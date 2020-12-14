@@ -5,8 +5,8 @@
   </figure>
 
   <nav>
-    <a routerLink="/">Dashboard</a>
-    <a routerLink="/about"> About </a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+    <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> About </a>
   </nav>
 </header>
 

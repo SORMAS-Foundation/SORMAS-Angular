@@ -35,6 +35,10 @@ $white: white;
       &:hover {
         background-color: lighten($blue, 5);
       }
+
+      &.active {
+        background-color: lighten($blue, 3);
+      }
     }
   }
 }
