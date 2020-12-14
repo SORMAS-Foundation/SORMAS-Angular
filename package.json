@@ -6,8 +6,9 @@
     "start": "ng serve --hmr",
     "build": "ng build --prod",
     "test": "ng test",
-    "lint": "ng lint",
     "e2e": "ng e2e",
+    "lint": "ng lint",
+    "lint:styles": "stylelint \"**/*.scss\"",
     "format": "prettier --config ./.prettierrc --write \"src/{app,enviroonments}/**/*{.ts,.html,.scss}\""
   },
   "private": true,
@@ -57,22 +58,34 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "prettier": "^2.2.1",
     "protractor": "~7.0.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.18.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --relative npm run format"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*": [
-      "npm run format"
+    "*.{ts,scss,html}": [
+      "npm run format",
+      "git add"
     ],
-    "*.{js,ts}": [
+    "*.ts": [
       "eslint --fix",
-      "git add -A ."
+      "git add"
+    ],
+    "**/*.scss": [
+      "npm run lint:styles",
+      "git add"
     ]
   }
 }
