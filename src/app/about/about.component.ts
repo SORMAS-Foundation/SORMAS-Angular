@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, VERSION } from '@angular/core';
 import { version } from '../../../package.json';
-import { VERSION } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -9,5 +8,6 @@ import { VERSION } from '@angular/core';
 })
 export class AboutComponent {
   public version: string = version;
+
   public ngVersion: string = VERSION.full;
 }
