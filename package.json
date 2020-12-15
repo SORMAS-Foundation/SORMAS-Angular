@@ -7,7 +7,7 @@
     "build": "ng build --prod",
     "test": "ng test",
     "e2e": "ng e2e",
-    "lint": "ng lint",
+    "lint": "ng lint --cache",
     "lint:styles": "stylelint \"**/*.scss\"",
     "format": "prettier --config ./.prettierrc --write \"src/{app,enviroonments}/**/*{.ts,.html,.scss}\""
   },
