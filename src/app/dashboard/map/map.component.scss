@@ -1,1 +1,12 @@
-/* stylelint-disable */
+@import 'leaflet/dist/leaflet.css';
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .map {
+    width: 500px;
+    height: 300px;
+  }
+}

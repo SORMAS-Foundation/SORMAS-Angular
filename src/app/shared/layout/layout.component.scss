@@ -31,7 +31,11 @@
       color: $white;
       text-decoration: none;
 
-      &:hover:focus {
+      &:hover {
+        background-color: lighten($blue, 5);
+      }
+
+      &:focus {
         background-color: lighten($blue, 5);
       }
 
