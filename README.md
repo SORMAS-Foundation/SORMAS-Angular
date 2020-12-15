@@ -1,5 +1,23 @@
 # Sormas
 
+## Angular technical setup WIP:
+
+- [x] modules structure example (root, shared, feature module - dashboard, tasks)
+- [x] ESLint
+- [x] Prettier
+- [x] style lint
+- [x] a11y checks - stylelint and tslint for templates
+- [x] pre-commit hooks
+- [x] map example with Leaflet
+- [x] lazy loaded feature modules - Ex Tasks
+- [ ] HTTP service example
+- [ ] Localization
+- [ ] Table component
+- [ ] Integrate CSS FW / Component lib
+- [ ] Other basic components?
+- [ ] Tests
+- [ ] VSCode Setup & extensions used - document
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
 ## Development server
