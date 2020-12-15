@@ -10,7 +10,7 @@
 - [x] pre-commit hooks
 - [x] map example with Leaflet
 - [x] lazy loaded feature modules - Ex Tasks
-- [ ] HTTP service example
+- [x] HTTP service example
 - [ ] Localization
 - [ ] Table component
 - [ ] Integrate CSS FW / Component lib

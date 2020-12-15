@@ -1,0 +1,17 @@
+<div *ngIf="diseases" class="cards">
+  <div *ngFor="let item of diseases" class="card">
+    <div class="container">
+      <h4>
+        <b>{{ item.name }}</b>
+      </h4>
+      <p>
+        Count: <i>{{ item.count | number }}</i>
+      </p>
+      <p>
+        Last reported: <i>{{ item.lastReport | date }}</i>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="errorMessage" class="error">{{ errorMessage.message }}</div>
