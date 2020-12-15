@@ -8,6 +8,7 @@
     "test": "ng test",
     "e2e": "ng e2e",
     "lint": "ng lint --cache",
+    "tslint": "tslint --project tsconfig.json",
     "lint:styles": "stylelint \"**/*.scss\"",
     "format": "prettier --config ./.prettierrc --write \"src/{app,enviroonments}/**/*{.ts,.html,.scss}\""
   },
@@ -78,10 +79,8 @@
   "lint-staged": {
     "*.{ts,scss,html}": [
       "npm run format",
-      "git add"
-    ],
-    "*.ts": [
       "eslint --fix",
+      "npm run tslint",
       "git add"
     ],
     "**/*.scss": [
