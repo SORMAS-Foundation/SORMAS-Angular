@@ -11,7 +11,7 @@
 - [x] map example with Leaflet
 - [x] lazy loaded feature modules - Ex Tasks
 - [x] HTTP service example
-- [ ] Localization
+- [x] Localization
 - [ ] Table component
 - [ ] Integrate CSS FW / Component lib
 - [ ] Other basic components?
@@ -22,7 +22,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -30,7 +30,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
@@ -39,6 +39,20 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## i18n
+
+Install ngx-i18nsupport: `npm install -g ngx-i18nsupport`
+Generate localization data: `npm run extract-i18n`
+It will generate locale data for all languages specified in `xliffmerge.json` in the `./src/locale` folder.
+
+Notes:
+
+- xliffmerge.json can be configured with "autotranslate": true, provided a Google translate API key is provided
+- Tiny translator tool can be used to translate to other languages (avoid directly modifying the `.xls` files). Run it locally with docker: `docker run -d -it --rm -p4000:80 martinroob/tiny-translator:latest` or use it directly from [here](https://martinroob.github.io/tiny-translator/en/#/home).
+- Run `npm start:fr` or `npm start:de` to launch the app in a certain language.
+
+For more info on Angular's i18n features read [here](https://angular.io/guide/i18n).
 
 ## Further help
 
