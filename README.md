@@ -57,3 +57,7 @@ For more info on Angular's i18n features read [here](https://angular.io/guide/i1
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Check the app
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/438ae622-8eac-4dfd-be4a-240ca127430d/deploy-status)](https://app.netlify.com/sites/sormas-angular-setup/deploys)
