@@ -8,7 +8,8 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "fr": "src/locale/messages.fr.xlf"
+          "fr": "src/locale/messages.fr.xlf",
+          "de": "src/locale/messages.de.xlf"
         }
       },
       "schematics": {
@@ -43,6 +44,9 @@
             },
             "fr": {
               "localize": ["fr"]
+            },
+            "de": {
+              "localize": ["de"]
             },
             "production": {
               "fileReplacements": [
@@ -87,6 +91,9 @@
             },
             "fr": {
               "browserTarget": "sormas:build:fr"
+            },
+            "de": {
+              "browserTarget": "sormas:build:de"
             }
           }
         },

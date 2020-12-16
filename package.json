@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --hmr --configuration=en-US",
     "start:fr": "ng serve --hmr --configuration=fr",
+    "start:de": "ng serve --hmr --configuration=de",
     "build": "ng build --prod",
     "extract-i18n": "ng extract-i18n --output-path src/locale && xliffmerge -p xliffmerge.json",
     "test": "ng test",

@@ -6,7 +6,7 @@
     "i18nBaseFile": "messages",
     "i18nFormat": "xlf",
     "defaultLanguage": "en-US",
-    "languages": ["fr"],
+    "languages": ["fr", "de"],
     "removeUnusedIds": true,
     "autotranslate": false
   }
