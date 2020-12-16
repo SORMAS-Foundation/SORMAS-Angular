@@ -9,7 +9,7 @@
         "sourceLocale": "en-US",
         "locales": {
           "fr": "src/locale/messages.fr.xlf",
-          "de": "src/locale/messages.de.xlf"
+          "de": { "translation": "src/locale/messages.de.xlf", "baseHref": "" }
         }
       },
       "schematics": {
@@ -40,7 +40,8 @@
           },
           "configurations": {
             "en-US": {
-              "localize": ["en-US"]
+              "localize": ["en-US"],
+              "outputPath": "dist"
             },
             "fr": {
               "localize": ["fr"]
