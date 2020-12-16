@@ -1,0 +1,13 @@
+{
+  "xliffmergeOptions": {
+    "srcDir": "src/locale",
+    "genDir": "src/locale",
+    "i18nFile": "messages.xlf",
+    "i18nBaseFile": "messages",
+    "i18nFormat": "xlf",
+    "defaultLanguage": "en-US",
+    "languages": ["fr"],
+    "removeUnusedIds": true,
+    "autotranslate": false
+  }
+}
