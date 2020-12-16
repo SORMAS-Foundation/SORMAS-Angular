@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template">
+  <file source-language="en-US" target-language="fr" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="004b222ff9ef9dd4771b777950ca1d0e4cd4348a" datatype="html">
         <source>About</source>
@@ -66,6 +66,22 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
           <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+            <trans-unit id="0902a5e0023022f59901407710303e2aaca34800" datatype="html">
+        <source> Count: <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="INTERPOLATION" equiv-text="{{ item.count | number }}"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <target> Compter:  <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="INTERPOLATION" equiv-text="{{ item.count | number }}"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9f3125beceb9cb6d7d430a69e6303225f440235a" datatype="html">
+        <source> Last reported: <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="INTERPOLATION" equiv-text="{{ item.lastReport | date }}"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <target> Dernier rapport: <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="INTERPOLATION" equiv-text="{{ item.lastReport | date }}"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
     </body>

@@ -62,6 +62,20 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="0902a5e0023022f59901407710303e2aaca34800" datatype="html">
+        <source> Count: <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="INTERPOLATION" equiv-text="{{ item.count | number }}"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9f3125beceb9cb6d7d430a69e6303225f440235a" datatype="html">
+        <source> Last reported: <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="INTERPOLATION" equiv-text="{{ item.lastReport | date }}"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="a4cc69493c5420bf17aa94c4c5aca3ec469f8c91" datatype="html">
         <source>tasks works!</source>
         <context-group purpose="location">
