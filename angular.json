@@ -5,6 +5,12 @@
   "projects": {
     "sormas": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr": "src/locale/messages.fr.xlf"
+        }
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -20,17 +26,24 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sormas",
+            "outputPath": "dist/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "localize": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss", "./node_modules/leaflet/dist/leaflet.css"],
             "scripts": []
           },
           "configurations": {
+            "en-US": {
+              "localize": ["en-US"]
+            },
+            "fr": {
+              "localize": ["fr"]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -68,6 +81,12 @@
           "configurations": {
             "production": {
               "browserTarget": "sormas:build:production"
+            },
+            "en-US": {
+              "browserTarget": "sormas:build:en-US"
+            },
+            "fr": {
+              "browserTarget": "sormas:build:fr"
             }
           }
         },

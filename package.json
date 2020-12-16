@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --hmr",
+    "start": "ng serve --hmr --configuration=en-US",
+    "start:fr": "ng serve --hmr --configuration=fr",
     "build": "ng build --prod",
     "test": "ng test",
     "e2e": "ng e2e",
@@ -38,6 +39,7 @@
     "@angular-eslint/template-parser": "0.8.0-beta.5",
     "@angular/cli": "~11.0.4",
     "@angular/compiler-cli": "~11.0.4",
+    "@angular/localize": "^11.0.4",
     "@types/jasmine": "~3.6.0",
     "@types/leaflet": "^1.5.19",
     "@types/node": "^12.11.1",

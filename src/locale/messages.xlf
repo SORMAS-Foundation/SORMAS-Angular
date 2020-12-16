@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="004b222ff9ef9dd4771b777950ca1d0e4cd4348a" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about/about.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5e0f2d398d78f588a533b805908ff03242391668" datatype="html">
+        <source>SORMAS Next-Gen version: <x id="INTERPOLATION" equiv-text="{{ version }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about/about.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2739b4b75f74191c275be59a75f2495df23c4ad4" datatype="html">
+        <source>Angular version: <x id="INTERPOLATION" equiv-text="{{ ngVersion }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about/about.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2dd80be74b351eb1354f629b3ef20a3a50e3efbe" datatype="html">
+        <source>logo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a6a5459e619c412d3e7458fa5e857a46b3b1ecc2" datatype="html">
+        <source>Sormas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f65253954b66e929a8b4d5ecaf61f9129f8cec64" datatype="html">
+        <source>Dashboard</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ea6d7c9dfdc3eb077d754600d7a5a34f2f5aa4ea" datatype="html">
+        <source> About </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="197442fc07dc2e53359c59a1b4f7d15afb49188c" datatype="html">
+        <source> Tasks </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a4cc69493c5420bf17aa94c4c5aca3ec469f8c91" datatype="html">
+        <source>tasks works!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
