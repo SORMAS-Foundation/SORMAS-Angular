@@ -11,12 +11,14 @@
 - [x] map example with Leaflet
 - [x] lazy loaded feature modules - Ex Tasks
 - [x] HTTP service example
-- [x] Localization
-- [ ] Table component
+- [x] Docker example
+- [x] Localization - default Angular i18n
 - [ ] Integrate CSS FW / Component lib
+- [ ] Table component
 - [ ] Other basic components?
 - [ ] Tests
 - [ ] VSCode Setup & extensions used - document
+- [ ] Explore Localization option 2 - transloco (check compat with crowdin app)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
@@ -54,9 +56,17 @@ Notes:
 
 For more info on Angular's i18n features read [here](https://angular.io/guide/i18n).
 
+The Crowdin app used for Sormas-Project supports `.xlf` files.
+https://support.crowdin.com/supported-formats/
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Docker
+
+`docker build -t angular-app .`
+`docker run --name angular-app -d -p 5001:80 angular-app`
 
 ## Check the app
 
