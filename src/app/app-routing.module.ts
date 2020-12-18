@@ -13,6 +13,10 @@ const routes: Routes = [
     component: AboutComponent,
   },
   { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then((m) => m.TasksModule) },
+  {
+    path: 'pds-playground',
+    loadChildren: () => import('./pds-playground/pds-playground.module').then((m) => m.PdsPlaygroundModule),
+  },
   { path: '**', component: NotFoundComponent },
 ];
 

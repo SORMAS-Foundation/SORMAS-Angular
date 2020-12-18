@@ -1,0 +1,69 @@
+.pds-examples {
+  padding: 2rem;
+  text-align: initial;
+}
+
+// TODO - those should be from PDS??
+$space-7: 40px !default;
+
+@mixin spacing-trim($anchors: all, $type: margin) {
+  $is-vertical: some($anchors, vertical, y);
+
+  &:first-of-type {
+    $dir: if($is-vertical, top, left);
+    #{$type}-#{$dir}: 0;
+  }
+  &:last-of-type {
+    $dir: if($is-vertical, bottom, right);
+    #{$type}-#{$dir}: 0;
+  }
+}
+
+@mixin spacing($space, $anchors: all, $trim: false, $justify: false, $type: margin) {
+  $space: calc(#{var-or-default($space)} * #{var(--spacing, 1)});
+  $anchors: to-list($anchors);
+
+  @if some($anchors, all, top, vertical, y) {
+    #{$type}-top: $space;
+  }
+  @if some($anchors, all, left, horizontal, x) {
+    #{$type}-left: $space;
+  }
+  @if some($anchors, all, bottom, vertical, y) {
+    #{$type}-bottom: $space;
+  }
+  @if some($anchors, all, right, horizontal, x) {
+    #{$type}-right: $space;
+  }
+
+  @if $justify {
+    @include spacing-justify($anchors, $type);
+  }
+  @if $trim {
+    @include spacing-trim($anchors, $type);
+  }
+}
+
+@mixin inner-spacing($space, $anchors: all, $trim: false, $justify: false) {
+  @include spacing($space, $anchors, $trim, $justify, $type: padding);
+}
+@mixin outer-spacing($space, $anchors: all, $trim: false, $justify: false) {
+  @include spacing($space, $anchors, $trim, $justify, margin);
+}
+
+.row {
+  display: flex;
+
+  .col {
+    flex: 0 1 auto;
+
+    @include outer-spacing($space-7, x, $trim: true);
+
+    &.col-grow {
+      flex: 1 0 auto;
+    }
+    &.col-25 {
+      min-width: 25%;
+    }
+  }
+}

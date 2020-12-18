@@ -6,5 +6,8 @@ module.exports = {
     'stylelint-prettier/recommended',
   ],
   plugins: ['stylelint-order', 'stylelint-scss'],
-  rules: {},
+  rules: {
+    'at-rule-no-unknown': null,
+  },
+  ignoreFiles: ['src/assets/**/*.css'],
 };
