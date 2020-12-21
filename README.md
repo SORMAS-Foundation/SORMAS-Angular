@@ -13,11 +13,11 @@
 - [x] HTTP service example
 - [x] Docker example
 - [x] Localization - default Angular i18n
+- [ ] Localization - deployment with language switch
+- [ ] Forms / dynamic forms / form validation & submission
 - [ ] Integrate CSS FW / Component lib
-- [ ] Table component
-- [ ] Other basic components?
 - [ ] Tests
-- [ ] VSCode Setup & extensions used - document
+- [x] VSCode Setup & extensions used - document
 - [ ] Explore Localization option 2 - transloco (check compat with crowdin app)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
@@ -71,3 +71,58 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Check the app
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/438ae622-8eac-4dfd-be4a-240ca127430d/deploy-status)](https://app.netlify.com/sites/sormas-angular-setup/deploys)
+
+## Local dev setup
+
+Install [Node.js](https://nodejs.org/en/)
+
+Install the Angular CLI: `npm install -g @angular/cli`
+
+Run `npm i` in the project root to install the preject dependencies.
+
+### VS Code Extensions
+
+Search in VS Code extensions library and install:
+
+- Angular Language Service
+- Angular Schematics
+- ESLint
+- Prettier
+- stylelint
+- TSLint
+
+### VS Code
+
+Add those to the VS Code settings JSON:
+
+```json
+{
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.detectIndentation": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": ["javascript", "typescript", "html"],
+  "eslint.options": {
+    "extensions": [".js", ".ts", "html"]
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true
+}
+```
