@@ -26,6 +26,8 @@
     "@angular/platform-browser-dynamic": "~11.0.4",
     "@angular/router": "~11.0.4",
     "@asymmetrik/ngx-leaflet": "^8.1.0",
+    "keycloak-angular": "^8.0.1",
+    "keycloak-js": "^12.0.1",
     "leaflet": "^1.7.1",
     "lint-staged": "^10.5.3",
     "rxjs": "~6.6.0",

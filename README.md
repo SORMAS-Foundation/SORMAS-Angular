@@ -13,7 +13,8 @@
 - [x] HTTP service example
 - [x] Docker example
 - [x] Localization - default Angular i18n
-- [ ] Localization - deployment with language switch
+- [ ] Localization - deployment with language switch (need DevOps help)
+- [x] Auth & Integrate Keycloak
 - [ ] Forms / dynamic forms / form validation & submission
 - [ ] Integrate CSS FW / Component lib
 - [ ] Tests
@@ -66,7 +67,28 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Docker
 
 `docker build -t angular-app .`
+
 `docker run --name angular-app -d -p 5001:80 angular-app`
+
+## Auth with Keycloak
+
+Run keycloak locally with docker (this is only for dev testing):
+`docker run -p 5001:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:12.0.1`
+Go to `http://localhost:5001/auth/admin` and use `admin` & `admin` to log in.
+
+See more: https://www.keycloak.org/getting-started/getting-started-docker
+Steps
+
+- Create realm Sormas
+- Create user
+- Go to http://localhost:5001/auth/realms/Sormas/account/#/ click `Sign In` - check your user can sign in
+- Create client for the Angular app (from the Keycloak Admin Clients section):
+
+  Client ID: `sormas-angular`
+
+  Client Protocol: `openid-connect`
+
+  Root URL: `http://localhost:4200/`
 
 ## Check the app
 
