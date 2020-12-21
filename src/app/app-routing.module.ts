@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./pds-playground/pds-playground.module').then((m) => m.PdsPlaygroundModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
+    canActivate: [AuthGuard],
+  },
   { path: '**', component: NotFoundComponent },
 ];
 

@@ -1,0 +1,15 @@
+<h2 i18n>User profile</h2>
+<br />
+<p i18n>
+  User name: <b>{{ user }}</b>
+</p>
+<p i18n>User roles:</p>
+<ul>
+  <li *ngFor="let role of roles">
+    {{ role }}
+  </li>
+</ul>
+
+<br />
+
+<button (click)="logout()">Log out</button>
