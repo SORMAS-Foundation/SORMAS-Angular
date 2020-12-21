@@ -1,12 +1,13 @@
 import { KeycloakService } from 'keycloak-angular';
+import { environment } from '../../../environments/environment';
 
 export function initializeAuth(keycloak: KeycloakService): () => Promise<boolean> {
   return () =>
     keycloak.init({
       config: {
-        url: 'http://localhost:5001/auth',
-        realm: 'Sormas',
-        clientId: 'sormas-angular',
+        url: environment.keycloakUrl,
+        realm: environment.keycloakRealm,
+        clientId: environment.keycloakClientId,
       },
       initOptions: {
         checkLoginIframe: true,

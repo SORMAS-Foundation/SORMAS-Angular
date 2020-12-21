@@ -4,6 +4,9 @@
 
 export const environment = {
   production: false,
+  keycloakUrl: 'http://localhost:5001/auth',
+  keycloakRealm: 'Sormas',
+  keycloakClientId: 'sormas-angular',
 };
 
 /*
