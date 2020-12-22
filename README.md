@@ -14,7 +14,8 @@
 - [x] Docker example
 - [x] Localization - default Angular i18n
 - [ ] Localization - deployment with language switch (need DevOps help)
-- [x] Auth & Integrate Keycloak
+- [x] Auth - Keycloak integration
+- [ ] RBAC
 - [ ] Forms / dynamic forms / form validation & submission
 - [ ] Integrate CSS FW / Component lib
 - [ ] Tests
@@ -73,9 +74,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Auth with Keycloak
 
 Run keycloak locally with docker (this is only for dev testing):
-`docker run -p 5001:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:12.0.1`
+`docker run --name keycloak -p 5001:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:12.0.1`
 Go to `http://localhost:5001/auth/admin` and use `admin` & `admin` to log in.
 
+To get Keycloak configured (use one of those 2 options):
+- Option 1 - import `keykloak/sormas-realm.json` as a new Realm & then start the app and login with user `sormas-dev` and pw `Test.3210`
+- Option 2 - follow steps below
+  
 See more: https://www.keycloak.org/getting-started/getting-started-docker
 Steps
 
