@@ -44,5 +44,14 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'off',
       },
     },
+    {
+      files: ['*.js'],
+      parserOptions: {
+        ecmaVersion: 2020,
+      },
+      env: {
+        es6: true,
+      },
+    },
   ],
 };
