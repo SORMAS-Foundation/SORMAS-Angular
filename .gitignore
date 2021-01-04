@@ -47,3 +47,6 @@ Thumbs.db
 
 # eslint cache
 .eslintcache
+
+# log files
+*.log
