@@ -1,12 +1,12 @@
 export interface Disease {
   name: string;
   lastReport: string;
-  count: 10;
+  count: number;
 }
 
 export interface DiseaseResponsePayload {
   [key: string]: {
     lastReport: string;
-    count: 10;
+    count: number;
   };
 }

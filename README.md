@@ -16,11 +16,14 @@
 - [ ] Localization - deployment with language switch (need DevOps help)
 - [x] Auth - Keycloak integration
 - [ ] RBAC
-- [ ] Forms / dynamic forms / form validation & submission
+- [ ] State management
+- [ ] Forms / dynamic forms / form validation & submission (help welcome)
 - [ ] Integrate CSS FW / Component lib
+- [ ] Common components - Table, Modal, Dropdown (help welcome)
+- [ ] Integrate with Sormas Keycloak & Sormas API backend (help welcome - BE)
 - [ ] Tests
-- [x] VSCode Setup & extensions used - document
-- [ ] Explore Localization option 2 - transloco (check compat with crowdin app)
+- [x] Local dev setup & VS Code extensions used - document
+- [ ] Explore Localization option 2 - transloco (check compat with crowdin app) (help welcome)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
@@ -69,7 +72,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 `docker build -t angular-app .`
 
-`docker run --name angular-app -d -p 5001:80 angular-app`
+`docker run --name angular-app -d -p 4200:80 angular-app`
 
 ## Auth with Keycloak
 
@@ -78,9 +81,10 @@ Run keycloak locally with docker (this is only for dev testing):
 Go to `http://localhost:5001/auth/admin` and use `admin` & `admin` to log in.
 
 To get Keycloak configured (use one of those 2 options):
+
 - Option 1 - import `keykloak/sormas-realm.json` as a new Realm & then start the app and login with user `sormas-dev` and pw `Test.3210`
 - Option 2 - follow steps below
-  
+
 See more: https://www.keycloak.org/getting-started/getting-started-docker
 Steps
 
