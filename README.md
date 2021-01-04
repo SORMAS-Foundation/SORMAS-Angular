@@ -1,4 +1,4 @@
-# Sormas
+# SORMAS-Angular
 
 ## Angular technical setup WIP:
 
@@ -26,6 +26,10 @@
 - [ ] Explore Localization option 2 - transloco (check compat with crowdin app) (help welcome)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
+
+## Install dependencies
+
+Run `npm i`
 
 ## Development server
 
