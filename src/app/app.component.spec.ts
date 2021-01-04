@@ -22,6 +22,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('.content span').textContent).toContain('sormas app is running!');
+    expect(compiled.querySelector('app-layout')).toBeDefined();
   });
 });
