@@ -9,7 +9,7 @@
         "sourceLocale": "en-US",
         "locales": {
           "fr": "src/locale/messages.fr.xlf",
-          "de": { "translation": "src/locale/messages.de.xlf", "baseHref": "" }
+          "de": "src/locale/messages.de.xlf"
         }
       },
       "schematics": {
@@ -35,7 +35,7 @@
             "aot": true,
             "localize": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "./node_modules/leaflet/dist/leaflet.css"],
+            "styles": ["src/styles.scss", "./node_modules/leaflet/dist/leaflet.css", "src/assets/pds-css/petrol.css"],
             "scripts": []
           },
           "configurations": {
