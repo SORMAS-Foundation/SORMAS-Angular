@@ -13,7 +13,7 @@
 - [x] HTTP service example
 - [x] Docker example
 - [x] Localization - default Angular i18n
-- [ ] Localization - deployment with language switch (need DevOps help)
+- [x] Localization - deployment with language switch
 - [x] Auth - Keycloak integration
 - [ ] RBAC
 - [ ] State management
@@ -34,6 +34,11 @@ Run `npm i`
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+You can start the app in a different language using:
+Ex: `npm run start:de`
+
+> Note: Keycloak is required to run the app - [see below](https://github.com/hzi-braunschweig/SORMAS-Angular#auth-with-keycloak)
 
 ## Code scaffolding
 
@@ -77,6 +82,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `docker build -t angular-app .`
 
 `docker run --name angular-app -d -p 4200:80 angular-app`
+
+Should be able to navigate to:
+
+- `http://localhost:4200/de/`
+- `http://localhost:4200/en-US/`
+- `http://localhost:4200/fr/`
+
+> Note: Keycloak is required to run the app - [see below](https://github.com/hzi-braunschweig/SORMAS-Angular#auth-with-keycloak)
 
 ## Auth with Keycloak
 
