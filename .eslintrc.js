@@ -16,6 +16,7 @@ module.exports = {
       rules: {
         'import/prefer-default-export': 'off',
         '@typescript-eslint/lines-between-class-members': 'off',
+        'class-methods-use-this': 'off',
       },
     },
     {

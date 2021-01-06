@@ -20,7 +20,6 @@ export class BaseDataService {
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
   handleError(err: HttpErrorResponse): Observable<never> {
     // todo logging - send error to remote logging infra
 
