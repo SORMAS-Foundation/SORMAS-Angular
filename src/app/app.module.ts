@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +17,10 @@ import { initializeAuth } from './shared/auth/init-auth';
       provide: APP_INITIALIZER,
       useFactory: initializeAuth,
       multi: true,
-      deps: [KeycloakService],
+      deps: [KeycloakService, Location],
     },
+    Location,
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
   ],
   bootstrap: [AppComponent],
 })
