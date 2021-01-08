@@ -38,7 +38,9 @@ describe('UserProfileComponent', () => {
   it('should render user name', () => {
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('p[data-test-id="user-name"]').textContent).toBe(' User name: test-user');
+    expect(compiled.querySelector('p[data-test-id="user-name"]').textContent).toBe(
+      ' User name: test-user'
+    );
 
     mockRoles.forEach((role) => {
       expect(compiled.innerHTML).toContain(role);

@@ -2,7 +2,10 @@ import { Location } from '@angular/common';
 import { KeycloakService } from 'keycloak-angular';
 import { environment } from '../../../environments/environment';
 
-export function initializeAuth(keycloak: KeycloakService, locationStrategy: Location): () => Promise<boolean> {
+export function initializeAuth(
+  keycloak: KeycloakService,
+  locationStrategy: Location
+): () => Promise<boolean> {
   return () => {
     return keycloak.init({
       config: {
