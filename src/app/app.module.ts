@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -11,7 +12,14 @@ import { initializeAuth } from './shared/auth/init-auth';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, DashboardModule, KeycloakAngularModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    DashboardModule,
+    KeycloakAngularModule,
+    BrowserAnimationsModule,
+  ],
   providers: [
     {
       provide: APP_INITIALIZER,
