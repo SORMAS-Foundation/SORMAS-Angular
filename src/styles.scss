@@ -5,6 +5,8 @@
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
+
+// TODO - use Open Sans as in Sormas?
 $custom-typography: mat-typography-config(
   $font-family: 'Roboto, "Helvetica Neue", sans-serif',
   $headline: mat-typography-level(32px, 48px, 700),
