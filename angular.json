@@ -35,7 +35,7 @@
             "aot": true,
             "localize": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "./node_modules/leaflet/dist/leaflet.css", "src/assets/pds-css/petrol.css"],
+            "styles": ["src/styles.scss", "./node_modules/leaflet/dist/leaflet.css"],
             "scripts": []
           },
           "configurations": {
