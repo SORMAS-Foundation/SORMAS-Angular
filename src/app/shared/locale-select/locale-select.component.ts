@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID, Inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { localeOptions } from './localeOptions';
 
 @Component({
   selector: 'app-locale-select',
@@ -6,8 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./locale-select.component.scss'],
 })
 export class LocaleSelectComponent {
-  selectLanguage(event: Event): void {
-    const newLocale = (event.target as HTMLInputElement)?.value ?? '';
+  options = localeOptions;
+  myControl = new FormControl();
+  selectedLocale = '';
+
+  constructor(@Inject(LOCALE_ID) protected localeId: string) {
+    this.selectedLocale = localeId;
+  }
+
+  selectLocale(event: { value?: string }): void {
+    const newLocale = event?.value ?? '';
 
     if (window) {
       window.location.assign(`${window.location.origin}/${newLocale}`);
