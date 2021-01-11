@@ -5,7 +5,7 @@
       <mat-nav-list>
         <a
           mat-list-item
-          *ngFor="let item of navigationSideMenu"
+          *ngFor="let item of navigation"
           (click)="sidenav.close()"
           [routerLink]="[item.link]"
           routerLinkActive="active"
