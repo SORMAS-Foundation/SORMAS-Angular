@@ -8,6 +8,7 @@ module.exports = {
   plugins: ['stylelint-order', 'stylelint-scss'],
   rules: {
     'at-rule-no-unknown': null,
+    'selector-type-no-unknown': null,
   },
   ignoreFiles: ['src/assets/**/*.css'],
 };
