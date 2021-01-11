@@ -11,13 +11,10 @@ export class LayoutComponent {
   year = new Date().getFullYear();
   logo = logoPath;
 
-  // todo translations
   navigation = [
-    { link: '', label: 'Dashboard' },
-    { link: 'about', label: 'About' },
-    { link: 'tasks', label: 'Tasks' },
-    { link: 'user-profile', label: 'My profile' },
+    { link: '', label: $localize`Dashboard` },
+    { link: 'about', label: $localize`About` },
+    { link: 'tasks', label: $localize`Tasks` },
+    { link: 'user-profile', label: $localize`My profile` },
   ];
-
-  navigationSideMenu = [...this.navigation];
 }
