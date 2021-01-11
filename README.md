@@ -19,7 +19,7 @@
 - [ ] State management
 - [ ] Forms / dynamic forms / form validation & submission (help welcome)
 - [ ] Integrate CSS FW / Component lib
-- [ ] Common components - Table, Modal, Dropdown (help welcome)
+- [x] Common components - Table, Modal, Dropdown (help welcome)
 - [ ] Integrate with Sormas Keycloak & Sormas API backend (help welcome - BE)
 - [ ] Tests
 - [x] Local dev setup & VS Code extensions used - document
