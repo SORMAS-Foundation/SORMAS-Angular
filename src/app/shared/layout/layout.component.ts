@@ -8,7 +8,6 @@ import logoPath from '../../../assets/img/sormas-logo.png';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
-  year = new Date().getFullYear();
   logo = logoPath;
 
   navigation = [

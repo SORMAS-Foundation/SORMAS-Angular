@@ -1,7 +1,12 @@
 <div class="main-wrapper">
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push">
-      <div class="branding"><img [src]="logo" [alt]="logo" /> <span> Sormas</span></div>
+      <div class="logo">
+        <figure>
+          <img [src]="logo" i18n-alt alt="logo" />
+          <figcaption i18n>Sormas</figcaption>
+        </figure>
+      </div>
       <mat-nav-list>
         <a
           mat-list-item
@@ -24,8 +29,11 @@
               <fa-icon icon="bars"></fa-icon>
             </button>
 
-            <span routerLink="" class="branding spacer center d-inline d-sm-none">
-              <img [src]="logo" [alt]="logo" /> Sormas
+            <span routerLink="" class="logo spacer d-inline d-sm-none">
+              <figure>
+                <img [src]="logo" i18n-alt alt="logo" />
+                <figcaption i18n>Sormas</figcaption>
+              </figure>
             </span>
 
             <span class="d-none d-md-inline">
