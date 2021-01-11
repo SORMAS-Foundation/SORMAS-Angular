@@ -8,20 +8,20 @@
 mat-sidenav {
   width: 250px;
 
-  .branding {
-    height: 64px;
-    padding: 8px 10px;
-    font-size: 20px;
-    font-weight: 500;
+  .logo {
+    figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 10px;
 
-    img {
-      height: 48px;
-      margin: 2px 10px 0 0;
-    }
+      figcaption {
+        font-size: large;
+      }
 
-    span {
-      position: relative;
-      top: 3px;
+      > * {
+        margin-left: 0.4rem;
+      }
     }
   }
 
@@ -48,21 +48,18 @@ mat-sidenav-container {
       font-size: 24px;
     }
 
-    .branding {
-      overflow: hidden;
-      padding-top: 4px;
+    // todo extract logo
+    .logo {
       cursor: pointer;
-      text-overflow: ellipsis;
+      figure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px auto 10px 25%;
 
-      &.center {
-        text-align: center;
-      }
-
-      img {
-        position: relative;
-        top: -2px;
-        width: 48px;
-        height: 48px;
+        > * {
+          margin-left: 0.4rem;
+        }
       }
     }
 
@@ -74,16 +71,16 @@ mat-sidenav-container {
       flex: 1 1 auto;
     }
 
-    mat-select {
-      width: 40px;
-      margin: 0 0 0 20px;
-      font-size: 14px;
-    }
-
     @media (max-width: map-get($grid-breakpoints, lg)) {
       .nav-button {
         min-width: 0;
         padding: 0 10px;
+      }
+    }
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      .nav-button {
+        display: none;
       }
     }
   }
@@ -100,15 +97,14 @@ mat-sidenav-container {
     .content {
       overflow: hidden;
       flex: 1 0 auto;
-      margin: 5rem;
-
+      margin: 5rem 2rem;
       text-align: center;
     }
   }
 
   @media (max-width: $toolbar-breakpoint) {
     .content {
-      margin-top: 4rem;
+      margin-top: 4rem 2rem;
     }
   }
 }
