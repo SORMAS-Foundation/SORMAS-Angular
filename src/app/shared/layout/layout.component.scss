@@ -6,14 +6,14 @@
 }
 
 mat-sidenav {
-  width: 250px;
+  width: 15.625rem;
 
   .logo {
     figure {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-left: 10px;
+      margin-left: 0.625rem;
 
       figcaption {
         font-size: large;
@@ -56,7 +56,6 @@ mat-sidenav-container {
       font-size: 24px;
     }
 
-    // todo extract logo
     .logo {
       cursor: pointer;
       figure {
@@ -82,7 +81,7 @@ mat-sidenav-container {
     @media (max-width: map-get($grid-breakpoints, lg)) {
       .nav-button {
         min-width: 0;
-        padding: 0 10px;
+        padding: 0 0.625;
       }
     }
 
@@ -103,16 +102,21 @@ mat-sidenav-container {
     flex-direction: column;
 
     .content {
-      overflow: hidden;
+      width: 99%;
+      height: 90vh;
       flex: 1 0 auto;
-      margin: 5rem 2rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      overflow-y: auto;
       text-align: center;
     }
-  }
 
-  @media (max-width: $toolbar-breakpoint) {
-    .content {
-      margin-top: 4rem 2rem;
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      .content {
+        width: 100%;
+        padding: 0.3rem;
+        margin-top: 4rem;
+      }
     }
   }
 }
