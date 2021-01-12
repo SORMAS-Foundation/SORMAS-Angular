@@ -89,6 +89,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    MatIconModule,
   ],
 })
 export class MaterialModule {}
