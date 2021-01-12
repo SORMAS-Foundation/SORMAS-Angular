@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+$sormas-primary: mat-palette($mat-indigo);
+$sormas-accent: mat-palette($mat-pink, A200, A100, A400);
+$sormas-warn: mat-palette($mat-red);
+
+$toolbar-breakpoint: 600px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$primary: mat-color($sormas-primary);
+$accent: mat-color($sormas-accent);
+$warn: mat-color($sormas-warn);
+
+$primary-light-50: map-get($sormas-primary, 50);
+$primary-light-100: map-get($sormas-primary, 100);
+
+// TIP: to check all colors in a pallete:
+// @debug $sormas-primary;

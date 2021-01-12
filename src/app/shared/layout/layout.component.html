@@ -14,7 +14,7 @@
           (click)="sidenav.close()"
           [routerLink]="[item.link]"
           routerLinkActive="active"
-          i18n
+          [routerLinkActiveOptions]="{ exact: true }"
         >
           {{ item.label }}
         </a>

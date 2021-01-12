@@ -1,4 +1,4 @@
-@use './src/styles.scss' as *;
+@use './src/variables.scss' as *;
 
 .main-wrapper {
   width: 100%;
@@ -27,6 +27,14 @@ mat-sidenav {
 
   .mat-nav-list {
     padding-top: 0;
+  }
+
+  mat-nav-list {
+    a {
+      &.active {
+        background: $primary-light-100;
+      }
+    }
   }
 }
 
