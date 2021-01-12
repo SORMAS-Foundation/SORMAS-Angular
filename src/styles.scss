@@ -6,7 +6,6 @@
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
 
-// TODO - use Open Sans as in Sormas?
 $custom-typography: mat-typography-config(
   $font-family: 'Roboto, "Helvetica Neue", sans-serif',
   $headline: mat-typography-level(32px, 48px, 700),
@@ -44,11 +43,6 @@ $sormas-theme: mat-light-theme(
 // that you are using.
 @include angular-material-theme($sormas-theme);
 
-/* You can add global styles to this file, and also import other style files */
-// define app-level variables
-$blue: #3a8ccf;
-$white: white;
-
 * {
   box-sizing: border-box;
 }
@@ -58,16 +52,3 @@ body {
   height: 100%;
   margin: 0;
 }
-
-$toolbar-breakpoint: 600px;
-
-$link-hover-decoration: none;
-$label-margin-bottom: 0;
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-);
