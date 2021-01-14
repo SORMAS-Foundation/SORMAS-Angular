@@ -1,17 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { initializeAuth } from './shared/auth/init-auth';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, DashboardModule, KeycloakAngularModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, DashboardModule, KeycloakAngularModule, FormsModule],
   providers: [
     {
       provide: APP_INITIALIZER,
