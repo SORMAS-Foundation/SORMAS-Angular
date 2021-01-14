@@ -74,7 +74,7 @@ services:
       - SORMAS_POSTGRES_USER=${SORMAS_POSTGRES_USER}
       - TZ=${TZ}
     volumes:
-      - ${SORMAS_PATH}/psqldata:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
     ports:
       - 127.0.0.1:8300:5432
     healthcheck:
@@ -122,7 +122,7 @@ services:
       - POSTGRES_DB=${KEYCLOAK_DB_NAME}
       - TZ=${TZ}
     volumes:
-      - ${SORMAS_PATH}/keycloak/psqldata:/var/lib/postgresql/data
+      - keycloak-postgres:/var/lib/postgresql/data
     ports:
       - 8401:5432
     healthcheck:
@@ -153,3 +153,6 @@ services:
     depends_on:
       - sormas
 
+volumes:
+  postgres:
+  keycloak-postgres:
