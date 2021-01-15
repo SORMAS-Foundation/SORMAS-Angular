@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { QuestionBase } from './question-base';
+import { FormElementBase } from './types/form-element-base';
 
 @Component({
-  selector: 'app-question',
-  templateUrl: './dynamic-form-question.component.html',
+  selector: 'app-form-group',
+  templateUrl: './dynamic-form-group.component.html',
 })
-export class DynamicFormQuestionComponent {
-  @Input() question: QuestionBase<string> = {
+export class DynamicFormGroupComponent {
+  @Input() formElement: FormElementBase<string> = {
     controlType: '',
     key: '',
     label: '',
@@ -24,6 +24,6 @@ export class DynamicFormQuestionComponent {
     });
   }
   get isValid(): boolean {
-    return this.form.controls[this.question.key].valid;
+    return this.form.controls[this.formElement.key].valid;
   }
 }

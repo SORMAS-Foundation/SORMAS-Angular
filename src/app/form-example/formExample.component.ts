@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { QuestionBase } from '../question-base';
-import { QuestionService } from '../question.service';
+import { FormDataService } from '../services/form-data.service';
+import { FormElementBase } from '../shared/dynamic-form/types/form-element-base';
 
 @Component({
   selector: 'app-forms',
   templateUrl: './formExample.component.html',
   styleUrls: ['./formExample.component.scss'],
-  providers: [QuestionService],
+  providers: [FormDataService],
 })
 export class FormExampleComponent {
-  questions: QuestionBase<any>[] = [];
+  myFormElements: FormElementBase<any>[] = [];
 
-  constructor(service: QuestionService) {
-    service.getQuestions().subscribe({
+  constructor(service: FormDataService) {
+    service.getFormData().subscribe({
       next: (value) => {
-        this.questions = value;
+        this.myFormElements = value;
       },
     });
   }

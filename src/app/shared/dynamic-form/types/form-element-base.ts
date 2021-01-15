@@ -1,4 +1,4 @@
-export class QuestionBase<T> {
+export class FormElementBase<T> {
   value?: T;
   key: string;
   label: string;
