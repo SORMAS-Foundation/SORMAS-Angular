@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import logoPath from '../../../assets/img/sormas-logo.png';
 
 @Component({
@@ -14,6 +14,7 @@ export class LayoutComponent {
     { link: '', label: $localize`Dashboard` },
     { link: 'about', label: $localize`About` },
     { link: 'tasks', label: $localize`Tasks` },
+    { link: 'forms', label: $localize`Forms` },
     { link: 'user-profile', label: $localize`My profile` },
   ];
 }

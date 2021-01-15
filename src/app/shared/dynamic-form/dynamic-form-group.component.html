@@ -13,7 +13,12 @@
       <option *ngFor="let opt of formElement.options" [value]="opt.key">{{ opt.value }}</option>
     </select>
 
-    <input *ngSwitchCase="'checkbox'" [formControlName]="formElement.key" [id]="formElement.key" [type]="'checkbox'" />
+    <input
+      *ngSwitchCase="'checkbox'"
+      [formControlName]="formElement.key"
+      [id]="formElement.key"
+      [type]="'checkbox'"
+    />
   </div>
 
   <div class="errorMessage" *ngIf="!isValid">{{ formElement.label }} is required</div>
