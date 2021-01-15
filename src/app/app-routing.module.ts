@@ -22,17 +22,14 @@ const routes: Routes = [
   },
   {
     path: 'forms',
-    loadChildren: () => import('./form-example/formExample.module').then((m) => m.FormExampleModule),
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'pds-playground',
-    loadChildren: () => import('./pds-playground/pds-playground.module').then((m) => m.PdsPlaygroundModule),
+    loadChildren: () =>
+      import('./form-example/formExample.module').then((m) => m.FormExampleModule),
     canActivate: [AuthGuard],
   },
   {
     path: 'user-profile',
-    loadChildren: () => import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
+    loadChildren: () =>
+      import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
     canActivate: [AuthGuard],
   },
   { path: '**', component: NotFoundComponent },

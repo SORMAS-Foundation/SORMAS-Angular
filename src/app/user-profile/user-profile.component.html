@@ -1,15 +1,21 @@
 <h2 i18n>User profile</h2>
-<br />
-<p i18n data-test-id="user-name">
-  User name: <b>{{ user }}</b>
-</p>
-<p i18n>User roles:</p>
-<ul>
-  <li *ngFor="let role of roles">
-    {{ role }}
-  </li>
-</ul>
 
-<br />
+<mat-card raised>
+  <h3 i18n data-test-id="user-name">
+    User name: <b>{{ user }}</b>
+  </h3>
 
-<button (click)="logout()">Log out</button>
+  <mat-card-content>
+    <h3 i18n>User roles:</h3>
+    <mat-chip-list [selectable]="false" aria-label="User roles">
+      <mat-chip *ngFor="let role of roles"> {{ role }}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+  <br />
+
+  <app-locale-select> </app-locale-select>
+
+  <mat-card-actions>
+    <button mat-button color="accent" (click)="logout()">Log out</button>
+  </mat-card-actions>
+</mat-card>

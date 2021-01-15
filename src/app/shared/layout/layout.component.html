@@ -1,25 +1,60 @@
-<header>
-  <figure>
-    <img src="assets/img/sormas-logo.png" i18n-alt alt="logo" />
-    <figcaption i18n>Sormas</figcaption>
-  </figure>
+<div class="main-wrapper">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" [autoFocus]="false">
+      <div class="logo">
+        <figure>
+          <img [src]="logo" i18n-alt alt="logo" />
+          <figcaption i18n>Sormas</figcaption>
+        </figure>
+      </div>
+      <mat-nav-list>
+        <a
+          mat-list-item
+          *ngFor="let item of navigation"
+          (click)="sidenav.close()"
+          [routerLink]="[item.link]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          {{ item.label }}
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="wrapper">
+      <div class="toolbar">
+        <div class="toolbar">
+          <mat-toolbar color="primary">
+            <button mat-icon-button class="d-md-none" (click)="sidenav.open()">
+              <mat-icon>menu</mat-icon>
+            </button>
 
-  <nav>
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" i18n>Dashboard</a>
-    <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" i18n> About </a>
-    <a routerLink="/tasks" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" i18n> Tasks </a>
-    <a routerLink="/forms" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" i18n> Forms </a>
-    <a routerLink="/pds-playground" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" i18n>
-      PDS Playground
-    </a>
-    <a routerLink="/user-profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" i18n>
-      My profile
-    </a>
-  </nav>
-</header>
+            <span routerLink="" class="logo spacer d-inline d-sm-none">
+              <figure>
+                <img [src]="logo" i18n-alt alt="logo" />
+                <figcaption i18n>Sormas</figcaption>
+              </figure>
+            </span>
 
-<main>
-  <ng-content></ng-content>
-</main>
+            <span class="d-none d-md-inline">
+              <button
+                mat-button
+                class="nav-button"
+                *ngFor="let item of navigation"
+                [routerLink]="[item.link]"
+                routerLinkActive="active"
+              >
+                {{ item.label }}
+              </button>
+            </span>
+          </mat-toolbar>
+        </div>
 
-<footer></footer>
+        <div class="content">
+          <ng-content></ng-content>
+        </div>
+
+        <div class="footer"></div>
+      </div>
+    </div>
+  </mat-sidenav-container>
+</div>

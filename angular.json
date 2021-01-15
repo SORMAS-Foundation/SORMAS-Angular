@@ -35,7 +35,7 @@
             "aot": true,
             "localize": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "./node_modules/leaflet/dist/leaflet.css", "src/assets/pds-css/petrol.css"],
+            "styles": ["src/styles.scss", "./node_modules/leaflet/dist/leaflet.css"],
             "scripts": []
           },
           "configurations": {
@@ -66,13 +66,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "600kb",
+                  "maximumError": "1.2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "11kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "100kb"
                 }
               ]
             }

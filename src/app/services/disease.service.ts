@@ -15,9 +15,11 @@ export class DiseaseService extends BaseDataService {
 
   getDiseaseData(): Observable<Disease[]> {
     // todo base url
-    return this.http.get<DiseaseResponsePayload>('https://demo7548196.mockable.io/api/diseases/overview').pipe(
-      map((data) => Object.keys(data).map((k) => ({ name: k, ...data[k] }))),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<DiseaseResponsePayload>('https://demo7548196.mockable.io/api/diseases/overview')
+      .pipe(
+        map((data) => Object.keys(data).map((k) => ({ name: k, ...data[k] }))),
+        catchError(this.handleError)
+      );
   }
 }
