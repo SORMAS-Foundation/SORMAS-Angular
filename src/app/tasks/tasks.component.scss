@@ -1,1 +1,28 @@
 /* stylelint-disable */
+:host {
+  text-align: left;
+}
+
+.tasks-list-container {
+  overflow: auto;
+}
+
+table.mat-table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  padding: 0 0.5rem;
+  white-space: nowrap;
+}
+
+td.mat-cell {
+  font-size: 0.75rem;
+  padding: 0 0.5rem;
+}
+
+.mat-form-field {
+  margin-right: 1rem;
+}
