@@ -91,6 +91,26 @@ Should be able to navigate to:
 
 > Note: Keycloak is required to run the app - [see below](https://github.com/hzi-braunschweig/SORMAS-Angular#auth-with-keycloak)
 
+
+## Docker Compose
+1. You will first need to add the following to your hosts file: `127.0.0.1	sormas-docker-test.com`
+2. On Windows ensure the local git repository is set to not replace line endings with
+   `git config core.autocrlf input` and ` git config core.eol lf`
+3. On Windows ensure your IDE is set to use LF for line endings instead of the default CRLF
+
+To run the environment please use: `docker-compose up`
+
+## Links:
+| App Name           | Url                                            |
+| -------------------| -----------------------------------------------|
+| Sormas Application | http://localhost:8100/sormas-ui/login          |
+| Sormas Angular     | http://localhost:8200                          |
+| Sormas Postgres    | 127.0.0.1:8300                                 |
+| Keycloak           | http://localhost:8400                          |
+| Keycloak Postgres  | 127.0.0.1:8401                                 |
+
+On Windows, make sure the `docker` folder in the project is added to the Docker File Sharing as per the instructions [here](https://docs.docker.com/docker-for-windows/)
+
 ## Auth with Keycloak
 
 Run keycloak locally with docker (this is only for dev testing):
