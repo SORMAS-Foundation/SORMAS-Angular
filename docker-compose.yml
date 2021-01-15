@@ -65,7 +65,8 @@ services:
 
   postgres:
     command: -c 'config_file=/etc/postgresql/postgresql.conf'
-    image: hzibraunschweig/sormas-postgres:${SORMAS_DOCKER_VERSION}
+    build:
+      context: docker/postgres
     environment:
       - POSTGRES_PASSWORD=${SORMAS_POSTGRES_PASSWORD}
       - DB_NAME=sormas
