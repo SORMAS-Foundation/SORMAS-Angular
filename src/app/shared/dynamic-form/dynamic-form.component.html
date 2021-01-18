@@ -3,10 +3,9 @@
     <div *ngFor="let element of formElements" class="form-row">
       <app-form-group [formElement]="element" [form]="form"></app-form-group>
     </div>
-
+    <br />
     <div class="form-row">
-      f
-      <button type="submit" [disabled]="!form.valid">Save</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Save</button>
     </div>
   </form>
 

@@ -5,6 +5,7 @@ import { FormElementBase } from './types/form-element-base';
 @Component({
   selector: 'app-form-group',
   templateUrl: './dynamic-form-group.component.html',
+  styleUrls: ['./dynamic-form-group.component.scss'],
 })
 export class DynamicFormGroupComponent {
   @Input() formElement: FormElementBase<string> = {
@@ -13,7 +14,7 @@ export class DynamicFormGroupComponent {
     label: '',
     options: [],
     order: 0,
-    required: true,
+    validation: [],
     type: '',
     value: '',
   };

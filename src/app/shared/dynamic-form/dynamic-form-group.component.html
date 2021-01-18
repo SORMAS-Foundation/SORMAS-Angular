@@ -1,25 +1,33 @@
 <div [formGroup]="form">
-  <label [attr.for]="formElement.key">{{ formElement.label }}</label>
-
   <div [ngSwitch]="formElement.controlType">
-    <input
-      *ngSwitchCase="'textbox'"
-      [formControlName]="formElement.key"
-      [id]="formElement.key"
-      [type]="formElement.type"
-    />
-
-    <select [id]="formElement.key" *ngSwitchCase="'dropdown'" [formControlName]="formElement.key">
-      <option *ngFor="let opt of formElement.options" [value]="opt.key">{{ opt.value }}</option>
-    </select>
-
-    <input
+    <mat-form-field *ngSwitchCase="'input'" appearance="legacy" [id]="formElement.key">
+      <mat-label>{{ formElement.key }}</mat-label>
+      <input
+        [value]="formElement.value"
+        [type]="formElement.type"
+        [formControlName]="formElement.key"
+        matInput
+        placeholder="{{ formElement.key }}"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" *ngSwitchCase="'dropdown'">
+      <mat-label>{{ formElement.label }}</mat-label>
+      <mat-select [formControlName]="formElement.key">
+        <mat-option *ngFor="let opt of formElement.options" [value]="opt.key">
+          {{ opt.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    <mat-checkbox
       *ngSwitchCase="'checkbox'"
+      class="example-margin"
       [formControlName]="formElement.key"
       [id]="formElement.key"
-      [type]="'checkbox'"
-    />
+      >{{ formElement.label }}</mat-checkbox
+    >
   </div>
 
-  <div class="errorMessage" *ngIf="!isValid">{{ formElement.label }} is required</div>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ formElement.validationMessage }}</div>
+  <br />
 </div>

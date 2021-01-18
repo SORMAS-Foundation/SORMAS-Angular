@@ -2,7 +2,8 @@ export class FormElementBase<T> {
   value?: T;
   key: string;
   label: string;
-  required: boolean;
+  validation?: string[];
+  validationMessage?: string;
   order: number;
   controlType: string;
   type: string;
@@ -13,7 +14,8 @@ export class FormElementBase<T> {
       value?: T;
       key?: string;
       label?: string;
-      required?: boolean;
+      validation?: string[];
+      validationMessage?: string;
       order?: number;
       controlType?: string;
       type?: string;
@@ -23,7 +25,8 @@ export class FormElementBase<T> {
     this.value = options.value;
     this.key = options.key || '';
     this.label = options.label || '';
-    this.required = !!options.required;
+    this.validation = options.validation;
+    this.validationMessage = options.validationMessage;
     this.order = options.order === undefined ? 1 : options.order;
     this.controlType = options.controlType || '';
     this.type = options.type || '';
