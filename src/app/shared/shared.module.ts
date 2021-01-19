@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { DynamicFormGroupComponent } from './dynamic-form/dynamic-form-group.component';
@@ -17,7 +17,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DynamicFormGroupComponent,
     LocaleSelectComponent,
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterialModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule, MaterialModule],
   exports: [
     LayoutComponent,
     NotFoundComponent,
