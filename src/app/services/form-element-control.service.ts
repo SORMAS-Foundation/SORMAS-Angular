@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { FormElementBase } from '../shared/dynamic-form/types/form-element-base';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class FormElementControlService {
   toFormGroup = (formElements: FormElementBase<string>[]) => {
-    const group: any = {};
+    const group: { [key: string]: FormControl } = {};
     let validations: ValidatorFn[] = [];
     // TODO : Extract the validation logic in separate ts
     formElements.forEach((formElement) => {

@@ -1,6 +1,5 @@
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
@@ -18,7 +17,6 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     DashboardModule,
     KeycloakAngularModule,
-    FormsModule,
     BrowserAnimationsModule,
   ],
   providers: [
