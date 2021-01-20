@@ -1,5 +1,9 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+
+import { merge, of as observableOf } from 'rxjs';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -28,13 +32,20 @@ export class TasksComponent implements AfterViewInit {
     'taskComments',
     'status',
   ];
+  displayedColumnsSS: string[] = ['context', 'type', 'region', 'district', 'priority', 'status'];
   dataSource!: MatTableDataSource<Task>;
+  dataSourceSS!: MatTableDataSource<Task>;
   formControl: FormGroup;
   priorityList: string[] = [];
   contextList: string[] = [];
+  isLoadingResults = false;
+  resultsLength = 0;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('tasksListPaginator', { read: MatPaginator, static: true })
+  tasksListPaginator!: MatPaginator;
+  @ViewChild('tableTasks', { read: MatSort, static: true }) tasksListSort!: MatSort;
 
   constructor(private tasksService: TasksService) {
     this.formControl = new FormGroup({
@@ -46,7 +57,7 @@ export class TasksComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.tasksService.getTasks().then((tasksData) => {
-      this.tasks = tasksData;
+      this.tasks = tasksData.items;
       this.dataSource = new MatTableDataSource(this.tasks);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -68,6 +79,38 @@ export class TasksComponent implements AfterViewInit {
       this.formControl.valueChanges.subscribe((value) => {
         this.dataSource.filter = JSON.stringify({ ...value });
       });
+
+      this.tasksListSort.sortChange.subscribe(() => {
+        this.tasksListPaginator.pageIndex = 0;
+      });
+
+      merge(this.tasksListSort.sortChange, this.tasksListPaginator.page)
+        .pipe(
+          startWith({}),
+          switchMap(() => {
+            this.isLoadingResults = true;
+            return this.tasksService.getTasks(
+              this.tasksListSort.active as keyof Task,
+              this.tasksListSort.direction,
+              5,
+              this.tasksListPaginator.pageIndex
+            );
+          }),
+          map((data) => {
+            // Flip flag to show that loading has finished.
+            this.isLoadingResults = false;
+            this.resultsLength = data.totalCount;
+
+            return data.items;
+          }),
+          catchError(() => {
+            this.isLoadingResults = false;
+            return observableOf([]);
+          })
+        )
+        .subscribe((data) => {
+          this.dataSourceSS = new MatTableDataSource(data);
+        });
     });
   }
 }

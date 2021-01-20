@@ -14,3 +14,8 @@ export interface Task {
   creator: string;
   status: string;
 }
+
+export interface TaskApi {
+  totalCount: number;
+  items: Task[];
+}
