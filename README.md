@@ -16,14 +16,15 @@
 - [x] Localization - deployment with language switch
 - [x] Auth - Keycloak integration
 - [ ] RBAC
-- [ ] State management
-- [ ] Forms / dynamic forms / form validation & submission (help welcome)
-- [ ] Integrate CSS FW / Component lib
-- [x] Common components - Table, Modal, Dropdown (help welcome)
-- [ ] Integrate with Sormas Keycloak & Sormas API backend (help welcome - BE)
-- [ ] Tests
+- [x] State management - keep it simple - use singleton services for now
+- [x] Forms / dynamic forms / form validation & submission (help welcome)
+- [x] Integrate CSS FW / Component lib
+- [x] Common components - Table, Modal, Dropdown (used from Angular Material)
+- [x] Integrate with Sormas Keycloak & Sormas API backend (help welcome - BE)
+- [ ] Unit Tests run on CI
+- [ ] E2E tests setup (maybe Cypress) & run in CI
+- [ ] CD pipeline - after CI is passing create a CD pipeline to deploy the applications for easy testing
 - [x] Local dev setup & VS Code extensions used - document
-- [ ] Explore Localization option 2 - transloco (check compat with crowdin app) (help welcome)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
