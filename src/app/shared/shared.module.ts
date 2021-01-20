@@ -18,7 +18,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DynamicFormGroupComponent,
     LocaleSelectComponent,
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule, MaterialModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    HttpClientModule,
+  ],
   exports: [
     LayoutComponent,
     NotFoundComponent,
@@ -26,7 +33,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DynamicFormGroupComponent,
     LocaleSelectComponent,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
 })
 export class SharedModule {}
