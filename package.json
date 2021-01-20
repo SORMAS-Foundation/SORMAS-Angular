@@ -7,7 +7,7 @@
     "start:fr": "ng serve --hmr --configuration=fr",
     "start:de": "ng serve --hmr --configuration=de",
     "start:ar": "ng serve --hmr --configuration=ar",
-    "build": "ng build --prod",
+    "build": "ng build api-client && ng build --prod",
     "extract-i18n": "ng extract-i18n --output-path src/locale && xliffmerge -p xliffmerge.json",
     "test": "ng test",
     "test:ci": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
