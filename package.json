@@ -13,7 +13,7 @@
     "test:ci": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "e2e": "ng e2e --protractor-config=e2e/protractor-ci.conf.js",
     "e2e:ci": "ng e2e",
-    "lint": "ng lint --cache",
+    "lint": "ng lint sormas --cache",
     "tslint": "tslint --project tsconfig.json",
     "lint:styles": "stylelint \"**/*.scss\"",
     "format": "prettier --config ./.prettierrc --write \"src/{app,enviroonments}/**/*{.ts,.html,.scss}\""
@@ -71,6 +71,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^11.0.0",
     "prettier": "^2.2.1",
     "protractor": "~7.0.0",
     "stylelint": "^13.8.0",

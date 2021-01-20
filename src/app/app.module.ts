@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiModule } from 'api-client';
 import { BidiModule } from '@angular/cdk/bidi';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     DashboardModule,
     KeycloakAngularModule,
     BrowserAnimationsModule,
+    ApiModule,
     BidiModule,
   ],
   providers: [

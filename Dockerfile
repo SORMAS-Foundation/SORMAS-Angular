@@ -11,4 +11,4 @@ RUN npm run build
 
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=compile-image /opt/ng/dist /usr/share/nginx/html
+COPY --from=compile-image /opt/ng/dist/app /usr/share/nginx/html
