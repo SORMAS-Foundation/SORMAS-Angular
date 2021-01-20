@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { TasksComponent } from './tasks.component';
 
 describe('TasksComponent', () => {
@@ -9,6 +10,7 @@ describe('TasksComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TasksComponent],
+      imports: [MatPaginatorModule, BrowserAnimationsModule],
     }).compileComponents();
   });
 
