@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "http://localhost:8100/sormas-rest",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  "changeOrigin": true
+}
