@@ -103,10 +103,11 @@ To run the environment please use: `docker-compose up`
 ## Links:
 | App Name           | Url                                            |
 | -------------------| -----------------------------------------------|
-| Sormas Application | http://localhost:8100/sormas-ui/login          |
+| Sormas Application | https://sormas-docker-test.com/sormas-ui/login |
+| Sormas REST API    | https://sormas-docker-test.com/sormas-rest/    |
 | Sormas Angular     | http://localhost:8200                          |
 | Sormas Postgres    | 127.0.0.1:8300                                 |
-| Keycloak           | http://localhost:8400                          |
+| Keycloak           | https://sormas-docker-test.com/keycloak        |
 | Keycloak Postgres  | 127.0.0.1:8401                                 |
 
 On Windows, make sure the `docker` folder in the project is added to the Docker File Sharing as per the instructions [here](https://docs.docker.com/docker-for-windows/)
