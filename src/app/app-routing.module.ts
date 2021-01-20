@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './shared/auth/app.guard';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
@@ -18,6 +18,12 @@ const routes: Routes = [
   {
     path: 'tasks',
     loadChildren: () => import('./tasks/tasks.module').then((m) => m.TasksModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'forms',
+    loadChildren: () =>
+      import('./form-example/formExample.module').then((m) => m.FormExampleModule),
     canActivate: [AuthGuard],
   },
   {
