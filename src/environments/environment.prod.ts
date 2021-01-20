@@ -3,4 +3,5 @@ export const environment = {
   keycloakUrl: 'http://localhost:8400/keycloak/auth',
   keycloakRealm: 'SORMAS',
   keycloakClientId: 'sormas-angular-prod',
+  apiUrl: 'http://localhost:8100/sormas-rest/',
 };

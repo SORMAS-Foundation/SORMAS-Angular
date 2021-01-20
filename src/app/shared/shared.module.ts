@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material.module';
 import { DynamicFormGroupComponent } from './dynamic-form/dynamic-form-group.component';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
@@ -17,7 +18,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DynamicFormGroupComponent,
     LocaleSelectComponent,
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule, MaterialModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule, MaterialModule, HttpClientModule],
   exports: [
     LayoutComponent,
     NotFoundComponent,
@@ -25,6 +26,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DynamicFormGroupComponent,
     LocaleSelectComponent,
     MaterialModule,
+    HttpClientModule
   ],
 })
 export class SharedModule {}
