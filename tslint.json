@@ -1,6 +1,9 @@
 {
   "extends": "tslint:recommended",
   "rulesDirectory": ["codelyzer"],
+  "linterOptions": {
+    "exclude": ["projects/api-client/**/*.ts"]
+  },
   "rules": {
     "align": {
       "options": ["parameters", "statements"]

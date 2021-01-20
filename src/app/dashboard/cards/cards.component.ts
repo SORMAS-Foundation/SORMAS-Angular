@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ContactDto } from 'api-client';
+import { Subscription } from 'rxjs';
 import { DiseaseService } from '../../services/disease.service';
-import { Disease } from '../../services/payloads/disease-reponse';
 import { ApiError } from '../../shared/http/BaseDataService';
 
 @Component({
@@ -8,20 +9,27 @@ import { ApiError } from '../../shared/http/BaseDataService';
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
 })
-export class CardsComponent implements OnInit {
-  diseases: Disease[] = [];
+export class CardsComponent implements OnInit, OnDestroy {
+  contacts: ContactDto[] = [];
   errorMessage?: ApiError;
+  subscription: Subscription = new Subscription();
 
   constructor(private diseaseService: DiseaseService) {}
 
   ngOnInit(): void {
-    this.diseaseService.getDiseaseData().subscribe({
-      next: (diseases) => {
-        this.diseases = diseases;
+    this.subscription = this.diseaseService.getContactsData().subscribe({
+      next: (contacts) => {
+        this.contacts = contacts;
       },
       error: (err) => {
         this.errorMessage = err;
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
