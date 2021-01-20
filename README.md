@@ -90,7 +90,7 @@ To run the environment please use: `docker-compose up`
 | App Name           | Url                                   |
 | ------------------ | ------------------------------------- |
 | Sormas Application | http://localhost:8100/sormas-ui/login |
-| Sormas Angular     | http://localhost:8200/en-US           |
+| Sormas Angular     | http://localhost:8200/                |
 | Sormas Postgres    | 127.0.0.1:8300                        |
 | Keycloak           | http://localhost:8400                 |
 | Keycloak Postgres  | 127.0.0.1:8401                        |
