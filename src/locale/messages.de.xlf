@@ -24,40 +24,43 @@
         </context-group>
       </trans-unit><trans-unit id="6570363013146073520" datatype="html">
         <source>Dashboard</source><target state="new">Instrumententafel</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/shared/layout/layout.component.ts</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="1726363342938046830" datatype="html">
+
+      <context-group purpose="location"><context context-type="sourcefile">src/app/shared/layout/layout.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="1726363342938046830" datatype="html">
         <source>About</source><target state="new">Über</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/layout/layout.component.ts</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-      </trans-unit><trans-unit id="6904866445262015585" datatype="html">
-        <source>Tasks</source><target state="new">Tasks</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/layout/layout.component.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit><trans-unit id="8258325324649507024" datatype="html">
+
+      <context-group purpose="location"><context context-type="sourcefile">src/app/shared/layout/layout.component.ts</context><context context-type="linenumber">15</context></context-group></trans-unit><trans-unit id="6904866445262015585" datatype="html">
+        <source>Tasks</source><target state="new">Aufgaben</target>
+
+      <context-group purpose="location"><context context-type="sourcefile">src/app/shared/layout/layout.component.ts</context><context context-type="linenumber">16</context></context-group></trans-unit><trans-unit id="8258325324649507024" datatype="html">
         <source>My profile</source><target state="new">Mein Profil</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/layout/layout.component.ts</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-      </trans-unit><trans-unit id="192623d99468e256fcaf03d459ef8cd1c8bfda74" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text=" >
-          {{"/> </source><target state="new"> <x id="INTERPOLATION" equiv-text=" >
-          {{"/> </target>
+
+      <context-group purpose="location"><context context-type="sourcefile">src/app/shared/layout/layout.component.ts</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="2dd80be74b351eb1354f629b3ef20a3a50e3efbe" datatype="html">
+        <source>logo</source><target state="new">logo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
-          <context context-type="linenumber">13,15</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit><trans-unit id="a6a5459e619c412d3e7458fa5e857a46b3b1ecc2" datatype="html">
+        <source>Sormas</source><target state="new">Sormas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/layout.component.html</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      
-      
+
+
       <trans-unit id="f65253954b66e929a8b4d5ecaf61f9129f8cec64" datatype="html">
         <source>Dashboard</source><target state="new">Instrumententafel</target>
-        
-        
+
+
       <context-group purpose="location"><context context-type="sourcefile">src/app/dashboard/dashboard.component.html</context><context context-type="linenumber">1</context></context-group><note from="description" priority="1">Dashboard header</note></trans-unit><trans-unit id="fe46ccaae902ce974e2441abe752399288298619" datatype="html">
         <source>Language</source><target state="new">Language</target>
         <context-group purpose="location">
@@ -65,8 +68,8 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      
-      
+
+
       <trans-unit id="0902a5e0023022f59901407710303e2aaca34800" datatype="html">
         <source> Count: <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="Cou"/><x id="INTERPOLATION" equiv-text="nt: &lt;i>{{ item.count | nu"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="mber"/></source>
         <target state="new"> Anzahl: <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/><x id="INTERPOLATION" equiv-text="{{ item.count | number }}"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/></target>
@@ -82,32 +85,127 @@
           <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="a4cc69493c5420bf17aa94c4c5aca3ec469f8c91" datatype="html">
-        <source>tasks works!</source><target state="new">tasks works!</target>
+      </trans-unit><trans-unit id="56b6659f48e01e94d1ed4058c39eff10a90e9e1d" datatype="html">
+        <source>Context</source><target state="new">Aufgabenkontext</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">5</context>
         </context-group>
-      </trans-unit><trans-unit id="65b0617aa0cf48c0fc1ab0fe2bd0ebc8834b13a3" datatype="html">
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit><trans-unit id="2ae797460f17fe72086256ec5e2da35ddc6e1614" datatype="html">
+        <source>Region</source><target state="new">Bundesland</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit><trans-unit id="b74af38005e8a8914e45af2ec412e11ceafef8b6" datatype="html">
+        <source>Priority</source><target state="new">Priorität</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit><trans-unit id="65d12da4ad09fc141d80fe376743c07f95d64269" datatype="html">
+        <source>Associated link</source><target state="new">Verknüpfter Link</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit><trans-unit id="b97b8998eda718b586d9961c7fe288d0dc53e4ce" datatype="html">
+        <source>Task context</source><target state="new">Aufgabenkontext</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit><trans-unit id="456df8ba0675db0dd9d2ebc3967a05bbcf09fce0" datatype="html">
+        <source>Task type</source><target state="new">Aufgabentyp</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit><trans-unit id="f4b73761d75e38e805dbd99127e3b8122345b6be" datatype="html">
+        <source>District</source><target state="new">Landkreis/Kreisfreie Stadt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit><trans-unit id="8d09f86958bf3f578f1024f77298646067329167" datatype="html">
+        <source>Suggested start</source><target state="new">Empfohlener Start</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit><trans-unit id="f2f085b2c292ce0d2f66de3c3754750b9fed1793" datatype="html">
+        <source>Due date</source><target state="new">Fälligkeitsdatum</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit><trans-unit id="43f40a9ea5bb0b3739a8cf64d600538609036525" datatype="html">
+        <source>Assigned to</source><target state="new">Zugewiesen an</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit><trans-unit id="104ac21ca43095d780f6e656f0de14a9ac096a48" datatype="html">
+        <source>Comments on execution</source><target state="new">Kommentare zur Ausführung</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit><trans-unit id="29b4ae3296e239446fa0dea88a5112de15cffa54" datatype="html">
+        <source>Created by</source><target state="new">Erstellt von</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit><trans-unit id="9e604c72b633da6fc807153484aac42a8cb23db1" datatype="html">
+        <source>Comments on task</source><target state="new">Kommentare zur Aufgabe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit><trans-unit id="81b97b8ea996ad1e4f9fca8415021850214884b1" datatype="html">
+        <source>Status</source><target state="new">Aufgabenstatus</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks/tasks.component.html</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="65b0617aa0cf48c0fc1ab0fe2bd0ebc8834b13a3" datatype="html">
         <source>User profile</source><target state="new">Benutzerprofil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/user-profile/user-profile.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
-      </trans-unit><trans-unit id="ffc83ac97ab76cec99516fbd73d2cd148cdef0c3" datatype="html">
-        <source> User name: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="e: "/><x id="INTERPOLATION" equiv-text="&lt;b>{{ user"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text=" }}&lt;"/></source><target state="new"> Nutzername: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="e: "/><x id="INTERPOLATION" equiv-text="&lt;b>{{ user"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text=" }}&lt;"/></target>
+      </trans-unit><trans-unit id="aa653e902f948ffed97e75a4540a0b9f07977a0b" datatype="html">
+        <source> User name: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="me:"/><x id="INTERPOLATION" equiv-text=" &lt;b>{{ use"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="r }}"/></source><target state="new"> User name: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="me:"/><x id="INTERPOLATION" equiv-text=" &lt;b>{{ use"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="r }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/user-profile/user-profile.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit><trans-unit id="95314cf736d27a431c3d0b535c00290bb774b5e8" datatype="html">
         <source>User roles:</source><target state="new">Benutzerregeln:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/user-profile/user-profile.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
+
+      <context-group purpose="location"><context context-type="sourcefile">src/app/user-profile/user-profile.component.html</context><context context-type="linenumber">9</context></context-group></trans-unit>
     </body>
   </file>
 </xliff>
