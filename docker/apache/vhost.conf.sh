@@ -19,8 +19,10 @@ Listen 443
 <VirtualHost *:443>
         ServerName ${SORMAS_SERVER_URL}
 
-        Header set Access-Control-Allow-Origin "*"
+        SetEnvIfNoCase Origin "https?://(localhost|sormas-docker-test\.com)(:\d+)?\$" AccessControlAllowOrigin=\$0
+        Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
         Header set Access-Control-Allow-Headers "*"
+        Header set Access-Control-Allow-Credentials "true"
 
 	      RedirectMatch "^(/(?!downloads|keycloak|metrics).*)" https://${SORMAS_SERVER_URL}/sormas-ui\$1
 
