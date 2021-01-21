@@ -112,6 +112,10 @@ To run the environment please use: `docker-compose up`
 
 On Windows, make sure the `docker` folder in the project is added to the Docker File Sharing as per the instructions [here](https://docs.docker.com/docker-for-windows/)
 
+To connect to the Postgres databases you can use your preferred IDE or from the cli with
+`psql -h 127.0.0.1 -p 8401 -U KEYCLOAK_DB_USER` and
+`psql -h 127.0.0.1 -p 8300 -U SORMAS_POSTGRES_USER`
+
 ## Auth with Keycloak
 
 Run keycloak locally with docker (this is only for dev testing):
