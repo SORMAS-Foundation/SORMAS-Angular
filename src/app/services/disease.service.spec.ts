@@ -1,19 +1,21 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ContactControllerService } from 'api-client';
 
 import { DiseaseService } from './disease.service';
+
+class ContactControllerServiceMock extends ContactControllerService {}
 
 describe('DiseaseServiceService', () => {
   let service: DiseaseService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-    });
-    service = TestBed.inject(DiseaseService);
+    // @ts-ignore
+    const dep = new ContactControllerServiceMock(null, '', {});
+    service = new DiseaseService(dep);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    console.log(service);
+
+    expect(service).toBeDefined();
   });
 });
