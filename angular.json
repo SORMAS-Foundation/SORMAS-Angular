@@ -84,8 +84,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sormas:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "browserTarget": "sormas:build"
           },
           "configurations": {
             "production": {
