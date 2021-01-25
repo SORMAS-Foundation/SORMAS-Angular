@@ -87,6 +87,6 @@ describe('LocaleSelectComponent', () => {
         })
     );
 
-    expect(component.selectLocale).toHaveBeenCalledTimes(3);
+    expect(component.selectLocale).toHaveBeenCalledTimes(4);
   });
 });
