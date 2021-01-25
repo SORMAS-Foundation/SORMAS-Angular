@@ -6,7 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LocaleSelectComponent } from './locale-select.component';
 import { SharedModule } from '../shared.module';
-import { localeOptions } from './localeOptions';
+import { localeOptions } from './shared/localeOptions';
 
 let loader: HarnessLoader;
 
@@ -87,6 +87,6 @@ describe('LocaleSelectComponent', () => {
         })
     );
 
-    expect(component.selectLocale).toHaveBeenCalledTimes(3);
+    expect(component.selectLocale).toHaveBeenCalledTimes(4);
   });
 });
