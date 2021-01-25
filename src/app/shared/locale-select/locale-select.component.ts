@@ -1,6 +1,6 @@
 import { Component, LOCALE_ID, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { localeOptions } from './localeOptions';
+import { localeOptions } from './shared/localeOptions';
 
 @Component({
   selector: 'app-locale-select',
