@@ -71,16 +71,20 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Docker Compose
 
+**Please note: this approach is for local development only!**
+
 1. You will first need to add the following to your hosts file: `127.0.0.1 sormas-docker-test.com`
 2. On Windows ensure the local git repository is set to not replace line endings with
    `git config core.autocrlf input` and ` git config core.eol lf`
 3. On Windows ensure your IDE is set to use LF for line endings instead of the default CRLF
+4. Update the `.env` file with your own `LOCAL_IPV4_ADDRESS`.
 
 To run the environment please use: `docker-compose up`
 
 ## Links:
+
 | App Name           | Url                                            |
-| -------------------| -----------------------------------------------|
+| ------------------ | ---------------------------------------------- |
 | Sormas Application | https://sormas-docker-test.com/sormas-ui/login |
 | Sormas REST API    | https://sormas-docker-test.com/sormas-rest/    |
 | Sormas Angular     | http://localhost:8200                          |
@@ -102,7 +106,7 @@ To connect to the Postgres databases you can use your preferred IDE or from the 
 `psql -h 127.0.0.1 -p 8401 -U keycloak` and
 `psql -h 127.0.0.1 -p 8300 -U sormas_user`
 
-When prompted for the password you will need to enter the one you set in the .env file 
+When prompted for the password you will need to enter the one you set in the .env file
 
 ## Auth with Keycloak
 
