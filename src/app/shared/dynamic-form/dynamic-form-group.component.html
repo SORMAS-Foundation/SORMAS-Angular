@@ -1,6 +1,11 @@
 <div [formGroup]="form">
   <div [ngSwitch]="formElement.controlType">
-    <mat-form-field *ngSwitchCase="'input'" appearance="legacy" [id]="formElement.key">
+    <mat-form-field
+      *ngSwitchCase="'input'"
+      [id]="formElement.key"
+      appearance="outline"
+      floatLabel="always"
+    >
       <mat-label>{{ formElement.key }}</mat-label>
       <input
         [value]="formElement.value"
@@ -10,7 +15,7 @@
         placeholder="{{ formElement.key }}"
       />
     </mat-form-field>
-    <mat-form-field appearance="fill" *ngSwitchCase="'dropdown'">
+    <mat-form-field appearance="outline" floatLabel="always" *ngSwitchCase="'dropdown'">
       <mat-label>{{ formElement.label }}</mat-label>
       <mat-select [formControlName]="formElement.key">
         <mat-option *ngFor="let opt of formElement.options" [value]="opt.key">
