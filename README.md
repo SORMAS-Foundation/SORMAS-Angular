@@ -39,6 +39,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Install dependencies
 
 Run `npm i`
+Go to `cd ./projects/api-proxy & npm i`
 
 ## Development server
 

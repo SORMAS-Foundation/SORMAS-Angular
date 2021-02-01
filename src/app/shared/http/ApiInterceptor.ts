@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpEvent,
-  HttpInterceptor,
-  HttpHandler,
-  HttpRequest,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -18,10 +12,6 @@ export class ApiInterceptor implements HttpInterceptor {
 
     const apiReq = req.clone({
       url: `${baseUrl}${req.url}`,
-      // todo - remove this header after the bearer tokens issue is resolved in Sormas-Rest API
-      headers: new HttpHeaders({
-        Authorization: `Basic ${btoa('SurvOff:SurvOff')}`,
-      }),
     });
 
     return next.handle(apiReq);

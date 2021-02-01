@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  keycloakUrl: 'https://sormas-docker-test.com/keycloak/auth/',
+  keycloakUrl: 'https://test-de1.sormas.netzlink.com/keycloak/auth/',
   keycloakRealm: 'SORMAS',
   keycloakClientId: 'sormas-angular',
-  apiUrl: 'https://sormas-docker-test.com',
+  apiUrl: 'http://localhost:4201',
 };
 
 /*
