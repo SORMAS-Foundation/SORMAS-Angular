@@ -39,7 +39,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Install dependencies
 
 Run `npm i`
-Go to `cd ./projects/api-proxy & npm i`
+Run `cd ./projects/api-proxy & npm i`
+Run `ng build api-client`
 
 ## Development server
 
