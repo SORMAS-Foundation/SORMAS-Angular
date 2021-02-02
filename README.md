@@ -21,8 +21,8 @@
 - [x] Integrate CSS FW / Component lib
 - [x] Common components - Table, Modal, Dropdown (used from Angular Material)
 - [x] Integrate with Sormas Keycloak & Sormas API backend (help welcome - BE)
-- [ ] Unit Tests run on CI
-- [ ] E2E tests setup (maybe Cypress) & run in CI
+- [x] Unit Tests run on CI
+- [ ] E2E tests setup & run them in CI
 - [ ] CD pipeline - after CI is passing create a CD pipeline to deploy the applications for easy testing
 - [x] Local dev setup & VS Code extensions used - document
 
