@@ -18,7 +18,7 @@
 
       .mat-form-field-outline {
         top: 0;
-        color: mat-color(mat-palette($primary, 100));
+        color: mat-color(mat-palette($primary, 200));
 
         .mat-form-field-outline-start,
         .mat-form-field-outline-gap,
@@ -27,7 +27,7 @@
         }
 
         &.mat-form-field-outline-thick {
-          color: mat-color(mat-palette($accent));
+          color: mat-color(mat-palette($primary, A400));
         }
       }
 
