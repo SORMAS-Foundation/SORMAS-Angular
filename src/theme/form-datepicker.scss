@@ -1,0 +1,35 @@
+@mixin form-datepicker-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-form-field-appearance-outline {
+      .mat-form-field-flex {
+        align-items: center;
+      }
+
+      .mat-form-field-prefix,
+      .mat-form-field-suffix {
+        top: 0;
+      }
+    }
+
+    .mat-calendar-body-selected {
+      background-color: mat-color(mat-palette($accent, A200));
+    }
+
+    .mat-datepicker-toggle.mat-datepicker-toggle-active,
+    .mat-datepicker-content .mat-calendar-next-button,
+    .mat-datepicker-content .mat-calendar-previous-button {
+      color: mat-color(mat-palette($accent, A200));
+    }
+
+    .mat-calendar-table-header-divider::after {
+      height: 2px;
+      background: mat-color(mat-palette($accent, 200));
+    }
+  }
+}

@@ -84,7 +84,7 @@
     "type": "date",
     "order": 7,
     "validation": [],
-    "controlType": "input",
+    "controlType": "date",
     "options": [],
     "value": ""
   },

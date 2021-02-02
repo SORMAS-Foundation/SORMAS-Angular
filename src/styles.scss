@@ -6,6 +6,7 @@
 @import './theme/form-field.scss';
 @import './theme/form-checkbox.scss';
 @import './theme/form-select.scss';
+@import './theme/form-datepicker.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -46,6 +47,7 @@ $sormas-theme: mat-light-theme(
   @include form-checkbox-theme($theme);
   @include form-field-theme($theme);
   @include form-select-theme($theme);
+  @include form-datepicker-theme($theme);
 }
 
 // Include theme styles for core and each component used in your app.
