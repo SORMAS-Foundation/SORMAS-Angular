@@ -19,13 +19,17 @@
         margin-left: 1em;
       }
 
+      &:not(.mat-radio-disabled) .mat-radio-outer-circle {
+        border-color: mat-color(mat-palette($primary, 700));
+      }
+
+      &.mat-radio-disabled:not(.mat-radio-checked) .mat-radio-outer-circle {
+        border-width: 0;
+      }
+
       &:focus,
       &:hover {
         color: mat-color(mat-palette($primary, 700));
-
-        .mat-radio-outer-circle {
-          border-color: mat-color(mat-palette($primary, 700));
-        }
       }
 
       &.mat-radio-checked {
