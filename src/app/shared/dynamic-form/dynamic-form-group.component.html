@@ -37,7 +37,7 @@
     <br />
     <mat-checkbox
       *ngSwitchCase="'checkbox'"
-      class="example-margin"
+      color="primary"
       [formControlName]="formElement.key"
       [id]="formElement.key"
       >{{ formElement.label }}</mat-checkbox
@@ -46,7 +46,7 @@
       <mat-label *ngIf="formElement.label" class="radio-group-label">{{
         formElement.label
       }}</mat-label>
-      <mat-radio-button *ngFor="let opt of formElement.options" [value]="opt.key">
+      <mat-radio-button *ngFor="let opt of formElement.options" [value]="opt.key" color="primary">
         {{ opt.value }}
       </mat-radio-button>
     </mat-radio-group>

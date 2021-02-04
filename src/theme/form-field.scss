@@ -18,16 +18,18 @@
 
       .mat-form-field-outline {
         top: 0;
-        color: mat-color(mat-palette($primary, 200));
+        color: mat-color(mat-palette($accent, 400));
 
         .mat-form-field-outline-start,
         .mat-form-field-outline-gap,
         .mat-form-field-outline-end {
           border-width: 2px;
         }
+      }
 
-        &.mat-form-field-outline-thick {
-          color: mat-color(mat-palette($primary, A400));
+      &:not(.mat-form-field-invalid) {
+        .mat-form-field-outline-thick {
+          color: mat-color(mat-palette($primary, 700));
         }
       }
 
@@ -44,12 +46,6 @@
 
       &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
         transform: translateY(-1.59375em);
-      }
-
-      &.mat-form-field-invalid {
-        .mat-form-field-outline-thick {
-          color: mat-color(mat-palette($warn));
-        }
       }
     }
   }

@@ -7,6 +7,8 @@
 @import './theme/form-checkbox.scss';
 @import './theme/form-select.scss';
 @import './theme/form-datepicker.scss';
+@import './theme/form-radio.scss';
+@import './theme/button.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -25,8 +27,8 @@ $custom-typography: mat-typography-config(
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$sormas-primary: mat-palette($brand-primary, 800);
-$sormas-accent: mat-palette($brand-secondary, 700);
+$sormas-primary: mat-palette($brand-primary, 700);
+$sormas-accent: mat-palette($brand-neutrals, 800);
 
 // The warn palette is optional (defaults to red).
 $sormas-warn: mat-palette($mat-red);
@@ -48,6 +50,8 @@ $sormas-theme: mat-light-theme(
   @include form-field-theme($theme);
   @include form-select-theme($theme);
   @include form-datepicker-theme($theme);
+  @include form-radio-theme($theme);
+  @include button-theme($theme);
 }
 
 // Include theme styles for core and each component used in your app.

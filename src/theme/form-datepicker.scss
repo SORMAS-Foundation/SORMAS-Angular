@@ -18,17 +18,16 @@
     }
 
     .mat-calendar-body-selected {
-      background-color: mat-color(mat-palette($accent, 200));
-      color: mat-color(mat-palette($accent, lighter-contrast));
+      background-color: mat-color(mat-palette($primary, 700));
     }
 
     .mat-datepicker-toggle.mat-datepicker-toggle-active {
-      color: mat-color(mat-palette($primary, A400));
+      color: mat-color(mat-palette($primary, 700));
     }
 
     .mat-datepicker-content .mat-calendar-next-button,
     .mat-datepicker-content .mat-calendar-previous-button {
-      color: mat-color(mat-palette($accent, 300));
+      color: mat-color(mat-palette($primary, 600));
     }
 
     .cdk-keyboard-focused
@@ -41,12 +40,12 @@
       > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
     .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
       > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
-      background-color: mat-color(mat-palette($accent, 50));
+      background-color: mat-color(mat-palette($primary, 50));
     }
 
     .mat-calendar-table-header-divider::after {
       height: 2px;
-      background: mat-color(mat-palette($primary, A200));
+      background: mat-color(mat-palette($accent, 400));
     }
   }
 }

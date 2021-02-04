@@ -1,0 +1,18 @@
+@mixin button-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-button-base ~ .mat-button-base {
+      margin-left: 1em;
+    }
+
+    .mat-stroked-button:not(.mat-button-disabled) {
+      border-width: 2px;
+      border-color: currentColor;
+    }
+  }
+}
