@@ -98,5 +98,31 @@
     "controlType": "input",
     "options": [],
     "value": ""
+  },
+  {
+    "key": "outcome",
+    "label": "Outcome of case",
+    "options": [
+      {
+        "key": "",
+        "value": "No outcome yet"
+      },
+      {
+        "key": "deceased",
+        "value": "Deceased"
+      },
+      {
+        "key": "recovered",
+        "value": "Recovered"
+      },
+      {
+        "key": "unknown",
+        "value": "Unknown"
+      }
+    ],
+    "order": 9,
+    "validation": [],
+    "controlType": "radio",
+    "type": ""
   }
 ]

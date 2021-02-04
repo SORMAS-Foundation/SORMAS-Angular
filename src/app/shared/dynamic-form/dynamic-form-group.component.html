@@ -28,7 +28,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline" floatLabel="always" *ngSwitchCase="'dropdown'">
       <mat-label>{{ formElement.label }}</mat-label>
-      <mat-select [formControlName]="formElement.key">
+      <mat-select disableOptionCentering [formControlName]="formElement.key">
         <mat-option *ngFor="let opt of formElement.options" [value]="opt.key">
           {{ opt.value }}
         </mat-option>
@@ -42,6 +42,14 @@
       [id]="formElement.key"
       >{{ formElement.label }}</mat-checkbox
     >
+    <mat-radio-group *ngSwitchCase="'radio'">
+      <mat-label *ngIf="formElement.label" class="radio-group-label">{{
+        formElement.label
+      }}</mat-label>
+      <mat-radio-button *ngFor="let opt of formElement.options" [value]="opt.key">
+        {{ opt.value }}
+      </mat-radio-button>
+    </mat-radio-group>
   </div>
 
   <div class="errorMessage" color="warn" *ngIf="!isValid">{{ formElement.validationMessage }}</div>
