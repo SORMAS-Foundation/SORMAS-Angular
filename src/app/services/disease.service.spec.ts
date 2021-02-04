@@ -14,8 +14,6 @@ describe('DiseaseServiceService', () => {
   });
 
   it('should be created', () => {
-    console.log(service);
-
     expect(service).toBeDefined();
   });
 });
