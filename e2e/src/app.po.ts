@@ -6,12 +6,25 @@ export class AppPage {
     return browser.driver.get(browser.baseUrl);
   }
 
-  async navigateToAnguar(): Promise<unknown> {
+  // actually checks that an angular app is loaded on the page
+  async navigateToAngular(): Promise<unknown> {
     return browser.get(browser.baseUrl);
   }
 
   async getTitleText(): Promise<string> {
     return element(by.tagName('h1')).getText();
+  }
+
+  async getUserNameInput(): Promise<WebElementPromise> {
+    return this.getById('username');
+  }
+
+  async getPwInput(): Promise<WebElementPromise> {
+    return this.getById('password');
+  }
+
+  async getSubmitBtn(): Promise<WebElementPromise> {
+    return this.getById('kc-login');
   }
 
   async getById(id: string): Promise<WebElementPromise> {

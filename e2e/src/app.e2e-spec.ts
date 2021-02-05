@@ -2,6 +2,8 @@
 import { browser, protractor } from 'protractor';
 import { AppPage } from './app.po';
 
+const TEST_CREDENTIALS = 'SurvOff';
+
 describe('workspace-project App', () => {
   let page: AppPage;
 
@@ -9,7 +11,7 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('can login', async () => {
+  it('can login using Keycloak', async () => {
     await browser.waitForAngularEnabled(false);
     await page.navigateTo();
 
@@ -22,19 +24,15 @@ describe('workspace-project App', () => {
 
     expect(await page.getTitleText()).toEqual('SORMAS');
 
-    const username = await page.getById('username');
-    const pw = await page.getById('password');
+    const username = await page.getUserNameInput();
+    const pw = await page.getPwInput();
 
-    username.sendKeys('SurvSup');
-    pw.sendKeys('SurvSup');
+    username.sendKeys(TEST_CREDENTIALS);
+    pw.sendKeys(TEST_CREDENTIALS);
 
-    const submitBtn = await page.getById('kc-login');
+    const submitBtn = await page.getSubmitBtn();
     submitBtn.click();
 
-    await browser.wait(protractor.ExpectedConditions.urlContains('4200'), 5000).catch(() => {
-      return false;
-    });
-
-    await page.navigateToAnguar();
+    await page.navigateToAngular();
   });
 });
