@@ -15,14 +15,23 @@
       .mat-form-field-suffix {
         top: 0;
       }
+
+      &.mat-focused,
+      .mat-form-field-flex:focus,
+      .mat-form-field-flex:hover {
+        .mat-datepicker-toggle {
+          color: mat-color(mat-palette($primary, 700));
+        }
+      }
+
+      &.datepicker-opened:not(.mat-form-field-invalid) .mat-form-field-outline {
+        border-color: mat-color(mat-palette($primary, 700));
+        color: mat-color(mat-palette($primary, 700));
+      }
     }
 
     .mat-calendar-body-selected {
       background-color: mat-color(mat-palette($primary, 700));
-    }
-
-    .mat-datepicker-toggle.mat-datepicker-toggle-active {
-      color: mat-color(mat-palette($primary, 700));
     }
 
     .mat-datepicker-content .mat-calendar-next-button,
@@ -44,8 +53,7 @@
     }
 
     .mat-calendar-table-header-divider::after {
-      height: 2px;
-      background: mat-color(mat-palette($accent, 400));
+      background: mat-color(mat-palette($accent, 300));
     }
   }
 }

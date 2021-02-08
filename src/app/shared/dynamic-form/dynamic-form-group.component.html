@@ -5,6 +5,7 @@
       [id]="formElement.key"
       appearance="outline"
       floatLabel="always"
+      class="{{ picker.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
     >
       <mat-label>{{ formElement.label }}</mat-label>
       <input matInput [matDatepicker]="picker" />

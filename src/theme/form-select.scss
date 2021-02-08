@@ -20,17 +20,31 @@
         transform: rotate(45deg);
       }
 
-      &.mat-focused:not(.mat-form-field-invalid),
-      &:not(.mat-form-field-invalid):focus,
-      &:not(.mat-form-field-invalid):hover {
-        .mat-select-arrow {
-          border-color: mat-color(mat-palette($primary, 700));
-        }
+      &:not(.mat-form-field-invalid) {
+        &.mat-focused,
+        .mat-form-field-flex:focus,
+        .mat-form-field-flex:hover {
+          .mat-select-arrow {
+            border-color: mat-color(mat-palette($primary, 700));
+          }
 
-        .mat-select-value {
-          color: mat-color(mat-palette($primary, 700));
+          .mat-select-value {
+            color: mat-color(mat-palette($primary, 700));
+          }
         }
       }
+
+      // &.mat-focused:not(.mat-form-field-invalid),
+      // &:not(.mat-form-field-invalid) .mat-form-field-flex:focus,
+      // &:not(.mat-form-field-invalid) .mat-form-field-flex:hover {
+      //   .mat-select-arrow {
+      //     border-color: mat-color(mat-palette($primary, 700));
+      //   }
+
+      //   .mat-select-value {
+      //     color: mat-color(mat-palette($primary, 700));
+      //   }
+      // }
     }
 
     .mat-select-panel {
