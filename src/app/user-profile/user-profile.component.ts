@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { KeycloakService } from 'keycloak-angular';
 import { AuthService } from '../shared/auth/auth-service/auth.service';
 
 @Component({
@@ -18,7 +17,7 @@ export class UserProfileComponent implements OnInit {
     this.roles = this.authService.getUserRoles();
   }
 
-  async logout(): Promise<void> {
-    await this.authService.logout();
+  logout(): void {
+    this.authService.logout();
   }
 }
