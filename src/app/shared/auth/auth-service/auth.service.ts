@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthServiceService {
+export class AuthService {
   init(options: any): Promise<boolean> {
     console.log(options);
 
-    return Promise.resolve(false);
+    return Promise.resolve(true);
   }
 }

@@ -14,6 +14,7 @@ import { initializeAuth } from './shared/auth/init-auth';
 import { ApiInterceptor } from './shared/http/ApiInterceptor';
 import { SharedModule } from './shared/shared.module';
 import { ENV, getEnv } from '../environments/getEnv';
+import { AuthService } from './shared/auth/auth-service/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,14 +30,14 @@ import { ENV, getEnv } from '../environments/getEnv';
   ],
   providers: [
     { provide: ENV, useFactory: getEnv },
+    Location,
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAuth,
       multi: true,
-      deps: [KeycloakService, Location, ENV],
+      deps: [KeycloakService, AuthService, Location, ENV],
     },
-    Location,
-    { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
