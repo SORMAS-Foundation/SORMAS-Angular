@@ -1,12 +1,20 @@
 import { Location } from '@angular/common';
 import { KeycloakService } from 'keycloak-angular';
-import { environment } from '../../../environments/environment';
+import { Environment } from '../../../environments/ienvironment';
+import { AuthServiceService } from './auth-service/auth-service.service';
+// import { environment } from '../../../environments/environment';
 
 export function initializeAuth(
   keycloak: KeycloakService,
-  locationStrategy: Location
+  authService: AuthServiceService,
+  locationStrategy: Location,
+  environment: Environment
 ): () => Promise<boolean> {
   return () => {
+    if (environment.isLegacyLogin) {
+      return authService.init({});
+    }
+
     return keycloak.init({
       config: {
         url: environment.keycloakUrl,

@@ -13,6 +13,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { initializeAuth } from './shared/auth/init-auth';
 import { ApiInterceptor } from './shared/http/ApiInterceptor';
 import { SharedModule } from './shared/shared.module';
+import { ENV, getEnv } from '../environments/getEnv';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,11 +28,12 @@ import { SharedModule } from './shared/shared.module';
     BidiModule,
   ],
   providers: [
+    { provide: ENV, useFactory: getEnv },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAuth,
       multi: true,
-      deps: [KeycloakService, Location],
+      deps: [KeycloakService, Location, ENV],
     },
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
