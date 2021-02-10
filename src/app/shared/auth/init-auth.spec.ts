@@ -2,11 +2,11 @@ import { initializeAuth } from './init-auth';
 
 describe('initializeAuth', () => {
   it('sets auth type based on env for legacy login', async () => {
-    const keycloakServ = jasmine.createSpyObj('KeycloakService', ['init']);
     const authService = jasmine.createSpyObj('authService', ['init']);
+    authService.init.and.callFake(() => Promise.resolve(true));
     const location = jasmine.createSpyObj('Location', ['getState']);
 
-    const res = await initializeAuth(keycloakServ, authService, location, {
+    const res = await initializeAuth(authService, location, {
       isLegacyLogin: true,
       apiUrl: '',
       keycloakClientId: '',
@@ -16,17 +16,15 @@ describe('initializeAuth', () => {
     })();
 
     expect(res).toBe(true);
-    expect(keycloakServ.init).not.toHaveBeenCalled();
+    expect(authService.init).toHaveBeenCalledOnceWith({});
   });
 
   it('sets auth type based on env for login with Keycloak', async () => {
-    const keycloakServ = jasmine.createSpyObj('KeycloakService', ['init']);
     const authService = jasmine.createSpyObj('authService', ['init']);
+    authService.init.and.callFake(() => Promise.resolve(true));
     const location = jasmine.createSpyObj('Location', ['getState', 'prepareExternalUrl']);
 
-    keycloakServ.init.and.callFake(() => Promise.resolve(true));
-
-    const res = await initializeAuth(keycloakServ, authService, location, {
+    const res = await initializeAuth(authService, location, {
       isLegacyLogin: false,
       apiUrl: '',
       keycloakClientId: '',
@@ -36,6 +34,6 @@ describe('initializeAuth', () => {
     })();
 
     expect(res).toBe(true);
-    expect(keycloakServ.init).toHaveBeenCalledTimes(1);
+    expect(authService.init).toHaveBeenCalledTimes(1);
   });
 });

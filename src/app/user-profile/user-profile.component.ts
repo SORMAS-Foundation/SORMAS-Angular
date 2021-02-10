@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { KeycloakService } from 'keycloak-angular';
+// import { KeycloakService } from 'keycloak-angular';
+import { AuthService } from '../shared/auth/auth-service/auth.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,7 +11,7 @@ export class UserProfileComponent implements OnInit {
   user = '';
   roles: string[] = [];
 
-  constructor(private authService: KeycloakService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.user = this.authService.getUsername();

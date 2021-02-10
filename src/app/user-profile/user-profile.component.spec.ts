@@ -4,13 +4,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipHarness } from '@angular/material/chips/testing';
 
-import { KeycloakService } from 'keycloak-angular';
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileComponent } from './user-profile.component';
+import { AuthService } from '../shared/auth/auth-service/auth.service';
 
 const mockRoles = ['admin', 'role-A', 'role-B'];
 
-class MockKeycloakService extends KeycloakService {
+class MockAuthService {
   getUsername(): string {
     return 'test-user';
   }
@@ -29,7 +29,7 @@ describe('UserProfileComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SharedModule, NoopAnimationsModule],
       declarations: [UserProfileComponent],
-      providers: [{ provide: KeycloakService, useValue: new MockKeycloakService() }],
+      providers: [{ provide: AuthService, useValue: new MockAuthService() }],
     }).compileComponents();
     fixture = TestBed.createComponent(UserProfileComponent);
     component = fixture.componentInstance;
