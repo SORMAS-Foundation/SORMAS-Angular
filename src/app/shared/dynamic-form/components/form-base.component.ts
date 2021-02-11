@@ -20,6 +20,6 @@ export class FormBaseComponent {
   group: FormGroup = new FormGroup({});
 
   get isValid(): boolean {
-    return this.group.controls[this.config.key].valid;
+    return this.group.controls[this.config.key]?.valid;
   }
 }
