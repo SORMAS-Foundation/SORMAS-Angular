@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
+import { AuthService } from './auth-service/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthLegacyGuard {
-  canActivate(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    next: ActivatedRouteSnapshot,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    state: RouterStateSnapshot
-  ): Promise<boolean> | boolean {
-    // todo - check if user is logged in and required roles are enabled for this route
-    return true;
+  constructor(private authService: AuthService) {}
+
+  canActivate(route: ActivatedRouteSnapshot): Promise<boolean> | boolean {
+    const requiredRoles = route.data.roles;
+
+    // Allow the user to to proceed if no additional roles are required to access the route.
+    if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
+      return this.authService.isLoggedIn();
+    }
+
+    return (
+      this.authService.isLoggedIn() &&
+      requiredRoles.every((role) => this.authService.getUserRoles().includes(role))
+    );
   }
 }
