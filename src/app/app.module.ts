@@ -9,7 +9,6 @@ import { BidiModule } from '@angular/cdk/bidi';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { initializeAuth } from './shared/auth/init-auth';
 import { ApiInterceptor } from './shared/http/ApiInterceptor';
 import { SharedModule } from './shared/shared.module';
@@ -21,7 +20,6 @@ import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    DashboardModule,
     KeycloakAngularModule,
     BrowserAnimationsModule,
     ApiModule,
