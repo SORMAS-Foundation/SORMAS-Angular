@@ -36,6 +36,7 @@ const routes: Routes = [
       import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
     canActivate: [Guard],
   },
+  { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
 ];
 
