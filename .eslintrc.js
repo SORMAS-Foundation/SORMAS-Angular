@@ -18,6 +18,12 @@ module.exports = {
         '@typescript-eslint/lines-between-class-members': 'off',
         'class-methods-use-this': 'off',
         'no-underscore-dangle': 'off',
+        'prettier/prettier': [
+          'warn',
+          {
+            endOfLine: 'auto',
+          },
+        ],
       },
     },
     {

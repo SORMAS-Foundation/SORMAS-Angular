@@ -1,14 +1,14 @@
-<div *ngIf="diseases" class="cards">
-  <div *ngFor="let item of diseases" class="card">
+<div *ngIf="contacts" class="cards">
+  <div *ngFor="let item of contacts" class="card">
     <div class="container">
       <h4>
-        <b>{{ item.name }}</b>
+        <b>{{ item.disease }}</b>
       </h4>
       <p i18n>
-        Count: <i>{{ item.count | number }}</i>
+        Category: <i>{{ item.contactCategory }}</i>
       </p>
       <p i18n>
-        Last reported: <i>{{ item.lastReport | date }}</i>
+        Last reported: <i>{{ item.creationDate | date }}</i>
       </p>
     </div>
   </div>

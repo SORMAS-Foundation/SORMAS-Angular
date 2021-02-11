@@ -3,11 +3,15 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiModule } from 'api-client';
 import { BidiModule } from '@angular/cdk/bidi';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { initializeAuth } from './shared/auth/init-auth';
+import { ApiInterceptor } from './shared/http/ApiInterceptor';
 import { SharedModule } from './shared/shared.module';
 import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
 
@@ -20,6 +24,7 @@ import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
     DashboardModule,
     KeycloakAngularModule,
     BrowserAnimationsModule,
+    ApiModule,
     BidiModule,
     DynamicFormModule,
   ],
@@ -32,6 +37,7 @@ import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
     },
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
