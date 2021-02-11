@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { initializeAuth } from './shared/auth/init-auth';
 import { SharedModule } from './shared/shared.module';
+import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
     KeycloakAngularModule,
     BrowserAnimationsModule,
     BidiModule,
+    DynamicFormModule,
   ],
   providers: [
     {
