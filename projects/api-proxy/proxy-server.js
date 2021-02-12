@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 var cors = require('cors');
-const bodyParser = require('body-parser');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();

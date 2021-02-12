@@ -32,14 +32,14 @@ import { AuthService } from './shared/auth/auth-service/auth.service';
     { provide: ENV, useFactory: getEnv },
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: AuthService, useClass: getEnv().isLegacyLogin ? AuthService : KeycloakService },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAuth,
       multi: true,
       deps: [AuthService, Location, ENV],
     },
-    { provide: AuthService, useClass: getEnv().isLegacyLogin ? AuthService : KeycloakService },
-    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

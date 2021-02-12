@@ -16,9 +16,8 @@ export class AuthLegacyGuard {
       return this.authService.isLoggedIn();
     }
 
-    return (
-      this.authService.isLoggedIn() &&
-      requiredRoles.every((role) => this.authService.getUserRoles().includes(role))
-    );
+    return requiredRoles.every((role) => this.authService.getUserRoles().includes(role))
+      ? this.authService.isLoggedIn()
+      : Promise.resolve(false);
   }
 }

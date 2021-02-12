@@ -1,20 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService extends KeycloakService {
   private isUserLoggedIn = false; // todo false
   private options: any = {};
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {
+    super();
+  }
 
-  init(options: any): Promise<boolean> {
+  async init(options: any): Promise<boolean> {
     this.options = options;
 
-    if (!this.isLoggedIn()) {
+    if (!(await this.isLoggedIn())) {
       this.router.navigate(['/login']);
     }
 
@@ -44,9 +47,9 @@ export class AuthService {
     }
   }
 
-  isLoggedIn(): boolean {
+  isLoggedIn(): Promise<boolean> {
     // this needs to be an async call to the API
-    return this.isUserLoggedIn;
+    return Promise.resolve(this.isUserLoggedIn);
   }
 
   async loginUser(username: string, pw: string): Promise<boolean> {

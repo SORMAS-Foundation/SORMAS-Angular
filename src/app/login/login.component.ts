@@ -22,9 +22,9 @@ export class LoginComponent {
   async submit(): Promise<void> {
     this.error = '';
     if (this.form.valid) {
-      const username = this.form.get('username');
-      const pw = this.form.get('password');
-      const loginResult = await this.authService.loginUser(username?.value ?? '', pw?.value ?? '');
+      const username = this.form.get('username')?.value ?? '';
+      const pw = this.form.get('password')?.value ?? '';
+      const loginResult = await this.authService.loginUser(username, pw);
       if (loginResult) {
         this.router.navigate(['/']);
       } else {
