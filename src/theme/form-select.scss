@@ -1,0 +1,54 @@
+@mixin form-select-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-form-field-type-mat-select.mat-form-field-appearance-outline {
+      .mat-select-arrow-wrapper {
+        transform: none;
+      }
+
+      .mat-select-arrow {
+        width: 8px;
+        height: 8px;
+        border: 0 solid currentColor;
+        border-right: 2px solid;
+        border-bottom: 2px solid;
+        transform: rotate(45deg);
+      }
+
+      &:not(.mat-form-field-invalid) {
+        &.mat-focused,
+        .mat-form-field-flex:focus,
+        .mat-form-field-flex:hover {
+          .mat-select-arrow {
+            border-color: mat-color(mat-palette($primary, 700));
+          }
+
+          .mat-select-value {
+            color: mat-color(mat-palette($primary, 700));
+          }
+        }
+      }
+
+      // &.mat-focused:not(.mat-form-field-invalid),
+      // &:not(.mat-form-field-invalid) .mat-form-field-flex:focus,
+      // &:not(.mat-form-field-invalid) .mat-form-field-flex:hover {
+      //   .mat-select-arrow {
+      //     border-color: mat-color(mat-palette($primary, 700));
+      //   }
+
+      //   .mat-select-value {
+      //     color: mat-color(mat-palette($primary, 700));
+      //   }
+      // }
+    }
+
+    .mat-select-panel {
+      transform: translateY(30px) !important;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@mixin form-datepicker-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-form-field-appearance-outline {
+      .mat-form-field-flex {
+        align-items: center;
+      }
+
+      .mat-form-field-prefix,
+      .mat-form-field-suffix {
+        top: 0;
+      }
+
+      &.mat-focused,
+      .mat-form-field-flex:focus,
+      .mat-form-field-flex:hover {
+        .mat-datepicker-toggle {
+          color: mat-color(mat-palette($primary, 700));
+        }
+      }
+
+      &.datepicker-opened:not(.mat-form-field-invalid) .mat-form-field-outline {
+        border-color: mat-color(mat-palette($primary, 700));
+        color: mat-color(mat-palette($primary, 700));
+      }
+    }
+
+    .mat-calendar-body-selected {
+      background-color: mat-color(mat-palette($primary, 700));
+    }
+
+    .mat-datepicker-content .mat-calendar-next-button,
+    .mat-datepicker-content .mat-calendar-previous-button {
+      color: mat-color(mat-palette($primary, 600));
+    }
+
+    .cdk-keyboard-focused
+      .mat-calendar-body-active
+      > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+    .cdk-program-focused
+      .mat-calendar-body-active
+      > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+    .mat-calendar-body-cell:not(.mat-calendar-body-disabled):focus
+      > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+    .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+      > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+      background-color: mat-color(mat-palette($primary, 50));
+    }
+
+    .mat-calendar-table-header-divider::after {
+      background: mat-color(mat-palette($accent, 300));
+    }
+  }
+}

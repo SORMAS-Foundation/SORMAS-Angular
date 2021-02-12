@@ -1,0 +1,14 @@
+<div [formGroup]="group">
+  <mat-form-field
+    [id]="config.key"
+    appearance="outline"
+    floatLabel="always"
+    class="{{ picker.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+  >
+    <mat-label>{{ config.label }}</mat-label>
+    <input matInput [matDatepicker]="picker" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage }}</div>
+</div>

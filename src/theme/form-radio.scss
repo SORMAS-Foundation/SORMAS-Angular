@@ -1,0 +1,40 @@
+@mixin form-radio-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-radio-group {
+      .radio-group-label {
+        display: block;
+      }
+    }
+
+    .mat-radio-button {
+      text-align: left;
+
+      ~ .mat-radio-button {
+        margin-left: 1em;
+      }
+
+      &:not(.mat-radio-disabled) .mat-radio-outer-circle {
+        border-color: mat-color(mat-palette($primary, 700));
+      }
+
+      &.mat-radio-disabled:not(.mat-radio-checked) .mat-radio-outer-circle {
+        border-width: 0;
+      }
+
+      &:focus,
+      &:hover {
+        color: mat-color(mat-palette($primary, 700));
+      }
+
+      &.mat-radio-checked {
+        color: mat-color(mat-palette($primary, 700));
+      }
+    }
+  }
+}
