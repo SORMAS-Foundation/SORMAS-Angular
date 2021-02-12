@@ -6,5 +6,5 @@ export const environment: Environment = {
   keycloakRealm: 'SORMAS',
   keycloakClientId: 'sormas-angular-prod',
   apiUrl: 'https://sormas-docker-test.com',
-  isLegacyLogin: true,
+  isLegacyLogin: false,
 };
