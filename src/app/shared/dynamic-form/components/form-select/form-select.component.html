@@ -1,0 +1,11 @@
+<div [formGroup]="group">
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>{{ config.label }}</mat-label>
+    <mat-select disableOptionCentering [formControlName]="config.key">
+      <mat-option *ngFor="let opt of config.options" [value]="opt.key">
+        {{ opt.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage }}</div>
+</div>

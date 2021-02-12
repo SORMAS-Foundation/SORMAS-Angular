@@ -1,8 +1,12 @@
 <div>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div *ngFor="let element of formElements" class="form-row">
-      <app-form-group [formElement]="element" [form]="form"></app-form-group>
-    </div>
+    <ng-container
+      *ngFor="let field of formElements"
+      appDynamicField
+      [config]="field"
+      [group]="form"
+    >
+    </ng-container>
     <br />
     <div class="form-row">
       <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Save</button>
