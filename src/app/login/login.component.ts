@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/auth/auth-service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +11,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   error: string | null = null;
 
+  constructor(private authService: AuthService, private router: Router) {}
+
   form: FormGroup = new FormGroup({
     // todo - extra validations required for inputs / pws?
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  submit(): void {
+  async submit(): Promise<void> {
+    this.error = '';
     if (this.form.valid) {
-      console.log('submit');
+      const username = this.form.get('username');
+      const pw = this.form.get('password');
+      const loginResult = await this.authService.loginUser(username?.value ?? '', pw?.value ?? '');
+      if (loginResult) {
+        this.router.navigate(['/']);
+      } else {
+        this.error = 'Invalid username or password'; // todo i18n
+      }
     }
   }
 }
