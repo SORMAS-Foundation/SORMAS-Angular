@@ -1,0 +1,8 @@
+<h1 i18n="Cases Overview header">Cases Overview</h1>
+<app-table
+  [tableData]="cases"
+  [tableColumns]="casesColumnDefs"
+  [isSortable]="true"
+  [isPageable]="true"
+  (sort)="sortData($event)"
+></app-table>

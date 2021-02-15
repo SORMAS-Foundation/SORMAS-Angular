@@ -7,9 +7,17 @@ import { MaterialModule } from '../material.module';
 import { LayoutComponent } from './layout/layout.component';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TableComponent } from './table/table.component';
+import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 
 @NgModule({
-  declarations: [LayoutComponent, NotFoundComponent, LocaleSelectComponent],
+  declarations: [
+    LayoutComponent,
+    NotFoundComponent,
+    LocaleSelectComponent,
+    TableComponent,
+    PropertyGetterPipe,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -22,6 +30,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LayoutComponent,
     NotFoundComponent,
     LocaleSelectComponent,
+    TableComponent,
     MaterialModule,
     HttpClientModule,
   ],
