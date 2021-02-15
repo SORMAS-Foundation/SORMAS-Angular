@@ -3,11 +3,18 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
 
+interface LoginResultPayload {
+  userName: string;
+  roles: string[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService extends KeycloakService {
-  private isUserLoggedIn = false; // todo false
+  private isUserLoggedIn = false;
+  private userName = '';
+  private roles: string[] = [];
   private options: any = {};
 
   constructor(private router: Router, private http: HttpClient) {
@@ -25,13 +32,11 @@ export class AuthService extends KeycloakService {
   }
 
   getUsername(): string {
-    // todo
-    return 'john-doe';
+    return this.userName;
   }
 
   getUserRoles(): string[] {
-    // todo
-    return ['admin'];
+    return this.roles;
   }
 
   async logout(): Promise<void> {
@@ -56,7 +61,11 @@ export class AuthService extends KeycloakService {
     try {
       // todo - route should be  `/sormas-rest/login`
       // todo - encode cred?
-      await this.http.post('/login', { username, pw }).toPromise();
+      const result = await this.http
+        .post<LoginResultPayload>('/login', { username, pw })
+        .toPromise<LoginResultPayload>();
+      this.userName = result.userName;
+      this.roles = result.roles;
       this.isUserLoggedIn = true;
       return Promise.resolve(true);
     } catch {

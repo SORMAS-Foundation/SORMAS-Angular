@@ -18,7 +18,7 @@ app.use('/login', (req, res) => {
   const { username = '', pw = '' } = req.body;
 
   if (username === 'sormas-dev' && pw === 'sormas-dev') {
-    res.status(200).send({});
+    res.status(200).send({ userName: 'sormas-dev', roles: ['admin', 'role-A'] });
   } else {
     res.send(401);
   }
