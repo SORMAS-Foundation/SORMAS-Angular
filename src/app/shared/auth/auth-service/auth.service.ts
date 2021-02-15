@@ -44,6 +44,8 @@ export class AuthService extends KeycloakService {
       // todo - route should be  `/sormas-rest/logout`
       await this.http.post('/logout', {}).toPromise();
       this.options = {};
+      this.userName = '';
+      this.roles = [];
       this.isUserLoggedIn = false;
       this.router.navigate(['/login']);
     } catch (err) {
