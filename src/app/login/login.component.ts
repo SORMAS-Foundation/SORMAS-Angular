@@ -10,6 +10,7 @@ import { AuthService } from '../shared/auth/auth-service/auth.service';
 })
 export class LoginComponent {
   error: string | null = null;
+  submitDisabled = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -22,6 +23,7 @@ export class LoginComponent {
   async submit(): Promise<void> {
     this.error = '';
     if (this.form.valid) {
+      this.submitDisabled = true;
       const username = this.form.get('username')?.value ?? '';
       const pw = this.form.get('password')?.value ?? '';
       const loginResult = await this.authService.loginUser(username, pw);
@@ -29,6 +31,7 @@ export class LoginComponent {
         this.router.navigate(['/']);
       } else {
         this.error = 'Invalid username or password'; // todo i18n
+        this.submitDisabled = false;
       }
     }
   }
