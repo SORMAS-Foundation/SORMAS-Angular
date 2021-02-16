@@ -2,21 +2,23 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="over" [autoFocus]="false">
       <div class="logo">
-        <figure>
-          <img [src]="logo" i18n-alt alt="logo" />
-          <figcaption i18n>Sormas</figcaption>
+        <figure class="sidenav-figure">
+          <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
+          <button mat-icon-button class="d-md-none inner-hamburger-menu" (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
         </figure>
       </div>
-      <mat-nav-list>
+      <mat-nav-list layout-align="center start">
         <a
           mat-list-item
           *ngFor="let item of navigation"
-          (click)="sidenav.close()"
+          (click)="sidenav.toggle()"
           [routerLink]="[item.link]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          {{ item.label }}
+          <div class="align-center">{{ item.label }}</div>
         </a>
       </mat-nav-list>
     </mat-sidenav>
@@ -24,24 +26,22 @@
       <div class="toolbar">
         <div class="toolbar">
           <mat-toolbar color="accent">
-            <button mat-icon-button class="d-md-none" (click)="sidenav.open()">
-              <mat-icon>menu</mat-icon>
-            </button>
-
             <span routerLink="" class="logo spacer d-inline d-sm-none">
               <figure>
                 <img [src]="logo" i18n-alt alt="logo" />
-                <figcaption i18n>Sormas</figcaption>
               </figure>
             </span>
-
-            <span class="d-none d-md-inline">
+            <button mat-icon-button class="d-md-none hamburger-menu" (click)="sidenav.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <span class="d-none d-md-inline button-container">
               <button
                 mat-button
                 class="nav-button"
                 *ngFor="let item of navigation"
                 [routerLink]="[item.link]"
-                routerLinkActive="active"
+                [routerLinkActive]="['is-menu-item-active']"
+                [routerLinkActiveOptions]="{ exact: true }"
               >
                 {{ item.label }}
               </button>
