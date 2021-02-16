@@ -1,0 +1,8 @@
+<section *ngIf="case">
+  <h1>
+    <span class="material-icons"> west </span>
+    <span> {{ case.person?.firstName }} {{ case.person?.lastName }}</span>
+  </h1>
+
+  <pre> {{ case | json }} </pre>
+</section>

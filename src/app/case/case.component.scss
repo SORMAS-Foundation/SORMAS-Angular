@@ -1,0 +1,13 @@
+:host {
+  text-align: left;
+
+  h1 {
+    display: flex;
+    max-width: 350px; // todo rem
+    align-items: center;
+
+    span {
+      margin-left: 20px; // todo rem
+    }
+  }
+}
