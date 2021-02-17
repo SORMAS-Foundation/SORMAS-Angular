@@ -7,6 +7,8 @@ const { makeId } = require('./make-id');
 var cookieParser = require('cookie-parser');
 const https = require('https');
 
+// TODO - env
+
 const app = express();
 const PORT = 4201;
 const HOST = 'localhost';
@@ -25,7 +27,7 @@ const API_SERVICE_URL = 'https://sormas-docker-test.com';
 
 app.use(morgan('dev'));
 
-const loggedUsers = [];
+let loggedUsers = [];
 
 // TODO - routes as POST with express router
 // this is just for local dev testing when using the app without keycloak
@@ -70,8 +72,16 @@ app.use('/login', async (req, res) => {
 });
 
 // this is just for local dev testing when using the app without keycloak
-app.use('/logout', (_, res) => {
-  // todo - delete user stored in mem
+app.use('/logout', (req, res) => {
+  const cookie = req.cookies[`local-dev`];
+  const auth = loggedUsers.find((x) => x.cookie === cookie);
+
+  if (auth) {
+    loggedUsers = loggedUsers.filter((x) => x.user === auth.username);
+  }
+
+  console.log(loggedUsers);
+
   res.status(200).send({});
 });
 
