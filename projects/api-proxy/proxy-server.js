@@ -5,8 +5,12 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const { default: axios } = require('axios');
 const { makeId } = require('./make-id');
 var cookieParser = require('cookie-parser');
+const https = require('https');
 
 const app = express();
+const PORT = 4201;
+const HOST = 'localhost';
+
 app.use(
   cors({
     origin: 'http://localhost:4200',
@@ -16,9 +20,8 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-const PORT = 4201;
-const HOST = 'localhost';
-const API_SERVICE_URL = 'https://test-de1.sormas.netzlink.com/';
+// to use other BE server - ex - 'https://test-de1.sormas.netzlink.com/'
+const API_SERVICE_URL = 'https://sormas-docker-test.com';
 
 app.use(morgan('dev'));
 
@@ -32,10 +35,16 @@ app.use('/login', async (req, res) => {
   try {
     // we just make an basic auth call to see if the credentials are valid
     const auth = Buffer.from(`${username}:${pw}`).toString('base64');
+    // used to ignore untrusted / dev certs
+    const agent = new https.Agent({
+      rejectUnauthorized: false,
+    });
+
     const proxyQuery = await axios.post(`${API_SERVICE_URL}/sormas-rest/actions/query`, [''], {
       headers: {
         Authorization: `Basic ${auth}`,
       },
+      httpsAgent: agent,
     });
     const data = await proxyQuery.data;
     if (data) {
@@ -56,14 +65,14 @@ app.use('/login', async (req, res) => {
     }
   } catch (err) {
     console.error(err);
-    res.send(401);
+    res.sendStatus(401);
   }
 });
 
 // todo - this is just for testing
 app.use('/logout', (_, res) => {
   // todo - delete user stored in mem
-  res.status(200).send({});
+  res.sendStatus(200).send({});
 });
 
 app.use('/check-session', (req, res) => {
@@ -108,6 +117,7 @@ app.use(
     changeOrigin: true,
     autoRewrite: true,
     followRedirects: true,
+    secure: false, // ignore cert validation
     logLevel: 'debug',
   })
 );
