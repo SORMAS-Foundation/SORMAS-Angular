@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 const loggedUsers = [];
 
 // TODO - routes as POST with express router
-// todo - this is just for dev testing
+// this is just for local dev testing when using the app without keycloak
 app.use('/login', async (req, res) => {
   const { username = '', pw = '' } = req.body;
 
@@ -69,10 +69,10 @@ app.use('/login', async (req, res) => {
   }
 });
 
-// todo - this is just for testing
+// this is just for local dev testing when using the app without keycloak
 app.use('/logout', (_, res) => {
   // todo - delete user stored in mem
-  res.sendStatus(200).send({});
+  res.status(200).send({});
 });
 
 app.use('/check-session', (req, res) => {

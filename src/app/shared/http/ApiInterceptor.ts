@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-import { from, Observable } from 'rxjs';
+import {
+  HttpEvent,
+  HttpInterceptor,
+  HttpHandler,
+  HttpRequest,
+  HttpErrorResponse,
+} from '@angular/common/http';
+import { from, Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth/auth-service/auth.service';
 import { getEnv } from '../../../environments/getEnv';
@@ -38,6 +45,18 @@ export class ApiInterceptor implements HttpInterceptor {
       withCredentials: true,
     });
 
-    return next.handle(apiReq).toPromise();
+    return next
+      .handle(apiReq)
+      .pipe(
+        catchError((err) => {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+              this.authService.logout();
+            }
+          }
+          return throwError(err);
+        })
+      )
+      .toPromise();
   }
 }
