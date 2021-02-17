@@ -54,8 +54,17 @@ export class AuthService extends KeycloakService {
     }
   }
 
-  isLoggedIn(): Promise<boolean> {
-    // this needs to be an async call to the API
+  async isLoggedIn(): Promise<boolean> {
+    try {
+      const result = await this.http
+        .post<LoginResultPayload>('/check-session', {}, { withCredentials: true })
+        .toPromise<LoginResultPayload>();
+      this.userName = result.userName;
+      this.roles = result.roles;
+      this.isUserLoggedIn = true;
+    } catch {
+      this.isUserLoggedIn = false;
+    }
     return Promise.resolve(this.isUserLoggedIn);
   }
 
@@ -64,7 +73,7 @@ export class AuthService extends KeycloakService {
       // todo - route should be  `/sormas-rest/login`
       // todo - encode cred?
       const result = await this.http
-        .post<LoginResultPayload>('/login', { username, pw })
+        .post<LoginResultPayload>('/login', { username, pw }, { withCredentials: true })
         .toPromise<LoginResultPayload>();
       this.userName = result.userName;
       this.roles = result.roles;

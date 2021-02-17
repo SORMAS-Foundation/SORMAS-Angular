@@ -4,10 +4,17 @@ var cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const { default: axios } = require('axios');
 const { makeId } = require('./make-id');
+var cookieParser = require('cookie-parser');
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:4200',
+    credentials: true,
+  })
+);
 app.use(express.json());
+app.use(cookieParser());
 
 const PORT = 4201;
 const HOST = 'localhost';
@@ -17,6 +24,7 @@ app.use(morgan('dev'));
 
 const loggedUsers = [];
 
+// TODO - routes as POST with express router
 // todo - this is just for dev testing
 app.use('/login', async (req, res) => {
   const { username = '', pw = '' } = req.body;
@@ -35,11 +43,14 @@ app.use('/login', async (req, res) => {
       const serverIdentity = { username, cookie: makeId(16), cred: auth };
       loggedUsers.push(serverIdentity);
 
-      // console.log(serverIdentity);
-      // res.cookie('local-dev', randomNumber, { maxAge: 900000 });
+      console.log(loggedUsers);
 
       res
-        .cookie('local-dev', serverIdentity.cookie, { maxAge: 900000 })
+        .cookie('local-dev', serverIdentity.cookie, {
+          maxAge: 900000,
+          httpOnly: false,
+          sameSite: false,
+        })
         .status(200)
         .send({ userName: username, roles: ['admin', 'role-A'] }); // todo
     }
@@ -51,18 +62,37 @@ app.use('/login', async (req, res) => {
 
 // todo - this is just for testing
 app.use('/logout', (_, res) => {
+  // todo - delete user stored in mem
   res.status(200).send({});
 });
 
-// this middleware appends Basic Auth when needed
+app.use('/check-session', (req, res) => {
+  if (loggedUsers.length) {
+    const cookie = req.cookies[`local-dev`];
+    const auth = loggedUsers.find((x) => x.cookie === cookie);
+
+    if (auth) {
+      const username = auth.username;
+      res.status(200).send({ userName: username, roles: ['admin', 'role-A'] }); // todo roles
+    }
+  } else {
+    res.sendStatus(401);
+  }
+});
+
+// this middleware appends Basic Auth when needed to the proxy call
 app.use('', (req, res, next) => {
   if (req.headers.authorization) {
     next();
   } else {
-    // todo - check cookie and assign token based on cookie
     if (loggedUsers.length) {
-      req.headers['Authorization'] = `Basic ${loggedUsers[0].cred}`;
-      next();
+      const cookie = req.cookies[`local-dev`];
+      const auth = loggedUsers.find((x) => x.cookie === cookie)?.cred;
+
+      if (auth) {
+        req.headers['Authorization'] = `Basic ${auth}`;
+        next();
+      }
     } else {
       res.sendStatus(403);
     }

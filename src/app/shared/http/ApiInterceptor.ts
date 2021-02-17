@@ -35,6 +35,7 @@ export class ApiInterceptor implements HttpInterceptor {
 
     const apiReq = req.clone({
       url: `${baseUrl}${req.url}`,
+      withCredentials: true,
     });
 
     return next.handle(apiReq).toPromise();

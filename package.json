@@ -7,7 +7,7 @@
     "start:fr": "ng serve --hmr --configuration=fr",
     "start:de": "ng serve --hmr --configuration=de",
     "start:ar": "ng serve --hmr --configuration=ar",
-    "start-proxy": "node ./projects/api-proxy/proxy-server.js",
+    "start-proxy": "npm run start --prefix projects/api-proxy",
     "build": "ng build api-client && ng build --prod",
     "analyze-bundle": "ng build --prod --configuration=en-US --stats-json && webpack-bundle-analyzer dist/app/en-US/stats.json ",
     "extract-i18n": "ng extract-i18n --output-path src/locale && xliffmerge -p xliffmerge.json",
