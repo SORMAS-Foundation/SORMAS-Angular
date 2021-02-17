@@ -1,3 +1,4 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import {
   AfterViewInit,
   Component,
@@ -20,17 +21,20 @@ import { TableColumn } from './table-column';
 export class TableComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<any>([]);
   public displayedColumns: string[] = [];
+  selection = new SelectionModel<any>(true, []);
 
   @ViewChild(MatSort, { static: true }) matSort!: MatSort;
   @ViewChild(MatPaginator, { static: false }) matPaginator!: MatPaginator;
 
   @Input() isSortable = false;
   @Input() isPageable = false;
+  @Input() isSelectable = false;
   @Input() paginationSizes: number[] = [5, 10, 15];
   @Input() defaultPageSize = this.paginationSizes[1];
   @Input() tableColumns: TableColumn[] = [];
 
   @Output() sort: EventEmitter<Sort> = new EventEmitter();
+  @Output() rowSelection: EventEmitter<any> = new EventEmitter();
 
   @Input() set tableData(data: any[]) {
     this.setdataSource(data);
@@ -38,7 +42,8 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     const columnNames = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
-    this.displayedColumns = columnNames;
+    this.displayedColumns = this.isSelectable ? ['select', ...columnNames] : columnNames;
+    this.selection.changed.subscribe(() => this.rowSelection.emit(this.selection.selected));
   }
 
   ngAfterViewInit(): void {

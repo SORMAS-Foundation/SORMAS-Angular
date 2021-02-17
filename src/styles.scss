@@ -9,6 +9,7 @@
 @import './theme/form-datepicker.scss';
 @import './theme/form-radio.scss';
 @import './theme/button.scss';
+@import './theme/table.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -52,6 +53,7 @@ $sormas-theme: mat-light-theme(
   @include form-datepicker-theme($theme);
   @include form-radio-theme($theme);
   @include button-theme($theme);
+  @include table-theme($theme);
 }
 
 // Include theme styles for core and each component used in your app.
@@ -68,4 +70,8 @@ html,
 body {
   height: 100%;
   margin: 0;
+}
+
+.content {
+  text-align: left !important;
 }

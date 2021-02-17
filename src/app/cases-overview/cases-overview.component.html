@@ -3,6 +3,7 @@
   [tableData]="cases"
   [tableColumns]="casesColumnDefs"
   [isSortable]="true"
-  [isPageable]="true"
+  [isSelectable]="true"
   (sort)="sortData($event)"
+  (rowSelection)="selectionData($event)"
 ></app-table>

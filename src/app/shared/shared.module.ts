@@ -9,6 +9,7 @@ import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
+import { TableIconComponent } from './table/table-icon.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe
     NotFoundComponent,
     LocaleSelectComponent,
     TableComponent,
+    TableIconComponent,
     PropertyGetterPipe,
   ],
   imports: [
@@ -31,6 +33,7 @@ import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe
     NotFoundComponent,
     LocaleSelectComponent,
     TableComponent,
+    TableIconComponent,
     MaterialModule,
     HttpClientModule,
   ],
