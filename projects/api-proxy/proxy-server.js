@@ -72,8 +72,10 @@ app.use('/check-session', (req, res) => {
     const auth = loggedUsers.find((x) => x.cookie === cookie);
 
     if (auth) {
-      const username = auth.username;
+      const { username } = auth;
       res.status(200).send({ userName: username, roles: ['admin', 'role-A'] }); // todo roles
+    } else {
+      res.sendStatus(401);
     }
   } else {
     res.sendStatus(401);
