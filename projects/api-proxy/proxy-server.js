@@ -63,8 +63,6 @@ app.use('/login', async (req, res) => {
       const serverIdentity = { username, roles, cookie: makeId(16), cred: auth };
       loggedUsers.push(serverIdentity);
 
-      console.log(loggedUsers);
-
       res
         .cookie('local-dev', serverIdentity.cookie, {
           maxAge: 900000,
@@ -88,8 +86,6 @@ app.use('/logout', (req, res) => {
   if (auth) {
     loggedUsers = loggedUsers.filter((x) => x.user === auth.username);
   }
-
-  console.log(loggedUsers);
 
   res.status(200).send({});
 });
