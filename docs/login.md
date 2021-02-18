@@ -19,3 +19,7 @@ Check `environment.ts` and set:
 - `isLegacyLogin` to `true`.
 - `apiUrl` - the URL of your local running proxy - see `SORMAS-Angular/projects/api-proxy/.env` - default is `http://localhost:4201`
 - `production` - needs to be set to false
+
+`proxy-server.js` uses a simple built-in cookie sessions handling that is good enough for local development.
+To improve this you can migrate this approach you can look at:
+[express-session](https://github.com/expressjs/session#readme)
