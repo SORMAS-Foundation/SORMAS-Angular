@@ -81,10 +81,10 @@ app.use('/login', async (req, res) => {
 // this is just for local dev testing when using the app without keycloak
 app.use('/logout', (req, res) => {
   const cookie = req.cookies[`local-dev`];
-  const auth = loggedUsers.find((x) => x.cookie === cookie);
+  const foundUser = loggedUsers.find((x) => x.cookie === cookie);
 
-  if (auth) {
-    loggedUsers = loggedUsers.filter((x) => x.user === auth.username);
+  if (foundUser) {
+    loggedUsers = loggedUsers.filter((x) => x.username !== foundUser.username);
   }
 
   res.status(200).send({});
