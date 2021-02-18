@@ -1,3 +1,4 @@
+require('custom-env').env();
 const express = require('express');
 const morgan = require('morgan');
 var cors = require('cors');
@@ -7,51 +8,59 @@ const { makeId } = require('./make-id');
 var cookieParser = require('cookie-parser');
 const https = require('https');
 
-// TODO - env
-
 const app = express();
-const PORT = 4201;
-const HOST = 'localhost';
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 
 app.use(
   cors({
-    origin: 'http://localhost:4200',
+    origin: process.env.ANGULAR_ORIGIN,
     credentials: true,
   })
 );
 app.use(express.json());
 app.use(cookieParser());
 
-// to use other BE server - ex - 'https://test-de1.sormas.netzlink.com/'
-const API_SERVICE_URL = 'https://sormas-docker-test.com';
+const API_SERVICE_URL = process.env.API_SERVICE_URL;
 
 app.use(morgan('dev'));
 
 let loggedUsers = [];
 
-// TODO - routes as POST with express router
+const agent = new https.Agent({
+  rejectUnauthorized: !process.env.IGNORE_CERT_VALIDATION,
+});
+
+async function getUser(username, auth) {
+  const proxyQuery = await axios.get(
+    `${API_SERVICE_URL}/sormas-rest/users/all/${new Date().getFullYear() - 1}`,
+    {
+      headers: {
+        Authorization: `Basic ${auth}`,
+      },
+      httpsAgent: agent,
+    }
+  );
+
+  const data = await proxyQuery.data;
+  const user = data?.find((u) => u.userName === username);
+
+  return user;
+}
+
 // this is just for local dev testing when using the app without keycloak
 app.use('/login', async (req, res) => {
   const { username = '', pw = '' } = req.body;
 
   try {
-    // we just make an basic auth call to see if the credentials are valid
     const auth = Buffer.from(`${username}:${pw}`).toString('base64');
-    // used to ignore untrusted / dev certs
-    const agent = new https.Agent({
-      rejectUnauthorized: false,
-    });
 
-    const proxyQuery = await axios.post(`${API_SERVICE_URL}/sormas-rest/actions/query`, [''], {
-      headers: {
-        Authorization: `Basic ${auth}`,
-      },
-      httpsAgent: agent,
-    });
-    const data = await proxyQuery.data;
-    if (data) {
+    const user = await getUser(username, auth);
+    if (user) {
       console.log(`Succesful login for user ${username}`);
-      const serverIdentity = { username, cookie: makeId(16), cred: auth };
+      const roles = user.userRoles;
+
+      const serverIdentity = { username, roles, cookie: makeId(16), cred: auth };
       loggedUsers.push(serverIdentity);
 
       console.log(loggedUsers);
@@ -63,7 +72,7 @@ app.use('/login', async (req, res) => {
           sameSite: false,
         })
         .status(200)
-        .send({ userName: username, roles: ['admin', 'role-A'] }); // todo
+        .send({ userName: username, roles });
     }
   } catch (err) {
     console.error(err);
@@ -88,11 +97,11 @@ app.use('/logout', (req, res) => {
 app.use('/check-session', (req, res) => {
   if (loggedUsers.length) {
     const cookie = req.cookies[`local-dev`];
-    const auth = loggedUsers.find((x) => x.cookie === cookie);
+    const foundUser = loggedUsers.find((x) => x.cookie === cookie);
 
-    if (auth) {
-      const { username } = auth;
-      res.status(200).send({ userName: username, roles: ['admin', 'role-A'] }); // todo roles
+    if (foundUser) {
+      const { username, roles } = foundUser;
+      res.status(200).send({ userName: username, roles });
     } else {
       res.sendStatus(401);
     }
@@ -127,7 +136,7 @@ app.use(
     changeOrigin: true,
     autoRewrite: true,
     followRedirects: true,
-    secure: false, // ignore cert validation
+    secure: !process.env.IGNORE_CERT_VALIDATION,
     logLevel: 'debug',
   })
 );

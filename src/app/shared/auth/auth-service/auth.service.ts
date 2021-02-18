@@ -21,6 +21,13 @@ export class AuthService extends KeycloakService {
     super();
   }
 
+  private flush(): void {
+    this.isUserLoggedIn = false;
+    this.userName = '';
+    this.roles = [];
+    this.options = {};
+  }
+
   async init(options: any): Promise<boolean> {
     this.options = options;
 
@@ -41,12 +48,8 @@ export class AuthService extends KeycloakService {
 
   async logout(): Promise<void> {
     try {
-      // todo - route should be  `/sormas-rest/logout`
       await this.http.post('/logout', {}).toPromise();
-      this.options = {};
-      this.userName = '';
-      this.roles = [];
-      this.isUserLoggedIn = false;
+      this.flush();
       this.router.navigate(['/login']);
     } catch (err) {
       // eslint-disable-next-line no-console
@@ -63,15 +66,13 @@ export class AuthService extends KeycloakService {
       this.roles = result.roles;
       this.isUserLoggedIn = true;
     } catch {
-      this.isUserLoggedIn = false;
+      this.flush();
     }
     return Promise.resolve(this.isUserLoggedIn);
   }
 
   async loginUser(username: string, pw: string): Promise<boolean> {
     try {
-      // todo - route should be  `/sormas-rest/login`
-      // todo - encode cred?
       const result = await this.http
         .post<LoginResultPayload>('/login', { username, pw }, { withCredentials: true })
         .toPromise<LoginResultPayload>();
