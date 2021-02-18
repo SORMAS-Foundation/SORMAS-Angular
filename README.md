@@ -12,7 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Prerequisites:
 
-- [Node.js](https://nodejs.org/en/)
+- [Node.js 14 or above](https://nodejs.org/en/)
 - [Docker](https://docs.docker.com/get-docker/)
 - Angular CLI: `npm install -g @angular/cli`
 
