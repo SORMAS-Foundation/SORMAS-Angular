@@ -6,13 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { mockData } from './mock-data';
 import { TableColumn } from './table-column';
 
-interface Element {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -75,7 +68,7 @@ export class TableComponent implements OnInit {
   getData(): void {
     // todo - here invoke a function that gets more data
     // also consider the sorting rules
-    const data: Element[] = this.dataSource ? [...this.dataSource.data, ...mockData] : mockData;
+    const data: any[] = this.dataSource ? [...this.dataSource.data, ...mockData] : mockData;
     this.dataSource = new MatTableDataSource(data);
   }
 }
