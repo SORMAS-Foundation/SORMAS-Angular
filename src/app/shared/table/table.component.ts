@@ -3,7 +3,6 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { mockData } from './mock-data';
 import { TableColumn } from './table-column';
 
 @Component({
@@ -68,7 +67,7 @@ export class TableComponent implements OnInit {
   getData(): void {
     // todo - here invoke a function that gets more data
     // also consider the sorting rules
-    const data: any[] = this.dataSource ? [...this.dataSource.data, ...mockData] : mockData;
+    const data: any[] = [...this.dataSource.data, ...this.dataSource.data];
     this.dataSource = new MatTableDataSource(data);
   }
 }
