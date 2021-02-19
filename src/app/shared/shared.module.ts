@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { TableIconComponent } from './table/table-icon.component';
+import { ScrollContainerComponent } from './table/scroll-container/scroll-container.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TableIconComponent } from './table/table-icon.component';
     TableComponent,
     TableIconComponent,
     PropertyGetterPipe,
+    ScrollContainerComponent,
   ],
   imports: [
     CommonModule,

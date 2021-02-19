@@ -1,1 +1,5 @@
 /* stylelint-disable */
+:host {
+  display: flex;
+  flex-direction: column;
+}

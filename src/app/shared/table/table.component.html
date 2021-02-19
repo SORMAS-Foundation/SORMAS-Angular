@@ -1,4 +1,12 @@
-<ng-container>
+<!-- <ng-container> -->
+<app-scroll-container
+  [more]="hasMore()"
+  [scrollOffset]="2500"
+  [scrollDelay]="1000"
+  (scrolled)="handleScroll($event)"
+  [class.full]="true"
+  class="table-container"
+>
   <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortTable($event)">
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef></th>
@@ -41,10 +49,11 @@
       [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
     ></tr>
   </table>
-  <mat-paginator
+</app-scroll-container>
+<!-- <mat-paginator
     *ngIf="isPageable"
     [pageSizeOptions]="paginationSizes"
     [pageSize]="defaultPageSize"
   >
-  </mat-paginator>
-</ng-container>
+  </mat-paginator> -->
+<!-- </ng-container> -->

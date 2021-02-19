@@ -78,7 +78,6 @@ const globalRippleConfig: RippleGlobalOptions = {
     MatDividerModule,
     MatExpansionModule,
     MatGridListModule,
-    MatIconModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
@@ -105,7 +104,6 @@ const globalRippleConfig: RippleGlobalOptions = {
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule,
   ],
   providers: [{ provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig }],
 })

@@ -102,6 +102,8 @@ mat-sidenav-container {
     flex-direction: column;
 
     .content {
+      display: flex;
+
       width: 99%;
       height: 90vh;
       flex: 1 0 auto;

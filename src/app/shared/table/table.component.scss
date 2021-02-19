@@ -1,1 +1,18 @@
 /* stylelint-disable */
+
+:host {
+  overflow: scroll;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+app-scroll-container {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+app-scroll-container.full {
+  flex-basis: auto;
+}
