@@ -5,10 +5,13 @@
   height: 100%;
 }
 
-mat-sidenav {
-  width: 15.625rem;
+.mat-sidenav {
   width: 100%;
-  background-color: map-get($sormas-accent, 800);
+  background: linear-gradient(
+    90deg,
+    map-get($sormas-accent, 900) 0%,
+    map-get($sormas-accent, 800) 100%
+  );
   color: $white;
 
   .sidenav-figure {
@@ -46,9 +49,6 @@ mat-sidenav {
     .menu-item-label {
       text-align: center;
     }
-  }
-
-  mat-nav-list {
     a {
       color: $white;
 
@@ -63,9 +63,8 @@ mat-sidenav {
   }
 }
 
-mat-sidenav-container {
+.mat-sidenav-container {
   width: 100%;
-  height: 445px;
 
   .toolbar {
     position: fixed;
@@ -75,6 +74,11 @@ mat-sidenav-container {
 
     .mat-toolbar-single-row {
       height: 68px;
+      background: linear-gradient(
+        90deg,
+        map-get($sormas-accent, 900) 0%,
+        map-get($sormas-accent, 800) 100%
+      );
     }
 
     .hamburger-menu {
