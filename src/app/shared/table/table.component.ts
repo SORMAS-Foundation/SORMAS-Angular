@@ -1,4 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import {
   AfterViewInit,
   Component,
@@ -23,6 +24,8 @@ export class TableComponent implements OnInit, AfterViewInit {
   public displayedColumns: string[] = [];
   selection = new SelectionModel<any>(true, []);
 
+  @ViewChild(CdkVirtualScrollViewport, { static: false }) viewPort!: CdkVirtualScrollViewport;
+
   @ViewChild(MatSort, { static: true }) matSort!: MatSort;
   @ViewChild(MatPaginator, { static: false }) matPaginator!: MatPaginator;
 
@@ -35,8 +38,10 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   @Output() sort: EventEmitter<Sort> = new EventEmitter();
   @Output() rowSelection: EventEmitter<any> = new EventEmitter();
+  @Output() fetchMoreData: EventEmitter<any> = new EventEmitter();
 
-  @Input() set tableData(data: any[]) {
+  @Input()
+  set tableData(data: any[]) {
     this.setdataSource(data);
   }
 
@@ -48,6 +53,10 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.matPaginator;
+
+    this.viewPort.elementScrolled().subscribe(() => {
+      // this.fetchMoreData.emit();
+    });
   }
 
   setdataSource(data: any): void {

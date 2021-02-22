@@ -47,4 +47,9 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
     // eslint-disable-next-line no-console
     console.log(selection);
   }
+
+  async fetchMoreData(): Promise<void> {
+    const newData = await this.caseService.getCasesData().toPromise();
+    this.cases = this.cases.concat(newData);
+  }
 }
