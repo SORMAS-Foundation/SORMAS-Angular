@@ -19,12 +19,22 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   casesColumnDefs: TableColumn[] = defaultColumnDefs;
 
+  // todo - get value from API
+  currentIndex = 0;
+  size = 100000;
+  // batchSize = 50;
+
   constructor(private caseService: CaseService) {}
 
   ngOnInit(): void {
     this.subscription = this.caseService.getCasesData().subscribe({
       next: (data) => {
-        this.cases = data;
+        // this.batchSize = data.length;
+        this.currentIndex = data.length;
+        const virtualPaginationDummyData = new Array(this.size - this.currentIndex).fill(null);
+
+        // TODO - initially render a full data-set with original + null data
+        this.cases = [...data, ...virtualPaginationDummyData];
       },
       error: (err) => {
         this.errorMessage = err;
@@ -48,8 +58,21 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
     console.log(selection);
   }
 
-  async fetchMoreData(): Promise<void> {
-    const newData = await this.caseService.getCasesData().toPromise();
-    this.cases = this.cases.concat(newData);
+  async fetchMoreData(index: number): Promise<void> {
+    // TODO - pass the index to get the data to the API to get it from the specified index
+
+    // todo - not ok - as user can scroll back
+    // better - store an array with indexes that have data and check that index is not between them
+    if (index > this.currentIndex - 10) {
+      const newData = await this.caseService.getCasesData().toPromise();
+      const size = newData.length;
+      const newCases = [...this.cases];
+      newCases.splice(index, size);
+      newCases.splice(index, size, ...newData);
+      this.cases = newCases;
+      this.currentIndex = index + newData.length;
+
+      console.log('new cases', this.cases, this.cases.length);
+    }
   }
 }

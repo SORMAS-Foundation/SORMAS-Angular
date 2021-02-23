@@ -1,17 +1,11 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+
+import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
+
 import { TableColumn } from './table-column';
 
 @Component({
@@ -19,10 +13,17 @@ import { TableColumn } from './table-column';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit, AfterViewInit {
-  public dataSource = new MatTableDataSource<any>([]);
+export class TableComponent implements OnInit {
+  public dataSource = new TableVirtualScrollDataSource<any>([]);
   public displayedColumns: string[] = [];
   selection = new SelectionModel<any>(true, []);
+
+  // Manually set the amount of buffer and the height of the table elements
+  BUFFER_SIZE = 3;
+  rowHeight = 48;
+  headerHeight = 56;
+  gridHeight = 400;
+  // rows: Observable<Array<any>> = of([]);
 
   @ViewChild(CdkVirtualScrollViewport, { static: false }) viewPort!: CdkVirtualScrollViewport;
 
@@ -38,7 +39,9 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   @Output() sort: EventEmitter<Sort> = new EventEmitter();
   @Output() rowSelection: EventEmitter<any> = new EventEmitter();
-  @Output() fetchMoreData: EventEmitter<any> = new EventEmitter();
+  @Output() fetchMoreData: EventEmitter<number> = new EventEmitter();
+
+  date = new Date();
 
   @Input()
   set tableData(data: any[]) {
@@ -51,16 +54,19 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.selection.changed.subscribe(() => this.rowSelection.emit(this.selection.selected));
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.matPaginator;
+  scrolledIndexChange(index: number): void {
+    console.log(index);
 
-    this.viewPort.elementScrolled().subscribe(() => {
-      // this.fetchMoreData.emit();
-    });
+    // max 1 request pert second
+    if (new Date().getTime() - this.date.getTime() > 1000) {
+      this.fetchMoreData.emit(index);
+      this.date = new Date();
+    }
   }
 
   setdataSource(data: any): void {
-    this.dataSource = new MatTableDataSource<any>(data);
+    this.dataSource.data = data;
+
     this.dataSource.sort = this.matSort;
     this.dataSource.paginator = this.matPaginator;
   }

@@ -1,5 +1,10 @@
 <ng-container>
-  <cdk-virtual-scroll-viewport [itemSize]="20" class="viewport" #scrollViewport>
+  <cdk-virtual-scroll-viewport
+    [tvsItemSize]="50"
+    class="viewport"
+    #scrollViewport
+    (scrolledIndexChange)="scrolledIndexChange($event)"
+  >
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortTable($event)">
       <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef></th>
@@ -41,6 +46,15 @@
         (click)="selection.toggle(row)"
         [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
       ></tr>
+      <!-- <ng-template
+        let-row
+        matRowDef
+        cdkVirtualFor
+        [matRowDefColumns]="displayedColumns"
+        [cdkVirtualForOf]="rows"
+      >
+        <tr mat-row></tr>
+      </ng-template> -->
     </table>
     <!-- <mat-paginator
       *ngIf="isPageable"
