@@ -15,48 +15,29 @@
   color: $white;
 
   .sidenav-figure {
-    margin: 15px 15px 0 15px;
-  }
-
-  .logo {
-    figure {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 0.625rem;
-
-      figcaption {
-        font-size: large;
-      }
-
-      > * {
-        margin-left: 0.4rem;
-      }
-    }
-    img {
-      position: absolute;
-      left: 20px;
-    }
-
-    .inner-hamburger-menu {
-      color: map-get($sormas-primary, 700);
-    }
+    height: 68px;
+    margin: 0;
   }
 
   .mat-nav-list {
     justify-content: center;
     padding-top: 0;
+
     .menu-item-label {
       text-align: center;
     }
-    a {
+    button {
+      display: block;
+      width: 100%;
+      margin: 0;
       color: $white;
+      line-height: 40px;
 
       .align-center {
         width: 100%;
         text-align: center;
       }
-      &.active {
+      &.is-menu-item-active {
         color: map-get($sormas-primary, 700);
       }
     }
@@ -81,17 +62,19 @@
       );
     }
 
-    .hamburger-menu {
-      display: none;
-    }
-
     .button-container {
-      margin-left: 16px;
+      margin-left: 62px;
 
       .nav-button {
         min-width: 0;
         padding: 0;
         margin: 0 16px 0 16px;
+      }
+
+      @media (max-width: map-get($grid-breakpoints, lg)) {
+        .nav-button {
+          margin: 0 12px 0 12px;
+        }
       }
 
       .is-menu-item-active {
@@ -107,20 +90,6 @@
       font-size: 24px;
     }
 
-    .logo {
-      cursor: pointer;
-      figure {
-        display: flex;
-        align-items: center;
-        justify-content: left;
-        margin: 10px auto 10px 0;
-
-        > * {
-          margin-left: 0.4rem;
-        }
-      }
-    }
-
     .mat-stroked-button {
       margin-right: 10px;
     }
@@ -132,13 +101,6 @@
     @media (max-width: map-get($grid-breakpoints, md)) {
       .nav-button {
         display: none;
-      }
-      .hamburger-menu {
-        position: absolute;
-        right: 0;
-        left: 0;
-        display: block;
-        margin: 0 auto !important;
       }
     }
   }
@@ -168,6 +130,12 @@
         padding: 0.3rem;
         margin-top: 4rem;
       }
+    }
+  }
+
+  @media (max-width: map-get($grid-breakpoints, md)) {
+    .mat-toolbar-single-row {
+      display: block;
     }
   }
 }

@@ -1,7 +1,7 @@
 <div class="main-wrapper">
-  <mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav mode="over" [autoFocus]="false">
-      <div class="logo">
+  <mat-drawer-container class="mat-sidenav-container" fullscreen>
+    <mat-drawer class="mat-sidenav" #drawer mode="over" [autoFocus]="false">
+      <!-- <div class="logo">
         <figure class="sidenav-figure">
           <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
           <button mat-icon-button class="d-md-none inner-hamburger-menu" (click)="sidenav.toggle()">
@@ -9,52 +9,57 @@
           </button>
         </figure>
       </div>
-      <mat-nav-list layout-align="center start">
-        <a
-          mat-list-item
+      <mat-nav-list>
+        <button
+          mat-button
+          class="nav-button"
           *ngFor="let item of navigation"
           (click)="sidenav.toggle()"
           [routerLink]="[item.link]"
-          routerLinkActive="active"
+          [routerLinkActive]="['is-menu-item-active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <div class="align-center">{{ item.label }}</div>
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
+          {{ item.label }}
+        </button>
+      </mat-nav-list> -->
+      <!-- <app-menu-items [drawer]="drawer"></app-menu-items> -->
+    </mat-drawer>
     <div class="wrapper">
       <div class="toolbar">
-        <div class="toolbar">
-          <mat-toolbar color="accent">
-            <span routerLink="" class="logo spacer d-inline d-sm-none">
-              <figure>
-                <img [src]="logo" i18n-alt alt="logo" />
-              </figure>
-            </span>
-            <button mat-icon-button class="d-md-none hamburger-menu" (click)="sidenav.toggle()">
-              <mat-icon>menu</mat-icon>
-            </button>
-            <span class="d-none d-md-inline button-container">
+        <mat-toolbar color="accent">
+          <!-- <div class="logo">
+            <figure class="sidenav-figure">
+              <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
               <button
-                mat-button
-                class="nav-button"
-                *ngFor="let item of navigation"
-                [routerLink]="[item.link]"
-                [routerLinkActive]="['is-menu-item-active']"
-                [routerLinkActiveOptions]="{ exact: true }"
+                mat-icon-button
+                class="d-md-none inner-hamburger-menu"
+                (click)="drawer.toggle()"
               >
-                {{ item.label }}
+                <mat-icon>menu</mat-icon>
               </button>
-            </span>
-          </mat-toolbar>
-        </div>
-
-        <div class="content">
-          <ng-content></ng-content>
-        </div>
-
-        <div class="footer"></div>
+            </figure>
+          </div>
+          <span class="d-none d-md-inline button-container">
+            <button
+              mat-button
+              class="nav-button"
+              *ngFor="let item of navigation"
+              [routerLink]="[item.link]"
+              [routerLinkActive]="['is-menu-item-active']"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              {{ item.label }}
+            </button>
+          </span> -->
+          <app-menu-items class=".d-none .d-md-block .d-lg-none" [drawer]="drawer"></app-menu-items>
+        </mat-toolbar>
       </div>
+
+      <div class="content">
+        <ng-content></ng-content>
+      </div>
+
+      <div class="footer"></div>
     </div>
-  </mat-sidenav-container>
+  </mat-drawer-container>
 </div>

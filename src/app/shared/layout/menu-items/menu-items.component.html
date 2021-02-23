@@ -1,0 +1,20 @@
+<div class="logo">
+  <figure class="sidenav-figure">
+    <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
+    <button mat-icon-button class="d-md-none inner-hamburger-menu" (click)="drawer.close()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </figure>
+</div>
+<span class="button-container">
+  <button
+    mat-button
+    class="nav-button"
+    *ngFor="let item of navigation"
+    [routerLink]="[item.link]"
+    [routerLinkActive]="['is-menu-item-active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ item.label }}
+  </button>
+</span>
