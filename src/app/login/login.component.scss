@@ -1,3 +1,5 @@
+@use './src/variables.scss' as *;
+
 :host {
   display: flex;
   justify-content: center;
@@ -16,7 +18,7 @@ mat-card-content {
 }
 
 .error {
-  color: red;
+  color: $warn-default;
 }
 
 .button {
