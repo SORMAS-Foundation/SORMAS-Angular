@@ -21,5 +21,7 @@ $warn: mat-color($sormas-warn);
 $primary-light-50: map-get($sormas-primary, 50);
 $primary-light-100: map-get($sormas-primary, 100);
 
+$warn-default: map-get($sormas-warn, default);
+
 // TIP: to check all colors in a pallete:
 // @debug $sormas-primary;
