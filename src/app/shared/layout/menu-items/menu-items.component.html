@@ -1,20 +1,13 @@
-<div class="logo">
-  <figure class="sidenav-figure">
-    <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
-    <button mat-icon-button class="d-md-none inner-hamburger-menu" (click)="drawer.close()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </figure>
-</div>
-<span class="button-container">
+<div class="button-container">
   <button
     mat-button
     class="nav-button"
-    *ngFor="let item of navigation"
-    [routerLink]="[item.link]"
-    [routerLinkActive]="['is-menu-item-active']"
+    *ngFor="let route of routeConfig"
+    [routerLink]="[route.link]"
+    [routerLinkActive]="['route-active']"
     [routerLinkActiveOptions]="{ exact: true }"
+    (click)="doRouteChange(route)"
   >
-    {{ item.label }}
+    {{ route.label }}
   </button>
-</span>
+</div>

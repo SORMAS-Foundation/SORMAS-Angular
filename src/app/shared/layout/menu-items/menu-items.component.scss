@@ -1,89 +1,57 @@
 @use '../../../../../src/variables.scss' as *;
 
-.logo {
-  figure {
+.button-container {
+  display: flex;
+  height: 100%;
+}
+
+.nav-button {
+  min-width: 0;
+  padding: 0;
+  margin: 0 16px 0 16px;
+
+  &.route-active::after {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    margin-left: 22px;
-
-    .inner-hamburger-menu {
-      display: none;
-    }
+    height: 4px;
+    background-color: map-get($sormas-primary, 700);
+    content: '';
   }
 }
 
-.button-container {
-  margin-left: 62px;
+@media (map-get($media, large-up)) {
+  .nav-button {
+    margin: 0 12px;
+  }
+}
+
+@media (map-get($media, extra-large-up)) {
+  .nav-button {
+    margin: 0 16px;
+  }
+}
+
+@media (map-get($media, medium-down)) {
+  .button-container {
+    flex-direction: column;
+  }
 
   .nav-button {
-    min-width: 0;
-    padding: 0;
-    margin: 0 16px 0 16px;
-  }
-
-  @media (max-width: map-get($grid-breakpoints, lg)) {
-    .nav-button {
-      margin: 0 12px 0 12px;
-    }
-  }
-
-  .is-menu-item-active {
-    height: 68px;
-    padding: 0 0px;
-    border-bottom: solid 4px map-get($sormas-primary, 700);
-    border-radius: 0;
-    line-height: 68px;
-  }
-}
-
-@media (max-width: map-get($grid-breakpoints, md)) {
-  .logo {
+    display: block;
     width: 100%;
-    .sidenav-figure {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 14px 0;
-
-      img {
-        position: absolute;
-        left: 20px;
-      }
-
-      .inner-hamburger-menu {
-        display: block !important;
-        color: map-get($sormas-primary, 700);
-      }
-    }
-  }
-
-  .button-container {
-    justify-content: center;
-    padding-top: 0;
+    padding: 1em;
     margin: 0;
+    color: $white;
+    line-height: 1;
 
-    .menu-item-label {
-      text-align: center;
+    &.route-active {
+      color: map-get($sormas-primary, 700);
     }
-    button {
-      display: block;
-      width: 100%;
-      margin: 0;
-      color: $white;
-      line-height: 40px;
 
-      .align-center {
-        width: 100%;
-        text-align: center;
-      }
-      &.is-menu-item-active {
-        height: auto;
-        border: none;
-        color: map-get($sormas-primary, 700);
-        line-height: 40px;
-      }
+    &.route-active::after {
+      display: none;
     }
   }
 }

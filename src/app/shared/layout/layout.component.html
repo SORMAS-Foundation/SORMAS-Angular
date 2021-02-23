@@ -1,65 +1,29 @@
 <div class="main-wrapper">
-  <mat-drawer-container class="mat-sidenav-container" fullscreen>
-    <mat-drawer class="mat-sidenav" #drawer mode="over" [autoFocus]="false">
-      <!-- <div class="logo">
-        <figure class="sidenav-figure">
-          <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
-          <button mat-icon-button class="d-md-none inner-hamburger-menu" (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-          </button>
-        </figure>
-      </div>
-      <mat-nav-list>
-        <button
-          mat-button
-          class="nav-button"
-          *ngFor="let item of navigation"
-          (click)="sidenav.toggle()"
-          [routerLink]="[item.link]"
-          [routerLinkActive]="['is-menu-item-active']"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          {{ item.label }}
-        </button>
-      </mat-nav-list> -->
-      <!-- <app-menu-items [drawer]="drawer"></app-menu-items> -->
-    </mat-drawer>
-    <div class="wrapper">
-      <div class="toolbar">
-        <mat-toolbar color="accent">
-          <!-- <div class="logo">
-            <figure class="sidenav-figure">
-              <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
-              <button
-                mat-icon-button
-                class="d-md-none inner-hamburger-menu"
-                (click)="drawer.toggle()"
-              >
-                <mat-icon>menu</mat-icon>
-              </button>
-            </figure>
-          </div>
-          <span class="d-none d-md-inline button-container">
-            <button
-              mat-button
-              class="nav-button"
-              *ngFor="let item of navigation"
-              [routerLink]="[item.link]"
-              [routerLinkActive]="['is-menu-item-active']"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
-              {{ item.label }}
-            </button>
-          </span> -->
-          <app-menu-items class=".d-none .d-md-block .d-lg-none" [drawer]="drawer"></app-menu-items>
-        </mat-toolbar>
-      </div>
+  <mat-toolbar color="accent">
+    <div class="toolbar">
+      <figure class="sidenav-figure">
+        <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
+      </figure>
+      <button
+        mat-icon-button
+        class="menu-burger"
+        [color]="sidenav.opened ? 'primary' : ''"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <app-menu-items [routeConfig]="navigation" class="menu-top"></app-menu-items>
+    </div>
+  </mat-toolbar>
 
+  <mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="over" [autoFocus]="false">
+      <app-menu-items [routeConfig]="navigation" (routeChange)="sidenav.close()"></app-menu-items>
+    </mat-sidenav>
+    <mat-sidenav-content>
       <div class="content">
         <ng-content></ng-content>
       </div>
-
-      <div class="footer"></div>
-    </div>
-  </mat-drawer-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
