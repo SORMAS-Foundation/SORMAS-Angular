@@ -7,8 +7,9 @@
     "start:fr": "ng serve --hmr --configuration=fr",
     "start:de": "ng serve --hmr --configuration=de",
     "start:ar": "ng serve --hmr --configuration=ar",
-    "start-proxy": "node ./projects/api-proxy/proxy-server.js",
+    "start-proxy": "npm run start --prefix projects/api-proxy",
     "build": "ng build api-client && ng build --prod",
+    "analyze-bundle": "ng build --prod --configuration=en-US --stats-json && webpack-bundle-analyzer dist/app/en-US/stats.json ",
     "extract-i18n": "ng extract-i18n --output-path src/locale && xliffmerge -p xliffmerge.json",
     "test": "ng test sormas",
     "test:ci": "ng test sormas --no-watch --no-progress --browsers=ChromeHeadlessCI",
@@ -57,7 +58,7 @@
     "@typescript-eslint/eslint-plugin": "4.14.2",
     "@typescript-eslint/parser": "4.3.0",
     "codelyzer": "^6.0.0",
-    "eslint": "^7.6.0",
+    "eslint": "^7.20.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-import": "^2.22.1",
@@ -86,7 +87,8 @@
     "stylelint-scss": "^3.18.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.0.2",
+    "webpack-bundle-analyzer": "^4.4.0"
   },
   "husky": {
     "hooks": {
