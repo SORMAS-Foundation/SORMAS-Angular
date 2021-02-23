@@ -21,7 +21,7 @@
   }
 }
 
-@media (map-get($media, large-up)) {
+@media (map-get($media, medium-up)) {
   .nav-button {
     margin: 0 12px;
   }

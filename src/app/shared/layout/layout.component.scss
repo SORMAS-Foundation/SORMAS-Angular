@@ -6,7 +6,7 @@
 }
 
 .menu-burger {
-  display: none;
+  margin: 0 auto;
 }
 
 .mat-toolbar {
@@ -23,7 +23,7 @@
 .sidenav-figure {
   width: 40px;
   height: 25px;
-  margin: 0 1rem;
+  margin: 0 1rem 0 0.5rem;
 }
 
 .menu-top {
@@ -38,10 +38,6 @@
 
   .mat-stroked-button {
     margin-right: 10px;
-  }
-
-  .spacer {
-    flex: 0 1 auto;
   }
 }
 
@@ -86,7 +82,7 @@
 }
 
 .content {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -102,15 +98,6 @@
 }
 
 @media (map-get($media, medium-down)) {
-  .menu-burger {
-    display: block;
-    margin: 0 auto;
-  }
-
-  .menu-top {
-    display: none;
-  }
-
   .sidenav-figure {
     position: absolute;
   }

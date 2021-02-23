@@ -5,6 +5,7 @@
         <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
       </figure>
       <button
+        *ngIf="showButtonBurger"
         mat-icon-button
         class="menu-burger"
         [color]="sidenav.opened ? 'primary' : ''"
@@ -12,7 +13,11 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <app-menu-items [routeConfig]="navigation" class="menu-top"></app-menu-items>
+      <app-menu-items
+        *ngIf="showMenuHeader"
+        [routeConfig]="navigation"
+        class="menu-top"
+      ></app-menu-items>
     </div>
   </mat-toolbar>
 
