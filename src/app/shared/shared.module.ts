@@ -24,6 +24,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LocaleSelectComponent,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}
