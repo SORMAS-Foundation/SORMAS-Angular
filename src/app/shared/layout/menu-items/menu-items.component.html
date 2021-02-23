@@ -6,7 +6,7 @@
     [routerLink]="[route.link]"
     [routerLinkActive]="['route-active']"
     [routerLinkActiveOptions]="{ exact: true }"
-    (click)="doRouteChange(route)"
+    (click)="announceRouteChange(route)"
   >
     {{ route.label }}
   </button>
