@@ -13,7 +13,6 @@ export class LayoutComponent implements OnInit {
   logo = logoPath;
   navigation = routesConfig;
   showMenuHeader = true;
-  showMenuDrawer = true;
   showButtonBurger = true;
 
   constructor(private mediaService: MediaService) {}
@@ -22,7 +21,6 @@ export class LayoutComponent implements OnInit {
     this.mediaService.subscribeToLayoutChanges().subscribe(() => {
       const IS_MEDIUM = this.mediaService.isBreakpointActive(CustomBreakpointNames.medium);
       this.showMenuHeader = !IS_MEDIUM;
-      this.showMenuDrawer = !!IS_MEDIUM;
       this.showButtonBurger = !!IS_MEDIUM;
     });
   }

@@ -2,12 +2,12 @@ import { Component, EventEmitter, Injectable, Input, Output } from '@angular/cor
 import { RouteItem } from '../shared/route-item.model';
 
 @Component({
-  selector: 'app-menu-items',
-  templateUrl: './menu-items.component.html',
-  styleUrls: ['./menu-items.component.scss'],
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
 })
 @Injectable()
-export class MenuItemsComponent {
+export class MenuComponent {
   @Input() routeConfig: RouteItem[] = [];
   @Output() routeChange: EventEmitter<any> = new EventEmitter();
 

@@ -13,17 +13,13 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <app-menu-items
-        *ngIf="showMenuHeader"
-        [routeConfig]="navigation"
-        class="menu-top"
-      ></app-menu-items>
+      <app-menu *ngIf="showMenuHeader" [routeConfig]="navigation" class="menu-top"></app-menu>
     </div>
   </mat-toolbar>
 
   <mat-sidenav-container fullscreen>
     <mat-sidenav #sidenav mode="over" [autoFocus]="false">
-      <app-menu-items [routeConfig]="navigation" (routeChange)="sidenav.close()"></app-menu-items>
+      <app-menu [routeConfig]="navigation" (routeChange)="sidenav.close()"></app-menu>
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="content">

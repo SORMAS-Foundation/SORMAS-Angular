@@ -1,7 +1,6 @@
-<div class="button-container">
-  <button
+<nav class="menu">
+  <a
     mat-button
-    class="nav-button"
     *ngFor="let route of routeConfig"
     [routerLink]="[route.link]"
     [routerLinkActive]="['route-active']"
@@ -9,5 +8,5 @@
     (click)="announceRouteChange(route)"
   >
     {{ route.label }}
-  </button>
-</div>
+  </a>
+</nav>
