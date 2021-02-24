@@ -44,8 +44,6 @@ export class TableComponent implements OnInit {
   @Output() fetchMoreData: EventEmitter<number> = new EventEmitter();
   debouncer: Subject<number> = new Subject<number>();
 
-  date = new Date();
-
   @Input()
   set tableData(data: any[]) {
     this.setdataSource(data);

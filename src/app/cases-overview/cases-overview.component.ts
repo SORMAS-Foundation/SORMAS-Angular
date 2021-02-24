@@ -19,7 +19,6 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   casesColumnDefs: TableColumn[] = defaultColumnDefs;
 
-  currentIndex = 0;
   // todo - get value from API
   size = 100000;
   storedDataBetweenIndexes: number[][] = [];
@@ -28,15 +27,17 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   constructor(private caseService: CaseService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.subscription = this.caseService.getCasesData().subscribe({
       next: (data) => {
-        // this.batchSize = data.length;
-        this.currentIndex = data.length;
-        const virtualPaginationDummyData = new Array(this.size - this.currentIndex).fill(null);
+        const virtualPaginationDummyData = new Array(this.size - data.length).fill(null);
 
-        // TODO - initially render a full data-set with original + null data
+        // initially render a full data-set with original + null data
+        this.storedDataBetweenIndexes.push([0, data.length]);
         this.cases = [...data, ...virtualPaginationDummyData];
-        this.storedDataBetweenIndexes.push([0, this.currentIndex]);
+        this.isLoading = false;
+
+        console.log('Initial storedDataBetweenIndexes', this.storedDataBetweenIndexes);
       },
       error: (err) => {
         this.errorMessage = err;
@@ -61,15 +62,15 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   }
 
   containsIndex(scrolledIndex: number): boolean {
-    const containsIndex = this.storedDataBetweenIndexes.some((sd) => sd.includes(scrolledIndex));
-    // todo-later - expand next with 50 so you know what you know if scrolledIndex is close so you need to fetch
+    const containsIndex = this.storedDataBetweenIndexes.some(
+      (sd) => sd[0] <= scrolledIndex && scrolledIndex <= sd[1]
+    );
 
-    return !containsIndex;
+    return containsIndex;
   }
 
   async fetchMoreData(index: number): Promise<void> {
-    // if (index > this.currentIndex - 10) {
-    if (this.containsIndex(index) && !this.isLoading) {
+    if (!this.containsIndex(index) && !this.isLoading) {
       this.isLoading = true;
       // TODO - pass the index to get the data to the API to get it from the specified index - and calculate what size you need
       const newData = await this.caseService.getCasesData().toPromise();
@@ -78,14 +79,11 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
       newCases.splice(index, size);
       newCases.splice(index, 0, ...newData);
       this.cases = newCases;
-      this.currentIndex = index + newData.length;
 
-      const newStoredDataBetween = [this.currentIndex, this.currentIndex + newData.length];
+      const newStoredDataBetween = [index, index + newData.length];
 
       this.storedDataBetweenIndexes.push(newStoredDataBetween);
       this.isLoading = false;
-
-      console.log('newStoredDataBetween', this.cases.length, newStoredDataBetween);
     }
   }
 }
