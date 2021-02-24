@@ -25,6 +25,7 @@ import { MenuComponent } from './layout/menu/menu.component';
     LocaleSelectComponent,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

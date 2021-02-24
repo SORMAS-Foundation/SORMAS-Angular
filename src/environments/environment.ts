@@ -2,12 +2,15 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+import { Environment } from './ienvironment';
+
+export const environment: Environment = {
   production: false,
   keycloakUrl: 'https://test-de1.sormas.netzlink.com/keycloak/auth/',
   keycloakRealm: 'SORMAS',
   keycloakClientId: 'sormas-angular',
   apiUrl: 'http://localhost:4201',
+  isLegacyLogin: false,
 };
 
 /*

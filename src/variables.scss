@@ -19,5 +19,7 @@ $accent: mat-color($sormas-accent);
 $warn: mat-color($sormas-warn);
 $white: #ffffff;
 
+$warn-default: map-get($sormas-warn, default);
+
 // TIP: to check all colors in a pallete:
 // @debug $sormas-primary;
