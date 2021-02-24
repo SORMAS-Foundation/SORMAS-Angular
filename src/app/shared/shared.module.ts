@@ -40,6 +40,8 @@ import { TableIconComponent } from './table/table-icon.component';
     TableIconComponent,
     MaterialModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}
