@@ -18,9 +18,19 @@ const allData: TestDto[] = new Array<TestDto>(100000)
     name: `name ${i}`,
   }));
 
-const mockFetcher = (index: number) => of(allData.slice(index, 20));
+const mockFetcher = (index: number) => of(allData.slice(index - 1, index - 1 + 20));
 
 describe('DataFetcherService', () => {
+  const getNullAndNonNull = (data: TestDto[]) => {
+    const nonNullData = data.filter((x) => x !== null);
+    const nullData = data.filter((x) => x === null);
+
+    return {
+      nonNullData,
+      nullData,
+    };
+  };
+
   let service: DataFetcherService<TestDto>;
 
   beforeEach(() => {
@@ -33,49 +43,62 @@ describe('DataFetcherService', () => {
   });
 
   it('can initialize data', async () => {
-    const data = await service.init(mockFetcher as any);
+    const data = await service.init(mockFetcher);
 
     expect(data.length).toBe(100000);
   });
 
   it('appends virtual data to data', async () => {
-    const data = await service.init(mockFetcher as any);
+    const data = await service.init(mockFetcher);
 
-    const nonNullData = data.filter((x) => !!x);
-    const nullData = data.filter((x) => x === null);
+    const { nonNullData, nullData } = getNullAndNonNull(data);
 
     expect(nonNullData.length).toBe(20);
     expect(nullData.length).toBe(100000 - 20);
   });
 
-  it('correctly computes initial storedDataBetweenIndexes', async () => {
-    await service.init(mockFetcher as any);
+  it('correctly computes initial segments', async () => {
+    await service.init(mockFetcher);
 
-    expect(service.storedDataBetweenIndexes).toEqual([[1, 20]]);
+    expect(service.segments).toEqual([[1, 20]]);
   });
 
   it('can fetch more data', async () => {
-    const initialData = await service.init(mockFetcher as any);
-    const moreData = await service.fetchMoreData(21, initialData, mockFetcher as any);
+    const initialData = await service.init(mockFetcher);
+    const moreData = await service.fetchMoreData(21, initialData, mockFetcher);
 
-    const nonNullData = moreData.filter((x) => x !== null);
-    const nullData = moreData.filter((x) => x === null);
+    const { nonNullData, nullData } = getNullAndNonNull(moreData);
 
     expect(nonNullData.length).toBe(40);
     expect(nullData.length).toBe(100000 - 40);
   });
 
   it('can fetch more data multiple times correctly', async () => {
-    const initialData = await service.init(mockFetcher as any);
-    const data = await service.fetchMoreData(21, initialData, mockFetcher as any);
-    const finalData = await service.fetchMoreData(41, data, mockFetcher as any);
+    const initialData = await service.init(mockFetcher);
+    const data = await service.fetchMoreData(21, initialData, mockFetcher);
+    const finalData = await service.fetchMoreData(41, data, mockFetcher);
 
-    const nonNullData = finalData.filter((x) => x !== null);
-    const nullData = finalData.filter((x) => x === null);
-
-    console.log(data, finalData, service);
+    const { nonNullData, nullData } = getNullAndNonNull(finalData);
 
     expect(nonNullData.length).toBe(60);
     expect(nullData.length).toBe(100000 - 60);
+
+    expect(service.segments).toEqual([
+      [1, 20],
+      [21, 40],
+      [41, 60],
+    ]);
+  });
+
+  it('can fetch data in-between segments', async () => {
+    const initialData = await service.init(mockFetcher);
+    const moreData = await service.fetchMoreData(41, initialData, mockFetcher);
+    await service.fetchMoreData(30, moreData, mockFetcher);
+
+    expect(service.segments).toEqual([
+      [1, 20],
+      [41, 60],
+      [21, 40],
+    ]);
   });
 });
