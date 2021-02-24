@@ -4,6 +4,7 @@ import { Sort } from '@angular/material/sort';
 import { CaseDataDto } from 'api-client';
 import { Subscription } from 'rxjs';
 import { CaseService } from '../services/case.service';
+import { DataFetcherService } from '../services/data-fetcher.service';
 import { ApiError } from '../shared/http/BaseDataService';
 import { TableColumn } from '../shared/table/table-column';
 import { defaultColumnDefs } from './columns-default';
@@ -24,25 +25,15 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   storedDataBetweenIndexes: number[][] = [];
   isLoading = false;
 
-  constructor(private caseService: CaseService) {}
+  constructor(
+    private caseService: CaseService,
+    private dataFetchingServie: DataFetcherService<CaseDataDto>
+  ) {}
 
-  ngOnInit(): void {
-    this.isLoading = true;
-    this.subscription = this.caseService.getCasesData().subscribe({
-      next: (data) => {
-        const virtualPaginationDummyData = new Array(this.size - data.length).fill(null);
+  fetcher = () => this.caseService.getCasesData();
 
-        // initially render a full data-set with original + null data
-        this.storedDataBetweenIndexes.push([0, data.length]);
-        this.cases = [...data, ...virtualPaginationDummyData];
-        this.isLoading = false;
-
-        console.log('Initial storedDataBetweenIndexes', this.storedDataBetweenIndexes);
-      },
-      error: (err) => {
-        this.errorMessage = err;
-      },
-    });
+  async ngOnInit(): Promise<void> {
+    this.cases = await this.dataFetchingServie.init(this.fetcher);
   }
 
   ngOnDestroy(): void {
@@ -70,20 +61,6 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   }
 
   async fetchMoreData(index: number): Promise<void> {
-    if (!this.containsIndex(index) && !this.isLoading) {
-      this.isLoading = true;
-      // TODO - pass the index to get the data to the API to get it from the specified index - and calculate what size you need
-      const newData = await this.caseService.getCasesData().toPromise();
-      const size = newData.length;
-      const newCases = [...this.cases];
-      newCases.splice(index, size);
-      newCases.splice(index, 0, ...newData);
-      this.cases = newCases;
-
-      const newStoredDataBetween = [index, index + newData.length];
-
-      this.storedDataBetweenIndexes.push(newStoredDataBetween);
-      this.isLoading = false;
-    }
+    this.cases = await this.dataFetchingServie.fetchMoreData(index, this.cases, this.fetcher);
   }
 }
