@@ -29,7 +29,7 @@ export class DataFetcherService<T> {
     this.size = dataSize;
     const virtualFillData = new Array(this.size - initialData.length).fill(null);
     const data = [...initialData, ...virtualFillData];
-    this.storedDataBetweenIndexes.push([0, initialData.length]);
+    this.storedDataBetweenIndexes.push([1, initialData.length]);
 
     this.isLoading = false;
     return data;
@@ -43,16 +43,16 @@ export class DataFetcherService<T> {
       // TODO - pass the index to get the data to the API to get it from the specified index - and calculate what size you need
       const newData = await fetcher().toPromise();
       const size = newData.length;
-      const newResolvedData = [...currentData];
-      newResolvedData.splice(index, size, ...newData);
-      // newResolvedData.splice(index - 1, size); // newResolvedData.splice(index, size, ...newData);
-      // newResolvedData.splice(index - 1, 0, ...newData);
-      const newStoredDataBetween = [index, index + newData.length];
+      const newComputedData = [...currentData];
+      newComputedData.splice(index - 1, size, ...newData);
+      const newStoredDataBetween = [index, index + newData.length - 1];
 
       this.storedDataBetweenIndexes.push(newStoredDataBetween);
       this.isLoading = false;
 
-      return newResolvedData;
+      // console.log(newComputedData);
+
+      return newComputedData;
     }
 
     return Promise.resolve(currentData);
