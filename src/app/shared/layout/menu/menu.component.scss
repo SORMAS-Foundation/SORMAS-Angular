@@ -22,19 +22,19 @@
   }
 }
 
-@media (map-get($media, medium-up)) {
+@media (min-width: map-get($grid-breakpoints, md)) {
   .mat-button {
     margin: 0 12px;
   }
 }
 
-@media (map-get($media, extra-large-up)) {
+@media (min-width: map-get($grid-breakpoints, lg)) {
   .mat-button {
     margin: 0 16px;
   }
 }
 
-@media (map-get($media, medium-down)) {
+@media (max-width: map-get($grid-breakpoints, md)) {
   .menu {
     flex-direction: column;
   }

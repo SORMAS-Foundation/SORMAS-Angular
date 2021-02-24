@@ -5,8 +5,6 @@ $sormas-primary: mat-palette($brand-primary);
 $sormas-accent: mat-palette($brand-neutrals);
 $sormas-warn: mat-palette($mat-red);
 
-$toolbar-breakpoint: 600px;
-
 $grid-breakpoints: (
   xs: 0,
   sm: 720px,
@@ -14,19 +12,6 @@ $grid-breakpoints: (
   lg: 1024px,
   xl: 1440px,
   xxl: 1680px,
-);
-
-$media: (
-  small-down: '(max-width: #{map-get($grid-breakpoints, sm)})',
-  small-up: '(min-width: #{map-get($grid-breakpoints, sm)})',
-  medium-down: '(max-width: #{map-get($grid-breakpoints, md)})',
-  medium-up: '(min-width: #{map-get($grid-breakpoints, md)})',
-  large-down: '(max-width: #{map-get($grid-breakpoints, lg)})',
-  large-up: '(min-width: #{map-get($grid-breakpoints, lg)})',
-  extra-large-down: '(max-width: #{map-get($grid-breakpoints, xl)})',
-  extra-large-up: '(min-width: #{map-get($grid-breakpoints, xl)})',
-  wide-down: '(max-width: #{map-get($grid-breakpoints, xxl)})',
-  wide-up: '(min-width: #{map-get($grid-breakpoints, xxl)})',
 );
 
 $primary: mat-color($sormas-primary);

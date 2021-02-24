@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="25px" viewBox="0 0 40 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Sormas icon@2x</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.960400 0 0 0 0 0.968240 0 0 0 0 0.980000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sormas-Icon-Copy" filter="url(#filter-1)">
+            <g id="Sormas-icon" fill="#3B4858">
+                <path d="M20,0 C28.7129854,0 36.268287,5.07678057 40,12.4998167 C36.268287,19.9232194 28.7129854,25 20,25 C11.2870145,25 3.73171301,19.9232194 0,12.5001832 C3.73171301,5.07678057 11.2870145,0 20,0 Z M19.9755266,0.0730994151 C13.2534225,0.0730994151 7.8040804,5.63681231 7.8040804,12.5 C7.8040804,19.3631876 13.2534225,24.9269005 19.9755266,24.9269005 C26.6976308,24.9269005 32.1469729,19.3631876 32.1469729,12.5 C32.1469729,5.63681231 26.6976308,0.0730994151 19.9755266,0.0730994151 Z" id="Combined-Shape"></path>
+                <g id="Group-2" transform="translate(11.000000, 4.000000)">
+                    <rect id="Rectangle" x="0" y="9.99186861" width="3.8324075" height="5.99512116"></rect>
+                    <rect id="Rectangle-Copy" x="4.7001224" y="4.07076128" width="3.8324075" height="11.9162284"></rect>
+                    <g id="Group" transform="translate(9.400245, 0.000000)">
+                        <rect id="Rectangle-Copy-2" x="0" y="12.2862977" width="3.8324075" height="3.70069207"></rect>
+                        <polygon id="Rectangle-Copy-3" points="0 0 3.8324075 0 3.32624046 10.5839793 0.506167028 10.5839793"></polygon>
+                    </g>
+                    <rect id="Rectangle-Copy-4" x="14.1003672" y="14.5067129" width="3.8324075" height="1.48027683"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

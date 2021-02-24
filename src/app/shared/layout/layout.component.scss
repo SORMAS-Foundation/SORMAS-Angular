@@ -91,13 +91,13 @@
   }
 }
 
-@media (map-get($media, small-down)) {
+@media (max-width: map-get($grid-breakpoints, sm)) {
   .content {
     padding: 0.3rem;
   }
 }
 
-@media (map-get($media, medium-down)) {
+@media (max-width: map-get($grid-breakpoints, md)) {
   .sidenav-figure {
     position: absolute;
   }
