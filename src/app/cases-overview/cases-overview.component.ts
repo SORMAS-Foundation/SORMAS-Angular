@@ -19,10 +19,11 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   casesColumnDefs: TableColumn[] = defaultColumnDefs;
 
-  // todo - get value from API
   currentIndex = 0;
+  // todo - get value from API
   size = 100000;
-  // batchSize = 50;
+  storedDataBetweenIndexes: number[][] = [];
+  isLoading = false;
 
   constructor(private caseService: CaseService) {}
 
@@ -35,6 +36,7 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
 
         // TODO - initially render a full data-set with original + null data
         this.cases = [...data, ...virtualPaginationDummyData];
+        this.storedDataBetweenIndexes.push([0, this.currentIndex]);
       },
       error: (err) => {
         this.errorMessage = err;
@@ -58,21 +60,32 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
     console.log(selection);
   }
 
-  async fetchMoreData(index: number): Promise<void> {
-    // TODO - pass the index to get the data to the API to get it from the specified index
+  containsIndex(scrolledIndex: number): boolean {
+    const containsIndex = this.storedDataBetweenIndexes.some((sd) => sd.includes(scrolledIndex));
+    // todo-later - expand next with 50 so you know what you know if scrolledIndex is close so you need to fetch
 
-    // todo - not ok - as user can scroll back
-    // better - store an array with indexes that have data and check that index is not between them
-    if (index > this.currentIndex - 10) {
+    return !containsIndex;
+  }
+
+  async fetchMoreData(index: number): Promise<void> {
+    // if (index > this.currentIndex - 10) {
+    if (this.containsIndex(index) && !this.isLoading) {
+      this.isLoading = true;
+      // TODO - pass the index to get the data to the API to get it from the specified index - and calculate what size you need
       const newData = await this.caseService.getCasesData().toPromise();
       const size = newData.length;
       const newCases = [...this.cases];
       newCases.splice(index, size);
-      newCases.splice(index, size, ...newData);
+      newCases.splice(index, 0, ...newData);
       this.cases = newCases;
       this.currentIndex = index + newData.length;
 
-      console.log('new cases', this.cases, this.cases.length);
+      const newStoredDataBetween = [this.currentIndex, this.currentIndex + newData.length];
+
+      this.storedDataBetweenIndexes.push(newStoredDataBetween);
+      this.isLoading = false;
+
+      console.log('newStoredDataBetween', this.cases.length, newStoredDataBetween);
     }
   }
 }

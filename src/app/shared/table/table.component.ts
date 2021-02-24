@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 
 import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import { TableColumn } from './table-column';
 
@@ -40,12 +42,17 @@ export class TableComponent implements OnInit {
   @Output() sort: EventEmitter<Sort> = new EventEmitter();
   @Output() rowSelection: EventEmitter<any> = new EventEmitter();
   @Output() fetchMoreData: EventEmitter<number> = new EventEmitter();
+  debouncer: Subject<number> = new Subject<number>();
 
   date = new Date();
 
   @Input()
   set tableData(data: any[]) {
     this.setdataSource(data);
+  }
+
+  constructor() {
+    this.debouncer.pipe(debounceTime(500)).subscribe((value) => this.fetchMoreData.emit(value));
   }
 
   ngOnInit(): void {
@@ -56,12 +63,7 @@ export class TableComponent implements OnInit {
 
   scrolledIndexChange(index: number): void {
     console.log(index);
-
-    // max 1 request pert second
-    if (new Date().getTime() - this.date.getTime() > 1000) {
-      this.fetchMoreData.emit(index);
-      this.date = new Date();
-    }
+    this.debouncer.next(index);
   }
 
   setdataSource(data: any): void {
