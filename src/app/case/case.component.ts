@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CaseControllerService, CaseDataDto } from 'api-client';
 
 @Component({
   selector: 'app-case',
   templateUrl: './case.component.html',
   styleUrls: ['./case.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CaseComponent implements OnInit {
   case: CaseDataDto | undefined;

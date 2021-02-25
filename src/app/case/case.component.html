@@ -1,8 +1,17 @@
-<section *ngIf="case">
+<section *ngIf="case" class="case-page">
   <h1>
     <span class="material-icons"> west </span>
     <span> {{ case.person?.firstName }} {{ case.person?.lastName }}</span>
   </h1>
-
-  <pre> {{ case | json }} </pre>
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Case"> Case </mat-tab>
+    <mat-tab label="Case person"> Case person </mat-tab>
+    <mat-tab label="Hospitalization"> Hospitalization </mat-tab>
+    <mat-tab label="Symptoms"> Symptoms </mat-tab>
+    <mat-tab label="Epidemiological data"> Epidemiological data </mat-tab>
+    <mat-tab label="Therapy"> Therapy </mat-tab>
+    <mat-tab label="Follow-up"> Follow-up </mat-tab>
+    <mat-tab label="Clinical course"> Clinical course </mat-tab>
+    <mat-tab label="Contacts"> Contacts </mat-tab>
+  </mat-tab-group>
 </section>

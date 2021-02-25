@@ -1,13 +1,29 @@
-:host {
-  text-align: left;
+@use '../../variables.scss' as *;
 
+.case-page {
   h1 {
     display: flex;
-    max-width: 350px; // todo rem
+    max-width: 350px;
     align-items: center;
 
     span {
-      margin-left: 20px; // todo rem
+      margin-left: 20px;
+    }
+  }
+  .mat-tab-group {
+    .mat-tab-header {
+      .mat-tab-label-container {
+        .mat-tab-label {
+          min-width: auto;
+          padding: 16px;
+        }
+      }
+      .mat-tab-header-pagination-disabled {
+        display: none;
+      }
+      .mat-tab-header-pagination-chevron {
+        border-color: map-get($sormas-primary, 700);
+      }
     }
   }
 }
