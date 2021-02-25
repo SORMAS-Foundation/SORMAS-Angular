@@ -101,4 +101,16 @@ describe('DataFetcherService', () => {
       [21, 40],
     ]);
   });
+
+  it('can fetch data ahead of time', async () => {
+    // if we have segments [[1,20]] & our index is 10
+    // then fetch data for 21 - 40 because probably the user will go there
+    const initialData = await service.init(mockFetcher);
+    await service.fetchMoreData(10, initialData, mockFetcher);
+
+    expect(service.segments).toEqual([
+      [1, 20],
+      [21, 40],
+    ]);
+  });
 });
