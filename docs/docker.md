@@ -1,6 +1,6 @@
-## Docker
+## Docker build for Angular app
 
-> Note: using the `docker-compose` approach from the main Readme is recommanded as it also spawns containers for the apps external dependencies (Auth Server, API).
+> Note: using the `docker-compose` approach is recommanded for local development as it also spawns containers for the apps external dependencies (Auth Server, API).
 
 You can build a docker image of the application with:
 

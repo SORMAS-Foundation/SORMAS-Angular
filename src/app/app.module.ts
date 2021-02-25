@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { initializeAuth } from './shared/auth/init-auth';
 import { ApiInterceptor } from './shared/http/ApiInterceptor';
 import { SharedModule } from './shared/shared.module';
+import { ENV, getEnv } from '../environments/getEnv';
+import { AuthService } from './shared/auth/auth-service/auth.service';
 import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
 
 @NgModule({
@@ -27,15 +29,17 @@ import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
     DynamicFormModule,
   ],
   providers: [
+    { provide: ENV, useFactory: getEnv },
+    Location,
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: AuthService, useClass: getEnv().isLegacyLogin ? AuthService : KeycloakService },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAuth,
       multi: true,
-      deps: [KeycloakService, Location],
+      deps: [AuthService, Location, ENV],
     },
-    Location,
-    { provide: LocationStrategy, useClass: PathLocationStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

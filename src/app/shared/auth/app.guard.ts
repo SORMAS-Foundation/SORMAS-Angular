@@ -1,7 +1,8 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
+import { KeycloakAuthGuard } from 'keycloak-angular';
+import { AuthService } from './auth-service/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +10,10 @@ import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 export class AuthGuard extends KeycloakAuthGuard {
   constructor(
     protected readonly router: Router,
-    protected readonly keycloak: KeycloakService,
+    protected readonly authService: AuthService,
     protected locationStrategy: Location
   ) {
-    super(router, keycloak);
+    super(router, authService);
   }
 
   public async isAccessAllowed(
@@ -21,7 +22,7 @@ export class AuthGuard extends KeycloakAuthGuard {
   ): Promise<boolean> {
     // Force the user to log in if currently unauthenticated.
     if (!this.authenticated) {
-      await this.keycloak.login({
+      await this.authService.login({
         redirectUri: `${window.location.origin}${this.locationStrategy.prepareExternalUrl(
           state.url
         )}`,
@@ -29,7 +30,7 @@ export class AuthGuard extends KeycloakAuthGuard {
     }
 
     // Get the roles required from the route.
-    const requiredRoles = route.data.roles;
+    const requiredRoles = route.data.roles || [];
 
     // Allow the user to to proceed if no additional roles are required to access the route.
     if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {

@@ -6,10 +6,6 @@
   $foreground: map-get($theme, foreground);
 
   :root {
-    .mat-button-base ~ .mat-button-base {
-      margin-left: 1em;
-    }
-
     .mat-stroked-button:not(.mat-button-disabled) {
       border-width: 2px;
       border-color: currentColor;
