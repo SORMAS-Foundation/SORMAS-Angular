@@ -1,0 +1,12 @@
+<nav class="menu">
+  <a
+    mat-button
+    *ngFor="let route of routeConfig"
+    [routerLink]="[route.link]"
+    [routerLinkActive]="['route-active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    (click)="announceRouteChange(route)"
+  >
+    {{ route.label }}
+  </a>
+</nav>
