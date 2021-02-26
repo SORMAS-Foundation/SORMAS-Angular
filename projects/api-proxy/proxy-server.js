@@ -135,18 +135,15 @@ app.use(
     secure: !process.env.IGNORE_CERT_VALIDATION,
     logLevel: 'debug',
     onProxyReq: (proxyReq, req, res) => {
-      console.log('Running onProxyReq');
       if (!req.body || !Object.keys(req.body).length) {
         return;
       }
 
       const contentType = proxyReq.getHeader('Content-Type');
       const writeBody = (bodyData) => {
-        console.log('Write body');
         proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
         proxyReq.write(bodyData);
       };
-      console.log(contentType);
       if (contentType.includes('application/json')) {
         writeBody(JSON.stringify(req.body));
       }
