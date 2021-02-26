@@ -11,6 +11,7 @@ const https = require('https');
 const app = express();
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;
+const API_SERVICE_URL = process.env.API_SERVICE_URL;
 
 app.use(
   cors({
@@ -18,10 +19,9 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(cookieParser());
-
-const API_SERVICE_URL = process.env.API_SERVICE_URL;
 
 app.use(morgan('dev'));
 
@@ -134,6 +134,24 @@ app.use(
     followRedirects: true,
     secure: !process.env.IGNORE_CERT_VALIDATION,
     logLevel: 'debug',
+    onProxyReq: (proxyReq, req, res) => {
+      if (!req.body || !Object.keys(req.body).length) {
+        return;
+      }
+
+      const contentType = proxyReq.getHeader('Content-Type');
+      const writeBody = (bodyData) => {
+        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+        proxyReq.write(bodyData);
+      };
+      if (contentType.includes('application/json')) {
+        writeBody(JSON.stringify(req.body));
+      }
+
+      if (contentType.includes('application/x-www-form-urlencoded')) {
+        writeBody(querystring.stringify(req.body));
+      }
+    },
   })
 );
 
