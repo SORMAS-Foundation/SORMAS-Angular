@@ -64,6 +64,8 @@ describe('DataFetcherService', () => {
   });
 
   it('can fetch more data', async () => {
+    console.log('can fetch more data');
+
     const initialData = await service.init(mockFetcher);
     const moreData = await service.fetchMoreData(21, initialData, mockFetcher);
 
