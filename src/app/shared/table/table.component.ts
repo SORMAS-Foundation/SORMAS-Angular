@@ -20,13 +20,6 @@ export class TableComponent implements OnInit {
   public displayedColumns: string[] = [];
   selection = new SelectionModel<any>(true, []);
 
-  // Manually set the amount of buffer and the height of the table elements
-  BUFFER_SIZE = 3;
-  rowHeight = 48;
-  headerHeight = 56;
-  gridHeight = 400;
-  // rows: Observable<Array<any>> = of([]);
-
   @ViewChild(CdkVirtualScrollViewport, { static: false }) viewPort!: CdkVirtualScrollViewport;
 
   @ViewChild(MatSort, { static: true }) matSort!: MatSort;

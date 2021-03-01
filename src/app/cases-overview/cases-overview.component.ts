@@ -52,14 +52,6 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
     console.log(selection);
   }
 
-  containsIndex(scrolledIndex: number): boolean {
-    const containsIndex = this.storedDataBetweenIndexes.some(
-      (sd) => sd[0] <= scrolledIndex && scrolledIndex <= sd[1]
-    );
-
-    return containsIndex;
-  }
-
   async fetchMoreData(index: number): Promise<void> {
     this.cases = await this.dataFetchingServie.fetchMoreData(index, this.cases, this.fetcher);
   }
