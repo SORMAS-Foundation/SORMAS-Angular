@@ -43,7 +43,7 @@ export class TableComponent implements OnInit {
   }
 
   constructor() {
-    this.debouncer.pipe(debounceTime(500)).subscribe((value) => this.fetchMoreData.emit(value));
+    this.debouncer.pipe(debounceTime(300)).subscribe((value) => this.fetchMoreData.emit(value));
   }
 
   ngOnInit(): void {
@@ -53,7 +53,7 @@ export class TableComponent implements OnInit {
   }
 
   scrolledIndexChange(index: number): void {
-    console.log(index);
+    // console.log(index);
     this.debouncer.next(index);
   }
 

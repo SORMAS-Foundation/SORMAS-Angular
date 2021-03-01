@@ -13,7 +13,8 @@ export class DataFetcherService<T> {
 
   private getSegmentRange(): number {
     const firstSegment = this.segments[0];
-    return firstSegment ? firstSegment[1] - firstSegment[0] : 0;
+
+    return firstSegment ? firstSegment[1] - firstSegment[0] + 1 : 0;
   }
 
   private findSegment(scrollIndex: number): number[] | undefined {
@@ -34,10 +35,6 @@ export class DataFetcherService<T> {
     }
 
     return false;
-
-    // const flatSegments =  this.segments.flat();
-
-    // return this.segments.some((sd) => sd[0] <= scrollIndex && scrollIndex <= sd[1]);
   }
 
   // if the index already exists in a segment it will return the next index for the next segment to fetch
@@ -50,35 +47,16 @@ export class DataFetcherService<T> {
       const nextSegment = this.findSegment(scrollIndex + segmentRange);
 
       if (!nextSegment) {
-        console.log(
-          `Segment found for index ${scrollIndex}, fetching for next segment, ${segment[1] + 1}`
-        );
         return segment[1] + 1;
       }
     }
 
-    // todo - compute this only once
     const allSegmentStarts = new Array(Math.round(this.size / segmentRange))
       .fill(null)
       .map((_, i) => (i + 1) * segmentRange + 1);
 
     const nearestMin = allSegmentStarts.reverse().find((n) => n <= scrollIndex) ?? 0;
-
-    // if (scrollIndex - nearestMin < segmentRange) {
-    //   // todo - infinite scroll issues here!
-
-    //   // todo - nearest min should always be calculated:
-    //   // nearestMinIndex = segmentRange * x < scrollIndex
-
-    //   console.log('nearestMin', nearestMin + 1);
-
-    //   return nearestMin + 1;
-    // }
-
-    // if we have segments [[1,20]] & our index is 10
-    // => fetch data for 21 - 40 because probably the user will go there
-    console.log('nearestMin', nearestMin + 1);
-    return nearestMin + 1;
+    return nearestMin;
   }
 
   async init(fetcher: FetcherFn<T>): Promise<T[]> {
@@ -108,8 +86,6 @@ export class DataFetcherService<T> {
 
       this.segments.push(newStoredDataBetween);
       this.isLoading = false;
-
-      console.log('DATA length', newComputedData.length);
 
       return newComputedData;
     }
