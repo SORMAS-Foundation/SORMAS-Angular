@@ -9,13 +9,18 @@ import logoPath from '../../../assets/img/sormas-logo.png';
 })
 export class LayoutComponent {
   logo = logoPath;
-
-  navigation = [
-    { link: '', label: $localize`Dashboard` },
-    { link: 'about', label: $localize`About` },
-    { link: 'tasks', label: $localize`Tasks` },
-    { link: 'forms', label: $localize`Forms` },
-    { link: 'cases', label: $localize`Cases` },
-    { link: 'user-profile', label: $localize`My profile` },
-  ];
+  navigation = routesConfig;
+  showMenuHeader = true;
+  showButtonBurger = true;
+  constructor(private mediaService: MediaService) {}
+  ngAfterContentInit(): void {
+    this.mediaService.subscribeToLayoutChanges().subscribe(() => {
+      const IS_MEDIUM = this.mediaService.isBreakpointActive(CustomBreakpointNames.medium);
+      this.showMenuHeader = !IS_MEDIUM;
+      this.showButtonBurger = !!IS_MEDIUM;
+      if (IS_MEDIUM) {
+        this.sidenav.close();
+      }
+    });
+  }
 }
