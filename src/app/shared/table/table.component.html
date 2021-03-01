@@ -37,6 +37,7 @@
             [label]="element | propertyGetter: tableColumn.dataKey"
           ></app-table-icon>
           {{ element | propertyGetter: tableColumn.dataKey }}
+          <div *ngIf="!element" class="row-skeleton"></div>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

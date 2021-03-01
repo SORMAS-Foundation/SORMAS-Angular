@@ -15,7 +15,7 @@ import { defaultColumnDefs } from './columns-default';
   styleUrls: ['./cases-overview.component.scss'],
 })
 export class CasesOverviewComponent implements OnInit, OnDestroy {
-  cases: CaseDataDto[] = [];
+  cases: CaseDataDto[] = new Array(100).fill(null);
   errorMessage?: ApiError;
   subscription: Subscription = new Subscription();
   casesColumnDefs: TableColumn[] = defaultColumnDefs;
