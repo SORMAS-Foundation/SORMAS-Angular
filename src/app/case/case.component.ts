@@ -6,6 +6,7 @@ import { CaseClassificationIcons, CaseOutcomeIcons } from './icons-assignment';
   selector: 'app-case',
   templateUrl: './case.component.html',
   styleUrls: ['./case.component.scss'],
+  providers: [CaseControllerService],
 })
 export class CaseComponent implements OnInit {
   case: CaseDataDto | undefined;
