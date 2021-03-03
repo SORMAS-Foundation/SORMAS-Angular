@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Page } from './payloads/page';
 
-type FetcherFn<T> = (index: number) => Observable<T[]>;
+type FetcherFn<T> = (index: number) => Observable<Page<T>>;
 
 @Injectable({
   providedIn: 'root',
@@ -62,34 +63,35 @@ export class DataFetcherService<T> {
   async init(fetcher: FetcherFn<T>): Promise<T[]> {
     this.isLoading = true;
 
-    const initialData = await fetcher(1).toPromise();
-    const dataSize = 100000; // todo get from API response
+    const initialData = await fetcher(0).toPromise();
+    const dataSize = initialData.totalNoElements;
     this.size = dataSize;
-    const virtualFillData = new Array(this.size - initialData.length).fill(null);
-    const data = [...initialData, ...virtualFillData];
-    this.segments.push([1, initialData.length]);
+    const virtualFillData = new Array(this.size - initialData.elements.length).fill(null);
+    const data = [...initialData.elements, ...virtualFillData];
+    this.segments.push([0, initialData.elements.length - 1]);
 
     this.isLoading = false;
     return data;
   }
 
   async fetchMoreData(index: number, currentData: T[], fetcher: FetcherFn<T>): Promise<T[]> {
-    if (!this.containsKnownSegments(index) && !this.isLoading) {
-      const indexToUse = this.computeIndex(index);
-
-      this.isLoading = true;
-      const newData = await fetcher(indexToUse).toPromise();
-      const size = newData.length;
-      const newComputedData = [...currentData];
-      newComputedData.splice(indexToUse - 1, size, ...newData);
-      const newStoredDataBetween = [indexToUse, indexToUse + newData.length - 1];
-
-      this.segments.push(newStoredDataBetween);
-      this.isLoading = false;
-
-      return newComputedData;
+    if (this.isLoading || this.containsKnownSegments(index)) {
+      return Promise.resolve(currentData);
     }
 
-    return Promise.resolve(currentData);
+    const indexToUse = this.computeIndex(index);
+    const segmentRange = this.getSegmentRange();
+
+    this.isLoading = true;
+    const newData = await fetcher(Math.floor(indexToUse / segmentRange)).toPromise();
+    const size = newData.elements.length;
+    const newComputedData = [...currentData];
+    newComputedData.splice(indexToUse - 1, size, ...newData.elements);
+    const newStoredDataBetween = [indexToUse, indexToUse + newData.elements.length - 1];
+
+    this.segments.push(newStoredDataBetween);
+    this.isLoading = false;
+
+    return newComputedData;
   }
 }

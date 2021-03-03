@@ -1,10 +1,14 @@
 @use './src/variables.scss' as *;
 
 .viewport {
-  height: 95%;
+  .mat-cell {
+    height: 54px;
+  }
 
   .row-skeleton {
-    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    height: 1rem;
     animation: skeleton 3s ease;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
@@ -21,14 +25,14 @@
 
 @keyframes skeleton {
   0% {
-    opacity: 0;
+    opacity: 0.1;
   }
 
   50% {
-    opacity: 1;
+    opacity: 0.6;
   }
 
   100% {
-    opacity: 0;
+    opacity: 0.1;
   }
 }

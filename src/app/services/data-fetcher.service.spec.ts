@@ -1,12 +1,22 @@
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { DataFetcherService } from './data-fetcher.service';
+
+type Page<T> = {
+  elements: T[];
+  pageNumber: number;
+  size: number;
+  totalNoElements: number;
+  hasNext: boolean;
+};
 
 type TestDto = {
   id: number;
   name: string;
 };
+
+type FetcherFn<T> = (index: number) => Observable<Page<T>>;
 
 const allData: TestDto[] = new Array<TestDto>(100000)
   .fill({
@@ -17,8 +27,16 @@ const allData: TestDto[] = new Array<TestDto>(100000)
     id: i,
     name: `name ${i}`,
   }));
+const pageData: Page<TestDto> = {
+  elements: [],
+  totalNoElements: allData.length,
+  pageNumber: 0,
+  size: 20,
+  hasNext: true,
+};
 
-const mockFetcher = (index: number) => of(allData.slice(index - 1, index - 1 + 20));
+const mockFetcher: FetcherFn<TestDto> = (index: number) =>
+  of({ ...pageData, ...{ elements: allData.slice(index - 1, index - 1 + 20) } });
 
 describe('DataFetcherService', () => {
   const getNullAndNonNull = (data: TestDto[]) => {
@@ -64,8 +82,6 @@ describe('DataFetcherService', () => {
   });
 
   it('can fetch more data', async () => {
-    console.log('can fetch more data');
-
     const initialData = await service.init(mockFetcher);
     const moreData = await service.fetchMoreData(21, initialData, mockFetcher);
 

@@ -4,6 +4,8 @@
   [tableColumns]="casesColumnDefs"
   [isSortable]="true"
   [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [visibleRowsCount]="visibleRowsCount"
   (sort)="sortData($event)"
   (rowSelection)="selectionData($event)"
   (fetchMoreData)="fetchMoreData($event)"

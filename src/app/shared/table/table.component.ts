@@ -28,9 +28,11 @@ export class TableComponent implements OnInit {
   @Input() isSortable = false;
   @Input() isPageable = false;
   @Input() isSelectable = false;
+  @Input() isHeaderSticky = false;
   @Input() paginationSizes: number[] = [5, 10, 15];
   @Input() defaultPageSize = this.paginationSizes[1];
   @Input() tableColumns: TableColumn[] = [];
+  @Input() visibleRowsCount = 10;
 
   @Output() sort: EventEmitter<Sort> = new EventEmitter();
   @Output() rowSelection: EventEmitter<any> = new EventEmitter();
@@ -53,7 +55,6 @@ export class TableComponent implements OnInit {
   }
 
   scrolledIndexChange(index: number): void {
-    // console.log(index);
     this.debouncer.next(index);
   }
 

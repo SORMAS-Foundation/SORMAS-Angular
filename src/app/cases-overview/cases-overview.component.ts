@@ -9,31 +9,37 @@ import { ApiError } from '../shared/http/BaseDataService';
 import { TableColumn } from '../shared/table/table-column';
 import { defaultColumnDefs } from './columns-default';
 
+const VISIBLE_ROWS_COUNT = 8;
+const PAGE_SIZE = 8;
+
 @Component({
   selector: 'app-cases-overview',
   templateUrl: './cases-overview.component.html',
   styleUrls: ['./cases-overview.component.scss'],
 })
 export class CasesOverviewComponent implements OnInit, OnDestroy {
-  cases: CaseDataDto[] = new Array(100).fill(null);
+  cases: CaseDataDto[] = [];
+  pageSize = PAGE_SIZE;
+  visibleRowsCount = VISIBLE_ROWS_COUNT;
   errorMessage?: ApiError;
   subscription: Subscription = new Subscription();
   casesColumnDefs: TableColumn[] = defaultColumnDefs;
 
-  // todo - get value from API
-  size = 100000;
-  storedDataBetweenIndexes: number[][] = [];
   isLoading = false;
 
   constructor(
     private caseService: CaseService,
-    private dataFetchingServie: DataFetcherService<CaseDataDto>
+    private dataFetchingService: DataFetcherService<CaseDataDto>
   ) {}
 
-  fetcher = () => this.caseService.getCasesData();
+  fetcher = (page: number) =>
+    this.caseService.getPaginatedCases(page, this.pageSize, {
+      caseCriteria: null,
+      sortProperties: null,
+    });
 
   async ngOnInit(): Promise<void> {
-    this.cases = await this.dataFetchingServie.init(this.fetcher);
+    this.cases = await this.dataFetchingService.init(this.fetcher);
   }
 
   ngOnDestroy(): void {
@@ -53,6 +59,6 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   }
 
   async fetchMoreData(index: number): Promise<void> {
-    this.cases = await this.dataFetchingServie.fetchMoreData(index, this.cases, this.fetcher);
+    this.cases = await this.dataFetchingService.fetchMoreData(index, this.cases, this.fetcher);
   }
 }

@@ -1,6 +1,8 @@
 <ng-container>
   <cdk-virtual-scroll-viewport
-    [tvsItemSize]="50"
+    [tvsItemSize]="54"
+    [headerHeight]="56"
+    [style.height.px]="visibleRowsCount * 54"
     class="viewport"
     #scrollViewport
     (scrolledIndexChange)="scrolledIndexChange($event)"
@@ -40,29 +42,19 @@
           <div *ngIf="!element" class="row-skeleton"></div>
         </td>
       </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
       <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns"
         (click)="selection.toggle(row)"
         [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
       ></tr>
-
-      <!-- <ng-template
-        let-row
-        matRowDef
-        cdkVirtualFor
-        [matRowDefColumns]="displayedColumns"
-        [cdkVirtualForOf]="rows"
-      >
-        <tr mat-row></tr>
-      </ng-template> -->
     </table>
-    <!-- <mat-paginator
+    <mat-paginator
       *ngIf="isPageable"
       [pageSizeOptions]="paginationSizes"
       [pageSize]="defaultPageSize"
     >
-    </mat-paginator> -->
+    </mat-paginator>
   </cdk-virtual-scroll-viewport>
 </ng-container>
