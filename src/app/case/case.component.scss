@@ -1,0 +1,36 @@
+@use '../../variables.scss' as *;
+
+.case-page {
+  h1 {
+    display: flex;
+    max-width: 400px;
+    align-items: center;
+    margin-top: 48px;
+    font-size: 34px;
+    font-weight: bold;
+
+    span {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+  }
+  .info-box {
+    padding: 15px 20px;
+    background-color: map-get($sormas-accent, 50);
+
+    .info-item {
+      display: inline-block;
+      height: 32px;
+      padding: 0 15px;
+      border-right: solid 1px map-get($sormas-accent, 200);
+      margin-top: 5px;
+      line-height: 32px;
+
+      .material-icons {
+        position: relative;
+        top: 3px;
+        font-size: 18px;
+      }
+    }
+  }
+}
