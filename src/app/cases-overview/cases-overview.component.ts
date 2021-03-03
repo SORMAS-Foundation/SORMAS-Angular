@@ -4,7 +4,7 @@ import { Sort } from '@angular/material/sort';
 import { CaseDataDto } from 'api-client';
 import { Subscription } from 'rxjs';
 import { CaseService } from '../services/case.service';
-import { DataFetcherService } from '../services/data-fetcher.service';
+import { PaginatedDataService } from '../services/paginated-data.service';
 import { ApiError } from '../shared/http/BaseDataService';
 import { TableColumn } from '../shared/table/table-column';
 import { defaultColumnDefs } from './columns-default';
@@ -29,7 +29,7 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
 
   constructor(
     private caseService: CaseService,
-    private dataFetchingService: DataFetcherService<CaseDataDto>
+    private paginatedDataService: PaginatedDataService<CaseDataDto>
   ) {}
 
   fetcher = (page: number) =>
@@ -39,7 +39,7 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
     });
 
   async ngOnInit(): Promise<void> {
-    this.cases = await this.dataFetchingService.init(this.fetcher);
+    this.cases = await this.paginatedDataService.init(this.fetcher);
   }
 
   ngOnDestroy(): void {
@@ -59,6 +59,6 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   }
 
   async fetchMoreData(index: number): Promise<void> {
-    this.cases = await this.dataFetchingService.fetchMoreData(index, this.cases, this.fetcher);
+    this.cases = await this.paginatedDataService.fetchMoreData(index, this.cases, this.fetcher);
   }
 }

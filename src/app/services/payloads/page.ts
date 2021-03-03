@@ -1,3 +1,17 @@
+import { Observable } from 'rxjs';
+
+export interface SortProperties<T> {
+  property?: keyof T;
+  order?: 'asc' | 'desc';
+}
+
+export interface PageRequest<T> {
+  page: number;
+  size: number;
+  sortProperties: SortProperties<T>;
+  caseCriteria?: object;
+}
+
 export interface Page<T> {
   elements: T[];
   pageNumber: number;
@@ -5,3 +19,5 @@ export interface Page<T> {
   totalNoElements: number;
   hasNext: boolean;
 }
+
+export type PaginatedEndpoint<T> = (req: PageRequest<T>) => Observable<Page<T>>;

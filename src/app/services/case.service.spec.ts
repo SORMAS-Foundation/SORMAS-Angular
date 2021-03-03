@@ -15,11 +15,14 @@ describe('CaseServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [CaseService],
+      providers: [CaseService, CaseControllerService],
     });
-    service = TestBed.inject(CaseService);
-    httpMock = TestBed.get(HttpTestingController);
+    httpMock = TestBed.inject(HttpTestingController);
     httpClient = TestBed.inject(HttpClient);
+    // @ts-ignore
+    const dep = new CaseControllerServiceMock(httpClient, '', {});
+    service = new CaseService(dep, httpClient);
+    service = TestBed.inject(CaseService);
   });
 
   it('should be created', () => {
