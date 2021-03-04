@@ -8,6 +8,7 @@ import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
+import { IconsMap } from 'src/app/app.constants';
 import { TableColumn } from './table-column';
 
 @Component({
@@ -38,6 +39,7 @@ export class TableComponent implements OnInit {
   @Output() rowSelection: EventEmitter<any> = new EventEmitter();
   @Output() fetchMoreData: EventEmitter<number> = new EventEmitter();
   debouncer: Subject<number> = new Subject<number>();
+  icons = IconsMap;
 
   @Input()
   set tableData(data: any[]) {

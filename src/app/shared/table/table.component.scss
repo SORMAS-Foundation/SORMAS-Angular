@@ -1,5 +1,10 @@
 @use './src/variables.scss' as *;
 
+.mat-icon {
+  font-size: 14px;
+  line-height: inherit;
+}
+
 .viewport {
   .mat-cell {
     height: 54px;

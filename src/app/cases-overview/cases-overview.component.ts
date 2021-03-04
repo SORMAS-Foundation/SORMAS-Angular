@@ -3,14 +3,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { CaseDataDto } from 'api-client';
 import { Subscription } from 'rxjs';
+import {
+  VIRTUAL_SCROLL_TABLE_VISIBLE_ROWS_COUNT,
+  VIRTUAL_SCROLL_PAGE_SIZE,
+} from 'src/app/app.constants';
 import { CaseService } from '../services/case.service';
 import { PaginatedDataService } from '../services/paginated-data.service';
 import { ApiError } from '../shared/http/BaseDataService';
 import { TableColumn } from '../shared/table/table-column';
 import { defaultColumnDefs } from './columns-default';
-
-const VISIBLE_ROWS_COUNT = 8;
-const PAGE_SIZE = 8;
 
 @Component({
   selector: 'app-cases-overview',
@@ -19,8 +20,8 @@ const PAGE_SIZE = 8;
 })
 export class CasesOverviewComponent implements OnInit, OnDestroy {
   cases: CaseDataDto[] = [];
-  pageSize = PAGE_SIZE;
-  visibleRowsCount = VISIBLE_ROWS_COUNT;
+  pageSize = VIRTUAL_SCROLL_PAGE_SIZE;
+  visibleRowsCount = VIRTUAL_SCROLL_TABLE_VISIBLE_ROWS_COUNT;
   errorMessage?: ApiError;
   subscription: Subscription = new Subscription();
   casesColumnDefs: TableColumn[] = defaultColumnDefs;

@@ -33,7 +33,7 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'Investigation status',
     dataKey: 'investigationStatus',
     isSortable: true,
-    icon: '$value',
+    icon: true,
   },
   {
     name: 'First name',

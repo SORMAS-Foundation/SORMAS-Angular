@@ -33,11 +33,9 @@
         </ng-template>
 
         <td mat-cell *matCellDef="let element">
-          <app-table-icon
-            *ngIf="tableColumn.icon"
-            [icon]="tableColumn.icon"
-            [label]="element | propertyGetter: tableColumn.dataKey"
-          ></app-table-icon>
+          <mat-icon *ngIf="tableColumn.icon">{{
+            $any(icons)[$any(element | propertyGetter: tableColumn.dataKey)]
+          }}</mat-icon>
           {{ element | propertyGetter: tableColumn.dataKey }}
           <div *ngIf="!element" class="row-skeleton"></div>
         </td>

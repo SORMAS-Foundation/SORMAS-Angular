@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { CaseControllerService, CaseDataDto } from 'api-client';
 import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { BaseDataService } from '../shared/http/BaseDataService';
@@ -19,9 +18,8 @@ export class CaseService extends BaseDataService {
     super();
   }
 
-  getCasesData(): Observable<CaseDataDto[]> {
-    // eslint-disable-next-line no-console
-    return this.caseService.getAllCases(new Date(2020).getTime()).pipe(tap(console.log));
+  getCasesData(since: number): Observable<CaseDataDto[]> {
+    return this.caseService.getAllCases(since);
   }
 
   public getPaginatedCases(
