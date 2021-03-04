@@ -42,6 +42,11 @@ const routes: Routes = [
       import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
     canActivate: [Guard],
   },
+  {
+    path: 'case',
+    loadChildren: () => import('./case/case.module').then((m) => m.CaseModule),
+    canActivate: [AuthGuard],
+  },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
 ];
