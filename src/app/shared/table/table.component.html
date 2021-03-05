@@ -1,0 +1,58 @@
+<ng-container>
+  <cdk-virtual-scroll-viewport
+    [tvsItemSize]="54"
+    [headerHeight]="56"
+    [style.height.px]="visibleRowsCount * 54"
+    class="viewport"
+    #scrollViewport
+    (scrolledIndexChange)="scrolledIndexChange($event)"
+  >
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortTable($event)">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox
+            color="primary"
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+          ></mat-checkbox>
+        </td>
+      </ng-container>
+      <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
+        <ng-container *ngIf="isSortable && tableColumn.isSortable; else notSortable">
+          <th mat-header-cell *matHeaderCellDef [mat-sort-header]="tableColumn.name">
+            {{ tableColumn.name }}
+          </th>
+        </ng-container>
+
+        <ng-template #notSortable>
+          <th mat-header-cell *matHeaderCellDef>
+            {{ tableColumn.name }}
+          </th>
+        </ng-template>
+
+        <td mat-cell *matCellDef="let element">
+          <mat-icon *ngIf="tableColumn.icon">{{
+            $any(icons)[$any(element | propertyGetter: tableColumn.dataKey)]
+          }}</mat-icon>
+          {{ element | propertyGetter: tableColumn.dataKey }}
+          <div *ngIf="!element" class="row-skeleton"></div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selection.toggle(row)"
+        [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
+      ></tr>
+    </table>
+    <mat-paginator
+      *ngIf="isPageable"
+      [pageSizeOptions]="paginationSizes"
+      [pageSize]="defaultPageSize"
+    >
+    </mat-paginator>
+  </cdk-virtual-scroll-viewport>
+</ng-container>

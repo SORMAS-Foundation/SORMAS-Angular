@@ -9,6 +9,7 @@
 @import './theme/form-datepicker.scss';
 @import './theme/form-radio.scss';
 @import './theme/button.scss';
+@import './theme/table.scss';
 @import './theme/tabs.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
@@ -53,6 +54,7 @@ $sormas-theme: mat-light-theme(
   @include form-datepicker-theme($theme);
   @include form-radio-theme($theme);
   @include button-theme($theme);
+  @include table-theme($theme);
   @include tabs-theme($theme);
 }
 

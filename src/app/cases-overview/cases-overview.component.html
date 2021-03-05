@@ -1,0 +1,12 @@
+<h1 i18n="Cases Overview header">Cases Overview</h1>
+<app-table
+  [tableData]="cases"
+  [tableColumns]="casesColumnDefs"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [visibleRowsCount]="visibleRowsCount"
+  (sort)="sortData($event)"
+  (rowSelection)="selectionData($event)"
+  (fetchMoreData)="fetchMoreData($event)"
+></app-table>

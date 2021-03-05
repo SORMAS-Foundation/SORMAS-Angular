@@ -1,0 +1,45 @@
+@mixin table-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    th.mat-header-cell,
+    td.mat-cell {
+      padding: 1em 1rem;
+      border-bottom-width: 2px;
+      color: mat-color(mat-palette($accent, 800));
+      white-space: nowrap;
+    }
+
+    th.mat-header-cell {
+      border-bottom-color: inherit;
+      border-left: 1px solid mat-color(mat-palette($accent, 300));
+      background-color: mat-color(mat-palette($accent, 50));
+      font-size: 1rem;
+
+      &:first-child {
+        border-left-width: 0;
+      }
+    }
+
+    td.mat-cell {
+      border-bottom-color: mat-color(mat-palette($accent, 100));
+      font-size: 0.875rem;
+
+      .mat-icon {
+        vertical-align: middle;
+      }
+    }
+
+    tr.mat-row:nth-child(even) td.mat-cell {
+      background-color: mat-color(mat-palette($accent, 50));
+    }
+
+    tr.mat-row.row-selected td.mat-cell {
+      background-color: mat-color(mat-palette($primary, 50));
+    }
+  }
+}
