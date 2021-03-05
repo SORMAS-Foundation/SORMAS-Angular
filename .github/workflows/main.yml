@@ -27,6 +27,8 @@ jobs:
           ${{ runner.os }}-node-
     - name: Install dependencies
       run: npm ci
+    - name: Install chrome driver
+      run: node webdriver-manager update --versions.chrome 88.0.4324.96 --gecko false --standalone false
     - name: Lint
       run: npm run lint
     - name: TSLint
