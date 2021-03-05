@@ -11,7 +11,7 @@ jobs:
     # Machine environment:
     # https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions#ubuntu-1804-lts
     # We specify the Node.js version manually below, and use versioned Chrome from Puppeteer.
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -26,7 +26,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     - name: Install dependencies
-      run: npm install
+      run: npm ci
+    - name: Install chrome driver
+      run: node node_modules/protractor/bin/webdriver-manager update --versions.chrome 88.0.4324.96 --gecko false --standalone false
     - name: Lint
       run: npm run lint
     - name: TSLint
