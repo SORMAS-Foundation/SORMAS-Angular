@@ -3,7 +3,6 @@
 .case-page {
   h1 {
     display: flex;
-    max-width: 400px;
     align-items: center;
     margin-top: 48px;
     font-size: 34px;
@@ -15,7 +14,7 @@
     }
   }
   .info-box {
-    padding: 15px 20px;
+    padding: 8px 20px;
     background-color: map-get($sormas-accent, 50);
 
     .info-item {
