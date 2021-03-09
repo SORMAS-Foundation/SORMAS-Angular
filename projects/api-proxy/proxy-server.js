@@ -43,7 +43,7 @@ async function getUser(username, auth) {
   );
 
   const data = await proxyQuery.data;
-  const user = data?.find((u) => u.userName === username);
+  const user = data.find((u) => u.userName === username);
 
   return user;
 }
@@ -113,7 +113,7 @@ app.use('', (req, res, next) => {
   } else {
     if (loggedUsers.length) {
       const cookie = req.cookies[`local-dev`];
-      const auth = loggedUsers.find((x) => x.cookie === cookie)?.cred;
+      const auth = loggedUsers.find((x) => x.cookie === cookie).cred;
 
       if (auth) {
         req.headers['Authorization'] = `Basic ${auth}`;
