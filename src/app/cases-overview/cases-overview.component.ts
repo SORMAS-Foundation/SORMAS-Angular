@@ -18,7 +18,7 @@ import { defaultColumnDefs } from './columns-default';
   templateUrl: './cases-overview.component.html',
   styleUrls: ['./cases-overview.component.scss'],
 })
-export class CasesOverviewComponent implements OnInit, OnDestroy {
+export class CasesOverviewComponent implements OnDestroy, OnInit {
   cases: CaseDataDto[] = [];
   pageSize = VIRTUAL_SCROLL_PAGE_SIZE;
   visibleRowsCount = VIRTUAL_SCROLL_TABLE_VISIBLE_ROWS_COUNT;
@@ -28,6 +28,12 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
 
   isLoading = false;
 
+  sortParameters: Sort = { active: 'caseClassification', direction: 'asc' };
+  currentSort = {
+    propertyName: this.sortParameters.active,
+    ascending: this.sortParameters.direction === 'asc',
+  };
+
   constructor(
     private caseService: CaseService,
     private paginatedDataService: PaginatedDataService<CaseDataDto>
@@ -36,7 +42,7 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
   fetcher = (page: number) =>
     this.caseService.getPaginatedCases(page, this.pageSize, {
       caseCriteria: null,
-      sortProperties: null,
+      sortProperties: [this.currentSort],
     });
 
   async ngOnInit(): Promise<void> {
@@ -49,8 +55,16 @@ export class CasesOverviewComponent implements OnInit, OnDestroy {
     }
   }
 
-  sortData(sortParameters: Sort): void {
+  async sortData(sortParameters: Sort): Promise<void> {
     // eslint-disable-next-line no-console
+    this.currentSort = {
+      propertyName: sortParameters.active,
+      ascending: sortParameters.direction === 'asc',
+    };
+    this.paginatedDataService.setSortDirection(sortParameters.direction);
+    this.paginatedDataService.clearCachedPages();
+    this.cases = await this.paginatedDataService.init(this.fetcher);
+
     console.log(sortParameters);
   }
 

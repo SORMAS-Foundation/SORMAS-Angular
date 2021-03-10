@@ -21,7 +21,7 @@
       </ng-container>
       <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
         <ng-container *ngIf="isSortable && tableColumn.isSortable; else notSortable">
-          <th mat-header-cell *matHeaderCellDef [mat-sort-header]="tableColumn.name">
+          <th mat-header-cell *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
             {{ tableColumn.name }}
           </th>
         </ng-container>
@@ -37,7 +37,7 @@
             $any(icons)[$any(element | propertyGetter: tableColumn.dataKey)]
           }}</mat-icon>
           {{ element | propertyGetter: tableColumn.dataKey }}
-          <div *ngIf="!element" class="row-skeleton"></div>
+          <div *ngIf="!element.uuid" class="row-skeleton"></div>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>

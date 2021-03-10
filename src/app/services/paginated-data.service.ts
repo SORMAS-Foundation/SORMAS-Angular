@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SortDirection } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import { Page } from './payloads/page';
 
@@ -14,6 +15,7 @@ export class PaginatedDataService<T> {
   private totalSize = 0;
   private isLoading = false;
   private cachedPages: number[] = [];
+  private sortDirection: SortDirection = '';
 
   /**
    * @description Computes page number based on provided index from data set
@@ -84,12 +86,22 @@ export class PaginatedDataService<T> {
     this.pageSize = initialData.elements.length;
     this.totalSize = initialData.totalNoElements;
     this.cachedPages.push(0);
-    const virtualFillData = new Array(this.totalSize - this.pageSize).fill(null);
+    const virtualFillData = new Array(this.totalSize - this.pageSize).fill({});
     const data = [...initialData.elements, ...virtualFillData];
 
     this.isLoading = false;
     return data;
   }
+
+  setSortDirection = (direction: SortDirection) => {
+    // we will need to manipulate virtualFillData based on this
+    this.sortDirection = direction;
+    console.log('this.sortDirection', this.sortDirection);
+  };
+
+  clearCachedPages = () => {
+    this.cachedPages = [];
+  };
 
   async fetchMoreData(index: number, currentData: T[], fetcher: PaginatedData<T>): Promise<T[]> {
     if (this.isLoading || !this.shouldFetchMore(index)) {
