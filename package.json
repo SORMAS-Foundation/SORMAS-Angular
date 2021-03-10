@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve --hmr --configuration=en-US\" \"npm run start-proxy\"",
+    "start": "concurrently \"ng serve --proxy-config proxy.conf.json --hmr --configuration=en-US\" \"npm run start-proxy\"",
     "start:fr": "ng serve --hmr --configuration=fr",
     "start:de": "ng serve --hmr --configuration=de",
     "start:ar": "ng serve --hmr --configuration=ar",

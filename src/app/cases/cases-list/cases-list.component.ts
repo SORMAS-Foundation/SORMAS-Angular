@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { CaseDataDto } from 'api-client';
 import { Subscription } from 'rxjs';
@@ -7,18 +7,17 @@ import {
   VIRTUAL_SCROLL_TABLE_VISIBLE_ROWS_COUNT,
   VIRTUAL_SCROLL_PAGE_SIZE,
 } from 'src/app/app.constants';
-import { CaseService } from '../../services/case.service';
-import { PaginatedDataService } from '../../services/paginated-data.service';
 import { ApiError } from '../../shared/http/BaseDataService';
 import { TableColumn } from '../../shared/table/table-column';
 import { defaultColumnDefs } from './columns-default';
+import { CaseService } from '../../_services/api/case.service';
 
 @Component({
   selector: 'app-cases-list',
   templateUrl: './cases-list.component.html',
   styleUrls: ['./cases-list.component.scss'],
 })
-export class CasesListComponent implements OnInit, OnDestroy {
+export class CasesListComponent implements OnInit {
   cases: CaseDataDto[] = [];
   pageSize = VIRTUAL_SCROLL_PAGE_SIZE;
   visibleRowsCount = VIRTUAL_SCROLL_TABLE_VISIBLE_ROWS_COUNT;
@@ -26,27 +25,22 @@ export class CasesListComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   casesColumnDefs: TableColumn[] = defaultColumnDefs;
 
-  isLoading = false;
+  constructor(private caseService: CaseService) {}
 
-  constructor(
-    private caseService: CaseService,
-    private paginatedDataService: PaginatedDataService<CaseDataDto>
-  ) {}
-
-  fetcher = (page: number) =>
-    this.caseService.getPaginatedCases(page, this.pageSize, {
-      caseCriteria: null,
-      sortProperties: null,
-    });
-
-  async ngOnInit(): Promise<void> {
-    this.cases = await this.paginatedDataService.init(this.fetcher);
+  ngOnInit(): void {
+    this.getCases();
   }
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+  getCases(): void {
+    this.caseService.getAllCases({ page: 0, size: 2 }).subscribe({
+      next: (response: any) => {
+        this.cases = response.elements;
+      },
+      error: (err: any) => {
+        console.log('errrrrrr', err);
+      },
+      complete: () => {},
+    });
   }
 
   sortData(sortParameters: Sort): void {
@@ -59,7 +53,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     console.log(selection);
   }
 
-  async fetchMoreData(index: number): Promise<void> {
-    this.cases = await this.paginatedDataService.fetchMoreData(index, this.cases, this.fetcher);
+  fetchMoreData(index: number): void {
+    console.log('index', index);
   }
 }
