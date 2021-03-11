@@ -8,7 +8,7 @@ import { Resource } from '../../_models/resource';
 import { Serializer } from '../../_serializers/base.serializer';
 
 import * as constants from '../../app.constants';
-import { PaginationResponse } from '../../_models/common';
+import { PaginationResponse, Sorting } from '../../_models/common';
 
 @Injectable({
   providedIn: 'root',
@@ -23,8 +23,7 @@ export class BaseService<T extends Resource> {
     @Inject('Serializer') private serializer: Serializer
   ) {}
 
-  getAll(pagination?: any, sorting?: any): Observable<PaginationResponse> {
-
+  getAll(pagination?: any, sorting?: Sorting): Observable<PaginationResponse> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.GET_ALL) {
@@ -41,9 +40,12 @@ export class BaseService<T extends Resource> {
     let sortingTmp = {};
     if (typeof sorting !== 'undefined') {
       sortingTmp = {
-        caseCriteria: sorting.caseCriteria,
-        sortProperties: sorting.sortProperties,
-      };
+        caseCriteria: null,
+        sortProperties:[{
+            propertyName: sorting.field,
+            ascending: sorting.ascending
+          }]
+      }
     }
 
     return this.httpClient

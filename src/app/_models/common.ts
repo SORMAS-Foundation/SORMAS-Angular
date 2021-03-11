@@ -11,6 +11,6 @@ export interface PaginationResponse {
 
 // sorting
 export interface Sorting {
-  caseCriteria: string;
-  sortProperties: string;
+  field: string;
+  ascending: boolean;
 }

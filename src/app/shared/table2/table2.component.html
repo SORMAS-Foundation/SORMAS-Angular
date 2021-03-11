@@ -1,14 +1,14 @@
 <div class="example-container mat-elevation-z8">
   <button style="margin: 15px" (click)="sort()">Sort me</button>
-  <mat-table #table [dataSource]="dataSource" (scroll)="onTableScroll($event)">
+  <mat-table #table [dataSource]="tableData" (scroll)="onTableScroll($event)">
 
     <!-- Position Column -->
-    <ng-container *ngFor="let tableColumn of displayedColumns;" [matColumnDef]="tableColumn">
+    <ng-container *ngFor="let tableColumn of tableColumns;" [matColumnDef]="tableColumn">
       <mat-header-cell *matHeaderCellDef> {{ tableColumn }} </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element[tableColumn]}} </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
   </mat-table>
 </div>

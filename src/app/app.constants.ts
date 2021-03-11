@@ -32,3 +32,6 @@ export enum CaseClassificationIcons {
   CONFIRMED_UNKNOWN_SYMPTOMS = 'new_releases',
   NO_CASE = 'how_to_reg',
 }
+
+// pagination
+export const PAGE_SIZE = 7;

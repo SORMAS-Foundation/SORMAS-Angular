@@ -12,4 +12,8 @@
 ></app-table>
 
 <app-table2
+  *ngIf="cases.length"
+  [resourceService]="caseService"
+  [tableData]="cases"
+  [tableColumns]="['uuid', 'disease', 'caseClassification']"
 ></app-table2>
