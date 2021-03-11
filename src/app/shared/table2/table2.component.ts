@@ -3,6 +3,7 @@ import { Resource } from '../../_models/resource';
 
 import * as constants from '../../app.constants';
 import { Sorting } from '../../_models/common';
+import {NotificationService} from '../../_services/notification.service';
 
 @Component({
   selector: 'app-table2',
@@ -23,6 +24,10 @@ export class Table2Component implements OnInit {
 
   @Output() selectRow: EventEmitter<any> = new EventEmitter();
 
+  constructor(
+    private notificationService: NotificationService
+  ) {
+  }
 
   ngOnInit(): void {
   }
@@ -45,7 +50,7 @@ export class Table2Component implements OnInit {
         }
       },
       error: (err: any) => {
-        console.log('errrrrrr', err);
+        this.notificationService.error(err)
       },
       complete: () => {},
     });

@@ -4,6 +4,7 @@ import { CaseClassificationIcons, CaseOutcomeIcons } from '../../app.constants';
 import { CaseService } from '../../_services/api/case.service';
 import { ActivatedRoute } from '@angular/router';
 import { CaseItem } from '../../_models/case';
+import { NotificationService } from '../../_services/notification.service';
 
 @Component({
   selector: 'app-case',
@@ -18,7 +19,11 @@ export class CaseComponent implements OnInit {
 
   caseId: any;
 
-  constructor(private caseService: CaseService, private activeRoute: ActivatedRoute) {}
+  constructor(
+    private caseService: CaseService,
+    private activeRoute: ActivatedRoute,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit(): void {
     const routeParams = this.activeRoute.snapshot.params;
@@ -30,7 +35,7 @@ export class CaseComponent implements OnInit {
         this.case = response;
       },
       error: (err: any) => {
-        console.log('errrrrrr', err);
+        this.notificationService.error(err);
       },
       complete: () => {
       },

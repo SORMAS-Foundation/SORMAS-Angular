@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { CaseItem, defaultColumnDefs } from '../../_models/case';
 
 import * as constants from '../../app.constants';
-import {Sorting} from '../../_models/common';
 import {NotificationService} from '../../_services/notification.service';
 
 @Component({
@@ -39,7 +38,7 @@ export class CasesListComponent implements OnInit {
         this.cases = response.elements;
       },
       error: (err: any) => {
-        console.log('errrrrrr', err);
+        this.notificationService.error(err);
       },
       complete: () => {},
     });
