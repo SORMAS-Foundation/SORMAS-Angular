@@ -1,17 +1,19 @@
 <section *ngIf="case" class="case-page">
   <div class="title-container">
     <h1>
-      <span class="material-icons"> west </span>
+      <a [routerLink]="['/cases/list']">
+        <span class="material-icons"> west </span>
+      </a>
       <span> {{ case.person?.firstName }} {{ case.person?.lastName }}</span>
     </h1>
   </div>
   <div class="info-box">
     <span *ngIf="case.outcome" class="info-item">
-      <span class="material-icons"> {{ caseOutcomeIcons[case.outcome!] }} </span>
+<!--      <span class="material-icons"> {{ caseOutcomeIcons[case.outcome!] }} </span>-->
       <span>{{ case.outcome }}</span>
     </span>
     <span *ngIf="case.caseClassification" class="info-item">
-      <span class="material-icons"> {{ caseClassificationIcons[case.caseClassification!] }} </span>
+<!--      <span class="material-icons"> {{ caseClassificationIcons[case.caseClassification!] }} </span>-->
       {{ case.caseClassification }}
     </span>
     <span *ngIf="case.disease" class="info-item">
@@ -26,15 +28,25 @@
       {{ case.reportingUser.caption }}
     </span>
   </div>
-  <mat-tab-group mat-align-tabs="start">
-    <mat-tab i18n label="Case"> Case </mat-tab>
-    <mat-tab i18n label="Case person"> Case person </mat-tab>
-    <mat-tab i18n label="Hospitalization"> Hospitalization </mat-tab>
-    <mat-tab i18n label="Symptoms"> Symptoms </mat-tab>
-    <mat-tab i18n label="Epidemiological data"> Epidemiological data </mat-tab>
-    <mat-tab i18n label="Therapy"> Therapy </mat-tab>
-    <mat-tab i18n label="Follow-up"> Follow-up </mat-tab>
-    <mat-tab i18n label="Clinical course"> Clinical course </mat-tab>
-    <mat-tab i18n label="Contacts"> Contacts </mat-tab>
-  </mat-tab-group>
+
+  <ul>
+    <li>
+      <a [routerLink]="['/cases/case/' + caseId + '/details']">
+        Case
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/cases/case/' + caseId + '/person']">
+        Case person
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/cases/case/' + caseId + '/hospitalization']">
+        Hospitalization
+      </a>
+    </li>
+  </ul>
+
+  <router-outlet></router-outlet>
+
 </section>

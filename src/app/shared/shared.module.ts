@@ -13,6 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { MenuComponent } from './layout/menu/menu.component';
+import { Table2Component } from './table2/table2.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MenuComponent } from './layout/menu/menu.component';
     TableComponent,
     PropertyGetterPipe,
     MenuComponent,
+    Table2Component
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { MenuComponent } from './layout/menu/menu.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    Table2Component
   ],
 })
 export class SharedModule {}
