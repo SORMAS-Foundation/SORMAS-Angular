@@ -34,7 +34,7 @@ export class Table2Component implements OnInit {
 
   onSelectRow(resource: Resource): void {
     this.selectRow.emit({
-      id: resource.id
+      rowItem: resource
     });
   }
 

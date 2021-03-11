@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  VIRTUAL_SCROLL_TABLE_VISIBLE_ROWS_COUNT,
-  VIRTUAL_SCROLL_PAGE_SIZE,
-} from 'src/app/app.constants';
-import { TableColumn } from '../../shared/table/table-column';
 import { CaseService } from '../../_services/api/case.service';
 import { Router } from '@angular/router';
-import { CaseItem, defaultColumnDefs } from '../../_models/case';
+import { CaseItem } from '../../_models/case';
 
 import * as constants from '../../app.constants';
-import {NotificationService} from '../../_services/notification.service';
+import { NotificationService } from '../../_services/notification.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -18,9 +13,6 @@ import {NotificationService} from '../../_services/notification.service';
 })
 export class CasesListComponent implements OnInit {
   cases: CaseItem[] = [];
-  pageSize = VIRTUAL_SCROLL_PAGE_SIZE;
-  visibleRowsCount = VIRTUAL_SCROLL_TABLE_VISIBLE_ROWS_COUNT;
-  casesColumnDefs: TableColumn[] = defaultColumnDefs;
 
   constructor(
     public caseService: CaseService,
@@ -61,14 +53,6 @@ export class CasesListComponent implements OnInit {
   }
 
   onRowSelect(event: any): void {
-    this.router.navigate([`/cases/case/${event.id}/details`]);
-  }
-
-  selectionData(selection: any): void {
-    this.router.navigate([`/cases/case/${  selection[0].id}/details`]);
-  }
-
-  fetchMoreData(index: number): void {
-    console.log('index', index);
+    this.router.navigate([`/cases/case/${event.rowItem.uuid}/details`]);
   }
 }
