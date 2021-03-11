@@ -14,6 +14,7 @@ import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { MenuComponent } from './layout/menu/menu.component';
 import { Table2Component } from './table2/table2.component';
+import { NotificationModalComponent } from './notification-modal/notification-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Table2Component } from './table2/table2.component';
     TableComponent,
     PropertyGetterPipe,
     MenuComponent,
-    Table2Component
+    Table2Component,
+    NotificationModalComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { Table2Component } from './table2/table2.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    Table2Component
+    Table2Component,
+    NotificationModalComponent
   ],
 })
 export class SharedModule {}

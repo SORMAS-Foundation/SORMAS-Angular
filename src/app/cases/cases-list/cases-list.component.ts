@@ -10,6 +10,7 @@ import { CaseItem, defaultColumnDefs } from '../../_models/case';
 
 import * as constants from '../../app.constants';
 import {Sorting} from '../../_models/common';
+import {NotificationService} from '../../_services/notification.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -24,7 +25,8 @@ export class CasesListComponent implements OnInit {
 
   constructor(
     public caseService: CaseService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -43,8 +45,24 @@ export class CasesListComponent implements OnInit {
     });
   }
 
-  sortData(event: any): void {
+  modalSuccess(): void {
+    this.notificationService.success('Yess');
+  }
 
+  modalError(): void {
+    this.notificationService.error('Noo');
+  }
+
+  modalConfirm(): void {
+    this.notificationService.confirm().subscribe(result => {
+      if (result) {
+        console.log('yyyyyyyyyyyyyyy', result);
+      }
+    });
+  }
+
+  onRowSelect(event: any): void {
+    this.router.navigate([`/cases/case/${event.id}/details`]);
   }
 
   selectionData(selection: any): void {

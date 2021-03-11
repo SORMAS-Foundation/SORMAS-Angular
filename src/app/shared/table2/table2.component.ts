@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Resource } from '../../_models/resource';
 
 import * as constants from '../../app.constants';
@@ -21,7 +21,16 @@ export class Table2Component implements OnInit {
   @Input() tableColumns: string[] = [];
   @Input() resourceService: any;
 
+  @Output() selectRow: EventEmitter<any> = new EventEmitter();
+
+
   ngOnInit(): void {
+  }
+
+  onSelectRow(resource: Resource): void {
+    this.selectRow.emit({
+      id: resource.id
+    });
   }
 
   getResources(reset: boolean = false): any {

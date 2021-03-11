@@ -1,4 +1,7 @@
 <h1 i18n="Cases Overview header">Cases Overview</h1>
+<button (click)="modalSuccess()">modal success</button>
+<button (click)="modalError()">modal error</button>
+<button (click)="modalConfirm()">modal confirm</button>
 <app-table
   [tableData]="cases"
   [tableColumns]="casesColumnDefs"
@@ -6,7 +9,6 @@
   [isSelectable]="true"
   [isHeaderSticky]="true"
   [visibleRowsCount]="visibleRowsCount"
-  (sort)="sortData($event)"
   (rowSelection)="selectionData($event)"
   (fetchMoreData)="fetchMoreData($event)"
 ></app-table>
@@ -16,4 +18,5 @@
   [resourceService]="caseService"
   [tableData]="cases"
   [tableColumns]="['uuid', 'disease', 'caseClassification']"
+  (selectRow)="onRowSelect($event)"
 ></app-table2>
