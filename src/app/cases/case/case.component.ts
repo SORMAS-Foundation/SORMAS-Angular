@@ -27,8 +27,7 @@ export class CaseComponent implements OnInit {
 
   ngOnInit(): void {
     const routeParams = this.activeRoute.snapshot.params;
-    // this.caseId = routeParams.caseId;
-    this.caseId = "W5GUPC-LBYRTF-XM2B6S-VEZXSJJU";
+    this.caseId = routeParams.caseId;
 
     this.caseService.getById(this.caseId).subscribe({
       next: (response: any) => {
