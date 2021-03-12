@@ -23,7 +23,7 @@ export class BaseService<T extends Resource> {
     @Inject('Serializer') private serializer: Serializer
   ) {}
 
-  getAll(pagination?: any, sorting?: Sorting): Observable<PaginationResponse> {
+  getAll(pagination?: any, sorting?: any): Observable<PaginationResponse> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.GET_ALL) {
@@ -37,7 +37,7 @@ export class BaseService<T extends Resource> {
     }
 
     // sorting
-    let sortingTmp = {};
+    let sortingTmp: any = { caseCriteria: null, sortProperties: null};
     if (typeof sorting !== 'undefined') {
       sortingTmp = {
         caseCriteria: null,
