@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CaseControllerService } from 'api-client';
-import { CaseClassificationIcons, CaseOutcomeIcons } from '../../app.constants';;
-import { CaseService } from '../../_services/api/case.service';
 import { ActivatedRoute } from '@angular/router';
-import { CaseItem } from '../../_models/case';
 import { NotificationService } from '../../_services/notification.service';
+import { CaseService } from '../../_services/api/case.service';
+import { CaseItem } from '../../_models/case';
+import { CaseClassificationIcons, CaseOutcomeIcons } from '../../app.constants';
 
 @Component({
   selector: 'app-case',
@@ -36,8 +36,7 @@ export class CaseComponent implements OnInit {
       error: (err: any) => {
         this.notificationService.error(err);
       },
-      complete: () => {
-      },
+      complete: () => {},
     });
 
     this.caseOutcomeIcons = CaseOutcomeIcons;

@@ -8,7 +8,7 @@ import { Resource } from '../../_models/resource';
 import { Serializer } from '../../_serializers/base.serializer';
 
 import * as constants from '../../app.constants';
-import { PaginationResponse, Sorting } from '../../_models/common';
+import { PaginationResponse } from '../../_models/common';
 
 @Injectable({
   providedIn: 'root',
@@ -37,15 +37,17 @@ export class BaseService<T extends Resource> {
     }
 
     // sorting
-    let sortingTmp: any = { caseCriteria: null, sortProperties: null};
+    let sortingTmp: any = { caseCriteria: null, sortProperties: null };
     if (typeof sorting !== 'undefined') {
       sortingTmp = {
         caseCriteria: null,
-        sortProperties:[{
+        sortProperties: [
+          {
             propertyName: sorting.field,
-            ascending: sorting.ascending
-          }]
-      }
+            ascending: sorting.ascending,
+          },
+        ],
+      };
     }
 
     return this.httpClient
