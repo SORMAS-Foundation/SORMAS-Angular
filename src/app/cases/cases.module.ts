@@ -17,7 +17,7 @@ import { CaseHospitalizationComponent } from './case_components/case-hospitaliza
     CaseComponent,
     CaseDetailsComponent,
     CasePersonComponent,
-    CaseHospitalizationComponent
+    CaseHospitalizationComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule],
 })

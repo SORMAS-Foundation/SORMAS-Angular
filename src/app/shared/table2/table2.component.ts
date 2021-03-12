@@ -1,16 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Resource } from '../../_models/resource';
 
 import * as constants from '../../app.constants';
 import { Sorting } from '../../_models/common';
-import {NotificationService} from '../../_services/notification.service';
+import { NotificationService } from '../../_services/notification.service';
 
 @Component({
   selector: 'app-table2',
   templateUrl: './table2.component.html',
   styleUrls: ['./table2.component.scss'],
 })
-export class Table2Component implements OnInit {
+export class Table2Component {
   page = constants.PAGE_SIZE;
   limit = constants.PAGE_SIZE;
 
@@ -24,17 +24,11 @@ export class Table2Component implements OnInit {
 
   @Output() selectRow: EventEmitter<any> = new EventEmitter();
 
-  constructor(
-    private notificationService: NotificationService
-  ) {
-  }
-
-  ngOnInit(): void {
-  }
+  constructor(private notificationService: NotificationService) {}
 
   onSelectRow(resource: Resource): void {
     this.selectRow.emit({
-      rowItem: resource
+      rowItem: resource,
     });
   }
 
@@ -50,7 +44,7 @@ export class Table2Component implements OnInit {
         }
       },
       error: (err: any) => {
-        this.notificationService.error(err)
+        this.notificationService.error(err);
       },
       complete: () => {},
     });
@@ -65,7 +59,7 @@ export class Table2Component implements OnInit {
   sort(): void {
     this.caseSorting = {
       field: 'uuid',
-      ascending: this.sortBool
+      ascending: this.sortBool,
     };
 
     this.getResources(true);

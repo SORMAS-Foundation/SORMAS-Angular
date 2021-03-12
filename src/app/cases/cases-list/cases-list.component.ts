@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CaseService } from '../../_services/api/case.service';
 import { Router } from '@angular/router';
+import { CaseService } from '../../_services/api/case.service';
 import { CaseItem } from '../../_models/case';
 
 import * as constants from '../../app.constants';
@@ -45,7 +45,7 @@ export class CasesListComponent implements OnInit {
   }
 
   modalConfirm(): void {
-    this.notificationService.confirm().subscribe(result => {
+    this.notificationService.confirm().subscribe((result) => {
       if (result) {
         console.log('yyyyyyyyyyyyyyy', result);
       }
