@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { getEnv } from '../environments/getEnv';
-import { AboutComponent } from './about/about.component';
 import { AuthLegacyGuard } from './shared/auth/app-legacy.guard';
 import { AuthGuard } from './shared/auth/app.guard';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
@@ -16,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent,
+    // component: AboutComponent,
+    loadChildren: () => import('./about/about.module').then((m) => m.AboutModule),
     canActivate: [Guard],
   },
   {

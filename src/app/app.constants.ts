@@ -14,6 +14,8 @@ export enum IconsMap {
   PENDING = 'pending_actions',
   DONE = 'done',
   DISCARDED = 'cancel_presentation',
+  DIALOG_ICON_TITLE_ALERT = 'warning_amber',
+  DIALOG_ICON_CLOSE = 'highlight_off',
 }
 
 export enum CaseOutcomeIcons {
@@ -35,3 +37,17 @@ export enum CaseClassificationIcons {
 
 // pagination
 export const PAGE_SIZE = 7;
+
+// dialog & notifications
+export const DIALOG_MIN_WIDTH = 360;
+export const DIALOG_MAX_WIDTH = 500;
+export const NOTIFICATION_SUCCESS_AUTO_CLOSE_DELAY = 3;
+export const NOTIFICATION_ERROR_AUTO_CLOSE_DELAY = 0;
+export const NOTIFICATION_WARNING_AUTO_CLOSE_DELAY = 3;
+export const NOTIFICATION_MEESAGE_AUTO_CLOSE_DELAY = 3;
+
+export enum DialogTypes {
+  Alert = 'dialog-alert',
+  Prompt = 'dialog-prompt',
+  Confirm = 'dialog-confirm',
+}

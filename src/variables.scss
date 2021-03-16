@@ -3,7 +3,9 @@
 
 $sormas-primary: mat-palette($brand-primary);
 $sormas-accent: mat-palette($brand-neutrals);
-$sormas-warn: mat-palette($mat-red);
+$sormas-alert: mat-palette($brand-alert);
+$sormas-warning: mat-palette($brand-warning);
+$sormas-success: mat-palette($brand-success);
 
 $grid-breakpoints: (
   xs: 0,
@@ -16,10 +18,7 @@ $grid-breakpoints: (
 
 $primary: mat-color($sormas-primary);
 $accent: mat-color($sormas-accent);
-$warn: mat-color($sormas-warn);
+$warn: mat-color($sormas-alert);
 $white: #ffffff;
 
-$warn-default: map-get($sormas-warn, default);
-
-// TIP: to check all colors in a pallete:
-// @debug $sormas-primary;
+$warn-default: map-get($sormas-alert, default);
