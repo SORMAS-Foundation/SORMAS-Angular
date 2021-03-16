@@ -5,6 +5,9 @@ import { CaseItem } from '../../_models/case';
 
 import * as constants from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
+import { TableColumn } from '../../shared/table/table-column';
+import { defaultColumnDefs } from '../../_entity-data/case';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-cases-list',
@@ -13,6 +16,7 @@ import { NotificationService } from '../../_services/notification.service';
 })
 export class CasesListComponent implements OnInit {
   cases: CaseItem[] = [];
+  defaultColumns: TableColumn[] = [];
 
   constructor(
     public caseService: CaseService,
@@ -21,6 +25,7 @@ export class CasesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.defaultColumns = defaultColumnDefs;
     this.getCases();
   }
 
@@ -52,7 +57,12 @@ export class CasesListComponent implements OnInit {
     });
   }
 
-  onRowSelect(event: any): void {
-    this.router.navigate([`/cases/case/${event.rowItem.uuid}/details`]);
+  selectionData(selection: SelectionModel<any>): void {
+    // eslint-disable-next-line no-console
+    console.log(selection);
+  }
+
+  onCaseSelect(event: any): void {
+    this.router.navigate([`/cases/case/${event.id}/details`]);
   }
 }

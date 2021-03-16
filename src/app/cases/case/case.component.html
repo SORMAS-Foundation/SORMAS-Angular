@@ -9,12 +9,12 @@
   </div>
   <div class="info-box">
     <span *ngIf="case.outcome" class="info-item">
-<!--      <span class="material-icons"> {{ caseOutcomeIcons[case.outcome!] }} </span>-->
+      <span class="material-icons"> {{ caseOutcomeIcons[case.outcome!] }} </span>
       <span>{{ case.outcome }}</span>
     </span>
     <span *ngIf="case.caseClassification" class="info-item">
-<!--      <span class="material-icons"> {{ caseClassificationIcons[case.caseClassification!] }} </span>-->
-      {{ case.caseClassification }}
+      <span class="material-icons"> {{ caseClassificationIcons[case.caseClassification!] }} </span>
+      {{ case.caseClassification! }}
     </span>
     <span *ngIf="case.disease" class="info-item">
       {{ case.disease }}
@@ -29,24 +29,17 @@
     </span>
   </div>
 
-  <ul>
-    <li>
-      <a [routerLink]="['/cases/case/' + caseId + '/details']">
-        Case
-      </a>
-    </li>
-    <li>
-      <a [routerLink]="['/cases/case/' + caseId + '/person']">
-        Case person
-      </a>
-    </li>
-    <li>
-      <a [routerLink]="['/cases/case/' + caseId + '/hospitalization']">
-        Hospitalization
-      </a>
-    </li>
-  </ul>
-
+  <nav mat-tab-nav-bar>
+    <a
+      mat-tab-link
+      *ngFor="let link of links"
+      [routerLink]="link.link"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+    >
+      {{ link.title }}
+    </a>
+  </nav>
   <router-outlet></router-outlet>
-
 </section>

@@ -1,12 +1,10 @@
-<h1 i18n="Cases Overview header">Cases Overview</h1>
-<button (click)="modalSuccess()">modal success</button>
-<button (click)="modalError()">modal error</button>
-<button (click)="modalConfirm()">modal confirm</button>
-
+<h1 class="header-title" i18n="Cases Overview header">Cases Overview</h1>
 <app-table2
   *ngIf="cases.length"
   [resourceService]="caseService"
   [tableData]="cases"
-  [tableColumns]="['uuid', 'disease', 'caseClassification']"
-  (selectRow)="onRowSelect($event)"
+  [tableColumns]="defaultColumns"
+  [isSelectable]="true"
+  (selectData)="selectionData($event)"
+  (selectCase)="onCaseSelect($event)"
 ></app-table2>
