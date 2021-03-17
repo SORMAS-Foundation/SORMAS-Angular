@@ -21,7 +21,7 @@
 
     .mat-dialog-content {
       padding: 16px 64px;
-      border-top: 2px solid #c1cad9;
+      border-top: 2px solid map-get($sormas-accent, 200);
       margin: 0 -64px;
       font-size: 1rem;
       line-height: 1.5;

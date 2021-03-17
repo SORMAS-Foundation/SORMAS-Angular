@@ -14,7 +14,7 @@ export class AboutComponent {
   constructor(private notificationService: NotificationService) {}
 
   notifyInfo(): void {
-    this.notificationService.message('A simple message with usefull informtion.');
+    this.notificationService.message('A simple message with useful informtion.');
   }
 
   notifyWarning(): void {
