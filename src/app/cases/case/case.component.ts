@@ -4,12 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseService } from '../../_services/api/case.service';
 import { CaseItem } from '../../_models/case';
-import {
-  CaseClassificationIcons,
-  CaseLink,
-  CaseOutcomeIcons,
-  CaseTitles,
-} from '../../app.constants';
+import { CaseClassificationIcons, CaseLink, CaseOutcomeIcons } from '../../app.constants';
 import { caseLinks } from '../../_entity-data/case';
 
 @Component({

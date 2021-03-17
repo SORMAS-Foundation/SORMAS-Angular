@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SelectionModel } from '@angular/cdk/collections';
 import { CaseService } from '../../_services/api/case.service';
 import { CaseItem } from '../../_models/case';
-
 import * as constants from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
 import { TableColumn } from '../../shared/table/table-column';
 import { defaultColumnDefs } from '../../_entity-data/case';
-import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-cases-list',
@@ -52,6 +51,7 @@ export class CasesListComponent implements OnInit {
   modalConfirm(): void {
     this.notificationService.confirm().subscribe((result) => {
       if (result) {
+        // eslint-disable-next-line no-console
         console.log('yyyyyyyyyyyyyyy', result);
       }
     });
