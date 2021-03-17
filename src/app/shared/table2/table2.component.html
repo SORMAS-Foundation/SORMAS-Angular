@@ -28,8 +28,10 @@
           (click)="
             tableColumn === tableColumns[0] ? onCaseSelect(element[tableColumn.dataKey]) : null
           "
-          >{{ element[tableColumn.dataKey] }}</span
+          (keyup.enter)="({})"
         >
+          {{ element[tableColumn.dataKey] }}
+        </span>
       </mat-cell>
     </ng-container>
 
