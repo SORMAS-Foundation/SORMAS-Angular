@@ -1,4 +1,4 @@
-import { Disease } from '../../../dist/api-client/public-api';
+import { Disease } from './disease';
 import { Person } from './person';
 import { User } from './user';
 
