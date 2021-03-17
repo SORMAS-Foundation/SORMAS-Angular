@@ -1,4 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CasesListComponent } from './cases-list.component';
 
@@ -9,6 +13,7 @@ describe('CasesListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CasesListComponent],
+      imports: [HttpClientModule, RouterTestingModule, MatDialogModule],
     }).compileComponents();
   });
 

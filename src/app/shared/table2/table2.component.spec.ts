@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { Table2Component } from './table2.component';
 
@@ -9,6 +10,7 @@ describe('Table2Component', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [Table2Component],
+      imports: [MatDialogModule],
     }).compileComponents();
   });
 
@@ -19,6 +21,13 @@ describe('Table2Component', () => {
   });
 
   it('should create', () => {
+    // @ts-ignore
+    alertify = jasmine.createSpy().and.callFake((input) => {
+      return {
+        success: () => input,
+      };
+    });
+
     expect(component).toBeTruthy();
   });
 });
