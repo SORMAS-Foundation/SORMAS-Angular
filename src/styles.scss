@@ -1,3 +1,4 @@
+@use './variables.scss' as *;
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -11,6 +12,7 @@
 @import './theme/button.scss';
 @import './theme/table.scss';
 @import './theme/tabs.scss';
+@import './theme/dialog.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -33,7 +35,7 @@ $sormas-primary: mat-palette($brand-primary, 700);
 $sormas-accent: mat-palette($brand-neutrals, 800);
 
 // The warn palette is optional (defaults to red).
-$sormas-warn: mat-palette($mat-red);
+$sormas-warn: mat-palette($brand-alert, 700);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -56,6 +58,7 @@ $sormas-theme: mat-light-theme(
   @include button-theme($theme);
   @include table-theme($theme);
   @include tabs-theme($theme);
+  @include dialog-theme($theme);
 }
 
 // Include theme styles for core and each component used in your app.
@@ -72,4 +75,51 @@ html,
 body {
   height: 100%;
   margin: 0;
+}
+
+:root {
+  .alertify-notifier {
+    display: flex;
+    width: 436px;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &.ajs-top {
+      top: 92px;
+    }
+
+    &.ajs-right {
+      right: 64px;
+
+      .ajs-message.ajs-visible {
+        right: 0;
+      }
+    }
+
+    .ajs-message {
+      width: auto;
+      max-width: 436px;
+      padding: 2em;
+      margin-bottom: 1em;
+      background-color: map-get($sormas-primary, 50);
+      border-radius: 5px;
+      font-size: 1rem;
+      @include mat-elevation(4);
+
+      &.ajs-success {
+        background-color: map-get($sormas-success, 50);
+        @include mat-elevation(4);
+      }
+
+      &.ajs-error {
+        background-color: map-get($sormas-alert, 50);
+        @include mat-elevation(15);
+      }
+
+      &.ajs-warning {
+        background-color: map-get($sormas-warning, 50);
+        @include mat-elevation(15);
+      }
+    }
+  }
 }

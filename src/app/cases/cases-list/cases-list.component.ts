@@ -48,15 +48,6 @@ export class CasesListComponent implements OnInit {
     this.notificationService.error('Noo');
   }
 
-  modalConfirm(): void {
-    this.notificationService.confirm().subscribe((result) => {
-      if (result) {
-        // eslint-disable-next-line no-console
-        console.log('yyyyyyyyyyyyyyy', result);
-      }
-    });
-  }
-
   selectionData(selection: SelectionModel<any>): void {
     // eslint-disable-next-line no-console
     console.log(selection);
