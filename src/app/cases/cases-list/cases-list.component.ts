@@ -36,22 +36,6 @@ export class CasesListComponent implements OnInit {
     });
   }
 
-  modalSuccess(): void {
-    this.notificationService.success('Yess');
-  }
-
-  modalError(): void {
-    this.notificationService.error('Noo');
-  }
-
-  modalConfirm(): void {
-    this.notificationService.confirm().subscribe((result) => {
-      if (result) {
-        console.log('yyyyyyyyyyyyyyy', result);
-      }
-    });
-  }
-
   onRowSelect(event: any): void {
     this.router.navigate([`/cases/case/${event.rowItem.uuid}/details`]);
   }

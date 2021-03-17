@@ -12,7 +12,7 @@ import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { MenuComponent } from './layout/menu/menu.component';
 import { Table2Component } from './table2/table2.component';
-import { NotificationModalComponent } from './notification-modal/notification-modal.component';
+import { DialogModule } from './dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,6 @@ import { NotificationModalComponent } from './notification-modal/notification-mo
     PropertyGetterPipe,
     MenuComponent,
     Table2Component,
-    NotificationModalComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +32,7 @@ import { NotificationModalComponent } from './notification-modal/notification-mo
     MaterialModule,
     HttpClientModule,
     TableVirtualScrollModule,
+    DialogModule,
   ],
   exports: [
     LayoutComponent,
@@ -44,7 +44,7 @@ import { NotificationModalComponent } from './notification-modal/notification-mo
     FormsModule,
     ReactiveFormsModule,
     Table2Component,
-    NotificationModalComponent,
+    DialogModule,
   ],
 })
 export class SharedModule {}

@@ -1,3 +1,16 @@
 <h1 i18n>About</h1>
 <p i18n>SORMAS Next-Gen version: {{ version }}</p>
 <p i18n>Angular version: {{ ngVersion }}</p>
+
+<div>
+  <button mat-flat-button color="primary" (click)="alertConfirm()">Alert confirm</button>
+  <button mat-flat-button color="primary" (click)="alertError()">Alert warning</button>
+  <button mat-flat-button color="primary" (click)="alertPrompt()">Alert prompt</button>
+</div>
+
+<div>
+  <button mat-stroked-button (click)="notifyInfo()">Notfiy info</button>
+  <button mat-stroked-button (click)="notifyWarning()">Notfiy warning</button>
+  <button mat-stroked-button (click)="notifyError()">Notify error</button>
+  <button mat-stroked-button (click)="notifySuccess()">Notify success</button>
+</div>
