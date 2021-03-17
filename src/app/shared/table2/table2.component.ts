@@ -1,39 +1,53 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 import { Resource } from '../../_models/resource';
 
 import * as constants from '../../app.constants';
 import { Sorting } from '../../_models/common';
 import { NotificationService } from '../../_services/notification.service';
+import { TableColumn } from '../table/table-column';
 
 @Component({
   selector: 'app-table2',
   templateUrl: './table2.component.html',
   styleUrls: ['./table2.component.scss'],
 })
-export class Table2Component {
-  page = constants.PAGE_SIZE;
+export class Table2Component implements OnInit {
+  page = 0;
   limit = constants.PAGE_SIZE;
-
-  caseSorting: Sorting;
-
-  sortBool = false;
+  columnKeys: string[] = [];
+  sorting: Sorting = { ascending: true, field: 'uuid' };
+  selection = new SelectionModel<any>(true, []);
 
   @Input() tableData: Resource[] = [];
-  @Input() tableColumns: string[] = [];
+  @Input() tableColumns: TableColumn[] = [];
+  @Input() isSelectable = false;
   @Input() resourceService: any;
 
-  @Output() selectRow: EventEmitter<any> = new EventEmitter();
+  @Output() selectCase: EventEmitter<any> = new EventEmitter();
+  @Output() selectData: EventEmitter<any> = new EventEmitter();
 
   constructor(private notificationService: NotificationService) {}
 
-  onSelectRow(resource: Resource): void {
-    this.selectRow.emit({
-      rowItem: resource,
+  ngOnInit(): void {
+    this.columnKeys = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.dataKey);
+    this.selection.changed.subscribe(() => this.selectData.emit(this.selection.selected));
+  }
+
+  onCaseSelect(id: any): void {
+    this.selectCase.emit({
+      id,
+    });
+  }
+
+  onCheckboxChange(element: any): void {
+    this.selectData.emit({
+      element,
     });
   }
 
   getResources(reset: boolean = false): any {
-    this.resourceService.getAll({ page: this.page, size: this.limit }, this.caseSorting).subscribe({
+    this.resourceService.getAll({ page: this.page, size: this.limit }, this.sorting).subscribe({
       next: (response: any) => {
         if (reset) {
           this.page = 0;
@@ -56,14 +70,12 @@ export class Table2Component {
     }
   }
 
-  sort(): void {
-    this.caseSorting = {
-      field: 'uuid',
-      ascending: this.sortBool,
+  sort(dataKey: string, ascending: boolean): void {
+    this.sorting = {
+      field: dataKey,
+      ascending,
     };
 
     this.getResources(true);
-
-    this.sortBool = !this.sortBool;
   }
 }

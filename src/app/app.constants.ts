@@ -25,6 +25,14 @@ export enum CaseOutcomeIcons {
   UNKNOWN = 'help_outline',
 }
 
+export enum CaseTitles {
+  NO_OUTCOME = 'No outcome',
+  NOT_CLASSIFIED = 'Not yet classified',
+  DECEASED = 'Deceased',
+  RECOVERED = 'Recovered',
+  UNKOWN = 'Unknown',
+}
+
 export enum CaseClassificationIcons {
   NOT_CLASSIFIED = 'cached',
   SUSPECT = 'person_search',
@@ -37,6 +45,12 @@ export enum CaseClassificationIcons {
 
 // pagination
 export const PAGE_SIZE = 7;
+
+// case-tab-links
+export type CaseLink = {
+  title: string;
+  link: string;
+};
 
 // dialog & notifications
 export const DIALOG_MIN_WIDTH = 360;

@@ -1,12 +1,47 @@
-<div class="example-container mat-elevation-z8">
-  <button style="margin: 15px" (click)="sort()">Sort me</button>
+<div class="table-responsive mat-elevation-z8">
   <mat-table #table [dataSource]="tableData" (scroll)="onTableScroll($event)">
-    <ng-container *ngFor="let tableColumn of tableColumns;" [matColumnDef]="tableColumn">
-      <mat-header-cell *matHeaderCellDef> {{ tableColumn }} </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element[tableColumn]}} </mat-cell>
+    <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.dataKey">
+      <mat-header-cell *matHeaderCellDef>
+        <div class="header-title">{{ tableColumn.name }}</div>
+        <div class="header-icon" *ngIf="tableColumn.isSortable">
+          <mat-icon
+            (click)="
+              sorting.ascending ? sort(tableColumn.dataKey, false) : sort(tableColumn.dataKey, true)
+            "
+            >{{
+              !sorting.ascending && sorting.field === tableColumn.dataKey
+                ? 'arrow_drop_down'
+                : 'arrow_drop_up'
+            }}</mat-icon
+          >
+        </div>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox
+          *ngIf="tableColumn === tableColumns[0]"
+          color="primary"
+          (click)="$event.stopPropagation()"
+          (change)="$event ? selection.toggle(element) : null"
+          [checked]="selection.isSelected(element)"
+        ></mat-checkbox>
+        <span
+          (click)="
+            tableColumn === tableColumns[0] ? onCaseSelect(element[tableColumn.dataKey]) : null
+          "
+          (keyup.enter)="({})"
+        >
+          {{ element[tableColumn.dataKey] }}
+        </span>
+      </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></mat-header-row>
-    <mat-row (click)="onSelectRow(row)" *matRowDef="let row; columns: tableColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="columnKeys; sticky: true"></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: columnKeys"
+      [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
+      (click)="selection.toggle(row)"
+    >
+      <div class="row-container"></div>
+    </mat-row>
   </mat-table>
 </div>
