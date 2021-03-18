@@ -29,6 +29,10 @@
     </span>
   </div>
 
+  <button mat-flat-button color="primary" (click)="saveForm()">
+    Save
+  </button>
+
   <nav mat-tab-nav-bar>
     <a
       mat-tab-link
@@ -41,5 +45,5 @@
       {{ link.title }}
     </a>
   </nav>
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
 </section>

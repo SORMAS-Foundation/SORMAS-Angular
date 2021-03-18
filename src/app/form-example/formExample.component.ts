@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormDataService } from '../services/form-data.service';
-import { FormElementBase } from '../shared/dynamic-form/types/form-element-base';
+import {FormBase, FormElementBase} from '../shared/dynamic-form/types/form-element-base';
 
 @Component({
   selector: 'app-forms',
@@ -10,14 +10,14 @@ import { FormElementBase } from '../shared/dynamic-form/types/form-element-base'
   providers: [FormDataService],
 })
 export class FormExampleComponent implements OnDestroy {
-  myFormElements: FormElementBase<any>[] = [];
+  myFormElements: FormBase<any>[] = [];
   subscription: Subscription = new Subscription();
   constructor(service: FormDataService) {
-    this.subscription = service.getFormData().subscribe({
-      next: (value) => {
-        this.myFormElements = value;
-      },
-    });
+    // this.subscription = service.getFormData().subscribe({
+    //   next: (value) => {
+    //     this.myFormElements = value;
+    //   },
+    // });
   }
 
   ngOnDestroy = () => {

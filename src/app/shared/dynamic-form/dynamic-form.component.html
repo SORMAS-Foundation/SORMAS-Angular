@@ -1,19 +1,17 @@
-<div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <ng-container
-      *ngFor="let field of formElements"
-      appDynamicField
-      [config]="field"
-      [group]="form"
-    >
-    </ng-container>
-    <br />
-    <div class="form-row">
-      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Save</button>
+<div class="dynamic-form-wrapper">
+  <form [formGroup]="form">
+    <div *ngFor="let group of formElements" class="dynamic-form-group">
+      <h1 class="group-title">{{group.title}}</h1>
+      <mat-card class="dynamic-form-card">
+        <div class="dynamic-form-input" *ngFor="let field of group.fields">
+          <ng-container
+            appDynamicField
+            [config]="field"
+            [group]="form"
+          >
+          </ng-container>
+        </div>
+      </mat-card>
     </div>
   </form>
-
-  <div *ngIf="payLoad" class="form-row">
-    <strong>Saved the following values</strong><br />{{ payLoad }}
-  </div>
 </div>

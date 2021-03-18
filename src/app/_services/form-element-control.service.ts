@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { FormElementBase } from '../shared/dynamic-form/types/form-element-base';
+import {FormBase, FormElementBase} from '../shared/dynamic-form/types/form-element-base';
+import {Resource} from '../_models/resource';
 
 const MAX_AGE = 100;
 const MIN_PASS_LENGTH = 8;
@@ -32,5 +33,17 @@ export class FormElementControlService {
       validations = [];
     });
     return new FormGroup(group);
+  };
+
+  setValuesForDynamicForm(resource: Resource, formElements: FormBase<any>[]): FormBase<any>[] {
+    formElements.forEach((formElement) => {
+      formElement.fields.forEach((field) => {
+        // @ts-ignore
+        // eslint-disable-next-line no-param-reassign
+        field.value = resource[field.key];
+      });
+    });
+
+    return formElements;
   };
 }

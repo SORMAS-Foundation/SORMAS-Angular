@@ -1,1 +1,27 @@
-/* stylelint-disable */
+.dynamic-form-wrapper {
+  .dynamic-form-group {
+    margin: 15px 0;
+
+    h1.group-title {
+      display: inline-block;
+      width: 10%;
+      padding: 0 15px;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: right;
+      vertical-align: top;
+    }
+
+    .dynamic-form-card {
+      display: inline-block;
+      width: 90%;
+      vertical-align: top;
+
+      .dynamic-form-input {
+        display: inline-block;
+        margin-right: 20px;
+        vertical-align: top;
+      }
+    }
+  }
+}
