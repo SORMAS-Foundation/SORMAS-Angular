@@ -13,13 +13,17 @@ import { DialogService } from './dialog.service';
 
 declare let alertify: any;
 
+alertify.defaults = {
+  notifier: {
+    position: 'top-right',
+  },
+};
+
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
-  constructor(private dialogService: DialogService) {
-    alertify.set('notifier', 'position', 'top-right');
-  }
+  constructor(private dialogService: DialogService) {}
 
   success(message: string): void {
     alertify.success(message, NOTIFICATION_SUCCESS_AUTO_CLOSE_DELAY);
