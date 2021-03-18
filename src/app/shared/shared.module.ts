@@ -4,15 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
-
 import { MaterialModule } from '../material.module';
-
 import { LayoutComponent } from './layout/layout.component';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { MenuComponent } from './layout/menu/menu.component';
+import { Table2Component } from './table2/table2.component';
+import { DialogModule } from './dialog';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { MenuComponent } from './layout/menu/menu.component';
     TableComponent,
     PropertyGetterPipe,
     MenuComponent,
+    Table2Component,
   ],
   imports: [
     CommonModule,
@@ -31,6 +32,7 @@ import { MenuComponent } from './layout/menu/menu.component';
     MaterialModule,
     HttpClientModule,
     TableVirtualScrollModule,
+    DialogModule,
   ],
   exports: [
     LayoutComponent,
@@ -41,6 +43,8 @@ import { MenuComponent } from './layout/menu/menu.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    Table2Component,
+    DialogModule,
   ],
 })
 export class SharedModule {}

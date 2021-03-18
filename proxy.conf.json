@@ -1,0 +1,8 @@
+{
+  "/sormas-rest/*": {
+    "target": "http://localhost:4201",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

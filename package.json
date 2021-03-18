@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve --hmr --configuration=en-US\" \"npm run start-proxy\"",
-    "start:fr": "ng serve --hmr --configuration=fr",
-    "start:de": "ng serve --hmr --configuration=de",
-    "start:ar": "ng serve --hmr --configuration=ar",
+    "start": "concurrently \"ng serve --proxy-config proxy.conf.json --hmr --configuration=en-US\" \"npm run start-proxy\"",
+    "start:fr": "ng serve --proxy-config proxy.conf.json --hmr --configuration=fr",
+    "start:de": "ng serve --proxy-config proxy.conf.json --hmr --configuration=de",
+    "start:ar": "ng serve --proxy-config proxy.conf.json --hmr --configuration=ar",
     "start-proxy": "npm run start --prefix projects/api-proxy",
     "build": "ng build api-client && ng build --prod",
     "analyze-bundle": "ng build --prod --configuration=en-US --stats-json && webpack-bundle-analyzer dist/app/en-US/stats.json ",
@@ -33,6 +33,7 @@
     "@angular/platform-browser-dynamic": "~11.1.1",
     "@angular/router": "~11.1.1",
     "@asymmetrik/ngx-leaflet": "^8.1.0",
+    "alertifyjs": "^1.13.1",
     "concurrently": "^5.3.0",
     "keycloak-angular": "^8.0.1",
     "keycloak-js": "^12.0.1",
@@ -91,11 +92,7 @@
     "typescript": "~4.0.2",
     "webpack-bundle-analyzer": "^4.4.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  "husky": {},
   "lint-staged": {
     "*.{ts,html}": [
       "npm run format",

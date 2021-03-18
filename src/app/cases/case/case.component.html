@@ -1,7 +1,9 @@
 <section *ngIf="case" class="case-page">
   <div class="title-container">
     <h1>
-      <span class="material-icons"> west </span>
+      <a [routerLink]="['/cases/list']">
+        <span class="material-icons"> west </span>
+      </a>
       <span> {{ case.person?.firstName }} {{ case.person?.lastName }}</span>
     </h1>
   </div>
@@ -12,7 +14,7 @@
     </span>
     <span *ngIf="case.caseClassification" class="info-item">
       <span class="material-icons"> {{ caseClassificationIcons[case.caseClassification!] }} </span>
-      {{ case.caseClassification }}
+      {{ case.caseClassification! }}
     </span>
     <span *ngIf="case.disease" class="info-item">
       {{ case.disease }}
@@ -26,15 +28,18 @@
       {{ case.reportingUser.caption }}
     </span>
   </div>
-  <mat-tab-group mat-align-tabs="start">
-    <mat-tab i18n label="Case"> Case </mat-tab>
-    <mat-tab i18n label="Case person"> Case person </mat-tab>
-    <mat-tab i18n label="Hospitalization"> Hospitalization </mat-tab>
-    <mat-tab i18n label="Symptoms"> Symptoms </mat-tab>
-    <mat-tab i18n label="Epidemiological data"> Epidemiological data </mat-tab>
-    <mat-tab i18n label="Therapy"> Therapy </mat-tab>
-    <mat-tab i18n label="Follow-up"> Follow-up </mat-tab>
-    <mat-tab i18n label="Clinical course"> Clinical course </mat-tab>
-    <mat-tab i18n label="Contacts"> Contacts </mat-tab>
-  </mat-tab-group>
+
+  <nav mat-tab-nav-bar>
+    <a
+      mat-tab-link
+      *ngFor="let link of links"
+      [routerLink]="link.link"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+    >
+      {{ link.title }}
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
 </section>

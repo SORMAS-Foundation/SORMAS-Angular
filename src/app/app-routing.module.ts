@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { getEnv } from '../environments/getEnv';
-import { AboutComponent } from './about/about.component';
 import { AuthLegacyGuard } from './shared/auth/app-legacy.guard';
 import { AuthGuard } from './shared/auth/app.guard';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
@@ -16,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent,
+    // component: AboutComponent,
+    loadChildren: () => import('./about/about.module').then((m) => m.AboutModule),
     canActivate: [Guard],
   },
   {
@@ -31,9 +31,14 @@ const routes: Routes = [
     canActivate: [Guard],
   },
   {
-    path: 'cases',
+    path: 'cases_old',
     loadChildren: () =>
       import('./cases-overview/cases-overview.module').then((m) => m.CasesOverviewModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'cases',
+    loadChildren: () => import('./cases/cases.module').then((m) => m.CasesModule),
     canActivate: [AuthGuard],
   },
   {
@@ -41,11 +46,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
     canActivate: [Guard],
-  },
-  {
-    path: 'case',
-    loadChildren: () => import('./case/case.module').then((m) => m.CaseModule),
-    canActivate: [AuthGuard],
   },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
