@@ -36,15 +36,12 @@ export class DynamicFieldDirective implements OnInit {
     validation: [],
     type: '',
     value: '',
-    newLine: false
+    newLine: false,
   };
   @Input() group: FormGroup = new FormGroup({});
   component: any;
 
-  constructor(
-    private resolver: ComponentFactoryResolver,
-    private container: ViewContainerRef,
-  ) {}
+  constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) {}
 
   ngOnInit(): void {
     const component = components[this.config.controlType];

@@ -11,9 +11,9 @@ export const FORM_DATA_CASE_DETAILS = [
         controlType: 'input',
         options: [],
         type: 'text',
-        newLine: false
-      }
-    ]
+        newLine: false,
+      },
+    ],
   },
   {
     title: 'Other stuff',
@@ -27,8 +27,8 @@ export const FORM_DATA_CASE_DETAILS = [
         controlType: 'input',
         options: [],
         type: 'text',
-        newLine: false
-      }
-    ]
-  }
-]
+        newLine: false,
+      },
+    ],
+  },
+];

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import {FormBase, FormElementBase} from '../shared/dynamic-form/types/form-element-base';
-import {Resource} from '../_models/resource';
+import { FormBase, FormElementBase } from '../shared/dynamic-form/types/form-element-base';
+import { Resource } from '../_models/resource';
 
 const MAX_AGE = 100;
 const MIN_PASS_LENGTH = 8;
@@ -45,5 +45,5 @@ export class FormElementControlService {
     });
 
     return formElements;
-  };
+  }
 }

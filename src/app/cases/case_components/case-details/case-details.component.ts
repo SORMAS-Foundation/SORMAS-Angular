@@ -15,13 +15,13 @@ export class CaseDetailsComponent {
 
   public resourceService: BaseService<any>;
 
-  constructor(
-    private formElementControlService: FormElementControlService,
-  ) {
-  }
+  constructor(private formElementControlService: FormElementControlService) {}
 
   updateComponent(caseItem: CaseItem, resourceService: BaseService<any>): void {
     this.resourceService = resourceService;
-    this.myFormElements = this.formElementControlService.setValuesForDynamicForm(caseItem, data.FORM_DATA_CASE_DETAILS);
+    this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+      caseItem,
+      data.FORM_DATA_CASE_DETAILS
+    );
   }
 }

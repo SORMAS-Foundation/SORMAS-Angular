@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormElementControlService } from '../../_services/form-element-control.service';
@@ -6,7 +6,7 @@ import { FormBase, FormElementBase } from './types/form-element-base';
 import { TriggerSaveFormService } from '../../_services/trigger-save-form.service';
 import { NotificationService } from '../../_services/notification.service';
 import { BaseService } from '../../_services/api/base.service';
-import {Resource} from '../../_models/resource';
+import { Resource } from '../../_models/resource';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -25,7 +25,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     private formElementControlService: FormElementControlService,
     form: FormBuilder,
     private triggerSaveFormService: TriggerSaveFormService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {
     this.form = form.group({
       title: form.control('initial value', Validators.required),
@@ -42,8 +42,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       }
 
       this.resourceService.update(this.updateResource(response.resource)).subscribe({
-        next: () => {
-        },
+        next: () => {},
         error: (err: any) => {
           this.notificationService.error(err);
         },
@@ -53,12 +52,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   updateResource(resource: any): Resource {
-    Object.entries(this.form.getRawValue()).forEach(
-      ([key, value]) => {
-        // eslint-disable-next-line no-param-reassign
-        resource[key] = value;
-      }
-    );
+    Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
+      // eslint-disable-next-line no-param-reassign
+      resource[key] = value;
+    });
 
     return resource;
   }
