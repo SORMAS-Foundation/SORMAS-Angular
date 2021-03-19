@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { CaseItem } from '../../../_models/case';
 import * as data from './form-data';
@@ -11,7 +11,6 @@ import { BaseService } from '../../../_services/api/base.service';
   styleUrls: ['./case-details.component.scss'],
 })
 export class CaseDetailsComponent {
-  @Output() searchItem: EventEmitter<any> = new EventEmitter();
   myFormElements: FormBase<any>[] = [];
 
   public resourceService: BaseService<any>;
@@ -21,7 +20,7 @@ export class CaseDetailsComponent {
   ) {
   }
 
-  anyFunction(caseItem: CaseItem, resourceService: BaseService<any>): void {
+  updateComponent(caseItem: CaseItem, resourceService: BaseService<any>): void {
     this.resourceService = resourceService;
     this.myFormElements = this.formElementControlService.setValuesForDynamicForm(caseItem, data.FORM_DATA_CASE_DETAILS);
   }

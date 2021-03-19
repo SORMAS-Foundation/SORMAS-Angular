@@ -24,4 +24,5 @@ export interface CaseItem {
   personLastName: string;
   vaccineName: string;
   additionalDetails: string;
+  xx: string;
 }

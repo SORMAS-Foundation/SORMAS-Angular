@@ -51,8 +51,8 @@ export class CaseComponent implements OnInit {
   }
 
   onActivate(componentReference: any): void {
-    if (typeof componentReference.anyFunction === 'function') {
-      componentReference.anyFunction(this.case, this.caseService);
+    if (typeof componentReference.updateComponent === 'function') {
+      componentReference.updateComponent(this.case, this.caseService);
     }
   }
 }

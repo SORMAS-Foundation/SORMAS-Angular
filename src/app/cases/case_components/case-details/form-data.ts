@@ -12,7 +12,29 @@ export const FORM_DATA_CASE_DETAILS = [
         "options": [],
         "type": "text",
         "newLine": false
-      }
+      },
+      {
+        "key": "person.firstName",
+        "label": "Person first",
+        "value": "",
+        "validation": ["required"],
+        "order": 1,
+        "controlType": "input",
+        "options": [],
+        "type": "text",
+        "newLine": false
+      },
+      {
+        "key": "vaccineName",
+        "label": "Vaccine Name",
+        "value": "",
+        "validation": ["required"],
+        "order": 1,
+        "controlType": "card",
+        "options": [],
+        "type": "text",
+        "newLine": false
+      },
     ]
   },
   {
