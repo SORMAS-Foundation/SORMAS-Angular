@@ -38,9 +38,19 @@ export class FormElementControlService {
   setValuesForDynamicForm(resource: Resource, formElements: FormBase<any>[]): FormBase<any>[] {
     formElements.forEach((formElement) => {
       formElement.fields.forEach((field) => {
-        // @ts-ignore
-        // eslint-disable-next-line no-param-reassign
-        field.value = resource[field.key];
+        if (field.key.includes('.')) {
+          const getProp = (obj: any, prop: any) => {
+            return prop.split('.').reduce((r: any, e: any) => {
+              return r[e];
+            }, obj);
+          };
+          // eslint-disable-next-line no-param-reassign
+          field.value = getProp(resource, field.key);
+        } else {
+          // @ts-ignore
+          // eslint-disable-next-line no-param-reassign
+          field.value = resource[field.key];
+        }
       });
     });
 

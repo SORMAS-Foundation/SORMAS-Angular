@@ -53,8 +53,24 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   updateResource(resource: any): Resource {
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
-      // eslint-disable-next-line no-param-reassign
-      resource[key] = value;
+      if (key.includes('.')) {
+        const setToValue = (obj: any, prop: any) => {
+          let i;
+          // eslint-disable-next-line no-param-reassign
+          prop = prop.split('.');
+          // eslint-disable-next-line no-plusplus
+          for (i = 0; i < prop.length - 1; i++) {
+            // eslint-disable-next-line no-param-reassign
+            obj = obj[prop[i]];
+          }
+          // eslint-disable-next-line no-param-reassign
+          obj[prop[i]] = value;
+        };
+        setToValue(resource, key);
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        resource[key] = value;
+      }
     });
 
     return resource;
