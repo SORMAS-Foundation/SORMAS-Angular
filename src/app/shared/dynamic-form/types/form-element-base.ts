@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 export class FormElementBase<T> {
   value?: T;
   key: string;
@@ -7,6 +8,7 @@ export class FormElementBase<T> {
   order: number;
   controlType: string;
   type: string;
+  newLine: boolean | undefined;
   options: { key: string; value: string }[];
 
   constructor(
@@ -19,6 +21,7 @@ export class FormElementBase<T> {
       order?: number;
       controlType?: string;
       type?: string;
+      newLine?: boolean;
       options?: { key: string; value: string }[];
     } = {}
   ) {
@@ -30,6 +33,12 @@ export class FormElementBase<T> {
     this.order = options.order === undefined ? 1 : options.order;
     this.controlType = options.controlType || '';
     this.type = options.type || '';
+    this.newLine = options.newLine;
     this.options = options.options || [];
   }
+}
+
+export class FormBase<T> {
+  title: string;
+  fields: FormElementBase<T>[];
 }

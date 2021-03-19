@@ -25,12 +25,6 @@ const routes: Routes = [
     canActivate: [Guard],
   },
   {
-    path: 'forms',
-    loadChildren: () =>
-      import('./form-example/formExample.module').then((m) => m.FormExampleModule),
-    canActivate: [Guard],
-  },
-  {
     path: 'cases_old',
     loadChildren: () =>
       import('./cases-overview/cases-overview.module').then((m) => m.CasesOverviewModule),

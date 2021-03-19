@@ -36,6 +36,7 @@ export class DynamicFieldDirective implements OnInit {
     validation: [],
     type: '',
     value: '',
+    newLine: false,
   };
   @Input() group: FormGroup = new FormGroup({});
   component: any;

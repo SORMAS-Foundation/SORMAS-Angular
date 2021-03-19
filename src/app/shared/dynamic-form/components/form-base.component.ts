@@ -16,6 +16,7 @@ export class FormBaseComponent {
     validation: [],
     type: '',
     value: '',
+    newLine: false,
   };
   group: FormGroup = new FormGroup({});
 

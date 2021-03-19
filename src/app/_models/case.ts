@@ -22,4 +22,6 @@ export interface CaseItem {
   reportingUser: User;
   personFirstName: string;
   personLastName: string;
+  vaccineName: string;
+  additionalDetails: string;
 }

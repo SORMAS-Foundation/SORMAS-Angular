@@ -67,6 +67,18 @@ export class BaseService<T extends Resource> {
       .pipe(map((data: any) => this.serializer.fromJson(data[0]) as T));
   }
 
+  update(item: T): Observable<T> {
+    // endpoint
+    let endpoint = this.endpoint.ENDPOINT;
+    if (this.endpoint.UPDATE) {
+      endpoint = this.endpoint.UPDATE;
+    }
+
+    return this.httpClient
+      .post(`${this.url}/${this.apiEndpoint}/${endpoint}`, [item])
+      .pipe(map((data) => this.serializer.fromJson(data) as T));
+  }
+
   // toDO: for later
 
   // add(item: T): Observable<T> {

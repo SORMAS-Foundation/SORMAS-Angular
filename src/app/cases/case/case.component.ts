@@ -6,6 +6,7 @@ import { CaseService } from '../../_services/api/case.service';
 import { CaseItem } from '../../_models/case';
 import { CaseClassificationIcons, CaseLink, CaseOutcomeIcons } from '../../app.constants';
 import { caseLinks } from '../../_entity-data/case';
+import { TriggerSaveFormService } from '../../_services/trigger-save-form.service';
 
 @Component({
   selector: 'app-case',
@@ -14,7 +15,7 @@ import { caseLinks } from '../../_entity-data/case';
   providers: [CaseControllerService],
 })
 export class CaseComponent implements OnInit {
-  case: CaseItem | undefined;
+  case: CaseItem;
   caseOutcomeIcons = CaseOutcomeIcons;
   caseClassificationIcons = CaseClassificationIcons;
   links: CaseLink[] = [];
@@ -23,7 +24,8 @@ export class CaseComponent implements OnInit {
   constructor(
     private caseService: CaseService,
     private activeRoute: ActivatedRoute,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private triggerSaveFormService: TriggerSaveFormService
   ) {}
 
   ngOnInit(): void {
@@ -42,5 +44,15 @@ export class CaseComponent implements OnInit {
 
     this.caseOutcomeIcons = CaseOutcomeIcons;
     this.caseClassificationIcons = CaseClassificationIcons;
+  }
+
+  saveForm(): void {
+    this.triggerSaveFormService.setSave(this.case);
+  }
+
+  onActivate(componentReference: any): void {
+    if (typeof componentReference.updateComponent === 'function') {
+      componentReference.updateComponent(this.case, this.caseService);
+    }
   }
 }
