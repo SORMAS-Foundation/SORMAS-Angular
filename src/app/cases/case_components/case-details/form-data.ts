@@ -29,6 +29,17 @@ export const FORM_DATA_CASE_DETAILS = [
         type: 'text',
         newLine: false,
       },
+      {
+        key: 'person.firstName',
+        label: 'Person name',
+        value: '',
+        validation: ['required'],
+        order: 1,
+        controlType: 'input',
+        options: [],
+        type: 'text',
+        newLine: false,
+      },
     ],
   },
 ];
