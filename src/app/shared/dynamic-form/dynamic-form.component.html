@@ -1,16 +1,14 @@
 <div class="dynamic-form-wrapper">
   <form [formGroup]="form">
     <div *ngFor="let group of formElements" class="dynamic-form-group">
-      <h1 class="group-title">{{group.title}}</h1>
+      <h2>{{ group.title }} <span class="required" *ngIf="group.required">*</span></h2>
       <mat-card class="dynamic-form-card">
-        <div class="dynamic-form-input" *ngFor="let field of group.fields">
-          <ng-container
-            appDynamicField
-            [config]="field"
-            [group]="form"
-          >
-          </ng-container>
-        </div>
+        <ng-container *ngFor="let field of group.fields">
+          <mat-divider *ngIf="field.newLine"></mat-divider>
+          <div [ngClass]="['dynamic-form-input', field.className || '']">
+            <ng-container appDynamicField [config]="field" [group]="form"> </ng-container>
+          </div>
+        </ng-container>
       </mat-card>
     </div>
   </form>

@@ -9,6 +9,7 @@ export class FormElementBase<T> {
   controlType: string;
   type: string;
   newLine: boolean | undefined;
+  className?: string;
   options: { key: string; value: string }[];
 
   constructor(
@@ -22,6 +23,7 @@ export class FormElementBase<T> {
       controlType?: string;
       type?: string;
       newLine?: boolean;
+      className?: string;
       options?: { key: string; value: string }[];
     } = {}
   ) {
@@ -34,6 +36,7 @@ export class FormElementBase<T> {
     this.controlType = options.controlType || '';
     this.type = options.type || '';
     this.newLine = options.newLine;
+    this.className = options.className;
     this.options = options.options || [];
   }
 }
@@ -41,4 +44,5 @@ export class FormElementBase<T> {
 export class FormBase<T> {
   title: string;
   fields: FormElementBase<T>[];
+  required?: boolean;
 }

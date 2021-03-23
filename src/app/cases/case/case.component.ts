@@ -50,6 +50,11 @@ export class CaseComponent implements OnInit {
     this.triggerSaveFormService.setSave(this.case);
   }
 
+  resetForm(): void {
+    // eslint-disable-next-line no-console
+    console.log('reset form');
+  }
+
   onActivate(componentReference: any): void {
     if (typeof componentReference.updateComponent === 'function') {
       componentReference.updateComponent(this.case, this.caseService);

@@ -24,6 +24,13 @@
         }
       }
 
+      &.datepicker-closed,
+      &.datepicker-opened {
+        .mat-form-field-flex {
+          padding-right: 0;
+        }
+      }
+
       &.datepicker-opened:not(.mat-form-field-invalid) .mat-form-field-outline {
         border-color: mat-color(mat-palette($primary, 700));
         color: mat-color(mat-palette($primary, 700));

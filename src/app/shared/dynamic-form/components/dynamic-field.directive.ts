@@ -14,6 +14,7 @@ import { FormDateComponent } from './form-date/form-date.component';
 import { FormInputComponent } from './form-input/form-input.component';
 import { FormRadioComponent } from './form-radio/form-radio.component';
 import { FormSelectComponent } from './form-select/form-select.component';
+import { FormTextareaComponent } from './form-textarea/form-textarea.component';
 
 const components: FormFields = {
   input: FormInputComponent,
@@ -21,6 +22,7 @@ const components: FormFields = {
   radio: FormRadioComponent,
   dropdown: FormSelectComponent,
   date: FormDateComponent,
+  textarea: FormTextareaComponent,
 };
 
 @Directive({

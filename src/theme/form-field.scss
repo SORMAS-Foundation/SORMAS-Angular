@@ -7,6 +7,10 @@
 
   :root {
     .mat-form-field-appearance-outline {
+      &.mat-form-field {
+        display: block;
+      }
+
       .mat-form-field-infix {
         padding: 0.8em 0;
         border-top-width: 0;
@@ -48,6 +52,7 @@
       .mat-form-field-label-wrapper {
         top: -1.42857em;
         left: -0.75em;
+        min-width: 128px;
         padding-top: 1.42857em;
       }
 

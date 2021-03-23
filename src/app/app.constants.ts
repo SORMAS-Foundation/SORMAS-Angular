@@ -66,3 +66,93 @@ export enum DialogTypes {
   Prompt = 'dialog-prompt',
   Confirm = 'dialog-confirm',
 }
+
+// form data defaults
+export const FORM_DATA_INPUT = {
+  key: '',
+  label: '',
+  value: '',
+  validation: [],
+  order: 1,
+  controlType: 'input',
+  options: [],
+  type: 'text',
+  newLine: false,
+  className: 'size-medium',
+};
+
+export const FORM_DATA_DATE = {
+  key: '',
+  label: '',
+  value: '',
+  validation: [],
+  order: 1,
+  controlType: 'date',
+  options: [],
+  type: 'date',
+  newLine: false,
+  className: 'size-small',
+};
+
+export const FORM_DATA_NUMBER = {
+  key: '',
+  label: '',
+  value: '',
+  validation: [],
+  order: 1,
+  controlType: 'input',
+  options: [],
+  type: 'number',
+  newLine: false,
+  className: 'size-medium',
+};
+
+export const FORM_DATA_RADIO = {
+  key: '',
+  label: '',
+  value: '',
+  validation: [],
+  order: 1,
+  controlType: 'radio',
+  options: [],
+  type: '',
+  newLine: false,
+};
+
+export const FORM_DATA_SELECT = {
+  key: '',
+  label: '',
+  value: '',
+  validation: [],
+  order: 1,
+  controlType: 'dropdown',
+  options: [],
+  type: 'simple',
+  newLine: false,
+  className: 'size-medium',
+};
+
+export const FORM_DATA_CHECKBOX = {
+  key: '',
+  label: '',
+  value: '',
+  validation: [],
+  order: 1,
+  controlType: 'checkbox',
+  options: [],
+  type: '',
+  newLine: false,
+};
+
+export const FORM_DATA_TEXTAREA = {
+  key: '',
+  label: '',
+  value: '',
+  validation: [],
+  order: 1,
+  controlType: 'textarea',
+  options: [],
+  type: '',
+  newLine: false,
+  className: 'size-full',
+};
