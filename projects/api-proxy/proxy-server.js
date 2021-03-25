@@ -125,223 +125,223 @@ app.use('', (req, res, next) => {
   }
 });
 
-app.use('/sormas-rest/cases/query', (req, res) => {
-  res.status(200).send([
-    {
-      "creationDate":1614335623297,
-      "changeDate":1614773385829,
-      "uuid":"W5GUPC-LBYRTF-XM2B6S-VEZXSJJU",
-      "pseudonymized":false,
-      "disease":"CORONAVIRUS",
-      "person":{
-        "uuid":"XTUE2E-LBVCWA-FMROA2-AP5RCGKY",
-        "caption":"Aisha Zari OKAR-BAAKO",
-        "firstName":"Aisha Zari",
-        "lastName":"Okar-Baako"
-      },
-      "epidNumber":"DEF-REG-DIS-21-016",
-      "reportDate":1611406260000,
-      "nationalLevelDate":1611826020000,
-      "districtLevelDate":1611624780000,
-      "caseClassification":"SUSPECT",
-      "classificationUser":{
-        "uuid":"SNS6XV-XLUHRA-Y3ETEG-KCUMKAGA",
-        "caption":"Surveillance OFFICER - Surveillance Officer",
-        "firstName":"Surveillance",
-        "lastName":"Officer"
-      },
-      "classificationDate":1614773385270,
-      "clinicalConfirmation":"UNKNOWN",
-      "epidemiologicalConfirmation":"YES",
-      "investigationStatus":"PENDING",
-      "outcome":"RECOVERED",
-      "outcomeDate":1611606480000,
-      "sequelae":"YES",
-      "region":{
-        "uuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
-        "caption":"Default Region",
-        "externalId":null
-      },
-      "district":{
-        "uuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU",
-        "caption":"Default District",
-        "externalId":null
-      },
-      "community":{
-        "uuid":"TVCEZ3-OJWUUF-34DGDV-TMFZ2BOM",
-        "caption":"Default Community",
-        "externalId":null
-      },
-      "facilityType":"LABORATORY",
-      "healthFacility":{
-        "uuid":"TEZCPG-4UNIMV-ZSP3UG-BLLPCF7Y",
-        "caption":"Default Laboratory",
-        "externalId":null
-      },
-      "pregnant":"YES",
-      "firstVaccinationDate":1611566220000,
-      "lastVaccinationDate":1611787260000,
-      "vaccineName":"UNKNOWN",
-      "surveillanceOfficer":{
-        "uuid":"SNS6XV-XLUHRA-Y3ETEG-KCUMKAGA",
-        "caption":"Surveillance OFFICER - Surveillance Officer",
-        "firstName":"Surveillance",
-        "lastName":"Officer"
-      },
-      "hospitalization":{
-        "creationDate":1614335623322,
-        "changeDate":1614773385556,
-        "uuid":"SQYJNS-O3ETSK-ABOGKH-2W2YSDGM",
-        "previousHospitalizations":[
-        ]
-      },
-      "symptoms":{
-        "creationDate":1614335623344,
-        "changeDate":1614335623344,
-        "uuid":"RSBRMA-UZHMXX-ZVMARQ-7WXLSCM4",
-        "pseudonymized":false,
-        "symptomatic":false
-      },
-      "epiData":{
-        "creationDate":1614335623319,
-        "changeDate":1614773385558,
-        "uuid":"QQROVW-QXK7HS-PVLEC3-YCTBSA4M",
-        "pseudonymized":false,
-        "exposures":[
-        ],
-        "activitiesAsCase":[
-        ]
-      },
-      "therapy":{
-        "creationDate":1614335623382,
-        "changeDate":1614335623382,
-        "uuid":"XCD35E-V3LUFV-NDMH3D-VYH5CJNA"
-      },
-      "clinicalCourse":{
-        "creationDate":1614335623313,
-        "changeDate":1614335623313,
-        "uuid":"X3BUDU-WJQZEZ-EV7C72-DULTCPVU",
-        "healthConditions":{
-          "creationDate":1614335623309,
-          "changeDate":1614335623309,
-          "uuid":"QIPERX-NEQPWZ-HF43UK-S5Z2SC4I",
-          "pseudonymized":false
-        }
-      },
-      "maternalHistory":{
-        "creationDate":1614335623325,
-        "changeDate":1614335623325,
-        "uuid":"VSGZG6-AO67I7-7AVM77-UBIT2P6A",
-        "pseudonymized":false
-      },
-      "portHealthInfo":{
-        "creationDate":1614335623336,
-        "changeDate":1614335623336,
-        "uuid":"SX3KCU-DAUWX2-45BBBI-KQLFCNWE",
-        "arrivalDateTime":1611825540000,
-        "freeSeating":"YES",
-        "conveyanceType":"OTHER"
-      },
-      "caseOrigin":"IN_COUNTRY",
-      "additionalDetails":"Case generated using DevMode on 2021-02-26",
-      "sharedToCountry":false,
-      "nosocomialOutbreak":false,
-      "quarantineOrderedVerbally":false,
-      "quarantineOrderedOfficialDocument":false,
-      "quarantineExtended":false,
-      "quarantineReduced":false,
-      "quarantineOfficialOrderSent":false,
-      "trimester":"FIRST",
-      "followUpStatus":"FOLLOW_UP",
-      "followUpUntil":1612562400000,
-      "overwriteFollowUpUntil":false,
-      "ownershipHandedOver":false,
-      "notACaseReasonNegativeTest":false,
-      "notACaseReasonPhysicianInformation":false,
-      "notACaseReasonDifferentPathogen":false,
-      "notACaseReasonOther":false
-    }
-  ]);
-});
-
-app.use('/sormas-rest/cases', (req, res) => {
-
-  let total = 1000;
-
-  const arrayTmp = [];
-  let offset = 0;
-
-  if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
-    offset = 1000;
-  }
-
-  if (req.body.filter) {
-    total = 50;
-  }
-
-  for (var i = parseInt(req.query.page) ; i < parseInt(req.query.page) + parseInt(req.query.size); i++) {
-    arrayTmp.push({
-      "pseudonymized":false,
-      "id":120,
-      // "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(req.query.page*req.query.size + i),
-      "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(parseInt(offset) - parseInt(i)),
-      "epidNumber":"DEF-REG-DIS-21-001",
-      "externalID":null,
-      "externalToken":null,
-      "personFirstName":"Aisha Ayana",
-      "personLastName":"Chipo-Chipo",
-      "disease":"CORONAVIRUS",
-      "diseaseVariant":{
-        "uuid":null,
-        "caption":null
-      },
-      "diseaseDetails":null,
-      "caseClassification":"PROBABLE",
-      "investigationStatus":"DISCARDED",
-      "presentCondition":"ALIVE",
-      "reportDate":1610865900000,
-      "creationDate":1614335617159,
-      "districtName":"Default District",
-      "healthFacilityName":"Default Facility",
-      "pointOfEntryName":"",
-      "surveillanceOfficerUuid":"SNS6XV-XLUHRA-Y3ETEG-KCUMKAGA",
-      "outcome":"RECOVERED",
-      "sex":"FEMALE",
-      "ageAndBirthDate":{
-        "birthdateDD":null,
-        "birthdateMM":null,
-        "birthdateYYYY":null,
-        "age":null,
-        "ageType":"DAYS"
-      },
-      "completeness":0.55,
-      "quarantineTo":null,
-      "followUpStatus":"LOST",
-      "followUpUntil":1612044000000,
-      "symptomJournalStatus":null,
-      "visitCount":0,
-      "jurisdiction":{
-        "reportingUserUuid":"QWW5JU-5ZIZSB-6YWYNM-GGLGSM2E",
-        "regionUuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
-        "districtUuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU",
-        "communityUuid":"TVCEZ3-OJWUUF-34DGDV-TMFZ2BOM",
-        "healthFacilityUuid":"QFMYC6-U27ZBE-VEK7G3-7D5XKLWA",
-        "pointOfEntryUuid":null
-      },
-      "regionUuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
-      "districtUuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU"
-    });
-  }
-
-
-  res.status(200).send({
-    "elements": arrayTmp,
-    "pageNumber":0,
-    "size":8,
-    "totalNoElements": total,
-    "hasNext":true
-  });
-});
+// app.use('/sormas-rest/cases/indexList', (req, res) => {
+//
+//   let total = 1000;
+//
+//   const arrayTmp = [];
+//   let offset = 0;
+//
+//   if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
+//     offset = 1000;
+//   }
+//
+//   if (req.body.filter) {
+//     total = 50;
+//   }
+//
+//   for (var i = parseInt(req.query.offset) ; i < parseInt(req.query.offset) + parseInt(req.query.size); i++) {
+//     arrayTmp.push({
+//       "pseudonymized":false,
+//       "id":120,
+//       // "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(req.query.page*req.query.size + i),
+//       "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(parseInt(offset) - parseInt(i)),
+//       "epidNumber":"DEF-REG-DIS-21-001",
+//       "externalID":null,
+//       "externalToken":null,
+//       "personFirstName":"Aisha Ayana",
+//       "personLastName":"Chipo-Chipo",
+//       "disease":"CORONAVIRUS",
+//       "diseaseVariant":{
+//         "uuid":null,
+//         "caption":null
+//       },
+//       "diseaseDetails":null,
+//       "caseClassification":"PROBABLE",
+//       "investigationStatus":"DISCARDED",
+//       "presentCondition":"ALIVE",
+//       "reportDate":1610865900000,
+//       "creationDate":1614335617159,
+//       "districtName":"Default District",
+//       "healthFacilityName":"Default Facility",
+//       "pointOfEntryName":"",
+//       "surveillanceOfficerUuid":"SNS6XV-XLUHRA-Y3ETEG-KCUMKAGA",
+//       "outcome":"RECOVERED",
+//       "sex":"FEMALE",
+//       "ageAndBirthDate":{
+//         "birthdateDD":null,
+//         "birthdateMM":null,
+//         "birthdateYYYY":null,
+//         "age":null,
+//         "ageType":"DAYS"
+//       },
+//       "completeness":0.55,
+//       "quarantineTo":null,
+//       "followUpStatus":"LOST",
+//       "followUpUntil":1612044000000,
+//       "symptomJournalStatus":null,
+//       "visitCount":0,
+//       "jurisdiction":{
+//         "reportingUserUuid":"QWW5JU-5ZIZSB-6YWYNM-GGLGSM2E",
+//         "regionUuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
+//         "districtUuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU",
+//         "communityUuid":"TVCEZ3-OJWUUF-34DGDV-TMFZ2BOM",
+//         "healthFacilityUuid":"QFMYC6-U27ZBE-VEK7G3-7D5XKLWA",
+//         "pointOfEntryUuid":null
+//       },
+//       "regionUuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
+//       "districtUuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU"
+//     });
+//   }
+//
+//
+//   res.status(200).send({
+//     "elements": arrayTmp,
+//     "pageNumber":0,
+//     "size":8,
+//     "totalNoElements": total,
+//     "hasNext":true
+//   });
+// });
+//
+// app.use('/sormas-rest/cases', (req, res) => {
+//   res.status(200).send(
+//     {
+//       "creationDate":1614335623297,
+//       "changeDate":1614773385829,
+//       "uuid":"W5GUPC-LBYRTF-XM2B6S-VEZXSJJU",
+//       "pseudonymized":false,
+//       "disease":"CORONAVIRUS",
+//       "person":{
+//         "uuid":"XTUE2E-LBVCWA-FMROA2-AP5RCGKY",
+//         "caption":"Aisha Zari OKAR-BAAKO",
+//         "firstName":"Aisha Zari",
+//         "lastName":"Okar-Baako"
+//       },
+//       "epidNumber":"DEF-REG-DIS-21-016",
+//       "reportDate":1611406260000,
+//       "nationalLevelDate":1611826020000,
+//       "districtLevelDate":1611624780000,
+//       "caseClassification":"SUSPECT",
+//       "classificationUser":{
+//         "uuid":"SNS6XV-XLUHRA-Y3ETEG-KCUMKAGA",
+//         "caption":"Surveillance OFFICER - Surveillance Officer",
+//         "firstName":"Surveillance",
+//         "lastName":"Officer"
+//       },
+//       "classificationDate":1614773385270,
+//       "clinicalConfirmation":"UNKNOWN",
+//       "epidemiologicalConfirmation":"YES",
+//       "investigationStatus":"PENDING",
+//       "outcome":"RECOVERED",
+//       "outcomeDate":1611606480000,
+//       "sequelae":"YES",
+//       "region":{
+//         "uuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
+//         "caption":"Default Region",
+//         "externalId":null
+//       },
+//       "district":{
+//         "uuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU",
+//         "caption":"Default District",
+//         "externalId":null
+//       },
+//       "community":{
+//         "uuid":"TVCEZ3-OJWUUF-34DGDV-TMFZ2BOM",
+//         "caption":"Default Community",
+//         "externalId":null
+//       },
+//       "facilityType":"LABORATORY",
+//       "healthFacility":{
+//         "uuid":"TEZCPG-4UNIMV-ZSP3UG-BLLPCF7Y",
+//         "caption":"Default Laboratory",
+//         "externalId":null
+//       },
+//       "pregnant":"YES",
+//       "firstVaccinationDate":1611566220000,
+//       "lastVaccinationDate":1611787260000,
+//       "vaccineName":"UNKNOWN",
+//       "surveillanceOfficer":{
+//         "uuid":"SNS6XV-XLUHRA-Y3ETEG-KCUMKAGA",
+//         "caption":"Surveillance OFFICER - Surveillance Officer",
+//         "firstName":"Surveillance",
+//         "lastName":"Officer"
+//       },
+//       "hospitalization":{
+//         "creationDate":1614335623322,
+//         "changeDate":1614773385556,
+//         "uuid":"SQYJNS-O3ETSK-ABOGKH-2W2YSDGM",
+//         "previousHospitalizations":[
+//         ]
+//       },
+//       "symptoms":{
+//         "creationDate":1614335623344,
+//         "changeDate":1614335623344,
+//         "uuid":"RSBRMA-UZHMXX-ZVMARQ-7WXLSCM4",
+//         "pseudonymized":false,
+//         "symptomatic":false
+//       },
+//       "epiData":{
+//         "creationDate":1614335623319,
+//         "changeDate":1614773385558,
+//         "uuid":"QQROVW-QXK7HS-PVLEC3-YCTBSA4M",
+//         "pseudonymized":false,
+//         "exposures":[
+//         ],
+//         "activitiesAsCase":[
+//         ]
+//       },
+//       "therapy":{
+//         "creationDate":1614335623382,
+//         "changeDate":1614335623382,
+//         "uuid":"XCD35E-V3LUFV-NDMH3D-VYH5CJNA"
+//       },
+//       "clinicalCourse":{
+//         "creationDate":1614335623313,
+//         "changeDate":1614335623313,
+//         "uuid":"X3BUDU-WJQZEZ-EV7C72-DULTCPVU",
+//         "healthConditions":{
+//           "creationDate":1614335623309,
+//           "changeDate":1614335623309,
+//           "uuid":"QIPERX-NEQPWZ-HF43UK-S5Z2SC4I",
+//           "pseudonymized":false
+//         }
+//       },
+//       "maternalHistory":{
+//         "creationDate":1614335623325,
+//         "changeDate":1614335623325,
+//         "uuid":"VSGZG6-AO67I7-7AVM77-UBIT2P6A",
+//         "pseudonymized":false
+//       },
+//       "portHealthInfo":{
+//         "creationDate":1614335623336,
+//         "changeDate":1614335623336,
+//         "uuid":"SX3KCU-DAUWX2-45BBBI-KQLFCNWE",
+//         "arrivalDateTime":1611825540000,
+//         "freeSeating":"YES",
+//         "conveyanceType":"OTHER"
+//       },
+//       "caseOrigin":"IN_COUNTRY",
+//       "additionalDetails":"Case generated using DevMode on 2021-02-26",
+//       "sharedToCountry":false,
+//       "nosocomialOutbreak":false,
+//       "quarantineOrderedVerbally":false,
+//       "quarantineOrderedOfficialDocument":false,
+//       "quarantineExtended":false,
+//       "quarantineReduced":false,
+//       "quarantineOfficialOrderSent":false,
+//       "trimester":"FIRST",
+//       "followUpStatus":"FOLLOW_UP",
+//       "followUpUntil":1612562400000,
+//       "overwriteFollowUpUntil":false,
+//       "ownershipHandedOver":false,
+//       "notACaseReasonNegativeTest":false,
+//       "notACaseReasonPhysicianInformation":false,
+//       "notACaseReasonDifferentPathogen":false,
+//       "notACaseReasonOther":false
+//     }
+//   );
+// });
 
 // app.use('/sormas-rest/cases', (req, res) => {
 //   res.status(200).send({

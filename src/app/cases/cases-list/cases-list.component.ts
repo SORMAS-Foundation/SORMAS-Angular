@@ -27,19 +27,22 @@ export class CasesListComponent implements OnInit {
     this.defaultColumns = defaultColumnDefs;
   }
 
-  selectionData(selection: SelectionModel<any>): void {
-    // eslint-disable-next-line no-console
-    console.log(selection);
+  selectCase(selection: SelectionModel<any>): void {
+    console.log('event', selection);
   }
 
-  onCaseSelect(event: any): void {
-    this.router.navigate([`/cases/case/${event.id}/details`]);
+  clickCase(event: any): void {
+    this.router.navigate([`/cases/case/${event.item.uuid}/details`]);
   }
 
   filter(): void {
     this.filterService.setFilters([
       {
         field: 'filter',
+        value: '11111',
+      },
+      {
+        field: 'filter222',
         value: '22222',
       },
     ]);

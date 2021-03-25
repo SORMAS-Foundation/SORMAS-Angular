@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
@@ -23,7 +23,7 @@ export class Table3Component implements OnInit, OnDestroy {
   public displayedColumns: string[] = [];
 
   selection = new SelectionModel<any>(true, []);
-  page = 0;
+  offset = 0;
   limit = constants.PAGE_SIZE;
   sorting: Sorting = { field: '', ascending: true };
   filters: Filter[];
@@ -39,6 +39,9 @@ export class Table3Component implements OnInit, OnDestroy {
   @Input() visibleRowsCount = 10;
   @Input() resourceService: BaseService<any>;
 
+  @Output() selectItem: EventEmitter<any> = new EventEmitter();
+  @Output() clickItem: EventEmitter<any> = new EventEmitter();
+
   icons = IconsMap;
 
   constructor(
@@ -51,7 +54,7 @@ export class Table3Component implements OnInit, OnDestroy {
     this.displayedColumns = this.isSelectable ? ['select', ...columnNames] : columnNames;
 
     this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
-      this.page = value;
+      this.offset = value;
       if (!value) {
         this.getResources(true);
       } else {
@@ -74,7 +77,7 @@ export class Table3Component implements OnInit, OnDestroy {
 
   getResources(reload: boolean = false): void {
     this.resourceService
-      .getAll({ page: this.page, size: this.limit }, this.sorting, this.filters)
+      .getAll({ offset: this.offset, size: this.limit }, this.sorting, this.filters)
       .subscribe({
         next: (response: any) => {
           if (reload) {
@@ -90,8 +93,8 @@ export class Table3Component implements OnInit, OnDestroy {
             this.dataSource = new TableVirtualScrollDataSource(dataSourceTmp);
           }
 
-          for (let i = this.page; i < this.page + this.limit; i++) {
-            this.dataSourceArray[i] = response.elements[i - this.page];
+          for (let i = this.offset; i < this.offset + this.limit; i++) {
+            this.dataSourceArray[i] = response.elements[i - this.offset];
           }
         },
         error: (err: any) => {
@@ -99,6 +102,19 @@ export class Table3Component implements OnInit, OnDestroy {
         },
         complete: () => {},
       });
+  }
+
+  onItemSelect(event: any, row: any): void {
+    event.stopPropagation()
+    this.selectItem.emit({
+      item: this.dataSourceArray[row.index],
+    });
+  }
+
+  onItemClick(row: any): void {
+    this.clickItem.emit({
+      item: this.dataSourceArray[row.index],
+    });
   }
 
   scrolledIndexChange(index: number): void {

@@ -33,7 +33,7 @@ export class BaseService<T extends Resource> {
     // pagination
     let paginationTmp = '';
     if (typeof pagination !== 'undefined') {
-      paginationTmp = `?page=${pagination.page}&size=${pagination.size}`;
+      paginationTmp = `?offset=${pagination.offset}&size=${pagination.size}`;
     }
 
     // sorting
@@ -41,7 +41,7 @@ export class BaseService<T extends Resource> {
 
     if (typeof sorting !== 'undefined') {
       requestPayload = {
-        caseCriteria: null,
+        criteria: null,
         sortProperties: [
           {
             propertyName: sorting.field,
@@ -52,7 +52,11 @@ export class BaseService<T extends Resource> {
     }
 
     // filters
+    console.log('filters', filters);
     if (typeof filters !== 'undefined') {
+      // filters.forEach((filter: any) => {
+      //   requestPayload.criteria
+      // });
       requestPayload[filters[0].field] = filters[0].value;
     }
 
@@ -69,8 +73,8 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.url}/${this.apiEndpoint}/${endpoint}`, [id])
-      .pipe(map((data: any) => this.serializer.fromJson(data[0]) as T));
+      .get(`${this.url}/${this.apiEndpoint}/${endpoint}/${id}`)
+      .pipe(map((data: any) => this.serializer.fromJson(data) as T));
   }
 
   update(item: T): Observable<T> {
