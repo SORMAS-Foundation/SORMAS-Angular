@@ -13,6 +13,7 @@ import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe
 import { MenuComponent } from './layout/menu/menu.component';
 import { Table2Component } from './table2/table2.component';
 import { DialogModule } from './dialog';
+import { Table3Component } from './table3/table3.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DialogModule } from './dialog';
     PropertyGetterPipe,
     MenuComponent,
     Table2Component,
+    Table3Component,
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { DialogModule } from './dialog';
     FormsModule,
     ReactiveFormsModule,
     Table2Component,
+    Table3Component,
     DialogModule,
   ],
 })

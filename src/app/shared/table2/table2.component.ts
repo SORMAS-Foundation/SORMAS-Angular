@@ -48,7 +48,7 @@ export class Table2Component implements OnInit {
     });
 
     const DATA = this.getData(1000);
-    this.dataSource = new TableVirtualScrollDataSource(DATA);
+    //this.dataSource = new TableVirtualScrollDataSource(DATA);
   }
 
   getData(n = 1000): any[] {
@@ -80,9 +80,7 @@ export class Table2Component implements OnInit {
         if (reset) {
           this.page = 0;
           this.tableData = response.elements;
-        } else {
-          this.page += this.limit;
-          this.tableData = this.tableData.concat(response.elements);
+          this.dataSource = new TableVirtualScrollDataSource(response.elements);
         }
       },
       error: (err: any) => {
@@ -90,12 +88,6 @@ export class Table2Component implements OnInit {
       },
       complete: () => {},
     });
-  }
-
-  onTableScroll(event: any): void {
-    if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
-      this.getResources();
-    }
   }
 
   sort(dataKey: string, ascending: boolean): void {

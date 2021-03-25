@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CaseService } from '../../_services/api/case.service';
 import { CaseItem } from '../../_models/case';
-import * as constants from '../../app.constants';
-import { NotificationService } from '../../_services/notification.service';
 import { TableColumn } from '../../shared/table/table-column';
 import { defaultColumnDefs } from '../../_entity-data/case';
+
+import { FilterService } from '../../_services/filter.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -20,32 +20,11 @@ export class CasesListComponent implements OnInit {
   constructor(
     public caseService: CaseService,
     private router: Router,
-    private notificationService: NotificationService
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
-    this.getCases();
-  }
-
-  getCases(): void {
-    this.caseService.getAll({ page: 0, size: constants.PAGE_SIZE }).subscribe({
-      next: (response: any) => {
-        this.cases = response.elements;
-      },
-      error: (err: any) => {
-        this.notificationService.error(err);
-      },
-      complete: () => {},
-    });
-  }
-
-  modalSuccess(): void {
-    this.notificationService.success('Yess');
-  }
-
-  modalError(): void {
-    this.notificationService.error('Noo');
   }
 
   selectionData(selection: SelectionModel<any>): void {
@@ -55,5 +34,14 @@ export class CasesListComponent implements OnInit {
 
   onCaseSelect(event: any): void {
     this.router.navigate([`/cases/case/${event.id}/details`]);
+  }
+
+  filter(): void {
+    this.filterService.setFilters([
+      {
+        field: 'filter',
+        value: '22222',
+      },
+    ]);
   }
 }

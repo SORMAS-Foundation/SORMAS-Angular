@@ -266,13 +266,25 @@ app.use('/sormas-rest/cases/query', (req, res) => {
 
 app.use('/sormas-rest/cases', (req, res) => {
 
-  const arrayTmp = [];
+  let total = 1000;
 
-  for (var i = 1 ; i <= req.query.size; i++) {
+  const arrayTmp = [];
+  let offset = 0;
+
+  if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
+    offset = 1000;
+  }
+
+  if (req.body.filter) {
+    total = 50;
+  }
+
+  for (var i = parseInt(req.query.page) ; i < parseInt(req.query.page) + parseInt(req.query.size); i++) {
     arrayTmp.push({
       "pseudonymized":false,
       "id":120,
-      "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(req.query.page*req.query.size + i),
+      // "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(req.query.page*req.query.size + i),
+      "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(parseInt(offset) - parseInt(i)),
       "epidNumber":"DEF-REG-DIS-21-001",
       "externalID":null,
       "externalToken":null,
@@ -321,11 +333,12 @@ app.use('/sormas-rest/cases', (req, res) => {
     });
   }
 
+
   res.status(200).send({
     "elements": arrayTmp,
     "pageNumber":0,
     "size":8,
-    "totalNoElements": 1000,
+    "totalNoElements": total,
     "hasNext":true
   });
 });

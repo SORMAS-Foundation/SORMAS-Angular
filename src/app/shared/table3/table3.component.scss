@@ -1,0 +1,43 @@
+@use './src/variables.scss' as *;
+
+.mat-icon {
+  font-size: 14px;
+  line-height: inherit;
+}
+
+.viewport {
+  .mat-cell {
+    height: 54px;
+  }
+
+  .row-skeleton {
+    display: inline-block;
+    width: 100%;
+    height: 1rem;
+    animation: skeleton 3s ease;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    background-color: map-get($sormas-accent, 200);
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion) {
+    .row-skeleton {
+      animation: none;
+    }
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0.1;
+  }
+}

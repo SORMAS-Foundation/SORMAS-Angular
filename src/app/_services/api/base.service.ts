@@ -23,7 +23,7 @@ export class BaseService<T extends Resource> {
     @Inject('Serializer') private serializer: Serializer
   ) {}
 
-  getAll(pagination?: any, sorting?: any): Observable<PaginationResponse> {
+  getAll(pagination?: any, sorting?: any, filters?: any): Observable<PaginationResponse> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.GET_ALL) {
@@ -37,9 +37,10 @@ export class BaseService<T extends Resource> {
     }
 
     // sorting
-    let sortingTmp: any = { caseCriteria: null, sortProperties: null };
+    let requestPayload: any = { caseCriteria: null, sortProperties: null };
+
     if (typeof sorting !== 'undefined') {
-      sortingTmp = {
+      requestPayload = {
         caseCriteria: null,
         sortProperties: [
           {
@@ -50,8 +51,13 @@ export class BaseService<T extends Resource> {
       };
     }
 
+    // filters
+    if (typeof filters !== 'undefined') {
+      requestPayload[filters[0].field] = filters[0].value;
+    }
+
     return this.httpClient
-      .post(`${this.url}/${this.apiEndpoint}/${endpoint}${paginationTmp}`, sortingTmp)
+      .post(`${this.url}/${this.apiEndpoint}/${endpoint}${paginationTmp}`, requestPayload)
       .pipe(map((data: any) => this.convertData(data)));
   }
 

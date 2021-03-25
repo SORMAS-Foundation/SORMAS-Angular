@@ -1,0 +1,50 @@
+<ng-container *ngIf="tableColumns">
+  <cdk-virtual-scroll-viewport
+    [tvsItemSize]="54"
+    [headerHeight]="56"
+    [style.height.px]="visibleRowsCount * 54"
+    class="viewport"
+    (scrolledIndexChange)="scrolledIndexChange($event)"
+  >
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortTable($event)">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox
+            color="primary"
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+          ></mat-checkbox>
+        </td>
+      </ng-container>
+      <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
+        <ng-container *ngIf="isSortable && tableColumn.isSortable; else notSortable">
+          <th mat-header-cell *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
+            {{ tableColumn.name }}
+          </th>
+        </ng-container>
+
+        <ng-template #notSortable>
+          <th mat-header-cell *matHeaderCellDef>
+            {{ tableColumn.name }}
+          </th>
+        </ng-template>
+
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="getTableData(element.index, tableColumn.dataKey) !== 'loading'">
+            {{ getTableData(element.index, tableColumn.dataKey) }}
+          </span>
+          <div *ngIf="getTableData(element.index, tableColumn.dataKey) === 'loading'" class="row-skeleton"></div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selection.toggle(row)"
+        [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
+      ></tr>
+    </table>
+  </cdk-virtual-scroll-viewport>
+</ng-container>
