@@ -1,0 +1,1 @@
+export type DengueFeverType = 'DENGUE_FEVER' | 'DENGUE_HEMORRHAGIC_FEVER' | 'DENUGE_SHOCK_SYNDROME';

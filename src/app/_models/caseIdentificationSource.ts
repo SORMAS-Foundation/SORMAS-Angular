@@ -1,0 +1,8 @@
+export type CaseIdentificationSource =
+  | 'UNKNOWN'
+  | 'OUTBREAK_INVESTIGATION'
+  | 'CONTACT_TRACKING_APP'
+  | 'SUSPICION_REPORT'
+  | 'CONTACT_TRACING'
+  | 'SCREENING'
+  | 'OTHER';

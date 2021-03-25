@@ -49,6 +49,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         complete: () => this.notificationService.success('Successfully saved'),
       });
     });
+
+    this.detectChanges();
   }
 
   updateResource(resource: any): Resource {
@@ -84,6 +86,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
 
     return arrayTmp;
+  }
+
+  detectChanges(): void {
+    this.form.valueChanges.subscribe((val) => console.log(val));
   }
 
   ngOnDestroy(): void {

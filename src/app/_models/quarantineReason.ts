@@ -1,0 +1,5 @@
+export type QuarantineReason =
+  | 'IDENTIFIED_BY_CONTACT_TRACING'
+  | 'ENTRY_FROM_RISK_AREA'
+  | 'SWISS_COVID_APP_NOTIFICATION'
+  | 'OTHER_REASON';

@@ -1,6 +1,11 @@
 <div [formGroup]="group">
-  <mat-form-field [id]="config.key" appearance="outline" floatLabel="always">
-    <mat-label>{{ config.label }}</mat-label>
+  <mat-form-field
+    [id]="config.key"
+    appearance="outline"
+    floatLabel="always"
+    [ngClass]="{ 'has-hint': !!config.hint }"
+  >
+    <mat-label *ngIf="config.label">{{ config.label }}</mat-label>
     <textarea
       [value]="config.value"
       [type]="config.type"
@@ -8,6 +13,7 @@
       matInput
       placeholder="{{ config.key }}"
     ></textarea>
+    <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
   </mat-form-field>
   <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage }}</div>
 </div>

@@ -7,7 +7,9 @@
 }
 
 h2 {
-  flex: 0 1 24%;
+  min-width: 176px;
+  max-width: 248px;
+  flex: 0 0 24%;
   padding: 24px;
   margin: 0;
   font-size: 14px;
@@ -20,13 +22,12 @@ h2 {
   .mat-divider-horizontal {
     position: unset;
     border: 0;
-    margin: 1.5rem;
+    margin: 0.5rem;
   }
 }
 
 .dynamic-form-input {
   display: inline-block;
-  max-width: 500px;
   margin-right: 20px;
   vertical-align: top;
 }
@@ -45,6 +46,7 @@ h2 {
 
 .size-full {
   width: 100%;
+  max-width: 500px;
 }
 
 .required {

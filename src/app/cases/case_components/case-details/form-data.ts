@@ -5,7 +5,24 @@ import {
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
+  CaseClassification,
+  InvestigationStatus,
+  CaseOutcome,
+  Disease,
+  YesNoUnknown,
+  PlaceOfStay,
 } from '../../../app.constants';
+
+import { EnumToKeyValuePipe } from '../../../shared/pipes/enum-to-key-value/enum-to-key-value.pipe';
+
+const pipe = new EnumToKeyValuePipe();
+
+const optionsCaseClassification = pipe.transform(CaseClassification);
+const optionsCaseOutcome = pipe.transform(CaseOutcome);
+const optionsInvestigationStatus = pipe.transform(InvestigationStatus);
+const optionsDisese = pipe.transform(Disease);
+const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
+const optionsPlaceOfStay = pipe.transform(PlaceOfStay);
 
 export const FORM_DATA_CASE_DETAILS = [
   {
@@ -27,24 +44,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_RADIO,
         key: 'caseClassification',
         validation: ['required'],
-        options: [
-          {
-            key: '',
-            value: 'No outcome yet',
-          },
-          {
-            key: 'deceased',
-            value: 'Deceased',
-          },
-          {
-            key: 'recovered',
-            value: 'Recovered',
-          },
-          {
-            key: 'unknown',
-            value: 'Unknown',
-          },
-        ],
+        options: optionsCaseClassification,
       },
     ],
   },
@@ -56,20 +56,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_RADIO,
         key: 'investigationStatus',
         validation: ['required'],
-        options: [
-          {
-            key: 'PENDING',
-            value: 'Investigation pending',
-          },
-          {
-            key: 'DONE',
-            value: 'Investigation done',
-          },
-          {
-            key: 'DISCARDED',
-            value: 'Investigation discarded',
-          },
-        ],
+        options: optionsInvestigationStatus,
       },
       {
         ...FORM_DATA_DATE,
@@ -87,24 +74,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'disease',
         validation: ['required'],
-        options: [
-          {
-            key: 'solid',
-            value: 'Solid',
-          },
-          {
-            key: 'great',
-            value: 'Great',
-          },
-          {
-            key: 'good',
-            value: 'Good',
-          },
-          {
-            key: 'unproven',
-            value: 'Unproven',
-          },
-        ],
+        options: optionsDisese,
       },
     ],
   },
@@ -126,30 +96,14 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_RADIO,
         key: 'outcome',
         validation: ['required'],
-        options: [
-          {
-            key: '',
-            value: 'No outcome yet',
-          },
-          {
-            key: 'deceased',
-            value: 'Deceased',
-          },
-          {
-            key: 'recovered',
-            value: 'Recovered',
-          },
-          {
-            key: 'unknown',
-            value: 'Unknown',
-          },
-        ],
+        options: optionsCaseOutcome,
       },
       {
         ...FORM_DATA_DATE,
         key: 'outcomeDate',
-        label: 'Date of outcome',
+        hint: 'Date of outcome',
         newLine: true,
+        toggleExpression: '!!outcome',
       },
     ],
   },
@@ -160,26 +114,14 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'sequelae',
-        options: [
-          {
-            key: 'Yes',
-            value: 'Yes',
-          },
-          {
-            key: 'No',
-            value: 'No',
-          },
-          {
-            key: 'Unknown',
-            value: 'Unknown',
-          },
-        ],
+        options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'sequelaeDetails',
         label: 'Describe sequelae',
         newLine: true,
+        className: 'size-full',
       },
     ],
   },
@@ -198,6 +140,7 @@ export const FORM_DATA_CASE_DETAILS = [
             value: 'Default region',
           },
         ],
+        className: 'size-large',
       },
       {
         ...FORM_DATA_SELECT,
@@ -211,6 +154,7 @@ export const FORM_DATA_CASE_DETAILS = [
           },
         ],
         newLine: true,
+        className: 'size-large',
       },
       {
         ...FORM_DATA_SELECT,
@@ -223,6 +167,7 @@ export const FORM_DATA_CASE_DETAILS = [
           },
         ],
         newLine: true,
+        className: 'size-large',
       },
     ],
   },
@@ -232,18 +177,9 @@ export const FORM_DATA_CASE_DETAILS = [
     fields: [
       {
         ...FORM_DATA_RADIO,
-        key: 'healthFacility.uuid',
+        key: 'placeOfStaty',
         validation: ['required'],
-        options: [
-          {
-            key: 'FACILITY',
-            value: 'Facility',
-          },
-          {
-            key: 'HOME',
-            value: 'Home',
-          },
-        ],
+        options: optionsPlaceOfStay,
       },
       {
         ...FORM_DATA_SELECT,
@@ -257,6 +193,7 @@ export const FORM_DATA_CASE_DETAILS = [
           },
         ],
         newLine: true,
+        className: 'size-large',
       },
       {
         ...FORM_DATA_SELECT,
@@ -270,12 +207,14 @@ export const FORM_DATA_CASE_DETAILS = [
           },
         ],
         newLine: true,
+        className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails',
         label: 'Facility name and description',
         newLine: true,
+        className: 'size-full',
       },
     ],
   },
@@ -298,17 +237,21 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_DATE,
         key: '  quarantineFrom',
         label: 'Quarantine period',
+        hint: 'Start date',
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: '  quarantineTo',
+        label: ' ',
+        hint: 'End data',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'quarantineHelpNeeded',
         label: 'Help needed in quarantine',
         newLine: true,
+        className: 'size-full',
       },
     ],
   },
@@ -364,11 +307,13 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_DATE,
         key: 'firstVaccinationDate',
+        hint: 'First vaccination',
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'lastVaccinationDate',
+        hint: 'Last vaccination',
       },
       {
         ...FORM_DATA_SELECT,
@@ -393,6 +338,7 @@ export const FORM_DATA_CASE_DETAILS = [
           },
         ],
         newLine: true,
+        className: 'size-large',
       },
       {
         ...FORM_DATA_SELECT,
@@ -444,24 +390,28 @@ export const FORM_DATA_CASE_DETAILS = [
             value: 'Bla bla',
           },
         ],
+        className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'clinicianName',
         label: 'Name of responsable clinician',
         newLine: true,
+        className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'clinicianPhone',
         label: 'Phone of responsable clinician',
         newLine: true,
+        className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'clinicianEmail',
         label: 'Email address of responsable clinician',
         newLine: true,
+        className: 'size-large',
       },
     ],
   },
@@ -480,6 +430,7 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'followUpComment',
         label: 'Follow up status comment',
         newLine: true,
+        className: 'size-full',
       },
     ],
   },

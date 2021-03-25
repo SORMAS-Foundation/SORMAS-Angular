@@ -6,7 +6,7 @@
         <ng-container *ngFor="let field of group.fields">
           <mat-divider *ngIf="field.newLine"></mat-divider>
           <div [ngClass]="['dynamic-form-input', field.className || '']">
-            <ng-container appDynamicField [config]="field" [group]="form"> </ng-container>
+            <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
           </div>
         </ng-container>
       </mat-card>

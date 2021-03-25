@@ -1,0 +1,16 @@
+export type Language =
+  | 'EN'
+  | 'EN_NG'
+  | 'EN_GH'
+  | 'EN_AF'
+  | 'FR'
+  | 'FR_CH'
+  | 'DE'
+  | 'DE_CH'
+  | 'ES_EC'
+  | 'ES_CU'
+  | 'IT'
+  | 'IT_CH'
+  | 'FI'
+  | 'PS'
+  | 'FA';

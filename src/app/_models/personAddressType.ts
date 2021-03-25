@@ -1,0 +1,8 @@
+export type PersonAddressType =
+  | 'HOME'
+  | 'PLACE_OF_RESIDENCE'
+  | 'PLACE_OF_EXPOSURE'
+  | 'PLACE_OF_WORK'
+  | 'PLACE_OF_ISOLATION'
+  | 'EVENT_LOCATION'
+  | 'OTHER_ADDRESS';

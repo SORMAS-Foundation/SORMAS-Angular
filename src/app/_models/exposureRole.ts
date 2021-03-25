@@ -1,0 +1,18 @@
+export type ExposureRole =
+  | 'PASSENGER'
+  | 'STAFF'
+  | 'NURSING_STAFF'
+  | 'MEDICAL_STAFF'
+  | 'VISITOR'
+  | 'GUEST'
+  | 'CUSTOMER'
+  | 'CONSERVATEE'
+  | 'PATIENT'
+  | 'EDUCATOR'
+  | 'TRAINEE_TEACHER'
+  | 'PUPIL'
+  | 'STUDENT'
+  | 'PARENT'
+  | 'TEACHER'
+  | 'UNKNOWN'
+  | 'OTHER';

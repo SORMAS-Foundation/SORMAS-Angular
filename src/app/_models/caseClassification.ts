@@ -1,0 +1,8 @@
+export type CaseClassification =
+  | 'NOT_CLASSIFIED'
+  | 'SUSPECT'
+  | 'PROBABLE'
+  | 'CONFIRMED'
+  | 'CONFIRMED_NO_SYMPTOMS'
+  | 'CONFIRMED_UNKNOWN_SYMPTOMS'
+  | 'NO_CASE';

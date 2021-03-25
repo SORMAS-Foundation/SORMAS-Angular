@@ -1,0 +1,16 @@
+export type TypeOfAnimal =
+  | 'BAT'
+  | 'POULTRY'
+  | 'CAMEL'
+  | 'CANIDAE'
+  | 'CAT'
+  | 'CATTLE'
+  | 'DOG'
+  | 'PRIMATE'
+  | 'SNAKE'
+  | 'SWINE'
+  | 'RABBIT'
+  | 'RODENT'
+  | 'TICK'
+  | 'FLEA'
+  | 'OTHER';

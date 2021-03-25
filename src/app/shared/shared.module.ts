@@ -13,6 +13,7 @@ import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe
 import { MenuComponent } from './layout/menu/menu.component';
 import { Table2Component } from './table2/table2.component';
 import { DialogModule } from './dialog';
+import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DialogModule } from './dialog';
     PropertyGetterPipe,
     MenuComponent,
     Table2Component,
+    EnumToKeyValuePipe,
   ],
   imports: [
     CommonModule,

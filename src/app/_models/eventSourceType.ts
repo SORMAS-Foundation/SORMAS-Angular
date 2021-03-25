@@ -1,0 +1,6 @@
+export type EventSourceType =
+  | 'NOT_APPLICABLE'
+  | 'MEDIA_NEWS'
+  | 'HOTLINE_PERSON'
+  | 'MATHEMATICAL_MODEL'
+  | 'INSTITUTIONAL_PARTNER';
