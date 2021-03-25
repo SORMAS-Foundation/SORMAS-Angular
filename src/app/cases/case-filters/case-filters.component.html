@@ -1,0 +1,187 @@
+<div class="case-filters" fxLayout="column">
+  <h2 class="filters-header">Filters</h2>
+  <form [formGroup]="filtersForm">
+    <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
+      <mat-label hidden>Search</mat-label>
+      <input value="" type="text" matInput placeholder="Search by Id, name" />
+    </mat-form-field>
+    <app-collapsable-box [collapsed]="true" boxTitle="Cases">
+      <mat-radio-group name="cases">
+        <mat-radio-button
+          class="case-radio"
+          value="active"
+          color="primary"
+          (change)="radioChange($event)"
+        >
+          Active cases
+        </mat-radio-button>
+        <mat-radio-button
+          class="case-radio"
+          value="archived"
+          color="primary"
+          (change)="radioChange($event)"
+        >
+          Archived cases
+        </mat-radio-button>
+        <mat-radio-button
+          class="case-radio"
+          value="all"
+          color="primary"
+          (change)="radioChange($event)"
+        >
+          All cases
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box [collapsed]="true" boxTitle="Case origin">
+      <mat-radio-group name="caseOrigin">
+        <mat-radio-button
+          class="case-radio"
+          value="in-country"
+          color="primary"
+          (change)="radioChange($event)"
+        >
+          In country
+        </mat-radio-button>
+        <mat-radio-button
+          class="case-radio"
+          value="point-of-entry"
+          color="primary"
+          (change)="radioChange($event)"
+        >
+          Point of entry
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box [collapsed]="true" boxTitle="Medical aspects">
+      <mat-form-field appearance="outline" floatLabel="never" class="collapsable-field">
+        <mat-label hidden>Outcome of case</mat-label>
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="dropdownChange($event.value)"
+          formControlName="caseOutcome"
+        >
+          <mat-option value="case-outcome1"> Outcome of case1 </mat-option>
+          <mat-option value="case-outcome2"> Outcome of case2 </mat-option>
+          <mat-option value="case-outcome3"> Outcome of case3 </mat-option>
+          <mat-option value="case-outcome4"> Outcome of case4 </mat-option>
+          <mat-option value="case-outcome5"> Outcome of case5 </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="never" class="collapsable-field">
+        <mat-label hidden>Disease</mat-label>
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="dropdownChange($event)"
+          formControlName="disease"
+        >
+          <mat-option value="disease1"> Disease1 </mat-option>
+          <mat-option value="disease2"> Disease2 </mat-option>
+          <mat-option value="disease3"> Disease3 </mat-option>
+          <mat-option value="disease4"> Disease4 </mat-option>
+          <mat-option value="disease5"> Disease5 </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="never" class="collapsable-field">
+        <mat-label hidden>Case classification</mat-label>
+        <mat-select disableOptionCentering (selectionChange)="dropdownChange($event)">
+          <mat-option value="classification1"> Case classification1 </mat-option>
+          <mat-option value="classification2"> Case classification2 </mat-option>
+          <mat-option value="classification3"> Case classification3 </mat-option>
+          <mat-option value="classification4"> Case classification4 </mat-option>
+          <mat-option value="classification5"> Case classification5 </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="never" class="collapsable-field">
+        <mat-label hidden>Follow-up status</mat-label>
+        <mat-select disableOptionCentering (selectionChange)="dropdownChange($event)">
+          <mat-option value="status1"> Status1 </mat-option>
+          <mat-option value="status2"> Status2 </mat-option>
+          <mat-option value="status3"> Status3 </mat-option>
+          <mat-option value="status4"> Status4 </mat-option>
+          <mat-option value="status5"> Status5 </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box [collapsed]="true" boxTitle="Date filter">
+      <mat-form-field appearance="outline" floatLabel="never" class="collapsable-field">
+        <mat-label hidden>By date</mat-label>
+        <mat-select disableOptionCentering>
+          <mat-option value="status1"> By date </mat-option>
+          <mat-option value="status2"> By something else </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field
+        id="new-case-from"
+        appearance="outline"
+        floatLabel="always"
+        class="{{ picker1.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+      >
+        <mat-label> New case from </mat-label>
+        <input matInput [matDatepicker]="picker1" size="5" />
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        id="new-case-to"
+        appearance="outline"
+        floatLabel="always"
+        class="{{ picker2.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+      >
+        <mat-label> to </mat-label>
+        <input matInput [matDatepicker]="picker2" size="5" />
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        id="quarantine-end"
+        appearance="outline"
+        floatLabel="always"
+        class="{{ picker3.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+      >
+        <mat-label> Quarantine end </mat-label>
+        <input matInput [matDatepicker]="picker3" size="5" />
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        id="follow-up-until"
+        appearance="outline"
+        floatLabel="always"
+        class="{{ picker4.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+      >
+        <mat-label> Follow up until </mat-label>
+        <input matInput [matDatepicker]="picker4" size="5" />
+        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+        <mat-datepicker #picker4></mat-datepicker>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box [collapsed]="true" boxTitle="More filters">
+      <mat-form-field appearance="outline" floatLabel="never" class="collapsable-field">
+        <mat-label hidden>Symptoms journal</mat-label>
+        <mat-select disableOptionCentering>
+          <mat-option value="symptoms-journal1"> Symptoms journal1 </mat-option>
+          <mat-option value="symptoms-journal2"> Symptoms journal2 </mat-option>
+          <mat-option value="symptoms-journal3"> Symptoms journal3 </mat-option>
+          <mat-option value="symptoms-journal4"> Symptoms journal4 </mat-option>
+          <mat-option value="symptoms-journal5"> Symptoms journal5 </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="never" class="collapsable-field">
+        <mat-label hidden>More filters</mat-label>
+        <mat-select disableOptionCentering multiple>
+          <mat-option value="no-geo-coordinates"> Cases without geo-coordinates </mat-option>
+          <mat-option value="no-facility"> Port health cases without a facility </mat-option>
+          <mat-option value="management-data"> Cases with case management data </mat-option>
+          <mat-option value="no-responsible"> Cases without responsible officer </mat-option>
+          <mat-option value="extended-quarantine"> Cases with extended quarantine </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+    <div fxFlexOffset="auto" class="reset-button" (click)="resetFilters()">Reset filters</div>
+  </form>
+</div>
