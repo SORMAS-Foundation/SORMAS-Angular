@@ -4,6 +4,17 @@
   .filters-header {
     margin-bottom: 0;
   }
+  .filters-form {
+    position: relative;
+    .reset-button {
+      position: sticky;
+      z-index: 10;
+      bottom: 0;
+      color: map-get($sormas-primary, 700);
+      cursor: pointer;
+      text-align: center;
+    }
+  }
   .case-radio {
     display: block;
     padding-bottom: 5px;
@@ -12,11 +23,7 @@
   .collapsable-field {
     width: 185px;
   }
-  .reset-button {
-    color: map-get($sormas-primary, 700);
-    cursor: pointer;
-    text-align: center;
-  }
+
   .search-field {
     width: 240px;
     margin-left: 16px;
