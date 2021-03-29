@@ -343,6 +343,7 @@ app.use('', (req, res, next) => {
 //   );
 // });
 
+
 // app.use('/sormas-rest/cases', (req, res) => {
 //   res.status(200).send({
 //     "elements":[
