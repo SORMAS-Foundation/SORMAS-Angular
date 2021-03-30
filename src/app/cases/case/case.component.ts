@@ -35,7 +35,6 @@ export class CaseComponent implements OnInit {
     this.caseService.getById(this.caseId).subscribe({
       next: (response: any) => {
         this.case = response;
-        console.log(this.case);
       },
       error: (err: any) => {
         this.notificationService.error(err);

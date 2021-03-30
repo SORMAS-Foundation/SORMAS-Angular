@@ -152,6 +152,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_NULL,
         key: 'caseOrigin',
+        className: 'size-medium origin-country',
       },
       {
         ...FORM_DATA_SELECT,
@@ -166,6 +167,8 @@ export const FORM_DATA_CASE_DETAILS = [
         ],
         newLine: true,
         className: 'size-large',
+        dependingOn: 'caseOrigin',
+        dependingOnValues: ['IN_COUNTRY'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -180,6 +183,8 @@ export const FORM_DATA_CASE_DETAILS = [
         ],
         newLine: true,
         className: 'size-large',
+        dependingOn: 'caseOrigin',
+        dependingOnValues: ['IN_COUNTRY'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -193,6 +198,22 @@ export const FORM_DATA_CASE_DETAILS = [
         ],
         newLine: true,
         className: 'size-large',
+        dependingOn: 'caseOrigin',
+        dependingOnValues: ['IN_COUNTRY'],
+      },
+      {
+        ...FORM_DATA_NULL,
+        key: 'pointOfEntry.caption',
+        label: 'Point of entry',
+        dependingOn: 'caseOrigin',
+        dependingOnValues: ['POINT_OF_ENTRY'],
+      },
+      {
+        ...FORM_DATA_NULL,
+        key: 'pointOfEntryDetails',
+        label: ' ',
+        dependingOn: 'caseOrigin',
+        dependingOnValues: ['POINT_OF_ENTRY'],
       },
     ],
   },

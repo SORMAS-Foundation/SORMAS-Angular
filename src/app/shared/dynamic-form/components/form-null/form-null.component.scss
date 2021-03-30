@@ -1,1 +1,18 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+.form-null-label {
+  display: block;
+  height: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.form-null-value {
+  display: block;
+  font-weight: 500;
+}
+
+.form-null-hint {
+  display: block;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 11px;
+}

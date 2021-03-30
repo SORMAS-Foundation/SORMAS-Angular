@@ -1,5 +1,5 @@
 <div class="form-null">
-  <span class="form-null-label">{{ config.label }}</span>
+  <span *ngIf="config.label" class="form-null-label">{{ config.label }}</span>
   <span class="form-null-value">{{ config.value }}</span>
-  <span class="form-null-hint">{{ config.hint }}</span>
+  <span *ngIf="config.hint" class="form-null-hint">{{ config.hint }}</span>
 </div>

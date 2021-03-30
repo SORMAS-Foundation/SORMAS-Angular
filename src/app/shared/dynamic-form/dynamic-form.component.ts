@@ -71,7 +71,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           // eslint-disable-next-line no-plusplus
           for (i = 0; i < prop.length - 1; i++) {
             // eslint-disable-next-line no-param-reassign
-            obj = obj[prop[i]];
+            obj = prop[i] && obj[prop[i]];
           }
           // eslint-disable-next-line no-param-reassign
           obj[prop[i]] = value;
@@ -114,8 +114,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
             watchField?.active && (item.values ? item.values.includes(val) : !!val);
           // set same value on target field just to trigger 'valueChanges'
           // on it so it can properly update any dependent fields
-          const formElement = this.form.get(targetField.key);
-          formElement?.setValue(formElement?.value);
+          if (item.target !== targetField.key) {
+            const formElement = this.form.get(targetField.key);
+            formElement?.setValue(formElement?.value);
+          }
         }
       });
     });
