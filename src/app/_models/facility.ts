@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
+
 export type FacilityType =
   | 'ASSOCIATION'
   | 'BUSINESS'
