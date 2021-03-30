@@ -1,14 +1,13 @@
 @use '../../../variables.scss' as *;
 
 .collapsable-box {
-  padding: 25px 10px 10px 10px;
+  padding: 25px 10px;
   border: solid 1px map-get($sormas-accent, 200);
   margin: 16px;
   box-shadow: none;
   .box-header {
     position: relative;
     width: 100%;
-    margin-bottom: 18px;
 
     .box-title {
       display: block;
@@ -26,6 +25,7 @@
     }
   }
   .box-content {
+    margin-bottom: 0;
     margin-left: 16px;
   }
 }

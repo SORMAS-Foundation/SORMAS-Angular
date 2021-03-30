@@ -1,4 +1,5 @@
 <div class="case-filters" fxLayout="column">
+  <mat-icon class="toggle-filter" (click)="drawer.close()">filter_list</mat-icon>
   <h2 class="filters-header">Filters</h2>
   <form [formGroup]="filtersForm" class="filters-form">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
@@ -9,6 +10,7 @@
         matInput
         placeholder="Search by Id, name"
         formControlName="search"
+        (change)="onFormChange()"
       />
     </mat-form-field>
     <app-collapsable-box [collapsed]="true" boxTitle="Cases">
@@ -17,7 +19,7 @@
           class="case-radio"
           value="active"
           color="primary"
-          (change)="radioChange()"
+          (change)="onFormChange()"
         >
           Active cases
         </mat-radio-button>
@@ -25,11 +27,11 @@
           class="case-radio"
           value="archived"
           color="primary"
-          (change)="radioChange()"
+          (change)="onFormChange()"
         >
           Archived cases
         </mat-radio-button>
-        <mat-radio-button class="case-radio" value="all" color="primary" (change)="radioChange()">
+        <mat-radio-button class="case-radio" value="all" color="primary" (change)="onFormChange()">
           All cases
         </mat-radio-button>
       </mat-radio-group>
@@ -41,7 +43,7 @@
           class="case-radio"
           value="in-country"
           color="primary"
-          (change)="radioChange()"
+          (change)="onFormChange()"
         >
           In country
         </mat-radio-button>
@@ -49,7 +51,7 @@
           class="case-radio"
           value="point-of-entry"
           color="primary"
-          (change)="radioChange()"
+          (change)="onFormChange()"
         >
           Point of entry
         </mat-radio-button>
@@ -57,12 +59,12 @@
     </app-collapsable-box>
 
     <app-collapsable-box [collapsed]="true" boxTitle="Medical aspects">
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>Outcome of case</mat-label>
+      <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
-          (selectionChange)="dropdownChange($event.value)"
+          (selectionChange)="onFormChange()"
           formControlName="caseOutcome"
+          placeholder="Outcome of case"
         >
           <mat-option value="NO_OUTCOME"> No outcome </mat-option>
           <mat-option value="DECEASED"> Deceased </mat-option>
@@ -70,24 +72,24 @@
           <mat-option value="UNKNOWN"> Unknown </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>Disease</mat-label>
+      <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
-          (selectionChange)="dropdownChange($event)"
+          (selectionChange)="onFormChange()"
           formControlName="disease"
+          placeholder="Disease"
         >
           <mat-option *ngFor="let opt of allDisease" [value]="opt.value">
             {{ opt.key }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>Case classification</mat-label>
+      <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
-          (selectionChange)="dropdownChange($event)"
+          (selectionChange)="onFormChange()"
           formControlName="caseClassification"
+          placeholder="Case classification"
         >
           <mat-option value="NOT_CLASSIFIED"> Not classified </mat-option>
           <mat-option value="SUSPECT"> Suspect </mat-option>
@@ -98,12 +100,12 @@
           <mat-option value="NO_CASE"> No case </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>Follow-up status</mat-label>
+      <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
-          (selectionChange)="dropdownChange($event)"
+          (selectionChange)="onFormChange()"
           formControlName="followUpStatus"
+          placeholder="Follow-up status"
         >
           <mat-option value="FOLLOW_UP"> Follow up </mat-option>
           <mat-option value="COMPLETED"> Completed </mat-option>
@@ -115,12 +117,11 @@
     </app-collapsable-box>
 
     <app-collapsable-box [collapsed]="true" boxTitle="Admin aspects">
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>Present condition</mat-label>
+      <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
-          disableOptionCentering
-          (selectionChange)="dropdownChange($event.value)"
+          (selectionChange)="onFormChange()"
           formControlName="presentCondition"
+          placeholder="Present condition"
         >
           <mat-option value="ALIVE"> Alive </mat-option>
           <mat-option value="DEAD"> Dead </mat-option>
@@ -128,29 +129,112 @@
           <mat-option value="UNKNOWN"> Unknown </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleRegion"
+          placeholder="Present condition"
+        >
+          <mat-option value="defaultRegion"> Default region </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleDistrict"
+          placeholder="Responsible district"
+        >
+          <mat-option value="defaultRegion"> Default district </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleCommunity"
+          placeholder="Responsible community"
+        >
+          <mat-option value="defaultCommunity"> Default community </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleSurveillor"
+          placeholder="Responsible surveillor"
+        >
+          <mat-option value="defaultUser"> Default user </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="reportedBy"
+          placeholder="Reported by"
+        >
+          <mat-option value="defaultUser"> Default user </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="reportingUser"
+          placeholder="Reporting user"
+        >
+          <mat-option value="defaultUser"> Default user </mat-option>
+        </mat-select>
+      </mat-form-field>
     </app-collapsable-box>
 
     <app-collapsable-box [collapsed]="true" boxTitle="Facility">
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>Facility type</mat-label>
+      <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
-          (selectionChange)="dropdownChange($event.value)"
+          (selectionChange)="onFormChange()"
+          formControlName="facilityCategory"
+          placeholder="Facility category"
+        >
+          <mat-option value="defaultCategory"> Default category </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
           formControlName="facilityType"
+          placeholder="Facility type"
         >
           <mat-option *ngFor="let opt of allFacilityTypes" [value]="opt.value">
             {{ opt.key }}
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="facility"
+          placeholder="Facility"
+        >
+          <mat-option value="defaultFacility"> Default Facility </mat-option>
+        </mat-select>
+      </mat-form-field>
     </app-collapsable-box>
 
     <app-collapsable-box [collapsed]="true" boxTitle="Date filter">
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>By date</mat-label>
-        <mat-select disableOptionCentering formControlName="dateFilter">
-          <mat-option value="status1"> By date </mat-option>
-          <mat-option value="status2"> By something else </mat-option>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          formControlName="dateFilter"
+          (selectionChange)="onFormChange()"
+          placeholder="By date"
+        >
+          <mat-option value="byDate"> By date </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field
@@ -160,7 +244,13 @@
         class="{{ picker1.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
       >
         <mat-label> New case from </mat-label>
-        <input matInput [matDatepicker]="picker1" size="5" formControlName="newCaseFrom" />
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          size="5"
+          formControlName="newCaseFrom"
+          (dateChange)="onFormChange()"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
@@ -171,7 +261,13 @@
         class="{{ picker2.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
       >
         <mat-label> to </mat-label>
-        <input matInput [matDatepicker]="picker2" size="5" formControlName="newCaseTo" />
+        <input
+          matInput
+          [matDatepicker]="picker2"
+          size="5"
+          formControlName="newCaseTo"
+          (dateChange)="onFormChange()"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
@@ -182,7 +278,13 @@
         class="{{ picker3.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
       >
         <mat-label> Quarantine end </mat-label>
-        <input matInput [matDatepicker]="picker3" size="5" formControlName="quarantineEnd" />
+        <input
+          matInput
+          [matDatepicker]="picker3"
+          size="5"
+          formControlName="quarantineEnd"
+          (dateChange)="onFormChange()"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
         <mat-datepicker #picker3></mat-datepicker>
       </mat-form-field>
@@ -193,16 +295,26 @@
         class="{{ picker4.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
       >
         <mat-label> Follow up until </mat-label>
-        <input matInput [matDatepicker]="picker4" size="5" formControlName="followUpUntil" />
+        <input
+          matInput
+          [matDatepicker]="picker4"
+          size="5"
+          formControlName="followUpUntil"
+          (dateChange)="onFormChange()"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
         <mat-datepicker #picker4></mat-datepicker>
       </mat-form-field>
     </app-collapsable-box>
 
     <app-collapsable-box [collapsed]="true" boxTitle="More filters">
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>Symptoms journal</mat-label>
-        <mat-select disableOptionCentering formControlName="sympromsJournal">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          formControlName="sympromsJournal"
+          (selectionChange)="onFormChange()"
+          placeholder="Symptoms journal"
+        >
           <mat-option value="symptoms-journal1"> Symptoms journal1 </mat-option>
           <mat-option value="symptoms-journal2"> Symptoms journal2 </mat-option>
           <mat-option value="symptoms-journal3"> Symptoms journal3 </mat-option>
@@ -210,9 +322,14 @@
           <mat-option value="symptoms-journal5"> Symptoms journal5 </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field appearance="outline" floatLabel="always" class="collapsable-field">
-        <mat-label>More filters</mat-label>
-        <mat-select disableOptionCentering multiple formControlName="moreFilters">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          multiple
+          formControlName="moreFilters"
+          (selectionChange)="onFormChange()"
+          placeholder="More filters"
+        >
           <mat-option value="no-geo-coordinates"> Cases without geo-coordinates </mat-option>
           <mat-option value="no-facility"> Port health cases without a facility </mat-option>
           <mat-option value="management-data"> Cases with case management data </mat-option>
@@ -221,7 +338,7 @@
         </mat-select>
       </mat-form-field>
     </app-collapsable-box>
-    <br />
-    <div fxFlexOffset="auto" class="reset-button" (click)="resetFilters()">Reset filters</div>
   </form>
+  <br />
+  <div fxFlexOffset="auto" class="reset-button" (click)="resetFilters()">Reset filters</div>
 </div>

@@ -1,7 +1,9 @@
-<mat-icon class="toggle-filter" (click)="drawer.toggle()">filter_list</mat-icon>
+<mat-icon class="toggle-filter" (click)="drawer.open()" *ngIf="!drawer.opened"
+  >filter_list</mat-icon
+>
 <mat-drawer-container class="example-container">
-  <mat-drawer #drawer mode="side" class="filters-bar">
-    <app-case-filters></app-case-filters>
+  <mat-drawer #drawer opened mode="side" class="filters-bar">
+    <app-case-filters [drawer]="drawer"></app-case-filters>
   </mat-drawer>
   <mat-drawer-content>
     <h1 class="header-title" i18n="Cases Overview header">Cases Overview</h1>

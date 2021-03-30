@@ -1,24 +1,38 @@
 @use '../../../variables.scss' as *;
 
 .case-filters {
+  .toggle-filter {
+    position: absolute;
+    top: 45vh;
+    right: 12px;
+    color: map-get($sormas-primary, 700);
+    cursor: pointer;
+    transform: rotate(90deg);
+  }
+
   .filters-header {
     margin-bottom: 0;
   }
-  .filters-form {
-    position: relative;
-    .reset-button {
-      position: sticky;
-      z-index: 10;
-      bottom: 0;
-      color: map-get($sormas-primary, 700);
-      cursor: pointer;
-      text-align: center;
-    }
+  .reset-button {
+    position: sticky;
+    z-index: 10;
+    bottom: 0;
+    width: 85%;
+    padding-top: 10px;
+    margin: 0 auto;
+    background: $white;
+    color: map-get($sormas-primary, 700);
+    cursor: pointer;
+    text-align: center;
   }
   .case-radio {
     display: block;
     padding-bottom: 5px;
     margin-left: 0;
+
+    &:first-child {
+      margin-top: 15px;
+    }
   }
   .collapsable-field {
     width: 185px;
