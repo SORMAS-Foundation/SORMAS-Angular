@@ -17,13 +17,20 @@
     position: sticky;
     z-index: 10;
     bottom: 0;
+    display: block;
     width: 85%;
     padding-top: 10px;
+    border: none;
     margin: 0 auto;
     background: $white;
     color: map-get($sormas-primary, 700);
     cursor: pointer;
     text-align: center;
+    &:active,
+    &:focus {
+      border: none;
+      outline: none;
+    }
   }
   .case-radio {
     display: block;

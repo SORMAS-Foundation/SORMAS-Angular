@@ -1,4 +1,4 @@
-<div class="case-filters" fxLayout="column">
+<div class="case-filters">
   <mat-icon class="toggle-filter" (click)="drawer.close()">filter_list</mat-icon>
   <h2 class="filters-header">Filters</h2>
   <form [formGroup]="filtersForm" class="filters-form">
@@ -340,12 +340,12 @@
     </app-collapsable-box>
   </form>
   <br />
-  <div
+  <button
     fxFlexOffset="auto"
     class="reset-button"
     (click)="resetFilters()"
     (keyup.enter)="resetFilters()"
   >
     Reset filters
-  </div>
+  </button>
 </div>
