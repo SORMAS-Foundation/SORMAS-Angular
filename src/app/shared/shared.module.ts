@@ -14,6 +14,7 @@ import { MenuComponent } from './layout/menu/menu.component';
 import { Table2Component } from './table2/table2.component';
 import { DialogModule } from './dialog';
 import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.
     PropertyGetterPipe,
     MenuComponent,
     Table2Component,
+    InpageNavComponent,
     EnumToKeyValuePipe,
   ],
   imports: [
@@ -41,12 +43,14 @@ import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.
     NotFoundComponent,
     LocaleSelectComponent,
     TableComponent,
+    RouterModule,
     MaterialModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     Table2Component,
     DialogModule,
+    InpageNavComponent,
   ],
 })
 export class SharedModule {}

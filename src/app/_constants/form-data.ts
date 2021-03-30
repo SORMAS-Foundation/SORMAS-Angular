@@ -1,4 +1,4 @@
-const FORM_DATA_BASE = {
+export const FORM_DATA_BASE = {
   key: '',
   label: '',
   value: '',
@@ -8,6 +8,7 @@ const FORM_DATA_BASE = {
   options: [],
   type: '',
   newLine: false,
+  active: true,
 };
 
 export const FORM_DATA_INPUT = {
@@ -49,4 +50,11 @@ export const FORM_DATA_TEXTAREA = {
   ...FORM_DATA_BASE,
   controlType: 'textarea',
   className: 'size-full',
+};
+
+export const FORM_DATA_NULL = {
+  ...FORM_DATA_BASE,
+  controlType: 'null',
+  className: 'size-medium',
+  disabled: true,
 };

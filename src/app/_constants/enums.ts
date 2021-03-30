@@ -88,6 +88,49 @@ export enum PlaceOfStay {
   HOME = 'Home',
 }
 
+export enum Quarantine {
+  HOME = 'Home',
+  INSTITUTIONELL = 'Institutional',
+  NONE = 'None',
+  UNKNOWN = 'Unknown',
+  OTHER = 'Other',
+}
+
+export enum VaccinationStatus {
+  VACCINATED = 'Vaccinated',
+  UNVACCINATED = 'Unvaccinated',
+  UNKNOWN = 'Unknown',
+}
+
+export enum VaccinationSource {
+  VACCINATION_CARD = 'Vaccination card',
+  ORAL_COMMUNICATION = 'Oral communication',
+  NO_EVIDENCE = 'No evidence',
+  UNKNOWN = 'Unknown',
+}
+
+export enum VaccineName {
+  COMIRNATY = 'Pfizer-BioNTech COVID-19 vaccine',
+  MRNA_1273 = 'Moderna COVID-19 vaccine',
+  OXFORD_ASTRA_ZENECA = 'Oxford-AstraZeneca COVID-19 vaccine',
+  AD26_COV2_S = 'Ad26.COV2.S',
+  NVX_COV_2373 = 'Novavax COVID-19 vaccine',
+  SANOFI_GSK = 'Sanofi-GSK',
+  UNKNOWN = 'Unknown',
+  OTHER = 'Other',
+}
+
+export enum VaccineManufacturer {
+  BIONTECH_PFIZER = 'BioNTech/Pfizer',
+  MODERNA = 'Moderna',
+  ASTRA_ZENECA = 'AstraZeneca',
+  JOHNSON_JOHNSON = 'Johnson & Johnson',
+  NOVAVAX = 'Novavax',
+  SANOFI_GSK = 'Sanofi-GSK',
+  UNKNOWN = 'Unknown',
+  OTHER = 'Other',
+}
+
 export enum YesNoUnknown {
   YES = 'Yes',
   NO = 'No',

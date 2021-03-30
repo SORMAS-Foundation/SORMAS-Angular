@@ -11,6 +11,7 @@ import { FormCheckboxComponent } from './components/form-checkbox/form-checkbox.
 import { FormSelectComponent } from './components/form-select/form-select.component';
 import { FormRadioComponent } from './components/form-radio/form-radio.component';
 import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
+import { FormNullComponent } from './components/form-null/form-null.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SharedModule],
@@ -23,6 +24,7 @@ import { FormTextareaComponent } from './components/form-textarea/form-textarea.
     FormSelectComponent,
     FormRadioComponent,
     FormTextareaComponent,
+    FormNullComponent,
   ],
   exports: [DynamicFormComponent],
   entryComponents: [
@@ -32,6 +34,7 @@ import { FormTextareaComponent } from './components/form-textarea/form-textarea.
     FormSelectComponent,
     FormRadioComponent,
     FormTextareaComponent,
+    FormNullComponent,
   ],
 })
 export class DynamicFormModule {}

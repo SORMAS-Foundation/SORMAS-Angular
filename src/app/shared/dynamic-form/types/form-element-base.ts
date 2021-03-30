@@ -13,6 +13,9 @@ export class FormElementBase<T> {
   className?: string;
   options: { key: string; value: string }[];
   toggleExpression?: string;
+  active: boolean;
+  dependingOn?: string;
+  dependingOnValues?: any[];
 
   constructor(
     options: {
@@ -28,7 +31,9 @@ export class FormElementBase<T> {
       newLine?: boolean;
       className?: string;
       options?: { key: string; value: string }[];
-      toggleExpression?: string;
+      active?: boolean;
+      dependingOn?: string;
+      dependingOnValues?: any[];
     } = {}
   ) {
     this.value = options.value;
@@ -43,7 +48,9 @@ export class FormElementBase<T> {
     this.newLine = options.newLine;
     this.className = options.className;
     this.options = options.options || [];
-    this.toggleExpression = options.toggleExpression;
+    this.active = options.active ?? true;
+    this.dependingOn = options.dependingOn;
+    this.dependingOnValues = options.dependingOnValues;
   }
 }
 
@@ -51,4 +58,6 @@ export class FormBase<T> {
   title: string;
   fields: FormElementBase<T>[];
   required?: boolean;
+  anchor?: string;
+  anchorLabel?: string;
 }

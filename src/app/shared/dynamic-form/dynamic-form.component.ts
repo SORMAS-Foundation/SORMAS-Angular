@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -20,6 +21,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   formElementsProcessed: FormElementBase<string>[] = [];
   form: FormGroup;
   subscription: Subscription = new Subscription();
+  watchFields: any[] = [];
 
   constructor(
     private formElementControlService: FormElementControlService,
@@ -51,6 +53,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
 
     this.detectChanges();
+
+    // trigger 'valueChanges' on each form control to update their dependent fields
+    Object.keys(this.form.controls).forEach((key) => {
+      const control = this.form.controls[key];
+      control.setValue(control.value);
+    });
   }
 
   updateResource(resource: any): Resource {
@@ -85,11 +93,41 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       arrayTmp = arrayTmp.concat(formElement.fields);
     });
 
+    this.watchFields = arrayTmp
+      .filter((item) => item.dependingOn)
+      .map((item) => ({
+        watch: item.dependingOn,
+        target: item.key,
+        values: item.dependingOnValues,
+      }));
+
     return arrayTmp;
   }
 
   detectChanges(): void {
-    this.form.valueChanges.subscribe((val) => console.log(val));
+    this.watchFields.forEach((item) => {
+      this.form.get(item.watch)?.valueChanges.subscribe((val) => {
+        const targetField = this.getTargetField(item.target);
+        const watchField = this.getTargetField(item.watch);
+        if (targetField) {
+          targetField.active =
+            watchField?.active && (item.values ? item.values.includes(val) : !!val);
+          // set same value on target field just to trigger 'valueChanges'
+          // on it so it can properly update any dependent fields
+          const formElement = this.form.get(targetField.key);
+          formElement?.setValue(formElement?.value);
+        }
+      });
+    });
+  }
+
+  getTargetField(target: string): FormElementBase<string> | undefined {
+    let result: FormElementBase<string> | undefined;
+    this.formElements.some((group) => {
+      result = group.fields.find((field) => field.key === target);
+      return result;
+    });
+    return result;
   }
 
   ngOnDestroy(): void {

@@ -8,7 +8,6 @@
     <mat-label *ngIf="config.label">{{ config.label }}</mat-label>
     <textarea
       [value]="config.value"
-      [type]="config.type"
       [formControlName]="config.key"
       matInput
       placeholder="{{ config.key }}"

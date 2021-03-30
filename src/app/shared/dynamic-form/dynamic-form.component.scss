@@ -4,6 +4,15 @@
   display: flex;
   justify-content: stretch;
   margin: 10px 0;
+
+  &.dynamic-form-section {
+    margin-top: 48px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $white;
+  }
 }
 
 h2 {
