@@ -8,9 +8,8 @@ describe('CollapsableBoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CollapsableBoxComponent ]
-    })
-    .compileComponents();
+      declarations: [CollapsableBoxComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

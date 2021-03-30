@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Disease } from '../../_models/disease';
-import { FacilityType } from '../../_models/facility';
+import { FacilityTypeObject } from '../../_models/facility';
 
 export interface DropdownData {
   key: string;
@@ -22,7 +22,7 @@ export class CaseFiltersComponent implements OnInit {
   filtersForm = new FormGroup({});
   allFilters: Filters[] = [];
   allDisease: DropdownData[] = this.getDropdownOptions(Disease);
-  allFacilityTypes: DropdownData[] = this.getDropdownOptions(FacilityType);
+  allFacilityTypes: DropdownData[] = this.getDropdownOptions(FacilityTypeObject);
 
   @Input() drawer: any = {};
 

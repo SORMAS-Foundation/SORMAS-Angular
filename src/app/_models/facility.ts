@@ -41,7 +41,7 @@ export type FacilityType =
   | 'UNIVERSITY'
   | 'ZOO';
 
-export const FacilityType = {
+export const FacilityTypeObject = {
   ASSOCIATION: 'ASSOCIATION' as FacilityType,
   BUSINESS: 'BUSINESS' as FacilityType,
   CAMPSITE: 'CAMPSITE' as FacilityType,
