@@ -340,5 +340,12 @@
     </app-collapsable-box>
   </form>
   <br />
-  <div fxFlexOffset="auto" class="reset-button" (click)="resetFilters()">Reset filters</div>
+  <div
+    fxFlexOffset="auto"
+    class="reset-button"
+    (click)="resetFilters()"
+    (keyup.enter)="resetFilters()"
+  >
+    Reset filters
+  </div>
 </div>

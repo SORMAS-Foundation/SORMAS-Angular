@@ -4,7 +4,7 @@
       <div class="box-title">
         {{ boxTitle }}
       </div>
-      <div class="box-icon" (click)="collapsed = !collapsed">
+      <div class="box-icon" (click)="collapsed = !collapsed" (keyup.enter)="collapsed = !collapsed">
         <mat-icon *ngIf="collapsed">add</mat-icon>
         <mat-icon *ngIf="!collapsed">remove</mat-icon>
       </div>
