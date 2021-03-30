@@ -1,4 +1,20 @@
+@use '../../../variables.scss' as *;
+
+.toggle-filter {
+  position: fixed;
+  top: 57vh;
+  left: 0;
+  color: map-get($sormas-primary, 700);
+  cursor: pointer;
+  transform: rotate(90deg);
+}
 .header-title {
+  padding-left: 20px;
   font-size: 34px;
   font-weight: 500;
+}
+
+.filters-bar {
+  width: 290px;
+  background-color: inherit;
 }

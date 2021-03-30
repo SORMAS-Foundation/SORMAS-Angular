@@ -14,6 +14,7 @@ import { MenuComponent } from './layout/menu/menu.component';
 import { Table2Component } from './table2/table2.component';
 import { DialogModule } from './dialog';
 import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
 import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
     MenuComponent,
     Table2Component,
     InpageNavComponent,
+    CollapsableBoxComponent,
     EnumToKeyValuePipe,
   ],
   imports: [
@@ -51,6 +53,7 @@ import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
     Table2Component,
     DialogModule,
     InpageNavComponent,
+    CollapsableBoxComponent,
   ],
 })
 export class SharedModule {}

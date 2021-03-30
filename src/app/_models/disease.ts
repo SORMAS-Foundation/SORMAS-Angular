@@ -68,6 +68,7 @@ export type Disease =
   | 'OTHER'
   | 'UNDEFINED';
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const Disease = {
   AFP: 'AFP' as Disease,
   CHOLERA: 'CHOLERA' as Disease,
