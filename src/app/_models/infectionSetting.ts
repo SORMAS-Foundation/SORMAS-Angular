@@ -1,0 +1,44 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
+
+export type InfectionSetting =
+  | 'UNKNOWN'
+  | 'AMBULATORY'
+  | 'MEDICAL_PRACTICE'
+  | 'OPERATIVE_1200'
+  | 'HOSPITAL_1300'
+  | 'OTHER_OUTPATIENT_FACILITY'
+  | 'STATIONARY'
+  | 'HOSPITAL_2100'
+  | 'NORMAL_WARD'
+  | 'OPERATIVE_2111'
+  | 'NOT_OPERATIVE'
+  | 'HEMATOLOGICAL_ONCOLOGY'
+  | 'CHILDREN_WARD'
+  | 'NEONATOLOGY'
+  | 'INTENSIVE_CARE_UNIT'
+  | 'OTHER_STATION'
+  | 'NURSING_HOME'
+  | 'REHAB_FACILITY'
+  | 'OTHER_STATIONARY_FACILITY';
+
+export const InfectionSetting = {
+  UNKNOWN: 'UNKNOWN' as InfectionSetting,
+  AMBULATORY: 'AMBULATORY' as InfectionSetting,
+  MEDICALPRACTICE: 'MEDICAL_PRACTICE' as InfectionSetting,
+  OPERATIVE1200: 'OPERATIVE_1200' as InfectionSetting,
+  HOSPITAL1300: 'HOSPITAL_1300' as InfectionSetting,
+  OTHEROUTPATIENTFACILITY: 'OTHER_OUTPATIENT_FACILITY' as InfectionSetting,
+  STATIONARY: 'STATIONARY' as InfectionSetting,
+  HOSPITAL2100: 'HOSPITAL_2100' as InfectionSetting,
+  NORMALWARD: 'NORMAL_WARD' as InfectionSetting,
+  OPERATIVE2111: 'OPERATIVE_2111' as InfectionSetting,
+  NOTOPERATIVE: 'NOT_OPERATIVE' as InfectionSetting,
+  HEMATOLOGICALONCOLOGY: 'HEMATOLOGICAL_ONCOLOGY' as InfectionSetting,
+  CHILDRENWARD: 'CHILDREN_WARD' as InfectionSetting,
+  NEONATOLOGY: 'NEONATOLOGY' as InfectionSetting,
+  INTENSIVECAREUNIT: 'INTENSIVE_CARE_UNIT' as InfectionSetting,
+  OTHERSTATION: 'OTHER_STATION' as InfectionSetting,
+  NURSINGHOME: 'NURSING_HOME' as InfectionSetting,
+  REHABFACILITY: 'REHAB_FACILITY' as InfectionSetting,
+  OTHERSTATIONARYFACILITY: 'OTHER_STATIONARY_FACILITY' as InfectionSetting,
+};

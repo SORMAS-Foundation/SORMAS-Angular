@@ -16,9 +16,9 @@ $grid-breakpoints: (
   xxl: 1680px,
 );
 
-$primary: mat-color($sormas-primary);
-$accent: mat-color($sormas-accent);
-$warn: mat-color($sormas-alert);
+$primary: mat-color($sormas-primary, 700);
+$accent: mat-color($sormas-accent, 800);
+$warn: mat-color($sormas-alert, 700);
 $white: #ffffff;
 $black: #000000;
 

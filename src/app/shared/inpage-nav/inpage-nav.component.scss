@@ -1,0 +1,21 @@
+@use '../../../variables.scss' as *;
+
+nav {
+  @include mat-elevation(2);
+
+  padding: 1.5rem 1rem 0.75rem;
+  background-color: $white;
+  border-radius: 0 0 5px 5px;
+
+  a {
+    margin: 0 1rem;
+    color: map-get($sormas-accent, 500);
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: $primary;
+    }
+  }
+}
