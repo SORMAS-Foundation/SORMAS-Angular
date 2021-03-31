@@ -62,6 +62,9 @@ services:
 #      - sormas-docker-test.com:host.docker.internal
       - sormas-docker-test.com:172.17.0.1
     volumes:
+# If you wish to run a custom .war for the sormas-rest, please use the below line as an example and change
+# the path `./sormas-rest/sormas-rest.war` to the one to the .war file you wish to use
+#      - ./sormas-rest/sormas-rest.war:/opt/domains/sormas/deployments/sormas-rest.war
       - ${SORMAS_PATH}/documents:/opt/sormas/documents
       - ${SORMAS_PATH}/custom:/opt/sormas/custom
       - ${SORMAS_PATH}/sormas2sormas:/opt/sormas/sormas2sormas
