@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
@@ -82,7 +82,7 @@ export class Table3Component implements OnInit, OnDestroy {
         next: (response: any) => {
           if (reload) {
             const dataSourceTmp = [];
-            for (let i = 0; i < response.totalElementCount; i++) {
+            for (let i = 0; i < response.totalElementCount; i += 1) {
               this.dataSourceArray.push({
                 index: i,
               });
@@ -93,7 +93,7 @@ export class Table3Component implements OnInit, OnDestroy {
             this.dataSource = new TableVirtualScrollDataSource(dataSourceTmp);
           }
 
-          for (let i = this.offset; i < this.offset + this.limit; i++) {
+          for (let i = this.offset; i < this.offset + this.limit; i += 1) {
             this.dataSourceArray[i] = response.elements[i - this.offset];
           }
         },
@@ -105,7 +105,7 @@ export class Table3Component implements OnInit, OnDestroy {
   }
 
   onItemSelect(event: any, row: any): void {
-    event.stopPropagation()
+    event.stopPropagation();
     this.selectItem.emit({
       item: this.dataSourceArray[row.index],
     });
@@ -124,8 +124,8 @@ export class Table3Component implements OnInit, OnDestroy {
   sortTable(sortParameters: Sort): void {
     this.sorting = {
       field: sortParameters.active,
-      ascending: sortParameters.direction !== 'desc'
-    }
+      ascending: sortParameters.direction !== 'desc',
+    };
 
     this.getResources(true);
   }

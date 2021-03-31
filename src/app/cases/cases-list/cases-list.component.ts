@@ -15,16 +15,14 @@ export class CasesListComponent implements OnInit {
   cases: CaseDataDto[] = [];
   defaultColumns: TableColumn[] = [];
 
-  constructor(
-    public caseService: CaseService,
-    private router: Router,
-  ) {}
+  constructor(public caseService: CaseService, private router: Router) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
   }
 
   selectCase(selection: SelectionModel<any>): void {
+    // eslint-disable-next-line no-console
     console.log('event', selection);
   }
 

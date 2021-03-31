@@ -23,10 +23,7 @@ export class CaseFiltersComponent implements OnInit {
 
   @Input() drawer: any = {};
 
-  constructor(
-    private filterService: FilterService
-  ) {
-  }
+  constructor(private filterService: FilterService) {}
 
   getDropdownOptions(type: object): DropdownData[] {
     const list = Object.values(type);

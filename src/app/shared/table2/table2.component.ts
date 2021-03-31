@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { Resource } from '../../_models/resource';
 
 import * as constants from '../../app.constants';
 import { Sorting } from '../../_models/common';
 import { NotificationService } from '../../_services/notification.service';
 import { TableColumn } from '../table/table-column';
-import { Subject } from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-table2',
@@ -27,7 +27,6 @@ export class Table2Component implements OnInit {
 
   dataSource: any;
 
-
   @Input() tableData: Resource[] = [];
   @Input() tableColumns: TableColumn[] = [];
   @Input() isSelectable = false;
@@ -42,19 +41,16 @@ export class Table2Component implements OnInit {
     this.columnKeys = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.dataKey);
     this.selection.changed.subscribe(() => this.selectData.emit(this.selection.selected));
 
-
     this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
+      // eslint-disable-next-line no-console
       console.log('valueee', value);
     });
-
-    const DATA = this.getData(1000);
-    //this.dataSource = new TableVirtualScrollDataSource(DATA);
   }
 
   getData(n = 1000): any[] {
-    return Array.from({length: n}, (v, i) => ({
+    return Array.from({ length: n }, (v, i) => ({
       id: i + 1,
-      name: `Element #${i + 1}`
+      name: `Element #${i + 1}`,
     }));
   }
 

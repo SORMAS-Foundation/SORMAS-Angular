@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import {Filter} from '../_models/common';
+import { Filter } from '../_models/common';
 
 @Injectable({ providedIn: 'root' })
 export class FilterService {
