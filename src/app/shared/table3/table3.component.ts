@@ -25,7 +25,7 @@ export class Table3Component implements OnInit, OnDestroy {
   selection = new SelectionModel<any>(true, []);
   offset = 0;
   limit = constants.PAGE_SIZE;
-  sorting: Sorting = { field: '', ascending: true };
+  sorting: Sorting | null = null;
   filters: Filter[];
   debouncer: Subject<number> = new Subject<number>();
   dataSourceArray: any = [];
@@ -82,7 +82,7 @@ export class Table3Component implements OnInit, OnDestroy {
         next: (response: any) => {
           if (reload) {
             const dataSourceTmp = [];
-            for (let i = 0; i < response.totalNoElements; i++) {
+            for (let i = 0; i < response.totalElementCount; i++) {
               this.dataSourceArray.push({
                 index: i,
               });
@@ -122,9 +122,10 @@ export class Table3Component implements OnInit, OnDestroy {
   }
 
   sortTable(sortParameters: Sort): void {
-    this.sorting.field = sortParameters.active;
-
-    this.sorting.ascending = sortParameters.direction !== 'desc';
+    this.sorting = {
+      field: sortParameters.active,
+      ascending: sortParameters.direction !== 'desc'
+    }
 
     this.getResources(true);
   }

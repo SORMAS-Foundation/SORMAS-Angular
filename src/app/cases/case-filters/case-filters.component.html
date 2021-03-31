@@ -14,12 +14,11 @@
       />
     </mat-form-field>
     <app-collapsable-box [collapsed]="true" boxTitle="Cases">
-      <mat-radio-group name="cases" formControlName="cases">
+      <mat-radio-group name="cases" formControlName="cases" (change)="onFormChange()">
         <mat-radio-button
           class="case-radio"
           value="active"
           color="primary"
-          (change)="onFormChange()"
         >
           Active cases
         </mat-radio-button>
@@ -27,7 +26,6 @@
           class="case-radio"
           value="archived"
           color="primary"
-          (change)="onFormChange()"
         >
           Archived cases
         </mat-radio-button>
@@ -38,12 +36,11 @@
     </app-collapsable-box>
 
     <app-collapsable-box [collapsed]="true" boxTitle="Case origin">
-      <mat-radio-group name="caseOrigin" formControlName="caseOrigin">
+      <mat-radio-group name="caseOrigin" formControlName="caseOrigin" (change)="onFormChange()">
         <mat-radio-button
           class="case-radio"
           value="in-country"
           color="primary"
-          (change)="onFormChange()"
         >
           In country
         </mat-radio-button>
@@ -51,7 +48,6 @@
           class="case-radio"
           value="point-of-entry"
           color="primary"
-          (change)="onFormChange()"
         >
           Point of entry
         </mat-radio-button>

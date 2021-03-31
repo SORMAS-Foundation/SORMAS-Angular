@@ -32,14 +32,14 @@ export class BaseService<T extends Resource> {
 
     // pagination
     let paginationTmp = '';
-    if (typeof pagination !== 'undefined') {
+    if (typeof pagination !== 'undefined' && pagination !== null) {
       paginationTmp = `?offset=${pagination.offset}&size=${pagination.size}`;
     }
 
     // sorting
     let requestPayload: any = { caseCriteria: null, sortProperties: null };
 
-    if (typeof sorting !== 'undefined') {
+    if (typeof sorting !== 'undefined' && sorting !== null) {
       requestPayload = {
         criteria: null,
         sortProperties: [
@@ -52,12 +52,11 @@ export class BaseService<T extends Resource> {
     }
 
     // filters
-    console.log('filters', filters);
-    if (typeof filters !== 'undefined') {
-      // filters.forEach((filter: any) => {
-      //   requestPayload.criteria
-      // });
-      requestPayload[filters[0].field] = filters[0].value;
+    if (typeof filters !== 'undefined' && filters !== null) {
+      requestPayload.criteria = {};
+      filters.forEach((filter: any) => {
+        requestPayload.criteria[filter.field] = filter.value;
+      });
     }
 
     return this.httpClient

@@ -7,17 +7,6 @@
   </mat-drawer>
   <mat-drawer-content>
     <h1 class="header-title" i18n="Cases Overview header">Cases Overview</h1>
-    <!--<app-table2-->
-    <!--  [resourceService]="caseService"-->
-    <!--  [tableData]="cases"-->
-    <!--  [tableColumns]="defaultColumns"-->
-    <!--  [isSelectable]="true"-->
-    <!--  (selectData)="selectionData($event)"-->
-    <!--  (selectCase)="onCaseSelect($event)"-->
-    <!--&gt;</app-table2>-->
-
-    <button (click)="filter()">filter</button>
-
     <app-table3
       [resourceService]="caseService"
       [tableColumns]="defaultColumns"
@@ -28,6 +17,5 @@
       (selectItem)="selectCase($event)"
       (clickItem)="clickCase($event)"
     ></app-table3>
-    </app-table2>
   </mat-drawer-content>
 </mat-drawer-container>
