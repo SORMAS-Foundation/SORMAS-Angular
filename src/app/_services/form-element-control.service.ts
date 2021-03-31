@@ -41,7 +41,7 @@ export class FormElementControlService {
         if (field.key.includes('.')) {
           const getProp = (obj: any, prop: any) => {
             return prop.split('.').reduce((r: any, e: any) => {
-              return r[e];
+              return r && r[e];
             }, obj);
           };
           // eslint-disable-next-line no-param-reassign

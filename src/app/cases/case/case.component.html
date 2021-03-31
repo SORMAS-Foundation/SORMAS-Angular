@@ -2,7 +2,7 @@
   <div class="title-container">
     <h1>
       <a [routerLink]="['/cases/list']">
-        <span class="material-icons"> west </span>
+        <mat-icon class="material-icons" color="accent"> west </mat-icon>
       </a>
       <span> {{ case.person?.firstName }} {{ case.person?.lastName }}</span>
     </h1>
@@ -29,21 +29,26 @@
     </span>
   </div>
 
-  <button mat-flat-button color="primary" class="save-btn" (click)="saveForm()">
-    Save
-  </button>
+  <div class="tab-nav-header">
+    <nav mat-tab-nav-bar>
+      <a
+        mat-tab-link
+        *ngFor="let link of links"
+        [routerLink]="link.link"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        {{ link.title }}
+      </a>
+    </nav>
+    <div class="tab-nav-header-actions">
+      <button mat-stroked-button color="primary" class="reset-btn" (click)="resetForm()">
+        Discard
+      </button>
+      <button mat-flat-button color="primary" class="save-btn" (click)="saveForm()">Save</button>
+    </div>
+  </div>
 
-  <nav mat-tab-nav-bar>
-    <a
-      mat-tab-link
-      *ngFor="let link of links"
-      [routerLink]="link.link"
-      routerLinkActive
-      #rla="routerLinkActive"
-      [active]="rla.isActive"
-    >
-      {{ link.title }}
-    </a>
-  </nav>
   <router-outlet (activate)="onActivate($event)"></router-outlet>
 </section>

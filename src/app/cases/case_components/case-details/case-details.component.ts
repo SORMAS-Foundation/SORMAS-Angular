@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
-import { CaseItem } from '../../../_models/case';
 import * as data from './form-data';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { BaseService } from '../../../_services/api/base.service';
+import { CaseDataDto } from '../../../_models/caseDataDto';
 
 @Component({
   selector: 'app-case-details',
@@ -12,16 +12,23 @@ import { BaseService } from '../../../_services/api/base.service';
 })
 export class CaseDetailsComponent {
   myFormElements: FormBase<any>[] = [];
+  formData = data.FORM_DATA_CASE_DETAILS;
 
   public resourceService: BaseService<any>;
 
   constructor(private formElementControlService: FormElementControlService) {}
 
-  updateComponent(caseItem: CaseItem, resourceService: BaseService<any>): void {
+  updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
     this.resourceService = resourceService;
     this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
       caseItem,
-      data.FORM_DATA_CASE_DETAILS
+      this.formData
     );
+  }
+
+  getSections(): any {
+    return this.formData
+      .filter((item) => item.anchor)
+      .map((item: FormBase<string>) => ({ id: item.anchor, label: item.anchorLabel }));
   }
 }

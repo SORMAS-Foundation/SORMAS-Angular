@@ -14,6 +14,9 @@ import { FormDateComponent } from './form-date/form-date.component';
 import { FormInputComponent } from './form-input/form-input.component';
 import { FormRadioComponent } from './form-radio/form-radio.component';
 import { FormSelectComponent } from './form-select/form-select.component';
+import { FormTextareaComponent } from './form-textarea/form-textarea.component';
+import { FORM_DATA_BASE } from '../../../app.constants';
+import { FormNullComponent } from './form-null/form-null.component';
 
 const components: FormFields = {
   input: FormInputComponent,
@@ -21,6 +24,8 @@ const components: FormFields = {
   radio: FormRadioComponent,
   dropdown: FormSelectComponent,
   date: FormDateComponent,
+  textarea: FormTextareaComponent,
+  null: FormNullComponent,
 };
 
 @Directive({
@@ -28,15 +33,7 @@ const components: FormFields = {
 })
 export class DynamicFieldDirective implements OnInit {
   @Input() config: FormElementBase<string> = {
-    controlType: '',
-    key: '',
-    label: '',
-    options: [],
-    order: 0,
-    validation: [],
-    type: '',
-    value: '',
-    newLine: false,
+    ...FORM_DATA_BASE,
   };
   @Input() group: FormGroup = new FormGroup({});
   component: any;

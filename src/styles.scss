@@ -3,6 +3,7 @@
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
+@import './theme/common.scss';
 @import './theme/palettes.scss';
 @import './theme/form-field.scss';
 @import './theme/form-checkbox.scss';
@@ -13,6 +14,7 @@
 @import './theme/table.scss';
 @import './theme/tabs.scss';
 @import './theme/dialog.scss';
+@import './theme/alertify.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -66,60 +68,3 @@ $sormas-theme: mat-light-theme(
 // that you are using.
 @include angular-material-theme($sormas-theme);
 @include custom-theme($sormas-theme);
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-:root {
-  .alertify-notifier {
-    display: flex;
-    width: 436px;
-    flex-direction: column;
-    align-items: flex-end;
-
-    &.ajs-top {
-      top: 92px;
-    }
-
-    &.ajs-right {
-      right: 64px;
-
-      .ajs-message.ajs-visible {
-        right: 0;
-      }
-    }
-
-    .ajs-message {
-      width: auto;
-      max-width: 436px;
-      padding: 2em;
-      margin-bottom: 1em;
-      background-color: map-get($sormas-primary, 50);
-      border-radius: 5px;
-      font-size: 1rem;
-      @include mat-elevation(4);
-
-      &.ajs-success {
-        background-color: map-get($sormas-success, 50);
-        @include mat-elevation(4);
-      }
-
-      &.ajs-error {
-        background-color: map-get($sormas-alert, 50);
-        @include mat-elevation(15);
-      }
-
-      &.ajs-warning {
-        background-color: map-get($sormas-warning, 50);
-        @include mat-elevation(15);
-      }
-    }
-  }
-}

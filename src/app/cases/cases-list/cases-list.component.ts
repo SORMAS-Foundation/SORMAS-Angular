@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CaseService } from '../../_services/api/case.service';
-import { CaseItem } from '../../_models/case';
+import * as constants from '../../app.constants';
+import { NotificationService } from '../../_services/notification.service';
 import { TableColumn } from '../../shared/table/table-column';
 import { defaultColumnDefs } from '../../_entity-data/case';
+import { CaseDataDto } from '../../_models/caseDataDto';
 
 import { FilterService } from '../../_services/filter.service';
 
@@ -14,7 +16,7 @@ import { FilterService } from '../../_services/filter.service';
   styleUrls: ['./cases-list.component.scss'],
 })
 export class CasesListComponent implements OnInit {
-  cases: CaseItem[] = [];
+  cases: CaseDataDto[] = [];
   defaultColumns: TableColumn[] = [];
 
   constructor(

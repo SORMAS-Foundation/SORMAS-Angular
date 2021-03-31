@@ -3,10 +3,10 @@ import { CaseControllerService } from 'api-client';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseService } from '../../_services/api/case.service';
-import { CaseItem } from '../../_models/case';
 import { CaseClassificationIcons, CaseLink, CaseOutcomeIcons } from '../../app.constants';
 import { caseLinks } from '../../_entity-data/case';
 import { TriggerSaveFormService } from '../../_services/trigger-save-form.service';
+import { CaseDataDto } from '../../_models/caseDataDto';
 
 @Component({
   selector: 'app-case',
@@ -15,7 +15,7 @@ import { TriggerSaveFormService } from '../../_services/trigger-save-form.servic
   providers: [CaseControllerService],
 })
 export class CaseComponent implements OnInit {
-  case: CaseItem;
+  case: CaseDataDto;
   caseOutcomeIcons = CaseOutcomeIcons;
   caseClassificationIcons = CaseClassificationIcons;
   links: CaseLink[] = [];
@@ -48,6 +48,11 @@ export class CaseComponent implements OnInit {
 
   saveForm(): void {
     this.triggerSaveFormService.setSave(this.case);
+  }
+
+  resetForm(): void {
+    // eslint-disable-next-line no-console
+    console.log('reset form');
   }
 
   onActivate(componentReference: any): void {
