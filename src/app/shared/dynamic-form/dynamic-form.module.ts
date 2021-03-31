@@ -12,6 +12,7 @@ import { FormSelectComponent } from './components/form-select/form-select.compon
 import { FormRadioComponent } from './components/form-radio/form-radio.component';
 import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
 import { FormNullComponent } from './components/form-null/form-null.component';
+import { FormNumberComponent } from './components/form-number/form-number.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SharedModule],
@@ -25,6 +26,7 @@ import { FormNullComponent } from './components/form-null/form-null.component';
     FormRadioComponent,
     FormTextareaComponent,
     FormNullComponent,
+    FormNumberComponent,
   ],
   exports: [DynamicFormComponent],
   entryComponents: [
@@ -35,6 +37,7 @@ import { FormNullComponent } from './components/form-null/form-null.component';
     FormRadioComponent,
     FormTextareaComponent,
     FormNullComponent,
+    FormNumberComponent,
   ],
 })
 export class DynamicFormModule {}

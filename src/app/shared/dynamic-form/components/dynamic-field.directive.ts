@@ -17,6 +17,7 @@ import { FormSelectComponent } from './form-select/form-select.component';
 import { FormTextareaComponent } from './form-textarea/form-textarea.component';
 import { FORM_DATA_BASE } from '../../../app.constants';
 import { FormNullComponent } from './form-null/form-null.component';
+import { FormNumberComponent } from './form-number/form-number.component';
 
 const components: FormFields = {
   input: FormInputComponent,
@@ -26,6 +27,7 @@ const components: FormFields = {
   date: FormDateComponent,
   textarea: FormTextareaComponent,
   null: FormNullComponent,
+  number: FormNumberComponent,
 };
 
 @Directive({

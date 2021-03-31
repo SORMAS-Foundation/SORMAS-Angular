@@ -17,6 +17,7 @@ import {
   VaccineName,
   VaccineManufacturer,
   FORM_DATA_NULL,
+  FORM_DATA_NUMBER,
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../shared/pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -347,7 +348,7 @@ export const FORM_DATA_CASE_DETAILS = [
         options: optionsVaccinationStatus,
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_NUMBER,
         key: 'vaccinationDoses',
         label: 'Vaccination doses',
         dependingOn: 'vaccination',
