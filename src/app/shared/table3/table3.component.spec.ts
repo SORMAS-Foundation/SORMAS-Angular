@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Table3Component } from './table3.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { Table3Component } from './table3.component';
 
 describe('Table3Component', () => {
   let component: Table3Component;
