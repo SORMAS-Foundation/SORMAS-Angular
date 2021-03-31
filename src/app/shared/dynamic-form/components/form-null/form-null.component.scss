@@ -3,7 +3,7 @@
 .form-null-label {
   display: block;
   height: 1rem;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba($black, 0.6);
 }
 
 .form-null-value {
@@ -13,6 +13,6 @@
 
 .form-null-hint {
   display: block;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba($black, 0.6);
   font-size: 11px;
 }
