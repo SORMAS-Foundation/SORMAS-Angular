@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Table3Component } from './table3.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('Table3Component', () => {
   let component: Table3Component;
@@ -8,9 +9,9 @@ describe('Table3Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Table3Component ]
-    })
-    .compileComponents();
+      declarations: [Table3Component],
+      imports: [MatDialogModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
