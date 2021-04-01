@@ -11,12 +11,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { MenuComponent } from './layout/menu/menu.component';
-import { Table2Component } from './table2/table2.component';
 import { DialogModule } from './dialog';
 import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
 import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
-import { Table3Component } from './table3/table3.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +24,9 @@ import { Table3Component } from './table3/table3.component';
     TableComponent,
     PropertyGetterPipe,
     MenuComponent,
-    Table2Component,
     InpageNavComponent,
     CollapsableBoxComponent,
     EnumToKeyValuePipe,
-    Table3Component,
   ],
   imports: [
     CommonModule,
@@ -52,8 +48,6 @@ import { Table3Component } from './table3/table3.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    Table2Component,
-    Table3Component,
     DialogModule,
     InpageNavComponent,
     CollapsableBoxComponent,

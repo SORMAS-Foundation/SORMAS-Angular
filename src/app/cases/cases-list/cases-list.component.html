@@ -7,7 +7,7 @@
   </mat-drawer>
   <mat-drawer-content>
     <h1 class="header-title" i18n="Cases Overview header">Cases Overview</h1>
-    <app-table3
+    <app-table
       [resourceService]="caseService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"
@@ -16,6 +16,6 @@
       [visibleRowsCount]="8"
       (selectItem)="selectCase($event)"
       (clickItem)="clickCase($event)"
-    ></app-table3>
+    ></app-table>
   </mat-drawer-content>
 </mat-drawer-container>
