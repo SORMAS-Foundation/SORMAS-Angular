@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatDialogModule } from '@angular/material/dialog';
-import { Table3Component } from './table3.component';
+import { TableComponent } from './table.component';
 
-describe('Table3Component', () => {
-  let component: Table3Component;
-  let fixture: ComponentFixture<Table3Component>;
+describe('TableComponent', () => {
+  let component: TableComponent;
+  let fixture: ComponentFixture<TableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Table3Component],
+      declarations: [TableComponent],
       imports: [MatDialogModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Table3Component);
+    fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
