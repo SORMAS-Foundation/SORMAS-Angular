@@ -1,5 +1,5 @@
 <div class="case-filters">
-  <mat-icon class="toggle-filter" (click)="drawer.close()">filter_list</mat-icon>
+  <button class="toggle-filter" (click)="drawer.close()"><mat-icon>filter_list</mat-icon></button>
   <h2 class="filters-header">Filters</h2>
   <form [formGroup]="filtersForm" class="filters-form">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
@@ -15,18 +15,10 @@
     </mat-form-field>
     <app-collapsable-box [collapsed]="true" boxTitle="Cases">
       <mat-radio-group name="cases" formControlName="cases" (change)="onFormChange()">
-        <mat-radio-button
-          class="case-radio"
-          value="active"
-          color="primary"
-        >
+        <mat-radio-button class="case-radio" value="active" color="primary">
           Active cases
         </mat-radio-button>
-        <mat-radio-button
-          class="case-radio"
-          value="archived"
-          color="primary"
-        >
+        <mat-radio-button class="case-radio" value="archived" color="primary">
           Archived cases
         </mat-radio-button>
         <mat-radio-button class="case-radio" value="all" color="primary" (change)="onFormChange()">
@@ -37,18 +29,10 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="Case origin">
       <mat-radio-group name="caseOrigin" formControlName="caseOrigin" (change)="onFormChange()">
-        <mat-radio-button
-          class="case-radio"
-          value="in-country"
-          color="primary"
-        >
+        <mat-radio-button class="case-radio" value="IN_COUNTRY" color="primary">
           In country
         </mat-radio-button>
-        <mat-radio-button
-          class="case-radio"
-          value="point-of-entry"
-          color="primary"
-        >
+        <mat-radio-button class="case-radio" value="POINT_OF_ENTRY" color="primary">
           Point of entry
         </mat-radio-button>
       </mat-radio-group>
@@ -237,9 +221,10 @@
         id="new-case-from"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker1.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+        class="{{
+          picker1.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-field has-hint with-spacing"
       >
-        <mat-label> New case from </mat-label>
         <input
           matInput
           [matDatepicker]="picker1"
@@ -247,16 +232,20 @@
           formControlName="newCaseFrom"
           (dateChange)="onFormChange()"
         />
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-hint>New case from</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
       <mat-form-field
         id="new-case-to"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker2.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+        class="{{ picker2.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
       >
-        <mat-label> to </mat-label>
         <input
           matInput
           [matDatepicker]="picker2"
@@ -264,16 +253,20 @@
           formControlName="newCaseTo"
           (dateChange)="onFormChange()"
         />
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-hint>to</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker2"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
       <mat-form-field
         id="quarantine-end"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker3.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+        class="{{ picker3.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
       >
-        <mat-label> Quarantine end </mat-label>
         <input
           matInput
           [matDatepicker]="picker3"
@@ -281,16 +274,20 @@
           formControlName="quarantineEnd"
           (dateChange)="onFormChange()"
         />
-        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-hint>Quarantine end</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker3"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
         <mat-datepicker #picker3></mat-datepicker>
       </mat-form-field>
       <mat-form-field
         id="follow-up-until"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker4.opened ? 'datepicker-opened' : 'datepicker-closed' }}"
+        class="{{ picker4.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
       >
-        <mat-label> Follow up until </mat-label>
         <input
           matInput
           [matDatepicker]="picker4"
@@ -298,7 +295,12 @@
           formControlName="followUpUntil"
           (dateChange)="onFormChange()"
         />
-        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+        <mat-hint>Follow up until</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker4"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
         <mat-datepicker #picker4></mat-datepicker>
       </mat-form-field>
     </app-collapsable-box>

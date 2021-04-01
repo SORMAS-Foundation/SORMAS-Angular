@@ -7,9 +7,12 @@
 .toggle-filter {
   position: fixed;
   top: 57vh;
-  left: 0;
+  left: -10px;
+  border: none;
+  background: transparent;
   color: map-get($sormas-primary, 700);
   cursor: pointer;
+  outline: none;
   transform: rotate(90deg);
 }
 .header-title {
