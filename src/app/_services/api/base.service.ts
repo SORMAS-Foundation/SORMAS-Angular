@@ -54,6 +54,9 @@ export class BaseService<T extends Resource> {
     // filters
     if (typeof filters !== 'undefined' && filters !== null) {
       requestPayload.criteria = {};
+      if (!filters.length) {
+        requestPayload.criteria = null;
+      }
       filters.forEach((filter: any) => {
         requestPayload.criteria[filter.field] = filter.value;
       });
