@@ -23,7 +23,7 @@ export class BaseService<T extends Resource> {
     @Inject('Serializer') private serializer: Serializer
   ) {}
 
-  getAll(pagination?: any, sorting?: any): Observable<PaginationResponse> {
+  getAll(pagination?: any, sorting?: any, filters?: any): Observable<PaginationResponse> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.GET_ALL) {
@@ -32,15 +32,16 @@ export class BaseService<T extends Resource> {
 
     // pagination
     let paginationTmp = '';
-    if (typeof pagination !== 'undefined') {
-      paginationTmp = `?page=${pagination.page}&size=${pagination.size}`;
+    if (typeof pagination !== 'undefined' && pagination !== null) {
+      paginationTmp = `?offset=${pagination.offset}&size=${pagination.size}`;
     }
 
     // sorting
-    let sortingTmp: any = { caseCriteria: null, sortProperties: null };
-    if (typeof sorting !== 'undefined') {
-      sortingTmp = {
-        caseCriteria: null,
+    let requestPayload: any = { caseCriteria: null, sortProperties: null };
+
+    if (typeof sorting !== 'undefined' && sorting !== null) {
+      requestPayload = {
+        criteria: null,
         sortProperties: [
           {
             propertyName: sorting.field,
@@ -50,8 +51,19 @@ export class BaseService<T extends Resource> {
       };
     }
 
+    // filters
+    if (typeof filters !== 'undefined' && filters !== null) {
+      requestPayload.criteria = {};
+      if (!filters.length) {
+        requestPayload.criteria = null;
+      }
+      filters.forEach((filter: any) => {
+        requestPayload.criteria[filter.field] = filter.value;
+      });
+    }
+
     return this.httpClient
-      .post(`${this.url}/${this.apiEndpoint}/${endpoint}${paginationTmp}`, sortingTmp)
+      .post(`${this.url}/${this.apiEndpoint}/${endpoint}${paginationTmp}`, requestPayload)
       .pipe(map((data: any) => this.convertData(data)));
   }
 
@@ -63,8 +75,8 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.url}/${this.apiEndpoint}/${endpoint}`, [id])
-      .pipe(map((data: any) => this.serializer.fromJson(data[0]) as T));
+      .get(`${this.url}/${this.apiEndpoint}/${endpoint}/${id}`)
+      .pipe(map((data: any) => this.serializer.fromJson(data) as T));
   }
 
   update(item: T): Observable<T> {

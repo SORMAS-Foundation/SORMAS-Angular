@@ -1,5 +1,9 @@
 @use '../../../variables.scss' as *;
 
+.mat-drawer-container {
+  height: 100%;
+}
+
 .toggle-filter {
   position: fixed;
   top: 57vh;

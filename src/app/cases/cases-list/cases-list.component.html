@@ -1,5 +1,5 @@
 <mat-icon class="toggle-filter" (click)="drawer.open()" *ngIf="!drawer.opened"
-  >filter_list</mat-icon
+>filter_list</mat-icon
 >
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer opened mode="side" class="filters-bar">
@@ -7,15 +7,15 @@
   </mat-drawer>
   <mat-drawer-content>
     <h1 class="header-title" i18n="Cases Overview header">Cases Overview</h1>
-    <app-table2
-      *ngIf="cases.length"
+    <app-table
       [resourceService]="caseService"
-      [tableData]="cases"
       [tableColumns]="defaultColumns"
+      [isSortable]="true"
       [isSelectable]="true"
-      (selectData)="selectionData($event)"
-      (selectCase)="onCaseSelect($event)"
-    >
-    </app-table2>
+      [isHeaderSticky]="true"
+      [visibleRowsCount]="8"
+      (selectItem)="selectCase($event)"
+      (clickItem)="clickCase($event)"
+    ></app-table>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -2,15 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Disease } from '../../_models/disease';
 import { FacilityTypeObject } from '../../_models/facility';
+import { FilterService } from '../../_services/filter.service';
+import { Filter } from '../../_models/common';
 
 export interface DropdownData {
   key: string;
   value: string;
-}
-
-export interface Filters {
-  field: string;
-  value: string | string[];
 }
 
 @Component({
@@ -20,11 +17,13 @@ export interface Filters {
 })
 export class CaseFiltersComponent implements OnInit {
   filtersForm = new FormGroup({});
-  allFilters: Filters[] = [];
+  allFilters: Filter[] = [];
   allDisease: DropdownData[] = this.getDropdownOptions(Disease);
   allFacilityTypes: DropdownData[] = this.getDropdownOptions(FacilityTypeObject);
 
   @Input() drawer: any = {};
+
+  constructor(private filterService: FilterService) {}
 
   getDropdownOptions(type: object): DropdownData[] {
     const list = Object.values(type);
@@ -44,7 +43,7 @@ export class CaseFiltersComponent implements OnInit {
         this.allFilters.push({ field: keys[i], value: values[i] });
       }
     });
-    console.log('all filters = ', this.allFilters); // TODO: delete this before merge with main
+    this.filterService.setFilters(this.allFilters);
   }
 
   initFiltersForm(): void {
