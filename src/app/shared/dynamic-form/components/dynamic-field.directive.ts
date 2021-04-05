@@ -18,6 +18,7 @@ import { FormTextareaComponent } from './form-textarea/form-textarea.component';
 import { FORM_DATA_BASE } from '../../../app.constants';
 import { FormNullComponent } from './form-null/form-null.component';
 import { FormNumberComponent } from './form-number/form-number.component';
+import { FormWidgetComponent } from './form-widget/form-widget.component';
 
 const components: FormFields = {
   input: FormInputComponent,
@@ -28,6 +29,7 @@ const components: FormFields = {
   textarea: FormTextareaComponent,
   null: FormNullComponent,
   number: FormNumberComponent,
+  widget: FormWidgetComponent,
 };
 
 @Directive({

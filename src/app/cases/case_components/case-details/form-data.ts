@@ -5,6 +5,9 @@ import {
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
+  FORM_DATA_NULL,
+  FORM_DATA_NUMBER,
+  FORM_DATA_BASE,
   CaseClassification,
   InvestigationStatus,
   CaseOutcome,
@@ -16,11 +19,13 @@ import {
   VaccinationSource,
   VaccineName,
   VaccineManufacturer,
-  FORM_DATA_NULL,
-  FORM_DATA_NUMBER,
+  CaseIdentificationSource,
+  ScreeningType,
+  InfectionSetting,
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../shared/pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { CasePersonAddressComponent } from '../case-person-address/case-person-address.component';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -35,8 +40,21 @@ const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
 const optionsVaccinationSource = pipe.transform(VaccinationSource);
 const optionsVaccineName = pipe.transform(VaccineName);
 const optionsVaccineManufacturer = pipe.transform(VaccineManufacturer);
+const optionsCaseIdentificationSource = pipe.transform(CaseIdentificationSource);
+const optionsScreeningType = pipe.transform(ScreeningType);
+const optionsInfectionSetting = pipe.transform(InfectionSetting);
 
 export const FORM_DATA_CASE_DETAILS = [
+  {
+    title: 'Addresses',
+    fields: [
+      {
+        ...FORM_DATA_BASE,
+        controlType: 'widget',
+        widget: CasePersonAddressComponent,
+      },
+    ],
+  },
   {
     title: 'Date of report',
     required: true,
@@ -59,6 +77,36 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'caseClassification',
         validation: ['required'],
         options: optionsCaseClassification,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'clinicalConfirmation',
+        label: 'Clinical confirmation',
+        options: optionsYesNoUnknown,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'epidemiologicalConfirmation',
+        label: 'Epidemiological confirmation',
+        options: optionsYesNoUnknown,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'laboratoryDiagnosticConfirmation',
+        label: 'Lab diagnostic confirmation',
+        options: optionsYesNoUnknown,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'classificationDate',
+        label: 'Date of classification',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_NULL,
+        key: 'classificationUser.caption',
+        label: 'Classifying user',
       },
     ],
   },
@@ -83,13 +131,36 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    title: 'External data',
+    required: true,
+    fields: [
+      {
+        ...FORM_DATA_INPUT,
+        key: 'externalID',
+        label: 'External ID',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'externalToken',
+        label: 'External token',
+      },
+    ],
+  },
+  {
     title: 'Disease',
     required: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
+        label: 'Disease',
         validation: ['required'],
+        options: optionsDisese,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'diseaseVariant.uuid',
+        label: 'Disease variant',
         options: optionsDisese,
       },
     ],
@@ -122,18 +193,14 @@ export const FORM_DATA_CASE_DETAILS = [
         dependingOn: 'outcome',
         dependingOnValues: ['DECEASED', 'RECOVERED'],
       },
-    ],
-  },
-  {
-    title: 'Sequelae',
-    required: false,
-    fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'sequelae',
+        label: 'Sequelae',
         options: optionsYesNoUnknown,
         dependingOn: 'outcome',
         dependingOnValues: ['RECOVERED', 'UNKNOWN'],
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -143,6 +210,37 @@ export const FORM_DATA_CASE_DETAILS = [
         className: 'size-full',
         dependingOn: 'sequelae',
         dependingOnValues: ['YES'],
+      },
+    ],
+  },
+  {
+    title: 'Source',
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'reportingDistrict.uuid',
+        label: 'Reporting district',
+        options: [
+          {
+            key: 'default',
+            value: 'Default district',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'caseIdentificationSource',
+        label: 'Case identification source',
+        options: optionsCaseIdentificationSource,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'screeningType',
+        label: 'Screening',
+        options: optionsScreeningType,
+        dependingOn: 'caseIdentificationSource',
+        dependingOnValues: ['SCREENING'],
       },
     ],
   },
@@ -241,6 +339,8 @@ export const FORM_DATA_CASE_DETAILS = [
         ],
         newLine: true,
         className: 'size-large',
+        dependingOn: 'placeOfStaty',
+        dependingOnValues: ['FACILITY'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -255,6 +355,8 @@ export const FORM_DATA_CASE_DETAILS = [
         ],
         newLine: true,
         className: 'size-large',
+        dependingOn: 'placeOfStaty',
+        dependingOnValues: ['FACILITY'],
       },
       {
         ...FORM_DATA_INPUT,
@@ -262,6 +364,17 @@ export const FORM_DATA_CASE_DETAILS = [
         label: 'Facility name and description',
         newLine: true,
         className: 'size-full',
+        dependingOn: 'placeOfStaty',
+        dependingOnValues: ['FACILITY'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'placeOfStatyDetails',
+        label: 'Place description',
+        newLine: true,
+        className: 'size-full',
+        dependingOn: 'placeOfStaty',
+        dependingOnValues: ['HOME'],
       },
     ],
   },
@@ -270,27 +383,99 @@ export const FORM_DATA_CASE_DETAILS = [
     required: false,
     fields: [
       {
+        ...FORM_DATA_RADIO,
+        key: 'quarantineHomePossible',
+        label: 'Home base quarantine possible',
+        options: optionsYesNoUnknown,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'quarantineHomePossibleComment',
+        label: 'Comment',
+        className: 'size-large',
+        dependingOn: 'quarantineHomePossible',
+        dependingOnValues: ['NO'],
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'quarantineHomeSupplyEnsured',
+        label: 'Supply ensured?',
+        options: optionsYesNoUnknown,
+        dependingOn: 'quarantineHomePossible',
+        dependingOnValues: ['YES'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'quarantineHomeSupplyEnsuredComment',
+        label: 'Comment',
+        className: 'size-large',
+        dependingOn: 'quarantineHomeSupplyEnsured',
+        dependingOnValues: ['NO'],
+      },
+      {
         ...FORM_DATA_SELECT,
         key: 'quarantine',
         label: 'Place of quarantine',
         options: optionsQuarantine,
+        newLine: true,
       },
       {
         ...FORM_DATA_DATE,
-        key: '  quarantineFrom',
+        key: 'quarantineFrom',
         label: 'Quarantine period',
         hint: 'Start date',
-        newLine: true,
         dependingOn: 'quarantine',
         dependingOnValues: ['HOME', 'INSTITUTIONELL'],
       },
       {
         ...FORM_DATA_DATE,
-        key: '  quarantineTo',
+        key: 'quarantineTo',
         label: ' ',
         hint: 'End data',
         dependingOn: 'quarantine',
         dependingOnValues: ['HOME', 'INSTITUTIONELL'],
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'quarantineOrderedVerbally',
+        label: 'Quarantine ordered verbally',
+        dependingOn: 'quarantine',
+        dependingOnValues: ['HOME', 'INSTITUTIONELL'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'quarantineOrderedVerballyDate',
+        hint: 'Date of verbal order',
+        dependingOn: 'quarantineOrderedVerbally',
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'quarantineOrderedOfficialDocument',
+        label: 'Quarantine ordered by official document',
+        dependingOn: 'quarantine',
+        dependingOnValues: ['HOME', 'INSTITUTIONELL'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'quarantineOrderedOfficialDocumentDate',
+        hint: 'Date of document order',
+        dependingOn: 'quarantineOrderedOfficialDocument',
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'quarantineOfficialOrderSent',
+        label: 'Official quarantine order sent',
+        dependingOn: 'quarantineOrderedOfficialDocument',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'quarantineOfficialOrderSentDate',
+        hint: 'Date order was sent',
+        dependingOn: 'quarantineOfficialOrderSent',
       },
       {
         ...FORM_DATA_INPUT,
@@ -336,10 +521,54 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'Vaccination',
+    title: 'Donation',
     required: false,
     anchor: 'additional_information',
     anchorLabel: 'Additional information',
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'bloodOrganOrTissueDonated',
+        label: 'Blood/organ/tissue donation in the last 6 month',
+        options: optionsYesNoUnknown,
+      },
+    ],
+  },
+  {
+    title: 'Infection',
+    required: false,
+    fields: [
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'nosocomialOutbreak',
+        label: 'Resulted from nosocomial outbreak',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'infectionSetting',
+        label: 'Infection setting',
+        options: optionsInfectionSetting,
+        dependingOn: 'nosocomialOutbreak',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'reInfection',
+        label: 'Reinfection',
+        options: optionsYesNoUnknown,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'previousInfectionDate',
+        hint: 'Previous infection date',
+        dependingOn: 'reInfection',
+        dependingOnValues: ['YES'],
+      },
+    ],
+  },
+  {
+    title: 'Vaccination',
+    required: false,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -393,7 +622,6 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'vaccineManufacturer',
         label: 'Manufacturer',
         options: optionsVaccineManufacturer,
-        newLine: true,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
@@ -426,6 +654,34 @@ export const FORM_DATA_CASE_DETAILS = [
         label: 'ATC code',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
+      },
+    ],
+  },
+  {
+    title: 'Work',
+    required: false,
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'prohibitionToWork',
+        label: 'Prohibition to work',
+        options: optionsYesNoUnknown,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'prohibitionToWorkFrom',
+        label: ' ',
+        hint: 'Prohibition to work from',
+        dependingOn: 'prohibitionToWork',
+        dependingOnValues: ['YES'],
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'prohibitionToWorkUntil',
+        label: ' ',
+        hint: 'Prohibition to work until',
+        dependingOn: 'prohibitionToWork',
+        dependingOnValues: ['YES'],
       },
     ],
   },

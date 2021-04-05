@@ -13,6 +13,7 @@ import { FormRadioComponent } from './components/form-radio/form-radio.component
 import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
 import { FormNullComponent } from './components/form-null/form-null.component';
 import { FormNumberComponent } from './components/form-number/form-number.component';
+import { FormWidgetComponent } from './components/form-widget/form-widget.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SharedModule],
@@ -27,6 +28,7 @@ import { FormNumberComponent } from './components/form-number/form-number.compon
     FormTextareaComponent,
     FormNullComponent,
     FormNumberComponent,
+    FormWidgetComponent,
   ],
   exports: [DynamicFormComponent],
   entryComponents: [
@@ -38,6 +40,7 @@ import { FormNumberComponent } from './components/form-number/form-number.compon
     FormTextareaComponent,
     FormNullComponent,
     FormNumberComponent,
+    FormWidgetComponent,
   ],
 })
 export class DynamicFormModule {}
