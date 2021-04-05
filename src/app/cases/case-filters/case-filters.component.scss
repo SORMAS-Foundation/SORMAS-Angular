@@ -4,9 +4,12 @@
   .toggle-filter {
     position: absolute;
     top: 45vh;
-    right: 12px;
+    right: 8px;
+    border: none;
+    background: transparent;
     color: map-get($sormas-primary, 700);
     cursor: pointer;
+    outline: none;
     transform: rotate(90deg);
   }
 
@@ -43,10 +46,27 @@
   }
   .collapsable-field {
     width: 185px;
+    margin-top: 15px;
+    &:first-child {
+      margin-top: 20px;
+    }
   }
 
   .search-field {
     width: 240px;
     margin-left: 16px;
+  }
+
+  .date-field {
+    width: 185px;
+
+    .datepicker-icon {
+      position: relative;
+      right: 5px;
+      font-size: 10px;
+    }
+    &.with-spacing {
+      margin-top: 20px;
+    }
   }
 }
