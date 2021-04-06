@@ -77,6 +77,32 @@
       &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
         transform: translateY(-1.59375em);
       }
+
+      &.readonly {
+        .mat-form-field-flex {
+          padding: 0;
+        }
+
+        .mat-form-field-outline {
+          display: none;
+        }
+
+        .mat-form-field-label-wrapper {
+          left: 0;
+        }
+      }
+    }
+
+    .size-medium .mat-form-field-appearance-outline {
+      &.mat-form-field-has-label .mat-form-field-label-wrapper {
+        width: 230px;
+      }
+    }
+
+    .size-large .mat-form-field-appearance-outline {
+      &.mat-form-field-has-label .mat-form-field-label-wrapper {
+        width: 330px;
+      }
     }
   }
 }
