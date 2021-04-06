@@ -20,7 +20,9 @@ export class FormBaseComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.initialValue = this.group.controls[this.config.key].value;
+    if (typeof this.group.controls[this.config.key] !== 'undefined') {
+      this.initialValue = this.group.controls[this.config.key].value;
+    }
   }
 
   get isValid(): boolean {
