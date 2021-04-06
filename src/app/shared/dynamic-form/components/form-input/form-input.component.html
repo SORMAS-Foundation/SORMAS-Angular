@@ -9,6 +9,7 @@
     <input
       [value]="config.value"
       [type]="config.type"
+      (change)="onChange()"
       [formControlName]="config.key"
       matInput
       placeholder="{{ config.key }}"

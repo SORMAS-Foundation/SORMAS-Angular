@@ -12,6 +12,7 @@ import { CaseTherapyComponent } from './case_components/case-therapy/case-therap
 import { CaseFollowUpComponent } from './case_components/case-follow-up/case-follow-up.component';
 import { CaseClinicalCourseComponent } from './case_components/case-clinical-course/case-clinical-course.component';
 import { CaseContactsComponent } from './case_components/case-contacts/case-contacts.component';
+import { LeaveGuard } from '../_guards/leave-guard';
 
 const routes: Routes = [
   {
@@ -23,15 +24,15 @@ const routes: Routes = [
         path: 'case/:caseId',
         component: CaseComponent,
         children: [
-          { path: 'details', component: CaseDetailsComponent },
-          { path: 'person', component: CasePersonComponent },
-          { path: 'hospitalization', component: CaseHospitalizationComponent },
-          { path: 'symptoms', component: CaseSymptomsComponent },
-          { path: 'epidemiological-data', component: CaseEpidemiologicalDataComponent },
-          { path: 'therapy', component: CaseTherapyComponent },
-          { path: 'follow-up', component: CaseFollowUpComponent },
-          { path: 'clinical-course', component: CaseClinicalCourseComponent },
-          { path: 'contacts', component: CaseContactsComponent },
+          { path: 'details', component: CaseDetailsComponent, canActivate: [LeaveGuard] },
+          { path: 'person', component: CasePersonComponent, canActivate: [LeaveGuard] },
+          { path: 'hospitalization', component: CaseHospitalizationComponent, canActivate: [LeaveGuard] },
+          { path: 'symptoms', component: CaseSymptomsComponent, canActivate: [LeaveGuard] },
+          { path: 'epidemiological-data', component: CaseEpidemiologicalDataComponent, canActivate: [LeaveGuard] },
+          { path: 'therapy', component: CaseTherapyComponent, canActivate: [LeaveGuard] },
+          { path: 'follow-up', component: CaseFollowUpComponent, canActivate: [LeaveGuard] },
+          { path: 'clinical-course', component: CaseClinicalCourseComponent, canActivate: [LeaveGuard] },
+          { path: 'contacts', component: CaseContactsComponent, canActivate: [LeaveGuard] },
         ],
       },
     ],

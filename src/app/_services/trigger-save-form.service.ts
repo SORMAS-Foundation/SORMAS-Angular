@@ -5,6 +5,7 @@ import { Resource } from '../_models/resource';
 @Injectable({ providedIn: 'root' })
 export class TriggerSaveFormService {
   private subject = new Subject<any>();
+  private subjectInputChange = new Subject<any>();
 
   setSave(resource: Resource): void {
     this.subject.next({ resource });
@@ -12,5 +13,13 @@ export class TriggerSaveFormService {
 
   getSave(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+  setInputChange(inputChange: boolean): void {
+    this.subjectInputChange.next({ inputChange });
+  }
+
+  getInputChange(): Observable<any> {
+    return this.subjectInputChange.asObservable();
   }
 }

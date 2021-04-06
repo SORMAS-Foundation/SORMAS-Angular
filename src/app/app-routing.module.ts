@@ -4,6 +4,7 @@ import { getEnv } from '../environments/getEnv';
 import { AuthLegacyGuard } from './shared/auth/app-legacy.guard';
 import { AuthGuard } from './shared/auth/app.guard';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { LeaveGuard } from './_guards/leave-guard';
 
 const Guard = getEnv().isLegacyLogin ? AuthLegacyGuard : AuthGuard;
 
@@ -11,29 +12,29 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-    canActivate: [Guard],
+    canActivate: [Guard, LeaveGuard],
   },
   {
     path: 'about',
     // component: AboutComponent,
     loadChildren: () => import('./about/about.module').then((m) => m.AboutModule),
-    canActivate: [Guard],
+    canActivate: [Guard, LeaveGuard],
   },
   {
     path: 'tasks',
     loadChildren: () => import('./tasks/tasks.module').then((m) => m.TasksModule),
-    canActivate: [Guard],
+    canActivate: [Guard, LeaveGuard],
   },
   {
     path: 'cases',
     loadChildren: () => import('./cases/cases.module').then((m) => m.CasesModule),
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, LeaveGuard],
   },
   {
     path: 'user-profile',
     loadChildren: () =>
       import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
-    canActivate: [Guard],
+    canActivate: [Guard, LeaveGuard],
   },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
