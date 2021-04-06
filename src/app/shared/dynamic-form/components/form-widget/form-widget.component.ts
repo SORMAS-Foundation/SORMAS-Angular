@@ -29,7 +29,7 @@ export class FormWidgetComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.config.widget
+      this.config?.widget
     );
     this.dynamic.clear();
     const componentRef = this.dynamic.createComponent<any>(componentFactory);

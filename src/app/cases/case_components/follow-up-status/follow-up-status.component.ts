@@ -11,21 +11,21 @@ export class FollowUpStatusComponent {
   config: FormElementBase<string>;
   group: FormGroup;
 
-  allowResume(): boolean {
-    const status = this.group.value?.followUpStatus;
+  canResume(): boolean {
+    const status = this.group?.value?.followUpStatus;
     if (!status) {
       return true;
     }
     return ['NO_FOLLOW_UP', 'CANCELED', 'LOST'].includes(status);
   }
 
-  allowCancel(): boolean {
-    const status = this.group.value?.followUpStatus;
+  canCancel(): boolean {
+    const status = this.group?.value?.followUpStatus;
     return status === 'FOLLOW_UP';
   }
 
-  allowLost(): boolean {
-    const status = this.group.value?.followUpStatus;
+  canLost(): boolean {
+    const status = this.group?.value?.followUpStatus;
     return status === 'FOLLOW_UP';
   }
 
