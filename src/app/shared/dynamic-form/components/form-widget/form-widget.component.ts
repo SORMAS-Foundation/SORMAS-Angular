@@ -5,6 +5,7 @@ import {
   ViewChild,
   ViewContainerRef,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormElementBase } from '../../types/form-element-base';
@@ -21,7 +22,10 @@ export class FormWidgetComponent implements AfterViewInit {
 
   @ViewChild('dynamic', { read: ViewContainerRef }) dynamic: ViewContainerRef;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngAfterViewInit(): void {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
@@ -31,5 +35,6 @@ export class FormWidgetComponent implements AfterViewInit {
     const componentRef = this.dynamic.createComponent<any>(componentFactory);
     componentRef.instance.group = this.group;
     componentRef.instance.config = this.config;
+    this.changeDetectorRef.detectChanges();
   }
 }

@@ -20,6 +20,10 @@
         width: 130px;
       }
 
+      .mat-datepicker-toggle {
+        font-size: 10px;
+      }
+
       &.mat-focused,
       .mat-form-field-flex:focus,
       .mat-form-field-flex:hover {
@@ -31,6 +35,7 @@
       &.datepicker-closed,
       &.datepicker-opened {
         .mat-form-field-flex {
+          width: 124px;
           padding-right: 0;
         }
       }

@@ -19,9 +19,10 @@ h2 {
   min-width: 176px;
   max-width: 248px;
   flex: 0 0 24%;
-  padding: 24px;
+  padding: 29px 24px;
   margin: 0;
   font-size: 14px;
+  line-height: 1.5;
   text-align: right;
 }
 
@@ -42,7 +43,7 @@ h2 {
 }
 
 .size-small {
-  width: 128px;
+  width: 150px;
 }
 
 .size-medium {
@@ -58,16 +59,20 @@ h2 {
   max-width: 500px;
 }
 
+.fullwidth {
+  width: 100%;
+}
+
+.push-right {
+  margin-right: 0;
+  float: right;
+  text-align: right;
+}
+
 .required {
   color: $warn;
 }
 
 .hidden {
   display: none;
-}
-
-/* particular rules */
-.origin-country {
-  margin: 1rem 0 !important;
-  font-size: 12px;
 }

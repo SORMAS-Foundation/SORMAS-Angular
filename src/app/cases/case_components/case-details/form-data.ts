@@ -7,7 +7,7 @@ import {
   FORM_DATA_TEXTAREA,
   FORM_DATA_NULL,
   FORM_DATA_NUMBER,
-  FORM_DATA_BASE,
+  FORM_DATA_WIDGET,
   CaseClassification,
   InvestigationStatus,
   CaseOutcome,
@@ -22,10 +22,12 @@ import {
   CaseIdentificationSource,
   ScreeningType,
   InfectionSetting,
+  Trimester,
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../shared/pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { CasePersonAddressComponent } from '../case-person-address/case-person-address.component';
+import { FollowUpStatusComponent } from '../follow-up-status/follow-up-status.component';
+import { NewEpidNumberComponent } from '../new-epid-number/new-epid-number.component';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -43,18 +45,9 @@ const optionsVaccineManufacturer = pipe.transform(VaccineManufacturer);
 const optionsCaseIdentificationSource = pipe.transform(CaseIdentificationSource);
 const optionsScreeningType = pipe.transform(ScreeningType);
 const optionsInfectionSetting = pipe.transform(InfectionSetting);
+const optionsTrimester = pipe.transform(Trimester);
 
 export const FORM_DATA_CASE_DETAILS = [
-  {
-    title: 'Addresses',
-    fields: [
-      {
-        ...FORM_DATA_BASE,
-        controlType: 'widget',
-        widget: CasePersonAddressComponent,
-      },
-    ],
-  },
   {
     title: 'Date of report',
     required: true,
@@ -173,6 +166,10 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_INPUT,
         key: 'epidNumber',
       },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: NewEpidNumberComponent,
+      },
     ],
   },
   {
@@ -251,7 +248,6 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_NULL,
         key: 'caseOrigin',
-        className: 'size-medium origin-country',
       },
       {
         ...FORM_DATA_SELECT,
@@ -560,8 +556,36 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_DATE,
         key: 'previousInfectionDate',
+        label: ' ',
         hint: 'Previous infection date',
         dependingOn: 'reInfection',
+        dependingOnValues: ['YES'],
+      },
+    ],
+  },
+  {
+    title: 'Additional medical information',
+    required: false,
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'pregnant',
+        label: 'Pregnancy',
+        options: optionsYesNoUnknown,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'postpartum',
+        label: 'Postpartum',
+        options: optionsYesNoUnknown,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'trimester',
+        label: 'Trimester',
+        options: optionsTrimester,
+        newLine: true,
+        dependingOn: 'pregnant',
         dependingOnValues: ['YES'],
       },
     ],
@@ -731,10 +755,24 @@ export const FORM_DATA_CASE_DETAILS = [
     anchorLabel: 'Follow-up status',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: FollowUpStatusComponent,
+        className: 'size-large push-right',
+      },
+      {
+        ...FORM_DATA_NULL,
+        key: 'followUpStatus',
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'overwriteFollowUpUntil',
         label: 'Overwrite follow-up until date',
-        value: 'YES',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'followUpUntil',
+        dependingOn: 'overwriteFollowUpUntil',
       },
       {
         ...FORM_DATA_INPUT,

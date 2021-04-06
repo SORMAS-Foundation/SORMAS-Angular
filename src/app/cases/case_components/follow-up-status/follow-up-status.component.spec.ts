@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CasePersonAddressComponent } from './case-person-address.component';
+import { FollowUpStatusComponent } from './follow-up-status.component';
 
-describe('CasePersonAddressComponent', () => {
-  let component: CasePersonAddressComponent;
-  let fixture: ComponentFixture<CasePersonAddressComponent>;
+describe('FollowUpStatusComponent', () => {
+  let component: FollowUpStatusComponent;
+  let fixture: ComponentFixture<FollowUpStatusComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CasePersonAddressComponent],
+      declarations: [FollowUpStatusComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CasePersonAddressComponent);
+    fixture = TestBed.createComponent(FollowUpStatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

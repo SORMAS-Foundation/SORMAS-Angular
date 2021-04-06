@@ -178,3 +178,10 @@ export enum InfectionSetting {
   REHAB_FACILITY = 'In-patient ➜ Rehab facility',
   OTHER_STATIONARY_FACILITY = 'In-patient ➜ Other in-patient facility',
 }
+
+export enum Trimester {
+  FIRST = 'First',
+  SECOND = 'Second',
+  THIRD = 'Third',
+  UNKNOWN = 'Unknown',
+}
