@@ -1,5 +1,18 @@
-<div class="form-null">
-  <span *ngIf="config.label" class="form-null-label">{{ config.label }}</span>
-  <span class="form-null-value">{{ config.value }}</span>
-  <span *ngIf="config.hint" class="form-null-hint">{{ config.hint }}</span>
+<div [formGroup]="group">
+  <mat-form-field
+    [id]="config.key"
+    appearance="outline"
+    floatLabel="always"
+    [ngClass]="{ 'has-hint': !!config.hint, readonly: true }"
+  >
+    <mat-label *ngIf="config.label">{{ config.label }}</mat-label>
+    <input
+      [value]="config.value"
+      [type]="config.type"
+      [formControlName]="config.key"
+      matInput
+      readonly
+    />
+    <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
+  </mat-form-field>
 </div>

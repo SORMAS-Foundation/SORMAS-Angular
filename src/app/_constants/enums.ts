@@ -136,3 +136,52 @@ export enum YesNoUnknown {
   NO = 'No',
   UNKNOWN = 'Unknown',
 }
+
+export enum CaseIdentificationSource {
+  UNKNOWN = 'Unknown',
+  OUTBREAK_INVESTIGATION = 'Outbreak investigation',
+  CONTACT_TRACKING_APP = 'Contact tracking app',
+  SUSPICION_REPORT = 'Suspicion report',
+  CONTACT_TRACING = 'Contact tracing',
+  SCREENING = 'Screening',
+  OTHER = 'Other',
+}
+
+export enum ScreeningType {
+  ON_HOSPITAL_ADMISSION = 'On admission in a hospital',
+  ON_CARE_HOME_ADMISSION = 'On admission in care home',
+  ON_ASYLUM_ADMISSION = 'On admission in an asylum seeking centre',
+  ON_ENTRY_FROM_RISK_AREA = 'On entry from risk area',
+  HEALTH_SECTOR_EMPLOYEE = 'Employee in health sector',
+  EDUCATIONAL_INSTITUTIONS = 'Educational institution',
+  OTHER = 'Other',
+}
+
+export enum InfectionSetting {
+  UNKNOWN = 'Unknown',
+  AMBULATORY = 'Ambulatory',
+  MEDICAL_PRACTICE = 'Ambulatory ➜ Medical practice',
+  OPERATIVE_1200 = 'Ambulatory ➜ Operative',
+  HOSPITAL_1300 = 'Ambulatory ➜ Hospital',
+  OTHER_OUTPATIENT_FACILITY = 'Ambulatory ➜ Other outpatient facility',
+  STATIONARY = 'In-patient',
+  HOSPITAL_2100 = 'In-patient ➜ Hospital',
+  NORMAL_WARD = 'Hospital ➜ Normal ward',
+  OPERATIVE_2111 = 'Normal ward ➜ Operative',
+  NOT_OPERATIVE = 'Normal ward ➜ Not operative',
+  HEMATOLOGICAL_ONCOLOGY = 'Normal ward ➜ Hematological oncology',
+  CHILDREN_WARD = 'Hospital ➜ Childrens ward',
+  NEONATOLOGY = 'Hospital ➜ Neonatology',
+  INTENSIVE_CARE_UNIT = 'Hospital ➜ Intensive care',
+  OTHER_STATION = 'Hospital ➜ Other station',
+  NURSING_HOME = 'In-patient ➜ Nursing home',
+  REHAB_FACILITY = 'In-patient ➜ Rehab facility',
+  OTHER_STATIONARY_FACILITY = 'In-patient ➜ Other in-patient facility',
+}
+
+export enum Trimester {
+  FIRST = 'First',
+  SECOND = 'Second',
+  THIRD = 'Third',
+  UNKNOWN = 'Unknown',
+}

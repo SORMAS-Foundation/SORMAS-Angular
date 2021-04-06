@@ -58,3 +58,8 @@ export const FORM_DATA_NULL = {
   className: 'size-medium',
   disabled: true,
 };
+
+export const FORM_DATA_WIDGET = {
+  ...FORM_DATA_BASE,
+  controlType: 'widget',
+};
