@@ -14,40 +14,43 @@ export class FormActionsComponent implements OnInit, OnDestroy {
   @Input() resource: Resource;
 
   hasInputsChanged = false;
-  subscription: Subscription = new Subscription();
-  subscriptionRoute: Subscription = new Subscription();
+  subscription: Subscription[] = [];
 
   constructor(
     private formActionsService: FormActionsService,
     private notificationService: NotificationService,
     private router: Router
   ) {
-    // @ts-ignore
-    this.subscriptionRoute = this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart && this.hasInputsChanged) {
-        this.notificationService
-          .prompt({
-            title: 'Are you sure you want to leave?',
-            message: 'You will lose all changes that were made',
-            buttonDeclineText: 'Cancel',
-            buttonConfirmText: 'I am sure',
-          })
-          .subscribe((result) => {
-            if (result) {
-              if (result === 'CONFIRM') {
-                this.formActionsService.setInputChange(false);
-                this.router.navigate([event.url]);
+    this.subscription.push(
+      // @ts-ignore
+      this.router.events.subscribe((event: Event) => {
+        if (event instanceof NavigationStart && this.hasInputsChanged) {
+          this.notificationService
+            .prompt({
+              title: 'Are you sure you want to leave?',
+              message: 'You will lose all changes that were made',
+              buttonDeclineText: 'Cancel',
+              buttonConfirmText: 'I am sure',
+            })
+            .subscribe((result) => {
+              if (result) {
+                if (result === 'CONFIRM') {
+                  this.formActionsService.setInputChange(false);
+                  this.router.navigate([event.url]);
+                }
               }
-            }
-          });
-      }
-    });
+            });
+        }
+      })
+    );
   }
 
   ngOnInit(): void {
-    this.subscription = this.formActionsService.getInputChange().subscribe((response: any) => {
-      this.hasInputsChanged = response.inputChange;
-    });
+    this.subscription.push(
+      this.formActionsService.getInputChange().subscribe((response: any) => {
+        this.hasInputsChanged = response.inputChange;
+      })
+    );
   }
 
   resetForm(): void {
@@ -73,12 +76,6 @@ export class FormActionsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-
-    if (this.subscriptionRoute) {
-      this.subscriptionRoute.unsubscribe();
-    }
+    this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 }

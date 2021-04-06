@@ -20,9 +20,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() resourceService: BaseService<any>;
   formElementsProcessed: FormElementBase<string>[] = [];
   form: FormGroup;
-  subscription: Subscription = new Subscription();
-  subscriptionD: Subscription = new Subscription();
   watchFields: any[] = [];
+  subscription: Subscription[] = [];
 
   constructor(
     private formElementControlService: FormElementControlService,
@@ -38,26 +37,30 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.form = this.formElementControlService.toFormGroup(this.processFormArray());
 
-    this.subscription = this.formActionsService.getSave().subscribe((response: any) => {
-      if (this.form.invalid) {
-        this.notificationService.error('Please fill in all the mandatory fields');
-        return;
-      }
+    this.subscription.push(
+      this.formActionsService.getSave().subscribe((response: any) => {
+        if (this.form.invalid) {
+          this.notificationService.error('Please fill in all the mandatory fields');
+          return;
+        }
 
-      this.resourceService.update(this.updateResource(response.resource)).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => this.notificationService.success('Successfully saved'),
-      });
-    });
+        this.resourceService.update(this.updateResource(response.resource)).subscribe({
+          next: () => {},
+          error: (err: any) => {
+            this.notificationService.error(err);
+          },
+          complete: () => this.notificationService.success('Successfully saved'),
+        });
+      })
+    );
 
-    this.subscriptionD = this.formActionsService.getDiscard().subscribe(() => {
-      this.processFormArray().forEach((item) => {
-        this.form.controls[item.key].setValue(item.value);
-      });
-    });
+    this.subscription.push(
+      this.formActionsService.getDiscard().subscribe(() => {
+        this.processFormArray().forEach((item) => {
+          this.form.controls[item.key].setValue(item.value);
+        });
+      })
+    );
 
     this.detectChanges();
 
@@ -140,12 +143,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-
-    if (this.subscriptionD) {
-      this.subscriptionD.unsubscribe();
-    }
+    this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 }
