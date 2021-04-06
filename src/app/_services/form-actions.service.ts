@@ -3,16 +3,17 @@ import { Observable, Subject } from 'rxjs';
 import { Resource } from '../_models/resource';
 
 @Injectable({ providedIn: 'root' })
-export class TriggerSaveFormService {
-  private subject = new Subject<any>();
+export class FormActionsService {
+  private subjectSave = new Subject<any>();
   private subjectInputChange = new Subject<any>();
+  private subjectDiscard = new Subject<any>();
 
   setSave(resource: Resource): void {
-    this.subject.next({ resource });
+    this.subjectSave.next({ resource });
   }
 
   getSave(): Observable<any> {
-    return this.subject.asObservable();
+    return this.subjectSave.asObservable();
   }
 
   setInputChange(inputChange: boolean): void {
@@ -21,5 +22,14 @@ export class TriggerSaveFormService {
 
   getInputChange(): Observable<any> {
     return this.subjectInputChange.asObservable();
+  }
+
+  setDiscard(): void {
+    this.subjectDiscard.next({});
+    this.subjectInputChange.next({ inputChange: false });
+  }
+
+  getDiscard(): Observable<any> {
+    return this.subjectDiscard.asObservable();
   }
 }

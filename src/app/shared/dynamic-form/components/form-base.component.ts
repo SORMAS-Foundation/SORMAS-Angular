@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FORM_DATA_BASE } from '../../../app.constants';
 import { FormElementBase } from '../types/form-element-base';
-import { TriggerSaveFormService } from '../../../_services/trigger-save-form.service';
+import { FormActionsService } from '../../../_services/form-actions.service';
 
 @Component({
   selector: 'app-form-base',
@@ -16,7 +16,7 @@ export class FormBaseComponent implements OnInit{
   initialValue: any;
 
   constructor(
-    public triggerSaveFormService: TriggerSaveFormService
+    public formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -29,9 +29,9 @@ export class FormBaseComponent implements OnInit{
 
   onChange(): void {
     if (this.initialValue === this.group.controls[this.config.key].value) {
-      this.triggerSaveFormService.setInputChange(false);
+      this.formActionsService.setInputChange(false);
     } else {
-      this.triggerSaveFormService.setInputChange(true);
+      this.formActionsService.setInputChange(true);
     }
   }
 }

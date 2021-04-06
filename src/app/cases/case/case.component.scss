@@ -48,9 +48,5 @@
     border-bottom: solid 2px map-get($sormas-accent, 200);
     text-align: right;
     white-space: nowrap;
-
-    .mat-button-base + .mat-button-base {
-      margin-left: 1rem;
-    }
   }
 }
