@@ -57,7 +57,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_DATE,
         key: 'reportDate',
-        validation: ['required'],
+        validation: [],
       },
     ],
   },
@@ -68,7 +68,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'caseClassification',
-        validation: ['required'],
+        validation: [],
         options: optionsCaseClassification,
       },
       {
@@ -110,7 +110,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'investigationStatus',
-        validation: ['required'],
+        validation: [],
         options: optionsInvestigationStatus,
       },
       {
@@ -147,7 +147,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'disease',
         label: 'Disease',
-        validation: ['required'],
+        validation: [],
         options: optionsDisese,
       },
       {
@@ -179,7 +179,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'outcome',
-        validation: ['required'],
+        validation: [],
         options: optionsCaseOutcome,
       },
       {
@@ -253,7 +253,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
         label: 'Responsible region',
-        validation: ['required'],
+        validation: [],
         options: [
           {
             key: 'default',
@@ -269,7 +269,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
         label: 'Responsible district',
-        validation: ['required'],
+        validation: [],
         options: [
           {
             key: 'default',
@@ -319,14 +319,14 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'placeOfStaty',
-        validation: ['required'],
+        validation: [],
         options: optionsPlaceOfStay,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility.uuid',
         label: 'Facility category region',
-        validation: ['required'],
+        validation: [],
         options: [
           {
             key: 'default',
@@ -342,7 +342,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'facilityType',
         label: 'Facility type',
-        validation: ['required'],
+        validation: [],
         options: [
           {
             key: 'LABORATORY',
