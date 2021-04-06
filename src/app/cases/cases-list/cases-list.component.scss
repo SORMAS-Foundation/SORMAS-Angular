@@ -1,4 +1,27 @@
+@use '../../../variables.scss' as *;
+
+.mat-drawer-container {
+  height: 100%;
+}
+
+.toggle-filter {
+  position: fixed;
+  top: 57vh;
+  left: -10px;
+  border: none;
+  background: transparent;
+  color: map-get($sormas-primary, 700);
+  cursor: pointer;
+  outline: none;
+  transform: rotate(90deg);
+}
 .header-title {
+  padding-left: 20px;
   font-size: 34px;
   font-weight: 500;
+}
+
+.filters-bar {
+  width: 290px;
+  background-color: inherit;
 }

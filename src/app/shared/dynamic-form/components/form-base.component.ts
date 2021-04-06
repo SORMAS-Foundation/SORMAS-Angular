@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { FORM_DATA_BASE } from '../../../app.constants';
 import { FormElementBase } from '../types/form-element-base';
 
 @Component({
@@ -8,15 +9,7 @@ import { FormElementBase } from '../types/form-element-base';
 })
 export class FormBaseComponent {
   config: FormElementBase<string> = {
-    controlType: '',
-    key: '',
-    label: '',
-    options: [],
-    order: 0,
-    validation: [],
-    type: '',
-    value: '',
-    newLine: false,
+    ...FORM_DATA_BASE,
   };
   group: FormGroup = new FormGroup({});
 

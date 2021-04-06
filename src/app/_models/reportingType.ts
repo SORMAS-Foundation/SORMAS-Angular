@@ -1,0 +1,24 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
+
+export type ReportingType =
+  | 'DOCTOR'
+  | 'FORWARDING'
+  | 'HOSPITAL_OR_STATIONARY_CARE'
+  | 'COMMUNITY_FACILITY'
+  | 'COMMUNITY_FACILITY_IFSG_ARTICLE_34'
+  | 'OWN_DETERMINATION'
+  | 'NOT_DETERMINABLE'
+  | 'NOT_RAISED'
+  | 'OTHER';
+
+export const ReportingType = {
+  DOCTOR: 'DOCTOR' as ReportingType,
+  FORWARDING: 'FORWARDING' as ReportingType,
+  HOSPITALORSTATIONARYCARE: 'HOSPITAL_OR_STATIONARY_CARE' as ReportingType,
+  COMMUNITYFACILITY: 'COMMUNITY_FACILITY' as ReportingType,
+  COMMUNITYFACILITYIFSGARTICLE34: 'COMMUNITY_FACILITY_IFSG_ARTICLE_34' as ReportingType,
+  OWNDETERMINATION: 'OWN_DETERMINATION' as ReportingType,
+  NOTDETERMINABLE: 'NOT_DETERMINABLE' as ReportingType,
+  NOTRAISED: 'NOT_RAISED' as ReportingType,
+  OTHER: 'OTHER' as ReportingType,
+};

@@ -1,0 +1,48 @@
+@use '../variables.scss' as *;
+
+:root {
+  .alertify-notifier {
+    display: flex;
+    width: 436px;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &.ajs-top {
+      top: 92px;
+    }
+
+    &.ajs-right {
+      right: 64px;
+
+      .ajs-message.ajs-visible {
+        right: 0;
+      }
+    }
+
+    .ajs-message {
+      width: auto;
+      max-width: 436px;
+      padding: 2rem;
+      margin-bottom: 1rem;
+      background-color: map-get($sormas-primary, 50);
+      border-radius: 5px;
+      font-size: 1rem;
+      @include mat-elevation(4);
+
+      &.ajs-success {
+        background-color: map-get($sormas-success, 50);
+        @include mat-elevation(4);
+      }
+
+      &.ajs-error {
+        background-color: map-get($sormas-alert, 50);
+        @include mat-elevation(15);
+      }
+
+      &.ajs-warning {
+        background-color: map-get($sormas-warning, 50);
+        @include mat-elevation(15);
+      }
+    }
+  }
+}

@@ -33,7 +33,24 @@
     }
   }
 
-  .save-btn {
-    float: right;
+  .tab-nav-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mat-tab-header {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .tab-nav-header-actions {
+    min-width: 248px;
+    border-bottom: solid 2px map-get($sormas-accent, 200);
+    text-align: right;
+    white-space: nowrap;
+
+    .mat-button-base + .mat-button-base {
+      margin-left: 1rem;
+    }
   }
 }

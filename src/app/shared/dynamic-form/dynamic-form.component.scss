@@ -1,27 +1,69 @@
-.dynamic-form-wrapper {
-  .dynamic-form-group {
-    margin: 15px 0;
+@use '/src/variables.scss' as *;
 
-    h1.group-title {
-      display: inline-block;
-      width: 10%;
-      padding: 0 15px;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: right;
-      vertical-align: top;
-    }
+.dynamic-form-group {
+  display: flex;
+  justify-content: stretch;
+  margin: 10px 0;
 
-    .dynamic-form-card {
-      display: inline-block;
-      width: 90%;
-      vertical-align: top;
-
-      .dynamic-form-input {
-        display: inline-block;
-        margin-right: 20px;
-        vertical-align: top;
-      }
-    }
+  &.dynamic-form-section {
+    margin-top: 48px;
   }
+
+  &:hover,
+  &:focus {
+    background-color: $white;
+  }
+}
+
+h2 {
+  min-width: 176px;
+  max-width: 248px;
+  flex: 0 0 24%;
+  padding: 24px;
+  margin: 0;
+  font-size: 14px;
+  text-align: right;
+}
+
+.mat-card {
+  flex: 1 1 auto;
+
+  .mat-divider-horizontal {
+    position: unset;
+    border: 0;
+    margin: 0.5rem;
+  }
+}
+
+.dynamic-form-input {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: top;
+}
+
+.size-small {
+  width: 128px;
+}
+
+.size-medium {
+  width: 230px;
+}
+
+.size-large {
+  width: 330px;
+}
+
+.size-full {
+  width: 100%;
+  max-width: 500px;
+}
+
+.required {
+  color: $warn;
+}
+
+/* particular rules */
+.origin-country {
+  margin: 1rem 0 !important;
+  font-size: 12px;
 }

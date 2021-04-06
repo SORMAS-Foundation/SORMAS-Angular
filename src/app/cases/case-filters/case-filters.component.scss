@@ -1,0 +1,72 @@
+@use '../../../variables.scss' as *;
+
+.case-filters {
+  .toggle-filter {
+    position: absolute;
+    top: 45vh;
+    right: 8px;
+    border: none;
+    background: transparent;
+    color: map-get($sormas-primary, 700);
+    cursor: pointer;
+    outline: none;
+    transform: rotate(90deg);
+  }
+
+  .filters-header {
+    margin-bottom: 0;
+  }
+  .reset-button {
+    position: sticky;
+    z-index: 10;
+    bottom: 0;
+    display: block;
+    width: 85%;
+    padding-top: 10px;
+    border: none;
+    margin: 0 auto;
+    background: $white;
+    color: map-get($sormas-primary, 700);
+    cursor: pointer;
+    text-align: center;
+    &:active,
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+  .case-radio {
+    display: block;
+    padding-bottom: 5px;
+    margin-left: 0;
+
+    &:first-child {
+      margin-top: 15px;
+    }
+  }
+  .collapsable-field {
+    width: 185px;
+    margin-top: 15px;
+    &:first-child {
+      margin-top: 20px;
+    }
+  }
+
+  .search-field {
+    width: 240px;
+    margin-left: 16px;
+  }
+
+  .date-field {
+    width: 185px;
+
+    .datepicker-icon {
+      position: relative;
+      right: 5px;
+      font-size: 10px;
+    }
+    &.with-spacing {
+      margin-top: 20px;
+    }
+  }
+}

@@ -11,8 +11,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { MenuComponent } from './layout/menu/menu.component';
-import { Table2Component } from './table2/table2.component';
 import { DialogModule } from './dialog';
+import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
+import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { DialogModule } from './dialog';
     TableComponent,
     PropertyGetterPipe,
     MenuComponent,
-    Table2Component,
+    InpageNavComponent,
+    CollapsableBoxComponent,
+    EnumToKeyValuePipe,
   ],
   imports: [
     CommonModule,
@@ -39,12 +43,14 @@ import { DialogModule } from './dialog';
     NotFoundComponent,
     LocaleSelectComponent,
     TableComponent,
+    RouterModule,
     MaterialModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    Table2Component,
     DialogModule,
+    InpageNavComponent,
+    CollapsableBoxComponent,
   ],
 })
 export class SharedModule {}

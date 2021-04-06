@@ -125,8 +125,87 @@ app.use('', (req, res, next) => {
   }
 });
 
-// app.use('/sormas-rest/cases/query', (req, res) => {
-//   res.status(200).send([
+// app.use('/sormas-rest/cases/indexList', (req, res) => {
+//
+//   let total = 1000;
+//
+//   const arrayTmp = [];
+//   let offset = 0;
+//
+//   if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
+//     offset = 1000;
+//   }
+//
+//   if (req.body.filter) {
+//     total = 50;
+//   }
+//
+//   for (var i = parseInt(req.query.offset) ; i < parseInt(req.query.offset) + parseInt(req.query.size); i++) {
+//     arrayTmp.push({
+//       "pseudonymized":false,
+//       "id":120,
+//       // "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(req.query.page*req.query.size + i),
+//       "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(parseInt(offset) - parseInt(i)),
+//       "epidNumber":"DEF-REG-DIS-21-001",
+//       "externalID":null,
+//       "externalToken":null,
+//       "personFirstName":"Aisha Ayana",
+//       "personLastName":"Chipo-Chipo",
+//       "disease":"CORONAVIRUS",
+//       "diseaseVariant":{
+//         "uuid":null,
+//         "caption":null
+//       },
+//       "diseaseDetails":null,
+//       "caseClassification":"PROBABLE",
+//       "investigationStatus":"DISCARDED",
+//       "presentCondition":"ALIVE",
+//       "reportDate":1610865900000,
+//       "creationDate":1614335617159,
+//       "districtName":"Default District",
+//       "healthFacilityName":"Default Facility",
+//       "pointOfEntryName":"",
+//       "surveillanceOfficerUuid":"SNS6XV-XLUHRA-Y3ETEG-KCUMKAGA",
+//       "outcome":"RECOVERED",
+//       "sex":"FEMALE",
+//       "ageAndBirthDate":{
+//         "birthdateDD":null,
+//         "birthdateMM":null,
+//         "birthdateYYYY":null,
+//         "age":null,
+//         "ageType":"DAYS"
+//       },
+//       "completeness":0.55,
+//       "quarantineTo":null,
+//       "followUpStatus":"LOST",
+//       "followUpUntil":1612044000000,
+//       "symptomJournalStatus":null,
+//       "visitCount":0,
+//       "jurisdiction":{
+//         "reportingUserUuid":"QWW5JU-5ZIZSB-6YWYNM-GGLGSM2E",
+//         "regionUuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
+//         "districtUuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU",
+//         "communityUuid":"TVCEZ3-OJWUUF-34DGDV-TMFZ2BOM",
+//         "healthFacilityUuid":"QFMYC6-U27ZBE-VEK7G3-7D5XKLWA",
+//         "pointOfEntryUuid":null
+//       },
+//       "regionUuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
+//       "districtUuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU"
+//     });
+//   }
+//
+//
+//   res.status(200).send({
+//     "elements": arrayTmp,
+//     "pageNumber":0,
+//     "size":8,
+//     "totalElementCount": total,
+//     "hasNext":true
+//   });
+// });
+//
+// app.use('/sormas-rest/cases', (req, res) => {
+//   res.status(200).send(
 //     {
 //       "creationDate":1614335623297,
 //       "changeDate":1614773385829,
@@ -261,9 +340,10 @@ app.use('', (req, res, next) => {
 //       "notACaseReasonDifferentPathogen":false,
 //       "notACaseReasonOther":false
 //     }
-//   ]);
+//   );
 // });
-//
+
+
 // app.use('/sormas-rest/cases', (req, res) => {
 //   res.status(200).send({
 //     "elements":[

@@ -7,17 +7,18 @@
 
   :root {
     .mat-radio-group {
+      display: inline-block;
+      margin: 8px 0;
+
       .radio-group-label {
         display: block;
       }
     }
 
     .mat-radio-button {
+      margin-right: 1em;
+      line-height: 32px;
       text-align: left;
-
-      ~ .mat-radio-button {
-        margin-left: 1em;
-      }
 
       &:not(.mat-radio-disabled) .mat-radio-outer-circle {
         border-color: mat-color(mat-palette($primary, 700));
