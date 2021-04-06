@@ -63,8 +63,16 @@ services:
       - sormas-docker-test.com:172.17.0.1
     volumes:
 # If you wish to run a custom .war for the sormas-rest, please use the below line as an example and change
-# the path `./sormas-rest/sormas-rest.war` to the one to the .war file you wish to use
+# the path `./sormas-rest/sormas-rest.war` to the one to the .war file you wish to use,
+# the same goes for sormas-ui and sormas-ear
+# After the project fully starts you will need to run:
+# docker exec sormas-angular_sormas_1 /opt/payara5/bin/asadmin --port 6048 deploy --force /opt/domains/sormas/deployments/sormas-rest.war
 #      - ./sormas-rest/sormas-rest.war:/opt/domains/sormas/deployments/sormas-rest.war
+#      - ./sormas-rest/sormas-ui.war:/opt/domains/sormas/deployments/sormas-ui.war
+#      - ./sormas-rest/sormas-ear.ear:/opt/domains/sormas/deployments/sormas-ear.ear
+#      - ./sormas-rest/sormas-ui.war:/opt/domains/sormas/autodeploy/sormas-ui.war
+#      - ./sormas-rest/sormas-rest.war:/opt/domains/sormas/autodeploy/sormas-rest.war
+#      - ./sormas-rest/sormas-ear.ear:/opt/domains/sormas/autodeploy/sormas-ear.ear
       - ${SORMAS_PATH}/documents:/opt/sormas/documents
       - ${SORMAS_PATH}/custom:/opt/sormas/custom
       - ${SORMAS_PATH}/sormas2sormas:/opt/sormas/sormas2sormas
@@ -86,6 +94,7 @@ services:
     command: -c 'config_file=/etc/postgresql/postgresql.conf'
     build:
       context: docker/postgres
+    image: sormas-postgres
     environment:
       - POSTGRES_PASSWORD=${SORMAS_POSTGRES_PASSWORD}
       - DB_NAME=sormas
