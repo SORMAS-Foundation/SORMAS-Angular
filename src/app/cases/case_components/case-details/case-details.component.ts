@@ -25,10 +25,4 @@ export class CaseDetailsComponent {
       this.formData
     );
   }
-
-  getSections(): any {
-    return this.formData
-      .filter((item) => item.anchor)
-      .map((item: FormBase<string>) => ({ id: item.anchor, label: item.anchorLabel }));
-  }
 }

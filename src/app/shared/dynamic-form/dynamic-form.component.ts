@@ -18,6 +18,8 @@ import { Resource } from '../../_models/resource';
 export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() formElements: FormBase<string>[] = [];
   @Input() resourceService: BaseService<any>;
+  @Input() withAnchor = false;
+
   formElementsProcessed: FormElementBase<string>[] = [];
   form: FormGroup;
   subscription: Subscription = new Subscription();
@@ -130,6 +132,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       return result;
     });
     return result;
+  }
+
+  getSections(): any {
+    return this.formElements
+      .filter((item) => item.anchor)
+      .map((item: FormBase<string>) => ({ id: item.anchor, label: item.anchorLabel }));
   }
 
   ngOnDestroy(): void {
