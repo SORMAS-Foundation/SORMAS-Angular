@@ -73,10 +73,6 @@ services:
 #      - ./sormas-rest/sormas-ui.war:/opt/domains/sormas/autodeploy/sormas-ui.war
 #      - ./sormas-rest/sormas-rest.war:/opt/domains/sormas/autodeploy/sormas-rest.war
 #      - ./sormas-rest/sormas-ear.ear:/opt/domains/sormas/autodeploy/sormas-ear.ear
-      - ${SORMAS_PATH}/documents:/opt/sormas/documents
-      - ${SORMAS_PATH}/custom:/opt/sormas/custom
-      - ${SORMAS_PATH}/sormas2sormas:/opt/sormas/sormas2sormas
-      - ${SORMAS_PATH}/sormas-logs:/opt/domains/sormas/logs
       - ./docker/certs:/tmp/certs
     healthcheck:
       test: ["CMD", "curl", "-f", "-I", "http://localhost:6080/sormas-ui/login"]
@@ -104,6 +100,7 @@ services:
       - TZ=${TZ}
     volumes:
       - postgres:/var/lib/postgresql/data
+      - ./docker/postgres/psql.conf:/etc/postgresql/postgresql.conf
     ports:
       - 127.0.0.1:8300:5432
     healthcheck:
