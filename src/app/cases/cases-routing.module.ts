@@ -26,12 +26,24 @@ const routes: Routes = [
         children: [
           { path: 'details', component: CaseDetailsComponent, canActivate: [LeaveGuard] },
           { path: 'person', component: CasePersonComponent, canActivate: [LeaveGuard] },
-          { path: 'hospitalization', component: CaseHospitalizationComponent, canActivate: [LeaveGuard] },
+          {
+            path: 'hospitalization',
+            component: CaseHospitalizationComponent,
+            canActivate: [LeaveGuard],
+          },
           { path: 'symptoms', component: CaseSymptomsComponent, canActivate: [LeaveGuard] },
-          { path: 'epidemiological-data', component: CaseEpidemiologicalDataComponent, canActivate: [LeaveGuard] },
+          {
+            path: 'epidemiological-data',
+            component: CaseEpidemiologicalDataComponent,
+            canActivate: [LeaveGuard],
+          },
           { path: 'therapy', component: CaseTherapyComponent, canActivate: [LeaveGuard] },
           { path: 'follow-up', component: CaseFollowUpComponent, canActivate: [LeaveGuard] },
-          { path: 'clinical-course', component: CaseClinicalCourseComponent, canActivate: [LeaveGuard] },
+          {
+            path: 'clinical-course',
+            component: CaseClinicalCourseComponent,
+            canActivate: [LeaveGuard],
+          },
           { path: 'contacts', component: CaseContactsComponent, canActivate: [LeaveGuard] },
         ],
       },

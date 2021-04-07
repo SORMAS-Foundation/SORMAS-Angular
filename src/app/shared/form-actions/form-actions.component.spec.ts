@@ -10,10 +10,9 @@ describe('FormActionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormActionsComponent ],
+      declarations: [FormActionsComponent],
       imports: [MatDialogModule, RouterTestingModule],
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

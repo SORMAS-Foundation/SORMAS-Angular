@@ -6,7 +6,7 @@ import { FormActionsService } from '../_services/form-actions.service';
 export class LeaveGuard implements CanActivate {
   canLeave = true;
 
-  constructor(private formActionsService: FormActionsService ) {
+  constructor(private formActionsService: FormActionsService) {
     this.formActionsService.getInputChange().subscribe((response: any) => {
       this.canLeave = !response.inputChange;
     });

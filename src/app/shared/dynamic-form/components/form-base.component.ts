@@ -8,16 +8,14 @@ import { FormActionsService } from '../../../_services/form-actions.service';
   selector: 'app-form-base',
   template: ``,
 })
-export class FormBaseComponent implements OnInit{
+export class FormBaseComponent implements OnInit {
   config: FormElementBase<string> = {
     ...FORM_DATA_BASE,
   };
   group: FormGroup = new FormGroup({});
   initialValue: any;
 
-  constructor(
-    public formActionsService: FormActionsService
-  ) {}
+  constructor(public formActionsService: FormActionsService) {}
 
   ngOnInit(): void {
     if (typeof this.group.controls[this.config.key] !== 'undefined') {
