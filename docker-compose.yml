@@ -2,12 +2,17 @@ version: '3.4'
 
 services:
   sormas-angular:
+    restart: always
     build:
       context: .
+      target: compile-image
+    entrypoint: /opt/ng/node_modules/.bin/ng serve --configuration=en-US --disable-host-check --port 80 --host=0.0.0.0
     ports:
       - 127.0.0.1:8200:80
     networks:
       - sormas
+    volumes:
+    - ./:/opt/ng
 
   sormas:
     ports:
