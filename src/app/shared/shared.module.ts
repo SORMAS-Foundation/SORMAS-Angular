@@ -15,6 +15,7 @@ import { DialogModule } from './dialog';
 import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
 import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
+import { FormActionsComponent } from './form-actions/form-actions.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
     InpageNavComponent,
     CollapsableBoxComponent,
     EnumToKeyValuePipe,
+    FormActionsComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +53,7 @@ import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
     DialogModule,
     InpageNavComponent,
     CollapsableBoxComponent,
+    FormActionsComponent,
   ],
 })
 export class SharedModule {}

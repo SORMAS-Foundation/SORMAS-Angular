@@ -13,6 +13,7 @@
     <input
       matInput
       [matDatepicker]="picker"
+      (dateChange)="onChange()"
       [formControlName]="config.key"
       placeholder="Choose a date"
     />

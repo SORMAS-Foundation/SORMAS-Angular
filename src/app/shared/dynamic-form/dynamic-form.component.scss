@@ -1,5 +1,19 @@
 @use '/src/variables.scss' as *;
 
+.dynamic-form-wrapper {
+  .inpage-nav {
+    position: fixed;
+    z-index: 9;
+    padding: 0 30px;
+    right: 0;
+    left: 0;
+  }
+
+  .form-content {
+    padding-top: 40px;
+  }
+}
+
 .dynamic-form-group {
   display: flex;
   justify-content: stretch;

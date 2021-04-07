@@ -1,6 +1,10 @@
 <div [formGroup]="group">
-  <mat-checkbox color="primary" [formControlName]="config.key" [id]="config.key">{{
-    config.label
-  }}</mat-checkbox>
+  <mat-checkbox
+    color="primary"
+    (change)="onChange()"
+    [formControlName]="config.key"
+    [id]="config.key">
+      {{ config.label}}
+  </mat-checkbox>
   <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage }}</div>
 </div>
