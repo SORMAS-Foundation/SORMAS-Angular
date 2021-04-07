@@ -6,9 +6,11 @@ services:
     build:
       context: .
       target: compile-image
-    entrypoint: /opt/ng/node_modules/.bin/ng serve --configuration=en-US --disable-host-check --port 80 --host=0.0.0.0
+    entrypoint: /opt/ng/node_modules/.bin/ng serve --configuration=en-US --port 80 --host="0.0.0.0" --public-host="sormas-docker-test.com/sormas-angular/" --disable-host-check
     ports:
       - 127.0.0.1:8200:80
+    extra_hosts:
+      - "sormas-docker-test.com:0.0.0.0"
     networks:
       - sormas
     volumes:
@@ -72,12 +74,12 @@ services:
 # the same goes for sormas-ui and sormas-ear
 # After the project fully starts you will need to run:
 # docker exec sormas-angular_sormas_1 /opt/payara5/bin/asadmin --port 6048 deploy --force /opt/domains/sormas/deployments/sormas-rest.war
-#      - ./sormas-rest/sormas-rest.war:/opt/domains/sormas/deployments/sormas-rest.war
-#      - ./sormas-rest/sormas-ui.war:/opt/domains/sormas/deployments/sormas-ui.war
-#      - ./sormas-rest/sormas-ear.ear:/opt/domains/sormas/deployments/sormas-ear.ear
-#      - ./sormas-rest/sormas-ui.war:/opt/domains/sormas/autodeploy/sormas-ui.war
-#      - ./sormas-rest/sormas-rest.war:/opt/domains/sormas/autodeploy/sormas-rest.war
-#      - ./sormas-rest/sormas-ear.ear:/opt/domains/sormas/autodeploy/sormas-ear.ear
+      - ./sormas-rest/sormas-rest.war:/opt/domains/sormas/deployments/sormas-rest.war
+      - ./sormas-rest/sormas-ui.war:/opt/domains/sormas/deployments/sormas-ui.war
+      - ./sormas-rest/sormas-ear.ear:/opt/domains/sormas/deployments/sormas-ear.ear
+      - ./sormas-rest/sormas-ui.war:/opt/domains/sormas/autodeploy/sormas-ui.war
+      - ./sormas-rest/sormas-rest.war:/opt/domains/sormas/autodeploy/sormas-rest.war
+      - ./sormas-rest/sormas-ear.ear:/opt/domains/sormas/autodeploy/sormas-ear.ear
       - ./docker/certs:/tmp/certs
     healthcheck:
       test: ["CMD", "curl", "-f", "-I", "http://localhost:6080/sormas-ui/login"]

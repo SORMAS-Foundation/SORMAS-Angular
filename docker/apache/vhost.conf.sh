@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 cat << EOF > /usr/local/apache2/conf.d/000_${SORMAS_SERVER_URL}.conf
 <VirtualHost *:80>
     ServerName ${SORMAS_SERVER_URL}
@@ -24,7 +23,7 @@ Listen 443
         Header set Access-Control-Allow-Headers "*"
         Header set Access-Control-Allow-Credentials "true"
 
-	      RedirectMatch "^(/(?!downloads|keycloak|metrics).*)" https://${SORMAS_SERVER_URL}/sormas-ui\$1
+	      RedirectMatch "^(/(?!downloads|keycloak|metrics|sockjs-node).*)" https://${SORMAS_SERVER_URL}/sormas-ui\$1
 
         ErrorLog /var/log/apache2/error.log
         LogLevel warn
@@ -52,6 +51,8 @@ Listen 443
         ProxyPassReverse /keycloak http://keycloak:8080/keycloak
         ProxyPass /sormas-angular http://sormas-angular:80/ connectiontimeout=5 timeout=600
         ProxyPassReverse /sormas-angular/ http://sormas-angular:80/
+        ProxyPass /sockjs-node/ http://sormas-angular:80/sockjs-node/ connectiontimeout=5 timeout=600
+        ProxyPassReverse /sockjs-node/ http://sormas-angular:80/sockjs-node/
         <Location /metrics>
             ProxyPass  http://sormas:6080/metrics connectiontimeout=5 timeout=600
             ProxyPassReverse http://sormas:6080/metrics
