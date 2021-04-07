@@ -74,10 +74,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   updateResource(resource: any): Resource {
-
-    console.log('resource', resource);
-    console.log('this.form.getRawValue()', this.form.getRawValue());
-
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
       if (key.includes('.')) {
         const setToValue = (obj: any, prop: any) => {
@@ -155,6 +151,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.forEach(subscription => subscription.unsubscribe());
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }

@@ -35,7 +35,7 @@ export class FormActionsComponent implements OnInit, OnDestroy {
             .subscribe((result) => {
               if (result) {
                 if (result === 'CONFIRM') {
-                  this.formActionsService.setInputChange(false);
+                  this.formActionsService.resetInputChange();
                   this.router.navigate([event.url]);
                 }
               }
@@ -76,6 +76,6 @@ export class FormActionsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.forEach(subscription => subscription.unsubscribe());
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }

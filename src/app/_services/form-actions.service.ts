@@ -8,6 +8,8 @@ export class FormActionsService {
   private subjectInputChange = new Subject<any>();
   private subjectDiscard = new Subject<any>();
 
+  private fieldsArray: string[] = [];
+
   setSave(resource: Resource): void {
     this.subjectSave.next({ resource });
   }
@@ -16,8 +18,18 @@ export class FormActionsService {
     return this.subjectSave.asObservable();
   }
 
-  setInputChange(inputChange: boolean): void {
-    this.subjectInputChange.next({ inputChange });
+  setInputChange(field: string, isInputChanged: boolean): void {
+    if (isInputChanged) {
+      this.fieldsArray.push(field);
+    } else if (this.fieldsArray.includes(field)) {
+      this.fieldsArray = this.fieldsArray.filter((item) => item !== field);
+    }
+    this.subjectInputChange.next({ inputChange: this.fieldsArray.length });
+  }
+
+  resetInputChange(): void {
+    this.fieldsArray = [];
+    this.subjectInputChange.next({ inputChange: false });
   }
 
   getInputChange(): Observable<any> {
@@ -25,6 +37,7 @@ export class FormActionsService {
   }
 
   setDiscard(): void {
+    this.fieldsArray = [];
     this.subjectDiscard.next({});
     this.subjectInputChange.next({ inputChange: false });
   }

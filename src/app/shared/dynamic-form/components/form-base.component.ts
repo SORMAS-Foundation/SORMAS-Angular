@@ -31,9 +31,9 @@ export class FormBaseComponent implements OnInit{
 
   onChange(): void {
     if (this.initialValue === this.group.controls[this.config.key].value) {
-      this.formActionsService.setInputChange(false);
+      this.formActionsService.setInputChange(this.config.key, false);
     } else {
-      this.formActionsService.setInputChange(true);
+      this.formActionsService.setInputChange(this.config.key, true);
     }
   }
 }
