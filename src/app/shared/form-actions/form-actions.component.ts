@@ -24,7 +24,7 @@ export class FormActionsComponent implements OnInit, OnDestroy {
     this.subscription.push(
       // @ts-ignore
       this.router.events.subscribe((event: Event) => {
-        if (event instanceof NavigationStart && this.hasInputsChanged) {
+        if (event instanceof NavigationStart && this.hasInputsChanged && !event.url.includes('#')) {
           this.notificationService
             .prompt({
               title: 'Are you sure you want to leave?',
