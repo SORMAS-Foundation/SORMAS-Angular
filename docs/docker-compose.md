@@ -7,20 +7,25 @@ This approach helps you spin off a local backend environment using docker.
 2. On Windows ensure the local git repository is set to not replace line endings with
    `git config core.autocrlf input` and ` git config core.eol lf`
 3. On Windows ensure your IDE is set to use LF for line endings instead of the default CRLF
-4. Update the `.env` file with your own `LOCAL_IPV4_ADDRESS`.
-
-To run the environment please use: `docker-compose up`
+4. Make any changes you need for passwords and configurations in the `.env` file
+5. Ensure the correct ip / hostname is set on the `extra_host` for the
+6. Run `docker-compose up -d`
+7. Wait the sormas app to start...
+8. Run `/opt/payara5/bin/asadmin --port 6048 deploy --force /opt/domains/sormas/deployments/sormas-rest.war` In the `sormas` container
+   i.e. `docker exec sormas-angular_sormas_1 /opt/payara5/bin/asadmin --port 6048 deploy --force /opt/domains/sormas/deployments/sormas-rest.war`
+9. Go to https://sormas-docker-test.com/keycloak/auth and login with the credentials you set in the `.env` file
+10. Create a new client with the client id: `sormas-angular` and the root url `https://sormas-docker-test.com/sormas-angular/`
 
 ## Links:
 
-| App Name           | Url                                            |
-| ------------------ | ---------------------------------------------- |
-| Sormas Application | https://sormas-docker-test.com/sormas-ui/login |
-| Sormas REST API    | https://sormas-docker-test.com/sormas-rest/    |
-| Sormas Angular     | http://localhost:8200                          |
-| Sormas Postgres    | 127.0.0.1:8300                                 |
-| Keycloak           | https://sormas-docker-test.com/keycloak        |
-| Keycloak Postgres  | 127.0.0.1:8401                                 |
+| App Name           | Url                                                  |
+| ------------------ | ----------------------------------------------       |
+| Sormas Application | https://sormas-docker-test.com/sormas-ui/login       |
+| Sormas REST API    | https://sormas-docker-test.com/sormas-rest/          |
+| Sormas Angular     | https://sormas-docker-test.com/sormas-angular/en-US/ |
+| Sormas Postgres    | 127.0.0.1:8300                                       |
+| Keycloak           | https://sormas-docker-test.com/keycloak              |
+| Keycloak Postgres  | 127.0.0.1:8401                                       |
 
 | App Name           | Url                                   |
 | ------------------ | ------------------------------------- |
