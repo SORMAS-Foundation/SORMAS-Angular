@@ -10,7 +10,13 @@
     }"
   >
     <mat-label *ngIf="config.label">{{ config.label }}</mat-label>
-    <input matInput [matDatepicker]="picker" [formControlName]="config.key" />
+    <input
+      matInput
+      [matDatepicker]="picker"
+      (dateChange)="onChange()"
+      [formControlName]="config.key"
+      placeholder="Choose a date"
+    />
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>

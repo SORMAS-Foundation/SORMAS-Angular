@@ -4,10 +4,10 @@ import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { FormBase, FormElementBase } from './types/form-element-base';
-import { TriggerSaveFormService } from '../../_services/trigger-save-form.service';
 import { NotificationService } from '../../_services/notification.service';
 import { BaseService } from '../../_services/api/base.service';
 import { Resource } from '../../_models/resource';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -18,15 +18,17 @@ import { Resource } from '../../_models/resource';
 export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() formElements: FormBase<string>[] = [];
   @Input() resourceService: BaseService<any>;
+  @Input() withAnchor = false;
+
   formElementsProcessed: FormElementBase<string>[] = [];
   form: FormGroup;
-  subscription: Subscription = new Subscription();
   watchFields: any[] = [];
+  subscription: Subscription[] = [];
 
   constructor(
     private formElementControlService: FormElementControlService,
     form: FormBuilder,
-    private triggerSaveFormService: TriggerSaveFormService,
+    private formActionsService: FormActionsService,
     private notificationService: NotificationService
   ) {
     this.form = form.group({
@@ -37,20 +39,30 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.form = this.formElementControlService.toFormGroup(this.processFormArray());
 
-    this.subscription = this.triggerSaveFormService.getSave().subscribe((response: any) => {
-      if (this.form.invalid) {
-        this.notificationService.error('Please fill in all the mandatory fields');
-        return;
-      }
+    this.subscription.push(
+      this.formActionsService.getSave().subscribe((response: any) => {
+        if (this.form.invalid) {
+          this.notificationService.error('Please fill in all the mandatory fields');
+          return;
+        }
 
-      this.resourceService.update(this.updateResource(response.resource)).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => this.notificationService.success('Successfully saved'),
-      });
-    });
+        this.resourceService.update(this.updateResource(response.resource)).subscribe({
+          next: () => {},
+          error: (err: any) => {
+            this.notificationService.error(err);
+          },
+          complete: () => this.notificationService.success('Successfully saved'),
+        });
+      })
+    );
+
+    this.subscription.push(
+      this.formActionsService.getDiscard().subscribe(() => {
+        this.processFormArray().forEach((item) => {
+          this.form.controls[item.key].setValue(item.value);
+        });
+      })
+    );
 
     this.detectChanges();
 
@@ -114,7 +126,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
             watchField?.active && (item.values ? item.values.includes(val) : !!val);
           // set same value on target field just to trigger 'valueChanges'
           // on it so it can properly update any dependent fields
-          if (item.target !== targetField.key) {
+          if (item.watch !== targetField.key) {
             const formElement = this.form.get(targetField.key);
             formElement?.setValue(formElement?.value);
           }
@@ -132,9 +144,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return result;
   }
 
+  getSections(): any {
+    return this.formElements
+      .filter((item) => item.anchor)
+      .map((item: FormBase<string>) => ({ id: item.anchor, label: item.anchorLabel }));
+  }
+
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }

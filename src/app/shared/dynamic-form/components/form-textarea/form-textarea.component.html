@@ -8,9 +8,10 @@
     <mat-label *ngIf="config.label">{{ config.label }}</mat-label>
     <textarea
       [value]="config.value"
+      (change)="onChange()"
       [formControlName]="config.key"
       matInput
-      placeholder="{{ config.key }}"
+      [placeholder]="config.label"
     ></textarea>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
   </mat-form-field>

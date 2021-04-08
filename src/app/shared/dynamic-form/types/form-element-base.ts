@@ -12,10 +12,10 @@ export class FormElementBase<T> {
   newLine: boolean | undefined;
   className?: string;
   options: { key: string; value: string }[];
-  toggleExpression?: string;
   active: boolean;
   dependingOn?: string;
   dependingOnValues?: any[];
+  widget?: any;
 
   constructor(
     options: {
@@ -34,6 +34,7 @@ export class FormElementBase<T> {
       active?: boolean;
       dependingOn?: string;
       dependingOnValues?: any[];
+      widget?: any;
     } = {}
   ) {
     this.value = options.value;
@@ -51,6 +52,7 @@ export class FormElementBase<T> {
     this.active = options.active ?? true;
     this.dependingOn = options.dependingOn;
     this.dependingOnValues = options.dependingOnValues;
+    this.widget = options.widget;
   }
 }
 
