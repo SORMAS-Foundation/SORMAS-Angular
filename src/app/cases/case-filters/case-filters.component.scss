@@ -1,6 +1,7 @@
 @use '../../../variables.scss' as *;
 
 .case-filters {
+  margin-top: 24px;
   .toggle-filter {
     position: absolute;
     top: 45vh;
@@ -14,7 +15,9 @@
   }
 
   .filters-header {
+    padding-left: 16px;
     margin-bottom: 0;
+    font-size: 24px;
   }
   .reset-button {
     position: sticky;
@@ -55,10 +58,21 @@
   .search-field {
     width: 240px;
     margin-left: 16px;
+    .search-icon {
+      width: 14px;
+      height: 12px;
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
+    ::placeholder {
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
   }
 
   .date-field {
     width: 185px;
+    margin-bottom: 19px;
 
     .datepicker-icon {
       position: relative;

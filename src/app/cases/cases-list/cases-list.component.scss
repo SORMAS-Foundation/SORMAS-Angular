@@ -1,7 +1,8 @@
 @use '../../../variables.scss' as *;
 
-.mat-drawer-container {
+.case-list-container {
   height: 100%;
+  background: $white;
 }
 
 .toggle-filter {
@@ -17,6 +18,7 @@
 }
 .header-title {
   padding-left: 20px;
+  margin-top: 24px;
   font-size: 34px;
   font-weight: 500;
 }
