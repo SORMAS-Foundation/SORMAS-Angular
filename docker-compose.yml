@@ -6,7 +6,7 @@ services:
     build:
       context: .
       target: compile-image
-    entrypoint: /opt/ng/node_modules/.bin/ng serve --configuration=en-US --port 80 --host="0.0.0.0" --public-host="sormas-docker-test.com/sormas-angular/" --disable-host-check
+    entrypoint: /opt/ng/node_modules/.bin/ng serve --configuration=en-US --port 80 --host="0.0.0.0" --public-host="sormas-docker-test.com/sormas-angular/" --disable-host-check --poll
     ports:
       - 127.0.0.1:8200:80
     extra_hosts:
