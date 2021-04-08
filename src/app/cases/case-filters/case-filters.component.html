@@ -3,7 +3,7 @@
   <h2 class="filters-header">Filters</h2>
   <form [formGroup]="filtersForm" class="filters-form">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
-      <mat-label>Search</mat-label>
+      <mat-icon matPrefix class="search-icon">search</mat-icon>
       <input
         value=""
         type="text"
@@ -322,11 +322,11 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
-          disableOptionCentering
           multiple
           formControlName="moreFilters"
           (selectionChange)="onFormChange()"
           placeholder="More filters"
+          class="multiselect"
         >
           <mat-option value="no-geo-coordinates"> Cases without geo-coordinates </mat-option>
           <mat-option value="no-facility"> Port health cases without a facility </mat-option>
