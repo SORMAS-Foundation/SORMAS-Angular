@@ -118,7 +118,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   detectChanges(): void {
     this.watchFields.forEach((item) => {
-      this.form.get(item.watch)?.valueChanges.subscribe((val) => {
+      this.form.controls[item.watch]?.valueChanges.subscribe((val) => {
         const targetField = this.getTargetField(item.target);
         const watchField = this.getTargetField(item.watch);
         if (targetField) {
