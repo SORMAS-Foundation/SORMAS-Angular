@@ -4,13 +4,23 @@
   .inpage-nav {
     position: fixed;
     z-index: 9;
-    padding: 0 30px;
     right: 0;
     left: 0;
+    padding: 0 30px;
   }
 
   .form-content {
     padding-top: 40px;
+  }
+}
+
+.mat-card {
+  flex: 1 1 auto;
+
+  .mat-divider-horizontal {
+    position: unset;
+    border: 0;
+    margin: 0.5rem;
   }
 }
 
@@ -26,6 +36,10 @@
   &:hover,
   &:focus {
     background-color: $white;
+
+    .mat-card {
+      @include mat-elevation(6);
+    }
   }
 }
 
@@ -38,16 +52,6 @@ h2 {
   font-size: 14px;
   line-height: 1.5;
   text-align: right;
-}
-
-.mat-card {
-  flex: 1 1 auto;
-
-  .mat-divider-horizontal {
-    position: unset;
-    border: 0;
-    margin: 0.5rem;
-  }
 }
 
 .dynamic-form-input {

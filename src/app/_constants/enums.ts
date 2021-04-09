@@ -185,3 +185,9 @@ export enum Trimester {
   THIRD = 'Third',
   UNKNOWN = 'Unknown',
 }
+
+export enum HospitalizationReason {
+  REPORTED_DISEASE = 'Reported disease',
+  UNKNOWN = 'Unknown',
+  OTHER = 'Other',
+}

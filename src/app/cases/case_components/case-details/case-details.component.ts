@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
-import * as data from './form-data';
+import * as data from './case-details-form-data';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { BaseService } from '../../../_services/api/base.service';
 import { CaseDataDto } from '../../../_models/caseDataDto';

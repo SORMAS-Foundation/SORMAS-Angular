@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { BaseService } from '../../../_services/api/base.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
-import * as data from './form-data';
+import * as data from './case-hospitalization-form-data';
 import { CaseDataDto } from '../../../_models/caseDataDto';
 
 @Component({
@@ -12,6 +12,7 @@ import { CaseDataDto } from '../../../_models/caseDataDto';
 })
 export class CaseHospitalizationComponent {
   myFormElements: FormBase<any>[] = [];
+  formData = data.FORM_DATA_CASE_HOSPITALIZATION;
 
   public resourceService: BaseService<any>;
 
@@ -21,7 +22,7 @@ export class CaseHospitalizationComponent {
     this.resourceService = resourceService;
     this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
       caseItem,
-      data.FORM_DATA_CASE_HOSPITALIZATION
+      this.formData
     );
   }
 }

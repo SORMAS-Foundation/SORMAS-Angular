@@ -30,7 +30,13 @@ export function deserializeDates(source: any): void {
   }
 
   Object.entries(source).forEach(([key, value]) => {
-    if (typeof value === 'number' && (key.endsWith('Date') || key.endsWith('Until'))) {
+    if (
+      typeof value === 'number' &&
+      (key.endsWith('Date') ||
+        key.endsWith('Until') ||
+        key.endsWith('End') ||
+        key.endsWith('Start'))
+    ) {
       source[key] = new Date(value);
     }
 
