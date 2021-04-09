@@ -21,7 +21,14 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
     fields: [
       {
         ...FORM_DATA_NULL,
-        key: 'hospitalName',
+        key: 'healthFacility.caption',
+        dependingOn: 'healthFacility.caption',
+      },
+      {
+        ...FORM_DATA_NULL,
+        key: 'healthFacilityDetails',
+        dependingOn: 'facilityType',
+        dependingOnValues: ['OTHER_CARE_FACILITY'],
       },
     ],
   },
