@@ -151,7 +151,7 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sormas:serve:e2e"
+              "devServerTarget": "sormas:serve:e2e-test"
             }
           }
         }
