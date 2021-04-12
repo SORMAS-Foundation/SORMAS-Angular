@@ -82,6 +82,14 @@
                   "maximumError": "100kb"
                 }
               ]
+            },
+            "e2e-test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.e2e-test.ts"
+                }
+              ]
             }
           }
         },
@@ -93,6 +101,9 @@
           "configurations": {
             "production": {
               "browserTarget": "sormas:build:production"
+            },
+            "e2e-test": {
+              "browserTarget": "sormas:build:e2e-test"
             },
             "en-US": {
               "browserTarget": "sormas:build:en-US"
@@ -140,7 +151,7 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sormas:serve:production"
+              "devServerTarget": "sormas:serve:e2e"
             }
           }
         }
