@@ -1,3 +1,5 @@
+import { PositionType } from '../_models/positionType';
+
 export enum CaseClassification {
   NOT_CLASSIFIED = 'Not yet classified',
   SUSPECT = 'Suspect case',
@@ -190,4 +192,23 @@ export enum HospitalizationReason {
   REPORTED_DISEASE = 'Reported disease',
   UNKNOWN = 'Unknown',
   OTHER = 'Other',
+}
+
+export const Position = {
+  TOPLEFT: 'TOPLEFT' as PositionType,
+  TOP: 'TOP' as PositionType,
+  TOPRIGHT: 'TOPRIGHT' as PositionType,
+  RIGHT: 'RIGHT' as PositionType,
+  BOTTOMRIGHT: 'BOTTOMRIGHT' as PositionType,
+  BOTTOM: 'BOTTOM' as PositionType,
+  BOTTOMLEFT: 'BOTTOMLEFT' as PositionType,
+  LEFT: 'LEFT' as PositionType,
+  CENTER: 'CENTER' as PositionType,
+};
+
+export enum DateCardType {
+  STANDARD = 'standard',
+  ACTIVE = 'active',
+  CARD = 'card',
+  HIGHLIGHT = 'highlight',
 }

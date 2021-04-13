@@ -1,0 +1,62 @@
+@use '/src/variables.scss' as *;
+
+:host {
+  text-align: center;
+}
+
+.sample-details {
+  color: mat-color($sormas-accent, 500);
+
+  strong {
+    font-weight: 500;
+  }
+}
+
+.sample-status {
+  display: block;
+}
+
+.show-priority {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-assignee {
+  color: mat-color($sormas-accent, 600);
+  font-size: 12px;
+
+  .mat-icon {
+    width: 14px;
+    height: 14px;
+    margin: 3px 6px 0 0;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.priority-high {
+  color: mat-color($sormas-warning, 800);
+  font-weight: 500;
+}
+
+.status-pending,
+.status-not_done {
+  color: mat-color($sormas-alert, 300);
+}
+
+.status-indeterminate {
+  color: mat-color($sormas-warning, 800);
+}
+
+.status-positive {
+  color: mat-color($sormas-alert, 700);
+}
+
+.status-negative {
+  color: mat-color($sormas-primary, 400);
+}

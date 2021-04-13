@@ -11,6 +11,61 @@ export class AboutComponent {
   public version: string = version;
   public ngVersion: string = VERSION.full;
 
+  dataAddress = {
+    city: 'Cluj-Napoca',
+    street: 'Sarmisegetuza street',
+    houseNumber: 21,
+    postalCode: 400592,
+    addressTypeDetails: 'Home',
+  };
+  dataCaseTask = {
+    taskType: 'HEALTH_ACTIVITIES',
+    taskStatus: 'PENDING',
+    priority: 'NORMAL',
+    perceivedStart: new Date('2021/02/11'),
+    dueDate: new Date('2021/02/26'),
+    assigneeUser: {
+      caption: 'Surveillance supervisor',
+    },
+  };
+  dataCaseTaskHigh = { ...this.dataCaseTask, ...{ priority: 'HIGH' } };
+  dataCaseTaskDone = { ...this.dataCaseTask, ...{ taskStatus: 'DONE' } };
+  dataCaseTaskNotExecutable = { ...this.dataCaseTask, ...{ taskStatus: 'NOT_EXECUTABLE' } };
+
+  dataSample = {
+    pathogenTestResult: 'NOT_DONE',
+    sampleMaterial: 'SERA',
+    samplePurpose: 'INTERNAL',
+    sampleDateTime: new Date('2021/01/12'),
+    reportDateTime: new Date('2021/01/12'),
+    lab: {
+      caption: 'Internal/in-house testing',
+    },
+  } as any;
+  dataSamplePositive = {
+    ...this.dataSample,
+    pathogenTestResult: 'POSITIVE',
+    shipmentDate: new Date('2021/01/24'),
+    receivedDate: new Date('2021/02/01'),
+  };
+  dataSamplePending = {
+    ...this.dataSample,
+    pathogenTestResult: 'PENDING',
+    sampleMaterial: 'NASAL_SWAB',
+    shipmentDate: new Date('2021/01/24'),
+  };
+  dataSampleIndeterminate = {
+    ...this.dataSample,
+    pathogenTestResult: 'INDETERMINATE',
+    shipmentDate: new Date('2021/01/24'),
+  };
+  dataSampleNegative = {
+    ...this.dataSample,
+    pathogenTestResult: 'NEGATIVE',
+    sampleMaterial: 'NASAL_SWAB',
+    shipmentDate: new Date('2021/01/24'),
+  };
+
   constructor(private notificationService: NotificationService) {}
 
   notifyInfo(): void {

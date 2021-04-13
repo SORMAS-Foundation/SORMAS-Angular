@@ -1,0 +1,8 @@
+<div [ngClass]="['date-card', appearance]">
+  <div class="date">
+    <span *ngIf="showMonth" class="month">{{ date | date: 'MMM' }}</span>
+    <span *ngIf="showDay" class="day">{{ date | date: 'dd' }}</span>
+    <span *ngIf="showYear" class="year">{{ date | date: 'yyyy' }}</span>
+  </div>
+  <div *ngIf="label" class="date-label">{{ label }}</div>
+</div>

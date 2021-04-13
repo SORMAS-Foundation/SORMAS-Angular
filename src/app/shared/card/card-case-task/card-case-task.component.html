@@ -1,0 +1,31 @@
+<div [ngClass]="['task-details', data.priority === 'HIGH' ? 'show-priority' : '']">
+  <span *ngIf="data.priority === 'HIGH'" class="task-priority">
+    priority
+    <strong [ngClass]="'priority-' + [data.priority | lowercase]">{{ data.priority }}</strong>
+  </span>
+  <span [ngClass]="['task-status', 'status-' + data.taskStatus | lowercase]">
+    {{ data.taskStatus }}
+  </span>
+</div>
+
+<div class="task-timeline">
+  <app-date-card
+    *ngIf="data.perceivedStart"
+    [date]="data.perceivedStart"
+    label="start"
+    [showYear]="false"
+    [appearance]="data.taskStatus === 'DONE' ? dateCardType.CARD : dateCardType.STANDARD"
+  ></app-date-card>
+  <app-date-card
+    *ngIf="data.dueDate"
+    [date]="data.dueDate"
+    label="end"
+    [showYear]="false"
+    [appearance]="data.taskStatus === 'DONE' ? dateCardType.CARD : dateCardType.STANDARD"
+  ></app-date-card>
+</div>
+
+<div class="task-assignee">
+  <mat-icon>perm_contact_calendar</mat-icon>
+  <span>{{ data.assigneeUser.caption }}</span>
+</div>

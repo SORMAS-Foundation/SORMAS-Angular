@@ -1,7 +1,14 @@
-div {
+.wrapper {
   padding: 16px;
   border: 1px solid #ccc;
   margin-top: 16px;
+}
+
+.wrapper-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  gap: 1rem;
 }
 
 .mat-button-base {

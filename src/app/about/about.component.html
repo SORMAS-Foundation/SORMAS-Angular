@@ -2,15 +2,220 @@
 <p i18n>SORMAS Next-Gen version: {{ version }}</p>
 <p i18n>Angular version: {{ ngVersion }}</p>
 
-<div>
+<div class="wrapper">
   <button mat-flat-button color="primary" (click)="alertConfirm()">Alert confirm</button>
   <button mat-flat-button color="primary" (click)="alertError()">Alert warning</button>
   <button mat-flat-button color="primary" (click)="alertPrompt()">Alert prompt</button>
 </div>
 
-<div>
+<div class="wrapper">
   <button mat-stroked-button (click)="notifyInfo()">Notfiy info</button>
   <button mat-stroked-button (click)="notifyWarning()">Notfiy warning</button>
   <button mat-stroked-button (click)="notifyError()">Notify error</button>
   <button mat-stroked-button (click)="notifySuccess()">Notify success</button>
 </div>
+
+<div class="wrapper-cards">
+  <app-card
+    [title]="dataCaseTask.taskType"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="case_task"
+    [data]="dataCaseTask"
+  ></app-card>
+  <app-card
+    [title]="dataCaseTask.taskType"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="case_task"
+    status="undetermined"
+    [data]="dataCaseTaskHigh"
+  ></app-card>
+  <app-card
+    [title]="dataCaseTask.taskType"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="case_task"
+    status="completed"
+    [data]="dataCaseTaskDone"
+  ></app-card>
+  <app-card
+    [title]="dataCaseTask.taskType"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="case_task"
+    status="critical"
+    [data]="dataCaseTaskNotExecutable"
+  ></app-card>
+</div>
+
+<div class="wrapper-cards">
+  <app-card
+    [title]="dataSample.sampleMaterial"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="sample"
+    [data]="dataSample"
+    appearance="outlined"
+  ></app-card>
+  <app-card
+    [title]="dataSample.sampleMaterial"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="sample"
+    [data]="dataSamplePending"
+    appearance="outlined"
+  ></app-card>
+  <app-card
+    [title]="dataSample.sampleMaterial"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="sample"
+    status="critical"
+    [data]="dataSamplePositive"
+    appearance="outlined"
+  ></app-card>
+  <app-card
+    [title]="dataSample.sampleMaterial"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="sample"
+    status="undetermined"
+    [data]="dataSampleIndeterminate"
+    appearance="outlined"
+  ></app-card>
+  <app-card
+    [title]="dataSample.sampleMaterial"
+    [width]="200"
+    [collapse]="true"
+    [edit]="true"
+    type="sample"
+    status="good"
+    [data]="dataSampleNegative"
+    appearance="outlined"
+  ></app-card>
+</div>
+
+<div class="wrapper-cards">
+  <app-card
+    title="Signal event"
+    [width]="260"
+    [select]="true"
+    selectPosition="TOPRIGHT"
+    [edit]="true"
+    editPosition="TOPRIGHT"
+    appearance="card"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a signal event card</div>
+  </app-card>
+  <app-card
+    title="Screening event"
+    [width]="260"
+    [select]="true"
+    selectPosition="TOPRIGHT"
+    [edit]="true"
+    editPosition="TOPRIGHT"
+    appearance="card"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a screening event card</div>
+  </app-card>
+</div>
+
+<div class="wrapper-cards">
+  <app-card
+    title="Jonas Wolf"
+    [width]="200"
+    [edit]="true"
+    editPosition="TOPRIGHT"
+    appearance="outlined"
+    status="unclassified"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a case person card</div>
+  </app-card>
+  <app-card
+    title="Drug intake"
+    [width]="200"
+    [select]="true"
+    [edit]="true"
+    editPosition="BOTTOMLEFT"
+    appearance="outlined"
+    status="unclassified"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a prescription card</div>
+  </app-card>
+</div>
+
+<div class="wrapper-cards">
+  <app-card
+    [width]="220"
+    [edit]="true"
+    editPosition="BOTTOMRIGHT"
+    [delete]="true"
+    deletePosition="TOPRIGHT"
+    type="address"
+    [data]="dataAddress"
+  ></app-card>
+  <app-card
+    title="Drug intake"
+    [width]="200"
+    [select]="true"
+    [edit]="true"
+    editPosition="BOTTOMLEFT"
+    appearance="outlined"
+    status="unclassified"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a prescription card</div>
+  </app-card>
+</div>
+
+<app-card
+  title="Health activities"
+  [width]="360"
+  [collapse]="true"
+  [select]="true"
+  [edit]="true"
+  [delete]="true"
+>
+  <div style="padding: 30px 0; text-align: center; background-color: lightskyblue">
+    This is another card
+  </div>
+</app-card>
+
+<app-card
+  title="Health activities"
+  [width]="360"
+  [collapse]="true"
+  [select]="true"
+  [edit]="true"
+  [delete]="true"
+  [link]="true"
+  [unlink]="true"
+  [refresh]="true"
+>
+  <div style="padding: 30px 0; text-align: center; background-color: lightskyblue">
+    This is another card
+  </div>
+</app-card>
+
+<app-card
+  title="Health activities"
+  [width]="280"
+  [select]="true"
+  selectPosition="TOPRIGHT"
+  [edit]="true"
+  editPosition="TOPRIGHT"
+  [unlink]="true"
+  unlinkPosition="BOTTOMLEFT"
+  [refresh]="true"
+  refreshPosition="BOTTOMRIGHT"
+>
+  <div style="padding: 30px 0; text-align: center">This is another card</div>
+</app-card>
