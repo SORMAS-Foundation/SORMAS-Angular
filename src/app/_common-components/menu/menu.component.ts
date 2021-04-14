@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import logoPath from '../../../assets/img/sormas-logo.svg';
 
 export interface RouteItem {
   link: string;
@@ -18,7 +19,7 @@ export const routesConfig: RouteItem[] = [
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-
 export class MenuComponent {
   routeConfig: RouteItem[] = routesConfig;
+  logo = logoPath;
 }

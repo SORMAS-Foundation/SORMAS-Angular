@@ -2,16 +2,20 @@
 
 .menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 9;
-  background: white;
+  top: 0;
+  right: 0;
+  left: 0;
   height: 68px;
-  color: white;
   background: linear-gradient(
       90deg
     , #1b1f26 0%, #2b323d 100%);
+  color: $white;
+
+  .logo {
+    margin: 20px 10px 0 25px;
+    float: left;
+  }
 }
 
 .mat-button {

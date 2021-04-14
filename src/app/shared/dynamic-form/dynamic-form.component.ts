@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import {Component, HostListener, Input, OnDestroy, OnInit} from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormElementControlService } from '../../_services/form-element-control.service';
