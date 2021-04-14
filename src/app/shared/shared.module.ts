@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { MaterialModule } from '../material.module';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { TableComponent } from './table/table.component';
 import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { DialogModule } from './dialog';
@@ -17,7 +16,6 @@ import { FormActionsComponent } from './form-actions/form-actions.component';
 
 @NgModule({
   declarations: [
-    NotFoundComponent,
     LocaleSelectComponent,
     TableComponent,
     PropertyGetterPipe,
@@ -37,7 +35,6 @@ import { FormActionsComponent } from './form-actions/form-actions.component';
     DialogModule,
   ],
   exports: [
-    NotFoundComponent,
     LocaleSelectComponent,
     TableComponent,
     RouterModule,

@@ -16,9 +16,10 @@ import { AuthService } from './shared/auth/auth-service/auth.service';
 import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
 import { MenuComponent } from './_common-components/menu/menu.component';
 import { ApiInterceptor } from './_interceptors/ApiInterceptor';
+import { NotFoundComponent } from './_common-components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent],
+  declarations: [AppComponent, MenuComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
