@@ -8,9 +8,9 @@ import {
 } from '@angular/common/http';
 import { from, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { AuthService } from '../auth/auth-service/auth.service';
-import { getEnv } from '../../../environments/getEnv';
+import { environment } from '../../environments/environment';
+import { AuthService } from '../shared/auth/auth-service/auth.service';
+import { getEnv } from '../../environments/getEnv';
 
 @Injectable({
   providedIn: 'root',

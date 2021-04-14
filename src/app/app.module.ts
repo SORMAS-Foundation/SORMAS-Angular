@@ -10,12 +10,12 @@ import { BidiModule } from '@angular/cdk/bidi';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeAuth } from './shared/auth/init-auth';
-import { ApiInterceptor } from './shared/http/ApiInterceptor';
 import { SharedModule } from './shared/shared.module';
 import { ENV, getEnv } from '../environments/getEnv';
 import { AuthService } from './shared/auth/auth-service/auth.service';
 import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
 import { MenuComponent } from './_common-components/menu/menu.component';
+import { ApiInterceptor } from './_interceptors/ApiInterceptor';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent],

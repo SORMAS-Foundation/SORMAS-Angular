@@ -17,11 +17,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-
-    expect(compiled.querySelector('app-layout')).toBeDefined();
-  });
 });
