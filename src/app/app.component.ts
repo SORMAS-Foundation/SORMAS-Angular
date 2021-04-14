@@ -6,7 +6,7 @@ import { getEnv } from '../environments/getEnv';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   direction: Direction = 'ltr';

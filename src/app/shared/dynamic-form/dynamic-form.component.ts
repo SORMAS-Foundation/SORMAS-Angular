@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {Component, HostListener, Input, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormElementControlService } from '../../_services/form-element-control.service';
@@ -24,6 +24,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
   watchFields: any[] = [];
   subscription: Subscription[] = [];
+  fixedHeader = false;
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(): void {
+    if (this.withAnchor) {
+      this.fixedHeader = window.pageYOffset > 71;
+    }
+  }
 
   constructor(
     private formElementControlService: FormElementControlService,

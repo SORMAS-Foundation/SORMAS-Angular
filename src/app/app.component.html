@@ -1,5 +1,10 @@
-<div [dir]="direction">
-  <app-layout>
-    <router-outlet></router-outlet>
-  </app-layout>
+<!--<div [dir]="direction">-->
+<!--  <app-layout>-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </app-layout>-->
+<!--</div>-->
+
+<div [dir]="direction" class="main-wrapper">
+  <app-menu></app-menu>
+  <router-outlet></router-outlet>
 </div>

@@ -2,15 +2,15 @@
 
 .dynamic-form-wrapper {
   .inpage-nav {
-    position: fixed;
-    z-index: 9;
-    right: 0;
-    left: 0;
-    padding: 0 30px;
-  }
-
-  .form-content {
-    padding-top: 40px;
+    &.fixed {
+      position: fixed;
+      z-index: 9;
+      padding: 0 25px;
+      top: 200px;
+      right: 0;
+      left: 0;
+      background: white;
+    }
   }
 }
 
