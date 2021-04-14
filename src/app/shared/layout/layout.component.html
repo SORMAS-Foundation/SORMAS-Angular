@@ -1,0 +1,30 @@
+<div class="main-wrapper">
+  <mat-toolbar color="accent">
+    <div class="toolbar">
+      <figure class="sidenav-figure">
+        <img class="sidenav-logo" [src]="logo" i18n-alt alt="logo" />
+      </figure>
+      <button
+        *ngIf="showButtonBurger"
+        mat-icon-button
+        class="menu-burger"
+        [color]="sidenav.opened ? 'primary' : ''"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <app-menu *ngIf="showMenuHeader" [routeConfig]="navigation" class="menu-top"></app-menu>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="over" [autoFocus]="false">
+      <app-menu [routeConfig]="navigation" (routeChange)="sidenav.close()"></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content">
+        <ng-content></ng-content>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
