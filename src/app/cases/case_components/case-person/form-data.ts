@@ -44,11 +44,17 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
     anchorLabel: 'Case data',
     fields: [
       {
+        ...FORM_DATA_NULL,
+        key: 'uuid',
+        label: 'ID: ',
+        sameLine: true,
+      },
+      {
         ...FORM_DATA_INPUT,
         key: 'firstName',
         label: 'First name',
         validation: ['required'],
-        newLine: false,
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
