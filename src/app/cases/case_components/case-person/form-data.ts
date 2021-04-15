@@ -1,28 +1,8 @@
 import {
-  FORM_DATA_CHECKBOX,
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
-  FORM_DATA_RADIO,
   FORM_DATA_SELECT,
-  FORM_DATA_TEXTAREA,
   FORM_DATA_NULL,
-  FORM_DATA_NUMBER,
-  FORM_DATA_WIDGET,
-  CaseClassification,
-  InvestigationStatus,
-  CaseOutcome,
-  Disease,
-  YesNoUnknown,
-  PlaceOfStay,
-  Quarantine,
-  VaccinationStatus,
-  VaccinationSource,
-  VaccineName,
-  VaccineManufacturer,
-  CaseIdentificationSource,
-  ScreeningType,
-  InfectionSetting,
-  Trimester,
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../shared/pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -52,7 +32,7 @@ const yearOptions = Array.from({ length: 122 }, (_, i) => {
   return { key: i, value: i + 1900 };
 });
 const monthOptions = Array.from({ length: 12 }, (_, i) => {
-  return { key: i, value: ('0' + (i + 1)).slice(-2) };
+  return { key: i, value: i + 1 };
 });
 const dayOptions = Array.from({ length: 31 }, (_, i) => {
   return { key: i, value: i + 1 };
@@ -61,7 +41,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
   {
     title: 'Person',
     required: true,
-    anchor: 'case_data',
     anchorLabel: 'Case data',
     fields: [
       {
@@ -69,6 +48,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'firstName',
         label: 'First name',
         validation: ['required'],
+        newLine: false,
       },
       {
         ...FORM_DATA_INPUT,
@@ -127,6 +107,8 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'Date of death',
         options: optionsPresentCondition,
         className: 'size-small',
+        dependingOn: 'presentCondition',
+        dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -134,11 +116,15 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'Cause of death',
         options: optionsCauseOfDeath,
         newLine: true,
+        dependingOn: 'presentCondition',
+        dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'responsibleDisease',
         label: 'Responsible disease',
+        dependingOn: 'presentCondition',
+        dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -146,11 +132,14 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'Death place type',
         options: optionsDeathPlaceType,
         newLine: true,
+        dependingOn: 'presentCondition',
+        dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'deathPlaceDescription',
         label: 'Death place discription',
+        dependingOn: 'deathPlaceType',
       },
       {
         ...FORM_DATA_INPUT,
@@ -190,6 +179,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'occupationDetails',
         label: 'Occupation details',
         className: 'size-large',
+        dependingOn: 'occupationType',
       },
       {
         ...FORM_DATA_SELECT,
@@ -201,7 +191,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'education',
+        key: 'educationType',
         label: 'Education',
         options: optionsEducation,
         className: 'size-large',
@@ -212,6 +202,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'educationDetailes',
         label: 'Details',
         className: 'size-large',
+        dependingOn: 'educationType',
       },
     ],
   },
