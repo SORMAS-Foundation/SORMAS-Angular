@@ -25,7 +25,7 @@ import {
   Trimester,
 } from '../../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../../shared/pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { FollowUpStatusComponent } from '../follow-up-status/follow-up-status.component';
 import { NewEpidNumberComponent } from '../new-epid-number/new-epid-number.component';
 

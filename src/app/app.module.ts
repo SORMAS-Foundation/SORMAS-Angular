@@ -17,9 +17,10 @@ import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
 import { MenuComponent } from './_common-components/menu/menu.component';
 import { ApiInterceptor } from './_interceptors/ApiInterceptor';
 import { NotFoundComponent } from './_common-components/not-found/not-found.component';
+import { EnumToKeyValuePipe } from './_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, NotFoundComponent],
+  declarations: [AppComponent, MenuComponent, NotFoundComponent, EnumToKeyValuePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

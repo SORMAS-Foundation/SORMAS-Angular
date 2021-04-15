@@ -8,7 +8,7 @@ import {
   HospitalizationReason,
 } from '../../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../../shared/pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 

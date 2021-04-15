@@ -7,9 +7,7 @@ import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { MaterialModule } from '../material.module';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { TableComponent } from './table/table.component';
-import { PropertyGetterPipe } from './pipes/property-getter/property-getter.pipe';
 import { DialogModule } from './dialog';
-import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
 import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
 import { FormActionsComponent } from './form-actions/form-actions.component';
@@ -18,10 +16,8 @@ import { FormActionsComponent } from './form-actions/form-actions.component';
   declarations: [
     LocaleSelectComponent,
     TableComponent,
-    PropertyGetterPipe,
     InpageNavComponent,
     CollapsableBoxComponent,
-    EnumToKeyValuePipe,
     FormActionsComponent,
   ],
   imports: [
