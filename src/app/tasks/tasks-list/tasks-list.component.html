@@ -1,1 +1,19 @@
-<p>tasks-list works!</p>
+<button class="toggle-filter" (click)="drawer.open()">
+  <mat-icon *ngIf="!drawer.opened">filter_list</mat-icon>
+</button>
+<mat-drawer-container class="case-list-container">
+  <mat-drawer #drawer opened mode="side" class="filters-bar">
+    <app-task-filters [drawer]="drawer"></app-task-filters>
+  </mat-drawer>
+  <mat-drawer-content>
+    <h1 class="header-title" i18n="Cases Overview header">Cases Overview</h1>
+    <app-table
+      [resourceService]="taskService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [visibleRowsCount]="8"
+    ></app-table>
+  </mat-drawer-content>
+</mat-drawer-container>

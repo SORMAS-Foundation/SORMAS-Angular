@@ -164,8 +164,8 @@ app.use('/sormas-rest/tasks/indexList', (req, res) => {
       "creatorUser":{
         "uuid":null,
         "caption":" ",
-        "firstName":null,
-        "lastName":null,
+        "firstName": "first name",
+        "lastName": "last name",
         "shortCaption":" "
       },
       "creatorComment":null,

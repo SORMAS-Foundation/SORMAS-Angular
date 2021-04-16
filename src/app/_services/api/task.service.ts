@@ -10,8 +10,8 @@ import { TaskDto } from '../../_models/taskDto';
 @Injectable({
   providedIn: 'root',
 })
-export class CaseService extends BaseService<TaskDto> {
+export class TaskService extends BaseService<TaskDto> {
   constructor(httpClient: HttpClient) {
-    super(httpClient, '', constants.API_ROUTE_CASES, new TaskSerializer());
+    super(httpClient, '', constants.API_ROUTE_TASKS, new TaskSerializer());
   }
 }

@@ -5,3 +5,9 @@ export const API_ROUTE_CASES = {
   GET_ALL: 'cases/indexList',
   UPDATE: 'cases/update',
 };
+
+export const API_ROUTE_TASKS = {
+  ENDPOINT: 'tasks',
+  GET_ALL: 'tasks/indexList',
+  UPDATE: 'tasks/update',
+};
