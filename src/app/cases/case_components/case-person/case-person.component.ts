@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
-import * as data from './form-data';
+import * as data from './case-person-form-data';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { BaseService } from '../../../_services/api/base.service';
 import { CaseDataDto, PersonDto } from '../../../_models/models';
@@ -23,18 +23,6 @@ export class CasePersonComponent {
     private personService: PersonService,
     private notificationService: NotificationService
   ) {}
-
-  getPersonResource(uuid: string): void {
-    this.personService.getById(uuid).subscribe({
-      next: (response: any) => {
-        this.person = response;
-      },
-      error: (err: any) => {
-        this.notificationService.error(err);
-      },
-      complete: () => {},
-    });
-  }
 
   updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
     this.personService.getById(caseItem.person.uuid).subscribe({
