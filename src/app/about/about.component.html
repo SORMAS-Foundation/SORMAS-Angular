@@ -2,13 +2,13 @@
 <p i18n>SORMAS Next-Gen version: {{ version }}</p>
 <p i18n>Angular version: {{ ngVersion }}</p>
 
-<div class="wrapper">
+<div class="wrapper" style="display: none">
   <button mat-flat-button color="primary" (click)="alertConfirm()">Alert confirm</button>
   <button mat-flat-button color="primary" (click)="alertError()">Alert warning</button>
   <button mat-flat-button color="primary" (click)="alertPrompt()">Alert prompt</button>
 </div>
 
-<div class="wrapper">
+<div class="wrapper" style="display: none">
   <button mat-stroked-button (click)="notifyInfo()">Notfiy info</button>
   <button mat-stroked-button (click)="notifyWarning()">Notfiy warning</button>
   <button mat-stroked-button (click)="notifyError()">Notify error</button>
@@ -16,92 +16,58 @@
 </div>
 
 <div class="wrapper-cards">
-  <app-card
-    [title]="dataCaseTask.taskType"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="case_task"
-    [data]="dataCaseTask"
-  ></app-card>
-  <app-card
-    [title]="dataCaseTask.taskType"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="case_task"
-    status="undetermined"
-    [data]="dataCaseTaskHigh"
-  ></app-card>
-  <app-card
-    [title]="dataCaseTask.taskType"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="case_task"
-    status="completed"
-    [data]="dataCaseTaskDone"
-  ></app-card>
-  <app-card
-    [title]="dataCaseTask.taskType"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="case_task"
-    status="critical"
-    [data]="dataCaseTaskNotExecutable"
-  ></app-card>
+  <h1>Tasks (Case page)</h1>
+  <app-card-list
+    [data]="listCaseTask"
+    [cardWidth]="200"
+    [cardCollapse]="true"
+    [cardEdit]="true"
+    cardType="case_task"
+    cardTitleKey="taskType"
+    cardStatusKey="taskStatus"
+  ></app-card-list>
 </div>
 
 <div class="wrapper-cards">
-  <app-card
-    [title]="dataSample.sampleMaterial"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="sample"
-    [data]="dataSample"
-    appearance="outlined"
-  ></app-card>
-  <app-card
-    [title]="dataSample.sampleMaterial"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="sample"
-    [data]="dataSamplePending"
-    appearance="outlined"
-  ></app-card>
-  <app-card
-    [title]="dataSample.sampleMaterial"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="sample"
-    status="critical"
-    [data]="dataSamplePositive"
-    appearance="outlined"
-  ></app-card>
-  <app-card
-    [title]="dataSample.sampleMaterial"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="sample"
-    status="undetermined"
-    [data]="dataSampleIndeterminate"
-    appearance="outlined"
-  ></app-card>
-  <app-card
-    [title]="dataSample.sampleMaterial"
-    [width]="200"
-    [collapse]="true"
-    [edit]="true"
-    type="sample"
-    status="good"
-    [data]="dataSampleNegative"
-    appearance="outlined"
-  ></app-card>
+  <h1>Samples (Case page)</h1>
+  <app-card-list
+    [data]="listSample"
+    [initialPageSize]="3"
+    [cardWidth]="200"
+    [cardCollapse]="true"
+    [cardEdit]="true"
+    cardType="sample"
+    cardTitleKey="sampleMaterial"
+    cardStatusKey="pathogenTestResult"
+    cardAppearance="outlined"
+  ></app-card-list>
+</div>
+
+<div class="wrapper-cards">
+  <h1>Events (Case page)</h1>
+  <app-card-list
+    [data]="listCaseEvent"
+    [cardWidth]="200"
+    [cardCollapse]="true"
+    [cardEdit]="true"
+    [cardUnlink]="true"
+    cardUnlinkPosition="BOTTOMLEFT"
+    cardType="case_event"
+    cardTitleKey="eventTitle"
+  ></app-card-list>
+</div>
+
+<div class="wrapper-cards">
+  <h1>Address (Case person tab)</h1>
+  <app-card-list
+    [data]="listAddress"
+    [cardWidth]="220"
+    [cardEdit]="true"
+    [cardDelete]="true"
+    cardDeletePosition="TOPRIGHT"
+    cardType="address"
+    (editCard)="editAddress($event)"
+  ></app-card-list>
 </div>
 
 <div class="wrapper-cards">
@@ -175,47 +141,3 @@
     <div style="padding: 30px 0; text-align: center">This is a prescription card</div>
   </app-card>
 </div>
-
-<app-card
-  title="Health activities"
-  [width]="360"
-  [collapse]="true"
-  [select]="true"
-  [edit]="true"
-  [delete]="true"
->
-  <div style="padding: 30px 0; text-align: center; background-color: lightskyblue">
-    This is another card
-  </div>
-</app-card>
-
-<app-card
-  title="Health activities"
-  [width]="360"
-  [collapse]="true"
-  [select]="true"
-  [edit]="true"
-  [delete]="true"
-  [link]="true"
-  [unlink]="true"
-  [refresh]="true"
->
-  <div style="padding: 30px 0; text-align: center; background-color: lightskyblue">
-    This is another card
-  </div>
-</app-card>
-
-<app-card
-  title="Health activities"
-  [width]="280"
-  [select]="true"
-  selectPosition="TOPRIGHT"
-  [edit]="true"
-  editPosition="TOPRIGHT"
-  [unlink]="true"
-  unlinkPosition="BOTTOMLEFT"
-  [refresh]="true"
-  refreshPosition="BOTTOMRIGHT"
->
-  <div style="padding: 30px 0; text-align: center">This is another card</div>
-</app-card>

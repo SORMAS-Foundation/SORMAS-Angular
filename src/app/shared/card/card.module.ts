@@ -7,16 +7,22 @@ import { CardAddressComponent } from './card-address/card-address.component';
 import { CardCaseTaskComponent } from './card-case-task/card-case-task.component';
 import { DateCardModule } from '../date-card/date-card.module';
 import { CardSampleComponent } from './card-sample/card-sample.component';
+import { HumanizePipe } from '../../_pipes/humanize/humanize.pipe';
+import { CardCaseEventComponent } from './card-case-event/card-case-event.component';
+import { CardListComponent } from './card-list/card-list.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule],
   declarations: [
+    HumanizePipe,
     CardComponent,
     CardActionsComponent,
     CardAddressComponent,
     CardCaseTaskComponent,
+    CardCaseEventComponent,
     CardSampleComponent,
+    CardListComponent,
   ],
-  exports: [CardComponent],
+  exports: [CardComponent, CardListComponent],
 })
 export class CardModule {}

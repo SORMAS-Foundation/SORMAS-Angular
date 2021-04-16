@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PositionType } from 'src/app/_models/positionType';
-import { Position } from 'src/app/_constants/enums';
+import { CardAppearanceOptions, CardStatusMap, Position } from 'src/app/_constants/enums';
 import { CardActionsIcons } from 'src/app/_constants/icons';
 import { CardActions } from 'src/app/_models/cardActions';
 import { CardAppearance, CardStatus, CardType } from 'src/app/_models/cardAppearance';
@@ -30,8 +30,8 @@ export class CardComponent implements OnInit {
   @Input() refreshPosition: PositionType = Position.BOTTOMRIGHT;
   @Input() width: number;
   @Input() type: CardType;
-  @Input() appearance: CardAppearance = 'standard';
-  @Input() status: CardStatus = 'confirmed';
+  @Input() appearance: CardAppearance = CardAppearanceOptions.STANDARD;
+  @Input() status: CardStatus = CardStatusMap.CONFIRMED;
   @Input() data: any;
 
   @Output() selectCard: EventEmitter<any> = new EventEmitter();
@@ -84,16 +84,16 @@ export class CardComponent implements OnInit {
         this.selectCard.emit(event.checked);
         break;
       case 'edit':
-        this.editCard.emit(true);
+        this.editCard.emit(this.data.uuid);
         break;
       case 'link':
-        this.linkCard.emit(true);
+        this.linkCard.emit(this.data.uuid);
         break;
       case 'unlink':
-        this.unlinkCard.emit(true);
+        this.unlinkCard.emit(this.data.uuid);
         break;
       case 'refresh':
-        this.refreshCard.emit(true);
+        this.refreshCard.emit(this.data.uuid);
         break;
       default:
         break;

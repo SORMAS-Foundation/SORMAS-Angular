@@ -1,1 +1,1 @@
-export type DateCardAppearance = 'standard' | 'active' | 'card' | 'highlight';
+export type DateCardAppearance = 'standard' | 'accent' | 'card' | 'highlight' | 'flat';

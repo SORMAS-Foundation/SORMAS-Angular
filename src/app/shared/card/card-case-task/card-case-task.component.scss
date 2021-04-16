@@ -12,12 +12,25 @@
   color: mat-color($sormas-accent, 300);
 }
 
+.task-status {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.timeline {
+  margin: 0.75rem 0;
+
+  .date {
+    margin: 0 0.5rem;
+  }
+}
+
 .show-priority {
   display: flex;
   justify-content: space-between;
 }
 
-.task-assignee {
+.assignee {
   color: mat-color($sormas-accent, 600);
   font-size: 12px;
 
@@ -38,6 +51,7 @@
 .priority-high {
   color: mat-color($sormas-warning, 800);
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 .status-pending {

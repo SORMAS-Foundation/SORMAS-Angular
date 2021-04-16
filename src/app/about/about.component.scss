@@ -1,13 +1,23 @@
+@use '/src/variables.scss' as *;
+
+:host {
+  display: block;
+  padding: 1rem;
+}
+
 .wrapper {
-  padding: 16px;
+  padding: 1rem;
   border: 1px solid #ccc;
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
 .wrapper-cards {
+  @include mat-elevation(3);
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem;
   margin: 2rem 0;
+  border-radius: 4px;
   gap: 1rem;
 }
 

@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HumanizePipe } from '../../../_pipes/humanize/humanize.pipe';
 
 import { CardCaseTaskComponent } from './card-case-task.component';
 
@@ -9,7 +10,7 @@ describe('CardCaseTaskComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CardCaseTaskComponent],
+      declarations: [CardCaseTaskComponent, HumanizePipe],
     }).compileComponents();
   });
 

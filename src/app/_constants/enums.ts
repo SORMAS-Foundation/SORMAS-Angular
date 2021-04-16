@@ -194,21 +194,38 @@ export enum HospitalizationReason {
   OTHER = 'Other',
 }
 
-export const Position = {
-  TOPLEFT: 'TOPLEFT' as PositionType,
-  TOP: 'TOP' as PositionType,
-  TOPRIGHT: 'TOPRIGHT' as PositionType,
-  RIGHT: 'RIGHT' as PositionType,
-  BOTTOMRIGHT: 'BOTTOMRIGHT' as PositionType,
-  BOTTOM: 'BOTTOM' as PositionType,
-  BOTTOMLEFT: 'BOTTOMLEFT' as PositionType,
-  LEFT: 'LEFT' as PositionType,
-  CENTER: 'CENTER' as PositionType,
-};
+export enum Position {
+  TOPLEFT = 'TOPLEFT',
+  TOP = 'TOP',
+  TOPRIGHT = 'TOPRIGHT',
+  RIGHT = 'RIGHT',
+  BOTTOMRIGHT = 'BOTTOMRIGHT',
+  BOTTOM = 'BOTTOM',
+  BOTTOMLEFT = 'BOTTOMLEFT',
+  LEFT = 'LEFT',
+  CENTER = 'CENTER',
+}
 
 export enum DateCardType {
   STANDARD = 'standard',
-  ACTIVE = 'active',
+  ACCENT = 'accent',
   CARD = 'card',
   HIGHLIGHT = 'highlight',
+  FLAT = 'flat',
+}
+
+export enum CardStatusMap {
+  CONFIRMED = 'confirmed',
+  PENEDING = 'undetermined',
+  INDETERMINATE = 'undetermined',
+  DONE = 'completed',
+  NEGATIVE = 'good',
+  POSITIVE = 'critical',
+  NOT_EXECUTABLE = 'critical',
+}
+
+export enum CardAppearanceOptions {
+  STANDARD = 'standard',
+  CARD = 'card',
+  OUTLINED = 'outlined',
 }

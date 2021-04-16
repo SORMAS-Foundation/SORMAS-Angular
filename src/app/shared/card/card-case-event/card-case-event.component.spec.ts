@@ -1,21 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HumanizePipe } from '../../../_pipes/humanize/humanize.pipe';
 
-import { CardSampleComponent } from './card-sample.component';
+import { CardCaseEventComponent } from './card-case-event.component';
 
-describe('CardCaseSampleComponent', () => {
-  let component: CardSampleComponent;
-  let fixture: ComponentFixture<CardSampleComponent>;
+describe('CardCaseEventComponent', () => {
+  let component: CardCaseEventComponent;
+  let fixture: ComponentFixture<CardCaseEventComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CardSampleComponent, HumanizePipe],
+      declarations: [CardCaseEventComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardSampleComponent);
+    fixture = TestBed.createComponent(CardCaseEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

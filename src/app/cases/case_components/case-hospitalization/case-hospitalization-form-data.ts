@@ -108,7 +108,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
         key: 'hospitalization.intensiveCareUnitEnd',
         hint: 'End',
         dependingOn: 'hospitalization.intensiveCareUnit',
-        dependingOnValues: ['Yes'],
+        dependingOnValues: ['YES'],
       },
     ],
   },

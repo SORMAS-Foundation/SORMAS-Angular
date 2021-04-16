@@ -1,0 +1,19 @@
+<div *ngIf="data" class="event">
+  <app-date-card
+    *ngIf="data.startDate"
+    [date]="data.startDate"
+    [showYear]="false"
+    [appearance]="dateCardType.FLAT"
+    class="event-date"
+  ></app-date-card>
+  <div *ngIf="data.eventLocation" class="event-address">
+    <span *ngIf="data.eventLocation.city">{{ data.eventLocation.city }}, </span>
+    <span *ngIf="data.eventLocation.street">{{ data.eventLocation.street }}, </span>
+    <span *ngIf="data.eventLocation.houseNumber">{{ data.eventLocation.houseNumber }}, </span>
+    <span *ngIf="data.eventLocation.postalCode">{{ data.eventLocation.postalCode }}, </span>
+    <span *ngIf="data.eventLocation.district?.caption"
+      >{{ data.eventLocation.district?.caption }},
+    </span>
+    <span *ngIf="data.eventLocation.region?.caption">{{ data.eventLocation.region?.caption }}</span>
+  </div>
+</div>

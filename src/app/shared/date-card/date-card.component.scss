@@ -24,7 +24,6 @@
 
 .date-card {
   display: inline-block;
-  margin: 0.5rem;
   color: mat-color($sormas-accent, 400);
   font-size: 10px;
   text-align: center;
@@ -34,8 +33,15 @@
     @include mat-elevation(1);
   }
 
-  &.active {
+  &.accent {
     color: mat-color($sormas-accent, 800);
+  }
+
+  &.flat {
+    .date {
+      border-width: 0;
+      background-color: mat-color($sormas-accent, 50);
+    }
   }
 
   &.highlight {

@@ -15,9 +15,10 @@ import { SharedModule } from './shared/shared.module';
 import { ENV, getEnv } from '../environments/getEnv';
 import { AuthService } from './shared/auth/auth-service/auth.service';
 import { DynamicFormModule } from './shared/dynamic-form/dynamic-form.module';
+import { MenuComponent } from './_common-components/menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

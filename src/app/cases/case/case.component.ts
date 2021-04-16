@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CaseControllerService } from 'api-client';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../_services/notification.service';
@@ -19,6 +19,12 @@ export class CaseComponent implements OnInit {
   caseClassificationIcons = CaseClassificationIcons;
   links: CaseLink[] = [];
   caseId: any;
+  fixedHeader = false;
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(): void {
+    this.fixedHeader = window.pageYOffset > 71;
+  }
 
   constructor(
     private caseService: CaseService,

@@ -1,34 +1,39 @@
-<div class="sample-details">
-  <span [ngClass]="['sample-status', 'status-' + data.pathogenTestResult | lowercase]">
-    {{ data.pathogenTestResult }}
-  </span>
-  <strong *ngIf="!data.shipmentDate">Not shipped yet</strong>
-</div>
+<div *ngIf="data" class="card-sample">
+  <div class="sample-details">
+    <span [ngClass]="['sample-status', 'status-' + data.pathogenTestResult | lowercase]">
+      {{ data.pathogenTestResult | humanize }}
+    </span>
+    <strong *ngIf="!data.shipmentDate">Not shipped yet</strong>
+  </div>
 
-<div class="sample-timeline">
-  <app-date-card
-    *ngIf="data.shipmentDate && !data.receivedDate"
-    [date]="data.shipmentDate"
-    label="shipped"
-    [showYear]="false"
-    [appearance]="dateCardType.ACTIVE"
-  ></app-date-card>
-  <app-date-card
-    *ngIf="data.receivedDate"
-    [date]="data.receivedDate"
-    label="recieved"
-    [showYear]="false"
-    [appearance]="dateCardType.HIGHLIGHT"
-  ></app-date-card>
-  <app-date-card
-    *ngIf="data.sampleDateTime"
-    [date]="data.sampleDateTime"
-    label="collected"
-    [showYear]="false"
-  ></app-date-card>
-</div>
+  <div class="timeline">
+    <app-date-card
+      *ngIf="data.shipmentDate && !data.receivedDate"
+      [date]="data.shipmentDate"
+      label="shipped"
+      [showYear]="false"
+      [appearance]="dateCardType.ACCENT"
+      class="date"
+    ></app-date-card>
+    <app-date-card
+      *ngIf="data.receivedDate"
+      [date]="data.receivedDate"
+      label="recieved"
+      [showYear]="false"
+      [appearance]="dateCardType.HIGHLIGHT"
+      class="date"
+    ></app-date-card>
+    <app-date-card
+      *ngIf="data.sampleDateTime"
+      [date]="data.sampleDateTime"
+      label="collected"
+      [showYear]="false"
+      class="date"
+    ></app-date-card>
+  </div>
 
-<div class="task-assignee">
-  <mat-icon>perm_contact_calendar</mat-icon>
-  <span>{{ data.lab.caption }}</span>
+  <div class="assignee">
+    <mat-icon>perm_contact_calendar</mat-icon>
+    <span>{{ data.lab.caption }}</span>
+  </div>
 </div>

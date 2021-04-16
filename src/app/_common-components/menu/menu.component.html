@@ -1,0 +1,12 @@
+<nav class="menu">
+  <img class="logo" [src]="logo" i18n-alt alt="logo" />
+  <a
+    mat-button
+    *ngFor="let route of routeConfig"
+    [routerLink]="[route.link]"
+    [routerLinkActive]="['route-active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ route.label }}
+  </a>
+</nav>
