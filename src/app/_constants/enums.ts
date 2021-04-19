@@ -191,3 +191,39 @@ export enum HospitalizationReason {
   UNKNOWN = 'Unknown',
   OTHER = 'Other',
 }
+
+export enum Position {
+  TOPLEFT = 'TOPLEFT',
+  TOP = 'TOP',
+  TOPRIGHT = 'TOPRIGHT',
+  RIGHT = 'RIGHT',
+  BOTTOMRIGHT = 'BOTTOMRIGHT',
+  BOTTOM = 'BOTTOM',
+  BOTTOMLEFT = 'BOTTOMLEFT',
+  LEFT = 'LEFT',
+  CENTER = 'CENTER',
+}
+
+export enum DateCardType {
+  STANDARD = 'standard',
+  ACCENT = 'accent',
+  CARD = 'card',
+  HIGHLIGHT = 'highlight',
+  FLAT = 'flat',
+}
+
+export enum CardStatusMap {
+  CONFIRMED = 'confirmed',
+  PENEDING = 'undetermined',
+  INDETERMINATE = 'undetermined',
+  DONE = 'completed',
+  NEGATIVE = 'good',
+  POSITIVE = 'critical',
+  NOT_EXECUTABLE = 'critical',
+}
+
+export enum CardAppearanceOptions {
+  STANDARD = 'standard',
+  CARD = 'card',
+  OUTLINED = 'outlined',
+}

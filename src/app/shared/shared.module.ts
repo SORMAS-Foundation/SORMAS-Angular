@@ -16,6 +16,8 @@ import { EnumToKeyValuePipe } from './pipes/enum-to-key-value/enum-to-key-value.
 import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
 import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
 import { FormActionsComponent } from './form-actions/form-actions.component';
+import { CardModule } from './card/card.module';
+import { DateCardModule } from './date-card/date-card.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { FormActionsComponent } from './form-actions/form-actions.component';
     HttpClientModule,
     TableVirtualScrollModule,
     DialogModule,
+    CardModule,
+    DateCardModule,
   ],
   exports: [
     LayoutComponent,
@@ -54,6 +58,8 @@ import { FormActionsComponent } from './form-actions/form-actions.component';
     InpageNavComponent,
     CollapsableBoxComponent,
     FormActionsComponent,
+    CardModule,
+    DateCardModule,
   ],
 })
 export class SharedModule {}

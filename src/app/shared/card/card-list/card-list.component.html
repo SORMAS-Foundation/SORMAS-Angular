@@ -1,0 +1,36 @@
+<section class="card-list">
+  <app-card
+    *ngFor="let card of data | slice: 0:limit"
+    [id]="card.uuid"
+    [title]="card[cardTitleKey]"
+    [width]="cardWidth"
+    [collapse]="cardCollapse"
+    [collapsePosition]="cardCollapsePosition"
+    [select]="cardSelect"
+    [selectPosition]="cardSelectPosition"
+    [edit]="cardEdit"
+    [editPosition]="cardEditPosition"
+    [delete]="cardDelete"
+    [deletePosition]="cardDeletePosition"
+    [link]="cardLink"
+    [linkPosition]="cardLinkPosition"
+    [unlink]="cardUnlink"
+    [unlinkPosition]="cardUnlinkPosition"
+    [refresh]="cardRefresh"
+    [refreshPosition]="cardRefreshPosition"
+    [type]="cardType"
+    [appearance]="cardAppearance"
+    [status]="getStatus(card)"
+    [data]="card"
+    (editCard)="processEditCard($event)"
+  ></app-card>
+</section>
+
+<p *ngIf="initialPageSize" class="card-list-actions">
+  <button *ngIf="limit === initialPageSize" mat-button color="primary" (click)="showMore()">
+    Show more
+  </button>
+  <button *ngIf="limit !== initialPageSize" mat-button color="primary" (click)="showLess()">
+    Show less
+  </button>
+</p>
