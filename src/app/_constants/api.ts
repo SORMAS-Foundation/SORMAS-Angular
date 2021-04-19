@@ -5,3 +5,9 @@ export const API_ROUTE_CASES = {
   GET_ALL: 'cases/indexList',
   UPDATE: 'cases/update',
 };
+
+export const API_ROUTE_PERSONS = {
+  ENDPOINT: 'persons',
+  GET_ALL: 'persons',
+  UPDATE: 'persons/update',
+};
