@@ -6,5 +6,5 @@ export const environment: Environment = {
   keycloakRealm: 'SORMAS',
   keycloakClientId: 'sormas-angular',
   apiUrl: 'http://localhost:4201',
-  isLegacyLogin: true,
+  isLegacyLogin: false,
 };
