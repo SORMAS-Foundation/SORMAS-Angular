@@ -6,6 +6,12 @@ export const API_ROUTE_CASES = {
   UPDATE: 'cases/update',
 };
 
+export const API_ROUTE_PERSONS = {
+  ENDPOINT: 'persons',
+  GET_ALL: 'persons',
+  UPDATE: 'persons/update',
+};
+
 export const API_ROUTE_TASKS = {
   ENDPOINT: 'tasks',
   GET_ALL: 'tasks/indexList',

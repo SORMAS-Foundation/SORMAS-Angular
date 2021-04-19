@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CasePersonComponent } from './case-person.component';
 
 describe('CasePersonComponent', () => {
@@ -8,6 +10,7 @@ describe('CasePersonComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CasePersonComponent],
+      imports: [HttpClientTestingModule, MatDialogModule],
     }).compileComponents();
   });
 

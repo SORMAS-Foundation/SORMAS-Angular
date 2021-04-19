@@ -12,7 +12,7 @@
       (change)="onChange()"
       [formControlName]="config.key"
       matInput
-      [placeholder]="config.label"
+      [placeholder]="config.placeholder || ''"
     />
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
   </mat-form-field>

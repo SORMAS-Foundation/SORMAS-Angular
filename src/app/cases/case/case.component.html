@@ -10,25 +10,27 @@
     </div>
 
     <div class="info-box">
-    <span *ngIf="case.outcome" class="info-item">
-      <span class="material-icons"> {{ caseOutcomeIcons[case.outcome!] }} </span>
-      <span>{{ case.outcome }}</span>
-    </span>
+      <span *ngIf="case.outcome" class="info-item">
+        <span class="material-icons"> {{ caseOutcomeIcons[case.outcome!] }} </span>
+        <span>{{ case.outcome }}</span>
+      </span>
       <span *ngIf="case.caseClassification" class="info-item">
-      <span class="material-icons"> {{ caseClassificationIcons[case.caseClassification!] }} </span>
+        <span class="material-icons">
+          {{ caseClassificationIcons[case.caseClassification!] }}
+        </span>
         {{ case.caseClassification! }}
-    </span>
+      </span>
       <span *ngIf="case.disease" class="info-item">
-      {{ case.disease }}
-    </span>
+        {{ case.disease }}
+      </span>
       <span *ngIf="case.uuid" class="info-item">
-      <strong i18n>ID: </strong>
+        <strong i18n>ID: </strong>
         {{ case.uuid }}
-    </span>
+      </span>
       <span *ngIf="case.reportingUser?.caption" class="info-item">
-      <strong i18n>Reporting user: </strong>
+        <strong i18n>Reporting user: </strong>
         {{ case.reportingUser.caption }}
-    </span>
+      </span>
     </div>
 
     <div class="tab-nav-header" [ngClass]="{'fixed': fixedHeader}">

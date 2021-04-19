@@ -22,3 +22,11 @@ export enum CaseClassificationIcons {
   CONFIRMED_UNKNOWN_SYMPTOMS = 'new_releases',
   NO_CASE = 'how_to_reg',
 }
+
+export enum CardActionsIcons {
+  edit = 'edit',
+  delete = 'highlight_off',
+  link = 'link',
+  unlink = 'link_off',
+  refresh = 'sync',
+}
