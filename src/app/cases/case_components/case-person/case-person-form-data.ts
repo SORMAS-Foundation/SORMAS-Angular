@@ -237,18 +237,18 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'mothersName',
-        label: "Mother's name",
+        label: 'Mother\'s name',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'mothersMaidenName',
-        label: "Mother's maiden name",
+        label: 'Mother\'s maiden name',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'fathersName',
-        label: "Father's name",
+        label: 'Father\'s name',
       },
       {
         ...FORM_DATA_INPUT,
