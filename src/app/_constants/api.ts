@@ -11,3 +11,9 @@ export const API_ROUTE_PERSONS = {
   GET_ALL: 'persons',
   UPDATE: 'persons/update',
 };
+
+export const API_ROUTE_TASKS = {
+  ENDPOINT: 'tasks',
+  GET_ALL: 'tasks/indexList',
+  UPDATE: 'tasks/update',
+};

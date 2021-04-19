@@ -1,3 +1,4 @@
 export interface Resource {
-  uuid?: string;
+  id?: number | string;
+  uuid?: number | string;
 }

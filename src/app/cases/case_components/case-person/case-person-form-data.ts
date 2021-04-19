@@ -5,7 +5,7 @@ import {
   FORM_DATA_NULL,
 } from '../../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../../shared/pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import {
   CauseOfDeath,
   PresentCondition,

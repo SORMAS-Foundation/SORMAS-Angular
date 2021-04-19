@@ -125,6 +125,91 @@ app.use('', (req, res, next) => {
   }
 });
 
+// app.use('/sormas-rest/tasks/indexList', (req, res) => {
+//
+//   let total = 1000;
+//
+//   const arrayTmp = [];
+//   let offset = 0;
+//
+//   if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
+//     offset = 1000;
+//   }
+//
+//   if (req.body.filter) {
+//     total = 50;
+//   }
+//
+//   for (var i = parseInt(req.query.offset) ; i < parseInt(req.query.offset) + parseInt(req.query.size); i++) {
+//     arrayTmp.push({
+//       "pseudonymized":false,
+//       "uuid":"Q4URIL-TZKR6G-M6G6LG-KBNKSML4",
+//       "taskContext":"CASE",
+//       "caze":{
+//         "uuid":"W7ORVE-ILNJF7-O7V2P2-V6XOSNQA",
+//         "caption":"W7ORVE",
+//         "firstName":"",
+//         "lastName":""
+//       },
+//       "event":null,
+//       "contact":null,
+//       "region":"Region",
+//       "district":"District",
+//       "community":null,
+//       "taskType":"CASE_INVESTIGATION",
+//       "priority":"NORMAL",
+//       "dueDate":1617959309689,
+//       "suggestedStart":1617872909689,
+//       "taskStatus":"PENDING",
+//       "creatorUser":{
+//         "uuid":null,
+//         "caption":" ",
+//         "firstName": "first name",
+//         "lastName": "last name",
+//         "shortCaption":" "
+//       },
+//       "creatorComment":null,
+//       "assigneeUser":{
+//         "uuid":null,
+//         "caption":"  ()",
+//         "firstName":null,
+//         "lastName":null,
+//         "shortCaption":" "
+//       },
+//       "assigneeReply":null,
+//       "jurisdiction":{
+//         "creatorUserUuid":null,
+//         "assigneeUserUuid":null,
+//         "caseJurisdiction":{
+//           "reportingUserUuid":"UJEUQS-WZYRSD-THNKL5-HGQF2MWY",
+//           "regionUuid":"XG5652-O6T5KY-46BC3H-OOZ2SDC4",
+//           "districtUuid":"QEKECO-ST6YF3-ZSVWHN-VFLASBHM",
+//           "communityUuid":null,
+//           "healthFacilityUuid":"SORMAS-CONSTID-ISNONE-FACILITY",
+//           "pointOfEntryUuid":null
+//         },
+//         "contactJurisdiction":null,
+//         "eventJurisdiction":null
+//       },
+//       "contextReference":{
+//         "uuid":"W7ORVE-ILNJF7-O7V2P2-V6XOSNQA",
+//         "caption":"W7ORVE",
+//         "firstName":"",
+//         "lastName":""
+//       }
+//     });
+//   }
+//
+//
+//   res.status(200).send({
+//     "elements": arrayTmp,
+//     "pageNumber":0,
+//     "size":8,
+//     "totalElementCount": total,
+//     "hasNext":true
+//   });
+// });
+
 // app.use('/sormas-rest/cases/indexList', (req, res) => {
 //
 //   let total = 1000;

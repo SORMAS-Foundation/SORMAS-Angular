@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CaseService } from '../../_services/api/case.service';
 import { TableColumn } from '../../shared/table/table-column';
-import { defaultColumnDefs } from '../../_entity-data/case';
+import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 
 @Component({

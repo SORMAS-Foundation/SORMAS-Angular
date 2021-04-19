@@ -9,7 +9,7 @@ export interface RouteItem {
 export const routesConfig: RouteItem[] = [
   { link: '', label: $localize`Dashboard` },
   { link: 'about', label: $localize`About` },
-  { link: 'tasks', label: $localize`Tasks` },
+  { link: 'tasks/list', label: $localize`Tasks` },
   { link: 'cases/list', label: $localize`Cases` },
   { link: 'user-profile', label: $localize`My profile` },
 ];
