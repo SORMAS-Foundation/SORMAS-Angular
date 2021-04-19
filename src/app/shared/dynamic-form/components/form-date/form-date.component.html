@@ -15,7 +15,7 @@
       [matDatepicker]="picker"
       (dateChange)="onChange()"
       [formControlName]="config.key"
-      placeholder="Choose a date"
+      [placeholder]="config.placeholder || ''"
     />
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

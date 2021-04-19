@@ -1,1 +1,5 @@
-<p>case-person works!</p>
+<app-dynamic-form
+  *ngIf="person"
+  [formElements]="myFormElements"
+  [resourceService]="resourceService"
+></app-dynamic-form>

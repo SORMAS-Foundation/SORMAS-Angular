@@ -1,6 +1,7 @@
 export const FORM_DATA_BASE = {
   key: '',
   label: '',
+  placeholder: '',
   value: '',
   validation: [],
   order: 1,
