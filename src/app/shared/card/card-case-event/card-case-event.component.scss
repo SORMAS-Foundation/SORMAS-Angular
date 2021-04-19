@@ -1,0 +1,15 @@
+@use '/src/variables.scss' as *;
+
+.event {
+  display: flex;
+}
+
+.event-date {
+  flex-grow: 0;
+  margin-right: 0.5rem;
+}
+
+.event-address {
+  font-size: 12px;
+  line-height: 16px;
+}

@@ -1,0 +1,17 @@
+.mat-card-actions {
+  display: flex;
+  padding: 0;
+  margin: 0 -8px;
+}
+
+.right:first-child,
+.left + .right {
+  margin-left: auto;
+}
+
+.mat-checkbox.small {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+}

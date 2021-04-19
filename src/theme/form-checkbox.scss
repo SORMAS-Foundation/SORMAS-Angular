@@ -19,6 +19,13 @@
           border-color: mat-color(mat-palette($primary, 700));
         }
       }
+
+      &.small {
+        .mat-checkbox-inner-container {
+          width: 12px;
+          height: 12px;
+        }
+      }
     }
   }
 }

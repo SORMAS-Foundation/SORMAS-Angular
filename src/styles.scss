@@ -13,6 +13,7 @@
 @import './theme/button.scss';
 @import './theme/table.scss';
 @import './theme/tabs.scss';
+@import './theme/card.scss';
 @import './theme/dialog.scss';
 @import './theme/alertify.scss';
 
@@ -60,6 +61,7 @@ $sormas-theme: mat-light-theme(
   @include button-theme($theme);
   @include table-theme($theme);
   @include tabs-theme($theme);
+  @include card-theme($theme);
   @include dialog-theme($theme);
 }
 
