@@ -1,5 +1,3 @@
-import { PositionType } from '../_models/positionType';
-
 export enum CaseClassification {
   NOT_CLASSIFIED = 'Not yet classified',
   SUSPECT = 'Suspect case',
