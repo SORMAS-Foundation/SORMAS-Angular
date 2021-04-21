@@ -24,18 +24,24 @@ export class CasePersonComponent {
     private notificationService: NotificationService
   ) {}
 
+  setPersonFormData(): void {
+    this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+      this.person,
+      data.FORM_DATA_CASE_PERSON_DETAILS
+    );
+  }
+
   updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
     this.personService.getById(caseItem.person.uuid).subscribe({
       next: (response: any) => {
-        this.person = response;
+        this.person = response || ({} as PersonDto);
         this.resourceService = resourceService;
-        this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-          this.person,
-          data.FORM_DATA_CASE_PERSON_DETAILS
-        );
+        this.setPersonFormData();
       },
       error: (err: any) => {
         this.notificationService.error(err);
+        this.person = {} as PersonDto;
+        this.setPersonFormData();
       },
       complete: () => {},
     });
