@@ -41,7 +41,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
   {
     title: 'Person',
     required: true,
-    anchorLabel: 'Case data',
     fields: [
       {
         ...FORM_DATA_NULL,
@@ -170,8 +169,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
   },
   {
     title: 'Occupation & Education',
-    anchor: 'case_person',
-    anchorLabel: 'Case person',
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -214,8 +211,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
   },
   {
     title: 'Addresses',
-    anchor: 'addresses',
-    anchorLabel: 'Addresses',
     fields: [
       {
         ...FORM_DATA_NULL,
@@ -226,8 +221,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
   },
   {
     title: 'Contact',
-    anchor: 'contact',
-    anchorLabel: 'Contact',
     fields: [
       {
         ...FORM_DATA_INPUT,

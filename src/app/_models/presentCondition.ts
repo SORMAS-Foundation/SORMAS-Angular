@@ -3,8 +3,8 @@
 export type PresentCondition = 'ALIVE' | 'DEAD' | 'BURIED' | 'UNKNOWN';
 
 export const PresentCondition = {
-  ALIVE: 'ALIVE' as PresentCondition,
-  DEAD: 'DEAD' as PresentCondition,
-  BURIED: 'BURIED' as PresentCondition,
-  UNKNOWN: 'UNKNOWN' as PresentCondition,
+  ALIVE: 'Alive' as PresentCondition,
+  DEAD: 'Dead' as PresentCondition,
+  BURIED: 'Buried' as PresentCondition,
+  UNKNOWN: 'Unknown' as PresentCondition,
 };

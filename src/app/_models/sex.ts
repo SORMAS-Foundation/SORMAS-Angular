@@ -3,8 +3,8 @@
 export type Sex = 'MALE' | 'FEMALE' | 'OTHER' | 'UNKNOWN';
 
 export const Sex = {
-  MALE: 'MALE' as Sex,
-  FEMALE: 'FEMALE' as Sex,
-  OTHER: 'OTHER' as Sex,
-  UNKNOWN: 'UNKNOWN' as Sex,
+  MALE: 'Male' as Sex,
+  FEMALE: 'Female' as Sex,
+  OTHER: 'Other' as Sex,
+  UNKNOWN: 'Unknown' as Sex,
 };
