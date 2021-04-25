@@ -9,8 +9,6 @@ import {
 import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-// eslint-disable-next-line import/no-cycle
-import { SymptomsGroupSelectComponent } from '../symptoms-group-select/symptoms-group-select.component';
 
 const pipe = new EnumToKeyValuePipe();
 const range = (start: number, end: number, step = 1) => {
@@ -24,7 +22,7 @@ const range = (start: number, end: number, step = 1) => {
 const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 const optionsTemperatureSource = pipe.transform(TemperatureSource);
 const optionsTemperature = range(35, 44.1, 0.1).map((val) => ({
-  key: val.toFixed(1),
+  key: Number(val.toFixed(1)),
   value: `${val.toFixed(1)} °C`,
 }));
 
@@ -53,7 +51,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        widget: SymptomsGroupSelectComponent,
+        widget: 'app-symptoms-group-select',
       },
     ],
   },

@@ -33,7 +33,7 @@
       </span>
     </div>
 
-    <div class="tab-nav-header" [ngClass]="{'fixed': fixedHeader}">
+    <div class="tab-nav-header" [ngClass]="{ fixed: fixedHeader }">
       <nav mat-tab-nav-bar>
         <a
           mat-tab-link
@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <div class="case-content" [ngClass]="{'fixed': fixedHeader}">
+  <div class="case-content" [ngClass]="{ fixed: fixedHeader }">
     <router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
 </section>

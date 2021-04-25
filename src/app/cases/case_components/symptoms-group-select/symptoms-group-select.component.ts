@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormElementBase } from '../../../shared/dynamic-form/types/form-element-base';
-// eslint-disable-next-line import/no-cycle
+import { FormActionsService } from '../../../_services/form-actions.service';
 import * as data from '../case-symptoms/case-symptoms-form-data';
 
 @Component({
@@ -14,8 +14,10 @@ export class SymptomsGroupSelectComponent {
   group: FormGroup;
   dataForm = data.FORM_DATA_CASE_SYMPTOMS;
 
+  constructor(private formActionsService: FormActionsService) {}
+
   setAllClear(): void {
-    this.updateSymptoms(undefined);
+    this.updateSymptoms('');
   }
 
   setAllNo(): void {
@@ -31,7 +33,9 @@ export class SymptomsGroupSelectComponent {
       section.fields.forEach((field: FormElementBase<string>) => {
         if (field.controlType === 'radio') {
           const control = this.group.controls[field.key];
+          const changed = control.value !== value;
           control?.patchValue(value);
+          this.formActionsService.setInputChange(field.key, changed);
         }
       });
     });
