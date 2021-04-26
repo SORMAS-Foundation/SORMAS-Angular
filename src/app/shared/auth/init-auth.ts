@@ -39,29 +39,29 @@ export function initializeAuth(
     //   }
     // });
 
-    // return new Promise((resolve, reject) => {
-    //   http.get('http://localhost:4200/assets/environment.json').toPromise()
-    //     .then((result: any) => {
-    //       console.log(result);
-    //       return resolve(authService.init({
-    //         config: {
-    //           url: environment.keycloakUrl,
-    //           realm: environment.keycloakRealm,
-    //           clientId: environment.keycloakClientId,
-    //         },
-    //         initOptions: {
-    //           enableLogging: !environment.production,
-    //           onLoad: 'check-sso',
-    //           silentCheckSsoRedirectUri: `${window.location.origin}${locationStrategy.prepareExternalUrl(
-    //             '/assets/silent-check-sso.html'
-    //           )}`,
-    //         },
-    //         loadUserProfileAtStartUp: true,
-    //       }));
-    //     }).catch(error => {
-    //       console.log('errrrrorrrrrrrrrrrrrrrrr', error);
-    //   })
-    // });
+    return new Promise((resolve, reject) => {
+      http.get('http://localhost:4200/assets/environment.json').toPromise()
+        .then((result: any) => {
+          console.log(result);
+          return resolve(authService.init({
+            config: {
+              url: environment.keycloakUrl,
+              realm: environment.keycloakRealm,
+              clientId: environment.keycloakClientId,
+            },
+            initOptions: {
+              enableLogging: !environment.production,
+              onLoad: 'check-sso',
+              silentCheckSsoRedirectUri: `${window.location.origin}${locationStrategy.prepareExternalUrl(
+                '/assets/silent-check-sso.html'
+              )}`,
+            },
+            loadUserProfileAtStartUp: true,
+          }));
+        }).catch(error => {
+          console.log('errrrrorrrrrrrrrrrrrrrrr', error);
+      })
+    });
 
     return authService.init({
       config: {
