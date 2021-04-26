@@ -3,7 +3,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import { ApiModule } from 'api-client';
 import { BidiModule } from '@angular/cdk/bidi';
 
@@ -18,6 +18,7 @@ import { MenuComponent } from './_common-components/menu/menu.component';
 import { ApiInterceptor } from './_interceptors/ApiInterceptor';
 import { NotFoundComponent } from './_common-components/not-found/not-found.component';
 import { EnumToKeyValuePipe } from './_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { EnvironmentService } from './_services/api/environment.service';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent, NotFoundComponent, EnumToKeyValuePipe],
@@ -41,7 +42,7 @@ import { EnumToKeyValuePipe } from './_pipes/enum-to-key-value/enum-to-key-value
       provide: APP_INITIALIZER,
       useFactory: initializeAuth,
       multi: true,
-      deps: [AuthService, Location, ENV],
+      deps: [AuthService, EnvironmentService, HttpClient, Location, ENV],
     },
   ],
   bootstrap: [AppComponent],

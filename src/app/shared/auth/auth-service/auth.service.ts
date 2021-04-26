@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
+import {EnvironmentService} from '../../../_services/api/environment.service';
 
 interface LoginResultPayload {
   userName: string;
@@ -17,7 +18,7 @@ export class AuthService extends KeycloakService {
   private roles: string[] = [];
   private options: any = {};
 
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient, private environmentService: EnvironmentService) {
     super();
   }
 
@@ -29,6 +30,7 @@ export class AuthService extends KeycloakService {
   }
 
   async init(options: any): Promise<boolean> {
+    console.log('1111111111111111111111111');
     this.options = options;
 
     if (!(await this.isLoggedIn())) {
