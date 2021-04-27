@@ -19,6 +19,7 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { CaseFiltersComponent } from './case-filters/case-filters.component';
 import { NewEpidNumberComponent } from './case_components/new-epid-number/new-epid-number.component';
 import { FollowUpStatusComponent } from './case_components/follow-up-status/follow-up-status.component';
+import { ExposuresListComponent } from './case_components/exposures-list/exposures-list.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FollowUpStatusComponent } from './case_components/follow-up-status/foll
     CaseFiltersComponent,
     NewEpidNumberComponent,
     FollowUpStatusComponent,
+    ExposuresListComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

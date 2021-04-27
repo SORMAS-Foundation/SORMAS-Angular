@@ -61,6 +61,7 @@ export class FormElementBase<T> {
 
 export class FormBase<T> {
   title: string;
+  subTitle?: string;
   fields: FormElementBase<T>[];
   required?: boolean;
   anchor?: string;

@@ -1,0 +1,10 @@
+<app-card-list
+  *ngIf="exposures"
+  [data]="exposures"
+  [cardWidth]="200"
+  [cardCollapse]="false"
+  [cardEdit]="true"
+  cardType="case_task"
+  cardTitleKey="taskType"
+  cardStatusKey="taskStatus"
+></app-card-list>

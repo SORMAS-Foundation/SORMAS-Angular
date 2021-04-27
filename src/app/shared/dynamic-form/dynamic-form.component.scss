@@ -5,10 +5,10 @@
     &.fixed {
       position: fixed;
       z-index: 9;
-      padding: 0 25px;
       top: 200px;
       right: 0;
       left: 0;
+      padding: 0 25px;
       background: white;
     }
   }
@@ -52,6 +52,13 @@ h2 {
   font-size: 14px;
   line-height: 1.5;
   text-align: right;
+}
+
+.sub-title {
+  color: mat-color($sormas-accent, 800);
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
 }
 
 .dynamic-form-input {
