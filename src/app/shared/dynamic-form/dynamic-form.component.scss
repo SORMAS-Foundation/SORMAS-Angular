@@ -5,11 +5,11 @@
     &.fixed {
       position: fixed;
       z-index: 9;
-      padding: 0 25px;
       top: 200px;
       right: 0;
       left: 0;
-      background: white;
+      padding: 0 25px;
+      background: $white;
     }
   }
 }
@@ -88,7 +88,7 @@ h2 {
 }
 
 .required {
-  color: $warn;
+  color: map-get($sormas-alert, 400);
 }
 
 .hidden {

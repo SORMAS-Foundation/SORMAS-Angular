@@ -17,6 +17,9 @@ export class FormElementControlService {
       if (formElement.validation?.includes('required')) {
         validations.push(Validators.required);
       }
+      if (formElement.validation?.includes('requiredTrue')) {
+        validations.push(Validators.requiredTrue);
+      }
       if (formElement.validation?.includes('email')) {
         validations.push(Validators.email);
       }

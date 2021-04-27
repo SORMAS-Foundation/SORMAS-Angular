@@ -11,12 +11,17 @@ body {
 }
 
 a {
-  color: $primary;
+  color: map-get($sormas-primary, 700);
   text-decoration: none;
 
   &:hover,
   &:focus,
   &:active {
     text-decoration: underline;
+    text-underline-offset: 4px;
   }
+}
+
+.errorMessage {
+  color: $warn;
 }

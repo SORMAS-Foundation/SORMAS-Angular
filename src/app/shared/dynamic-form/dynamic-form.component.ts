@@ -50,6 +50,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.subscription.push(
       this.formActionsService.getSave().subscribe((response: any) => {
         if (this.form.invalid) {
+          this.form.markAllAsTouched();
           this.notificationService.error('Please fill in all the mandatory fields');
           return;
         }

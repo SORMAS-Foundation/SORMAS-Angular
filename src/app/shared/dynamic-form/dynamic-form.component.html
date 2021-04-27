@@ -1,5 +1,11 @@
+<p>
+  <a href="#" mat-button color="primary">Test</a>
+  <a href="#" mat-button color="warn">Button</a>
+  <a href="#" mat-button color="warn" disabled>Button</a>
+  <a href="#">Button</a>
+</p>
 <div class="dynamic-form-wrapper">
-  <div class="inpage-nav" [ngClass]="{'fixed': fixedHeader}">
+  <div class="inpage-nav" [ngClass]="{ fixed: fixedHeader }">
     <app-inpage-nav *ngIf="withAnchor" [anchors]="getSections()"></app-inpage-nav>
   </div>
   <div class="form-content">
@@ -15,7 +21,11 @@
             <mat-divider *ngIf="field.newLine"></mat-divider>
             <div
               *ngIf="field.active"
-              [ngClass]="['dynamic-form-input', field.className || '', field.active ? '' : 'hidden']"
+              [ngClass]="[
+                'dynamic-form-input',
+                field.className || '',
+                field.active ? '' : 'hidden'
+              ]"
             >
               <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
             </div>
