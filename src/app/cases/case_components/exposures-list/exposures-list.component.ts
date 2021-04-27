@@ -11,7 +11,8 @@ import { SendResourceService } from '../../../_services/send-resource.service';
 export class ExposuresListComponent implements OnInit, OnDestroy {
   case: CaseDataDto;
   caseId: any;
-  exposures: any[];
+  title1: string;
+  public exposures: any[] = [];
   subscription: Subscription = new Subscription();
 
   dataCaseTask = {
@@ -40,11 +41,17 @@ export class ExposuresListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
-      this.exposures = response.resource?.epiData?.exposures || [];
-      this.setExposuresData(this.exposures);
-      console.log('exposures!!!', this.exposures);
+      // this.exposures = response.resource?.epiData?.exposures || [];
+      // this.setExposuresData(this.exposures);
       this.exposures = this.listExposures;
+      console.log('exposures!!!', this.exposures);
+      this.title1 = 'ggg';
     });
+    // this.title1 = 'ggg';
+    setTimeout(() => {
+      console.log('timeout', this.exposures);
+    }, 5000);
+    // this.exposures = this.listExposures;
   }
 
   ngOnDestroy(): void {
@@ -53,8 +60,12 @@ export class ExposuresListComponent implements OnInit, OnDestroy {
     }
   }
 
+  getExposures(): number {
+    return this.exposures.length;
+  }
+
   setExposuresData(exposures: any[]): void {
-    this.exposures = [];
+    // this.exposures = [];
     exposures.forEach((exposure: any) => {
       const newExposure = {
         taskType: exposure.exposureType,

@@ -1,5 +1,5 @@
 <app-card-list
-  *ngIf="exposures"
+  *ngIf="exposures.length > 0"
   [data]="exposures"
   [cardWidth]="200"
   [cardCollapse]="false"
@@ -8,3 +8,4 @@
   cardTitleKey="taskType"
   cardStatusKey="taskStatus"
 ></app-card-list>
+<app-collapsable-box [boxTitle]="title1"></app-collapsable-box>
