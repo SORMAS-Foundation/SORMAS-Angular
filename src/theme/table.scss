@@ -41,5 +41,15 @@
     tr.mat-row.row-selected td.mat-cell {
       background-color: mat-color(mat-palette($primary, 50));
     }
+
+    .mat-sort-header-content {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .mat-sort-header-arrow {
+      display: none !important;
+    }
   }
 }

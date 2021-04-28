@@ -42,7 +42,15 @@
     }
 
     .mat-select-panel {
-      transform: translateY(30px) !important;
+      padding: 8px 0;
+
+      .mat-option.mat-active,
+      .mat-option.mat-selected,
+      .mat-option:not(.mat-option-disabled):hover,
+      .mat-option:not(.mat-option-disabled):focus {
+        background-color: mat-color(mat-palette($accent, 50));
+        color: currentColor;
+      }
     }
   }
 }

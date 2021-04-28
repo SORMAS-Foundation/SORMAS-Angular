@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 
-a {
+a:not(.mat-button) {
   color: map-get($sormas-primary, 700);
   text-decoration: none;
 

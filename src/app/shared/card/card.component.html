@@ -13,7 +13,7 @@
       {{ title | humanize | titlecase }}
     </mat-card-title>
     <button *ngIf="collapse" mat-icon-button (click)="toggleCollapse()">
-      <mat-icon>{{ collapsed ? 'add' : 'remove' }}</mat-icon>
+      <mat-icon class="material-icons-round">{{ collapsed ? 'add' : 'remove' }}</mat-icon>
     </button>
   </mat-card-header>
 
