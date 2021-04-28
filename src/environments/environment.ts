@@ -6,15 +6,7 @@ import { Environment } from './ienvironment';
 
 export const environment: Environment = {
   production: false,
-  keycloakRealm: 'SORMAS',
-  keycloakClientId: 'sormas-angular',
-  isLegacyLogin: false,
-
-  keycloakUrl: 'https://sormas-docker-test.com/keycloak/auth/',
-  apiUrl: 'https://sormas-docker-test.com/sormas-rest',
-
-  // keycloakUrl: 'https://test-de1.sormas.netzlink.com/keycloak/auth/',
-  // apiUrl: 'http://localhost:4201',
+  isLegacyLogin: false
 };
 
 /*

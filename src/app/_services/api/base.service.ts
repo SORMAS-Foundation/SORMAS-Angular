@@ -9,6 +9,7 @@ import { Serializer } from '../../_serializers/base.serializer';
 
 import * as constants from '../../app.constants';
 import { PaginationResponse } from '../../_models/common';
+import { HelperService } from '../helper.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class BaseService<T extends Resource> {
 
   constructor(
     protected httpClient: HttpClient,
+    protected helperService: HelperService,
     @Inject('string') private url: string,
     @Inject('any') private endpoint: any,
     @Inject('Serializer') private serializer: Serializer
@@ -62,8 +64,10 @@ export class BaseService<T extends Resource> {
       });
     }
 
+    console.log('aaaaaaaaaaaaaaa', this.helperService.getApiUrl());
+
     return this.httpClient
-      .post(`${this.url}/${this.apiEndpoint}/${endpoint}${paginationTmp}`, requestPayload)
+      .post(`${this.helperService.getApiUrl()}/${endpoint}${paginationTmp}`, requestPayload)
       .pipe(map((data: any) => this.convertData(data)));
   }
 

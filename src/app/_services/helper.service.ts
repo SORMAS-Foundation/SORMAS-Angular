@@ -4,5 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class HelperService {
-  // any generic helper methods go here
+  private apiUrl: string;
+
+  setApiUrl(apiUrl: string) {
+    this.apiUrl = apiUrl;
+  }
+
+  getApiUrl() {
+    return this.apiUrl;
+  }
 }

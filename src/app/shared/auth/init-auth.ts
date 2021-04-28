@@ -1,12 +1,14 @@
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Environment } from '../../../environments/ienvironment';
 import { AuthService } from './auth-service/auth.service';
-import { HttpClient} from '@angular/common/http';
+import { HelperService } from '../../_services/helper.service';
 
 export function initializeAuth(
   authService: AuthService,
   locationStrategy: Location,
   http: HttpClient,
+  helperService: HelperService,
   environment: Environment
 ): () => Promise<boolean> {
   return () => {
@@ -16,9 +18,10 @@ export function initializeAuth(
 
     return new Promise((resolve, reject) => {
       http
-        .get('/sormas-angular/assets/environment.json')
+        .get('assets/environment.json')
         .toPromise()
         .then((result: any) => {
+          helperService.setApiUrl(result.apiUrl);
           return resolve(
             authService.init({
               config: {
@@ -40,22 +43,6 @@ export function initializeAuth(
         .catch((error) => {
           reject(error);
         });
-    });
-
-    return authService.init({
-      config: {
-        url: environment.keycloakUrl,
-        realm: environment.keycloakRealm,
-        clientId: environment.keycloakClientId,
-      },
-      initOptions: {
-        enableLogging: !environment.production,
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri: `${window.location.origin}${locationStrategy.prepareExternalUrl(
-          '/assets/silent-check-sso.html'
-        )}`,
-      },
-      loadUserProfileAtStartUp: true,
     });
   };
 }
