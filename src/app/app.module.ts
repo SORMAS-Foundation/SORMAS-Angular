@@ -3,7 +3,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { ApiModule } from 'api-client';
 import { BidiModule } from '@angular/cdk/bidi';
 
@@ -41,7 +41,7 @@ import { EnumToKeyValuePipe } from './_pipes/enum-to-key-value/enum-to-key-value
       provide: APP_INITIALIZER,
       useFactory: initializeAuth,
       multi: true,
-      deps: [AuthService, Location, ENV],
+      deps: [AuthService, Location, HttpClient, ENV],
     },
   ],
   bootstrap: [AppComponent],

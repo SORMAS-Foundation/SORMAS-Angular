@@ -25,7 +25,11 @@ export class ApiInterceptor implements HttpInterceptor {
   }
 
   async handle(req: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
-    const bearerToken = await this.authService.getToken();
+    let bearerToken = '';
+    if (!req.url.includes('environment.json')) {
+      bearerToken = await this.authService.getToken();
+    }
+    console.log('bearerToken', bearerToken);
     const apiReq = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${bearerToken}`),
     });
