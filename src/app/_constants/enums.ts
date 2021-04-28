@@ -227,3 +227,10 @@ export enum CardAppearanceOptions {
   CARD = 'card',
   OUTLINED = 'outlined',
 }
+
+export enum TemperatureSource {
+  AXILLARY = 'Axillary',
+  ORAL = 'Oral',
+  RECTAL = 'Rectal',
+  NON_CONTACT = 'Non contact',
+}
