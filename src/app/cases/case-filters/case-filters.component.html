@@ -1,9 +1,11 @@
 <div class="case-filters">
-  <button class="toggle-filter" (click)="drawer.close()"><mat-icon>filter_list</mat-icon></button>
+  <button class="toggle-filter" (click)="drawer.close()">
+    <mat-icon class="material-icons-round">filter_list</mat-icon>
+  </button>
   <h2 class="filters-header">Filters</h2>
   <form [formGroup]="filtersForm" class="filters-form">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
-      <mat-icon matPrefix class="search-icon">search</mat-icon>
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
       <input
         value=""
         type="text"

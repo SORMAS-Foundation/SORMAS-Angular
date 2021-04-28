@@ -1,7 +1,7 @@
 <div *ngIf="data" class="card-address">
   <h3>{{ data.addressTypeDetails }}</h3>
   <div class="content">
-    <mat-icon>place</mat-icon>
+    <mat-icon class="material-icons-round">place</mat-icon>
     <div *ngIf="data" class="address">
       <span *ngIf="data.city">{{ data.city }}, </span>
       <span *ngIf="data.street">{{ data.street }}, </span>
