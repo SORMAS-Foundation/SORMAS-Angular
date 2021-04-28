@@ -1,17 +1,16 @@
 import { initializeAuth } from './init-auth';
+import {HttpClient} from '@angular/common/http';
 
 describe('initializeAuth', () => {
   it('sets auth type based on env for legacy login', async () => {
     const authService = jasmine.createSpyObj('authService', ['init']);
     authService.init.and.callFake(() => Promise.resolve(true));
     const location = jasmine.createSpyObj('Location', ['getState']);
+    const http = jasmine.createSpyObj('HttpClient', ['init']);
+    const helperService = jasmine.createSpyObj('HelperService', ['init']);
 
-    const res = await initializeAuth(authService, location, {
+    const res = await initializeAuth(authService, location, http, helperService, {
       isLegacyLogin: true,
-      apiUrl: '',
-      keycloakClientId: '',
-      keycloakRealm: '',
-      keycloakUrl: '',
       production: true,
     })();
 
@@ -23,13 +22,11 @@ describe('initializeAuth', () => {
     const authService = jasmine.createSpyObj('authService', ['init']);
     authService.init.and.callFake(() => Promise.resolve(true));
     const location = jasmine.createSpyObj('Location', ['getState', 'prepareExternalUrl']);
+    const http = jasmine.createSpyObj('HttpClient', ['get']);
+    const helperService = jasmine.createSpyObj('HelperService', ['init']);
 
-    const res = await initializeAuth(authService, location, {
+    const res = await initializeAuth(authService, location, http, helperService, {
       isLegacyLogin: false,
-      apiUrl: '',
-      keycloakClientId: '',
-      keycloakRealm: '',
-      keycloakUrl: '',
       production: false,
     })();
 
