@@ -21,7 +21,10 @@
       <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
         <ng-container *ngIf="isSortable && tableColumn.isSortable; else notSortable">
           <th mat-header-cell *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
-            {{ tableColumn.name }}
+            <span>{{ tableColumn.name }}</span>
+            <mat-icon *ngIf="sorting?.field === tableColumn.dataKey" class="material-icons-round">
+              {{ sorting?.ascending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+            </mat-icon>
           </th>
         </ng-container>
 
@@ -35,7 +38,10 @@
           <span *ngIf="getTableData(element.index, tableColumn.dataKey) !== 'loading'">
             {{ getTableData(element.index, tableColumn.dataKey) }}
           </span>
-          <div *ngIf="getTableData(element.index, tableColumn.dataKey) === 'loading'" class="row-skeleton"></div>
+          <div
+            *ngIf="getTableData(element.index, tableColumn.dataKey) === 'loading'"
+            class="row-skeleton"
+          ></div>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>

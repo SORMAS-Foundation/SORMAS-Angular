@@ -64,8 +64,6 @@ export class BaseService<T extends Resource> {
       });
     }
 
-    console.log('aaaaaaaaaaaaaaa', this.helperService.getApiUrl());
-
     return this.httpClient
       .post(`${this.helperService.getApiUrl()}/${endpoint}${paginationTmp}`, requestPayload)
       .pipe(map((data: any) => this.convertData(data)));
@@ -79,7 +77,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .get(`${this.url}/${this.apiEndpoint}/${endpoint}/${id}`)
+      .get(`${this.helperService.getApiUrl()}/${endpoint}/${id}`)
       .pipe(map((data: any) => this.serializer.fromJson(data) as T));
   }
 
@@ -91,7 +89,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.url}/${this.apiEndpoint}/${endpoint}`, [item])
+      .post(`${this.helperService.getApiUrl()}`, [item])
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 

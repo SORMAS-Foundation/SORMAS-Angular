@@ -9,8 +9,8 @@
         (click)="collapsed = !collapsed"
         (keyup.enter)="collapsed = !collapsed"
       >
-        <mat-icon *ngIf="collapsed">add</mat-icon>
-        <mat-icon *ngIf="!collapsed">remove</mat-icon>
+        <mat-icon *ngIf="collapsed" class="material-icons-round">add</mat-icon>
+        <mat-icon *ngIf="!collapsed" class="material-icons-round">remove</mat-icon>
       </button>
     </mat-card-title>
   </mat-card-header>
