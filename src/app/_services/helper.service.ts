@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
 export class HelperService {
   private apiUrl: string;
 
-  setApiUrl(apiUrl: string) {
+  setApiUrl(apiUrl: string): void {
     this.apiUrl = apiUrl;
   }
 
-  getApiUrl() {
+  getApiUrl(): string {
     return this.apiUrl;
   }
 }
