@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
 import { Resource } from '../../_models/resource';
 import { Serializer } from '../../_serializers/base.serializer';
 
-import * as constants from '../../app.constants';
 import { PaginationResponse } from '../../_models/common';
 import { HelperService } from '../helper.service';
 
@@ -15,8 +14,6 @@ import { HelperService } from '../helper.service';
   providedIn: 'root',
 })
 export class BaseService<T extends Resource> {
-  private apiEndpoint = constants.API_ROUTE_MAIN;
-
   constructor(
     protected httpClient: HttpClient,
     protected helperService: HelperService,
@@ -89,7 +86,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.helperService.getApiUrl()}`, [item])
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, [item])
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 

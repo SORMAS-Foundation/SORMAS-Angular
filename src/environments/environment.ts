@@ -6,7 +6,7 @@ import { Environment } from './ienvironment';
 
 export const environment: Environment = {
   production: false,
-  isLegacyLogin: false
+  isLegacyLogin: false,
 };
 
 /*
