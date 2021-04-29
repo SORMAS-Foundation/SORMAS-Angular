@@ -1,5 +1,4 @@
 import { initializeAuth } from './init-auth';
-import {HttpClient} from '@angular/common/http';
 
 describe('initializeAuth', () => {
   it('sets auth type based on env for legacy login', async () => {
