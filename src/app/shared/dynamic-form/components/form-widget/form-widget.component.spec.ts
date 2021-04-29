@@ -5,7 +5,7 @@ import { FORM_DATA_WIDGET } from '../../../../_constants/form-data';
 
 import { FormWidgetComponent } from './form-widget.component';
 
-describe('FormNullComponent', () => {
+describe('FormWidgetComponent', () => {
   let component: FormWidgetComponent;
   let fixture: ComponentFixture<FormWidgetComponent>;
 
@@ -19,7 +19,7 @@ describe('FormNullComponent', () => {
     fixture = TestBed.createComponent(FormWidgetComponent);
     component = fixture.componentInstance;
     component.config = { ...FORM_DATA_WIDGET };
-    component.config.widget = NewEpidNumberComponent;
+    component.config.widget = 'app-new-epid-number';
     fixture.detectChanges();
   });
 

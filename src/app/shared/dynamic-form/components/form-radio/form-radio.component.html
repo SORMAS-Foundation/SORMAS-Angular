@@ -1,6 +1,9 @@
 <div [formGroup]="group">
   <mat-radio-group [formControlName]="config.key" (change)="onChange()">
-    <mat-label *ngIf="config.label" class="radio-group-label">{{ config.label }}</mat-label>
+    <mat-label *ngIf="config.label" class="radio-group-label">
+      {{ config.label }}
+      <span *ngIf="config.validation?.length" class="required">*</span>
+    </mat-label>
     <mat-radio-button *ngFor="let opt of config.options" [value]="opt.key" color="primary">
       {{ opt.value }}
     </mat-radio-button>

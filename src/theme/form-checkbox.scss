@@ -11,13 +11,12 @@
         font-weight: 500;
       }
 
-      &:focus,
-      &:hover {
-        color: mat-color(mat-palette($primary, 700));
+      &:not(.mat-checkbox-disabled) .mat-checkbox-frame {
+        border-color: mat-color(mat-palette($primary, 700));
+      }
 
-        .mat-checkbox-frame {
-          border-color: mat-color(mat-palette($primary, 700));
-        }
+      &.ng-touched.ng-invalid .mat-checkbox-frame {
+        border-color: mat-color(mat-palette($warn, 300));
       }
 
       &.small {

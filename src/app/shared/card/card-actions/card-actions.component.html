@@ -7,7 +7,7 @@
       [ngClass]="['small', action.position?.includes('LEFT') ? 'left' : 'right']"
       (click)="announceAction($event, action.type)"
     >
-      <mat-icon>{{ getIcon(action.type) }}</mat-icon>
+      <mat-icon class="material-icons-round">{{ getIcon(action.type) }}</mat-icon>
     </button>
     <mat-checkbox
       *ngSwitchCase="'checkbox'"

@@ -26,8 +26,6 @@ import {
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { FollowUpStatusComponent } from '../follow-up-status/follow-up-status.component';
-import { NewEpidNumberComponent } from '../new-epid-number/new-epid-number.component';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -95,6 +93,7 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'classificationDate',
         label: 'Date of classification',
         newLine: true,
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_NULL,
@@ -168,7 +167,7 @@ export const FORM_DATA_CASE_DETAILS = [
       },
       {
         ...FORM_DATA_WIDGET,
-        widget: NewEpidNumberComponent,
+        widget: 'app-new-epid-number',
       },
     ],
   },
@@ -756,7 +755,7 @@ export const FORM_DATA_CASE_DETAILS = [
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        widget: FollowUpStatusComponent,
+        widget: 'app-follow-up-status',
         className: 'size-large push-right',
       },
       {

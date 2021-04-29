@@ -5,7 +5,10 @@
     floatLabel="always"
     [ngClass]="{ 'has-hint': !!config.hint }"
   >
-    <mat-label *ngIf="config.label">{{ config.label }}</mat-label>
+    <mat-label *ngIf="config.label">
+      {{ config.label }}
+      <span *ngIf="config.validation?.length" class="required">*</span>
+    </mat-label>
     <input
       [value]="config.value"
       [type]="config.type"

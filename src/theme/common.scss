@@ -10,13 +10,18 @@ body {
   margin: 0;
 }
 
-a {
-  color: $primary;
+a:not(.mat-button) {
+  color: map-get($sormas-primary, 700);
   text-decoration: none;
 
   &:hover,
   &:focus,
   &:active {
     text-decoration: underline;
+    text-underline-offset: 4px;
   }
+}
+
+.errorMessage {
+  color: $warn;
 }

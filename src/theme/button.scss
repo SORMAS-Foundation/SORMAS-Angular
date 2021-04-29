@@ -6,9 +6,91 @@
   $foreground: map-get($theme, foreground);
 
   :root {
-    .mat-stroked-button:not(.mat-button-disabled) {
+    .mat-button-focus-overlay {
+      background-color: transparent !important;
+    }
+
+    .mat-button.mat-primary:not(.mat-button-disabled) {
+      &:hover,
+      &:focus,
+      &:active {
+        color: mat-color(mat-palette($primary, 800));
+      }
+    }
+
+    .mat-button.mat-warn:not(.mat-button-disabled) {
+      &:hover,
+      &:focus,
+      &:active {
+        color: mat-color(mat-palette($warn, 800));
+      }
+    }
+
+    .mat-button.mat-button-disabled {
+      color: mat-color(mat-palette($accent, 400));
+    }
+
+    .mat-stroked-button {
       border-width: 2px;
       border-color: currentColor;
+    }
+
+    .mat-stroked-button.mat-primary:not(.mat-button-disabled) {
+      border-color: currentColor;
+
+      &:hover,
+      &:focus {
+        color: mat-color(mat-palette($primary, 800));
+      }
+
+      &:active {
+        background-color: mat-color(mat-palette($primary, 50));
+        color: mat-color(mat-palette($primary, 700));
+      }
+    }
+
+    .mat-stroked-button.mat-warn:not(.mat-button-disabled) {
+      &:hover,
+      &:focus {
+        color: mat-color(mat-palette($warn, 800));
+      }
+
+      &:active {
+        background-color: mat-color(mat-palette($warn, 50));
+        color: mat-color(mat-palette($warn, 700));
+      }
+    }
+
+    .mat-stroked-button.mat-button-disabled {
+      border-color: mat-color(mat-palette($accent, 200));
+      color: mat-color(mat-palette($accent, 400));
+    }
+
+    .mat-flat-button.mat-primary:not(.mat-button-disabled) {
+      &:hover,
+      &:focus {
+        background-color: mat-color(mat-palette($primary, 800));
+      }
+
+      &:active {
+        background-color: mat-color(mat-palette($primary, 900));
+      }
+    }
+
+    .mat-flat-button.mat-warn:not(.mat-button-disabled) {
+      &:hover,
+      &:focus {
+        background-color: mat-color(mat-palette($warn, 800));
+      }
+
+      &:active {
+        background-color: mat-color(mat-palette($warn, 900));
+      }
+    }
+
+    .mat-flat-button.mat-button-disabled {
+      background-color: mat-color(mat-palette($accent, 50));
+      color: mat-color(mat-palette($accent, 400));
     }
 
     .mat-icon-button.small {

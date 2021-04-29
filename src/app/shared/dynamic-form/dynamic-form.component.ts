@@ -1,6 +1,15 @@
 /* eslint-disable no-console */
-import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { FormBase, FormElementBase } from './types/form-element-base';
@@ -19,6 +28,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() formElements: FormBase<string>[] = [];
   @Input() resourceService: BaseService<any>;
   @Input() withAnchor = false;
+
+  @Output() changed: EventEmitter<any> = new EventEmitter();
 
   formElementsProcessed: FormElementBase<string>[] = [];
   form: FormGroup;
@@ -50,6 +61,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.subscription.push(
       this.formActionsService.getSave().subscribe((response: any) => {
         if (this.form.invalid) {
+          this.form.markAllAsTouched();
           this.notificationService.error('Please fill in all the mandatory fields');
           return;
         }
@@ -70,6 +82,15 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           this.form.controls[item.key].setValue(item.value);
         });
       })
+    );
+
+    this.subscription.push(
+      this.formActionsService
+        .getInputChange()
+        .pipe(debounceTime(300))
+        .subscribe(() => {
+          this.changed.emit(this.form.value);
+        })
     );
 
     this.detectChanges();

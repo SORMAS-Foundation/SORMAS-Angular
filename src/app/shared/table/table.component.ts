@@ -72,7 +72,7 @@ export class TableComponent implements OnInit, OnDestroy {
     if (typeof this.dataSourceArray[index].index !== 'undefined') {
       return 'loading';
     }
-    return this.dataSourceArray[index][key];
+    return this.dataSourceArray[index][key]?.toString();
   }
 
   getResources(reload: boolean = false): void {
@@ -122,10 +122,14 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   sortTable(sortParameters: Sort): void {
-    this.sorting = {
-      field: sortParameters.active,
-      ascending: sortParameters.direction !== 'desc',
-    };
+    if (!sortParameters || !sortParameters.direction) {
+      this.sorting = null;
+    } else {
+      this.sorting = {
+        field: sortParameters.active,
+        ascending: sortParameters.direction !== 'desc',
+      };
+    }
 
     this.getResources(true);
   }

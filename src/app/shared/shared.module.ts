@@ -13,6 +13,7 @@ import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
 import { FormActionsComponent } from './form-actions/form-actions.component';
 import { CardModule } from './card/card.module';
 import { DateCardModule } from './date-card/date-card.module';
+import { PipesModule } from '../_pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DateCardModule } from './date-card/date-card.module';
     DialogModule,
     CardModule,
     DateCardModule,
+    PipesModule,
   ],
   exports: [
     LocaleSelectComponent,
@@ -48,6 +50,7 @@ import { DateCardModule } from './date-card/date-card.module';
     FormActionsComponent,
     CardModule,
     DateCardModule,
+    PipesModule,
   ],
 })
 export class SharedModule {}

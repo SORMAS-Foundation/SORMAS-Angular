@@ -9,7 +9,7 @@
       right: 0;
       left: 0;
       padding: 0 25px;
-      background: white;
+      background: $white;
     }
   }
 }
@@ -95,7 +95,7 @@ h2 {
 }
 
 .required {
-  color: $warn;
+  color: map-get($sormas-alert, 400);
 }
 
 .hidden {
