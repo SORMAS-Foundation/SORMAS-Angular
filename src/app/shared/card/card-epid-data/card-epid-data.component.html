@@ -29,9 +29,9 @@
   <div class="description">{{ data.description }}</div>
   <div class="location">
     <span *ngIf="data.location?.street || data.location?.city || data.location?.houseNumber"
-      ><mat-icon class="place-icon">place</mat-icon>{{ data.location?.street }}
-      {{ data.location?.houseNumber }}, {{ data.location?.postalCode }}
-      {{ data.location?.city }}</span
+      ><mat-icon class="place-icon material-icons-round">place</mat-icon
+      >{{ data.location?.street }} {{ data.location?.houseNumber }},
+      {{ data.location?.postalCode }} {{ data.location?.city }}</span
     >
   </div>
 </div>

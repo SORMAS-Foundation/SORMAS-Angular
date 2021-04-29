@@ -21,7 +21,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
       },
       {
         ...FORM_DATA_WIDGET,
-        widget: ExposuresListComponent,
+        widget: 'app-exposures-list',
         label: 'Exposures',
         newLine: true,
       },
@@ -38,7 +38,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
       },
       {
         ...FORM_DATA_WIDGET,
-        widget: ActivitiesListComponent,
+        widget: 'app-activities-list',
         newLine: true,
       },
     ],
