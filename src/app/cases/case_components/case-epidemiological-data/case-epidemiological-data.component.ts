@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { SentResourceTypes } from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { CaseDataDto } from '../../../_models/models';
 import { BaseService } from '../../../_services/api/base.service';
@@ -25,7 +26,7 @@ export class CaseEpidemiologicalDataComponent {
 
   updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
     setTimeout(() => {
-      this.sendResourceService.setResource(caseItem);
+      this.sendResourceService.setResource(caseItem, SentResourceTypes.EPIDEMIOLOGICAL_DATA);
     });
     this.resourceService = resourceService;
     this.myFormElements = this.formElementControlService.setValuesForDynamicForm(

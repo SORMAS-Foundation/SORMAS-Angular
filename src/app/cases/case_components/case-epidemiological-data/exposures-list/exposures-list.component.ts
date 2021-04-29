@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { SentResourceTypes } from '../../../../app.constants';
 import { CaseDataDto, TypeOfPlace } from '../../../../_models/models';
 import { SendResourceService } from '../../../../_services/send-resource.service';
 
@@ -18,8 +19,10 @@ export class ExposuresListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
-      this.exposures = response.resource?.epiData?.exposures || [];
-      this.setExposuresData(this.exposures);
+      if (response.fromComponent === SentResourceTypes.EPIDEMIOLOGICAL_DATA) {
+        this.exposures = response.resource?.epiData?.exposures || [];
+        this.setExposuresData(this.exposures);
+      }
     });
   }
 

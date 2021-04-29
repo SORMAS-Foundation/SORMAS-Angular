@@ -6,8 +6,8 @@ import { Resource } from '../_models/resource';
 export class SendResourceService {
   private subject = new Subject<any>();
 
-  setResource(resource: Resource): void {
-    this.subject.next({ resource });
+  setResource(resource: Resource, fromComponent: string): void {
+    this.subject.next({ resource, fromComponent });
   }
 
   getResource(): Observable<Resource> {

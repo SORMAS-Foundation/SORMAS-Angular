@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { SentResourceTypes } from '../../../../app.constants';
 import { CaseDataDto, TypeOfPlace } from '../../../../_models/models';
 import { SendResourceService } from '../../../../_services/send-resource.service';
 
@@ -18,8 +19,10 @@ export class ActivitiesListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
-      this.activities = response.resource?.epiData?.activitiesAsCase || [];
-      this.setActivitiesData(this.activities);
+      if (response.fromComponent === SentResourceTypes.EPIDEMIOLOGICAL_DATA) {
+        this.activities = response.resource?.epiData?.activitiesAsCase || [];
+        this.setActivitiesData(this.activities);
+      }
     });
   }
 
@@ -36,8 +39,8 @@ export class ActivitiesListComponent implements OnInit, OnDestroy {
         epidTitle: activity.activityAsCaseType,
         typeOfPlace: activity.typeOfPlace as TypeOfPlace,
         priority: 'NORMAL',
-        startDate: activity.startDate && new Date(activity.startDate),
-        endDate: activity.endDate && new Date(activity.endDate),
+        startDate: activity.startDate,
+        endDate: activity.endDate,
         description: activity.description,
         location: activity.location,
       };

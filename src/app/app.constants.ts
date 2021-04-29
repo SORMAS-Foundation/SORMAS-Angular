@@ -15,6 +15,11 @@ export enum CaseTitles {
   UNKOWN = 'Unknown',
 }
 
+// Send resource data to any component specified in this enum
+export enum SentResourceTypes {
+  EPIDEMIOLOGICAL_DATA = 'epidemiological_data',
+}
+
 // pagination
 export const PAGE_SIZE = 7;
 

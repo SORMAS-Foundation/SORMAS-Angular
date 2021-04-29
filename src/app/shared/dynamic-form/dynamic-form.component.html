@@ -11,8 +11,7 @@
       >
         <h2>
           {{ group.title }} <span class="required" *ngIf="group.required">*</span>
-          <br *ngIf="group.subTitle" />
-          <span *ngIf="group.subTitle" class="sub-title">{{ group.subTitle }}</span>
+          <p *ngIf="group.subTitle" class="sub-title">{{ group.subTitle }}</p>
         </h2>
         <mat-card class="dynamic-form-card">
           <ng-container *ngFor="let field of group.fields">
