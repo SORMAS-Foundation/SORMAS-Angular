@@ -7,11 +7,13 @@ import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { IconsMap } from 'src/app/app.constants';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
 import { Filter, Sorting, TableColumn } from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
+import { LocalStorageService } from '../../_services/local-storage.service';
 
 @Component({
   selector: 'app-table',
@@ -38,6 +40,7 @@ export class TableComponent implements OnInit, OnDestroy {
   @Input() tableColumns: TableColumn[] = [];
   @Input() visibleRowsCount = 10;
   @Input() resourceService: BaseService<any>;
+  @Input() saveConfigKey: string | undefined;
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
@@ -46,12 +49,12 @@ export class TableComponent implements OnInit, OnDestroy {
 
   constructor(
     private notificationService: NotificationService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
-    const columnNames = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
-    this.displayedColumns = this.isSelectable ? ['select', ...columnNames] : columnNames;
+    this.displayedColumns = this.getColumns();
 
     this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
       this.offset = value;
@@ -66,6 +69,26 @@ export class TableComponent implements OnInit, OnDestroy {
       this.filters = response.filters;
       this.getResources(true);
     });
+  }
+
+  getColumns(): string[] {
+    let columns = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
+
+    if (this.isSelectable) {
+      columns.unshift('select');
+    }
+
+    if (!this.saveConfigKey) {
+      return columns;
+    }
+
+    const config = this.localStorageService.get(this.saveConfigKey);
+
+    if (config) {
+      columns = config.filter((col: any) => columns.includes(col));
+    }
+
+    return columns;
   }
 
   getTableData(index: number, key: string): any {
@@ -132,6 +155,13 @@ export class TableComponent implements OnInit, OnDestroy {
     }
 
     this.getResources(true);
+  }
+
+  drop(event: CdkDragDrop<string[]>): void {
+    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+    if (this.saveConfigKey) {
+      this.localStorageService.set(this.saveConfigKey, this.displayedColumns);
+    }
   }
 
   ngOnDestroy(): void {
