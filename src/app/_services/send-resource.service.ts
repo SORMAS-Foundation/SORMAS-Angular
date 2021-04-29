@@ -10,7 +10,7 @@ export class SendResourceService {
     this.subject.next({ resource, fromComponent });
   }
 
-  getResource(): Observable<Resource> {
+  getResource(): Observable<any> {
     return this.subject.asObservable();
   }
 }
