@@ -4,7 +4,6 @@ import {
   ComponentFactoryResolver,
   ViewChild,
   ViewContainerRef,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -14,7 +13,6 @@ import { FormElementBase } from '../../types/form-element-base';
   selector: 'app-form-widget',
   templateUrl: './form-widget.component.html',
   styleUrls: ['./form-widget.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormWidgetComponent implements AfterViewInit {
   config: FormElementBase<string>;

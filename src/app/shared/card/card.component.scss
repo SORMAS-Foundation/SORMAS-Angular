@@ -17,6 +17,12 @@
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
+    &.center {
+      text-align: center;
+    }
+    &.right {
+      text-align: right;
+    }
   }
 
   &.collapse-left {

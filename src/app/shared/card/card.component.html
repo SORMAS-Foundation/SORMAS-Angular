@@ -9,7 +9,7 @@
   ></app-card-actions>
 
   <mat-card-header *ngIf="title || collapse" [ngClass]="getClassCollapse()">
-    <mat-card-title *ngIf="title">
+    <mat-card-title *ngIf="title" [ngClass]="titlePosition?.toLowerCase() || ''">
       {{ title | humanize | titlecase }}
     </mat-card-title>
     <button *ngIf="collapse" mat-icon-button (click)="toggleCollapse()">
@@ -22,6 +22,7 @@
     <app-card-case-task *ngSwitchCase="'case_task'" [data]="data"></app-card-case-task>
     <app-card-case-event *ngSwitchCase="'case_event'" [data]="data"></app-card-case-event>
     <app-card-sample *ngSwitchCase="'sample'" [data]="data"></app-card-sample>
+    <app-card-epid-data *ngSwitchCase="'epid_data'" [data]="data"></app-card-epid-data>
     <ng-content *ngSwitchDefault></ng-content>
   </mat-card-content>
 

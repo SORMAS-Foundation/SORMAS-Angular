@@ -1,7 +1,8 @@
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { YesNoUnknown } from '../../../_models/models';
 import { FORM_DATA_RADIO, FORM_DATA_WIDGET } from '../../../_constants/form-data';
-import { ExposuresListComponent } from '../exposures-list/exposures-list.component';
+import { ExposuresListComponent } from './exposures-list/exposures-list.component';
+import { ActivitiesListComponent } from './activities-list/activities-list.component';
 
 const pipe = new EnumToKeyValuePipe();
 const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
@@ -33,8 +34,12 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.activityAsCaseDetailsKnown',
-        label: 'Activity details known',
         options: optionsYesNoUnknown,
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: ActivitiesListComponent,
+        newLine: true,
       },
     ],
   },

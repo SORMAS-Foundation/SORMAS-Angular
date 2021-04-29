@@ -10,6 +10,7 @@ import { CardSampleComponent } from './card-sample/card-sample.component';
 import { HumanizePipe } from '../../_pipes/humanize/humanize.pipe';
 import { CardCaseEventComponent } from './card-case-event/card-case-event.component';
 import { CardListComponent } from './card-list/card-list.component';
+import { CardEpidDataComponent } from './card-epid-data/card-epid-data.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule],
@@ -22,6 +23,7 @@ import { CardListComponent } from './card-list/card-list.component';
     CardCaseEventComponent,
     CardSampleComponent,
     CardListComponent,
+    CardEpidDataComponent,
   ],
   exports: [CardComponent, CardListComponent],
 })

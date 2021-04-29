@@ -19,7 +19,8 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { CaseFiltersComponent } from './case-filters/case-filters.component';
 import { NewEpidNumberComponent } from './case_components/new-epid-number/new-epid-number.component';
 import { FollowUpStatusComponent } from './case_components/follow-up-status/follow-up-status.component';
-import { ExposuresListComponent } from './case_components/exposures-list/exposures-list.component';
+import { ExposuresListComponent } from './case_components/case-epidemiological-data/exposures-list/exposures-list.component';
+import { ActivitiesListComponent } from './case_components/case-epidemiological-data/activities-list/activities-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ExposuresListComponent } from './case_components/exposures-list/exposur
     NewEpidNumberComponent,
     FollowUpStatusComponent,
     ExposuresListComponent,
+    ActivitiesListComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

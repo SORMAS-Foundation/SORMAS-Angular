@@ -13,6 +13,7 @@ export type CardType =
   | 'case_event'
   | 'case_contact'
   | 'case_task'
+  | 'epid_data'
   | 'address'
   | 'hospitalization'
   | 'activity'

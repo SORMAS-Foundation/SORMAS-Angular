@@ -1,6 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PositionType } from 'src/app/_models/positionType';
-import { CardAppearanceOptions, CardStatusMap, Position } from 'src/app/_constants/enums';
+import { PositionType, BasicPositionType } from 'src/app/_models/positionType';
+import {
+  BasicPosition,
+  CardAppearanceOptions,
+  CardStatusMap,
+  Position,
+} from 'src/app/_constants/enums';
 import { CardActionsIcons } from 'src/app/_constants/icons';
 import { CardActions } from 'src/app/_models/cardActions';
 import { CardAppearance, CardStatus, CardType } from 'src/app/_models/cardAppearance';
@@ -14,6 +19,7 @@ import { AVAILABLE_ACTIONS } from './card-data';
 export class CardComponent implements OnInit {
   @Input() id: string;
   @Input() title: string;
+  @Input() titlePosition: BasicPositionType = BasicPosition.LEFT;
   @Input() collapse = false;
   @Input() collapsePosition: PositionType = Position.RIGHT;
   @Input() select = false;

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Position, CardStatusMap } from '../../../app.constants';
+import { BasicPosition } from '../../../_constants/enums';
 import { CardAppearance, CardStatus, CardType } from '../../../_models/cardAppearance';
-import { PositionType } from '../../../_models/positionType';
+import { BasicPositionType, PositionType } from '../../../_models/positionType';
 
 @Component({
   selector: 'app-card-list',
@@ -30,6 +31,7 @@ export class CardListComponent implements OnInit {
   @Input() cardType: CardType;
   @Input() cardAppearance: CardAppearance;
   @Input() cardTitleKey: string;
+  @Input() cardTitlePosition: BasicPositionType = BasicPosition.LEFT;
   @Input() cardStatusKey: string;
 
   @Output() selectCard: EventEmitter<any> = new EventEmitter();
