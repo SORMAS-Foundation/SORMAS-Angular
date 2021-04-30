@@ -1,0 +1,37 @@
+<div *ngIf="data" class="card-epid-data">
+  <div>
+    <span class="type-of-place">
+      {{ data.typeOfPlace | humanize }}
+    </span>
+  </div>
+
+  <div class="timeline">
+    <app-date-card
+      *ngIf="data.startDate"
+      [date]="data.startDate"
+      label="start"
+      [showYear]="false"
+      [appearance]="dateCardType.STANDARD"
+      class="date"
+    ></app-date-card>
+    <app-date-card
+      *ngIf="data.endDate"
+      [date]="data.endDate"
+      label="end"
+      [showYear]="false"
+      [appearance]="dateCardType.STANDARD"
+      class="date"
+    ></app-date-card>
+  </div>
+  <div class="contact-person" *ngIf="data.contactToCase?.caption">
+    <span class="contact-label">Source </span>{{ data.contactToCase?.caption }}
+  </div>
+  <div class="description">{{ data.description }}</div>
+  <div class="location">
+    <span *ngIf="data.location?.street || data.location?.city || data.location?.houseNumber"
+      ><mat-icon class="place-icon material-icons-round">place</mat-icon
+      >{{ data.location?.street }} {{ data.location?.houseNumber }},
+      {{ data.location?.postalCode }} {{ data.location?.city }}</span
+    >
+  </div>
+</div>

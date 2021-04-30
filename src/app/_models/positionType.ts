@@ -1,3 +1,5 @@
+export type BasicPositionType = 'LEFT' | 'RIGHT' | 'CENTER';
+
 export type PositionType =
   | 'TOPLEFT'
   | 'TOP'

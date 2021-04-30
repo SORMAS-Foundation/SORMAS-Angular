@@ -192,6 +192,12 @@ export enum HospitalizationReason {
   OTHER = 'Other',
 }
 
+export enum BasicPosition {
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+  CENTER = 'CENTER',
+}
+
 export enum Position {
   TOPLEFT = 'TOPLEFT',
   TOP = 'TOP',

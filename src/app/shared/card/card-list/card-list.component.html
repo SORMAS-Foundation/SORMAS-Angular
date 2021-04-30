@@ -3,6 +3,7 @@
     *ngFor="let card of data | slice: 0:limit"
     [id]="card.uuid"
     [title]="card[cardTitleKey]"
+    [titlePosition]="cardTitlePosition"
     [width]="cardWidth"
     [collapse]="cardCollapse"
     [collapsePosition]="cardCollapsePosition"
@@ -27,7 +28,12 @@
 </section>
 
 <p *ngIf="initialPageSize" class="card-list-actions">
-  <button *ngIf="limit === initialPageSize" mat-button color="primary" (click)="showMore()">
+  <button
+    *ngIf="limit === initialPageSize && data.length > limit"
+    mat-button
+    color="primary"
+    (click)="showMore()"
+  >
     Show more
   </button>
   <button *ngIf="limit !== initialPageSize" mat-button color="primary" (click)="showLess()">
