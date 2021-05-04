@@ -11,14 +11,22 @@ table {
 
 .risklevel-low {
   color: map-get($sormas-success, 700);
+  font-weight: 500;
 }
 
 .risklevel-moderate {
   color: map-get($sormas-warning, 800);
+  font-weight: 500;
 }
 
 .risklevel-high {
   color: map-get($sormas-alert, 300);
+  font-weight: 500;
+}
+
+.risklevel-unknown {
+  color: map-get($sormas-accent, 500);
+  font-weight: 500;
 }
 
 .viewport {
