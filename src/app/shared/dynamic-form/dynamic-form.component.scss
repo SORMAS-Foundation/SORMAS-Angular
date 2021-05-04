@@ -43,15 +43,26 @@
   }
 }
 
-h2 {
+.left-section {
   min-width: 176px;
   max-width: 248px;
   flex: 0 0 24%;
   padding: 29px 24px;
   margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
   text-align: right;
+
+  h2 {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .sub-title {
+    color: mat-color($sormas-accent, 800);
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+  }
 }
 
 .dynamic-form-input {

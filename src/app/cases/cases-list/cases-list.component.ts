@@ -5,6 +5,7 @@ import { CaseService } from '../../_services/api/case.service';
 import { TableColumn } from '../../shared/table/table-column';
 import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
+import { CONFIG_CASES } from '../../_constants/storage';
 
 @Component({
   selector: 'app-cases-list',
@@ -14,6 +15,7 @@ import { CaseDataDto } from '../../_models/caseDataDto';
 export class CasesListComponent implements OnInit {
   cases: CaseDataDto[] = [];
   defaultColumns: TableColumn[] = [];
+  configKey = CONFIG_CASES;
 
   constructor(public caseService: CaseService, private router: Router) {}
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../shared/table/table-column';
+import { CONFIG_TASKS } from '../../_constants/storage';
 import { TaskDto } from '../../_models/taskDto';
 import { TaskService } from '../../_services/api/task.service';
 import { defaultColumnDefs } from './tasks-list-table-data';
@@ -12,6 +13,7 @@ import { defaultColumnDefs } from './tasks-list-table-data';
 export class TasksListComponent implements OnInit {
   tasks: TaskDto[] = [];
   defaultColumns: TableColumn[] = [];
+  configKey = CONFIG_TASKS;
 
   constructor(public taskService: TaskService) {}
 

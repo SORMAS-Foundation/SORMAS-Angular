@@ -9,6 +9,7 @@ import { DateCardModule } from '../date-card/date-card.module';
 import { CardSampleComponent } from './card-sample/card-sample.component';
 import { CardCaseEventComponent } from './card-case-event/card-case-event.component';
 import { CardListComponent } from './card-list/card-list.component';
+import { CardEpidDataComponent } from './card-epid-data/card-epid-data.component';
 import { PipesModule } from '../../_pipes/pipes.module';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PipesModule } from '../../_pipes/pipes.module';
     CardCaseEventComponent,
     CardSampleComponent,
     CardListComponent,
+    CardEpidDataComponent,
   ],
   exports: [CardComponent, CardListComponent],
 })

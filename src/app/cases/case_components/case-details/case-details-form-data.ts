@@ -75,7 +75,6 @@ export const FORM_DATA_CASE_DETAILS = [
         label: 'Clinical confirmation',
         options: optionsYesNoUnknown,
         newLine: true,
-        validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -768,7 +767,6 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'overwriteFollowUpUntil',
         label: 'Overwrite follow-up until date',
         newLine: true,
-        validation: ['required'],
       },
       {
         ...FORM_DATA_DATE,
@@ -795,7 +793,6 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'districtLevelDate',
         label: 'Date received at district level',
         className: 'size-medium',
-        validation: ['required'],
       },
       {
         ...FORM_DATA_DATE,
