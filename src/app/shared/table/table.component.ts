@@ -1,5 +1,15 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
@@ -20,32 +30,36 @@ import { LocalStorageService } from '../../_services/local-storage.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit, OnDestroy {
+export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   public dataSource = new TableVirtualScrollDataSource<any>([]);
   public displayedColumns: string[] = [];
 
   selection = new SelectionModel<any>(true, []);
   offset = 0;
   limit = constants.PAGE_SIZE;
+  headerHeight = constants.VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT;
+  rowHeight = constants.VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT;
+  tableHeight = this.limit * this.rowHeight;
   sorting: Sorting | null = null;
   filters: Filter[];
   debouncer: Subject<number> = new Subject<number>();
   dataSourceArray: any = [];
   subscription: Subscription = new Subscription();
+  icons = IconsMap;
 
   @Input() isSortable = false;
   @Input() isPageable = false;
   @Input() isSelectable = false;
   @Input() isHeaderSticky = false;
   @Input() tableColumns: TableColumn[] = [];
-  @Input() visibleRowsCount = 10;
   @Input() resourceService: BaseService<any>;
   @Input() saveConfigKey: string | undefined;
+  @Input() fullHeight: boolean;
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
 
-  icons = IconsMap;
+  @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
   constructor(
     private notificationService: NotificationService,
@@ -161,6 +175,19 @@ export class TableComponent implements OnInit, OnDestroy {
     moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
     if (this.saveConfigKey) {
       this.localStorageService.set(this.saveConfigKey, this.displayedColumns);
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (this.fullHeight) {
+      setTimeout(() => {
+        const viewportHeight = window.innerHeight;
+        const rect = this.vsTable.nativeElement.getBoundingClientRect();
+        const offsetTop = rect.top + window.pageYOffset - document.documentElement.clientTop;
+
+        this.tableHeight = viewportHeight - offsetTop;
+        this.limit = Math.ceil((this.tableHeight - this.headerHeight) / this.rowHeight);
+      });
     }
   }
 
