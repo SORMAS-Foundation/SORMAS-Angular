@@ -1,12 +1,13 @@
 <ng-container *ngIf="tableColumns">
   <cdk-virtual-scroll-viewport
-    [tvsItemSize]="54"
-    [headerHeight]="56"
-    [style.height.px]="visibleRowsCount * 54"
+    [tvsItemSize]="rowHeight"
+    [headerHeight]="headerHeight"
+    [style.height.px]="tableHeight"
     class="viewport"
     (scrolledIndexChange)="scrolledIndexChange($event)"
   >
     <table
+      #vsTable
       mat-table
       [dataSource]="dataSource"
       matSort
