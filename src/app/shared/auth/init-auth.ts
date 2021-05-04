@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Environment } from '../../../environments/ienvironment';
 import { AuthService } from './auth-service/auth.service';
 import { HelperService } from '../../_services/helper.service';
@@ -18,7 +18,9 @@ export function initializeAuth(
 
     return new Promise((resolve, reject) => {
       http
-        .get('assets/environment.json')
+        .get('assets/environment.json', {
+          headers: new HttpHeaders().set('No-Bearer', 'true'),
+        })
         .toPromise()
         .then((result: any) => {
           helperService.setApiUrl(result.apiUrl);
