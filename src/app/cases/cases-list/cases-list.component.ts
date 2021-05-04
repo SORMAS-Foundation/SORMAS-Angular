@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CaseService } from '../../_services/api/case.service';
-import { TableColumn } from '../../shared/table/table-column';
+import { TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';

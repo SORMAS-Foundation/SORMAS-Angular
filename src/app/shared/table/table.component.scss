@@ -1,4 +1,4 @@
-@use './src/variables.scss' as *;
+@use '/src/variables.scss' as *;
 
 .mat-cell .mat-icon {
   font-size: 14px;
@@ -7,6 +7,18 @@
 
 table {
   width: 100%;
+}
+
+.risklevel-low {
+  color: map-get($sormas-success, 700);
+}
+
+.risklevel-moderate {
+  color: map-get($sormas-warning, 800);
+}
+
+.risklevel-high {
+  color: map-get($sormas-alert, 300);
 }
 
 .viewport {

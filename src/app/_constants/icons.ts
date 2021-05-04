@@ -4,6 +4,7 @@ export enum IconsMap {
   DISCARDED = 'cancel_presentation',
   DIALOG_ICON_TITLE_ALERT = 'warning_amber',
   DIALOG_ICON_CLOSE = 'highlight_off',
+  ONGOING = 'refresh',
 }
 
 export enum CaseOutcomeIcons {

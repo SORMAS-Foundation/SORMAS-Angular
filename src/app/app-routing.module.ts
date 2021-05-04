@@ -31,6 +31,11 @@ const routes: Routes = [
     canActivate: [AuthGuard, LeaveGuard],
   },
   {
+    path: 'events',
+    loadChildren: () => import('./events/events.module').then((m) => m.EventsModule),
+    canActivate: [AuthGuard, LeaveGuard],
+  },
+  {
     path: 'user-profile',
     loadChildren: () =>
       import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
