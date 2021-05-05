@@ -8,15 +8,15 @@ import {
 } from '@angular/common/http';
 import { from, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
 import { AuthService } from '../shared/auth/auth-service/auth.service';
 import { getEnv } from '../../environments/getEnv';
+import { HelperService } from '../_services/helper.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private helperService: HelperService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return getEnv().isLegacyLogin
@@ -25,7 +25,10 @@ export class ApiInterceptor implements HttpInterceptor {
   }
 
   async handle(req: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
-    const bearerToken = await this.authService.getToken();
+    let bearerToken = '';
+    if (req.headers.getAll('No-Bearer') === null) {
+      bearerToken = await this.authService.getToken();
+    }
     const apiReq = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${bearerToken}`),
     });
@@ -34,7 +37,7 @@ export class ApiInterceptor implements HttpInterceptor {
   }
 
   async handleLegacy(req: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
-    const baseUrl = environment.apiUrl;
+    const baseUrl = this.helperService.getApiUrl();
 
     const apiReq = req.clone({
       url: `${baseUrl}${req.url}`,
