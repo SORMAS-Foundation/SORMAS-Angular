@@ -72,18 +72,6 @@
           "configurations": {
             "production": {
               "browserTarget": "sormas:build:production"
-            },
-            "en-US": {
-              "browserTarget": "sormas:build:en-US"
-            },
-            "fr": {
-              "browserTarget": "sormas:build:fr"
-            },
-            "de": {
-              "browserTarget": "sormas:build:de"
-            },
-            "ar": {
-              "browserTarget": "sormas:build:ar"
             }
           }
         },
@@ -115,7 +103,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sormas:serve:en-US"
+            "devServerTarget": "sormas:serve"
           },
           "configurations": {
             "production": {
