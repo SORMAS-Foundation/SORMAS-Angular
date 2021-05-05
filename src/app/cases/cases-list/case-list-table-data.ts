@@ -1,4 +1,4 @@
-import { TableColumn } from '../../shared/table/table-column';
+import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
@@ -35,7 +35,7 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'Investigation status',
     dataKey: 'investigationStatus',
     isSortable: true,
-    icon: true,
+    iconify: true,
   },
   {
     name: 'First name',

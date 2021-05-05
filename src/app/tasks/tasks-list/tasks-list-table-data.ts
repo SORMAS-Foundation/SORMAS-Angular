@@ -1,4 +1,4 @@
-import { TableColumn } from '../../shared/table/table-column';
+import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {

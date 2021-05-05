@@ -112,6 +112,14 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.dataSourceArray[index][key]?.toString();
   }
 
+  getIcon(key: string): string {
+    return this.icons[key as keyof typeof IconsMap];
+  }
+
+  getClass(key: string, value: string): string {
+    return `${key.toLocaleLowerCase()}-${value.toLocaleLowerCase()}`;
+  }
+
   getResources(reload: boolean = false): void {
     this.resourceService
       .getAll({ offset: this.offset, size: this.limit }, this.sorting, this.filters)

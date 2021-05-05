@@ -27,4 +27,6 @@ export interface TableColumn {
   name: string;
   dataKey: string;
   isSortable?: boolean;
+  iconify?: boolean;
+  stylify?: boolean;
 }
