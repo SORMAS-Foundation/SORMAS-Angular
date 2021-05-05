@@ -1,0 +1,6 @@
+{
+  "keycloakRealm": "SORMAS",
+  "keycloakClientId": "sormas-angular",
+  "keycloakUrl": "https://sormas-docker-test.com/keycloak/auth/",
+  "apiUrl": "https://sormas-docker-test.com/sormas-rest"
+}
