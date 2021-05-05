@@ -17,3 +17,9 @@ export const API_ROUTE_TASKS = {
   GET_ALL: 'tasks/indexList',
   UPDATE: 'tasks/update',
 };
+
+export const API_ROUTE_EVENTS = {
+  ENDPOINT: 'events',
+  GET_ALL: 'events/indexList',
+  UPDATE: 'events/update',
+};

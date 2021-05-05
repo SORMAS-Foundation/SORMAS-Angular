@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TableColumn } from '../../shared/table/table-column';
+import { TableColumn } from '../../_models/common';
 import { CONFIG_TASKS } from '../../_constants/storage';
 import { TaskDto } from '../../_models/taskDto';
 import { TaskService } from '../../_services/api/task.service';

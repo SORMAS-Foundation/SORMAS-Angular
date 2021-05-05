@@ -11,6 +11,7 @@ export const routesConfig: RouteItem[] = [
   { link: 'about', label: $localize`About` },
   { link: 'tasks/list', label: $localize`Tasks` },
   { link: 'cases/list', label: $localize`Cases` },
+  { link: 'events/list', label: $localize`Events` },
   { link: 'user-profile', label: $localize`My profile` },
 ];
 
