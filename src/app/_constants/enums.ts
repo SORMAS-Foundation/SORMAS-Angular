@@ -240,3 +240,8 @@ export enum TemperatureSource {
   RECTAL = 'Rectal',
   NON_CONTACT = 'Non contact',
 }
+
+export enum TableAppearanceOptions {
+  STANDARD = 'standard',
+  MINIMAL = 'minimal',
+}
