@@ -105,7 +105,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
-    title: _('Respiratory'),
+    title: 'Respiratory',
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -239,20 +239,20 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       },
     ],
   },
-  {
-    title: _('Additional details'),
+  { // // translate-bug
+    title: 'Additional details',
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'symptoms.symptomsComments',
-        label: _('Comments'),
+        label: 'Comments',
         options: optionsYesNoUnknown,
         className: 'size-full',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'symptoms.onsetSymptom',
-        label: _('First symptom'),
+        label: 'First symptom',
         options: [],
         className: 'size-large',
         newLine: true,
@@ -260,7 +260,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_DATE,
         key: 'symptoms.onsetDate',
-        label: _('Date of symptom onset'),
+        label: 'Date of symptom onset',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },

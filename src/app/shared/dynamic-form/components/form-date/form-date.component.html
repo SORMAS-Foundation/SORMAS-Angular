@@ -10,7 +10,7 @@
     }"
   >
     <mat-label *ngIf="config.label">
-      {{ config.label | translate }}
+      {{ config.label || '' | translate }}
       <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
     <input
@@ -26,5 +26,5 @@
     </mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage | translate }}</div>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage || '' | translate }}</div>
 </div>

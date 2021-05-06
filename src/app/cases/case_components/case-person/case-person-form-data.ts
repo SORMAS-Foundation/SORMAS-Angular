@@ -89,7 +89,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'day',
         label: ' ',
-        placeholder: _('Day'),
+        placeholder: 'Day', // translate-bug
         options: dayOptions,
         className: 'size-small',
       },
@@ -103,7 +103,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'presentCondition',
-        label: _('Present condition'),
+        label: 'Present condition', // translate-bug
         options: optionsPresentCondition,
         newLine: true,
       },
@@ -264,14 +264,14 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'countryOfBirth',
         label: _('Country of birth'),
-        options: [{ key: 'defaultCountry', value: _('Default country') }],
+        options: [{ key: 'defaultCountry', value: 'Default country' }],
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'citizenship',
         label: _('Citizenship'),
-        options: [{ key: 'defaultCitizenship', value: _('Default citizenship') }],
+        options: [{ key: 'defaultCitizenship', value: 'Default citizenship' }],
         newLine: true,
       },
     ],

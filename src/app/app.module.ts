@@ -22,7 +22,7 @@ import { NotFoundComponent } from './_common-components/not-found/not-found.comp
 import { HelperService } from './_services/helper.service';
 
 export function HttpLoaderFactory(http: HttpClient): any {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, 'assets/i18n/');
 }
 
 @NgModule({

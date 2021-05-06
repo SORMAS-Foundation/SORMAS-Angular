@@ -15,6 +15,7 @@ import { NotificationService } from '../../../_services/notification.service';
 export class CasePersonComponent {
   person: PersonDto;
   myFormElements: FormBase<any>[] = [];
+  formData = data.FORM_DATA_CASE_PERSON_DETAILS;
 
   public resourceService: BaseService<any>;
 
@@ -27,7 +28,7 @@ export class CasePersonComponent {
   setPersonFormData(): void {
     this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
       this.person,
-      data.FORM_DATA_CASE_PERSON_DETAILS
+      this.formData
     );
   }
 

@@ -5,7 +5,7 @@
     floatLabel="always"
     [ngClass]="{ 'has-hint': !!config.hint, readonly: true }"
   >
-    <mat-label *ngIf="config.label">{{ config.label | translate }}</mat-label>
+    <mat-label *ngIf="config.label">{{ config.label || '' | translate }}</mat-label>
     <input
       [value]="config.value"
       [type]="config.type"
@@ -13,6 +13,6 @@
       matInput
       readonly
     />
-    <mat-hint *ngIf="config.hint">{{ config.hint | translate }}</mat-hint>
+    <mat-hint *ngIf="config.hint">{{ config.hint || '' | translate }}</mat-hint>
   </mat-form-field>
 </div>
