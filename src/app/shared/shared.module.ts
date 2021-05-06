@@ -53,7 +53,7 @@ import { PipesModule } from '../_pipes/pipes.module';
     CardModule,
     DateCardModule,
     PipesModule,
-    TranslateModule
+    TranslateModule,
   ],
 })
 export class SharedModule {}

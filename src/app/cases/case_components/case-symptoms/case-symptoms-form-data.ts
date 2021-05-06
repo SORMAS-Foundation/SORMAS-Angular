@@ -239,7 +239,8 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       },
     ],
   },
-  { // // translate-bug
+  {
+    // // translate-bug
     title: 'Additional details',
     fields: [
       {

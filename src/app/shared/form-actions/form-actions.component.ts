@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NavigationStart, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { FormActionsService } from '../../_services/form-actions.service';
 import { Resource } from '../../_models/resource';
 import { NotificationService } from '../../_services/notification.service';
-import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form-actions',

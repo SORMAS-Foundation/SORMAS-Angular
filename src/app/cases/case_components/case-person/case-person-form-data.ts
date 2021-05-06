@@ -29,15 +29,16 @@ const optionsOccupationType = pipe.transform(OccupationType);
 const optionsArmedForces = pipe.transform(ArmedForcesRelationType);
 const optionsEducation = pipe.transform(EducationType);
 
-const yearOptions = Array.from({ length: 122 }, (_, i) => {
+const yearOptions = Array.from({ length: 122 }, (v, i) => {
   return { key: i, value: i + 1900 };
 });
-const monthOptions = Array.from({ length: 12 }, (_, i) => {
+const monthOptions = Array.from({ length: 12 }, (v, i) => {
   return { key: i, value: i + 1 };
 });
-const dayOptions = Array.from({ length: 31 }, (_, i) => {
+const dayOptions = Array.from({ length: 31 }, (v, i) => {
   return { key: i, value: i + 1 };
 });
+
 export const FORM_DATA_CASE_PERSON_DETAILS = [
   {
     title: _('Person'),
