@@ -16,7 +16,6 @@ import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { IconsMap } from 'src/app/app.constants';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TranslateService } from '@ngx-translate/core';
 import { BaseService } from '../../_services/api/base.service';
@@ -40,13 +39,13 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   limit = constants.PAGE_SIZE;
   headerHeight = constants.VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT;
   rowHeight = constants.VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT;
-  tableHeight = this.limit * this.rowHeight;
+  tableHeight: number;
   sorting: Sorting | null = null;
   filters: Filter[];
   debouncer: Subject<number> = new Subject<number>();
   dataSourceArray: any = [];
   subscription: Subscription = new Subscription();
-  icons = IconsMap;
+  icons = constants.IconsMap;
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -56,6 +55,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() resourceService: BaseService<any>;
   @Input() saveConfigKey: string | undefined;
   @Input() fullHeight: boolean;
+  @Input() appearance: string = constants.TableAppearanceOptions.STANDARD;
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
@@ -70,6 +70,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
     this.displayedColumns = this.getColumns();
 
     this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
@@ -115,7 +116,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getIcon(key: string): string {
-    return this.icons[key as keyof typeof IconsMap];
+    return this.icons[key as keyof typeof constants.IconsMap];
   }
 
   getClass(key: string, value: string): string {

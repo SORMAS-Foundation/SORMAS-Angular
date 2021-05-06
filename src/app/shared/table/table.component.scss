@@ -9,6 +9,22 @@ table {
   width: 100%;
 }
 
+.minimal {
+  th.mat-header-cell {
+    border-bottom-color: map-get($sormas-accent, 200);
+    border-left-width: 0;
+    background-color: unset;
+  }
+
+  tr.mat-row td.mat-cell {
+    background-color: unset;
+  }
+
+  tr.mat-row.row-selected td.mat-cell {
+    background-color: map-get($sormas-primary, 50);
+  }
+}
+
 .risklevel-low {
   color: map-get($sormas-success, 700);
   font-weight: 500;

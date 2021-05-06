@@ -15,6 +15,7 @@
       cdkDropList
       cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="drop($event)"
+      [ngClass]="[appearance]"
     >
       <ng-container matColumnDef="select">
         <th mat-header-cell cdkDrag *matHeaderCellDef></th>
