@@ -18,6 +18,7 @@ import { debounceTime } from 'rxjs/operators';
 
 import { IconsMap } from 'src/app/app.constants';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { TranslateService } from '@ngx-translate/core';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
@@ -64,7 +65,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private notificationService: NotificationService,
     private filterService: FilterService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    public translateService: TranslateService
   ) {}
 
   ngOnInit(): void {

@@ -30,7 +30,7 @@
       <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
         <ng-container *ngIf="isSortable && tableColumn.isSortable; else notSortable">
           <th mat-header-cell cdkDrag *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
-            <span>{{ tableColumn.name }}</span>
+            <span>{{ tableColumn.name | translate }}</span>
             <mat-icon *ngIf="sorting?.field === tableColumn.dataKey" class="material-icons-round">
               {{ sorting?.ascending ? 'arrow_drop_up' : 'arrow_drop_down' }}
             </mat-icon>

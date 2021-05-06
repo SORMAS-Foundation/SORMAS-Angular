@@ -69,17 +69,17 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'Quarantine end',
+    name: _('Quarantine end'),
     dataKey: 'quarantineTo',
     isSortable: true,
   },
   {
-    name: 'Follow-up status',
+    name: _('Follow-up status'),
     dataKey: 'followUpStatus',
     isSortable: true,
   },
   {
-    name: 'Follow-up until',
+    name: _('Follow-up until'),
     dataKey: 'followUpUntil',
     isSortable: true,
   },

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import logoPath from '../../../assets/img/sormas-logo.svg';
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 
 export interface RouteItem {
   link: string;
@@ -26,8 +25,8 @@ export class MenuComponent {
   routeConfig: RouteItem[] = routesConfig;
   logo = logoPath;
 
-  constructor(public translate: TranslateService) {
-    translate.setDefaultLang('en');
-    translate.use('en');
+  constructor(public translateService: TranslateService) {
+    translateService.setDefaultLang('en');
+    translateService.use('en');
   }
 }

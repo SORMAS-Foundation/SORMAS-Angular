@@ -14,6 +14,7 @@ import { FormActionsComponent } from './form-actions/form-actions.component';
 import { CardModule } from './card/card.module';
 import { DateCardModule } from './date-card/date-card.module';
 import { PipesModule } from '../_pipes/pipes.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PipesModule } from '../_pipes/pipes.module';
     CardModule,
     DateCardModule,
     PipesModule,
+    TranslateModule,
   ],
   exports: [
     LocaleSelectComponent,
