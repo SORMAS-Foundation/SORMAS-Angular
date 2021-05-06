@@ -53,6 +53,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CardModule,
     DateCardModule,
     PipesModule,
+    TranslateModule
   ],
 })
 export class SharedModule {}
