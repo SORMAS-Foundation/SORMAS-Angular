@@ -10,5 +10,7 @@ COPY . ./
 RUN npm run build
 
 FROM nginx
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY docker/angular/nginx.conf /etc/nginx/nginx.conf
+COPY docker/angular/configure-envionment.sh /docker-entrypoint.d/99-configure-envionment.sh
+
 COPY --from=compile-image /opt/ng/dist/app /usr/share/nginx/html
