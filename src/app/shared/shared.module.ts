@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
+import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from '../material.module';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { TableComponent } from './table/table.component';
@@ -14,7 +15,6 @@ import { FormActionsComponent } from './form-actions/form-actions.component';
 import { CardModule } from './card/card.module';
 import { DateCardModule } from './date-card/date-card.module';
 import { PipesModule } from '../_pipes/pipes.module';
-import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [

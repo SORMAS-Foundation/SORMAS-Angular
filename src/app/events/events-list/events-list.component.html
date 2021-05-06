@@ -6,7 +6,7 @@
     <app-event-filters [drawer]="drawer"></app-event-filters>
   </mat-drawer>
   <mat-drawer-content>
-    <h1 class="header-title" i18n="Events Overview header">Events Overview</h1>
+    <h1 class="header-title" i18n="Events Overview header">{{ 'Events Overview' | translate }}</h1>
     <app-table
       [resourceService]="eventService"
       [tableColumns]="defaultColumns"

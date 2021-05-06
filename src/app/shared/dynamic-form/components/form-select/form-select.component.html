@@ -5,7 +5,7 @@
     [ngClass]="{ 'has-hint': !!config.hint }"
   >
     <mat-label *ngIf="config.label">
-      {{ config.label }}
+      {{ config.label | translate }}
       <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
     <mat-select
@@ -20,5 +20,5 @@
     </mat-select>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
   </mat-form-field>
-  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage }}</div>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage | translate }}</div>
 </div>

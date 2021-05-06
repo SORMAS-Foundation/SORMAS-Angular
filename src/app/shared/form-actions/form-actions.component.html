@@ -5,6 +5,6 @@
   (click)="resetForm()"
   *ngIf="hasInputsChanged"
 >
-  Discard
+  {{ 'Discard' | translate }}
 </button>
-<button mat-flat-button color="primary" class="save-btn" (click)="saveForm()">Save</button>
+<button mat-flat-button color="primary" class="save-btn" (click)="saveForm()">{{ 'Save' | translate }}</button>

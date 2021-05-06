@@ -9,7 +9,7 @@ const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 export const FORM_DATA_CASE_EPID_DETAILS = [
   {
     title: _('Exposure investigation'),
-    subTitle: _('Please document ALL relevant direct exposures (e.g. attended gatherings, travels, animal contacts, etc.) during the incubation period.'),
+    subTitle: _('Please document ALL relevant direct exposures (eg attended gatherings, travels, animal contacts, etc) during the incubation period'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -27,7 +27,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
   },
   {
     title: _('Activity as case'),
-    subTitle: _('Please document ALL relevant activities after infection.'),
+    subTitle: _('Please document ALL relevant activities after infection'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -48,7 +48,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.highTransmissionRiskArea',
-        label: _('Residing or working in an area with high risk of transmission of the disease e.g. colsed residential and camp-like settings'),
+        label: _('Residing or working in an area with high risk of transmission of the disease eg colsed residential and camp-like settings'),
         options: optionsYesNoUnknown,
       },
       {
