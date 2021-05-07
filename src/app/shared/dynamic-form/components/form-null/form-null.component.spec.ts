@@ -1,6 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+  TranslateStore,
+} from '@ngx-translate/core';
 import { FormNullComponent } from './form-null.component';
 
 describe('FormNullComponent', () => {
@@ -10,6 +16,8 @@ describe('FormNullComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormNullComponent],
+      imports: [TranslateModule],
+      providers: [TranslateService, TranslateStore, TranslateLoader],
     }).compileComponents();
   });
 

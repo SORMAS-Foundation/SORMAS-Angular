@@ -1,6 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+  TranslateStore,
+} from '@ngx-translate/core';
 import { FormRadioComponent } from './form-radio.component';
 
 describe('FormRadioComponent', () => {
@@ -10,6 +16,8 @@ describe('FormRadioComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormRadioComponent],
+      imports: [TranslateModule],
+      providers: [TranslateService, TranslateStore, TranslateLoader],
     }).compileComponents();
   });
 

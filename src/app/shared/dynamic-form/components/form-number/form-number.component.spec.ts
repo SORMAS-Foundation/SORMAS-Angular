@@ -1,6 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+  TranslateStore,
+} from '@ngx-translate/core';
 import { FormNumberComponent } from './form-number.component';
 
 describe('FormInputComponent', () => {
@@ -10,6 +16,8 @@ describe('FormInputComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormNumberComponent],
+      imports: [TranslateModule],
+      providers: [TranslateService, TranslateStore, TranslateLoader],
     }).compileComponents();
   });
 

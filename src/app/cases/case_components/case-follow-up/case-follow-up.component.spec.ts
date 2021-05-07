@@ -1,5 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+  TranslateStore,
+} from '@ngx-translate/core';
 import { CaseFollowUpComponent } from './case-follow-up.component';
 
 describe('CaseFollowUpComponent', () => {
@@ -9,6 +15,8 @@ describe('CaseFollowUpComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CaseFollowUpComponent],
+      imports: [TranslateModule],
+      providers: [TranslateService, TranslateStore, TranslateLoader],
     }).compileComponents();
   });
 

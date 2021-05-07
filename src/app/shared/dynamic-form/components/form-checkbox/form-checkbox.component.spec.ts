@@ -1,6 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+  TranslateStore,
+} from '@ngx-translate/core';
 import { FormCheckboxComponent } from './form-checkbox.component';
 
 describe('FormCheckboxComponent', () => {
@@ -10,6 +16,8 @@ describe('FormCheckboxComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormCheckboxComponent],
+      imports: [TranslateModule],
+      providers: [TranslateService, TranslateStore, TranslateLoader],
     }).compileComponents();
   });
 
