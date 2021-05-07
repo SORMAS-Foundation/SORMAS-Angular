@@ -13,7 +13,12 @@ describe('EventsListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [EventsListComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule, TranslateModule.forRoot()],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        MatDialogModule,
+        TranslateModule.forRoot(),
+      ],
     }).compileComponents();
   });
 
