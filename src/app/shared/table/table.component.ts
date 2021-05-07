@@ -17,6 +17,7 @@ import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ViewportRuler } from '@angular/cdk/scrolling';
 import { TranslateService } from '@ngx-translate/core';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
@@ -66,12 +67,17 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private notificationService: NotificationService,
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    private viewportRuler: ViewportRuler
   ) {}
 
   ngOnInit(): void {
     this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
     this.displayedColumns = this.getColumns();
+
+    if (this.fullHeight) {
+      this.viewportRuler.change(300).subscribe(() => this.determineHeight());
+    }
 
     this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
       this.offset = value;
@@ -189,16 +195,18 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  determineHeight(): void {
+    const viewportHeight = window.innerHeight;
+    const rect = this.vsTable.nativeElement.getBoundingClientRect();
+    const offsetTop = rect.top + window.pageYOffset - document.documentElement.clientTop;
+
+    this.tableHeight = viewportHeight - offsetTop;
+    this.limit = Math.ceil((this.tableHeight - this.headerHeight) / this.rowHeight);
+  }
+
   ngAfterViewInit(): void {
     if (this.fullHeight) {
-      setTimeout(() => {
-        const viewportHeight = window.innerHeight;
-        const rect = this.vsTable.nativeElement.getBoundingClientRect();
-        const offsetTop = rect.top + window.pageYOffset - document.documentElement.clientTop;
-
-        this.tableHeight = viewportHeight - offsetTop;
-        this.limit = Math.ceil((this.tableHeight - this.headerHeight) / this.rowHeight);
-      });
+      setTimeout(() => this.determineHeight());
     }
   }
 
