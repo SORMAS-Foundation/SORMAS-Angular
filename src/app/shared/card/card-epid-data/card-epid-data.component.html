@@ -24,7 +24,7 @@
     ></app-date-card>
   </div>
   <div class="contact-person" *ngIf="data.contactToCase?.caption">
-    <span class="contact-label">Source </span>{{ data.contactToCase?.caption }}
+    <span class="contact-label">{{ 'Source' | translate }} </span>{{ data.contactToCase?.caption }}
   </div>
   <div class="description">{{ data.description }}</div>
   <div class="location">

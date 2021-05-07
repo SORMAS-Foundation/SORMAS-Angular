@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { CardComponent } from './card.component';
 import { MaterialModule } from '../../material.module';
 import { CardActionsComponent } from './card-actions/card-actions.component';
@@ -13,7 +14,7 @@ import { CardEpidDataComponent } from './card-epid-data/card-epid-data.component
 import { PipesModule } from '../../_pipes/pipes.module';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, DateCardModule, PipesModule],
+  imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
   declarations: [
     CardComponent,
     CardActionsComponent,

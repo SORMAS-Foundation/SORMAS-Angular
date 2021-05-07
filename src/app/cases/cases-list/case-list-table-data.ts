@@ -1,84 +1,85 @@
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'Case id',
+    name: _('Case id'),
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: 'External id',
+    name: _('External id'),
     dataKey: 'externalID',
     isSortable: true,
   },
   {
-    name: 'Disease',
+    name: _('Disease'),
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: 'Disease variant',
+    name: _('Disease variant'),
     dataKey: 'diseaseDetails',
     isSortable: true,
   },
   {
-    name: 'Case classification',
+    name: _('Case classification'),
     dataKey: 'caseClassification',
     isSortable: true,
   },
   {
-    name: 'Outcome of case',
+    name: _('Outcome of case'),
     dataKey: 'outcome',
     isSortable: true,
   },
   {
-    name: 'Investigation status',
+    name: _('Investigation status'),
     dataKey: 'investigationStatus',
     isSortable: true,
     iconify: true,
   },
   {
-    name: 'First name',
+    name: _('First name'),
     dataKey: 'person.firstName',
     isSortable: true,
   },
   {
-    name: 'Last name',
+    name: _('Last name'),
     dataKey: 'person.lastName',
     isSortable: true,
   },
   {
-    name: 'District',
+    name: _('District'),
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: 'Health facility',
+    name: _('Health facility'),
     dataKey: 'healthFacility.caption',
     isSortable: true,
   },
   {
-    name: 'Point of entry',
+    name: _('Point of entry'),
     dataKey: 'pointOfEntry.caption',
     isSortable: true,
   },
   {
-    name: 'Date of report',
+    name: _('Date of report'),
     dataKey: 'reportDate',
     isSortable: true,
   },
   {
-    name: 'Quarantine end',
+    name: _('Quarantine end'),
     dataKey: 'quarantineTo',
     isSortable: true,
   },
   {
-    name: 'Follow-up status',
+    name: _('Follow-up status'),
     dataKey: 'followUpStatus',
     isSortable: true,
   },
   {
-    name: 'Follow-up until',
+    name: _('Follow-up until'),
     dataKey: 'followUpUntil',
     isSortable: true,
   },

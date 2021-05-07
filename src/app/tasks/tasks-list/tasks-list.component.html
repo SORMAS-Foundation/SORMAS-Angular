@@ -6,7 +6,7 @@
     <app-task-filters [drawer]="drawer"></app-task-filters>
   </mat-drawer>
   <mat-drawer-content>
-    <h1 class="header-title" i18n="Cases Overview header">Tasks Overview</h1>
+    <h1 class="header-title" i18n="Cases Overview header">{{ 'Tasks Overview' | translate }}</h1>
     <app-table
       [resourceService]="taskService"
       [tableColumns]="defaultColumns"

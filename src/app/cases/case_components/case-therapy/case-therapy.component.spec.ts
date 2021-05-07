@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { CaseTherapyComponent } from './case-therapy.component';
 
 describe('CaseTherapyComponent', () => {
@@ -9,6 +10,7 @@ describe('CaseTherapyComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CaseTherapyComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

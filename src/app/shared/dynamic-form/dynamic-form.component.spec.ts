@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 import { DynamicFormComponent } from './dynamic-form.component';
 
 describe('DynamicFormComponent', () => {
@@ -10,7 +11,7 @@ describe('DynamicFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DynamicFormComponent],
-      imports: [FormsModule, ReactiveFormsModule, MatDialogModule],
+      imports: [FormsModule, ReactiveFormsModule, MatDialogModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

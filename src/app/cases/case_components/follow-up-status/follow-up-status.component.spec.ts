@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from '../../../material.module';
 
 import { FollowUpStatusComponent } from './follow-up-status.component';
@@ -11,7 +12,7 @@ describe('FollowUpStatusComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FollowUpStatusComponent],
-      imports: [MaterialModule],
+      imports: [MaterialModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

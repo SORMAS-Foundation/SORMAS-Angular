@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { ActivitiesListComponent } from './activities-list.component';
 
 describe('ActivitiesListComponent', () => {
@@ -9,6 +10,7 @@ describe('ActivitiesListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ActivitiesListComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

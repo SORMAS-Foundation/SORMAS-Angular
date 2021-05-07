@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { FormSelectComponent } from './form-select.component';
 
 describe('FormSelectComponent', () => {
@@ -10,6 +11,7 @@ describe('FormSelectComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormSelectComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

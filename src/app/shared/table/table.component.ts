@@ -18,6 +18,7 @@ import { debounceTime } from 'rxjs/operators';
 
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ViewportRuler } from '@angular/cdk/scrolling';
+import { TranslateService } from '@ngx-translate/core';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
@@ -66,6 +67,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private notificationService: NotificationService,
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
+    public translateService: TranslateService,
     private viewportRuler: ViewportRuler
   ) {}
 

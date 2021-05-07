@@ -1,3 +1,4 @@
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import {
   FORM_DATA_RADIO,
   FORM_DATA_DATE,
@@ -28,26 +29,26 @@ const optionsTemperature = range(35, 44.1, 0.1).map((val) => ({
 
 export const FORM_DATA_CASE_SYMPTOMS = [
   {
-    title: 'Clinical measurements',
+    title: _('Clinical measurements'),
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'symptoms.temperature',
-        label: 'Max body temperature in °C',
+        label: _('Max body temperature in °C'),
         options: optionsTemperature,
         className: 'size-medium',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'symptoms.temperatureSource',
-        label: 'Source',
+        label: _('Source'),
         options: optionsTemperatureSource,
         className: 'size-small',
       },
     ],
   },
   {
-    title: 'Clinical signs and sympotms',
+    title: _('Clinical signs and sympotms'),
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -56,40 +57,40 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
-    title: 'General',
+    title: _('General'),
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.chillsSweats',
-        label: 'Chills or sweats',
+        label: _('Chills or sweats'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.headache',
-        label: 'Headache',
+        label: _('Headache'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.fever',
-        label: 'Fever',
+        label: _('Fever'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.musclePain',
-        label: 'Muscle pain',
+        label: _('Muscle pain'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.shivering',
-        label: 'Shivering',
+        label: _('Shivering'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
@@ -97,7 +98,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.feelingIll',
-        label: 'Feeling ill',
+        label: _('Feeling ill'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
@@ -109,120 +110,120 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.soreThroat',
-        label: 'Sore throat',
+        label: _('Sore throat'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.runnyNose',
-        label: 'Runny nose',
+        label: _('Runny nose'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.cough',
-        label: 'Caugh',
+        label: _('Caugh'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.difficultyBreathing',
-        label: 'Difficulty breathing / Dyspnea',
+        label: _('Difficulty breathing / Dyspnea'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.rapidBreathing',
-        label: 'Rapid breathing',
+        label: _('Rapid breathing'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.pneumoniaClinicalOrRadiologic',
-        label: 'Pneumonia (clinical or radiologic)',
+        label: _('Pneumonia (clinical or radiologic)'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.oxygenSaturationLower94',
-        label: 'Oxygen saturation < 94%',
+        label: _('Oxygen saturation < 94%'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.respiratoryDiseaseVentilation',
-        label: 'Respiratory disease requiring ventilation',
+        label: _('Respiratory disease requiring ventilation'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.acuteRespiratoryDistressSyndrome',
-        label: 'Acute respiratory distress syndrome',
+        label: _('Acute respiratory distress syndrome'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
     ],
   },
   {
-    title: 'Cardiovascular',
+    title: _('Cardiovascular'),
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.fastHeartRate',
-        label: 'Fast hearth rate (Tachycardia)',
+        label: _('Fast hearth rate (Tachycardia)'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
     ],
   },
   {
-    title: 'Gastrointestinal',
+    title: _('Gastrointestinal'),
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.diarrhea',
-        label: 'Diarrhea',
+        label: _('Diarrhea'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.nausea',
-        label: 'Nausea',
+        label: _('Nausea'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
     ],
   },
   {
-    title: 'Other',
+    title: _('Other'),
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.lossOfSmell',
-        label: 'New loss of smell',
+        label: _('New loss of smell'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.lossOfTaste',
-        label: 'New loss of taste',
+        label: _('New loss of taste'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.otherComplications',
-        label: 'Other clinical symptoms',
+        label: _('Other clinical symptoms'),
         options: optionsYesNoUnknown,
         className: 'size-large',
         newLine: true,
@@ -230,7 +231,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_INPUT,
         key: 'symptoms.otherComplicationsText',
-        label: 'Specify other symptoms',
+        label: _('Specify other symptoms'),
         validation: ['required'],
         className: 'size-large',
         dependingOn: 'symptoms.otherComplications',
@@ -239,6 +240,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
+    // // translate-bug
     title: 'Additional details',
     fields: [
       {

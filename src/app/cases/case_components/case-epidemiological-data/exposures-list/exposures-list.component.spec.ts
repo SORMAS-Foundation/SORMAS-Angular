@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { ExposuresListComponent } from './exposures-list.component';
 
 describe('ExposuresListComponent', () => {
@@ -9,6 +10,7 @@ describe('ExposuresListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ExposuresListComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

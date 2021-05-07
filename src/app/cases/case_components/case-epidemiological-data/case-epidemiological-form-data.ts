@@ -1,3 +1,4 @@
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { YesNoUnknown } from '../../../_models/models';
 import { FORM_DATA_RADIO, FORM_DATA_WIDGET } from '../../../_constants/form-data';
@@ -7,27 +8,28 @@ const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 
 export const FORM_DATA_CASE_EPID_DETAILS = [
   {
-    title: 'Exposure investigation',
-    subTitle:
-      'Please document ALL relevant direct exposures (e.g. attended gatherings, travels, animal contacts, etc.) during the incubation period.',
+    title: _('Exposure investigation'),
+    subTitle: _(
+      'Please document ALL relevant direct exposures (eg attended gatherings, travels, animal contacts, etc) during the incubation period'
+    ),
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.exposureDetailsKnown',
-        label: 'Exposure details known',
+        label: _('Exposure details known'),
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-exposures-list',
-        label: 'Exposures',
+        label: _('Exposures'),
         newLine: true,
       },
     ],
   },
   {
-    title: 'Activity as case',
-    subTitle: 'Please document ALL relevant activities after infection.',
+    title: _('Activity as case'),
+    subTitle: _('Please document ALL relevant activities after infection'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -42,35 +44,39 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
     ],
   },
   {
-    title: 'Incubation period',
-    subTitle:
-      'Please indicate if any of the following is relevant for the patient during the incubation period',
+    title: _('Incubation period'),
+    subTitle: _(
+      'Please indicate if any of the following is relevant for the patient during the incubation period'
+    ),
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.highTransmissionRiskArea',
-        label:
-          'Residing or working in an area with high risk of transmission of the disease e.g. colsed residential and camp-like settings',
+        label: _(
+          'Residing or working in an area with high risk of transmission of the disease eg colsed residential and camp-like settings'
+        ),
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.largeOutbreaksArea',
-        label:
-          'Residing or traveling to countries/territories/areas experiencing larger outbreaks of local transmission',
+        label: _(
+          'Residing or traveling to countries/territories/areas experiencing larger outbreaks of local transmission'
+        ),
         options: optionsYesNoUnknown,
       },
     ],
   },
   {
-    title: 'Contacts with source case',
-    subTitle:
-      'Please indicate ALL contacts with potential source cases during the incubation period',
+    title: _('Contacts with source case'),
+    subTitle: _(
+      'Please indicate ALL contacts with potential source cases during the incubation period'
+    ),
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.contactWithSourceCaseKnown',
-        label: 'Contactsh with source case known',
+        label: _('Contactsh with source case known'),
         options: optionsYesNoUnknown,
       },
     ],

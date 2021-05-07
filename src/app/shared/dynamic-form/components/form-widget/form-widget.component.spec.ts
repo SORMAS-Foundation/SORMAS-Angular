@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { NewEpidNumberComponent } from '../../../../cases/case_components/new-epid-number/new-epid-number.component';
 import { FORM_DATA_WIDGET } from '../../../../_constants/form-data';
 
@@ -12,6 +13,7 @@ describe('FormWidgetComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormWidgetComponent, NewEpidNumberComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

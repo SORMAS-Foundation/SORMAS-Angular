@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
+import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from '../material.module';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { TableComponent } from './table/table.component';
@@ -35,6 +36,7 @@ import { PipesModule } from '../_pipes/pipes.module';
     CardModule,
     DateCardModule,
     PipesModule,
+    TranslateModule,
   ],
   exports: [
     LocaleSelectComponent,
@@ -51,6 +53,7 @@ import { PipesModule } from '../_pipes/pipes.module';
     CardModule,
     DateCardModule,
     PipesModule,
+    TranslateModule,
   ],
 })
 export class SharedModule {}

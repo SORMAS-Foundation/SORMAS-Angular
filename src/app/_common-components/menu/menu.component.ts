@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
+import { TranslateService } from '@ngx-translate/core';
 import logoPath from '../../../assets/img/sormas-logo.svg';
 
 export interface RouteItem {
@@ -7,12 +9,12 @@ export interface RouteItem {
 }
 
 export const routesConfig: RouteItem[] = [
-  { link: '', label: $localize`Dashboard` },
-  { link: 'about', label: $localize`About` },
-  { link: 'tasks/list', label: $localize`Tasks` },
-  { link: 'cases/list', label: $localize`Cases` },
-  { link: 'events/list', label: $localize`Events` },
-  { link: 'user-profile', label: $localize`My profile` },
+  { link: '', label: _('Dashboard') },
+  { link: 'about', label: _('About') },
+  { link: 'tasks/list', label: _('Tasks') },
+  { link: 'cases/list', label: _('Cases') },
+  { link: 'events/list', label: _('Events') },
+  { link: 'user-profile', label: _('My profile') },
 ];
 
 @Component({
@@ -23,4 +25,9 @@ export const routesConfig: RouteItem[] = [
 export class MenuComponent {
   routeConfig: RouteItem[] = routesConfig;
   logo = logoPath;
+
+  constructor(public translateService: TranslateService) {
+    translateService.setDefaultLang('en');
+    translateService.use('en');
+  }
 }

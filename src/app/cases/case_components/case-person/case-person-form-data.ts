@@ -1,3 +1,4 @@
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import {
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
@@ -28,50 +29,51 @@ const optionsOccupationType = pipe.transform(OccupationType);
 const optionsArmedForces = pipe.transform(ArmedForcesRelationType);
 const optionsEducation = pipe.transform(EducationType);
 
-const yearOptions = Array.from({ length: 122 }, (_, i) => {
+const yearOptions = Array.from({ length: 122 }, (v, i) => {
   return { key: i, value: i + 1900 };
 });
-const monthOptions = Array.from({ length: 12 }, (_, i) => {
+const monthOptions = Array.from({ length: 12 }, (v, i) => {
   return { key: i, value: i + 1 };
 });
-const dayOptions = Array.from({ length: 31 }, (_, i) => {
+const dayOptions = Array.from({ length: 31 }, (v, i) => {
   return { key: i, value: i + 1 };
 });
+
 export const FORM_DATA_CASE_PERSON_DETAILS = [
   {
-    title: 'Person',
+    title: _('Person'),
     required: true,
     fields: [
       {
         ...FORM_DATA_NULL,
         key: 'uuid',
-        label: 'ID: ',
+        label: _('ID'),
         sameLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'firstName',
-        label: 'First name',
+        label: _('First name'),
         validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'lastName',
-        label: 'Last name',
+        label: _('Last name'),
         validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'salutation',
-        label: 'Salutation',
+        label: _('Salutation'),
         options: optionsSalutation,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'year',
-        label: 'Birth',
-        placeholder: 'Year',
+        label: _('Birth'),
+        placeholder: _('Year'),
         options: yearOptions,
         className: 'size-small',
         newLine: true,
@@ -80,7 +82,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'month',
         label: ' ',
-        placeholder: 'Month',
+        placeholder: _('Month'),
         options: monthOptions,
         className: 'size-small',
       },
@@ -88,28 +90,28 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'day',
         label: ' ',
-        placeholder: 'Day',
+        placeholder: 'Day', // translate-bug
         options: dayOptions,
         className: 'size-small',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'sex',
-        label: 'Sex',
+        label: _('Sex'),
         options: optionsSex,
         className: 'size-small',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'presentCondition',
-        label: 'Present condition',
+        label: 'Present condition', // translate-bug
         options: optionsPresentCondition,
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'dateOfDeath',
-        label: 'Date of death',
+        label: _('Date of death'),
         options: optionsPresentCondition,
         className: 'size-small',
         dependingOn: 'presentCondition',
@@ -118,7 +120,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'causeOfDeath',
-        label: 'Cause of death',
+        label: _('Cause of death'),
         options: optionsCauseOfDeath,
         newLine: true,
         dependingOn: 'presentCondition',
@@ -127,14 +129,14 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'responsibleDisease',
-        label: 'Responsible disease',
+        label: _('Responsible disease'),
         dependingOn: 'presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'deathPlaceType',
-        label: 'Death place type',
+        label: _('Death place type'),
         options: optionsDeathPlaceType,
         newLine: true,
         dependingOn: 'presentCondition',
@@ -143,51 +145,51 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'deathPlaceDescription',
-        label: 'Death place discription',
+        label: _('Death place discription'),
         dependingOn: 'deathPlaceType',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'passportNumber',
-        label: 'Passport number',
+        label: _('Passport number'),
         newLine: true,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'healthId',
-        label: 'Health ID',
+        label: _('Health ID'),
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'externalToken',
-        label: 'External token',
+        label: _('External token'),
         className: 'size-large',
       },
     ],
   },
   {
-    title: 'Occupation & Education',
+    title: _('Occupation & Education'),
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'occupationType',
-        label: 'Occupation type',
+        label: _('Occupation type'),
         options: optionsOccupationType,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'occupationDetails',
-        label: 'Occupation details',
+        label: _('Occupation details'),
         className: 'size-large',
         dependingOn: 'occupationType',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'staffOfArmedForces',
-        label: 'Staff of armed forces',
+        label: _('Staff of armed forces'),
         options: optionsArmedForces,
         className: 'size-large',
         newLine: true,
@@ -195,7 +197,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'educationType',
-        label: 'Education',
+        label: _('Education'),
         options: optionsEducation,
         className: 'size-large',
         newLine: true,
@@ -203,73 +205,73 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'educationDetailes',
-        label: 'Details',
+        label: _('Details'),
         className: 'size-large',
         dependingOn: 'educationType',
       },
     ],
   },
   {
-    title: 'Addresses',
+    title: _('Addresses'),
     fields: [
       {
         ...FORM_DATA_NULL,
         key: 'widget',
-        label: 'Widget',
+        label: _('Widget'),
       },
     ],
   },
   {
-    title: 'Contact',
+    title: _('Contact'),
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'nickname',
-        label: 'Nickname',
+        label: _('Nickname'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'mothersName',
-        label: 'Mother\'s name',
+        label: _('Mother\'s name'),
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'mothersMaidenName',
-        label: 'Mother\'s maiden name',
+        label: _('Mother\'s maiden name'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'fathersName',
-        label: 'Father\'s name',
+        label: _('Father\'s name'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'phoneNumber',
-        label: 'Phone number',
+        label: _('Phone number'),
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'ownerOfPhone',
-        label: 'Owner of phone',
+        label: _('Owner of phone'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'email',
-        label: 'Email',
+        label: _('Email'),
       },
       {
         ...FORM_DATA_SELECT,
         key: 'countryOfBirth',
-        label: 'Country of birth',
+        label: _('Country of birth'),
         options: [{ key: 'defaultCountry', value: 'Default country' }],
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'citizenship',
-        label: 'Citizenship',
+        label: _('Citizenship'),
         options: [{ key: 'defaultCitizenship', value: 'Default citizenship' }],
         newLine: true,
       },
