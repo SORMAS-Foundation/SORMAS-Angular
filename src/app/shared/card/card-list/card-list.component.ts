@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Position, CardStatusMap } from '../../../app.constants';
-import { BasicPosition } from '../../../_constants/enums';
+import { BasicPosition, CardAppearanceOptions } from '../../../_constants/enums';
 import { CardAppearance, CardStatus, CardType } from '../../../_models/cardAppearance';
 import { BasicPositionType, PositionType } from '../../../_models/positionType';
 
@@ -29,7 +29,7 @@ export class CardListComponent implements OnInit {
   @Input() cardRefreshPosition: PositionType = Position.BOTTOMRIGHT;
   @Input() cardWidth: number;
   @Input() cardType: CardType;
-  @Input() cardAppearance: CardAppearance;
+  @Input() cardAppearance: CardAppearance = CardAppearanceOptions.STANDARD;
   @Input() cardTitleKey: string;
   @Input() cardTitlePosition: BasicPositionType = BasicPosition.LEFT;
   @Input() cardStatusKey: string;
