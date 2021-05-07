@@ -1,12 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {
-  TranslateLoader,
-  TranslateModule,
-  TranslateService,
-  TranslateStore,
-} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { SymptomsGroupSelectComponent } from './symptoms-group-select.component';
 
 describe('SymptomsGroupSelectComponent', () => {
@@ -16,8 +11,7 @@ describe('SymptomsGroupSelectComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SymptomsGroupSelectComponent],
-      imports: [TranslateModule],
-      providers: [TranslateService, TranslateStore, TranslateLoader],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

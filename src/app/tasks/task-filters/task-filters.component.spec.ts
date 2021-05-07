@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { TaskFiltersComponent } from './task-filters.component';
 
 describe('TaskFiltersComponent', () => {
@@ -10,8 +10,7 @@ describe('TaskFiltersComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TaskFiltersComponent],
-      imports: [TranslateModule],
-      providers: [TranslateService, TranslateStore],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

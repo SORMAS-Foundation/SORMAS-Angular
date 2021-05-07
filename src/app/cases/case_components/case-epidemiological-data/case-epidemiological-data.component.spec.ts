@@ -1,11 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {
-  TranslateLoader,
-  TranslateModule,
-  TranslateService,
-  TranslateStore,
-} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { CaseEpidemiologicalDataComponent } from './case-epidemiological-data.component';
 
 describe('CaseEpidemiologicalDataComponent', () => {
@@ -15,8 +10,7 @@ describe('CaseEpidemiologicalDataComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CaseEpidemiologicalDataComponent],
-      imports: [TranslateModule],
-      providers: [TranslateService, TranslateStore, TranslateLoader],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

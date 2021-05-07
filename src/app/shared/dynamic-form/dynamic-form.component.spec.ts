@@ -11,7 +11,7 @@ describe('DynamicFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DynamicFormComponent],
-      imports: [FormsModule, ReactiveFormsModule, MatDialogModule, TranslateModule],
+      imports: [FormsModule, ReactiveFormsModule, MatDialogModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

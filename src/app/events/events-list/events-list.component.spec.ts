@@ -3,12 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialogModule } from '@angular/material/dialog';
-import {
-  TranslateLoader,
-  TranslateModule,
-  TranslateService,
-  TranslateStore,
-} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { EventsListComponent } from './events-list.component';
 
 describe('EventsListComponent', () => {
@@ -18,8 +13,7 @@ describe('EventsListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [EventsListComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule, TranslateModule],
-      providers: [TranslateService, TranslateStore, TranslateLoader],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

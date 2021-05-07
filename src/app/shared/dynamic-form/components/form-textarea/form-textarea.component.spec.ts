@@ -1,12 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {
-  TranslateLoader,
-  TranslateModule,
-  TranslateService,
-  TranslateStore,
-} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { FormTextareaComponent } from './form-textarea.component';
 
 describe('FormTextareaComponent', () => {
@@ -16,8 +11,7 @@ describe('FormTextareaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormTextareaComponent],
-      imports: [TranslateModule],
-      providers: [TranslateService, TranslateStore, TranslateLoader],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
