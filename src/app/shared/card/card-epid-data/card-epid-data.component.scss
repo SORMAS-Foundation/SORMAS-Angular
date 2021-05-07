@@ -5,9 +5,9 @@
 
   .type-of-place {
     color: mat-color($sormas-accent, 500);
-    font-size: 0.875rem;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 1.5rem;
+    line-height: 24px;
   }
   .timeline {
     margin: 0.75rem 0;
@@ -19,18 +19,18 @@
   .description {
     margin-bottom: 10px;
     color: mat-color($sormas-accent, 700);
-    font-size: 0.75rem;
-    line-height: 1rem;
+    font-size: 12px;
+    line-height: 16px;
   }
   .contact-person {
     margin-top: -5px;
     margin-bottom: 5px;
     color: mat-color($sormas-alert, 300);
-    font-size: 0.875rem;
+    font-size: 14px;
     font-weight: 500;
     .contact-label {
       color: mat-color($sormas-accent, 500);
-      font-size: 0.625rem;
+      font-size: 10px;
       font-weight: 400;
     }
   }
@@ -38,8 +38,8 @@
     display: inline-block;
     padding-left: 20px;
     color: mat-color($sormas-accent, 500);
-    font-size: 0.625rem;
-    line-height: 1rem;
+    font-size: 10px;
+    line-height: 16px;
     text-align: left;
 
     .place-icon {
