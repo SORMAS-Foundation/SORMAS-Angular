@@ -94,3 +94,10 @@ app-card-actions + .mat-card-header {
   border-color: mat-color($sormas-primary, 200);
   background-color: rgba(mat-color($sormas-primary, 50), 0.5);
 }
+
+.type-epid_data {
+  .mat-card-header .mat-card-title {
+    padding-bottom: 0;
+    font-size: 16px;
+  }
+}

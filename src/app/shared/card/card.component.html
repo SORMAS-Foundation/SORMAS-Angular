@@ -1,6 +1,11 @@
 <mat-card
   [style.width.px]="width"
-  [ngClass]="['appearance-' + appearance, 'status-' + status, selected ? 'selected' : '']"
+  [ngClass]="[
+    appearance ? 'appearance-' + appearance : '',
+    status ? 'status-' + status : '',
+    selected ? 'selected' : '',
+    type ? 'type-' + type : ''
+  ]"
 >
   <app-card-actions
     *ngIf="!collapsed && actionsTop.length"
