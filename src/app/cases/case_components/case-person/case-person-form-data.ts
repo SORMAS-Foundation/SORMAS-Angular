@@ -29,16 +29,6 @@ const optionsOccupationType = pipe.transform(OccupationType);
 const optionsArmedForces = pipe.transform(ArmedForcesRelationType);
 const optionsEducation = pipe.transform(EducationType);
 
-const yearOptions = Array.from({ length: 122 }, (v, i) => {
-  return { key: i, value: i + 1900 };
-});
-const monthOptions = Array.from({ length: 12 }, (v, i) => {
-  return { key: i, value: i + 1 };
-});
-const dayOptions = Array.from({ length: 31 }, (v, i) => {
-  return { key: i, value: i + 1 };
-});
-
 export const FORM_DATA_CASE_PERSON_DETAILS = [
   {
     title: _('Person'),
@@ -74,7 +64,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'year',
         label: _('Birth'),
         placeholder: _('Year'),
-        options: yearOptions,
+        options: [],
         className: 'size-small',
         newLine: true,
       },
@@ -83,7 +73,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'month',
         label: ' ',
         placeholder: _('Month'),
-        options: monthOptions,
+        options: [],
         className: 'size-small',
       },
       {
@@ -91,7 +81,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'day',
         label: ' ',
         placeholder: 'Day', // translate-bug
-        options: dayOptions,
+        options: [],
         className: 'size-small',
       },
       {
