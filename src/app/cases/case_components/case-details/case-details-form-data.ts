@@ -720,7 +720,7 @@ export const FORM_DATA_CASE_DETAILS = [
         options: [
           {
             key: 'default',
-            value: _('Default'),
+            value: 'Default',
           },
         ],
         className: 'size-large',
