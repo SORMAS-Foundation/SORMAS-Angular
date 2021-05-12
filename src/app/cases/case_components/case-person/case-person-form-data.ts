@@ -31,6 +31,7 @@ const optionsEducation = pipe.transform(EducationType);
 
 export const FORM_DATA_CASE_PERSON_DETAILS = [
   {
+    id: 'person',
     title: _('Person'),
     required: true,
     fields: [
@@ -80,7 +81,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'day',
         label: ' ',
-        placeholder: 'Day', // translate-bug
+        placeholder: _('Day'),
         options: [],
         className: 'size-small',
       },
@@ -94,7 +95,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'presentCondition',
-        label: 'Present condition', // translate-bug
+        label: _('Present condition'),
         options: optionsPresentCondition,
         newLine: true,
       },
@@ -160,6 +161,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
     ],
   },
   {
+    id: 'education',
     title: _('Occupation & Education'),
     fields: [
       {
@@ -202,6 +204,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
     ],
   },
   {
+    id: 'address',
     title: _('Addresses'),
     fields: [
       {
@@ -212,6 +215,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
     ],
   },
   {
+    id: 'contact',
     title: _('Contact'),
     fields: [
       {
@@ -222,18 +226,18 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'mothersName',
-        label: _('Mother\'s name'),
+        label: _('Mother’s name'),
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'mothersMaidenName',
-        label: _('Mother\'s maiden name'),
+        label: _('Mother’s maiden name'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'fathersName',
-        label: _('Father\'s name'),
+        label: _('Father’s name'),
       },
       {
         ...FORM_DATA_INPUT,

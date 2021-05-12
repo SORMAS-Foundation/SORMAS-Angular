@@ -18,6 +18,7 @@ const optionsHospitalizationReason = pipe.transform(HospitalizationReason);
 
 export const FORM_DATA_CASE_HOSPITALIZATION = [
   {
+    id: 'hospital',
     title: _('Hospital Name'),
     fields: [
       {
@@ -34,6 +35,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
     ],
   },
   {
+    id: 'facility',
     title: _('Facility inpatient'),
     fields: [
       {
@@ -44,6 +46,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
     ],
   },
   {
+    id: 'date',
     title: _('Date'),
     fields: [
       {
@@ -59,6 +62,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
     ],
   },
   {
+    id: 'hospitalization',
     title: _('Hospitalization'),
     fields: [
       {
@@ -79,7 +83,8 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
     ],
   },
   {
-    title: _('Left against medical advise'),
+    id: 'medicalAdvice',
+    title: _('Left against medical advice'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -89,6 +94,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
     ],
   },
   {
+    id: 'intensiveCare',
     title: _('Stay in intensive care unit'),
     fields: [
       {
@@ -114,6 +120,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
     ],
   },
   {
+    id: 'isolation',
     title: _('Isolation'),
     fields: [
       {

@@ -28,9 +28,9 @@ export class CasePersonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.updateOptions('Person', 'year', this.helperService.getYears());
-    this.updateOptions('Person', 'month', this.helperService.getMonths());
-    this.updateOptions('Person', 'day', this.helperService.getDaysForMonth());
+    this.updateOptions('person', 'year', this.helperService.getYears());
+    this.updateOptions('person', 'month', this.helperService.getMonths());
+    this.updateOptions('person', 'day', this.helperService.getDaysForMonth());
   }
 
   setPersonFormData(): void {
@@ -58,12 +58,12 @@ export class CasePersonComponent implements OnInit {
 
   onFormChanged(event: any): void {
     const options = this.helperService.getDaysForMonth(event.month, event.year);
-    this.updateOptions('Person', 'day', options);
+    this.updateOptions('person', 'day', options);
   }
 
-  updateOptions(title: string, field: string, options: any): void {
+  updateOptions(id: string, field: string, options: any): void {
     const section = this.formData.find((item) => {
-      return item.title === title;
+      return item.id === id;
     });
     const dayField = (section?.fields as any[]).find((item) => {
       return item.key.includes(field);
