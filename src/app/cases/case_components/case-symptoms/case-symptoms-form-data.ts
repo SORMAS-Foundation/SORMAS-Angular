@@ -105,7 +105,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
-    title: 'Respiratory',
+    title: _('Respiratory'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -261,7 +261,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_DATE,
         key: 'symptoms.onsetDate',
-        label: 'Date of symptom onset',
+        label: _('Date of symptom onset'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
