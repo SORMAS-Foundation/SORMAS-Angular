@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LeaveGuard } from '../_guards/leave-guard';
-import {SamplesComponent} from './samples.component';
-import {SamplesListComponent} from './samples-list/samples-list.component';
+import { SamplesComponent } from './samples.component';
+import { SamplesListComponent } from './samples-list/samples-list.component';
 
 const routes: Routes = [
   {
