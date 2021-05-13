@@ -29,6 +29,7 @@ const optionsTemperature = range(35, 44.1, 0.1).map((val) => ({
 
 export const FORM_DATA_CASE_SYMPTOMS = [
   {
+    id: 'measurements',
     title: _('Clinical measurements'),
     fields: [
       {
@@ -48,7 +49,8 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
-    title: _('Clinical signs and sympotms'),
+    id: 'symptoms',
+    title: _('Clinical signs and symptoms'),
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -57,6 +59,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
+    id: 'general',
     title: _('General'),
     fields: [
       {
@@ -105,6 +108,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
+    id: 'respiratory',
     title: _('Respiratory'),
     fields: [
       {
@@ -173,6 +177,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
+    id: 'cardiovascular',
     title: _('Cardiovascular'),
     fields: [
       {
@@ -185,6 +190,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
+    id: 'gastrointestinal',
     title: _('Gastrointestinal'),
     fields: [
       {
@@ -204,6 +210,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
     ],
   },
   {
+    id: 'other',
     title: _('Other'),
     fields: [
       {
@@ -241,6 +248,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
   },
   {
     // // translate-bug
+    id: 'details',
     title: 'Additional details',
     fields: [
       {
@@ -253,7 +261,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_SELECT,
         key: 'symptoms.onsetSymptom',
-        label: 'First symptom',
+        label: _('First symptom'),
         options: [],
         className: 'size-large',
         newLine: true,

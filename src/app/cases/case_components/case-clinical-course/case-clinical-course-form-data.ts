@@ -10,6 +10,7 @@ const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 
 export const FORM_DATA_CASE_CLINICAL_COURSE = [
   {
+    id: 'conditions',
     title: _('Pre-existing conditions'),
     fields: [
       {
