@@ -48,6 +48,7 @@ const optionsTrimester = pipe.transform(Trimester);
 
 export const FORM_DATA_CASE_DETAILS = [
   {
+    id: 'reportDate',
     title: _('Date of report'),
     required: true,
     anchor: 'case_data',
@@ -61,6 +62,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'caseClassification',
     title: _('Case classification'),
     required: true,
     fields: [
@@ -104,6 +106,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'investigationStatus',
     title: _('Investigation status'),
     required: true,
     fields: [
@@ -124,6 +127,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'externalData',
     title: _('External data'),
     required: true,
     fields: [
@@ -140,6 +144,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'disease',
     title: _('Disease'),
     required: true,
     fields: [
@@ -159,6 +164,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'epidNumber',
     title: _('Epid number'),
     required: false,
     fields: [
@@ -173,6 +179,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'caseOutcome',
     title: _('Outcome of case'),
     required: true,
     fields: [
@@ -211,6 +218,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'source',
     title: _('Source'),
     fields: [
       {
@@ -242,6 +250,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'caseOrigin',
     title: _('Case origin'),
     required: false,
     fields: [
@@ -313,6 +322,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'placeOfStay',
     title: _('Place of stay'),
     required: true,
     fields: [
@@ -375,6 +385,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'quarantine',
     title: _('Quarantine'),
     required: false,
     fields: [
@@ -494,6 +505,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'reportGPS',
     title: _('Report GPS'),
     required: false,
     fields: [
@@ -517,6 +529,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'donation',
     title: _('Donation'),
     required: false,
     anchor: 'additional_information',
@@ -531,6 +544,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'infection',
     title: _('Infection'),
     required: false,
     fields: [
@@ -564,6 +578,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'medicalInformation',
     title: _('Additional medical information'),
     required: false,
     fields: [
@@ -591,6 +606,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'vaccination',
     title: _('Vaccination'),
     required: false,
     fields: [
@@ -682,6 +698,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'work',
     title: _('Work'),
     required: false,
     fields: [
@@ -710,6 +727,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'surveillance',
     title: _('Surveillance'),
     required: false,
     fields: [
@@ -720,7 +738,7 @@ export const FORM_DATA_CASE_DETAILS = [
         options: [
           {
             key: 'default',
-            value: _('Default'),
+            value: 'Default',
           },
         ],
         className: 'size-large',
@@ -749,6 +767,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'followupStatus',
     title: '',
     required: false,
     anchor: 'followup_status',
@@ -784,6 +803,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'paperForm',
     title: '',
     required: false,
     anchor: 'paper_form',
@@ -812,6 +832,7 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'comment',
     title: '',
     required: false,
     anchor: 'general_comment',

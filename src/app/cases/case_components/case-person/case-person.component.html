@@ -2,4 +2,5 @@
   *ngIf="person"
   [formElements]="myFormElements"
   [resourceService]="resourceService"
+  (changed)="onFormChanged($event)"
 ></app-dynamic-form>
