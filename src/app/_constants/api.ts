@@ -23,3 +23,9 @@ export const API_ROUTE_EVENTS = {
   GET_ALL: 'events/indexList',
   UPDATE: 'events/update',
 };
+
+export const API_ROUTE_SAMPLES = {
+  ENDPOINT: 'samples',
+  GET_ALL: 'samples/indexList',
+  UPDATE: 'samples/update',
+};
