@@ -2,7 +2,7 @@
   <button class="toggle-filter" (click)="drawer.close()">
     <mat-icon class="material-icons-round">filter_list</mat-icon>
   </button>
-  <h2 class="filters-header">{{ 'Filters' |translate }}</h2>
+  <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form [formGroup]="filtersForm" class="filters-form">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
@@ -77,8 +77,12 @@
           <mat-option value="SUSPECT"> {{ 'Suspect' | translate }} </mat-option>
           <mat-option value="PROBABLE"> {{ 'Probable' | translate }} </mat-option>
           <mat-option value="CONFIRMED"> {{ 'Confirmed' | translate }} </mat-option>
-          <mat-option value="CONFIRMED_NO_SYMPTOMS"> {{ 'Confirmed, no symptoms' | translate }} </mat-option>
-          <mat-option value="CONFIRMED_UNKNOWN_SYMPTOMS"> {{ 'Confirmed, unknown symptoms' | translate }} </mat-option>
+          <mat-option value="CONFIRMED_NO_SYMPTOMS">
+            {{ 'Confirmed, no symptoms' | translate }}
+          </mat-option>
+          <mat-option value="CONFIRMED_UNKNOWN_SYMPTOMS">
+            {{ 'Confirmed, unknown symptoms' | translate }}
+          </mat-option>
           <mat-option value="NO_CASE"> {{ 'No case' | translate }} </mat-option>
         </mat-select>
       </mat-form-field>
@@ -330,11 +334,21 @@
           placeholder="{{ 'More filters' | translate }}"
           class="multiselect"
         >
-          <mat-option value="no-geo-coordinates"> {{ 'Cases without geo-coordinates' | translate }} </mat-option>
-          <mat-option value="no-facility"> {{ 'Port health cases without a facility' | translate }} </mat-option>
-          <mat-option value="management-data"> {{ 'Cases with case management data' | translate }} </mat-option>
-          <mat-option value="no-responsible"> {{ 'Cases without responsible officer' | translate }} </mat-option>
-          <mat-option value="extended-quarantine"> {{ 'Cases with extended quarantine' | translate }} </mat-option>
+          <mat-option value="no-geo-coordinates">
+            {{ 'Cases without geo-coordinates' | translate }}
+          </mat-option>
+          <mat-option value="no-facility">
+            {{ 'Port health cases without a facility' | translate }}
+          </mat-option>
+          <mat-option value="management-data">
+            {{ 'Cases with case management data' | translate }}
+          </mat-option>
+          <mat-option value="no-responsible">
+            {{ 'Cases without responsible officer' | translate }}
+          </mat-option>
+          <mat-option value="extended-quarantine">
+            {{ 'Cases with extended quarantine' | translate }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </app-collapsable-box>

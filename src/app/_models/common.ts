@@ -30,3 +30,9 @@ export interface TableColumn {
   iconify?: boolean;
   stylify?: boolean;
 }
+
+// scrolling
+export interface Offset {
+  top: number;
+  left: number;
+}
