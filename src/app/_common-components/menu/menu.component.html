@@ -1,7 +1,7 @@
 <nav [ngClass]="menuOpen ? 'menu open' : 'menu'" [@animateMenu]="!menuOpen ? 'close' : 'open'">
-  <div class="menu-overlay" (click)="toggleMenu(false)"></div>
+  <div class="menu-overlay" (click)="toggleMenu(false)" (keyup.enter)="toggleMenu(false)"></div>
   <img class="logo" [src]="logo" i18n-alt alt="logo" />
-  <button mat-icon-button (click)="toggleMenu()">
+  <button mat-icon-button (click)="toggleMenu()" (keyup.enter)="toggleMenu()">
     <mat-icon class="material-icons-round">menu</mat-icon>
   </button>
   <a
@@ -11,6 +11,7 @@
     [routerLinkActive]="['route-active']"
     [routerLinkActiveOptions]="{ exact: true }"
     (click)="toggleMenu()"
+    (keyup.enter)="toggleMenu()"
   >
     {{ route.label | translate }}
   </a>
