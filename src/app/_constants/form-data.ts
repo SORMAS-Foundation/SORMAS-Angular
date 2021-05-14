@@ -24,6 +24,13 @@ export const FORM_DATA_DATE = {
   className: 'size-small',
 };
 
+export const FORM_DATA_DATETIME = {
+  ...FORM_DATA_BASE,
+  controlType: 'datetime',
+  type: 'date',
+  className: 'size-large',
+};
+
 export const FORM_DATA_NUMBER = {
   ...FORM_DATA_BASE,
   type: 'number',

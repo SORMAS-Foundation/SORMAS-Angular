@@ -13,6 +13,7 @@ import { CaseFollowUpComponent } from './case_components/case-follow-up/case-fol
 import { CaseClinicalCourseComponent } from './case_components/case-clinical-course/case-clinical-course.component';
 import { CaseContactsComponent } from './case_components/case-contacts/case-contacts.component';
 import { LeaveGuard } from '../_guards/leave-guard';
+import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
           {
             path: 'hospitalization',
             component: CaseHospitalizationComponent,
+            canActivate: [LeaveGuard],
+          },
+          {
+            path: 'port-health',
+            component: CasePortHealthComponent,
             canActivate: [LeaveGuard],
           },
           { path: 'symptoms', component: CaseSymptomsComponent, canActivate: [LeaveGuard] },
