@@ -27,8 +27,8 @@ export const routesConfig: RouteItem[] = [
     trigger('animateMenu', [
       state('open', style({ 'overflow-y': 'hidden' })),
       state('close', style({ 'overflow-y': 'hidden' })),
-      transition('open => close', [style({ height: '*' }), animate(2550, style({ height: 0 }))]),
-      transition('close => open', [style({ height: 0 }), animate(250, style({ height: '*' }))]),
+      transition('open => close', [style({ height: '*' }), animate(2550, style({ height: 68 }))]),
+      transition('close => open', [style({ height: 68 }), animate(250, style({ height: '*' }))]),
     ]),
   ],
 })
