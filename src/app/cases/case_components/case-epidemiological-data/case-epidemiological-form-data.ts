@@ -7,6 +7,7 @@ const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 
 export const FORM_DATA_CASE_EPID_DETAILS = [
   {
+    id: 'exposureInvestigation',
     title: _('Exposure investigation'),
     subTitle: _(
       'Please document ALL relevant direct exposures (eg attended gatherings, travels, animal contacts, etc) during the incubation period'
@@ -27,6 +28,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
     ],
   },
   {
+    id: 'activity',
     title: _('Activity as case'),
     subTitle: _('Please document ALL relevant activities after infection'),
     fields: [
@@ -43,6 +45,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
     ],
   },
   {
+    id: 'incubation',
     title: _('Incubation period'),
     subTitle: _(
       'Please indicate if any of the following is relevant for the patient during the incubation period'
@@ -67,6 +70,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
     ],
   },
   {
+    id: 'contacts',
     title: _('Contacts with source case'),
     subTitle: _(
       'Please indicate ALL contacts with potential source cases during the incubation period'
