@@ -45,6 +45,6 @@ export class MenuComponent {
   }
 
   toggleMenu(closed?: boolean): void {
-    this.menuOpen = closed || !this.menuOpen;
+    this.menuOpen = closed ?? !this.menuOpen;
   }
 }
