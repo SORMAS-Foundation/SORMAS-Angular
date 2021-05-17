@@ -11,5 +11,108 @@
         formControlName="search"
       />
     </mat-form-field>
+
+    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task status' | translate }}">
+      <mat-radio-group name="status" formControlName="status" (change)="onFormChange()">
+        <mat-radio-button class="task-radio" value="pending" color="primary">
+          {{ 'Pending' | translate }}
+        </mat-radio-button>
+        <mat-radio-button class="task-radio" value="done" color="primary">
+          {{ 'Done' | translate }}
+        </mat-radio-button>
+        <mat-radio-button class="task-radio" value="removed" color="primary" (change)="onFormChange()">
+          {{ 'Removed' | translate }}
+        </mat-radio-button>
+        <mat-radio-button class="task-radio" value="not-executable" color="primary" (change)="onFormChange()">
+          {{ 'Not executable' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task' | translate }}">
+      <mat-radio-group name="status" formControlName="task" (change)="onFormChange()">
+        <mat-radio-button class="task-radio" value="active" color="primary">
+          {{ 'Active tasks' | translate }}
+        </mat-radio-button>
+        <mat-radio-button class="task-radio" value="archived" color="primary">
+          {{ 'Archived tasks' | translate }}
+        </mat-radio-button>
+        <mat-radio-button class="task-radio" value="all" color="primary" (change)="onFormChange()">
+          {{ 'All tasks' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task content' | translate }}">
+      <mat-radio-group name="status" formControlName="taskContent" (change)="onFormChange()">
+        <mat-radio-button class="task-radio" value="case" color="primary">
+          {{ 'Case' | translate }}
+        </mat-radio-button>
+        <mat-radio-button class="task-radio" value="contact" color="primary">
+          {{ 'Contact' | translate }}
+        </mat-radio-button>
+        <mat-radio-button class="task-radio" value="event" color="primary" (change)="onFormChange()">
+          {{ 'Event' | translate }}
+        </mat-radio-button>
+        <mat-radio-button class="task-radio" value="general" color="primary" (change)="onFormChange()">
+          {{ 'General' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Admin aspect' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="region"
+          placeholder="{{ 'Responsible region' | translate }}"
+        >
+          <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
+          <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
+          <mat-option value="region3"> {{ 'Region 3' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="region"
+          placeholder="{{ 'Responsible district' | translate }}"
+        >
+          <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
+          <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
+          <mat-option value="region3"> {{ 'Region 3' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="region"
+          placeholder="{{ 'Assigned to' | translate }}"
+        >
+          <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
+          <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
+          <mat-option value="region3"> {{ 'Region 3' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="region"
+          placeholder="{{ 'Created by' | translate }}"
+        >
+          <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
+          <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
+          <mat-option value="region3"> {{ 'Region 3' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
   </form>
 </div>
