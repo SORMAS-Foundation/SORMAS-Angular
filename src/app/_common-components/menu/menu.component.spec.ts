@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from './menu.component';
@@ -10,7 +11,7 @@ describe('MenuComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MenuComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [TranslateModule.forRoot(), BrowserAnimationsModule],
     }).compileComponents();
   });
 
