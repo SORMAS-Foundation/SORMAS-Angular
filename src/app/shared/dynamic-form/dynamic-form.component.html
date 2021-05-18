@@ -1,6 +1,10 @@
 <div class="dynamic-form-wrapper">
   <div class="inpage-nav" [ngClass]="{ fixed: fixedHeader }">
-    <app-inpage-nav *ngIf="withAnchor" [anchors]="getSections()"></app-inpage-nav>
+    <app-inpage-nav
+      *ngIf="withAnchor"
+      [pageOffset]="280"
+      [anchors]="getSections()"
+    ></app-inpage-nav>
   </div>
   <div class="form-content">
     <form [formGroup]="form">
