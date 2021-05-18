@@ -1,6 +1,6 @@
 <div class="task-filters">
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
-  <form class="filters-form">
+  <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
       <input
@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task status' | translate }}">
-      <mat-radio-group name="status" formControlName="status" (change)="onFormChange()">
+      <mat-radio-group name="taskStatus" formControlName="taskStatus" (change)="onFormChange()">
         <mat-radio-button class="task-radio" value="pending" color="primary">
           {{ 'Pending' | translate }}
         </mat-radio-button>
@@ -30,7 +30,7 @@
     </app-collapsable-box>
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task' | translate }}">
-      <mat-radio-group name="status" formControlName="task" (change)="onFormChange()">
+      <mat-radio-group name="task" formControlName="task" (change)="onFormChange()">
         <mat-radio-button class="task-radio" value="active" color="primary">
           {{ 'Active tasks' | translate }}
         </mat-radio-button>
@@ -44,7 +44,7 @@
     </app-collapsable-box>
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task content' | translate }}">
-      <mat-radio-group name="status" formControlName="taskContent" (change)="onFormChange()">
+      <mat-radio-group name="taskContent" formControlName="taskContent" (change)="onFormChange()">
         <mat-radio-button class="task-radio" value="case" color="primary">
           {{ 'Case' | translate }}
         </mat-radio-button>
@@ -78,7 +78,7 @@
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
-          formControlName="region"
+          formControlName="district"
           placeholder="{{ 'Responsible district' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
@@ -91,7 +91,7 @@
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
-          formControlName="region"
+          formControlName="assignedTo"
           placeholder="{{ 'Assigned to' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
@@ -104,7 +104,7 @@
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
-          formControlName="region"
+          formControlName="createdBy"
           placeholder="{{ 'Created by' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
