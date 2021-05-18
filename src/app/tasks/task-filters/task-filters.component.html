@@ -14,16 +14,16 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task status' | translate }}">
       <mat-radio-group name="taskStatus" formControlName="taskStatus" (change)="onFormChange()">
-        <mat-radio-button class="task-radio" value="pending" color="primary">
+        <mat-radio-button class="task-radio" value="PENDING" color="primary">
           {{ 'Pending' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="done" color="primary">
+        <mat-radio-button class="task-radio" value="DONE" color="primary">
           {{ 'Done' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="removed" color="primary" (change)="onFormChange()">
+        <mat-radio-button class="task-radio" value="REMOVED" color="primary" (change)="onFormChange()">
           {{ 'Removed' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="not-executable" color="primary" (change)="onFormChange()">
+        <mat-radio-button class="task-radio" value="NOT-EXECUTABLE" color="primary" (change)="onFormChange()">
           {{ 'Not executable' | translate }}
         </mat-radio-button>
       </mat-radio-group>
