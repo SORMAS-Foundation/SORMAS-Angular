@@ -22,13 +22,18 @@ export class TaskFiltersComponent implements OnInit {
 
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
+      search: new FormControl(),
       taskStatus: new FormControl(),
       task: new FormControl(),
-      taskContent: new FormControl(),
+      taskContext: new FormControl(),
       region: new FormControl(),
       district: new FormControl(),
       assignedTo: new FormControl(),
       createdBy: new FormControl(),
+      dateFilter: new FormControl(),
+      referenceDate: new FormControl(),
+      startDate: new FormControl(),
+      dueDate: new FormControl(),
     });
   }
 
