@@ -1,24 +1,20 @@
 <button class="toggle-filter" (click)="drawer.open()">
   <mat-icon *ngIf="!drawer.opened" class="material-icons-round">filter_list</mat-icon>
 </button>
-<mat-drawer-container
-  [ngClass]="drawer.opened ? 'case-list-container' : 'case-list-container margin'"
->
+<mat-drawer-container class="sample-list-container">
   <mat-drawer #drawer opened mode="side" class="filters-bar">
-    <app-case-filters [drawer]="drawer"></app-case-filters>
+    <app-sample-filter [drawer]="drawer"></app-sample-filter>
   </mat-drawer>
   <mat-drawer-content>
-    <h1 class="header-title" i18n="Cases Overview header">{{ 'Cases Overview' | translate }}</h1>
+    <h1 class="header-title" i18n="Samples Overview header">{{ 'Samples Overview' | translate }}</h1>
     <app-table
-      [resourceService]="caseService"
+      [resourceService]="sampleService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"
       [isSelectable]="true"
       [isHeaderSticky]="true"
       [fullHeight]="true"
       [saveConfigKey]="configKey"
-      (selectItem)="selectCase($event)"
-      (clickItem)="clickCase($event)"
     ></app-table>
   </mat-drawer-content>
 </mat-drawer-container>

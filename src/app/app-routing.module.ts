@@ -26,6 +26,11 @@ const routes: Routes = [
     canActivate: [Guard, LeaveGuard],
   },
   {
+    path: 'samples',
+    loadChildren: () => import('./samples/samples.module').then((m) => m.SamplesModule),
+    canActivate: [Guard, LeaveGuard],
+  },
+  {
     path: 'cases',
     loadChildren: () => import('./cases/cases.module').then((m) => m.CasesModule),
     canActivate: [AuthGuard, LeaveGuard],

@@ -10,8 +10,8 @@ export class TaskSerializer implements Serializer {
     return json;
   }
 
-  toJson(caseItem: TaskDto): any {
-    serializeDates(caseItem);
-    return caseItem;
+  toJson(taskItem: TaskDto): any {
+    serializeDates(taskItem);
+    return taskItem;
   }
 }

@@ -1,17 +1,17 @@
 /* eslint-disable no-param-reassign */
 import { Serializer } from './base.serializer';
-import { EventDto } from '../_models/eventDto';
+import { SampleDto } from '../_models/sampleDto';
 import { deserializeDates, serializeDates } from './date-parse';
 
-export class EventSerializer implements Serializer {
-  fromJson(json: any): EventDto {
+export class SampleSerializer implements Serializer {
+  fromJson(json: any): SampleDto {
     json.id = json.id ?? json.uuid;
     deserializeDates(json);
     return json;
   }
 
-  toJson(eventItem: EventDto): any {
-    serializeDates(eventItem);
-    return eventItem;
+  toJson(sampleItem: SampleDto): any {
+    serializeDates(sampleItem);
+    return sampleItem;
   }
 }

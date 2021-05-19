@@ -4,7 +4,7 @@ import { TableColumn } from '../../_models/common';
 export const defaultColumnDefs: TableColumn[] = [
   {
     name: _('Assigned user'),
-    dataKey: 'assigneeUser.lastName',
+    dataKey: 'assigneeUser.caption',
     isSortable: true,
   },
   {

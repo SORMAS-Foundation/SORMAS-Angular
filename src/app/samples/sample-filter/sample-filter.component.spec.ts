@@ -1,22 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { MenuComponent } from './menu.component';
+import { SampleFilterComponent } from './sample-filter.component';
 
-describe('MenuComponent', () => {
-  let component: MenuComponent;
-  let fixture: ComponentFixture<MenuComponent>;
+describe('SampleFilterComponent', () => {
+  let component: SampleFilterComponent;
+  let fixture: ComponentFixture<SampleFilterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MenuComponent],
-      imports: [TranslateModule.forRoot(), BrowserAnimationsModule],
+      declarations: [SampleFilterComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MenuComponent);
+    fixture = TestBed.createComponent(SampleFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
