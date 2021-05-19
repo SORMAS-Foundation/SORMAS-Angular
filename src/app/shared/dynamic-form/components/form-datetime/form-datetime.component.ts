@@ -1,5 +1,6 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { FormBaseComponent } from '../form-base.component';
 import { FormElementBase } from '../../types/form-element-base';
 import { FormActionsService } from '../../../../_services/form-actions.service';
@@ -9,11 +10,12 @@ import { FormActionsService } from '../../../../_services/form-actions.service';
   templateUrl: './form-datetime.component.html',
   styleUrls: ['./form-datetime.component.scss'],
 })
-export class FormDatetimeComponent extends FormBaseComponent implements AfterViewInit {
+export class FormDatetimeComponent extends FormBaseComponent implements AfterViewInit, OnDestroy {
   config: FormElementBase<string>;
   group: FormGroup;
   form: FormGroup;
   options: any[] = [];
+  subscription: Subscription[] = [];
 
   constructor(public formActionsService: FormActionsService, formBuilder: FormBuilder) {
     super(formActionsService);
@@ -25,21 +27,23 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
   }
 
   ngAfterViewInit(): void {
-    this.form.valueChanges.subscribe(({ date, time }) => {
-      if (!date) {
-        return;
-      }
+    this.subscription.push(
+      this.form.valueChanges.subscribe(({ date, time }) => {
+        if (!date) {
+          return;
+        }
 
-      if (time) {
-        const [hours, minutes] = time.split(':');
-        date.setHours(hours, minutes);
-      }
+        if (time) {
+          const [hours, minutes] = time.split(':');
+          date.setHours(hours, minutes);
+        }
 
-      const field: any = {};
-      field[this.config.key] = date;
+        const field: any = {};
+        field[this.config.key] = date;
 
-      this.group.patchValue(field);
-    });
+        this.group.patchValue(field);
+      })
+    );
   }
 
   timeOptions(): any[] {
@@ -58,5 +62,9 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
     }
 
     return options;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }
