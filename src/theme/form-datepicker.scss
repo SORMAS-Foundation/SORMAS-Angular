@@ -51,6 +51,14 @@
           color: mat-color(mat-palette($primary, 700));
         }
       }
+
+      &.time {
+        flex-grow: 1;
+
+        .mat-form-field-infix {
+          width: auto;
+        }
+      }
     }
 
     .mat-calendar-body-selected {
