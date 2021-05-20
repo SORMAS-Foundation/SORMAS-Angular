@@ -14,10 +14,25 @@ export class AddressesListComponent implements OnDestroy, OnInit {
 
   constructor(private sendResourceService: SendResourceService) {}
 
+  getHomeAddress(address: any): any {
+    return [
+      {
+        addressType: address?.facilityType,
+        addressTypeDetails: address?.facilityDetails,
+        houseNumber: address?.houseNumber,
+        street: address?.street,
+        postalCode: address?.postalCode,
+        uuid: address?.uuid,
+      },
+    ];
+  }
+
   ngOnInit(): void {
     this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
       if (response.fromComponent === SentResourceTypes.PERSON_DATA) {
-        this.addresses = response.resource?.addresses || [];
+        this.addresses =
+          this.getHomeAddress(response.resource?.address).concat(response.resource?.addresses) ||
+          [];
       }
     });
   }
