@@ -24,6 +24,7 @@ import { ActivitiesListComponent } from './case_components/case-epidemiological-
 import { SymptomsGroupSelectComponent } from './case_components/symptoms-group-select/symptoms-group-select.component';
 import { AddressesListComponent } from './case_components/case-person/addresses-list/addresses-list.component';
 import { NewAddressComponent } from './case_components/case-person/new-address/new-address.component';
+import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { NewAddressComponent } from './case_components/case-person/new-address/n
     CaseDetailsComponent,
     CasePersonComponent,
     CaseHospitalizationComponent,
+    CasePortHealthComponent,
     CaseSymptomsComponent,
     CaseEpidemiologicalDataComponent,
     CaseTherapyComponent,

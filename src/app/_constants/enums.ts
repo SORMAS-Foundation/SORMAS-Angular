@@ -245,3 +245,10 @@ export enum TableAppearanceOptions {
   STANDARD = 'standard',
   MINIMAL = 'minimal',
 }
+
+export enum ConveyanceTypeOptions {
+  CAR = 'Car',
+  BUS = 'Bus',
+  MOTORBIKE = 'Motorbike',
+  OTHER = 'Other',
+}

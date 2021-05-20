@@ -108,7 +108,14 @@
         }
 
         .mat-form-field-label-wrapper {
+          top: -8px;
           left: 0;
+          padding-top: 0;
+          font-size: 12px;
+        }
+
+        input {
+          font-weight: 500;
         }
       }
 

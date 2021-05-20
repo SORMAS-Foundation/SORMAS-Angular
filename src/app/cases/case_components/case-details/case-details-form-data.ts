@@ -102,6 +102,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_NULL,
         key: 'classificationUser.caption',
         label: _('Classifying user'),
+        dependingOn: 'classificationUser.caption',
       },
     ],
   },
