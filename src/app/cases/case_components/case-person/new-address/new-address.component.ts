@@ -7,8 +7,5 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./new-address.component.scss'],
 })
 export class NewAddressComponent {
-  constructor(public translateService: TranslateService) {
-    translateService.setDefaultLang('en');
-    translateService.use('en');
-  }
+  constructor(public translateService: TranslateService) {}
 }
