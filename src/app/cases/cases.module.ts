@@ -22,6 +22,8 @@ import { FollowUpStatusComponent } from './case_components/follow-up-status/foll
 import { ExposuresListComponent } from './case_components/case-epidemiological-data/exposures-list/exposures-list.component';
 import { ActivitiesListComponent } from './case_components/case-epidemiological-data/activities-list/activities-list.component';
 import { SymptomsGroupSelectComponent } from './case_components/symptoms-group-select/symptoms-group-select.component';
+import { AddressesListComponent } from './case_components/case-person/addresses-list/addresses-list.component';
+import { NewAddressComponent } from './case_components/case-person/new-address/new-address.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { SymptomsGroupSelectComponent } from './case_components/symptoms-group-s
     ExposuresListComponent,
     ActivitiesListComponent,
     SymptomsGroupSelectComponent,
+    AddressesListComponent,
+    NewAddressComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
