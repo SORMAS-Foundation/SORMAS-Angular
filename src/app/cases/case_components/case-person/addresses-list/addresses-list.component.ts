@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SentResourceTypes } from '../../../../app.constants';
+import { PersonAddressType } from '../../../../_models/models';
 import { SendResourceService } from '../../../../_services/send-resource.service';
 
 @Component({
@@ -14,25 +15,20 @@ export class AddressesListComponent implements OnDestroy, OnInit {
 
   constructor(private sendResourceService: SendResourceService) {}
 
-  getHomeAddress(address: any): any {
-    return [
-      {
-        addressType: address?.facilityType,
-        addressTypeDetails: address?.facilityDetails,
-        houseNumber: address?.houseNumber,
-        street: address?.street,
-        postalCode: address?.postalCode,
-        uuid: address?.uuid,
-      },
-    ];
-  }
-
   ngOnInit(): void {
     this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
       if (response.fromComponent === SentResourceTypes.PERSON_DATA) {
+        const homeAddress = response.resource?.address;
         this.addresses =
-          this.getHomeAddress(response.resource?.address).concat(response.resource?.addresses) ||
-          [];
+          [
+            {
+              addressType: PersonAddressType.HOME,
+              houseNumber: homeAddress?.houseNumber,
+              street: homeAddress?.street,
+              postalCode: homeAddress?.postalCode,
+              uuid: homeAddress?.uuid,
+            },
+          ].concat(response.resource?.addresses) || [];
       }
     });
   }
