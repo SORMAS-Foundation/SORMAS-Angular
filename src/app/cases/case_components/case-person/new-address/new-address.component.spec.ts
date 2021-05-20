@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { NewAddressComponent } from './new-address.component';
 
@@ -9,6 +10,7 @@ describe('NewAddressComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NewAddressComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
