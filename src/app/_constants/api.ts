@@ -1,5 +1,3 @@
-export const API_ROUTE_MAIN = 'sormas-rest';
-
 export const API_ROUTE_CASES = {
   ENDPOINT: 'cases',
   GET_ALL: 'cases/indexList',
@@ -20,7 +18,7 @@ export const API_ROUTE_TASKS = {
 
 export const API_ROUTE_EVENTS = {
   ENDPOINT: 'events',
-  GET_ALL: 'events/indexList',
+  GET_ALL: 'contacts/indexList',
   UPDATE: 'events/update',
 };
 
@@ -28,4 +26,10 @@ export const API_ROUTE_SAMPLES = {
   ENDPOINT: 'samples',
   GET_ALL: 'samples/indexList',
   UPDATE: 'samples/update',
+};
+
+export const API_ROUTE_CONTACTS = {
+  ENDPOINT: 'contacts',
+  GET_ALL: 'contacts/indexList',
+  UPDATE: 'contacts/update',
 };
