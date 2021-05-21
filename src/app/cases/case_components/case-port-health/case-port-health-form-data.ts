@@ -2,7 +2,6 @@ import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import {
   FORM_DATA_NULL,
   FORM_DATA_RADIO,
-  FORM_DATA_DATE,
   FORM_DATA_DATETIME,
   FORM_DATA_SELECT,
   FORM_DATA_INPUT,
@@ -204,28 +203,16 @@ export const FORM_DATA_CASE_PORT_HEALTH_SEAPORT = [
         label: _('Last port of call'),
       },
       {
-        ...FORM_DATA_DATE,
+        ...FORM_DATA_DATETIME,
         key: 'portHealthInfo.departureDateTime',
         label: _('Date of departure'),
         newLine: true,
-        className: 'size-small',
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'portHealthInfo.departureDateTime',
-        label: _('Time of departure'),
-      },
-      {
-        ...FORM_DATA_DATE,
+        ...FORM_DATA_DATETIME,
         key: 'portHealthInfo.arrivalDateTime',
         label: _('Date of arrival'),
         newLine: true,
-        className: 'size-small',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'portHealthInfo.arrivalDateTime',
-        label: _('Time of arrival'),
       },
     ],
   },
