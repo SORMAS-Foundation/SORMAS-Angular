@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormElementBase } from '../../../shared/dynamic-form/types/form-element-base';
+import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 import { FormActionsService } from '../../../_services/form-actions.service';
-import * as data from '../case-symptoms/case-symptoms-form-data';
+import * as data from '../../../cases/case_components/case-symptoms/case-symptoms-form-data';
 
 @Component({
   selector: 'app-symptoms-group-select',

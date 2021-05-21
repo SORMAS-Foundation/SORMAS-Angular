@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { NewEpidNumberComponent } from '../../../../cases/case_components/new-epid-number/new-epid-number.component';
 import { FORM_DATA_WIDGET } from '../../../../_constants/form-data';
+import { NewEpidNumberComponent } from '../../../widgets/new-epid-number/new-epid-number.component';
 
 import { FormWidgetComponent } from './form-widget.component';
 

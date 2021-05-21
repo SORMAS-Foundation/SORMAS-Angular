@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormElementBase } from '../../../shared/dynamic-form/types/form-element-base';
+import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 @Component({
   selector: 'app-new-epid-number',

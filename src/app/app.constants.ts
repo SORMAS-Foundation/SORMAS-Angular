@@ -18,6 +18,7 @@ export enum CaseTitles {
 // Send resource data to any component specified in this enum
 export enum SentResourceTypes {
   EPIDEMIOLOGICAL_DATA = 'epidemiological_data',
+  PERSON_DATA = 'person_data',
 }
 
 // pagination

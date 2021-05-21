@@ -17,6 +17,7 @@ import {
   ArmedForcesRelationType,
   EducationType,
 } from '../../../_models/models';
+import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -208,9 +209,13 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
     title: _('Addresses'),
     fields: [
       {
-        ...FORM_DATA_NULL,
-        key: 'widget',
-        label: _('Widget'),
+        ...FORM_DATA_WIDGET,
+        widget: 'app-new-address',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-addresses-list',
+        newLine: true,
       },
     ],
   },
