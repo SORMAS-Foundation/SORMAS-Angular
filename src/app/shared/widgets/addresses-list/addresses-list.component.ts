@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SentResourceTypes } from '../../../../app.constants';
-import { PersonAddressType } from '../../../../_models/models';
-import { SendResourceService } from '../../../../_services/send-resource.service';
+import { SentResourceTypes } from '../../../app.constants';
+import { PersonAddressType } from '../../../_models/models';
+import { SendResourceService } from '../../../_services/send-resource.service';
 
 @Component({
   selector: 'app-addresses-list',

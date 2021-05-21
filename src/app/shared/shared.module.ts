@@ -15,6 +15,13 @@ import { FormActionsComponent } from './form-actions/form-actions.component';
 import { CardModule } from './card/card.module';
 import { DateCardModule } from './date-card/date-card.module';
 import { PipesModule } from '../_pipes/pipes.module';
+import { NewEpidNumberComponent } from './widgets/new-epid-number/new-epid-number.component';
+import { FollowUpStatusComponent } from './widgets/follow-up-status/follow-up-status.component';
+import { ExposuresListComponent } from './widgets/exposures-list/exposures-list.component';
+import { ActivitiesListComponent } from './widgets/activities-list/activities-list.component';
+import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/symptoms-group-select.component';
+import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
+import { NewAddressComponent } from './widgets/new-address/new-address.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +30,13 @@ import { PipesModule } from '../_pipes/pipes.module';
     InpageNavComponent,
     CollapsableBoxComponent,
     FormActionsComponent,
+    NewEpidNumberComponent,
+    FollowUpStatusComponent,
+    ExposuresListComponent,
+    ActivitiesListComponent,
+    SymptomsGroupSelectComponent,
+    AddressesListComponent,
+    NewAddressComponent,
   ],
   imports: [
     CommonModule,

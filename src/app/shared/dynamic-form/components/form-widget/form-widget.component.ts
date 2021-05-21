@@ -7,14 +7,14 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ActivitiesListComponent } from '../../../../cases/case_components/case-epidemiological-data/activities-list/activities-list.component';
+import { ActivitiesListComponent } from '../../../widgets/activities-list/activities-list.component';
 // tslint:disable-next-line:max-line-length
-import { ExposuresListComponent } from '../../../../cases/case_components/case-epidemiological-data/exposures-list/exposures-list.component';
-import { AddressesListComponent } from '../../../../cases/case_components/case-person/addresses-list/addresses-list.component';
-import { NewAddressComponent } from '../../../../cases/case_components/case-person/new-address/new-address.component';
-import { FollowUpStatusComponent } from '../../../../cases/case_components/follow-up-status/follow-up-status.component';
-import { NewEpidNumberComponent } from '../../../../cases/case_components/new-epid-number/new-epid-number.component';
-import { SymptomsGroupSelectComponent } from '../../../../cases/case_components/symptoms-group-select/symptoms-group-select.component';
+import { ExposuresListComponent } from '../../../widgets/exposures-list/exposures-list.component';
+import { AddressesListComponent } from '../../../widgets/addresses-list/addresses-list.component';
+import { NewAddressComponent } from '../../../widgets/new-address/new-address.component';
+import { FollowUpStatusComponent } from '../../../widgets/follow-up-status/follow-up-status.component';
+import { NewEpidNumberComponent } from '../../../widgets/new-epid-number/new-epid-number.component';
+import { SymptomsGroupSelectComponent } from '../../../widgets/symptoms-group-select/symptoms-group-select.component';
 import { FormElementBase } from '../../types/form-element-base';
 
 const COMPONENTS_MAP: any = {

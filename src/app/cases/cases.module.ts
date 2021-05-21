@@ -17,13 +17,6 @@ import { CaseClinicalCourseComponent } from './case_components/case-clinical-cou
 import { CaseContactsComponent } from './case_components/case-contacts/case-contacts.component';
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { CaseFiltersComponent } from './case-filters/case-filters.component';
-import { NewEpidNumberComponent } from './case_components/new-epid-number/new-epid-number.component';
-import { FollowUpStatusComponent } from './case_components/follow-up-status/follow-up-status.component';
-import { ExposuresListComponent } from './case_components/case-epidemiological-data/exposures-list/exposures-list.component';
-import { ActivitiesListComponent } from './case_components/case-epidemiological-data/activities-list/activities-list.component';
-import { SymptomsGroupSelectComponent } from './case_components/symptoms-group-select/symptoms-group-select.component';
-import { AddressesListComponent } from './case_components/case-person/addresses-list/addresses-list.component';
-import { NewAddressComponent } from './case_components/case-person/new-address/new-address.component';
 import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
 
 @NgModule({
@@ -42,13 +35,6 @@ import { CasePortHealthComponent } from './case_components/case-port-health/case
     CaseClinicalCourseComponent,
     CaseContactsComponent,
     CaseFiltersComponent,
-    NewEpidNumberComponent,
-    FollowUpStatusComponent,
-    ExposuresListComponent,
-    ActivitiesListComponent,
-    SymptomsGroupSelectComponent,
-    AddressesListComponent,
-    NewAddressComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
