@@ -1,1 +1,22 @@
-<p>case-contacts works!</p>
+<button class="toggle-filter" (click)="drawer.open()">
+  <mat-icon *ngIf="!drawer.opened" class="material-icons-round">filter_list</mat-icon>
+</button>
+<mat-drawer-container
+  [ngClass]="drawer.opened ? 'contact-list-container' : 'contact-list-container margin'"
+>
+  <mat-drawer #drawer opened mode="side" class="filters-bar">
+    <app-contact-filters [drawer]="drawer"></app-contact-filters>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-table
+      [resourceService]="contactService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      [preSetFilters]="preSetFilters"
+    ></app-table>
+  </mat-drawer-content>
+</mat-drawer-container>

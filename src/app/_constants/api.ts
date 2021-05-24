@@ -18,7 +18,7 @@ export const API_ROUTE_TASKS = {
 
 export const API_ROUTE_EVENTS = {
   ENDPOINT: 'events',
-  GET_ALL: 'contacts/indexList',
+  GET_ALL: 'events/indexList',
   UPDATE: 'events/update',
 };
 

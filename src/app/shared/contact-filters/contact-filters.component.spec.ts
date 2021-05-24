@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { ContactFiltersComponent } from './contact-filters.component';
 
 describe('ContactFiltersComponent', () => {
@@ -8,9 +9,9 @@ describe('ContactFiltersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactFiltersComponent ]
-    })
-    .compileComponents();
+      declarations: [ContactFiltersComponent],
+      imports: [TranslateModule.forRoot()],
+    }).compileComponents();
   });
 
   beforeEach(() => {

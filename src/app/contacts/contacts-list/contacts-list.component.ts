@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
-import { EventService } from '../../_services/api/event.service';
 import { defaultColumnDefs } from './contacts-list-table-data';
+import { ContactService } from '../../_services/api/contact.service';
 
 @Component({
   selector: 'app-contacts-list',
@@ -15,7 +15,7 @@ export class ContactsListComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;
 
-  constructor(public contactService: EventService) {}
+  constructor(public contactService: ContactService) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;

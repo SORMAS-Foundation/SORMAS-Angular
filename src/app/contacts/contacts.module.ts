@@ -6,10 +6,9 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { ContactsRoutingModule } from './contacts-routing.module';
-import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 
 @NgModule({
-  declarations: [ContactsComponent, ContactsListComponent, ContactFiltersComponent],
+  declarations: [ContactsComponent, ContactsListComponent],
   imports: [CommonModule, ContactsRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class ContactsModule {}
