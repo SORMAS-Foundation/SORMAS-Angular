@@ -57,6 +57,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() saveConfigKey: string | undefined;
   @Input() fullHeight: boolean;
   @Input() appearance: string = constants.TableAppearanceOptions.STANDARD;
+  @Input() preSetFilters: Filter[];
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
@@ -80,6 +81,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
+      if (this.preSetFilters) {
+        this.filters = this.preSetFilters;
+      }
       this.offset = value;
       if (!value) {
         this.getResources(true);
@@ -90,6 +94,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.subscription = this.filterService.getFilters().subscribe((response: any) => {
       this.filters = response.filters;
+      if (this.preSetFilters) {
+        this.filters = this.filters.concat(this.preSetFilters);
+      }
       this.getResources(true);
     });
   }
@@ -118,6 +125,11 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     if (typeof this.dataSourceArray[index].index !== 'undefined') {
       return 'loading';
     }
+
+    if (key.indexOf('.') > -1) {
+      return key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
+    }
+
     return this.dataSourceArray[index][key]?.toString();
   }
 

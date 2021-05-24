@@ -22,6 +22,7 @@ import { ActivitiesListComponent } from './widgets/activities-list/activities-li
 import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/symptoms-group-select.component';
 import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
+import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NewAddressComponent } from './widgets/new-address/new-address.component
     SymptomsGroupSelectComponent,
     AddressesListComponent,
     NewAddressComponent,
+    ContactFiltersComponent,
   ],
   imports: [
     CommonModule,
@@ -68,6 +70,7 @@ import { NewAddressComponent } from './widgets/new-address/new-address.component
     DateCardModule,
     PipesModule,
     TranslateModule,
+    ContactFiltersComponent,
   ],
 })
 export class SharedModule {}

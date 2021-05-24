@@ -15,6 +15,7 @@ export const routesConfig: RouteItem[] = [
   { link: 'tasks/list', label: _('Tasks') },
   { link: 'cases/list', label: _('Cases') },
   { link: 'events/list', label: _('Events') },
+  { link: 'contacts/list', label: _('Contacts') },
   { link: 'samples/list', label: _('Samples') },
   { link: 'user-profile', label: _('My profile') },
 ];
