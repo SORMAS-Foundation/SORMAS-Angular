@@ -43,7 +43,7 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: _('Follow-up unti'),
+    name: _('Follow-up until'),
     dataKey: 'followUpUntil',
     isSortable: true,
   },

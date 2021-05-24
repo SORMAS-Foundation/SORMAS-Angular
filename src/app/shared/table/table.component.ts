@@ -127,19 +127,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     if (key.indexOf('.') > -1) {
-      const keyArray = key.split('.');
-      if (this.dataSourceArray[index] !== null) {
-        let dataSourceTmp = this.dataSourceArray[index];
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < keyArray.length; i += 1) {
-          if (dataSourceTmp[keyArray[i]]) {
-            dataSourceTmp = dataSourceTmp[keyArray[i]];
-          } else {
-            return '';
-          }
-        }
-        return dataSourceTmp;
-      }
+      return key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
     }
 
     return this.dataSourceArray[index][key]?.toString();
