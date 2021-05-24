@@ -1,0 +1,22 @@
+{
+  "name": "sormas-angular-translations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "convertTranslations.ts",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "properties-reader": "^2.2.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^15.3.1"
+  }
+}
