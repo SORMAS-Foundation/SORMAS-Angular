@@ -7,6 +7,8 @@ import { CaseDataDto, PersonDto } from '../../../_models/models';
 import { PersonService } from '../../../_services/api/person.service';
 import { NotificationService } from '../../../_services/notification.service';
 import { HelperService } from '../../../_services/helper.service';
+import { SendResourceService } from '../../../_services/send-resource.service';
+import { SentResourceTypes } from '../../../app.constants';
 
 @Component({
   selector: 'app-case-person',
@@ -24,7 +26,8 @@ export class CasePersonComponent implements OnInit {
     private formElementControlService: FormElementControlService,
     private personService: PersonService,
     private notificationService: NotificationService,
-    private helperService: HelperService
+    private helperService: HelperService,
+    private sendResourceService: SendResourceService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +49,9 @@ export class CasePersonComponent implements OnInit {
         this.person = response || ({} as PersonDto);
         this.resourceService = resourceService;
         this.setPersonFormData();
+        setTimeout(() => {
+          this.sendResourceService.setResource(this.person, SentResourceTypes.PERSON_DATA);
+        });
       },
       error: (err: any) => {
         this.notificationService.error(err);
