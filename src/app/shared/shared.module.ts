@@ -3,11 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from '../material.module';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
-import { TableComponent } from './table/table.component';
 import { DialogModule } from './dialog';
 import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
 import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
@@ -23,11 +21,11 @@ import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/sy
 import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
+import { TableModule } from './table/table.module';
 
 @NgModule({
   declarations: [
     LocaleSelectComponent,
-    TableComponent,
     InpageNavComponent,
     CollapsableBoxComponent,
     FormActionsComponent,
@@ -47,16 +45,15 @@ import { ContactFiltersComponent } from './contact-filters/contact-filters.compo
     FormsModule,
     MaterialModule,
     HttpClientModule,
-    TableVirtualScrollModule,
     DialogModule,
     CardModule,
     DateCardModule,
     PipesModule,
     TranslateModule,
+    TableModule,
   ],
   exports: [
     LocaleSelectComponent,
-    TableComponent,
     RouterModule,
     MaterialModule,
     HttpClientModule,
@@ -71,6 +68,7 @@ import { ContactFiltersComponent } from './contact-filters/contact-filters.compo
     PipesModule,
     TranslateModule,
     ContactFiltersComponent,
+    TableModule,
   ],
 })
 export class SharedModule {}

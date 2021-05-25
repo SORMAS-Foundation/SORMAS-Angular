@@ -25,3 +25,61 @@ a:not(.mat-button) {
 .errorMessage {
   color: $warn;
 }
+
+/* Table dynamic content */
+
+.mat-table {
+  .visit-date {
+    .date {
+      color: map-get($sormas-accent, 600);
+      font-size: 10px;
+      text-transform: uppercase;
+
+      > :first-child {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .visit-blood-pressure {
+    color: map-get($sormas-accent, 600);
+    font-weight: 500;
+
+    em {
+      display: block;
+      color: map-get($sormas-accent, 500);
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 400;
+    }
+  }
+
+  .visit-heart-rate {
+    color: map-get($sormas-accent, 600);
+    font-weight: 500;
+
+    em {
+      color: map-get($sormas-accent, 400);
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 400;
+    }
+  }
+
+  .visit-temperature {
+    font-weight: 500;
+
+    .fever {
+      color: map-get($sormas-alert, 400);
+    }
+  }
+
+  .visit-remarks {
+    font-size: 12px;
+  }
+
+  .visit-clinician {
+    color: map-get($sormas-accent, 500);
+    font-weight: 500;
+  }
+}

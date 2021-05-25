@@ -33,3 +33,9 @@ export const API_ROUTE_CONTACTS = {
   GET_ALL: 'contacts/indexList',
   UPDATE: 'contacts/update',
 };
+
+export const API_ROUTE_CLINICAL_VISIT = {
+  ENDPOINT: 'clinicalvisits',
+  GET_ALL: 'clinicalvisits/indexList',
+  UPDATE: 'clinicalvisits/update',
+};

@@ -1,0 +1,20 @@
+<div
+  *ngIf="data !== 'loading'; else loading"
+  [ngClass]="[config.className || '', config.stylify ? getClass(config.dataKey, data) : '']"
+>
+  <mat-icon *ngIf="config.iconify" class="material-icons-round">
+    {{ getIcon(data) }}
+  </mat-icon>
+  <div *ngIf="config.dateFormat; else content" class="date">
+    <span *ngFor="let format of config.dateFormat">
+      {{ data | date: format }}
+    </span>
+  </div>
+  <ng-template #content>
+    <span [innerHtml]="data"></span>
+  </ng-template>
+</div>
+
+<ng-template #loading>
+  <div class="row-skeleton"></div>
+</ng-template>

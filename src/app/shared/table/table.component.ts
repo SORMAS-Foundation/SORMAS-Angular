@@ -121,24 +121,11 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  getTableData(index: number, key: string): any {
+  getTableData(index: number, config: TableColumn): any {
     if (typeof this.dataSourceArray[index].index !== 'undefined') {
       return 'loading';
     }
-
-    if (key.indexOf('.') > -1) {
-      return key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
-    }
-
-    return this.dataSourceArray[index][key]?.toString();
-  }
-
-  getIcon(key: string): string {
-    return this.icons[key as keyof typeof constants.IconsMap];
-  }
-
-  getClass(key: string, value: string): string {
-    return `${key.toLocaleLowerCase()}-${value.toLocaleLowerCase()}`;
+    return config.dataKey.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
   }
 
   getResources(reload: boolean = false): void {

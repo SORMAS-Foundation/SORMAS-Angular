@@ -29,6 +29,11 @@ export interface TableColumn {
   isSortable?: boolean;
   iconify?: boolean;
   stylify?: boolean;
+  align?: string;
+  interpolate?: string;
+  dateFormat?: string[];
+  numberFormat?: Record<string, number[]>;
+  className?: string;
 }
 
 // scrolling

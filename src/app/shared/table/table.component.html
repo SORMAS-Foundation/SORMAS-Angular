@@ -43,19 +43,12 @@
           </th>
         </ng-template>
 
-        <td mat-cell *matCellDef="let element">
-          <ng-container *ngIf="getTableData(element.index, tableColumn.dataKey); let data">
-            <span
-              *ngIf="data !== 'loading'"
-              [ngClass]="tableColumn.stylify ? getClass(tableColumn.dataKey, data) : ''"
-            >
-              <mat-icon *ngIf="tableColumn.iconify" class="material-icons-round">
-                {{ getIcon(data) }}
-              </mat-icon>
-              {{ data }}
-            </span>
-            <div *ngIf="data === 'loading'" class="row-skeleton"></div>
-          </ng-container>
+        <td mat-cell *matCellDef="let element" [align]="tableColumn.align">
+          <app-table-data
+            *ngIf="getTableData(element.index, tableColumn); let data"
+            [data]="data"
+            [config]="tableColumn"
+          ></app-table-data>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
