@@ -26,6 +26,8 @@ export interface Filter {
 export interface TableColumn {
   name: string;
   dataKey: string;
+  additionalKeys?: string[];
+  additionalKeySeparator?: string;
   isSortable?: boolean;
   iconify?: boolean;
   stylify?: boolean;
