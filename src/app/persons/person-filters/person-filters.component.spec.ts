@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { PersonFiltersComponent } from './person-filters.component';
 
@@ -9,6 +10,7 @@ describe('PersonFiltersComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PersonFiltersComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
