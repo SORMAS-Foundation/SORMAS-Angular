@@ -128,7 +128,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.cough',
-        label: _('Caugh'),
+        label: _('Cough'),
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
