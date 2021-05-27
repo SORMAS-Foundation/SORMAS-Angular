@@ -27,10 +27,20 @@ export const routesConfig: RouteItem[] = [
   styleUrls: ['./menu.component.scss'],
   animations: [
     trigger('animateMenu', [
-      state('open', style({ 'overflow-y': 'hidden' })),
-      state('close', style({ 'overflow-y': 'hidden' })),
-      transition('open => close', [style({ height: '*' }), animate(2550, style({ height: 68 }))]),
-      transition('close => open', [style({ height: 68 }), animate(250, style({ height: '*' }))]),
+      state(
+        'close',
+        style({
+          height: '68px',
+        })
+      ),
+      state(
+        'open',
+        style({
+          maxHeight: '2000px',
+        })
+      ),
+      transition('close=>open', animate('200ms')),
+      transition('open=>close', animate('200ms')),
     ]),
   ],
 })

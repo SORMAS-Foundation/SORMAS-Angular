@@ -7,7 +7,7 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 68px;
+  height: auto;
   background: linear-gradient(90deg, #1b1f26 0%, #2b323d 100%);
   color: $white;
 
@@ -63,13 +63,15 @@
 }
 
 @media (max-width: map-get($grid-breakpoints, md)) {
+  .menu-list {
+    padding: 20px 0;
+  }
+
   .menu {
-    height: auto;
-    min-height: 68px;
+    overflow: hidden;
     flex-direction: column;
 
     .mat-button {
-      display: none;
       width: 100%;
       padding: 12px;
       margin: 0;
@@ -90,26 +92,6 @@
       right: 40px;
       display: block;
       margin: 0 auto;
-    }
-
-    &.open {
-      z-index: 10;
-      padding-bottom: 24px;
-      text-align: center;
-
-      .menu-overlay {
-        display: block;
-        background-color: rgba(mat-color($sormas-accent, 900), 0.2);
-      }
-
-      .mat-icon-button {
-        margin-bottom: 14px;
-        color: map-get($sormas-primary, 700);
-      }
-
-      .mat-button {
-        display: block;
-      }
     }
   }
 }
