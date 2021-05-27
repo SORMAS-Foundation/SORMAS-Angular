@@ -6,7 +6,7 @@ export const API_ROUTE_CASES = {
 
 export const API_ROUTE_PERSONS = {
   ENDPOINT: 'persons',
-  GET_ALL: 'persons',
+  GET_ALL: 'persons/indexList',
   UPDATE: 'persons/update',
 };
 

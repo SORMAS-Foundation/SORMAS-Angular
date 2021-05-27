@@ -44,7 +44,17 @@
         </ng-template>
 
         <td mat-cell *matCellDef="let element">
-          <ng-container *ngIf="getTableData(element.index, tableColumn.dataKey); let data">
+          <ng-container
+            *ngIf="
+              getTableData(
+                element.index,
+                tableColumn.dataKey,
+                tableColumn.additionalKeys,
+                tableColumn.additionalKeySeparator
+              );
+              let data
+            "
+          >
             <span
               *ngIf="data !== 'loading'"
               [ngClass]="tableColumn.stylify ? getClass(tableColumn.dataKey, data) : ''"

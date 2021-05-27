@@ -121,16 +121,58 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  getTableData(index: number, key: string): any {
+  changeAgeStructure(date: string, additionalKeySeparator?: string): string {
+    if (additionalKeySeparator && date !== '') {
+      return date.replace(additionalKeySeparator, ' (').concat(')');
+    }
+    return date;
+  }
+
+  getTableData(
+    index: number,
+    key: string,
+    additionalKeys?: string[],
+    additionalKeySeparator?: string
+  ): any {
+    const processedKeys: string[] = [];
     if (typeof this.dataSourceArray[index].index !== 'undefined') {
       return 'loading';
     }
 
     if (key.indexOf('.') > -1) {
-      return key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
+      const primaryItem = key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
+
+      if (primaryItem) {
+        processedKeys.push(primaryItem);
+      }
     }
 
-    return this.dataSourceArray[index][key]?.toString();
+    if (additionalKeys) {
+      additionalKeys.forEach((element) => {
+        let currentItem: string | undefined;
+        if (element.indexOf('.') > -1) {
+          currentItem = element.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
+        } else {
+          currentItem = this.dataSourceArray[index][element]?.toString();
+        }
+        if (currentItem) {
+          processedKeys.push(currentItem);
+        }
+      });
+    }
+    const secondaryItem = this.dataSourceArray[index][key]?.toString();
+    if (secondaryItem) {
+      processedKeys.unshift(secondaryItem);
+    }
+
+    if (key === 'ageAndBirthDate.age') {
+      return this.changeAgeStructure(
+        processedKeys.join(additionalKeySeparator || ''),
+        additionalKeySeparator
+      );
+    }
+
+    return processedKeys.join(additionalKeySeparator || '');
   }
 
   getIcon(key: string): string {
