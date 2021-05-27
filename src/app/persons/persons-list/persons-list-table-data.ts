@@ -19,13 +19,14 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: _('Age & birth date'),
-    dataKey: 'ageAndBirthDate.age',
-    additionalKeys: [
+    dataKey: 'age',
+    advancedDisplay: '$param1 ($param2/$param3/$param4)',
+    advancedDisplayParams: [
+      'ageAndBirthDate.age',
       'ageAndBirthDate.birthdateDD',
       'ageAndBirthDate.birthdateMM',
       'ageAndBirthDate.birthdateYYYY',
     ],
-    additionalKeySeparator: '/',
     isSortable: true,
   },
   {
@@ -41,8 +42,8 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: _('Address'),
     dataKey: 'city',
-    additionalKeys: ['street', 'houseNumber', 'postalCode'],
-    additionalKeySeparator: ', ',
+    advancedDisplay: '$param1, $param2, $param3',
+    advancedDisplayParams: ['street', 'houseNumber', 'postalCode'],
     isSortable: true,
   },
   {

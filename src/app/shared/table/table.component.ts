@@ -121,58 +121,47 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  changeAgeStructure(date: string, additionalKeySeparator?: string): string {
-    if (additionalKeySeparator && date !== '') {
-      return date.replace(additionalKeySeparator, ' (').concat(')');
+  getAdvancedDisplay(index: number, tableColumn: TableColumn): string {
+    let displayTmp = tableColumn.advancedDisplay || '';
+    if (tableColumn.advancedDisplayParams) {
+      for (let i = 0; i < tableColumn.advancedDisplayParams?.length; i += 1) {
+        const tableDataTmp = this.getTableDataByKey(index, tableColumn.advancedDisplayParams[i]);
+        if (tableDataTmp === '') {
+          return '';
+        }
+        displayTmp = displayTmp?.replace(`$param${i + 1}`, tableDataTmp);
+      }
+      return displayTmp;
     }
-    return date;
+
+    return '';
   }
 
-  getTableData(
-    index: number,
-    key: string,
-    additionalKeys?: string[],
-    additionalKeySeparator?: string
-  ): any {
-    const processedKeys: string[] = [];
+  getTableDataByKey(index: number, key: string): any {
+    let displayText;
+
     if (typeof this.dataSourceArray[index].index !== 'undefined') {
       return 'loading';
     }
 
     if (key.indexOf('.') > -1) {
-      const primaryItem = key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
-
-      if (primaryItem) {
-        processedKeys.push(primaryItem);
-      }
+      displayText = key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
+    } else {
+      displayText = this.dataSourceArray[index][key]?.toString();
     }
 
-    if (additionalKeys) {
-      additionalKeys.forEach((element) => {
-        let currentItem: string | undefined;
-        if (element.indexOf('.') > -1) {
-          currentItem = element.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
-        } else {
-          currentItem = this.dataSourceArray[index][element]?.toString();
-        }
-        if (currentItem) {
-          processedKeys.push(currentItem);
-        }
-      });
-    }
-    const secondaryItem = this.dataSourceArray[index][key]?.toString();
-    if (secondaryItem) {
-      processedKeys.unshift(secondaryItem);
+    if (typeof displayText === 'undefined' || displayText === null) {
+      return '';
     }
 
-    if (key === 'ageAndBirthDate.age') {
-      return this.changeAgeStructure(
-        processedKeys.join(additionalKeySeparator || ''),
-        additionalKeySeparator
-      );
-    }
+    return displayText;
+  }
 
-    return processedKeys.join(additionalKeySeparator || '');
+  getTableData(index: number, tableColumn: TableColumn): any {
+    if (tableColumn.advancedDisplay) {
+      return this.getAdvancedDisplay(index, tableColumn);
+    }
+    return this.getTableDataByKey(index, tableColumn.dataKey);
   }
 
   getIcon(key: string): string {
