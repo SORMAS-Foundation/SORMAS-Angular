@@ -1,0 +1,20 @@
+<button class="toggle-filter" (click)="drawer.open()">
+  <mat-icon *ngIf="!drawer.opened" class="material-icons-round">filter_list</mat-icon>
+</button>
+<mat-drawer-container class="person-list-container">
+  <mat-drawer #drawer opened mode="side" class="filters-bar">
+    <app-person-filters [drawer]="drawer"></app-person-filters>
+  </mat-drawer>
+  <mat-drawer-content>
+    <h1 class="header-title" i18n="Person Overview header">{{ 'Persons Overview' | translate }}</h1>
+    <app-table
+      [resourceService]="personService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+    ></app-table>
+  </mat-drawer-content>
+</mat-drawer-container>

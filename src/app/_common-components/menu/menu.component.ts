@@ -18,6 +18,7 @@ export const routesConfig: RouteItem[] = [
   { link: 'contacts/list', label: _('Contacts') },
   { link: 'samples/list', label: _('Samples') },
   { link: 'user-profile', label: _('My profile') },
+  { link: 'persons/list', label: _('Persons') },
 ];
 
 @Component({
