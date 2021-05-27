@@ -1,0 +1,55 @@
+@use '../../../variables.scss' as *;
+
+.sample-filters {
+  margin-top: 24px;
+  .filters-header {
+    padding-left: 16px;
+    margin-bottom: 0;
+    font-size: 24px;
+  }
+
+  .sample-radio {
+    display: block;
+    padding-bottom: 5px;
+    margin-left: 0;
+
+    &:first-child {
+      margin-top: 15px;
+    }
+  }
+
+  .search-field {
+    width: 240px;
+    margin-left: 16px;
+    .search-icon {
+      width: 14px;
+      height: 12px;
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
+    ::placeholder {
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
+  }
+
+  .reset-button {
+    position: sticky;
+    z-index: 10;
+    bottom: 0;
+    display: block;
+    width: 85%;
+    padding-top: 10px;
+    border: none;
+    margin: 0 auto;
+    background: $white;
+    color: map-get($sormas-primary, 700);
+    cursor: pointer;
+    text-align: center;
+    &:active,
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}

@@ -79,7 +79,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.contactWithSourceCaseKnown',
-        label: _('Contactsh with source case known'),
+        label: _('Contacts with source case known'),
         options: optionsYesNoUnknown,
       },
     ],

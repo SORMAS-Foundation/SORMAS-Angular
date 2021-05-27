@@ -3,7 +3,7 @@
 </button>
 <mat-drawer-container class="sample-list-container">
   <mat-drawer #drawer opened mode="side" class="filters-bar">
-    <app-sample-filter [drawer]="drawer"></app-sample-filter>
+    <app-sample-filters [drawer]="drawer"></app-sample-filters>
   </mat-drawer>
   <mat-drawer-content>
     <h1 class="header-title" i18n="Samples Overview header">{{ 'Samples Overview' | translate }}</h1>
