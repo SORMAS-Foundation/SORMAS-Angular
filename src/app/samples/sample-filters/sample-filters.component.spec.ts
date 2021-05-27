@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { SampleFilterComponent } from './sample-filter.component';
+import { SampleFiltersComponent } from './sample-filters.component';
 
-describe('SampleFilterComponent', () => {
-  let component: SampleFilterComponent;
-  let fixture: ComponentFixture<SampleFilterComponent>;
+describe('SampleFiltersComponent', () => {
+  let component: SampleFiltersComponent;
+  let fixture: ComponentFixture<SampleFiltersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SampleFilterComponent],
+      declarations: [SampleFiltersComponent],
       imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SampleFilterComponent);
+    fixture = TestBed.createComponent(SampleFiltersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

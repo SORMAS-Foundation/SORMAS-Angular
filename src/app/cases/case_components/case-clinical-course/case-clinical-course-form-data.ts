@@ -15,7 +15,7 @@ export const FORM_DATA_CASE_CLINICAL_COURSE = [
     fields: [
       {
         ...FORM_DATA_RADIO,
-        label: _('Cardiovascular disease, including hypertention'),
+        label: _('Cardiovascular disease, including hypertension'),
         key: 'clinicalCourse.healthConditions.cardiovascularDiseaseIncludingHypertension',
         options: optionsYesNoUnknown,
         className: 'size-large',
@@ -43,14 +43,14 @@ export const FORM_DATA_CASE_CLINICAL_COURSE = [
       },
       {
         ...FORM_DATA_RADIO,
-        label: _('Livear disease'),
+        label: _('Liver disease'),
         key: 'clinicalCourse.healthConditions.chronicLiverDisease',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
-        label: _('Chronic polmonary disease'),
+        label: _('Chronic pulmonary disease'),
         key: 'clinicalCourse.healthConditions.chronicPulmonaryDisease',
         options: optionsYesNoUnknown,
         className: 'size-large',
