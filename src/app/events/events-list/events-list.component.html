@@ -1,7 +1,7 @@
 <button class="toggle-filter" (click)="drawer.open()">
   <mat-icon *ngIf="!drawer.opened" class="material-icons-round">filter_list</mat-icon>
 </button>
-<mat-drawer-container class="event-list-container">
+<mat-drawer-container [ngClass]="['event-list-container', drawer.opened ? '' : 'margin']">
   <mat-drawer #drawer opened mode="side" class="filters-bar">
     <app-event-filters [drawer]="drawer"></app-event-filters>
   </mat-drawer>
