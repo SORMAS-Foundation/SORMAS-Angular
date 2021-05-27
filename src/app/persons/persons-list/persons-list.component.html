@@ -1,14 +1,14 @@
 <button class="toggle-filter" (click)="drawer.open()">
   <mat-icon *ngIf="!drawer.opened" class="material-icons-round">filter_list</mat-icon>
 </button>
-<mat-drawer-container [ngClass]="['event-list-container', drawer.opened ? '' : 'margin']">
+<mat-drawer-container class="person-list-container">
   <mat-drawer #drawer opened mode="side" class="filters-bar">
-    <app-event-filters [drawer]="drawer"></app-event-filters>
+    <app-person-filters [drawer]="drawer"></app-person-filters>
   </mat-drawer>
   <mat-drawer-content>
-    <h1 class="header-title" i18n="Events Overview header">{{ 'Events Overview' | translate }}</h1>
+    <h1 class="header-title" i18n="Person Overview header">{{ 'Persons Overview' | translate }}</h1>
     <app-table
-      [resourceService]="eventService"
+      [resourceService]="personService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"
       [isSelectable]="true"

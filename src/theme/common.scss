@@ -2,6 +2,18 @@
 
 * {
   box-sizing: border-box;
+  scrollbar-color: map-get($sormas-accent, 300) map-get($sormas-accent, 100);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 8px;
+  background-color: map-get($sormas-accent, 100);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: map-get($sormas-accent, 300);
 }
 
 html,

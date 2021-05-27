@@ -121,16 +121,47 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  getTableData(index: number, key: string): any {
+  getAdvancedDisplay(index: number, tableColumn: TableColumn): string {
+    let displayTmp = tableColumn.advancedDisplay || '';
+    if (tableColumn.advancedDisplayParams) {
+      for (let i = 0; i < tableColumn.advancedDisplayParams?.length; i += 1) {
+        const tableDataTmp = this.getTableDataByKey(index, tableColumn.advancedDisplayParams[i]);
+        if (tableDataTmp === '') {
+          return '';
+        }
+        displayTmp = displayTmp?.replace(`$param${i + 1}`, tableDataTmp);
+      }
+      return displayTmp;
+    }
+
+    return '';
+  }
+
+  getTableDataByKey(index: number, key: string): any {
+    let displayText;
+
     if (typeof this.dataSourceArray[index].index !== 'undefined') {
       return 'loading';
     }
 
     if (key.indexOf('.') > -1) {
-      return key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
+      displayText = key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
+    } else {
+      displayText = this.dataSourceArray[index][key]?.toString();
     }
 
-    return this.dataSourceArray[index][key]?.toString();
+    if (typeof displayText === 'undefined' || displayText === null) {
+      return '';
+    }
+
+    return displayText;
+  }
+
+  getTableData(index: number, tableColumn: TableColumn): any {
+    if (tableColumn.advancedDisplay) {
+      return this.getAdvancedDisplay(index, tableColumn);
+    }
+    return this.getTableDataByKey(index, tableColumn.dataKey);
   }
 
   getIcon(key: string): string {

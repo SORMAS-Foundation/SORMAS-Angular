@@ -1,18 +1,13 @@
 @use '../../../variables.scss' as *;
 
-.event-list-container {
+.person-list-container {
   height: 100%;
   background: $white;
-
-  &.margin {
-    margin-left: 20px;
-  }
 }
 
 .toggle-filter {
   position: fixed;
-  z-index: 2;
-  top: 53vh;
+  top: 57vh;
   left: -10px;
   border: none;
   background: transparent;
