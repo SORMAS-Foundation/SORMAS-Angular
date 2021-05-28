@@ -18,45 +18,45 @@
       />
     </mat-form-field>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Persons' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Persons' | translate }}">
       <mat-radio-group name="persons" formControlName="persons" (change)="onFormChange()">
-        <mat-radio-button class="option-radio" value="ALL" color="primary">
+        <mat-radio-button value="ALL" color="primary">
           {{ 'All' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="CASE" color="primary">
+        <mat-radio-button value="CASE" color="primary">
           {{ 'Case' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="CONTACT" color="primary">
+        <mat-radio-button value="CONTACT" color="primary">
           {{ 'Contact' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="EVENT_PARTICIPANT" color="primary">
+        <mat-radio-button value="EVENT_PARTICIPANT" color="primary">
           {{ 'Event participant' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Present condition' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Present condition' | translate }}">
       <mat-radio-group
         name="presentCondition"
         formControlName="presentCondition"
         (change)="onFormChange()"
       >
-        <mat-radio-button class="option-radio" value="ALIVE" color="primary">
+        <mat-radio-button value="ALIVE" color="primary">
           {{ 'Alive' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="DEAD" color="primary">
+        <mat-radio-button value="DEAD" color="primary">
           {{ 'Dead' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="BURIED" color="primary">
+        <mat-radio-button value="BURIED" color="primary">
           {{ 'Buried' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="UNKNOWN" color="primary">
+        <mat-radio-button value="UNKNOWN" color="primary">
           {{ 'Unknown' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Birth' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Birth' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -89,7 +89,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Admin aspect' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Admin aspect' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -124,7 +124,6 @@
       </mat-form-field>
     </app-collapsable-box>
   </form>
-  <br />
   <button class="reset-button" (click)="resetFilters()" (keyup.enter)="resetFilters()">
     {{ 'Reset filters' | translate }}
   </button>

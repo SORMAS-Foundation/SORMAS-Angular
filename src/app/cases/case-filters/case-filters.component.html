@@ -15,12 +15,12 @@
         (change)="onFormChange()"
       />
     </mat-form-field>
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Cases' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Cases' | translate }}">
       <mat-radio-group name="cases" formControlName="cases" (change)="onFormChange()">
-        <mat-radio-button class="option-radio" value="active" color="primary">
+        <mat-radio-button value="active" color="primary">
           {{ 'Active cases' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="archived" color="primary">
+        <mat-radio-button value="archived" color="primary">
           {{ 'Archived cases' | translate }}
         </mat-radio-button>
         <mat-radio-button
@@ -34,18 +34,18 @@
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="Case origin{{ 'Cases' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Case origin' | translate }}">
       <mat-radio-group name="caseOrigin" formControlName="caseOrigin" (change)="onFormChange()">
-        <mat-radio-button class="option-radio" value="IN_COUNTRY" color="primary">
+        <mat-radio-button value="IN_COUNTRY" color="primary">
           {{ 'In country' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="POINT_OF_ENTRY" color="primary">
+        <mat-radio-button value="POINT_OF_ENTRY" color="primary">
           {{ 'Point of entry' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Cases' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Medical aspects' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -107,7 +107,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="Admin aspects">
+    <app-collapsable-box boxTitle="Admin aspects">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           (selectionChange)="onFormChange()"
@@ -182,7 +182,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Facility' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Facility' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -217,7 +217,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Date filter' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Date filter' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -322,7 +322,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'More filters' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'More filters' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -364,7 +364,6 @@
       </mat-form-field>
     </app-collapsable-box>
   </form>
-  <br />
   <button class="reset-button" (click)="resetFilters()" (keyup.enter)="resetFilters()">
     {{ 'Reset filters' | translate }}
   </button>

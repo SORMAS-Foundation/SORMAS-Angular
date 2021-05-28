@@ -16,55 +16,55 @@
       />
     </mat-form-field>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task status' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Task status' | translate }}">
       <mat-radio-group name="taskStatus" formControlName="taskStatus" (change)="onFormChange()">
-        <mat-radio-button class="option-radio" value="PENDING" color="primary">
+        <mat-radio-button value="PENDING" color="primary">
           {{ 'Pending' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="DONE" color="primary">
+        <mat-radio-button value="DONE" color="primary">
           {{ 'Done' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="REMOVED" color="primary">
+        <mat-radio-button value="REMOVED" color="primary">
           {{ 'Removed' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="NOT_EXECUTABLE" color="primary">
+        <mat-radio-button value="NOT_EXECUTABLE" color="primary">
           {{ 'Not executable' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Task' | translate }}">
       <mat-radio-group name="task" formControlName="task" (change)="onFormChange()">
-        <mat-radio-button class="option-radio" value="active" color="primary">
+        <mat-radio-button value="active" color="primary">
           {{ 'Active tasks' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="archived" color="primary">
+        <mat-radio-button value="archived" color="primary">
           {{ 'Archived tasks' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="all" color="primary">
+        <mat-radio-button value="all" color="primary">
           {{ 'All tasks' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task context' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Task context' | translate }}">
       <mat-radio-group name="taskContext" formControlName="taskContext" (change)="onFormChange()">
-        <mat-radio-button class="option-radio" value="CASE" color="primary">
+        <mat-radio-button value="CASE" color="primary">
           {{ 'Case' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="CONTACT" color="primary">
+        <mat-radio-button value="CONTACT" color="primary">
           {{ 'Contact' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="EVENT" color="primary">
+        <mat-radio-button value="EVENT" color="primary">
           {{ 'Event' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="option-radio" value="GENERAL" color="primary">
+        <mat-radio-button value="GENERAL" color="primary">
           {{ 'General' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Admin aspect' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Admin aspect' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -118,7 +118,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Date filter' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Date filter' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -187,7 +187,6 @@
       </mat-form-field>
     </app-collapsable-box>
   </form>
-  <br />
   <button class="reset-button" (click)="resetFilters()" (keyup.enter)="resetFilters()">
     {{ 'Reset filters' | translate }}
   </button>

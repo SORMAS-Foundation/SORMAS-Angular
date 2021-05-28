@@ -17,12 +17,18 @@
 }
 
 .filters-header {
-  margin: 16px 0 16px;
+  margin: 16px 0;
   font-size: 24px;
 }
 
-.option-radio {
-  display: block;
+.mat-radio-group {
+  margin: 0;
+
+  .mat-radio-button {
+    display: block;
+    margin: 0;
+    font-weight: 400;
+  }
 }
 
 .collapsable-field {
@@ -30,7 +36,6 @@
 }
 
 .search-field {
-  margin: 16px 0;
   .search-icon {
     width: 14px;
     height: 12px;
