@@ -1,9 +1,9 @@
 @use '../../../variables.scss' as *;
 
 .collapsable-box {
-  padding: 25px 10px;
+  padding: 24px 16px;
   border: solid 1px map-get($sormas-accent, 200);
-  margin: 24px 16px;
+  margin: 24px 0;
   box-shadow: none;
   .box-header {
     position: relative;
@@ -12,14 +12,14 @@
     .box-title {
       display: block;
       width: auto;
-      padding-left: 14px;
+      padding-left: 8px;
       float: left;
       font-size: 14px;
     }
     .box-icon {
       position: absolute;
       top: 0;
-      right: 10px;
+      right: 0;
       display: block;
       border: none;
       background: transparent;
@@ -28,7 +28,6 @@
     }
   }
   .box-content {
-    margin-bottom: 0;
-    margin-left: 14px;
+    margin: 24px 8px -8px;
   }
 }

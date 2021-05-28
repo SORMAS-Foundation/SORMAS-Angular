@@ -1,4 +1,4 @@
-<div class="event-filters">
+<div class="filters">
   <button class="toggle-filter" (click)="drawer.close()">
     <mat-icon class="material-icons-round">filter_list</mat-icon>
   </button>
@@ -18,16 +18,16 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Risk level' | translate }}">
       <mat-radio-group name="riskLevel" formControlName="riskLevel" (change)="onFormChange()">
-        <mat-radio-button class="event-radio" value="LOW" color="primary">
+        <mat-radio-button class="option-radio" value="LOW" color="primary">
           {{ 'Low' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="MODERATE" color="primary">
+        <mat-radio-button class="option-radio" value="MODERATE" color="primary">
           {{ 'Moderate' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="HIGH" color="primary">
+        <mat-radio-button class="option-radio" value="HIGH" color="primary">
           {{ 'High' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="UNKNOWN" color="primary">
+        <mat-radio-button class="option-radio" value="UNKNOWN" color="primary">
           {{ 'Unknown' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -35,22 +35,22 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Event status' | translate }}">
       <mat-radio-group name="eventStatus" formControlName="eventStatus" (change)="onFormChange()">
-        <mat-radio-button class="event-radio" value="ALL" color="primary">
+        <mat-radio-button class="option-radio" value="ALL" color="primary">
           {{ 'All' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="SIGNAL" color="primary">
+        <mat-radio-button class="option-radio" value="SIGNAL" color="primary">
           {{ 'Signal' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="EVENT" color="primary">
+        <mat-radio-button class="option-radio" value="EVENT" color="primary">
           {{ 'Event' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="SCREENING" color="primary">
+        <mat-radio-button class="option-radio" value="SCREENING" color="primary">
           {{ 'Screening' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="CLUSTER" color="primary">
+        <mat-radio-button class="option-radio" value="CLUSTER" color="primary">
           {{ 'Cluster' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="DROPPED" color="primary">
+        <mat-radio-button class="option-radio" value="DROPPED" color="primary">
           {{ 'Dropped' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -62,16 +62,16 @@
         formControlName="eventInvestigationStatus"
         (change)="onFormChange()"
       >
-        <mat-radio-button class="event-radio" value="PENDING" color="primary">
+        <mat-radio-button class="option-radio" value="PENDING" color="primary">
           {{ 'Pending' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="ONGOING" color="primary">
+        <mat-radio-button class="option-radio" value="ONGOING" color="primary">
           {{ 'Ongoing' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="DONE" color="primary">
+        <mat-radio-button class="option-radio" value="DONE" color="primary">
           {{ 'Done' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="DISCARDED" color="primary">
+        <mat-radio-button class="option-radio" value="DISCARDED" color="primary">
           {{ 'Discarded' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -79,13 +79,13 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Events' | translate }}">
       <mat-radio-group name="event" formControlName="event" (change)="onFormChange()">
-        <mat-radio-button class="event-radio" value="active" color="primary">
+        <mat-radio-button class="option-radio" value="active" color="primary">
           {{ 'Active events' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="archived" color="primary">
+        <mat-radio-button class="option-radio" value="archived" color="primary">
           {{ 'Archived events' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="event-radio" value="all" color="primary">
+        <mat-radio-button class="option-radio" value="all" color="primary">
           {{ 'All events' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -96,7 +96,7 @@
         id="searchParticipant"
         appearance="outline"
         floatLabel="always"
-        class="card-search-field"
+        class="search-field"
       >
         <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
         <input
@@ -115,7 +115,7 @@
         id="searchGroup"
         appearance="outline"
         floatLabel="always"
-        class="card-search-field"
+        class="search-field"
       >
         <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
         <input
