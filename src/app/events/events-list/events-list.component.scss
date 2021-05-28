@@ -12,7 +12,7 @@
 .toggle-filter {
   position: fixed;
   z-index: 2;
-  top: 53vh;
+  top: calc(50vh + 20px);
   left: -10px;
   border: none;
   background: transparent;

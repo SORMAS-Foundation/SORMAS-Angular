@@ -1,9 +1,130 @@
-<div class="person-filters">
+<div class="filters">
+  <button class="toggle-filter" (click)="drawer.close()">
+    <mat-icon class="material-icons-round">filter_list</mat-icon>
+  </button>
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
-  <form class="filters-form">
+  <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
-      <input value="" type="text" matInput placeholder="{{ 'Search by Id, name' | translate }}" />
+      <input
+        value=""
+        type="text"
+        matInput
+        placeholder="{{
+          'Search by Id, name, phone number, email, city, street, postal code' | translate
+        }}"
+        formControlName="search"
+        (change)="onFormChange()"
+      />
     </mat-form-field>
+
+    <app-collapsable-box boxTitle="{{ 'Persons' | translate }}">
+      <mat-radio-group name="persons" formControlName="persons" (change)="onFormChange()">
+        <mat-radio-button value="ALL" color="primary">
+          {{ 'All' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="CASE" color="primary">
+          {{ 'Case' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="CONTACT" color="primary">
+          {{ 'Contact' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="EVENT_PARTICIPANT" color="primary">
+          {{ 'Event participant' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Present condition' | translate }}">
+      <mat-radio-group
+        name="presentCondition"
+        formControlName="presentCondition"
+        (change)="onFormChange()"
+      >
+        <mat-radio-button value="ALIVE" color="primary">
+          {{ 'Alive' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="DEAD" color="primary">
+          {{ 'Dead' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="BURIED" color="primary">
+          {{ 'Buried' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="UNKNOWN" color="primary">
+          {{ 'Unknown' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Birth' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="birthdateYYYY"
+          placeholder="{{ 'Year of birth' | translate }}"
+        >
+          <mat-option value="1900">1900</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="birthdateMM"
+          placeholder="{{ 'Month of birth' | translate }}"
+        >
+          <mat-option value="1">January</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="birthdateDD"
+          placeholder="{{ 'Day of birth' | translate }}"
+        >
+          <mat-option value="1">1</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Admin aspect' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="region"
+          placeholder="{{ 'Responsible region' | translate }}"
+        >
+          <mat-option value="default_region">Default region</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="district"
+          placeholder="{{ 'Responsible district' | translate }}"
+        >
+          <mat-option value="default_district">Default district</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="community"
+          placeholder="{{ 'Responsible community' | translate }}"
+        >
+          <mat-option value="default_community">Default community</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
   </form>
+  <button class="reset-button" (click)="resetFilters()" (keyup.enter)="resetFilters()">
+    {{ 'Reset filters' | translate }}
+  </button>
 </div>
