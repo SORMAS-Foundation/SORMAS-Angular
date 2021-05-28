@@ -42,8 +42,8 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: _('Address'),
     dataKey: 'city',
-    advancedDisplay: '$param1, $param2, $param3',
-    advancedDisplayParams: ['street', 'houseNumber', 'postalCode'],
+    advancedDisplay: '$param1, $param2, $param3, $param4',
+    advancedDisplayParams: ['city', 'street', 'houseNumber', 'postalCode'],
     isSortable: true,
   },
   {
