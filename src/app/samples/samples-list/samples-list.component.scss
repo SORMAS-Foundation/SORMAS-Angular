@@ -3,11 +3,15 @@
 .sample-list-container {
   height: 100%;
   background: $white;
+
+  &.margin {
+    margin-left: 20px;
+  }
 }
 
 .toggle-filter {
   position: fixed;
-  top: 57vh;
+  top: calc(50vh + 20px);
   left: -10px;
   border: none;
   background: transparent;

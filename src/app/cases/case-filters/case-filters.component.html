@@ -1,4 +1,4 @@
-<div class="case-filters">
+<div class="filters">
   <button class="toggle-filter" (click)="drawer.close()">
     <mat-icon class="material-icons-round">filter_list</mat-icon>
   </button>
@@ -17,13 +17,18 @@
     </mat-form-field>
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Cases' | translate }}">
       <mat-radio-group name="cases" formControlName="cases" (change)="onFormChange()">
-        <mat-radio-button class="case-radio" value="active" color="primary">
+        <mat-radio-button class="option-radio" value="active" color="primary">
           {{ 'Active cases' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="case-radio" value="archived" color="primary">
+        <mat-radio-button class="option-radio" value="archived" color="primary">
           {{ 'Archived cases' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="case-radio" value="all" color="primary" (change)="onFormChange()">
+        <mat-radio-button
+          class="option-radio"
+          value="all"
+          color="primary"
+          (change)="onFormChange()"
+        >
           {{ 'All cases' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -31,10 +36,10 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="Case origin{{ 'Cases' | translate }}">
       <mat-radio-group name="caseOrigin" formControlName="caseOrigin" (change)="onFormChange()">
-        <mat-radio-button class="case-radio" value="IN_COUNTRY" color="primary">
+        <mat-radio-button class="option-radio" value="IN_COUNTRY" color="primary">
           {{ 'In country' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="case-radio" value="POINT_OF_ENTRY" color="primary">
+        <mat-radio-button class="option-radio" value="POINT_OF_ENTRY" color="primary">
           {{ 'Point of entry' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -229,7 +234,7 @@
         floatLabel="always"
         class="{{
           picker1.opened ? 'datepicker-opened' : 'datepicker-closed'
-        }} date-field has-hint with-spacing"
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -250,7 +255,9 @@
         id="new-case-to"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker2.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
+        class="{{
+          picker2.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -271,7 +278,9 @@
         id="quarantine-end"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker3.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
+        class="{{
+          picker3.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -292,7 +301,9 @@
         id="follow-up-until"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker4.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
+        class="{{
+          picker4.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
       >
         <input
           matInput

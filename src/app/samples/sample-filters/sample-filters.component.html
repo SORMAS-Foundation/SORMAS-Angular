@@ -1,4 +1,7 @@
-<div class="sample-filters">
+<div class="filters">
+  <button class="toggle-filter" (click)="drawer.close()">
+    <mat-icon class="material-icons-round">filter_list</mat-icon>
+  </button>
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
@@ -15,19 +18,19 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Sample' | translate }}">
       <mat-radio-group name="sample" formControlName="sample" (change)="onFormChange()">
-        <mat-radio-button class="sample-radio" value="ALL" color="primary">
+        <mat-radio-button class="option-radio" value="ALL" color="primary">
           {{ 'All' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="NOT_SHIPPED" color="primary">
+        <mat-radio-button class="option-radio" value="NOT_SHIPPED" color="primary">
           {{ 'Not shipped' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="SHIPPED" color="primary">
+        <mat-radio-button class="option-radio" value="SHIPPED" color="primary">
           {{ 'Shipped' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="RECEIVED" color="primary">
+        <mat-radio-button class="option-radio" value="RECEIVED" color="primary">
           {{ 'Received' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="REFERRED_TO_OTHER_LAB" color="primary">
+        <mat-radio-button class="option-radio" value="REFERRED_TO_OTHER_LAB" color="primary">
           {{ 'Referred to other lab' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -35,13 +38,13 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Status' | translate }}">
       <mat-radio-group name="status" formControlName="status" (change)="onFormChange()">
-        <mat-radio-button class="sample-radio" value="active" color="primary">
+        <mat-radio-button class="option-radio" value="active" color="primary">
           {{ 'Active' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="archived" color="primary">
+        <mat-radio-button class="option-radio" value="archived" color="primary">
           {{ 'Archived' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="all" color="primary">
+        <mat-radio-button class="option-radio" value="all" color="primary">
           {{ 'All' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -49,16 +52,16 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Sample type' | translate }}">
       <mat-radio-group name="sampleType" formControlName="sampleType" (change)="onFormChange()">
-        <mat-radio-button class="sample-radio" value="ALL" color="primary">
+        <mat-radio-button class="option-radio" value="ALL" color="primary">
           {{ 'All samples' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="CASE" color="primary">
+        <mat-radio-button class="option-radio" value="CASE" color="primary">
           {{ 'Case samples' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="CONTACT" color="primary">
+        <mat-radio-button class="option-radio" value="CONTACT" color="primary">
           {{ 'Contact samples' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="sample-radio" value="EVENT" color="primary">
+        <mat-radio-button class="option-radio" value="EVENT" color="primary">
           {{ 'Event participant sample' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -176,7 +179,7 @@
         floatLabel="always"
         class="{{
           picker1.opened ? 'datepicker-opened' : 'datepicker-closed'
-        }} date-field has-hint with-spacing"
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -197,7 +200,9 @@
         id="due-date"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker2.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
+        class="{{
+          picker2.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
       >
         <input
           matInput

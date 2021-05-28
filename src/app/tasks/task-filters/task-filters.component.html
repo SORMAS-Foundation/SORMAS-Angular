@@ -1,4 +1,7 @@
-<div class="task-filters">
+<div class="filters">
+  <button class="toggle-filter" (click)="drawer.close()">
+    <mat-icon class="material-icons-round">filter_list</mat-icon>
+  </button>
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
@@ -15,16 +18,16 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task status' | translate }}">
       <mat-radio-group name="taskStatus" formControlName="taskStatus" (change)="onFormChange()">
-        <mat-radio-button class="task-radio" value="PENDING" color="primary">
+        <mat-radio-button class="option-radio" value="PENDING" color="primary">
           {{ 'Pending' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="DONE" color="primary">
+        <mat-radio-button class="option-radio" value="DONE" color="primary">
           {{ 'Done' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="REMOVED" color="primary">
+        <mat-radio-button class="option-radio" value="REMOVED" color="primary">
           {{ 'Removed' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="NOT_EXECUTABLE" color="primary">
+        <mat-radio-button class="option-radio" value="NOT_EXECUTABLE" color="primary">
           {{ 'Not executable' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -32,13 +35,13 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task' | translate }}">
       <mat-radio-group name="task" formControlName="task" (change)="onFormChange()">
-        <mat-radio-button class="task-radio" value="active" color="primary">
+        <mat-radio-button class="option-radio" value="active" color="primary">
           {{ 'Active tasks' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="archived" color="primary">
+        <mat-radio-button class="option-radio" value="archived" color="primary">
           {{ 'Archived tasks' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="all" color="primary">
+        <mat-radio-button class="option-radio" value="all" color="primary">
           {{ 'All tasks' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -46,16 +49,16 @@
 
     <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Task context' | translate }}">
       <mat-radio-group name="taskContext" formControlName="taskContext" (change)="onFormChange()">
-        <mat-radio-button class="task-radio" value="CASE" color="primary">
+        <mat-radio-button class="option-radio" value="CASE" color="primary">
           {{ 'Case' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="CONTACT" color="primary">
+        <mat-radio-button class="option-radio" value="CONTACT" color="primary">
           {{ 'Contact' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="EVENT" color="primary">
+        <mat-radio-button class="option-radio" value="EVENT" color="primary">
           {{ 'Event' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="task-radio" value="GENERAL" color="primary">
+        <mat-radio-button class="option-radio" value="GENERAL" color="primary">
           {{ 'General' | translate }}
         </mat-radio-button>
       </mat-radio-group>
@@ -142,7 +145,7 @@
         floatLabel="always"
         class="{{
           picker1.opened ? 'datepicker-opened' : 'datepicker-closed'
-        }} date-field has-hint with-spacing"
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -163,7 +166,9 @@
         id="due-date"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker2.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
+        class="{{
+          picker2.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
       >
         <input
           matInput
