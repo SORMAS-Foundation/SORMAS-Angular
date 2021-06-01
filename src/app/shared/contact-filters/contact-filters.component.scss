@@ -1,25 +1,70 @@
-@use '../../../variables.scss' as *;
+@use '/src/variables.scss' as *;
 
-.contact-filters {
-  margin-top: 24px;
-  .filters-header {
-    padding-left: 16px;
-    margin-bottom: 0;
-    font-size: 24px;
+.filters {
+  padding: 24px;
+}
+
+.toggle-filter {
+  position: absolute;
+  top: calc(50vh - 48px);
+  right: 0;
+  border: none;
+  background: transparent;
+  color: map-get($sormas-primary, 700);
+  cursor: pointer;
+  outline: none;
+  transform: rotate(90deg);
+}
+
+.filters-header {
+  margin: 16px 0;
+  font-size: 24px;
+}
+
+.mat-radio-group {
+  margin: 0;
+
+  .mat-radio-button {
+    display: block;
+    margin: 0;
+    font-weight: 400;
   }
+}
 
-  .search-field {
-    width: 240px;
-    margin-left: 16px;
-    .search-icon {
-      width: 14px;
-      height: 12px;
-      color: map-get($sormas-accent, 200);
-      font-size: 12px;
-    }
-    ::placeholder {
-      color: map-get($sormas-accent, 200);
-      font-size: 12px;
-    }
+.collapsable-field {
+  margin: 12px 0;
+}
+
+.search-field {
+  .search-icon {
+    width: 14px;
+    height: 12px;
+    color: map-get($sormas-accent, 200);
+    font-size: 12px;
+  }
+  ::placeholder {
+    color: map-get($sormas-accent, 200);
+    font-size: 12px;
+  }
+}
+
+.reset-button {
+  position: sticky;
+  z-index: 10;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  margin: 0 auto -24px;
+  background: $white;
+  color: map-get($sormas-primary, 700);
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  &:active,
+  &:focus {
+    border: none;
+    outline: none;
   }
 }

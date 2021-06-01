@@ -30,7 +30,7 @@ export class PersonFiltersComponent implements OnInit {
       birthdateDD: new FormControl(),
       region: new FormControl(),
       district: new FormControl(),
-      community: new FormControl(),
+      community: new FormControl()
     });
   }
 
