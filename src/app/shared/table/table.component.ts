@@ -34,6 +34,7 @@ import { LocalStorageService } from '../../_services/local-storage.service';
 export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   public dataSource = new TableVirtualScrollDataSource<any>([]);
   public displayedColumns: string[] = [];
+  public uuidKey = constants.UUID_KEY;
 
   selection = new SelectionModel<any>(true, []);
   offset = 0;

@@ -43,7 +43,7 @@
           </th>
         </ng-template>
 
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element; let row">
           <ng-container *ngIf="getTableData(element.index, tableColumn); let data">
             <span
               *ngIf="data !== 'loading'"
@@ -52,7 +52,15 @@
               <mat-icon *ngIf="tableColumn.iconify" class="material-icons-round">
                 {{ getIcon(data) }}
               </mat-icon>
-              {{ data }}
+              <button
+                mat-button
+                color="primary"
+                (click)="onItemClick(row)"
+                *ngIf="tableColumn.dataKey === uuidKey"
+              >
+                {{ data | toShortId: tableColumn.dataKey }}
+              </button>
+              <span *ngIf="tableColumn.dataKey !== uuidKey">{{ data }}</span>
             </span>
             <div *ngIf="data === 'loading'" class="row-skeleton"></div>
           </ng-container>
@@ -62,8 +70,8 @@
       <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns"
-        (click)="onItemClick(row)"
         [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
+        (click)="$event ? selection.toggle(row) : null"
       ></tr>
     </table>
   </cdk-virtual-scroll-viewport>
