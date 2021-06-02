@@ -52,15 +52,16 @@
               <mat-icon *ngIf="tableColumn.iconify" class="material-icons-round">
                 {{ getIcon(data) }}
               </mat-icon>
-              <button
+
+              <a
                 mat-button
                 color="primary"
-                (click)="onItemClick(row)"
-                *ngIf="tableColumn.dataKey === uuidKey"
+                [routerLink]="getAdvancedLink(element.index, tableColumn)"
+                *ngIf="tableColumn.linkParams; else noLinkData"
               >
                 {{ data | toShortId: tableColumn.dataKey }}
-              </button>
-              <span *ngIf="tableColumn.dataKey !== uuidKey">{{ data }}</span>
+              </a>
+              <ng-template #noLinkData>{{ data | toShortId: tableColumn.dataKey }}</ng-template>
             </span>
             <div *ngIf="data === 'loading'" class="row-skeleton"></div>
           </ng-container>

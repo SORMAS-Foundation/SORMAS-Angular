@@ -138,6 +138,22 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return '';
   }
 
+  getAdvancedLink(index: number, tableColumn: TableColumn): string {
+    let linkTmp = tableColumn.linkPattern || '';
+    if (tableColumn.linkParams) {
+      for (let i = 0; i < tableColumn.linkParams?.length; i += 1) {
+        const tableLinkTmp = this.getTableDataByKey(index, tableColumn.linkParams[i]);
+        if (tableLinkTmp === '') {
+          return '';
+        }
+        linkTmp = linkTmp?.replace(`$param${i + 1}`, tableLinkTmp);
+      }
+      return linkTmp;
+    }
+
+    return '';
+  }
+
   getTableDataByKey(index: number, key: string): any {
     let displayText;
 
@@ -162,6 +178,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     if (tableColumn.advancedDisplay) {
       return this.getAdvancedDisplay(index, tableColumn);
     }
+    // if (tableColumn.advancedLinkFormat) {
+    //   return this.getAdvancedLink(index, tableColumn);
+    // }
     return this.getTableDataByKey(index, tableColumn.dataKey);
   }
 
@@ -205,12 +224,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   onItemSelect(event: any, row: any): void {
     event.stopPropagation();
     this.selectItem.emit({
-      item: this.dataSourceArray[row.index],
-    });
-  }
-
-  onItemClick(row: any): void {
-    this.clickItem.emit({
       item: this.dataSourceArray[row.index],
     });
   }
