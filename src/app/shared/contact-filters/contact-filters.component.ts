@@ -10,7 +10,7 @@ import { FilterService } from '../../_services/filter.service';
 })
 export class ContactFiltersComponent implements OnInit {
   @Input() drawer: any = {};
-  @Input() inTab: boolean = false;
+  @Input() inTab = false;
 
   filtersForm = new FormGroup({});
   allFilters: Filter[] = [];
