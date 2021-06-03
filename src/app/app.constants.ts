@@ -8,6 +8,11 @@ export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 54;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
 export const UUID_KEY = 'uuid';
 
+export enum AdvancedDataType {
+  DISPLAY = 'Display',
+  LINK = 'Link',
+}
+
 export enum CaseTitles {
   NO_OUTCOME = 'No outcome',
   NOT_CLASSIFIED = 'Not yet classified',

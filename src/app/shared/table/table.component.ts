@@ -35,6 +35,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   public dataSource = new TableVirtualScrollDataSource<any>([]);
   public displayedColumns: string[] = [];
   public uuidKey = constants.UUID_KEY;
+  public advancedDataType = constants.AdvancedDataType;
 
   selection = new SelectionModel<any>(true, []);
   offset = 0;
@@ -122,33 +123,32 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  getAdvancedDisplay(index: number, tableColumn: TableColumn): string {
-    let displayTmp = tableColumn.advancedDisplay || '';
-    if (tableColumn.advancedDisplayParams) {
-      for (let i = 0; i < tableColumn.advancedDisplayParams?.length; i += 1) {
-        const tableDataTmp = this.getTableDataByKey(index, tableColumn.advancedDisplayParams[i]);
+  getAdvancedData(
+    index: number,
+    tableColumn: TableColumn,
+    type: constants.AdvancedDataType
+  ): string {
+    let params: keyof typeof tableColumn;
+    let pattern: keyof typeof tableColumn;
+
+    if (type === constants.AdvancedDataType.DISPLAY) {
+      params = 'advancedDisplayParams';
+      pattern = 'advancedDisplay';
+    } else {
+      params = 'linkParams';
+      pattern = 'linkPattern';
+    }
+    let dataTmp = tableColumn[pattern] || '';
+    const currentParam = tableColumn[params];
+    if (currentParam) {
+      for (let i = 0; i < currentParam.length; i += 1) {
+        const tableDataTmp = this.getTableDataByKey(index, currentParam[i]);
         if (tableDataTmp === '') {
           return '';
         }
-        displayTmp = displayTmp?.replace(`$param${i + 1}`, tableDataTmp);
+        dataTmp = dataTmp?.replace(`$param${i + 1}`, tableDataTmp);
       }
-      return displayTmp;
-    }
-
-    return '';
-  }
-
-  getAdvancedLink(index: number, tableColumn: TableColumn): string {
-    let linkTmp = tableColumn.linkPattern || '';
-    if (tableColumn.linkParams) {
-      for (let i = 0; i < tableColumn.linkParams?.length; i += 1) {
-        const tableLinkTmp = this.getTableDataByKey(index, tableColumn.linkParams[i]);
-        if (tableLinkTmp === '') {
-          return '';
-        }
-        linkTmp = linkTmp?.replace(`$param${i + 1}`, tableLinkTmp);
-      }
-      return linkTmp;
+      return dataTmp;
     }
 
     return '';
@@ -176,11 +176,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getTableData(index: number, tableColumn: TableColumn): any {
     if (tableColumn.advancedDisplay) {
-      return this.getAdvancedDisplay(index, tableColumn);
+      return this.getAdvancedData(index, tableColumn, constants.AdvancedDataType.DISPLAY);
     }
-    // if (tableColumn.advancedLinkFormat) {
-    //   return this.getAdvancedLink(index, tableColumn);
-    // }
     return this.getTableDataByKey(index, tableColumn.dataKey);
   }
 
