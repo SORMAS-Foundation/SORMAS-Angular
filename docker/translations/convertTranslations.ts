@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 const propertiesReader = require('properties-reader');
 const path = require('path');
 const fs = require('fs');
