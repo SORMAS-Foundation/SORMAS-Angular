@@ -34,6 +34,8 @@ import { LocalStorageService } from '../../_services/local-storage.service';
 export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   public dataSource = new TableVirtualScrollDataSource<any>([]);
   public displayedColumns: string[] = [];
+  public uuidKey = constants.UUID_KEY;
+  public advancedDataType = constants.AdvancedDataType;
 
   selection = new SelectionModel<any>(true, []);
   offset = 0;
@@ -121,17 +123,32 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  getAdvancedDisplay(index: number, tableColumn: TableColumn): string {
-    let displayTmp = tableColumn.advancedDisplay || '';
-    if (tableColumn.advancedDisplayParams) {
-      for (let i = 0; i < tableColumn.advancedDisplayParams?.length; i += 1) {
-        const tableDataTmp = this.getTableDataByKey(index, tableColumn.advancedDisplayParams[i]);
+  getAdvancedData(
+    index: number,
+    tableColumn: TableColumn,
+    type: constants.AdvancedDataType
+  ): string {
+    let params: keyof typeof tableColumn;
+    let pattern: keyof typeof tableColumn;
+
+    if (type === constants.AdvancedDataType.DISPLAY) {
+      params = 'advancedDisplayParams';
+      pattern = 'advancedDisplay';
+    } else {
+      params = 'linkParams';
+      pattern = 'linkPattern';
+    }
+    let dataTmp = tableColumn[pattern] || '';
+    const currentParam = tableColumn[params];
+    if (currentParam) {
+      for (let i = 0; i < currentParam.length; i += 1) {
+        const tableDataTmp = this.getTableDataByKey(index, currentParam[i]);
         if (tableDataTmp === '') {
           return '';
         }
-        displayTmp = displayTmp?.replace(`$param${i + 1}`, tableDataTmp);
+        dataTmp = dataTmp?.replace(`$param${i + 1}`, tableDataTmp);
       }
-      return displayTmp;
+      return dataTmp;
     }
 
     return '';
@@ -159,7 +176,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getTableData(index: number, tableColumn: TableColumn): any {
     if (tableColumn.advancedDisplay) {
-      return this.getAdvancedDisplay(index, tableColumn);
+      return this.getAdvancedData(index, tableColumn, constants.AdvancedDataType.DISPLAY);
     }
     return this.getTableDataByKey(index, tableColumn.dataKey);
   }
@@ -204,12 +221,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   onItemSelect(event: any, row: any): void {
     event.stopPropagation();
     this.selectItem.emit({
-      item: this.dataSourceArray[row.index],
-    });
-  }
-
-  onItemClick(row: any): void {
-    this.clickItem.emit({
       item: this.dataSourceArray[row.index],
     });
   }
