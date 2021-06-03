@@ -22,6 +22,12 @@ fs.readdir(__dirname, (error: NodeJS.ErrnoException | null, files: string[]) => 
         throw error;
     }
     files.forEach((file: string) => {
+        if (file.indexOf('_') < 0 && file.indexOf('.properties') > -1) {
+            if (!languageFiles['en']) {
+                languageFiles['en'] = [];
+            }
+            languageFiles['en'].push(file);
+        }
         languages.forEach((language: string) => {
             if (file.indexOf(`${language}.properties`) > -1) {
                 if (!languageFiles[language]) {
