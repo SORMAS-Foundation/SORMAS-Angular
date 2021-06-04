@@ -1,0 +1,62 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component } from '@angular/core';
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
+import { TranslateService } from '@ngx-translate/core';
+import logoPath from '../../../assets/img/sormas-logo.svg';
+
+export interface RouteItem {
+  link: string;
+  label: string;
+}
+
+export const routesConfig: RouteItem[] = [
+  { link: '', label: _('Dashboard') },
+  { link: 'about', label: _('About') },
+  { link: 'tasks/list', label: _('Tasks') },
+  { link: 'cases/list', label: _('Cases') },
+  { link: 'events/list', label: _('Events') },
+  { link: 'contacts/list', label: _('Contacts') },
+  { link: 'samples/list', label: _('Samples') },
+  { link: 'user-profile', label: _('My profile') },
+  { link: 'persons/list', label: _('Persons') },
+];
+
+@Component({
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
+  animations: [
+    trigger('animateMenu', [
+      state(
+        'close',
+        style({
+          height: '68px',
+        })
+      ),
+      state(
+        'open',
+        style({
+          maxHeight: '2000px',
+        })
+      ),
+      transition('close=>open', animate('200ms')),
+      transition('open=>close', animate('200ms')),
+    ]),
+  ],
+})
+export class MenuComponent {
+  routeConfig: RouteItem[] = routesConfig;
+  logo = logoPath;
+
+  navigation = routesConfig;
+  menuOpen = false;
+
+  constructor(public translateService: TranslateService) {
+    translateService.setDefaultLang('en');
+    translateService.use('en');
+  }
+
+  toggleMenu(closed?: boolean): void {
+    this.menuOpen = closed ?? !this.menuOpen;
+  }
+}

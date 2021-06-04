@@ -1,0 +1,40 @@
+@mixin tabs-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-tab-nav-bar {
+      border: none;
+      .mat-tab-link-container {
+        border-bottom: solid 2px map-get($sormas-accent, 200);
+        // overflow-y: visible;
+        .mat-tab-links {
+          .mat-tab-link {
+            min-width: auto;
+            padding: 8px;
+            color: map-get($sormas-accent, 800);
+          }
+        }
+        .mat-ink-bar {
+          bottom: -2px;
+        }
+      }
+      .mat-tab-header-pagination {
+        border-bottom: solid 2px map-get($sormas-accent, 200);
+        box-shadow: none;
+        .mat-tab-header-pagination-chevron {
+          border-color: map-get($sormas-primary, 700);
+        }
+        &.mat-tab-header-pagination-disabled {
+          display: none;
+          .mat-tab-header-pagination-chevron {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

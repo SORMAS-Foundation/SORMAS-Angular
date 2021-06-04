@@ -1,0 +1,43 @@
+@use '../variables.scss' as *;
+
+* {
+  box-sizing: border-box;
+  scrollbar-color: map-get($sormas-accent, 300) map-get($sormas-accent, 100);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 8px;
+  background-color: map-get($sormas-accent, 100);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: map-get($sormas-accent, 300);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+a:not(.mat-button) {
+  color: map-get($sormas-primary, 700);
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+.errorMessage {
+  color: $warn;
+}
+
+.filters .mat-drawer-inner-container {
+  overflow-y: scroll;
+}

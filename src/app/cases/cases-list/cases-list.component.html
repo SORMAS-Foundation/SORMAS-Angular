@@ -1,0 +1,17 @@
+<app-filters [topGap]="68">
+  <app-case-filters filters></app-case-filters>
+  <ng-container list>
+    <h1 class="header-title" i18n="Cases Overview header">{{ 'Cases Overview' | translate }}</h1>
+    <app-table
+      [resourceService]="caseService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      (selectItem)="selectCase($event)"
+      (clickItem)="clickCase($event)"
+    ></app-table>
+  </ng-container>
+</app-filters>

@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card-list-actions {
+  margin: 0;
+  text-align: right;
+
+  button {
+    font-size: 12px;
+  }
+}

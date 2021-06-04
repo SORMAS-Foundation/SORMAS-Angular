@@ -1,0 +1,22 @@
+<div [formGroup]="group">
+  <mat-form-field
+    [id]="config.key"
+    appearance="outline"
+    floatLabel="always"
+    [ngClass]="{ 'has-hint': !!config.hint }"
+  >
+    <mat-label *ngIf="config.label">
+      {{ config.label || '' | translate }}
+      <span *ngIf="config.validation?.length" class="required">*</span>
+    </mat-label>
+    <textarea
+      [value]="config.value"
+      (change)="onChange()"
+      [formControlName]="config.key"
+      matInput
+      [placeholder]="config.label"
+    ></textarea>
+    <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
+  </mat-form-field>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage || '' | translate }}</div>
+</div>

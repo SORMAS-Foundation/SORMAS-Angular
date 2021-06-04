@@ -1,0 +1,23 @@
+$card-border: rgb(243, 213, 213);
+$error: indianred;
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+
+  .card {
+    border: 1px solid $card-border;
+
+    .container {
+      padding: 0.2rem 1rem;
+    }
+  }
+}
+
+.error {
+  padding: 0.2rem 1rem;
+  color: $error;
+}

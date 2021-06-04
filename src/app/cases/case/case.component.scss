@@ -1,0 +1,83 @@
+@use '../../../variables.scss' as *;
+
+.case-page {
+  padding: 0 25px;
+
+  .case-content {
+    &.fixed {
+      padding-top: 100px;
+    }
+  }
+  .top-section {
+    padding-top: 100px;
+
+    .title-container {
+      position: fixed;
+      z-index: 9;
+      top: 68px;
+      right: 0;
+      left: 0;
+      padding: 30px 25px 0 25px;
+      background: $white;
+    }
+  }
+  h1 {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 34px;
+    font-weight: bold;
+
+    span {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+  }
+  .info-box {
+    padding: 8px 20px;
+    margin-bottom: 10px;
+    background-color: map-get($sormas-accent, 50);
+
+    .info-item {
+      display: inline-block;
+      height: 32px;
+      padding: 0 15px;
+      border-right: solid 1px map-get($sormas-accent, 200);
+      margin-top: 5px;
+      line-height: 32px;
+
+      .material-icons {
+        position: relative;
+        top: 3px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .tab-nav-header {
+    display: flex;
+    justify-content: space-between;
+
+    &.fixed {
+      position: fixed;
+      z-index: 9;
+      top: 150px;
+      right: 0;
+      left: 0;
+      padding: 0 25px;
+      background: $white;
+    }
+  }
+
+  .mat-tab-header {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .tab-nav-header-actions {
+    min-width: 248px;
+    border-bottom: solid 2px map-get($sormas-accent, 200);
+    text-align: right;
+    white-space: nowrap;
+  }
+}

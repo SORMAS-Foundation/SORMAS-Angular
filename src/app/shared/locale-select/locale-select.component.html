@@ -1,0 +1,10 @@
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label i18n>Language</mat-label>
+    <mat-select [(value)]="selectedLocale" (selectionChange)="selectLocale($event)">
+      <mat-option *ngFor="let option of options" [value]="option.locale">
+        {{ option.lang }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

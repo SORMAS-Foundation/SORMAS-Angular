@@ -1,0 +1,23 @@
+{
+  "name": "sormas-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon proxy-server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "custom-env": "^2.0.1",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.6",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

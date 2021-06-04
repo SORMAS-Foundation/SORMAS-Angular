@@ -1,0 +1,364 @@
+<div class="filters">
+  <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
+  <form [formGroup]="filtersForm" class="filters-form">
+    <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        placeholder="{{ 'Search by Id, name' | translate }}"
+        formControlName="search"
+        (change)="onFormChange()"
+      />
+    </mat-form-field>
+    <app-collapsable-box boxTitle="{{ 'Cases' | translate }}">
+      <mat-radio-group name="cases" formControlName="cases" (change)="onFormChange()">
+        <mat-radio-button value="active" color="primary">
+          {{ 'Active cases' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="archived" color="primary">
+          {{ 'Archived cases' | translate }}
+        </mat-radio-button>
+        <mat-radio-button
+          class="option-radio"
+          value="all"
+          color="primary"
+          (change)="onFormChange()"
+        >
+          {{ 'All cases' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Case origin' | translate }}">
+      <mat-radio-group name="caseOrigin" formControlName="caseOrigin" (change)="onFormChange()">
+        <mat-radio-button value="IN_COUNTRY" color="primary">
+          {{ 'In country' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="POINT_OF_ENTRY" color="primary">
+          {{ 'Point of entry' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Medical aspects' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="caseOutcome"
+          placeholder="{{ 'Outcome of case' | translate }}"
+        >
+          <mat-option value="NO_OUTCOME"> {{ 'No outcome' | translate }} </mat-option>
+          <mat-option value="DECEASED"> {{ 'Deceased' | translate }} </mat-option>
+          <mat-option value="RECOVERED"> {{ 'Recovered' | translate }} </mat-option>
+          <mat-option value="UNKNOWN"> {{ 'Unknown' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="disease"
+          placeholder="{{ 'Disease' | translate }}"
+        >
+          <mat-option *ngFor="let opt of allDisease" [value]="opt.value">
+            {{ opt.key }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="caseClassification"
+          placeholder="{{ 'Case classification' | translate }}"
+        >
+          <mat-option value="NOT_CLASSIFIED"> {{ 'Not classified' | translate }} </mat-option>
+          <mat-option value="SUSPECT"> {{ 'Suspect' | translate }} </mat-option>
+          <mat-option value="PROBABLE"> {{ 'Probable' | translate }} </mat-option>
+          <mat-option value="CONFIRMED"> {{ 'Confirmed' | translate }} </mat-option>
+          <mat-option value="CONFIRMED_NO_SYMPTOMS">
+            {{ 'Confirmed, no symptoms' | translate }}
+          </mat-option>
+          <mat-option value="CONFIRMED_UNKNOWN_SYMPTOMS">
+            {{ 'Confirmed, unknown symptoms' | translate }}
+          </mat-option>
+          <mat-option value="NO_CASE"> {{ 'No case' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="followUpStatus"
+          placeholder="{{ 'Follow-up status' | translate }}"
+        >
+          <mat-option value="FOLLOW_UP"> {{ 'Follow up' | translate }} </mat-option>
+          <mat-option value="COMPLETED"> {{ 'Completed' | translate }} </mat-option>
+          <mat-option value="CANCELED"> {{ 'Canceled' | translate }} </mat-option>
+          <mat-option value="LOST"> {{ 'Lost' | translate }} </mat-option>
+          <mat-option value="NO_FOLLOW_UP"> {{ 'No follow up' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="Admin aspects">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          (selectionChange)="onFormChange()"
+          formControlName="presentCondition"
+          placeholder="{{ 'Present condition' | translate }}"
+        >
+          <mat-option value="ALIVE"> {{ 'Alive' | translate }} </mat-option>
+          <mat-option value="DEAD"> {{ 'Dead' | translate }} </mat-option>
+          <mat-option value="BURIED"> {{ 'Buried' | translate }} </mat-option>
+          <mat-option value="UNKNOWN"> {{ 'Unknown' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleRegion"
+          placeholder="{{ 'Present condition' | translate }}"
+        >
+          <mat-option value="defaultRegion"> {{ 'Default region' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleDistrict"
+          placeholder="{{ 'Responsible district' | translate }}"
+        >
+          <mat-option value="defaultRegion"> {{ 'Default district' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleCommunity"
+          placeholder="{{ 'Responsible community' | translate }}"
+        >
+          <mat-option value="defaultCommunity"> {{ 'Default community' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleSurveillor"
+          placeholder="{{ 'Responsible surveillor' | translate }}"
+        >
+          <mat-option value="defaultUser"> {{ 'Default user' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="reportedBy"
+          placeholder="{{ 'Reported by' | translate }}"
+        >
+          <mat-option value="defaultUser"> {{ 'Default user' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="reportingUser"
+          placeholder="{{ 'Reporting user' | translate }}"
+        >
+          <mat-option value="defaultUser"> {{ 'Default user' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Facility' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="facilityCategory"
+          placeholder="{{ 'Facility category' | translate }}"
+        >
+          <mat-option value="defaultCategory"> {{ 'Default category' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="facilityType"
+          placeholder="{{ 'Facility type' | translate }}"
+        >
+          <mat-option *ngFor="let opt of allFacilityTypes" [value]="opt.value">
+            {{ opt.key }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="facility"
+          placeholder="{{ 'Facility' | translate }}"
+        >
+          <mat-option value="defaultFacility"> {{ 'Default Facility' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Date filter' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          formControlName="dateFilter"
+          (selectionChange)="onFormChange()"
+          placeholder="{{ 'By date' | translate }}"
+        >
+          <mat-option value="byDate"> {{ 'By date' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field
+        id="new-case-from"
+        appearance="outline"
+        floatLabel="always"
+        class="{{
+          picker1.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
+      >
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          size="5"
+          formControlName="newCaseFrom"
+          (dateChange)="onFormChange()"
+        />
+        <mat-hint>{{ 'New case from' | translate }}</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        id="new-case-to"
+        appearance="outline"
+        floatLabel="always"
+        class="{{
+          picker2.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
+      >
+        <input
+          matInput
+          [matDatepicker]="picker2"
+          size="5"
+          formControlName="newCaseTo"
+          (dateChange)="onFormChange()"
+        />
+        <mat-hint>to</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker2"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        id="quarantine-end"
+        appearance="outline"
+        floatLabel="always"
+        class="{{
+          picker3.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
+      >
+        <input
+          matInput
+          [matDatepicker]="picker3"
+          size="5"
+          formControlName="quarantineEnd"
+          (dateChange)="onFormChange()"
+        />
+        <mat-hint>{{ 'Quarantine end' | translate }}</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker3"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        id="follow-up-until"
+        appearance="outline"
+        floatLabel="always"
+        class="{{
+          picker4.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
+      >
+        <input
+          matInput
+          [matDatepicker]="picker4"
+          size="5"
+          formControlName="followUpUntil"
+          (dateChange)="onFormChange()"
+        />
+        <mat-hint>{{ 'Follow up until' | translate }}</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker4"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker4></mat-datepicker>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'More filters' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          formControlName="sympromsJournal"
+          (selectionChange)="onFormChange()"
+          placeholder="{{ 'Symptoms journal' | translate }}"
+        >
+          <mat-option value="symptoms-journal1"> {{ 'Symptoms journal1' | translate }} </mat-option>
+          <mat-option value="symptoms-journal2"> {{ 'Symptoms journal2' | translate }} </mat-option>
+          <mat-option value="symptoms-journal3"> {{ 'Symptoms journal3' | translate }} </mat-option>
+          <mat-option value="symptoms-journal4"> {{ 'Symptoms journal4' | translate }} </mat-option>
+          <mat-option value="symptoms-journal5"> {{ 'Symptoms journal5' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          multiple
+          formControlName="moreFilters"
+          (selectionChange)="onFormChange()"
+          placeholder="{{ 'More filters' | translate }}"
+          class="multiselect"
+        >
+          <mat-option value="no-geo-coordinates">
+            {{ 'Cases without geo-coordinates' | translate }}
+          </mat-option>
+          <mat-option value="no-facility">
+            {{ 'Port health cases without a facility' | translate }}
+          </mat-option>
+          <mat-option value="management-data">
+            {{ 'Cases with case management data' | translate }}
+          </mat-option>
+          <mat-option value="no-responsible">
+            {{ 'Cases without responsible officer' | translate }}
+          </mat-option>
+          <mat-option value="extended-quarantine">
+            {{ 'Cases with extended quarantine' | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+  </form>
+</div>

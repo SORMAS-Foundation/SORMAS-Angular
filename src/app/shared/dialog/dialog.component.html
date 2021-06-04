@@ -1,0 +1,40 @@
+<button mat-icon-button mat-dialog-close class="dialog-close">
+  <mat-icon class="material-icons-round">{{ iconClose }}</mat-icon>
+</button>
+
+<div class="title">
+  <mat-icon *ngIf="data.titleIcon" class="dialog-title-icon material-icons-round">{{
+    data.titleIcon
+  }}</mat-icon>
+  <mat-dialog-title *ngIf="data.title" mat-dialog-title>{{ data.title }}</mat-dialog-title>
+</div>
+
+<mat-dialog-content [innerHtml]="data.message"></mat-dialog-content>
+
+<mat-dialog-actions *ngIf="showActions">
+  <button
+    *ngIf="data.buttonCancelText"
+    mat-button
+    [color]="buttonCancelColor"
+    class="button-cancel"
+    mat-dialog-close
+  >
+    {{ data.buttonCancelText }}
+  </button>
+  <button
+    *ngIf="data.buttonDeclineText"
+    mat-stroked-button
+    [color]="buttonDeclineColor"
+    [mat-dialog-close]="'DECLINE'"
+  >
+    {{ data.buttonDeclineText }}
+  </button>
+  <button
+    *ngIf="data.buttonConfirmText"
+    mat-flat-button
+    [color]="buttonConfirmColor"
+    [mat-dialog-close]="'CONFIRM'"
+  >
+    {{ data.buttonConfirmText }}
+  </button>
+</mat-dialog-actions>

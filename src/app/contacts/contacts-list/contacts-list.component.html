@@ -1,0 +1,10 @@
+<h1 class="header-title" i18n="Contacts Overview header">{{ 'Contacts Overview' | translate }}</h1>
+<app-table
+  [resourceService]="contactService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [saveConfigKey]="configKey"
+></app-table>

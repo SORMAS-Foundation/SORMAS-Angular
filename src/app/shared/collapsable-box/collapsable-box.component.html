@@ -1,0 +1,9 @@
+<mat-expansion-panel #panel [hideToggle]="true" [expanded]="expanded" class="collapsable-box">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ boxTitle }}
+    </mat-panel-title>
+    <mat-icon class="material-icons-round">{{ panel.expanded ? 'remove' : 'add' }}</mat-icon>
+  </mat-expansion-panel-header>
+  <ng-content></ng-content>
+</mat-expansion-panel>

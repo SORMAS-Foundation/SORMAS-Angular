@@ -1,0 +1,42 @@
+@mixin form-radio-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-radio-group {
+      display: inline-block;
+      margin: 8px 0;
+
+      .radio-group-label {
+        display: block;
+      }
+
+      .mat-radio-button {
+        margin-right: 24px;
+        font-weight: 500;
+        line-height: 36px;
+        text-align: left;
+
+        &:not(.mat-radio-disabled) .mat-radio-outer-circle {
+          border-color: mat-color(mat-palette($primary, 700));
+        }
+
+        &:focus,
+        &:hover {
+          color: mat-color(mat-palette($primary, 700));
+        }
+
+        &.mat-radio-checked {
+          color: mat-color(mat-palette($primary, 700));
+        }
+      }
+
+      &.ng-touched.ng-invalid .mat-radio-button:not(.mat-radio-disabled) .mat-radio-outer-circle {
+        border-color: mat-color(mat-palette($warn, 300));
+      }
+    }
+  }
+}

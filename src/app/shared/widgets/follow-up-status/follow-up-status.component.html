@@ -1,0 +1,18 @@
+<div class="follow-up-actions">
+  <button *ngIf="canResume()" mat-stroked-button color="primary" (click)="resumeFollowUp()">
+    {{ 'Resume follow-up' | translate }}
+  </button>
+
+  <button
+    *ngIf="canCancel() || canLost()"
+    mat-stroked-button
+    color="primary"
+    [matMenuTriggerFor]="menu"
+  >
+    {{ 'Follow-up actions' | translate }}
+  </button>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button *ngIf="canCancel()" mat-menu-item (click)="cancelFollowUp()">{{ 'Cancel follow-up' | translate }}</button>
+    <button *ngIf="canLost()" mat-menu-item (click)="lostFollowUp()">{{ 'Lost follow-up' | translate }}</button>
+  </mat-menu>
+</div>

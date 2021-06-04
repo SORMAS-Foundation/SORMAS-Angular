@@ -1,0 +1,30 @@
+@mixin form-checkbox-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-checkbox {
+      .mat-checkbox-label {
+        font-weight: 500;
+      }
+
+      &:not(.mat-checkbox-disabled) .mat-checkbox-frame {
+        border-color: mat-color(mat-palette($primary, 700));
+      }
+
+      &.ng-touched.ng-invalid .mat-checkbox-frame {
+        border-color: mat-color(mat-palette($warn, 300));
+      }
+
+      &.small {
+        .mat-checkbox-inner-container {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
+}

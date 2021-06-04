@@ -1,0 +1,10 @@
+<h1 class="header-title" i18n="Samples Overview header">{{ 'Samples Overview' | translate }}</h1>
+<app-table
+  [resourceService]="sampleService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [saveConfigKey]="configKey"
+></app-table>

@@ -1,0 +1,14 @@
+<h4 class="list-title">{{ 'Activity details known' | translate }}</h4>
+<app-card-list
+  *ngIf="activities.length"
+  [data]="activities"
+  [cardWidth]="200"
+  [initialPageSize]="4"
+  [cardEdit]="true"
+  cardEditPosition="TOPLEFT"
+  [cardDelete]="true"
+  cardDeletePosition="TOPRIGHT"
+  cardType="epid_data"
+  cardTitleKey="activityAsCaseType"
+  cardTitlePosition="CENTER"
+></app-card-list>

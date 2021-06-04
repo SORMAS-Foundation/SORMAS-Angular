@@ -1,0 +1,55 @@
+@use '/src/variables.scss' as *;
+
+.button-open,
+.button-close {
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 20px);
+
+  .mat-icon {
+    transform: rotate(90deg);
+  }
+}
+
+.button-close {
+  right: 0;
+}
+
+.button-open {
+  left: -8px;
+}
+
+.button-reset {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  color: map-get($sormas-primary, 700);
+}
+
+.filters-closed {
+  padding-left: 24px;
+}
+
+.mat-sidenav {
+  width: 290px;
+}
+
+.filters-wrapper {
+  padding: 24px;
+}
+
+@media (max-width: map-get($grid-breakpoints, md)) {
+  .button-close {
+    top: 14px;
+    right: 22px;
+    color: map-get($sormas-accent, 500);
+  }
+
+  .mat-sidenav {
+    width: 384px;
+  }
+
+  .filters-wrapper {
+    padding: 24px 72px;
+  }
+}

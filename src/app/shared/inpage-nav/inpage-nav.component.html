@@ -1,0 +1,10 @@
+<nav>
+  <a
+    *ngFor="let anchor of anchors"
+    [routerLink]="['.']"
+    [fragment]="anchor.id"
+    [ngClass]="{ active: fragment === anchor.id }"
+  >
+    {{ anchor.label | translate }}
+  </a>
+</nav>

@@ -1,0 +1,79 @@
+@mixin dialog-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-dialog-container {
+      padding-right: 64px;
+      padding-left: 64px;
+      border-radius: 12px;
+    }
+
+    .mat-dialog-title {
+      margin-top: 40px;
+      margin-bottom: 24px;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .mat-dialog-content {
+      padding: 16px 64px;
+      border-top: 2px solid map-get($sormas-accent, 200);
+      margin: 0 -64px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .mat-dialog-actions {
+      justify-content: flex-end;
+      margin-bottom: 0;
+
+      .mat-button-base + .mat-button-base {
+        margin-left: 1rem;
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin: 1em 0;
+    }
+
+    .dialog-confirm {
+      .mat-dialog-title {
+        color: mat-color(mat-palette($warn, 700));
+      }
+    }
+
+    .dialog-alert {
+      .mat-dialog-container {
+        padding-left: 88px;
+      }
+
+      .mat-dialog-title {
+        color: mat-color(mat-palette($warn, 700));
+      }
+
+      .mat-dialog-content {
+        padding-left: 88px;
+        margin-left: -88px;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      li::before {
+        margin-right: 0.5rem;
+        color: mat-color(mat-palette($warn, 700));
+        content: '•';
+      }
+    }
+  }
+}

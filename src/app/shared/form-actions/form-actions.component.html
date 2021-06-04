@@ -1,0 +1,10 @@
+<button
+  mat-stroked-button
+  color="primary"
+  class="reset-btn"
+  (click)="resetForm()"
+  *ngIf="hasInputsChanged"
+>
+  {{ 'Discard' | translate }}
+</button>
+<button mat-flat-button color="primary" class="save-btn" (click)="saveForm()">{{ 'Save' | translate }}</button>

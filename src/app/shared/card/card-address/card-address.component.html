@@ -1,0 +1,13 @@
+<div *ngIf="data" class="card-address">
+  <div class="content">
+    <mat-icon class="material-icons-round">place</mat-icon>
+    <div *ngIf="data" class="address">
+      <span *ngIf="data.city">{{ data.city }}, </span>
+      <span *ngIf="data.street">{{ data.street }}, </span>
+      <span *ngIf="data.houseNumber">{{ data.houseNumber }}, </span>
+      <span *ngIf="data.postalCode">{{ data.postalCode }}, </span>
+      <span *ngIf="data.district?.caption">{{ data.district?.caption }}, </span>
+      <span *ngIf="data.region?.caption">{{ data.region?.caption }}</span>
+    </div>
+  </div>
+</div>

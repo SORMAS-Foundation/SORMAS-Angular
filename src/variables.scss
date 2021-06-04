@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+@import './theme/palettes.scss';
+
+$sormas-primary: mat-palette($brand-primary);
+$sormas-accent: mat-palette($brand-neutrals);
+$sormas-alert: mat-palette($brand-alert);
+$sormas-warning: mat-palette($brand-warning);
+$sormas-success: mat-palette($brand-success);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 720px,
+  md: 840px,
+  lg: 1024px,
+  xl: 1440px,
+  xxl: 1680px,
+);
+
+$primary: mat-color($sormas-primary, 700);
+$accent: mat-color($sormas-accent, 800);
+$warn: mat-color($sormas-alert, 700);
+$white: #ffffff;
+$black: #000000;
+
+$warn-default: map-get($sormas-alert, default);

@@ -1,0 +1,18 @@
+<app-filters [fixed]="false">
+  <app-contact-filters filters></app-contact-filters>
+  <ng-container list>
+    <h1 class="header-title" i18n="Contacts Overview header">
+      {{ 'Contacts Overview' | translate }}
+    </h1>
+    <app-table
+      [resourceService]="contactService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      [preSetFilters]="preSetFilters"
+    ></app-table>
+  </ng-container>
+</app-filters>

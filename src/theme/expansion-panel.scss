@@ -1,0 +1,30 @@
+@mixin expansion-panel-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-expansion-panel {
+      @include mat-elevation(0);
+
+      border: solid 1px map-get($sormas-accent, 200);
+    }
+
+    .mat-expansion-panel-header {
+      height: auto;
+      padding: 16px 24px;
+
+      &:hover,
+      &:focus {
+        background: unset !important;
+      }
+    }
+
+    .mat-expansion-panel-header-title {
+      font-weight: 500;
+      line-height: 24px;
+    }
+  }
+}
