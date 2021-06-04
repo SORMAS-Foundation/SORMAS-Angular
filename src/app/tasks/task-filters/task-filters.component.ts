@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { FilterService } from '../../_services/filter.service';
 import { Filter } from '../../_models/common';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-filters',
