@@ -23,6 +23,7 @@
   position: sticky;
   bottom: 0;
   width: 100%;
+  padding: 8px 16px;
   color: map-get($sormas-primary, 700);
 }
 
@@ -35,7 +36,7 @@
 }
 
 .filters-wrapper {
-  padding: 24px;
+  padding: 24px 24px 0;
 }
 
 @media (max-width: map-get($grid-breakpoints, md)) {

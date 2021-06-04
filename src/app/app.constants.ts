@@ -29,3 +29,5 @@ export type CaseLink = {
   title: string;
   link: string;
 };
+
+export const HEADER_HEIGHT = 68;
