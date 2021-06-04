@@ -37,3 +37,7 @@ a:not(.mat-button) {
 .errorMessage {
   color: $warn;
 }
+
+.filters .mat-drawer-inner-container {
+  overflow-y: scroll;
+}

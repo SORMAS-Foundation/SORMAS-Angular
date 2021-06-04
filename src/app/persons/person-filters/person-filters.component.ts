@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Filter } from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 
@@ -8,16 +9,22 @@ import { FilterService } from '../../_services/filter.service';
   templateUrl: './person-filters.component.html',
   styleUrls: ['./person-filters.component.scss'],
 })
-export class PersonFiltersComponent implements OnInit {
-  @Input() drawer: any = {};
-
+export class PersonFiltersComponent implements OnInit, OnDestroy {
   filtersForm = new FormGroup({});
   allFilters: Filter[] = [];
+  subscriptions: Subscription[] = [];
 
   constructor(private filterService: FilterService) {}
 
   ngOnInit(): void {
     this.initFiltersForm();
+    this.subscriptions.push(
+      this.filterService.getFilters().subscribe((response: any) => {
+        if (!response.filters.length) {
+          this.filtersForm.reset();
+        }
+      })
+    );
   }
 
   initFiltersForm(): void {
@@ -46,11 +53,11 @@ export class PersonFiltersComponent implements OnInit {
     this.filterService.setFilters(this.allFilters);
   }
 
-  resetFilters(): void {
-    this.initFiltersForm();
-    this.filtersToArray();
-  }
   onFormChange(): void {
     this.filtersToArray();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
