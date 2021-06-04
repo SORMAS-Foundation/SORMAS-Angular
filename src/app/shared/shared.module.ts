@@ -23,6 +23,7 @@ import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/sy
 import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ContactFiltersComponent } from './contact-filters/contact-filters.compo
     AddressesListComponent,
     NewAddressComponent,
     ContactFiltersComponent,
+    FiltersComponent,
   ],
   imports: [
     CommonModule,
@@ -71,6 +73,7 @@ import { ContactFiltersComponent } from './contact-filters/contact-filters.compo
     PipesModule,
     TranslateModule,
     ContactFiltersComponent,
+    FiltersComponent,
   ],
 })
 export class SharedModule {}

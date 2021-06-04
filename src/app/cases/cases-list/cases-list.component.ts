@@ -6,6 +6,7 @@ import { TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
+import { HEADER_HEIGHT } from '../../app.constants';
 
 @Component({
   selector: 'app-cases-list',
@@ -16,6 +17,7 @@ export class CasesListComponent implements OnInit {
   cases: CaseDataDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_CASES;
+  headerHeight = HEADER_HEIGHT;
 
   constructor(public caseService: CaseService, private router: Router) {}
 

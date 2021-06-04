@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Disease } from '../../_models/disease';
 import { FacilityTypeObject } from '../../_models/facility';
 import { FilterService } from '../../_services/filter.service';
@@ -15,13 +16,12 @@ export interface DropdownData {
   templateUrl: './case-filters.component.html',
   styleUrls: ['./case-filters.component.scss'],
 })
-export class CaseFiltersComponent implements OnInit {
+export class CaseFiltersComponent implements OnInit, OnDestroy {
   filtersForm = new FormGroup({});
   allFilters: Filter[] = [];
   allDisease: DropdownData[] = this.getDropdownOptions(Disease);
   allFacilityTypes: DropdownData[] = this.getDropdownOptions(FacilityTypeObject);
-
-  @Input() drawer: any = {};
+  subscriptions: Subscription[] = [];
 
   constructor(private filterService: FilterService) {}
 
@@ -75,15 +75,22 @@ export class CaseFiltersComponent implements OnInit {
     });
   }
 
-  resetFilters(): void {
-    this.initFiltersForm();
-    this.filtersToArray();
-  }
   onFormChange(): void {
     this.filtersToArray();
   }
 
   ngOnInit(): void {
     this.initFiltersForm();
+    this.subscriptions.push(
+      this.filterService.getFilters().subscribe((response: any) => {
+        if (!response.filters.length) {
+          this.filtersForm.reset();
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
