@@ -1,7 +1,8 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {Component, ContentChild, Input, OnInit, ViewChild} from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { FilterService } from '../../_services/filter.service';
+import {IFilter} from '../../_constants/i-filter';
 
 @Component({
   selector: 'app-filters',
@@ -16,6 +17,7 @@ export class FiltersComponent implements OnInit {
   @Input() mode: MatDrawerMode = 'side';
 
   @ViewChild('filters') filters: MatSidenav;
+  @ContentChild('filtersComponent') filterComponent: IFilter;
 
   isMobile: boolean;
 
@@ -44,5 +46,6 @@ export class FiltersComponent implements OnInit {
 
   resetFilters(): void {
     this.filterService.setFilters([]);
+    this.filterComponent.resetFilters();
   }
 }

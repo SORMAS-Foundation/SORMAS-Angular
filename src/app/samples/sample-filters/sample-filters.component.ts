@@ -3,13 +3,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FilterService } from '../../_services/filter.service';
 import { Filter } from '../../_models/common';
+import {IFilter} from '../../_constants/i-filter';
 
 @Component({
   selector: 'app-sample-filters',
   templateUrl: './sample-filters.component.html',
   styleUrls: ['./sample-filters.component.scss'],
 })
-export class SampleFiltersComponent implements OnInit, OnDestroy {
+export class SampleFiltersComponent implements IFilter, OnInit {
   filtersForm = new FormGroup({});
   allFilters: Filter[] = [];
   subscriptions: Subscription[] = [];
@@ -18,13 +19,6 @@ export class SampleFiltersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initFiltersForm();
-    this.subscriptions.push(
-      this.filterService.getFilters().subscribe((response: any) => {
-        if (!response.filters.length) {
-          this.filtersForm.reset();
-        }
-      })
-    );
   }
 
   initFiltersForm(): void {
@@ -47,7 +41,6 @@ export class SampleFiltersComponent implements OnInit, OnDestroy {
   }
 
   filtersToArray(): void {
-    const x = 1;
     const keys: string[] = Object.keys(this.filtersForm.value);
     const values: string[] = Object.values(this.filtersForm.value);
     this.allFilters = [];
@@ -63,7 +56,7 @@ export class SampleFiltersComponent implements OnInit, OnDestroy {
     this.filtersToArray();
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  resetFilters(): void {
+    this.filtersForm.reset();
   }
 }
