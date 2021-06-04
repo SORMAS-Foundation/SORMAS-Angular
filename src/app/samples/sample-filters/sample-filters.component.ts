@@ -41,6 +41,7 @@ export class SampleFiltersComponent implements IFilter, OnInit {
   }
 
   filtersToArray(): void {
+    const x = 1;
     const keys: string[] = Object.keys(this.filtersForm.value);
     const values: string[] = Object.values(this.filtersForm.value);
     this.allFilters = [];
