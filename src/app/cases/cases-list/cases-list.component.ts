@@ -9,6 +9,7 @@ import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { Subscription } from 'rxjs';
+import {CaseAddComponent} from '../case-add/case-add.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -41,7 +42,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddBaseModalComponent, {
       width: '820px',
       data: {
-        test: 'test'
+        test: 'test',
+        component: CaseAddComponent
       }
     });
 
