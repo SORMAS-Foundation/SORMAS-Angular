@@ -1,10 +1,11 @@
 <div class="add-base-modal-wrapper">
-  <h1 mat-dialog-title>Add</h1>
-  <div mat-dialog-content>
-    <ng-template #addResource></ng-template>
-  </div>
+  <h1 mat-dialog-title>{{ data.title }}</h1>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
     <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    <button mat-button (click)="save()">{{ 'Save' | translate }}</button>
+  </div>
+  <div mat-dialog-content>
+    <ng-template #addResource></ng-template>
   </div>
 </div>

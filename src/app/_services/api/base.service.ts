@@ -86,23 +86,25 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.helperService.getApiUrl()}/${endpoint}`, [item])
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, item)
+      .pipe(map((data) => this.serializer.fromJson(data) as T));
+  }
+
+  add(item: T): Observable<T> {
+    // endpoint
+    let endpoint = this.endpoint.ENDPOINT;
+    if (this.endpoint.ADD) {
+      endpoint = this.endpoint.ADD;
+    }
+
+    return this.httpClient
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, item)
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 
   // toDO: for later
 
-  // add(item: T): Observable<T> {
-  //   return this.httpClient
-  //     .post<T>(`${this.url}/${this.endpoint}`, this.serializer.toJson(item))
-  //     .pipe(map((data) => this.serializer.fromJson(data) as T));
-  // }
   //
-  // update(item: T): Observable<T> {
-  //   return this.httpClient
-  //     .put<T>(`${this.url}/${this.endpoint}/${item.id}`, this.serializer.toJson(item))
-  //     .pipe(map((data) => this.serializer.fromJson(data) as T));
-  // }
   //
   // delete(item: T): any {
   //   return this.httpClient.delete(`${this.url}/${this.endpoint}/${item.id}`);

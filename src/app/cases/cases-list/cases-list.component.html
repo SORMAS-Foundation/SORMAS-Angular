@@ -9,7 +9,7 @@
   </mat-drawer>
   <mat-drawer-content>
     <h1 class="header-title" i18n="Cases Overview header">{{ 'Cases Overview' | translate }}</h1>
-    <button (click)="openAddCaseModal()">Add case</button>
+    <button mat-flat-button color="primary" (click)="openAddCaseModal()">{{ 'Add new case' | translate }}</button>
     <app-table
       [resourceService]="caseService"
       [tableColumns]="defaultColumns"

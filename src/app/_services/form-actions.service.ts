@@ -10,7 +10,7 @@ export class FormActionsService {
 
   private fieldsArray: string[] = [];
 
-  setSave(resource: Resource): void {
+  setSave(resource: Resource | null): void {
     this.subjectSave.next({ resource });
   }
 

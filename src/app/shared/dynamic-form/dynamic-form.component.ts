@@ -66,7 +66,16 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           return;
         }
 
-        this.resourceService.update(this.updateResource(response.resource)).subscribe({
+        let RESOURCE;
+        if (response.resource === null) {
+          // ADD mode
+          RESOURCE = this.resourceService.add(this.form.getRawValue());
+        } else {
+          // EDIT mode
+          RESOURCE = this.resourceService.update(this.updateResource(response.resource));
+        }
+
+        RESOURCE.subscribe({
           next: () => {},
           error: (err: any) => {
             this.notificationService.error(err);

@@ -1,15 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { CaseService } from '../../_services/api/case.service';
 import { TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
-import { Subscription } from 'rxjs';
-import {CaseAddComponent} from '../case-add/case-add.component';
+import { CaseAddComponent } from '../case-add/case-add.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -23,7 +24,12 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription[] = [];
 
-  constructor(public caseService: CaseService, private router: Router, private dialog: MatDialog) {}
+  constructor(
+    public caseService: CaseService,
+    private router: Router,
+    private dialog: MatDialog,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
@@ -40,21 +46,23 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openAddCaseModal(): void {
     const dialogRef = this.dialog.open(AddBaseModalComponent, {
-      width: '820px',
+      width: '1240px',
       data: {
-        test: 'test',
-        component: CaseAddComponent
-      }
+        title: this.translateService.instant('Add new case'),
+        component: CaseAddComponent,
+      },
     });
 
-    this.subscription.push(dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('rrrrr');
-      }
-    }));
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          console.log('rrrrr');
+        }
+      })
+    );
   }
 
   ngOnDestroy() {
-    this.subscription.forEach(subscription => subscription.unsubscribe());
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }
