@@ -3,6 +3,7 @@ export const API_ROUTE_CASES = {
   GET_ALL: 'cases/indexList',
   UPDATE: 'cases/update',
   ADD: 'cases/add',
+  DELETE: 'cases/delete',
 };
 
 export const API_ROUTE_PERSONS = {
@@ -10,6 +11,7 @@ export const API_ROUTE_PERSONS = {
   GET_ALL: 'persons/indexList',
   UPDATE: 'persons/update',
   ADD: 'persons/add',
+  DELETE: 'persons/delete',
 };
 
 export const API_ROUTE_TASKS = {
@@ -17,6 +19,7 @@ export const API_ROUTE_TASKS = {
   GET_ALL: 'tasks/indexList',
   UPDATE: 'tasks/update',
   ADD: 'tasks/add',
+  DELETE: 'tasks/delete',
 };
 
 export const API_ROUTE_EVENTS = {
@@ -24,6 +27,7 @@ export const API_ROUTE_EVENTS = {
   GET_ALL: 'events/indexList',
   UPDATE: 'events/update',
   ADD: 'events/add',
+  DELETE: 'events/delete',
 };
 
 export const API_ROUTE_SAMPLES = {
@@ -31,6 +35,7 @@ export const API_ROUTE_SAMPLES = {
   GET_ALL: 'samples/indexList',
   UPDATE: 'samples/update',
   ADD: 'samples/add',
+  DELETE: 'samples/delete',
 };
 
 export const API_ROUTE_CONTACTS = {
@@ -38,4 +43,5 @@ export const API_ROUTE_CONTACTS = {
   GET_ALL: 'contacts/indexList',
   UPDATE: 'contacts/update',
   ADD: 'contacts/add',
+  DELETE: 'contacts/delete',
 };

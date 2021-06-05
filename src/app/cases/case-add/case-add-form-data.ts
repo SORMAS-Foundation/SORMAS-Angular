@@ -1,66 +1,27 @@
 import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import {
-  FORM_DATA_CHECKBOX,
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
-  FORM_DATA_TEXTAREA,
-  FORM_DATA_NULL,
-  FORM_DATA_NUMBER,
-  FORM_DATA_WIDGET,
-  CaseClassification,
-  InvestigationStatus,
-  CaseOutcome,
   Disease,
-  YesNoUnknown,
   PlaceOfStay,
-  Quarantine,
-  VaccinationStatus,
-  VaccinationSource,
-  VaccineName,
-  VaccineManufacturer,
-  CaseIdentificationSource,
-  ScreeningType,
-  InfectionSetting,
-  Trimester,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { Salutation } from '../../_models/salutation';
 import { Sex } from '../../_models/sex';
 import { PresentCondition } from '../../_models/presentCondition';
 import { CauseOfDeath } from '../../_models/causeOfDeath';
 import { DeathPlaceType } from '../../_models/deathPlaceType';
-import { OccupationType } from '../../_models/occupationType';
-import { ArmedForcesRelationType } from '../../_models/armedForcesRelationType';
-import { EducationType } from '../../_models/educationType';
 
 const pipe = new EnumToKeyValuePipe();
 
-const optionsCaseClassification = pipe.transform(CaseClassification);
-const optionsCaseOutcome = pipe.transform(CaseOutcome);
-const optionsInvestigationStatus = pipe.transform(InvestigationStatus);
-const optionsDisese = pipe.transform(Disease);
-const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
+const optionsDisease = pipe.transform(Disease);
 const optionsPlaceOfStay = pipe.transform(PlaceOfStay);
-const optionsQuarantine = pipe.transform(Quarantine);
-const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
-const optionsVaccinationSource = pipe.transform(VaccinationSource);
-const optionsVaccineName = pipe.transform(VaccineName);
-const optionsVaccineManufacturer = pipe.transform(VaccineManufacturer);
-const optionsCaseIdentificationSource = pipe.transform(CaseIdentificationSource);
-const optionsScreeningType = pipe.transform(ScreeningType);
-const optionsInfectionSetting = pipe.transform(InfectionSetting);
-const optionsTrimester = pipe.transform(Trimester);
-const optionsSalutation = pipe.transform(Salutation);
 const optionsSex = pipe.transform(Sex);
 const optionsPresentCondition = pipe.transform(PresentCondition);
 const optionsCauseOfDeath = pipe.transform(CauseOfDeath);
 const optionsDeathPlaceType = pipe.transform(DeathPlaceType);
-const optionsOccupationType = pipe.transform(OccupationType);
-const optionsArmedForces = pipe.transform(ArmedForcesRelationType);
-const optionsEducation = pipe.transform(EducationType);
 
 export const FORM_DATA_CASE_ADD = [
   {
@@ -81,14 +42,14 @@ export const FORM_DATA_CASE_ADD = [
         key: 'disease',
         label: _('Disease'),
         validation: ['required'],
-        options: optionsDisese,
-        newLine: true
+        options: optionsDisease,
+        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'diseaseVariant.uuid',
         label: _('Disease variant'),
-        options: optionsDisese,
+        options: optionsDisease,
       },
       {
         ...FORM_DATA_INPUT,
@@ -326,7 +287,7 @@ export const FORM_DATA_CASE_ADD = [
         key: 'phoneNo',
         label: _('Phone number'),
         className: 'size-large',
-        newLine: true
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -352,6 +313,6 @@ export const FORM_DATA_CASE_ADD = [
         label: _('Sympton onset'),
         key: 'symptomOnset',
       },
-    ]
-  }
+    ],
+  },
 ];

@@ -2,6 +2,7 @@
 
 .dynamic-form-wrapper {
   .inpage-nav {
+    margin: 0 -25px;
     &.fixed {
       position: fixed;
       z-index: 9;
@@ -47,7 +48,6 @@
 .left-section {
   min-width: 176px;
   max-width: 248px;
-  flex: 0 0 24%;
   padding: 29px 24px;
   margin: 0;
   text-align: right;

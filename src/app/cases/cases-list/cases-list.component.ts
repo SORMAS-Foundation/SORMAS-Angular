@@ -48,7 +48,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openAddCaseModal(): void {
     const dialogRef = this.dialog.open(AddBaseModalComponent, {
-      width: '1240px',
+      width: '1110px',
       data: {
         title: this.translateService.instant('Add new case'),
         component: CaseAddComponent,

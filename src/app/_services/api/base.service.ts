@@ -86,7 +86,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.helperService.getApiUrl()}/${endpoint}`, item)
+      .post(`${this.helperService.getApiUrl()}/${endpoint}/${item.id}`, item)
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 
@@ -102,13 +102,15 @@ export class BaseService<T extends Resource> {
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 
-  // toDO: for later
+  delete(item: T): any {
+    // endpoint
+    let endpoint = this.endpoint.ENDPOINT;
+    if (this.endpoint.DELETE) {
+      endpoint = this.endpoint.DELETE;
+    }
 
-  //
-  //
-  // delete(item: T): any {
-  //   return this.httpClient.delete(`${this.url}/${this.endpoint}/${item.id}`);
-  // }
+    return this.httpClient.delete(`${this.helperService.getApiUrl()}/${endpoint}/${item.id}`);
+  }
 
   private convertData(data: any): PaginationResponse {
     // eslint-disable-next-line no-param-reassign

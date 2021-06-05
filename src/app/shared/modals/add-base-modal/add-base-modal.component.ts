@@ -36,6 +36,10 @@ export class AddBaseModalComponent implements OnInit {
     this.formActionsService.setSave(null);
   }
 
+  discard(): void {
+    this.formActionsService.setDiscard();
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
