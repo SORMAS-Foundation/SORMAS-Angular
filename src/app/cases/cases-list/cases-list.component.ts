@@ -9,6 +9,7 @@ import { TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
+import { HEADER_HEIGHT } from '../../app.constants';
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
 
@@ -21,6 +22,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   cases: CaseDataDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_CASES;
+  headerHeight = HEADER_HEIGHT;
 
   private subscription: Subscription[] = [];
 

@@ -1,7 +1,4 @@
 <div class="filters">
-  <button class="toggle-filter" (click)="drawer.close()">
-    <mat-icon class="material-icons-round">filter_list</mat-icon>
-  </button>
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <div *ngIf="!inTab">
@@ -63,7 +60,12 @@
       </app-collapsable-box>
 
       <app-collapsable-box boxTitle="{{ 'Events' | translate }}">
-        <mat-form-field id="eventSearch" appearance="outline" floatLabel="always" class="search-field">
+        <mat-form-field
+          id="eventSearch"
+          appearance="outline"
+          floatLabel="always"
+          class="search-field"
+        >
           <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
           <input
             value=""
@@ -155,8 +157,8 @@
           appearance="outline"
           floatLabel="always"
           class="{{
-          pickerFollowUpUntilDate.opened ? 'datepicker-opened' : 'datepicker-closed'
-        }} date-filter has-hint"
+            pickerFollowUpUntilDate.opened ? 'datepicker-opened' : 'datepicker-closed'
+          }} date-filter has-hint"
         >
           <input
             matInput
@@ -165,7 +167,7 @@
             formControlName="followUpUntilDate"
             (dateChange)="onFormChange()"
           />
-          <mat-hint>{{ 'Follwo up until' | translate }}</mat-hint>
+          <mat-hint>{{ 'Follow up until' | translate }}</mat-hint>
           <mat-datepicker-toggle
             matSuffix
             [for]="pickerFollowUpUntilDate"
@@ -254,8 +256,8 @@
           appearance="outline"
           floatLabel="always"
           class="{{
-          pickerQuarantineEndDate.opened ? 'datepicker-opened' : 'datepicker-closed'
-        }} date-filter has-hint"
+            pickerQuarantineEndDate.opened ? 'datepicker-opened' : 'datepicker-closed'
+          }} date-filter has-hint"
         >
           <input
             matInput
@@ -300,8 +302,8 @@
           appearance="outline"
           floatLabel="always"
           class="{{
-          picker1.opened ? 'datepicker-opened' : 'datepicker-closed'
-        }} date-filter has-hint"
+            picker1.opened ? 'datepicker-opened' : 'datepicker-closed'
+          }} date-filter has-hint"
         >
           <input
             matInput
@@ -323,8 +325,8 @@
           appearance="outline"
           floatLabel="always"
           class="{{
-          picker2.opened ? 'datepicker-opened' : 'datepicker-closed'
-        }} date-filter has-hint"
+            picker2.opened ? 'datepicker-opened' : 'datepicker-closed'
+          }} date-filter has-hint"
         >
           <input
             matInput
@@ -391,8 +393,4 @@
       </app-collapsable-box>
     </div>
   </form>
-
-  <button class="reset-button" (click)="resetFilters()" (keyup.enter)="resetFilters()">
-    {{ 'Reset filters' | translate }}
-  </button>
 </div>

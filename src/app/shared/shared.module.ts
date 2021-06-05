@@ -23,6 +23,7 @@ import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/sy
 import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
+import { FiltersComponent } from './filters/filters.component';
 import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.component';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     AddressesListComponent,
     NewAddressComponent,
     ContactFiltersComponent,
+    FiltersComponent,
     AddBaseModalComponent,
   ],
   imports: [
@@ -73,6 +75,7 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     PipesModule,
     TranslateModule,
     ContactFiltersComponent,
+    FiltersComponent,
   ],
   entryComponents: [AddBaseModalComponent],
 })

@@ -1,34 +1,8 @@
 @use '../../../variables.scss' as *;
 
-.contact-list-container {
-  height: 100%;
-  background: $white;
-
-  &.margin {
-    margin-left: 20px;
-  }
-}
-
-.toggle-filter {
-  position: fixed;
-  z-index: 2;
-  top: calc(50vh + 20px);
-  left: -10px;
-  border: none;
-  background: transparent;
-  color: map-get($sormas-primary, 700);
-  cursor: pointer;
-  outline: none;
-  transform: rotate(90deg);
-}
 .header-title {
   padding-left: 20px;
   margin-top: 24px;
   font-size: 34px;
   font-weight: 500;
-}
-
-.filters-bar {
-  width: 290px;
-  background-color: inherit;
 }

@@ -1,7 +1,4 @@
 <div class="filters">
-  <button class="toggle-filter" (click)="drawer.close()">
-    <mat-icon class="material-icons-round">filter_list</mat-icon>
-  </button>
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
@@ -124,7 +121,4 @@
       </mat-form-field>
     </app-collapsable-box>
   </form>
-  <button class="reset-button" (click)="resetFilters()" (keyup.enter)="resetFilters()">
-    {{ 'Reset filters' | translate }}
-  </button>
 </div>
