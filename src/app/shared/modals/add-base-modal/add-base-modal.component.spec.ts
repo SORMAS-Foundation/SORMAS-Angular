@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 import { AddBaseModalComponent } from './add-base-modal.component';
 
 describe('AddBaseModalComponent', () => {
@@ -8,9 +10,13 @@ describe('AddBaseModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddBaseModalComponent ]
-    })
-    .compileComponents();
+      declarations: [AddBaseModalComponent],
+      imports: [MatDialogModule, TranslateModule.forRoot()],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

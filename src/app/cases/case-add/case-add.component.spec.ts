@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CaseAddComponent } from './case-add.component';
 
 describe('CaseAddComponent', () => {
@@ -8,9 +9,9 @@ describe('CaseAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CaseAddComponent ]
-    })
-    .compileComponents();
+      declarations: [CaseAddComponent],
+      imports: [HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
