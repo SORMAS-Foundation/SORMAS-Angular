@@ -69,7 +69,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         let RESOURCE;
         if (response.resource === null) {
           // ADD mode
-          RESOURCE = this.resourceService.add(this.form.getRawValue());
+          RESOURCE = this.resourceService.add(this.updateFormRawValueWithObjects());
         } else {
           // EDIT mode
           RESOURCE = this.resourceService.update(this.updateResource(response.resource));
@@ -109,6 +109,25 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       const control = this.form.controls[key];
       control.setValue(control.value);
     });
+  }
+
+  convertDotPathToNestedObject(path: string, value: any): any {
+    const [last, ...paths] = path.split('.').reverse();
+    // @ts-ignore
+    return paths.reduce((acc, el) => ({ [el]: acc }), { [last]: value });
+  }
+
+  updateFormRawValueWithObjects(): any {
+    const rawValueTmp:any = {};
+    Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
+      if (key.includes('.')) {
+        const keys = key.split('.');
+        rawValueTmp[keys[0]] = this.convertDotPathToNestedObject(key, value)[keys[0]];
+      } else {
+        rawValueTmp[key] = value;
+      }
+    });
+    return rawValueTmp;
   }
 
   updateResource(resource: any): Resource {

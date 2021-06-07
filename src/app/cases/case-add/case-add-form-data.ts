@@ -35,13 +35,13 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_DATE,
         label: _('Date of report'),
         key: 'reportDate',
-        validation: ['required'],
+        // validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
         label: _('Disease'),
-        validation: ['required'],
+        // validation: ['required'],
         options: optionsDisease,
         newLine: true,
       },
@@ -55,7 +55,7 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'epidNumber',
         label: _('Epid number'),
-        validation: ['required'],
+        // validation: ['required'],
       },
     ],
   },
@@ -68,7 +68,7 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
         label: _('Responsible region'),
-        validation: ['required'],
+        // validation: ['required'],
         options: [
           {
             key: 'default',
@@ -83,7 +83,7 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
         label: _('Responsible district'),
-        validation: ['required'],
+        // validation: ['required'],
         options: [
           {
             key: 'default',
@@ -118,14 +118,14 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_RADIO,
         key: 'placeOfStaty',
-        validation: ['required'],
+        // validation: ['required'],
         options: optionsPlaceOfStay,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility.uuid',
         label: _('Facility category region'),
-        validation: ['required'],
+        // validation: ['required'],
         options: [
           {
             key: 'default',
@@ -141,7 +141,7 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_SELECT,
         key: 'facilityType',
         label: _('Facility type'),
-        validation: ['required'],
+        // validation: ['required'],
         options: [
           {
             key: 'LABORATORY',
@@ -182,14 +182,14 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'firstName',
         label: _('First name'),
-        validation: ['required'],
+        // validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'lastName',
         label: _('Last name'),
-        validation: ['required'],
+        // validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
