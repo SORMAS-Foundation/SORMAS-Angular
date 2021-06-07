@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/dot-notation */
 const propertiesReader = require('properties-reader');
 const path = require('path');
 const fs = require('fs');
@@ -24,10 +23,10 @@ fs.readdir(__dirname, (error: NodeJS.ErrnoException | null, files: string[]) => 
     }
     files.forEach((file: string) => {
         if (file.indexOf('_') < 0 && file.indexOf('.properties') > -1) {
-            if (!languageFiles['en']) {
-                languageFiles['en'] = [];
+            if (!languageFiles.en) {
+                languageFiles.en = [];
             }
-            languageFiles['en'].push(file);
+            languageFiles.en.push(file);
         }
         languages.forEach((language: string) => {
             if (file.indexOf(`${language}.properties`) > -1) {
