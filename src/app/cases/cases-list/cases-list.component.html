@@ -1,7 +1,7 @@
 <app-filters [topGap]="headerHeight">
   <app-case-filters filters></app-case-filters>
   <ng-container list>
-    <h1 class="header-title" i18n="Cases Overview header">{{ 'Cases Overview' | translate }}</h1>
+    <h1 class="header-title" i18n="Cases Overview header">{{ 'caseCasesList' | translate }}</h1>
     <app-table
       [resourceService]="caseService"
       [tableColumns]="defaultColumns"
