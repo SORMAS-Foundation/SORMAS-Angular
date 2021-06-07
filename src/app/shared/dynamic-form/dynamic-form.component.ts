@@ -118,7 +118,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   updateFormRawValueWithObjects(): any {
-    const rawValueTmp:any = {};
+    const rawValueTmp: any = {};
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
       if (key.includes('.')) {
         const keys = key.split('.');
