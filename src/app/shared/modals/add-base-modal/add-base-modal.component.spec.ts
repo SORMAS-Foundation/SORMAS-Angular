@@ -6,7 +6,6 @@ import { AddBaseModalComponent } from './add-base-modal.component';
 
 describe('AddBaseModalComponent', () => {
   // toDo: problem with the tests, because of the use of the dynamic load components: resolveComponentFactory
-
   // let component: AddBaseModalComponent;
   // let fixture: ComponentFixture<AddBaseModalComponent>;
   //

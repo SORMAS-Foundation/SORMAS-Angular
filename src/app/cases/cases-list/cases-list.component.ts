@@ -58,7 +58,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          console.log('rrrrr');
+          // callback
         }
       })
     );
