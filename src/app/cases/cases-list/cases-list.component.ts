@@ -64,7 +64,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }
