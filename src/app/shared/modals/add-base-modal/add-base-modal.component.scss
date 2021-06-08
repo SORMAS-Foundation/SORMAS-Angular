@@ -1,3 +1,5 @@
+@use '/src/variables.scss' as *;
+
 .add-base-modal-wrapper {
   position: relative;
   .modal-header {
@@ -20,5 +22,8 @@
         cursor: pointer;
       }
     }
+  }
+  .mat-dialog-content {
+    background: $background-color;
   }
 }

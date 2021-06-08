@@ -224,13 +224,6 @@ export const FORM_DATA_CASE_ADD = [
         className: 'size-small',
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'presentCondition',
-        label: _('Present condition'),
-        options: optionsPresentCondition,
-        newLine: true,
-      },
-      {
         ...FORM_DATA_DATE,
         key: 'dateOfDeath',
         label: _('Date of death'),
