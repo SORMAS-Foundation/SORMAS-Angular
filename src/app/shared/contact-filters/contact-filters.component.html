@@ -3,7 +3,7 @@
   <form class="filters-form" [formGroup]="filtersForm">
     <div *ngIf="!inTab">
       <mat-form-field
-        id="nameUuidCaseLike"
+        id="nameUuidCaseLike1"
         appearance="outline"
         floatLabel="always"
         class="search-field"
@@ -452,6 +452,25 @@
       </app-collapsable-box>
     </div>
     <div *ngIf="inTab">
+      <mat-form-field
+        id="nameUuidCaseLike2"
+        appearance="outline"
+        floatLabel="always"
+        class="search-field"
+      >
+        <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+        <input
+          value=""
+          type="text"
+          matInput
+          appDebounce
+          placeholder="{{
+            'ID, name, case ID, case name, person phone / postal code / city' | translate
+          }}"
+          formControlName="nameUuidCaseLike"
+          (debounce)="onFormChange()"
+        />
+      </mat-form-field>
       <app-collapsable-box boxTitle="{{ 'Medical aspects' | translate }}">
         <mat-form-field appearance="outline" class="collapsable-field">
           <mat-select
