@@ -10,6 +10,7 @@ import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
 import { HEADER_HEIGHT } from '../../app.constants';
+import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
 
@@ -48,7 +49,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openAddCaseModal(): void {
     const dialogRef = this.dialog.open(AddBaseModalComponent, {
-      width: '1110px',
+      maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('Add new case'),
         component: CaseAddComponent,
