@@ -24,6 +24,6 @@
     }
   }
   .mat-dialog-content {
-    background: $background-color;
+    background: map-get($sormas-accent, 50);
   }
 }

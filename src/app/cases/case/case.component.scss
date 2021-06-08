@@ -3,7 +3,7 @@
 .case-page {
   .case-content {
     padding: 0 25px;
-    background: $background-color;
+    background: map-get($sormas-accent, 50);
 
     &.fixed {
       padding-top: 100px;
