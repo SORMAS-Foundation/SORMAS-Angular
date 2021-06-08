@@ -137,7 +137,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'deathPlaceDescription',
-        label: _('Death place discription'),
+        label: _('Death place description'),
         dependingOn: 'deathPlaceType',
       },
       {

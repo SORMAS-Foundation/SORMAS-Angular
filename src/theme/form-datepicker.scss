@@ -59,6 +59,10 @@
           width: auto;
         }
       }
+
+      &.date-filter .mat-form-field-flex {
+        width: 100%;
+      }
     }
 
     .mat-calendar-body-selected {

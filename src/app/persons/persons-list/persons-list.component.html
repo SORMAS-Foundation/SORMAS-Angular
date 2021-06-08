@@ -1,0 +1,10 @@
+<h1 class="header-title" i18n="Person Overview header">{{ 'Persons Overview' | translate }}</h1>
+<app-table
+  [resourceService]="personService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [saveConfigKey]="configKey"
+></app-table>

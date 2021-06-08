@@ -6,6 +6,8 @@ export const defaultColumnDefs: TableColumn[] = [
     name: _('Case id'),
     dataKey: 'uuid',
     isSortable: true,
+    linkPattern: '/cases/case/$param1/details',
+    linkParams: ['uuid'],
   },
   {
     name: _('External id'),

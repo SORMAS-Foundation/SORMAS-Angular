@@ -22,6 +22,8 @@ import { AddressesListComponent } from './widgets/addresses-list/addresses-list.
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 import { TableModule } from './table/table.module';
+import { FiltersComponent } from './filters/filters.component';
+import { DebounceDirective } from '../_directives/debounce.directive';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { TableModule } from './table/table.module';
     AddressesListComponent,
     NewAddressComponent,
     ContactFiltersComponent,
+    FiltersComponent,
+    DebounceDirective,
   ],
   imports: [
     CommonModule,
@@ -69,6 +73,8 @@ import { TableModule } from './table/table.module';
     TranslateModule,
     ContactFiltersComponent,
     TableModule,
+    FiltersComponent,
+    DebounceDirective,
   ],
 })
 export class SharedModule {}

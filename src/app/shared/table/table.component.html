@@ -49,14 +49,23 @@
             [data]="data"
             [config]="tableColumn"
           ></app-table-data>
+              <a
+                mat-button
+                color="primary"
+                [routerLink]="getAdvancedData(element.index, tableColumn, advancedDataType.LINK)"
+                *ngIf="tableColumn.linkParams; else noLinkData"
+              >
+                {{ data | toShortId: tableColumn.dataKey }}
+              </a>
+              <ng-template #noLinkData>{{ data | toShortId: tableColumn.dataKey }}</ng-template>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
       <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns"
-        (click)="onItemClick(row)"
         [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
+        (click)="$event ? selection.toggle(row) : null"
       ></tr>
     </table>
   </cdk-virtual-scroll-viewport>

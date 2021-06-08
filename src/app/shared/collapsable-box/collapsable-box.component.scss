@@ -1,34 +1,5 @@
 @use '../../../variables.scss' as *;
 
 .collapsable-box {
-  padding: 25px 10px;
-  border: solid 1px map-get($sormas-accent, 200);
-  margin: 24px 16px;
-  box-shadow: none;
-  .box-header {
-    position: relative;
-    width: 100%;
-
-    .box-title {
-      display: block;
-      width: auto;
-      padding-left: 14px;
-      float: left;
-      font-size: 14px;
-    }
-    .box-icon {
-      position: absolute;
-      top: 0;
-      right: 10px;
-      display: block;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      outline: none;
-    }
-  }
-  .box-content {
-    margin-bottom: 0;
-    margin-left: 14px;
-  }
+  margin: 24px 0;
 }

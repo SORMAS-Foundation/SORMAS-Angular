@@ -6,6 +6,12 @@ export * from './_constants/enums';
 
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 54;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
+export const UUID_KEY = 'uuid';
+
+export enum AdvancedDataType {
+  DISPLAY = 'Display',
+  LINK = 'Link',
+}
 
 export enum CaseTitles {
   NO_OUTCOME = 'No outcome',
@@ -29,3 +35,5 @@ export type CaseLink = {
   title: string;
   link: string;
 };
+
+export const HEADER_HEIGHT = 68;

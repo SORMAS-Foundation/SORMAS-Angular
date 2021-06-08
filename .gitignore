@@ -52,3 +52,5 @@ Thumbs.db
 
 # log files
 *.log
+
+docker/translations/node_modules

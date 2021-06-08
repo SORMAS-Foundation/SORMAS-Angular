@@ -1,46 +1,69 @@
-<div class="case-filters">
-  <button class="toggle-filter" (click)="drawer.close()">
-    <mat-icon class="material-icons-round">filter_list</mat-icon>
-  </button>
+<div class="filters">
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form [formGroup]="filtersForm" class="filters-form">
-    <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
+    <mat-form-field
+      id="nameUuidEpidNumberLike"
+      appearance="outline"
+      floatLabel="always"
+      class="search-field"
+    >
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
       <input
         value=""
         type="text"
         matInput
+        appDebounce
         placeholder="{{ 'Search by Id, name' | translate }}"
-        formControlName="search"
-        (change)="onFormChange()"
+        formControlName="nameUuidEpidNumberLike"
+        (debounce)="onFormChange()"
       />
     </mat-form-field>
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Cases' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Cases' | translate }}">
       <mat-radio-group name="cases" formControlName="cases" (change)="onFormChange()">
-        <mat-radio-button class="case-radio" value="active" color="primary">
+        <mat-radio-button value="active" color="primary">
           {{ 'Active cases' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="case-radio" value="archived" color="primary">
+        <mat-radio-button value="archived" color="primary">
           {{ 'Archived cases' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="case-radio" value="all" color="primary" (change)="onFormChange()">
+        <mat-radio-button
+          class="option-radio"
+          value="all"
+          color="primary"
+          (change)="onFormChange()"
+        >
           {{ 'All cases' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="Case origin{{ 'Cases' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Case origin' | translate }}">
       <mat-radio-group name="caseOrigin" formControlName="caseOrigin" (change)="onFormChange()">
-        <mat-radio-button class="case-radio" value="IN_COUNTRY" color="primary">
+        <mat-radio-button value="IN_COUNTRY" color="primary">
           {{ 'In country' | translate }}
         </mat-radio-button>
-        <mat-radio-button class="case-radio" value="POINT_OF_ENTRY" color="primary">
+        <mat-radio-button value="POINT_OF_ENTRY" color="primary">
           {{ 'Point of entry' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Cases' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Events' | translate }}">
+      <mat-form-field id="eventLike" appearance="outline" floatLabel="always" class="search-field">
+        <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+        <input
+          value=""
+          type="text"
+          matInput
+          appDebounce
+          placeholder="{{ 'Event: ID, title, description' | translate }}"
+          formControlName="eventLike"
+          (debounce)="onFormChange()"
+        />
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Medical aspects' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -102,7 +125,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="Admin aspects">
+    <app-collapsable-box boxTitle="Admin aspects">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           (selectionChange)="onFormChange()"
@@ -177,7 +200,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Facility' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Facility' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -212,7 +235,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'Date filter' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Date filter' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -229,7 +252,7 @@
         floatLabel="always"
         class="{{
           picker1.opened ? 'datepicker-opened' : 'datepicker-closed'
-        }} date-field has-hint with-spacing"
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -250,7 +273,9 @@
         id="new-case-to"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker2.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
+        class="{{
+          picker2.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -271,7 +296,9 @@
         id="quarantine-end"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker3.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
+        class="{{
+          picker3.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -292,7 +319,9 @@
         id="follow-up-until"
         appearance="outline"
         floatLabel="always"
-        class="{{ picker4.opened ? 'datepicker-opened' : 'datepicker-closed' }} date-field has-hint"
+        class="{{
+          picker4.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
       >
         <input
           matInput
@@ -311,7 +340,7 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box [collapsed]="true" boxTitle="{{ 'More filters' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'More filters' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
@@ -353,8 +382,4 @@
       </mat-form-field>
     </app-collapsable-box>
   </form>
-  <br />
-  <button class="reset-button" (click)="resetFilters()" (keyup.enter)="resetFilters()">
-    {{ 'Reset filters' | translate }}
-  </button>
 </div>

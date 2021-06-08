@@ -1,20 +1,10 @@
-<button class="toggle-filter" (click)="drawer.open()">
-  <mat-icon *ngIf="!drawer.opened" class="material-icons-round">filter_list</mat-icon>
-</button>
-<mat-drawer-container class="event-list-container">
-  <mat-drawer #drawer opened mode="side" class="filters-bar">
-    <app-event-filters [drawer]="drawer"></app-event-filters>
-  </mat-drawer>
-  <mat-drawer-content>
-    <h1 class="header-title" i18n="Events Overview header">{{ 'Events Overview' | translate }}</h1>
-    <app-table
-      [resourceService]="eventService"
-      [tableColumns]="defaultColumns"
-      [isSortable]="true"
-      [isSelectable]="true"
-      [isHeaderSticky]="true"
-      [fullHeight]="true"
-      [saveConfigKey]="configKey"
-    ></app-table>
-  </mat-drawer-content>
-</mat-drawer-container>
+<h1 class="header-title" i18n="Events Overview header">{{ 'Events Overview' | translate }}</h1>
+<app-table
+  [resourceService]="eventService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [saveConfigKey]="configKey"
+></app-table>
