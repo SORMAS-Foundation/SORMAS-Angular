@@ -32,7 +32,7 @@ export class ContactFiltersComponent implements OnInit, OnDestroy {
   initFiltersForm(): void {
     if (this.inTab) {
       this.filtersForm = new FormGroup({
-        search: new FormControl(),
+        nameUuidCaseLike: new FormControl(),
         contactClassification: new FormControl(),
         contactPerson: new FormControl(),
         responsibleRegion: new FormControl(),
@@ -40,8 +40,8 @@ export class ContactFiltersComponent implements OnInit, OnDestroy {
       });
     } else {
       this.filtersForm = new FormGroup({
-        search: new FormControl(),
-        eventSearch: new FormControl(),
+        nameUuidCaseLike: new FormControl(),
+        eventLike: new FormControl(),
         contacts: new FormControl(),
         status: new FormControl(),
         traveler: new FormControl(),

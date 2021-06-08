@@ -1,15 +1,21 @@
 <div class="filters">
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form [formGroup]="filtersForm" class="filters-form">
-    <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
+    <mat-form-field
+      id="nameUuidEpidNumberLike"
+      appearance="outline"
+      floatLabel="always"
+      class="search-field"
+    >
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
       <input
         value=""
         type="text"
         matInput
+        appDebounce
         placeholder="{{ 'Search by Id, name' | translate }}"
-        formControlName="search"
-        (change)="onFormChange()"
+        formControlName="nameUuidEpidNumberLike"
+        (debounce)="onFormChange()"
       />
     </mat-form-field>
     <app-collapsable-box boxTitle="{{ 'Cases' | translate }}">
@@ -40,6 +46,21 @@
           {{ 'Point of entry' | translate }}
         </mat-radio-button>
       </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Events' | translate }}">
+      <mat-form-field id="eventLike" appearance="outline" floatLabel="always" class="search-field">
+        <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+        <input
+          value=""
+          type="text"
+          matInput
+          appDebounce
+          placeholder="{{ 'Event: ID, title, description' | translate }}"
+          formControlName="eventLike"
+          (debounce)="onFormChange()"
+        />
+      </mat-form-field>
     </app-collapsable-box>
 
     <app-collapsable-box boxTitle="{{ 'Medical aspects' | translate }}">
