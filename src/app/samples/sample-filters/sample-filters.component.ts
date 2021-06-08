@@ -29,7 +29,7 @@ export class SampleFiltersComponent implements OnInit, OnDestroy {
 
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
-      search: new FormControl(),
+      caseCodeIdLike: new FormControl(),
       sample: new FormControl(),
       status: new FormControl(),
       sampleType: new FormControl(),

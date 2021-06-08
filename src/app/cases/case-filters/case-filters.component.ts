@@ -48,7 +48,8 @@ export class CaseFiltersComponent implements OnInit, OnDestroy {
 
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
-      search: new FormControl(),
+      nameUuidEpidNumberLike: new FormControl(),
+      eventLike: new FormControl(),
       cases: new FormControl(),
       caseOrigin: new FormControl(),
       caseOutcome: new FormControl(),

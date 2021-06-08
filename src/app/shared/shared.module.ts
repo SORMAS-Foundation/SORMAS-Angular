@@ -24,6 +24,7 @@ import { AddressesListComponent } from './widgets/addresses-list/addresses-list.
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 import { FiltersComponent } from './filters/filters.component';
+import { DebounceDirective } from '../_directives/debounce.directive';
 import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.component';
 
 @NgModule({
@@ -42,6 +43,7 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     NewAddressComponent,
     ContactFiltersComponent,
     FiltersComponent,
+    DebounceDirective,
     AddBaseModalComponent,
   ],
   imports: [
@@ -76,6 +78,7 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     TranslateModule,
     ContactFiltersComponent,
     FiltersComponent,
+    DebounceDirective,
   ],
   entryComponents: [AddBaseModalComponent],
 })

@@ -2,15 +2,23 @@
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <div *ngIf="!inTab">
-      <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
+      <mat-form-field
+        id="nameUuidCaseLike"
+        appearance="outline"
+        floatLabel="always"
+        class="search-field"
+      >
         <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
         <input
           value=""
           type="text"
           matInput
-          placeholder="{{ 'Search by Id, name' | translate }}"
-          formControlName="search"
-          (change)="onFormChange()"
+          appDebounce
+          placeholder="{{
+            'ID, name, case ID, case name, person phone / postal code / city' | translate
+          }}"
+          formControlName="nameUuidCaseLike"
+          (debounce)="onFormChange()"
         />
       </mat-form-field>
 
@@ -81,7 +89,7 @@
 
       <app-collapsable-box boxTitle="{{ 'Events' | translate }}">
         <mat-form-field
-          id="eventSearch"
+          id="eventLike"
           appearance="outline"
           floatLabel="always"
           class="search-field"
@@ -91,9 +99,10 @@
             value=""
             type="text"
             matInput
-            placeholder="{{ 'Search by event, title, description' | translate }}"
-            formControlName="eventSearch"
-            (change)="onFormChange()"
+            appDebounce
+            placeholder="{{ 'Event: ID, title, description' | translate }}"
+            formControlName="eventLike"
+            (debounce)="onFormChange()"
           />
         </mat-form-field>
       </app-collapsable-box>

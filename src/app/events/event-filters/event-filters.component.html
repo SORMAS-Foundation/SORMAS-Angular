@@ -1,15 +1,16 @@
 <div class="filters">
   <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
-    <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
+    <mat-form-field id="freeText" appearance="outline" floatLabel="always" class="search-field">
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
       <input
         value=""
         type="text"
         matInput
+        appDebounce
         placeholder="{{ 'Search by Id, name' | translate }}"
-        formControlName="search"
-        (change)="onFormChange()"
+        formControlName="freeText"
+        (debounce)="onFormChange()"
       />
     </mat-form-field>
 
@@ -90,7 +91,7 @@
 
     <app-collapsable-box boxTitle="{{ 'Event participant' | translate }}">
       <mat-form-field
-        id="searchParticipant"
+        id="freeTextEventParticipants"
         appearance="outline"
         floatLabel="always"
         class="search-field"
@@ -100,16 +101,17 @@
           value=""
           type="text"
           matInput
+          appDebounce
           placeholder="{{ 'ID or personal details of event participants' | translate }}"
-          formControlName="searchParticipant"
-          (change)="onFormChange()"
+          formControlName="freeTextEventParticipants"
+          (debounce)="onFormChange()"
         />
       </mat-form-field>
     </app-collapsable-box>
 
     <app-collapsable-box boxTitle="{{ 'Event group' | translate }}">
       <mat-form-field
-        id="searchGroup"
+        id="freeTextEventGroups"
         appearance="outline"
         floatLabel="always"
         class="search-field"
@@ -119,9 +121,10 @@
           value=""
           type="text"
           matInput
+          appDebounce
           placeholder="{{ 'ID or name of event group' | translate }}"
-          formControlName="searchGroup"
-          (change)="onFormChange()"
+          formControlName="freeTextEventGroups"
+          (debounce)="onFormChange()"
         />
       </mat-form-field>
     </app-collapsable-box>

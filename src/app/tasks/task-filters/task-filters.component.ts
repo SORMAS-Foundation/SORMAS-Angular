@@ -29,7 +29,7 @@ export class TaskFiltersComponent implements OnInit, OnDestroy {
 
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
-      search: new FormControl(),
+      freeText: new FormControl(),
       taskStatus: new FormControl(),
       task: new FormControl(),
       taskContext: new FormControl(),

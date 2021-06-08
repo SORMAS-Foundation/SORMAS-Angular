@@ -29,13 +29,13 @@ export class EventFiltersComponent implements OnInit, OnDestroy {
 
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
-      search: new FormControl(),
+      freeText: new FormControl(),
       riskLevel: new FormControl(),
       eventStatus: new FormControl(),
       eventInvestigationStatus: new FormControl(),
       event: new FormControl(),
-      searchParticipant: new FormControl(),
-      searchGroup: new FormControl(),
+      freeTextEventParticipants: new FormControl(),
+      freeTextEventGroups: new FormControl(),
       disease: new FormControl(),
       reportingUser: new FormControl(),
       responsibleUser: new FormControl(),
