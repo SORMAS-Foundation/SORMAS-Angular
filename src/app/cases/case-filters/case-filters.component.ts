@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { fromEvent, Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Disease } from '../../_models/disease';
 import { FacilityTypeObject } from '../../_models/facility';
 import { FilterService } from '../../_services/filter.service';
 import { Filter } from '../../_models/common';
-import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
 
 export interface DropdownData {
   key: string;
