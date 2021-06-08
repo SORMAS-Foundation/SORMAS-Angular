@@ -7,9 +7,10 @@
         value=""
         type="text"
         matInput
+        appDebounce
         placeholder="{{ 'Search by Id, name' | translate }}"
         formControlName="freeText"
-        (change)="onFormChange()"
+        (debounce)="onFormChange()"
       />
     </mat-form-field>
 
@@ -100,9 +101,10 @@
           value=""
           type="text"
           matInput
+          appDebounce
           placeholder="{{ 'ID or personal details of event participants' | translate }}"
           formControlName="freeTextEventParticipants"
-          (change)="onFormChange()"
+          (debounce)="onFormChange()"
         />
       </mat-form-field>
     </app-collapsable-box>
@@ -119,9 +121,10 @@
           value=""
           type="text"
           matInput
+          appDebounce
           placeholder="{{ 'ID or name of event group' | translate }}"
           formControlName="freeTextEventGroups"
-          (change)="onFormChange()"
+          (debounce)="onFormChange()"
         />
       </mat-form-field>
     </app-collapsable-box>

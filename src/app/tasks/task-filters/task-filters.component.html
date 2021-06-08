@@ -7,9 +7,10 @@
         value=""
         type="text"
         matInput
+        appDebounce
         placeholder="{{ 'Case or Contact ID/name, Event ID/title' | translate }}"
         formControlName="freeText"
-        (change)="onFormChange()"
+        (debounce)="onFormChange()"
       />
     </mat-form-field>
 

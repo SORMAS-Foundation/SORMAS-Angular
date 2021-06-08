@@ -24,6 +24,7 @@ import { AddressesListComponent } from './widgets/addresses-list/addresses-list.
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 import { FiltersComponent } from './filters/filters.component';
+import { DebounceDirective } from '../_directives/debounce.directive';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FiltersComponent } from './filters/filters.component';
     NewAddressComponent,
     ContactFiltersComponent,
     FiltersComponent,
+    DebounceDirective,
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,7 @@ import { FiltersComponent } from './filters/filters.component';
     TranslateModule,
     ContactFiltersComponent,
     FiltersComponent,
+    DebounceDirective,
   ],
 })
 export class SharedModule {}

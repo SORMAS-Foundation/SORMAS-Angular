@@ -12,9 +12,10 @@
         value=""
         type="text"
         matInput
+        appDebounce
         placeholder="{{ 'Search by Id, name' | translate }}"
         formControlName="nameUuidEpidNumberLike"
-        (change)="onFormChange()"
+        (debounce)="onFormChange()"
       />
     </mat-form-field>
     <app-collapsable-box boxTitle="{{ 'Cases' | translate }}">
@@ -54,9 +55,10 @@
           value=""
           type="text"
           matInput
+          appDebounce
           placeholder="{{ 'Event: ID, title, description' | translate }}"
           formControlName="eventLike"
-          (change)="onFormChange()"
+          (debounce)="onFormChange()"
         />
       </mat-form-field>
     </app-collapsable-box>
