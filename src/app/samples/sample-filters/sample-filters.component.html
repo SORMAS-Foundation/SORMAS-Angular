@@ -1,5 +1,5 @@
 <div class="filters">
-  <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
+  <h2 class="filters-header">{{ 'headingFilters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field
       id="caseCodeIdLike"
@@ -13,7 +13,7 @@
         type="text"
         matInput
         appDebounce
-        placeholder="{{ 'Sample ID/name, case name/epid number/ID' | translate }}"
+        placeholder="{{ 'promptSamplesSearchField' | translate }}"
         formControlName="caseCodeIdLike"
         (debounce)="onFormChange()"
       />
@@ -22,61 +22,61 @@
     <app-collapsable-box boxTitle="{{ 'Sample' | translate }}">
       <mat-radio-group name="sample" formControlName="sample" (change)="onFormChange()">
         <mat-radio-button value="ALL" color="primary">
-          {{ 'All' | translate }}
+          {{ 'sampleAllSamples' | translate }}
         </mat-radio-button>
         <mat-radio-button value="NOT_SHIPPED" color="primary">
-          {{ 'Not shipped' | translate }}
+          {{ 'sampleNotShipped' | translate }}
         </mat-radio-button>
         <mat-radio-button value="SHIPPED" color="primary">
-          {{ 'Shipped' | translate }}
+          {{ 'sampleShipped' | translate }}
         </mat-radio-button>
         <mat-radio-button value="RECEIVED" color="primary">
-          {{ 'Received' | translate }}
+          {{ 'sampleReceived' | translate }}
         </mat-radio-button>
         <mat-radio-button value="REFERRED_TO_OTHER_LAB" color="primary">
-          {{ 'Referred to other lab' | translate }}
+          {{ 'sampleReferred' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Status' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Sample.status' | translate }}">
       <mat-radio-group name="status" formControlName="status" (change)="onFormChange()">
         <mat-radio-button value="active" color="primary">
-          {{ 'Active' | translate }}
+          {{ 'Sample.status.active' | translate }}
         </mat-radio-button>
         <mat-radio-button value="archived" color="primary">
-          {{ 'Archived' | translate }}
+          {{ 'Sample.status.archived' | translate }}
         </mat-radio-button>
         <mat-radio-button value="all" color="primary">
-          {{ 'All' | translate }}
+          {{ 'Sample.status.all' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Sample type' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'sampleAssociationType' | translate }}">
       <mat-radio-group name="sampleType" formControlName="sampleType" (change)="onFormChange()">
         <mat-radio-button value="ALL" color="primary">
-          {{ 'All samples' | translate }}
+          {{ 'SampleAssociationType.ALL' | translate }}
         </mat-radio-button>
         <mat-radio-button value="CASE" color="primary">
-          {{ 'Case samples' | translate }}
+          {{ 'SampleAssociationType.CASE' | translate }}
         </mat-radio-button>
         <mat-radio-button value="CONTACT" color="primary">
-          {{ 'Contact samples' | translate }}
+          {{ 'SampleAssociationType.CONTACT' | translate }}
         </mat-radio-button>
         <mat-radio-button value="EVENT" color="primary">
-          {{ 'Event participant sample' | translate }}
+          {{ 'SampleAssociationType.EVENT_PARTICIPANT' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Medical aspects' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Sample.medicalAspects' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="testResults"
-          placeholder="{{ 'Test results' | translate }}"
+          placeholder="{{ 'Sample.testResults' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -89,7 +89,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="specimenCondition"
-          placeholder="{{ 'Specimen condition' | translate }}"
+          placeholder="{{ 'Sample.specimenCondition' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -102,7 +102,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="caseClassification"
-          placeholder="{{ 'Case classification' | translate }}"
+          placeholder="{{ 'Sample.caseClassification' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -115,7 +115,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="disease"
-          placeholder="{{ 'Disease' | translate }}"
+          placeholder="{{ 'Sample.diseaseShort' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -130,7 +130,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="region"
-          placeholder="{{ 'Responsible region' | translate }}"
+          placeholder="{{ 'Sample.responsibleRegion' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -143,7 +143,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="district"
-          placeholder="{{ 'Responsible district' | translate }}"
+          placeholder="{{ 'Sample.responsibleDistrict' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -156,7 +156,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="laboratory"
-          placeholder="{{ 'Laboratory' | translate }}"
+          placeholder="{{ 'Sample.lab' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -165,15 +165,15 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Date filter' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'Sample.dateFilter' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           formControlName="dateFilter"
           (selectionChange)="onFormChange()"
-          placeholder="{{ 'By date' | translate }}"
+          placeholder="{{ 'DateFilterOption.DATE' | translate }}"
         >
-          <mat-option value="byDate"> {{ 'By date' | translate }} </mat-option>
+          <mat-option value="byDate"> {{ 'DateFilterOption.DATE' | translate }} </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field
@@ -191,7 +191,7 @@
           formControlName="startDate"
           (dateChange)="onFormChange()"
         />
-        <mat-hint>{{ 'Sample from' | translate }}</mat-hint>
+        <mat-hint>{{ 'Sample.sampleForm' | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="picker1"
@@ -214,7 +214,7 @@
           formControlName="dueDate"
           (dateChange)="onFormChange()"
         />
-        <mat-hint>{{ 'To' | translate }}</mat-hint>
+        <mat-hint>{{ 'to' | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="picker2"

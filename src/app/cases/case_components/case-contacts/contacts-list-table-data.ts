@@ -1,59 +1,58 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Contact id'),
+    name: 'Contact.uuid',
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: _('Disease'),
+    name: 'disease',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: _('Contact classification'),
+    name: 'Contact.contactClassification',
     dataKey: 'contactClassification',
     isSortable: true,
   },
   {
-    name: _('Contact status'),
+    name: 'Contact.contactStatus',
     dataKey: 'contactStatus',
     isSortable: true,
   },
   {
-    name: _('First name'),
+    name: 'Contact.firstName',
     dataKey: 'firstName',
     isSortable: true,
   },
   {
-    name: _('Last name'),
+    name: 'Contact.lastName',
     dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: _('Type of contact'),
+    name: 'Contact.typeOfContact',
     dataKey: 'contactProximity', // toDo
     isSortable: true,
   },
   {
-    name: _('Follow-up status'),
+    name: 'headingFollowUpStatus',
     dataKey: 'followUpStatus',
     isSortable: true,
   },
   {
-    name: _('Follow-up until'),
+    name: 'Contact.followUpUntil',
     dataKey: 'followUpUntil',
     isSortable: true,
   },
   {
-    name: _('Informatns N'),
+    name: 'Informatns N',
     dataKey: '', // toDo
     isSortable: true,
   },
   {
-    name: _('Tasks'),
+    name: 'Tasks',
     dataKey: '', // toDo
     isSortable: true,
   },

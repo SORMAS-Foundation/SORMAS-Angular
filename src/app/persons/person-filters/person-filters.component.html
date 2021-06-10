@@ -1,5 +1,5 @@
 <div class="filters">
-  <h2 class="filters-header">{{ 'Filters' | translate }}</h2>
+  <h2 class="filters-header">{{ 'headingFilters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field
       id="nameAddressPhoneEmailLike"
@@ -13,7 +13,7 @@
         type="text"
         matInput
         appDebounce
-        placeholder="{{ 'ID, name, phone number, email, city, street, postal code' | translate }}"
+        placeholder="{{ 'searchByIdNameAndMore' | translate }}"
         formControlName="nameAddressPhoneEmailLike"
         (debounce)="onFormChange()"
       />

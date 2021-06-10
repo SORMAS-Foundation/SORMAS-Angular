@@ -2,8 +2,10 @@
   <app-case-filters filters></app-case-filters>
   <ng-container list>
     <div class="case-list-header">
-      <h1 class="header-title" i18n="Cases Overview header">{{ 'Cases Overview' | translate }}</h1>
-      <button class="add-btn" mat-flat-button color="primary" (click)="openAddCaseModal()">{{ 'Add new case' | translate }}</button>
+      <h1 class="header-title" i18n="Cases Overview header">{{ 'caseCasesList' | translate }}</h1>
+      <button class="add-btn" mat-flat-button color="primary" (click)="openAddCaseModal()">
+        {{ 'caseNewCase' | translate }}
+      </button>
     </div>
     <app-table
       [resourceService]="caseService"

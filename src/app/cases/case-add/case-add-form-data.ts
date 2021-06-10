@@ -1,4 +1,3 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import {
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
@@ -25,22 +24,22 @@ const optionsDeathPlaceType = pipe.transform(DeathPlaceType);
 
 export const FORM_DATA_CASE_ADD = [
   {
-    id: 'caseDaa',
-    title: _('Case data'),
+    id: 'caseData',
+    title: 'headingCaseData',
     required: true,
     anchor: 'case_data',
-    anchorLabel: _('Case data'),
+    anchorLabel: 'headingCaseData',
     fields: [
       {
         ...FORM_DATA_DATE,
-        label: _('Date of report'),
+        label: 'CaseData.reportDate',
         key: 'reportDate',
         validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
-        label: _('Disease'),
+        label: 'disease',
         validation: ['required'],
         options: optionsDisease,
         newLine: true,
@@ -48,31 +47,31 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'diseaseVariant.uuid',
-        label: _('Disease variant'),
+        label: 'CaseData.diseaseVariant',
         options: optionsDisease,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'epidNumber',
-        label: _('Epid number'),
+        label: 'CaseData.epidNumber',
         validation: ['required'],
       },
     ],
   },
   {
     id: 'caseOrigin',
-    title: _('Case origin'),
+    title: 'CaseData.caseOrigin',
     required: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        label: _('Responsible region'),
+        label: 'CaseData.responsibleRegion',
         validation: ['required'],
         options: [
           {
             key: 'default',
-            value: _('Default region'),
+            value: 'defaultRegion',
           },
         ],
         className: 'size-large',
@@ -82,12 +81,12 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        label: _('Responsible district'),
+        label: 'CaseData.responsibleDistrict',
         validation: ['required'],
         options: [
           {
             key: 'default',
-            value: _('Default district'),
+            value: 'defaultDistrict',
           },
         ],
         className: 'size-large',
@@ -97,11 +96,11 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
-        label: _('Responsible community'),
+        label: 'CaseData.responsibleCommunity',
         options: [
           {
             key: 'default',
-            value: _('Default community'),
+            value: 'defaultCommunity',
           },
         ],
         className: 'size-large',
@@ -112,7 +111,7 @@ export const FORM_DATA_CASE_ADD = [
   },
   {
     id: 'placeOfStay',
-    title: _('Place of stay'),
+    title: 'casePlaceOfStay',
     required: true,
     fields: [
       {
@@ -124,12 +123,12 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility.uuid',
-        label: _('Facility category region'),
+        label: 'CaseData.facility.region',
         validation: ['required'],
         options: [
           {
             key: 'default',
-            value: _('Default region'),
+            value: 'defaultRegion',
           },
         ],
         newLine: true,
@@ -140,12 +139,12 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: _('Facility type'),
+        label: 'CaseData.facilityType',
         validation: ['required'],
         options: [
           {
             key: 'LABORATORY',
-            value: _('Laboratory'),
+            value: 'FacilityType.LABORATORY',
           },
         ],
         newLine: true,
@@ -156,7 +155,7 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails',
-        label: _('Facility name and description'),
+        label: 'CaseData.healthFacilityDetails',
         newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStaty',
@@ -165,7 +164,7 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'placeOfStatyDetails',
-        label: _('Place description'),
+        label: 'CaseData.noneHealthFacilityDetails',
         newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStaty',
@@ -175,27 +174,27 @@ export const FORM_DATA_CASE_ADD = [
   },
   {
     id: 'person',
-    title: _('Person information'),
+    title: 'headingPersonInformation',
     required: true,
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'firstName',
-        label: _('First name'),
+        label: 'firstName',
         validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'lastName',
-        label: _('Last name'),
+        label: 'lastName',
         validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'year',
-        label: _('Date of birth'),
-        placeholder: _('Year'),
+        label: 'Person.birth',
+        placeholder: 'year',
         options: [],
         className: 'size-small',
         newLine: true,
@@ -204,7 +203,7 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_SELECT,
         key: 'month',
         label: ' ',
-        placeholder: _('Month'),
+        placeholder: 'month',
         options: [],
         className: 'size-small',
       },
@@ -212,21 +211,21 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_SELECT,
         key: 'day',
         label: ' ',
-        placeholder: _('Day'),
+        placeholder: 'day',
         options: [],
         className: 'size-small',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'sex',
-        label: _('Sex'),
+        label: 'sex',
         options: optionsSex,
         className: 'size-small',
       },
       {
         ...FORM_DATA_DATE,
         key: 'dateOfDeath',
-        label: _('Date of death'),
+        label: 'Person.dateOfDeath',
         options: optionsPresentCondition,
         className: 'size-small',
         dependingOn: 'presentCondition',
@@ -235,7 +234,7 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'causeOfDeath',
-        label: _('Cause of death'),
+        label: 'Person.causeOfDeath',
         options: optionsCauseOfDeath,
         newLine: true,
         dependingOn: 'presentCondition',
@@ -244,14 +243,14 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'responsibleDisease',
-        label: _('Responsible disease'),
+        label: 'Person.causeOfDeathDisease',
         dependingOn: 'presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'deathPlaceType',
-        label: _('Death place type'),
+        label: 'Person.deathPlaceType',
         options: optionsDeathPlaceType,
         newLine: true,
         dependingOn: 'presentCondition',
@@ -260,50 +259,50 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'deathPlaceDescription',
-        label: _('Death place description'),
+        label: 'Person.deathPlaceDescription',
         dependingOn: 'deathPlaceType',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'healthId',
-        label: _('Health ID'),
+        label: 'Person.nationalHealthId',
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'passportNumber',
-        label: _('Passport number'),
+        label: 'Person.passportNumber',
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'phoneNo',
-        label: _('Phone number'),
+        label: 'User.phone',
         className: 'size-large',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'email',
-        label: _('Email'),
+        label: 'User.userEmail',
         className: 'size-large',
       },
     ],
   },
   {
     id: 'health',
-    title: _('Health'),
+    title: 'NewCaseHealth',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'presentCondition',
-        label: _('Present condition'),
+        label: 'PresentCondition',
         options: optionsPresentCondition,
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
-        label: _('Sympton onset'),
+        label: 'NewCaseDateType.ONSET',
         key: 'symptomOnset',
       },
     ],

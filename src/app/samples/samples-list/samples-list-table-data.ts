@@ -1,69 +1,68 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Sample id'),
+    name: 'Sample.uuid',
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: _('Epid number'),
+    name: 'Sample.labSampleID',
     dataKey: 'epidNumber',
     isSortable: true,
   },
   {
-    name: _('Associated case'),
+    name: 'Sample.associatedCase',
     dataKey: 'associatedCase.caption',
     isSortable: true,
   },
   {
-    name: _('Disease'),
+    name: 'Sample.diseaseShort',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: _('District'),
+    name: 'Sample.caseDistrict',
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: _('Sent/Dispatched'),
+    name: 'Sample.shipped',
     dataKey: 'shipped',
     isSortable: true,
   },
   {
-    name: _('Received'),
+    name: 'Sample.received',
     dataKey: 'received',
     isSortable: true,
   },
   {
-    name: _('Date sent'),
+    name: 'Sample.shipmentDate',
     dataKey: 'shipmentDate',
     isSortable: true,
   },
   {
-    name: _('Laboratory'),
+    name: 'Sample.lab',
     dataKey: 'lab.caption',
     isSortable: true,
   },
   {
-    name: _('Type of sample'),
+    name: 'Sample.sampleMaterial',
     dataKey: 'sampleMaterial',
     isSortable: true,
   },
   {
-    name: _('Purpose of the sample'),
+    name: 'Sample.samplePurpose',
     dataKey: 'samplePurpose',
     isSortable: true,
   },
   {
-    name: _('Final laboratory result'),
+    name: 'Sample.pathogenTestResult',
     dataKey: 'pathogenTestResult',
     isSortable: true,
   },
   {
-    name: _('Additional testing status'),
+    name: 'Sample.additionalTestingStatus',
     dataKey: 'additionalTestingStatus',
     isSortable: true,
   },

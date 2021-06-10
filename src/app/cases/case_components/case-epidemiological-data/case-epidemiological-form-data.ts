@@ -1,4 +1,3 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { FORM_DATA_RADIO, FORM_DATA_WIDGET, YesNoUnknown } from '../../../app.constants';
 
@@ -8,29 +7,27 @@ const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 export const FORM_DATA_CASE_EPID_DETAILS = [
   {
     id: 'exposureInvestigation',
-    title: _('Exposure investigation'),
-    subTitle: _(
-      'Please document ALL relevant direct exposures (eg attended gatherings, travels, animal contacts, etc) during the incubation period'
-    ),
+    title: 'headingExposureInvestigation',
+    subTitle: 'infoExposureInvestigation',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.exposureDetailsKnown',
-        label: _('Exposure details known'),
+        label: 'EpiData.exposureDetailsKnown',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-exposures-list',
-        label: _('Exposures'),
+        label: 'EpiData.exposures',
         newLine: true,
       },
     ],
   },
   {
     id: 'activity',
-    title: _('Activity as case'),
-    subTitle: _('Please document ALL relevant activities after infection'),
+    title: 'EpiData.activitiesAsCase',
+    subTitle: 'infoActivityAsCaseInvestigation',
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -46,40 +43,32 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
   },
   {
     id: 'incubation',
-    title: _('Incubation period'),
-    subTitle: _(
-      'Please indicate if any of the following is relevant for the patient during the incubation period'
-    ),
+    title: 'EpiData.incubationPeriod',
+    subTitle: 'infoEpiDataFieldsHint',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.highTransmissionRiskArea',
-        label: _(
-          'Residing or working in an area with high risk of transmission of the disease eg colsed residential and camp-like settings'
-        ),
+        label: 'EpiData.highTransmissionRiskArea',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.largeOutbreaksArea',
-        label: _(
-          'Residing or traveling to countries/territories/areas experiencing larger outbreaks of local transmission'
-        ),
+        label: 'EpiData.largeOutbreaksArea',
         options: optionsYesNoUnknown,
       },
     ],
   },
   {
     id: 'contacts',
-    title: _('Contacts with source case'),
-    subTitle: _(
-      'Please indicate ALL contacts with potential source cases during the incubation period'
-    ),
+    title: 'EpiData.contactWithSourceCase',
+    subTitle: 'infoEpiDataSourceCaseContacts',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.contactWithSourceCaseKnown',
-        label: _('Contacts with source case known'),
+        label: 'EpiData.contactWithSourceCaseKnown',
         options: optionsYesNoUnknown,
       },
     ],

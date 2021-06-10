@@ -1,12 +1,12 @@
-<h2 i18n>User profile</h2>
+<h2 i18n>{{ 'myProfile.userProfile' | translate }}</h2>
 
 <mat-card raised>
   <h3 i18n data-test-id="user-name">
-    User name: <b>{{ user }}</b>
+    {{ 'User.userName' | translate }} <b>{{ user }}</b>
   </h3>
 
   <mat-card-content>
-    <h3 i18n>User roles:</h3>
+    <h3 i18n>{{ 'User.userRoles' | translate }}</h3>
     <mat-chip-list [selectable]="false" aria-label="User roles">
       <mat-chip *ngFor="let role of roles"> {{ role }}</mat-chip>
     </mat-chip-list>
@@ -16,6 +16,6 @@
   <app-locale-select> </app-locale-select>
 
   <mat-card-actions>
-    <button mat-button color="accent" (click)="logout()">Log out</button>
+    <button mat-button color="accent" (click)="logout()">{{ 'actionLogout' | translate }}</button>
   </mat-card-actions>
 </mat-card>
