@@ -3,22 +3,22 @@ import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Person id'),
+    name: _('Person.uuid'),
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: _('First name'),
+    name: _('firstName'),
     dataKey: 'firstName',
     isSortable: true,
   },
   {
-    name: _('Last name'),
+    name: _('lastName'),
     dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: _('Age & birth date'),
+    name: _('Person.ageAndBirthDate'),
     dataKey: 'age',
     advancedDisplay: '$param1 ($param2/$param3/$param4)',
     advancedDisplayParams: [
@@ -30,29 +30,29 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: _('Sex'),
+    name: _('sex'),
     dataKey: 'sex',
     isSortable: true,
   },
   {
-    name: _('District'),
+    name: _('Person.districtName'),
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: _('Address'),
+    name: _('address'),
     dataKey: 'city',
     advancedDisplay: '$param1, $param2, $param3, $param4',
     advancedDisplayParams: ['city', 'street', 'houseNumber', 'postalCode'],
     isSortable: true,
   },
   {
-    name: _('Primary phone number'),
+    name: _('person.primaryPhone'),
     dataKey: 'phone',
     isSortable: true,
   },
   {
-    name: _('Primary email address'),
+    name: _('Person.emailAddress'),
     dataKey: 'email',
     isSortable: true,
   },

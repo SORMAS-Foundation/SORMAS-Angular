@@ -19,7 +19,7 @@ const optionsHospitalizationReason = pipe.transform(HospitalizationReason);
 export const FORM_DATA_CASE_HOSPITALIZATION = [
   {
     id: 'hospital',
-    title: _('Hospital Name'),
+    title: _('CaseHospitalization.healthFacility'),
     fields: [
       {
         ...FORM_DATA_NULL,
@@ -36,7 +36,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
   },
   {
     id: 'facility',
-    title: _('Facility inpatient'),
+    title: _('CaseHospitalization.facilityInpatient'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -47,35 +47,35 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
   },
   {
     id: 'date',
-    title: _('Date'),
+    title: _('date'),
     fields: [
       {
         ...FORM_DATA_DATE,
         key: 'hospitalization.admissionDate',
-        hint: _('Admission'),
+        hint: _('CaseHospitalization.admissionDate'),
       },
       {
         ...FORM_DATA_DATE,
         key: 'hospitalization.dischargeDate',
-        hint: _('Discharge or transfer'),
+        hint: _('CaseHospitalization.dischargeDate'),
       },
     ],
   },
   {
     id: 'hospitalization',
-    title: _('Hospitalization'),
+    title: _('CaseHospitalization'),
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'hospitalization.hospitalizationReason',
-        label: _('Reasons for hospitalization'),
+        label: _('CaseHospitalization.hospitalizationReason'),
         options: optionsHospitalizationReason,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'hospitalization.otherHospitalizationReason',
-        label: _('Specify reason'),
+        label: _('CaseHospitalization.otherHospitalizationReason'),
         className: 'size-large',
         dependingOn: 'hospitalization.hospitalizationReason',
         dependingOnValues: ['OTHER'],
@@ -84,7 +84,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
   },
   {
     id: 'medicalAdvice',
-    title: _('Left against medical advice'),
+    title: _('CaseHospitalization.leftAgainstAdvice'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -95,7 +95,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
   },
   {
     id: 'intensiveCare',
-    title: _('Stay in intensive care unit'),
+    title: _('CaseHospitalization.intensiveCareUnit'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -105,7 +105,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
       {
         ...FORM_DATA_DATE,
         key: 'hospitalization.intensiveCareUnitStart',
-        hint: _('Start'),
+        hint: _('CaseHospitalization.intensiveCareUnitStart'),
         newLine: true,
         dependingOn: 'hospitalization.intensiveCareUnit',
         dependingOnValues: ['YES'],
@@ -113,7 +113,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
       {
         ...FORM_DATA_DATE,
         key: 'hospitalization.intensiveCareUnitEnd',
-        hint: _('End'),
+        hint: _('CaseHospitalization.intensiveCareUnitEnd'),
         dependingOn: 'hospitalization.intensiveCareUnit',
         dependingOnValues: ['YES'],
       },
@@ -121,7 +121,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
   },
   {
     id: 'isolation',
-    title: _('Isolation'),
+    title: _('CaseHospitalization.isolation'),
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -131,7 +131,7 @@ export const FORM_DATA_CASE_HOSPITALIZATION = [
       {
         ...FORM_DATA_DATE,
         key: 'hospitalization.isolationDate',
-        hint: _('Date of isolation'),
+        hint: _('CaseHospitalization.isolationDate'),
         newLine: true,
         dependingOn: 'hospitalization.isolated',
         dependingOnValues: ['YES'],

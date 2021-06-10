@@ -10,15 +10,15 @@ export interface RouteItem {
 }
 
 export const routesConfig: RouteItem[] = [
-  { link: '', label: _('Dashboard') },
-  { link: 'about', label: _('About') },
-  { link: 'tasks/list', label: _('Tasks') },
-  { link: 'cases/list', label: _('Cases') },
-  { link: 'events/list', label: _('Events') },
-  { link: 'contacts/list', label: _('Contacts') },
-  { link: 'samples/list', label: _('Samples') },
-  { link: 'user-profile', label: _('My profile') },
-  { link: 'persons/list', label: _('Persons') },
+  { link: '', label: _('mainMenuDashboard') },
+  { link: 'about', label: _('mainMenuAbout') },
+  { link: 'tasks/list', label: _('mainMenuTasks') },
+  { link: 'cases/list', label: _('mainMenuCases') },
+  { link: 'events/list', label: _('mainMenuEvents') },
+  { link: 'contacts/list', label: _('mainMenuContacts') },
+  { link: 'samples/list', label: _('mainMenuSamples') },
+  { link: 'user-profile', label: _('mainMenuMyProfile') },
+  { link: 'persons/list', label: _('mainMenuPersons') },
 ];
 
 @Component({

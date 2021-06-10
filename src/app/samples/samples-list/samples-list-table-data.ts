@@ -3,67 +3,67 @@ import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Sample id'),
+    name: _('Sample.uuid'),
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: _('Epid number'),
+    name: _('Sample.labSampleID'),
     dataKey: 'epidNumber',
     isSortable: true,
   },
   {
-    name: _('Associated case'),
+    name: _('Sample.associatedCase'),
     dataKey: 'associatedCase.caption',
     isSortable: true,
   },
   {
-    name: _('Disease'),
+    name: _('Sample.diseaseShort'),
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: _('District'),
+    name: _('Sample.caseDistrict'),
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: _('Sent/Dispatched'),
+    name: _('Sample.shipped'),
     dataKey: 'shipped',
     isSortable: true,
   },
   {
-    name: _('Received'),
+    name: _('Sample.received'),
     dataKey: 'received',
     isSortable: true,
   },
   {
-    name: _('Date sent'),
+    name: _('Sample.shipmentDate'),
     dataKey: 'shipmentDate',
     isSortable: true,
   },
   {
-    name: _('Laboratory'),
+    name: _('Sample.lab'),
     dataKey: 'lab.caption',
     isSortable: true,
   },
   {
-    name: _('Type of sample'),
+    name: _('Sample.sampleMaterial'),
     dataKey: 'sampleMaterial',
     isSortable: true,
   },
   {
-    name: _('Purpose of the sample'),
+    name: _('Sample.samplePurpose'),
     dataKey: 'samplePurpose',
     isSortable: true,
   },
   {
-    name: _('Final laboratory result'),
+    name: _('Sample.pathogenTestResult'),
     dataKey: 'pathogenTestResult',
     isSortable: true,
   },
   {
-    name: _('Additional testing status'),
+    name: _('Sample.additionalTestingStatus'),
     dataKey: 'additionalTestingStatus',
     isSortable: true,
   },

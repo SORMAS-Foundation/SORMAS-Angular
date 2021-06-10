@@ -3,37 +3,37 @@ import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Assigned user'),
+    name: _('Task.contextReference'),
     dataKey: 'assigneeUser.caption',
     isSortable: true,
   },
   {
-    name: _('Type'),
+    name: _('statisticsVisualizationType'),
     dataKey: 'taskType',
     isSortable: true,
   },
   {
-    name: _('Priority'),
+    name: _('Task.priority'),
     dataKey: 'priority',
     isSortable: true,
   },
   {
-    name: _('Context'),
+    name: _('Task.taskContext'),
     dataKey: 'taskContext',
     isSortable: true,
   },
   {
-    name: _('Region'),
+    name: _('region'),
     dataKey: 'region',
     isSortable: true,
   },
   {
-    name: _('District'),
+    name: _('district'),
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: _('Suggested start'),
+    name: _('Task.suggestedStart'),
     dataKey: 'suggestedStart',
     isSortable: true,
   },

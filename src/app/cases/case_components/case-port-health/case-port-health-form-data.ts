@@ -20,18 +20,18 @@ const optionsConveyanceType = pipe.transform(ConveyanceTypeOptions);
 export const FORM_DATA_CASE_PORT_HEALTH_AIRPORT = [
   {
     id: 'pointOfEntry',
-    title: _('Point of entry'),
+    title: _('pointOfEntry'),
     fields: [
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.pointOfEntryType',
-        label: _('Point of entry type'),
+        label: _('PointOfEntry.pointOfEntryType'),
         className: 'size-small',
       },
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.caption',
-        label: _('Point of entry'),
+        label: _('pointOfEntry'),
       },
     ],
   },
@@ -42,47 +42,47 @@ export const FORM_DATA_CASE_PORT_HEALTH_AIRPORT = [
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.airlineName',
-        label: _('Airline name'),
+        label: _('PortHealthInfo.airlineName'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.departureAirport',
-        label: _('Departing airport'),
+        label: _('PortHealthInfo.departureAirport'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.flightNumber',
-        label: _('Flight number'),
+        label: _('PortHealthInfo.flightNumber'),
         newLine: true,
       },
       {
         ...FORM_DATA_DATETIME,
         key: 'portHealthInfo.departureDateTime',
-        label: _('Date of departure'),
+        label: _('PortHealthInfo.departureDateTime'),
       },
       {
         ...FORM_DATA_RADIO,
         key: 'portHealthInfo.freeSeating',
-        label: _('Free seating'),
+        label: _('PortHealthInfo.freeSeating'),
         options: optionsYesNoUnknown,
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.seatNumber',
-        label: _('Seat number'),
+        label: _('PortHealthInfo.seatNumber'),
         className: 'size-small',
       },
       {
         ...FORM_DATA_DATETIME,
         key: 'portHealthInfo.arrivalDateTime',
-        label: _('Date of arrival'),
+        label: _('PortHealthInfo.arrivalDateTime'),
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'portHealthInfo.numberOfTransitStops',
-        label: _('Number of transit stops'),
+        label: _('PortHealthInfo.numberOfTransitStops'),
         options: [
           {
             key: 0,
@@ -113,7 +113,7 @@ export const FORM_DATA_CASE_PORT_HEALTH_AIRPORT = [
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.transitStopDetails1',
-        label: _('Detail about first transit stop'),
+        label: _('PortHealthInfo.transitStopDetails1'),
         className: 'size-large',
         newLine: true,
         dependingOn: 'portHealthInfo.numberOfTransitStops',
@@ -122,7 +122,7 @@ export const FORM_DATA_CASE_PORT_HEALTH_AIRPORT = [
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.transitStopDetails2',
-        label: _('Detail about second transit stop'),
+        label: _('PortHealthInfo.transitStopDetails2'),
         className: 'size-large',
         newLine: true,
         dependingOn: 'portHealthInfo.numberOfTransitStops',
@@ -131,7 +131,7 @@ export const FORM_DATA_CASE_PORT_HEALTH_AIRPORT = [
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.transitStopDetails3',
-        label: _('Detail about third transit stop'),
+        label: _('PortHealthInfo.transitStopDetails3'),
         className: 'size-large',
         newLine: true,
         dependingOn: 'portHealthInfo.numberOfTransitStops',
@@ -140,7 +140,7 @@ export const FORM_DATA_CASE_PORT_HEALTH_AIRPORT = [
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.transitStopDetails4',
-        label: _('Detail about fourth transit stop'),
+        label: _('PortHealthInfo.transitStopDetails4'),
         className: 'size-large',
         newLine: true,
         dependingOn: 'portHealthInfo.numberOfTransitStops',
@@ -149,7 +149,7 @@ export const FORM_DATA_CASE_PORT_HEALTH_AIRPORT = [
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.transitStopDetails5',
-        label: _('Detail about fifth transit stop'),
+        label: _('PortHealthInfo.transitStopDetails5'),
         className: 'size-large',
         newLine: true,
         dependingOn: 'portHealthInfo.numberOfTransitStops',
@@ -162,56 +162,56 @@ export const FORM_DATA_CASE_PORT_HEALTH_AIRPORT = [
 export const FORM_DATA_CASE_PORT_HEALTH_SEAPORT = [
   {
     id: 'pointOfEntry',
-    title: _('Point of entry'),
+    title: _('pointOfEntry'),
     fields: [
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.pointOfEntryType',
-        label: _('Point of entry type'),
+        label: _('PointOfEntry.pointOfEntryType'),
         className: 'size-small',
       },
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.caption',
-        label: _('Point of entry'),
+        label: _('pointOfEntry'),
       },
     ],
   },
   {
     id: 'vesselDetails',
-    title: _('Vessel details'),
+    title: _('PortHealthInfo.vesselDetails'),
     fields: [
       {
         ...FORM_DATA_INPUT,
-        key: 'portHealthInfo.vesselName',
+        key: 'PortHealthInfo.vesselName',
         label: _('Vessel name'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.vesselDetails',
-        label: _('Vessel details'),
+        label: _('PortHealthInfo.vesselDetails'),
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.portOfDeparture',
-        label: _('Port of departure'),
+        label: _('PortHealthInfo.portOfDeparture'),
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.lastPortOfCall',
-        label: _('Last port of call'),
+        label: _('PortHealthInfo.lastPortOfCall'),
       },
       {
         ...FORM_DATA_DATETIME,
         key: 'portHealthInfo.departureDateTime',
-        label: _('Date of departure'),
+        label: _('PortHealthInfo.departureDateTime'),
         newLine: true,
       },
       {
         ...FORM_DATA_DATETIME,
         key: 'portHealthInfo.arrivalDateTime',
-        label: _('Date of arrival'),
+        label: _('PortHealthInfo.arrivalDateTime'),
         newLine: true,
       },
     ],
@@ -221,48 +221,48 @@ export const FORM_DATA_CASE_PORT_HEALTH_SEAPORT = [
 export const FORM_DATA_CASE_PORT_HEALTH_GROUNDCROSSING = [
   {
     id: 'pointOfEntry',
-    title: _('Point of entry'),
+    title: _('pointOfEntry'),
     fields: [
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.pointOfEntryType',
-        label: _('Point of entry type'),
+        label: _('PointOfEntry.pointOfEntryType'),
         className: 'size-small',
       },
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.caption',
-        label: _('Point of entry'),
+        label: _('pointOfEntry'),
       },
     ],
   },
   {
     id: 'details',
-    title: _('Conveyance details'),
+    title: _('portHealthInfo.conveyanceDetails'),
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'portHealthInfo.conveyanceType',
-        label: _('Conveyance type'),
+        label: _('PortHealthInfo.conveyanceType'),
         options: optionsConveyanceType,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.conveyanceTypeDetails',
-        label: _('Specify the conveyance type'),
+        label: _('PortHealthInfo.conveyanceTypeDetails'),
         dependingOn: 'portHealthInfo.conveyanceType',
         dependingOnValues: ['OTHER'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.departureLocation',
-        label: _('Start location of travel'),
+        label: _('PortHealthInfo.departureLocation'),
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'portHealthInfo.finalDestination',
-        label: _('Final destination'),
+        label: _('PortHealthInfo.finalDestination'),
       },
     ],
   },
@@ -271,23 +271,23 @@ export const FORM_DATA_CASE_PORT_HEALTH_GROUNDCROSSING = [
 export const FORM_DATA_CASE_PORT_HEALTH_OTHER = [
   {
     id: 'pointOfEntry',
-    title: _('Point of entry'),
+    title: _('pointOfEntry'),
     fields: [
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.pointOfEntryType',
-        label: _('Point of entry type'),
+        label: _('pointOfEntry.pointOfEntryType'),
         className: 'size-small',
       },
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.caption',
-        label: _('Point of entry'),
+        label: _('pointOfEntry'),
       },
       {
         ...FORM_DATA_TEXTAREA,
         key: 'portHealthInfo.details',
-        label: _('Point of entry details'),
+        label: _('PortHealthInfo.details'),
         newLine: true,
       },
     ],

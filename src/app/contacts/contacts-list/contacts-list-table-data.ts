@@ -3,57 +3,57 @@ import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Contact id'),
+    name: _('Contact.uuid'),
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: _('Disease'),
+    name: _('disease'),
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: _('Contact classification'),
+    name: _('Contact.contactClassification'),
     dataKey: 'contactClassification',
     isSortable: true,
   },
   {
-    name: _('Contact status'),
+    name: _('Contact.contactStatus'),
     dataKey: 'contactStatus',
     isSortable: true,
   },
   {
-    name: _('First name'),
+    name: _('Contact.firstName'),
     dataKey: 'firstName',
     isSortable: true,
   },
   {
-    name: _('Last name'),
+    name: _('Contact.lastName'),
     dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: _('Type of contact'),
+    name: _('Contact.contactProximityLongForm'),
     dataKey: 'contactProximity', // toDo
     isSortable: true,
   },
   {
-    name: _('Follow-up status'),
+    name: _('ContactsEpiCurveMode.FOLLOW_UP_STATUS'),
     dataKey: 'followUpStatus',
     isSortable: true,
   },
   {
-    name: _('Follow-up until'),
+    name: _('ContactsEpiCurveMode.FOLLOW_UP_UNTIL'),
     dataKey: 'followUpUntil',
     isSortable: true,
   },
   {
-    name: _('Informatns N'),
+    name: _('Contact.numberOfVisits'),
     dataKey: '', // toDo
     isSortable: true,
   },
   {
-    name: _('Tasks'),
+    name: _('columnNumberOfPendingTasks'),
     dataKey: '', // toDo
     isSortable: true,
   },
