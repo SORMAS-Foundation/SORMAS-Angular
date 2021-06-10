@@ -1,24 +1,23 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Person.uuid'),
+    name: 'Person.uuid',
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: _('firstName'),
+    name: 'firstName',
     dataKey: 'firstName',
     isSortable: true,
   },
   {
-    name: _('lastName'),
+    name: 'lastName',
     dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: _('Person.ageAndBirthDate'),
+    name: 'Person.ageAndBirthDate',
     dataKey: 'age',
     advancedDisplay: '$param1 ($param2/$param3/$param4)',
     advancedDisplayParams: [
@@ -30,29 +29,29 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: _('sex'),
+    name: 'sex',
     dataKey: 'sex',
     isSortable: true,
   },
   {
-    name: _('Person.districtName'),
+    name: 'Person.districtName',
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: _('address'),
+    name: 'address',
     dataKey: 'city',
     advancedDisplay: '$param1, $param2, $param3, $param4',
     advancedDisplayParams: ['city', 'street', 'houseNumber', 'postalCode'],
     isSortable: true,
   },
   {
-    name: _('person.primaryPhone'),
+    name: 'person.primaryPhone',
     dataKey: 'phone',
     isSortable: true,
   },
   {
-    name: _('Person.emailAddress'),
+    name: 'Person.emailAddress',
     dataKey: 'email',
     isSortable: true,
   },

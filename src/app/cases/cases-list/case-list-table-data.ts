@@ -1,87 +1,86 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('CaseData.uuid'),
+    name: 'CaseData.uuid',
     dataKey: 'uuid',
     isSortable: true,
     linkPattern: '/cases/case/$param1/details',
     linkParams: ['uuid'],
   },
   {
-    name: _('CaseData.externalID'),
+    name: 'CaseData.externalID',
     dataKey: 'externalID',
     isSortable: true,
   },
   {
-    name: _('disease'),
+    name: 'disease',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: _('CaseData.diseaseVariant'),
+    name: 'CaseData.diseaseVariant',
     dataKey: 'diseaseDetails',
     isSortable: true,
   },
   {
-    name: _('Contact.caze.caseClassification'),
+    name: 'Contact.caze.caseClassification',
     dataKey: 'caseClassification',
     isSortable: true,
   },
   {
-    name: _('CaseData.outcome'),
+    name: 'CaseData.outcome',
     dataKey: 'outcome',
     isSortable: true,
   },
   {
-    name: _('CaseData.investigationStatus'),
+    name: 'CaseData.investigationStatus',
     dataKey: 'investigationStatus',
     isSortable: true,
     iconify: true,
   },
   {
-    name: _('CaseData.personFirstName'),
+    name: 'CaseData.personFirstName',
     dataKey: 'person.firstName',
     isSortable: true,
   },
   {
-    name: _('CaseData.personLastName'),
+    name: 'CaseData.personLastName',
     dataKey: 'person.lastName',
     isSortable: true,
   },
   {
-    name: _('CaseData.district'),
+    name: 'CaseData.district',
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: _('CaseData.healthFacilityName'),
+    name: 'CaseData.healthFacilityName',
     dataKey: 'healthFacility.caption',
     isSortable: true,
   },
   {
-    name: _('CaseData.pointOfEntry'),
+    name: 'CaseData.pointOfEntry',
     dataKey: 'pointOfEntry.caption',
     isSortable: true,
   },
   {
-    name: _('CaseData.reportDate'),
+    name: 'CaseData.reportDate',
     dataKey: 'reportDate',
     isSortable: true,
   },
   {
-    name: _('CaseData.quarantineTo'),
+    name: 'CaseData.quarantineTo',
     dataKey: 'quarantineTo',
     isSortable: true,
   },
   {
-    name: _('CaseData.followUpStatus'),
+    name: 'CaseData.followUpStatus',
     dataKey: 'followUpStatus',
     isSortable: true,
   },
   {
-    name: _('CaseData.followUpUntil'),
+    name: 'CaseData.followUpUntil',
     dataKey: 'followUpUntil',
     isSortable: true,
   },

@@ -1,4 +1,3 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import {
   FORM_DATA_RADIO,
   FORM_DATA_DATE,
@@ -30,19 +29,19 @@ const optionsTemperature = range(35, 44.1, 0.1).map((val) => ({
 export const FORM_DATA_CASE_SYMPTOMS = [
   {
     id: 'measurements',
-    title: _('headingClinicalMeasurements'),
+    title: 'headingClinicalMeasurements',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'symptoms.temperature',
-        label: _('symptomsMaxTemperature'),
+        label: 'symptomsMaxTemperature',
         options: optionsTemperature,
         className: 'size-medium',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'symptoms.temperatureSource',
-        label: _('Symptoms.temperatureSource'),
+        label: 'Symptoms.temperatureSource',
         options: optionsTemperatureSource,
         className: 'size-small',
       },
@@ -50,7 +49,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
   },
   {
     id: 'symptoms',
-    title: _('headingSignsAndSymptoms'),
+    title: 'headingSignsAndSymptoms',
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -60,40 +59,40 @@ export const FORM_DATA_CASE_SYMPTOMS = [
   },
   {
     id: 'general',
-    title: _('SymptomGroup.GENERAL'),
+    title: 'SymptomGroup.GENERAL',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.chillsSweats',
-        label: _('Symptoms.chillsSweats'),
+        label: 'Symptoms.chillsSweats',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.headache',
-        label: _('Symptoms.headache'),
+        label: 'Symptoms.headache',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.fever',
-        label: _('Symptoms.fever'),
+        label: 'Symptoms.fever',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.musclePain',
-        label: _('Symptoms.musclePain'),
+        label: 'Symptoms.musclePain',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.shivering',
-        label: _('Symptoms.shivering'),
+        label: 'Symptoms.shivering',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
@@ -101,7 +100,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.feelingIll',
-        label: _('Symptoms.feelingIll'),
+        label: 'Symptoms.feelingIll',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
@@ -109,68 +108,68 @@ export const FORM_DATA_CASE_SYMPTOMS = [
   },
   {
     id: 'respiratory',
-    title: _('SymptomGroup.RESPIRATORY'),
+    title: 'SymptomGroup.RESPIRATORY',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.soreThroat',
-        label: _('Symptoms.soreThroat'),
+        label: 'Symptoms.soreThroat',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.runnyNose',
-        label: _('Symptoms.runnyNose'),
+        label: 'Symptoms.runnyNose',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.cough',
-        label: _('Symptoms.cough'),
+        label: 'Symptoms.cough',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.difficultyBreathing',
-        label: _('Symptoms.difficultyBreathing'),
+        label: 'Symptoms.difficultyBreathing',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.rapidBreathing',
-        label: _('Symptoms.rapidBreathing'),
+        label: 'Symptoms.rapidBreathing',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.pneumoniaClinicalOrRadiologic',
-        label: _('Symptoms.pneumoniaClinicalOrRadiologic'),
+        label: 'Symptoms.pneumoniaClinicalOrRadiologic',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.oxygenSaturationLower94',
-        label: _('Symptoms.oxygenSaturationLower94'),
+        label: 'Symptoms.oxygenSaturationLower94',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.respiratoryDiseaseVentilation',
-        label: _('Symptoms.respiratoryDiseaseVentilation'),
+        label: 'Symptoms.respiratoryDiseaseVentilation',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.acuteRespiratoryDistressSyndrome',
-        label: _('Symptoms.acuteRespiratoryDistressSyndrome'),
+        label: 'Symptoms.acuteRespiratoryDistressSyndrome',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
@@ -178,12 +177,12 @@ export const FORM_DATA_CASE_SYMPTOMS = [
   },
   {
     id: 'cardiovascular',
-    title: _('SymptomGroup.CARDIOVASCULAR'),
+    title: 'SymptomGroup.CARDIOVASCULAR',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.fastHeartRate',
-        label: _('Symptoms.fastHeartRate'),
+        label: 'Symptoms.fastHeartRate',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
@@ -191,19 +190,19 @@ export const FORM_DATA_CASE_SYMPTOMS = [
   },
   {
     id: 'gastrointestinal',
-    title: _('SymptomGroup.GASTROINTESTINAL'),
+    title: 'SymptomGroup.GASTROINTESTINAL',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.diarrhea',
-        label: _('Symptoms.diarrhea'),
+        label: 'Symptoms.diarrhea',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.nausea',
-        label: _('Symptoms.nausea'),
+        label: 'Symptoms.nausea',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
@@ -211,26 +210,26 @@ export const FORM_DATA_CASE_SYMPTOMS = [
   },
   {
     id: 'other',
-    title: _('SymptomGroup.OTHER'),
+    title: 'SymptomGroup.OTHER',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.lossOfSmell',
-        label: _('Symptoms.lossOfSmell'),
+        label: 'Symptoms.lossOfSmell',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.lossOfTaste',
-        label: _('Symptoms.lossOfTaste'),
+        label: 'Symptoms.lossOfTaste',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.otherComplications',
-        label: _('Symptoms.otherNonHemorrhagicSymptoms'),
+        label: 'Symptoms.otherNonHemorrhagicSymptoms',
         options: optionsYesNoUnknown,
         className: 'size-large',
         newLine: true,
@@ -238,7 +237,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_INPUT,
         key: 'symptoms.otherComplicationsText',
-        label: _('Symptoms.otherNonHemorrhagicSymptomsText'),
+        label: 'Symptoms.otherNonHemorrhagicSymptomsText',
         validation: ['required'],
         className: 'size-large',
         dependingOn: 'symptoms.otherComplications',
@@ -261,7 +260,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_SELECT,
         key: 'symptoms.onsetSymptom',
-        label: _('Symptoms.firstSymptom'),
+        label: 'Symptoms.firstSymptom',
         options: [],
         className: 'size-large',
         newLine: true,
@@ -269,7 +268,7 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_DATE,
         key: 'symptoms.onsetDate',
-        label: _('Date of symptom onset'),
+        label: 'Date of symptom onset',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },

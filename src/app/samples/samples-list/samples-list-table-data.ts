@@ -1,69 +1,68 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Sample.uuid'),
+    name: 'Sample.uuid',
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: _('Sample.labSampleID'),
+    name: 'Sample.labSampleID',
     dataKey: 'epidNumber',
     isSortable: true,
   },
   {
-    name: _('Sample.associatedCase'),
+    name: 'Sample.associatedCase',
     dataKey: 'associatedCase.caption',
     isSortable: true,
   },
   {
-    name: _('Sample.diseaseShort'),
+    name: 'Sample.diseaseShort',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: _('Sample.caseDistrict'),
+    name: 'Sample.caseDistrict',
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: _('Sample.shipped'),
+    name: 'Sample.shipped',
     dataKey: 'shipped',
     isSortable: true,
   },
   {
-    name: _('Sample.received'),
+    name: 'Sample.received',
     dataKey: 'received',
     isSortable: true,
   },
   {
-    name: _('Sample.shipmentDate'),
+    name: 'Sample.shipmentDate',
     dataKey: 'shipmentDate',
     isSortable: true,
   },
   {
-    name: _('Sample.lab'),
+    name: 'Sample.lab',
     dataKey: 'lab.caption',
     isSortable: true,
   },
   {
-    name: _('Sample.sampleMaterial'),
+    name: 'Sample.sampleMaterial',
     dataKey: 'sampleMaterial',
     isSortable: true,
   },
   {
-    name: _('Sample.samplePurpose'),
+    name: 'Sample.samplePurpose',
     dataKey: 'samplePurpose',
     isSortable: true,
   },
   {
-    name: _('Sample.pathogenTestResult'),
+    name: 'Sample.pathogenTestResult',
     dataKey: 'pathogenTestResult',
     isSortable: true,
   },
   {
-    name: _('Sample.additionalTestingStatus'),
+    name: 'Sample.additionalTestingStatus',
     dataKey: 'additionalTestingStatus',
     isSortable: true,
   },

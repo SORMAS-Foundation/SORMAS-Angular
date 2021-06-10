@@ -1,39 +1,38 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Task.contextReference'),
+    name: 'Task.contextReference',
     dataKey: 'assigneeUser.caption',
     isSortable: true,
   },
   {
-    name: _('statisticsVisualizationType'),
+    name: 'statisticsVisualizationType',
     dataKey: 'taskType',
     isSortable: true,
   },
   {
-    name: _('Task.priority'),
+    name: 'Task.priority',
     dataKey: 'priority',
     isSortable: true,
   },
   {
-    name: _('Task.taskContext'),
+    name: 'Task.taskContext',
     dataKey: 'taskContext',
     isSortable: true,
   },
   {
-    name: _('region'),
+    name: 'region',
     dataKey: 'region',
     isSortable: true,
   },
   {
-    name: _('district'),
+    name: 'district',
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: _('Task.suggestedStart'),
+    name: 'Task.suggestedStart',
     dataKey: 'suggestedStart',
     isSortable: true,
   },

@@ -1,4 +1,3 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { FORM_DATA_RADIO, FORM_DATA_WIDGET, YesNoUnknown } from '../../../app.constants';
 
@@ -8,27 +7,27 @@ const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 export const FORM_DATA_CASE_EPID_DETAILS = [
   {
     id: 'exposureInvestigation',
-    title: _('headingExposureInvestigation'),
-    subTitle: _('infoExposureInvestigation'),
+    title: 'headingExposureInvestigation',
+    subTitle: 'infoExposureInvestigation',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.exposureDetailsKnown',
-        label: _('EpiData.exposureDetailsKnown'),
+        label: 'EpiData.exposureDetailsKnown',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-exposures-list',
-        label: _('EpiData.exposures'),
+        label: 'EpiData.exposures',
         newLine: true,
       },
     ],
   },
   {
     id: 'activity',
-    title: _('EpiData.activitiesAsCase'),
-    subTitle: _('infoActivityAsCaseInvestigation'),
+    title: 'EpiData.activitiesAsCase',
+    subTitle: 'infoActivityAsCaseInvestigation',
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -44,32 +43,32 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
   },
   {
     id: 'incubation',
-    title: _('EpiData.incubationPeriod'),
-    subTitle: _('infoEpiDataFieldsHint'),
+    title: 'EpiData.incubationPeriod',
+    subTitle: 'infoEpiDataFieldsHint',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.highTransmissionRiskArea',
-        label: _('EpiData.highTransmissionRiskArea'),
+        label: 'EpiData.highTransmissionRiskArea',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.largeOutbreaksArea',
-        label: _('EpiData.largeOutbreaksArea'),
+        label: 'EpiData.largeOutbreaksArea',
         options: optionsYesNoUnknown,
       },
     ],
   },
   {
     id: 'contacts',
-    title: _('EpiData.contactWithSourceCase'),
-    subTitle: _('infoEpiDataSourceCaseContacts'),
+    title: 'EpiData.contactWithSourceCase',
+    subTitle: 'infoEpiDataSourceCaseContacts',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.contactWithSourceCaseKnown',
-        label: _('EpiData.contactWithSourceCaseKnown'),
+        label: 'EpiData.contactWithSourceCaseKnown',
         options: optionsYesNoUnknown,
       },
     ],
