@@ -3,11 +3,10 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipHarness } from '@angular/material/chips/testing';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileComponent } from './user-profile.component';
 import { AuthService } from '../shared/auth/auth-service/auth.service';
-import { TranslateModule } from '@ngx-translate/core';
 
 const mockRoles = ['admin', 'role-A', 'role-B'];
 
