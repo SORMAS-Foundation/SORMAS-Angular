@@ -48,7 +48,7 @@ const optionsTrimester = pipe.transform(Trimester);
 export const FORM_DATA_CASE_DETAILS = [
   {
     id: 'reportDate',
-    title: 'Date of report',
+    title: 'CaseData.reportDate',
     required: true,
     anchor: 'case_data',
     anchorLabel: 'headingCaseData',

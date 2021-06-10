@@ -5175,7 +5175,6 @@
   "personMultiplePrimaryEmailAddresses": "The person has multiple primary email addresses. Only one primary email address is allowed.",
   "birthDateInFuture": "Birth date must not be in the future",
   "birthDateInvalid": "The specified birth date is not a valid date",
-  "mock-label": "Mock translation",
   "events.surveillanceToolLastShareDate": "Surveillance tool last share date",
   "events.surveillanceToolStatus": "Surveillance tool status",
   "events.surveillanceToolShareCount": "Surveillance tool share count",
@@ -5257,5 +5256,6 @@
   "actionShowMore": "Show more",
   "actionShowLess": "Show less",
   "actionAddNewAddress": "Add new address",
-  "tasksHeading": "Tasks Overview"
+  "tasksHeading": "Tasks Overview",
+  "NewCaseHealth": "Health"
 }
