@@ -1,9 +1,10 @@
 @use '../../../variables.scss' as *;
 
 .case-page {
-  padding: 0 25px;
-
   .case-content {
+    padding: 0 25px;
+    background: map-get($sormas-accent, 50);
+
     &.fixed {
       padding-top: 100px;
     }
@@ -57,6 +58,7 @@
   .tab-nav-header {
     display: flex;
     justify-content: space-between;
+    padding: 0 25px;
 
     &.fixed {
       position: fixed;
@@ -64,7 +66,6 @@
       top: 150px;
       right: 0;
       left: 0;
-      padding: 0 25px;
       background: $white;
     }
   }

@@ -5256,5 +5256,6 @@
   "samplesHeading": "Samples Overview",
   "actionShowMore": "Show more",
   "actionShowLess": "Show less",
-  "actionAddNewAddress": "Add new address"
+  "actionAddNewAddress": "Add new address",
+  "tasksHeading": "Tasks Overview"
 }

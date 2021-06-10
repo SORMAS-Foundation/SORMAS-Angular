@@ -29,7 +29,7 @@ export class PersonFiltersComponent implements OnInit, OnDestroy {
 
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
-      search: new FormControl(),
+      nameAddressPhoneEmailLike: new FormControl(),
       persons: new FormControl(),
       presentCondition: new FormControl(),
       birthdateYYYY: new FormControl(),

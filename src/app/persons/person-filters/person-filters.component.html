@@ -1,15 +1,21 @@
 <div class="filters">
   <h2 class="filters-header">{{ 'headingFilters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
-    <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
+    <mat-form-field
+      id="nameAddressPhoneEmailLike"
+      appearance="outline"
+      floatLabel="always"
+      class="search-field"
+    >
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
       <input
         value=""
         type="text"
         matInput
+        appDebounce
         placeholder="{{ 'searchByIdNameAndMore' | translate }}"
-        formControlName="search"
-        (change)="onFormChange()"
+        formControlName="nameAddressPhoneEmailLike"
+        (debounce)="onFormChange()"
       />
     </mat-form-field>
 

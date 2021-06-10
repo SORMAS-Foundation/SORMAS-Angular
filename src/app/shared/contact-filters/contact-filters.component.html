@@ -2,15 +2,21 @@
   <h2 class="filters-header">{{ 'headingFilters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <div *ngIf="!inTab">
-      <mat-form-field id="search" appearance="outline" floatLabel="always" class="search-field">
+      <mat-form-field
+        id="nameUuidCaseLike1"
+        appearance="outline"
+        floatLabel="always"
+        class="search-field"
+      >
         <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
         <input
           value=""
           type="text"
           matInput
-          placeholder="{{ 'searchByIdName' | translate }}"
-          formControlName="search"
-          (change)="onFormChange()"
+          appDebounce
+          placeholder="{{ 'promptContactsSearchField' | translate }}"
+          formControlName="nameUuidCaseLike"
+          (debounce)="onFormChange()"
         />
       </mat-form-field>
 
@@ -45,6 +51,30 @@
         </mat-radio-group>
       </app-collapsable-box>
 
+      <app-collapsable-box boxTitle="{{ 'Contact.contactCategory' | translate }}">
+        <mat-radio-group
+          name="contactCategory"
+          formControlName="contactCategory"
+          (change)="onFormChange()"
+        >
+          <mat-radio-button value="high_risk_contact" color="primary">
+            {{ 'ContactCategory.HIGH_RISK' | translate }}
+          </mat-radio-button>
+          <mat-radio-button value="high_risk_medical_contact" color="primary">
+            {{ 'ContactCategory.HIGH_RISK_MED' | translate }}
+          </mat-radio-button>
+          <mat-radio-button value="medium_risk_medical_contact" color="primary">
+            {{ 'ContactCategory.MEDIUM_RISK_MED' | translate }}
+          </mat-radio-button>
+          <mat-radio-button value="low_risk_contact" color="primary">
+            {{ 'ContactCategory.LOW_RISK' | translate }}
+          </mat-radio-button>
+          <mat-radio-button value="no_risk_contact" color="primary">
+            {{ 'ContactCategory.NO_RISK' | translate }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </app-collapsable-box>
+
       <app-collapsable-box boxTitle="{{ 'Contact.returningTraveler' | translate }}">
         <mat-radio-group name="traveler" formControlName="traveler" (change)="onFormChange()">
           <mat-radio-button value="LOW" color="primary">
@@ -61,7 +91,7 @@
 
       <app-collapsable-box boxTitle="{{ 'entityEvents' | translate }}">
         <mat-form-field
-          id="eventSearch"
+          id="eventLike"
           appearance="outline"
           floatLabel="always"
           class="search-field"
@@ -71,9 +101,10 @@
             value=""
             type="text"
             matInput
+            appDebounce
             placeholder="{{ 'Contact.searchByEventTitleDescription' | translate }}"
-            formControlName="eventSearch"
-            (change)="onFormChange()"
+            formControlName="eventLike"
+            (debounce)="onFormChange()"
           />
         </mat-form-field>
       </app-collapsable-box>
@@ -136,10 +167,40 @@
           <mat-select
             disableOptionCentering
             (selectionChange)="onFormChange()"
-            formControlName="caseClassification"
+            formControlName="diseaseVariant"
+            placeholder="{{ 'CaseData.diseaseVariant' | translate }}"
+          >
+            <mat-option value="disease_variant1">Disease variant1</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="collapsable-field">
+          <mat-select
+            disableOptionCentering
+            (selectionChange)="onFormChange()"
+            formControlName="sourceCaseClassification"
             placeholder="{{ 'Contact.caze.caseClassification' | translate }}"
           >
             <mat-option value="case1">Case1</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="collapsable-field">
+          <mat-select
+            disableOptionCentering
+            (selectionChange)="onFormChange()"
+            formControlName="symptomJournalStatus"
+            placeholder="{{ 'Symptom journal status' | translate }}"
+          >
+            <mat-option value="symptom_journal_status1">symptom journal status1</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="collapsable-field">
+          <mat-select
+            disableOptionCentering
+            (selectionChange)="onFormChange()"
+            formControlName="vaccinationStatus"
+            placeholder="{{ 'Vaccination status' | translate }}"
+          >
+            <mat-option value="symptom_journal_status1">symptom journal status1</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline" class="collapsable-field">
@@ -212,10 +273,20 @@
           <mat-select
             disableOptionCentering
             (selectionChange)="onFormChange()"
-            formControlName="contactPerson"
-            placeholder="{{ 'Contact.person' | translate }}"
+            formControlName="contactOfficer"
+            placeholder="{{ 'UserRole.CONTACT_OFFICER' | translate }}"
           >
-            <mat-option value="person1">Person1</mat-option>
+            <mat-option value="officer">Officer1</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="collapsable-field">
+          <mat-select
+            disableOptionCentering
+            (selectionChange)="onFormChange()"
+            formControlName="relationshipWithCase"
+            placeholder="{{ 'Relationship with case' | translate }}"
+          >
+            <mat-option value="rel1">Rel1</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline" class="collapsable-field">
@@ -230,12 +301,21 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="collapsable-field">
           <mat-select
-            disableOptionCentering
-            (selectionChange)="onFormChange()"
+            multiple
             formControlName="moreFilters"
+            (selectionChange)="onFormChange()"
             placeholder="{{ 'Contact.moreFilters' | translate }}"
+            class="multiselect"
           >
-            <mat-option value="more_filters">More filters</mat-option>
+            <mat-option value="high_priority_contacts">
+              {{ 'High priority contacts' | translate }}
+            </mat-option>
+            <mat-option value="contacts_with_source">
+              {{ 'Contacts with source case linked to the specified event' | translate }}
+            </mat-option>
+            <mat-option value="contacts_from_other">
+              {{ 'Contacts from other instances' | translate }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </app-collapsable-box>
@@ -249,6 +329,34 @@
             placeholder="{{ 'TaskType.QUARANTINE_PLACE' | translate }}"
           >
             <mat-option value="place1">Place1</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="collapsable-field">
+          <mat-select
+            multiple
+            formControlName="quarantineDetails"
+            (selectionChange)="onFormChange()"
+            placeholder="{{ 'Quarantine details' | translate }}"
+            class="multiselect"
+          >
+            <mat-option value="quarantine_ordered_verbally">
+              {{ 'Quarantine ordered verbally' | translate }}
+            </mat-option>
+            <mat-option value="quarantine_ordered_document">
+              {{ 'Quarantine ordered by official document' | translate }}
+            </mat-option>
+            <mat-option value="no_quarantine">
+              {{ 'No quarantine ordered' | translate }}
+            </mat-option>
+            <mat-option value="help_needed">
+              {{ 'Help needed in quarantine' | translate }}
+            </mat-option>
+            <mat-option value="contacts_extended_quarantine">
+              {{ 'Contacts with extended quarantine' | translate }}
+            </mat-option>
+            <mat-option value="contacts_reduce_quarantine">
+              {{ 'Contacts with reduced quarantine' | translate }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field
@@ -348,6 +456,23 @@
       </app-collapsable-box>
     </div>
     <div *ngIf="inTab">
+      <mat-form-field
+        id="nameUuidCaseLike2"
+        appearance="outline"
+        floatLabel="always"
+        class="search-field"
+      >
+        <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+        <input
+          value=""
+          type="text"
+          matInput
+          appDebounce
+          placeholder="{{ 'promptContactsSearchField' | translate }}"
+          formControlName="nameUuidCaseLike"
+          (debounce)="onFormChange()"
+        />
+      </mat-form-field>
       <app-collapsable-box boxTitle="{{ 'Contact.medicalAspects' | translate }}">
         <mat-form-field appearance="outline" class="collapsable-field">
           <mat-select
