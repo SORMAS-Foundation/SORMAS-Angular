@@ -61,14 +61,6 @@
                   "maximumError": "100kb"
                 }
               ]
-            },
-            "e2e-test": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.e2e-test.ts"
-                }
-              ]
             }
           }
         },
