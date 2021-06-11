@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { CaseComponent } from './case.component';
 
 describe('CaseComponent', () => {
@@ -12,7 +13,12 @@ describe('CaseComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CaseComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        MatDialogModule,
+        TranslateModule.forRoot(),
+      ],
     }).compileComponents();
   });
 

@@ -1,21 +1,22 @@
-<button class="toggle-filter" (click)="drawer.open()">
-  <mat-icon *ngIf="!drawer.opened">filter_list</mat-icon>
-</button>
-<mat-drawer-container class="case-list-container">
-  <mat-drawer #drawer opened mode="side" class="filters-bar">
-    <app-case-filters [drawer]="drawer"></app-case-filters>
-  </mat-drawer>
-  <mat-drawer-content>
-    <h1 class="header-title" i18n="Cases Overview header">Cases Overview</h1>
+<app-filters [topGap]="headerHeight">
+  <app-case-filters filters></app-case-filters>
+  <ng-container list>
+    <div class="case-list-header">
+      <h1 class="header-title" i18n="Cases Overview header">{{ 'caseCasesList' | translate }}</h1>
+      <button class="add-btn" mat-flat-button color="primary" (click)="openAddCaseModal()">
+        {{ 'caseNewCase' | translate }}
+      </button>
+    </div>
     <app-table
       [resourceService]="caseService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"
       [isSelectable]="true"
       [isHeaderSticky]="true"
-      [visibleRowsCount]="8"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
       (selectItem)="selectCase($event)"
       (clickItem)="clickCase($event)"
     ></app-table>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </ng-container>
+</app-filters>

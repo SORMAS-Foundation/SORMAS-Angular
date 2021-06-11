@@ -1,0 +1,14 @@
+<h4 class="list-title">{{ 'EpiData.exposures' | translate }}</h4>
+<app-card-list
+  *ngIf="exposures.length"
+  [data]="exposures"
+  [cardWidth]="200"
+  [cardEdit]="true"
+  [initialPageSize]="4"
+  cardEditPosition="TOPLEFT"
+  [cardDelete]="true"
+  cardDeletePosition="TOPRIGHT"
+  cardType="epid_data"
+  cardTitleKey="exposureType"
+  cardTitlePosition="CENTER"
+></app-card-list>

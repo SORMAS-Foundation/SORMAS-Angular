@@ -3,7 +3,7 @@
 export type DeathPlaceType = 'COMMUNITY' | 'HOSPITAL' | 'OTHER';
 
 export const DeathPlaceType = {
-  COMMUNITY: 'COMMUNITY' as DeathPlaceType,
-  HOSPITAL: 'HOSPITAL' as DeathPlaceType,
-  OTHER: 'OTHER' as DeathPlaceType,
+  COMMUNITY: 'Community' as DeathPlaceType,
+  HOSPITAL: 'Hospital' as DeathPlaceType,
+  OTHER: 'Other' as DeathPlaceType,
 };

@@ -14,6 +14,7 @@
       .mat-form-field-prefix,
       .mat-form-field-suffix {
         top: 0;
+        right: 4px;
       }
 
       .mat-form-field-infix {
@@ -21,7 +22,7 @@
       }
 
       .mat-datepicker-toggle {
-        font-size: 10px;
+        font-size: 9px;
       }
 
       &.mat-focused,
@@ -40,9 +41,27 @@
         }
       }
 
-      &.datepicker-opened:not(.mat-form-field-invalid) .mat-form-field-outline {
-        border-color: mat-color(mat-palette($primary, 700));
-        color: mat-color(mat-palette($primary, 700));
+      &.datepicker-opened {
+        .mat-form-field-outline {
+          border-color: mat-color(mat-palette($primary, 700));
+          color: mat-color(mat-palette($primary, 700));
+        }
+        .mat-form-field-infix,
+        .mat-button-wrapper {
+          color: mat-color(mat-palette($primary, 700));
+        }
+      }
+
+      &.time {
+        flex-grow: 1;
+
+        .mat-form-field-infix {
+          width: auto;
+        }
+      }
+
+      &.date-filter .mat-form-field-flex {
+        width: 100%;
       }
     }
 

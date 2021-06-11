@@ -1,8 +1,48 @@
-@use './src/variables.scss' as *;
+@use '/src/variables.scss' as *;
 
-.mat-icon {
+.mat-cell .mat-icon {
   font-size: 14px;
   line-height: inherit;
+}
+
+table {
+  width: 100%;
+}
+
+.minimal {
+  th.mat-header-cell {
+    border-bottom-color: map-get($sormas-accent, 200);
+    border-left-width: 0;
+    background-color: unset;
+  }
+
+  tr.mat-row td.mat-cell {
+    background-color: unset;
+  }
+
+  tr.mat-row.row-selected td.mat-cell {
+    background-color: map-get($sormas-primary, 50);
+  }
+}
+
+.risklevel-low {
+  color: map-get($sormas-success, 700);
+  font-weight: 500;
+}
+
+.risklevel-moderate {
+  color: map-get($sormas-warning, 800);
+  font-weight: 500;
+}
+
+.risklevel-high {
+  color: map-get($sormas-alert, 300);
+  font-weight: 500;
+}
+
+.risklevel-unknown {
+  color: map-get($sormas-accent, 500);
+  font-weight: 500;
 }
 
 .viewport {
@@ -11,7 +51,14 @@
   }
 
   .mat-row {
+    position: relative;
+    z-index: 1;
     cursor: pointer;
+    &:hover,
+    :focus {
+      @include mat-elevation(5);
+      z-index: 2;
+    }
   }
 
   .row-skeleton {

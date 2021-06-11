@@ -1,0 +1,39 @@
+<mat-card
+  [style.width.px]="width"
+  [ngClass]="[
+    appearance ? 'appearance-' + appearance : '',
+    status ? 'status-' + status : '',
+    selected ? 'selected' : '',
+    type ? 'type-' + type : ''
+  ]"
+>
+  <app-card-actions
+    *ngIf="!collapsed && actionsTop.length"
+    [actions]="actionsTop"
+    (actionSelected)="processAction($event)"
+  ></app-card-actions>
+
+  <mat-card-header *ngIf="title || collapse" [ngClass]="getClassCollapse()">
+    <mat-card-title *ngIf="title" [ngClass]="titlePosition?.toLowerCase() || ''">
+      {{ title | humanize | titlecase }}
+    </mat-card-title>
+    <button *ngIf="collapse" mat-icon-button (click)="toggleCollapse()">
+      <mat-icon class="material-icons-round">{{ collapsed ? 'add' : 'remove' }}</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="!collapsed" [ngSwitch]="type">
+    <app-card-address *ngSwitchCase="'address'" [data]="data"></app-card-address>
+    <app-card-case-task *ngSwitchCase="'case_task'" [data]="data"></app-card-case-task>
+    <app-card-case-event *ngSwitchCase="'case_event'" [data]="data"></app-card-case-event>
+    <app-card-sample *ngSwitchCase="'sample'" [data]="data"></app-card-sample>
+    <app-card-epid-data *ngSwitchCase="'epid_data'" [data]="data"></app-card-epid-data>
+    <ng-content *ngSwitchDefault></ng-content>
+  </mat-card-content>
+
+  <app-card-actions
+    *ngIf="!collapsed && actionsBottom.length"
+    [actions]="actionsBottom"
+    (actionSelected)="processAction($event)"
+  ></app-card-actions>
+</mat-card>

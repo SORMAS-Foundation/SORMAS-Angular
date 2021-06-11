@@ -1,0 +1,22 @@
+@use '/src/variables.scss' as *;
+
+h3 {
+  margin: -12px 0 12px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.content {
+  display: flex;
+  gap: 4px;
+}
+
+.address {
+  width: 100%;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.mat-icon {
+  color: mat-color($sormas-primary, 300);
+}

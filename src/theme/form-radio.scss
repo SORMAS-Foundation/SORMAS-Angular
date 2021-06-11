@@ -13,29 +13,29 @@
       .radio-group-label {
         display: block;
       }
-    }
 
-    .mat-radio-button {
-      margin-right: 1em;
-      font-weight: 500;
-      line-height: 32px;
-      text-align: left;
+      .mat-radio-button {
+        margin-right: 24px;
+        font-weight: 500;
+        line-height: 36px;
+        text-align: left;
 
-      &:not(.mat-radio-disabled) .mat-radio-outer-circle {
-        border-color: mat-color(mat-palette($primary, 700));
+        &:not(.mat-radio-disabled) .mat-radio-outer-circle {
+          border-color: mat-color(mat-palette($primary, 700));
+        }
+
+        &:focus,
+        &:hover {
+          color: mat-color(mat-palette($primary, 700));
+        }
+
+        &.mat-radio-checked {
+          color: mat-color(mat-palette($primary, 700));
+        }
       }
 
-      &.mat-radio-disabled:not(.mat-radio-checked) .mat-radio-outer-circle {
-        border-width: 0;
-      }
-
-      &:focus,
-      &:hover {
-        color: mat-color(mat-palette($primary, 700));
-      }
-
-      &.mat-radio-checked {
-        color: mat-color(mat-palette($primary, 700));
+      &.ng-touched.ng-invalid .mat-radio-button:not(.mat-radio-disabled) .mat-radio-outer-circle {
+        border-color: mat-color(mat-palette($warn, 300));
       }
     }
   }

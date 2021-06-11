@@ -1,0 +1,53 @@
+@use '/src/variables.scss' as *;
+
+.card-epid-data {
+  text-align: center;
+
+  .type-of-place {
+    color: mat-color($sormas-accent, 500);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .timeline {
+    margin: 0.75rem 0;
+
+    .date {
+      margin: 0 0.5rem;
+    }
+  }
+  .description {
+    margin-bottom: 10px;
+    color: mat-color($sormas-accent, 700);
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .contact-person {
+    margin-top: -5px;
+    margin-bottom: 5px;
+    color: mat-color($sormas-alert, 300);
+    font-size: 14px;
+    font-weight: 500;
+    .contact-label {
+      color: mat-color($sormas-accent, 500);
+      font-size: 10px;
+      font-weight: 400;
+    }
+  }
+  .location {
+    display: inline-block;
+    padding-left: 20px;
+    color: mat-color($sormas-accent, 500);
+    font-size: 10px;
+    line-height: 16px;
+    text-align: left;
+
+    .place-icon {
+      width: 16px;
+      height: 16px;
+      margin-left: -20px;
+      float: left;
+      font-size: 14px;
+    }
+  }
+}

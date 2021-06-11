@@ -1,0 +1,58 @@
+@use '/src/variables.scss' as *;
+
+.date {
+  width: 36px;
+  border: 1px solid mat-color($sormas-accent, 200);
+  background-color: $white;
+  border-radius: 4px;
+}
+
+.month,
+.year {
+  display: block;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.day {
+  display: block;
+  color: mat-color($sormas-accent, 600);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.date-card {
+  display: inline-block;
+  color: mat-color($sormas-accent, 400);
+  font-size: 10px;
+  text-align: center;
+
+  &.card .date {
+    border-width: 0;
+    @include mat-elevation(1);
+  }
+
+  &.accent {
+    color: mat-color($sormas-accent, 800);
+  }
+
+  &.flat {
+    .date {
+      border-width: 0;
+      background-color: mat-color($sormas-accent, 50);
+    }
+  }
+
+  &.highlight {
+    color: mat-color($sormas-accent, 800);
+
+    .date {
+      border-color: mat-color($sormas-primary, 400);
+    }
+
+    .month {
+      color: mat-color($sormas-primary, 400);
+    }
+  }
+}

@@ -3,6 +3,6 @@
 export type CauseOfDeath = 'EPIDEMIC_DISEASE' | 'OTHER_CAUSE';
 
 export const CauseOfDeath = {
-  EPIDEMICDISEASE: 'EPIDEMIC_DISEASE' as CauseOfDeath,
-  OTHERCAUSE: 'OTHER_CAUSE' as CauseOfDeath,
+  EPIDEMICDISEASE: 'Epidemic disease' as CauseOfDeath,
+  OTHERCAUSE: 'Other cause' as CauseOfDeath,
 };

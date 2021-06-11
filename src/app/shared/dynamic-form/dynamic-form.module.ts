@@ -14,6 +14,7 @@ import { FormTextareaComponent } from './components/form-textarea/form-textarea.
 import { FormNullComponent } from './components/form-null/form-null.component';
 import { FormNumberComponent } from './components/form-number/form-number.component';
 import { FormWidgetComponent } from './components/form-widget/form-widget.component';
+import { FormDatetimeComponent } from './components/form-datetime/form-datetime.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SharedModule],
@@ -22,6 +23,7 @@ import { FormWidgetComponent } from './components/form-widget/form-widget.compon
     DynamicFieldDirective,
     FormInputComponent,
     FormDateComponent,
+    FormDatetimeComponent,
     FormCheckboxComponent,
     FormSelectComponent,
     FormRadioComponent,
@@ -34,6 +36,7 @@ import { FormWidgetComponent } from './components/form-widget/form-widget.compon
   entryComponents: [
     FormInputComponent,
     FormDateComponent,
+    FormDatetimeComponent,
     FormCheckboxComponent,
     FormSelectComponent,
     FormRadioComponent,

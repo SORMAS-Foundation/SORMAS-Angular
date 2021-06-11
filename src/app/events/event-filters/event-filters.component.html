@@ -1,0 +1,330 @@
+<div class="filters">
+  <h2 class="filters-header">{{ 'headingFilters' | translate }}</h2>
+  <form class="filters-form" [formGroup]="filtersForm">
+    <mat-form-field id="freeText" appearance="outline" floatLabel="always" class="search-field">
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'searchByIdName' | translate }}"
+        formControlName="freeText"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+
+    <app-collapsable-box boxTitle="{{ 'Event.riskLevel' | translate }}">
+      <mat-radio-group name="riskLevel" formControlName="riskLevel" (change)="onFormChange()">
+        <mat-radio-button value="LOW" color="primary">
+          {{ 'RiskLevel.LOW' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="MODERATE" color="primary">
+          {{ 'RiskLevel.MODERATE' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="HIGH" color="primary">
+          {{ 'RiskLevel.HIGH' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="UNKNOWN" color="primary">
+          {{ 'RiskLevel.UNKNOWN' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'EventAction.eventStatus' | translate }}">
+      <mat-radio-group name="eventStatus" formControlName="eventStatus" (change)="onFormChange()">
+        <mat-radio-button value="ALL" color="primary">
+          {{ 'EventStatus.ALL' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="SIGNAL" color="primary">
+          {{ 'EventStatus.SIGNAL' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="EVENT" color="primary">
+          {{ 'EventStatus.EVENT' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="SCREENING" color="primary">
+          {{ 'EventStatus.SCREENING' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="CLUSTER" color="primary">
+          {{ 'EventStatus.CLUSTER' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="DROPPED" color="primary">
+          {{ 'EventStatus.DROPPED' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Event.eventInvestigationStatus' | translate }}">
+      <mat-radio-group
+        name="eventInvestigationStatus"
+        formControlName="eventInvestigationStatus"
+        (change)="onFormChange()"
+      >
+        <mat-radio-button value="PENDING" color="primary">
+          {{ 'EventInvestigationStatus.Short.PENDING' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="ONGOING" color="primary">
+          {{ 'EventInvestigationStatus.Short.ONGOING' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="DONE" color="primary">
+          {{ 'EventInvestigationStatus.Short.DONE' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="DISCARDED" color="primary">
+          {{ 'EventInvestigationStatus.Short.DISCARDED' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'eventDefaultView' | translate }}">
+      <mat-radio-group name="event" formControlName="event" (change)="onFormChange()">
+        <mat-radio-button value="active" color="primary">
+          {{ 'eventActiveEvents' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="archived" color="primary">
+          {{ 'eventArchivedEvents' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="all" color="primary">
+          {{ 'eventAllEvents' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'eventEventParticipants' | translate }}">
+      <mat-form-field
+        id="freeTextEventParticipants"
+        appearance="outline"
+        floatLabel="always"
+        class="search-field"
+      >
+        <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+        <input
+          value=""
+          type="text"
+          matInput
+          appDebounce
+          placeholder="{{ 'promptEventsSearchFieldEventParticipants' | translate }}"
+          formControlName="freeTextEventParticipants"
+          (debounce)="onFormChange()"
+        />
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'EventGroup' | translate }}">
+      <mat-form-field
+        id="freeTextEventGroups"
+        appearance="outline"
+        floatLabel="always"
+        class="search-field"
+      >
+        <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+        <input
+          value=""
+          type="text"
+          matInput
+          appDebounce
+          placeholder="{{ 'promptEventsSearchFieldEventGroups' | translate }}"
+          formControlName="freeTextEventGroups"
+          (debounce)="onFormChange()"
+        />
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Event.medicalAspects' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="disease"
+          placeholder="{{ 'Event.diseaseShort' | translate }}"
+        >
+          <mat-option value="corona">Corona</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Event.adminAspect' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="reportingUser"
+          placeholder="{{ 'reportedBy' | translate }}"
+        >
+          <mat-option value="survoff">Surveillance Officer</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="responsibleUser"
+          placeholder="{{ 'Event.responsibleUser' | translate }}"
+        >
+          <mat-option value="survoff">Surveillance Officer</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="region"
+          placeholder="{{ 'EventParticipant.region' | translate }}"
+        >
+          <mat-option value="default_region">Default region</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="district"
+          placeholder="{{ 'EventParticipant.district' | translate }}"
+        >
+          <mat-option value="default_district">Default district</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="community"
+          placeholder="{{ 'Event.responsibleCommunity' | translate }}"
+        >
+          <mat-option value="default_community">Default community</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Event.dateFilter' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          formControlName="dateType"
+          (selectionChange)="onFormChange()"
+          placeholder="{{ 'DateFilterOption.DATE' | translate }}"
+        >
+          <mat-option value="byDate"> {{ 'DateFilterOption.DATE' | translate }} </mat-option>
+          <mat-option value="byEpiWeek"> {{ 'DateFilterOption.EPI_WEEK' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        id="start-date"
+        appearance="outline"
+        floatLabel="always"
+        class="{{
+          pickerStartDate.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
+      >
+        <input
+          matInput
+          [matDatepicker]="pickerStartDate"
+          size="5"
+          formControlName="startDate"
+          (dateChange)="onFormChange()"
+        />
+        <mat-hint>{{ 'Event.filter.startDate' | translate }}</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerStartDate"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerStartDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field
+        id="due-date"
+        appearance="outline"
+        floatLabel="always"
+        class="{{
+          pickerEndDate.opened ? 'datepicker-opened' : 'datepicker-closed'
+        }} date-filter has-hint"
+      >
+        <input
+          matInput
+          [matDatepicker]="pickerEndDate"
+          size="5"
+          formControlName="dueDate"
+          (dateChange)="onFormChange()"
+        />
+        <mat-hint>{{ 'Event.filter.dueDate' | translate }}</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerEndDate"
+          class="datepicker-icon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerEndDate></mat-datepicker>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'Event.moreFilters' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="countMethod"
+          placeholder="{{ 'Event.contactCountMethod' | translate }}"
+        >
+          <mat-option value="all"> {{ 'EventContactCountMethod.ALL' | translate }} </mat-option>
+          <mat-option value="withSourceCase">
+            {{ 'EventContactCountMethod.SOURCE_CASE_IN_EVENT' | translate }}
+          </mat-option>
+          <mat-option value="both">
+            {{ 'EventContactCountMethod.BOTH_METHODS' | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="srcType"
+          placeholder="{{ 'Event.srcType' | translate }}"
+        >
+          <mat-option value="NOT_APPLICABLE">
+            {{ 'EventSourceType.NOT_APPLICABLE' | translate }}
+          </mat-option>
+          <mat-option value="MEDIA_NEWS">
+            {{ 'EventSourceType.MEDIA_NEWS' | translate }}
+          </mat-option>
+          <mat-option value="HOTLINE_PERSON">
+            {{ 'EventSourceType.HOTLINE_PERSON' | translate }}
+          </mat-option>
+          <mat-option value="MATHEMATICAL_MODEL">
+            {{ 'EventSourceType.MATHEMATICAL_MODEL' | translate }}
+          </mat-option>
+          <mat-option value="INSTITUTIONAL_PARTNER">
+            {{ 'EventSourceType.INSTITUTIONAL_PARTNER' | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="countMethod"
+          placeholder="{{ 'Event.contactCountMethod' | translate }}"
+        >
+          <mat-option value="FACILITY"> {{ 'TypeOfPlace.FACILITY' | translate }} </mat-option>
+          <mat-option value="FESTIVITIES"> {{ 'TypeOfPlace.FESTIVITIES' | translate }} </mat-option>
+          <mat-option value="HOME"> {{ 'TypeOfPlace.HOME' | translate }} </mat-option>
+          <mat-option value="MEANS_OF_TRANSPORT">
+            {{ 'TypeOfPlace.MEANS_OF_TRANSPORT' | translate }}
+          </mat-option>
+          <mat-option value="PUBLIC_PLACE">
+            {{ 'TypeOfPlace.PUBLIC_PLACE' | translate }}
+          </mat-option>
+          <mat-option value="SCATTERED"> {{ 'TypeOfPlace.SCATTERED' | translate }} </mat-option>
+          <mat-option value="UNKNOWN"> {{ 'TypeOfPlace.UNKNOWN' | translate }} </mat-option>
+          <mat-option value="OTHER"> {{ 'TypeOfPlace.OTHER' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+  </form>
+</div>

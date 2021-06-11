@@ -1,0 +1,14 @@
+<app-card-list
+  class="addresses-list"
+  *ngIf="addresses.length"
+  [data]="addresses"
+  [cardWidth]="200"
+  [initialPageSize]="4"
+  [cardEdit]="true"
+  cardEditPosition="BOTTOMRIGHT"
+  [cardDelete]="true"
+  cardDeletePosition="TOPRIGHT"
+  cardType="address"
+  cardTitleKey="addressType"
+  cardTitlePosition="LEFT"
+></app-card-list>

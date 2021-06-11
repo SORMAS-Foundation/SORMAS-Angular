@@ -1,29 +1,16 @@
 @use '../../../variables.scss' as *;
 
-.case-list-container {
-  height: 100%;
-  background: $white;
-}
+.case-list-header {
+  overflow: hidden;
+  padding: 20px;
 
-.toggle-filter {
-  position: fixed;
-  top: 57vh;
-  left: -10px;
-  border: none;
-  background: transparent;
-  color: map-get($sormas-primary, 700);
-  cursor: pointer;
-  outline: none;
-  transform: rotate(90deg);
-}
-.header-title {
-  padding-left: 20px;
-  margin-top: 24px;
-  font-size: 34px;
-  font-weight: 500;
-}
-
-.filters-bar {
-  width: 290px;
-  background-color: inherit;
+  .add-btn {
+    float: right;
+  }
+  .header-title {
+    float: left;
+    font-size: 34px;
+    font-weight: 500;
+    margin: 0;
+  }
 }

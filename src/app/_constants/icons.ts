@@ -4,6 +4,7 @@ export enum IconsMap {
   DISCARDED = 'cancel_presentation',
   DIALOG_ICON_TITLE_ALERT = 'warning_amber',
   DIALOG_ICON_CLOSE = 'highlight_off',
+  ONGOING = 'refresh',
 }
 
 export enum CaseOutcomeIcons {
@@ -21,4 +22,12 @@ export enum CaseClassificationIcons {
   CONFIRMED_NO_SYMPTOMS = 'new_releases',
   CONFIRMED_UNKNOWN_SYMPTOMS = 'new_releases',
   NO_CASE = 'how_to_reg',
+}
+
+export enum CardActionsIcons {
+  edit = 'edit',
+  delete = 'highlight_off',
+  link = 'link',
+  unlink = 'link_off',
+  refresh = 'sync',
 }

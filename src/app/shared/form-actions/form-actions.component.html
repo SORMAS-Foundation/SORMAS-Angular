@@ -1,4 +1,12 @@
-<button mat-stroked-button color="primary" class="reset-btn" (click)="resetForm()" *ngIf="hasInputsChanged">
-  Discard
+<button
+  mat-stroked-button
+  color="primary"
+  class="reset-btn"
+  (click)="resetForm()"
+  *ngIf="hasInputsChanged"
+>
+  {{ 'actionDiscard' | translate }}
 </button>
-<button mat-flat-button color="primary" class="save-btn" (click)="saveForm()">Save</button>
+<button mat-flat-button color="primary" class="save-btn" (click)="saveForm()">
+  {{ 'actionSave' | translate }}
+</button>

@@ -1,0 +1,103 @@
+@use '/src/variables.scss' as *;
+
+.mat-card {
+  @include mat-elevation(0);
+
+  padding: 0.5rem 1rem;
+  border: 1px solid mat-color($sormas-accent, 200);
+  border-radius: 5px;
+}
+
+.mat-card-header {
+  justify-content: space-between;
+
+  .mat-card-title {
+    padding: 10px 0;
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    &.center {
+      text-align: center;
+    }
+    &.right {
+      text-align: right;
+    }
+  }
+
+  &.collapse-left {
+    flex-direction: row-reverse;
+
+    button {
+      margin-left: -8px;
+    }
+  }
+
+  &.collapse-right {
+    button {
+      margin-right: -8px;
+    }
+  }
+}
+
+app-card-actions + .mat-card-header {
+  margin-top: -10px;
+}
+
+.mat-card-content {
+  margin-bottom: 0;
+}
+
+.status-confirmed {
+  border-width: 1px;
+  border-color: mat-color($sormas-accent, 200);
+}
+
+.status-completed {
+  border-width: 0;
+  background-color: mat-color($sormas-accent, 50);
+}
+
+.status-undetermined {
+  border-width: 2px;
+  border-color: mat-color($sormas-alert, 100);
+}
+
+.status-critical {
+  border-width: 2px;
+  border-color: mat-color($sormas-alert, 100);
+  background-color: rgba(mat-color($sormas-alert, 50), 0.3);
+}
+
+.status-good {
+  border-width: 1px;
+  border-color: mat-color($sormas-primary, 100);
+}
+
+.status-unclassified {
+  border-width: 1px;
+  border-color: mat-color($sormas-primary, A100);
+}
+
+.appearance-card {
+  @include mat-elevation(3);
+  border-width: 0;
+}
+
+.appearance-outlined {
+  border-left-width: 4px;
+  border-radius: 0 5px 5px 0;
+}
+
+.selected {
+  @include mat-elevation(0);
+  border-color: mat-color($sormas-primary, 200);
+  background-color: rgba(mat-color($sormas-primary, 50), 0.5);
+}
+
+.type-epid_data {
+  .mat-card-header .mat-card-title {
+    padding-bottom: 0;
+    font-size: 16px;
+  }
+}

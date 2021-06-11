@@ -3,8 +3,9 @@
     color="primary"
     (change)="onChange()"
     [formControlName]="config.key"
-    [id]="config.key">
-      {{ config.label}}
+    [id]="config.key"
+  >
+    {{ config.label || '' | translate }}
   </mat-checkbox>
-  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage }}</div>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage || '' | translate }}</div>
 </div>

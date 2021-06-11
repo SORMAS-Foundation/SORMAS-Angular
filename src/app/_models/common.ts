@@ -18,7 +18,7 @@ export interface Sorting {
 // filter
 export interface Filter {
   field: string;
-  value: string;
+  value?: string;
   operation?: string;
 }
 
@@ -26,5 +26,17 @@ export interface Filter {
 export interface TableColumn {
   name: string;
   dataKey: string;
+  advancedDisplay?: string;
+  advancedDisplayParams?: string[];
+  linkPattern?: string;
+  linkParams?: string[];
   isSortable?: boolean;
+  iconify?: boolean;
+  stylify?: boolean;
+}
+
+// scrolling
+export interface Offset {
+  top: number;
+  left: number;
 }

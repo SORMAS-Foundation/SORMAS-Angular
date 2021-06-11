@@ -19,6 +19,7 @@ import { FORM_DATA_BASE } from '../../../app.constants';
 import { FormNullComponent } from './form-null/form-null.component';
 import { FormNumberComponent } from './form-number/form-number.component';
 import { FormWidgetComponent } from './form-widget/form-widget.component';
+import { FormDatetimeComponent } from './form-datetime/form-datetime.component';
 
 const components: FormFields = {
   input: FormInputComponent,
@@ -26,6 +27,7 @@ const components: FormFields = {
   radio: FormRadioComponent,
   dropdown: FormSelectComponent,
   date: FormDateComponent,
+  datetime: FormDatetimeComponent,
   textarea: FormTextareaComponent,
   null: FormNullComponent,
   number: FormNumberComponent,

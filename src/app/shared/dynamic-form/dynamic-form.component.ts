@@ -1,6 +1,15 @@
 /* eslint-disable no-console */
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { FormBase, FormElementBase } from './types/form-element-base';
@@ -20,10 +29,20 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() resourceService: BaseService<any>;
   @Input() withAnchor = false;
 
+  @Output() changed: EventEmitter<any> = new EventEmitter();
+
   formElementsProcessed: FormElementBase<string>[] = [];
   form: FormGroup;
   watchFields: any[] = [];
   subscription: Subscription[] = [];
+  fixedHeader = false;
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(): void {
+    if (this.withAnchor) {
+      this.fixedHeader = window.pageYOffset > 71;
+    }
+  }
 
   constructor(
     private formElementControlService: FormElementControlService,
@@ -42,11 +61,21 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.subscription.push(
       this.formActionsService.getSave().subscribe((response: any) => {
         if (this.form.invalid) {
+          this.form.markAllAsTouched();
           this.notificationService.error('Please fill in all the mandatory fields');
           return;
         }
 
-        this.resourceService.update(this.updateResource(response.resource)).subscribe({
+        let RESOURCE;
+        if (response.resource === null) {
+          // ADD mode
+          RESOURCE = this.resourceService.add(this.updateFormRawValueWithObjects());
+        } else {
+          // EDIT mode
+          RESOURCE = this.resourceService.update(this.updateResource(response.resource));
+        }
+
+        RESOURCE.subscribe({
           next: () => {},
           error: (err: any) => {
             this.notificationService.error(err);
@@ -64,6 +93,15 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       })
     );
 
+    this.subscription.push(
+      this.formActionsService
+        .getInputChange()
+        .pipe(debounceTime(300))
+        .subscribe(() => {
+          this.changed.emit(this.form.value);
+        })
+    );
+
     this.detectChanges();
 
     // trigger 'valueChanges' on each form control to update their dependent fields
@@ -71,6 +109,25 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       const control = this.form.controls[key];
       control.setValue(control.value);
     });
+  }
+
+  convertDotPathToNestedObject(path: string, value: any): any {
+    const [last, ...paths] = path.split('.').reverse();
+    // @ts-ignore
+    return paths.reduce((acc, el) => ({ [el]: acc }), { [last]: value });
+  }
+
+  updateFormRawValueWithObjects(): any {
+    const rawValueTmp: any = {};
+    Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
+      if (key.includes('.')) {
+        const keys = key.split('.');
+        rawValueTmp[keys[0]] = this.convertDotPathToNestedObject(key, value)[keys[0]];
+      } else {
+        rawValueTmp[key] = value;
+      }
+    });
+    return rawValueTmp;
   }
 
   updateResource(resource: any): Resource {

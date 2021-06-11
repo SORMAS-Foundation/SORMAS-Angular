@@ -2,15 +2,142 @@
 <p i18n>SORMAS Next-Gen version: {{ version }}</p>
 <p i18n>Angular version: {{ ngVersion }}</p>
 
-<div>
+<div class="wrapper">
   <button mat-flat-button color="primary" (click)="alertConfirm()">Alert confirm</button>
   <button mat-flat-button color="primary" (click)="alertError()">Alert warning</button>
   <button mat-flat-button color="primary" (click)="alertPrompt()">Alert prompt</button>
 </div>
 
-<div>
+<div class="wrapper" style="display: none">
   <button mat-stroked-button (click)="notifyInfo()">Notfiy info</button>
   <button mat-stroked-button (click)="notifyWarning()">Notfiy warning</button>
   <button mat-stroked-button (click)="notifyError()">Notify error</button>
   <button mat-stroked-button (click)="notifySuccess()">Notify success</button>
+</div>
+
+<div class="wrapper-cards">
+  <h1>Tasks (Case page)</h1>
+  <app-card-list
+    [data]="listCaseTask"
+    [cardWidth]="200"
+    [cardCollapse]="true"
+    [cardEdit]="true"
+    cardType="case_task"
+    cardTitleKey="taskType"
+    cardStatusKey="taskStatus"
+  ></app-card-list>
+</div>
+
+<div class="wrapper-cards">
+  <h1>Samples (Case page)</h1>
+  <app-card-list
+    [data]="listSample"
+    [initialPageSize]="3"
+    [cardWidth]="200"
+    [cardCollapse]="true"
+    [cardEdit]="true"
+    cardType="sample"
+    cardTitleKey="sampleMaterial"
+    cardStatusKey="pathogenTestResult"
+    cardAppearance="outlined"
+  ></app-card-list>
+</div>
+
+<div class="wrapper-cards">
+  <h1>Events (Case page)</h1>
+  <app-card-list
+    [data]="listCaseEvent"
+    [cardWidth]="200"
+    [cardCollapse]="true"
+    [cardEdit]="true"
+    [cardUnlink]="true"
+    cardUnlinkPosition="BOTTOMLEFT"
+    cardType="case_event"
+    cardTitleKey="eventTitle"
+  ></app-card-list>
+</div>
+
+<div class="wrapper-cards">
+  <h1>Address (Case person tab)</h1>
+  <app-card-list
+    [data]="listAddress"
+    [cardWidth]="220"
+    [cardEdit]="true"
+    [cardDelete]="true"
+    cardDeletePosition="TOPRIGHT"
+    cardType="address"
+    (editCard)="editAddress($event)"
+  ></app-card-list>
+</div>
+
+<div class="wrapper-cards">
+  <app-card
+    title="Signal event"
+    [width]="260"
+    [select]="true"
+    selectPosition="TOPRIGHT"
+    [edit]="true"
+    editPosition="TOPRIGHT"
+    appearance="card"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a signal event card</div>
+  </app-card>
+  <app-card
+    title="Screening event"
+    [width]="260"
+    [select]="true"
+    selectPosition="TOPRIGHT"
+    [edit]="true"
+    editPosition="TOPRIGHT"
+    appearance="card"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a screening event card</div>
+  </app-card>
+</div>
+
+<div class="wrapper-cards">
+  <app-card
+    title="Jonas Wolf"
+    [width]="200"
+    [edit]="true"
+    editPosition="TOPRIGHT"
+    appearance="outlined"
+    status="unclassified"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a case person card</div>
+  </app-card>
+  <app-card
+    title="Drug intake"
+    [width]="200"
+    [select]="true"
+    [edit]="true"
+    editPosition="BOTTOMLEFT"
+    appearance="outlined"
+    status="unclassified"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a prescription card</div>
+  </app-card>
+</div>
+
+<div class="wrapper-cards">
+  <app-card
+    [width]="220"
+    [edit]="true"
+    editPosition="BOTTOMRIGHT"
+    [delete]="true"
+    deletePosition="TOPRIGHT"
+    type="address"
+    [data]="dataAddress"
+  ></app-card>
+  <app-card
+    title="Drug intake"
+    [width]="200"
+    [select]="true"
+    [edit]="true"
+    editPosition="BOTTOMLEFT"
+    appearance="outlined"
+    status="unclassified"
+  >
+    <div style="padding: 30px 0; text-align: center">This is a prescription card</div>
+  </app-card>
 </div>

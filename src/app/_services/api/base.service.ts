@@ -7,17 +7,16 @@ import { map } from 'rxjs/operators';
 import { Resource } from '../../_models/resource';
 import { Serializer } from '../../_serializers/base.serializer';
 
-import * as constants from '../../app.constants';
 import { PaginationResponse } from '../../_models/common';
+import { HelperService } from '../helper.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BaseService<T extends Resource> {
-  private apiEndpoint = constants.API_ROUTE_MAIN;
-
   constructor(
     protected httpClient: HttpClient,
+    protected helperService: HelperService,
     @Inject('string') private url: string,
     @Inject('any') private endpoint: any,
     @Inject('Serializer') private serializer: Serializer
@@ -63,7 +62,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.url}/${this.apiEndpoint}/${endpoint}${paginationTmp}`, requestPayload)
+      .post(`${this.helperService.getApiUrl()}/${endpoint}${paginationTmp}`, requestPayload)
       .pipe(map((data: any) => this.convertData(data)));
   }
 
@@ -75,7 +74,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .get(`${this.url}/${this.apiEndpoint}/${endpoint}/${id}`)
+      .get(`${this.helperService.getApiUrl()}/${endpoint}/${id}`)
       .pipe(map((data: any) => this.serializer.fromJson(data) as T));
   }
 
@@ -87,27 +86,31 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.url}/${this.apiEndpoint}/${endpoint}`, [item])
+      .post(`${this.helperService.getApiUrl()}/${endpoint}/${item.id}`, item)
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 
-  // toDO: for later
+  add(item: T): Observable<T> {
+    // endpoint
+    let endpoint = this.endpoint.ENDPOINT;
+    if (this.endpoint.ADD) {
+      endpoint = this.endpoint.ADD;
+    }
 
-  // add(item: T): Observable<T> {
-  //   return this.httpClient
-  //     .post<T>(`${this.url}/${this.endpoint}`, this.serializer.toJson(item))
-  //     .pipe(map((data) => this.serializer.fromJson(data) as T));
-  // }
-  //
-  // update(item: T): Observable<T> {
-  //   return this.httpClient
-  //     .put<T>(`${this.url}/${this.endpoint}/${item.id}`, this.serializer.toJson(item))
-  //     .pipe(map((data) => this.serializer.fromJson(data) as T));
-  // }
-  //
-  // delete(item: T): any {
-  //   return this.httpClient.delete(`${this.url}/${this.endpoint}/${item.id}`);
-  // }
+    return this.httpClient
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, item)
+      .pipe(map((data) => this.serializer.fromJson(data) as T));
+  }
+
+  delete(item: T): any {
+    // endpoint
+    let endpoint = this.endpoint.ENDPOINT;
+    if (this.endpoint.DELETE) {
+      endpoint = this.endpoint.DELETE;
+    }
+
+    return this.httpClient.delete(`${this.helperService.getApiUrl()}/${endpoint}/${item.id}`);
+  }
 
   private convertData(data: any): PaginationResponse {
     // eslint-disable-next-line no-param-reassign

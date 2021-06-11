@@ -4,21 +4,38 @@ import {
   ComponentFactoryResolver,
   ViewChild,
   ViewContainerRef,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ActivitiesListComponent } from '../../../widgets/activities-list/activities-list.component';
+// tslint:disable-next-line:max-line-length
+import { ExposuresListComponent } from '../../../widgets/exposures-list/exposures-list.component';
+import { AddressesListComponent } from '../../../widgets/addresses-list/addresses-list.component';
+import { NewAddressComponent } from '../../../widgets/new-address/new-address.component';
+import { FollowUpStatusComponent } from '../../../widgets/follow-up-status/follow-up-status.component';
+import { NewEpidNumberComponent } from '../../../widgets/new-epid-number/new-epid-number.component';
+import { SymptomsGroupSelectComponent } from '../../../widgets/symptoms-group-select/symptoms-group-select.component';
 import { FormElementBase } from '../../types/form-element-base';
+
+const COMPONENTS_MAP: any = {
+  'app-follow-up-status': FollowUpStatusComponent,
+  'app-new-epid-number': NewEpidNumberComponent,
+  'app-symptoms-group-select': SymptomsGroupSelectComponent,
+  'app-exposures-list': ExposuresListComponent,
+  'app-activities-list': ActivitiesListComponent,
+  'app-addresses-list': AddressesListComponent,
+  'app-new-address': NewAddressComponent,
+};
 
 @Component({
   selector: 'app-form-widget',
   templateUrl: './form-widget.component.html',
   styleUrls: ['./form-widget.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormWidgetComponent implements AfterViewInit {
   config: FormElementBase<string>;
   group: FormGroup;
+  components = COMPONENTS_MAP;
 
   @ViewChild('dynamic', { read: ViewContainerRef }) dynamic: ViewContainerRef;
 
@@ -29,7 +46,7 @@ export class FormWidgetComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.config?.widget
+      this.components[this.config?.widget]
     );
     this.dynamic.clear();
     const componentRef = this.dynamic.createComponent<any>(componentFactory);

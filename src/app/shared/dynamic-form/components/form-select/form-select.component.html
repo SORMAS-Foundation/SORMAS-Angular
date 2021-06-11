@@ -4,13 +4,21 @@
     floatLabel="always"
     [ngClass]="{ 'has-hint': !!config.hint }"
   >
-    <mat-label *ngIf="config.label">{{ config.label }}</mat-label>
-    <mat-select disableOptionCentering [formControlName]="config.key" [placeholder]="config.label" (selectionChange)="onChange()">
+    <mat-label *ngIf="config.label">
+      {{ config.label || '' | translate }}
+      <span *ngIf="config.validation?.length" class="required">*</span>
+    </mat-label>
+    <mat-select
+      disableOptionCentering
+      [formControlName]="config.key"
+      [placeholder]="config.placeholder || ''"
+      (selectionChange)="onChange()"
+    >
       <mat-option *ngFor="let opt of config.options" [value]="opt.key">
         {{ opt.value }}
       </mat-option>
     </mat-select>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
   </mat-form-field>
-  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage }}</div>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage || '' | translate }}</div>
 </div>

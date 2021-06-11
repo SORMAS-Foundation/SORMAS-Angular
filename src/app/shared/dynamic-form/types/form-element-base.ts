@@ -3,6 +3,7 @@ export class FormElementBase<T> {
   value?: T;
   key: string;
   label: string;
+  placeholder?: string;
   hint?: string;
   validation?: string[];
   validationMessage?: string;
@@ -22,6 +23,7 @@ export class FormElementBase<T> {
       value?: T;
       key?: string;
       label?: string;
+      placeholder?: string;
       hint?: string;
       validation?: string[];
       validationMessage?: string;
@@ -40,6 +42,7 @@ export class FormElementBase<T> {
     this.value = options.value;
     this.key = options.key || '';
     this.label = options.label || '';
+    this.placeholder = options.placeholder || '';
     this.hint = options.hint;
     this.validation = options.validation;
     this.validationMessage = options.validationMessage;
@@ -58,6 +61,7 @@ export class FormElementBase<T> {
 
 export class FormBase<T> {
   title: string;
+  subTitle?: string;
   fields: FormElementBase<T>[];
   required?: boolean;
   anchor?: string;

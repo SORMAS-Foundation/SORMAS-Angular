@@ -1,6 +1,7 @@
 export const FORM_DATA_BASE = {
   key: '',
   label: '',
+  placeholder: '',
   value: '',
   validation: [],
   order: 1,
@@ -21,6 +22,13 @@ export const FORM_DATA_DATE = {
   controlType: 'date',
   type: 'date',
   className: 'size-small',
+};
+
+export const FORM_DATA_DATETIME = {
+  ...FORM_DATA_BASE,
+  controlType: 'datetime',
+  type: 'date',
+  className: 'size-large',
 };
 
 export const FORM_DATA_NUMBER = {

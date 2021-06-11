@@ -1,21 +1,9 @@
-<mat-card class="collapsable-box">
-  <mat-card-header class="box-header">
-    <mat-card-title>
-      <div class="box-title">
-        {{ boxTitle }}
-      </div>
-      <button
-        class="box-icon"
-        (click)="collapsed = !collapsed"
-        (keyup.enter)="collapsed = !collapsed"
-      >
-        <mat-icon *ngIf="collapsed">add</mat-icon>
-        <mat-icon *ngIf="!collapsed">remove</mat-icon>
-      </button>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content *ngIf="!collapsed" class="box-content">
-    <ng-content></ng-content>
-  </mat-card-content>
-  <mat-card-actions> </mat-card-actions>
-</mat-card>
+<mat-expansion-panel #panel [hideToggle]="true" [expanded]="expanded" class="collapsable-box">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ boxTitle }}
+    </mat-panel-title>
+    <mat-icon class="material-icons-round">{{ panel.expanded ? 'remove' : 'add' }}</mat-icon>
+  </mat-expansion-panel-header>
+  <ng-content></ng-content>
+</mat-expansion-panel>

@@ -5,14 +5,6 @@
   "projects": {
     "sormas": {
       "projectType": "application",
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": {
-          "fr": "src/locale/messages.fr.xlf",
-          "de": "src/locale/messages.de.xlf",
-          "ar": "src/locale/messages.ar.xlf"
-        }
-      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -34,7 +26,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "localize": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
@@ -44,18 +35,6 @@
             "scripts": ["node_modules/alertifyjs/build/alertify.min.js"]
           },
           "configurations": {
-            "en-US": {
-              "localize": ["en-US"]
-            },
-            "fr": {
-              "localize": ["fr"]
-            },
-            "de": {
-              "localize": ["de"]
-            },
-            "ar": {
-              "localize": ["ar"]
-            },
             "production": {
               "fileReplacements": [
                 {
@@ -104,18 +83,6 @@
             },
             "e2e-test": {
               "browserTarget": "sormas:build:e2e-test"
-            },
-            "en-US": {
-              "browserTarget": "sormas:build:en-US"
-            },
-            "fr": {
-              "browserTarget": "sormas:build:fr"
-            },
-            "de": {
-              "browserTarget": "sormas:build:de"
-            },
-            "ar": {
-              "browserTarget": "sormas:build:ar"
             }
           }
         },
@@ -147,7 +114,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sormas:serve:en-US"
+            "devServerTarget": "sormas:serve"
           },
           "configurations": {
             "production": {
