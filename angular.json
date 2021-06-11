@@ -72,6 +72,9 @@
           "configurations": {
             "production": {
               "browserTarget": "sormas:build:production"
+            },
+            "e2e-test": {
+              "browserTarget": "sormas:build:e2e-test"
             }
           }
         },
@@ -107,7 +110,7 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sormas:serve:production"
+              "devServerTarget": "sormas:serve:e2e-test"
             }
           }
         }
