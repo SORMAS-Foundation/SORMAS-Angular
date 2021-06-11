@@ -43,21 +43,13 @@
           </th>
         </ng-template>
 
-        <td mat-cell *matCellDef="let element" [align]="tableColumn.align">
-          <app-table-data
-            *ngIf="getTableData(element.index, tableColumn); let data"
-            [data]="data"
-            [config]="tableColumn"
-          ></app-table-data>
-              <a
-                mat-button
-                color="primary"
-                [routerLink]="getAdvancedData(element.index, tableColumn, advancedDataType.LINK)"
-                *ngIf="tableColumn.linkParams; else noLinkData"
-              >
-                {{ data | toShortId: tableColumn.dataKey }}
-              </a>
-              <ng-template #noLinkData>{{ data | toShortId: tableColumn.dataKey }}</ng-template>
+        <td
+          mat-cell
+          *matCellDef="let element; let row"
+          [align]="tableColumn.align"
+          [ngClass]="tableColumn.className || ''"
+        >
+          <app-cell-data [config]="tableColumn" [data]="getRowData(element.index)"></app-cell-data>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>

@@ -23,21 +23,22 @@ export interface Filter {
 }
 
 // table
+export interface TableDataFormat {
+  type: string;
+  pattern?: string;
+  params?: string[];
+  match?: { [key: string]: number[] };
+  truncate?: number;
+}
+
 export interface TableColumn {
   name: string;
   dataKey: string;
-  advancedDisplay?: string;
-  advancedDisplayParams?: string[];
-  linkPattern?: string;
-  linkParams?: string[];
   isSortable?: boolean;
   iconify?: boolean;
-  stylify?: boolean;
   align?: string;
-  interpolate?: string;
-  dateFormat?: string[];
-  numberFormat?: Record<string, number[]>;
   className?: string;
+  format?: TableDataFormat;
 }
 
 // scrolling

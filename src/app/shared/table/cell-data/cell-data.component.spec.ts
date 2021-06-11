@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableDataComponent } from './table-data.component';
+import { CellDataComponent } from './cell-data.component';
 
-describe('TableDataComponent', () => {
-  let component: TableDataComponent;
-  let fixture: ComponentFixture<TableDataComponent>;
+describe('CellDataComponent', () => {
+  let component: CellDataComponent;
+  let fixture: ComponentFixture<CellDataComponent>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [TableDataComponent],
+      declarations: [CellDataComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableDataComponent);
+    fixture = TestBed.createComponent(CellDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

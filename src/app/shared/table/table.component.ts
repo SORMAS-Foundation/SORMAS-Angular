@@ -48,7 +48,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   debouncer: Subject<number> = new Subject<number>();
   dataSourceArray: any = [];
   subscription: Subscription = new Subscription();
-  icons = constants.IconsMap;
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -123,59 +122,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  getAdvancedData(
-    index: number,
-    tableColumn: TableColumn,
-    type: constants.AdvancedDataType
-  ): string {
-    let params: keyof typeof tableColumn;
-    let pattern: keyof typeof tableColumn;
-
-    if (type === constants.AdvancedDataType.DISPLAY) {
-      params = 'advancedDisplayParams';
-      pattern = 'advancedDisplay';
-    } else {
-      params = 'linkParams';
-      pattern = 'linkPattern';
-    }
-    let dataTmp = tableColumn[pattern] || '';
-    const currentParam = tableColumn[params];
-    if (currentParam) {
-      for (let i = 0; i < currentParam.length; i += 1) {
-        const tableDataTmp = this.getTableDataByKey(index, currentParam[i]);
-        if (tableDataTmp === '') {
-          return '';
-        }
-        dataTmp = dataTmp?.replace(`$param${i + 1}`, tableDataTmp);
-      }
-      return dataTmp;
-    }
-
-    return '';
-  }
-
-  getTableDataByKey(index: number, key: string): any {
-    let displayText;
-
-    if (typeof this.dataSourceArray[index].index !== 'undefined') {
-      return 'loading';
-    }
-    return config.dataKey.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
-      displayText = key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
-    } else {
-      displayText = this.dataSourceArray[index][key]?.toString();
-    if (typeof displayText === 'undefined' || displayText === null) {
-      return '';
-    }
-
-    return displayText;
-  }
-
-  getTableData(index: number, tableColumn: TableColumn): any {
-    if (tableColumn.advancedDisplay) {
-      return this.getAdvancedData(index, tableColumn, constants.AdvancedDataType.DISPLAY);
-    }
-    return this.getTableDataByKey(index, tableColumn.dataKey);
+  getRowData(index: number): any {
+    return this.dataSourceArray[index];
   }
 
   getResources(reload: boolean = false): void {

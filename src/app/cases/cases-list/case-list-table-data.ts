@@ -6,8 +6,12 @@ export const defaultColumnDefs: TableColumn[] = [
     name: _('Case id'),
     dataKey: 'uuid',
     isSortable: true,
-    linkPattern: '/cases/case/$param1/details',
-    linkParams: ['uuid'],
+    format: {
+      type: 'LINK',
+      pattern: '/cases/case/$param1/details',
+      params: ['uuid'],
+      truncate: 6,
+    },
   },
   {
     name: _('External id'),
@@ -42,12 +46,12 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: _('First name'),
-    dataKey: 'person.firstName',
+    dataKey: 'personFirstName',
     isSortable: true,
   },
   {
     name: _('Last name'),
-    dataKey: 'person.lastName',
+    dataKey: 'personLastName',
     isSortable: true,
   },
   {
@@ -69,11 +73,19 @@ export const defaultColumnDefs: TableColumn[] = [
     name: _('Date of report'),
     dataKey: 'reportDate',
     isSortable: true,
+    format: {
+      type: 'DATE',
+      pattern: 'M/d/yyyy',
+    },
   },
   {
     name: _('Quarantine end'),
     dataKey: 'quarantineTo',
     isSortable: true,
+    format: {
+      type: 'DATE',
+      pattern: 'M/d/yyyy',
+    },
   },
   {
     name: _('Follow-up status'),
@@ -84,5 +96,9 @@ export const defaultColumnDefs: TableColumn[] = [
     name: _('Follow-up until'),
     dataKey: 'followUpUntil',
     isSortable: true,
+    format: {
+      type: 'DATE',
+      pattern: 'M/d/yyyy',
+    },
   },
 ];

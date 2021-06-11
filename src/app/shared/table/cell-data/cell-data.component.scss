@@ -1,5 +1,14 @@
 @use '/src/variables.scss' as *;
 
+.mat-icon {
+  font-size: 14px;
+  line-height: inherit;
+}
+
+a.mat-button {
+  line-height: inherit;
+}
+
 .row-skeleton {
   display: inline-block;
   width: 100%;

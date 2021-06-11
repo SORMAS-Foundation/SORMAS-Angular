@@ -26,7 +26,11 @@ export const defaultColumnDefs: TableColumn[] = [
     name: _('Risk level'),
     dataKey: 'riskLevel',
     isSortable: true,
-    stylify: true,
+    format: {
+      type: 'DISPLAY',
+      pattern: '<span class="risk-level-$param1">$param1</span>',
+      params: ['riskLevel'],
+    },
   },
   {
     name: _('Investigation status'),

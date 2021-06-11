@@ -20,14 +20,17 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: _('Age & birth date'),
     dataKey: 'age',
-    advancedDisplay: '$param1 ($param2/$param3/$param4)',
-    advancedDisplayParams: [
-      'ageAndBirthDate.age',
-      'ageAndBirthDate.birthdateDD',
-      'ageAndBirthDate.birthdateMM',
-      'ageAndBirthDate.birthdateYYYY',
-    ],
     isSortable: true,
+    format: {
+      type: 'DISPLAY',
+      pattern: '$param1 ($param2/$param3/$param4)',
+      params: [
+        'ageAndBirthDate.age',
+        'ageAndBirthDate.birthdateDD',
+        'ageAndBirthDate.birthdateMM',
+        'ageAndBirthDate.birthdateYYYY',
+      ],
+    },
   },
   {
     name: _('Sex'),
@@ -42,9 +45,12 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: _('Address'),
     dataKey: 'city',
-    advancedDisplay: '$param1, $param2, $param3, $param4',
-    advancedDisplayParams: ['city', 'street', 'houseNumber', 'postalCode'],
     isSortable: true,
+    format: {
+      type: 'DISPLAY',
+      pattern: '$param1, $param2, $param3, $param4',
+      params: ['city', 'street', 'houseNumber', 'postalCode'],
+    },
   },
   {
     name: _('Primary phone number'),
