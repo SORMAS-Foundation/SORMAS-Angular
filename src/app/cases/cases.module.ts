@@ -18,6 +18,7 @@ import { CaseContactsComponent } from './case_components/case-contacts/case-cont
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { CaseFiltersComponent } from './case-filters/case-filters.component';
 import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
+import { CaseAddComponent } from './case-add/case-add.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CasePortHealthComponent } from './case_components/case-port-health/case
     CaseClinicalCourseComponent,
     CaseContactsComponent,
     CaseFiltersComponent,
+    CaseAddComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

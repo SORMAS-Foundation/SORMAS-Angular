@@ -1,9 +1,8 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Case id'),
+    name: 'CaseData.uuid',
     dataKey: 'uuid',
     isSortable: true,
     format: {
@@ -14,63 +13,63 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: _('External id'),
+    name: 'CaseData.externalID',
     dataKey: 'externalID',
     isSortable: true,
   },
   {
-    name: _('Disease'),
+    name: 'disease',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: _('Disease variant'),
+    name: 'CaseData.diseaseVariant',
     dataKey: 'diseaseDetails',
     isSortable: true,
   },
   {
-    name: _('Case classification'),
+    name: 'Contact.caze.caseClassification',
     dataKey: 'caseClassification',
     isSortable: true,
   },
   {
-    name: _('Outcome of case'),
+    name: 'CaseData.outcome',
     dataKey: 'outcome',
     isSortable: true,
   },
   {
-    name: _('Investigation status'),
+    name: 'CaseData.investigationStatus',
     dataKey: 'investigationStatus',
     isSortable: true,
     iconify: true,
   },
   {
-    name: _('First name'),
+    name: 'CaseData.personFirstName',
     dataKey: 'personFirstName',
     isSortable: true,
   },
   {
-    name: _('Last name'),
+    name: 'CaseData.personLastName',
     dataKey: 'personLastName',
     isSortable: true,
   },
   {
-    name: _('District'),
+    name: 'CaseData.district',
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: _('Health facility'),
+    name: 'CaseData.healthFacilityName',
     dataKey: 'healthFacility.caption',
     isSortable: true,
   },
   {
-    name: _('Point of entry'),
+    name: 'CaseData.pointOfEntry',
     dataKey: 'pointOfEntry.caption',
     isSortable: true,
   },
   {
-    name: _('Date of report'),
+    name: 'CaseData.reportDate',
     dataKey: 'reportDate',
     isSortable: true,
     format: {
@@ -79,7 +78,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: _('Quarantine end'),
+    name: 'CaseData.quarantineTo',
     dataKey: 'quarantineTo',
     isSortable: true,
     format: {
@@ -88,12 +87,12 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: _('Follow-up status'),
+    name: 'CaseData.followUpStatus',
     dataKey: 'followUpStatus',
     isSortable: true,
   },
   {
-    name: _('Follow-up until'),
+    name: 'CaseData.followUpUntil',
     dataKey: 'followUpUntil',
     isSortable: true,
     format: {

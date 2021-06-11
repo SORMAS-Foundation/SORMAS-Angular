@@ -36,4 +36,7 @@ export type CaseLink = {
   link: string;
 };
 
+// max width of add modal
+export const ADD_MODAL_MAX_WIDTH = 1110;
+
 export const HEADER_HEIGHT = 68;

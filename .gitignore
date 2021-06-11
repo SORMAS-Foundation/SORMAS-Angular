@@ -54,3 +54,6 @@ Thumbs.db
 *.log
 
 docker/translations/node_modules
+
+# translations from backend
+/src/assets/i18n/dist

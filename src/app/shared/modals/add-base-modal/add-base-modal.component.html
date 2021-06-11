@@ -1,0 +1,20 @@
+<div class="add-base-modal-wrapper">
+  <div class="modal-header">
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+    <div mat-dialog-actions>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="reset-btn"
+        (click)="discard()"
+      >
+        {{ 'Discard' | translate }}
+      </button>
+      <button mat-flat-button color="primary" class="save-btn" (click)="save()">{{ 'Save' | translate }}</button>
+      <mat-icon class="material-icons-round" (click)="onNoClick()">cancel</mat-icon>
+    </div>
+  </div>
+  <div mat-dialog-content>
+    <ng-template #addResource></ng-template>
+  </div>
+</div>

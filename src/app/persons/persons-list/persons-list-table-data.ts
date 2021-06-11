@@ -1,24 +1,23 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Person id'),
+    name: 'Person.uuid',
     dataKey: 'uuid',
     isSortable: true,
   },
   {
-    name: _('First name'),
+    name: 'firstName',
     dataKey: 'firstName',
     isSortable: true,
   },
   {
-    name: _('Last name'),
+    name: 'lastName',
     dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: _('Age & birth date'),
+    name: 'Person.ageAndBirthDate',
     dataKey: 'age',
     isSortable: true,
     format: {
@@ -33,17 +32,17 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: _('Sex'),
+    name: 'sex',
     dataKey: 'sex',
     isSortable: true,
   },
   {
-    name: _('District'),
+    name: 'Person.districtName',
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: _('Address'),
+    name: 'address',
     dataKey: 'city',
     isSortable: true,
     format: {
@@ -53,12 +52,12 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: _('Primary phone number'),
+    name: 'person.primaryPhone',
     dataKey: 'phone',
     isSortable: true,
   },
   {
-    name: _('Primary email address'),
+    name: 'Person.emailAddress',
     dataKey: 'email',
     isSortable: true,
   },

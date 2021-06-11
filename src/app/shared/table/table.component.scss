@@ -26,6 +26,13 @@ table {
   }
 
   .mat-row {
+    position: relative;
+    z-index: 1;
     cursor: pointer;
+    &:hover,
+    :focus {
+      @include mat-elevation(5);
+      z-index: 2;
+    }
   }
 }
