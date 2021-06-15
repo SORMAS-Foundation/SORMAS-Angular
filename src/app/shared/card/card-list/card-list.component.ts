@@ -32,6 +32,7 @@ export class CardListComponent implements OnInit {
   @Input() cardAppearance: CardAppearance = CardAppearanceOptions.STANDARD;
   @Input() cardTitleKey: string;
   @Input() cardTitlePosition: BasicPositionType = BasicPosition.LEFT;
+  @Input() cardStatus: CardStatus;
   @Input() cardStatusKey: string;
 
   @Output() selectCard: EventEmitter<any> = new EventEmitter();
@@ -48,7 +49,7 @@ export class CardListComponent implements OnInit {
   }
 
   getStatus(data: any): CardStatus {
-    return CardStatusMap[data[this.cardStatusKey] as keyof typeof CardStatusMap];
+    return this.cardStatus || CardStatusMap[data[this.cardStatusKey] as keyof typeof CardStatusMap];
   }
 
   showMore(): void {

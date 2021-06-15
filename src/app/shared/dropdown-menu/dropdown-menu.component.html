@@ -1,0 +1,10 @@
+<button mat-stroked-button color="primary" #toggle="matMenuTrigger" [matMenuTriggerFor]="menu">
+  {{ buttonText | translate }}
+  <mat-icon class="material-icons-round">{{
+    toggle.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'
+  }}</mat-icon>
+</button>
+
+<mat-menu #menu [class]="panelClass">
+  <ng-content></ng-content>
+</mat-menu>

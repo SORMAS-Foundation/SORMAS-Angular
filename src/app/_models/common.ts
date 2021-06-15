@@ -40,3 +40,13 @@ export interface Offset {
   top: number;
   left: number;
 }
+
+// nav menu
+export type NavItemType = 'LINK' | 'ACTION' | 'MENU';
+
+export interface NavItem {
+  role: NavItemType;
+  name: string;
+  action: string;
+  children?: NavItem[];
+}
