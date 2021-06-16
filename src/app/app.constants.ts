@@ -3,6 +3,7 @@ export * from './_constants/icons';
 export * from './_constants/api';
 export * from './_constants/notifications';
 export * from './_constants/enums';
+export * from './_constants/actions';
 
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 54;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
@@ -38,5 +39,7 @@ export type CaseLink = {
 
 // max width of add modal
 export const ADD_MODAL_MAX_WIDTH = 1110;
+
+export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 
 export const HEADER_HEIGHT = 68;

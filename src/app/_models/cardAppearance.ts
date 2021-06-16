@@ -27,4 +27,5 @@ export type CardType =
   | 'person_case'
   | 'person_contact'
   | 'person_event'
+  | 'download'
   | undefined;

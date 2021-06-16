@@ -75,12 +75,9 @@
   "FollowUpStatus.actions": "Follow-up actions",
   "PageNotFound": "Page not found",
   "goToDashboard": "Go to Dashboard",
-  "contactsHeading": "Contacts Overview",
-  "personsHeading": "Persons Overview",
-  "samplesHeading": "Samples Overview",
   "actionShowMore": "Show more",
   "actionShowLess": "Show less",
   "actionAddNewAddress": "Add new address",
-  "tasksHeading": "Tasks Overview",
-  "NewCaseHealth": "Health"
+  "NewCaseHealth": "Health",
+  "actionDownload": "Download"
 }

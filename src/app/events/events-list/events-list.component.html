@@ -1,4 +1,10 @@
-<h1 class="header-title" i18n="Events Overview header">{{ 'Events Overview' | translate }}</h1>
+<div class="page-header">
+  <h1 class="page-header-title">
+    {{ 'View.events' | translate }}
+  </h1>
+  <div class="page-header-actions"></div>
+</div>
+
 <app-table
   [resourceService]="eventService"
   [tableColumns]="defaultColumns"
