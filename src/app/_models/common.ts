@@ -48,5 +48,6 @@ export interface NavItem {
   role: NavItemType;
   name: string;
   action: string;
+  className?: string;
   children?: NavItem[];
 }

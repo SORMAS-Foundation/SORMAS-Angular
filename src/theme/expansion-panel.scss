@@ -30,10 +30,13 @@
     .dropdown-menu {
       .mat-expansion-panel {
         border: 0;
+        border-bottom: 1px solid map-get($sormas-accent, 200);
+        margin-bottom: 8px;
+        border-radius: 0;
       }
 
       .mat-expansion-panel-header {
-        padding: 6px 16px;
+        padding: 12px 16px;
       }
 
       .mat-expansion-panel-header-title {
@@ -43,7 +46,6 @@
       .mat-expansion-panel-body {
         padding: 0;
         border-top: 1px solid map-get($sormas-accent, 200);
-        border-bottom: 1px solid map-get($sormas-accent, 200);
       }
     }
   }
