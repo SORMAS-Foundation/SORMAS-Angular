@@ -40,4 +40,6 @@ export type CaseLink = {
 // max width of add modal
 export const ADD_MODAL_MAX_WIDTH = 1110;
 
+export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
+
 export const HEADER_HEIGHT = 68;

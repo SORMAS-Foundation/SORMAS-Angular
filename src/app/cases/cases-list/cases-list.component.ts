@@ -9,7 +9,11 @@ import { NavItem, TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
-import { HEADER_HEIGHT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import {
+  HEADER_HEIGHT,
+  ADD_MODAL_MAX_WIDTH,
+  CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+} from '../../app.constants';
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -94,7 +98,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   exportCustomCase(): void {
     this.dialog.open(CustomCaseExportComponent, {
-      width: '776px',
+      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
 

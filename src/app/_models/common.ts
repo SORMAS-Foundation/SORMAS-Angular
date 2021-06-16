@@ -44,6 +44,12 @@ export interface Offset {
 // nav menu
 export type NavItemType = 'LINK' | 'ACTION' | 'MENU';
 
+export const NavItemRole = {
+  LINK: 'LINK' as NavItemType,
+  ACTION: 'ACTION' as NavItemType,
+  MENU: 'MENU' as NavItemType,
+};
+
 export interface NavItem {
   role: NavItemType;
   name: string;
