@@ -14,6 +14,7 @@ import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-ba
 import { CaseAddComponent } from '../case-add/case-add.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
 import { actionsMoreDefs } from './case-list-actions-data';
+import { ACTIONS_CASE } from '../../_constants/actions';
 
 @Component({
   selector: 'app-cases-list',
@@ -69,20 +70,22 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   onActionSelected(event: any): void {
     switch (event) {
-      case 'BASIC_EXPORT':
+      case ACTIONS_CASE.BASIC_EXPORT:
         break;
-      case 'DETAILED_EXPORT':
+      case ACTIONS_CASE.DETAILED_EXPORT:
         break;
-      case 'CASE_EXPORT':
+      case ACTIONS_CASE.CASE_EXPORT:
         break;
-      case 'SAMPLE_EXPORT':
+      case ACTIONS_CASE.SAMPLE_EXPORT:
         break;
-      case 'CUSTOM_EXPORT':
+      case ACTIONS_CASE.CUSTOM_EXPORT:
         this.exportCustomCase();
         break;
-      case 'CASE_GUIDE':
+      case ACTIONS_CASE.LINE_LISTING:
         break;
-      case 'MERGE_DUPLICATES':
+      case ACTIONS_CASE.CASE_GUIDE:
+        break;
+      case ACTIONS_CASE.MERGE_DUPLICATES:
         break;
       default:
         break;

@@ -14,12 +14,4 @@ export class ActionMenuComponent {
   onItemSelected(event: any): void {
     this.action.emit(event);
   }
-
-  collapse(): void {
-    console.log('collapsed now!');
-  }
-
-  expand(): void {
-    console.log('expanded now!');
-  }
 }

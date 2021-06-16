@@ -1,4 +1,5 @@
 import { NavItem } from '../../_models/common';
+import { ACTIONS_CASE } from '../../app.constants';
 
 export const actionsMoreDefs: NavItem[] = [
   {
@@ -9,46 +10,46 @@ export const actionsMoreDefs: NavItem[] = [
       {
         role: 'ACTION',
         name: 'exportBasic',
-        action: 'BASIC_EXPORT',
+        action: ACTIONS_CASE.BASIC_EXPORT,
       },
       {
         role: 'ACTION',
         name: 'exportDetailed',
-        action: 'DETAILED_EXPORT',
+        action: ACTIONS_CASE.DETAILED_EXPORT,
       },
       {
         role: 'ACTION',
         name: 'exportCaseManagement',
-        action: 'CASE_EXPORT',
+        action: ACTIONS_CASE.CASE_EXPORT,
       },
       {
         role: 'ACTION',
         name: 'exportSamples',
-        action: 'SAMPLE_EXPORT',
+        action: ACTIONS_CASE.SAMPLE_EXPORT,
       },
       {
         role: 'ACTION',
         name: 'exportCaseCustom',
-        action: 'CUSTOM_EXPORT',
+        action: ACTIONS_CASE.CUSTOM_EXPORT,
       },
     ],
   },
   {
     role: 'ACTION',
     name: 'caseLineListing',
-    action: 'LINE_LISTING',
+    action: ACTIONS_CASE.LINE_LISTING,
     className: 'accent',
   },
   {
     role: 'ACTION',
     name: 'caseOpenCasesGuide',
-    action: 'CASE_GUIDE',
+    action: ACTIONS_CASE.CASE_GUIDE,
     className: 'accent',
   },
   {
     role: 'ACTION',
     name: 'caseMergeDuplicates',
-    action: 'MERGE_DUPLICATES',
+    action: ACTIONS_CASE.MERGE_DUPLICATES,
     className: 'accent',
   },
 ];
