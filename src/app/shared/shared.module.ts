@@ -25,7 +25,7 @@ import { NewAddressComponent } from './widgets/new-address/new-address.component
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 import { FiltersComponent } from './filters/filters.component';
 import { DebounceDirective } from '../_directives/debounce.directive';
-import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.component';
+import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     ContactFiltersComponent,
     FiltersComponent,
     DebounceDirective,
-    AddBaseModalComponent,
+    AddEditBaseModalComponent,
   ],
   imports: [
     CommonModule,
@@ -80,6 +80,6 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     FiltersComponent,
     DebounceDirective,
   ],
-  entryComponents: [AddBaseModalComponent],
+  entryComponents: [AddEditBaseModalComponent],
 })
 export class SharedModule {}

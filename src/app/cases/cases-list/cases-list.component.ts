@@ -10,8 +10,9 @@ import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
 import { HEADER_HEIGHT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
-import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
+import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
+import { CaseEditComponent } from '../case-edit/case-edit.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -23,6 +24,9 @@ export class CasesListComponent implements OnInit, OnDestroy {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_CASES;
   headerHeight = HEADER_HEIGHT;
+  bulkConfig = {
+    editComponent: CaseEditComponent,
+  };
 
   private subscription: Subscription[] = [];
 
@@ -47,7 +51,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   openAddCaseModal(): void {
-    const dialogRef = this.dialog.open(AddBaseModalComponent, {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('Add new case'),

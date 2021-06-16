@@ -10,16 +10,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormActionsService } from '../../../_services/form-actions.service';
 
 @Component({
-  selector: 'app-add-base-modal',
-  templateUrl: './add-base-modal.component.html',
-  styleUrls: ['./add-base-modal.component.scss'],
+  selector: 'app-add-edit-base-modal',
+  templateUrl: './add-edit-base-modal.component.html',
+  styleUrls: ['./add-edit-base-modal.component.scss'],
 })
-export class AddBaseModalComponent implements OnInit {
-  @ViewChild('addResource', { read: ViewContainerRef })
-  addResource: ViewContainerRef;
+export class AddEditBaseModalComponent implements OnInit {
+  @ViewChild('addEditResource', { read: ViewContainerRef })
+  addEditResource: ViewContainerRef;
 
   constructor(
-    public dialogRef: MatDialogRef<AddBaseModalComponent>,
+    public dialogRef: MatDialogRef<AddEditBaseModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private componentFactoryResolver: ComponentFactoryResolver,
     private formActionsService: FormActionsService
@@ -28,7 +28,7 @@ export class AddBaseModalComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       const resolver = this.componentFactoryResolver.resolveComponentFactory(this.data.component);
-      this.addResource.createComponent(resolver);
+      this.addEditResource.createComponent(resolver);
     });
   }
 
