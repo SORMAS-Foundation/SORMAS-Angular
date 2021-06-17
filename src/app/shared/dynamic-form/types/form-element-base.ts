@@ -11,14 +11,12 @@ export class FormElementBase<T> {
   controlType: string;
   type: string;
   newLine: boolean | undefined;
-  disabledField: boolean | undefined;
   className?: string;
   options: { key: string; value: string }[];
   active: boolean;
   dependingOn?: string;
   dependingOnValues?: any[];
   widget?: any;
-  preselected?: string;
 
   constructor(
     options: {
@@ -33,14 +31,12 @@ export class FormElementBase<T> {
       controlType?: string;
       type?: string;
       newLine?: boolean;
-      disabledField?: boolean;
       className?: string;
       options?: { key: string; value: string }[];
       active?: boolean;
       dependingOn?: string;
       dependingOnValues?: any[];
       widget?: any;
-      preselected?: string;
     } = {}
   ) {
     this.value = options.value;
@@ -54,14 +50,12 @@ export class FormElementBase<T> {
     this.controlType = options.controlType || '';
     this.type = options.type || '';
     this.newLine = options.newLine;
-    this.disabledField = options.disabledField;
     this.className = options.className;
     this.options = options.options || [];
     this.active = options.active ?? true;
     this.dependingOn = options.dependingOn;
     this.dependingOnValues = options.dependingOnValues;
     this.widget = options.widget;
-    this.preselected = options.preselected;
   }
 }
 

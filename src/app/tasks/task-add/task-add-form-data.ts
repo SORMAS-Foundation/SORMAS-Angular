@@ -13,11 +13,9 @@ import {
   TaskStatusOptions,
   TaskTypeOptions,
 } from '../../_constants/enums';
-import { TaskContext } from '../../_models/models';
 
 const pipe = new EnumToKeyValuePipe();
 
-const optionsTaskContext = pipe.transform(TaskContextOptions);
 const optionsTaskTypes = pipe.transform(TaskTypeOptions);
 const optionsAssignedUser = pipe.transform(['Default user']);
 const optionsPriority = pipe.transform(TaskPriorityOptions);
@@ -29,11 +27,8 @@ export const FORM_DATA_TASK_ADD = [
     title: 'Task.taskContext',
     fields: [
       {
-        ...FORM_DATA_RADIO,
-        key: 'taskContext',
-        options: optionsTaskContext,
-        disabledField: true,
-        preselected: TaskContext.GENERAL,
+        ...FORM_DATA_NULL,
+        value: TaskContextOptions.GENERAL,
       },
     ],
   },

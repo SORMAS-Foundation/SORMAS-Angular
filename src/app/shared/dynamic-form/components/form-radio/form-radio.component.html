@@ -1,19 +1,10 @@
 <div [formGroup]="group">
-  <mat-radio-group
-    [disabled]="config.disabledField || false"
-    [formControlName]="config.key"
-    (change)="onChange()"
-  >
+  <mat-radio-group [formControlName]="config.key" (change)="onChange()">
     <mat-label *ngIf="config.label" class="radio-group-label">
       {{ config.label || '' | translate }}
       <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
-    <mat-radio-button
-      [checked]="opt.key === config.preselected"
-      *ngFor="let opt of config.options"
-      [value]="opt.key"
-      color="primary"
-    >
+    <mat-radio-button *ngFor="let opt of config.options" [value]="opt.key" color="primary">
       {{ opt.value }}
     </mat-radio-button>
   </mat-radio-group>

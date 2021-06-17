@@ -29,10 +29,10 @@ export class FormActionsComponent implements OnInit, OnDestroy {
         if (event instanceof NavigationStart && this.hasInputsChanged && !event.url.includes('#')) {
           this.notificationService
             .prompt({
-              title: this.translateService.instant('Are you sure you want to leave?'),
-              message: this.translateService.instant('You will lose all changes that were made'),
-              buttonDeclineText: this.translateService.instant('Cancel'),
-              buttonConfirmText: this.translateService.instant('I am sure'),
+              title: this.translateService.instant('actionSureToLeave'),
+              message: this.translateService.instant('actionLooseChanges'),
+              buttonDeclineText: this.translateService.instant('actionCancel'),
+              buttonConfirmText: this.translateService.instant('actionIAmSure'),
             })
             .subscribe((result) => {
               if (result) {
@@ -58,10 +58,10 @@ export class FormActionsComponent implements OnInit, OnDestroy {
   resetForm(): void {
     this.notificationService
       .prompt({
-        title: this.translateService.instant('Are you sure you want to discard your changes?'),
-        message: this.translateService.instant('You will lose all changes that were made'),
-        buttonDeclineText: this.translateService.instant('Cancel'),
-        buttonConfirmText: this.translateService.instant('I am sure'),
+        title: this.translateService.instant('actionSureDiscardChanges'),
+        message: this.translateService.instant('actionLooseChanges'),
+        buttonDeclineText: this.translateService.instant('actionCancel'),
+        buttonConfirmText: this.translateService.instant('actionIAmSure'),
       })
       .subscribe((result) => {
         if (result) {

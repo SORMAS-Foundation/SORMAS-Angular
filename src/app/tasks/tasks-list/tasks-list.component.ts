@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { TableColumn } from '../../_models/common';
 import { CONFIG_TASKS } from '../../_constants/storage';
 import { TaskDto } from '../../_models/taskDto';
 import { TaskService } from '../../_services/api/task.service';
 import { defaultColumnDefs } from './tasks-list-table-data';
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
-import { MatDialog } from '@angular/material/dialog';
 import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
-import { TranslateService } from '@ngx-translate/core';
 import { TaskAddComponent } from '../task-add/task-add.component';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tasks-list',

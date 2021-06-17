@@ -5258,5 +5258,10 @@
   "NewCaseHealth": "Health",
   "Task.taskTypeShort": "Task type",
   "Task.addNewTask": "Add new task",
-  "actionDownload": "Download"
+  "actionDownload": "Download",
+  "CaseData.addNewCase": "Add new case",
+  "actionSureToLeave": "Are you sure you want to leave?",
+  "actionLooseChanges": "You will lose all changes that were made",
+  "actionIAmSure": "I am sure",
+  "actionSureDiscardChanges": "Are you sure you want to discard your changes?"
 }
