@@ -201,7 +201,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getTableData(index: number, tableColumn: TableColumn): any {
-    console.log('aaaaaaaaaaa');
     if (tableColumn.advancedDisplay) {
       return this.getAdvancedData(index, tableColumn, constants.AdvancedDataType.DISPLAY);
     }
