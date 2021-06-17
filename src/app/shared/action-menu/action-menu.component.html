@@ -1,0 +1,27 @@
+<mat-action-list *ngIf="config">
+  <ng-container *ngFor="let item of config" [ngSwitch]="item.role">
+    <ng-template [ngSwitchCase]="'LINK'">
+      <a mat-list-item [routerLink]="[item.action]" [ngClass]="item.className || ''">{{
+        item.name | translate
+      }}</a>
+    </ng-template>
+    <ng-template [ngSwitchCase]="'ACTION'">
+      <button mat-list-item (click)="onItemSelected(item.action)" [ngClass]="item.className || ''">
+        {{ item.name | translate }}
+      </button>
+    </ng-template>
+    <ng-template [ngSwitchCase]="'MENU'">
+      <mat-expansion-panel expanded>
+        <mat-expansion-panel-header (click)="$event.stopPropagation()">
+          <mat-panel-title [ngClass]="item.className || ''">{{
+            item.name | translate
+          }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-action-menu
+          [config]="item.children"
+          (action)="onItemSelected($event)"
+        ></app-action-menu>
+      </mat-expansion-panel>
+    </ng-template>
+  </ng-container>
+</mat-action-list>

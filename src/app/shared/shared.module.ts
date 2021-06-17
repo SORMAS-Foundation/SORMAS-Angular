@@ -26,6 +26,8 @@ import { ContactFiltersComponent } from './contact-filters/contact-filters.compo
 import { FiltersComponent } from './filters/filters.component';
 import { DebounceDirective } from '../_directives/debounce.directive';
 import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.component';
+import { ActionMenuComponent } from './action-menu/action-menu.component';
+import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     FiltersComponent,
     DebounceDirective,
     AddBaseModalComponent,
+    ActionMenuComponent,
+    DropdownMenuComponent,
   ],
   imports: [
     CommonModule,
@@ -79,6 +83,8 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     ContactFiltersComponent,
     FiltersComponent,
     DebounceDirective,
+    ActionMenuComponent,
+    DropdownMenuComponent,
   ],
   entryComponents: [AddBaseModalComponent],
 })

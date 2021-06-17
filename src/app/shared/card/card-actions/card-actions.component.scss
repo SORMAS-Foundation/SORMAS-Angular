@@ -1,3 +1,5 @@
+@use '/src/variables.scss' as *;
+
 .mat-card-actions {
   display: flex;
   padding: 0;
@@ -14,4 +16,8 @@
   width: 24px;
   height: 24px;
   justify-content: center;
+}
+
+.delete {
+  color: map-get($sormas-accent, 500);
 }

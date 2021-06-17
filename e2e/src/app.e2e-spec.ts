@@ -16,22 +16,22 @@ describe('workspace-project App', () => {
     await page.navigateTo();
 
     // wait to be redirected to keycloak
-    // expect(
-    //   await browser.wait(protractor.ExpectedConditions.urlContains('keycloak'), 5000).catch(() => {
-    //     return false;
-    //   })
-    // ).toBeTruthy();
+    expect(
+      await browser.wait(protractor.ExpectedConditions.urlContains('keycloak'), 5000).catch(() => {
+        return false;
+      })
+    ).toBeTruthy();
 
-    // expect(await page.getTitleText()).toEqual('SORMAS');
+    expect(await page.getTitleText()).toEqual('SORMAS');
 
-    // const username = await page.getUserNameInput();
-    // const pw = await page.getPwInput();
+    const username = await page.getUserNameInput();
+    const pw = await page.getPwInput();
 
-    // username.sendKeys(TEST_CREDENTIALS);
-    // pw.sendKeys(TEST_CREDENTIALS);
+    username.sendKeys(TEST_CREDENTIALS);
+    pw.sendKeys(TEST_CREDENTIALS);
 
-    // const submitBtn = await page.getSubmitBtn();
-    // submitBtn.click();
+    const submitBtn = await page.getSubmitBtn();
+    submitBtn.click();
 
     await page.navigateToAngular();
   });
