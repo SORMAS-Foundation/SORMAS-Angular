@@ -8,5 +8,7 @@
       {{ opt.value }}
     </mat-radio-button>
   </mat-radio-group>
-  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage || '' | translate }}</div>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">
+    {{ config.validationMessage || '' | translate }}
+  </div>
 </div>

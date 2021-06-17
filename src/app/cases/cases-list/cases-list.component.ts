@@ -58,7 +58,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Add new case'),
+        title: this.translateService.instant('CaseData.addNewCase'),
         component: CaseAddComponent,
       },
     });
