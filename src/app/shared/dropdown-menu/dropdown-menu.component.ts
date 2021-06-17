@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class DropdownMenuComponent {
   @Input() buttonText = 'Open menu';
   @Input() panelClass = 'dropdown-menu';
+  @Input() disabled = false;
 }

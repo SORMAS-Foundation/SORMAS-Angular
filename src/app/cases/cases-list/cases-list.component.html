@@ -26,8 +26,8 @@
       [isHeaderSticky]="true"
       [fullHeight]="true"
       [saveConfigKey]="configKey"
-      (selectItem)="selectCase($event)"
-      (clickItem)="clickCase($event)"
+      [viewOptions]="actionsViewOptions"
+      [bulkEditOptions]="actionsBulkEdit"
     ></app-table>
   </ng-container>
 </app-filters>

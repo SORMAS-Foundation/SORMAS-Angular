@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,7 +16,11 @@ import {
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
-import { actionsMoreDefs } from './case-list-actions-data';
+import {
+  actionsMoreDefs,
+  actionsViewOptionsDefs,
+  actionsBulkEditDefs,
+} from './case-list-actions-data';
 import { ACTIONS_CASE } from '../../_constants/actions';
 
 @Component({
@@ -31,6 +34,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
   configKey = CONFIG_CASES;
   headerHeight = HEADER_HEIGHT;
   actionsMore: NavItem[] = actionsMoreDefs;
+  actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
+  actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
 
@@ -43,15 +48,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
-  }
-
-  selectCase(selection: SelectionModel<any>): void {
-    // eslint-disable-next-line no-console
-    console.log('event', selection);
-  }
-
-  clickCase(event: any): void {
-    this.router.navigate([`/cases/case/${event.item.uuid}/details`]);
   }
 
   openAddCaseModal(): void {
