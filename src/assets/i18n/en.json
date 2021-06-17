@@ -5257,5 +5257,7 @@
   "actionShowLess": "Show less",
   "actionAddNewAddress": "Add new address",
   "tasksHeading": "Tasks Overview",
-  "NewCaseHealth": "Health"
+  "NewCaseHealth": "Health",
+  "Task.taskTypeShort": "Task type",
+  "Task.addNewTask": "Add new task"
 }

@@ -9,6 +9,7 @@ export const FORM_DATA_BASE = {
   options: [],
   type: '',
   newLine: false,
+  disabledField: false,
   active: true,
 };
 

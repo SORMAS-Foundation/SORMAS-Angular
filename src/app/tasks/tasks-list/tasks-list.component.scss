@@ -1,8 +1,16 @@
 @use '../../../variables.scss' as *;
 
-.header-title {
-  padding-left: 20px;
-  margin-top: 24px;
-  font-size: 34px;
-  font-weight: 500;
+.task-list-header {
+  overflow: hidden;
+  padding: 20px;
+
+  .add-btn {
+    float: right;
+  }
+  .header-title {
+    margin: 0;
+    float: left;
+    font-size: 34px;
+    font-weight: 500;
+  }
 }

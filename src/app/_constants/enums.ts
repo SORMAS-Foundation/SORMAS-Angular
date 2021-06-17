@@ -252,3 +252,49 @@ export enum ConveyanceTypeOptions {
   MOTORBIKE = 'Motorbike',
   OTHER = 'Other',
 }
+
+export enum TaskContextOptions {
+  CASE = 'Case',
+  CONTACT = 'Contact',
+  EVENT = 'Event',
+  GENERAL = 'General',
+}
+
+export enum TaskTypeOptions {
+  ACTIVE_SEARCH_FOR_OTHER_CASES = 'Active search for other cases',
+  CASE_ISOLATION = 'Case isolation',
+  CASE_INVESTIGATION = 'Case investigation',
+  CASE_MANAGEMENT = 'Case management',
+  CASE_BURIAL = 'Case burial',
+  CONTACT_TRACING = 'Contact tracing',
+  SAMPLE_COLLECTION = 'Sample collection',
+  CONTACT_INVESTIGATION = 'Contact investigation',
+  CONTACT_FOLLOW_UP = 'Contact follow-up',
+  ANIMAL_TESTING = 'Animal testing',
+  EVENT_INVESTIGATION = 'Event investigation',
+  EVENT_CONTINUE_INVESTIGATION = 'Event continue investigation',
+  EVENT_REQUEST_ADDITIONAL_INFORMATION = 'Event request additional information',
+  TREATMENT_CENTER_ESTABLISHMENT = 'Treatment center establishement',
+  ENVIRONMENTAL_HEALTH_ACTIVITIES = 'Environmental health activities',
+  DECONTAMINATION_DISINFECTION_ACTIVITIES = 'Decontamination disinfection activities',
+  QUARANTINE_PLACE = 'Quarantine place',
+  VACCINATION_ACTIVITIES = 'Vaccination activities',
+  ANIMAL_DEPOPULATION = 'Animal depopulation',
+  OTHER = 'Other',
+  DAILY_REPORT_GENERATION = 'Daily report generation',
+  SURVEILLANCE_REPORT_GENERATION = 'Surveillance report generation',
+  WEEKLY_REPORT_GENERATION = 'Weekly report generation',
+}
+
+export enum TaskPriorityOptions {
+  HIGH = 'High',
+  NORMAL = 'Normal',
+  LOW = 'Low',
+}
+
+export enum TaskStatusOptions {
+  PENDING = 'Pending',
+  DONE = 'Done',
+  REMOVED = 'Removed',
+  NOTEXECUTABLE = 'Not executable',
+}
