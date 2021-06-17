@@ -5,7 +5,7 @@
   <app-dropdown-menu
     *ngIf="bulkEditOptions"
     buttonText="Enter bulk edit mode"
-    [disabled]="disableBulkEdit"
+    [disabled]="selection.isEmpty()"
   >
     <app-action-menu
       [config]="bulkEditOptions"

@@ -49,7 +49,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   dataSourceArray: any = [];
   subscriptions: Subscription[] = [];
   icons = constants.IconsMap;
-  disableBulkEdit = true;
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -63,9 +62,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() preSetFilters: Filter[];
   @Input() viewOptions: NavItem[];
   @Input() bulkEditOptions: NavItem[];
-
-  @Output() selectItem: EventEmitter<any> = new EventEmitter();
-  @Output() clickItem: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
@@ -106,12 +102,14 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         this.getResources(true);
       })
     );
+  }
 
-    this.subscriptions.push(
-      this.selection.changed.subscribe(() => {
-        this.disableBulkEdit = this.selection.isEmpty();
-      })
-    );
+  getSelectedItems(): any[] {
+    const result: any[] = [];
+    this.selection.selected.forEach((row) => {
+      result.push(this.dataSourceArray[row.index]);
+    });
+    return result;
   }
 
   getColumns(): string[] {

@@ -51,15 +51,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.defaultColumns = defaultColumnDefs;
   }
 
-  selectCase(selection: SelectionModel<any>): void {
-    // eslint-disable-next-line no-console
-    console.log('event', selection);
-  }
-
-  clickCase(event: any): void {
-    this.router.navigate([`/cases/case/${event.item.uuid}/details`]);
-  }
-
   openAddCaseModal(): void {
     const dialogRef = this.dialog.open(AddBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
