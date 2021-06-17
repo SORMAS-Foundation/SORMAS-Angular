@@ -28,6 +28,7 @@ export const FORM_DATA_TASK_ADD = [
     fields: [
       {
         ...FORM_DATA_NULL,
+        key: 'taskContext',
         value: TaskContextOptions.GENERAL,
       },
     ],
