@@ -1,4 +1,10 @@
-<button mat-stroked-button color="primary" #toggle="matMenuTrigger" [matMenuTriggerFor]="menu">
+<button
+  mat-stroked-button
+  color="primary"
+  #toggle="matMenuTrigger"
+  [matMenuTriggerFor]="menu"
+  [disabled]="disabled"
+>
   {{ buttonText | translate }}
   <mat-icon class="material-icons-round">{{
     toggle.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'

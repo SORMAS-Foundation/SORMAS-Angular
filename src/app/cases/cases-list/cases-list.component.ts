@@ -17,7 +17,11 @@ import {
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
-import { actionsMoreDefs } from './case-list-actions-data';
+import {
+  actionsMoreDefs,
+  actionsViewOptionsDefs,
+  actionsBulkEditDefs,
+} from './case-list-actions-data';
 import { ACTIONS_CASE } from '../../_constants/actions';
 
 @Component({
@@ -31,6 +35,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
   configKey = CONFIG_CASES;
   headerHeight = HEADER_HEIGHT;
   actionsMore: NavItem[] = actionsMoreDefs;
+  actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
+  actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
 
