@@ -2,16 +2,10 @@
 
 .dynamic-form-wrapper {
   .inpage-nav {
-    margin: 0 -25px;
-    &.fixed {
-      position: fixed;
-      z-index: 9;
-      top: 200px;
-      right: 0;
-      left: 0;
-      padding: 0 25px;
-      background: $white;
-    }
+    position: sticky;
+    z-index: 2;
+    top: 212px;
+    margin: 0 -24px;
   }
 }
 

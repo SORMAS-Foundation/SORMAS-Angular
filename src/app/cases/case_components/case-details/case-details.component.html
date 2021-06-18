@@ -1,5 +1,13 @@
-<app-dynamic-form
-  [formElements]="myFormElements"
-  [resourceService]="resourceService"
-  [withAnchor]="true"
-></app-dynamic-form>
+<app-sidebar>
+  <app-dynamic-form
+    main
+    [formElements]="myFormElements"
+    [resourceService]="resourceService"
+    [withAnchor]="true"
+  ></app-dynamic-form>
+  <div *ngIf="case" aside>
+    <app-edge-panel type="TASK" [service]="taskService" [scopeId]="case.uuid"></app-edge-panel>
+    <app-edge-panel type="SAMPLE" [service]="sampleService" [scopeId]="case.uuid"></app-edge-panel>
+    <app-edge-panel type="EVENT" [service]="eventService" [scopeId]="case.uuid"></app-edge-panel>
+  </div>
+</app-sidebar>

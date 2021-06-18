@@ -1,0 +1,22 @@
+<app-collapsable-box
+  boxTitle="{{ config.title | translate }}"
+  actionText="{{ config.action | translate }}"
+  [expanded]="true"
+  appearance="section"
+  iconExpand="arrow_drop_down"
+  iconCollapse="arrow_drop_up"
+  (action)="create()"
+>
+  <app-card-list
+    *ngIf="fetch | async; let data"
+    [data]="data.elements"
+    [cardWidth]="200"
+    [initialPageSize]="initialSize"
+    [cardType]="config.cardType"
+    [cardTitleKey]="config.cardTitleKey"
+    [cardStatusKey]="config.cardStatusKey"
+    [cardAppearance]="config.appearance"
+    [cardEdit]="true"
+    [cardCollapse]="true"
+  ></app-card-list>
+</app-collapsable-box>
