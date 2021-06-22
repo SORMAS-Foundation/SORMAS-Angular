@@ -7,9 +7,10 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { TasksRoutingModule } from './tasks-routing.module';
 import { MaterialModule } from '../material.module';
 import { TaskFiltersComponent } from './task-filters/task-filters.component';
+import { TaskAddComponent } from './task-add/task-add.component';
 
 @NgModule({
-  declarations: [TasksComponent, TasksListComponent, TaskFiltersComponent],
+  declarations: [TasksComponent, TasksListComponent, TaskFiltersComponent, TaskAddComponent],
   imports: [CommonModule, TasksRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class TasksModule {}

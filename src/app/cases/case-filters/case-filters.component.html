@@ -12,7 +12,8 @@
         value=""
         type="text"
         matInput
-        placeholder="{{ 'searchByIdName' | translate }}"
+        appDebounce
+        placeholder="{{ 'promptCasesSearchField' | translate }}"
         formControlName="nameUuidEpidNumberLike"
         (debounce)="onFormChange()"
       />

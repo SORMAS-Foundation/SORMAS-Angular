@@ -12,6 +12,7 @@ import { CardCaseEventComponent } from './card-case-event/card-case-event.compon
 import { CardListComponent } from './card-list/card-list.component';
 import { CardEpidDataComponent } from './card-epid-data/card-epid-data.component';
 import { PipesModule } from '../../_pipes/pipes.module';
+import { CardDownloadComponent } from './card-download/card-download.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
@@ -24,6 +25,7 @@ import { PipesModule } from '../../_pipes/pipes.module';
     CardSampleComponent,
     CardListComponent,
     CardEpidDataComponent,
+    CardDownloadComponent,
   ],
   exports: [CardComponent, CardListComponent],
 })

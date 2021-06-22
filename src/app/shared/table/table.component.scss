@@ -1,5 +1,13 @@
 @use '/src/variables.scss' as *;
 
+.actions {
+  padding: 24px;
+
+  & > * {
+    margin-right: 16px;
+  }
+}
+
 .mat-cell .mat-icon {
   font-size: 14px;
   line-height: inherit;

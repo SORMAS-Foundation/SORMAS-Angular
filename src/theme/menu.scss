@@ -1,0 +1,35 @@
+@mixin menu-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-menu-panel {
+      @include mat-elevation(6);
+
+      border: 1px solid map-get($sormas-accent, 200);
+      margin-top: 5px;
+      border-radius: 5px;
+    }
+
+    .mat-menu-content {
+      min-width: 200px;
+    }
+
+    .mat-list-base {
+      padding: 0;
+
+      .mat-list-item {
+        height: 36px;
+        font-size: 14px;
+      }
+
+      .mat-list-item:hover,
+      .mat-list-item:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -3,8 +3,8 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
   Input,
+  EventEmitter,
   OnDestroy,
   OnInit,
   Output,
@@ -23,7 +23,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
-import { Filter, Sorting, TableColumn } from '../../_models/common';
+import { Filter, NavItem, Sorting, TableColumn } from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -50,6 +50,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   filters: Filter[];
   debouncer: Subject<number> = new Subject<number>();
   dataSourceArray: any = [];
+  subscriptions: Subscription[] = [];
   icons = constants.IconsMap;
 
   private subscription: Subscription[] = [];
@@ -64,6 +65,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() fullHeight: boolean;
   @Input() appearance: string = constants.TableAppearanceOptions.STANDARD;
   @Input() preSetFilters: Filter[];
+  @Input() viewOptions: NavItem[];
+  @Input() bulkEditOptions: NavItem[];
+
   @Input() bulkConfig: any;
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
@@ -100,7 +104,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     });
 
-    this.subscription.push(
+    this.subscriptions.push(
       this.filterService.getFilters().subscribe((response: any) => {
         this.filters = response.filters;
         if (this.preSetFilters) {
@@ -109,6 +113,14 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         this.getResources(true);
       })
     );
+  }
+
+  getSelectedItems(): any[] {
+    const result: any[] = [];
+    this.selection.selected.forEach((row) => {
+      result.push(this.dataSourceArray[row.index]);
+    });
+    return result;
   }
 
   getColumns(): string[] {
@@ -244,13 +256,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       });
   }
 
-  onItemSelect(event: any, row: any): void {
-    event.stopPropagation();
-    this.selectItem.emit({
-      item: this.dataSourceArray[row.index],
-    });
-  }
-
   scrolledIndexChange(index: number): void {
     this.debouncer.next(index);
   }
@@ -284,6 +289,11 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.limit = Math.ceil((this.tableHeight - this.headerHeight) / this.rowHeight);
   }
 
+  onActionSelected(event: any): void {
+    // eslint-disable-next-line no-console
+    console.log(event);
+  }
+
   ngAfterViewInit(): void {
     if (this.fullHeight) {
       setTimeout(() => this.determineHeight());
@@ -291,6 +301,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

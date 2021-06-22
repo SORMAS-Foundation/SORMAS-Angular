@@ -1,11 +1,22 @@
 <app-filters [topGap]="headerHeight">
   <app-case-filters filters></app-case-filters>
   <ng-container list>
-    <div class="case-list-header">
-      <h1 class="header-title" i18n="Cases Overview header">{{ 'caseCasesList' | translate }}</h1>
-      <button class="add-btn" mat-flat-button color="primary" (click)="openAddCaseModal()">
-        {{ 'caseNewCase' | translate }}
-      </button>
+    <div class="page-header">
+      <h1 class="page-header-title" i18n="Cases Overview header">
+        {{ 'View.cases' | translate }}
+      </h1>
+      <div class="page-header-actions">
+        <button mat-flat-button color="primary" (click)="openAddCaseModal()">
+          {{ 'caseNewCase' | translate }}
+        </button>
+
+        <app-dropdown-menu buttonText="{{ 'moreActions' | translate }}">
+          <app-action-menu
+            [config]="actionsMore"
+            (action)="onActionSelected($event)"
+          ></app-action-menu>
+        </app-dropdown-menu>
+      </div>
     </div>
     <app-table
       [resourceService]="caseService"
@@ -16,8 +27,8 @@
       [fullHeight]="true"
       [bulkConfig]="bulkConfig"
       [saveConfigKey]="configKey"
-      (selectItem)="selectCase($event)"
-      (clickItem)="clickCase($event)"
+      [viewOptions]="actionsViewOptions"
+      [bulkEditOptions]="actionsBulkEdit"
     ></app-table>
   </ng-container>
 </app-filters>

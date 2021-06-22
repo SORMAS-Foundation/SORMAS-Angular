@@ -1,0 +1,11 @@
+@use '/src/variables.scss' as *;
+
+.mat-icon {
+  width: 14px;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.mat-stroked-button[aria-expanded='true'] {
+  background-color: mat-color($sormas-primary, 50);
+}

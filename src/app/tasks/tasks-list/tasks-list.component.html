@@ -1,4 +1,11 @@
-<h1 class="header-title" i18n="Cases Overview header">{{ 'tasksHeading' | translate }}</h1>
+<div class="page-header">
+  <h1 class="page-header-title" i18n="Cases Overview header">{{ 'tasksHeading' | translate }}</h1>
+  <div class="page-header-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddTaskModal()">
+      {{ 'taskNewTask' | translate }}
+    </button>
+  </div>
+</div>
 <app-table
   [resourceService]="taskService"
   [tableColumns]="defaultColumns"

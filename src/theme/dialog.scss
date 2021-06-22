@@ -7,16 +7,25 @@
 
   :root {
     .mat-dialog-container {
+      position: relative;
       padding-right: 64px;
       padding-left: 64px;
       border-radius: 12px;
     }
 
     .mat-dialog-title {
-      margin-top: 40px;
+      margin-top: 36px;
       margin-bottom: 24px;
-      font-size: 24px;
-      line-height: 1;
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 36px;
+    }
+
+    .button-dialog-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      color: map-get($sormas-accent, 500);
     }
 
     .mat-dialog-content {
@@ -45,9 +54,16 @@
       margin: 1em 0;
     }
 
+    .dialog-prompt {
+      .mat-dialog-title {
+        font-size: 24px;
+      }
+    }
+
     .dialog-confirm {
       .mat-dialog-title {
         color: mat-color(mat-palette($warn, 700));
+        font-size: 24px;
       }
     }
 
@@ -58,6 +74,7 @@
 
       .mat-dialog-title {
         color: mat-color(mat-palette($warn, 700));
+        font-size: 24px;
       }
 
       .mat-dialog-content {

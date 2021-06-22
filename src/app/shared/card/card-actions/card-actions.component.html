@@ -4,7 +4,7 @@
       *ngSwitchCase="'button'"
       mat-icon-button
       color="primary"
-      [ngClass]="['small', action.position?.includes('LEFT') ? 'left' : 'right']"
+      [ngClass]="['small', action.type, action.position?.includes('LEFT') ? 'left' : 'right']"
       (click)="announceAction($event, action.type)"
     >
       <mat-icon class="material-icons-round">{{ getIcon(action.type) }}</mat-icon>
