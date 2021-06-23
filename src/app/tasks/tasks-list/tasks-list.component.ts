@@ -7,9 +7,9 @@ import { CONFIG_TASKS } from '../../_constants/storage';
 import { TaskDto } from '../../_models/taskDto';
 import { TaskService } from '../../_services/api/task.service';
 import { defaultColumnDefs } from './tasks-list-table-data';
-import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 import { TaskAddComponent } from '../task-add/task-add.component';
+import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 
 @Component({
   selector: 'app-tasks-list',
@@ -34,7 +34,7 @@ export class TasksListComponent implements OnInit {
   }
 
   openAddTaskModal(): void {
-    const dialogRef = this.dialog.open(AddBaseModalComponent, {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('Task.addNewTask'),
