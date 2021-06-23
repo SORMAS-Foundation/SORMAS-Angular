@@ -131,10 +131,97 @@ export enum VaccineManufacturer {
   OTHER = 'Other',
 }
 
+export enum YesNo {
+  YES = 'Yes',
+  NO = 'No',
+}
+
 export enum YesNoUnknown {
   YES = 'Yes',
   NO = 'No',
   UNKNOWN = 'Unknown',
+}
+
+export enum SamplePurpose {
+  EXTERNAL = 'External',
+  INTERNAL = 'Internal',
+}
+
+export enum SampleMaterial {
+  BLOOD = 'Blood',
+  SERA = 'Sera',
+  STOOL = 'Stool',
+  NASALSWAB = 'Nasal swab',
+  THROATSWAB = 'Throat swab',
+  NPSWAB = 'Nasopharyngeal swab',
+  RECTALSWAB = 'Rectal swab',
+  CEREBROSPINALFLUID = 'Cerebrospinal fluid',
+  CRUST = 'Crust',
+  TISSUE = 'Tissue',
+  URINE = 'Urine',
+  CORNEAPM = 'Cornea p.m',
+  SALIVA = 'Saliva',
+  URINEPM = 'Urine p.m.',
+  NUCHALSKINBIOPSY = 'Nuchal skin biopsy',
+  SPUTUM = 'Sputum',
+  ENDOTRACHEALASPIRATE = 'Endotracheal aspirate',
+  BRONCHOALVEOLARLAVAGE = 'Bronchoalveolar lavage',
+  BRAINTISSUE = 'Brain tissue',
+  OTHER = 'Other',
+}
+
+export enum SamplingReason {
+  PRESENCE_OF_SYMPTOMS = 'Presence of symptoms',
+  OUTBREAK = 'Outbreak',
+  SCREENING = 'Screening',
+  PROFESSIONAL_REASON = 'Professional reason',
+  QUARANTINE_REGULATIONS = 'Quarantine regulations',
+  CONTACT_TO_CASE = 'Contact to case',
+  SWISS_COVID_APP_NOTIFICATION = 'Swiss covid app notification',
+  PLANNING_TO_TRAVEL = 'Planning to travel',
+  RETURNING_TRAVELER = 'Returning traveler',
+  PERSONAL_REASON = 'Personal reason',
+  MOVING_RETURNING_RETIREMENT_HOME = 'Moving/returning into retirement home',
+  QUARANTINE_END = 'Quarantine end',
+  UNKNOWN = 'Unknown',
+  OTHER_REASON = 'Other reason',
+}
+
+export enum SpecimenCondition {
+  ADEQUATE = 'Adequate ',
+  NOTADEQUATE = 'Not adequate',
+}
+
+export enum PathogenTestResultType {
+  INDETERMINATE = 'Indeterminate',
+  PENDING = 'Pending',
+  NEGATIVE = 'Negative',
+  POSITIVE = 'Positive',
+  NOTDONE = 'Not done',
+}
+
+export enum PathogenTestType {
+  ANTIBODYDETECTION = 'Antibody detection',
+  ANTIGENDETECTION = 'Antigen detection',
+  RAPIDTEST = 'Rapid test',
+  CULTURE = 'Culture',
+  HISTOPATHOLOGY = 'Histopatholog',
+  ISOLATION = 'Isolation',
+  IGMSERUMANTIBODY = 'IgM serum antibody',
+  IGGSERUMANTIBODY = 'IgG serum antibody',
+  IGASERUMANTIBODY = 'IgA serum antibody',
+  INCUBATIONTIME = 'Incubation time',
+  INDIRECTFLUORESCENTANTIBODY = 'Indirect Fluorescent Antibody (IFA)',
+  DIRECTFLUORESCENTANTIBODY = 'Direct fluorescent antibody (FA)',
+  MICROSCOPY = 'Microscopy',
+  NEUTRALIZINGANTIBODIES = 'Neutralizing antibodies',
+  PCRRTPCR = 'PCR / RT-PCR',
+  GRAMSTAIN = 'Gram Stain',
+  LATEXAGGLUTINATION = 'Latex Agglutination',
+  CQVALUEDETECTION = 'CQQ Value Detection',
+  SEQUENCING = 'Sequencing',
+  DNAMICROARRAY = 'DNA Microarray',
+  OTHER = 'Other',
 }
 
 export enum CaseIdentificationSource {
