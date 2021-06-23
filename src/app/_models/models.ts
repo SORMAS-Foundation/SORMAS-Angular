@@ -193,5 +193,4 @@ export * from './waterSource';
 export * from './weeklyReportDto';
 export * from './weeklyReportEntryDto';
 export * from './workEnvironment';
-export * from './yesNo';
 export * from './yesNoUnknown';
