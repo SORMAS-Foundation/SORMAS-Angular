@@ -131,11 +131,6 @@ export enum VaccineManufacturer {
   OTHER = 'Other',
 }
 
-export enum YesNo {
-  YES = 'Yes',
-  NO = 'No',
-}
-
 export enum YesNoUnknown {
   YES = 'Yes',
   NO = 'No',

@@ -6,7 +6,6 @@ import {
   SamplePurpose,
   SamplingReason,
   SpecimenCondition,
-  YesNo,
 } from '../../_constants/enums';
 import {
   FORM_DATA_CHECKBOX,
