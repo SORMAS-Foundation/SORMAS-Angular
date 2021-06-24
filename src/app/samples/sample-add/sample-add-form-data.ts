@@ -29,7 +29,6 @@ const optionsPathogenTestResult = pipe.transform(PathogenTestResultType);
 const optionsPathogenTestType = pipe.transform(PathogenTestType);
 const optionsDisease = pipe.transform(Disease);
 const optionsDiseaseVariant = pipe.transform(['Variant1', 'Variant2']);
-const optionstestResultVerified = pipe.transform(YesNo);
 
 export const FORM_DATA_SAMPLE_ADD = [
   {
@@ -235,12 +234,9 @@ export const FORM_DATA_SAMPLE_ADD = [
         dependingOnValues: ['OTHER'],
       },
       {
-        ...FORM_DATA_RADIO,
+        ...FORM_DATA_CHECKBOX,
         key: 'testResultVerified',
         label: 'PathogenTest.testResultVerified',
-        options: optionstestResultVerified,
-        newLine: true,
-        validation: ['required'],
         dependingOn: 'referred',
       },
       {
