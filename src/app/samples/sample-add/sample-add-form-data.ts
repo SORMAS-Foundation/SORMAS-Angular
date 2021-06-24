@@ -67,7 +67,7 @@ export const FORM_DATA_SAMPLE_ADD = [
         key: 'sampleMaterialText',
         label: 'Sample.sampleMaterialText',
         dependingOn: 'sampleMaterial',
-        dependingOnValues: [SampleMaterial.OTHER],
+        dependingOnValues: ['OTHER'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -82,7 +82,7 @@ export const FORM_DATA_SAMPLE_ADD = [
         key: 'samplingReasonDetails',
         label: 'Sample.samplingReasonDetails',
         dependingOn: 'samplingReason',
-        dependingOnValues: [SamplingReason.OTHER_REASON],
+        dependingOnValues: ['OTHER_REASON'],
       },
       {
         ...FORM_DATA_INPUT,
@@ -220,7 +220,7 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'testedDisease',
-        label: 'Sample.disease',
+        label: 'PathogenTest.testedDisease',
         options: optionsDisease,
         newLine: true,
         validation: ['required'],
@@ -229,10 +229,10 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'testedDiseaseDetails',
-        label: 'Sample.diseaseVariant',
+        label: 'PathogenTest.testedDiseaseVariant',
         options: optionsDiseaseVariant,
         dependingOn: 'testedDisease',
-        dependingOnValues: [Disease.OTHER],
+        dependingOnValues: ['OTHER'],
       },
       {
         ...FORM_DATA_RADIO,

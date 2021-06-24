@@ -87,9 +87,6 @@
   "actionLooseChanges": "You will lose all changes that were made",
   "actionIAmSure": "I am sure",
   "actionSureDiscardChanges": "Are you sure you want to discard your changes?",
-  "Sample.addNewSample": "Add new sample",
-  "Sample.disease": "Disease",
-  "Sample.diseaseVariant": "Disease variant",
   "Sample.resultDate": "Result date",
   "Sample.resultDetails": "Result details"
 }

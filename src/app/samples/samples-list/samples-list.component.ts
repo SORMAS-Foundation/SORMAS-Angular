@@ -37,7 +37,7 @@ export class SamplesListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Sample.addNewSample'),
+        title: this.translateService.instant('sampleCreateNew'),
         component: SampleAddComponent,
       },
     });
