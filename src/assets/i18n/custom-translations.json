@@ -86,5 +86,7 @@
   "actionSureToLeave": "Are you sure you want to leave?",
   "actionLooseChanges": "You will lose all changes that were made",
   "actionIAmSure": "I am sure",
-  "actionSureDiscardChanges": "Are you sure you want to discard your changes?"
+  "actionSureDiscardChanges": "Are you sure you want to discard your changes?",
+  "Sample.resultDate": "Result date",
+  "Sample.resultDetails": "Result details"
 }
