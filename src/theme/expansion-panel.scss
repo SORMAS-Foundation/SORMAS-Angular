@@ -70,13 +70,13 @@
       }
 
       .mat-expansion-panel-header-title {
-        flex: 0 1 max-content;
+        flex: 0 1 auto;
         font-size: 20px;
         line-height: 36px;
       }
 
       .mat-expansion-panel-header-description {
-        flex: 0 0 max-content;
+        flex: 0 0 auto;
         margin-right: 0;
         margin-left: auto;
 
