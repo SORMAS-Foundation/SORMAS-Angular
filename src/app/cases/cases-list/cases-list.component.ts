@@ -12,6 +12,7 @@ import {
   HEADER_HEIGHT,
   ADD_MODAL_MAX_WIDTH,
   CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+  CASE_IMPORT_MODAL_WIDTH,
 } from '../../app.constants';
 import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
@@ -71,10 +72,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openImportModal(): void {
     this.dialog.open(CaseImportComponent, {
-      width: '720px',
-      data: {
-        title: this.translateService.instant('headingImportCases'),
-      },
+      width: CASE_IMPORT_MODAL_WIDTH,
     });
   }
 
