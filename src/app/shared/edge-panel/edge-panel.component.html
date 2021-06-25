@@ -8,8 +8,8 @@
   (action)="create()"
 >
   <app-card-list
-    *ngIf="fetch | async; let data"
-    [data]="data.elements"
+    *ngIf="items.length"
+    [data]="items"
     [cardWidth]="200"
     [initialPageSize]="initialSize"
     [cardType]="config.cardType"

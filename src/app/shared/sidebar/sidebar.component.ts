@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDrawerMode } from '@angular/material/sidenav';
+import { BREAKPOINTS } from '../../app.constants';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +16,7 @@ export class SidebarComponent implements OnInit {
   constructor(public breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
-    this.breakpointObserver.observe(['(max-width: 1024px)']).subscribe((state) => {
+    this.breakpointObserver.observe([`(max-width: ${BREAKPOINTS.lg}px)`]).subscribe((state) => {
       this.mode = state.matches ? 'over' : 'side';
       this.opened = !state.matches;
     });

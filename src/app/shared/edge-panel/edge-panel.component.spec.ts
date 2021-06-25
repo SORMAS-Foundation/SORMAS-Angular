@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { EdgePanelComponent } from './edge-panel.component';
 
@@ -11,7 +12,7 @@ describe('EdgePanelComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [EdgePanelComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [TranslateModule.forRoot(), MatDialogModule],
     }).compileComponents();
   });
 
