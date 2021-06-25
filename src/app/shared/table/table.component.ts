@@ -149,6 +149,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       data: {
         title: this.translateService.instant('Edit cases'),
         component: this.bulkConfig.editComponent,
+        editResources: this.getSelectedItems(),
       },
     });
 

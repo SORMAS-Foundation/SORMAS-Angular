@@ -66,13 +66,20 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           return;
         }
 
+        console.log('response', response);
+
         let RESOURCE;
         if (response.resource === null) {
           // ADD mode
           RESOURCE = this.resourceService.add(this.updateFormRawValueWithObjects());
         } else {
           // EDIT mode
-          RESOURCE = this.resourceService.update(this.updateResource(response.resource));
+          const resourceArrayTmp = [];
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < response.resource.length; i += 1) {
+            resourceArrayTmp.push(this.updateResource(response.resource[i]));
+          }
+          RESOURCE = this.resourceService.update(resourceArrayTmp);
         }
 
         RESOURCE.subscribe({

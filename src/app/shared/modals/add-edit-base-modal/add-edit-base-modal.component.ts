@@ -33,7 +33,11 @@ export class AddEditBaseModalComponent implements OnInit {
   }
 
   save(): void {
-    this.formActionsService.setSave(null);
+    if (this.data.editResources) {
+      this.formActionsService.setSave(this.data.editResources);
+    } else {
+      this.formActionsService.setSave(null);
+    }
   }
 
   discard(): void {

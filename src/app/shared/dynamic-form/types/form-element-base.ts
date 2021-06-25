@@ -66,5 +66,4 @@ export class FormBase<T> {
   required?: boolean;
   anchor?: string;
   anchorLabel?: string;
-  visibilityCheckbox?: string;
 }
