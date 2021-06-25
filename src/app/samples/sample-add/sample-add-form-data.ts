@@ -18,7 +18,6 @@ import {
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
-
 const optionsSamplePurpose = pipe.transform(SamplePurpose);
 const optionsSampleTypes = pipe.transform(SampleMaterial);
 const optionsSampleReasons = pipe.transform(SamplingReason);
@@ -226,9 +225,16 @@ export const FORM_DATA_SAMPLE_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'testedDiseaseDetails',
+        key: 'testedDiseaseVariant',
         label: 'PathogenTest.testedDiseaseVariant',
         options: optionsDiseaseVariant,
+        dependingOn: 'testedDisease',
+        dependingOnValues: ['CORONAVIRUS'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'testedDiseaseDetails',
+        label: 'PathogenTest.testedDiseaseDetails',
         dependingOn: 'testedDisease',
         dependingOnValues: ['OTHER'],
       },
@@ -237,6 +243,7 @@ export const FORM_DATA_SAMPLE_ADD = [
         key: 'testResultVerified',
         label: 'PathogenTest.testResultVerified',
         dependingOn: 'referred',
+        newLine: true,
       },
       {
         ...FORM_DATA_DATE,
