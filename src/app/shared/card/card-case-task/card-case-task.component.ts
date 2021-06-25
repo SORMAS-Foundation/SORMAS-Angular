@@ -9,5 +9,6 @@ import { TaskDto } from '../../../_models/taskDto';
 })
 export class CardCaseTaskComponent {
   @Input() data: TaskDto;
+
   dateCardType = DateCardType;
 }

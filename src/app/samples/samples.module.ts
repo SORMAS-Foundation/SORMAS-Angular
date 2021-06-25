@@ -10,7 +10,12 @@ import { SampleFiltersComponent } from './sample-filters/sample-filters.componen
 import { SampleAddComponent } from './sample-add/sample-add.component';
 
 @NgModule({
-  declarations: [SamplesComponent, SamplesListComponent, SampleFiltersComponent, SampleAddComponent],
+  declarations: [
+    SamplesComponent,
+    SamplesListComponent,
+    SampleFiltersComponent,
+    SampleAddComponent,
+  ],
   imports: [CommonModule, SamplesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class SamplesModule {}

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { Position, CardStatusMap } from '../../../app.constants';
 import { BasicPosition, CardAppearanceOptions } from '../../../_constants/enums';
 import { CardAppearance, CardStatus, CardType } from '../../../_models/cardAppearance';
@@ -9,7 +9,7 @@ import { BasicPositionType, PositionType } from '../../../_models/positionType';
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.scss'],
 })
-export class CardListComponent implements OnInit {
+export class CardListComponent implements OnChanges {
   @Input() data: any[] = [];
   @Input() initialPageSize: number;
 
@@ -44,7 +44,7 @@ export class CardListComponent implements OnInit {
 
   limit: number;
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.limit = this.initialPageSize || this.data.length;
   }
 
