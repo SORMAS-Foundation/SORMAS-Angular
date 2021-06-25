@@ -20,6 +20,7 @@ import { CaseFiltersComponent } from './case-filters/case-filters.component';
 import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
 import { CaseAddComponent } from './case-add/case-add.component';
 import { CustomCaseExportComponent } from './custom-case-export/custom-case-export.component';
+import { CaseImportComponent } from './case-import/case-import.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CustomCaseExportComponent } from './custom-case-export/custom-case-expo
     CaseFiltersComponent,
     CaseAddComponent,
     CustomCaseExportComponent,
+    CaseImportComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

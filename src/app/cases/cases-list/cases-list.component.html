@@ -10,6 +10,10 @@
           {{ 'caseNewCase' | translate }}
         </button>
 
+        <button mat-stroked-button color="primary" (click)="openImportModal()">
+          {{ 'actionImport' | translate }}
+        </button>
+
         <app-dropdown-menu buttonText="{{ 'moreActions' | translate }}">
           <app-action-menu
             [config]="actionsMore"

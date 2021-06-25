@@ -1,10 +1,13 @@
-<button mat-icon-button mat-dialog-close class="button-dialog-close">
-  <mat-icon class="material-icons-round">highlight_off</mat-icon>
-</button>
+<div mat-dialog-title>
+  <h1>{{ 'exportCaseCustom' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
 
-<h1 mat-dialog-title>{{ 'exportCaseCustom' | translate }}</h1>
-
-<mat-dialog-content>
+<div mat-dialog-content>
   <p class="info-text">{{ 'infoCustomExport' | translate }}</p>
 
   <div class="list-heading">
@@ -42,4 +45,4 @@
       cardTitleKey="title"
     ></app-card-list>
   </div>
-</mat-dialog-content>
+</div>

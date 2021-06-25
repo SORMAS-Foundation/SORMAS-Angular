@@ -22,6 +22,7 @@ import {
   actionsBulkEditDefs,
 } from './case-list-actions-data';
 import { ACTIONS_CASE } from '../../_constants/actions';
+import { CaseImportComponent } from '../case-import/case-import.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -66,6 +67,15 @@ export class CasesListComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  openImportModal(): void {
+    this.dialog.open(CaseImportComponent, {
+      width: '720px',
+      data: {
+        title: this.translateService.instant('headingImportCases'),
+      },
+    });
   }
 
   onActionSelected(event: any): void {
