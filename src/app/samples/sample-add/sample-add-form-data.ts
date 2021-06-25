@@ -18,7 +18,6 @@ import {
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
-
 const optionsSamplePurpose = pipe.transform(SamplePurpose);
 const optionsSampleTypes = pipe.transform(SampleMaterial);
 const optionsSampleReasons = pipe.transform(SamplingReason);
