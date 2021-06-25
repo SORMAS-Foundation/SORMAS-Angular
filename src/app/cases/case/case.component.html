@@ -1,60 +1,58 @@
-<section *ngIf="case" class="case-page">
-  <div class="top-section">
-    <div class="title-container">
-      <h1>
-        <a [routerLink]="['/cases/list']">
-          <mat-icon class="material-icons-round" color="accent">west</mat-icon>
-        </a>
-        <span> {{ case.person?.firstName }} {{ case.person?.lastName }}</span>
-      </h1>
-    </div>
+<section *ngIf="case">
+  <header>
+    <a [routerLink]="['/cases/list']" mat-icon-button>
+      <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+    </a>
+    <h1>{{ case.person?.firstName }} {{ case.person?.lastName }}</h1>
+  </header>
 
-    <div class="info-box">
-      <span *ngIf="case.outcome" class="info-item">
+  <div class="person-information">
+    <ul>
+      <li *ngIf="case.outcome">
         <mat-icon class="material-icons-round">
           {{ caseOutcomeIcons[case.outcome!] }}
         </mat-icon>
-        <span>{{ case.outcome }}</span>
-      </span>
-      <span *ngIf="case.caseClassification" class="info-item">
+        {{ case.outcome }}
+      </li>
+      <li *ngIf="case.caseClassification">
         <mat-icon class="material-icons-round">
           {{ caseClassificationIcons[case.caseClassification!] }}
         </mat-icon>
         {{ case.caseClassification! }}
-      </span>
-      <span *ngIf="case.disease" class="info-item">
+      </li>
+      <li *ngIf="case.disease">
         {{ case.disease }}
-      </span>
-      <span *ngIf="case.uuid" class="info-item">
+      </li>
+      <li *ngIf="case.uuid">
         <strong i18n>ID: </strong>
         {{ case.uuid }}
-      </span>
-      <span *ngIf="case.reportingUser?.caption" class="info-item">
+      </li>
+      <li *ngIf="case.reportingUser?.caption">
         <strong i18n>Reporting user: </strong>
         {{ case.reportingUser.caption }}
-      </span>
-    </div>
+      </li>
+    </ul>
+  </div>
 
-    <div class="tab-nav-header" [ngClass]="{ fixed: fixedHeader }">
-      <nav mat-tab-nav-bar>
-        <a
-          mat-tab-link
-          *ngFor="let link of links"
-          [routerLink]="link.link"
-          routerLinkActive
-          #rla="routerLinkActive"
-          [active]="rla.isActive"
-        >
-          {{ link.title | translate }}
-        </a>
-      </nav>
-      <div class="tab-nav-header-actions">
-        <app-form-actions [resource]="case"></app-form-actions>
-      </div>
+  <div class="tab-nav-header">
+    <nav mat-tab-nav-bar>
+      <a
+        mat-tab-link
+        *ngFor="let link of links"
+        [routerLink]="link.link"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        {{ link.title | translate }}
+      </a>
+    </nav>
+    <div class="tab-nav-header-actions">
+      <app-form-actions [resource]="case"></app-form-actions>
     </div>
   </div>
 
-  <div class="case-content" [ngClass]="{ fixed: fixedHeader }">
+  <div class="case-content">
     <router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
 </section>
