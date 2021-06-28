@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { FormBaseComponent } from '../form-base.component';
 import { FormElementBase } from '../../types/form-element-base';
 import { FormActionsService } from '../../../../_services/form-actions.service';
@@ -16,6 +17,8 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
   form: FormGroup;
   options: any[] = [];
   subscription: Subscription[] = [];
+
+  @ViewChild('picker', { static: false }) datepicker: MatDatepicker<any>;
 
   constructor(public formActionsService: FormActionsService, formBuilder: FormBuilder) {
     super(formActionsService);
@@ -44,6 +47,22 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
         this.group.patchValue(field);
       })
     );
+
+    const control = this.group.controls[this.config.key];
+
+    if (control) {
+      this.subscription.push(
+        control.valueChanges.subscribe((data: any) => {
+          this.form.patchValue(
+            {
+              date: data,
+              time: data ? `${data.getHours()}:${data.getMinutes()}` : null,
+            },
+            { emitEvent: false }
+          );
+        })
+      );
+    }
   }
 
   timeOptions(): any[] {
@@ -62,6 +81,20 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
     }
 
     return options;
+  }
+
+  setDefaultDate(): void {
+    const today = new Date();
+
+    today.setMilliseconds(Math.ceil(today.getMilliseconds() / 1000) * 1000);
+    today.setSeconds(Math.ceil(today.getSeconds() / 60) * 60);
+    today.setMinutes(Math.ceil(today.getMinutes() / 15) * 15);
+
+    this.form.patchValue({
+      time: `${today.getHours()}:${today.getMinutes()}`,
+    });
+
+    this.datepicker.select(today);
   }
 
   ngOnDestroy(): void {

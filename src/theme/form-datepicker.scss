@@ -35,6 +35,8 @@
 
       &.datepicker-closed,
       &.datepicker-opened {
+        display: inline-block;
+
         .mat-form-field-flex {
           width: 124px;
           padding-right: 0;

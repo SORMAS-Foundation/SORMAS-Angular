@@ -26,6 +26,7 @@
     </mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+  <button mat-button type="button" color="primary" (click)="setDefaultDate()">Today</button>
   <div class="errorMessage" color="warn" *ngIf="!isValid">
     {{ config.validationMessage || '' | translate }}
   </div>

@@ -21,7 +21,7 @@ export const FORM_DATA_DATE = {
   ...FORM_DATA_BASE,
   controlType: 'date',
   type: 'date',
-  className: 'size-small',
+  className: 'size-medium',
 };
 
 export const FORM_DATA_DATETIME = {

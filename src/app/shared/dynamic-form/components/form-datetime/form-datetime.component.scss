@@ -1,4 +1,12 @@
 .datetime-picker {
   display: flex;
-  gap: 16px;
+}
+
+.time {
+  margin-left: 16px;
+}
+
+.mat-button {
+  align-self: end;
+  margin: 8px 0;
 }
