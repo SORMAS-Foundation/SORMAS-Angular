@@ -22,7 +22,6 @@ import {
   actionsBulkEditDefs,
 } from './case-list-actions-data';
 import { ACTIONS_CASE } from '../../_constants/actions';
-import { CaseEditComponent } from '../case-edit/case-edit.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -37,11 +36,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsMore: NavItem[] = actionsMoreDefs;
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
-
-
-  bulkConfig = {
-    editComponent: CaseEditComponent,
-  };
 
   private subscription: Subscription[] = [];
 

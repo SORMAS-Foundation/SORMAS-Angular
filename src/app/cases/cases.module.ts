@@ -40,7 +40,7 @@ import { CustomCaseExportComponent } from './custom-case-export/custom-case-expo
     CaseFiltersComponent,
     CaseAddComponent,
     CustomCaseExportComponent,
-    CaseEditComponent
+    CaseEditComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

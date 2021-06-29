@@ -27,7 +27,7 @@ import { Filter, NavItem, Sorting, TableColumn } from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 
 @Component({
   selector: 'app-table',
@@ -67,8 +67,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() preSetFilters: Filter[];
   @Input() viewOptions: NavItem[];
   @Input() bulkEditOptions: NavItem[];
-
-  @Input() bulkConfig: any;
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
@@ -143,12 +141,12 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  openBulkEdit(): void {
+  openBulkEdit(editComponent: any): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('Edit cases'),
-        component: this.bulkConfig.editComponent,
+        component: editComponent,
         editResources: this.getSelectedItems(),
       },
     });
@@ -291,8 +289,16 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onActionSelected(event: any): void {
-    // eslint-disable-next-line no-console
-    console.log(event);
+    switch(event) {
+      case ACTIONS_BULK_EDIT.EDIT:
+        // @ts-ignore
+        const editComponent = this.bulkEditOptions.find(item => item.action === event).component;
+        this.openBulkEdit(editComponent);
+        break;
+      default:
+        // eslint-disable-next-line no-console
+        console.log(event);
+    }
   }
 
   ngAfterViewInit(): void {

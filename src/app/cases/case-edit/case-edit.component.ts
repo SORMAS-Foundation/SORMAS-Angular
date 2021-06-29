@@ -9,7 +9,7 @@ import { CaseService } from '../../_services/api/case.service';
   styleUrls: ['./case-edit.component.scss'],
 })
 export class CaseEditComponent {
-  public formData: FormBase<any>[] = data.FORM_DATA_CASE_ADD;
+  public formData: FormBase<any>[] = data.FORM_DATA_CASE_EDIT;
 
   constructor(public caseService: CaseService) {}
 }
