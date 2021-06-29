@@ -15,6 +15,7 @@ import { FormNullComponent } from './components/form-null/form-null.component';
 import { FormNumberComponent } from './components/form-number/form-number.component';
 import { FormWidgetComponent } from './components/form-widget/form-widget.component';
 import { FormDatetimeComponent } from './components/form-datetime/form-datetime.component';
+import { DatepickerHeaderTodayComponent } from './components/datepicker-header-today/datepicker-header-today.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SharedModule],
@@ -31,6 +32,7 @@ import { FormDatetimeComponent } from './components/form-datetime/form-datetime.
     FormNullComponent,
     FormNumberComponent,
     FormWidgetComponent,
+    DatepickerHeaderTodayComponent,
   ],
   exports: [DynamicFormComponent],
   entryComponents: [
