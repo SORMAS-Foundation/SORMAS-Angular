@@ -289,10 +289,11 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onActionSelected(event: any): void {
-    switch(event) {
+    switch (event) {
       case ACTIONS_BULK_EDIT.EDIT:
         // @ts-ignore
-        const editComponent = this.bulkEditOptions.find(item => item.action === event).component;
+        // eslint-disable-next-line no-case-declarations
+        const editComponent = this.bulkEditOptions.find((item) => item.action === event).component;
         this.openBulkEdit(editComponent);
         break;
       default:
