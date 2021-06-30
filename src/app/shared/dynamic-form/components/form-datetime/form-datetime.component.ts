@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { FormBaseComponent } from '../form-base.component';
 import { FormElementBase } from '../../types/form-element-base';
 import { FormActionsService } from '../../../../_services/form-actions.service';
+import { DatepickerHeaderTodayComponent } from '../datepicker-header-today/datepicker-header-today.component';
 
 @Component({
   selector: 'app-form-datetime',
@@ -16,6 +17,7 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
   form: FormGroup;
   options: any[] = [];
   subscription: Subscription[] = [];
+  header = DatepickerHeaderTodayComponent;
 
   constructor(public formActionsService: FormActionsService, formBuilder: FormBuilder) {
     super(formActionsService);
@@ -27,6 +29,22 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
   }
 
   ngAfterViewInit(): void {
+    const control = this.group.controls[this.config.key];
+
+    if (control) {
+      this.subscription.push(
+        control.valueChanges.subscribe((data: any) => {
+          this.form.patchValue(
+            {
+              date: data,
+              time: data ? `${data.getHours()}:${data.getMinutes()}` : null,
+            },
+            { emitEvent: false }
+          );
+        })
+      );
+    }
+
     this.subscription.push(
       this.form.valueChanges.subscribe(({ date, time }) => {
         if (!date) {
