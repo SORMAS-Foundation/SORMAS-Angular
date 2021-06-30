@@ -45,7 +45,6 @@ export const FORM_DATA_CASE_EDIT = [
   {
     id: 'classification',
     title: 'Contact.caze.caseClassification',
-    required: true,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
@@ -63,7 +62,6 @@ export const FORM_DATA_CASE_EDIT = [
   {
     id: 'investigation',
     title: 'UserRightGroup.CASE_INVESTIGATION',
-    required: true,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
@@ -81,7 +79,6 @@ export const FORM_DATA_CASE_EDIT = [
   {
     id: 'outcome',
     title: 'StatisticsCaseAttribute.OUTCOME',
-    required: true,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
@@ -100,7 +97,6 @@ export const FORM_DATA_CASE_EDIT = [
   {
     id: 'location',
     title: 'Location',
-    required: true,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
