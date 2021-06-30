@@ -22,6 +22,11 @@ body {
   margin: 0;
 }
 
+.noscroll {
+  position: fixed;
+  overflow: hidden;
+}
+
 a:not(.mat-button) {
   color: map-get($sormas-primary, 700);
   text-decoration: none;

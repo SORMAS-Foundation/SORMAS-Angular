@@ -28,6 +28,8 @@ import { DebounceDirective } from '../_directives/debounce.directive';
 import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { EdgePanelComponent } from './edge-panel/edge-panel.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
     AddEditBaseModalComponent,
     ActionMenuComponent,
     DropdownMenuComponent,
+    SidebarComponent,
+    EdgePanelComponent,
   ],
   imports: [
     CommonModule,
@@ -85,6 +89,8 @@ import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
     DebounceDirective,
     ActionMenuComponent,
     DropdownMenuComponent,
+    SidebarComponent,
+    EdgePanelComponent,
   ],
   entryComponents: [AddEditBaseModalComponent],
 })

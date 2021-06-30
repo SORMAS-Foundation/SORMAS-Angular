@@ -33,6 +33,8 @@ export class BaseService<T extends Resource> {
     let paginationTmp = '';
     if (typeof pagination !== 'undefined' && pagination !== null) {
       paginationTmp = `?offset=${pagination.offset}&size=${pagination.size}`;
+    } else {
+      paginationTmp = `?offset=0&size=999`;
     }
 
     // sorting

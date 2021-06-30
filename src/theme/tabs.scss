@@ -9,8 +9,6 @@
     .mat-tab-nav-bar {
       border: none;
       .mat-tab-link-container {
-        border-bottom: solid 2px map-get($sormas-accent, 200);
-        // overflow-y: visible;
         .mat-tab-links {
           .mat-tab-link {
             min-width: auto;
@@ -23,7 +21,6 @@
         }
       }
       .mat-tab-header-pagination {
-        border-bottom: solid 2px map-get($sormas-accent, 200);
         box-shadow: none;
         .mat-tab-header-pagination-chevron {
           border-color: map-get($sormas-primary, 700);

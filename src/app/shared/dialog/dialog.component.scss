@@ -1,15 +1,10 @@
 @use '/src/variables.scss' as *;
 
-.dialog-close {
-  margin: -8px -48px 0 0;
-  color: map-get($sormas-accent, 500);
-  float: right;
-}
-
 .dialog-title-icon {
-  margin: -8px 0 0 -60px;
+  position: absolute;
+  margin-top: 18px;
+  margin-left: -60px;
   color: map-get($sormas-alert, 200);
-  float: left;
   font-size: 40px;
 }
 
