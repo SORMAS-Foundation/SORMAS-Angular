@@ -56,4 +56,5 @@ export interface NavItem {
   action: string;
   className?: string;
   children?: NavItem[];
+  component?: any;
 }

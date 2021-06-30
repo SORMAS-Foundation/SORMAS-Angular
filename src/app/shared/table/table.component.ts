@@ -4,8 +4,10 @@ import {
   Component,
   ElementRef,
   Input,
+  EventEmitter,
   OnDestroy,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { Sort } from '@angular/material/sort';
@@ -17,12 +19,15 @@ import { debounceTime } from 'rxjs/operators';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ViewportRuler } from '@angular/cdk/scrolling';
 import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
 import { Filter, NavItem, Sorting, TableColumn } from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
+import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
+import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 
 @Component({
   selector: 'app-table',
@@ -48,6 +53,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   subscriptions: Subscription[] = [];
   icons = constants.IconsMap;
 
+  private subscription: Subscription[] = [];
+
   @Input() isSortable = false;
   @Input() isPageable = false;
   @Input() isSelectable = false;
@@ -61,6 +68,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() viewOptions: NavItem[];
   @Input() bulkEditOptions: NavItem[];
 
+  @Output() selectItem: EventEmitter<any> = new EventEmitter();
+  @Output() clickItem: EventEmitter<any> = new EventEmitter();
+
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
   constructor(
@@ -68,7 +78,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
-    private viewportRuler: ViewportRuler
+    private viewportRuler: ViewportRuler,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -128,6 +139,26 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     return columns;
+  }
+
+  openBulkEdit(editComponent: any): void {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      minWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('Edit cases'),
+        component: editComponent,
+        editResources: this.getSelectedItems(),
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
   }
 
   getAdvancedData(
@@ -259,8 +290,17 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onActionSelected(event: any): void {
-    // eslint-disable-next-line no-console
-    console.log(event);
+    switch (event) {
+      case ACTIONS_BULK_EDIT.EDIT:
+        // @ts-ignore
+        // eslint-disable-next-line no-case-declarations
+        const editComponent = this.bulkEditOptions.find((item) => item.action === event).component;
+        this.openBulkEdit(editComponent);
+        break;
+      default:
+        // eslint-disable-next-line no-console
+        console.log(event);
+    }
   }
 
   ngAfterViewInit(): void {

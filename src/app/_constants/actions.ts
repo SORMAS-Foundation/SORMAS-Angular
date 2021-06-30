@@ -9,7 +9,7 @@ export const ACTIONS_CASE = {
   LINE_LISTING: 'CASE_LINE_LISTING',
 };
 
-export const ACTIONS_CASE_BULK_EDIT = {
+export const ACTIONS_BULK_EDIT = {
   EDIT: 'EDIT',
   DELETE: 'DELETE',
   ARCHIVE: 'ARCHIVE',

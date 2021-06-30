@@ -1,6 +1,7 @@
 import { NavItem, NavItemRole } from '../../_models/common';
 import { ACTIONS_CASE } from '../../app.constants';
-import { ACTIONS_CASE_BULK_EDIT, ACTIONS_CASE_VIEW_OPTIONS } from '../../_constants/actions';
+import { ACTIONS_BULK_EDIT, ACTIONS_CASE_VIEW_OPTIONS } from '../../_constants/actions';
+import { CaseEditComponent } from '../case-edit/case-edit.component';
 
 export const actionsMoreDefs: NavItem[] = [
   {
@@ -77,32 +78,33 @@ export const actionsBulkEditDefs: NavItem[] = [
   {
     role: NavItemRole.ACTION,
     name: 'Edit',
-    action: ACTIONS_CASE_BULK_EDIT.EDIT,
+    action: ACTIONS_BULK_EDIT.EDIT,
+    component: CaseEditComponent,
   },
   {
     role: NavItemRole.ACTION,
     name: 'Delete',
-    action: ACTIONS_CASE_BULK_EDIT.DELETE,
+    action: ACTIONS_BULK_EDIT.DELETE,
     className: 'warn',
   },
   {
     role: NavItemRole.ACTION,
     name: 'Archive',
-    action: ACTIONS_CASE_BULK_EDIT.ARCHIVE,
+    action: ACTIONS_BULK_EDIT.ARCHIVE,
   },
   {
     role: NavItemRole.ACTION,
     name: 'Share',
-    action: ACTIONS_CASE_BULK_EDIT.SHARE,
+    action: ACTIONS_BULK_EDIT.SHARE,
   },
   {
     role: NavItemRole.ACTION,
     name: 'Send to reporting tool',
-    action: ACTIONS_CASE_BULK_EDIT.REPORTING_TOOL,
+    action: ACTIONS_BULK_EDIT.REPORTING_TOOL,
   },
   {
     role: NavItemRole.ACTION,
     name: 'Create quarantine order documents',
-    action: ACTIONS_CASE_BULK_EDIT.QUARANTINE_DOCUMENTS,
+    action: ACTIONS_BULK_EDIT.QUARANTINE_DOCUMENTS,
   },
 ];

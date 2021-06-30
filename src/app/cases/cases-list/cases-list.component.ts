@@ -14,7 +14,7 @@ import {
   CASE_EXPORT_CUSTOM_MODAL_WIDTH,
   CASE_IMPORT_MODAL_WIDTH,
 } from '../../app.constants';
-import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
+import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
 import {
@@ -53,7 +53,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   openAddCaseModal(): void {
-    const dialogRef = this.dialog.open(AddBaseModalComponent, {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('CaseData.addNewCase'),
