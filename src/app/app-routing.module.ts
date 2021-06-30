@@ -26,6 +26,16 @@ const routes: Routes = [
     canActivate: [Guard, LeaveGuard],
   },
   {
+    path: 'contacts',
+    loadChildren: () => import('./contacts/contacts.module').then((m) => m.ContactsModule),
+    canActivate: [Guard, LeaveGuard],
+  },
+  {
+    path: 'samples',
+    loadChildren: () => import('./samples/samples.module').then((m) => m.SamplesModule),
+    canActivate: [Guard, LeaveGuard],
+  },
+  {
     path: 'cases',
     loadChildren: () => import('./cases/cases.module').then((m) => m.CasesModule),
     canActivate: [AuthGuard, LeaveGuard],
@@ -39,6 +49,11 @@ const routes: Routes = [
     path: 'user-profile',
     loadChildren: () =>
       import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
+    canActivate: [Guard, LeaveGuard],
+  },
+  {
+    path: 'persons',
+    loadChildren: () => import('./persons/persons.module').then((m) => m.PersonsModule),
     canActivate: [Guard, LeaveGuard],
   },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },

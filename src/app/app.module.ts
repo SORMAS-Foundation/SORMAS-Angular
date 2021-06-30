@@ -7,6 +7,8 @@ import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { ApiModule } from 'api-client';
 import { BidiModule } from '@angular/cdk/bidi';
 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeAuth } from './shared/auth/init-auth';
@@ -19,6 +21,10 @@ import { ApiInterceptor } from './_interceptors/ApiInterceptor';
 import { NotFoundComponent } from './_common-components/not-found/not-found.component';
 import { HelperService } from './_services/helper.service';
 
+export function HttpLoaderFactory(http: HttpClient): any {
+  return new TranslateHttpLoader(http, 'assets/i18n/');
+}
+
 @NgModule({
   declarations: [AppComponent, MenuComponent, NotFoundComponent],
   imports: [
@@ -30,6 +36,13 @@ import { HelperService } from './_services/helper.service';
     ApiModule,
     BidiModule,
     DynamicFormModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     { provide: ENV, useFactory: getEnv },

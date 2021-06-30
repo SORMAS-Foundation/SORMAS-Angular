@@ -1,25 +1,33 @@
-@use '../../../variables.scss' as *;
+@use '/src/variables.scss' as *;
 
-.event-filters {
-  margin-top: 24px;
-  .filters-header {
-    padding-left: 16px;
-    margin-bottom: 0;
-    font-size: 24px;
+.filters-header {
+  margin: 16px 0;
+  font-size: 24px;
+}
+
+.mat-radio-group {
+  margin: 0;
+
+  .mat-radio-button {
+    display: block;
+    margin: 0;
+    font-weight: 400;
   }
+}
 
-  .search-field {
-    width: 240px;
-    margin-left: 16px;
-    .search-icon {
-      width: 14px;
-      height: 12px;
-      color: map-get($sormas-accent, 200);
-      font-size: 12px;
-    }
-    ::placeholder {
-      color: map-get($sormas-accent, 200);
-      font-size: 12px;
-    }
+.collapsable-field {
+  margin: 12px 0;
+}
+
+.search-field {
+  .search-icon {
+    width: 14px;
+    height: 12px;
+    color: map-get($sormas-accent, 200);
+    font-size: 12px;
+  }
+  ::placeholder {
+    color: map-get($sormas-accent, 200);
+    font-size: 12px;
   }
 }

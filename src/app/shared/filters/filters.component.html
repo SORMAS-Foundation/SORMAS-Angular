@@ -1,0 +1,45 @@
+<mat-sidenav-container (backdropClick)="closeFilters()" class="filters">
+  <mat-sidenav
+    #filters
+    [opened]="opened"
+    [mode]="mode"
+    [fixedInViewport]="fixed"
+    [fixedTopGap]="topGap"
+    [fixedBottomGap]="bottomGap"
+  >
+    <button
+      *ngIf="opened"
+      mat-icon-button
+      color="primary"
+      class="button-close"
+      (click)="closeFilters()"
+    >
+      <mat-icon class="material-icons-round">{{
+        isMobile ? 'highlight_off' : 'filter_list'
+      }}</mat-icon>
+    </button>
+    <div class="filters-wrapper">
+      <ng-content select="[filters]"></ng-content>
+      <button
+        mat-flat-button
+        class="button-reset"
+        (click)="resetFilters()"
+        (keyup.enter)="resetFilters()"
+      >
+        {{ 'actionResetFilters' | translate }}
+      </button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content [ngClass]="[opened ? '' : 'filters-closed']">
+    <button
+      *ngIf="!opened"
+      mat-icon-button
+      color="primary"
+      class="button-open"
+      (click)="openFilters()"
+    >
+      <mat-icon class="material-icons-round">filter_list</mat-icon>
+    </button>
+    <ng-content select="[list]"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

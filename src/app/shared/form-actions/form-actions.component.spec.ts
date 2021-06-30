@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { FormActionsComponent } from './form-actions.component';
 
 describe('FormActionsComponent', () => {
@@ -11,7 +12,7 @@ describe('FormActionsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormActionsComponent],
-      imports: [MatDialogModule, RouterTestingModule],
+      imports: [MatDialogModule, RouterTestingModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

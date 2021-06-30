@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NavigationStart, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { FormActionsService } from '../../_services/form-actions.service';
 import { Resource } from '../../_models/resource';
 import { NotificationService } from '../../_services/notification.service';
@@ -19,7 +20,8 @@ export class FormActionsComponent implements OnInit, OnDestroy {
   constructor(
     private formActionsService: FormActionsService,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
   ) {
     this.subscription.push(
       // @ts-ignore
@@ -27,10 +29,10 @@ export class FormActionsComponent implements OnInit, OnDestroy {
         if (event instanceof NavigationStart && this.hasInputsChanged && !event.url.includes('#')) {
           this.notificationService
             .prompt({
-              title: 'Are you sure you want to leave?',
-              message: 'You will lose all changes that were made',
-              buttonDeclineText: 'Cancel',
-              buttonConfirmText: 'I am sure',
+              title: this.translateService.instant('actionSureToLeave'),
+              message: this.translateService.instant('actionLooseChanges'),
+              buttonDeclineText: this.translateService.instant('actionCancel'),
+              buttonConfirmText: this.translateService.instant('actionIAmSure'),
             })
             .subscribe((result) => {
               if (result) {
@@ -56,10 +58,10 @@ export class FormActionsComponent implements OnInit, OnDestroy {
   resetForm(): void {
     this.notificationService
       .prompt({
-        title: 'Are you sure you want to discard your changes?',
-        message: 'You will lose all changes that were made',
-        buttonDeclineText: 'Cancel',
-        buttonConfirmText: 'I am sure',
+        title: this.translateService.instant('actionSureDiscardChanges'),
+        message: this.translateService.instant('actionLooseChanges'),
+        buttonDeclineText: this.translateService.instant('actionCancel'),
+        buttonConfirmText: this.translateService.instant('actionIAmSure'),
       })
       .subscribe((result) => {
         if (result) {

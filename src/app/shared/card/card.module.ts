@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { CardComponent } from './card.component';
 import { MaterialModule } from '../../material.module';
 import { CardActionsComponent } from './card-actions/card-actions.component';
@@ -11,9 +12,10 @@ import { CardCaseEventComponent } from './card-case-event/card-case-event.compon
 import { CardListComponent } from './card-list/card-list.component';
 import { CardEpidDataComponent } from './card-epid-data/card-epid-data.component';
 import { PipesModule } from '../../_pipes/pipes.module';
+import { CardDownloadComponent } from './card-download/card-download.component';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, DateCardModule, PipesModule],
+  imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
   declarations: [
     CardComponent,
     CardActionsComponent,
@@ -23,6 +25,7 @@ import { PipesModule } from '../../_pipes/pipes.module';
     CardSampleComponent,
     CardListComponent,
     CardEpidDataComponent,
+    CardDownloadComponent,
   ],
   exports: [CardComponent, CardListComponent],
 })

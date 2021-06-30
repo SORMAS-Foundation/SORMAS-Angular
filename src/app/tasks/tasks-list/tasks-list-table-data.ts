@@ -2,37 +2,37 @@ import { TableColumn } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'Assigned user',
-    dataKey: 'assigneeUser.lastName',
+    name: 'Task.contextReference',
+    dataKey: 'assigneeUser.caption',
     isSortable: true,
   },
   {
-    name: 'Type',
+    name: 'statisticsVisualizationType',
     dataKey: 'taskType',
     isSortable: true,
   },
   {
-    name: 'Priority',
+    name: 'Task.priority',
     dataKey: 'priority',
     isSortable: true,
   },
   {
-    name: 'Context',
+    name: 'Task.taskContext',
     dataKey: 'taskContext',
     isSortable: true,
   },
   {
-    name: 'Region',
+    name: 'region',
     dataKey: 'region',
     isSortable: true,
   },
   {
-    name: 'District',
+    name: 'district',
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: 'Suggested start',
+    name: 'Task.suggestedStart',
     dataKey: 'suggestedStart',
     isSortable: true,
   },

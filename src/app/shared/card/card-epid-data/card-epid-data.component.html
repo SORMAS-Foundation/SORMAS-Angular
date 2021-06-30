@@ -1,7 +1,7 @@
 <div *ngIf="data" class="card-epid-data">
   <div>
     <span class="type-of-place">
-      {{ data.typeOfPlace | humanize }}
+      {{ data.typeOfPlace | humanize | titlecase }}
     </span>
   </div>
 
@@ -24,14 +24,18 @@
     ></app-date-card>
   </div>
   <div class="contact-person" *ngIf="data.contactToCase?.caption">
-    <span class="contact-label">Source </span>{{ data.contactToCase?.caption }}
+    <span class="contact-label">{{ 'CaseData.source' | translate }} </span
+    >{{ data.contactToCase?.caption }}
   </div>
   <div class="description">{{ data.description }}</div>
-  <div class="location">
-    <span *ngIf="data.location?.street || data.location?.city || data.location?.houseNumber"
-      ><mat-icon class="place-icon material-icons-round">place</mat-icon
-      >{{ data.location?.street }} {{ data.location?.houseNumber }},
-      {{ data.location?.postalCode }} {{ data.location?.city }}</span
-    >
+  <div
+    class="location"
+    *ngIf="data.location?.street || data.location?.city || data.location?.houseNumber"
+  >
+    <mat-icon class="place-icon material-icons-round">place</mat-icon>
+    <p>
+      {{ data.location?.street }} {{ data.location?.houseNumber }}, {{ data.location?.postalCode }}
+      {{ data.location?.city }}
+    </p>
   </div>
 </div>

@@ -1,3 +1,4 @@
 src/index.html
 src/assets/silent-check-sso.html
 projects/api-client
+node_modules/

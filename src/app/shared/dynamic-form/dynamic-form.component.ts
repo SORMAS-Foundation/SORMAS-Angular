@@ -1,13 +1,5 @@
 /* eslint-disable no-console */
-import {
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -35,14 +27,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
   watchFields: any[] = [];
   subscription: Subscription[] = [];
-  fixedHeader = false;
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(): void {
-    if (this.withAnchor) {
-      this.fixedHeader = window.pageYOffset > 71;
-    }
-  }
 
   constructor(
     private formElementControlService: FormElementControlService,
@@ -66,7 +50,21 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           return;
         }
 
-        this.resourceService.update(this.updateResource(response.resource)).subscribe({
+        let RESOURCE;
+        if (response.resource === null) {
+          // ADD mode
+          RESOURCE = this.resourceService.add(this.updateFormRawValueWithObjects());
+        } else {
+          // EDIT mode
+          const resourceArrayTmp = [];
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < response.resource.length; i += 1) {
+            resourceArrayTmp.push(this.updateResource(response.resource[i]));
+          }
+          RESOURCE = this.resourceService.update(resourceArrayTmp);
+        }
+
+        RESOURCE.subscribe({
           next: () => {},
           error: (err: any) => {
             this.notificationService.error(err);
@@ -100,6 +98,25 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       const control = this.form.controls[key];
       control.setValue(control.value);
     });
+  }
+
+  convertDotPathToNestedObject(path: string, value: any): any {
+    const [last, ...paths] = path.split('.').reverse();
+    // @ts-ignore
+    return paths.reduce((acc, el) => ({ [el]: acc }), { [last]: value });
+  }
+
+  updateFormRawValueWithObjects(): any {
+    const rawValueTmp: any = {};
+    Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
+      if (key.includes('.')) {
+        const keys = key.split('.');
+        rawValueTmp[keys[0]] = this.convertDotPathToNestedObject(key, value)[keys[0]];
+      } else {
+        rawValueTmp[key] = value;
+      }
+    });
+    return rawValueTmp;
   }
 
   updateResource(resource: any): Resource {

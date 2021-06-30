@@ -47,10 +47,11 @@ const optionsTrimester = pipe.transform(Trimester);
 
 export const FORM_DATA_CASE_DETAILS = [
   {
-    title: 'Date of report',
+    id: 'reportDate',
+    title: 'CaseData.reportDate',
     required: true,
     anchor: 'case_data',
-    anchorLabel: 'Case data',
+    anchorLabel: 'headingCaseData',
     fields: [
       {
         ...FORM_DATA_DATE,
@@ -60,7 +61,8 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'Case classification',
+    id: 'caseClassification',
+    title: 'CaseClassification',
     required: true,
     fields: [
       {
@@ -72,38 +74,40 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'clinicalConfirmation',
-        label: 'Clinical confirmation',
+        label: 'CaseData.clinicalConfirmation',
         options: optionsYesNoUnknown,
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'epidemiologicalConfirmation',
-        label: 'Epidemiological confirmation',
+        label: 'CaseData.epidemiologicalConfirmation',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'laboratoryDiagnosticConfirmation',
-        label: 'Lab diagnostic confirmation',
+        label: 'CaseData.laboratoryDiagnosticConfirmation',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_DATE,
         key: 'classificationDate',
-        label: 'Date of classification',
+        label: 'CaseData.classificationDate',
         newLine: true,
         className: 'size-medium',
       },
       {
         ...FORM_DATA_NULL,
         key: 'classificationUser.caption',
-        label: 'Classifying user',
+        label: 'CaseData.classificationUser',
+        dependingOn: 'classificationUser.caption',
       },
     ],
   },
   {
-    title: 'Investigation status',
+    id: 'investigationStatus',
+    title: 'CaseData.investigationStatus',
     required: true,
     fields: [
       {
@@ -115,7 +119,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_DATE,
         key: 'investigatedDate',
-        label: 'Date of investigation',
+        label: 'CaseData.investigatedDate',
         newLine: true,
         dependingOn: 'investigationStatus',
         dependingOnValues: ['DISCARDED', 'DONE'],
@@ -123,42 +127,45 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'External data',
+    id: 'externalData',
+    title: 'CaseData.externalData',
     required: true,
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'externalID',
-        label: 'External ID',
+        label: 'CaseData.externalID',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'externalToken',
-        label: 'External token',
+        label: 'CaseData.externalToken',
       },
     ],
   },
   {
-    title: 'Disease',
+    id: 'disease',
+    title: 'disease',
     required: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
-        label: 'Disease',
+        label: 'disease',
         validation: ['required'],
         options: optionsDisese,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'diseaseVariant.uuid',
-        label: 'Disease variant',
+        label: 'CaseData.diseaseVariant',
         options: optionsDisese,
       },
     ],
   },
   {
-    title: 'Epid number',
+    id: 'epidNumber',
+    title: 'CaseData.epidNumber',
     required: false,
     fields: [
       {
@@ -172,7 +179,8 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'Outcome of case',
+    id: 'caseOutcome',
+    title: 'CaseData.outcome',
     required: true,
     fields: [
       {
@@ -184,7 +192,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_DATE,
         key: 'outcomeDate',
-        hint: 'Date of outcome',
+        hint: 'CaseData.outcomeDate',
         newLine: true,
         dependingOn: 'outcome',
         dependingOnValues: ['DECEASED', 'RECOVERED'],
@@ -192,7 +200,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'sequelae',
-        label: 'Sequelae',
+        label: 'CaseData.sequelae',
         options: optionsYesNoUnknown,
         dependingOn: 'outcome',
         dependingOnValues: ['RECOVERED', 'UNKNOWN'],
@@ -201,7 +209,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'sequelaeDetails',
-        label: 'Describe sequelae',
+        label: 'CaseData.sequelaeDetails',
         newLine: true,
         className: 'size-full',
         dependingOn: 'sequelae',
@@ -210,30 +218,31 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'Source',
+    id: 'source',
+    title: 'CaseData.source',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'reportingDistrict.uuid',
-        label: 'Reporting district',
+        label: 'CaseData.reportingDistrict',
         options: [
           {
             key: 'default',
-            value: 'Default district',
+            value: 'defaultDistrict',
           },
         ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'caseIdentificationSource',
-        label: 'Case identification source',
+        label: 'CaseData.caseIdentificationSource',
         options: optionsCaseIdentificationSource,
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'screeningType',
-        label: 'Screening',
+        label: 'CaseData.screeningType',
         options: optionsScreeningType,
         dependingOn: 'caseIdentificationSource',
         dependingOnValues: ['SCREENING'],
@@ -241,7 +250,8 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'Case origin',
+    id: 'caseOrigin',
+    title: 'CaseData.caseOrigin',
     required: false,
     fields: [
       {
@@ -251,12 +261,12 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        label: 'Responsible region',
+        label: 'CaseData.responsibleRegion',
         validation: ['required'],
         options: [
           {
             key: 'default',
-            value: 'Default region',
+            value: 'defaultRegion',
           },
         ],
         newLine: true,
@@ -267,12 +277,12 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        label: 'Responsible district',
+        label: 'CaseData.responsibleDistrict',
         validation: ['required'],
         options: [
           {
             key: 'default',
-            value: 'Default district',
+            value: 'defaultDistrict',
           },
         ],
         newLine: true,
@@ -283,11 +293,11 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
-        label: 'Responsible community',
+        label: 'CaseData.responsibleCommunity',
         options: [
           {
             key: 'default',
-            value: 'Default community',
+            value: 'defaultCommunity',
           },
         ],
         newLine: true,
@@ -298,7 +308,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.caption',
-        label: 'Point of entry',
+        label: 'CaseData.pointOfEntry',
         dependingOn: 'caseOrigin',
         dependingOnValues: ['POINT_OF_ENTRY'],
       },
@@ -312,7 +322,8 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'Place of stay',
+    id: 'placeOfStay',
+    title: 'casePlaceOfStay',
     required: true,
     fields: [
       {
@@ -324,12 +335,12 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility.uuid',
-        label: 'Facility category region',
+        label: 'CaseData.facility.region',
         validation: ['required'],
         options: [
           {
             key: 'default',
-            value: 'Default region',
+            value: 'defaultRegion',
           },
         ],
         newLine: true,
@@ -340,12 +351,12 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: 'Facility type',
+        label: 'CaseData.facilityType',
         validation: ['required'],
         options: [
           {
             key: 'LABORATORY',
-            value: 'Laboratory',
+            value: 'FacilityType.LABORATORY',
           },
         ],
         newLine: true,
@@ -356,7 +367,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails',
-        label: 'Facility name and description',
+        label: 'CaseData.healthFacilityDetails',
         newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStaty',
@@ -365,7 +376,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'placeOfStatyDetails',
-        label: 'Place description',
+        label: 'CaseData.noneHealthFacilityDetails',
         newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStaty',
@@ -374,19 +385,20 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'Quarantine',
+    id: 'quarantine',
+    title: 'CaseData.quarantine',
     required: false,
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'quarantineHomePossible',
-        label: 'Home base quarantine possible',
+        label: 'CaseData.quarantineHomePossible',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'quarantineHomePossibleComment',
-        label: 'Comment',
+        label: 'CaseData.quarantineHomePossibleComment',
         className: 'size-large',
         dependingOn: 'quarantineHomePossible',
         dependingOnValues: ['NO'],
@@ -394,7 +406,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'quarantineHomeSupplyEnsured',
-        label: 'Supply ensured?',
+        label: 'CaseData.quarantineHomeSupplyEnsured',
         options: optionsYesNoUnknown,
         dependingOn: 'quarantineHomePossible',
         dependingOnValues: ['YES'],
@@ -403,7 +415,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'quarantineHomeSupplyEnsuredComment',
-        label: 'Comment',
+        label: 'CaseData.quarantineHomePossibleComment',
         className: 'size-large',
         dependingOn: 'quarantineHomeSupplyEnsured',
         dependingOnValues: ['NO'],
@@ -411,15 +423,15 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'quarantine',
-        label: 'Place of quarantine',
+        label: 'CaseData.placeOfQuarantine',
         options: optionsQuarantine,
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'quarantineFrom',
-        label: 'Quarantine period',
-        hint: 'Start date',
+        label: 'CaseData.quarantinePeriod',
+        hint: 'CaseData.quarantineFrom',
         dependingOn: 'quarantine',
         dependingOnValues: ['HOME', 'INSTITUTIONELL'],
       },
@@ -427,14 +439,14 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_DATE,
         key: 'quarantineTo',
         label: ' ',
-        hint: 'End data',
+        hint: 'CaseData.quarantineTo',
         dependingOn: 'quarantine',
         dependingOnValues: ['HOME', 'INSTITUTIONELL'],
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'quarantineOrderedVerbally',
-        label: 'Quarantine ordered verbally',
+        label: 'CaseData.quarantineOrderedVerbally',
         dependingOn: 'quarantine',
         dependingOnValues: ['HOME', 'INSTITUTIONELL'],
         newLine: true,
@@ -442,13 +454,13 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_DATE,
         key: 'quarantineOrderedVerballyDate',
-        hint: 'Date of verbal order',
+        hint: 'CaseData.quarantineOrderedVerballyDate',
         dependingOn: 'quarantineOrderedVerbally',
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'quarantineOrderedOfficialDocument',
-        label: 'Quarantine ordered by official document',
+        label: 'CaseData.quarantineOrderedOfficialDocument',
         dependingOn: 'quarantine',
         dependingOnValues: ['HOME', 'INSTITUTIONELL'],
         newLine: true,
@@ -456,26 +468,26 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_DATE,
         key: 'quarantineOrderedOfficialDocumentDate',
-        hint: 'Date of document order',
+        hint: 'CaseData.quarantineOrderedOfficialDocumentDate',
         dependingOn: 'quarantineOrderedOfficialDocument',
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'quarantineOfficialOrderSent',
-        label: 'Official quarantine order sent',
+        label: 'CaseData.quarantineOfficialOrderSent',
         dependingOn: 'quarantineOrderedOfficialDocument',
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'quarantineOfficialOrderSentDate',
-        hint: 'Date order was sent',
+        hint: 'CaseData.quarantineOfficialOrderSentDate',
         dependingOn: 'quarantineOfficialOrderSent',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'quarantineHelpNeeded',
-        label: 'Help needed in quarantine',
+        label: 'CaseData.quarantineHelpNeeded',
         newLine: true,
         className: 'size-full',
         dependingOn: 'quarantine',
@@ -484,7 +496,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'quarantineTypeDetails',
-        label: 'Quarantine details',
+        label: 'CaseData.quarantineTypeDetails',
         newLine: true,
         className: 'size-full',
         dependingOn: 'quarantine',
@@ -493,62 +505,65 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
-    title: 'Report GPS',
+    id: 'reportGPS',
+    title: 'CaseData.reportGPS',
     required: false,
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'reportLat',
-        label: 'Report GPS latitude',
+        label: 'CaseData.reportLatSimple',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'reportLon',
-        label: 'Report GPS longitude',
+        label: 'CaseData.reportLonSimple',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'reportLatLonAccuracy',
-        label: 'Report GPS accuracy in m',
+        label: 'CaseData.reportLatLonAccuracySimple',
         newLine: true,
       },
     ],
   },
   {
-    title: 'Donation',
+    id: 'donation',
+    title: 'CaseData.donation',
     required: false,
     anchor: 'additional_information',
-    anchorLabel: 'Additional information',
+    anchorLabel: 'CaseData.additionalInfo',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'bloodOrganOrTissueDonated',
-        label: 'Blood/organ/tissue donation in the last 6 month',
+        label: 'CaseData.bloodOrganOrTissueDonated',
         options: optionsYesNoUnknown,
       },
     ],
   },
   {
-    title: 'Infection',
+    id: 'infection',
+    title: 'CaseData.infection',
     required: false,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'nosocomialOutbreak',
-        label: 'Resulted from nosocomial outbreak',
+        label: 'CaseData.nosocomialOutbreak',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'infectionSetting',
-        label: 'Infection setting',
+        label: 'CaseData.infectionSetting',
         options: optionsInfectionSetting,
         dependingOn: 'nosocomialOutbreak',
       },
       {
         ...FORM_DATA_RADIO,
         key: 'reInfection',
-        label: 'Reinfection',
+        label: 'CaseData.reInfection',
         options: optionsYesNoUnknown,
         newLine: true,
       },
@@ -556,32 +571,33 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_DATE,
         key: 'previousInfectionDate',
         label: ' ',
-        hint: 'Previous infection date',
+        hint: 'CaseData.previousInfectionDate',
         dependingOn: 'reInfection',
         dependingOnValues: ['YES'],
       },
     ],
   },
   {
-    title: 'Additional medical information',
+    id: 'medicalInformation',
+    title: 'headingMedicalInformation',
     required: false,
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'pregnant',
-        label: 'Pregnancy',
+        label: 'CaseData.pregnancy',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_RADIO,
         key: 'postpartum',
-        label: 'Postpartum',
+        label: 'CaseData.postpartum',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_RADIO,
         key: 'trimester',
-        label: 'Trimester',
+        label: 'CaseData.trimester',
         options: optionsTrimester,
         newLine: true,
         dependingOn: 'pregnant',
@@ -590,33 +606,34 @@ export const FORM_DATA_CASE_DETAILS = [
     ],
   },
   {
+    id: 'vaccination',
     title: 'Vaccination',
     required: false,
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'vaccination',
-        label: 'Vaccination status',
+        label: 'CaseData.vaccination',
         options: optionsVaccinationStatus,
       },
       {
         ...FORM_DATA_NUMBER,
         key: 'vaccinationDoses',
-        label: 'Vaccination doses',
+        label: 'CaseData.vaccinationDoses',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_DATE,
         key: 'firstVaccinationDate',
-        hint: 'First vaccination',
+        hint: 'CaseData.firstVaccinationDate',
         newLine: true,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_DATE,
-        key: 'lastVaccinationDate',
+        key: 'CaseData.lastVaccinationDate',
         hint: 'Last vaccination',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
@@ -624,7 +641,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'vaccinationInfoSource',
-        label: 'Source of vaccination',
+        label: 'CaseData.vaccinationInfoSource',
         options: optionsVaccinationSource,
         newLine: true,
         dependingOn: 'vaccination',
@@ -633,7 +650,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'vaccineName',
-        label: 'Vaccine name',
+        label: 'CaseData.vaccineName',
         options: optionsVaccineName,
         newLine: true,
         className: 'size-large',
@@ -643,7 +660,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'vaccineManufacturer',
-        label: 'Manufacturer',
+        label: 'CaseData.vaccineManufacturer',
         options: optionsVaccineManufacturer,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
@@ -651,7 +668,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'vaccineInn',
-        label: 'INN',
+        label: 'CaseData.vaccineInn',
         newLine: true,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
@@ -659,14 +676,14 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'vaccineBatchNumber',
-        label: 'Batch number',
+        label: 'CaseData.vaccineBatchNumber',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'vaccineUniiCode',
-        label: 'UNII code',
+        label: 'CaseData.vaccineUniiCode',
         newLine: true,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
@@ -674,27 +691,28 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'vaccineAtcCode',
-        label: 'ATC code',
+        label: 'CaseData.vaccineAtcCode',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
     ],
   },
   {
-    title: 'Work',
+    id: 'work',
+    title: 'CaseData.work',
     required: false,
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'prohibitionToWork',
-        label: 'Prohibition to work',
+        label: 'CaseData.prohibitionToWork',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_DATE,
         key: 'prohibitionToWorkFrom',
         label: ' ',
-        hint: 'Prohibition to work from',
+        hint: 'CaseData.prohibitionToWorkFrom',
         dependingOn: 'prohibitionToWork',
         dependingOnValues: ['YES'],
       },
@@ -702,20 +720,21 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_DATE,
         key: 'prohibitionToWorkUntil',
         label: ' ',
-        hint: 'Prohibition to work until',
+        hint: 'CaseData.prohibitionToWorkUntil',
         dependingOn: 'prohibitionToWork',
         dependingOnValues: ['YES'],
       },
     ],
   },
   {
-    title: 'Surveillance',
+    id: 'surveillance',
+    title: 'CaseData.surveillance',
     required: false,
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'surveillanceOfficer',
-        label: 'Responsible surveillance officer',
+        label: 'CaseData.surveillanceOfficer',
         options: [
           {
             key: 'default',
@@ -727,31 +746,32 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'clinicianName',
-        label: 'Name of responsable clinician',
+        label: 'CaseData.clinicianName',
         newLine: true,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'clinicianPhone',
-        label: 'Phone of responsable clinician',
+        label: 'CaseData.clinicianPhone',
         newLine: true,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'clinicianEmail',
-        label: 'Email address of responsable clinician',
+        label: 'CaseData.clinicianEmail',
         newLine: true,
         className: 'size-large',
       },
     ],
   },
   {
+    id: 'followupStatus',
     title: '',
     required: false,
     anchor: 'followup_status',
-    anchorLabel: 'Follow-up status',
+    anchorLabel: 'CaseData.followUpStatus',
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -765,7 +785,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'overwriteFollowUpUntil',
-        label: 'Overwrite follow-up until date',
+        label: 'CaseData.overwriteFollowUpUntil',
         newLine: true,
       },
       {
@@ -776,45 +796,47 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_INPUT,
         key: 'followUpComment',
-        label: 'Follow up status comment',
+        label: 'CaseData.followUpComment',
         newLine: true,
         className: 'size-full',
       },
     ],
   },
   {
+    id: 'paperForm',
     title: '',
     required: false,
     anchor: 'paper_form',
-    anchorLabel: 'Paper form',
+    anchorLabel: 'CaseData.paperForm',
     fields: [
       {
         ...FORM_DATA_DATE,
         key: 'districtLevelDate',
-        label: 'Date received at district level',
+        label: 'CaseData.districtLevelDate',
         className: 'size-medium',
       },
       {
         ...FORM_DATA_DATE,
         key: 'regionLevelDate',
-        label: 'Date received at regional level',
+        label: 'CaseData.regionLevelDate',
         newLine: true,
         className: 'size-medium',
       },
       {
         ...FORM_DATA_DATE,
         key: 'nationalLevelDate',
-        label: 'Date received at national level',
+        label: 'CaseData.nationalLevelDate',
         newLine: true,
         className: 'size-medium',
       },
     ],
   },
   {
+    id: 'comment',
     title: '',
     required: false,
     anchor: 'general_comment',
-    anchorLabel: 'General comment',
+    anchorLabel: 'CaseData.additionalDetails',
     fields: [
       {
         ...FORM_DATA_TEXTAREA,

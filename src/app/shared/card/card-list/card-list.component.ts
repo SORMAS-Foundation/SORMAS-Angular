@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { Position, CardStatusMap } from '../../../app.constants';
-import { BasicPosition } from '../../../_constants/enums';
+import { BasicPosition, CardAppearanceOptions } from '../../../_constants/enums';
 import { CardAppearance, CardStatus, CardType } from '../../../_models/cardAppearance';
 import { BasicPositionType, PositionType } from '../../../_models/positionType';
 
@@ -9,7 +9,7 @@ import { BasicPositionType, PositionType } from '../../../_models/positionType';
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.scss'],
 })
-export class CardListComponent implements OnInit {
+export class CardListComponent implements OnChanges {
   @Input() data: any[] = [];
   @Input() initialPageSize: number;
 
@@ -29,9 +29,10 @@ export class CardListComponent implements OnInit {
   @Input() cardRefreshPosition: PositionType = Position.BOTTOMRIGHT;
   @Input() cardWidth: number;
   @Input() cardType: CardType;
-  @Input() cardAppearance: CardAppearance;
+  @Input() cardAppearance: CardAppearance = CardAppearanceOptions.STANDARD;
   @Input() cardTitleKey: string;
   @Input() cardTitlePosition: BasicPositionType = BasicPosition.LEFT;
+  @Input() cardStatus: CardStatus;
   @Input() cardStatusKey: string;
 
   @Output() selectCard: EventEmitter<any> = new EventEmitter();
@@ -43,12 +44,12 @@ export class CardListComponent implements OnInit {
 
   limit: number;
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.limit = this.initialPageSize || this.data.length;
   }
 
   getStatus(data: any): CardStatus {
-    return CardStatusMap[data[this.cardStatusKey] as keyof typeof CardStatusMap];
+    return this.cardStatus || CardStatusMap[data[this.cardStatusKey] as keyof typeof CardStatusMap];
   }
 
   showMore(): void {

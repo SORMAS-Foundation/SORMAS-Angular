@@ -17,11 +17,11 @@ import { CaseClinicalCourseComponent } from './case_components/case-clinical-cou
 import { CaseContactsComponent } from './case_components/case-contacts/case-contacts.component';
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { CaseFiltersComponent } from './case-filters/case-filters.component';
-import { NewEpidNumberComponent } from './case_components/new-epid-number/new-epid-number.component';
-import { FollowUpStatusComponent } from './case_components/follow-up-status/follow-up-status.component';
-import { ExposuresListComponent } from './case_components/case-epidemiological-data/exposures-list/exposures-list.component';
-import { ActivitiesListComponent } from './case_components/case-epidemiological-data/activities-list/activities-list.component';
-import { SymptomsGroupSelectComponent } from './case_components/symptoms-group-select/symptoms-group-select.component';
+import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
+import { CaseAddComponent } from './case-add/case-add.component';
+import { CaseEditComponent } from './case-edit/case-edit.component';
+import { CustomCaseExportComponent } from './custom-case-export/custom-case-export.component';
+import { CaseImportComponent } from './case-import/case-import.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { SymptomsGroupSelectComponent } from './case_components/symptoms-group-s
     CaseDetailsComponent,
     CasePersonComponent,
     CaseHospitalizationComponent,
+    CasePortHealthComponent,
     CaseSymptomsComponent,
     CaseEpidemiologicalDataComponent,
     CaseTherapyComponent,
@@ -38,11 +39,10 @@ import { SymptomsGroupSelectComponent } from './case_components/symptoms-group-s
     CaseClinicalCourseComponent,
     CaseContactsComponent,
     CaseFiltersComponent,
-    NewEpidNumberComponent,
-    FollowUpStatusComponent,
-    ExposuresListComponent,
-    ActivitiesListComponent,
-    SymptomsGroupSelectComponent,
+    CaseAddComponent,
+    CustomCaseExportComponent,
+    CaseImportComponent,
+    CaseEditComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

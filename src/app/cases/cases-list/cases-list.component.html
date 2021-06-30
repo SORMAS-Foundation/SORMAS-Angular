@@ -1,12 +1,27 @@
-<button class="toggle-filter" (click)="drawer.open()">
-  <mat-icon *ngIf="!drawer.opened" class="material-icons-round">filter_list</mat-icon>
-</button>
-<mat-drawer-container class="case-list-container">
-  <mat-drawer #drawer opened mode="side" class="filters-bar">
-    <app-case-filters [drawer]="drawer"></app-case-filters>
-  </mat-drawer>
-  <mat-drawer-content>
-    <h1 class="header-title" i18n="Cases Overview header">Cases Overview</h1>
+<app-filters [topGap]="headerHeight">
+  <app-case-filters filters></app-case-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title" i18n="Cases Overview header">
+        {{ 'View.cases' | translate }}
+      </h1>
+      <div class="page-header-actions">
+        <button mat-flat-button color="primary" (click)="openAddCaseModal()">
+          {{ 'caseNewCase' | translate }}
+        </button>
+
+        <button mat-stroked-button color="primary" (click)="openImportModal()">
+          {{ 'actionImport' | translate }}
+        </button>
+
+        <app-dropdown-menu buttonText="{{ 'moreActions' | translate }}">
+          <app-action-menu
+            [config]="actionsMore"
+            (action)="onActionSelected($event)"
+          ></app-action-menu>
+        </app-dropdown-menu>
+      </div>
+    </div>
     <app-table
       [resourceService]="caseService"
       [tableColumns]="defaultColumns"
@@ -15,8 +30,8 @@
       [isHeaderSticky]="true"
       [fullHeight]="true"
       [saveConfigKey]="configKey"
-      (selectItem)="selectCase($event)"
-      (clickItem)="clickCase($event)"
+      [viewOptions]="actionsViewOptions"
+      [bulkEditOptions]="actionsBulkEdit"
     ></app-table>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </ng-container>
+</app-filters>

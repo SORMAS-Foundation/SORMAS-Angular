@@ -1,19 +1,36 @@
 @use '../../../variables' as *;
 
 .menu {
+  @include mat-elevation(2);
   position: fixed;
-  z-index: 9;
+  z-index: 10;
   top: 0;
   right: 0;
   left: 0;
-  height: 68px;
+  height: auto;
   background: linear-gradient(90deg, #1b1f26 0%, #2b323d 100%);
   color: $white;
+
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+  }
 
   .logo {
     margin: 20px 10px 0 25px;
     float: left;
   }
+}
+
+.mat-icon-button {
+  display: none;
 }
 
 .mat-button {
@@ -46,24 +63,35 @@
 }
 
 @media (max-width: map-get($grid-breakpoints, md)) {
-  .menu {
-    flex-direction: column;
+  .menu-list {
+    padding: 20px 0;
   }
 
-  .mat-button {
-    display: block;
-    width: 100%;
-    padding: 1em;
-    margin: 0;
-    color: $white;
-    line-height: 1;
+  .menu {
+    overflow: hidden;
+    flex-direction: column;
 
-    &.route-active {
-      color: map-get($sormas-primary, 700);
+    .mat-button {
+      width: 100%;
+      padding: 12px;
+      margin: 0;
+      color: $white;
+      line-height: 1;
+
+      &.route-active {
+        color: map-get($sormas-primary, 700);
+      }
+
+      &.route-active::after {
+        display: none;
+      }
     }
 
-    &.route-active::after {
-      display: none;
+    .mat-icon-button {
+      top: 14px;
+      right: 40px;
+      display: block;
+      margin: 0 auto;
     }
   }
 }

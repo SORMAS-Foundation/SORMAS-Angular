@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h1 class="page-header-title">
+    {{ 'View.persons' | translate }}
+  </h1>
+  <div class="page-header-actions"></div>
+</div>
+
+<app-table
+  [resourceService]="personService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [saveConfigKey]="configKey"
+></app-table>

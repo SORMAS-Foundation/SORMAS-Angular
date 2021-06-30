@@ -1,1 +1,8 @@
-/* stylelint-disable */
+@use '../../../../variables' as *;
+
+.header-title {
+  padding-left: 20px;
+  margin-top: 24px;
+  font-size: 34px;
+  font-weight: 500;
+}

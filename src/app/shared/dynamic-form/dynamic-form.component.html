@@ -1,6 +1,10 @@
 <div class="dynamic-form-wrapper">
-  <div class="inpage-nav" [ngClass]="{ fixed: fixedHeader }">
-    <app-inpage-nav *ngIf="withAnchor" [anchors]="getSections()"></app-inpage-nav>
+  <div class="inpage-nav">
+    <app-inpage-nav
+      *ngIf="withAnchor"
+      [pageOffset]="280"
+      [anchors]="getSections()"
+    ></app-inpage-nav>
   </div>
   <div class="form-content">
     <form [formGroup]="form">
@@ -10,8 +14,10 @@
         [ngClass]="{ 'dynamic-form-group': true, 'dynamic-form-section': group.anchor }"
       >
         <div class="left-section">
-          <h2>{{ group.title }} <span class="required" *ngIf="group.required">*</span></h2>
-          <p *ngIf="group.subTitle" class="sub-title">{{ group.subTitle }}</p>
+          <h2>
+            {{ group.title | translate }} <span class="required" *ngIf="group.required">*</span>
+          </h2>
+          <p *ngIf="group.subTitle" class="sub-title">{{ group.subTitle | translate }}</p>
         </div>
         <mat-card class="dynamic-form-card">
           <ng-container *ngFor="let field of group.fields">

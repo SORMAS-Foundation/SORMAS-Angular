@@ -34,9 +34,9 @@
     color="primary"
     (click)="showMore()"
   >
-    Show more
+    {{ 'actionShowMore' | translate }}
   </button>
   <button *ngIf="limit !== initialPageSize" mat-button color="primary" (click)="showLess()">
-    Show less
+    {{ 'actionShowLess' | translate }}
   </button>
 </p>

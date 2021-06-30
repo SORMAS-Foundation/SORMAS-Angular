@@ -1,5 +1,13 @@
 @use '/src/variables.scss' as *;
 
+.actions {
+  padding: 24px;
+
+  & > * {
+    margin-right: 16px;
+  }
+}
+
 .mat-cell .mat-icon {
   font-size: 14px;
   line-height: inherit;
@@ -51,7 +59,14 @@ table {
   }
 
   .mat-row {
+    position: relative;
+    z-index: 1;
     cursor: pointer;
+    &:hover,
+    :focus {
+      @include mat-elevation(5);
+      z-index: 2;
+    }
   }
 
   .row-skeleton {

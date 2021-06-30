@@ -2,20 +2,16 @@
 
 .dynamic-form-wrapper {
   .inpage-nav {
-    &.fixed {
-      position: fixed;
-      z-index: 9;
-      top: 200px;
-      right: 0;
-      left: 0;
-      padding: 0 25px;
-      background: $white;
-    }
+    position: sticky;
+    z-index: 2;
+    top: 212px;
+    margin: 0 -24px;
   }
 }
 
 .mat-card {
   flex: 1 1 auto;
+  padding: 16px 24px;
 
   .mat-divider-horizontal {
     position: unset;
@@ -46,7 +42,6 @@
 .left-section {
   min-width: 176px;
   max-width: 248px;
-  flex: 0 0 24%;
   padding: 29px 24px;
   margin: 0;
   text-align: right;

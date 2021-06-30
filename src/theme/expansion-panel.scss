@@ -1,0 +1,93 @@
+@mixin expansion-panel-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-expansion-panel {
+      @include mat-elevation(0);
+
+      border: solid 1px map-get($sormas-accent, 200);
+    }
+
+    .mat-expansion-panel-header {
+      height: auto;
+      padding: 16px 24px;
+
+      &:hover,
+      &:focus {
+        background: unset !important;
+      }
+    }
+
+    .mat-expansion-panel-header-title {
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    .dropdown-menu {
+      .mat-expansion-panel {
+        border: 0;
+        border-radius: 0;
+      }
+
+      .mat-expansion-panel-header {
+        padding: 0 16px;
+        line-height: 36px;
+      }
+
+      .mat-expanded .mat-expansion-panel-header {
+        padding: 4px 16px;
+      }
+
+      .mat-expansion-panel-header-title {
+        font-size: 14px;
+      }
+
+      .mat-expansion-panel-body {
+        padding: 0;
+        border-top: 1px solid map-get($sormas-accent, 200);
+        border-bottom: 1px solid map-get($sormas-accent, 200);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .mat-expansion-panel-header {
+          transition: 0.2s;
+        }
+      }
+    }
+
+    .mat-expansion-panel.section {
+      border: 0;
+
+      .mat-expansion-panel-header {
+        padding: 0;
+      }
+
+      .mat-expansion-panel-header-title {
+        flex: 0 1 auto;
+        font-size: 20px;
+        line-height: 36px;
+      }
+
+      .mat-expansion-panel-header-description {
+        flex: 0 0 auto;
+        margin-right: 0;
+        margin-left: auto;
+
+        .mat-button {
+          padding: 0;
+        }
+      }
+
+      .mat-expansion-panel-body {
+        padding: 12px 0;
+      }
+    }
+  }
+}

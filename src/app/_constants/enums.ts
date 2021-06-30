@@ -137,6 +137,88 @@ export enum YesNoUnknown {
   UNKNOWN = 'Unknown',
 }
 
+export enum SamplePurpose {
+  EXTERNAL = 'External',
+  INTERNAL = 'Internal',
+}
+
+export enum SampleMaterial {
+  BLOOD = 'Blood',
+  SERA = 'Sera',
+  STOOL = 'Stool',
+  NASALSWAB = 'Nasal swab',
+  THROATSWAB = 'Throat swab',
+  NPSWAB = 'Nasopharyngeal swab',
+  RECTALSWAB = 'Rectal swab',
+  CEREBROSPINALFLUID = 'Cerebrospinal fluid',
+  CRUST = 'Crust',
+  TISSUE = 'Tissue',
+  URINE = 'Urine',
+  CORNEAPM = 'Cornea p.m',
+  SALIVA = 'Saliva',
+  URINEPM = 'Urine p.m.',
+  NUCHALSKINBIOPSY = 'Nuchal skin biopsy',
+  SPUTUM = 'Sputum',
+  ENDOTRACHEALASPIRATE = 'Endotracheal aspirate',
+  BRONCHOALVEOLARLAVAGE = 'Bronchoalveolar lavage',
+  BRAINTISSUE = 'Brain tissue',
+  OTHER = 'Other',
+}
+
+export enum SamplingReason {
+  PRESENCE_OF_SYMPTOMS = 'Presence of symptoms',
+  OUTBREAK = 'Outbreak',
+  SCREENING = 'Screening',
+  PROFESSIONAL_REASON = 'Professional reason',
+  QUARANTINE_REGULATIONS = 'Quarantine regulations',
+  CONTACT_TO_CASE = 'Contact to case',
+  SWISS_COVID_APP_NOTIFICATION = 'Swiss covid app notification',
+  PLANNING_TO_TRAVEL = 'Planning to travel',
+  RETURNING_TRAVELER = 'Returning traveler',
+  PERSONAL_REASON = 'Personal reason',
+  MOVING_RETURNING_RETIREMENT_HOME = 'Moving/returning into retirement home',
+  QUARANTINE_END = 'Quarantine end',
+  UNKNOWN = 'Unknown',
+  OTHER_REASON = 'Other reason',
+}
+
+export enum SpecimenCondition {
+  ADEQUATE = 'Adequate ',
+  NOTADEQUATE = 'Not adequate',
+}
+
+export enum PathogenTestResultType {
+  INDETERMINATE = 'Indeterminate',
+  PENDING = 'Pending',
+  NEGATIVE = 'Negative',
+  POSITIVE = 'Positive',
+  NOTDONE = 'Not done',
+}
+
+export enum PathogenTestType {
+  ANTIBODYDETECTION = 'Antibody detection',
+  ANTIGENDETECTION = 'Antigen detection',
+  RAPIDTEST = 'Rapid test',
+  CULTURE = 'Culture',
+  HISTOPATHOLOGY = 'Histopatholog',
+  ISOLATION = 'Isolation',
+  IGMSERUMANTIBODY = 'IgM serum antibody',
+  IGGSERUMANTIBODY = 'IgG serum antibody',
+  IGASERUMANTIBODY = 'IgA serum antibody',
+  INCUBATIONTIME = 'Incubation time',
+  INDIRECTFLUORESCENTANTIBODY = 'Indirect Fluorescent Antibody (IFA)',
+  DIRECTFLUORESCENTANTIBODY = 'Direct fluorescent antibody (FA)',
+  MICROSCOPY = 'Microscopy',
+  NEUTRALIZINGANTIBODIES = 'Neutralizing antibodies',
+  PCRRTPCR = 'PCR / RT-PCR',
+  GRAMSTAIN = 'Gram Stain',
+  LATEXAGGLUTINATION = 'Latex Agglutination',
+  CQVALUEDETECTION = 'CQQ Value Detection',
+  SEQUENCING = 'Sequencing',
+  DNAMICROARRAY = 'DNA Microarray',
+  OTHER = 'Other',
+}
+
 export enum CaseIdentificationSource {
   UNKNOWN = 'Unknown',
   OUTBREAK_INVESTIGATION = 'Outbreak investigation',
@@ -244,4 +326,57 @@ export enum TemperatureSource {
 export enum TableAppearanceOptions {
   STANDARD = 'standard',
   MINIMAL = 'minimal',
+}
+
+export enum ConveyanceTypeOptions {
+  CAR = 'Car',
+  BUS = 'Bus',
+  MOTORBIKE = 'Motorbike',
+  OTHER = 'Other',
+}
+
+export enum TaskContextOptions {
+  CASE = 'Case',
+  CONTACT = 'Contact',
+  EVENT = 'Event',
+  GENERAL = 'General',
+}
+
+export enum TaskTypeOptions {
+  ACTIVE_SEARCH_FOR_OTHER_CASES = 'Active search for other cases',
+  CASE_ISOLATION = 'Case isolation',
+  CASE_INVESTIGATION = 'Case investigation',
+  CASE_MANAGEMENT = 'Case management',
+  CASE_BURIAL = 'Case burial',
+  CONTACT_TRACING = 'Contact tracing',
+  SAMPLE_COLLECTION = 'Sample collection',
+  CONTACT_INVESTIGATION = 'Contact investigation',
+  CONTACT_FOLLOW_UP = 'Contact follow-up',
+  ANIMAL_TESTING = 'Animal testing',
+  EVENT_INVESTIGATION = 'Event investigation',
+  EVENT_CONTINUE_INVESTIGATION = 'Event continue investigation',
+  EVENT_REQUEST_ADDITIONAL_INFORMATION = 'Event request additional information',
+  TREATMENT_CENTER_ESTABLISHMENT = 'Treatment center establishement',
+  ENVIRONMENTAL_HEALTH_ACTIVITIES = 'Environmental health activities',
+  DECONTAMINATION_DISINFECTION_ACTIVITIES = 'Decontamination disinfection activities',
+  QUARANTINE_PLACE = 'Quarantine place',
+  VACCINATION_ACTIVITIES = 'Vaccination activities',
+  ANIMAL_DEPOPULATION = 'Animal depopulation',
+  OTHER = 'Other',
+  DAILY_REPORT_GENERATION = 'Daily report generation',
+  SURVEILLANCE_REPORT_GENERATION = 'Surveillance report generation',
+  WEEKLY_REPORT_GENERATION = 'Weekly report generation',
+}
+
+export enum TaskPriorityOptions {
+  HIGH = 'High',
+  NORMAL = 'Normal',
+  LOW = 'Low',
+}
+
+export enum TaskStatusOptions {
+  PENDING = 'Pending',
+  DONE = 'Done',
+  REMOVED = 'Removed',
+  NOTEXECUTABLE = 'Not executable',
 }

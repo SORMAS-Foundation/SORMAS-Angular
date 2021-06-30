@@ -1,6 +1,11 @@
 <mat-card
   [style.width.px]="width"
-  [ngClass]="['appearance-' + appearance, 'status-' + status, selected ? 'selected' : '']"
+  [ngClass]="[
+    appearance ? 'appearance-' + appearance : '',
+    status ? 'status-' + status : '',
+    selected ? 'selected' : '',
+    type ? 'type-' + type : ''
+  ]"
 >
   <app-card-actions
     *ngIf="!collapsed && actionsTop.length"
@@ -23,6 +28,7 @@
     <app-card-case-event *ngSwitchCase="'case_event'" [data]="data"></app-card-case-event>
     <app-card-sample *ngSwitchCase="'sample'" [data]="data"></app-card-sample>
     <app-card-epid-data *ngSwitchCase="'epid_data'" [data]="data"></app-card-epid-data>
+    <app-card-download *ngSwitchCase="'download'" [data]="data"></app-card-download>
     <ng-content *ngSwitchDefault></ng-content>
   </mat-card-content>
 

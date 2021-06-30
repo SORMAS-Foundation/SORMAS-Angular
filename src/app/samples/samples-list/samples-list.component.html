@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h1 class="page-header-title">
+    {{ 'View.samples' | translate }}
+  </h1>
+  <div class="page-header-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddSampleModal()">
+      {{ 'sampleCreateNew' | translate }}
+    </button>
+  </div>
+</div>
+
+<app-table
+  [resourceService]="sampleService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [saveConfigKey]="configKey"
+></app-table>

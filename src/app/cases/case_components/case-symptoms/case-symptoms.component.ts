@@ -74,7 +74,7 @@ export class CaseSymptomsComponent {
 
   updateFirstSymptom(symptoms: any[]): void {
     const additionalDetailsSection = this.formData.find((item) => {
-      return item.title === 'Additional details';
+      return item.id === 'details';
     });
     const onsetSymptomField = (additionalDetailsSection?.fields as any[]).find((item) => {
       return item.key.includes('onsetSymptom');

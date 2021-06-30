@@ -2,12 +2,29 @@
 
 * {
   box-sizing: border-box;
+  scrollbar-color: map-get($sormas-accent, 300) map-get($sormas-accent, 100);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 8px;
+  background-color: map-get($sormas-accent, 100);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: map-get($sormas-accent, 300);
 }
 
 html,
 body {
   height: 100%;
   margin: 0;
+}
+
+.noscroll {
+  position: fixed;
+  overflow: hidden;
 }
 
 a:not(.mat-button) {
@@ -24,4 +41,31 @@ a:not(.mat-button) {
 
 .errorMessage {
   color: $warn;
+}
+
+.filters .mat-drawer-inner-container {
+  overflow-y: scroll;
+}
+
+// page general layout
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 48px 32px 24px;
+  border-bottom: 2px solid map-get($sormas-accent, 200);
+
+  .page-header-title {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 36px;
+  }
+
+  .page-header-actions > * + * {
+    margin-left: 1rem;
+  }
+}
+
+.page-content {
+  padding: 32px;
 }

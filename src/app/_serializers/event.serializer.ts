@@ -10,8 +10,8 @@ export class EventSerializer implements Serializer {
     return json;
   }
 
-  toJson(caseItem: EventDto): any {
-    serializeDates(caseItem);
-    return caseItem;
+  toJson(eventItem: EventDto): any {
+    serializeDates(eventItem);
+    return eventItem;
   }
 }
