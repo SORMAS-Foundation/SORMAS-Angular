@@ -19,6 +19,7 @@
       (dateChange)="onChange()"
       [formControlName]="'date'"
       [placeholder]="config.placeholder || ''"
+      [matTooltip]="config.label || '' | translate"
     />
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
     <mat-datepicker-toggle matSuffix [for]="picker">

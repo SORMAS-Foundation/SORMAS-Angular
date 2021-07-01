@@ -1,8 +1,14 @@
 @use '/src/variables.scss' as *;
 
+:host {
+  display: flex;
+}
+
 .mat-card {
   @include mat-elevation(0);
 
+  display: flex;
+  flex-direction: column;
   padding: 0.5rem 1rem;
   border: 1px solid mat-color($sormas-accent, 200);
   border-radius: 5px;
@@ -38,6 +44,10 @@
       margin-right: -8px;
     }
   }
+}
+
+app-card-actions:last-child {
+  margin-top: auto;
 }
 
 app-card-actions + .mat-card-header {

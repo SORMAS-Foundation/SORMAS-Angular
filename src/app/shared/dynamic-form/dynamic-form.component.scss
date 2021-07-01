@@ -1,12 +1,15 @@
 @use '/src/variables.scss' as *;
 
-.dynamic-form-wrapper {
-  .inpage-nav {
-    position: sticky;
-    z-index: 2;
-    top: 212px;
-    margin: 0 -24px;
-  }
+section {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+header {
+  position: sticky;
+  z-index: 2;
+  top: 212px;
+  margin: 0 -24px;
 }
 
 .mat-card {
@@ -16,22 +19,23 @@
   .mat-divider-horizontal {
     position: unset;
     border: 0;
-    margin: 0.5rem;
   }
 }
 
-.dynamic-form-group {
+fieldset {
   display: flex;
   justify-content: stretch;
+  padding: 0;
+  border: 0;
   margin: 10px 0;
 
-  &.dynamic-form-section {
+  &.section {
     margin-top: 48px;
   }
 
   &:hover,
   &:focus {
-    background-color: $white;
+    background-color: rgba($white, 0.8);
 
     .mat-card {
       @include mat-elevation(6);
@@ -39,20 +43,22 @@
   }
 }
 
-.left-section {
-  min-width: 176px;
-  max-width: 248px;
-  padding: 29px 24px;
+legend {
+  flex: 0 0 176px;
+  padding: 24px;
   margin: 0;
+  float: left;
   text-align: right;
 
   h2 {
-    margin-bottom: 8px;
+    padding: 4px 0;
+    margin: 0;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 16px;
   }
 
-  .sub-title {
+  h3 {
+    margin: 8px 0 0 0;
     color: mat-color($sormas-accent, 800);
     font-size: 12px;
     font-weight: normal;
@@ -94,9 +100,16 @@
 }
 
 .required {
+  margin-left: 6px;
   color: map-get($sormas-alert, 400);
 }
 
 .hidden {
   display: none;
+}
+
+@media (min-width: map-get($grid-breakpoints, xl)) {
+  legend {
+    flex: 0 0 248px;
+  }
 }
