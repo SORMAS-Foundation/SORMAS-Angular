@@ -1,6 +1,6 @@
 @use '../../../variables.scss' as *;
 
-.case-content {
+.page-content {
   position: relative;
   z-index: 1;
   background: map-get($sormas-accent, 50);
