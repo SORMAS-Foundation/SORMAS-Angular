@@ -170,6 +170,7 @@ export const FORM_DATA_CONTACT_ADD = [
         key: 'contactProximityDetails',
         label: 'Contact.contactProximityDetails',
         newLine: true,
+        className: 'size-large',
       },
       {
         ...FORM_DATA_RADIO,

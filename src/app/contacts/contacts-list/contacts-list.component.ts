@@ -7,9 +7,9 @@ import { TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './contacts-list-table-data';
-import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
 import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
+import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 
 @Component({
   selector: 'app-contacts-list',
@@ -34,7 +34,7 @@ export class ContactsListComponent implements OnInit {
   }
 
   openAddContactModal(): void {
-    const dialogRef = this.dialog.open(AddBaseModalComponent, {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('contactCreateNew'),
