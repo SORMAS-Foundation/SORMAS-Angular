@@ -4,7 +4,12 @@
       {{ config.label || '' | translate }}
       <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
-    <mat-radio-button *ngFor="let opt of config.options" [value]="opt.key" color="primary">
+    <mat-radio-button
+      [ngClass]="config.separated ? 'block' : ''"
+      *ngFor="let opt of config.options"
+      [value]="opt.key"
+      color="primary"
+    >
       {{ opt.value }}
     </mat-radio-button>
   </mat-radio-group>

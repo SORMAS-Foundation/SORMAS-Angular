@@ -1,1 +1,5 @@
-/* stylelint-disable */
+.mat-radio-button {
+  &.block {
+    display: block;
+  }
+}

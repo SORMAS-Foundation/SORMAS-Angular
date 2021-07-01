@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { ContactService } from '../../_services/api/contact.service';
 import { TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './contacts-list-table-data';
-import { ContactService } from '../../_services/api/contact.service';
+import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
+import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
+import { ContactAddComponent } from '../contact-add/contact-add.component';
 
 @Component({
   selector: 'app-contacts-list',
@@ -15,9 +21,33 @@ export class ContactsListComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;
 
-  constructor(public contactService: ContactService) {}
+  private subscription: Subscription[] = [];
+
+  constructor(
+    public contactService: ContactService,
+    private dialog: MatDialog,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+  }
+
+  openAddContactModal(): void {
+    const dialogRef = this.dialog.open(AddBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('contactCreateNew'),
+        component: ContactAddComponent,
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
   }
 }

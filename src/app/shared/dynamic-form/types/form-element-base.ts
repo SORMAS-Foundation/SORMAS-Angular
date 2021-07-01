@@ -11,6 +11,7 @@ export class FormElementBase<T> {
   controlType: string;
   type: string;
   newLine: boolean | undefined;
+  separated: boolean | undefined;
   className?: string;
   options: { key: string; value: string }[];
   active: boolean;
@@ -31,6 +32,7 @@ export class FormElementBase<T> {
       controlType?: string;
       type?: string;
       newLine?: boolean;
+      separated?: boolean;
       className?: string;
       options?: { key: string; value: string }[];
       active?: boolean;
@@ -50,6 +52,7 @@ export class FormElementBase<T> {
     this.controlType = options.controlType || '';
     this.type = options.type || '';
     this.newLine = options.newLine;
+    this.separated = options.separated;
     this.className = options.className;
     this.options = options.options || [];
     this.active = options.active ?? true;
