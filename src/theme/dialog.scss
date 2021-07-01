@@ -7,33 +7,56 @@
 
   :root {
     .mat-dialog-container {
-      padding-right: 64px;
-      padding-left: 64px;
+      position: relative;
+      padding: 0;
+      background: map-get($sormas-accent, 50);
       border-radius: 12px;
     }
 
-    .mat-dialog-title {
-      margin-top: 40px;
-      margin-bottom: 24px;
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .mat-dialog-content {
-      padding: 16px 64px;
-      border-top: 2px solid map-get($sormas-accent, 200);
-      margin: 0 -64px;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
     .mat-dialog-actions {
+      min-height: unset;
+      align-content: flex-end;
       justify-content: flex-end;
+      padding: 12px 64px 36px;
       margin-bottom: 0;
 
       .mat-button-base + .mat-button-base {
         margin-left: 1rem;
       }
+    }
+
+    .mat-dialog-title {
+      display: flex;
+      justify-content: space-between;
+      padding: 24px 64px;
+      border-bottom: 2px solid map-get($sormas-accent, 200);
+      margin: 0;
+      background-color: $white;
+
+      h1 {
+        margin: 24px 0 0;
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 36px;
+      }
+
+      .mat-dialog-actions {
+        padding: 0;
+      }
+    }
+
+    .button-dialog-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      color: map-get($sormas-accent, 500);
+    }
+
+    .mat-dialog-content {
+      padding: 16px 64px;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.5;
     }
 
     ul {
@@ -45,24 +68,31 @@
       margin: 1em 0;
     }
 
+    .dialog-prompt {
+      .mat-dialog-title h1 {
+        font-size: 24px;
+      }
+    }
+
     .dialog-confirm {
-      .mat-dialog-title {
+      .mat-dialog-title h1 {
         color: mat-color(mat-palette($warn, 700));
+        font-size: 24px;
       }
     }
 
     .dialog-alert {
-      .mat-dialog-container {
-        padding-left: 88px;
-      }
-
       .mat-dialog-title {
-        color: mat-color(mat-palette($warn, 700));
+        padding-left: 88px;
+
+        h1 {
+          color: mat-color(mat-palette($warn, 700));
+          font-size: 24px;
+        }
       }
 
       .mat-dialog-content {
         padding-left: 88px;
-        margin-left: -88px;
       }
 
       ul {

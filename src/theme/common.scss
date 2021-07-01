@@ -22,6 +22,11 @@ body {
   margin: 0;
 }
 
+.noscroll {
+  position: fixed;
+  overflow: hidden;
+}
+
 a:not(.mat-button) {
   color: map-get($sormas-primary, 700);
   text-decoration: none;
@@ -40,6 +45,33 @@ a:not(.mat-button) {
 
 .filters .mat-drawer-inner-container {
   overflow-y: scroll;
+}
+
+// page general layout
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 48px 32px 24px;
+  border-bottom: 2px solid map-get($sormas-accent, 200);
+
+  .page-header-title {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 36px;
+  }
+
+  .page-header-actions > * + * {
+    margin-left: 1rem;
+  }
+}
+
+.page-content {
+  padding: 24px;
+
+  .sidebar {
+    margin: -24px;
+  }
 }
 
 /* Table dynamic content */

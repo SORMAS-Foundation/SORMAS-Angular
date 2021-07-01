@@ -3,8 +3,8 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
   Input,
+  EventEmitter,
   OnDestroy,
   OnInit,
   Output,
@@ -19,12 +19,15 @@ import { debounceTime } from 'rxjs/operators';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ViewportRuler } from '@angular/cdk/scrolling';
 import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
-import { Filter, Sorting, TableColumn } from '../../_models/common';
+import { Filter, NavItem, Sorting, TableColumn } from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
+import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
+import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 
 @Component({
   selector: 'app-table',
@@ -47,7 +50,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   filters: Filter[];
   debouncer: Subject<number> = new Subject<number>();
   dataSourceArray: any = [];
-  subscription: Subscription = new Subscription();
+  subscriptions: Subscription[] = [];
+  icons = constants.IconsMap;
+
+  private subscription: Subscription[] = [];
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -59,6 +65,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() fullHeight: boolean;
   @Input() appearance: string = constants.TableAppearanceOptions.STANDARD;
   @Input() preSetFilters: Filter[];
+  @Input() viewOptions: NavItem[];
+  @Input() bulkEditOptions: NavItem[];
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
@@ -70,7 +78,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
-    private viewportRuler: ViewportRuler
+    private viewportRuler: ViewportRuler,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -93,13 +102,23 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     });
 
-    this.subscription = this.filterService.getFilters().subscribe((response: any) => {
-      this.filters = response.filters;
-      if (this.preSetFilters) {
-        this.filters = this.filters.concat(this.preSetFilters);
-      }
-      this.getResources(true);
+    this.subscriptions.push(
+      this.filterService.getFilters().subscribe((response: any) => {
+        this.filters = response.filters;
+        if (this.preSetFilters) {
+          this.filters = this.filters.concat(this.preSetFilters);
+        }
+        this.getResources(true);
+      })
+    );
+  }
+
+  getSelectedItems(): any[] {
+    const result: any[] = [];
+    this.selection.selected.forEach((row) => {
+      result.push(this.dataSourceArray[row.index]);
     });
+    return result;
   }
 
   getColumns(): string[] {
@@ -122,8 +141,90 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  getRowData(index: number): any {
-    return this.dataSourceArray[index];
+  openBulkEdit(editComponent: any): void {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      minWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('Edit cases'),
+        component: editComponent,
+        editResources: this.getSelectedItems(),
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
+  }
+
+  getAdvancedData(
+    index: number,
+    tableColumn: TableColumn,
+    type: constants.AdvancedDataType
+  ): string {
+    let params: keyof typeof tableColumn;
+    let pattern: keyof typeof tableColumn;
+
+    if (type === constants.AdvancedDataType.DISPLAY) {
+      params = 'advancedDisplayParams';
+      pattern = 'advancedDisplay';
+    } else {
+      params = 'linkParams';
+      pattern = 'linkPattern';
+    }
+    let dataTmp = tableColumn[pattern] || '';
+    const currentParam = tableColumn[params];
+    if (currentParam) {
+      for (let i = 0; i < currentParam.length; i += 1) {
+        const tableDataTmp = this.getTableDataByKey(index, currentParam[i]);
+        if (tableDataTmp === '') {
+          return '';
+        }
+        dataTmp = dataTmp?.replace(`$param${i + 1}`, tableDataTmp);
+      }
+      return dataTmp;
+    }
+
+    return '';
+  }
+
+  getTableDataByKey(index: number, key: string): any {
+    let displayText;
+
+    if (typeof this.dataSourceArray[index].index !== 'undefined') {
+      return 'loading';
+    }
+
+    if (key.indexOf('.') > -1) {
+      displayText = key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
+    } else {
+      displayText = this.dataSourceArray[index][key]?.toString();
+    }
+
+    if (typeof displayText === 'undefined' || displayText === null) {
+      return '';
+    }
+
+    return displayText;
+  }
+
+  getTableData(index: number, tableColumn: TableColumn): any {
+    if (tableColumn.advancedDisplay) {
+      return this.getAdvancedData(index, tableColumn, constants.AdvancedDataType.DISPLAY);
+    }
+    return this.getTableDataByKey(index, tableColumn.dataKey);
+  }
+
+  getIcon(key: string): string {
+    return this.icons[key as keyof typeof constants.IconsMap];
+  }
+
+  getClass(key: string, value: string): string {
+    return `${key.toLocaleLowerCase()}-${value.toLocaleLowerCase()}`;
   }
 
   getResources(reload: boolean = false): void {
@@ -153,13 +254,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         complete: () => {},
       });
-  }
-
-  onItemSelect(event: any, row: any): void {
-    event.stopPropagation();
-    this.selectItem.emit({
-      item: this.dataSourceArray[row.index],
-    });
   }
 
   scrolledIndexChange(index: number): void {
@@ -195,6 +289,20 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.limit = Math.ceil((this.tableHeight - this.headerHeight) / this.rowHeight);
   }
 
+  onActionSelected(event: any): void {
+    switch (event) {
+      case ACTIONS_BULK_EDIT.EDIT:
+        // @ts-ignore
+        // eslint-disable-next-line no-case-declarations
+        const editComponent = this.bulkEditOptions.find((item) => item.action === event).component;
+        this.openBulkEdit(editComponent);
+        break;
+      default:
+        // eslint-disable-next-line no-console
+        console.log(event);
+    }
+  }
+
   ngAfterViewInit(): void {
     if (this.fullHeight) {
       setTimeout(() => this.determineHeight());
@@ -202,8 +310,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

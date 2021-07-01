@@ -2,4 +2,8 @@
 
 .collapsable-box {
   margin: 24px 0;
+
+  &.section {
+    margin-top: 0;
+  }
 }

@@ -1,0 +1,98 @@
+@use '/src/variables.scss' as *;
+
+section {
+  position: relative;
+  display: flex;
+}
+
+main {
+  z-index: 1;
+  flex: 1 1 auto;
+  padding: 0 24px;
+}
+
+aside {
+  @include mat-elevation(3);
+
+  z-index: 3;
+  flex-basis: 248px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background-color: $white;
+
+  &.opened {
+    flex-basis: 248px;
+
+    .content {
+      display: block;
+      padding: 24px;
+    }
+  }
+
+  &.closed {
+    flex-basis: 32px;
+    padding: 0;
+
+    .content {
+      display: none;
+    }
+  }
+}
+
+.button-toggle {
+  position: fixed;
+  top: calc(50vh + 48px);
+  width: 32px;
+
+  .mat-icon {
+    transform: rotate(-90deg);
+  }
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba($black, 0.5);
+}
+
+@media (min-width: map-get($grid-breakpoints, xxl)) {
+  aside.opened {
+    flex-basis: 496px;
+
+    .content {
+      padding: 32px;
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  aside.opened {
+    flex-basis: 496px;
+    margin-left: -496px;
+
+    .content {
+      padding: 32px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  aside,
+  .backdrop {
+    transition: 0.2s;
+  }
+
+  .backdrop.show {
+    height: auto;
+    opacity: 1;
+  }
+
+  .backdrop.hide {
+    height: 0;
+    opacity: 0;
+  }
+}

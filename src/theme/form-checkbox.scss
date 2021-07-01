@@ -7,6 +7,10 @@
 
   :root {
     .mat-checkbox {
+      .mat-checkbox-layout {
+        margin: 8px 0;
+      }
+
       .mat-checkbox-label {
         font-weight: 500;
       }

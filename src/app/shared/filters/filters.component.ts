@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { FilterService } from '../../_services/filter.service';
+import { BREAKPOINTS } from '../../app.constants';
 
 @Component({
   selector: 'app-filters',
@@ -25,7 +26,7 @@ export class FiltersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.breakpointObserver.observe(['(min-width: 840px)']).subscribe((state) => {
+    this.breakpointObserver.observe([`(min-width: ${BREAKPOINTS.md}px)`]).subscribe((state) => {
       this.mode = state.matches ? 'side' : 'over';
       this.opened = state.matches;
       this.isMobile = !state.matches;

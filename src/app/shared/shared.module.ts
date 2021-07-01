@@ -24,7 +24,11 @@ import { ContactFiltersComponent } from './contact-filters/contact-filters.compo
 import { TableModule } from './table/table.module';
 import { FiltersComponent } from './filters/filters.component';
 import { DebounceDirective } from '../_directives/debounce.directive';
-import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.component';
+import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
+import { ActionMenuComponent } from './action-menu/action-menu.component';
+import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { EdgePanelComponent } from './edge-panel/edge-panel.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,11 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     ContactFiltersComponent,
     FiltersComponent,
     DebounceDirective,
-    AddBaseModalComponent,
+    AddEditBaseModalComponent,
+    ActionMenuComponent,
+    DropdownMenuComponent,
+    SidebarComponent,
+    EdgePanelComponent,
   ],
   imports: [
     CommonModule,
@@ -77,7 +85,11 @@ import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.co
     TableModule,
     FiltersComponent,
     DebounceDirective,
+    ActionMenuComponent,
+    DropdownMenuComponent,
+    SidebarComponent,
+    EdgePanelComponent,
   ],
-  entryComponents: [AddBaseModalComponent],
+  entryComponents: [AddEditBaseModalComponent],
 })
 export class SharedModule {}

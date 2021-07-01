@@ -38,24 +38,24 @@
     .mat-stroked-button.mat-primary:not(.mat-button-disabled) {
       border-color: currentColor;
 
-      &:hover,
-      &:focus {
+      &:hover {
         color: mat-color(mat-palette($primary, 800));
       }
 
-      &:active {
+      &:active,
+      &:focus {
         background-color: mat-color(mat-palette($primary, 50));
         color: mat-color(mat-palette($primary, 700));
       }
     }
 
     .mat-stroked-button.mat-warn:not(.mat-button-disabled) {
-      &:hover,
-      &:focus {
+      &:hover {
         color: mat-color(mat-palette($warn, 800));
       }
 
-      &:active {
+      &:active,
+      &:focus {
         background-color: mat-color(mat-palette($warn, 50));
         color: mat-color(mat-palette($warn, 700));
       }
@@ -67,23 +67,23 @@
     }
 
     .mat-flat-button.mat-primary:not(.mat-button-disabled) {
-      &:hover,
-      &:focus {
+      &:hover {
         background-color: mat-color(mat-palette($primary, 800));
       }
 
-      &:active {
+      &:active,
+      &:focus {
         background-color: mat-color(mat-palette($primary, 900));
       }
     }
 
     .mat-flat-button.mat-warn:not(.mat-button-disabled) {
-      &:hover,
-      &:focus {
+      &:hover {
         background-color: mat-color(mat-palette($warn, 800));
       }
 
-      &:active {
+      &:active,
+      &:focus {
         background-color: mat-color(mat-palette($warn, 900));
       }
     }

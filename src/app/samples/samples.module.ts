@@ -7,9 +7,15 @@ import { SharedModule } from '../shared/shared.module';
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { SamplesRoutingModule } from './samples-routing.module';
 import { SampleFiltersComponent } from './sample-filters/sample-filters.component';
+import { SampleAddComponent } from './sample-add/sample-add.component';
 
 @NgModule({
-  declarations: [SamplesComponent, SamplesListComponent, SampleFiltersComponent],
+  declarations: [
+    SamplesComponent,
+    SamplesListComponent,
+    SampleFiltersComponent,
+    SampleAddComponent,
+  ],
   imports: [CommonModule, SamplesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class SamplesModule {}

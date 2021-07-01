@@ -75,12 +75,18 @@
   "FollowUpStatus.actions": "Follow-up actions",
   "PageNotFound": "Page not found",
   "goToDashboard": "Go to Dashboard",
-  "contactsHeading": "Contacts Overview",
-  "personsHeading": "Persons Overview",
-  "samplesHeading": "Samples Overview",
   "actionShowMore": "Show more",
   "actionShowLess": "Show less",
   "actionAddNewAddress": "Add new address",
   "tasksHeading": "Tasks Overview",
-  "NewCaseHealth": "Health"
+  "NewCaseHealth": "Health",
+  "Task.addNewTask": "Add new task",
+  "actionDownload": "Download",
+  "CaseData.addNewCase": "Add new case",
+  "actionSureToLeave": "Are you sure you want to leave?",
+  "actionLooseChanges": "You will lose all changes that were made",
+  "actionIAmSure": "I am sure",
+  "actionSureDiscardChanges": "Are you sure you want to discard your changes?",
+  "Sample.resultDate": "Result date",
+  "Sample.resultDetails": "Result details"
 }

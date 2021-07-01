@@ -2,16 +2,16 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { AddBaseModalComponent } from './add-base-modal.component';
+import { AddEditBaseModalComponent } from './add-edit-base-modal.component';
 
-describe('AddBaseModalComponent', () => {
+describe('AddEditBaseModalComponent', () => {
   // toDo: problem with the tests, because of the use of the dynamic load components: resolveComponentFactory
-  // let component: AddBaseModalComponent;
-  // let fixture: ComponentFixture<AddBaseModalComponent>;
+  // let component: AddEditBaseModalComponent;
+  // let fixture: ComponentFixture<AddEditBaseModalComponent>;
   //
   // beforeEach(async () => {
   //   await TestBed.configureTestingModule({
-  //     declarations: [AddBaseModalComponent],
+  //     declarations: [AddEditBaseModalComponent],
   //     imports: [MatDialogModule, TranslateModule.forRoot()],
   //     providers: [
   //       { provide: MAT_DIALOG_DATA, useValue: {} },
@@ -21,7 +21,7 @@ describe('AddBaseModalComponent', () => {
   // });
   //
   // beforeEach(() => {
-  //   fixture = TestBed.createComponent(AddBaseModalComponent);
+  //   fixture = TestBed.createComponent(AddEditBaseModalComponent);
   //   component = fixture.componentInstance;
   //   fixture.detectChanges();
   // });

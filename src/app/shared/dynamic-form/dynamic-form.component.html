@@ -1,40 +1,33 @@
-<div class="dynamic-form-wrapper">
-  <div class="inpage-nav" [ngClass]="{ fixed: fixedHeader }">
+<section>
+  <header>
     <app-inpage-nav
       *ngIf="withAnchor"
       [pageOffset]="280"
       [anchors]="getSections()"
     ></app-inpage-nav>
-  </div>
-  <div class="form-content">
-    <form [formGroup]="form">
-      <div
-        *ngFor="let group of formElements"
-        [attr.id]="group.anchor ? group.anchor : null"
-        [ngClass]="{ 'dynamic-form-group': true, 'dynamic-form-section': group.anchor }"
-      >
-        <div class="left-section">
-          <h2>
-            {{ group.title | translate }} <span class="required" *ngIf="group.required">*</span>
-          </h2>
-          <p *ngIf="group.subTitle" class="sub-title">{{ group.subTitle | translate }}</p>
-        </div>
-        <mat-card class="dynamic-form-card">
-          <ng-container *ngFor="let field of group.fields">
-            <mat-divider *ngIf="field.newLine"></mat-divider>
-            <div
-              *ngIf="field.active"
-              [ngClass]="[
-                'dynamic-form-input',
-                field.className || '',
-                field.active ? '' : 'hidden'
-              ]"
-            >
-              <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
-            </div>
-          </ng-container>
-        </mat-card>
-      </div>
-    </form>
-  </div>
-</div>
+  </header>
+
+  <form [formGroup]="form">
+    <fieldset
+      *ngFor="let group of formElements"
+      [attr.id]="group.anchor ? group.anchor : null"
+      [ngClass]="{ section: group.anchor }"
+    >
+      <legend>
+        <h2>{{ group.title | translate }}<span class="required" *ngIf="group.required">*</span></h2>
+        <h3 *ngIf="group.subTitle">{{ group.subTitle | translate }}</h3>
+      </legend>
+      <mat-card class="dynamic-form-card">
+        <ng-container *ngFor="let field of group.fields">
+          <mat-divider *ngIf="field.active && field.newLine"></mat-divider>
+          <div
+            *ngIf="field.active"
+            [ngClass]="['dynamic-form-input', field.className || '', field.active ? '' : 'hidden']"
+          >
+            <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
+          </div>
+        </ng-container>
+      </mat-card>
+    </fieldset>
+  </form>
+</section>

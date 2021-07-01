@@ -1,0 +1,25 @@
+<section [ngClass]="['sidebar', mode]">
+  <main>
+    <ng-content select="[main]"></ng-content>
+  </main>
+  <aside [ngClass]="opened ? 'opened' : 'closed'">
+    <button
+      *ngIf="mode === 'over'"
+      mat-icon-button
+      color="primary"
+      class="button-toggle"
+      (click)="toggleSidebar()"
+    >
+      <mat-icon class="material-icons-round">filter_list</mat-icon>
+    </button>
+    <div class="content">
+      <ng-content select="[aside]"></ng-content>
+    </div>
+  </aside>
+  <div
+    *ngIf="mode === 'over'"
+    [ngClass]="['backdrop', opened ? 'show' : 'hide']"
+    (click)="toggleSidebar()"
+    (keyup.enter)="toggleSidebar()"
+  ></div>
+</section>

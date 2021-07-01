@@ -33,6 +33,8 @@ export class BaseService<T extends Resource> {
     let paginationTmp = '';
     if (typeof pagination !== 'undefined' && pagination !== null) {
       paginationTmp = `?offset=${pagination.offset}&size=${pagination.size}`;
+    } else {
+      paginationTmp = `?offset=0&size=999`;
     }
 
     // sorting
@@ -78,7 +80,7 @@ export class BaseService<T extends Resource> {
       .pipe(map((data: any) => this.serializer.fromJson(data) as T));
   }
 
-  update(item: T): Observable<T> {
+  update(items: T[]): Observable<T> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.UPDATE) {
@@ -86,7 +88,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.helperService.getApiUrl()}/${endpoint}/${item.id}`, item)
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, [items])
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 

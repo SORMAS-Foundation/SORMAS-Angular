@@ -149,6 +149,7 @@ export * from './sampleMaterial';
 export * from './samplePurpose';
 export * from './sampleReferenceDto';
 export * from './sampleSource';
+export * from './samplingReason';
 export * from './screeningType';
 export * from './sex';
 export * from './simpleTestResultType';

@@ -19,12 +19,13 @@
       (dateChange)="onChange()"
       [formControlName]="config.key"
       [placeholder]="config.placeholder || ''"
+      [matTooltip]="config.label || '' | translate"
     />
     <mat-hint *ngIf="config.hint">{{ config.hint | translate }}</mat-hint>
     <mat-datepicker-toggle matSuffix [for]="picker">
       <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
     </mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
   </mat-form-field>
   <div class="errorMessage" color="warn" *ngIf="!isValid">
     {{ config.validationMessage || '' | translate }}

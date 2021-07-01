@@ -1,4 +1,10 @@
-<h1 class="header-title" i18n="Contacts Overview header">{{ 'Contacts Overview' | translate }}</h1>
+<div class="page-header">
+  <h1 class="page-header-title">
+    {{ 'View.contacts' | translate }}
+  </h1>
+  <div class="page-header-actions"></div>
+</div>
+
 <app-table
   [resourceService]="contactService"
   [tableColumns]="defaultColumns"

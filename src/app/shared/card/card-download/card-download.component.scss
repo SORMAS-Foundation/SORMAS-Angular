@@ -1,0 +1,16 @@
+@use '/src/variables.scss' as *;
+
+.card-download {
+  padding-top: 8px;
+  border-top: 2px solid map-get($sormas-alert, 100);
+}
+
+.mat-button {
+  padding: 0;
+}
+
+.mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
