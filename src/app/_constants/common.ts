@@ -1,4 +1,4 @@
-export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 54;
+export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
 export const UUID_KEY = 'uuid';
 

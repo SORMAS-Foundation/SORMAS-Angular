@@ -289,51 +289,51 @@ app.use('', (req, res, next) => {
 //   });
 // });
 //
-app.use('/sormas-rest/clinicalvisits/indexList', (req, res) => {
-  let total = 12;
-  const temperatures = [36.4, 36.8, 37.1, 37.2, 37.3, 37.8, 38.2, 387, 39.4];
-  const heartRate = [62, 64, 65, 68, 72, 77, 86, 92];
+// app.use('/sormas-rest/clinicalvisits/indexList', (req, res) => {
+//   let total = 12;
+//   const temperatures = [36.4, 36.8, 37.1, 37.2, 37.3, 37.8, 38.2, 387, 39.4];
+//   const heartRate = [62, 64, 65, 68, 72, 77, 86, 92];
 
-  const arrayTmp = [];
-  let offset = 0;
+//   const arrayTmp = [];
+//   let offset = 0;
 
-  if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
-    offset = 12;
-  }
+//   if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
+//     offset = 12;
+//   }
 
-  if (req.body.filter) {
-    total = 12;
-  }
+//   if (req.body.filter) {
+//     total = 12;
+//   }
 
-  for (
-    var i = parseInt(req.query.offset) || 0;
-    i < (parseInt(req.query.offset) || 0) + (parseInt(req.query.size) || total);
-    i++
-  ) {
-    arrayTmp.push({
-      creationDate: new Date('05/02/2021'),
-      uuid: 'MDFSK-ERHET-AGWHF-MGRJD',
-      symptoms: {
-        uuid: 'CMFJD-UMNGF-ASGSH-VMJRY',
-        temperature: temperatures[Math.floor(Math.random() * temperatures.length)],
-        temperatureSource: 'ORAL',
-        heartRate: heartRate[Math.floor(Math.random() * heartRate.length)],
-        bloodPressureSystolic: '120/40',
-      },
-      visitDateTime: new Date('05/02/2021'),
-      visitingPerson: 'John Adam',
-      visitRemarks: 'Lorem ipsum dolor sit amet',
-    });
-  }
+//   for (
+//     var i = parseInt(req.query.offset) || 0;
+//     i < (parseInt(req.query.offset) || 0) + (parseInt(req.query.size) || total);
+//     i++
+//   ) {
+//     arrayTmp.push({
+//       creationDate: new Date('05/02/2021'),
+//       uuid: 'MDFSK-ERHET-AGWHF-MGRJD',
+//       symptoms: {
+//         uuid: 'CMFJD-UMNGF-ASGSH-VMJRY',
+//         temperature: temperatures[Math.floor(Math.random() * temperatures.length)],
+//         temperatureSource: 'ORAL',
+//         heartRate: heartRate[Math.floor(Math.random() * heartRate.length)],
+//         bloodPressureSystolic: '120/40',
+//       },
+//       visitDateTime: new Date('05/02/2021'),
+//       visitingPerson: 'John Adam',
+//       visitRemarks: 'Lorem ipsum dolor sit amet',
+//     });
+//   }
 
-  res.status(200).send({
-    elements: arrayTmp,
-    pageNumber: 0,
-    size: 8,
-    totalElementCount: 22,
-    hasNext: true,
-  });
-});
+//   res.status(200).send({
+//     elements: arrayTmp,
+//     pageNumber: 0,
+//     size: 8,
+//     totalElementCount: 22,
+//     hasNext: true,
+//   });
+// });
 
 app.use(
   '/sormas-rest',

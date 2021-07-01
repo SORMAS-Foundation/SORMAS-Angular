@@ -35,7 +35,8 @@ export function deserializeDates(source: any): void {
       (key.endsWith('Date') ||
         key.endsWith('Until') ||
         key.endsWith('End') ||
-        key.endsWith('Start'))
+        key.endsWith('Start') ||
+        key.endsWith('DateTime'))
     ) {
       source[key] = new Date(value);
     }

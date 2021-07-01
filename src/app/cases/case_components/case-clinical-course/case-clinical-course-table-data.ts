@@ -1,66 +1,63 @@
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
-import { TableColumn } from '../../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: _('Date & time'),
+    name: 'ClinicalVisit.visitDateTime',
     dataKey: 'visitDateTime',
     isSortable: true,
     className: 'visit-date',
     align: 'right',
     format: {
-      type: 'DATE',
-      pattern: 'dd MM hh:mm aa',
+      type: TableDataFormatOptions.DATE,
+      pattern: 'dd MMM hh:mm aa',
+      breakSpaces: true,
     },
   },
   {
-    name: _('Temperature'),
-    dataKey: 'symptoms.temperature',
+    name: 'ClinicalVisit.temperature',
+    dataKey: 'temperature',
     isSortable: true,
     align: 'right',
     className: 'visit-temperature',
     format: {
-      type: 'NUMBER',
-      pattern: '<span class="$match">$param1 °C</span> <span class="explicative">$param2</span>',
-      params: ['symptoms.temperature', 'symptoms.temperatureSource'],
+      type: TableDataFormatOptions.NUMBER,
       match: {
         normal: [0, 37.3],
         fever: [37.3, 45],
       },
+      breakSpaces: true,
     },
   },
   {
-    name: _('Blood pressure'),
-    dataKey: 'symptoms.bloodPressureSystolic',
+    name: 'ClinicalVisit.bloodPressure',
+    dataKey: 'bloodPressure',
     isSortable: true,
     align: 'right',
     className: 'visit-blood-pressure',
     format: {
-      type: 'DISPLAY',
-      pattern: '$param1/$param2 <span class="explicative">mmHg</span>',
-      params: ['symptoms.bloodPressureSystolic', 'symptoms.bloodPressureDiastolic'],
+      type: TableDataFormatOptions.DISPLAY,
+      breakSpaces: true,
     },
   },
   {
-    name: _('Heart rate'),
-    dataKey: 'symptoms.heartRate',
+    name: 'ClinicalVisit.heartRate',
+    dataKey: 'heartRate',
     isSortable: true,
     align: 'right',
     className: 'visit-heart-rate',
     format: {
-      type: 'DISPLAY',
-      pattern: '$param1 <span class="explicative">mmHg</span>',
-      params: ['symptoms.heartRate'],
+      type: TableDataFormatOptions.DISPLAY,
+      breakSpaces: true,
     },
   },
   {
-    name: _('Clinician remarks'),
+    name: 'ClinicalVisit.visitRemarks',
     dataKey: 'visitRemarks',
     isSortable: true,
     className: 'visit-remarks',
   },
   {
-    name: _('Attending clinician'),
+    name: 'ClinicalVisit.visitingPerson',
     dataKey: 'visitingPerson',
     isSortable: true,
     className: 'visit-clinician',

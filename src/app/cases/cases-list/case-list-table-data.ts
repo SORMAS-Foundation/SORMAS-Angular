@@ -1,4 +1,4 @@
-import { TableColumn } from '../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
@@ -6,7 +6,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'uuid',
     isSortable: true,
     format: {
-      type: 'LINK',
+      type: TableDataFormatOptions.LINK,
       pattern: '/cases/case/$param1/details',
       params: ['uuid'],
       truncate: 6,
@@ -73,7 +73,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'reportDate',
     isSortable: true,
     format: {
-      type: 'DATE',
+      type: TableDataFormatOptions.DATE,
       pattern: 'M/d/yyyy',
     },
   },
@@ -82,7 +82,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'quarantineTo',
     isSortable: true,
     format: {
-      type: 'DATE',
+      type: TableDataFormatOptions.DATE,
       pattern: 'M/d/yyyy',
     },
   },
@@ -96,7 +96,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'followUpUntil',
     isSortable: true,
     format: {
-      type: 'DATE',
+      type: TableDataFormatOptions.DATE,
       pattern: 'M/d/yyyy',
     },
   },

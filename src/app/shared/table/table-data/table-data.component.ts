@@ -1,20 +1,22 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { TableColumn } from '../../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 import { IconsMap } from '../../../app.constants';
 
 @Component({
-  selector: 'app-cell-data',
-  templateUrl: './cell-data.component.html',
-  styleUrls: ['./cell-data.component.scss'],
+  selector: 'app-table-data',
+  templateUrl: './table-data.component.html',
+  styleUrls: ['./table-data.component.scss'],
 })
-export class CellDataComponent implements OnChanges {
+export class TableDataComponent implements OnChanges {
   @Input() config: TableColumn;
   @Input() data: any;
 
   dataType: string | undefined;
   dataLink: string | undefined;
   dataDisplay: string | undefined;
+  dataClass = '';
   icons = IconsMap;
+  formats = TableDataFormatOptions;
 
   ngOnChanges(): void {
     this.formatData();
@@ -31,7 +33,7 @@ export class CellDataComponent implements OnChanges {
 
   getType(): string | undefined {
     if (this.data.index) {
-      return 'LOADING';
+      return this.formats.LOADING;
     }
     return this.config.format?.type;
   }
@@ -39,16 +41,16 @@ export class CellDataComponent implements OnChanges {
   formatData(): void {
     this.dataType = this.getType();
     switch (this.config.format?.type) {
-      case 'LINK':
+      case this.formats.LINK:
         this.formatLink();
         break;
-      case 'DATE':
+      case this.formats.DATE:
         this.formatDate();
         break;
-      case 'NUMBER':
+      case this.formats.NUMBER:
         this.formatNumber();
         break;
-      case 'DISPLAY':
+      case this.formats.DISPLAY:
         this.formatDisplay();
         break;
       default:
@@ -58,11 +60,7 @@ export class CellDataComponent implements OnChanges {
 
   formatLink(): void {
     this.dataLink = this.interpolate();
-    let result = this.getData(this.config.dataKey);
-    if (this.config.format?.truncate) {
-      result = result?.slice(0, this.config.format.truncate);
-    }
-    this.dataDisplay = result;
+    this.dataDisplay = this.getData(this.config.dataKey);
   }
 
   formatDate(): void {
@@ -72,36 +70,56 @@ export class CellDataComponent implements OnChanges {
   formatNumber(): void {
     const match = this.config.format?.match;
     const value = this.getData(this.config.dataKey);
-    const temp = this.interpolate() || value;
-    let result = '';
+    const raw = value.replace(/[^\d.-]/g, '');
 
-    if (match) {
+    if (match && raw) {
       Object.entries(match).find(([key, range]) => {
-        const check = value > range[0] && value < range[1];
+        const check = raw > range[0] && raw < range[1];
         if (check) {
-          result = key;
+          this.dataClass = key;
         }
         return check;
       });
     }
 
-    this.dataDisplay = temp.replace('$match', result);
+    this.dataDisplay = this.getData(this.config.dataKey);
   }
 
   formatDisplay(): void {
     this.dataDisplay = this.interpolate();
   }
 
-  getData(key: string): any {
+  getRawData(key: string): any {
     return key.split('.').reduce((o, i) => o && o[i], this.data);
   }
 
-  interpolate(): string | undefined {
-    let result = this.config.format?.pattern;
-    this.config.format?.params?.forEach((key: any, index: number) => {
-      const param = this.getData(key);
-      result = result?.replaceAll(`$param${index + 1}`, param ?? '');
-    });
+  getData(key: string): any {
+    let result = this.getRawData(key);
+    if (this.config.format?.truncate) {
+      result = result?.slice(0, this.config.format.truncate);
+    }
     return result;
+  }
+
+  interpolate(): string | undefined {
+    const pattern = this.config.format?.pattern;
+    const params = this.config.format?.params;
+
+    if (!pattern || !params) {
+      return this.getData(this.config.dataKey);
+    }
+
+    let result: any = pattern;
+    let paramHasValue = false;
+
+    this.config.format?.params?.forEach((key: any, index: number) => {
+      const param = this.getRawData(key);
+      if (param) {
+        paramHasValue = true;
+      }
+      result = result.replaceAll(`$param${index + 1}`, param ?? '');
+    });
+
+    return paramHasValue ? result : '';
   }
 }

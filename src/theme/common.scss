@@ -77,22 +77,19 @@ a:not(.mat-button) {
 /* Table dynamic content */
 
 :root td.mat-cell {
-  .explicative {
-    color: map-get($sormas-accent, 500);
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-  }
-
   &.visit-date {
-    .date {
+    .visitDateTime {
       color: map-get($sormas-accent, 600);
       font-size: 10px;
       text-transform: uppercase;
+    }
 
-      > :first-child {
-        font-size: 14px;
-      }
+    .visitDateTime-item-1 {
+      font-size: 14px;
+    }
+
+    .visitDateTime-item-2 {
+      margin-right: 4px;
     }
   }
 
@@ -113,13 +110,23 @@ a:not(.mat-button) {
   &.visit-temperature {
     font-weight: 500;
 
-    .explicative {
-      display: block;
-    }
-
     .fever {
       color: map-get($sormas-alert, 400);
     }
+  }
+
+  .temperature-item-3,
+  .bloodPressure-item-2,
+  .heartRate-item-2 {
+    display: block;
+    color: map-get($sormas-accent, 500);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .heartRate-item-2 {
+    display: inline;
   }
 
   &.visit-remarks {

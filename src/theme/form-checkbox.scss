@@ -24,6 +24,10 @@
       }
 
       &.small {
+        .mat-checkbox-layout {
+          margin: 0;
+        }
+
         .mat-checkbox-inner-container {
           width: 12px;
           height: 12px;

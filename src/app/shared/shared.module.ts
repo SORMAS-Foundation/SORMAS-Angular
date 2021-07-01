@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from '../material.module';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
+import { TableComponent } from './table/table.component';
 import { DialogModule } from './dialog';
 import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
 import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
@@ -21,7 +23,6 @@ import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/sy
 import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
-import { TableModule } from './table/table.module';
 import { FiltersComponent } from './filters/filters.component';
 import { DebounceDirective } from '../_directives/debounce.directive';
 import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -29,10 +30,12 @@ import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EdgePanelComponent } from './edge-panel/edge-panel.component';
+import { TableDataComponent } from './table/table-data/table-data.component';
 
 @NgModule({
   declarations: [
     LocaleSelectComponent,
+    TableComponent,
     InpageNavComponent,
     CollapsableBoxComponent,
     FormActionsComponent,
@@ -51,6 +54,7 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     DropdownMenuComponent,
     SidebarComponent,
     EdgePanelComponent,
+    TableDataComponent,
   ],
   imports: [
     CommonModule,
@@ -59,15 +63,16 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     FormsModule,
     MaterialModule,
     HttpClientModule,
+    TableVirtualScrollModule,
     DialogModule,
     CardModule,
     DateCardModule,
     PipesModule,
     TranslateModule,
-    TableModule,
   ],
   exports: [
     LocaleSelectComponent,
+    TableComponent,
     RouterModule,
     MaterialModule,
     HttpClientModule,
@@ -82,7 +87,6 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     PipesModule,
     TranslateModule,
     ContactFiltersComponent,
-    TableModule,
     FiltersComponent,
     DebounceDirective,
     ActionMenuComponent,
@@ -90,6 +94,6 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     SidebarComponent,
     EdgePanelComponent,
   ],
-  entryComponents: [AddEditBaseModalComponent],
+  entryComponents: [AddEditBaseModalComponent, TableDataComponent],
 })
 export class SharedModule {}
