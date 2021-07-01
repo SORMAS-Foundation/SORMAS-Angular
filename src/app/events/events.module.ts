@@ -7,9 +7,10 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { EventsRoutingModule } from './events-routing.module';
 import { MaterialModule } from '../material.module';
 import { EventFiltersComponent } from './event-filters/event-filters.component';
+import { EventAddComponent } from './event-add/event-add.component';
 
 @NgModule({
-  declarations: [EventsComponent, EventsListComponent, EventFiltersComponent],
+  declarations: [EventsComponent, EventsListComponent, EventFiltersComponent, EventAddComponent],
   imports: [CommonModule, EventsRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class EventsModule {}
