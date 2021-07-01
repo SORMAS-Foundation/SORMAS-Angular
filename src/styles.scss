@@ -18,6 +18,7 @@
 @import './theme/alertify.scss';
 @import './theme/expansion-panel.scss';
 @import './theme/menu.scss';
+@import './theme/tooltip.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -67,6 +68,7 @@ $sormas-theme: mat-light-theme(
   @include dialog-theme($theme);
   @include expansion-panel-theme($theme);
   @include menu-theme($theme);
+  @include tooltip-theme($theme);
 }
 
 // Include theme styles for core and each component used in your app.
