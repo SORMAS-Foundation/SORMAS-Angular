@@ -12,8 +12,9 @@ import {
   HEADER_HEIGHT,
   ADD_MODAL_MAX_WIDTH,
   CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+  CASE_IMPORT_MODAL_WIDTH,
 } from '../../app.constants';
-import { AddBaseModalComponent } from '../../shared/modals/add-base-modal/add-base-modal.component';
+import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CaseAddComponent } from '../case-add/case-add.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
 import {
@@ -22,6 +23,7 @@ import {
   actionsBulkEditDefs,
 } from './case-list-actions-data';
 import { ACTIONS_CASE } from '../../_constants/actions';
+import { CaseImportComponent } from '../case-import/case-import.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -51,7 +53,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   openAddCaseModal(): void {
-    const dialogRef = this.dialog.open(AddBaseModalComponent, {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('CaseData.addNewCase'),
@@ -66,6 +68,12 @@ export class CasesListComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  openImportModal(): void {
+    this.dialog.open(CaseImportComponent, {
+      width: CASE_IMPORT_MODAL_WIDTH,
+    });
   }
 
   onActionSelected(event: any): void {

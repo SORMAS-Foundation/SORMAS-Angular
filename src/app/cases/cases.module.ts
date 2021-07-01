@@ -19,7 +19,9 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { CaseFiltersComponent } from './case-filters/case-filters.component';
 import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
 import { CaseAddComponent } from './case-add/case-add.component';
+import { CaseEditComponent } from './case-edit/case-edit.component';
 import { CustomCaseExportComponent } from './custom-case-export/custom-case-export.component';
+import { CaseImportComponent } from './case-import/case-import.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { CustomCaseExportComponent } from './custom-case-export/custom-case-expo
     CaseFiltersComponent,
     CaseAddComponent,
     CustomCaseExportComponent,
+    CaseImportComponent,
+    CaseEditComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

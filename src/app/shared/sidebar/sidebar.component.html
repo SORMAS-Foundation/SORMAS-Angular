@@ -1,4 +1,4 @@
-<section class="{{ mode }}">
+<section [ngClass]="['sidebar', mode]">
   <main>
     <ng-content select="[main]"></ng-content>
   </main>

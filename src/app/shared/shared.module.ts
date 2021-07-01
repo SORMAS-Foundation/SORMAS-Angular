@@ -25,7 +25,7 @@ import { NewAddressComponent } from './widgets/new-address/new-address.component
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 import { FiltersComponent } from './filters/filters.component';
 import { DebounceDirective } from '../_directives/debounce.directive';
-import { AddBaseModalComponent } from './modals/add-base-modal/add-base-modal.component';
+import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -48,7 +48,7 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     ContactFiltersComponent,
     FiltersComponent,
     DebounceDirective,
-    AddBaseModalComponent,
+    AddEditBaseModalComponent,
     ActionMenuComponent,
     DropdownMenuComponent,
     SidebarComponent,
@@ -92,6 +92,6 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     SidebarComponent,
     EdgePanelComponent,
   ],
-  entryComponents: [AddBaseModalComponent],
+  entryComponents: [AddEditBaseModalComponent],
 })
 export class SharedModule {}
