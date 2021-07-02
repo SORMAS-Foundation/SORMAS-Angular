@@ -380,3 +380,36 @@ export enum TaskStatusOptions {
   REMOVED = 'Removed',
   NOTEXECUTABLE = 'Not executable',
 }
+
+export enum ContactProximity {
+  TOUCHEDFLUID = 'Touched fluid of source case',
+  PHYSICALCONTACT = 'Direct physical contact with source case',
+  CLOTHESOROTHER = 'Manipulation of clothes or other objects of source case',
+  CLOSECONTACT = 'Was in close proximity (1 meter) with source case',
+  FACETOFACELONG = 'Face-to-face contact of at least 15 minutes',
+  MEDICALUNSAFE = 'Medical personnel with a high risk of exposure, e.g. unprotected relevant exposure to secretions',
+  SAMEROOM = 'Was in same room or house with source case',
+  AIRPLANE = 'Airplane, sitting up to two rows in front or behind the source case',
+  FACETOFACESHORT = 'Face-to-face contact of less than 15 minutes',
+  MEDICALSAFE = 'Medical personnel at save proximity (> 2 meter) or with protective equipment',
+  MEDICALSAMEROOM = 'Medical personnel that was in same room or house with source case',
+  AEROSOL = 'Persons exposed to aerosol producing activities',
+  MEDICALDISTANT = 'Medical personnel at save proximity (> 2 meter), without direct contact with secretions or excretions of the patient and without aerosol exposure',
+  MEDICALLIMITED = 'Medical personnel with limited exposure, e.g. with contact < 2m to COVID-19 cases without protective equipment',
+}
+
+export enum ContactCategory {
+  HIGHRISK = 'High risk contact',
+  HIGHRISKMED = 'High risk medical contact',
+  MEDIUMRISKMED = 'Medium risk medical contact',
+  LOWRISK = 'Low risk contact',
+  NORISK = 'No risk contact',
+}
+
+export enum ContactRelation {
+  SAMEHOUSEHOLD = 'Live in the same household',
+  FAMILYMEMBERORFRIEND = 'Other family member or friend',
+  SAMEENVIRONMENT = 'Work in the same environment',
+  MEDICALCARE = 'Provided medical care for the case',
+  OTHER = 'Other',
+}
