@@ -126,6 +126,7 @@ export const FORM_DATA_CONTACT_ADD = [
         ...FORM_DATA_DATE,
         key: 'lastContactDate',
         label: 'Contact.lastContactDate',
+        newLine: true,
       },
     ],
   },
