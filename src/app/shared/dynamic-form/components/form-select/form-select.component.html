@@ -12,6 +12,7 @@
       disableOptionCentering
       [formControlName]="config.key"
       [placeholder]="config.placeholder || ''"
+      [matTooltip]="config.label || '' | translate"
       (selectionChange)="onChange()"
     >
       <mat-option *ngFor="let opt of config.options" [value]="opt.key">
@@ -20,5 +21,7 @@
     </mat-select>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
   </mat-form-field>
-  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage || '' | translate }}</div>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">
+    {{ config.validationMessage || '' | translate }}
+  </div>
 </div>

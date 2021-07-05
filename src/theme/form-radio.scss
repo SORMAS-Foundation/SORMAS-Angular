@@ -8,10 +8,24 @@
   :root {
     .mat-radio-group {
       display: inline-block;
-      margin: 8px 0;
 
       .radio-group-label {
         display: block;
+        margin-top: 8px;
+        line-height: 24px;
+      }
+
+      .mat-radio-label {
+        align-items: normal;
+        white-space: normal;
+      }
+      .mat-radio-container {
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+      .mat-radio-label-content {
+        padding: 8px 0 8px 4px;
+        line-height: 20px;
       }
 
       .mat-radio-button {

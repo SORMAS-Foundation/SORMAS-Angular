@@ -1,0 +1,16 @@
+@mixin tooltip-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-tooltip {
+      padding: 4px 12px;
+      background-color: rgba(map-get($sormas-accent, 900), 0.8);
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}

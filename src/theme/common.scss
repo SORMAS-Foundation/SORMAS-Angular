@@ -67,5 +67,9 @@ a:not(.mat-button) {
 }
 
 .page-content {
-  padding: 32px;
+  padding: 24px;
+
+  .sidebar {
+    margin: -24px;
+  }
 }

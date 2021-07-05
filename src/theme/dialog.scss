@@ -68,6 +68,14 @@
       margin: 1em 0;
     }
 
+    .dialog-confirm,
+    .dialog-prompt,
+    .dialog-alert {
+      .mat-dialog-container {
+        background-color: $white;
+      }
+    }
+
     .dialog-prompt {
       .mat-dialog-title h1 {
         font-size: 24px;

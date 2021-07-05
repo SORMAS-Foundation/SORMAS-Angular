@@ -77,9 +77,9 @@
               >
                 {{ data | toShortId: tableColumn.dataKey }}
               </a>
-              <ng-template #noLinkData></ng-template>
-
-              {{ data | toShortId: tableColumn.dataKey }}
+              <ng-template #noLinkData>
+                {{ data | toShortId: tableColumn.dataKey }}
+              </ng-template>
             </span>
             <div *ngIf="data === 'loading'" class="row-skeleton"></div>
           </ng-container>

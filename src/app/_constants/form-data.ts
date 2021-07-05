@@ -10,6 +10,7 @@ export const FORM_DATA_BASE = {
   type: '',
   newLine: false,
   active: true,
+  separated: false,
 };
 
 export const FORM_DATA_INPUT = {

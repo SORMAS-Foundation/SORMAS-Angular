@@ -5265,5 +5265,7 @@
   "actionIAmSure": "I am sure",
   "actionSureDiscardChanges": "Are you sure you want to discard your changes?",
   "Sample.resultDate": "Result date",
-  "Sample.resultDetails": "Result details"
+  "Sample.resultDetails": "Result details",
+  "Contact.pickClosest": "if multiple pick the closest contact proximity",
+  "Contact.descriptionShort": "Contact description"
 }
