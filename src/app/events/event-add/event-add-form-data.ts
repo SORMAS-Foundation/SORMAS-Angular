@@ -3,24 +3,22 @@ import {
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
-  Disease,
-  PlaceOfStay, FORM_DATA_TEXTAREA,
+  FORM_DATA_TEXTAREA,
+  EventStatusOptions,
+  EventManagementStatusOptions,
+  YesNoUnknown,
+  FORM_DATA_CHECKBOX,
+  InvestigationStatusOptions,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { Sex } from '../../_models/sex';
-import { PresentCondition } from '../../_models/presentCondition';
-import { CauseOfDeath } from '../../_models/causeOfDeath';
-import { DeathPlaceType } from '../../_models/deathPlaceType';
 
 const pipe = new EnumToKeyValuePipe();
 
-const optionsDisease = pipe.transform(Disease);
-const optionsPlaceOfStay = pipe.transform(PlaceOfStay);
-const optionsSex = pipe.transform(Sex);
-const optionsPresentCondition = pipe.transform(PresentCondition);
-const optionsCauseOfDeath = pipe.transform(CauseOfDeath);
-const optionsDeathPlaceType = pipe.transform(DeathPlaceType);
+const eventStatusOptions = pipe.transform(EventStatusOptions);
+const eventManagementStatusOptions = pipe.transform(EventManagementStatusOptions);
+const yesNoUnknown = pipe.transform(YesNoUnknown);
+const investigationStatusOptions = pipe.transform(InvestigationStatusOptions);
 
 export const FORM_DATA_EVENT_ADD = [
   {
@@ -60,7 +58,35 @@ export const FORM_DATA_EVENT_ADD = [
     title: 'entityEvent',
     fields: [
       {
+        ...FORM_DATA_RADIO,
+        key: 'eventStatus',
+        label: 'EventAction.eventStatus',
+        validation: ['required'],
+        options: eventStatusOptions,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'riskLevel',
+        label: 'Event.riskLevel',
+        newLine: true,
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'eventManagementStatus',
+        label: 'Event.eventManagementStatus',
+        newLine: true,
+        validation: ['required'],
+        options: eventManagementStatusOptions,
+      },
+      {
         ...FORM_DATA_INPUT,
+        newLine: true,
         key: 'title',
         label: 'Event.eventTitle',
       },
@@ -89,6 +115,7 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_DATE,
         key: 'clusterEvolutionDate',
         label: 'Event.clusterEvolutionDate',
+        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -100,6 +127,136 @@ export const FORM_DATA_EVENT_ADD = [
             value: 'default',
           },
         ],
+      },
+    ],
+  },
+  {
+    id: 'transmission',
+    title: 'Transmission',
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'primaryModeTransmission',
+        label: 'Event.diseaseTransmissionMode',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'humanTransmission',
+        label: 'Event.humanTransmissionMode',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'parentalTransmission',
+        label: 'Event.parenteralTransmissionMode',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'medicallyAssociatedTransmission',
+        label: 'Event.medicallyAssociatedTransmissionMode',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'nosocomial',
+        label: 'Event.nosocomial',
+        options: yesNoUnknown,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'infectionPath',
+        newLine: true,
+        label: 'Event.infectionPathCertainty',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'epidemiologicalEvidence',
+        label: 'Event.epidemiologicalEvidence',
+        newLine: true,
+        options: yesNoUnknown,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'study',
+        label: 'EpidemiologicalEvidenceDetail.STUDY',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'explorativeSurvey',
+        label: 'EpidemiologicalEvidenceDetail.EXPLORATIVE_SURVEY_OF_AFFECTED',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'ascertainedData',
+        label: 'EpidemiologicalEvidenceDetail.DESCRIPTIVE_ANALYSIS_OF_ASCERTAINED_DATA',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'suspicion',
+        label: 'EpidemiologicalEvidenceDetail.SUSPICION',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'laboratoryDiagnosticEvidence',
+        label: 'Event.laboratoryDiagnosticEvidence',
+        options: yesNoUnknown,
+        newLine: true,
+      },
+    ],
+  },
+  {
+    id: 'investigation',
+    title: 'Investigation',
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'investigationStatus',
+        label: 'Event.eventInvestigationStatus',
+        options: investigationStatusOptions,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        label: 'Event.eventInvestigationStartDate',
+        newLine: true,
+        key: 'startInvestigationDate',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        label: 'Event.eventInvestigationEndDate',
+        key: 'endInvestigationDate',
       },
     ],
   },
@@ -161,8 +318,16 @@ export const FORM_DATA_EVENT_ADD = [
     title: 'Location',
     fields: [
       {
+        ...FORM_DATA_RADIO,
+        key: 'transregionalOutbrake',
+        label: 'Event.transregionalOutbreak',
+        validation: ['required'],
+        options: yesNoUnknown,
+      },
+      {
         ...FORM_DATA_SELECT,
         key: 'typeOfPlace',
+        newLine: true,
         label: 'ActivityAsCase.typeOfPlace',
         options: [
           {
@@ -323,9 +488,15 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'Community contact person',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'responsibleUser',
+        ...FORM_DATA_SELECT,
         label: 'Event.responsibleUser',
+        key: 'responsibleUser',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
       },
     ],
   },

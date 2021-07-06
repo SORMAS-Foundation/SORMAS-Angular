@@ -381,6 +381,27 @@ export enum TaskStatusOptions {
   NOTEXECUTABLE = 'Not executable',
 }
 
+export enum EventStatusOptions {
+  SIGNAL = 'Signal',
+  EVENT = 'Event',
+  DONE = 'Done',
+  CLOSED = 'Closed',
+}
+
+export enum EventManagementStatusOptions {
+  PENDING = 'Pending',
+  ONGOING = 'Ongoing',
+  DONE = 'Done',
+  CLOSED = 'Closed',
+}
+
+export enum InvestigationStatusOptions {
+  PENDING = 'Pending',
+  ONGOING = 'Ongoing',
+  DONE = 'Done',
+  DISCARDED = 'Discarded',
+}
+
 export enum ContactProximity {
   TOUCHEDFLUID = 'Touched fluid of source case',
   PHYSICALCONTACT = 'Direct physical contact with source case',
