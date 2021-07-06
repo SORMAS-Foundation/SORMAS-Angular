@@ -1,10 +1,14 @@
-import { TableColumn } from '../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'Event.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      truncate: 6,
+    },
   },
   {
     name: 'Event.externalId',
@@ -25,7 +29,11 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'Event.riskLevel',
     dataKey: 'riskLevel',
     isSortable: true,
-    stylify: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '<span class="risk-level-$param1">$param1</span>',
+      params: ['riskLevel'],
+    },
   },
   {
     name: 'Event.eventInvestigationStatus',

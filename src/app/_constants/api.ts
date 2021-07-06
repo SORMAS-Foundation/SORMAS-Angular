@@ -45,3 +45,9 @@ export const API_ROUTE_CONTACTS = {
   ADD: 'contacts/add',
   DELETE: 'contacts/delete',
 };
+
+export const API_ROUTE_CLINICAL_VISIT = {
+  ENDPOINT: 'clinicalvisits',
+  GET_ALL: 'clinicalvisits/indexList',
+  UPDATE: 'clinicalvisits/update',
+};

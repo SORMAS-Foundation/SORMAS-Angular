@@ -30,6 +30,7 @@ import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EdgePanelComponent } from './edge-panel/edge-panel.component';
+import { TableDataComponent } from './table/table-data/table-data.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     DropdownMenuComponent,
     SidebarComponent,
     EdgePanelComponent,
+    TableDataComponent,
   ],
   imports: [
     CommonModule,
@@ -92,6 +94,6 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     SidebarComponent,
     EdgePanelComponent,
   ],
-  entryComponents: [AddEditBaseModalComponent],
+  entryComponents: [AddEditBaseModalComponent, TableDataComponent],
 })
 export class SharedModule {}

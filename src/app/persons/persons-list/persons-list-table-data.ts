@@ -1,10 +1,14 @@
-import { TableColumn } from '../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'Person.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      truncate: 6,
+    },
   },
   {
     name: 'firstName',
@@ -19,14 +23,17 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'Person.ageAndBirthDate',
     dataKey: 'age',
-    advancedDisplay: '$param1 ($param2/$param3/$param4)',
-    advancedDisplayParams: [
-      'ageAndBirthDate.age',
-      'ageAndBirthDate.birthdateDD',
-      'ageAndBirthDate.birthdateMM',
-      'ageAndBirthDate.birthdateYYYY',
-    ],
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '$param1 ($param2/$param3/$param4)',
+      params: [
+        'ageAndBirthDate.age',
+        'ageAndBirthDate.birthdateDD',
+        'ageAndBirthDate.birthdateMM',
+        'ageAndBirthDate.birthdateYYYY',
+      ],
+    },
   },
   {
     name: 'sex',
@@ -41,9 +48,12 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'address',
     dataKey: 'city',
-    advancedDisplay: '$param1, $param2, $param3, $param4',
-    advancedDisplayParams: ['city', 'street', 'houseNumber', 'postalCode'],
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '$param1, $param2, $param3, $param4',
+      params: ['city', 'street', 'houseNumber', 'postalCode'],
+    },
   },
   {
     name: 'person.primaryPhone',

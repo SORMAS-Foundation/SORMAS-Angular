@@ -2,3 +2,19 @@
   [formElements]="myFormElements"
   [resourceService]="resourceService"
 ></app-dynamic-form>
+
+<section class="assessments">
+  <h2 class="assessments-title">
+    {{ 'ClinicalVisit' | translate }}
+  </h2>
+  <mat-card class="assessments-list">
+    <app-table
+      [resourceService]="clinicalVisitService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [appearance]="tableAppearanceOptions.MINIMAL"
+    ></app-table>
+  </mat-card>
+</section>

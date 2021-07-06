@@ -1,12 +1,16 @@
-import { TableColumn } from '../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'CaseData.uuid',
     dataKey: 'uuid',
     isSortable: true,
-    linkPattern: '/cases/case/$param1/details',
-    linkParams: ['uuid'],
+    format: {
+      type: TableDataFormatOptions.LINK,
+      pattern: '/cases/case/$param1/details',
+      params: ['uuid'],
+      truncate: 6,
+    },
   },
   {
     name: 'CaseData.externalID',
@@ -41,12 +45,12 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'CaseData.personFirstName',
-    dataKey: 'person.firstName',
+    dataKey: 'personFirstName',
     isSortable: true,
   },
   {
     name: 'CaseData.personLastName',
-    dataKey: 'person.lastName',
+    dataKey: 'personLastName',
     isSortable: true,
   },
   {
@@ -68,11 +72,19 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'CaseData.reportDate',
     dataKey: 'reportDate',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
   },
   {
     name: 'CaseData.quarantineTo',
     dataKey: 'quarantineTo',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
   },
   {
     name: 'CaseData.followUpStatus',
@@ -83,5 +95,9 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'CaseData.followUpUntil',
     dataKey: 'followUpUntil',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
   },
 ];

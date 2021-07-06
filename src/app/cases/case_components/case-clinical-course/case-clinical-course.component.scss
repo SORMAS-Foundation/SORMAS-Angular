@@ -1,1 +1,36 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+.assessments-title {
+  flex: 0 0 176px;
+  padding: 29px 24px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.assessments-list {
+  flex: 1 1 auto;
+  padding: 16px 24px;
+}
+
+.assessments {
+  display: flex;
+  justify-content: stretch;
+  margin: 10px 0;
+
+  &:hover,
+  &:focus {
+    background-color: $white;
+
+    .assessments-list {
+      @include mat-elevation(6);
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, xl)) {
+  .assessments-title {
+    flex: 0 0 248px;
+  }
+}
