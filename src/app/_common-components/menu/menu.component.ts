@@ -1,23 +1,26 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
 import logoPath from '../../../assets/img/sormas-logo.svg';
 
 export interface RouteItem {
   link: string;
   label: string;
+  selectedLink: string;
 }
 
 export const routesConfig: RouteItem[] = [
-  { link: '', label: 'mainMenuDashboard' },
-  { link: 'about', label: 'mainMenuAbout' },
-  { link: 'tasks/list', label: 'mainMenuTasks' },
-  { link: 'cases/list', label: 'mainMenuCases' },
-  { link: 'events/list', label: 'mainMenuEvents' },
-  { link: 'contacts/list', label: 'mainMenuContacts' },
-  { link: 'samples/list', label: 'mainMenuSamples' },
-  { link: 'user-profile', label: 'mainMenuMyProfile' },
-  { link: 'persons/list', label: 'mainMenuPersons' },
+  { link: '', label: 'mainMenuDashboard', selectedLink: 'dashboard' },
+  { link: 'about', label: 'mainMenuAbout', selectedLink: 'about' },
+  { link: 'tasks/list', label: 'mainMenuTasks', selectedLink: 'tasks' },
+  { link: 'cases/list', label: 'mainMenuCases', selectedLink: 'cases' },
+  { link: 'events/list', label: 'mainMenuEvents', selectedLink: 'events' },
+  { link: 'contacts/list', label: 'mainMenuContacts', selectedLink: 'contacts' },
+  { link: 'samples/list', label: 'mainMenuSamples', selectedLink: 'samples' },
+  { link: 'user-profile', label: 'mainMenuMyProfile', selectedLink: 'user-profile' },
+  { link: 'persons/list', label: 'mainMenuPersons', selectedLink: 'persons' },
 ];
 
 @Component({
@@ -43,19 +46,39 @@ export const routesConfig: RouteItem[] = [
     ]),
   ],
 })
-export class MenuComponent {
+export class MenuComponent implements OnDestroy {
   routeConfig: RouteItem[] = routesConfig;
   logo = logoPath;
 
   navigation = routesConfig;
   menuOpen = false;
 
-  constructor(public translateService: TranslateService) {
+  selectedRoute = '';
+
+  private subscription: Subscription[] = [];
+
+  constructor(public translateService: TranslateService, public router: Router) {
     translateService.setDefaultLang('en');
     translateService.use('en');
+
+    this.subscription.push(
+      this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.selectedRoute = event.url;
+        }
+      })
+    );
   }
 
   toggleMenu(closed?: boolean): void {
     this.menuOpen = closed ?? !this.menuOpen;
+  }
+
+  isSelectedLink(link: string): boolean {
+    return this.selectedRoute.includes(link);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }
