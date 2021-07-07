@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { TableColumn } from '../../_models/common';
+import { NavItem, TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
@@ -10,6 +10,7 @@ import { defaultColumnDefs } from './events-list-table-data';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 import { EventAddComponent } from '../event-add/event-add.component';
+import { actionsBulkEditDefs } from './event-list-actions-data';
 
 @Component({
   selector: 'app-events-list',
@@ -20,6 +21,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   tasks: EventDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;
+  actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
 

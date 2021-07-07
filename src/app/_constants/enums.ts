@@ -388,6 +388,14 @@ export enum EventStatusOptions {
   CLOSED = 'Closed',
 }
 
+export enum EventStatusOptionsEdit {
+  SIGNAL = 'Signal',
+  EVENT = 'Event',
+  SCREENING = 'Screening',
+  CLUSTER = 'Cluster',
+  DROPPED = 'Dropped',
+}
+
 export enum EventManagementStatusOptions {
   PENDING = 'Pending',
   ONGOING = 'Ongoing',
