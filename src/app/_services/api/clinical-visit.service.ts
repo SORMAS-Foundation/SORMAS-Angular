@@ -17,7 +17,7 @@ export class ClinicalVisitService extends BaseService<ClinicalVisitDto> {
       httpClient,
       helperService,
       '',
-      constants.API_ROUTE_CLINICAL_VISIT,
+      constants.API_ROUTE_CLINICAL_VISITS,
       new ClinicalVisitSerializer()
     );
   }

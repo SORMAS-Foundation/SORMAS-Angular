@@ -13,6 +13,6 @@ import { HelperService } from '../helper.service';
 })
 export class VisitService extends BaseService<VisitDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(httpClient, helperService, '', constants.API_ROUTE_VISIT, new VisitSerializer());
+    super(httpClient, helperService, '', constants.API_ROUTE_VISITS, new VisitSerializer());
   }
 }
