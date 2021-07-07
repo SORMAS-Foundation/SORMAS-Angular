@@ -11,7 +11,13 @@ import { EventAddComponent } from './event-add/event-add.component';
 import { EventEditComponent } from './event-edit/event-edit.component';
 
 @NgModule({
-  declarations: [EventsComponent, EventsListComponent, EventFiltersComponent, EventAddComponent, EventEditComponent],
+  declarations: [
+    EventsComponent,
+    EventsListComponent,
+    EventFiltersComponent,
+    EventAddComponent,
+    EventEditComponent,
+  ],
   imports: [CommonModule, EventsRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class EventsModule {}

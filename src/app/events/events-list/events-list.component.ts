@@ -12,7 +12,6 @@ import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
 
-
 @Component({
   selector: 'app-events-list',
   templateUrl: './events-list.component.html',
