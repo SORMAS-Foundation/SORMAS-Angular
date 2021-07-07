@@ -21,6 +21,7 @@ export const routesConfig: RouteItem[] = [
   { link: 'samples/list', label: 'mainMenuSamples', selectedLink: 'samples' },
   { link: 'user-profile', label: 'mainMenuMyProfile', selectedLink: 'user-profile' },
   { link: 'persons/list', label: 'mainMenuPersons', selectedLink: 'persons' },
+  { link: 'users/list', label: 'mainMenuUsers', selectedLink: 'users' },
 ];
 
 @Component({

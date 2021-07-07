@@ -57,3 +57,11 @@ export const API_ROUTE_VISITS = {
   GET_ALL: 'visits/indexList',
   UPDATE: 'visits/update',
 };
+
+export const API_ROUTE_USERS = {
+  ENDPOINT: 'users',
+  GET_ALL: 'users/indexList',
+  UPDATE: 'users/update',
+  ADD: 'users/add',
+  DELETE: 'users/delete',
+};
