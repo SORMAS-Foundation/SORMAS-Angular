@@ -8,9 +8,16 @@ import { TasksRoutingModule } from './tasks-routing.module';
 import { MaterialModule } from '../material.module';
 import { TaskFiltersComponent } from './task-filters/task-filters.component';
 import { TaskAddComponent } from './task-add/task-add.component';
+import { TaskEditComponent } from './task-edit/task-edit.component';
 
 @NgModule({
-  declarations: [TasksComponent, TasksListComponent, TaskFiltersComponent, TaskAddComponent],
+  declarations: [
+    TasksComponent,
+    TasksListComponent,
+    TaskFiltersComponent,
+    TaskAddComponent,
+    TaskEditComponent,
+  ],
   imports: [CommonModule, TasksRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class TasksModule {}

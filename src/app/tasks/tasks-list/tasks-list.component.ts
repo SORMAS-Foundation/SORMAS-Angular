@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { TableColumn } from '../../_models/common';
+import { NavItem, TableColumn } from '../../_models/common';
 import { CONFIG_TASKS } from '../../_constants/storage';
 import { TaskDto } from '../../_models/taskDto';
 import { TaskService } from '../../_services/api/task.service';
@@ -10,16 +10,19 @@ import { defaultColumnDefs } from './tasks-list-table-data';
 import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 import { TaskAddComponent } from '../task-add/task-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
+import { actionsBulkEditDefs } from './task-list-actions-data';
 
 @Component({
   selector: 'app-tasks-list',
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.scss'],
 })
-export class TasksListComponent implements OnInit {
+export class TasksListComponent implements OnInit, OnDestroy {
   tasks: TaskDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_TASKS;
+
+  actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
 
@@ -49,5 +52,9 @@ export class TasksListComponent implements OnInit {
         }
       })
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }
