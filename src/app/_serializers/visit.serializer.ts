@@ -1,16 +1,16 @@
 /* eslint-disable no-param-reassign */
 import { Serializer } from './base.serializer';
-import { ClinicalVisitDto } from '../_models/clinicalVisitDto';
+import { VisitDto } from '../_models/visitDto';
 import { deserializeDates, serializeDates } from './date-parse';
 
-export class ClinicalVisitSerializer implements Serializer {
-  fromJson(json: any): ClinicalVisitDto {
+export class VisitSerializer implements Serializer {
+  fromJson(json: any): VisitDto {
     json.id = json.id ?? json.uuid;
     deserializeDates(json);
     return json;
   }
 
-  toJson(item: ClinicalVisitDto): any {
+  toJson(item: VisitDto): any {
     serializeDates(item);
     return item;
   }

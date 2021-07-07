@@ -5,19 +5,19 @@ import { BaseService } from './base.service';
 import { ClinicalVisitSerializer } from '../../_serializers/clinical-visit.serializer';
 
 import * as constants from '../../app.constants';
-import { CaseDataDto } from '../../_models/caseDataDto';
+import { ClinicalVisitDto } from '../../_models/clinicalVisitDto';
 import { HelperService } from '../helper.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClinicalVisitService extends BaseService<CaseDataDto> {
+export class ClinicalVisitService extends BaseService<ClinicalVisitDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
     super(
       httpClient,
       helperService,
       '',
-      constants.API_ROUTE_CLINICAL_VISIT,
+      constants.API_ROUTE_CLINICAL_VISITS,
       new ClinicalVisitSerializer()
     );
   }
