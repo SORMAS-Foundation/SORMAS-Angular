@@ -133,7 +133,8 @@ a:not(.mat-button) {
     font-size: 12px;
   }
 
-  &.visit-clinician {
+  &.visit-clinician,
+  &.visit-person {
     color: map-get($sormas-accent, 500);
     font-weight: 500;
   }
@@ -155,6 +156,29 @@ a:not(.mat-button) {
 
   .risk-level-UNKNOWN {
     color: map-get($sormas-accent, 500);
+    font-weight: 500;
+  }
+
+  .visit-status-UNAVAILABLE {
+    font-weight: 500;
+  }
+
+  .visit-status-UNCOOPERATIVE {
+    color: map-get($sormas-alert, 400);
+    font-weight: 500;
+  }
+
+  .visit-status-COOPERATIVE {
+    color: map-get($sormas-primary, 500);
+    font-weight: 500;
+  }
+
+  .symptoms-true {
+    color: map-get($sormas-alert, 400);
+    font-weight: 500;
+  }
+
+  .symptoms-false {
     font-weight: 500;
   }
 }

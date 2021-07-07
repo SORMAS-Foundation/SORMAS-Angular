@@ -70,7 +70,7 @@ export class TableDataComponent implements OnChanges {
   formatNumber(): void {
     const match = this.config.format?.match;
     const value = this.getData(this.config.dataKey);
-    const raw = value.replace(/[^\d.-]/g, '');
+    const raw = parseFloat(value);
 
     if (match && raw) {
       Object.entries(match).find(([key, range]) => {
@@ -82,7 +82,7 @@ export class TableDataComponent implements OnChanges {
       });
     }
 
-    this.dataDisplay = this.getData(this.config.dataKey);
+    this.dataDisplay = this.interpolate();
   }
 
   formatDisplay(): void {

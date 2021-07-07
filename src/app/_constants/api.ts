@@ -51,3 +51,9 @@ export const API_ROUTE_CLINICAL_VISIT = {
   GET_ALL: 'clinicalvisits/indexList',
   UPDATE: 'clinicalvisits/update',
 };
+
+export const API_ROUTE_VISIT = {
+  ENDPOINT: 'visits',
+  GET_ALL: 'visits/indexList',
+  UPDATE: 'visits/update',
+};

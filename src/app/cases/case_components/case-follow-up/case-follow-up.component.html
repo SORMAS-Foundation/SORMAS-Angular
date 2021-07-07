@@ -1,1 +1,16 @@
-<p>case-follow-up works!</p>
+<section class="assessments">
+  <h2 class="assessments-title">
+    {{ 'Visit' | translate }}
+  </h2>
+  <mat-card class="assessments-list">
+    <app-table
+      [resourceService]="visitService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [appearance]="tableAppearanceOptions.MINIMAL"
+      [preSetFilters]="preSetFilters"
+    ></app-table>
+  </mat-card>
+</section>
