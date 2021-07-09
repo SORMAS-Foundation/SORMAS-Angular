@@ -12,7 +12,7 @@ const languages: string[] = [
 const outputDirectory = path.join('dist');
 
 const languageFiles: { [key: string]: string[] } = {};
-const translations: { [key: string]: string[] } = {};
+const translations: { [key: string]: { [key: string]: string[] } } = {};
 
 const customTranslation = JSON.parse(fs.readFileSync('custom-translations.json'));
 
@@ -28,26 +28,41 @@ fs.readdir(__dirname, (error: NodeJS.ErrnoException | null, files: string[]) => 
             }
             languageFiles.en.push(file);
         }
+        let found = false;
         languages.forEach((language: string) => {
+            // console.log(language);
             if (file.indexOf(`${language}.properties`) > -1) {
                 if (!languageFiles[language]) {
                     languageFiles[language] = [];
                 }
+                found = true;
                 languageFiles[language].push(file);
             }
         });
+        if (!found) {
+            console.log(`No matching language found for file: ${file}`)
+        }
     });
+    console.log('Language files found:');
+    console.log(JSON.stringify(languageFiles));
 
     languages.forEach((language: string) => {
         languageFiles[language].forEach((languageFile: string) => {
+            const translationDomain = languageFile.replace('.properties', '').replace(language, '').replace('_', '');
             const properties = propertiesReader(languageFile);
+            console.log(`Language file: ${languageFile} - translationDomain ${translationDomain}`);
             if (!translations[language]) {
-                translations[language] = properties.getAllProperties();
-
-                return;
+                translations[language] = {};
             }
 
-            translations[language] = {...translations[language], ...properties.getAllProperties()};
+            if (!translations[language][translationDomain]) {
+                // @ts-ignore
+                translations[language][translationDomain] = {};
+            }
+
+            translations[language][translationDomain] = {
+                ...translations[language][translationDomain], ...properties.getAllProperties()
+            };
         });
         Object.keys(customTranslation).forEach((translationLabel: string) => {
             if (!translations[language][translationLabel]) {
