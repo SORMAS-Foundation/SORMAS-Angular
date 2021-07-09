@@ -181,4 +181,8 @@ a:not(.mat-button) {
   .symptoms-false {
     font-weight: 500;
   }
+
+  &.user-status {
+    color: map-get($sormas-primary, 700);
+  }
 }
