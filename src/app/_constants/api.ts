@@ -14,6 +14,22 @@ export const API_ROUTE_PERSONS = {
   DELETE: 'persons/delete',
 };
 
+export const API_ROUTE_PRESCRIPTIONS = {
+  ENDPOINT: 'prescriptions',
+  GET_ALL: 'prescriptions/indexList',
+  UPDATE: 'prescriptions/update',
+  ADD: 'prescriptions/add',
+  DELETE: 'prescriptions/delete',
+};
+
+export const API_ROUTE_TREATMENTS = {
+  ENDPOINT: 'treatments',
+  GET_ALL: 'treatments/indexList',
+  UPDATE: 'treatments/update',
+  ADD: 'treatments/add',
+  DELETE: 'treatments/delete',
+};
+
 export const API_ROUTE_TASKS = {
   ENDPOINT: 'tasks',
   GET_ALL: 'tasks/indexList',

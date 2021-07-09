@@ -30,6 +30,8 @@ import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EdgePanelComponent } from './edge-panel/edge-panel.component';
+import { PrescriptionsListComponent } from './widgets/prescriptions-list/prescriptions-list.component';
+import { TreatmentsListComponent } from './widgets/treatments-list/treatments-list.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { EdgePanelComponent } from './edge-panel/edge-panel.component';
     DropdownMenuComponent,
     SidebarComponent,
     EdgePanelComponent,
+    PrescriptionsListComponent,
+    TreatmentsListComponent,
   ],
   imports: [
     CommonModule,

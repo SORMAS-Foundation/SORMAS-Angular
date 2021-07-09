@@ -1,0 +1,14 @@
+<app-card-list
+  class="prescriptions-list"
+  *ngIf="prescriptions.length"
+  [data]="prescriptions"
+  [cardWidth]="200"
+  [initialPageSize]="4"
+  [cardEdit]="true"
+  cardEditPosition="BOTTOMRIGHT"
+  [cardDelete]="true"
+  cardDeletePosition="TOPRIGHT"
+  cardType="address"
+  cardTitleKey="addressType"
+  cardTitlePosition="LEFT"
+></app-card-list>
