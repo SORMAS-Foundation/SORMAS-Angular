@@ -7,6 +7,8 @@ export enum IconsMap {
   ONGOING = 'refresh',
   true = 'check_box',
   false = 'check_box_outlined_off',
+  EMAIL = 'mail_outline',
+  PHONE = 'call',
 }
 
 export enum CaseOutcomeIcons {

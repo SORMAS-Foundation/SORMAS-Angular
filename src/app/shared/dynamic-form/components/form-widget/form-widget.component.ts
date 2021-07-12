@@ -16,6 +16,8 @@ import { FollowUpStatusComponent } from '../../../widgets/follow-up-status/follo
 import { NewEpidNumberComponent } from '../../../widgets/new-epid-number/new-epid-number.component';
 import { SymptomsGroupSelectComponent } from '../../../widgets/symptoms-group-select/symptoms-group-select.component';
 import { FormElementBase } from '../../types/form-element-base';
+import { PersonContactsListComponent } from '../../../widgets/person-contacts-list/person-contacts-list.component';
+import { NewPersonContactComponent } from '../../../widgets/new-person-contact/new-person-contact.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -25,6 +27,8 @@ const COMPONENTS_MAP: any = {
   'app-activities-list': ActivitiesListComponent,
   'app-addresses-list': AddressesListComponent,
   'app-new-address': NewAddressComponent,
+  'app-person-contacts-list': PersonContactsListComponent,
+  'app-new-person-contact': NewPersonContactComponent,
 };
 
 @Component({

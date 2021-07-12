@@ -8,7 +8,13 @@
   </ng-container>
 
   <ng-container *ngSwitchCase="formats.LINK">
-    <a mat-button color="primary" [routerLink]="dataLink" [innerHtml]="dataDisplay"></a>
+    <a
+      mat-button
+      color="primary"
+      [routerLink]="dataLink"
+      [innerHtml]="dataDisplay"
+      (click)="$event.stopPropagation()"
+    ></a>
   </ng-container>
 
   <ng-container *ngSwitchCase="formats.DATE">

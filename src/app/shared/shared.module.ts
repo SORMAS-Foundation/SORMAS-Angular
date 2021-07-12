@@ -31,6 +31,8 @@ import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EdgePanelComponent } from './edge-panel/edge-panel.component';
 import { TableDataComponent } from './table/table-data/table-data.component';
+import { PersonContactsListComponent } from './widgets/person-contacts-list/person-contacts-list.component';
+import { NewPersonContactComponent } from './widgets/new-person-contact/new-person-contact.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { TableDataComponent } from './table/table-data/table-data.component';
     SidebarComponent,
     EdgePanelComponent,
     TableDataComponent,
+    PersonContactsListComponent,
+    NewPersonContactComponent,
   ],
   imports: [
     CommonModule,

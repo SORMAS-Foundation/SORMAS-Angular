@@ -1,0 +1,32 @@
+@use '/src/variables.scss' as *;
+
+h3 {
+  padding: 10px 0;
+  margin: -12px 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.content {
+  overflow: hidden;
+  color: map-get($sormas-accent, 500);
+  font-size: 14px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.third-party-role {
+  margin: -2px 0 8px;
+  color: map-get($sormas-accent, 300);
+  font-weight: 500;
+}
+
+.mat-icon {
+  width: 14px;
+  height: 14px;
+  margin: 3px 6px 0 0;
+  float: left;
+  font-size: 14px;
+}

@@ -1,0 +1,12 @@
+<app-card-list
+  class="contacts-list"
+  *ngIf="contacts.length"
+  [data]="contacts"
+  [cardWidth]="230"
+  [initialPageSize]="4"
+  [cardEdit]="true"
+  cardEditPosition="BOTTOMRIGHT"
+  [cardDelete]="true"
+  cardDeletePosition="TOPRIGHT"
+  cardType="person_contact"
+></app-card-list>
