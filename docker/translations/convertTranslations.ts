@@ -48,7 +48,7 @@ fs.readdir(__dirname, (error: NodeJS.ErrnoException | null, files: string[]) => 
 
     languages.forEach((language: string) => {
         languageFiles[language].forEach((languageFile: string) => {
-            const translationDomain = languageFile.replace('.properties', '').replace(language, '').replace('_', '');
+            const translationDomain = languageFile.replace(`_${language}.properties`, '').replace('.properties', '');
             const properties = propertiesReader(languageFile);
             console.log(`Language file: ${languageFile} - translationDomain ${translationDomain}`);
             if (!translations[language]) {
