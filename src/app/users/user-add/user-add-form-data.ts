@@ -1,7 +1,12 @@
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { FORM_DATA_INPUT, FORM_DATA_RADIO, FORM_DATA_SELECT } from '../../_constants/form-data';
-import { AreaType, Language } from '../../_models/models';
-import { PointOfEntryType, UserRole } from '../../_constants/enums';
+import {
+  FORM_DATA_INPUT,
+  FORM_DATA_RADIO,
+  FORM_DATA_SELECT,
+  FORM_DATA_WIDGET,
+} from '../../_constants/form-data';
+import { Language } from '../../_models/models';
+import { AreaType, PointOfEntryType, UserRole } from '../../_constants/enums';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -134,6 +139,10 @@ export const FORM_DATA_USER_ADD = [
         label: 'Facility.city',
       },
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-address-button',
+      },
+      {
         ...FORM_DATA_INPUT,
         key: 'location.houseNumber',
         label: 'Facility.houseNumber',
@@ -179,6 +188,10 @@ export const FORM_DATA_USER_ADD = [
         key: 'location.latLonAccuracy',
         label: 'Location.latLonAccuracy',
         className: 'size-small',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
       },
     ],
   },

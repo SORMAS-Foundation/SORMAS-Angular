@@ -479,3 +479,9 @@ export enum PointOfEntryType {
   GROUNDCROSSING = 'Ground crossing',
   OTHER = 'Other',
 }
+
+export enum AreaType {
+  URBAN = 'Urban',
+  RURAL = 'Rural',
+  UNKNOWN = 'Unknown',
+}
