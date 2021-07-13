@@ -442,3 +442,40 @@ export enum ContactRelation {
   MEDICALCARE = 'Provided medical care for the case',
   OTHER = 'Other',
 }
+
+export enum UserRole {
+  ADMIN = 'Admin',
+  NATIONAL_USER = 'National user',
+  SURVEILLANCE_SUPERVISOR = 'Surveillance suprervisor',
+  ADMIN_SUPERVISOR = 'Admin supervisor',
+  SURVEILLANCE_OFFICER = 'Surveillance officer',
+  HOSPITAL_INFORMANT = 'Hospital informant',
+  COMMUNITY_OFFICER = 'Community officer',
+  COMMUNITY_INFORMANT = 'Community informant',
+  CASE_SUPERVISOR = 'Case supervisor',
+  CASE_OFFICER = 'Case officer',
+  CONTACT_SUPERVISOR = 'Contact supervisor',
+  CONTACT_OFFICER = 'Contact officer',
+  EVENT_OFFICER = 'Event officer',
+  LAB_USER = 'Lab user',
+  EXTERNAL_LAB_USER = 'External lab user',
+  NATIONAL_OBSERVER = 'National observer',
+  STATE_OBSERVER = 'State observer',
+  DISTRICT_OBSERVER = 'District observer',
+  NATIONAL_CLINICIAN = 'National clinician',
+  POE_INFORMANT = 'Poe informant',
+  POE_SUPERVISOR = 'Poe supervisor',
+  POE_NATIONAL_USER = 'Poe national user',
+  IMPORT_USER = 'Import user',
+  REST_EXTERNAL_VISITS_USER = 'Rest external visits user',
+  REST_USER = 'Rest user',
+  SORMAS_TO_SORMAS_CLIENT = 'Sormas to Sormas client',
+  BAG_USER = 'Bag user',
+}
+
+export enum PointOfEntryType {
+  AIRPORT = 'Airport',
+  SEAPORT = 'Seaport',
+  GROUNDCROSSING = 'Ground crossing',
+  OTHER = 'Other',
+}

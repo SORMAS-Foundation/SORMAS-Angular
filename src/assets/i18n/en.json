@@ -5267,5 +5267,7 @@
   "Sample.resultDate": "Result date",
   "Sample.resultDetails": "Result details",
   "Contact.pickClosest": "if multiple pick the closest contact proximity",
-  "Contact.descriptionShort": "Contact description"
+  "Contact.descriptionShort": "Contact description",
+  "User.language": "Language",
+  "User.gps": "GPS"
 }
