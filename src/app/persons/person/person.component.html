@@ -3,7 +3,9 @@
     <a [routerLink]="['/persons/list']" mat-icon-button>
       <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
     </a>
-    <h1>{{ person.firstName }} {{ person.lastName }}</h1>
+    <h1>
+      {{ person.firstName }} {{ person.lastName }} <small>({{ person.uuid | slice: 0:6 }})</small>
+    </h1>
   </header>
 
   <div class="page-content">

@@ -30,3 +30,12 @@ h3 {
   float: left;
   font-size: 14px;
 }
+
+.primary-contact {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  margin: 0;
+  color: map-get($sormas-primary, 400);
+  font-size: 18px;
+}
