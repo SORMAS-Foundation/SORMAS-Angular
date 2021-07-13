@@ -5,8 +5,8 @@ export enum IconsMap {
   DIALOG_ICON_TITLE_ALERT = 'warning_amber',
   DIALOG_ICON_CLOSE = 'highlight_off',
   ONGOING = 'refresh',
-  true = 'check_box',
-  false = 'check_box_outlined_off',
+  true = 'check_circle_black',
+  false = 'not_interested',
   EMAIL = 'mail_outline',
   PHONE = 'call',
 }

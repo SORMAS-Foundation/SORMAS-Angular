@@ -186,3 +186,11 @@ a:not(.mat-button) {
     color: map-get($sormas-primary, 700);
   }
 }
+
+.icon-active-true {
+  color: map-get($sormas-primary, 400);
+}
+
+.icon-active-false {
+  color: map-get($sormas-alert, 300);
+}
