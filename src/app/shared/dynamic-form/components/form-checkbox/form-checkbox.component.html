@@ -3,9 +3,29 @@
     color="primary"
     (change)="onChange()"
     [formControlName]="config.key"
+    *ngIf="config.options.length <= 0"
     [id]="config.key"
   >
     {{ config.label || '' | translate }}
   </mat-checkbox>
-  <div class="errorMessage" color="warn" *ngIf="!isValid">{{ config.validationMessage || '' | translate }}</div>
+  <div *ngIf="config.options.length > 0">
+    <mat-label *ngIf="config.label" class="selection-list-label">
+      {{ config.label || '' | translate }}
+      <span *ngIf="config.validation?.length" class="required">*</span>
+    </mat-label>
+    <mat-selection-list [formControlName]="config.key" (change)="onChange()">
+      <mat-list-option
+        color="primary"
+        class="single-item"
+        [value]="opt.key"
+        [id]="opt.key"
+        *ngFor="let opt of config.options"
+      >
+        {{ opt.value || '' | translate }}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">
+    {{ config.validationMessage || '' | translate }}
+  </div>
 </div>

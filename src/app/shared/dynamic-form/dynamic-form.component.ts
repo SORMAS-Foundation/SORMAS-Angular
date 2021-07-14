@@ -168,8 +168,20 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         const targetField = this.getTargetField(item.target);
         const watchField = this.getTargetField(item.watch);
         if (targetField) {
-          targetField.active =
-            watchField?.active && (item.values ? item.values.includes(val) : !!val);
+          if (Array.isArray(val)) {
+            if (item.values) {
+              targetField.active = false;
+              val.forEach((v) => {
+                if (item.values.includes(v)) {
+                  targetField.active = true;
+                }
+              });
+            }
+          } else {
+            targetField.active =
+              watchField?.active && (item.values ? item.values.includes(val) : !!val);
+          }
+
           // set same value on target field just to trigger 'valueChanges'
           // on it so it can properly update any dependent fields
           if (item.watch !== targetField.key) {
