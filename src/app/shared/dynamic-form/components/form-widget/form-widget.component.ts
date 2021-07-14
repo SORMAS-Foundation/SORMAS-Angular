@@ -18,6 +18,8 @@ import { SymptomsGroupSelectComponent } from '../../../widgets/symptoms-group-se
 import { FormElementBase } from '../../types/form-element-base';
 import { PersonContactsListComponent } from '../../../widgets/person-contacts-list/person-contacts-list.component';
 import { NewPersonContactComponent } from '../../../widgets/new-person-contact/new-person-contact.component';
+import { GpsCoordsComponent } from '../../../widgets/gps-coords/gps-coords.component';
+import { AddressButtonComponent } from '../../../widgets/address-button/address-button.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -29,6 +31,8 @@ const COMPONENTS_MAP: any = {
   'app-new-address': NewAddressComponent,
   'app-person-contacts-list': PersonContactsListComponent,
   'app-new-person-contact': NewPersonContactComponent,
+  'app-gps-coords': GpsCoordsComponent,
+  'app-address-button': AddressButtonComponent,
 };
 
 @Component({

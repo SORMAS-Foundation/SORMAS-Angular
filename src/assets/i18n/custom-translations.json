@@ -109,5 +109,7 @@
   "Gps.longitude": "GPS longitude",
   "Gps.accuracy": "GPS accuracy",
   "Transmission": "Transmission",
-  "Investigation": "Investigation"
+  "Investigation": "Investigation",
+  "User.language": "Language",
+  "User.gps": "GPS"
 }
