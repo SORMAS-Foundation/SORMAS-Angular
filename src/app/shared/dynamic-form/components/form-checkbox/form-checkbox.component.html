@@ -3,12 +3,12 @@
     color="primary"
     (change)="onChange()"
     [formControlName]="config.key"
-    *ngIf="config.options.length <= 0"
+    *ngIf="!config.options.length"
     [id]="config.key"
   >
     {{ config.label || '' | translate }}
   </mat-checkbox>
-  <div *ngIf="config.options.length > 0">
+  <div *ngIf="config.options.length">
     <mat-label *ngIf="config.label" class="selection-list-label">
       {{ config.label || '' | translate }}
       <span *ngIf="config.validation?.length" class="required">*</span>
