@@ -16,6 +16,7 @@ export const FORM_DATA_EVENT_EDIT = [
   {
     id: 'event',
     title: 'Event',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,

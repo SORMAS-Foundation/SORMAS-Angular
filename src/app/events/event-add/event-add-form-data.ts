@@ -4,18 +4,18 @@ import {
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
-  EventStatusOptions,
   EventManagementStatusOptions,
   YesNoUnknown,
   FORM_DATA_CHECKBOX,
   InvestigationStatusOptions,
+  EventStatusOptionsEdit,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
-const eventStatusOptions = pipe.transform(EventStatusOptions);
+const eventStatusOptionsEdit = pipe.transform(EventStatusOptionsEdit);
 const eventManagementStatusOptions = pipe.transform(EventManagementStatusOptions);
 const yesNoUnknown = pipe.transform(YesNoUnknown);
 const investigationStatusOptions = pipe.transform(InvestigationStatusOptions);
@@ -62,7 +62,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'eventStatus',
         label: 'EventAction.eventStatus',
         validation: ['required'],
-        options: eventStatusOptions,
+        options: eventStatusOptionsEdit,
       },
       {
         ...FORM_DATA_SELECT,
