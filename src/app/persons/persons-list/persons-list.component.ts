@@ -4,6 +4,7 @@ import { CONFIG_PERSONS } from '../../_constants/storage';
 import { defaultColumnDefs } from './persons-list-table-data';
 import { PersonService } from '../../_services/api/person.service';
 import { PersonDto } from '../../_models/models';
+import { HEADER_HEIGHT } from '../../app.constants';
 
 @Component({
   selector: 'app-persons-list',
@@ -14,6 +15,7 @@ export class PersonsListComponent implements OnInit {
   tasks: PersonDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_PERSONS;
+  headerHeight = HEADER_HEIGHT;
 
   constructor(public personService: PersonService) {}
 

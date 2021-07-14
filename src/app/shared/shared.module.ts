@@ -31,6 +31,8 @@ import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EdgePanelComponent } from './edge-panel/edge-panel.component';
 import { TableDataComponent } from './table/table-data/table-data.component';
+import { PersonContactsListComponent } from './widgets/person-contacts-list/person-contacts-list.component';
+import { NewPersonContactComponent } from './widgets/new-person-contact/new-person-contact.component';
 import { GpsCoordsComponent } from './widgets/gps-coords/gps-coords.component';
 import { AddressButtonComponent } from './widgets/address-button/address-button.component';
 
@@ -57,6 +59,8 @@ import { AddressButtonComponent } from './widgets/address-button/address-button.
     SidebarComponent,
     EdgePanelComponent,
     TableDataComponent,
+    PersonContactsListComponent,
+    NewPersonContactComponent,
     GpsCoordsComponent,
     AddressButtonComponent,
   ],
