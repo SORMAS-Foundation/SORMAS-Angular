@@ -8,6 +8,7 @@ export const actionsBulkEditDefs: NavItem[] = [
     name: 'Edit',
     action: ACTIONS_BULK_EDIT.EDIT,
     component: TaskEditComponent,
+    componentTitle: 'Edit task',
   },
   {
     role: NavItemRole.ACTION,

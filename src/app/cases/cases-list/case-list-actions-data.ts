@@ -80,6 +80,7 @@ export const actionsBulkEditDefs: NavItem[] = [
     name: 'Edit',
     action: ACTIONS_BULK_EDIT.EDIT,
     component: CaseEditComponent,
+    componentTitle: 'Edit case',
   },
   {
     role: NavItemRole.ACTION,

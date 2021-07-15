@@ -138,13 +138,13 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  openBulkEdit(editComponent: any): void {
+  openBulkEdit(bulkEditOption: any): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       minWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Edit cases'),
-        component: editComponent,
+        title: this.translateService.instant(bulkEditOption.componentTitle),
+        component: bulkEditOption.component,
         editResources: this.getSelectedItems(),
       },
     });
@@ -240,8 +240,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         // @ts-ignore
         // eslint-disable-next-line no-case-declarations
         const bulkEditOption = this.bulkEditOptions.find((item) => item.action === event);
-        // @ts-ignore
-        this.openBulkEdit(bulkEditOption.component);
+        this.openBulkEdit(bulkEditOption);
         break;
       default:
         // eslint-disable-next-line no-console
