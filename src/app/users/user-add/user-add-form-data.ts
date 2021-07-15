@@ -211,10 +211,17 @@ export const FORM_DATA_USER_ADD = [
     title: 'headingUserData',
     fields: [
       {
+        ...FORM_DATA_CHECKBOX,
+        key: 'active',
+        label: 'User.active',
+        newLine: true,
+      },
+      {
         ...FORM_DATA_INPUT,
         key: 'userName',
         label: 'User.userName',
         validation: ['required'],
+        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
