@@ -137,6 +137,15 @@ export enum YesNoUnknown {
   UNKNOWN = 'Unknown',
 }
 
+export enum DiseaseTransmissionMode {
+  HUMANTOHUMAN = 'HUMAN_TO_HUMAN',
+  ANIMAL = 'ANIMAL',
+  ENVIRONMENT = 'ENVIRONMENT',
+  FOOD = 'FOOD',
+  VECTORBORNE = 'VECTOR_BORNE',
+  UNKNOWN = 'UNKNOWN',
+}
+
 export enum SamplePurpose {
   EXTERNAL = 'External',
   INTERNAL = 'Internal',

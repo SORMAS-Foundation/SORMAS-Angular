@@ -9,12 +9,14 @@ import {
   FORM_DATA_CHECKBOX,
   InvestigationStatusOptions,
   EventStatusOptionsEdit,
+  DiseaseTransmissionMode,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
+const diseaseTransmissionMode = pipe.transform(DiseaseTransmissionMode);
 const eventStatusOptionsEdit = pipe.transform(EventStatusOptionsEdit);
 const eventManagementStatusOptions = pipe.transform(EventManagementStatusOptions);
 const yesNoUnknown = pipe.transform(YesNoUnknown);
@@ -138,17 +140,25 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_SELECT,
         key: 'primaryModeTransmission',
         label: 'Event.diseaseTransmissionMode',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        dependingOn: 'eventStatus',
+        dependingOnValues: ['CLUSTER'],
+        options: diseaseTransmissionMode,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'nosocomial',
+        label: 'Event.nosocomial',
+        options: yesNoUnknown,
+        dependingOn: 'eventStatus',
+        dependingOnValues: ['CLUSTER'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'humanTransmission',
+        newLine: true,
         label: 'Event.humanTransmissionMode',
+        dependingOn: 'primaryModeTransmission',
+        dependingOnValues: ['HUMANTOHUMAN'],
         options: [
           {
             key: 'default',
@@ -159,6 +169,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'parentalTransmission',
+        newLine: true,
         label: 'Event.parenteralTransmissionMode',
         options: [
           {
@@ -177,12 +188,6 @@ export const FORM_DATA_EVENT_ADD = [
             value: 'default',
           },
         ],
-      },
-      {
-        ...FORM_DATA_RADIO,
-        key: 'nosocomial',
-        label: 'Event.nosocomial',
-        options: yesNoUnknown,
       },
       {
         ...FORM_DATA_SELECT,
@@ -252,11 +257,15 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'Event.eventInvestigationStartDate',
         newLine: true,
         key: 'startInvestigationDate',
+        dependingOn: 'investigationStatus',
+        dependingOnValues: ['ONGOING', 'DONE', 'DISCARDED'],
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_DATE,
         label: 'Event.eventInvestigationEndDate',
         key: 'endInvestigationDate',
+        dependingOn: 'investigationStatus',
+        dependingOnValues: ['ONGOING', 'DONE', 'DISCARDED'],
       },
     ],
   },
