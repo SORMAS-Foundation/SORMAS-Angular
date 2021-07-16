@@ -76,7 +76,7 @@ export class MenuComponent implements OnDestroy {
   }
 
   isSelectedLink(link: string): boolean {
-    return this.selectedRoute.includes(link);
+    return this.selectedRoute.startsWith(`/${link}`);
   }
 
   ngOnDestroy(): void {
