@@ -10,6 +10,7 @@ import { defaultColumnDefs } from './contacts-list-table-data';
 import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-contacts-list',
@@ -26,7 +27,8 @@ export class ContactsListComponent implements OnInit {
   constructor(
     public contactService: ContactService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class ContactsListComponent implements OnInit {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }
