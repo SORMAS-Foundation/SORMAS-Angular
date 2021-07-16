@@ -5,19 +5,19 @@ import { TaskEditComponent } from '../task-edit/task-edit.component';
 export const actionsBulkEditDefs: NavItem[] = [
   {
     role: NavItemRole.ACTION,
-    name: 'Edit',
+    name: 'captions.edit',
     action: ACTIONS_BULK_EDIT.EDIT,
     component: TaskEditComponent,
   },
   {
     role: NavItemRole.ACTION,
-    name: 'Delete',
+    name: 'captions.actionDelete',
     action: ACTIONS_BULK_EDIT.DELETE,
     className: 'warn',
   },
   {
     role: NavItemRole.ACTION,
-    name: 'Archive',
+    name: 'captions.actionArchive',
     action: ACTIONS_BULK_EDIT.ARCHIVE,
   },
 ];

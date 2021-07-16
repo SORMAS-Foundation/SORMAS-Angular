@@ -24,7 +24,7 @@ const optionsTaskStatus = pipe.transform(TaskStatusOptions);
 export const FORM_DATA_TASK_ADD = [
   {
     id: 'taskContext',
-    title: 'Task.taskContext',
+    title: 'captions.Task.taskContext',
     fields: [
       {
         ...FORM_DATA_NULL,
@@ -35,7 +35,7 @@ export const FORM_DATA_TASK_ADD = [
   },
   {
     id: 'taskType',
-    title: 'Task.taskTypeShort',
+    title: 'captions.Task.taskType',
     required: true,
     fields: [
       {
@@ -49,16 +49,16 @@ export const FORM_DATA_TASK_ADD = [
   },
   {
     id: 'date',
-    title: 'date',
+    title: 'captions.date',
     fields: [
       {
         ...FORM_DATA_DATE,
-        label: 'Task.suggestedStart',
+        label: 'captions.Task.suggestedStart',
         key: 'suggestedStart',
       },
       {
         ...FORM_DATA_DATE,
-        label: 'Task.dueDate',
+        label: 'captions.Task.dueDate',
         validation: ['required'],
         key: 'dueDate',
       },
@@ -66,7 +66,7 @@ export const FORM_DATA_TASK_ADD = [
   },
   {
     id: 'assignedTo',
-    title: 'Task.assigneeUser',
+    title: 'captions.Task.assigneeUser',
     required: true,
     fields: [
       {
@@ -80,7 +80,7 @@ export const FORM_DATA_TASK_ADD = [
   },
   {
     id: 'priority',
-    title: 'Task.priority',
+    title: 'captions.Task.priority',
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -92,7 +92,7 @@ export const FORM_DATA_TASK_ADD = [
   },
   {
     id: 'taskComment',
-    title: 'Task.creatorComment',
+    title: 'captions.Task.creatorComment',
     fields: [
       {
         ...FORM_DATA_TEXTAREA,
@@ -103,7 +103,7 @@ export const FORM_DATA_TASK_ADD = [
   },
   {
     id: 'executionComment',
-    title: 'Task.assigneeReply',
+    title: 'captions.Task.assigneeReply',
     fields: [
       {
         ...FORM_DATA_TEXTAREA,
@@ -114,7 +114,7 @@ export const FORM_DATA_TASK_ADD = [
   },
   {
     id: 'taskStatus',
-    title: 'Task.taskStatus',
+    title: 'captions.Task.taskStatus',
     fields: [
       {
         ...FORM_DATA_RADIO,

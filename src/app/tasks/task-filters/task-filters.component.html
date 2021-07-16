@@ -1,5 +1,5 @@
 <div class="filters">
-  <h2 class="filters-header">{{ 'headingFilters' | translate }}</h2>
+  <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field id="freeText" appearance="outline" floatLabel="always" class="search-field">
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
@@ -8,67 +8,67 @@
         type="text"
         matInput
         appDebounce
-        placeholder="{{ 'promptTaskSearchField' | translate }}"
+        placeholder="{{ 'strings.promptTaskSearchField' | translate }}"
         formControlName="freeText"
         (debounce)="onFormChange()"
       />
     </mat-form-field>
 
-    <app-collapsable-box boxTitle="{{ 'Task.taskStatus' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'captions.Task.taskStatus' | translate }}">
       <mat-radio-group name="taskStatus" formControlName="taskStatus" (change)="onFormChange()">
         <mat-radio-button value="PENDING" color="primary">
-          {{ 'TaskStatus.PENDING' | translate }}
+          {{ 'enum.TaskStatus.PENDING' | translate }}
         </mat-radio-button>
         <mat-radio-button value="DONE" color="primary">
-          {{ 'TaskStatus.DONE' | translate }}
+          {{ 'enum.TaskStatus.DONE' | translate }}
         </mat-radio-button>
         <mat-radio-button value="REMOVED" color="primary">
-          {{ 'TaskStatus.REMOVED' | translate }}
+          {{ 'enum.TaskStatus.REMOVED' | translate }}
         </mat-radio-button>
         <mat-radio-button value="NOT_EXECUTABLE" color="primary">
-          {{ 'TaskStatus.NOT_EXECUTABLE' | translate }}
+          {{ 'enum.TaskStatus.NOT_EXECUTABLE' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Task' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'captions.Task' | translate }}">
       <mat-radio-group name="task" formControlName="task" (change)="onFormChange()">
         <mat-radio-button value="active" color="primary">
-          {{ 'taskActiveTasks' | translate }}
+          {{ 'captions.taskActiveTasks' | translate }}
         </mat-radio-button>
         <mat-radio-button value="archived" color="primary">
-          {{ 'taskArchivedTasks' | translate }}
+          {{ 'captions.taskArchivedTasks' | translate }}
         </mat-radio-button>
         <mat-radio-button value="all" color="primary">
-          {{ 'taskAllTasks' | translate }}
+          {{ 'captions.taskAllTasks' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Task.taskContext' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'captions.Task.taskContext' | translate }}">
       <mat-radio-group name="taskContext" formControlName="taskContext" (change)="onFormChange()">
         <mat-radio-button value="CASE" color="primary">
-          {{ 'TaskContext.CASE' | translate }}
+          {{ 'enum.TaskContext.CASE' | translate }}
         </mat-radio-button>
         <mat-radio-button value="CONTACT" color="primary">
-          {{ 'TaskContext.CONTACT' | translate }}
+          {{ 'enum.TaskContext.CONTACT' | translate }}
         </mat-radio-button>
         <mat-radio-button value="EVENT" color="primary">
-          {{ 'TaskContext.EVENT' | translate }}
+          {{ 'enum.TaskContext.EVENT' | translate }}
         </mat-radio-button>
         <mat-radio-button value="GENERAL" color="primary">
-          {{ 'TaskContext.GENERAL' | translate }}
+          {{ 'enum.TaskContext.GENERAL' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'task.adminAspect' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'headingAdminAspect' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="region"
-          placeholder="{{ 'CaseData.responsibleRegion' | translate }}"
+          placeholder="{{ 'captions.CaseData.responsibleRegion' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -81,7 +81,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="district"
-          placeholder="{{ 'CaseData.responsibleDistrict' | translate }}"
+          placeholder="{{ 'captions.CaseData.responsibleDistrict' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -94,7 +94,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="assignedTo"
-          placeholder="{{ 'Task.assigneeUser' | translate }}"
+          placeholder="{{ 'captions.Task.assigneeUser' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -107,7 +107,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="createdBy"
-          placeholder="{{ 'Task.creatorUser' | translate }}"
+          placeholder="{{ 'captions.Task.creatorUser' | translate }}"
         >
           <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
           <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
@@ -116,15 +116,17 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'task.dateFilter' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'headingDateFilter' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           formControlName="dateFilter"
           (selectionChange)="onFormChange()"
-          placeholder="{{ 'DateFilterOption.DATE' | translate }}"
+          placeholder="{{ 'enum.DateFilterOption.DATE' | translate }}"
         >
-          <mat-option value="byDate"> {{ 'DateFilterOption.DATE' | translate }} </mat-option>
+          <mat-option value="byDate">
+            {{ 'enum.DateFilterOption.DATE' | translate }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="collapsable-field">
@@ -132,9 +134,11 @@
           disableOptionCentering
           formControlName="referenceDate"
           (selectionChange)="onFormChange()"
-          placeholder="{{ 'task.referenceDate' | translate }}"
+          placeholder="{{ 'strings.promptEventDateType' | translate }}"
         >
-          <mat-option value="referenceDate"> {{ 'task.referenceDate' | translate }} </mat-option>
+          <mat-option value="referenceDate">
+            {{ 'strings.promptEventDateType' | translate }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field
@@ -152,7 +156,7 @@
           formControlName="startDate"
           (dateChange)="onFormChange()"
         />
-        <mat-hint>{{ 'task.startDate' | translate }}</mat-hint>
+        <mat-hint>{{ 'captions.Task.suggestedStart' | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="picker1"
@@ -175,7 +179,7 @@
           formControlName="dueDate"
           (dateChange)="onFormChange()"
         />
-        <mat-hint>{{ 'Task.dueDate' | translate }}</mat-hint>
+        <mat-hint>{{ 'captions.Task.dueDate' | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="picker2"

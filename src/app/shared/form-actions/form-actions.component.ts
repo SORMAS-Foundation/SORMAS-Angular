@@ -31,8 +31,8 @@ export class FormActionsComponent implements OnInit, OnDestroy {
             .prompt({
               title: this.translateService.instant('actionSureToLeave'),
               message: this.translateService.instant('actionLooseChanges'),
-              buttonDeclineText: this.translateService.instant('actionCancel'),
-              buttonConfirmText: this.translateService.instant('actionIAmSure'),
+              buttonDeclineText: this.translateService.instant('captions.actionCancel'),
+              buttonConfirmText: this.translateService.instant('captions.actionConfirm'),
             })
             .subscribe((result) => {
               if (result) {
@@ -60,8 +60,8 @@ export class FormActionsComponent implements OnInit, OnDestroy {
       .prompt({
         title: this.translateService.instant('actionSureDiscardChanges'),
         message: this.translateService.instant('actionLooseChanges'),
-        buttonDeclineText: this.translateService.instant('actionCancel'),
-        buttonConfirmText: this.translateService.instant('actionIAmSure'),
+        buttonDeclineText: this.translateService.instant('captions.actionCancel'),
+        buttonConfirmText: this.translateService.instant('captions.actionConfirm'),
       })
       .subscribe((result) => {
         if (result) {

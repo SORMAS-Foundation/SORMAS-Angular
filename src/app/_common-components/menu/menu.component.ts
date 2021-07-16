@@ -12,16 +12,16 @@ export interface RouteItem {
 }
 
 export const routesConfig: RouteItem[] = [
-  { link: '', label: 'mainMenuDashboard', selectedLink: 'dashboard' },
-  { link: 'about', label: 'mainMenuAbout', selectedLink: 'about' },
-  { link: 'tasks/list', label: 'mainMenuTasks', selectedLink: 'tasks' },
-  { link: 'cases/list', label: 'mainMenuCases', selectedLink: 'cases' },
-  { link: 'events/list', label: 'mainMenuEvents', selectedLink: 'events' },
-  { link: 'contacts/list', label: 'mainMenuContacts', selectedLink: 'contacts' },
-  { link: 'samples/list', label: 'mainMenuSamples', selectedLink: 'samples' },
+  { link: '', label: 'captions.mainMenuDashboard', selectedLink: 'dashboard' },
+  { link: 'about', label: 'captions.mainMenuAbout', selectedLink: 'about' },
+  { link: 'tasks/list', label: 'captions.mainMenuTasks', selectedLink: 'tasks' },
+  { link: 'cases/list', label: 'captions.mainMenuCases', selectedLink: 'cases' },
+  { link: 'events/list', label: 'captions.mainMenuEvents', selectedLink: 'events' },
+  { link: 'contacts/list', label: 'captions.mainMenuContacts', selectedLink: 'contacts' },
+  { link: 'samples/list', label: 'captions.mainMenuSamples', selectedLink: 'samples' },
   { link: 'user-profile', label: 'mainMenuMyProfile', selectedLink: 'user-profile' },
-  { link: 'persons/list', label: 'mainMenuPersons', selectedLink: 'persons' },
-  { link: 'users/list', label: 'mainMenuUsers', selectedLink: 'users' },
+  { link: 'persons/list', label: 'captions.mainMenuPersons', selectedLink: 'persons' },
+  { link: 'users/list', label: 'captions.mainMenuUsers', selectedLink: 'users' },
 ];
 
 @Component({

@@ -15,12 +15,12 @@ const investigationStatusOptions = pipe.transform(InvestigationStatusOptions);
 export const FORM_DATA_EVENT_EDIT = [
   {
     id: 'event',
-    title: 'Event',
+    title: 'captions.Event',
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'eventStatusVisibleCheckbox',
-        label: 'bulkEventStatus',
+        label: 'captions.bulkEventStatus',
       },
       {
         ...FORM_DATA_RADIO,
@@ -32,7 +32,7 @@ export const FORM_DATA_EVENT_EDIT = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'eventInvestigationStatusVisibleCheckbox',
-        label: 'bulkEventInvestigationStatus',
+        label: 'captions.bulkEventInvestigationStatus',
         newLine: true,
       },
       {

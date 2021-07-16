@@ -2,7 +2,7 @@ import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'Person.uuid',
+    name: 'captions.Person.uuid',
     dataKey: 'uuid',
     isSortable: true,
     format: {
@@ -13,17 +13,17 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'firstName',
+    name: 'captions.firstName',
     dataKey: 'firstName',
     isSortable: true,
   },
   {
-    name: 'lastName',
+    name: 'captions.lastName',
     dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: 'Person.ageAndBirthDate',
+    name: 'captions.Person.ageAndBirthDate',
     dataKey: 'age',
     isSortable: true,
     format: {
@@ -38,17 +38,17 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'sex',
+    name: 'captions.sex',
     dataKey: 'sex',
     isSortable: true,
   },
   {
-    name: 'Person.districtName',
+    name: 'captions.Person.districtName',
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: 'address',
+    name: 'captions.address',
     dataKey: 'city',
     isSortable: true,
     format: {
@@ -58,12 +58,12 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'person.primaryPhone',
+    name: 'captions.Person.phone',
     dataKey: 'phone',
     isSortable: true,
   },
   {
-    name: 'Person.emailAddress',
+    name: 'captions.Person.emailAddress',
     dataKey: 'email',
     isSortable: true,
   },

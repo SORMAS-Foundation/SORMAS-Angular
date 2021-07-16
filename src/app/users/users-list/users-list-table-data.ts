@@ -2,7 +2,7 @@ import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'User.uuid',
+    name: 'captions.User.uuid',
     dataKey: 'uuid',
     isSortable: true,
     format: {
@@ -11,7 +11,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'User.active',
+    name: 'captions.User.active',
     dataKey: 'active',
     isSortable: true,
     iconify: true,
@@ -24,27 +24,27 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'User.userRoles',
+    name: 'captions.User.userRoles',
     dataKey: 'userRoles',
     isSortable: true,
   },
   {
-    name: 'User.userName',
+    name: 'captions.User.userName',
     dataKey: 'userName',
     isSortable: true,
   },
   {
-    name: 'name',
+    name: 'captions.name',
     dataKey: 'name',
     isSortable: true,
   },
   {
-    name: 'User.userEmail',
+    name: 'captions.User.userEmail',
     dataKey: 'email',
     isSortable: true,
   },
   {
-    name: 'User.address',
+    name: 'captions.User.address',
     dataKey: 'address',
     isSortable: true,
     format: {
@@ -54,12 +54,12 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'district',
+    name: 'captions.district',
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: 'User.healthFacility',
+    name: 'captions.User.healthFacility',
     dataKey: 'healthFacility.caption',
     isSortable: true,
   },

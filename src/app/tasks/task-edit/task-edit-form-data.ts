@@ -16,17 +16,17 @@ const taskStatusOptions = pipe.transform(TaskStatusOptions);
 export const FORM_DATA_TASK_EDIT = [
   {
     id: 'task',
-    title: 'Task',
+    title: 'captions.Task',
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'changeAssigneeVisibleCheckbox',
-        label: 'bulkTaskAssignee',
+        label: 'captions.bulkTaskAssignee',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'taskAssignee',
-        label: 'Task.taskAssignee',
+        label: 'captions.Task.taskAssignee',
         options: [
           {
             key: 'default',
@@ -39,7 +39,7 @@ export const FORM_DATA_TASK_EDIT = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'taskPriorityVisibleCheckbox',
-        label: 'bulkTaskPriority',
+        label: 'captions.bulkTaskPriority',
         newLine: true,
       },
       {
@@ -52,7 +52,7 @@ export const FORM_DATA_TASK_EDIT = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'taskStatusVisibleCheckbox',
-        label: 'bulkTaskStatus',
+        label: 'captions.bulkTaskStatus',
         newLine: true,
       },
       {
