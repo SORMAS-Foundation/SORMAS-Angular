@@ -28,6 +28,7 @@ import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-table',
@@ -78,7 +79,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
     private viewportRuler: ViewportRuler,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -151,6 +153,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }

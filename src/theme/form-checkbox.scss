@@ -35,4 +35,29 @@
       }
     }
   }
+
+  // for checkbox groups
+  .mat-selection-list {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    .single-item {
+      flex: 1 1 30%;
+      &:hover,
+      &:focus {
+        background: transparent;
+      }
+      .mat-list-item-content {
+        flex-direction: row !important;
+        .mat-list-text {
+          padding-left: 7px !important;
+          font-weight: 500;
+        }
+        .mat-pseudo-checkbox {
+          border-color: map-get($sormas-primary, 700);
+        }
+      }
+    }
+  }
 }
