@@ -41,7 +41,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Event.addNewEvent'),
+        title: this.translateService.instant('eventNewEvent'),
         component: EventAddComponent,
       },
     });

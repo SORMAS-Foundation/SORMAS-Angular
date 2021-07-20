@@ -108,6 +108,10 @@ legend {
   display: none;
 }
 
+.sub-field {
+  margin-left: 20px;
+}
+
 @media (min-width: map-get($grid-breakpoints, xl)) {
   legend {
     flex: 0 0 248px;
