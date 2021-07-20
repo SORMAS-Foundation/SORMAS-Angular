@@ -1,3 +1,5 @@
+import {EventSourceType} from '../_models/eventSourceType';
+
 export enum CaseClassification {
   NOT_CLASSIFIED = 'Not yet classified',
   SUSPECT = 'Suspect case',
@@ -109,6 +111,14 @@ export enum VaccinationSource {
   UNKNOWN = 'Unknown',
 }
 
+export enum InformationSource {
+  NOTAPPLICABL = 'Not applicable',
+  MEDIANEWS = 'Media/News',
+  HOTLINEPERSON = 'Hotline/Person',
+  MATHEMATICALMODEL = 'Mathematical model',
+  INSTITUTIONALPARTNER = 'Institutional partner',
+}
+
 export enum VaccineName {
   COMIRNATY = 'Pfizer-BioNTech COVID-19 vaccine',
   MRNA_1273 = 'Moderna COVID-19 vaccine',
@@ -131,19 +141,48 @@ export enum VaccineManufacturer {
   OTHER = 'Other',
 }
 
+export enum InstitutionalPartnerType {
+  HEALTHINSURANCE = 'Health insurance',
+  TERRITORIALCOMMUNITIES = 'Territorial communities',
+  NATIONALEDUCATION = 'National education',
+  HEALTHESTABLISHMENTS = 'Health establishments',
+  MEDICOSOCIALESTABLISHMENTS = 'Medico-social establishments',
+  OTHER = 'Other',
+}
+
+export enum TypeOfPlace {
+  FACILITY = 'Facility',
+  FESTIVITIES = 'Festivities',
+  HOME = 'Home',
+  MEANSOFTRANSPORT = 'Means of transport',
+  PUBLICPLACE = 'Public place',
+  SCATTERED = 'Scattered',
+  UNKNOWN = 'Unknown',
+  OTHER = 'Other',
+}
+
 export enum YesNoUnknown {
   YES = 'Yes',
   NO = 'No',
   UNKNOWN = 'Unknown',
 }
 
+export enum MeansOfTransport {
+  LOCALPUBLICTRANSPORT = 'Local public transport',
+  BUS = 'Bus',
+  FERRY = 'Ship/Ferry',
+  PLANE = 'Plane',
+  TRAIN = 'Train',
+  OTHER = 'Other',
+}
+
 export enum DiseaseTransmissionMode {
-  HUMANTOHUMAN = 'HUMAN_TO_HUMAN',
-  ANIMAL = 'ANIMAL',
-  ENVIRONMENT = 'ENVIRONMENT',
-  FOOD = 'FOOD',
-  VECTORBORNE = 'VECTOR_BORNE',
-  UNKNOWN = 'UNKNOWN',
+  HUMANTOHUMAN = 'Primarily via human to human',
+  ANIMAL = 'Primarily via animal',
+  ENVIRONMENT = 'Primarily via environment',
+  FOOD = 'Primarily via food',
+  VECTORBORNE = 'Primarily vector-borne',
+  UNKNOWN = 'Unknown',
 }
 
 export enum SamplePurpose {
@@ -442,6 +481,13 @@ export enum ContactCategory {
   MEDIUMRISKMED = 'Medium risk medical contact',
   LOWRISK = 'Low risk contact',
   NORISK = 'No risk contact',
+}
+
+export enum RiskLevel {
+  LOW = 'Low risk',
+  MODERATE = 'Modate risk',
+  HIGH = 'High risk',
+  UNKNOWN = 'Unknown',
 }
 
 export enum ContactRelation {

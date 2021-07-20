@@ -22,7 +22,7 @@
           <mat-divider *ngIf="field.active && field.newLine"></mat-divider>
           <div
             *ngIf="field.active"
-            [ngClass]="['dynamic-form-input', field.className || '', field.active ? '' : 'hidden']"
+            [ngClass]="['dynamic-form-input', field.className || '', field.active ? '' : 'hidden', field.subField ? 'sub-field' : '']"
           >
             <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
           </div>
