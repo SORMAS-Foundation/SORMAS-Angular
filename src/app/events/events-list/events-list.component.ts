@@ -11,6 +11,7 @@ import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-mod
 import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-events-list',
@@ -28,7 +29,8 @@ export class EventsListComponent implements OnInit, OnDestroy {
   constructor(
     public eventService: EventService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +48,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }

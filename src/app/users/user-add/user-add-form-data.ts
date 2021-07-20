@@ -213,7 +213,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'active',
-        label: 'User.active',
+        label: 'captions.User.active',
         newLine: true,
       },
       {

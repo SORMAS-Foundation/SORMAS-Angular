@@ -23,7 +23,7 @@ export type CaseLink = {
 };
 
 // modals
-export const ADD_MODAL_MAX_WIDTH = '1200';
+export const ADD_MODAL_MAX_WIDTH = '1200px';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
 

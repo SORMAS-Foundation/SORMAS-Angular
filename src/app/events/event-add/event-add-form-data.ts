@@ -4,21 +4,33 @@ import {
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
-  EventStatusOptions,
   EventManagementStatusOptions,
   YesNoUnknown,
   FORM_DATA_CHECKBOX,
   InvestigationStatusOptions,
+  EventStatusOptionsEdit,
+  DiseaseTransmissionMode,
+  InformationSource,
+  InstitutionalPartnerType,
+  TypeOfPlace,
+  MeansOfTransport,
+  RiskLevel,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
-const eventStatusOptions = pipe.transform(EventStatusOptions);
+const diseaseTransmissionMode = pipe.transform(DiseaseTransmissionMode);
+const eventStatusOptionsEdit = pipe.transform(EventStatusOptionsEdit);
 const eventManagementStatusOptions = pipe.transform(EventManagementStatusOptions);
 const yesNoUnknown = pipe.transform(YesNoUnknown);
 const investigationStatusOptions = pipe.transform(InvestigationStatusOptions);
+const informationSourceOptions = pipe.transform(InformationSource);
+const institutionalPartnerTypeOptions = pipe.transform(InstitutionalPartnerType);
+const typeOfPlaceOptions = pipe.transform(TypeOfPlace);
+const meansOfTransportOptions = pipe.transform(MeansOfTransport);
+const riskLevelOptions = pipe.transform(RiskLevel);
 
 export const FORM_DATA_EVENT_ADD = [
   {
@@ -62,19 +74,14 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'eventStatus',
         label: 'captions.EventAction.eventStatus',
         validation: ['required'],
-        options: eventStatusOptions,
+        options: eventStatusOptionsEdit,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'riskLevel',
         label: 'captions.Event.riskLevel',
         newLine: true,
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        options: riskLevelOptions,
       },
       {
         ...FORM_DATA_RADIO,
@@ -102,9 +109,15 @@ export const FORM_DATA_EVENT_ADD = [
     title: 'captions.date',
     fields: [
       {
+        ...FORM_DATA_CHECKBOX,
+        key: 'multiDayEvent',
+        label: 'captions.Event.multiDayEvent',
+      },
+      {
         ...FORM_DATA_DATE,
         key: 'startDate',
         label: 'captions.Event.startDate',
+        newLine: true,
       },
       {
         ...FORM_DATA_DATE,
@@ -113,20 +126,15 @@ export const FORM_DATA_EVENT_ADD = [
       },
       {
         ...FORM_DATA_DATE,
-        key: 'clusterEvolutionDate',
+        key: 'evolutionDate',
         label: 'captions.Event.evolutionDate',
         newLine: true,
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'natureClusterEvolution',
+        ...FORM_DATA_INPUT,
+        key: 'evolutionComment',
         label: 'captions.Event.evolutionComment',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        dependingOn: 'evolutionDate',
       },
     ],
   },
@@ -138,39 +146,16 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_SELECT,
         key: 'primaryModeTransmission',
         label: 'captions.Event.diseaseTransmissionMode',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        dependingOn: 'eventStatus',
+        dependingOnValues: ['CLUSTER'],
+        options: diseaseTransmissionMode,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'humanTransmission',
         label: 'captions.Event.humanTransmissionMode',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'parentalTransmission',
-        label: 'captions.Event.parenteralTransmissionMode',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'medicallyAssociatedTransmission',
-        label: 'captions.Event.medicallyAssociatedTransmissionMode',
+        dependingOn: 'primaryModeTransmission',
+        dependingOnValues: ['HUMANTOHUMAN'],
         options: [
           {
             key: 'default',
@@ -183,12 +168,16 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'nosocomial',
         label: 'captions.Event.nosocomial',
         options: yesNoUnknown,
+        newLine: true,
+        dependingOn: 'eventStatus',
+        dependingOnValues: ['CLUSTER'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'infectionPath',
-        newLine: true,
         label: 'captions.Event.infectionPathCertainty',
+        dependingOn: 'nosocomial',
+        dependingOnValues: ['YES'],
         options: [
           {
             key: 'default',
@@ -201,30 +190,112 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'epidemiologicalEvidence',
         label: 'captions.Event.epidemiologicalEvidence',
         newLine: true,
+        dependingOn: 'primaryModeTransmission',
+        dependingOnValues: ['HUMANTOHUMAN'],
         options: yesNoUnknown,
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'study',
         label: 'enum.EpidemiologicalEvidenceDetail.STUDY',
+        dependingOn: 'epidemiologicalEvidence',
+        dependingOnValues: ['YES'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'caseControlStudy',
+        label: 'EpidemiologicalEvidenceDetail.CASE_CONTROL_STUDY',
+        dependingOn: 'study',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'cohortStudy',
+        label: 'EpidemiologicalEvidenceDetail.COHORT_STUDY',
+        dependingOn: 'study',
+        className: 'sub-field',
         newLine: true,
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'explorativeSurvey',
         label: 'enum.EpidemiologicalEvidenceDetail.EXPLORATIVE_SURVEY_OF_AFFECTED',
+        dependingOn: 'epidemiologicalEvidence',
+        dependingOnValues: ['YES'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'contactSickPerson',
+        label: 'EpidemiologicalEvidenceDetail.CONTACT_TO_SICK_PERSON',
+        dependingOn: 'explorativeSurvey',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'contactContaminatedMaterial',
+        label: 'EpidemiologicalEvidenceDetail.CONTACT_TO_CONTAMINATED_MATERIAL',
+        dependingOn: 'explorativeSurvey',
+        className: 'sub-field',
         newLine: true,
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'ascertainedData',
         label: 'enum.EpidemiologicalEvidenceDetail.DESCRIPTIVE_ANALYSIS_OF_ASCERTAINED_DATA',
+        dependingOn: 'epidemiologicalEvidence',
+        dependingOnValues: ['YES'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'temporalOccurence',
+        label: 'EpidemiologicalEvidenceDetail.TEMPORAL_OCCURENCE',
+        dependingOn: 'ascertainedData',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'spatialOccurence',
+        label: 'EpidemiologicalEvidenceDetail.SPACIAL_OCCURENCE',
+        dependingOn: 'ascertainedData',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'directOccurence',
+        label: 'EpidemiologicalEvidenceDetail.DIRECT_OCCURENCE',
+        dependingOn: 'ascertainedData',
+        className: 'sub-field',
         newLine: true,
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'suspicion',
         label: 'enum.EpidemiologicalEvidenceDetail.SUSPICION',
+        dependingOn: 'epidemiologicalEvidence',
+        dependingOnValues: ['YES'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'expressedByDiseased',
+        label: 'EpidemiologicalEvidenceDetail.EXPRESSED_BY_DISEASED',
+        dependingOn: 'suspicion',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'expressedByHealthDepartment',
+        label: 'EpidemiologicalEvidenceDetail.EXPRESSED_BY_HEALTH_DEPARTMENT',
+        dependingOn: 'suspicion',
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -232,6 +303,64 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'laboratoryDiagnosticEvidence',
         label: 'captions.Event.laboratoryDiagnosticEvidence',
         options: yesNoUnknown,
+        dependingOn: 'primaryModeTransmission',
+        dependingOnValues: ['HUMANTOHUMAN'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'verificationAtLeastTwoInfected',
+        label: 'LaboratoryDiagnosticEvidenceDetail.VERIFICATION_OF_AT_LEAST_TWO_INFECTED',
+        dependingOn: 'laboratoryDiagnosticEvidence',
+        dependingOnValues: ['YES'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'compliantPathogen',
+        label: 'LaboratoryDiagnosticEvidenceDetail.COMPLIANT_PATHOGEN_FINE_TYPING',
+        dependingOn: 'verificationAtLeastTwoInfected',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'verificationMaterials',
+        label: 'LaboratoryDiagnosticEvidenceDetail.VERIFICATION_ON_MATERIALS',
+        dependingOn: 'laboratoryDiagnosticEvidence',
+        dependingOnValues: ['YES'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'impressionTest',
+        label: 'LaboratoryDiagnosticEvidenceDetail.IMPRESSION_TEST',
+        dependingOn: 'verificationMaterials',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'waterSample',
+        label: 'LaboratoryDiagnosticEvidenceDetail.WATER_SAMPLE',
+        dependingOn: 'verificationMaterials',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'other',
+        label: 'LaboratoryDiagnosticEvidenceDetail.OTHER',
+        dependingOn: 'verificationMaterials',
+        className: 'sub-field',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'pathogenFineTyping',
+        label: 'LaboratoryDiagnosticEvidenceDetail.PATHOGEN_FINE_TYPING_COMPLIANT_WITH_CASE',
+        dependingOn: 'verificationMaterials',
+        className: 'sub-field',
         newLine: true,
       },
     ],
@@ -252,11 +381,15 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.Event.eventInvestigationStartDate',
         newLine: true,
         key: 'startInvestigationDate',
+        dependingOn: 'investigationStatus',
+        dependingOnValues: ['ONGOING', 'DONE', 'DISCARDED'],
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_DATE,
         label: 'captions.Event.eventInvestigationEndDate',
         key: 'endInvestigationDate',
+        dependingOn: 'investigationStatus',
+        dependingOnValues: ['ONGOING', 'DONE', 'DISCARDED'],
       },
     ],
   },
@@ -268,48 +401,67 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_SELECT,
         key: 'sourceType',
         label: 'captions.Event.srcType',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'sourceInstitutionalPartnerType',
-        label: 'captions.Event.srcInstitutionalPartnerType',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        options: informationSourceOptions,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'sourceFirstName',
-        label: 'captions.Event.srcFirstName',
+        key: 'srcMediaWebsite',
+        label: 'Event.srcMediaWebsite',
+        dependingOn: 'sourceType',
+        dependingOnValues: ['MEDIANEWS'],
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'sourceLastName',
-        label: 'captions.Event.srcLastName',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'sourceTelephoneNumber',
-        label: 'captions.Event.srcTelNo',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'sourceEmail',
-        label: 'captions.Event.srcEmail',
+        key: 'srcMediaName',
+        label: 'Event.srcMediaName',
+        dependingOn: 'sourceType',
+        dependingOnValues: ['MEDIANEWS'],
       },
       {
         ...FORM_DATA_TEXTAREA,
-        key: 'sourceDescription',
-        label: 'captions.Event.srcMediaDetails',
+        key: 'srcMediaDetails',
+        label: 'Event.srcMediaDetails',
+        dependingOn: 'sourceType',
+        dependingOnValues: ['MEDIANEWS'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'srcInstitutionalPartnerType',
+        label: 'captions.Event.srcInstitutionalPartnerType',
+        dependingOn: 'sourceType',
+        dependingOnValues: ['INSTITUTIONALPARTNER'],
+        options: institutionalPartnerTypeOptions,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'srcFirstName',
+        label: 'captions.Event.srcFirstName',
+        dependingOn: 'sourceType',
+        dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'srcLastName',
+        label: 'captions.Event.srcLastName',
+        dependingOn: 'sourceType',
+        dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'srcTelNo',
+        label: 'captions.Event.srcTelNo',
+        dependingOn: 'sourceType',
+        dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'srcEmail',
+        label: 'captions.Event.srcEmail',
+        dependingOn: 'sourceType',
+        dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
       },
     ],
   },
@@ -329,17 +481,15 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'typeOfPlace',
         newLine: true,
         label: 'captions.ActivityAsCase.typeOfPlace',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        options: typeOfPlaceOptions,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'facilityCategory',
         label: 'captions.Facility.typeGroup',
+        newLine: true,
+        dependingOn: 'typeOfPlace',
+        dependingOnValues: ['FACILITY'],
         options: [
           {
             key: 'default',
@@ -351,6 +501,8 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_SELECT,
         key: 'facilityType',
         label: 'captions.facilityType',
+        dependingOn: 'typeOfPlace',
+        dependingOnValues: ['FACILITY'],
         options: [
           {
             key: 'default',
@@ -360,14 +512,47 @@ export const FORM_DATA_EVENT_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'Facility',
+        key: 'facility',
         label: 'captions.facility',
+        dependingOn: 'typeOfPlace',
+        dependingOnValues: ['FACILITY'],
         options: [
           {
             key: 'default',
             value: 'default',
           },
         ],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'typeOfPlaceText',
+        label: 'Event.typeOfPlaceText',
+        dependingOn: 'typeOfPlace',
+        dependingOnValues: ['OTHER'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'meansOfTransport',
+        label: 'TypeOfPlace.MEANS_OF_TRANSPORT',
+        dependingOn: 'typeOfPlace',
+        dependingOnValues: ['MEANSOFTRANSPORT'],
+        options: meansOfTransportOptions,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'connectionNumber',
+        label: 'Event.connectionNumber',
+        dependingOn: 'typeOfPlace',
+        dependingOnValues: ['MEANSOFTRANSPORT'],
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'travelDate',
+        label: 'Event.travelDate',
+        dependingOn: 'typeOfPlace',
+        dependingOnValues: ['MEANSOFTRANSPORT'],
       },
     ],
   },
@@ -390,6 +575,7 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_SELECT,
         label: 'captions.region',
         key: 'region',
+        newLine: true,
         options: [
           {
             key: 'default',
@@ -426,13 +612,18 @@ export const FORM_DATA_EVENT_ADD = [
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'city',
+        key: 'houseNumber',
         label: 'captions.Facility.city',
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'houseNumber',
+        key: 'additionalInformation',
         label: 'captions.Facility.houseNumber',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'city',
+        label: 'Facility.city',
       },
       {
         ...FORM_DATA_INPUT,
@@ -449,11 +640,6 @@ export const FORM_DATA_EVENT_ADD = [
             value: 'default',
           },
         ],
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'additionalInformation',
-        label: 'captions.Facility.additionalInformation',
       },
     ],
   },

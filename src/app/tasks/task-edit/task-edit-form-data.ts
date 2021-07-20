@@ -17,6 +17,7 @@ export const FORM_DATA_TASK_EDIT = [
   {
     id: 'task',
     title: 'captions.Task',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,

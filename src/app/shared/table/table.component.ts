@@ -28,6 +28,7 @@ import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-table',
@@ -78,7 +79,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
     private viewportRuler: ViewportRuler,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -138,19 +140,20 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return columns;
   }
 
-  openBulkEdit(editComponent: any): void {
+  openBulkEdit(bulkEditOption: any): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       minWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Edit cases'),
-        component: editComponent,
+        title: this.translateService.instant(bulkEditOption.componentTitle),
+        component: bulkEditOption.component,
         editResources: this.getSelectedItems(),
       },
     });
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }
@@ -239,8 +242,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       case ACTIONS_BULK_EDIT.EDIT:
         // @ts-ignore
         // eslint-disable-next-line no-case-declarations
-        const editComponent = this.bulkEditOptions.find((item) => item.action === event).component;
-        this.openBulkEdit(editComponent);
+        const bulkEditOption = this.bulkEditOptions.find((item) => item.action === event);
+        this.openBulkEdit(bulkEditOption);
         break;
       default:
         // eslint-disable-next-line no-console
