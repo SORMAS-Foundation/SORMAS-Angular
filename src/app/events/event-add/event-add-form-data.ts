@@ -209,7 +209,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'caseControlStudy',
         label: 'EpidemiologicalEvidenceDetail.CASE_CONTROL_STUDY',
         dependingOn: 'study',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -217,7 +217,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'cohortStudy',
         label: 'EpidemiologicalEvidenceDetail.COHORT_STUDY',
         dependingOn: 'study',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -233,7 +233,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'contactSickPerson',
         label: 'EpidemiologicalEvidenceDetail.CONTACT_TO_SICK_PERSON',
         dependingOn: 'explorativeSurvey',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -241,7 +241,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'contactContaminatedMaterial',
         label: 'EpidemiologicalEvidenceDetail.CONTACT_TO_CONTAMINATED_MATERIAL',
         dependingOn: 'explorativeSurvey',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -257,7 +257,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'temporalOccurence',
         label: 'EpidemiologicalEvidenceDetail.TEMPORAL_OCCURENCE',
         dependingOn: 'ascertainedData',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -265,7 +265,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'spatialOccurence',
         label: 'EpidemiologicalEvidenceDetail.SPACIAL_OCCURENCE',
         dependingOn: 'ascertainedData',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -273,7 +273,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'directOccurence',
         label: 'EpidemiologicalEvidenceDetail.DIRECT_OCCURENCE',
         dependingOn: 'ascertainedData',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -289,7 +289,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'expressedByDiseased',
         label: 'EpidemiologicalEvidenceDetail.EXPRESSED_BY_DISEASED',
         dependingOn: 'suspicion',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -297,7 +297,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'expressedByHealthDepartment',
         label: 'EpidemiologicalEvidenceDetail.EXPRESSED_BY_HEALTH_DEPARTMENT',
         dependingOn: 'suspicion',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -322,7 +322,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'compliantPathogen',
         label: 'LaboratoryDiagnosticEvidenceDetail.COMPLIANT_PATHOGEN_FINE_TYPING',
         dependingOn: 'verificationAtLeastTwoInfected',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -338,7 +338,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'impressionTest',
         label: 'LaboratoryDiagnosticEvidenceDetail.IMPRESSION_TEST',
         dependingOn: 'verificationMaterials',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -346,7 +346,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'waterSample',
         label: 'LaboratoryDiagnosticEvidenceDetail.WATER_SAMPLE',
         dependingOn: 'verificationMaterials',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -354,7 +354,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'other',
         label: 'LaboratoryDiagnosticEvidenceDetail.OTHER',
         dependingOn: 'verificationMaterials',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
       {
@@ -362,7 +362,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'pathogenFineTyping',
         label: 'LaboratoryDiagnosticEvidenceDetail.PATHOGEN_FINE_TYPING_COMPLIANT_WITH_CASE',
         dependingOn: 'verificationMaterials',
-        subField: true,
+        className: 'sub-field',
         newLine: true,
       },
     ],

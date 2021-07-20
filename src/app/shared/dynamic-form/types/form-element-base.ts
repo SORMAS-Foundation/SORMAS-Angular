@@ -15,7 +15,6 @@ export class FormElementBase<T> {
   className?: string;
   options: { key: string; value: string }[]; // the options of the field, if it is a dropdown or radio buttons
   active: boolean;
-  subField?: boolean; // true if the field is a subField and needs to have a margin left
   dependingOn?: string; // the key of the field that the current field is depending on in order to be visible
   dependingOnValues?: any[]; // the value of the field that the current field is depending on in order to be visible
   widget?: any;
@@ -37,7 +36,6 @@ export class FormElementBase<T> {
       className?: string;
       options?: { key: string; value: string }[];
       active?: boolean;
-      subField?: boolean;
       dependingOn?: string;
       dependingOnValues?: any[];
       widget?: any;
@@ -58,7 +56,6 @@ export class FormElementBase<T> {
     this.className = options.className;
     this.options = options.options || [];
     this.active = options.active ?? true;
-    this.subField = options.subField ?? false;
     this.dependingOn = options.dependingOn;
     this.dependingOnValues = options.dependingOnValues;
     this.widget = options.widget;
