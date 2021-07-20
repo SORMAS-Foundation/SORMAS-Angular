@@ -1,6 +1,7 @@
 @use '/src/variables.scss' as *;
 
 .actions {
+  display: flex;
   padding: 24px;
 
   & > * {

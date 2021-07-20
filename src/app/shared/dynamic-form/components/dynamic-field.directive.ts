@@ -20,12 +20,14 @@ import { FormNullComponent } from './form-null/form-null.component';
 import { FormNumberComponent } from './form-number/form-number.component';
 import { FormWidgetComponent } from './form-widget/form-widget.component';
 import { FormDatetimeComponent } from './form-datetime/form-datetime.component';
+import { FormMultiselectComponent } from './form-multiselect/form-multiselect.component';
 
 const components: FormFields = {
   input: FormInputComponent,
   checkbox: FormCheckboxComponent,
   radio: FormRadioComponent,
   dropdown: FormSelectComponent,
+  multidropdown: FormMultiselectComponent,
   date: FormDateComponent,
   datetime: FormDatetimeComponent,
   textarea: FormTextareaComponent,

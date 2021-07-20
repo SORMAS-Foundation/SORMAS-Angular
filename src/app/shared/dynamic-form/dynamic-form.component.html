@@ -1,10 +1,6 @@
 <section>
-  <header>
-    <app-inpage-nav
-      *ngIf="withAnchor"
-      [pageOffset]="280"
-      [anchors]="getSections()"
-    ></app-inpage-nav>
+  <header *ngIf="withAnchor">
+    <app-inpage-nav [pageOffset]="280" [anchors]="getSections()"></app-inpage-nav>
   </header>
 
   <form [formGroup]="form">

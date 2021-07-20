@@ -6,7 +6,7 @@ import {
   YesNoUnknown,
   TemperatureSource,
 } from '../../../app.constants';
-import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import { FORM_DATA_MULTISELECT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 

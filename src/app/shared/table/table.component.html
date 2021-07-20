@@ -1,4 +1,10 @@
-<div *ngIf="viewOptions || bulkEditOptions" class="actions">
+<div *ngIf="viewOptions || bulkEditOptions || allowToggleColumns" class="actions">
+  <app-column-picker
+    *ngIf="allowToggleColumns"
+    [columns]="tableColumns"
+    [selection]="getColumnsKeyByName(displayedColumns)"
+    (selectionChange)="updateTableColumns($event)"
+  ></app-column-picker>
   <app-dropdown-menu *ngIf="viewOptions" buttonText="View options">
     <app-action-menu [config]="viewOptions" (action)="onActionSelected($event)"></app-action-menu>
   </app-dropdown-menu>

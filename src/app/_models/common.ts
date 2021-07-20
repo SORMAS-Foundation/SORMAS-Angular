@@ -50,6 +50,7 @@ export interface TableColumn {
   align?: string;
   className?: string;
   format?: TableDataFormat;
+  essential?: boolean;
 }
 
 // scrolling
