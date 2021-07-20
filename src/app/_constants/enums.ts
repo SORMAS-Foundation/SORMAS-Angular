@@ -1,5 +1,3 @@
-import {EventSourceType} from '../_models/eventSourceType';
-
 export enum CaseClassification {
   NOT_CLASSIFIED = 'Not yet classified',
   SUSPECT = 'Suspect case',
