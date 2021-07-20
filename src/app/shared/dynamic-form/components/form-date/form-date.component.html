@@ -18,7 +18,7 @@
       [matDatepicker]="picker"
       (dateChange)="onChange()"
       [formControlName]="config.key"
-      [placeholder]="config.placeholder || ''"
+      [placeholder]="config.placeholder || '' | translate"
       [matTooltip]="config.label || '' | translate"
     />
     <mat-hint *ngIf="config.hint">{{ config.hint | translate }}</mat-hint>

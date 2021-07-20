@@ -24,11 +24,11 @@
         {{ case.disease }}
       </li>
       <li *ngIf="case.uuid">
-        <strong i18n>ID: </strong>
+        <strong i18n>{{ 'captions.CaseData.uuid' | translate }}: </strong>
         {{ case.uuid }}
       </li>
       <li *ngIf="case.reportingUser?.caption">
-        <strong i18n>Reporting user: </strong>
+        <strong i18n>{{ 'captions.reportingUser' | translate }}: </strong>
         {{ case.reportingUser.caption }}
       </li>
     </ul>

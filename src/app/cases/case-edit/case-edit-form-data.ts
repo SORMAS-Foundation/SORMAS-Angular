@@ -23,18 +23,18 @@ const optionsPlaceOfStay = pipe.transform(PlaceOfStay);
 export const FORM_DATA_CASE_EDIT = [
   {
     id: 'disease',
-    title: 'disease',
+    title: 'captions.disease',
     required: true,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'diseaseVisibleCheckbox',
-        label: 'bulkDisease',
+        label: 'captions.bulkDisease',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
-        label: 'disease',
+        label: 'captions.disease',
         validation: ['required'],
         options: optionsDisease,
         dependingOn: 'diseaseVisibleCheckbox',
@@ -44,12 +44,12 @@ export const FORM_DATA_CASE_EDIT = [
   },
   {
     id: 'classification',
-    title: 'Contact.caze.caseClassification',
+    title: 'captions.Contact.caze.caseClassification',
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'classificationVisibleCheckbox',
-        label: 'bulkCaseClassification',
+        label: 'captions.bulkCaseClassification',
       },
       {
         ...FORM_DATA_RADIO,
@@ -61,12 +61,12 @@ export const FORM_DATA_CASE_EDIT = [
   },
   {
     id: 'investigation',
-    title: 'UserRightGroup.CASE_INVESTIGATION',
+    title: 'captions.CaseData.investigationStatus',
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'investigationVisibleCheckbox',
-        label: 'bulkInvestigationStatus',
+        label: 'captions.bulkInvestigationStatus',
       },
       {
         ...FORM_DATA_RADIO,
@@ -78,12 +78,12 @@ export const FORM_DATA_CASE_EDIT = [
   },
   {
     id: 'outcome',
-    title: 'StatisticsCaseAttribute.OUTCOME',
+    title: 'captions.CaseData.outcome',
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'outcomeVisibleCheckbox',
-        label: 'bulkCaseOutcome',
+        label: 'captions.bulkCaseOutcome',
       },
       {
         ...FORM_DATA_RADIO,
@@ -96,18 +96,18 @@ export const FORM_DATA_CASE_EDIT = [
   },
   {
     id: 'location',
-    title: 'Location',
+    title: 'captions.Location',
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'locationVisibleCheckbox',
-        label: 'bulkFacility',
+        label: 'captions.bulkFacility',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'region',
         newLine: true,
-        label: 'CaseData.responsibleRegion',
+        label: 'captions.CaseData.responsibleRegion',
         validation: ['required'],
         options: [
           {
@@ -121,7 +121,7 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'district',
-        label: 'CaseData.responsibleDistrict',
+        label: 'captions.CaseData.responsibleDistrict',
         validation: ['required'],
         options: [
           {
@@ -135,7 +135,7 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'community',
-        label: 'CaseData.responsibleCommunity',
+        label: 'captions.CaseData.responsibleCommunity',
         options: [
           {
             key: 'default',
@@ -155,8 +155,8 @@ export const FORM_DATA_CASE_EDIT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'healthFacility.uuid',
-        label: 'CaseData.facility.region',
+        key: 'facilityTypeGroup',
+        label: 'captions.facilityTypeGroup',
         validation: ['required'],
         options: [
           {
@@ -172,7 +172,7 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: 'CaseData.facilityType',
+        label: 'captions.CaseData.facilityType',
         validation: ['required'],
         options: [
           {
@@ -188,7 +188,7 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'facility',
-        label: 'facility',
+        label: 'captions.facility',
         validation: ['required'],
         options: [
           {
@@ -204,7 +204,7 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails',
-        label: 'CaseData.healthFacilityDetails',
+        label: 'captions.CaseData.healthFacilityDetails',
         newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStaty',
@@ -213,7 +213,7 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_INPUT,
         key: 'placeOfStatyDetails',
-        label: 'CaseData.noneHealthFacilityDetails',
+        label: 'captions.CaseData.noneHealthFacilityDetails',
         newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStaty',

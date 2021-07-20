@@ -2,7 +2,7 @@ import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'ClinicalVisit.visitDateTime',
+    name: 'captions.ClinicalVisit.visitDateTime',
     dataKey: 'visitDateTime',
     isSortable: true,
     className: 'visit-date',
@@ -14,7 +14,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'ClinicalVisit.temperature',
+    name: 'captions.ClinicalVisit.temperature',
     dataKey: 'temperature',
     isSortable: true,
     align: 'right',
@@ -29,7 +29,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'ClinicalVisit.bloodPressure',
+    name: 'captions.ClinicalVisit.bloodPressure',
     dataKey: 'bloodPressure',
     isSortable: true,
     align: 'right',
@@ -40,7 +40,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'ClinicalVisit.heartRate',
+    name: 'captions.ClinicalVisit.heartRate',
     dataKey: 'heartRate',
     isSortable: true,
     align: 'right',
@@ -51,13 +51,13 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'ClinicalVisit.visitRemarks',
+    name: 'captions.ClinicalVisit.visitRemarks',
     dataKey: 'visitRemarks',
     isSortable: true,
     className: 'visit-remarks',
   },
   {
-    name: 'ClinicalVisit.visitingPerson',
+    name: 'captions.ClinicalVisit.visitingPerson',
     dataKey: 'visitingPerson',
     isSortable: true,
     className: 'visit-clinician',

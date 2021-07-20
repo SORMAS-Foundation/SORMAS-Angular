@@ -39,7 +39,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       width: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('headingCreateNewUser'),
+        title: this.translateService.instant('strings.headingCreateNewUser'),
         component: UserAddComponent,
       },
     });

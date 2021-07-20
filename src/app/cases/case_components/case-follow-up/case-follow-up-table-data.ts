@@ -2,7 +2,7 @@ import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'Visit.visitDateTime',
+    name: 'captions.Visit.visitDateTime',
     dataKey: 'visitDateTime',
     isSortable: true,
     className: 'visit-date',
@@ -14,7 +14,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'Visit.visitStatus',
+    name: 'captions.Visit.visitStatus',
     dataKey: 'visitStatus',
     isSortable: true,
     className: 'visit-status',
@@ -25,13 +25,13 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'Visit.visitRemarks',
+    name: 'captions.Visit.visitRemarks',
     dataKey: 'visitRemarks',
     isSortable: true,
     className: 'visit-remarks',
   },
   {
-    name: 'Symptoms.symptomatic',
+    name: 'captions.Symptoms.symptomatic',
     dataKey: 'symptomatic',
     isSortable: true,
     align: 'center',
@@ -43,7 +43,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'Symptoms.temperature',
+    name: 'captions.Symptoms.temperature',
     dataKey: 'temperature',
     isSortable: true,
     className: 'visit-temperature',
@@ -59,7 +59,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'Visit.origin',
+    name: 'captions.Visit.origin',
     dataKey: 'visitUser.caption',
     className: 'visit-person',
   },

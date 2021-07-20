@@ -42,7 +42,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Task.addNewTask'),
+        title: this.translateService.instant('strings.headingCreateNewTask'),
         component: TaskAddComponent,
       },
     });

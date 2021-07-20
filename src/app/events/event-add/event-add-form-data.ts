@@ -35,17 +35,17 @@ const riskLevelOptions = pipe.transform(RiskLevel);
 export const FORM_DATA_EVENT_ADD = [
   {
     id: 'eventData',
-    title: 'headingEventData',
+    title: 'strings.headingEventData',
     fields: [
       {
         ...FORM_DATA_DATE,
-        label: 'Event.reportDateTime',
+        label: 'captions.Event.reportDateTime',
         key: 'reportDate',
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'internalId',
-        label: 'Event.internalId',
+        key: 'internalToken',
+        label: 'captions.Event.internalToken',
       },
     ],
   },
@@ -56,37 +56,37 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'externalId',
-        label: 'Event.externalId',
+        label: 'captions.Event.externalId',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'externalToken',
-        label: 'Event.externalToken',
+        label: 'captions.Event.externalToken',
       },
     ],
   },
   {
     id: 'event',
-    title: 'entityEvent',
+    title: 'strings.entityEvent',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'eventStatus',
-        label: 'EventAction.eventStatus',
+        label: 'captions.EventAction.eventStatus',
         validation: ['required'],
         options: eventStatusOptionsEdit,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'riskLevel',
-        label: 'Event.riskLevel',
+        label: 'captions.Event.riskLevel',
         newLine: true,
         options: riskLevelOptions,
       },
       {
         ...FORM_DATA_RADIO,
         key: 'eventManagementStatus',
-        label: 'Event.eventManagementStatus',
+        label: 'captions.Event.eventManagementStatus',
         newLine: true,
         validation: ['required'],
         options: eventManagementStatusOptions,
@@ -95,58 +95,57 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_INPUT,
         newLine: true,
         key: 'title',
-        label: 'Event.eventTitle',
+        label: 'captions.Event.eventTitle',
       },
       {
         ...FORM_DATA_TEXTAREA,
         key: 'description',
-        label: 'description',
+        label: 'captions.description',
       },
     ],
   },
   {
     id: 'date',
-    title: 'date',
+    title: 'captions.date',
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'multiDayEvent',
-        label: 'Event.multiDayEvent',
+        label: 'captions.Event.multiDayEvent',
       },
       {
         ...FORM_DATA_DATE,
         key: 'startDate',
-        label: 'Event.startDate',
+        label: 'captions.Event.startDate',
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'endDate',
-        dependingOn: 'multiDayEvent',
-        label: 'Event.endDate',
+        label: 'captions.Event.endDate',
       },
       {
         ...FORM_DATA_DATE,
         key: 'evolutionDate',
-        label: 'Event.evolutionDate',
+        label: 'captions.Event.evolutionDate',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'evolutionComment',
-        label: 'Event.evolutionComment',
+        label: 'captions.Event.evolutionComment',
         dependingOn: 'evolutionDate',
       },
     ],
   },
   {
     id: 'transmission',
-    title: 'Transmission',
+    title: 'headingTransmission',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'primaryModeTransmission',
-        label: 'Event.diseaseTransmissionMode',
+        label: 'captions.Event.diseaseTransmissionMode',
         dependingOn: 'eventStatus',
         dependingOnValues: ['CLUSTER'],
         options: diseaseTransmissionMode,
@@ -154,8 +153,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'humanTransmission',
-        newLine: true,
-        label: 'Event.humanTransmissionMode',
+        label: 'captions.Event.humanTransmissionMode',
         dependingOn: 'primaryModeTransmission',
         dependingOnValues: ['HUMANTOHUMAN'],
         options: [
@@ -168,7 +166,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_RADIO,
         key: 'nosocomial',
-        label: 'Event.nosocomial',
+        label: 'captions.Event.nosocomial',
         options: yesNoUnknown,
         newLine: true,
         dependingOn: 'eventStatus',
@@ -177,7 +175,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'infectionPath',
-        label: 'Event.infectionPathCertainty',
+        label: 'captions.Event.infectionPathCertainty',
         dependingOn: 'nosocomial',
         dependingOnValues: ['YES'],
         options: [
@@ -190,7 +188,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_RADIO,
         key: 'epidemiologicalEvidence',
-        label: 'Event.epidemiologicalEvidence',
+        label: 'captions.Event.epidemiologicalEvidence',
         newLine: true,
         dependingOn: 'primaryModeTransmission',
         dependingOnValues: ['HUMANTOHUMAN'],
@@ -199,7 +197,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'study',
-        label: 'EpidemiologicalEvidenceDetail.STUDY',
+        label: 'enum.EpidemiologicalEvidenceDetail.STUDY',
         dependingOn: 'epidemiologicalEvidence',
         dependingOnValues: ['YES'],
         newLine: true,
@@ -223,7 +221,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'explorativeSurvey',
-        label: 'EpidemiologicalEvidenceDetail.EXPLORATIVE_SURVEY_OF_AFFECTED',
+        label: 'enum.EpidemiologicalEvidenceDetail.EXPLORATIVE_SURVEY_OF_AFFECTED',
         dependingOn: 'epidemiologicalEvidence',
         dependingOnValues: ['YES'],
         newLine: true,
@@ -247,7 +245,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'ascertainedData',
-        label: 'EpidemiologicalEvidenceDetail.DESCRIPTIVE_ANALYSIS_OF_ASCERTAINED_DATA',
+        label: 'enum.EpidemiologicalEvidenceDetail.DESCRIPTIVE_ANALYSIS_OF_ASCERTAINED_DATA',
         dependingOn: 'epidemiologicalEvidence',
         dependingOnValues: ['YES'],
         newLine: true,
@@ -279,7 +277,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'suspicion',
-        label: 'EpidemiologicalEvidenceDetail.SUSPICION',
+        label: 'enum.EpidemiologicalEvidenceDetail.SUSPICION',
         dependingOn: 'epidemiologicalEvidence',
         dependingOnValues: ['YES'],
         newLine: true,
@@ -303,7 +301,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_RADIO,
         key: 'laboratoryDiagnosticEvidence',
-        label: 'Event.laboratoryDiagnosticEvidence',
+        label: 'captions.Event.laboratoryDiagnosticEvidence',
         options: yesNoUnknown,
         dependingOn: 'primaryModeTransmission',
         dependingOnValues: ['HUMANTOHUMAN'],
@@ -369,18 +367,18 @@ export const FORM_DATA_EVENT_ADD = [
   },
   {
     id: 'investigation',
-    title: 'Investigation',
+    title: 'headingInvestigation',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'investigationStatus',
-        label: 'Event.eventInvestigationStatus',
+        label: 'captions.Event.eventInvestigationStatus',
         options: investigationStatusOptions,
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
-        label: 'Event.eventInvestigationStartDate',
+        label: 'captions.Event.eventInvestigationStartDate',
         newLine: true,
         key: 'startInvestigationDate',
         dependingOn: 'investigationStatus',
@@ -388,7 +386,7 @@ export const FORM_DATA_EVENT_ADD = [
       },
       {
         ...FORM_DATA_DATE,
-        label: 'Event.eventInvestigationEndDate',
+        label: 'captions.Event.eventInvestigationEndDate',
         key: 'endInvestigationDate',
         dependingOn: 'investigationStatus',
         dependingOnValues: ['ONGOING', 'DONE', 'DISCARDED'],
@@ -397,12 +395,12 @@ export const FORM_DATA_EVENT_ADD = [
   },
   {
     id: 'sourceInformation',
-    title: 'Event.informationSource',
+    title: 'captions.Event.informationSource',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'sourceType',
-        label: 'Event.srcType',
+        label: 'captions.Event.srcType',
         options: informationSourceOptions,
       },
       {
@@ -430,8 +428,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'srcInstitutionalPartnerType',
-        newLine: true,
-        label: 'Event.srcInstitutionalPartnerType',
+        label: 'captions.Event.srcInstitutionalPartnerType',
         dependingOn: 'sourceType',
         dependingOnValues: ['INSTITUTIONALPARTNER'],
         options: institutionalPartnerTypeOptions,
@@ -439,7 +436,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'srcFirstName',
-        label: 'Event.srcFirstName',
+        label: 'captions.Event.srcFirstName',
         dependingOn: 'sourceType',
         dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
         newLine: true,
@@ -447,14 +444,14 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'srcLastName',
-        label: 'Event.srcLastName',
+        label: 'captions.Event.srcLastName',
         dependingOn: 'sourceType',
         dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'srcTelNo',
-        label: 'Event.srcTelNo',
+        label: 'captions.Event.srcTelNo',
         dependingOn: 'sourceType',
         dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
         newLine: true,
@@ -462,7 +459,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'srcEmail',
-        label: 'Event.srcEmail',
+        label: 'captions.Event.srcEmail',
         dependingOn: 'sourceType',
         dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
       },
@@ -470,12 +467,12 @@ export const FORM_DATA_EVENT_ADD = [
   },
   {
     id: 'location',
-    title: 'Location',
+    title: 'captions.Location',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'transregionalOutbrake',
-        label: 'Event.transregionalOutbreak',
+        label: 'captions.Event.transregionalOutbreak',
         validation: ['required'],
         options: yesNoUnknown,
       },
@@ -483,13 +480,13 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_SELECT,
         key: 'typeOfPlace',
         newLine: true,
-        label: 'ActivityAsCase.typeOfPlace',
+        label: 'captions.ActivityAsCase.typeOfPlace',
         options: typeOfPlaceOptions,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'facilityCategory',
-        label: 'Facility.typeGroup',
+        label: 'captions.Facility.typeGroup',
         newLine: true,
         dependingOn: 'typeOfPlace',
         dependingOnValues: ['FACILITY'],
@@ -503,7 +500,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: 'facilityType',
+        label: 'captions.facilityType',
         dependingOn: 'typeOfPlace',
         dependingOnValues: ['FACILITY'],
         options: [
@@ -516,7 +513,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'facility',
-        label: 'facility',
+        label: 'captions.facility',
         dependingOn: 'typeOfPlace',
         dependingOnValues: ['FACILITY'],
         options: [
@@ -561,11 +558,11 @@ export const FORM_DATA_EVENT_ADD = [
   },
   {
     id: 'address',
-    title: 'address',
+    title: 'captions.address',
     fields: [
       {
         ...FORM_DATA_SELECT,
-        label: 'country',
+        label: 'captions.country',
         key: 'country',
         options: [
           {
@@ -576,7 +573,7 @@ export const FORM_DATA_EVENT_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        label: 'region',
+        label: 'captions.region',
         key: 'region',
         newLine: true,
         options: [
@@ -588,7 +585,7 @@ export const FORM_DATA_EVENT_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        label: 'district',
+        label: 'captions.district',
         key: 'district',
         options: [
           {
@@ -599,7 +596,7 @@ export const FORM_DATA_EVENT_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        label: 'community',
+        label: 'captions.community',
         key: 'community',
         options: [
           {
@@ -611,17 +608,17 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'street',
-        label: 'Facility.street',
+        label: 'captions.Facility.street',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'houseNumber',
-        label: 'Facility.houseNumber',
+        label: 'captions.Facility.city',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'additionalInformation',
-        label: 'Facility.additionalInformation',
+        label: 'captions.Facility.houseNumber',
       },
       {
         ...FORM_DATA_INPUT,
@@ -631,11 +628,11 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'postalCode',
-        label: 'Facility.postalCode',
+        label: 'captions.Facility.postalCode',
       },
       {
         ...FORM_DATA_SELECT,
-        label: 'Facility.areaType',
+        label: 'captions.Facility.areaType',
         key: 'areaType',
         options: [
           {
@@ -648,37 +645,37 @@ export const FORM_DATA_EVENT_ADD = [
   },
   {
     id: 'gps',
-    title: 'Gps',
+    title: 'headingGps',
     fields: [
       {
         ...FORM_DATA_INPUT,
-        label: 'Location.latitude',
+        label: 'captions.Location.latitude',
         key: 'latitude',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'longitude',
-        label: 'Location.longitude',
+        label: 'captions.Location.longitude',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'accuracy',
-        label: 'Location.latLonAccuracy',
+        label: 'captions.Location.latLonAccuracy',
       },
     ],
   },
   {
     id: 'contact',
-    title: 'Contact',
+    title: 'captions.Contact',
     fields: [
       {
         ...FORM_DATA_INPUT,
-        label: 'Location.details',
-        key: 'Community contact person',
+        label: 'captions.Location.details',
+        key: '', // to-do
       },
       {
         ...FORM_DATA_SELECT,
-        label: 'Event.responsibleUser',
+        label: 'captions.Event.responsibleUser',
         key: 'responsibleUser',
         options: [
           {
