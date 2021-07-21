@@ -205,7 +205,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'caseControlStudy',
-        label: 'EpidemiologicalEvidenceDetail.CASE_CONTROL_STUDY',
+        label: 'enum.EpidemiologicalEvidenceDetail.CASE_CONTROL_STUDY',
         dependingOn: 'study',
         className: 'sub-field',
         newLine: true,
@@ -213,7 +213,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'cohortStudy',
-        label: 'EpidemiologicalEvidenceDetail.COHORT_STUDY',
+        label: 'enum.EpidemiologicalEvidenceDetail.COHORT_STUDY',
         dependingOn: 'study',
         className: 'sub-field',
         newLine: true,
@@ -229,7 +229,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'contactSickPerson',
-        label: 'EpidemiologicalEvidenceDetail.CONTACT_TO_SICK_PERSON',
+        label: 'enum.EpidemiologicalEvidenceDetail.CONTACT_TO_SICK_PERSON',
         dependingOn: 'explorativeSurvey',
         className: 'sub-field',
         newLine: true,
@@ -237,7 +237,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'contactContaminatedMaterial',
-        label: 'EpidemiologicalEvidenceDetail.CONTACT_TO_CONTAMINATED_MATERIAL',
+        label: 'enum.EpidemiologicalEvidenceDetail.CONTACT_TO_CONTAMINATED_MATERIAL',
         dependingOn: 'explorativeSurvey',
         className: 'sub-field',
         newLine: true,
@@ -253,7 +253,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'temporalOccurence',
-        label: 'EpidemiologicalEvidenceDetail.TEMPORAL_OCCURENCE',
+        label: 'enum.EpidemiologicalEvidenceDetail.TEMPORAL_OCCURENCE',
         dependingOn: 'ascertainedData',
         className: 'sub-field',
         newLine: true,
@@ -261,7 +261,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'spatialOccurence',
-        label: 'EpidemiologicalEvidenceDetail.SPACIAL_OCCURENCE',
+        label: 'enum.EpidemiologicalEvidenceDetail.SPACIAL_OCCURENCE',
         dependingOn: 'ascertainedData',
         className: 'sub-field',
         newLine: true,
@@ -269,7 +269,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'directOccurence',
-        label: 'EpidemiologicalEvidenceDetail.DIRECT_OCCURENCE',
+        label: 'enum.EpidemiologicalEvidenceDetail.DIRECT_OCCURENCE',
         dependingOn: 'ascertainedData',
         className: 'sub-field',
         newLine: true,
@@ -285,7 +285,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'expressedByDiseased',
-        label: 'EpidemiologicalEvidenceDetail.EXPRESSED_BY_DISEASED',
+        label: 'enum.EpidemiologicalEvidenceDetail.EXPRESSED_BY_DISEASED',
         dependingOn: 'suspicion',
         className: 'sub-field',
         newLine: true,
@@ -293,7 +293,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'expressedByHealthDepartment',
-        label: 'EpidemiologicalEvidenceDetail.EXPRESSED_BY_HEALTH_DEPARTMENT',
+        label: 'enum.EpidemiologicalEvidenceDetail.EXPRESSED_BY_HEALTH_DEPARTMENT',
         dependingOn: 'suspicion',
         className: 'sub-field',
         newLine: true,
