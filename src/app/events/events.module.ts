@@ -9,6 +9,11 @@ import { MaterialModule } from '../material.module';
 import { EventFiltersComponent } from './event-filters/event-filters.component';
 import { EventAddComponent } from './event-add/event-add.component';
 import { EventEditComponent } from './event-edit/event-edit.component';
+import { EventDataComponent } from './event-components/event-data/event-data.component';
+import { EventParticipantsComponent } from './event-components/event-participants/event-participants.component';
+import { EventParticipantsProfileComponent } from './event-components/event-participants-profile/event-participants-profile.component';
+import { EventActionsComponent } from './event-components/event-actions/event-actions.component';
+import { EventComponent } from './event/event.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +22,11 @@ import { EventEditComponent } from './event-edit/event-edit.component';
     EventFiltersComponent,
     EventAddComponent,
     EventEditComponent,
+    EventDataComponent,
+    EventParticipantsComponent,
+    EventParticipantsProfileComponent,
+    EventActionsComponent,
+    EventComponent,
   ],
   imports: [CommonModule, EventsRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

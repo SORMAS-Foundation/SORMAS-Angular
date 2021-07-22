@@ -6,7 +6,9 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'uuid',
     isSortable: true,
     format: {
-      type: TableDataFormatOptions.DISPLAY,
+      type: TableDataFormatOptions.LINK,
+      pattern: '/events/event/$param1/details',
+      params: ['uuid'],
       truncate: 6,
     },
   },
