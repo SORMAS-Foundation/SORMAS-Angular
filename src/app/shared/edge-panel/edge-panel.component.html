@@ -17,6 +17,7 @@
     [cardStatusKey]="config.cardStatusKey"
     [cardAppearance]="config.appearance"
     [cardEdit]="true"
-    [cardCollapse]="true"
+    [cardCollapse]="!!cardCollapse"
+    [cardStatus]="config.cardStatus || ''"
   ></app-card-list>
 </app-collapsable-box>

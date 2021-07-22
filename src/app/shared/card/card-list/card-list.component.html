@@ -2,7 +2,7 @@
   <app-card
     *ngFor="let card of data | slice: 0:limit"
     [id]="card.uuid"
-    [title]="card[cardTitleKey]"
+    [title]="card[cardTitleKey] | toShortId: cardTitleKey"
     [titlePosition]="cardTitlePosition"
     [width]="cardWidth"
     [collapse]="cardCollapse"

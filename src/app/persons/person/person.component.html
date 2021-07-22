@@ -15,7 +15,32 @@
         [formElements]="myFormElements"
         [resourceService]="personService"
       ></app-dynamic-form>
-      <div aside>sidebar</div>
+    <div aside>
+      
+      <app-edge-panel
+        type="CASE"
+        [resourceService]="caseService"
+        [scopeId]="person.uuid"
+        filterCriteriaEntity="person"
+        [cardCollapse]="false"
+        status="unclassified"
+      ></app-edge-panel>
+      <app-edge-panel
+        type="CONTACT"
+        [resourceService]="contactService"
+        [scopeId]="person.uuid"
+        filterCriteriaEntity="person"
+        [cardCollapse]="false"
+        status="unclassified"
+      ></app-edge-panel>
+      <app-edge-panel
+        type="PERSON_EVENT"
+        [resourceService]="eventService"
+        [scopeId]="person.uuid"
+        filterCriteriaEntity="person"
+        [cardCollapse]="false"
+      ></app-edge-panel>
+    </div>
     </app-sidebar>
   </div>
 </section>

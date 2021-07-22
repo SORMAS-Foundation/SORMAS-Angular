@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { PersonDto } from '../../_models/models';
 import { NotificationService } from '../../_services/notification.service';
 import { PersonService } from '../../_services/api/person.service';
@@ -8,6 +9,9 @@ import { FORM_DATA_PERSON } from './person-form-data';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { SendResourceService } from '../../_services/send-resource.service';
 import { SentResourceTypes } from '../../app.constants';
+import { EventService } from '../../_services/api/event.service';
+import { CaseService } from '../../_services/api/case.service';
+import { ContactService } from '../../_services/api/contact.service';
 
 @Component({
   selector: 'app-person',
@@ -19,14 +23,17 @@ export class PersonComponent implements OnInit {
   personId: string;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_PERSON;
-
+  subscriptions: Subscription[] = [];
   constructor(
     public personService: PersonService,
+    public eventService: EventService,
+    public caseService: CaseService,
+    public contactService: ContactService,
     private activeRoute: ActivatedRoute,
     private formElementControlService: FormElementControlService,
     private notificationService: NotificationService,
-    private sendResourceService: SendResourceService
-  ) {}
+    private sendResourceService: SendResourceService,
+  ) { }
 
   ngOnInit(): void {
     const routeParams = this.activeRoute.snapshot.params;
@@ -41,6 +48,7 @@ export class PersonComponent implements OnInit {
         setTimeout(() => {
           this.sendResourceService.setResource(this.person, SentResourceTypes.PERSON_DATA);
         });
+
       },
       error: (err: any) => {
         this.notificationService.error(err);

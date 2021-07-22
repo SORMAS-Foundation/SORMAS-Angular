@@ -10,16 +10,19 @@
       type="TASK"
       [resourceService]="taskService"
       [scopeId]="case.uuid"
+      [cardCollapse]="true"
     ></app-edge-panel>
     <app-edge-panel
       type="SAMPLE"
       [resourceService]="sampleService"
       [scopeId]="case.uuid"
+      [cardCollapse]="true"
     ></app-edge-panel>
     <app-edge-panel
       type="EVENT"
       [resourceService]="eventService"
       [scopeId]="case.uuid"
+      [cardCollapse]="true"
     ></app-edge-panel>
   </div>
 </app-sidebar>
