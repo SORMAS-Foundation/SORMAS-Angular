@@ -12,7 +12,7 @@ import { FormElementBase } from '../dynamic-form/types/form-element-base';
   styleUrls: ['./column-picker.component.scss'],
 })
 export class ColumnPickerComponent implements OnInit, OnDestroy {
-  @Input() columns: TableColumn[];
+  @Input() columns: TableColumn[] = [];
   @Input() selection: string[];
 
   @Output() selectionChange: EventEmitter<any[]> = new EventEmitter();
