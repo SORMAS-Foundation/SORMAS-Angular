@@ -27,7 +27,7 @@
           <input
             matInput
             formControlName="searchTerm"
-            [placeholder]="config.placeholder || ''"
+            [placeholder]="config.placeholder || '' | translate"
             appDebounce
             (debounce)="filterOptions()"
           />
@@ -45,7 +45,7 @@
     <mat-icon matSuffix class="material-icons-round icon-arrow">{{
       multiselect.panelOpen ? 'arrow_drop_up' : 'arrow_drop_down'
     }}</mat-icon>
-    <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
+    <mat-hint *ngIf="config.hint">{{ config.hint | translate }}</mat-hint>
   </mat-form-field>
   <div class="errorMessage" color="warn" *ngIf="!isValid">
     {{ config.validationMessage || '' | translate }}

@@ -5,12 +5,12 @@
     [selection]="getColumnsKeyByName(displayedColumns)"
     (selectionChange)="updateTableColumns($event)"
   ></app-column-picker>
-  <app-dropdown-menu *ngIf="viewOptions" buttonText="View options">
+  <app-dropdown-menu *ngIf="viewOptions" [buttonText]="'actionViewOptions' | translate">
     <app-action-menu [config]="viewOptions" (action)="onActionSelected($event)"></app-action-menu>
   </app-dropdown-menu>
   <app-dropdown-menu
     *ngIf="bulkEditOptions"
-    buttonText="Enter bulk edit mode"
+    [buttonText]="'captions.bulkActions' | translate"
     [disabled]="selection.isEmpty()"
   >
     <app-action-menu

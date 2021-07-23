@@ -21,8 +21,8 @@ export class ColumnPickerComponent implements OnInit, OnDestroy {
   config: FormElementBase<string> = {
     ...FORM_DATA_MULTISELECT,
     key: 'columns',
-    label: 'Toggle columns',
-    placeholder: 'Search columns by name',
+    label: 'actionToggleColumns',
+    placeholder: 'promptSearchColumns',
     options: [],
   };
   subscriptions: Subscription[] = [];
