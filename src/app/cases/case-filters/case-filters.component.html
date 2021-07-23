@@ -1,5 +1,5 @@
 <div class="filters">
-  <h2 class="filters-header">{{ 'headingFilters' | translate }}</h2>
+  <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
   <form [formGroup]="filtersForm" class="filters-form">
     <mat-form-field
       id="nameUuidEpidNumberLike"
@@ -13,18 +13,18 @@
         type="text"
         matInput
         appDebounce
-        placeholder="{{ 'promptCasesSearchField' | translate }}"
+        placeholder="{{ 'strings.promptCasesSearchField' | translate }}"
         formControlName="nameUuidEpidNumberLike"
         (debounce)="onFormChange()"
       />
     </mat-form-field>
-    <app-collapsable-box boxTitle="{{ 'entityCases' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'strings.entityCases' | translate }}">
       <mat-radio-group name="cases" formControlName="cases" (change)="onFormChange()">
         <mat-radio-button value="active" color="primary">
-          {{ 'caseActiveCases' | translate }}
+          {{ 'captions.caseActiveCases' | translate }}
         </mat-radio-button>
         <mat-radio-button value="archived" color="primary">
-          {{ 'caseArchivedCases' | translate }}
+          {{ 'captions.caseArchivedCases' | translate }}
         </mat-radio-button>
         <mat-radio-button
           class="option-radio"
@@ -32,23 +32,23 @@
           color="primary"
           (change)="onFormChange()"
         >
-          {{ 'caseAllCases' | translate }}
+          {{ 'captions.caseAllCases' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'CaseData.caseOrigin' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'captions.CaseData.caseOrigin' | translate }}">
       <mat-radio-group name="caseOrigin" formControlName="caseOrigin" (change)="onFormChange()">
         <mat-radio-button value="IN_COUNTRY" color="primary">
-          {{ 'CaseOrigin.IN_COUNTRY' | translate }}
+          {{ 'enum.CaseOrigin.IN_COUNTRY' | translate }}
         </mat-radio-button>
         <mat-radio-button value="POINT_OF_ENTRY" color="primary">
-          {{ 'CaseOrigin.POINT_OF_ENTRY' | translate }}
+          {{ 'enum.CaseOrigin.POINT_OF_ENTRY' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'caseEvents' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'captions.caseEvents' | translate }}">
       <mat-form-field id="eventLike" appearance="outline" floatLabel="always" class="search-field">
         <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
         <input
@@ -56,25 +56,29 @@
           type="text"
           matInput
           appDebounce
-          placeholder="{{ 'promptCaseOrContactEventSearchField' | translate }}"
+          placeholder="{{ 'strings.promptCaseOrContactEventSearchField' | translate }}"
           formControlName="eventLike"
           (debounce)="onFormChange()"
         />
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'caseData.medicalAspects' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'headingMedicalAspects' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="caseOutcome"
-          placeholder="{{ 'CaseData.outcome' | translate }}"
+          placeholder="{{ 'captions.CaseData.outcome' | translate }}"
         >
-          <mat-option value="NO_OUTCOME"> {{ 'CaseOutcome.NO_OUTCOME' | translate }} </mat-option>
-          <mat-option value="DECEASED"> {{ 'CaseOutcome.DECEASED' | translate }} </mat-option>
-          <mat-option value="RECOVERED"> {{ 'CaseOutcome.RECOVERED' | translate }} </mat-option>
-          <mat-option value="UNKNOWN"> {{ 'CaseOutcome.UNKNOWN' | translate }} </mat-option>
+          <mat-option value="NO_OUTCOME">
+            {{ 'enum.CaseOutcome.NO_OUTCOME' | translate }}
+          </mat-option>
+          <mat-option value="DECEASED"> {{ 'enum.CaseOutcome.DECEASED' | translate }} </mat-option>
+          <mat-option value="RECOVERED">
+            {{ 'enum.CaseOutcome.RECOVERED' | translate }}
+          </mat-option>
+          <mat-option value="UNKNOWN"> {{ 'enum.CaseOutcome.UNKNOWN' | translate }} </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="collapsable-field">
@@ -82,7 +86,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="disease"
-          placeholder="{{ 'disease' | translate }}"
+          placeholder="{{ 'captions.disease' | translate }}"
         >
           <mat-option *ngFor="let opt of allDisease" [value]="opt.value">
             {{ opt.key }}
@@ -94,27 +98,29 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="caseClassification"
-          placeholder="{{ 'CaseClassification' | translate }}"
+          placeholder="{{ 'captions.CaseData.caseClassification' | translate }}"
         >
           <mat-option value="NOT_CLASSIFIED">
-            {{ 'CaseClassification.Short.NOT_CLASSIFIED' | translate }}
+            {{ 'enum.CaseClassification.Short.NOT_CLASSIFIED' | translate }}
           </mat-option>
           <mat-option value="SUSPECT">
-            {{ 'CaseClassification.Short.SUSPECT' | translate }}
+            {{ 'enum.CaseClassification.Short.SUSPECT' | translate }}
           </mat-option>
           <mat-option value="PROBABLE">
-            {{ 'CaseClassification.Short.PROBABLE' | translate }}
+            {{ 'enum.CaseClassification.Short.PROBABLE' | translate }}
           </mat-option>
           <mat-option value="CONFIRMED">
-            {{ 'CaseClassification.Short.CONFIRMED' | translate }}
+            {{ 'enum.CaseClassification.Short.CONFIRMED' | translate }}
           </mat-option>
           <mat-option value="CONFIRMED_NO_SYMPTOMS">
-            {{ 'CaseClassification.CONFIRMED_NO_SYMPTOMS' | translate }}
+            {{ 'enum.CaseClassification.CONFIRMED_NO_SYMPTOMS' | translate }}
           </mat-option>
           <mat-option value="CONFIRMED_UNKNOWN_SYMPTOMS">
-            {{ 'CaseClassification.CONFIRMED_UNKNOWN_SYMPTOMS' | translate }}
+            {{ 'enum.CaseClassification.CONFIRMED_UNKNOWN_SYMPTOMS' | translate }}
           </mat-option>
-          <mat-option value="NO_CASE"> {{ 'CaseClassification.NO_CASE' | translate }} </mat-option>
+          <mat-option value="NO_CASE">
+            {{ 'enum.CaseClassification.NO_CASE' | translate }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="collapsable-field">
@@ -122,30 +128,38 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="followUpStatus"
-          placeholder="{{ 'headingFollowUpStatus' | translate }}"
+          placeholder="{{ 'captions.CaseData.followUpStatus' | translate }}"
         >
-          <mat-option value="FOLLOW_UP"> {{ 'FollowUpStatus.FOLLOW_UP' | translate }} </mat-option>
-          <mat-option value="COMPLETED"> {{ 'FollowUpStatus.COMPLETED' | translate }} </mat-option>
-          <mat-option value="CANCELED"> {{ 'FollowUpStatus.CANCELED' | translate }} </mat-option>
-          <mat-option value="LOST"> {{ 'FollowUpStatus.LOST' | translate }} </mat-option>
+          <mat-option value="FOLLOW_UP">
+            {{ 'enum.FollowUpStatus.FOLLOW_UP' | translate }}
+          </mat-option>
+          <mat-option value="COMPLETED">
+            {{ 'enum.FollowUpStatus.COMPLETED' | translate }}
+          </mat-option>
+          <mat-option value="CANCELED">
+            {{ 'enum.FollowUpStatus.CANCELED' | translate }}
+          </mat-option>
+          <mat-option value="LOST"> {{ 'enum.FollowUpStatus.LOST' | translate }} </mat-option>
           <mat-option value="NO_FOLLOW_UP">
-            {{ 'FollowUpStatus.NO_FOLLOW_UP' | translate }}
+            {{ 'enum.FollowUpStatus.NO_FOLLOW_UP' | translate }}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="Admin aspects">
+    <app-collapsable-box boxTitle="{{ 'headingAdminAspect' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           (selectionChange)="onFormChange()"
           formControlName="presentCondition"
-          placeholder="{{ 'PresentCondition' | translate }}"
+          placeholder="{{ 'captions.Person.presentCondition' | translate }}"
         >
-          <mat-option value="ALIVE"> {{ 'PresentCondition.ALIVE' | translate }} </mat-option>
-          <mat-option value="DEAD"> {{ 'PresentCondition.DEAD' | translate }} </mat-option>
-          <mat-option value="BURIED"> {{ 'PresentCondition.BURIED' | translate }} </mat-option>
-          <mat-option value="UNKNOWN"> {{ 'PresentCondition.UNKNOWN' | translate }} </mat-option>
+          <mat-option value="ALIVE"> {{ 'enum.PresentCondition.ALIVE' | translate }} </mat-option>
+          <mat-option value="DEAD"> {{ 'enum.PresentCondition.DEAD' | translate }} </mat-option>
+          <mat-option value="BURIED"> {{ 'enum.PresentCondition.BURIED' | translate }} </mat-option>
+          <mat-option value="UNKNOWN">
+            {{ 'enum.PresentCondition.UNKNOWN' | translate }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="collapsable-field">
@@ -153,7 +167,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="responsibleRegion"
-          placeholder="{{ 'CaseData.responsibleRegion' | translate }}"
+          placeholder="{{ 'captions.CaseData.responsibleRegion' | translate }}"
         >
           <mat-option value="defaultRegion"> {{ 'Default region' | translate }} </mat-option>
         </mat-select>
@@ -163,7 +177,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="responsibleDistrict"
-          placeholder="{{ 'CaseData.responsibleDistrict' | translate }}"
+          placeholder="{{ 'captions.CaseData.responsibleDistrict' | translate }}"
         >
           <mat-option value="defaultRegion"> {{ 'defaultDistrict' | translate }} </mat-option>
         </mat-select>
@@ -173,7 +187,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="responsibleCommunity"
-          placeholder="{{ 'CaseData.responsibleCommunity' | translate }}"
+          placeholder="{{ 'captions.CaseData.responsibleCommunity' | translate }}"
         >
           <mat-option value="defaultCommunity"> {{ 'defaultCommunity' | translate }} </mat-option>
         </mat-select>
@@ -183,7 +197,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="responsibleSurveillor"
-          placeholder="{{ 'CaseData.surveillanceOfficer' | translate }}"
+          placeholder="{{ 'captions.CaseData.surveillanceOfficer' | translate }}"
         >
           <mat-option value="defaultUser"> {{ 'Default user' | translate }} </mat-option>
         </mat-select>
@@ -193,7 +207,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="reportedBy"
-          placeholder="{{ 'reportedBy' | translate }}"
+          placeholder="{{ 'strings.reportedBy' | translate }}"
         >
           <mat-option value="defaultUser"> {{ 'Default user' | translate }} </mat-option>
         </mat-select>
@@ -203,20 +217,20 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="reportingUser"
-          placeholder="{{ 'CaseData.reportingUser' | translate }}"
+          placeholder="{{ 'captions.CaseData.reportingUser' | translate }}"
         >
           <mat-option value="defaultUser"> {{ 'Default user' | translate }} </mat-option>
         </mat-select>
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'facility' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'captions.facility' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="facilityCategory"
-          placeholder="{{ 'facilityTypeGroup' | translate }}"
+          placeholder="{{ 'captions.facilityTypeGroup' | translate }}"
         >
           <mat-option value="defaultCategory"> {{ 'Default category' | translate }} </mat-option>
         </mat-select>
@@ -226,7 +240,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="facilityType"
-          placeholder="{{ 'CaseData.facilityType' | translate }}"
+          placeholder="{{ 'captions.CaseData.facilityType' | translate }}"
         >
           <mat-option *ngFor="let opt of allFacilityTypes" [value]="opt.value">
             {{ opt.key }}
@@ -238,22 +252,22 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="facility"
-          placeholder="{{ 'facility' | translate }}"
+          placeholder="{{ 'captions.facility' | translate }}"
         >
           <mat-option value="defaultFacility"> {{ 'Default Facility' | translate }} </mat-option>
         </mat-select>
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'caseData.dateFilter' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'headingDateFilter' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           formControlName="dateFilter"
           (selectionChange)="onFormChange()"
-          placeholder="{{ 'DateFilterOption.DATE' | translate }}"
+          placeholder="{{ 'enum.DateFilterOption.DATE' | translate }}"
         >
-          <mat-option value="byDate"> {{ 'DateFilterOption.DATE' | translate }} </mat-option>
+          <mat-option value="byDate"> {{ 'enum.DateFilterOption.DATE' | translate }} </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field
@@ -271,7 +285,7 @@
           formControlName="newCaseFrom"
           (dateChange)="onFormChange()"
         />
-        <mat-hint>{{ 'promptCasesDateFrom' | translate }}</mat-hint>
+        <mat-hint>{{ 'strings.promptCasesDateFrom' | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="picker1"
@@ -294,7 +308,7 @@
           formControlName="newCaseTo"
           (dateChange)="onFormChange()"
         />
-        <mat-hint>{{ 'promptDateTo' | translate }}</mat-hint>
+        <mat-hint>{{ 'strings.promptDateTo' | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="picker2"
@@ -317,7 +331,7 @@
           formControlName="quarantineEnd"
           (dateChange)="onFormChange()"
         />
-        <mat-hint>{{ 'CaseData.quarantineTo' | translate }}</mat-hint>
+        <mat-hint>{{ 'captions.CaseData.quarantineTo' | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="picker3"
@@ -340,7 +354,7 @@
           formControlName="followUpUntil"
           (dateChange)="onFormChange()"
         />
-        <mat-hint>{{ 'CaseData.followUpUntil' | translate }}</mat-hint>
+        <mat-hint>{{ 'captions.CaseData.followUpUntil' | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="picker4"
@@ -350,13 +364,13 @@
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'caseData.moreFilters' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'headingMoreFilters' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           formControlName="sympromsJournal"
           (selectionChange)="onFormChange()"
-          placeholder="{{ 'CaseData.symptomJournalStatus' | translate }}"
+          placeholder="{{ 'captions.CaseData.symptomJournalStatus' | translate }}"
         >
           <mat-option value="symptoms-journal1"> {{ 'Symptoms journal1' | translate }} </mat-option>
           <mat-option value="symptoms-journal2"> {{ 'Symptoms journal2' | translate }} </mat-option>
@@ -370,23 +384,23 @@
           multiple
           formControlName="moreFilters"
           (selectionChange)="onFormChange()"
-          placeholder="{{ 'caseData.moreFilters' | translate }}"
+          placeholder="{{ 'headingMoreFilters' | translate }}"
           class="multiselect"
         >
           <mat-option value="no-geo-coordinates">
-            {{ 'caseFilterWithoutGeo' | translate }}
+            {{ 'captions.caseFilterWithoutGeo' | translate }}
           </mat-option>
           <mat-option value="no-facility">
-            {{ 'caseFilterPortHealthWithoutFacility' | translate }}
+            {{ 'captions.caseFilterPortHealthWithoutFacility' | translate }}
           </mat-option>
           <mat-option value="management-data">
-            {{ 'caseFilterCasesWithCaseManagementData' | translate }}
+            {{ 'captions.caseFilterCasesWithCaseManagementData' | translate }}
           </mat-option>
           <mat-option value="no-responsible">
-            {{ 'caseFilterWithoutResponsibleOfficer' | translate }}
+            {{ 'captions.caseFilterWithoutResponsibleOfficer' | translate }}
           </mat-option>
           <mat-option value="extended-quarantine">
-            {{ 'caseFilterWithExtendedQuarantine' | translate }}
+            {{ 'captions.caseFilterWithExtendedQuarantine' | translate }}
           </mat-option>
         </mat-select>
       </mat-form-field>

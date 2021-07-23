@@ -35,39 +35,39 @@ const optionsBurialConductor = pipe.transform(BurialConductor);
 export const FORM_DATA_PERSON = [
   {
     id: 'person',
-    title: 'Person',
+    title: 'captions.Person',
     required: true,
     fields: [
       {
         ...FORM_DATA_NULL,
         key: 'uuid',
-        label: 'Person.uuid',
+        label: 'captions.Person.uuid',
         sameLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'firstName',
-        label: 'firstName',
+        label: 'captions.firstName',
         validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'lastName',
-        label: 'lastName',
+        label: 'captions.lastName',
         validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'salutation',
-        label: 'Person.salutation',
+        label: 'captions.Person.salutation',
         options: optionsSalutation,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'year',
-        label: 'Person.birth',
-        placeholder: 'year',
+        label: 'captions.Person.birthdate',
+        placeholder: 'strings.year',
         options: [],
         className: 'size-small',
         newLine: true,
@@ -76,7 +76,7 @@ export const FORM_DATA_PERSON = [
         ...FORM_DATA_SELECT,
         key: 'month',
         label: ' ',
-        placeholder: 'month',
+        placeholder: 'strings.month',
         options: [],
         className: 'size-small',
       },
@@ -84,21 +84,21 @@ export const FORM_DATA_PERSON = [
         ...FORM_DATA_SELECT,
         key: 'day',
         label: ' ',
-        placeholder: 'day',
+        placeholder: 'strings.day',
         options: [],
         className: 'size-small',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'sex',
-        label: 'sex',
+        label: 'captions.sex',
         options: optionsSex,
         className: 'size-small',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.region.uuid',
-        label: 'Person.placeOfBirthRegion',
+        label: 'captions.Person.placeOfBirthRegion',
         options: [
           {
             key: 'default',
@@ -110,7 +110,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_SELECT,
         key: 'address.district.uuid',
-        label: 'Person.placeOfBirthDistrict',
+        label: 'captions.Person.placeOfBirthDistrict',
         options: [
           {
             key: 'default',
@@ -121,7 +121,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_SELECT,
         key: 'address.community.uuid',
-        label: 'Person.placeOfBirthCommunity',
+        label: 'captions.Person.placeOfBirthCommunity',
         options: [
           {
             key: 'default',
@@ -132,7 +132,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_SELECT,
         key: 'placeOfBirthFacilityType',
-        label: 'Facility type',
+        label: 'captions.facilityType',
         options: [
           {
             key: 'default',
@@ -144,7 +144,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_SELECT,
         key: 'placeOfBirthFacility',
-        label: 'Facility',
+        label: 'captions.facility',
         options: [
           {
             key: 'default',
@@ -155,25 +155,25 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_INPUT,
         key: 'gestationAgeAtBirth',
-        label: 'Person.gestationAgeAtBirth',
+        label: 'captions.Person.gestationAgeAtBirth',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'birthWeight',
-        label: 'Person.birthWeight',
+        label: 'captions.Person.birthWeight',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'presentCondition',
-        label: 'PresentCondition',
+        label: 'captions.Person.presentCondition',
         options: optionsPresentCondition,
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'dateOfDeath',
-        label: 'Person.dateOfDeath',
+        label: 'captions.Person.deathDate',
         className: 'size-small',
         dependingOn: 'presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
@@ -182,7 +182,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_SELECT,
         key: 'causeOfDeath',
-        label: 'Person.causeOfDeath',
+        label: 'captions.Person.causeOfDeath',
         options: optionsCauseOfDeath,
         dependingOn: 'presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
@@ -190,14 +190,14 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_INPUT,
         key: 'responsibleDisease',
-        label: 'Person.causeOfDeathDisease',
+        label: 'captions.Person.causeOfDeathDisease',
         dependingOn: 'presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'deathPlaceType',
-        label: 'Person.deathPlaceType',
+        label: 'captions.Person.deathPlaceType',
         options: optionsDeathPlaceType,
         newLine: true,
         dependingOn: 'presentCondition',
@@ -206,13 +206,13 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_INPUT,
         key: 'deathPlaceDescription',
-        label: 'Person.deathPlaceDescription',
+        label: 'captions.Person.deathPlaceDescription',
         dependingOn: 'deathPlaceType',
       },
       {
         ...FORM_DATA_DATE,
         key: 'burialDate',
-        label: 'Person.burialDate',
+        label: 'captions.Person.burialDate',
         className: 'size-small',
         dependingOn: 'presentCondition',
         dependingOnValues: ['BURIED'],
@@ -221,7 +221,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_SELECT,
         key: 'burialConductor',
-        label: 'Person.burialConductor',
+        label: 'captions.Person.burialConductor',
         options: optionsBurialConductor,
         dependingOn: 'presentCondition',
         dependingOnValues: ['BURIED'],
@@ -229,60 +229,60 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_INPUT,
         key: 'burialPlaceDescription',
-        label: 'Person.burialPlaceDescription',
+        label: 'captions.Person.burialPlaceDescription',
         dependingOn: 'presentCondition',
         dependingOnValues: ['BURIED'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'passportNumber',
-        label: 'Person.passportNumber',
+        label: 'captions.Person.passportNumber',
         className: 'size-large',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'healthId',
-        label: 'Person.nationalHealthId',
+        label: 'captions.Person.nationalHealthId',
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'externalId',
-        label: 'Person.externalId',
+        label: 'captions.Person.externalId',
         className: 'size-large',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'externalToken',
-        label: 'Person.externalToken',
+        label: 'captions.Person.externalToken',
         className: 'size-large',
       },
     ],
   },
   {
     id: 'education',
-    title: 'Person.occupationAndEducation',
+    title: 'strings.headingPersonOccupation',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'occupationType',
-        label: 'Person.occupationType',
+        label: 'captions.Person.occupationType',
         options: optionsOccupationType,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'occupationDetails',
-        label: 'Person.occupationDetails',
+        label: 'captions.Person.occupationDetails',
         className: 'size-large',
         dependingOn: 'occupationType',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'staffOfArmedForces',
-        label: 'Person.armedForcesRelationType',
+        label: 'captions.Person.armedForcesRelationType',
         options: optionsArmedForces,
         className: 'size-large',
         newLine: true,
@@ -290,7 +290,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_SELECT,
         key: 'educationType',
-        label: 'Person.educationType',
+        label: 'captions.Person.educationType',
         options: optionsEducation,
         className: 'size-large',
         newLine: true,
@@ -298,7 +298,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_INPUT,
         key: 'educationDetailes',
-        label: 'Person.educationDetails',
+        label: 'captions.Person.educationDetails',
         className: 'size-large',
         dependingOn: 'educationType',
       },
@@ -306,7 +306,7 @@ export const FORM_DATA_PERSON = [
   },
   {
     id: 'address',
-    title: 'Person.addresses',
+    title: 'captions.Person.addresses',
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -321,7 +321,7 @@ export const FORM_DATA_PERSON = [
   },
   {
     id: 'contact',
-    title: 'PersonAssociation.CONTACT',
+    title: 'strings.headingContactInformation',
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -331,24 +331,24 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_INPUT,
         key: 'nickname',
-        label: 'Person.nickname',
+        label: 'captions.Person.nickname',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'mothersName',
-        label: 'Person.mothersName',
+        label: 'captions.Person.mothersName',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'mothersMaidenName',
-        label: 'Person.mothersMaidenName',
+        label: 'captions.Person.mothersMaidenName',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'fathersName',
-        label: 'Person.fathersName',
+        label: 'captions.Person.fathersName',
       },
       {
         ...FORM_DATA_WIDGET,
@@ -359,12 +359,12 @@ export const FORM_DATA_PERSON = [
   },
   {
     id: 'details',
-    title: 'Person.sectionAdditionalDetails',
+    title: 'captions.PersonContactDetail.additionalInformation',
     fields: [
       {
         ...FORM_DATA_TEXTAREA,
         key: 'additionalDetails',
-        label: 'Person.additionalDetails',
+        label: 'captions.Person.additionalDetails',
       },
     ],
   },

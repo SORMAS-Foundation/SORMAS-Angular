@@ -17,7 +17,7 @@ export enum SentResourceTypes {
 export const PAGE_SIZE = 7;
 
 // case-tab-links
-export type CaseLink = {
+export type EntityLink = {
   title: string;
   link: string;
 };

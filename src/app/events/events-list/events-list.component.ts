@@ -8,7 +8,7 @@ import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
 import { defaultColumnDefs } from './events-list-table-data';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
 import { FormActionsService } from '../../_services/form-actions.service';
@@ -23,6 +23,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
+  headerHeight = HEADER_HEIGHT;
 
   private subscription: Subscription[] = [];
 
@@ -41,7 +42,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('eventNewEvent'),
+        title: this.translateService.instant('strings.headingCreateNewEvent'),
         component: EventAddComponent,
       },
     });

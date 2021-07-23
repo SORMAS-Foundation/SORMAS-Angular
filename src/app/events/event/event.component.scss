@@ -1,0 +1,90 @@
+@use '../../../variables.scss' as *;
+
+.page-content {
+  position: relative;
+  z-index: 1;
+  background: map-get($sormas-accent, 50);
+}
+
+header {
+  position: sticky;
+  z-index: 2;
+  top: 68px;
+  display: flex;
+  padding: 48px 24px 0;
+  background: $white;
+
+  .mat-icon-button {
+    margin-right: 16px;
+    margin-left: -8px;
+  }
+
+  .mat-icon {
+    font-size: 32px;
+  }
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 40px;
+}
+
+.person-information {
+  padding: 8px 24px;
+  margin: 0 24px 16px;
+  background-color: map-get($sormas-accent, 50);
+  border-radius: 4px;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    height: 32px;
+    padding: 0 16px;
+    border-right: solid 1px map-get($sormas-accent, 200);
+    margin: 0;
+    line-height: 32px;
+
+    .mat-icon {
+      position: relative;
+      top: 4px;
+      font-size: 18px;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  strong {
+    font-weight: 500;
+  }
+}
+
+.tab-nav-header {
+  position: sticky;
+  z-index: 3;
+  top: 164px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-bottom: solid 2px map-get($sormas-accent, 200);
+  background-color: $white;
+}
+
+.mat-tab-header {
+  min-width: 0;
+  flex: 1;
+}
+
+.tab-nav-header-actions {
+  min-width: 248px;
+  text-align: right;
+  white-space: nowrap;
+}

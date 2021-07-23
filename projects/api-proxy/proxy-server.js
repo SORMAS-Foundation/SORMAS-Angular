@@ -125,6 +125,41 @@ app.use('', (req, res, next) => {
   }
 });
 
+app.use('/sormas-rest/events/XQNW72-DBVFKM-YAX2PS-GZIUSPGQ', (req, res) => {
+  res.status(200).send( {
+        "creationDate": 1619541528333,
+        "changeDate": 1619541528333,
+        "uuid": "SPUVLN-3CCYN3-DDQLSJ-5WKKCICE",
+"pseudonymized": false,
+        "eventStatus": "EVENT",
+"eventInvestigationStatus": "PENDING",
+"eventTitle": "Rallye",
+"eventDesc": "Event generated using DevMode on 2021-04-27",
+"reportDateTime": 1616041080000,
+        "eventLocation": {
+  "creationDate": 1619541528333,
+            "changeDate": 1619541528333,
+            "uuid": "SKBM5N-FBSYCE-64OKQ2-4K2C2NKA",
+  "pseudonymized": false,
+            "region": {
+    "uuid": "RO2GQ5-U4ENKZ-CK63N6-M732SFGE",
+    "caption": "Default Region",
+    "externalId": null
+    },
+  "district": {
+    "uuid": "WD53UF-SVIISC-NRPHVB-Z27NCDCE",
+    "caption": "Default District",
+    "externalId": null
+    }
+  },
+"disease": "CORONAVIRUS",
+"ownershipHandedOver": false,
+        "multiDayEvent": false
+});
+});
+
+
+
 // app.use('/sormas-rest/tasks/indexList', (req, res) => {
 //
 //   let total = 1000;
