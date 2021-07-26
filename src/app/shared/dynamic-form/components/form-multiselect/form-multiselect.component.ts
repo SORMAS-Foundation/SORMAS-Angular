@@ -27,10 +27,9 @@ export class FormMultiselectComponent extends FormBaseComponent implements OnIni
   filterOptions(): void {
     const searchTerm = this.group.get('searchTerm')?.value;
 
-    this.options = searchTerm
-      ? this.config.options.filter((item) => {
-          return item.value.toLowerCase().includes(searchTerm.toLowerCase());
-        })
-      : this.config.options.slice();
+    this.options.forEach((opt) => {
+      // eslint-disable-next-line no-param-reassign
+      opt.hidden = searchTerm ? !opt.value.toLowerCase().includes(searchTerm.toLowerCase()) : false;
+    });
   }
 }

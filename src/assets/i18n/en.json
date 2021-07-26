@@ -5525,7 +5525,7 @@
   "actionSureDiscardChanges": "Are you sure you want to discard your changes?",
   "actionViewOptions": "View options",
   "actionToggleColumns": "Toggle columns",
-  "propmtSearchColumns": "Search columns by name",
+  "promptSearchColumns": "Search columns by name",
   "Contact.pickClosest": "if multiple pick the closest contact proximity",
   "Contact.descriptionShort": "Contact description",
   "User.language": "Language",
