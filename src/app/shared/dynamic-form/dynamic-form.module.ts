@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { DynamicFormComponent } from './dynamic-form.component';
 import { DynamicFieldDirective } from './components/dynamic-field.directive';
 import { FormInputComponent } from './components/form-input/form-input.component';
-import { SharedModule } from '../shared.module';
 import { FormDateComponent } from './components/form-date/form-date.component';
 import { FormCheckboxComponent } from './components/form-checkbox/form-checkbox.component';
 import { FormSelectComponent } from './components/form-select/form-select.component';
@@ -16,9 +16,20 @@ import { FormNumberComponent } from './components/form-number/form-number.compon
 import { FormWidgetComponent } from './components/form-widget/form-widget.component';
 import { FormDatetimeComponent } from './components/form-datetime/form-datetime.component';
 import { DatepickerHeaderTodayComponent } from './components/datepicker-header-today/datepicker-header-today.component';
+import { FormMultiselectComponent } from './components/form-multiselect/form-multiselect.component';
+import { MaterialModule } from '../../material.module';
+import { InpageNavModule } from '../inpage-nav/inpage-nav.module';
+import { DirectivesModule } from '../../_directives/directives.module';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SharedModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    TranslateModule,
+    InpageNavModule,
+    DirectivesModule,
+  ],
   declarations: [
     DynamicFormComponent,
     DynamicFieldDirective,
@@ -33,8 +44,9 @@ import { DatepickerHeaderTodayComponent } from './components/datepicker-header-t
     FormNumberComponent,
     FormWidgetComponent,
     DatepickerHeaderTodayComponent,
+    FormMultiselectComponent,
   ],
-  exports: [DynamicFormComponent],
+  exports: [DynamicFormComponent, FormMultiselectComponent],
   entryComponents: [
     FormInputComponent,
     FormDateComponent,

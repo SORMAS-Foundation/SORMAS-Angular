@@ -6,6 +6,35 @@
   $foreground: map-get($theme, foreground);
 
   :root {
+    .mat-select-panel {
+      padding: 8px 0;
+
+      .mat-option.mat-active,
+      .mat-option.mat-selected,
+      .mat-option:not(.mat-option-disabled):hover,
+      .mat-option:not(.mat-option-disabled):focus {
+        background-color: mat-color(mat-palette($accent, 50));
+        color: currentColor;
+      }
+
+      &.search-multiselect-panel {
+        max-width: 180px;
+        max-height: 304px;
+        margin-top: 42px;
+        margin-left: 24px;
+
+        .mat-select-header {
+          .mat-form-field-wrapper {
+            margin: 0;
+          }
+
+          .mat-form-field-flex {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
     .mat-form-field-type-mat-select.mat-form-field-appearance-outline {
       .mat-select-arrow-wrapper {
         transform: scale(0.8) translateX(6px);
@@ -38,18 +67,6 @@
             color: mat-color(mat-palette($primary, 700));
           }
         }
-      }
-    }
-
-    .mat-select-panel {
-      padding: 8px 0;
-
-      .mat-option.mat-active,
-      .mat-option.mat-selected,
-      .mat-option:not(.mat-option-disabled):hover,
-      .mat-option:not(.mat-option-disabled):focus {
-        background-color: mat-color(mat-palette($accent, 50));
-        color: currentColor;
       }
     }
   }

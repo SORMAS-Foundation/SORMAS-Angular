@@ -17,7 +17,6 @@ import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ViewportRuler } from '@angular/cdk/scrolling';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from '../../_services/api/base.service';
@@ -67,6 +66,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() preSetFilters: Filter[];
   @Input() viewOptions: NavItem[];
   @Input() bulkEditOptions: NavItem[];
+  @Input() allowToggleColumns = false;
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
@@ -78,7 +78,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
-    private viewportRuler: ViewportRuler,
     private dialog: MatDialog,
     private formActionsService: FormActionsService
   ) {}
@@ -127,14 +126,43 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       columns.unshift('select');
     }
 
-    if (!this.saveConfigKey) {
-      return columns;
+    if (this.saveConfigKey) {
+      const config = this.localStorageService.get(this.saveConfigKey);
+
+      if (config) {
+        columns = this.getColumnsNameByKey(config);
+      }
     }
 
-    const config = this.localStorageService.get(this.saveConfigKey);
+    return columns;
+  }
 
-    if (config) {
-      columns = config.filter((col: any) => columns.includes(col));
+  saveColumns(): void {
+    if (this.saveConfigKey) {
+      const columns = this.getColumnsKeyByName(this.displayedColumns);
+      this.localStorageService.set(this.saveConfigKey, columns);
+    }
+  }
+
+  getColumnsKeyByName(names: any[]): any[] {
+    return names.map((item) => {
+      const column = this.tableColumns.find((col) => col.name === item);
+      return column?.dataKey;
+    });
+  }
+
+  getColumnsNameByKey(keys: string[]): string[] {
+    const columns: string[] = [];
+
+    keys.forEach((item: string) => {
+      const column = this.tableColumns.find((col) => col.dataKey === item);
+      if (column) {
+        columns.push(column.name);
+      }
+    });
+
+    if (this.isSelectable) {
+      columns.unshift('select');
     }
 
     return columns;
@@ -213,9 +241,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
-    if (this.saveConfigKey) {
-      this.localStorageService.set(this.saveConfigKey, this.displayedColumns);
-    }
+    this.saveColumns();
   }
 
   determineHeight(fullHeight?: boolean): void {
@@ -249,6 +275,14 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         // eslint-disable-next-line no-console
         console.log(event);
     }
+  }
+
+  updateTableColumns(columns: string[]): void {
+    this.displayedColumns = this.getColumnsNameByKey(columns);
+    this.saveColumns();
+    setTimeout(() => {
+      this.formActionsService.setDiscard();
+    });
   }
 
   ngAfterViewInit(): void {

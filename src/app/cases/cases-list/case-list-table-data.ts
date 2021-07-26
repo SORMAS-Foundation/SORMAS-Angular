@@ -5,6 +5,7 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.CaseData.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    essential: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/cases/case/$param1/details',

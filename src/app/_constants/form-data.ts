@@ -50,6 +50,13 @@ export const FORM_DATA_SELECT = {
   className: 'size-medium',
 };
 
+export const FORM_DATA_MULTISELECT = {
+  ...FORM_DATA_BASE,
+  controlType: 'multidropdown',
+  type: 'simple',
+  className: 'size-medium',
+};
+
 export const FORM_DATA_CHECKBOX = {
   ...FORM_DATA_BASE,
   controlType: 'checkbox',
