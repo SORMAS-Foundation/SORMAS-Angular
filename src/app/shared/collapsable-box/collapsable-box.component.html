@@ -13,14 +13,14 @@
     </mat-panel-title>
     <mat-panel-description *ngIf="actionText && !showGroupLink">
       <button mat-button color="primary" (click)="doAction($event)">
-        {{ actionText | translate }}
+        {{ actionText }}
       </button>
     </mat-panel-description>
   </mat-expansion-panel-header>
   <ng-content></ng-content>
   <mat-panel-description *ngIf="actionText && showGroupLink">
     <a mat-button color="primary" [routerLink]="[actionLink]" [queryParams]="actionLinkParams">{{
-      actionText | translate
+      actionText
     }}</a>
   </mat-panel-description>
 </mat-expansion-panel>
