@@ -41,16 +41,16 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams = this.activeRoute.snapshot.queryParams;
-  hService: HelperService = this.helperService;
 
   private subscription: Subscription[] = [];
 
   constructor(
     public caseService: CaseService,
+    public helperService: HelperService,
     private activeRoute: ActivatedRoute,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private helperService: HelperService,
+
     private formActionsService: FormActionsService
   ) {}
 

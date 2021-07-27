@@ -26,17 +26,16 @@ export class EventsListComponent implements OnInit, OnDestroy {
   configKey = CONFIG_EVENTS;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams = this.activeRoute.snapshot.queryParams;
-  hService: HelperService = this.helperService;
   headerHeight = HEADER_HEIGHT;
 
   private subscription: Subscription[] = [];
 
   constructor(
     public eventService: EventService,
+    public helperService: HelperService,
     private dialog: MatDialog,
     private translateService: TranslateService,
     private activeRoute: ActivatedRoute,
-    private helperService: HelperService,
     private formActionsService: FormActionsService
   ) {}
 

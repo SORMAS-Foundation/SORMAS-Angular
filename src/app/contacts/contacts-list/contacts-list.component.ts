@@ -24,16 +24,15 @@ export class ContactsListComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;
   routeParams = this.activeRoute.snapshot.queryParams;
-  hService: HelperService = this.helperService;
 
   private subscription: Subscription[] = [];
 
   constructor(
     public contactService: ContactService,
+    public helperService: HelperService,
     private dialog: MatDialog,
     private translateService: TranslateService,
     private activeRoute: ActivatedRoute,
-    private helperService: HelperService,
     private formActionsService: FormActionsService
   ) {}
 
