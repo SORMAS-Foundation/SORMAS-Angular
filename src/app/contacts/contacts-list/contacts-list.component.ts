@@ -4,13 +4,14 @@ import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactService } from '../../_services/api/contact.service';
-import { Filter, TableColumn } from '../../_models/common';
+import { TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './contacts-list-table-data';
 import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
+import { HelperService } from '../../_services/helper.service';
 
 @Component({
   selector: 'app-contacts-list',
@@ -21,6 +22,8 @@ export class ContactsListComponent implements OnInit {
   tasks: EventDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;
+  routeParams = this.activeRoute.snapshot.queryParams;
+  hService: HelperService = this.helperService;
 
   private subscription: Subscription[] = [];
 
@@ -28,7 +31,8 @@ export class ContactsListComponent implements OnInit {
     public contactService: ContactService,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private helperService: HelperService
   ) {}
 
   ngOnInit(): void {
@@ -51,13 +55,5 @@ export class ContactsListComponent implements OnInit {
         }
       })
     );
-  }
-  setQueryParamsInFilters(): Filter[] {
-    const filters: Filter[] = [];
-    const routeParams = this.activeRoute.snapshot.queryParams;
-    Object.keys(routeParams).forEach((el) => {
-      filters.push({ field: el, value: { uuid: routeParams[el] } });
-    });
-    return filters;
   }
 }

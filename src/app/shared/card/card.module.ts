@@ -17,7 +17,6 @@ import { CardContactComponent } from './card-contact/card-contact.component';
 import { CardPersonCaseComponent } from './card-person-case/card-person-case.component';
 import { CardPersonContactComponent } from './card-person-contact/card-person-contact.component';
 import { CardPersonEventComponent } from './card-person-event/card-person-event.component';
-import { CardGroupLinkComponent } from './card-group-link/card-group-link.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
@@ -35,8 +34,7 @@ import { CardGroupLinkComponent } from './card-group-link/card-group-link.compon
     CardPersonCaseComponent,
     CardPersonContactComponent,
     CardPersonEventComponent,
-    CardGroupLinkComponent,
   ],
-  exports: [CardComponent, CardListComponent, CardGroupLinkComponent],
+  exports: [CardComponent, CardListComponent],
 })
 export class CardModule {}

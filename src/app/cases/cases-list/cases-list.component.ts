@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CaseService } from '../../_services/api/case.service';
-import { Filter, NavItem, TableColumn } from '../../_models/common';
+import { NavItem, TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
@@ -24,6 +24,7 @@ import {
 } from './case-list-actions-data';
 import { ACTIONS_CASE } from '../../_constants/actions';
 import { CaseImportComponent } from '../case-import/case-import.component';
+import { HelperService } from '../../_services/helper.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -38,6 +39,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsMore: NavItem[] = actionsMoreDefs;
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
+  routeParams = this.activeRoute.snapshot.queryParams;
+  hService: HelperService = this.helperService;
 
   private subscription: Subscription[] = [];
 
@@ -45,7 +48,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     public caseService: CaseService,
     private activeRoute: ActivatedRoute,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private helperService: HelperService
   ) {}
 
   ngOnInit(): void {
@@ -104,14 +108,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.dialog.open(CustomCaseExportComponent, {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
-  }
-  setQueryParamsInFilters(): Filter[] {
-    const filters: Filter[] = [];
-    const routeParams = this.activeRoute.snapshot.queryParams;
-    Object.keys(routeParams).forEach((el) => {
-      filters.push({ field: el, value: { uuid: routeParams[el] } });
-    });
-    return filters;
   }
   ngOnDestroy(): void {
     this.subscription.forEach((subscription) => subscription.unsubscribe());

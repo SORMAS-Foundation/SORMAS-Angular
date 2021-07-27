@@ -18,5 +18,5 @@
   [fullHeight]="true"
   [saveConfigKey]="configKey"
   [bulkEditOptions]="actionsBulkEdit"
-  [preSetFilters]="setQueryParamsInFilters()"
+  [preSetFilters]="hService.setQueryParamsInFilters(routeParams)"
 ></app-table>

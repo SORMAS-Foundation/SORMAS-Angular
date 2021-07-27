@@ -16,12 +16,9 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
   <ng-content></ng-content>
-  <app-card-group-link *ngIf="showGroupLink">
-    <mat-panel-description *ngIf="actionText">
-      <!-- <button mat-button color="primary" (click)="navigate(actionLink)">{{ actionText }}</button> -->
-      <a mat-button color="primary" [routerLink]="[actionLink]" [queryParams]="actionLinkParams">{{
-        actionText
-      }}</a>
-    </mat-panel-description>
-  </app-card-group-link>
+  <mat-panel-description *ngIf="actionText && showGroupLink">
+    <a mat-button color="primary" [routerLink]="[actionLink]" [queryParams]="actionLinkParams">{{
+      actionText
+    }}</a>
+  </mat-panel-description>
 </mat-expansion-panel>

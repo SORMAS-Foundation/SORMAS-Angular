@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
-import { Filter, NavItem, TableColumn } from '../../_models/common';
+import { NavItem, TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
@@ -12,6 +12,7 @@ import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-mod
 import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
+import { HelperService } from '../../_services/helper.service';
 
 @Component({
   selector: 'app-events-list',
@@ -23,6 +24,8 @@ export class EventsListComponent implements OnInit, OnDestroy {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
+  routeParams = this.activeRoute.snapshot.queryParams;
+  hService: HelperService = this.helperService;
 
   private subscription: Subscription[] = [];
 
@@ -30,7 +33,8 @@ export class EventsListComponent implements OnInit, OnDestroy {
     public eventService: EventService,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private helperService: HelperService
   ) {}
 
   ngOnInit(): void {
@@ -53,15 +57,6 @@ export class EventsListComponent implements OnInit, OnDestroy {
         }
       })
     );
-  }
-
-  setQueryParamsInFilters(): Filter[] {
-    const filters: Filter[] = [];
-    const routeParams = this.activeRoute.snapshot.queryParams;
-    Object.keys(routeParams).forEach((el) => {
-      filters.push({ field: el, value: { uuid: routeParams[el] } });
-    });
-    return filters;
   }
 
   ngOnDestroy(): void {
