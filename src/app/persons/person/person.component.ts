@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { PersonDto } from '../../_models/models';
 import { NotificationService } from '../../_services/notification.service';
 import { PersonService } from '../../_services/api/person.service';
@@ -23,7 +22,6 @@ export class PersonComponent implements OnInit {
   personId: string;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_PERSON;
-  subscriptions: Subscription[] = [];
   constructor(
     public personService: PersonService,
     public eventService: EventService,
@@ -32,8 +30,8 @@ export class PersonComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private formElementControlService: FormElementControlService,
     private notificationService: NotificationService,
-    private sendResourceService: SendResourceService,
-  ) { }
+    private sendResourceService: SendResourceService
+  ) {}
 
   ngOnInit(): void {
     const routeParams = this.activeRoute.snapshot.params;
@@ -48,7 +46,6 @@ export class PersonComponent implements OnInit {
         setTimeout(() => {
           this.sendResourceService.setResource(this.person, SentResourceTypes.PERSON_DATA);
         });
-
       },
       error: (err: any) => {
         this.notificationService.error(err);

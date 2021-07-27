@@ -15,7 +15,9 @@
 
   <mat-card-header *ngIf="title || collapse" [ngClass]="getClassCollapse()">
     <mat-card-title *ngIf="title" [ngClass]="titlePosition?.toLowerCase() || ''">
-      {{ title | humanize | titlecase }}
+      <span [ngClass]="titleUppercase ? 'uppercase' : ''">
+        {{ title | humanize | titlecase }}
+      </span>
     </mat-card-title>
     <button *ngIf="collapse" mat-icon-button (click)="toggleCollapse()">
       <mat-icon class="material-icons-round">{{ collapsed ? 'add' : 'remove' }}</mat-icon>

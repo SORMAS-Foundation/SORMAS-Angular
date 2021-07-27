@@ -23,6 +23,9 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() type: EdgePanelType = EDGE_PANEL_TYPE.TASK;
   @Input() filterCriteriaEntity?: string;
   @Input() cardCollapse: boolean;
+  @Input() showGroupLink = false;
+  @Input() actionLink = '';
+  @Input() actionLinkParams = {};
 
   items: any[] = [];
   initialSize: number;

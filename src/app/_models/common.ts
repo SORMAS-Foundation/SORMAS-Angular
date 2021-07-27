@@ -18,7 +18,7 @@ export interface Sorting {
 // filter
 export interface Filter {
   field: string;
-  value?: string;
+  value?: any;
   operation?: string;
 }
 

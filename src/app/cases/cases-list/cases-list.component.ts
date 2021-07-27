@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CaseService } from '../../_services/api/case.service';
-import { NavItem, TableColumn } from '../../_models/common';
+import { Filter, NavItem, TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
@@ -43,7 +43,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   constructor(
     public caseService: CaseService,
-    private router: Router,
+    private activeRoute: ActivatedRoute,
     private dialog: MatDialog,
     private translateService: TranslateService
   ) {}
@@ -105,7 +105,14 @@ export class CasesListComponent implements OnInit, OnDestroy {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
-
+  setQueryParamsInFilters(): Filter[] {
+    const filters: Filter[] = [];
+    const routeParams = this.activeRoute.snapshot.queryParams;
+    Object.keys(routeParams).forEach((el) => {
+      filters.push({ field: el, value: { uuid: routeParams[el] } });
+    });
+    return filters;
+  }
   ngOnDestroy(): void {
     this.subscription.forEach((subscription) => subscription.unsubscribe());
   }

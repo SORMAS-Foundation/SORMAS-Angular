@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { NavItem, TableColumn } from '../../_models/common';
+import { ActivatedRoute } from '@angular/router';
+import { Filter, NavItem, TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
@@ -28,7 +29,8 @@ export class EventsListComponent implements OnInit, OnDestroy {
   constructor(
     public eventService: EventService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +53,15 @@ export class EventsListComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  setQueryParamsInFilters(): Filter[] {
+    const filters: Filter[] = [];
+    const routeParams = this.activeRoute.snapshot.queryParams;
+    Object.keys(routeParams).forEach((el) => {
+      filters.push({ field: el, value: { uuid: routeParams[el] } });
+    });
+    return filters;
   }
 
   ngOnDestroy(): void {

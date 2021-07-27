@@ -1,4 +1,3 @@
-
 export const PANEL_CONFIG = {
   TASK: {
     title: 'entityTasks',
@@ -26,6 +25,7 @@ export const PANEL_CONFIG = {
     action: 'personLinkToEvents',
     cardType: 'person_event',
     cardTitleKey: 'uuid',
+    titleUppercase: true,
   },
   CASE: {
     title: 'entityCases',
@@ -34,6 +34,7 @@ export const PANEL_CONFIG = {
     cardTitleKey: 'uuid',
     appearance: 'outlined',
     cardStatus: 'unclassified',
+    titleUppercase: true,
   },
   CONTACT: {
     title: 'entityContacts',
@@ -41,5 +42,6 @@ export const PANEL_CONFIG = {
     cardType: 'person_contact',
     cardTitleKey: 'uuid',
     appearance: 'outlined',
-  }
+    titleUppercase: true,
+  },
 };

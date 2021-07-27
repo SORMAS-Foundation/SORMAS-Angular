@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
 import { ContactService } from '../../_services/api/contact.service';
-import { TableColumn } from '../../_models/common';
+import { Filter, TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './contacts-list-table-data';
@@ -26,7 +27,8 @@ export class ContactsListComponent implements OnInit {
   constructor(
     public contactService: ContactService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -49,5 +51,13 @@ export class ContactsListComponent implements OnInit {
         }
       })
     );
+  }
+  setQueryParamsInFilters(): Filter[] {
+    const filters: Filter[] = [];
+    const routeParams = this.activeRoute.snapshot.queryParams;
+    Object.keys(routeParams).forEach((el) => {
+      filters.push({ field: el, value: { uuid: routeParams[el] } });
+    });
+    return filters;
   }
 }

@@ -32,6 +32,7 @@ export class CardListComponent implements OnChanges {
   @Input() cardAppearance: CardAppearance = CardAppearanceOptions.STANDARD;
   @Input() cardTitleKey: string;
   @Input() cardTitlePosition: BasicPositionType = BasicPosition.LEFT;
+  @Input() titleUppercase = false;
   @Input() cardStatus: CardStatus;
   @Input() cardStatusKey: string;
 
