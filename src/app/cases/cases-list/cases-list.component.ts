@@ -25,6 +25,7 @@ import {
 import { ACTIONS_CASE } from '../../_constants/actions';
 import { CaseImportComponent } from '../case-import/case-import.component';
 import { HelperService } from '../../_services/helper.service';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -49,7 +50,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private helperService: HelperService
+    private helperService: HelperService,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -60,13 +62,14 @@ export class CasesListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('CaseData.addNewCase'),
+        title: this.translateService.instant('captions.caseCreateNew'),
         component: CaseAddComponent,
       },
     });
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }

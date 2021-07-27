@@ -7,27 +7,26 @@ const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 export const FORM_DATA_CASE_EPID_DETAILS = [
   {
     id: 'exposureInvestigation',
-    title: 'headingExposureInvestigation',
-    subTitle: 'infoExposureInvestigation',
+    title: 'strings.headingExposureInvestigation',
+    subTitle: 'strings.infoExposureInvestigation',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.exposureDetailsKnown',
-        label: 'EpiData.exposureDetailsKnown',
+        label: 'captions.EpiData.exposureDetailsKnown',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-exposures-list',
-        label: 'EpiData.exposures',
         newLine: true,
       },
     ],
   },
   {
     id: 'activity',
-    title: 'EpiData.activitiesAsCase',
-    subTitle: 'infoActivityAsCaseInvestigation',
+    title: 'captions.EpiData.activitiesAsCase',
+    subTitle: 'strings.infoActivityAsCaseInvestigation',
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -44,18 +43,18 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
   {
     id: 'incubation',
     title: 'EpiData.incubationPeriod',
-    subTitle: 'infoEpiDataFieldsHint',
+    subTitle: 'strings.infoEpiDataFieldsHint',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.highTransmissionRiskArea',
-        label: 'EpiData.highTransmissionRiskArea',
+        label: 'captions.EpiData.highTransmissionRiskArea',
         options: optionsYesNoUnknown,
       },
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.largeOutbreaksArea',
-        label: 'EpiData.largeOutbreaksArea',
+        label: 'captions.EpiData.largeOutbreaksArea',
         options: optionsYesNoUnknown,
       },
     ],
@@ -63,12 +62,12 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
   {
     id: 'contacts',
     title: 'EpiData.contactWithSourceCase',
-    subTitle: 'infoEpiDataSourceCaseContacts',
+    subTitle: 'strings.infoEpiDataSourceCaseContacts',
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'epiData.contactWithSourceCaseKnown',
-        label: 'EpiData.contactWithSourceCaseKnown',
+        label: 'captions.EpiData.contactWithSourceCaseKnown',
         options: optionsYesNoUnknown,
       },
     ],

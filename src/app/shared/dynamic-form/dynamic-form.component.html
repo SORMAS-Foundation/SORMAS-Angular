@@ -1,10 +1,6 @@
 <section>
-  <header>
-    <app-inpage-nav
-      *ngIf="withAnchor"
-      [pageOffset]="280"
-      [anchors]="getSections()"
-    ></app-inpage-nav>
+  <header *ngIf="withAnchor">
+    <app-inpage-nav [pageOffset]="280" [anchors]="getSections()"></app-inpage-nav>
   </header>
 
   <form [formGroup]="form">
@@ -13,7 +9,7 @@
       [attr.id]="group.anchor ? group.anchor : null"
       [ngClass]="{ section: group.anchor }"
     >
-      <legend>
+      <legend *ngIf="!group.hidden">
         <h2>{{ group.title | translate }}<span class="required" *ngIf="group.required">*</span></h2>
         <h3 *ngIf="group.subTitle">{{ group.subTitle | translate }}</h3>
       </legend>

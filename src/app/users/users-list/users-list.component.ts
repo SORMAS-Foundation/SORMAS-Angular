@@ -10,6 +10,7 @@ import { UserService } from '../../_services/api/user.service';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 import { UserAddComponent } from '../user-add/user-add.component';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-users-list',
@@ -26,7 +27,8 @@ export class UsersListComponent implements OnInit, OnDestroy {
   constructor(
     public userService: UserService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -37,13 +39,14 @@ export class UsersListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       width: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('headingCreateNewUser'),
+        title: this.translateService.instant('strings.headingCreateNewUser'),
         component: UserAddComponent,
       },
     });
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }

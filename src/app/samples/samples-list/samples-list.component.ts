@@ -10,6 +10,7 @@ import { SampleService } from '../../_services/api/sample.service';
 import { defaultColumnDefs } from './samples-list-table-data';
 import { SampleAddComponent } from '../sample-add/sample-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-samples-list',
@@ -26,7 +27,8 @@ export class SamplesListComponent implements OnInit {
   constructor(
     public sampleService: SampleService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -37,13 +39,14 @@ export class SamplesListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       width: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('sampleCreateNew'),
+        title: this.translateService.instant('captions.sampleCreateNew'),
         component: SampleAddComponent,
       },
     });
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }

@@ -167,6 +167,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       this.form.controls[item.watch]?.valueChanges.subscribe((val) => {
         const targetField = this.getTargetField(item.target);
         const watchField = this.getTargetField(item.watch);
+
         if (targetField) {
           if (Array.isArray(val)) {
             if (item.values) {
@@ -180,6 +181,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           } else {
             targetField.active =
               watchField?.active && (item.values ? item.values.includes(val) : !!val);
+          }
+
+          if (targetField.active && targetField.validation && targetField.validation.length) {
+            this.form
+              .get(targetField.key)
+              ?.setValidators(this.formElementControlService.getValidators(targetField.validation));
+          } else {
+            this.form.get(targetField.key)?.setValidators(null);
           }
 
           // set same value on target field just to trigger 'valueChanges'

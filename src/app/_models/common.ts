@@ -50,6 +50,7 @@ export interface TableColumn {
   align?: string;
   className?: string;
   format?: TableDataFormat;
+  essential?: boolean;
 }
 
 // scrolling
@@ -74,4 +75,5 @@ export interface NavItem {
   className?: string;
   children?: NavItem[];
   component?: any;
+  componentTitle?: string;
 }

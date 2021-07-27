@@ -17,13 +17,13 @@ export enum SentResourceTypes {
 export const PAGE_SIZE = 7;
 
 // case-tab-links
-export type CaseLink = {
+export type EntityLink = {
   title: string;
   link: string;
 };
 
 // modals
-export const ADD_MODAL_MAX_WIDTH = '1200';
+export const ADD_MODAL_MAX_WIDTH = '1200px';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
 

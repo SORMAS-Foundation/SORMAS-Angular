@@ -1,0 +1,58 @@
+<div [formGroup]="group">
+  <mat-form-field
+    appearance="outline"
+    floatLabel="always"
+    [ngClass]="{
+      'search-multiselect': true,
+      'search-multiselect-opened': multiselect.panelOpen,
+      'has-hint': !!config.hint
+    }"
+  >
+    <mat-label *ngIf="config.label">
+      {{ config.label || '' | translate }}
+      <span *ngIf="config.validation?.length" class="required">*</span>
+    </mat-label>
+    <mat-select
+      #multiselect
+      disableOptionCentering
+      [formControlName]="config.key"
+      [matTooltip]="config.label || '' | translate"
+      (selectionChange)="onChange()"
+      multiple
+      panelClass="search-multiselect-panel"
+    >
+      <div class="mat-select-header">
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-icon matPrefix class="material-icons-round icon-search">search</mat-icon>
+          <input
+            matInput
+            formControlName="searchTerm"
+            [placeholder]="config.placeholder || '' | translate"
+            appDebounce
+            (debounce)="filterOptions()"
+          />
+          <button matSuffix mat-icon-button (click)="clearSearch()">
+            <mat-icon class="material-icons-round icon-clear">cancel</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="mat-select-body">
+        <mat-option
+          *ngFor="let opt of options"
+          [value]="opt.key"
+          [disabled]="opt.disabled"
+          [ngClass]="{ hidden: opt.hidden }"
+        >
+          {{ opt.value }}
+        </mat-option>
+      </div>
+    </mat-select>
+    <mat-icon matSuffix class="material-icons-round icon-arrow">{{
+      multiselect.panelOpen ? 'arrow_drop_up' : 'arrow_drop_down'
+    }}</mat-icon>
+    <mat-hint *ngIf="config.hint">{{ config.hint | translate }}</mat-hint>
+  </mat-form-field>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">
+    {{ config.validationMessage || '' | translate }}
+  </div>
+</div>

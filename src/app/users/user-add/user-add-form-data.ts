@@ -28,32 +28,32 @@ const optionsLaboratories = pipe.transform(['default laboratory']);
 export const FORM_DATA_USER_ADD = [
   {
     id: 'personData',
-    title: 'headingPersonData',
+    title: 'strings.headingPersonData',
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'firstName',
-        label: 'firstName',
+        label: 'captions.firstName',
         validation: ['required'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'lastName',
-        label: 'lastName',
+        label: 'captions.lastName',
         validation: ['required'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'userEmail',
-        label: 'User.userEmail',
+        label: 'captions.User.userEmail',
         newLine: true,
-        hint: 'infoUserEmail',
+        hint: 'strings.infoUserEmail',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'phone',
-        label: 'User.phone',
-        hint: 'infoUserPhoneNumber',
+        label: 'captions.User.phone',
+        hint: 'strings.infoUserPhoneNumber',
       },
       {
         ...FORM_DATA_SELECT,
@@ -66,50 +66,50 @@ export const FORM_DATA_USER_ADD = [
   },
   {
     id: 'location',
-    title: 'headingLocation',
+    title: 'strings.headingLocation',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'address.country.caption',
-        label: 'country',
+        label: 'captions.country',
         options: optionsCountries,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'region.caption',
-        label: 'region',
+        label: 'captions.region',
         options: optionsRegions,
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'district.caption',
-        label: 'district',
+        label: 'captions.district',
         options: optionsDistricts,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.caption',
-        label: 'community',
+        label: 'captions.community',
         options: optionsCommunities,
       },
     ],
   },
   {
     id: 'facility',
-    title: 'facility',
+    title: 'captions.facility',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'address.facilityDetails',
-        label: 'facilityTypeGroup',
+        label: 'captions.facilityTypeGroup',
         options: optionsFacilityCategories,
         className: 'size-large',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.facilityType',
-        label: 'facilityType',
+        label: 'captions.facilityType',
         options: optionsFacilityTypes,
         newLine: true,
         className: 'size-large',
@@ -117,7 +117,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'address.facility',
-        label: 'facility',
+        label: 'captions.facility',
         options: optionsFacilities,
         newLine: true,
         className: 'size-large',
@@ -126,17 +126,17 @@ export const FORM_DATA_USER_ADD = [
   },
   {
     id: 'address',
-    title: 'User.address',
+    title: 'captions.User.address',
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'location.street',
-        label: 'Facility.street',
+        label: 'captions.Facility.street',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'location.city',
-        label: 'Facility.city',
+        label: 'captions.Facility.city',
       },
       {
         ...FORM_DATA_WIDGET,
@@ -145,48 +145,48 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'location.houseNumber',
-        label: 'Facility.houseNumber',
+        label: 'captions.Facility.houseNumber',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'location.areaType',
-        label: 'Facility.areaType',
+        label: 'captions.Facility.areaType',
         options: optionsAreaTypes,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'location.postalCode',
-        label: 'Facility.postalCode',
+        label: 'captions.Facility.postalCode',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'location.additionalInformation',
-        label: 'Facility.additionalInformation',
+        label: 'captions.Facility.additionalInformation',
       },
     ],
   },
   {
     id: 'gps',
-    title: 'User.gps',
+    title: 'headingGps',
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'location.latitude',
-        label: 'Location.latitude',
+        label: 'captions.Location.latitude',
         className: 'size-small',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'location.longitude',
-        label: 'Location.longitude',
+        label: 'captions.Location.longitude',
         className: 'size-small',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'location.latLonAccuracy',
-        label: 'Location.latLonAccuracy',
+        label: 'captions.Location.latLonAccuracy',
         className: 'size-small',
       },
       {
@@ -197,42 +197,42 @@ export const FORM_DATA_USER_ADD = [
   },
   {
     id: 'contact',
-    title: 'Contact',
+    title: 'captions.Contact',
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'location.details',
-        label: 'Location.details',
+        label: 'captions.Location.details',
       },
     ],
   },
   {
     id: 'userData',
-    title: 'headingUserData',
+    title: 'strings.headingUserData',
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'active',
-        label: 'User.active',
+        label: 'captions.User.active',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'userName',
-        label: 'User.userName',
+        label: 'captions.User.userName',
         validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'limitedDisease',
-        label: 'User.limitedDisease',
+        label: 'captions.User.limitedDisease',
         options: optionsLimitedDisease,
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'userRoles',
-        label: 'User.userRoles',
+        label: 'captions.User.userRoles',
         options: optionsUserRoles,
         newLine: true,
         validation: ['required'],
@@ -240,7 +240,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'region',
-        label: 'region',
+        label: 'captions.region',
         options: optionsRegions,
         newLine: true,
         validation: ['required'],
@@ -264,7 +264,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'district',
-        label: 'district',
+        label: 'captions.district',
         options: optionsDistricts,
         validation: ['required'],
         dependingOn: 'userRoles',
@@ -282,7 +282,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'community',
-        label: 'community',
+        label: 'captions.community',
         options: optionsCommunities,
         validation: ['required'],
         dependingOn: 'userRoles',
@@ -291,7 +291,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'facility',
-        label: 'facility',
+        label: 'captions.facility',
         options: optionsFacilities,
         newLine: true,
         dependingOn: 'userRoles',
@@ -307,7 +307,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'associatedOfficer',
-        label: 'User.associatedOfficer',
+        label: 'captions.User.associatedOfficer',
         options: optionsAssociatedOfficer,
         newLine: true,
         dependingOn: 'userRoles',
@@ -316,7 +316,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'pointOfEntry',
-        label: 'User.pointOfEntry',
+        label: 'captions.User.pointOfEntry',
         validation: ['required'],
         options: optionsPointOfEntries,
         dependingOn: 'userRoles',
@@ -325,7 +325,7 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'laboratory',
-        label: 'User.laboratory',
+        label: 'captions.User.laboratory',
         validation: ['required'],
         newLine: true,
         options: optionsLaboratories,

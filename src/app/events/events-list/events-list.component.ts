@@ -9,10 +9,11 @@ import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
 import { defaultColumnDefs } from './events-list-table-data';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-events-list',
@@ -26,6 +27,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams = this.activeRoute.snapshot.queryParams;
   hService: HelperService = this.helperService;
+  headerHeight = HEADER_HEIGHT;
 
   private subscription: Subscription[] = [];
 
@@ -34,7 +36,8 @@ export class EventsListComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private translateService: TranslateService,
     private activeRoute: ActivatedRoute,
-    private helperService: HelperService
+    private helperService: HelperService,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -45,13 +48,14 @@ export class EventsListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Event.addNewEvent'),
+        title: this.translateService.instant('strings.headingCreateNewEvent'),
         component: EventAddComponent,
       },
     });
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }

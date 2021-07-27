@@ -10,7 +10,7 @@ import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { TableComponent } from './table/table.component';
 import { DialogModule } from './dialog';
 import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
-import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
+import { InpageNavModule } from './inpage-nav/inpage-nav.module';
 import { FormActionsComponent } from './form-actions/form-actions.component';
 import { CardModule } from './card/card.module';
 import { DateCardModule } from './date-card/date-card.module';
@@ -24,7 +24,6 @@ import { AddressesListComponent } from './widgets/addresses-list/addresses-list.
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 import { FiltersComponent } from './filters/filters.component';
-import { DebounceDirective } from '../_directives/debounce.directive';
 import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
@@ -35,12 +34,13 @@ import { PersonContactsListComponent } from './widgets/person-contacts-list/pers
 import { NewPersonContactComponent } from './widgets/new-person-contact/new-person-contact.component';
 import { GpsCoordsComponent } from './widgets/gps-coords/gps-coords.component';
 import { AddressButtonComponent } from './widgets/address-button/address-button.component';
+import { ColumnPickerModule } from './column-picker/column-picker.module';
+import { DirectivesModule } from '../_directives/directives.module';
 
 @NgModule({
   declarations: [
     LocaleSelectComponent,
     TableComponent,
-    InpageNavComponent,
     CollapsableBoxComponent,
     FormActionsComponent,
     NewEpidNumberComponent,
@@ -52,7 +52,6 @@ import { AddressButtonComponent } from './widgets/address-button/address-button.
     NewAddressComponent,
     ContactFiltersComponent,
     FiltersComponent,
-    DebounceDirective,
     AddEditBaseModalComponent,
     ActionMenuComponent,
     DropdownMenuComponent,
@@ -77,6 +76,9 @@ import { AddressButtonComponent } from './widgets/address-button/address-button.
     DateCardModule,
     PipesModule,
     TranslateModule,
+    InpageNavModule,
+    ColumnPickerModule,
+    DirectivesModule,
   ],
   exports: [
     LocaleSelectComponent,
@@ -87,7 +89,7 @@ import { AddressButtonComponent } from './widgets/address-button/address-button.
     FormsModule,
     ReactiveFormsModule,
     DialogModule,
-    InpageNavComponent,
+    InpageNavModule,
     CollapsableBoxComponent,
     FormActionsComponent,
     CardModule,
@@ -96,11 +98,12 @@ import { AddressButtonComponent } from './widgets/address-button/address-button.
     TranslateModule,
     ContactFiltersComponent,
     FiltersComponent,
-    DebounceDirective,
     ActionMenuComponent,
     DropdownMenuComponent,
     SidebarComponent,
     EdgePanelComponent,
+    ColumnPickerModule,
+    DirectivesModule,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent],
 })

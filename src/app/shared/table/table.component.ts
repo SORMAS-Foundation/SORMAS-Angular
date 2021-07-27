@@ -17,7 +17,6 @@ import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ViewportRuler } from '@angular/cdk/scrolling';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from '../../_services/api/base.service';
@@ -28,6 +27,7 @@ import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-table',
@@ -66,6 +66,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() preSetFilters: Filter[];
   @Input() viewOptions: NavItem[];
   @Input() bulkEditOptions: NavItem[];
+  @Input() allowToggleColumns = false;
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
@@ -77,8 +78,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
-    private viewportRuler: ViewportRuler,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -125,32 +126,62 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       columns.unshift('select');
     }
 
-    if (!this.saveConfigKey) {
-      return columns;
-    }
+    if (this.saveConfigKey) {
+      const config = this.localStorageService.get(this.saveConfigKey);
 
-    const config = this.localStorageService.get(this.saveConfigKey);
-
-    if (config) {
-      columns = config.filter((col: any) => columns.includes(col));
+      if (config) {
+        columns = this.getColumnsNameByKey(config);
+      }
     }
 
     return columns;
   }
 
-  openBulkEdit(editComponent: any): void {
+  saveColumns(): void {
+    if (this.saveConfigKey) {
+      const columns = this.getColumnsKeyByName(this.displayedColumns);
+      this.localStorageService.set(this.saveConfigKey, columns);
+    }
+  }
+
+  getColumnsKeyByName(names: any[]): any[] {
+    return names.map((item) => {
+      const column = this.tableColumns.find((col) => col.name === item);
+      return column?.dataKey;
+    });
+  }
+
+  getColumnsNameByKey(keys: string[]): string[] {
+    const columns: string[] = [];
+
+    keys.forEach((item: string) => {
+      const column = this.tableColumns.find((col) => col.dataKey === item);
+      if (column) {
+        columns.push(column.name);
+      }
+    });
+
+    if (this.isSelectable) {
+      columns.unshift('select');
+    }
+
+    return columns;
+  }
+
+  openBulkEdit(bulkEditOption: any): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       minWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Edit cases'),
-        component: editComponent,
+        title: this.translateService.instant(bulkEditOption.componentTitle),
+        component: bulkEditOption.component,
         editResources: this.getSelectedItems(),
       },
     });
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }
@@ -210,9 +241,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
-    if (this.saveConfigKey) {
-      this.localStorageService.set(this.saveConfigKey, this.displayedColumns);
-    }
+    this.saveColumns();
   }
 
   determineHeight(fullHeight?: boolean): void {
@@ -239,13 +268,21 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       case ACTIONS_BULK_EDIT.EDIT:
         // @ts-ignore
         // eslint-disable-next-line no-case-declarations
-        const editComponent = this.bulkEditOptions.find((item) => item.action === event).component;
-        this.openBulkEdit(editComponent);
+        const bulkEditOption = this.bulkEditOptions.find((item) => item.action === event);
+        this.openBulkEdit(bulkEditOption);
         break;
       default:
         // eslint-disable-next-line no-console
         console.log(event);
     }
+  }
+
+  updateTableColumns(columns: string[]): void {
+    this.displayedColumns = this.getColumnsNameByKey(columns);
+    this.saveColumns();
+    setTimeout(() => {
+      this.formActionsService.setDiscard();
+    });
   }
 
   ngAfterViewInit(): void {

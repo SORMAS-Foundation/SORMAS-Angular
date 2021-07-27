@@ -3,10 +3,25 @@ import { CaseControllerService } from 'api-client';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseService } from '../../_services/api/case.service';
-import { CaseClassificationIcons, CaseLink, CaseOutcomeIcons } from '../../app.constants';
-import { caseLinks } from '../../_entity-data/case';
+import { CaseClassificationIcons, EntityLink, CaseOutcomeIcons } from '../../app.constants';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CaseOrigin } from '../../_models/caseOrigin';
+
+// case routing for tabs
+const caseLinks = (caseId: string): EntityLink[] => {
+  return [
+    { link: `/cases/case/${caseId}/details`, title: 'strings.entityCase' },
+    { link: `/cases/case/${caseId}/person`, title: 'captions.View.cases.person' },
+    { link: `/cases/case/${caseId}/hospitalization`, title: 'captions.CaseHospitalization' },
+    { link: `/cases/case/${caseId}/port-health`, title: 'captions.CaseData.portHealthInfo' },
+    { link: `/cases/case/${caseId}/symptoms`, title: 'captions.Symptoms' },
+    { link: `/cases/case/${caseId}/epidemiological-data`, title: 'captions.EpiData' },
+    { link: `/cases/case/${caseId}/therapy`, title: 'captions.CaseData.therapy' },
+    { link: `/cases/case/${caseId}/follow-up`, title: 'captions.caseFollowupVisitsView' },
+    { link: `/cases/case/${caseId}/clinical-course`, title: 'captions.View.cases.clinicalcourse' },
+    { link: `/cases/case/${caseId}/contacts`, title: 'captions.caseContacts' },
+  ];
+};
 
 @Component({
   selector: 'app-case',
@@ -18,7 +33,7 @@ export class CaseComponent implements OnInit {
   case: CaseDataDto;
   caseOutcomeIcons = CaseOutcomeIcons;
   caseClassificationIcons = CaseClassificationIcons;
-  links: CaseLink[] = [];
+  links: EntityLink[] = [];
   caseId: any;
 
   constructor(

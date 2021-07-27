@@ -1,5 +1,5 @@
 <div class="filters">
-  <h2 class="filters-header">{{ 'headingFilters' | translate }}</h2>
+  <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
     <mat-form-field
       id="nameAddressPhoneEmailLike"
@@ -13,57 +13,57 @@
         type="text"
         matInput
         appDebounce
-        placeholder="{{ 'promptPersonsSearchField' | translate }}"
+        placeholder="{{ 'strings.promptPersonsSearchField' | translate }}"
         formControlName="nameAddressPhoneEmailLike"
         (debounce)="onFormChange()"
       />
     </mat-form-field>
 
-    <app-collapsable-box boxTitle="{{ 'Persons' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'headingPersons' | translate }}">
       <mat-radio-group name="persons" formControlName="persons" (change)="onFormChange()">
         <mat-radio-button value="ALL" color="primary">
-          {{ 'All' | translate }}
+          {{ 'captions.all' | translate }}
         </mat-radio-button>
         <mat-radio-button value="CASE" color="primary">
-          {{ 'Case' | translate }}
+          {{ 'enum.PersonAssociation.CASE' | translate }}
         </mat-radio-button>
         <mat-radio-button value="CONTACT" color="primary">
-          {{ 'Contact' | translate }}
+          {{ 'enum.PersonAssociation.CONTACT' | translate }}
         </mat-radio-button>
         <mat-radio-button value="EVENT_PARTICIPANT" color="primary">
-          {{ 'Event participant' | translate }}
+          {{ 'enum.PersonAssociation.EVENT_PARTICIPANT' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Present condition' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'captions.Person.presentCondition' | translate }}">
       <mat-radio-group
         name="presentCondition"
         formControlName="presentCondition"
         (change)="onFormChange()"
       >
         <mat-radio-button value="ALIVE" color="primary">
-          {{ 'Alive' | translate }}
+          {{ 'enum.PresentCondition.ALIVE' | translate }}
         </mat-radio-button>
         <mat-radio-button value="DEAD" color="primary">
-          {{ 'Dead' | translate }}
+          {{ 'enum.PresentCondition.DEAD' | translate }}
         </mat-radio-button>
         <mat-radio-button value="BURIED" color="primary">
-          {{ 'Buried' | translate }}
+          {{ 'enum.PresentCondition.BURIED' | translate }}
         </mat-radio-button>
         <mat-radio-button value="UNKNOWN" color="primary">
-          {{ 'Unknown' | translate }}
+          {{ 'enum.PresentCondition.UNKNOWN' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Birth' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'headingBirthdate' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="birthdateYYYY"
-          placeholder="{{ 'Year of birth' | translate }}"
+          placeholder="{{ 'captions.Person.birthdateYYYY' | translate }}"
         >
           <mat-option value="1900">1900</mat-option>
         </mat-select>
@@ -73,7 +73,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="birthdateMM"
-          placeholder="{{ 'Month of birth' | translate }}"
+          placeholder="{{ 'captions.Person.birthdateMM' | translate }}"
         >
           <mat-option value="1">January</mat-option>
         </mat-select>
@@ -83,20 +83,20 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="birthdateDD"
-          placeholder="{{ 'Day of birth' | translate }}"
+          placeholder="{{ 'captions.Person.birthdateDD' | translate }}"
         >
           <mat-option value="1">1</mat-option>
         </mat-select>
       </mat-form-field>
     </app-collapsable-box>
 
-    <app-collapsable-box boxTitle="{{ 'Admin aspect' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'headingAdminAspect' | translate }}">
       <mat-form-field appearance="outline" class="collapsable-field">
         <mat-select
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="region"
-          placeholder="{{ 'Responsible region' | translate }}"
+          placeholder="{{ 'captions.Contact.region' | translate }}"
         >
           <mat-option value="default_region">Default region</mat-option>
         </mat-select>
@@ -107,7 +107,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="district"
-          placeholder="{{ 'Responsible district' | translate }}"
+          placeholder="{{ 'captions.Contact.district' | translate }}"
         >
           <mat-option value="default_district">Default district</mat-option>
         </mat-select>
@@ -118,7 +118,7 @@
           disableOptionCentering
           (selectionChange)="onFormChange()"
           formControlName="community"
-          placeholder="{{ 'Responsible community' | translate }}"
+          placeholder="{{ 'captions.Contact.community' | translate }}"
         >
           <mat-option value="default_community">Default community</mat-option>
         </mat-select>

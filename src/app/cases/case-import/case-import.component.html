@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-  <h1>{{ 'headingImportCases' | translate }}</h1>
+  <h1>{{ 'strings.headingImportCases' | translate }}</h1>
   <div mat-dialog-actions>
     <button mat-icon-button mat-dialog-close class="button-dialog-close">
       <mat-icon class="material-icons-round">highlight_off</mat-icon>
@@ -9,10 +9,10 @@
 
 <div mat-dialog-content>
   <div class="step">
-    <div class="iteration">{{ 'step' | translate }} 1</div>
+    <div class="iteration">{{ 'strings.step' | translate }} 1</div>
     <div class="instructions">
-      <h2>{{ 'headingDownloadImportGuide' | translate }}</h2>
-      <p>{{ 'infoDownloadImportGuide' | translate }}</p>
+      <h2>{{ 'strings.headingDownloadImportGuide' | translate }}</h2>
+      <p>{{ 'strings.infoDownloadImportGuide' | translate }}</p>
       <p class="actions">
         <a
           href="/assets/document.pdf"
@@ -22,7 +22,7 @@
           class="button-download"
         >
           <mat-icon class="material-icons-round">file_download_black</mat-icon>
-          {{ 'importDownloadImportGuide' | translate }}
+          {{ 'captions.importDownloadImportGuide' | translate }}
         </a>
         <a
           href="/assets/document.pdf"
@@ -32,17 +32,17 @@
           class="button-download"
         >
           <mat-icon class="material-icons-round">file_download_black</mat-icon>
-          {{ 'importDownloadDataDictionary' | translate }}
+          {{ 'captions.importDownloadDataDictionary' | translate }}
         </a>
       </p>
     </div>
   </div>
 
   <div class="step">
-    <div class="iteration">{{ 'step' | translate }} 2</div>
+    <div class="iteration">{{ 'strings.step' | translate }} 2</div>
     <div class="instructions">
-      <h2>{{ 'headingDownloadImportTemplate' | translate }}</h2>
-      <p>{{ 'infoDownloadCaseImportTemplate' | translate }}</p>
+      <h2>{{ 'strings.headingDownloadImportTemplate' | translate }}</h2>
+      <p>{{ 'strings.infoDownloadCaseImportTemplate' | translate }}</p>
       <p class="actions">
         <a
           href="/assets/document.pdf"
@@ -52,17 +52,17 @@
           class="button-download"
         >
           <mat-icon class="material-icons-round">file_download_black</mat-icon>
-          {{ 'importDownloadImportTemplate' | translate }}
+          {{ 'captions.importDownloadImportTemplate' | translate }}
         </a>
       </p>
     </div>
   </div>
 
   <div class="step">
-    <div class="iteration">{{ 'step' | translate }} 3</div>
+    <div class="iteration">{{ 'strings.step' | translate }} 3</div>
     <div class="instructions">
-      <h2>{{ 'headingImportCsvFile' | translate }}</h2>
-      <p>{{ 'infoImportCsvFile' | translate }}</p>
+      <h2>{{ 'strings.headingImportCsvFile' | translate }}</h2>
+      <p>{{ 'strings.infoImportCsvFile' | translate }}</p>
       <p class="file-upload">
         <label for="import">Choose file</label>
         <input type="file" id="import" name="import" accept=".csv" />
@@ -70,17 +70,17 @@
       <p class="actions">
         <button mat-button color="primary" class="button-upload" (click)="importCases()">
           <mat-icon class="material-icons-round">file_upload_black</mat-icon>
-          {{ 'importImportData' | translate }}
+          {{ 'captions.importImportData' | translate }}
         </button>
       </p>
     </div>
   </div>
 
   <div class="step">
-    <div class="iteration">{{ 'step' | translate }} 4</div>
+    <div class="iteration">{{ 'strings.step' | translate }} 4</div>
     <div class="instructions">
-      <h2>{{ 'headingDownloadErrorReport' | translate }}</h2>
-      <p>{{ 'infoDownloadErrorReport' | translate }}</p>
+      <h2>{{ 'strings.headingDownloadErrorReport' | translate }}</h2>
+      <p>{{ 'strings.infoDownloadErrorReport' | translate }}</p>
       <p class="actions">
         <a
           href="/assets/document.pdf"
@@ -90,7 +90,7 @@
           class="button-download"
         >
           <mat-icon class="material-icons-round">file_download_black</mat-icon>
-          {{ 'importDownloadErrorReport' | translate }}
+          {{ 'captions.importDownloadErrorReport' | translate }}
         </a>
       </p>
     </div>

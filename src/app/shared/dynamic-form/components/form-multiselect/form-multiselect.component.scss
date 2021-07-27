@@ -1,0 +1,32 @@
+@use '/src/variables.scss' as *;
+
+.mat-select-header {
+  padding: 16px 16px 24px;
+  border-bottom: 2px solid map-get($sormas-accent, 100);
+}
+
+.mat-select-body {
+  overflow: auto;
+  max-height: 208px;
+}
+
+.icon-search {
+  width: 16px;
+  height: 12px;
+  color: map-get($sormas-accent, 300);
+  font-size: 12px;
+}
+
+.icon-clear {
+  color: map-get($sormas-accent, 400);
+  font-size: 14px;
+}
+
+.icon-arrow {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.hidden {
+  display: none;
+}
