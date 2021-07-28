@@ -63,10 +63,21 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() saveConfigKey: string | undefined;
   @Input() fullHeight: boolean;
   @Input() appearance: string = constants.TableAppearanceOptions.STANDARD;
-  @Input() preSetFilters: Filter[];
   @Input() viewOptions: NavItem[];
   @Input() bulkEditOptions: NavItem[];
   @Input() allowToggleColumns = false;
+
+  preSetFiltersTmp: Filter[];
+  @Input() set preSetFilters(value) {
+    if (this.preSetFiltersTmp?.length !== value.length) {
+      this.filters = value;
+      this.getResources(true);
+    }
+    this.preSetFiltersTmp = value;
+  }
+  get preSetFilters(): Filter[] {
+    return this.preSetFiltersTmp;
+  }
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();

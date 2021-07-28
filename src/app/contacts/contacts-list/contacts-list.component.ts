@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ContactService } from '../../_services/api/contact.service';
 import { TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
@@ -38,6 +38,11 @@ export class ContactsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+    this.subscription.push(
+      this.activeRoute.queryParams.subscribe((params: Params) => {
+        this.routeParams = params;
+      })
+    );
   }
 
   openAddContactModal(): void {

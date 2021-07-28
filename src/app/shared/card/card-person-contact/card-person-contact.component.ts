@@ -6,7 +6,7 @@ import { ContactDto } from '../../../_models/contactDto';
 @Component({
   selector: 'app-card-person-contact',
   templateUrl: './card-person-contact.component.html',
-  styleUrls: ['./card-person-contact.component.scss']
+  styleUrls: ['./card-person-contact.component.scss'],
 })
 export class CardPersonContactComponent {
   @Input() data: ContactDto;

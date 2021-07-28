@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -40,7 +40,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsMore: NavItem[] = actionsMoreDefs;
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
-  routeParams = this.activeRoute.snapshot.queryParams;
+  routeParams: Params;
 
   private subscription: Subscription[] = [];
 
@@ -50,12 +50,16 @@ export class CasesListComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private dialog: MatDialog,
     private translateService: TranslateService,
-
     private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+    this.subscription.push(
+      this.activeRoute.queryParams.subscribe((params: any) => {
+        this.routeParams = params;
+      })
+    );
   }
 
   openAddCaseModal(): void {

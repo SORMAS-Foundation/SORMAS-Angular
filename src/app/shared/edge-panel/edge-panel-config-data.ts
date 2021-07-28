@@ -21,14 +21,14 @@ export const PANEL_CONFIG = {
     cardTitleKey: 'eventTitle',
   },
   PERSON_EVENT: {
-    title: 'entityEvents',
+    title: 'strings.entityEvents',
     action: 'captions.personLinkToEvents',
     cardType: 'person_event',
     cardTitleKey: 'uuid',
     titleUppercase: true,
   },
   CASE: {
-    title: 'entityCases',
+    title: 'strings.entityCases',
     action: 'captions.personLinkToCases',
     cardType: 'person_case',
     cardTitleKey: 'uuid',
@@ -37,7 +37,7 @@ export const PANEL_CONFIG = {
     titleUppercase: true,
   },
   CONTACT: {
-    title: 'entityContacts',
+    title: 'strings.entityContacts',
     action: 'captions.personLinkToContacts',
     cardType: 'person_contact',
     cardTitleKey: 'uuid',

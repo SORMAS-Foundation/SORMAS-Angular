@@ -40,7 +40,7 @@ export enum EventStatusIcons {
   SCREENING = 'travel_explore',
   CLUSTER = 'grain',
   DROPPED = 'disabled_by default',
-};
+}
 
 export enum CardActionsIcons {
   edit = 'edit',

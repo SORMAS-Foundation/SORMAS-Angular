@@ -6,7 +6,7 @@ import { CaseDataDto } from '../../../_models/caseDataDto';
 @Component({
   selector: 'app-card-person-case',
   templateUrl: './card-person-case.component.html',
-  styleUrls: ['./card-person-case.component.scss']
+  styleUrls: ['./card-person-case.component.scss'],
 })
 export class CardPersonCaseComponent {
   @Input() data: CaseDataDto;

@@ -6,7 +6,7 @@ import { EventDto } from '../../../_models/eventDto';
 @Component({
   selector: 'app-card-person-event',
   templateUrl: './card-person-event.component.html',
-  styleUrls: ['./card-person-event.component.scss']
+  styleUrls: ['./card-person-event.component.scss'],
 })
 export class CardPersonEventComponent {
   @Input() data: EventDto;
