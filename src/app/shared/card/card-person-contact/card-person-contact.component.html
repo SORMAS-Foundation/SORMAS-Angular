@@ -1,0 +1,12 @@
+<div *ngIf="data" class="card-person-contact">
+  <div class='disease'>{{data.disease ? disease[data.disease!] : ''}}</div>
+  <div class='classification'>
+    <span><mat-icon class="material-icons-round classification-icon">
+          {{ contactClassificationIcons[data.contactClassification!] }}
+        </mat-icon></span>
+    <span>{{contactClassification[data.contactClassification!]}}</span>
+  </div>
+  <div class='status'>
+    {{contactStatus[data.contactStatus!]}}
+  </div>
+</div>

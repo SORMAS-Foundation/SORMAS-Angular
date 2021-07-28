@@ -32,9 +32,12 @@ export const HEADER_HEIGHT = 68;
 // sidebar panels
 export const EDGE_PANEL_INITIAL_SIZE_SINGLE_COLUMN = 3;
 export const EDGE_PANEL_INITIAL_SIZE_DOUBLE_COLUMN = 4;
-export type EdgePanelType = 'TASK' | 'SAMPLE' | 'EVENT';
+export type EdgePanelType = 'TASK' | 'SAMPLE' | 'EVENT' | 'PERSON_EVENT' | 'CASE' | 'CONTACT';
 export const EDGE_PANEL_TYPE = {
   TASK: 'TASK' as EdgePanelType,
   SAMPLE: 'SAMPLE' as EdgePanelType,
   EVENT: 'EVENT' as EdgePanelType,
+  PERSON_EVENT: 'PERSON_EVENT' as EdgePanelType,
+  CASE: 'CASE' as EdgePanelType,
+  CONTACT: 'CONTACT' as EdgePanelType,
 };

@@ -20,6 +20,7 @@ export class CardComponent implements OnInit {
   @Input() id: string;
   @Input() title: string;
   @Input() titlePosition: BasicPositionType = BasicPosition.LEFT;
+  @Input() titleUppercase: boolean;
   @Input() collapse = false;
   @Input() collapsePosition: PositionType = Position.RIGHT;
   @Input() select = false;

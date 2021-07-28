@@ -12,7 +12,7 @@ import { HEADER_HEIGHT } from '../../app.constants';
   styleUrls: ['./persons-list.component.scss'],
 })
 export class PersonsListComponent implements OnInit {
-  tasks: PersonDto[] = [];
+  persons: PersonDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_PERSONS;
   headerHeight = HEADER_HEIGHT;
