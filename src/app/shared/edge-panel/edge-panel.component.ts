@@ -21,6 +21,11 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() resourceService: BaseService<any>;
   @Input() scopeId: string | undefined;
   @Input() type: EdgePanelType = EDGE_PANEL_TYPE.TASK;
+  @Input() filterCriteriaEntity?: string;
+  @Input() cardCollapse: boolean;
+  @Input() showGroupLink = false;
+  @Input() actionLink = '';
+  @Input() actionLinkParams = {};
 
   items: any[] = [];
   initialSize: number;
@@ -35,7 +40,7 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const filters = [
       {
-        field: 'caze',
+        field: this.filterCriteriaEntity || 'caze',
         value: {
           uuid: this.scopeId,
         },

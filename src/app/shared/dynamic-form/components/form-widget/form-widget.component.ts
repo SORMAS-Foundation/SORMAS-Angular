@@ -16,6 +16,10 @@ import { FollowUpStatusComponent } from '../../../widgets/follow-up-status/follo
 import { NewEpidNumberComponent } from '../../../widgets/new-epid-number/new-epid-number.component';
 import { SymptomsGroupSelectComponent } from '../../../widgets/symptoms-group-select/symptoms-group-select.component';
 import { FormElementBase } from '../../types/form-element-base';
+import { PersonContactsListComponent } from '../../../widgets/person-contacts-list/person-contacts-list.component';
+import { NewPersonContactComponent } from '../../../widgets/new-person-contact/new-person-contact.component';
+import { GpsCoordsComponent } from '../../../widgets/gps-coords/gps-coords.component';
+import { AddressButtonComponent } from '../../../widgets/address-button/address-button.component';
 import { PrescriptionsListComponent } from '../../../widgets/prescriptions-list/prescriptions-list.component';
 import { TreatmentsListComponent } from '../../../widgets/treatments-list/treatments-list.component';
 
@@ -29,6 +33,10 @@ const COMPONENTS_MAP: any = {
   'app-new-address': NewAddressComponent,
   'app-prescriptions-list': PrescriptionsListComponent,
   'app-treatments-list': TreatmentsListComponent,
+  'app-person-contacts-list': PersonContactsListComponent,
+  'app-new-person-contact': NewPersonContactComponent,
+  'app-gps-coords': GpsCoordsComponent,
+  'app-address-button': AddressButtonComponent,
 };
 
 @Component({

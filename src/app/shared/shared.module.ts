@@ -10,7 +10,7 @@ import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { TableComponent } from './table/table.component';
 import { DialogModule } from './dialog';
 import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
-import { InpageNavComponent } from './inpage-nav/inpage-nav.component';
+import { InpageNavModule } from './inpage-nav/inpage-nav.module';
 import { FormActionsComponent } from './form-actions/form-actions.component';
 import { CardModule } from './card/card.module';
 import { DateCardModule } from './date-card/date-card.module';
@@ -24,12 +24,18 @@ import { AddressesListComponent } from './widgets/addresses-list/addresses-list.
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
 import { FiltersComponent } from './filters/filters.component';
-import { DebounceDirective } from '../_directives/debounce.directive';
 import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EdgePanelComponent } from './edge-panel/edge-panel.component';
+import { TableDataComponent } from './table/table-data/table-data.component';
+import { PersonContactsListComponent } from './widgets/person-contacts-list/person-contacts-list.component';
+import { NewPersonContactComponent } from './widgets/new-person-contact/new-person-contact.component';
+import { GpsCoordsComponent } from './widgets/gps-coords/gps-coords.component';
+import { AddressButtonComponent } from './widgets/address-button/address-button.component';
+import { ColumnPickerModule } from './column-picker/column-picker.module';
+import { DirectivesModule } from '../_directives/directives.module';
 import { PrescriptionsListComponent } from './widgets/prescriptions-list/prescriptions-list.component';
 import { TreatmentsListComponent } from './widgets/treatments-list/treatments-list.component';
 
@@ -37,7 +43,6 @@ import { TreatmentsListComponent } from './widgets/treatments-list/treatments-li
   declarations: [
     LocaleSelectComponent,
     TableComponent,
-    InpageNavComponent,
     CollapsableBoxComponent,
     FormActionsComponent,
     NewEpidNumberComponent,
@@ -49,7 +54,6 @@ import { TreatmentsListComponent } from './widgets/treatments-list/treatments-li
     NewAddressComponent,
     ContactFiltersComponent,
     FiltersComponent,
-    DebounceDirective,
     AddEditBaseModalComponent,
     ActionMenuComponent,
     DropdownMenuComponent,
@@ -57,6 +61,11 @@ import { TreatmentsListComponent } from './widgets/treatments-list/treatments-li
     EdgePanelComponent,
     PrescriptionsListComponent,
     TreatmentsListComponent,
+    TableDataComponent,
+    PersonContactsListComponent,
+    NewPersonContactComponent,
+    GpsCoordsComponent,
+    AddressButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -71,6 +80,9 @@ import { TreatmentsListComponent } from './widgets/treatments-list/treatments-li
     DateCardModule,
     PipesModule,
     TranslateModule,
+    InpageNavModule,
+    ColumnPickerModule,
+    DirectivesModule,
   ],
   exports: [
     LocaleSelectComponent,
@@ -81,7 +93,7 @@ import { TreatmentsListComponent } from './widgets/treatments-list/treatments-li
     FormsModule,
     ReactiveFormsModule,
     DialogModule,
-    InpageNavComponent,
+    InpageNavModule,
     CollapsableBoxComponent,
     FormActionsComponent,
     CardModule,
@@ -90,12 +102,13 @@ import { TreatmentsListComponent } from './widgets/treatments-list/treatments-li
     TranslateModule,
     ContactFiltersComponent,
     FiltersComponent,
-    DebounceDirective,
     ActionMenuComponent,
     DropdownMenuComponent,
     SidebarComponent,
     EdgePanelComponent,
+    ColumnPickerModule,
+    DirectivesModule,
   ],
-  entryComponents: [AddEditBaseModalComponent],
+  entryComponents: [AddEditBaseModalComponent, TableDataComponent],
 })
 export class SharedModule {}

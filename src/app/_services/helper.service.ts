@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Params } from '@angular/router';
+import { Filter } from '../_models/common';
 
 @Injectable({
   providedIn: 'root',
@@ -43,5 +45,13 @@ export class HelperService {
     ).getDate();
     const days = this.getRange(1, maxDays);
     return days.map((x) => ({ key: x, value: x }));
+  }
+
+  setQueryParamsInFilters(routeParams: Params): Filter[] {
+    const filters: Filter[] = [];
+    Object.keys(routeParams).forEach((el) => {
+      filters.push({ field: el, value: { uuid: routeParams[el] } });
+    });
+    return filters;
   }
 }

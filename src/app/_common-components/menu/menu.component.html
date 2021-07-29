@@ -9,8 +9,7 @@
       mat-button
       *ngFor="let route of routeConfig"
       [routerLink]="[route.link]"
-      [routerLinkActive]="['route-active']"
-      [routerLinkActiveOptions]="{ exact: true }"
+      [ngClass]="{'route-active': isSelectedLink(route.selectedLink)}"
       (click)="toggleMenu()"
       (keyup.enter)="toggleMenu()"
     >

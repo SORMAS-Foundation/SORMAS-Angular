@@ -15,10 +15,10 @@
       [type]="config.type"
       (change)="onChange()"
       [formControlName]="config.key"
-      [placeholder]="config.placeholder || ''"
+      [placeholder]="config.placeholder || '' | translate"
       [matTooltip]="config.label || '' | translate"
     />
-    <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
+    <mat-hint *ngIf="config.hint">{{ config.hint | translate }}</mat-hint>
   </mat-form-field>
   <div class="errorMessage" color="warn" *ngIf="!isValid">
     {{ config.validationMessage || '' | translate }}

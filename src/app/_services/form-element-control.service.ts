@@ -14,20 +14,8 @@ export class FormElementControlService {
     const group: { [key: string]: FormControl } = {};
     let validations: ValidatorFn[] = [];
     formElements.forEach((formElement) => {
-      if (formElement.validation?.includes('required')) {
-        validations.push(Validators.required);
-      }
-      if (formElement.validation?.includes('requiredTrue')) {
-        validations.push(Validators.requiredTrue);
-      }
-      if (formElement.validation?.includes('email')) {
-        validations.push(Validators.email);
-      }
-      if (formElement.validation?.includes('age')) {
-        validations.push(Validators.max(MAX_AGE));
-      }
-      if (formElement.validation?.includes('password')) {
-        validations.push(Validators.minLength(MIN_PASS_LENGTH));
+      if (formElement.validation) {
+        validations = this.getValidators(formElement.validation);
       }
       group[formElement.key] =
         validations.length > 0
@@ -58,5 +46,27 @@ export class FormElementControlService {
     });
 
     return formElements;
+  }
+
+  getValidators(validators: string[]): ValidatorFn[] {
+    const validatorsArray = [];
+
+    if (validators.includes('required')) {
+      validatorsArray.push(Validators.required);
+    }
+    if (validators.includes('requiredTrue')) {
+      validatorsArray.push(Validators.requiredTrue);
+    }
+    if (validators.includes('email')) {
+      validatorsArray.push(Validators.email);
+    }
+    if (validators.includes('age')) {
+      validatorsArray.push(Validators.max(MAX_AGE));
+    }
+    if (validators.includes('password')) {
+      validatorsArray.push(Validators.minLength(MIN_PASS_LENGTH));
+    }
+
+    return validatorsArray;
   }
 }

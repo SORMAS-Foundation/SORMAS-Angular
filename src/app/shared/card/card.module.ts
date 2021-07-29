@@ -13,6 +13,10 @@ import { CardListComponent } from './card-list/card-list.component';
 import { CardEpidDataComponent } from './card-epid-data/card-epid-data.component';
 import { PipesModule } from '../../_pipes/pipes.module';
 import { CardDownloadComponent } from './card-download/card-download.component';
+import { CardContactComponent } from './card-contact/card-contact.component';
+import { CardPersonCaseComponent } from './card-person-case/card-person-case.component';
+import { CardPersonContactComponent } from './card-person-contact/card-person-contact.component';
+import { CardPersonEventComponent } from './card-person-event/card-person-event.component';
 import { CardTreatmentsComponent } from './card-treatments/card-treatments.component';
 import { CardPrescriptionsComponent } from './card-prescriptions/card-prescriptions.component';
 
@@ -30,6 +34,10 @@ import { CardPrescriptionsComponent } from './card-prescriptions/card-prescripti
     CardDownloadComponent,
     CardTreatmentsComponent,
     CardPrescriptionsComponent,
+    CardContactComponent,
+    CardPersonCaseComponent,
+    CardPersonContactComponent,
+    CardPersonEventComponent,
   ],
   exports: [CardComponent, CardListComponent],
 })

@@ -4,6 +4,8 @@ export enum CaseClassification {
   PROBABLE = 'Probabale case',
   CONFIRMED = 'Confirmed case',
   NO_CASE = 'Not a case',
+  CONFIRMED_NO_SYMPTOMS = 'Confirmed no symptoms',
+  CONFIRMED_UNKNOWN_SYMPTOMS = 'Confirmed unknown symptoms',
 }
 
 export enum CaseOutcome {
@@ -45,42 +47,42 @@ export enum Disease {
   POLIO = 'Poliomyelitis',
   UNSPECIFIED_VHF = 'Unspecified VHF',
   YELLOW_FEVER = 'Yellow Fever',
-  // WEST_NILE_FEVER = 'WEST_NILE_FEVER',
-  // PNEUMONIA = 'PNEUMONIA',
-  // MALARIA = 'MALARIA',
-  // TYPHOID_FEVER = 'TYPHOID_FEVER',
-  // ACUTE_VIRAL_HEPATITIS = 'ACUTE_VIRAL_HEPATITIS',
-  // NON_NEONATAL_TETANUS = 'NON_NEONATAL_TETANUS',
-  // HIV = 'HIV',
-  // SCHISTOSOMIASIS = 'SCHISTOSOMIASIS',
-  // SOIL_TRANSMITTED_HELMINTHS = 'SOIL_TRANSMITTED_HELMINTHS',
-  // TRYPANOSOMIASIS = 'TRYPANOSOMIASIS',
-  // DIARRHEA_DEHYDRATION = 'DIARRHEA_DEHYDRATION',
-  // DIARRHEA_BLOOD = 'DIARRHEA_BLOOD',
-  // SNAKE_BITE = 'SNAKE_BITE',
-  // RUBELLA = 'RUBELLA',
-  // TUBERCULOSIS = 'TUBERCULOSIS',
-  // LEPROSY = 'LEPROSY',
-  // LYMPHATIC_FILARIASIS = 'LYMPHATIC_FILARIASIS',
-  // BURULI_ULCER = 'BURULI_ULCER',
-  // PERTUSSIS = 'PERTUSSIS',
-  // NEONATAL_TETANUS = 'NEONATAL_TETANUS',
-  // ONCHOCERCIASIS = 'ONCHOCERCIASIS',
-  // DIPHTERIA = 'DIPHTERIA',
-  // TRACHOMA = 'TRACHOMA',
-  // YAWS_ENDEMIC_SYPHILIS = 'YAWS_ENDEMIC_SYPHILIS',
-  // MATERNAL_DEATHS = 'MATERNAL_DEATHS',
-  // PERINATAL_DEATHS = 'PERINATAL_DEATHS',
-  // INFLUENZA_A = 'INFLUENZA_A',
-  // INFLUENZA_B = 'INFLUENZA_B',
-  // H_METAPNEUMOVIRUS = 'H_METAPNEUMOVIRUS',
-  // RESPIRATORY_SYNCYTIAL_VIRUS = 'RESPIRATORY_SYNCYTIAL_VIRUS',
-  // PARAINFLUENZA_1_4 = 'PARAINFLUENZA_1_4',
-  // ADENOVIRUS = 'ADENOVIRUS',
-  // RHINOVIRUS = 'RHINOVIRUS',
-  // ENTEROVIRUS = 'ENTEROVIRUS',
-  // M_PNEUMONIAE = 'M_PNEUMONIAE',
-  // C_PNEUMONIAE = 'C_PNEUMONIAE',
+  WEST_NILE_FEVER = 'West nile fever',
+  PNEUMONIA = 'Pneumonia',
+  MALARIA = 'Malaria',
+  TYPHOID_FEVER = 'Typhoid fever',
+  ACUTE_VIRAL_HEPATITIS = 'Acute viral hepatitis',
+  NON_NEONATAL_TETANUS = 'Non neonatal tetanus',
+  HIV = 'Hiv',
+  SCHISTOSOMIASIS = 'Schistosomiasis',
+  SOIL_TRANSMITTED_HELMINTHS = 'Soil transitted helminths',
+  TRYPANOSOMIASIS = 'Trypanosomiasis',
+  DIARRHEA_DEHYDRATION = 'Diarrhea dehydration',
+  DIARRHEA_BLOOD = 'Diarrhea blood',
+  SNAKE_BITE = 'Snake bite',
+  RUBELLA = 'Rubella',
+  TUBERCULOSIS = 'Tuberculosis',
+  LEPROSY = 'Leprosy',
+  LYMPHATIC_FILARIASIS = 'Lymphatic filariasis',
+  BURULI_ULCER = 'Buruli ulcer',
+  PERTUSSIS = 'Pertussis',
+  NEONATAL_TETANUS = 'Neonatal tetanus',
+  ONCHOCERCIASIS = 'Onochocerciasis',
+  DIPHTERIA = 'Diphteria',
+  TRACHOMA = 'Trachoma',
+  YAWS_ENDEMIC_SYPHILIS = 'Yaws endemic syphilis',
+  MATERNAL_DEATHS = 'Maternal deaths',
+  PERINATAL_DEATHS = 'Perinatal deaths',
+  INFLUENZA_A = 'Influenza A',
+  INFLUENZA_B = 'Influenza B',
+  H_METAPNEUMOVIRUS = 'H metapneumovirus',
+  RESPIRATORY_SYNCYTIAL_VIRUS = 'Respiratory syncytial virus',
+  PARAINFLUENZA_1_4 = 'Parainfluenza 1 4',
+  ADENOVIRUS = 'Adenovirus',
+  RHINOVIRUS = 'Rhinovirus',
+  ENTEROVIRUS = 'Enterovirus',
+  M_PNEUMONIAE = 'M pneumoniae',
+  C_PNEUMONIAE = 'C pneumoniae',
 }
 
 export enum PlaceOfStay {
@@ -109,6 +111,14 @@ export enum VaccinationSource {
   UNKNOWN = 'Unknown',
 }
 
+export enum InformationSource {
+  NOTAPPLICABL = 'Not applicable',
+  MEDIANEWS = 'Media/News',
+  HOTLINEPERSON = 'Hotline/Person',
+  MATHEMATICALMODEL = 'Mathematical model',
+  INSTITUTIONALPARTNER = 'Institutional partner',
+}
+
 export enum VaccineName {
   COMIRNATY = 'Pfizer-BioNTech COVID-19 vaccine',
   MRNA_1273 = 'Moderna COVID-19 vaccine',
@@ -131,9 +141,47 @@ export enum VaccineManufacturer {
   OTHER = 'Other',
 }
 
+export enum InstitutionalPartnerType {
+  HEALTHINSURANCE = 'Health insurance',
+  TERRITORIALCOMMUNITIES = 'Territorial communities',
+  NATIONALEDUCATION = 'National education',
+  HEALTHESTABLISHMENTS = 'Health establishments',
+  MEDICOSOCIALESTABLISHMENTS = 'Medico-social establishments',
+  OTHER = 'Other',
+}
+
+export enum TypeOfPlace {
+  FACILITY = 'Facility',
+  FESTIVITIES = 'Festivities',
+  HOME = 'Home',
+  MEANSOFTRANSPORT = 'Means of transport',
+  PUBLICPLACE = 'Public place',
+  SCATTERED = 'Scattered',
+  UNKNOWN = 'Unknown',
+  OTHER = 'Other',
+}
+
 export enum YesNoUnknown {
   YES = 'Yes',
   NO = 'No',
+  UNKNOWN = 'Unknown',
+}
+
+export enum MeansOfTransport {
+  LOCALPUBLICTRANSPORT = 'Local public transport',
+  BUS = 'Bus',
+  FERRY = 'Ship/Ferry',
+  PLANE = 'Plane',
+  TRAIN = 'Train',
+  OTHER = 'Other',
+}
+
+export enum DiseaseTransmissionMode {
+  HUMANTOHUMAN = 'Primarily via human to human',
+  ANIMAL = 'Primarily via animal',
+  ENVIRONMENT = 'Primarily via environment',
+  FOOD = 'Primarily via food',
+  VECTORBORNE = 'Primarily vector-borne',
   UNKNOWN = 'Unknown',
 }
 
@@ -381,6 +429,35 @@ export enum TaskStatusOptions {
   NOTEXECUTABLE = 'Not executable',
 }
 
+export enum EventStatusOptions {
+  SIGNAL = 'Signal',
+  EVENT = 'Event',
+  DONE = 'Done',
+  CLOSED = 'Closed',
+}
+
+export enum EventStatusOptionsEdit {
+  SIGNAL = 'Signal',
+  EVENT = 'Event',
+  SCREENING = 'Screening',
+  CLUSTER = 'Cluster',
+  DROPPED = 'Dropped',
+}
+
+export enum EventManagementStatusOptions {
+  PENDING = 'Pending',
+  ONGOING = 'Ongoing',
+  DONE = 'Done',
+  CLOSED = 'Closed',
+}
+
+export enum InvestigationStatusOptions {
+  PENDING = 'Pending',
+  ONGOING = 'Ongoing',
+  DONE = 'Done',
+  DISCARDED = 'Discarded',
+}
+
 export enum ContactProximity {
   TOUCHEDFLUID = 'Touched fluid of source case',
   PHYSICALCONTACT = 'Direct physical contact with source case',
@@ -406,10 +483,72 @@ export enum ContactCategory {
   NORISK = 'No risk contact',
 }
 
+export enum RiskLevel {
+  LOW = 'Low risk',
+  MODERATE = 'Modate risk',
+  HIGH = 'High risk',
+  UNKNOWN = 'Unknown',
+}
+
 export enum ContactRelation {
   SAMEHOUSEHOLD = 'Live in the same household',
   FAMILYMEMBERORFRIEND = 'Other family member or friend',
   SAMEENVIRONMENT = 'Work in the same environment',
   MEDICALCARE = 'Provided medical care for the case',
   OTHER = 'Other',
+}
+
+export enum ContactClassification {
+  UNCONFIRMED = 'Unconfirmed contact',
+  CONFIRMED = 'Confirmed contact',
+  NO_CONTACT = 'Not a contact',
+}
+
+export enum ContactStatus {
+  ACTIVE = 'Active contact',
+  CONVERTED = 'Converted to case',
+  DROPPED = 'Dropped',
+}
+
+export enum UserRole {
+  ADMIN = 'Admin',
+  NATIONAL_USER = 'National user',
+  SURVEILLANCE_SUPERVISOR = 'Surveillance suprervisor',
+  ADMIN_SUPERVISOR = 'Admin supervisor',
+  SURVEILLANCE_OFFICER = 'Surveillance officer',
+  HOSPITAL_INFORMANT = 'Hospital informant',
+  COMMUNITY_OFFICER = 'Community officer',
+  COMMUNITY_INFORMANT = 'Community informant',
+  CASE_SUPERVISOR = 'Case supervisor',
+  CASE_OFFICER = 'Case officer',
+  CONTACT_SUPERVISOR = 'Contact supervisor',
+  CONTACT_OFFICER = 'Contact officer',
+  EVENT_OFFICER = 'Event officer',
+  LAB_USER = 'Lab user',
+  EXTERNAL_LAB_USER = 'External lab user',
+  NATIONAL_OBSERVER = 'National observer',
+  STATE_OBSERVER = 'State observer',
+  DISTRICT_OBSERVER = 'District observer',
+  NATIONAL_CLINICIAN = 'National clinician',
+  POE_INFORMANT = 'Poe informant',
+  POE_SUPERVISOR = 'Poe supervisor',
+  POE_NATIONAL_USER = 'Poe national user',
+  IMPORT_USER = 'Import user',
+  REST_EXTERNAL_VISITS_USER = 'Rest external visits user',
+  REST_USER = 'Rest user',
+  SORMAS_TO_SORMAS_CLIENT = 'Sormas to Sormas client',
+  BAG_USER = 'Bag user',
+}
+
+export enum PointOfEntryType {
+  AIRPORT = 'Airport',
+  SEAPORT = 'Seaport',
+  GROUNDCROSSING = 'Ground crossing',
+  OTHER = 'Other',
+}
+
+export enum AreaType {
+  URBAN = 'Urban',
+  RURAL = 'Rural',
+  UNKNOWN = 'Unknown',
 }

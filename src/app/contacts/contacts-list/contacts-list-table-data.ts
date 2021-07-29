@@ -1,58 +1,66 @@
-import { TableColumn } from '../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'Contact.uuid',
+    name: 'captions.Contact.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      truncate: 6,
+    },
   },
   {
-    name: 'disease',
+    name: 'captions.disease',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: 'Contact.contactClassification',
+    name: 'captions.Contact.contactClassification',
     dataKey: 'contactClassification',
     isSortable: true,
   },
   {
-    name: 'Contact.contactStatus',
+    name: 'captions.Contact.contactStatus',
     dataKey: 'contactStatus',
     isSortable: true,
   },
   {
-    name: 'Contact.firstName',
+    name: 'captions.Contact.firstName',
     dataKey: 'firstName',
     isSortable: true,
   },
   {
-    name: 'Contact.lastName',
+    name: 'captions.Contact.lastName',
     dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: 'Contact.contactProximityLongForm',
-    dataKey: 'contactProximity', // toDo
+    name: 'captions.Contact.contactProximity',
+    dataKey: 'contactProximity',
     isSortable: true,
   },
   {
-    name: 'ContactsEpiCurveMode.FOLLOW_UP_STATUS',
+    name: 'captions.Contact.followUpStatus',
     dataKey: 'followUpStatus',
     isSortable: true,
   },
   {
-    name: 'ContactsEpiCurveMode.FOLLOW_UP_UNTIL',
+    name: 'captions.Contact.followUpUntil',
     dataKey: 'followUpUntil',
     isSortable: true,
+    format: {
+      type: 'DATE',
+      pattern: 'd/M/yyyy',
+    },
   },
   {
-    name: 'Contact.numberOfVisits',
-    dataKey: '', // toDo
+    name: 'captions.Contact.numberOfVisits',
+    dataKey: 'visitCount',
     isSortable: true,
   },
   {
-    name: 'columnNumberOfPendingTasks',
+    name: 'captions.columnNumberOfPendingTasks',
     dataKey: '', // toDo
     isSortable: true,
   },

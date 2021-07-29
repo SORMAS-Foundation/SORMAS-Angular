@@ -1,4 +1,4 @@
-export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 54;
+export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
 export const UUID_KEY = 'uuid';
 
@@ -19,13 +19,13 @@ export enum SentResourceTypes {
 export const PAGE_SIZE = 7;
 
 // case-tab-links
-export type CaseLink = {
+export type EntityLink = {
   title: string;
   link: string;
 };
 
 // modals
-export const ADD_MODAL_MAX_WIDTH = 1110;
+export const ADD_MODAL_MAX_WIDTH = '1200px';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
 
@@ -34,9 +34,12 @@ export const HEADER_HEIGHT = 68;
 // sidebar panels
 export const EDGE_PANEL_INITIAL_SIZE_SINGLE_COLUMN = 3;
 export const EDGE_PANEL_INITIAL_SIZE_DOUBLE_COLUMN = 4;
-export type EdgePanelType = 'TASK' | 'SAMPLE' | 'EVENT';
+export type EdgePanelType = 'TASK' | 'SAMPLE' | 'EVENT' | 'PERSON_EVENT' | 'CASE' | 'CONTACT';
 export const EDGE_PANEL_TYPE = {
   TASK: 'TASK' as EdgePanelType,
   SAMPLE: 'SAMPLE' as EdgePanelType,
   EVENT: 'EVENT' as EdgePanelType,
+  PERSON_EVENT: 'PERSON_EVENT' as EdgePanelType,
+  CASE: 'CASE' as EdgePanelType,
+  CONTACT: 'CONTACT' as EdgePanelType,
 };

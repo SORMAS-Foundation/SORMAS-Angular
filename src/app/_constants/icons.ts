@@ -5,6 +5,10 @@ export enum IconsMap {
   DIALOG_ICON_TITLE_ALERT = 'warning_amber',
   DIALOG_ICON_CLOSE = 'highlight_off',
   ONGOING = 'refresh',
+  true = 'check_circle_black',
+  false = 'not_interested',
+  EMAIL = 'mail_outline',
+  PHONE = 'call',
 }
 
 export enum CaseOutcomeIcons {
@@ -22,6 +26,20 @@ export enum CaseClassificationIcons {
   CONFIRMED_NO_SYMPTOMS = 'new_releases',
   CONFIRMED_UNKNOWN_SYMPTOMS = 'new_releases',
   NO_CASE = 'how_to_reg',
+}
+
+export enum ContactClassificationIcons {
+  UNCONFIRMED = 'gpp_bad',
+  CONFIRMED = 'connect without contact',
+  NO_CONTACT = 'voice over off',
+}
+
+export enum EventStatusIcons {
+  SIGNAL = 'wifi_tethering',
+  EVENT = 'warning',
+  SCREENING = 'travel_explore',
+  CLUSTER = 'grain',
+  DROPPED = 'disabled_by default',
 }
 
 export enum CardActionsIcons {

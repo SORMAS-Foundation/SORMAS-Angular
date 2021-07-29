@@ -18,21 +18,39 @@ export interface Sorting {
 // filter
 export interface Filter {
   field: string;
-  value?: string;
+  value?: any;
   operation?: string;
 }
 
 // table
+export type TableDataFormatType = 'DISPLAY' | 'LINK' | 'NUMBER' | 'DATE' | 'LOADING';
+
+export const TableDataFormatOptions = {
+  DISPLAY: 'DISPLAY' as TableDataFormatType,
+  LINK: 'LINK' as TableDataFormatType,
+  NUMBER: 'NUMBER' as TableDataFormatType,
+  DATE: 'DATE' as TableDataFormatType,
+  LOADING: 'LOADING' as TableDataFormatType,
+};
+
+export interface TableDataFormat {
+  type: TableDataFormatType;
+  pattern?: string;
+  params?: string[];
+  match?: { [key: string]: number[] };
+  truncate?: number;
+  breakSpaces?: boolean;
+}
+
 export interface TableColumn {
   name: string;
   dataKey: string;
-  advancedDisplay?: string;
-  advancedDisplayParams?: string[];
-  linkPattern?: string;
-  linkParams?: string[];
   isSortable?: boolean;
   iconify?: boolean;
-  stylify?: boolean;
+  align?: string;
+  className?: string;
+  format?: TableDataFormat;
+  essential?: boolean;
 }
 
 // scrolling
@@ -57,4 +75,5 @@ export interface NavItem {
   className?: string;
   children?: NavItem[];
   component?: any;
+  componentTitle?: string;
 }

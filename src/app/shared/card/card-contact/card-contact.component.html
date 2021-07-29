@@ -1,0 +1,13 @@
+<div *ngIf="data">
+  <mat-icon *ngIf="data.primaryContact" class="material-icons-round primary-contact">
+    check_circle_outline
+  </mat-icon>
+  <p *ngIf="data.thirdParty" class="third-party-role">{{ data.thirdPartyRole }}</p>
+  <h3>{{ getName() }}</h3>
+  <div class="content">
+    <ng-container *ngIf="getIcon(); let icon">
+      <mat-icon class="material-icons-round">{{ icon }}</mat-icon>
+    </ng-container>
+    <span *ngIf="data.contactInformation">{{ data.contactInformation }}</span>
+  </div>
+</div>

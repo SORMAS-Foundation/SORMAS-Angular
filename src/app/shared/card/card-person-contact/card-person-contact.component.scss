@@ -1,0 +1,27 @@
+@use '../../../../variables.scss' as *;
+
+.card-person-contact {
+  padding-top: 5px;
+  border-top: solid 2px mat-color($sormas-alert, 100);
+  .disease {
+    margin-bottom: 8px;
+    color: mat-color($sormas-accent, 500);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .classification {
+    display: flex;
+    margin-bottom: 8px;
+    color: mat-color($sormas-accent, 800);
+    font-weight: 500;
+    gap: 12px;
+    .classification-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  .status {
+    color: mat-color($sormas-alert, 300);
+    font-weight: 500;
+  }
+}

@@ -56,6 +56,11 @@ const routes: Routes = [
     loadChildren: () => import('./persons/persons.module').then((m) => m.PersonsModule),
     canActivate: [Guard, LeaveGuard],
   },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
+    canActivate: [Guard, LeaveGuard],
+  },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
 ];

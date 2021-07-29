@@ -12,6 +12,7 @@ import { FacilityReferenceDto } from './facilityReferenceDto';
 import { FacilityType } from './facilityType';
 import { LocationDto } from './locationDto';
 import { OccupationType } from './occupationType';
+import { PersonContactDetailDto } from './personContactDetailDto';
 import { PresentCondition } from './presentCondition';
 import { RegionReferenceDto } from './regionReferenceDto';
 import { Salutation } from './salutation';
@@ -59,7 +60,6 @@ export interface PersonDto {
   burialPlaceDescription?: string;
   burialConductor?: BurialConductor;
   phone?: string;
-  phoneOwner?: string;
   address?: LocationDto;
   emailAddress?: string;
   educationType?: EducationType;
@@ -67,10 +67,10 @@ export interface PersonDto {
   occupationType?: OccupationType;
   occupationDetails?: string;
   armedForcesRelationType?: ArmedForcesRelationType;
-  generalPractitionerDetails?: string;
   passportNumber?: string;
   nationalHealthId?: string;
   addresses?: Array<LocationDto>;
+  personContactDetails?: Array<PersonContactDetailDto>;
   hasCovidApp?: boolean;
   covidCodeDelivered?: boolean;
   symptomJournalStatus?: SymptomJournalStatus;
@@ -78,5 +78,5 @@ export interface PersonDto {
   externalToken?: string;
   birthCountry?: CountryReferenceDto;
   citizenship?: CountryReferenceDto;
-  enrolledInExternalJournal?: boolean;
+  additionalDetails?: string;
 }

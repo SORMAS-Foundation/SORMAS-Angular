@@ -17,7 +17,6 @@ import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ViewportRuler } from '@angular/cdk/scrolling';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from '../../_services/api/base.service';
@@ -28,6 +27,7 @@ import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-table',
@@ -51,7 +51,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   debouncer: Subject<number> = new Subject<number>();
   dataSourceArray: any = [];
   subscriptions: Subscription[] = [];
-  icons = constants.IconsMap;
 
   private subscription: Subscription[] = [];
 
@@ -64,9 +63,21 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() saveConfigKey: string | undefined;
   @Input() fullHeight: boolean;
   @Input() appearance: string = constants.TableAppearanceOptions.STANDARD;
-  @Input() preSetFilters: Filter[];
   @Input() viewOptions: NavItem[];
   @Input() bulkEditOptions: NavItem[];
+  @Input() allowToggleColumns = false;
+
+  preSetFiltersTmp: Filter[];
+  @Input() set preSetFilters(value) {
+    if (this.preSetFiltersTmp?.length !== value.length) {
+      this.filters = value;
+      this.getResources(true);
+    }
+    this.preSetFiltersTmp = value;
+  }
+  get preSetFilters(): Filter[] {
+    return this.preSetFiltersTmp;
+  }
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() clickItem: EventEmitter<any> = new EventEmitter();
@@ -78,28 +89,22 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
-    private viewportRuler: ViewportRuler,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
     this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
     this.displayedColumns = this.getColumns();
 
-    if (this.fullHeight) {
-      this.viewportRuler.change(300).subscribe(() => this.determineHeight());
-    }
+    this.determineHeight(this.fullHeight);
 
     this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
       if (this.preSetFilters) {
         this.filters = this.preSetFilters;
       }
       this.offset = value;
-      if (!value) {
-        this.getResources(true);
-      } else {
-        this.getResources();
-      }
+      this.getResources(!value);
     });
 
     this.subscriptions.push(
@@ -111,6 +116,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         this.getResources(true);
       })
     );
+  }
+
+  getRowData(index: number): any {
+    return this.dataSourceArray[index];
   }
 
   getSelectedItems(): any[] {
@@ -128,103 +137,67 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       columns.unshift('select');
     }
 
-    if (!this.saveConfigKey) {
-      return columns;
-    }
+    if (this.saveConfigKey) {
+      const config = this.localStorageService.get(this.saveConfigKey);
 
-    const config = this.localStorageService.get(this.saveConfigKey);
-
-    if (config) {
-      columns = config.filter((col: any) => columns.includes(col));
+      if (config) {
+        columns = this.getColumnsNameByKey(config);
+      }
     }
 
     return columns;
   }
 
-  openBulkEdit(editComponent: any): void {
+  saveColumns(): void {
+    if (this.saveConfigKey) {
+      const columns = this.getColumnsKeyByName(this.displayedColumns);
+      this.localStorageService.set(this.saveConfigKey, columns);
+    }
+  }
+
+  getColumnsKeyByName(names: any[]): any[] {
+    return names.map((item) => {
+      const column = this.tableColumns.find((col) => col.name === item);
+      return column?.dataKey;
+    });
+  }
+
+  getColumnsNameByKey(keys: string[]): string[] {
+    const columns: string[] = [];
+
+    keys.forEach((item: string) => {
+      const column = this.tableColumns.find((col) => col.dataKey === item);
+      if (column) {
+        columns.push(column.name);
+      }
+    });
+
+    if (this.isSelectable) {
+      columns.unshift('select');
+    }
+
+    return columns;
+  }
+
+  openBulkEdit(bulkEditOption: any): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       minWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Edit cases'),
-        component: editComponent,
+        title: this.translateService.instant(bulkEditOption.componentTitle),
+        component: bulkEditOption.component,
         editResources: this.getSelectedItems(),
       },
     });
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }
       })
     );
-  }
-
-  getAdvancedData(
-    index: number,
-    tableColumn: TableColumn,
-    type: constants.AdvancedDataType
-  ): string {
-    let params: keyof typeof tableColumn;
-    let pattern: keyof typeof tableColumn;
-
-    if (type === constants.AdvancedDataType.DISPLAY) {
-      params = 'advancedDisplayParams';
-      pattern = 'advancedDisplay';
-    } else {
-      params = 'linkParams';
-      pattern = 'linkPattern';
-    }
-    let dataTmp = tableColumn[pattern] || '';
-    const currentParam = tableColumn[params];
-    if (currentParam) {
-      for (let i = 0; i < currentParam.length; i += 1) {
-        const tableDataTmp = this.getTableDataByKey(index, currentParam[i]);
-        if (tableDataTmp === '') {
-          return '';
-        }
-        dataTmp = dataTmp?.replace(`$param${i + 1}`, tableDataTmp);
-      }
-      return dataTmp;
-    }
-
-    return '';
-  }
-
-  getTableDataByKey(index: number, key: string): any {
-    let displayText;
-
-    if (typeof this.dataSourceArray[index].index !== 'undefined') {
-      return 'loading';
-    }
-
-    if (key.indexOf('.') > -1) {
-      displayText = key.split('.').reduce((o, i) => o && o[i], this.dataSourceArray[index]);
-    } else {
-      displayText = this.dataSourceArray[index][key]?.toString();
-    }
-
-    if (typeof displayText === 'undefined' || displayText === null) {
-      return '';
-    }
-
-    return displayText;
-  }
-
-  getTableData(index: number, tableColumn: TableColumn): any {
-    if (tableColumn.advancedDisplay) {
-      return this.getAdvancedData(index, tableColumn, constants.AdvancedDataType.DISPLAY);
-    }
-    return this.getTableDataByKey(index, tableColumn.dataKey);
-  }
-
-  getIcon(key: string): string {
-    return this.icons[key as keyof typeof constants.IconsMap];
-  }
-
-  getClass(key: string, value: string): string {
-    return `${key.toLocaleLowerCase()}-${value.toLocaleLowerCase()}`;
   }
 
   getResources(reload: boolean = false): void {
@@ -247,6 +220,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
           for (let i = this.offset; i < this.offset + this.limit; i += 1) {
             this.dataSourceArray[i] = response.elements[i - this.offset];
+          }
+
+          if (!this.fullHeight) {
+            this.determineHeight();
           }
         },
         error: (err: any) => {
@@ -275,18 +252,26 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
-    if (this.saveConfigKey) {
-      this.localStorageService.set(this.saveConfigKey, this.displayedColumns);
-    }
+    this.saveColumns();
   }
 
-  determineHeight(): void {
-    const viewportHeight = window.innerHeight;
-    const rect = this.vsTable.nativeElement.getBoundingClientRect();
-    const offsetTop = rect.top + window.pageYOffset - document.documentElement.clientTop;
+  determineHeight(fullHeight?: boolean): void {
+    setTimeout(() => {
+      const table = fullHeight
+        ? this.vsTable.nativeElement
+        : this.vsTable.nativeElement.querySelector('table');
+      const rect = table.getBoundingClientRect();
 
-    this.tableHeight = viewportHeight - offsetTop;
-    this.limit = Math.ceil((this.tableHeight - this.headerHeight) / this.rowHeight);
+      if (fullHeight) {
+        const viewportHeight = window.innerHeight;
+        const offsetTop = rect.top + window.pageYOffset - document.documentElement.clientTop;
+
+        this.tableHeight = viewportHeight - offsetTop;
+        this.limit = Math.ceil((this.tableHeight - this.headerHeight) / this.rowHeight);
+      } else {
+        this.tableHeight = Math.ceil(rect.height) + 8;
+      }
+    });
   }
 
   onActionSelected(event: any): void {
@@ -294,8 +279,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       case ACTIONS_BULK_EDIT.EDIT:
         // @ts-ignore
         // eslint-disable-next-line no-case-declarations
-        const editComponent = this.bulkEditOptions.find((item) => item.action === event).component;
-        this.openBulkEdit(editComponent);
+        const bulkEditOption = this.bulkEditOptions.find((item) => item.action === event);
+        this.openBulkEdit(bulkEditOption);
         break;
       default:
         // eslint-disable-next-line no-console
@@ -303,10 +288,16 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  updateTableColumns(columns: string[]): void {
+    this.displayedColumns = this.getColumnsNameByKey(columns);
+    this.saveColumns();
+    setTimeout(() => {
+      this.formActionsService.setDiscard();
+    });
+  }
+
   ngAfterViewInit(): void {
-    if (this.fullHeight) {
-      setTimeout(() => this.determineHeight());
-    }
+    this.determineHeight(this.fullHeight);
   }
 
   ngOnDestroy(): void {

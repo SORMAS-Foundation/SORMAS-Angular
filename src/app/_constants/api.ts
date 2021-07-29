@@ -61,3 +61,23 @@ export const API_ROUTE_CONTACTS = {
   ADD: 'contacts/add',
   DELETE: 'contacts/delete',
 };
+
+export const API_ROUTE_CLINICAL_VISITS = {
+  ENDPOINT: 'clinicalvisits',
+  GET_ALL: 'clinicalvisits/indexList',
+  UPDATE: 'clinicalvisits/update',
+};
+
+export const API_ROUTE_VISITS = {
+  ENDPOINT: 'visits',
+  GET_ALL: 'visits/indexList',
+  UPDATE: 'visits/update',
+};
+
+export const API_ROUTE_USERS = {
+  ENDPOINT: 'users',
+  GET_ALL: 'users/indexList',
+  UPDATE: 'users/update',
+  ADD: 'users/add',
+  DELETE: 'users/delete',
+};

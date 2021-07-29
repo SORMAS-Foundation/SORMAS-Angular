@@ -1,0 +1,19 @@
+<div *ngIf="data" class="card-person-event">
+  <div class="responsible-user" *ngIf='data.responsibleUser?.uuid'>
+      {{data.responsibleUser?.caption}} event
+  </div>
+  <div class='status'>
+    <span><mat-icon class="material-icons-round classification-icon">
+          {{ eventStatusIcons[data.eventStatus!] }}
+        </mat-icon></span>
+    <span>{{eventStatus[data.eventStatus!]}}</span>
+  </div>
+  <div class='event-id'>
+    <div class="label">
+      Event id
+    </div>
+    <div class='value'>
+      {{data.uuid | toShortId: 'uuid'}}
+    </div>
+  </div>  
+</div>

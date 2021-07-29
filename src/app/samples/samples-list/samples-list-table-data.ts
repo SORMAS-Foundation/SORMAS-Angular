@@ -1,68 +1,72 @@
-import { TableColumn } from '../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'Sample.uuid',
+    name: 'captions.Sample.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      truncate: 6,
+    },
   },
   {
-    name: 'Sample.labSampleID',
+    name: 'captions.Sample.labSampleID',
     dataKey: 'epidNumber',
     isSortable: true,
   },
   {
-    name: 'Sample.associatedCase',
+    name: 'captions.Sample.associatedCase',
     dataKey: 'associatedCase.caption',
     isSortable: true,
   },
   {
-    name: 'Sample.diseaseShort',
+    name: 'captions.Sample.diseaseShort',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: 'Sample.caseDistrict',
+    name: 'captions.Sample.caseDistrict',
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: 'Sample.shipped',
+    name: 'captions.Sample.shipped',
     dataKey: 'shipped',
     isSortable: true,
   },
   {
-    name: 'Sample.received',
+    name: 'captions.Sample.received',
     dataKey: 'received',
     isSortable: true,
   },
   {
-    name: 'Sample.shipmentDate',
+    name: 'captions.Sample.shipmentDate',
     dataKey: 'shipmentDate',
     isSortable: true,
   },
   {
-    name: 'Sample.lab',
+    name: 'captions.Sample.lab',
     dataKey: 'lab.caption',
     isSortable: true,
   },
   {
-    name: 'Sample.sampleMaterial',
+    name: 'captions.Sample.sampleMaterial',
     dataKey: 'sampleMaterial',
     isSortable: true,
   },
   {
-    name: 'Sample.samplePurpose',
+    name: 'captions.Sample.samplePurpose',
     dataKey: 'samplePurpose',
     isSortable: true,
   },
   {
-    name: 'Sample.pathogenTestResult',
+    name: 'captions.Sample.pathogenTestResult',
     dataKey: 'pathogenTestResult',
     isSortable: true,
   },
   {
-    name: 'Sample.additionalTestingStatus',
+    name: 'captions.Sample.additionalTestingStatus',
     dataKey: 'additionalTestingStatus',
     isSortable: true,
   },

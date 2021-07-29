@@ -31,7 +31,7 @@ const optionsDiseaseVariant = pipe.transform(['Variant1', 'Variant2']);
 export const FORM_DATA_SAMPLE_ADD = [
   {
     id: 'purpose',
-    title: 'Sample.samplePurpose',
+    title: 'captions.Sample.samplePurpose',
     required: true,
     fields: [
       {
@@ -43,18 +43,18 @@ export const FORM_DATA_SAMPLE_ADD = [
   },
   {
     id: 'sample',
-    title: 'Sample',
+    title: 'captions.Sample',
     required: true,
     fields: [
       {
         ...FORM_DATA_DATETIME,
-        label: 'LabMessage.sampleDateTime',
+        label: 'captions.LabMessage.sampleDateTime',
         key: 'sampleDateTime',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'sampleMaterial',
-        label: 'Sample.sampleMaterial',
+        label: 'captions.Sample.sampleMaterial',
         validation: ['required'],
         options: optionsSampleTypes,
         newLine: true,
@@ -62,14 +62,14 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'sampleMaterialText',
-        label: 'Sample.sampleMaterialText',
+        label: 'captions.Sample.sampleMaterialText',
         dependingOn: 'sampleMaterial',
         dependingOnValues: ['OTHER'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'samplingReason',
-        label: 'Sample.samplingReason',
+        label: 'captions.Sample.samplingReason',
         validation: ['required'],
         options: optionsSampleReasons,
         newLine: true,
@@ -77,27 +77,27 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'samplingReasonDetails',
-        label: 'Sample.samplingReasonDetails',
+        label: 'captions.Sample.samplingReasonDetails',
         dependingOn: 'samplingReason',
         dependingOnValues: ['OTHER_REASON'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'fieldSampleID',
-        label: 'Sample.fieldSampleID',
+        label: 'captions.Sample.fieldSampleID',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'lab',
-        label: 'Sample.lab',
+        label: 'captions.Sample.lab',
         options: optionsLab,
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'labDetails',
-        label: 'Sample.labDetails',
+        label: 'captions.Sample.labDetails',
         dependingOn: 'lab',
       },
     ],
@@ -109,12 +109,12 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'shipped',
-        label: 'Sample.shipped',
+        label: 'captions.Sample.shipped',
       },
       {
         ...FORM_DATA_DATE,
         key: 'shipmentDate',
-        label: 'Sample.shipmentDate',
+        label: 'captions.Sample.shipmentDate',
         validation: ['required'],
         newLine: true,
         dependingOn: 'shipped',
@@ -122,7 +122,7 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'shipmentDetails',
-        label: 'Sample.shipmentDetails',
+        label: 'captions.Sample.shipmentDetails',
         dependingOn: 'shipped',
       },
     ],
@@ -134,12 +134,12 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'received',
-        label: 'Sample.received',
+        label: 'captions.Sample.received',
       },
       {
         ...FORM_DATA_DATE,
         key: 'receivedDate',
-        label: 'Sample.receivedDate',
+        label: 'captions.Sample.receivedDate',
         validation: ['required'],
         newLine: true,
         dependingOn: 'received',
@@ -147,13 +147,13 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'labSampleID',
-        label: 'Sample.labSampleID',
+        label: 'captions.Sample.labSampleID',
         dependingOn: 'received',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'specimenCondition',
-        label: 'Sample.specimenCondition',
+        label: 'captions.Sample.specimenCondition',
         options: optionsSpecimenCondition,
         newLine: true,
         validation: ['required'],
@@ -162,14 +162,14 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'noTestPossibleReason',
-        label: 'Sample.noTestPossibleReason',
+        label: 'captions.Sample.noTestPossibleReason',
         validation: ['required'],
         dependingOn: 'specimenCondition',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'comment',
-        label: 'Sample.comment',
+        label: 'captions.Sample.comment',
         className: 'size-full',
         dependingOn: 'received',
       },
@@ -182,12 +182,12 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'referred',
-        label: 'sampleIncludeTestOnCreation',
+        label: 'captions.sampleIncludeTestOnCreation',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'pathogenTestResult',
-        label: 'PathogenTest.testResult',
+        label: 'captions.PathogenTest.testResult',
         options: optionsPathogenTestResult,
         newLine: true,
         validation: ['required'],
@@ -196,19 +196,19 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_DATE,
         key: 'reportDateTime',
-        label: 'PathogenTest.reportDate',
+        label: 'captions.PathogenTest.reportDate',
         dependingOn: 'referred',
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'viaLims',
-        label: 'PathogenTest.viaLims',
+        label: 'captions.PathogenTest.viaLims',
         dependingOn: 'referred',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'requestedPathogenTests',
-        label: 'Sample.typeOfTest',
+        label: 'captions.Sample.typeOfTest',
         options: optionsPathogenTestType,
         newLine: true,
         validation: ['required'],
@@ -217,7 +217,7 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'testedDisease',
-        label: 'PathogenTest.testedDisease',
+        label: 'captions.PathogenTest.testedDisease',
         options: optionsDisease,
         newLine: true,
         validation: ['required'],
@@ -226,7 +226,7 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'testedDiseaseVariant',
-        label: 'PathogenTest.testedDiseaseVariant',
+        label: 'captions.PathogenTest.testedDiseaseVariant',
         options: optionsDiseaseVariant,
         dependingOn: 'testedDisease',
         dependingOnValues: ['CORONAVIRUS'],
@@ -234,21 +234,21 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'testedDiseaseDetails',
-        label: 'PathogenTest.testedDiseaseDetails',
+        label: 'captions.PathogenTest.testedDiseaseDetails',
         dependingOn: 'testedDisease',
         dependingOnValues: ['OTHER'],
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'testResultVerified',
-        label: 'PathogenTest.testResultVerified',
+        label: 'captions.PathogenTest.testResultVerified',
         dependingOn: 'referred',
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'testDateTime',
-        label: 'Sample.resultDate',
+        label: 'captions.PathogenTest.testDateTime',
         validation: ['required'],
         newLine: true,
         dependingOn: 'referred',
@@ -256,7 +256,7 @@ export const FORM_DATA_SAMPLE_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'resultDetails',
-        label: 'Sample.resultDetails',
+        label: 'captions.PathogenTest.testResultText',
         className: 'size-full',
         dependingOn: 'referred',
       },

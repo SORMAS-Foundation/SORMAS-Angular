@@ -1,0 +1,30 @@
+@use '../../../../variables.scss' as *;
+
+.card-person-event {
+  padding-top: 5px;
+  border-top: solid 2px mat-color($sormas-alert, 100);
+  .status {
+    display: flex;
+    color: mat-color($sormas-primary, A700);
+    font-weight: 500;
+    gap: 5px;
+  }
+  .responsible-user {
+    margin-bottom: 5px;
+    color: mat-color($sormas-accent, 800);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .event-id {
+    position: absolute;
+    top: 5px;
+    right: 24px;
+    color: mat-color($sormas-accent, 500);
+    font-size: 14px;
+    .label {
+      color: mat-color($sormas-accent, 400);
+      font-size: 10px;
+      text-align: right;
+    }
+  }
+}

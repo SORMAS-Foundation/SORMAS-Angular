@@ -1,57 +1,69 @@
-import { TableColumn } from '../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'Person.uuid',
+    name: 'captions.Person.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.LINK,
+      pattern: '/persons/person/$param1',
+      params: ['uuid'],
+      truncate: 6,
+    },
   },
   {
-    name: 'firstName',
+    name: 'captions.firstName',
     dataKey: 'firstName',
     isSortable: true,
   },
   {
-    name: 'lastName',
+    name: 'captions.lastName',
     dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: 'Person.ageAndBirthDate',
+    name: 'captions.Person.ageAndBirthDate',
     dataKey: 'age',
-    advancedDisplay: '$param1 ($param2/$param3/$param4)',
-    advancedDisplayParams: [
-      'ageAndBirthDate.age',
-      'ageAndBirthDate.birthdateDD',
-      'ageAndBirthDate.birthdateMM',
-      'ageAndBirthDate.birthdateYYYY',
-    ],
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '$param1 ($param2/$param3/$param4)',
+      params: [
+        'ageAndBirthDate.age',
+        'ageAndBirthDate.birthdateDD',
+        'ageAndBirthDate.birthdateMM',
+        'ageAndBirthDate.birthdateYYYY',
+      ],
+    },
   },
   {
-    name: 'sex',
+    name: 'captions.sex',
     dataKey: 'sex',
     isSortable: true,
   },
   {
-    name: 'Person.districtName',
+    name: 'captions.Person.districtName',
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: 'address',
+    name: 'captions.address',
     dataKey: 'city',
-    advancedDisplay: '$param1, $param2, $param3, $param4',
-    advancedDisplayParams: ['city', 'street', 'houseNumber', 'postalCode'],
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '$param1, $param2, $param3, $param4',
+      params: ['city', 'street', 'houseNumber', 'postalCode'],
+    },
   },
   {
-    name: 'person.primaryPhone',
+    name: 'captions.Person.phone',
     dataKey: 'phone',
     isSortable: true,
   },
   {
-    name: 'Person.emailAddress',
+    name: 'captions.Person.emailAddress',
     dataKey: 'email',
     isSortable: true,
   },

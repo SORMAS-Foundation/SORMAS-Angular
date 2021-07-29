@@ -15,7 +15,9 @@
 
   <mat-card-header *ngIf="title || collapse" [ngClass]="getClassCollapse()">
     <mat-card-title *ngIf="title" [ngClass]="titlePosition?.toLowerCase() || ''">
-      {{ title | humanize | titlecase }}
+      <span [ngClass]="titleUppercase ? 'uppercase' : ''">
+        {{ title | humanize | titlecase }}
+      </span>
     </mat-card-title>
     <button *ngIf="collapse" mat-icon-button (click)="toggleCollapse()">
       <mat-icon class="material-icons-round">{{ collapsed ? 'add' : 'remove' }}</mat-icon>
@@ -26,6 +28,12 @@
     <app-card-address *ngSwitchCase="'address'" [data]="data"></app-card-address>
     <app-card-case-task *ngSwitchCase="'case_task'" [data]="data"></app-card-case-task>
     <app-card-case-event *ngSwitchCase="'case_event'" [data]="data"></app-card-case-event>
+    <app-card-person-case *ngSwitchCase="'person_case'" [data]="data"></app-card-person-case>
+    <app-card-person-contact
+      *ngSwitchCase="'person_contact'"
+      [data]="data"
+    ></app-card-person-contact>
+    <app-card-person-event *ngSwitchCase="'person_event'" [data]="data"></app-card-person-event>
     <app-card-sample *ngSwitchCase="'sample'" [data]="data"></app-card-sample>
     <app-card-epid-data *ngSwitchCase="'epid_data'" [data]="data"></app-card-epid-data>
     <app-card-download *ngSwitchCase="'download'" [data]="data"></app-card-download>
@@ -34,6 +42,7 @@
       *ngSwitchCase="'therapy_prescriptions'"
       [data]="data"
     ></app-card-prescriptions>
+    <app-card-contact *ngSwitchCase="'person_contact'" [data]="data"></app-card-contact>
     <ng-content *ngSwitchDefault></ng-content>
   </mat-card-content>
 

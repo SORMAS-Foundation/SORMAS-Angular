@@ -1,87 +1,104 @@
-import { TableColumn } from '../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'CaseData.uuid',
+    name: 'captions.CaseData.uuid',
     dataKey: 'uuid',
     isSortable: true,
-    linkPattern: '/cases/case/$param1/details',
-    linkParams: ['uuid'],
+    essential: true,
+    format: {
+      type: TableDataFormatOptions.LINK,
+      pattern: '/cases/case/$param1/details',
+      params: ['uuid'],
+      truncate: 6,
+    },
   },
   {
-    name: 'CaseData.externalID',
+    name: 'captions.CaseData.externalID',
     dataKey: 'externalID',
     isSortable: true,
   },
   {
-    name: 'disease',
+    name: 'captions.disease',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: 'CaseData.diseaseVariant',
+    name: 'captions.CaseData.diseaseVariant',
     dataKey: 'diseaseDetails',
     isSortable: true,
   },
   {
-    name: 'Contact.caze.caseClassification',
+    name: 'captions.Contact.caze.caseClassification',
     dataKey: 'caseClassification',
     isSortable: true,
   },
   {
-    name: 'CaseData.outcome',
+    name: 'captions.CaseData.outcome',
     dataKey: 'outcome',
     isSortable: true,
   },
   {
-    name: 'CaseData.investigationStatus',
+    name: 'captions.CaseData.investigationStatus',
     dataKey: 'investigationStatus',
     isSortable: true,
     iconify: true,
   },
   {
-    name: 'CaseData.personFirstName',
-    dataKey: 'person.firstName',
+    name: 'captions.CaseData.personFirstName',
+    dataKey: 'personFirstName',
     isSortable: true,
   },
   {
-    name: 'CaseData.personLastName',
-    dataKey: 'person.lastName',
+    name: 'captions.CaseData.personLastName',
+    dataKey: 'personLastName',
     isSortable: true,
   },
   {
-    name: 'CaseData.district',
+    name: 'captions.CaseData.district',
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
-    name: 'CaseData.healthFacilityName',
+    name: 'captions.CaseData.healthFacilityName',
     dataKey: 'healthFacility.caption',
     isSortable: true,
   },
   {
-    name: 'CaseData.pointOfEntry',
+    name: 'captions.CaseData.pointOfEntry',
     dataKey: 'pointOfEntry.caption',
     isSortable: true,
   },
   {
-    name: 'CaseData.reportDate',
+    name: 'captions.CaseData.reportDate',
     dataKey: 'reportDate',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
   },
   {
-    name: 'CaseData.quarantineTo',
+    name: 'captions.CaseData.quarantineTo',
     dataKey: 'quarantineTo',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
   },
   {
-    name: 'CaseData.followUpStatus',
+    name: 'captions.CaseData.followUpStatus',
     dataKey: 'followUpStatus',
     isSortable: true,
   },
   {
-    name: 'CaseData.followUpUntil',
+    name: 'captions.CaseData.followUpUntil',
     dataKey: 'followUpUntil',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
   },
 ];
