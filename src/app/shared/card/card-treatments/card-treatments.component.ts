@@ -12,9 +12,9 @@ export class CardTreatmentsComponent implements OnInit {
   public prescription: string;
 
   ngOnInit(): void {
-    this.drugInfo = this.data.treatmentType.split(' - ');
-    const date = new Date(this.data.treatmentDateTime);
+    this.drugInfo = this.data?.treatmentType.split(' - ');
+    const date = new Date(this.data?.treatmentDateTime);
     this.time = `${date.getHours()}:${date.getMinutes()}`;
-    this.prescription = `${this.data.dose} ${this.data.treatmentRoute}`;
+    this.prescription = `${this.data?.dose} ${this.data?.treatmentRoute}`;
   }
 }

@@ -14,10 +14,10 @@ export class CardPrescriptionsComponent implements OnInit {
   public endDate: Date;
 
   ngOnInit(): void {
-    this.drugInfo = this.data.prescriptionType.split(' - ');
-    this.date = new Date(this.data.prescriptionDate);
-    this.prescription = `${this.data.dose} ${this.data.prescriptionRoute} ${this.data.frequency}`;
-    this.startDate = new Date(this.data.prescriptionPeriod?.start);
-    this.endDate = new Date(this.data.prescriptionPeriod?.end);
+    this.drugInfo = this.data?.prescriptionType.split(' - ');
+    this.date = new Date(this.data?.prescriptionDate);
+    this.prescription = `${this.data?.dose} ${this.data?.prescriptionRoute} ${this.data?.frequency}`;
+    this.startDate = new Date(this.data?.prescriptionPeriod?.start);
+    this.endDate = new Date(this.data?.prescriptionPeriod?.end);
   }
 }
