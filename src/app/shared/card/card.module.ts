@@ -13,6 +13,8 @@ import { CardListComponent } from './card-list/card-list.component';
 import { CardEpidDataComponent } from './card-epid-data/card-epid-data.component';
 import { PipesModule } from '../../_pipes/pipes.module';
 import { CardDownloadComponent } from './card-download/card-download.component';
+import { CardTreatmentsComponent } from './card-treatments/card-treatments.component';
+import { CardPrescriptionsComponent } from './card-prescriptions/card-prescriptions.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
@@ -26,6 +28,8 @@ import { CardDownloadComponent } from './card-download/card-download.component';
     CardListComponent,
     CardEpidDataComponent,
     CardDownloadComponent,
+    CardTreatmentsComponent,
+    CardPrescriptionsComponent,
   ],
   exports: [CardComponent, CardListComponent],
 })

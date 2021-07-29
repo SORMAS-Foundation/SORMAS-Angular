@@ -28,4 +28,6 @@ export type CardType =
   | 'person_contact'
   | 'person_event'
   | 'download'
+  | 'therapy_treatments'
+  | 'therapy_prescriptions'
   | undefined;

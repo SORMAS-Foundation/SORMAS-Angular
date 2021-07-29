@@ -1,0 +1,20 @@
+<div *ngIf="data" class="card-treatment">
+  <div class="title-container">
+    <div class="title">{{ drugInfo[0] }}</div>
+  </div>
+  <div class="date">{{ date | date: 'd/m/yyyy' }}</div>
+  <div class="separator"></div>
+  <div class="drug">{{ drugInfo[1] }}</div>
+  <div class="prescription">{{ prescription }}</div>
+  <div class="period">
+    <span class="day">{{ startDate | date: 'dd' }}</span>
+    <span class="month">{{ startDate | date: 'MMM' }}</span>
+    <span class="small"> {{ 'to' | translate }} </span>
+    <span class="day">{{ endDate | date: 'dd' }}</span>
+    <span class="month">{{ endDate | date: 'MMM' }}</span>
+  </div>
+  <div class="clinician">
+    <mat-icon class="material-icons-round size-small">perm_contact_calendar</mat-icon>
+    {{ data.prescribingClinician }}
+  </div>
+</div>

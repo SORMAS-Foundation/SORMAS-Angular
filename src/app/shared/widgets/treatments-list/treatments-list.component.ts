@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SentResourceTypes } from '../../../_constants/common';
 import { SendResourceService } from '../../../_services/send-resource.service';
@@ -8,7 +8,7 @@ import { SendResourceService } from '../../../_services/send-resource.service';
   templateUrl: './treatments-list.component.html',
   styleUrls: ['./treatments-list.component.scss'],
 })
-export class TreatmentsListComponent implements OnInit {
+export class TreatmentsListComponent implements OnInit, OnDestroy {
   treatments: any[] = [];
   subscription: Subscription = new Subscription();
 
@@ -17,7 +17,7 @@ export class TreatmentsListComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
       if (response.fromComponent === SentResourceTypes.TREATMENT_DATA) {
-        this.treatments = response.resource?.treatments || [];
+        this.treatments = response.resource || [];
       }
     });
   }

@@ -1,0 +1,19 @@
+<div *ngIf="data" class="card-treatment">
+  <div class="title-container">
+    <div class="title">{{ drugInfo[0] }}</div>
+  </div>
+  <app-date-card
+    *ngIf="data.treatmentDateTime"
+    [date]="data.treatmentDateTime"
+    [label]="time"
+    [showYear]="false"
+    class="date"
+  ></app-date-card>
+  <div class="separator"></div>
+  <div class="drug">{{ drugInfo[1] }}</div>
+  <div class="prescription">{{ prescription }}</div>
+  <div class="clinician">
+    <mat-icon class="material-icons-round size-small">perm_contact_calendar</mat-icon>
+    {{ data.executingClinician }}
+  </div>
+</div>

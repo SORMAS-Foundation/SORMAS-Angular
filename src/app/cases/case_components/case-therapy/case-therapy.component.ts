@@ -48,20 +48,14 @@ export class CaseTherapyComponent {
 
   updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
     if (caseItem.therapy?.uuid) {
-      const prescriptionFilters = [
+      const prescriptionTreatmentFilters = [
         {
           field: 'therapy',
           value: caseItem.therapy.uuid,
         },
       ];
-      const treatmentFilters = [
-        {
-          field: 'treatment',
-          value: caseItem.therapy.uuid,
-        },
-      ];
       this.prescriptionService
-        .getAll({ offset: null, size: null }, false, prescriptionFilters)
+        .getAll({ offset: null, size: null }, false, prescriptionTreatmentFilters, false)
         .subscribe({
           next: (response: any) => {
             this.prescription = response || ({} as PrescriptionDto);
@@ -83,7 +77,7 @@ export class CaseTherapyComponent {
         });
 
       this.treatmentService
-        .getAll({ offset: null, size: null }, false, treatmentFilters)
+        .getAll({ offset: null, size: null }, false, prescriptionTreatmentFilters, false)
         .subscribe({
           next: (response: any) => {
             this.treatment = response || ({} as TreatmentDto);
