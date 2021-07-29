@@ -1,0 +1,44 @@
+<section *ngIf="sample">
+  <header>
+    <a [routerLink]="['/samples/list']" mat-icon-button>
+      <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+    </a>
+    <h1>
+      {{ sample.sampleMaterial }} <small>({{ sample.uuid | slice: 0:6 }})</small>
+    </h1>
+  </header>
+
+  <app-info-bar [data]="additionalData" [type]="additionalDataType"></app-info-bar>
+
+  <div class="tab-nav-header">
+    <nav>
+      <a
+        *ngIf="additionalData"
+        mat-button
+        [routerLink]="getAdditionalDataUrl()"
+        [ngSwitch]="additionalDataType"
+        class="associated-data-link"
+      >
+        <mat-icon class="material-icons-round">navigate_before</mat-icon>
+        <span *ngSwitchCase="'SAMPLE_CASE'">Case</span>
+        <span *ngSwitchCase="'SAMPLE_CONTACT'">Contact</span>
+        <span *ngSwitchCase="'SAMPLE_EVENT_PARTICIPANT'">Event</span>
+        <span *ngSwitchDefault></span>
+      </a>
+    </nav>
+    <div class="tab-nav-header-actions">
+      <app-form-actions [resource]="sample"></app-form-actions>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <app-sidebar>
+      <app-dynamic-form
+        main
+        [formElements]="myFormElements"
+        [resourceService]="sampleService"
+      ></app-dynamic-form>
+      <div aside>sidebar</div>
+    </app-sidebar>
+  </div>
+</section>

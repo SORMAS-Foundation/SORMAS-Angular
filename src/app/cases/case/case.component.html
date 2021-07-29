@@ -6,33 +6,7 @@
     <h1>{{ case.person?.firstName }} {{ case.person?.lastName }}</h1>
   </header>
 
-  <div class="person-information">
-    <ul>
-      <li *ngIf="case.outcome">
-        <mat-icon class="material-icons-round">
-          {{ caseOutcomeIcons[case.outcome!] }}
-        </mat-icon>
-        {{ case.outcome }}
-      </li>
-      <li *ngIf="case.caseClassification">
-        <mat-icon class="material-icons-round">
-          {{ caseClassificationIcons[case.caseClassification!] }}
-        </mat-icon>
-        {{ case.caseClassification! }}
-      </li>
-      <li *ngIf="case.disease">
-        {{ case.disease }}
-      </li>
-      <li *ngIf="case.uuid">
-        <strong i18n>{{ 'captions.CaseData.uuid' | translate }}: </strong>
-        {{ case.uuid }}
-      </li>
-      <li *ngIf="case.reportingUser?.caption">
-        <strong i18n>{{ 'captions.reportingUser' | translate }}: </strong>
-        {{ case.reportingUser.caption }}
-      </li>
-    </ul>
-  </div>
+  <app-info-bar [data]="case" [type]="'CASE'"></app-info-bar>
 
   <div class="tab-nav-header">
     <nav mat-tab-nav-bar>

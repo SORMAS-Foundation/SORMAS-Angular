@@ -1,20 +1,21 @@
-<div class="page-header">
-  <h1 class="page-header-title">
-    {{ 'captions.View.samples' | translate }}
-  </h1>
-  <div class="page-header-actions">
-    <button class="add-btn" mat-flat-button color="primary" (click)="openAddSampleModal()">
-      {{ 'captions.sampleCreateNew' | translate }}
-    </button>
-  </div>
-</div>
+<app-filters [topGap]="headerHeight">
+  <app-sample-filters filters></app-sample-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title">
+        {{ 'captions.View.samples' | translate }}
+      </h1>
+      <div class="page-header-actions"></div>
+    </div>
 
-<app-table
-  [resourceService]="sampleService"
-  [tableColumns]="defaultColumns"
-  [isSortable]="true"
-  [isSelectable]="true"
-  [isHeaderSticky]="true"
-  [fullHeight]="true"
-  [saveConfigKey]="configKey"
-></app-table>
+    <app-table
+      [resourceService]="sampleService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+    ></app-table>
+  </ng-container>
+</app-filters>

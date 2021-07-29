@@ -8,6 +8,7 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { SamplesRoutingModule } from './samples-routing.module';
 import { SampleFiltersComponent } from './sample-filters/sample-filters.component';
 import { SampleAddComponent } from './sample-add/sample-add.component';
+import { SampleComponent } from './sample/sample.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SampleAddComponent } from './sample-add/sample-add.component';
     SamplesListComponent,
     SampleFiltersComponent,
     SampleAddComponent,
+    SampleComponent,
   ],
   imports: [CommonModule, SamplesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

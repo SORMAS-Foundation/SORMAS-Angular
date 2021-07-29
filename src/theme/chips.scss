@@ -1,0 +1,39 @@
+@mixin chips-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-standard-chip {
+      min-height: 24px;
+      background-color: map-get($sormas-accent, 50);
+      color: map-get($sormas-accent, 800);
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 24px;
+
+      .mat-chip-remove {
+        color: inherit;
+        font-size: 14px;
+        line-height: 18px;
+        opacity: 1;
+
+        &:hover,
+        &:focus {
+          opacity: 1 !important;
+        }
+      }
+    }
+
+    .mat-chip-list-wrapper {
+      margin-top: 4px;
+      margin-bottom: 8px;
+
+      .mat-standard-chip {
+        margin-right: 12px;
+      }
+    }
+  }
+}

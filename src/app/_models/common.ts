@@ -77,3 +77,10 @@ export interface NavItem {
   component?: any;
   componentTitle?: string;
 }
+
+export type InfoBarType =
+  | 'CASE'
+  | 'EVENT'
+  | 'SAMPLE_CASE'
+  | 'SAMPLE_EVENT_PARTICIPANT'
+  | 'SAMPLE_CONTACT';

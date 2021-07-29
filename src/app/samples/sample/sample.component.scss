@@ -11,7 +11,7 @@ header {
   z-index: 2;
   top: 68px;
   display: flex;
-  padding: 48px 24px 0;
+  padding: 48px 24px 24px;
   background: $white;
 
   .mat-icon-button {
@@ -25,9 +25,14 @@ header {
 }
 
 h1 {
+  margin: 0;
   font-size: 34px;
   font-weight: 500;
   line-height: 40px;
+
+  small {
+    font-size: 20px;
+  }
 }
 
 .tab-nav-header {
@@ -36,14 +41,14 @@ h1 {
   top: 164px;
   display: flex;
   justify-content: space-between;
-  padding: 0 25px;
+  padding: 10px 25px;
   border-bottom: solid 2px map-get($sormas-accent, 200);
   background-color: $white;
 }
 
-.mat-tab-header {
-  min-width: 0;
-  flex: 1;
+.associated-data-link {
+  min-width: unset;
+  padding: 0;
 }
 
 .tab-nav-header-actions {
