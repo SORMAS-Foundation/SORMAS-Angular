@@ -3,7 +3,7 @@ import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
 export const FORM_DATA_CASE_THERAPY = [
   {
     id: 'prescriptions',
-    title: 'entityPrescriptions',
+    title: 'strings.entityPrescriptions',
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -13,7 +13,7 @@ export const FORM_DATA_CASE_THERAPY = [
   },
   {
     id: 'treatments',
-    title: 'entityTreatments',
+    title: 'strings.entityTreatments',
     fields: [
       {
         ...FORM_DATA_WIDGET,
