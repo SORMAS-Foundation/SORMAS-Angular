@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { SentResourceTypes } from '../../../_constants/common';
 import { CaseDataDto, PrescriptionDto, TherapyDto, TreatmentDto } from '../../../_models/models';
-import { BaseService } from '../../../_services/api/base.service';
 import { PrescriptionService } from '../../../_services/api/prescription.service';
 import { TreatmentService } from '../../../_services/api/treatment.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
@@ -21,8 +20,6 @@ export class CaseTherapyComponent {
   treatment: TreatmentDto;
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CASE_THERAPY;
-
-  public resourceService: BaseService<any>;
 
   constructor(
     private formElementControlService: FormElementControlService,
@@ -46,7 +43,7 @@ export class CaseTherapyComponent {
     );
   }
 
-  updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
+  updateComponent(caseItem: CaseDataDto): void {
     if (caseItem.therapy?.uuid) {
       const prescriptionTreatmentFilters = [
         {
@@ -59,7 +56,6 @@ export class CaseTherapyComponent {
         .subscribe({
           next: (response: any) => {
             this.prescription = response || ({} as PrescriptionDto);
-            this.resourceService = resourceService;
             this.setPrescriptionFormData();
             setTimeout(() => {
               this.sendResourceService.setResource(
@@ -81,7 +77,6 @@ export class CaseTherapyComponent {
         .subscribe({
           next: (response: any) => {
             this.treatment = response || ({} as TreatmentDto);
-            this.resourceService = resourceService;
             this.setTreatmentFormData();
             setTimeout(() => {
               this.sendResourceService.setResource(

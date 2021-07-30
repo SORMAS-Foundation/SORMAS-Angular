@@ -72,7 +72,7 @@ export class BaseService<T extends Resource> {
       .post(`${this.helperService.getApiUrl()}/${endpoint}${paginationTmp}`, requestPayload)
       .pipe(
         map((data: any) => {
-          return withPagination ? this.convertData(data) : data;
+          return this.convertData(data, withPagination);
         })
       );
   }
@@ -123,9 +123,9 @@ export class BaseService<T extends Resource> {
     return this.httpClient.delete(`${this.helperService.getApiUrl()}/${endpoint}/${item.id}`);
   }
 
-  private convertData(data: any): PaginationResponse {
-    // eslint-disable-next-line no-param-reassign
-    data.elements = data.elements.map((item: any) => this.serializer.fromJson(item));
-    return data;
+  private convertData(data: any, withPagination: boolean): PaginationResponse {
+    return withPagination
+      ? { ...data, elements: data.elements.map((item: any) => this.serializer.fromJson(item)) }
+      : this.serializer.fromJson(data);
   }
 }

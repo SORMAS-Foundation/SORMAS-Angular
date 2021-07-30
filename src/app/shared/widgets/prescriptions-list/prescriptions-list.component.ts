@@ -10,21 +10,21 @@ import { SendResourceService } from '../../../_services/send-resource.service';
 })
 export class PrescriptionsListComponent implements OnInit, OnDestroy {
   prescriptions: any[] = [];
-  subscription: Subscription = new Subscription();
+  subscriptions: Subscription[] = [];
 
   constructor(private sendResourceService: SendResourceService) {}
 
   ngOnInit(): void {
-    this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
-      if (response.fromComponent === SentResourceTypes.PRESCRIPTION_DATA) {
-        this.prescriptions = response.resource || [];
-      }
-    });
+    this.subscriptions.push(
+      this.sendResourceService.getResource().subscribe((response: any) => {
+        if (response.fromComponent === SentResourceTypes.PRESCRIPTION_DATA) {
+          this.prescriptions = response.resource || [];
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
