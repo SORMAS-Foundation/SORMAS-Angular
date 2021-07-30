@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { EventDataComponent } from './event-data.component';
 
 describe('EventDataComponent', () => {
@@ -9,6 +11,7 @@ describe('EventDataComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [EventDataComponent],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
     }).compileComponents();
   });
 
