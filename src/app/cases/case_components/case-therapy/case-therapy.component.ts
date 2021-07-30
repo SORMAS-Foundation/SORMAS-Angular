@@ -18,8 +18,10 @@ export class CaseTherapyComponent {
   therapy: TherapyDto;
   prescription: PrescriptionDto;
   treatment: TreatmentDto;
-  myFormElements: FormBase<any>[] = [];
-  formData = data.FORM_DATA_CASE_THERAPY;
+  formElementsPrescriptions: FormBase<any>[] = [];
+  formElementsTreatments: FormBase<any>[] = [];
+  formDataPrescriptions = data.FORM_DATA_CASE_THERAPY_PRESCRIPTIONS;
+  formDataTreatments = data.FORM_DATA_CASE_THERAPY_TREATMENTS;
 
   constructor(
     private formElementControlService: FormElementControlService,
@@ -30,16 +32,16 @@ export class CaseTherapyComponent {
   ) {}
 
   setPrescriptionFormData(): void {
-    this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+    this.formElementsPrescriptions = this.formElementControlService.setValuesForDynamicForm(
       this.prescription,
-      this.formData
+      this.formDataPrescriptions
     );
   }
 
   setTreatmentFormData(): void {
-    this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+    this.formElementsTreatments = this.formElementControlService.setValuesForDynamicForm(
       this.treatment,
-      this.formData
+      this.formDataTreatments
     );
   }
 

@@ -1,6 +1,6 @@
 import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
 
-export const FORM_DATA_CASE_THERAPY = [
+export const FORM_DATA_CASE_THERAPY_PRESCRIPTIONS = [
   {
     id: 'prescriptions',
     title: 'strings.entityPrescriptions',
@@ -11,6 +11,9 @@ export const FORM_DATA_CASE_THERAPY = [
       },
     ],
   },
+];
+
+export const FORM_DATA_CASE_THERAPY_TREATMENTS = [
   {
     id: 'treatments',
     title: 'strings.entityTreatments',

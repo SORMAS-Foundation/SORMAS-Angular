@@ -1,4 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {
+  DAY_DATE_FORMAT,
+  DEFAULT_DATE_FORMAT,
+  MONTH_DATE_TEXT_FORMAT,
+} from '../../../_constants/common';
 
 @Component({
   selector: 'app-card-prescriptions',
@@ -12,6 +17,10 @@ export class CardPrescriptionsComponent implements OnInit {
   public prescription: string;
   public startDate: Date;
   public endDate: Date;
+
+  defaultDateFormat = DEFAULT_DATE_FORMAT;
+  dayDateFormat = DAY_DATE_FORMAT;
+  monthDateTextFormat = MONTH_DATE_TEXT_FORMAT;
 
   ngOnInit(): void {
     this.drugInfo = this.data?.prescriptionType.split(' - ');

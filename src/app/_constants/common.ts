@@ -43,3 +43,8 @@ export const EDGE_PANEL_TYPE = {
   CASE: 'CASE' as EdgePanelType,
   CONTACT: 'CONTACT' as EdgePanelType,
 };
+
+// date format
+export const DEFAULT_DATE_FORMAT = 'd/m/yyyy';
+export const DAY_DATE_FORMAT = 'dd';
+export const MONTH_DATE_TEXT_FORMAT = 'MMM';
