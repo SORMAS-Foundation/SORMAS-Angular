@@ -15,9 +15,9 @@ import {
   TypeOfPlace,
   MeansOfTransport,
   RiskLevel,
-} from '../../app.constants';
+} from '../../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -34,40 +34,10 @@ const riskLevelOptions = pipe.transform(RiskLevel);
 
 export const FORM_DATA_EVENT_ADD = [
   {
-    id: 'eventData',
-    title: 'strings.headingEventData',
-    fields: [
-      {
-        ...FORM_DATA_DATE,
-        label: 'captions.Event.reportDateTime',
-        key: 'reportDate',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'internalToken',
-        label: 'captions.Event.internalToken',
-      },
-    ],
-  },
-  {
-    id: 'externalData',
-    title: 'Event.externalData',
-    fields: [
-      {
-        ...FORM_DATA_INPUT,
-        key: 'externalId',
-        label: 'captions.Event.externalId',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'externalToken',
-        label: 'captions.Event.externalToken',
-      },
-    ],
-  },
-  {
     id: 'event',
     title: 'strings.entityEvent',
+    anchor: 'event_data',
+    anchorLabel: 'strings.entityEvent',
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -100,42 +70,14 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_TEXTAREA,
         key: 'description',
+        newLine: true,
         label: 'captions.description',
-      },
-    ],
-  },
-  {
-    id: 'date',
-    title: 'captions.date',
-    fields: [
-      {
-        ...FORM_DATA_CHECKBOX,
-        key: 'multiDayEvent',
-        label: 'captions.Event.multiDayEvent',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'startDate',
-        label: 'captions.Event.startDate',
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'endDate',
-        label: 'captions.Event.endDate',
-        dependingOn: 'multiDayEvent',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'evolutionDate',
-        label: 'captions.Event.evolutionDate',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'evolutionComment',
-        label: 'captions.Event.evolutionComment',
-        dependingOn: 'evolutionDate',
+        newLine: true,
+        key: 'internalId',
+        label: 'captions.Event.internalId',
       },
     ],
   },
@@ -367,6 +309,79 @@ export const FORM_DATA_EVENT_ADD = [
     ],
   },
   {
+    id: 'date',
+    title: 'captions.date',
+    fields: [
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'multiDayEvent',
+        label: 'captions.Event.multiDayEvent',
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'startDate',
+        label: 'captions.Event.startDate',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'endDate',
+        label: 'captions.Event.endDate',
+        dependingOn: 'multiDayEvent',
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'evolutionDate',
+        label: 'captions.Event.evolutionDate',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'evolutionComment',
+        label: 'captions.Event.evolutionComment',
+        dependingOn: 'evolutionDate',
+      },
+    ],
+  },
+  {
+    id: 'disease',
+    title: 'captions.Event.diseaseShort',
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        label: 'captions.Event.diseaseShort',
+        key: 'disease',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        label: 'captions.Event.diseaseDetails',
+        key: 'diseaseName',
+      },
+    ],
+  },
+  {
+    id: 'externalData',
+    title: 'Event.externalData',
+    fields: [
+      {
+        ...FORM_DATA_INPUT,
+        key: 'externalId',
+        label: 'captions.Event.externalId',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'externalToken',
+        label: 'captions.Event.externalToken',
+      },
+    ],
+  },
+  {
     id: 'investigation',
     title: 'headingInvestigation',
     fields: [
@@ -397,6 +412,8 @@ export const FORM_DATA_EVENT_ADD = [
   {
     id: 'sourceInformation',
     title: 'captions.Event.informationSource',
+    anchor: 'source',
+    anchorLabel: 'captions.Event.informationSource',
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -467,8 +484,8 @@ export const FORM_DATA_EVENT_ADD = [
     ],
   },
   {
-    id: 'location',
-    title: 'captions.Location',
+    id: 'outbrake',
+    title: 'captions.Event.transregionalOutbreak',
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -477,6 +494,14 @@ export const FORM_DATA_EVENT_ADD = [
         validation: ['required'],
         options: yesNoUnknown,
       },
+    ]
+  },
+  {
+    id: 'location',
+    title: 'captions.Location',
+    anchor: 'location',
+    anchorLabel: 'captions.Location',
+    fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'typeOfPlace',
@@ -667,6 +692,8 @@ export const FORM_DATA_EVENT_ADD = [
   },
   {
     id: 'contact',
+    anchor: 'contact',
+    anchorLabel: 'captions.Contact',
     title: 'captions.Contact',
     fields: [
       {
