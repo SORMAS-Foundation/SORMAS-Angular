@@ -5,7 +5,7 @@
   <app-date-card
     *ngIf="data.treatmentDateTime"
     [date]="data.treatmentDateTime"
-    [label]="time"
+    [label]="data.treatmentDateTime | date: hourMinuteTimeFormat"
     [showYear]="false"
     class="date"
   ></app-date-card>

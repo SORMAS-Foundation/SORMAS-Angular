@@ -48,3 +48,4 @@ export const EDGE_PANEL_TYPE = {
 export const DEFAULT_DATE_FORMAT = 'd/m/yyyy';
 export const DAY_DATE_FORMAT = 'dd';
 export const MONTH_DATE_TEXT_FORMAT = 'MMM';
+export const HOUR_MINUTE_TIME_FORMAT = 'h:m';
