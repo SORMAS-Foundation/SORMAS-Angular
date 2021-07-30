@@ -1,5 +1,6 @@
 <mat-card
   [style.width.px]="width"
+  [style.height.px]="height"
   [ngClass]="[
     appearance ? 'appearance-' + appearance : '',
     status ? 'status-' + status : '',
@@ -29,12 +30,17 @@
     <app-card-case-task *ngSwitchCase="'case_task'" [data]="data"></app-card-case-task>
     <app-card-case-event *ngSwitchCase="'case_event'" [data]="data"></app-card-case-event>
     <app-card-person-case *ngSwitchCase="'person_case'" [data]="data"></app-card-person-case>
-    <app-card-person-contact *ngSwitchCase="'person_contact'" [data]="data"></app-card-person-contact>
+    <app-card-person-contact
+      *ngSwitchCase="'person_contact'"
+      [data]="data"
+    ></app-card-person-contact>
     <app-card-person-event *ngSwitchCase="'person_event'" [data]="data"></app-card-person-event>
     <app-card-sample *ngSwitchCase="'sample'" [data]="data"></app-card-sample>
     <app-card-epid-data *ngSwitchCase="'epid_data'" [data]="data"></app-card-epid-data>
     <app-card-download *ngSwitchCase="'download'" [data]="data"></app-card-download>
     <app-card-contact *ngSwitchCase="'person_contact'" [data]="data"></app-card-contact>
+    <app-card-event-actions *ngSwitchCase="'event_actions'" [data]="data"></app-card-event-actions>
+    <app-card-attachments *ngSwitchCase="'attachments'" [data]="data"></app-card-attachments>
     <ng-content *ngSwitchDefault></ng-content>
   </mat-card-content>
 

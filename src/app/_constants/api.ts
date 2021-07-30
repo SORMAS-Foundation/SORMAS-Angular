@@ -65,3 +65,12 @@ export const API_ROUTE_USERS = {
   ADD: 'users/add',
   DELETE: 'users/delete',
 };
+
+// TO DO - hardcoded endpoint
+export const API_ROUTE_ACTIONS = {
+  ENDPOINT: 'actions',
+  GET_ALL: 'actions/indexList',
+  UPDATE: 'actions/update',
+  ADD: 'actions/add',
+  DELETE: 'actions/delete',
+};

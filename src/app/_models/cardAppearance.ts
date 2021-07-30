@@ -28,4 +28,5 @@ export type CardType =
   | 'person_contact'
   | 'person_event'
   | 'download'
+  | 'attachments'
   | undefined;
