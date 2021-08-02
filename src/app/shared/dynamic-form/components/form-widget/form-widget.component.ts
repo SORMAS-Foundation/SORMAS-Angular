@@ -20,8 +20,6 @@ import { PersonContactsListComponent } from '../../../widgets/person-contacts-li
 import { NewPersonContactComponent } from '../../../widgets/new-person-contact/new-person-contact.component';
 import { GpsCoordsComponent } from '../../../widgets/gps-coords/gps-coords.component';
 import { AddressButtonComponent } from '../../../widgets/address-button/address-button.component';
-import { PrescriptionsListComponent } from '../../../widgets/prescriptions-list/prescriptions-list.component';
-import { TreatmentsListComponent } from '../../../widgets/treatments-list/treatments-list.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -31,8 +29,6 @@ const COMPONENTS_MAP: any = {
   'app-activities-list': ActivitiesListComponent,
   'app-addresses-list': AddressesListComponent,
   'app-new-address': NewAddressComponent,
-  'app-prescriptions-list': PrescriptionsListComponent,
-  'app-treatments-list': TreatmentsListComponent,
   'app-person-contacts-list': PersonContactsListComponent,
   'app-new-person-contact': NewPersonContactComponent,
   'app-gps-coords': GpsCoordsComponent,

@@ -11,8 +11,6 @@ export enum AdvancedDataType {
 export enum SentResourceTypes {
   EPIDEMIOLOGICAL_DATA = 'epidemiological_data',
   PERSON_DATA = 'person_data',
-  PRESCRIPTION_DATA = 'prescription_data',
-  TREATMENT_DATA = 'treatment_data',
 }
 
 // pagination
@@ -22,6 +20,7 @@ export const PAGE_SIZE = 7;
 export type EntityLink = {
   title: string;
   link: string;
+  showFormActions?: boolean;
 };
 
 // modals

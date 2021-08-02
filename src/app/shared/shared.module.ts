@@ -36,8 +36,6 @@ import { GpsCoordsComponent } from './widgets/gps-coords/gps-coords.component';
 import { AddressButtonComponent } from './widgets/address-button/address-button.component';
 import { ColumnPickerModule } from './column-picker/column-picker.module';
 import { DirectivesModule } from '../_directives/directives.module';
-import { PrescriptionsListComponent } from './widgets/prescriptions-list/prescriptions-list.component';
-import { TreatmentsListComponent } from './widgets/treatments-list/treatments-list.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +57,6 @@ import { TreatmentsListComponent } from './widgets/treatments-list/treatments-li
     DropdownMenuComponent,
     SidebarComponent,
     EdgePanelComponent,
-    PrescriptionsListComponent,
-    TreatmentsListComponent,
     TableDataComponent,
     PersonContactsListComponent,
     NewPersonContactComponent,
