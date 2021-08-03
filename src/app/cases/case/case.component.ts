@@ -16,7 +16,11 @@ const caseLinks = (caseId: string): EntityLink[] => {
       title: 'captions.View.cases.person',
       showFormActions: true,
     },
-    { link: `/cases/case/${caseId}/hospitalization`, title: 'captions.CaseHospitalization' },
+    {
+      link: `/cases/case/${caseId}/hospitalization`,
+      title: 'captions.CaseHospitalization',
+      showFormActions: true,
+    },
     {
       link: `/cases/case/${caseId}/port-health`,
       title: 'captions.CaseData.portHealthInfo',
@@ -86,9 +90,12 @@ export class CaseComponent implements OnInit {
 
   getCurrentSubpage(url: string): EntityLink {
     const parts = url.split('/');
-    const currentCaseLink = caseLinks(this.case.uuid || '').find(
-      (el) => el.title.toLowerCase() === parts[parts.length - 1].toLowerCase()
-    );
+    let currentCaseLink: EntityLink = {} as EntityLink;
+    caseLinks(parts[3] || '').forEach((el) => {
+      if (url === el.link) {
+        currentCaseLink = el;
+      }
+    });
     return {
       title: currentCaseLink?.title || '',
       showFormActions: currentCaseLink?.showFormActions || false,
