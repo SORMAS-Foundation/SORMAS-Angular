@@ -48,7 +48,7 @@
       </a>
     </nav>
     <div class="tab-nav-header-actions">
-      <app-form-actions [resource]="case"></app-form-actions>
+      <app-form-actions *ngIf="currentSubPage.showFormActions" [resource]="case"></app-form-actions>
     </div>
   </div>
 

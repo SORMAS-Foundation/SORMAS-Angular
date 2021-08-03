@@ -1,1 +1,36 @@
-<p>case-therapy works!</p>
+<section class="left-section">
+  <h2 class="section-title">
+    {{ 'strings.entityPrescriptions' | translate }}
+  </h2>
+  <app-card-list
+    class="prescriptions-list"
+    *ngIf="prescriptions?.length"
+    [data]="prescriptions"
+    [cardWidth]="250"
+    [initialPageSize]="8"
+    [cardEdit]="true"
+    [cardSelect]="true"
+    [cardEditPosition]="'BOTTOMLEFT'"
+    [cardSelectPosition]="'TOPLEFT'"
+    [cardType]="'therapy_prescriptions'"
+    [cardTitleKey]="''"
+  ></app-card-list>
+</section>
+<section class="left-section">
+  <h2 class="section-title">
+    {{ 'strings.entityTreatments' | translate }}
+  </h2>
+  <app-card-list
+    class="treatments-list"
+    *ngIf="treatments?.length"
+    [data]="treatments"
+    [cardWidth]="250"
+    [initialPageSize]="8"
+    [cardEdit]="true"
+    [cardSelect]="true"
+    [cardEditPosition]="'BOTTOMLEFT'"
+    [cardSelectPosition]="'TOPLEFT'"
+    [cardType]="'therapy_treatments'"
+    [cardTitleKey]="''"
+  ></app-card-list>
+</section>

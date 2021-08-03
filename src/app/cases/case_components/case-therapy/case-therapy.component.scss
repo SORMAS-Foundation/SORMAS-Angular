@@ -1,1 +1,41 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+.section-title {
+  flex: 0 0 176px;
+  padding: 29px 24px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.treatments-list,
+.prescriptions-list {
+  flex: 1 1 auto;
+  padding: 16px 24px;
+  @include mat-elevation(1);
+  background-color: $white;
+  border-radius: 4px;
+}
+
+.left-section {
+  display: flex;
+  justify-content: stretch;
+  margin: 10px 0;
+
+  &:hover,
+  &:focus {
+    background-color: $white;
+
+    .treatments-list,
+    .prescriptions-list {
+      @include mat-elevation(6);
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, xl)) {
+  .section-title {
+    flex: 0 0 248px;
+  }
+}

@@ -1,0 +1,57 @@
+@use '/src/variables.scss' as *;
+
+.card-treatment {
+  .title-container {
+    position: relative;
+    top: -4px;
+    display: table-cell;
+    height: 53px;
+    color: mat-color($sormas-accent, 600);
+    font-size: 16px;
+    font-weight: 500;
+    vertical-align: bottom;
+    .title {
+      display: block;
+      max-width: 165px;
+    }
+  }
+  .separator {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    border-bottom: solid 1px;
+    color: mat-color($sormas-alert, 100);
+  }
+  .date {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+  .drug {
+    margin-top: 5px;
+    color: mat-color($sormas-accent, 500);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .prescription {
+    margin-top: 2px;
+    color: mat-color($sormas-primary, A700);
+    font-weight: 500;
+  }
+
+  .clinician {
+    margin-top: 5px;
+    margin-right: 8px;
+    color: mat-color($sormas-accent, 500);
+    float: right;
+    font-weight: 500;
+    .mat-icon {
+      position: relative;
+      top: 2px;
+      width: 14px;
+      height: 14px;
+      font-size: 14px;
+    }
+  }
+}
