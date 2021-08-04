@@ -22,7 +22,12 @@ export class BaseService<T extends Resource> {
     @Inject('Serializer') private serializer: Serializer
   ) {}
 
-  getAll(pagination?: any, sorting?: any, filters?: any): Observable<PaginationResponse> {
+  getAll(
+    pagination?: any,
+    sorting?: any,
+    filters?: any,
+    withPagination: boolean = true
+  ): Observable<PaginationResponse> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.GET_ALL) {
@@ -65,7 +70,11 @@ export class BaseService<T extends Resource> {
 
     return this.httpClient
       .post(`${this.helperService.getApiUrl()}/${endpoint}${paginationTmp}`, requestPayload)
-      .pipe(map((data: any) => this.convertData(data)));
+      .pipe(
+        map((data: any) => {
+          return this.convertData(data, withPagination);
+        })
+      );
   }
 
   getById(id: number | string): Observable<T> {
@@ -114,9 +123,9 @@ export class BaseService<T extends Resource> {
     return this.httpClient.delete(`${this.helperService.getApiUrl()}/${endpoint}/${item.id}`);
   }
 
-  private convertData(data: any): PaginationResponse {
-    // eslint-disable-next-line no-param-reassign
-    data.elements = data.elements.map((item: any) => this.serializer.fromJson(item));
-    return data;
+  private convertData(data: any, withPagination: boolean): PaginationResponse {
+    return withPagination
+      ? { ...data, elements: data.elements.map((item: any) => this.serializer.fromJson(item)) }
+      : this.serializer.fromJson(data);
   }
 }

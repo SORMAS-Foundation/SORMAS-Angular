@@ -19,6 +19,8 @@ import { CardPersonContactComponent } from './card-person-contact/card-person-co
 import { CardPersonEventComponent } from './card-person-event/card-person-event.component';
 import { CardEventActionsComponent } from './card-event-actions/card-event-actions.component';
 import { CardAttachmentsComponent } from './card-attachments/card-attachments.component';
+import { CardTreatmentsComponent } from './card-treatments/card-treatments.component';
+import { CardPrescriptionsComponent } from './card-prescriptions/card-prescriptions.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
@@ -32,6 +34,8 @@ import { CardAttachmentsComponent } from './card-attachments/card-attachments.co
     CardListComponent,
     CardEpidDataComponent,
     CardDownloadComponent,
+    CardTreatmentsComponent,
+    CardPrescriptionsComponent,
     CardContactComponent,
     CardPersonCaseComponent,
     CardPersonContactComponent,

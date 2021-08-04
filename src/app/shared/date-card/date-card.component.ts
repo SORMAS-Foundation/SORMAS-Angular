@@ -9,7 +9,7 @@ import { DateCardAppearance } from '../../_models/dateCardAppearance';
 })
 export class DateCardComponent {
   @Input() date: Date;
-  @Input() label: string;
+  @Input() label: string | null;
   @Input() showDay = true;
   @Input() showMonth = true;
   @Input() showYear = true;

@@ -14,6 +14,22 @@ export const API_ROUTE_PERSONS = {
   DELETE: 'persons/delete',
 };
 
+export const API_ROUTE_PRESCRIPTIONS = {
+  ENDPOINT: 'prescriptions',
+  GET_ALL: 'prescriptions/indexList',
+  UPDATE: 'prescriptions/update',
+  ADD: 'prescriptions/add',
+  DELETE: 'prescriptions/delete',
+};
+
+export const API_ROUTE_TREATMENTS = {
+  ENDPOINT: 'treatments',
+  GET_ALL: 'treatments/indexList',
+  UPDATE: 'treatments/update',
+  ADD: 'treatments/add',
+  DELETE: 'treatments/delete',
+};
+
 export const API_ROUTE_TASKS = {
   ENDPOINT: 'tasks',
   GET_ALL: 'tasks/indexList',
@@ -64,6 +80,15 @@ export const API_ROUTE_USERS = {
   UPDATE: 'users/update',
   ADD: 'users/add',
   DELETE: 'users/delete',
+};
+
+// toDO: hardcoded endpoint. Needs backend
+export const API_ROUTE_EVENT_PARTICIPANTS = {
+  ENDPOINT: 'eventparticipants',
+  GET_ALL: 'eventparticipants/indexList',
+  UPDATE: 'eventparticipants/update',
+  ADD: 'eventparticipants/add',
+  DELETE: 'eventparticipants/delete',
 };
 
 // TO DO - hardcoded endpoint

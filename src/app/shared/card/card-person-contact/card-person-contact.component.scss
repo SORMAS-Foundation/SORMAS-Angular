@@ -1,10 +1,11 @@
 @use '../../../../variables.scss' as *;
 
 .card-person-contact {
-  padding-top: 5px;
+  padding-top: 10px;
   border-top: solid 2px mat-color($sormas-alert, 100);
+  margin-top: -4px;
   .disease {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: mat-color($sormas-accent, 500);
     font-size: 14px;
     font-weight: 500;
@@ -14,10 +15,11 @@
     margin-bottom: 8px;
     color: mat-color($sormas-accent, 800);
     font-weight: 500;
-    gap: 12px;
+    gap: 4px;
     .classification-icon {
       width: 14px;
       height: 14px;
+      font-size: 14px;
     }
   }
   .status {

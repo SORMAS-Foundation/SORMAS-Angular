@@ -1,8 +1,9 @@
 @use '../../../../variables.scss' as *;
 
 .card-person-case {
-  padding-top: 5px;
+  padding-top: 10px;
   border-top: solid 2px mat-color($sormas-alert, 100);
+  margin-top: -4px;
   .date {
     position: absolute;
     top: 10px;
@@ -11,7 +12,7 @@
     font-size: 12px;
   }
   .disease {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: mat-color($sormas-accent, 500);
     font-size: 14px;
     font-weight: 500;
@@ -20,10 +21,11 @@
     display: flex;
     color: mat-color($sormas-primary, A700);
     font-weight: 500;
-    gap: 12px;
+    gap: 4px;
     .classification-icon {
       width: 14px;
       height: 14px;
+      font-size: 14px;
     }
   }
 }
