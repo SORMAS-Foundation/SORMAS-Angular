@@ -49,8 +49,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   sorting: Sorting | null = null;
   filters: Filter[];
   debouncer: Subject<number> = new Subject<number>();
-  dataSourceArray: any = [];
+  dataSourceArray: any[] = [];
   subscriptions: Subscription[] = [];
+  columnKeys: string[] = [];
 
   private subscription: Subscription[] = [];
 
@@ -96,6 +97,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
     this.displayedColumns = this.getColumns();
+    this.columnKeys = this.getColumnsKeyByName(this.displayedColumns);
 
     this.determineHeight(this.fullHeight);
 
@@ -116,10 +118,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         this.getResources(true);
       })
     );
-  }
-
-  getRowData(index: number): any {
-    return this.dataSourceArray[index];
   }
 
   getSelectedItems(): any[] {
@@ -150,8 +148,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   saveColumns(): void {
     if (this.saveConfigKey) {
-      const columns = this.getColumnsKeyByName(this.displayedColumns);
-      this.localStorageService.set(this.saveConfigKey, columns);
+      this.localStorageService.set(this.saveConfigKey, this.columnKeys);
     }
   }
 
@@ -290,6 +287,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   updateTableColumns(columns: string[]): void {
     this.displayedColumns = this.getColumnsNameByKey(columns);
+    this.columnKeys = this.getColumnsKeyByName(this.displayedColumns);
     this.saveColumns();
     setTimeout(() => {
       this.formActionsService.setDiscard();

@@ -18,8 +18,15 @@ export class TableDataComponent implements OnChanges {
   icons = IconsMap;
   formats = TableDataFormatOptions;
 
+  iconName: string;
+  iconClass: string;
+
   ngOnChanges(): void {
     this.formatData();
+    if (this.config.iconify) {
+      this.iconName = this.getIcon();
+      this.iconClass = this.getIconClass();
+    }
   }
 
   getIcon(): string {
@@ -27,8 +34,8 @@ export class TableDataComponent implements OnChanges {
     return this.icons[key as keyof typeof IconsMap];
   }
 
-  getClass(key: string, value: string): string {
-    return `${key.toLocaleLowerCase()}-${value.toLocaleLowerCase()}`;
+  getIconClass(): string {
+    return `icon-${this.config.dataKey}-${this.getRawData(this.config.dataKey)}`;
   }
 
   getType(): string | undefined {

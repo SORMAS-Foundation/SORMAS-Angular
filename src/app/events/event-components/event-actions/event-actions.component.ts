@@ -78,10 +78,6 @@ export class EventActionsComponent implements OnInit, OnDestroy {
     });
   }
 
-  getDocumentsForAction(id: string | undefined): any[] {
-    return id ? this.documents[id] : [];
-  }
-
   filterList(status: string): void {
     this.data = status
       ? this.actions.filter((item) => item.actionStatus === status)

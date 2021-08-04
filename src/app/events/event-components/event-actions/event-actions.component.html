@@ -33,7 +33,7 @@
       [width]="300"
       [height]="maxHeight"
       type="attachments"
-      [data]="getDocumentsForAction(action.uuid)"
+      [data]="documents[action.uuid!]"
     ></app-card>
   </li>
 </ul>
