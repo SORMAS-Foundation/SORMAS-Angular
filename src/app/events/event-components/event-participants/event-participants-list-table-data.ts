@@ -7,8 +7,8 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
     format: {
       type: TableDataFormatOptions.LINK,
-      pattern: '/events/event/$param1/details',
-      params: ['uuid'],
+      pattern: '/events/event/$param1/participants-profile/$param2',
+      params: ['event.uuid', 'uuid'],
       truncate: 6,
     },
   },
@@ -36,6 +36,11 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.sex',
     dataKey: 'person.sex',
+    isSortable: true,
+  },
+  {
+    name: 'captions.EventParticipant.approximateAge',
+    dataKey: 'person.ageAndBirthDate.age',
     isSortable: true,
   },
   {
