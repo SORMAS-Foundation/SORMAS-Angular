@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../_models/common';
 import { CONFIG_CASES } from '../../../_constants/storage';
-import { BaseService } from '../../../_services/api/base.service';
-import { CaseDataDto } from '../../../_models/caseDataDto';
 import { defaultColumnDefs } from './event-participants-list-table-data';
 import { EventParticipantService } from '../../../_services/api/event-participant.service';
 
@@ -11,13 +9,13 @@ import { EventParticipantService } from '../../../_services/api/event-participan
   templateUrl: './event-participants.component.html',
   styleUrls: ['./event-participants.component.scss'],
 })
-export class EventParticipantsComponent {
+export class EventParticipantsComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_CASES;
 
   constructor(public eventParticipantService: EventParticipantService) {}
 
-  updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
+  ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
   }
 }

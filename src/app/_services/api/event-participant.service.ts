@@ -13,6 +13,12 @@ import { EventParticipantDto } from '../../_models/eventParticipantDto';
 })
 export class EventParticipantService extends BaseService<EventParticipantDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(httpClient, helperService, '', constants.API_ROUTE_EVENT_PARTICIPANTS, new EventSerializer());
+    super(
+      httpClient,
+      helperService,
+      '',
+      constants.API_ROUTE_EVENT_PARTICIPANTS,
+      new EventSerializer()
+    );
   }
 }
