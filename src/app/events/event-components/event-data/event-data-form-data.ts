@@ -494,7 +494,7 @@ export const FORM_DATA_EVENT_ADD = [
         validation: ['required'],
         options: yesNoUnknown,
       },
-    ]
+    ],
   },
   {
     id: 'location',

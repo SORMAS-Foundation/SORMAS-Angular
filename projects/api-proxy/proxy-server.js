@@ -125,37 +125,65 @@ app.use('', (req, res, next) => {
   }
 });
 
-app.use('/sormas-rest/events/XQNW72-DBVFKM-YAX2PS-GZIUSPGQ', (req, res) => {
-  res.status(200).send( {
-        "creationDate": 1619541528333,
-        "changeDate": 1619541528333,
-        "uuid": "SPUVLN-3CCYN3-DDQLSJ-5WKKCICE",
-"pseudonymized": false,
-        "eventStatus": "EVENT",
-"eventInvestigationStatus": "PENDING",
-"eventTitle": "Rallye",
-"eventDesc": "Event generated using DevMode on 2021-04-27",
-"reportDateTime": 1616041080000,
-        "eventLocation": {
-  "creationDate": 1619541528333,
-            "changeDate": 1619541528333,
-            "uuid": "SKBM5N-FBSYCE-64OKQ2-4K2C2NKA",
-  "pseudonymized": false,
-            "region": {
-    "uuid": "RO2GQ5-U4ENKZ-CK63N6-M732SFGE",
-    "caption": "Default Region",
-    "externalId": null
-    },
-  "district": {
-    "uuid": "WD53UF-SVIISC-NRPHVB-Z27NCDCE",
-    "caption": "Default District",
-    "externalId": null
-    }
-  },
-"disease": "CORONAVIRUS",
-"ownershipHandedOver": false,
-        "multiDayEvent": false
-});
+app.use('/sormas-rest/eventparticipants/indexList', (req, res) => {
+
+  let total = 1000;
+
+  const arrayTmp = [];
+  let offset = 0;
+
+  if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
+    offset = 1000;
+  }
+
+  if (req.body.filter) {
+    total = 50;
+  }
+
+  for (var i = parseInt(req.query.offset) ; i < parseInt(req.query.offset) + parseInt(req.query.size); i++) {
+    arrayTmp.push({
+      "uuid":"T79TR5-YVTX26-CHL6D7-Z2UPKIHI",
+      "involvementDescription": "Description etc",
+      "resultingCase": {
+        "uuid":"WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI",
+      },
+      "event": {
+        "uuid":"TFI3ZL-VSSLDP-QUNMND-VOYFSL7Y",
+      },
+      "person": {
+        "pseudonymized":false,
+        "uuid":"Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI",
+        "firstName":"Smoke3",
+        "lastName":"Test3",
+        "ageAndBirthDate":{
+          "dateOfBirthDD":23,
+          "dateOfBirthMM":4,
+          "dateOfBirthYYYY":1992,
+          "age":29,
+          "ageType":"YEARS"
+        },
+        "sex":"OTHER",
+        "district":"LK Uckermark",
+        "street":"Sarmisegetuza",
+        "houseNumber":"21",
+        "postalCode":"400592",
+        "city":"Cluj-Napoca",
+        "phone":"+40744373681",
+        "emailAddress":null,
+        "changeDate":1628038802556,
+        "inJurisdiction":true
+      },
+    });
+  }
+
+
+  res.status(200).send({
+    "elements": arrayTmp,
+    "pageNumber":0,
+    "size":8,
+    "totalElementCount": total,
+    "hasNext":true
+  });
 });
 
 
