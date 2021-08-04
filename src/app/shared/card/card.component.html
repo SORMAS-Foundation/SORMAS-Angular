@@ -5,7 +5,8 @@
     appearance ? 'appearance-' + appearance : '',
     status ? 'status-' + status : '',
     selected ? 'selected' : '',
-    type ? 'type-' + type : ''
+    type ? 'type-' + type : '',
+    collapsed ? 'collapsed' : ''
   ]"
 >
   <app-card-actions
@@ -14,7 +15,7 @@
     (actionSelected)="processAction($event)"
   ></app-card-actions>
 
-  <mat-card-header *ngIf="title || collapse" [ngClass]="getClassCollapse()">
+  <mat-card-header *ngIf="title || collapse" [ngClass]="collapseClass">
     <mat-card-title *ngIf="title" [ngClass]="titlePosition?.toLowerCase() || ''">
       <span [ngClass]="titleUppercase ? 'uppercase' : ''">
         {{ title | humanize | titlecase }}
@@ -43,7 +44,7 @@
       *ngSwitchCase="'therapy_prescriptions'"
       [data]="data"
     ></app-card-prescriptions>
-    <app-card-contact *ngSwitchCase="'person_contact'" [data]="data"></app-card-contact>
+    <app-card-contact *ngSwitchCase="'contact'" [data]="data"></app-card-contact>
     <app-card-event-actions *ngSwitchCase="'event_actions'" [data]="data"></app-card-event-actions>
     <app-card-attachments *ngSwitchCase="'attachments'" [data]="data"></app-card-attachments>
     <ng-content *ngSwitchDefault></ng-content>

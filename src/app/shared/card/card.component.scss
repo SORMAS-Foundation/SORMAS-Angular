@@ -124,3 +124,7 @@ app-card-actions + .mat-card-header {
   margin-top: 6px;
   border-radius: 0 0 5px 5px;
 }
+
+.collapsed {
+  align-self: flex-start;
+}

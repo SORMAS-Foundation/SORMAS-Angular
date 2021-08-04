@@ -27,6 +27,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams = this.activeRoute.snapshot.queryParams;
   headerHeight = HEADER_HEIGHT;
+  presetFilters: any;
 
   private subscription: Subscription[] = [];
 
@@ -41,6 +42,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+    this.presetFilters = this.helperService.setQueryParamsInFilters(this.routeParams);
     this.subscription.push(
       this.activeRoute.queryParams.subscribe((params: Params) => {
         this.routeParams = params;

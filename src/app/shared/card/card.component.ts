@@ -55,10 +55,12 @@ export class CardComponent implements OnInit {
   selected = false;
   actionsTop: CardActions[] = [];
   actionsBottom: CardActions[] = [];
+  collapseClass: string;
 
   constructor(public elementRef: ElementRef) {}
 
   ngOnInit(): void {
+    this.collapseClass = this.getClassCollapse();
     this.actions.forEach((action) => {
       const hasAction = this[action.type as keyof this];
       if (hasAction) {

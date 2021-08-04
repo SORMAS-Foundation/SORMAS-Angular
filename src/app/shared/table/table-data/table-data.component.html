@@ -1,8 +1,5 @@
-<mat-icon
-  *ngIf="config.iconify"
-  [ngClass]="['material-icons-round', 'icon-' + config.dataKey + '-' + getRawData(config.dataKey)]"
->
-  {{ getIcon() }}
+<mat-icon *ngIf="iconName" [ngClass]="['material-icons-round', iconClass]">
+  {{ iconName }}
 </mat-icon>
 
 <ng-container [ngSwitch]="dataType">
