@@ -1,1 +1,9 @@
-<p>event-participants works!</p>
+<app-table
+  [resourceService]="eventParticipantService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [saveConfigKey]="configKey"
+></app-table>
