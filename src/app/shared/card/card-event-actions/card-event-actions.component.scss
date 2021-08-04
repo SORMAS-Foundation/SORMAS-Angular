@@ -1,0 +1,102 @@
+@use '/src/variables.scss' as *;
+
+.action {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.action-date {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  color: map-get($sormas-accent, 400);
+  font-size: 10px;
+}
+
+.action-date-day {
+  margin-right: 3px;
+  color: map-get($sormas-accent, 500);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.action-date-month {
+  color: map-get($sormas-accent, 500);
+  text-transform: uppercase;
+}
+
+h3 {
+  padding: 8px 0;
+  border-bottom: 2px solid map-get($sormas-alert, 100);
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+h4 {
+  padding: 12px 0;
+  margin: 0;
+  color: map-get($sormas-accent, 500);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.action-props {
+  display: flex;
+  justify-content: space-evenly;
+  color: map-get($sormas-accent, 400);
+}
+
+.action-status {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.status-DONE {
+  color: map-get($sormas-success, 700);
+}
+
+.status-PENDING {
+  color: map-get($sormas-alert, 300);
+}
+
+.status-IN_PROGRESS {
+  color: map-get($sormas-primary, 400);
+}
+
+.action-priority {
+  font-size: 10px;
+}
+
+.priority-LOW {
+  color: map-get($sormas-accent, 600);
+  font-size: 12px;
+}
+
+.priority-NORMAL {
+  color: map-get($sormas-primary, 400);
+  font-size: 12px;
+}
+
+.priority-HIGH {
+  color: map-get($sormas-alert, 300);
+  font-size: 12px;
+}
+
+.action-description {
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.action-creator {
+  color: map-get($sormas-accent, 500);
+  font-size: 12px;
+  text-align: right;
+
+  .mat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+}

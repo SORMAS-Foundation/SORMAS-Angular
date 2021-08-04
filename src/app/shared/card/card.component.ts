@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PositionType, BasicPositionType } from 'src/app/_models/positionType';
 import {
   BasicPosition,
@@ -36,6 +36,7 @@ export class CardComponent implements OnInit {
   @Input() refresh = false;
   @Input() refreshPosition: PositionType = Position.BOTTOMRIGHT;
   @Input() width: number;
+  @Input() height: number | undefined;
   @Input() type: CardType;
   @Input() appearance: CardAppearance = CardAppearanceOptions.STANDARD;
   @Input() status: CardStatus = CardStatusMap.CONFIRMED;
@@ -54,6 +55,8 @@ export class CardComponent implements OnInit {
   selected = false;
   actionsTop: CardActions[] = [];
   actionsBottom: CardActions[] = [];
+
+  constructor(public elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.actions.forEach((action) => {

@@ -1,0 +1,60 @@
+@use '/src/variables.scss' as *;
+
+h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.documents-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  .mat-button {
+    padding: 0;
+  }
+}
+
+.documents-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  }
+}
+
+.document-link {
+  padding: 0;
+  font-weight: normal;
+  line-height: 24px;
+
+  .mat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+  }
+}
+
+.document-delete {
+  height: 24px;
+  color: map-get($sormas-alert, 300);
+  line-height: 24px;
+  text-align: right;
+
+  .mat-icon {
+    width: 16px;
+    font-size: 14px;
+  }
+}
+
+.no-documents {
+  margin: 0;
+  line-height: 24px;
+}

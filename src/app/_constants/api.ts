@@ -90,3 +90,12 @@ export const API_ROUTE_EVENT_PARTICIPANTS = {
   ADD: 'eventparticipants/add',
   DELETE: 'eventparticipants/delete',
 };
+
+// toDo: hardcoded endpoint. Needs backend
+export const API_ROUTE_ACTIONS = {
+  ENDPOINT: 'actions',
+  GET_ALL: 'actions/indexList',
+  UPDATE: 'actions/update',
+  ADD: 'actions/add',
+  DELETE: 'actions/delete',
+};

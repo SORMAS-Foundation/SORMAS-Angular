@@ -114,3 +114,13 @@ app-card-actions + .mat-card-header {
     font-size: 16px;
   }
 }
+
+.type-event_actions {
+  border-radius: 5px 5px 0 0;
+}
+
+.type-attachments {
+  border-color: map-get($sormas-primary, A200);
+  margin-top: 6px;
+  border-radius: 0 0 5px 5px;
+}

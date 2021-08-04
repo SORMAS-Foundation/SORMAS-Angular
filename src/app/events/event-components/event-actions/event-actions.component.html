@@ -1,1 +1,39 @@
-<p>event-actions works!</p>
+<div class="actions">
+  <form [formGroup]="form" class="filters-form">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-select disableOptionCentering formControlName="status" placeholder="Action status">
+        <mat-option value="">
+          {{ 'captions.all' | translate }}
+        </mat-option>
+        <mat-option value="DONE">
+          {{ 'enum.ActionStatus.DONE' | translate }}
+        </mat-option>
+        <mat-option value="PENDING">
+          {{ 'enum.ActionStatus.PENDING' | translate }}
+        </mat-option>
+        <mat-option value="IN_PROGRESS">
+          {{ 'enum.ActionStatus.IN_PROGRESS' | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <button mat-flat-button color="primary">Create</button>
+</div>
+
+<ul *ngIf="data.length" class="event-actions-list">
+  <li *ngFor="let action of data" [ngClass]="['event-action', maxHeight ? '' : 'normal-flow']">
+    <app-card
+      [data]="action"
+      type="event_actions"
+      [width]="300"
+      [edit]="true"
+      editPosition="TOPRIGHT"
+    ></app-card>
+    <app-card
+      [width]="300"
+      [height]="maxHeight"
+      type="attachments"
+      [data]="getDocumentsForAction(action.uuid)"
+    ></app-card>
+  </li>
+</ul>

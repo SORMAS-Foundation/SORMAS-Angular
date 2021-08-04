@@ -17,6 +17,8 @@ import { CardContactComponent } from './card-contact/card-contact.component';
 import { CardPersonCaseComponent } from './card-person-case/card-person-case.component';
 import { CardPersonContactComponent } from './card-person-contact/card-person-contact.component';
 import { CardPersonEventComponent } from './card-person-event/card-person-event.component';
+import { CardEventActionsComponent } from './card-event-actions/card-event-actions.component';
+import { CardAttachmentsComponent } from './card-attachments/card-attachments.component';
 import { CardTreatmentsComponent } from './card-treatments/card-treatments.component';
 import { CardPrescriptionsComponent } from './card-prescriptions/card-prescriptions.component';
 
@@ -38,7 +40,9 @@ import { CardPrescriptionsComponent } from './card-prescriptions/card-prescripti
     CardPersonCaseComponent,
     CardPersonContactComponent,
     CardPersonEventComponent,
+    CardEventActionsComponent,
+    CardAttachmentsComponent,
   ],
-  exports: [CardComponent, CardListComponent],
+  exports: [CardComponent, CardListComponent, CardEventActionsComponent, CardAttachmentsComponent],
 })
 export class CardModule {}

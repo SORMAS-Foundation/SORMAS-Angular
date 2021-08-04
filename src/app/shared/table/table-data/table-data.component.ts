@@ -32,7 +32,7 @@ export class TableDataComponent implements OnChanges {
   }
 
   getType(): string | undefined {
-    if (this.data.index) {
+    if (this.data?.index) {
       return this.formats.LOADING;
     }
     return this.config.format?.type;

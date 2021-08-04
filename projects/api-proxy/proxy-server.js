@@ -186,8 +186,6 @@ app.use('/sormas-rest/eventparticipants/indexList', (req, res) => {
   });
 });
 
-
-
 // app.use('/sormas-rest/tasks/indexList', (req, res) => {
 //
 //   let total = 1000;
@@ -397,6 +395,73 @@ app.use('/sormas-rest/eventparticipants/indexList', (req, res) => {
 //     hasNext: true,
 //   });
 // });
+
+app.use('/sormas-rest/actions/indexList', (req, res) => {
+  let total = 7;
+  const priorityOptions = ['LOW', 'NORMAL', 'HIGH'];
+  const statusOptions = ['DONE', 'IN_PROGRESS', 'PENDING'];
+  const measures = [
+    'PROHIBITION_OF_ENTRY_AND_WORK_CASES',
+    'SAMPLE_COLLECTION',
+    'FORWARDING_TO_NATIONAL_REFERENCE_CENTER',
+    'CONTACT_FOLLOW_UP',
+    'VERIFICATION_OF_VACCINATION_IMMUNIZATION',
+    'POST_EXPOSURE_PROPHYLAXIS_VACCINATION',
+    'CLOSURE_OF_FACILITY',
+    'PROHIBITION_OF_ENTRY_AND_WORK_CONTACTS',
+    'POPULATION_INFORMATION',
+  ];
+  const dates = [1617872909689, 1617872909689, null];
+  const titles = ['Collect samples', 'Prohibition action title', 'Verification action'];
+  const descriptions = [
+    'Yout comments here… your comments here… your comments here',
+    'We need to collect the mofo samples!',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  ];
+
+  const arrayTmp = [];
+  let offset = 0;
+
+  if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
+    offset = 0;
+  }
+
+  if (req.body.filter) {
+    total = 4;
+  }
+
+  for (let i = 0; i < total; i++) {
+    arrayTmp.push({
+      uuid: `TEST-${i}`,
+      creationDate: 1617959309689,
+      changeDate: dates[Math.floor(Math.random() * dates.length)],
+      actionContext: 'EVENT',
+      event: {
+        uuid: 'SW14IL-EAK3YG-T6G9LG-VNM28SL4',
+        caption: 'Some random event',
+      },
+      actionMeasure: measures[Math.floor(Math.random() * measures.length)],
+      priority: priorityOptions[Math.floor(Math.random() * priorityOptions.length)],
+      date: 1617872909689,
+      actionStatus: statusOptions[Math.floor(Math.random() * statusOptions.length)],
+      statusChangeDate: 1617872909689,
+      creatorUser: {
+        uuid: 'CN54IL-AZK56G-V6GELW-XBNKQ3LE',
+        caption: 'Userica',
+      },
+      title: titles[Math.floor(Math.random() * titles.length)],
+      description: descriptions[Math.floor(Math.random() * descriptions.length)],
+    });
+  }
+
+  res.status(200).send({
+    elements: arrayTmp,
+    pageNumber: 0,
+    size: 4,
+    totalElementCount: total,
+    hasNext: true,
+  });
+});
 
 app.use(
   '/sormas-rest',
