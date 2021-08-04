@@ -36,7 +36,6 @@ const caseLinks = (caseId: string): EntityLink[] => {
     {
       link: `/cases/case/${caseId}/follow-up`,
       title: 'captions.caseFollowupVisitsView',
-      showFormActions: true,
     },
     {
       link: `/cases/case/${caseId}/clinical-course`,

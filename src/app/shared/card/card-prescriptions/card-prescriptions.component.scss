@@ -26,16 +26,17 @@
     height: 1px;
     border-bottom: solid 2px;
     margin-top: 5px;
+    margin-bottom: 16px;
     color: mat-color($sormas-alert, 100);
   }
   .drug {
-    margin-top: 10px;
     color: mat-color($sormas-accent, 500);
     font-size: 14px;
     font-weight: 500;
   }
 
   .prescription {
+    margin-top: 4px;
     color: mat-color($sormas-accent, 800);
     font-weight: 500;
   }
