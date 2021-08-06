@@ -58,16 +58,16 @@ export class HelperService {
 
   getCurrentSubpage(url: string, links: any): EntityLink {
     const parts = url.split('/');
-    let currentCaseLink: EntityLink = {} as EntityLink;
+    let currentLink: EntityLink = {} as EntityLink;
     links(parts[3] || '').forEach((el: any) => {
       if (url === el.link) {
-        currentCaseLink = el;
+        currentLink = el;
       }
     });
     return {
-      title: currentCaseLink?.title || '',
-      showFormActions: currentCaseLink?.showFormActions || false,
-      link: currentCaseLink?.link || '',
+      title: currentLink?.title || '',
+      showFormActions: currentLink?.showFormActions || false,
+      link: currentLink?.link || '',
     };
   }
 }
