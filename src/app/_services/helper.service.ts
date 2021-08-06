@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { Filter } from '../_models/common';
-import {EntityLink} from '../_constants/common';
+import { EntityLink } from '../_constants/common';
 
 @Injectable({
   providedIn: 'root',

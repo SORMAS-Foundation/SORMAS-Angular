@@ -65,7 +65,8 @@ export class EventComponent implements OnInit {
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, eventLinks);
   }
 
-  addParticipant() {
-
+  addParticipant(): void {
+    // eslint-disable-next-line no-console
+    console.log('add participant');
   }
 }
