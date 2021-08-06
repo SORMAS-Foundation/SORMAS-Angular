@@ -33,7 +33,21 @@
       </a>
     </nav>
     <div class="tab-nav-header-actions">
-      <app-form-actions [resource]="event"></app-form-actions>
+      <app-form-actions *ngIf="currentSubPage.showFormActions" [resource]="event"></app-form-actions>
+      <div *ngIf="!currentSubPage.showFormActions && currentSubPage.link.includes('participants')">
+        <button
+          mat-flat-button
+          color="primary"
+          class="add-participant-btn"
+          (click)="addParticipant()"
+        >
+          {{ 'captions.eventParticipantAddPerson' | translate }}
+        </button>
+        <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+          <app-action-menu
+          ></app-action-menu>
+        </app-dropdown-menu>
+      </div>
     </div>
   </div>
 
