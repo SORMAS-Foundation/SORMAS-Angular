@@ -4,9 +4,9 @@ import {
   FORM_DATA_SELECT,
   FORM_DATA_NULL,
   FORM_DATA_WIDGET,
-} from '../../app.constants';
+} from '../../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import {
   CauseOfDeath,
   PresentCondition,
@@ -17,8 +17,14 @@ import {
   ArmedForcesRelationType,
   EducationType,
   BurialConductor,
-} from '../../_models/models';
-import { FORM_DATA_TEXTAREA } from '../../_constants/form-data';
+} from '../../../_models/models';
+import { FORM_DATA_NUMBER, FORM_DATA_TEXTAREA } from '../../../_constants/form-data';
+import {
+  VaccinationSource,
+  VaccinationStatus,
+  VaccineManufacturer,
+  VaccineName,
+} from '../../../_constants/enums';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -31,41 +37,81 @@ const optionsOccupationType = pipe.transform(OccupationType);
 const optionsArmedForces = pipe.transform(ArmedForcesRelationType);
 const optionsEducation = pipe.transform(EducationType);
 const optionsBurialConductor = pipe.transform(BurialConductor);
+const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
+const optionsVaccinationSource = pipe.transform(VaccinationSource);
+const optionsVaccineName = pipe.transform(VaccineName);
+const optionsVaccineManufacturer = pipe.transform(VaccineManufacturer);
 
-export const FORM_DATA_PERSON = [
+export const FORM_DATA_EVENT_PARTICIPANT = [
   {
-    id: 'person',
-    title: 'captions.Person',
+    id: 'involvement',
+    title: 'involvement',
     required: true,
     fields: [
       {
+        ...FORM_DATA_SELECT,
+        key: 'region',
+        label: 'captions.EventParticipant.region',
+        validation: ['required'],
+        options: [
+          {
+            key: 'default',
+            value: 'defaultRegion',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'district',
+        label: 'captions.EventParticipant.district',
+        validation: ['required'],
+        options: [
+          {
+            key: 'default',
+            value: 'defaultDistrict',
+          },
+        ],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'involvementDescription',
+        label: 'captions.EventParticipant.involvementDescription',
+        className: 'size-large',
+      },
+    ],
+  },
+  {
+    id: 'person',
+    title: 'captions.Person',
+    fields: [
+      {
         ...FORM_DATA_NULL,
-        key: 'uuid',
+        key: 'person.uuid',
         label: 'captions.Person.uuid',
         sameLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'firstName',
+        key: 'person.firstName',
         label: 'captions.firstName',
         validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'lastName',
+        key: 'person.lastName',
         label: 'captions.lastName',
         validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'salutation',
+        key: 'person.salutation',
         label: 'captions.Person.salutation',
         options: optionsSalutation,
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'year',
+        key: 'person.year',
         label: 'captions.Person.birthdate',
         placeholder: 'strings.year',
         options: [],
@@ -74,7 +120,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'month',
+        key: 'person.month',
         label: ' ',
         placeholder: 'strings.month',
         options: [],
@@ -82,7 +128,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'day',
+        key: 'person.day',
         label: ' ',
         placeholder: 'strings.day',
         options: [],
@@ -90,7 +136,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'sex',
+        key: 'person.sex',
         label: 'captions.sex',
         options: optionsSex,
         className: 'size-small',
@@ -131,7 +177,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'placeOfBirthFacilityType',
+        key: 'person.placeOfBirthFacilityType',
         label: 'captions.facilityType',
         options: [
           {
@@ -143,7 +189,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'placeOfBirthFacility',
+        key: 'person.placeOfBirthFacility',
         label: 'captions.facility',
         options: [
           {
@@ -154,67 +200,67 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'gestationAgeAtBirth',
+        key: 'person.gestationAgeAtBirth',
         label: 'captions.Person.gestationAgeAtBirth',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'birthWeight',
+        key: 'person.birthWeight',
         label: 'captions.Person.birthWeight',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'presentCondition',
+        key: 'person.presentCondition',
         label: 'captions.Person.presentCondition',
         options: optionsPresentCondition,
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
-        key: 'dateOfDeath',
+        key: 'person.dateOfDeath',
         label: 'captions.Person.deathDate',
         className: 'size-small',
-        dependingOn: 'presentCondition',
+        dependingOn: 'person.presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'causeOfDeath',
+        key: 'person.causeOfDeath',
         label: 'captions.Person.causeOfDeath',
         options: optionsCauseOfDeath,
-        dependingOn: 'presentCondition',
+        dependingOn: 'person.presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'responsibleDisease',
+        key: 'person.causeOfDeathDisease',
         label: 'captions.Person.causeOfDeathDisease',
-        dependingOn: 'presentCondition',
+        dependingOn: 'person.presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'deathPlaceType',
+        key: 'person.deathPlaceType',
         label: 'captions.Person.deathPlaceType',
         options: optionsDeathPlaceType,
         newLine: true,
-        dependingOn: 'presentCondition',
+        dependingOn: 'person.presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'deathPlaceDescription',
+        key: 'person.deathPlaceDescription',
         label: 'captions.Person.deathPlaceDescription',
-        dependingOn: 'deathPlaceType',
+        dependingOn: 'person.deathPlaceType',
       },
       {
         ...FORM_DATA_DATE,
         key: 'burialDate',
         label: 'captions.Person.burialDate',
         className: 'size-small',
-        dependingOn: 'presentCondition',
+        dependingOn: 'person.presentCondition',
         dependingOnValues: ['BURIED'],
         newLine: true,
       },
@@ -223,39 +269,39 @@ export const FORM_DATA_PERSON = [
         key: 'burialConductor',
         label: 'captions.Person.burialConductor',
         options: optionsBurialConductor,
-        dependingOn: 'presentCondition',
+        dependingOn: 'person.presentCondition',
         dependingOnValues: ['BURIED'],
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'burialPlaceDescription',
+        key: 'person.burialPlaceDescription',
         label: 'captions.Person.burialPlaceDescription',
-        dependingOn: 'presentCondition',
+        dependingOn: 'person.presentCondition',
         dependingOnValues: ['BURIED'],
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'passportNumber',
+        key: 'person.passportNumber',
         label: 'captions.Person.passportNumber',
         className: 'size-large',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'healthId',
+        key: 'person.nationalHealthId',
         label: 'captions.Person.nationalHealthId',
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'externalId',
+        key: 'person.externalId',
         label: 'captions.Person.externalId',
         className: 'size-large',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'externalToken',
+        key: 'person.externalToken',
         label: 'captions.Person.externalToken',
         className: 'size-large',
       },
@@ -267,21 +313,21 @@ export const FORM_DATA_PERSON = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'occupationType',
+        key: 'person.occupationType',
         label: 'captions.Person.occupationType',
         options: optionsOccupationType,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'occupationDetails',
+        key: 'person.occupationDetails',
         label: 'captions.Person.occupationDetails',
         className: 'size-large',
-        dependingOn: 'occupationType',
+        dependingOn: 'person.occupationType',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'staffOfArmedForces',
+        key: 'person.staffOfArmedForces',
         label: 'captions.Person.armedForcesRelationType',
         options: optionsArmedForces,
         className: 'size-large',
@@ -289,7 +335,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'educationType',
+        key: 'person.educationType',
         label: 'captions.Person.educationType',
         options: optionsEducation,
         className: 'size-large',
@@ -297,15 +343,15 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'educationDetailes',
+        key: 'person.educationDetailes',
         label: 'captions.Person.educationDetails',
         className: 'size-large',
-        dependingOn: 'educationType',
+        dependingOn: 'person.educationType',
       },
     ],
   },
   {
-    id: 'person.address',
+    id: 'address',
     title: 'captions.Person.addresses',
     fields: [
       {
@@ -354,6 +400,98 @@ export const FORM_DATA_PERSON = [
         ...FORM_DATA_WIDGET,
         widget: 'app-person-contacts-list',
         newLine: true,
+      },
+    ],
+  },
+  {
+    id: 'vaccination',
+    title: 'headingVaccination',
+    required: false,
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'vaccination',
+        label: 'captions.CaseData.vaccination',
+        options: optionsVaccinationStatus,
+      },
+      {
+        ...FORM_DATA_NUMBER,
+        key: 'vaccinationDoses',
+        label: 'captions.CaseData.vaccinationDoses',
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'firstVaccinationDate',
+        hint: 'captions.CaseData.firstVaccinationDate',
+        newLine: true,
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'CaseData.lastVaccinationDate',
+        hint: 'captions.CaseData.lastVaccinationDate',
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'vaccinationInfoSource',
+        label: 'captions.CaseData.vaccinationInfoSource',
+        options: optionsVaccinationSource,
+        newLine: true,
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'vaccineName',
+        label: 'captions.CaseData.vaccineName',
+        options: optionsVaccineName,
+        newLine: true,
+        className: 'size-large',
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'vaccineManufacturer',
+        label: 'captions.CaseData.vaccineManufacturer',
+        options: optionsVaccineManufacturer,
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'vaccineInn',
+        label: 'captions.CaseData.vaccineInn',
+        newLine: true,
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'vaccineBatchNumber',
+        label: 'captions.CaseData.vaccineBatchNumber',
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'vaccineUniiCode',
+        label: 'captions.CaseData.vaccineUniiCode',
+        newLine: true,
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'vaccineAtcCode',
+        label: 'captions.CaseData.vaccineAtcCode',
+        dependingOn: 'vaccination',
+        dependingOnValues: ['VACCINATED'],
       },
     ],
   },

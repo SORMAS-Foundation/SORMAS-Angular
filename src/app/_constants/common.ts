@@ -11,6 +11,7 @@ export enum AdvancedDataType {
 export enum SentResourceTypes {
   EPIDEMIOLOGICAL_DATA = 'epidemiological_data',
   PERSON_DATA = 'person_data',
+  EVENT_PARTICIPANT_DATA = 'event_participant_data',
 }
 
 // pagination
