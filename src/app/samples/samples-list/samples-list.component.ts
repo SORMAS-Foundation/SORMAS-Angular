@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../app.constants';
 import { TableColumn } from '../../_models/common';
 import { CONFIG_SAMPLES } from '../../_constants/storage';
 import { SampleDto } from '../../_models/sampleDto';
@@ -21,6 +21,7 @@ export class SamplesListComponent implements OnInit {
   samples: SampleDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_SAMPLES;
+  headerHeight = HEADER_HEIGHT;
 
   private subscription: Subscription[] = [];
 

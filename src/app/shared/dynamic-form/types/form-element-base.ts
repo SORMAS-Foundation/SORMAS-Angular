@@ -18,6 +18,7 @@ export class FormElementBase<T> {
   dependingOn?: string; // the key of the field that the current field is depending on in order to be visible
   dependingOnValues?: any[]; // the value of the field that the current field is depending on in order to be visible
   widget?: any;
+  chips?: boolean; // flag to toggle chips for multi-select
 
   constructor(
     options: {
@@ -39,6 +40,7 @@ export class FormElementBase<T> {
       dependingOn?: string;
       dependingOnValues?: any[];
       widget?: any;
+      chips?: boolean;
     } = {}
   ) {
     this.value = options.value;
@@ -59,6 +61,7 @@ export class FormElementBase<T> {
     this.dependingOn = options.dependingOn;
     this.dependingOnValues = options.dependingOnValues;
     this.widget = options.widget;
+    this.chips = options.chips ?? false;
   }
 }
 
