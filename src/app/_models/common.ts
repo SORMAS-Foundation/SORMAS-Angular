@@ -84,3 +84,11 @@ export type InfoBarType =
   | 'SAMPLE_CASE'
   | 'SAMPLE_EVENT_PARTICIPANT'
   | 'SAMPLE_CONTACT';
+
+export const InfoBarTypeOptions = {
+  CASE: 'CASE' as InfoBarType,
+  EVENT: 'EVENT' as InfoBarType,
+  SAMPLE_CASE: 'SAMPLE_CASE' as InfoBarType,
+  SAMPLE_EVENT_PARTICIPANT: 'SAMPLE_EVENT_PARTICIPANT' as InfoBarType,
+  SAMPLE_CONTACT: 'SAMPLE_CONTACT' as InfoBarType,
+};

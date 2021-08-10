@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CaseClassificationIcons, CaseOutcomeIcons } from '../../_constants/icons';
-import { InfoBarType } from '../../_models/common';
+import { InfoBarType, InfoBarTypeOptions } from '../../_models/common';
 
 @Component({
   selector: 'app-info-bar',
@@ -13,6 +13,7 @@ export class InfoBarComponent {
 
   caseOutcomeIcons = CaseOutcomeIcons;
   caseClassificationIcons = CaseClassificationIcons;
+  infoBarOptions = InfoBarTypeOptions;
 
   getOutcomeIcon(key: string): string {
     return this.caseOutcomeIcons[key as keyof typeof CaseOutcomeIcons];

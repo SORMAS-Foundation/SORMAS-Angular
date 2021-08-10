@@ -1,12 +1,18 @@
 <div *ngIf="data" class="info-bar" [ngSwitch]="type">
-  <ng-container *ngSwitchCase="'CASE'" [ngTemplateOutlet]="case"></ng-container>
-  <ng-container *ngSwitchCase="'EVENT'" [ngTemplateOutlet]="event"></ng-container>
-  <ng-container *ngSwitchCase="'SAMPLE_CASE'" [ngTemplateOutlet]="sample_case"></ng-container>
+  <ng-container *ngSwitchCase="infoBarOptions.CASE" [ngTemplateOutlet]="case"></ng-container>
+  <ng-container *ngSwitchCase="infoBarOptions.EVENT" [ngTemplateOutlet]="event"></ng-container>
   <ng-container
-    *ngSwitchCase="'SAMPLE_EVENT_PARTICIPANT'"
+    *ngSwitchCase="infoBarOptions.SAMPLE_CASE"
+    [ngTemplateOutlet]="sample_case"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="infoBarOptions.SAMPLE_EVENT_PARTICIPANT"
     [ngTemplateOutlet]="sample_event_participant"
   ></ng-container>
-  <ng-container *ngSwitchCase="'SAMPLE_CONTACT'" [ngTemplateOutlet]="sample_contact"></ng-container>
+  <ng-container
+    *ngSwitchCase="infoBarOptions.SAMPLE_CONTACT"
+    [ngTemplateOutlet]="sample_contact"
+  ></ng-container>
 </div>
 
 <ng-template #case>

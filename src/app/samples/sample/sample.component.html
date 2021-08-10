@@ -20,9 +20,9 @@
         class="associated-data-link"
       >
         <mat-icon class="material-icons-round">navigate_before</mat-icon>
-        <span *ngSwitchCase="'SAMPLE_CASE'">Case</span>
-        <span *ngSwitchCase="'SAMPLE_CONTACT'">Contact</span>
-        <span *ngSwitchCase="'SAMPLE_EVENT_PARTICIPANT'">Event</span>
+        <span *ngSwitchCase="infoBarOptions.SAMPLE_CASE">Case</span>
+        <span *ngSwitchCase="infoBarOptions.SAMPLE_CONTACT">Contact</span>
+        <span *ngSwitchCase="infoBarOptions.SAMPLE_EVENT_PARTICIPANT">Event</span>
         <span *ngSwitchDefault></span>
       </a>
     </nav>

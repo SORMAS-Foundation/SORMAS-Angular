@@ -8,7 +8,7 @@ import { CaseDataDto, ContactDto, EventParticipantDto, SampleDto } from '../../_
 import { SampleService } from '../../_services/api/sample.service';
 import { CaseService } from '../../_services/api/case.service';
 import { ContactService } from '../../_services/api/contact.service';
-import { InfoBarType } from '../../_models/common';
+import { InfoBarType, InfoBarTypeOptions } from '../../_models/common';
 import { EventService } from '../../_services/api/event.service';
 import { BaseService } from '../../_services/api/base.service';
 
@@ -22,6 +22,7 @@ export class SampleComponent implements OnInit {
   sampleId: string;
   additionalData: CaseDataDto | ContactDto | EventParticipantDto;
   additionalDataType: InfoBarType;
+  infoBarOptions = InfoBarTypeOptions;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_PERSON;
 
@@ -63,15 +64,15 @@ export class SampleComponent implements OnInit {
     let id = '';
 
     if (this.sample.associatedCase) {
-      this.additionalDataType = 'SAMPLE_CASE';
+      this.additionalDataType = this.infoBarOptions.SAMPLE_CASE;
       service = this.caseService;
       id = this.sample.associatedCase.uuid;
     } else if (this.sample.associatedContact) {
-      this.additionalDataType = 'SAMPLE_CONTACT';
+      this.additionalDataType = this.infoBarOptions.SAMPLE_CONTACT;
       service = this.contactService;
       id = this.sample.associatedContact.uuid;
     } else if (this.sample.associatedEventParticipant) {
-      this.additionalDataType = 'SAMPLE_EVENT_PARTICIPANT';
+      this.additionalDataType = this.infoBarOptions.SAMPLE_EVENT_PARTICIPANT;
       service = this.eventService;
       id = this.sample.associatedEventParticipant.uuid;
     }
@@ -93,13 +94,13 @@ export class SampleComponent implements OnInit {
     let url = '';
 
     switch (this.additionalDataType) {
-      case 'SAMPLE_CASE':
+      case this.infoBarOptions.SAMPLE_CASE:
         url = `/cases/case/${this.additionalData.uuid}/details`;
         break;
-      case 'SAMPLE_CONTACT':
+      case this.infoBarOptions.SAMPLE_CONTACT:
         url = `/contacts/contact/${this.additionalData.uuid}`;
         break;
-      case 'SAMPLE_EVENT_PARTICIPANT':
+      case this.infoBarOptions.SAMPLE_EVENT_PARTICIPANT:
         url = `/events/event/${this.additionalData.uuid}/participants`;
         break;
       default:
