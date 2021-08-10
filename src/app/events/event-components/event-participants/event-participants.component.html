@@ -1,18 +1,15 @@
-<mat-checkbox
-  color="primary"
-  (change)="onChangeContactRelatedEvent()"
-  [(ngModel)]="isContactRelatedEvent"
->
-  {{ 'captions.eventParticipantContactCountOnlyWithSourceCaseInEvent' | translate }}
-</mat-checkbox>
-
-<app-table
-  [resourceService]="eventParticipantService"
-  [tableColumns]="defaultColumns"
-  [isSortable]="true"
-  [isSelectable]="true"
-  [isHeaderSticky]="true"
-  [fullHeight]="true"
-  [saveConfigKey]="configKey"
-  [bulkEditOptions]="actionsBulkEdit"
-></app-table>
+<app-filters [fixed]="false">
+  <app-event-participants-filters filters></app-event-participants-filters>
+  <ng-container list>
+    <app-table
+      [resourceService]="eventParticipantService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      [bulkEditOptions]="actionsBulkEdit"
+    ></app-table>
+  </ng-container>
+</app-filters>

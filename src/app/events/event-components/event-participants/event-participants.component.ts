@@ -5,6 +5,7 @@ import { defaultColumnDefs } from './event-participants-list-table-data';
 import { EventParticipantService } from '../../../_services/api/event-participant.service';
 import { actionsBulkEditDefs } from './event-participants-list-actions-data';
 import { FilterService } from '../../../_services/filter.service';
+import { HEADER_HEIGHT } from '../../../_constants/common';
 
 @Component({
   selector: 'app-event-participants',
@@ -15,7 +16,7 @@ export class EventParticipantsComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_CASES;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
-  isContactRelatedEvent = false;
+  headerHeight = HEADER_HEIGHT;
 
   constructor(
     public eventParticipantService: EventParticipantService,
@@ -24,14 +25,5 @@ export class EventParticipantsComponent implements OnInit {
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
-  }
-
-  onChangeContactRelatedEvent(): void {
-    this.filterService.setFilters([
-      {
-        field: 'countContactRelatedEvent',
-        value: this.isContactRelatedEvent,
-      },
-    ]);
   }
 }
