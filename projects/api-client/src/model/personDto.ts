@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { CountryReferenceDto } from '../../../../src/app/_models/countryReferenceDto';
 import { ApproximateAgeType } from './approximateAgeType';
 import { BurialConductor } from './burialConductor';
 import { CauseOfDeath } from './causeOfDeath';
@@ -34,9 +35,11 @@ export interface PersonDto {
   firstName: string;
   lastName?: string;
   nickname?: string;
+  birthName?: string;
   mothersName?: string;
   mothersMaidenName?: string;
   fathersName?: string;
+  namesOfGuardians?: string;
   sex?: Sex;
   birthdateDD?: number;
   birthdateMM?: number;
@@ -78,4 +81,6 @@ export interface PersonDto {
   covidCodeDelivered?: boolean;
   symptomJournalStatus?: SymptomJournalStatus;
   externalId?: string;
+  birthCountry?: CountryReferenceDto;
+  citizenship?: CountryReferenceDto;
 }

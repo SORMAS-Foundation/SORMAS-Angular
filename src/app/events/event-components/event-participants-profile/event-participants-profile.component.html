@@ -1,6 +1,7 @@
 <div class="page-content">
   <app-dynamic-form
     main
+    *ngIf="participant"
     [formElements]="myFormElements"
     [resourceService]="participantService"
   ></app-dynamic-form>

@@ -36,6 +36,7 @@ import { GpsCoordsComponent } from './widgets/gps-coords/gps-coords.component';
 import { AddressButtonComponent } from './widgets/address-button/address-button.component';
 import { ColumnPickerModule } from './column-picker/column-picker.module';
 import { DirectivesModule } from '../_directives/directives.module';
+import { LastUpdateComponent } from './widgets/last-update/last-update.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { DirectivesModule } from '../_directives/directives.module';
     NewPersonContactComponent,
     GpsCoordsComponent,
     AddressButtonComponent,
+    LastUpdateComponent,
   ],
   imports: [
     CommonModule,

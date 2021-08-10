@@ -41,6 +41,8 @@ const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
 const optionsVaccinationSource = pipe.transform(VaccinationSource);
 const optionsVaccineName = pipe.transform(VaccineName);
 const optionsVaccineManufacturer = pipe.transform(VaccineManufacturer);
+const optionsCountryOfBirth = pipe.transform(['default country']);
+const optionsCitizenship = pipe.transform(['default citizenship']);
 
 export const FORM_DATA_EVENT_PARTICIPANT = [
   {
@@ -85,10 +87,15 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
     title: 'captions.Person',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-last-update',
+      },
+      {
         ...FORM_DATA_NULL,
         key: 'person.uuid',
         label: 'captions.Person.uuid',
         sameLine: true,
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -140,63 +147,6 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
         label: 'captions.sex',
         options: optionsSex,
         className: 'size-small',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'address.region.uuid',
-        label: 'captions.Person.placeOfBirthRegion',
-        options: [
-          {
-            key: 'default',
-            value: 'Default region',
-          },
-        ],
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'address.district.uuid',
-        label: 'captions.Person.placeOfBirthDistrict',
-        options: [
-          {
-            key: 'default',
-            value: 'Default district',
-          },
-        ],
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'address.community.uuid',
-        label: 'captions.Person.placeOfBirthCommunity',
-        options: [
-          {
-            key: 'default',
-            value: 'Default community',
-          },
-        ],
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'person.placeOfBirthFacilityType',
-        label: 'captions.facilityType',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'person.placeOfBirthFacility',
-        label: 'captions.facility',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
       },
       {
         ...FORM_DATA_INPUT,
@@ -376,25 +326,66 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'nickname',
-        label: 'captions.Person.nickname',
+        key: 'person.birthName',
+        label: 'captions.Person.birthName',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'mothersName',
+        key: 'person.nickname',
+        label: 'captions.Person.nickname',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'person.mothersName',
         label: 'captions.Person.mothersName',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'mothersMaidenName',
+        key: 'person.mothersMaidenName',
         label: 'captions.Person.mothersMaidenName',
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'fathersName',
+        key: 'person.fathersName',
         label: 'captions.Person.fathersName',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'person.namesOfGuardians',
+        label: 'captions.Person.namesOfGuardians',
+        newLine: true,
+        className: 'size-large',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'person.phone',
+        label: 'captions.Person.phone',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'person.phoneOwner',
+        label: 'captions.Person.phoneOwner',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'person.emailAddress',
+        label: 'captions.Person.emailAddress',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'person.birthCountry.caption',
+        label: 'captions.Person.birthCountry',
+        options: optionsCountryOfBirth,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'person.citizenship.caption',
+        label: 'captions.Person.citizenship',
+        options: optionsCitizenship,
       },
       {
         ...FORM_DATA_WIDGET,
@@ -410,36 +401,36 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'vaccination',
+        key: 'person.vaccination',
         label: 'captions.CaseData.vaccination',
         options: optionsVaccinationStatus,
       },
       {
         ...FORM_DATA_NUMBER,
-        key: 'vaccinationDoses',
-        label: 'captions.CaseData.vaccinationDoses',
+        key: 'person.vaccinationDoses',
+        label: 'captions.VaccinationInfo.vaccinationDoses',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_DATE,
-        key: 'firstVaccinationDate',
-        hint: 'captions.CaseData.firstVaccinationDate',
+        key: 'person.firstVaccinationDate',
+        hint: 'captions.VaccinationInfo.firstVaccinationDate',
         newLine: true,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_DATE,
-        key: 'CaseData.lastVaccinationDate',
-        hint: 'captions.CaseData.lastVaccinationDate',
+        key: 'person.lastVaccinationDate',
+        hint: 'captions.VaccinationInfo.lastVaccinationDate',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'vaccinationInfoSource',
-        label: 'captions.CaseData.vaccinationInfoSource',
+        key: 'person.vaccinationInfoSource',
+        label: 'captions.VaccinationInfo.vaccinationInfoSource',
         options: optionsVaccinationSource,
         newLine: true,
         dependingOn: 'vaccination',
@@ -447,8 +438,8 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'vaccineName',
-        label: 'captions.CaseData.vaccineName',
+        key: 'person.vaccineName',
+        label: 'captions.VaccinationInfo.vaccineName',
         options: optionsVaccineName,
         newLine: true,
         className: 'size-large',
@@ -457,39 +448,39 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'vaccineManufacturer',
-        label: 'captions.CaseData.vaccineManufacturer',
+        key: 'person.vaccineManufacturer',
+        label: 'captions.VaccinationInfo.vaccineManufacturer',
         options: optionsVaccineManufacturer,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'vaccineInn',
-        label: 'captions.CaseData.vaccineInn',
+        key: 'person.vaccineInn',
+        label: 'captions.VaccinationInfo.vaccineInn',
         newLine: true,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'vaccineBatchNumber',
-        label: 'captions.CaseData.vaccineBatchNumber',
+        key: 'person.vaccineBatchNumber',
+        label: 'captions.VaccinationInfo.vaccineBatchNumber',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'vaccineUniiCode',
-        label: 'captions.CaseData.vaccineUniiCode',
+        key: 'person.vaccineUniiCode',
+        label: 'captions.VaccinationInfo.vaccineUniiCode',
         newLine: true,
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'vaccineAtcCode',
-        label: 'captions.CaseData.vaccineAtcCode',
+        key: 'person.vaccineAtcCode',
+        label: 'captions.VaccinationInfo.vaccineAtcCode',
         dependingOn: 'vaccination',
         dependingOnValues: ['VACCINATED'],
       },
