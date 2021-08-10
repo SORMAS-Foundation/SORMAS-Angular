@@ -20,6 +20,7 @@ export const PAGE_SIZE = 7;
 export type EntityLink = {
   title: string;
   link: string;
+  showFormActions?: boolean;
 };
 
 // modals
@@ -32,9 +33,18 @@ export const HEADER_HEIGHT = 68;
 // sidebar panels
 export const EDGE_PANEL_INITIAL_SIZE_SINGLE_COLUMN = 3;
 export const EDGE_PANEL_INITIAL_SIZE_DOUBLE_COLUMN = 4;
-export type EdgePanelType = 'TASK' | 'SAMPLE' | 'EVENT';
+export type EdgePanelType = 'TASK' | 'SAMPLE' | 'EVENT' | 'PERSON_EVENT' | 'CASE' | 'CONTACT';
 export const EDGE_PANEL_TYPE = {
   TASK: 'TASK' as EdgePanelType,
   SAMPLE: 'SAMPLE' as EdgePanelType,
   EVENT: 'EVENT' as EdgePanelType,
+  PERSON_EVENT: 'PERSON_EVENT' as EdgePanelType,
+  CASE: 'CASE' as EdgePanelType,
+  CONTACT: 'CONTACT' as EdgePanelType,
 };
+
+// date format
+export const DEFAULT_DATE_FORMAT = 'd/m/yyyy';
+export const DAY_DATE_FORMAT = 'dd';
+export const MONTH_DATE_TEXT_FORMAT = 'MMM';
+export const HOUR_MINUTE_TIME_FORMAT = 'h:m';

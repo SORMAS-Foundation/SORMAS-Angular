@@ -23,6 +23,9 @@
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
+    .uppercase {
+      text-transform: uppercase;
+    }
     &.center {
       text-align: center;
     }
@@ -110,4 +113,18 @@ app-card-actions + .mat-card-header {
     padding-bottom: 0;
     font-size: 16px;
   }
+}
+
+.type-event_actions {
+  border-radius: 5px 5px 0 0;
+}
+
+.type-attachments {
+  border-color: map-get($sormas-primary, A200);
+  margin-top: 6px;
+  border-radius: 0 0 5px 5px;
+}
+
+.collapsed {
+  align-self: flex-start;
 }

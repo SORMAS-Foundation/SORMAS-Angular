@@ -8,18 +8,29 @@
   :root {
     .mat-tab-nav-bar {
       border: none;
+      margin-bottom: -2px;
+
       .mat-tab-link-container {
         .mat-tab-links {
           .mat-tab-link {
             min-width: auto;
-            padding: 8px;
+            padding: 8px 0;
+            margin-right: 16px;
             color: map-get($sormas-accent, 800);
+
+            &:hover,
+            &:focus,
+            &.mat-tab-label-active {
+              opacity: 1;
+              text-decoration: none;
+            }
           }
         }
         .mat-ink-bar {
-          bottom: -2px;
+          bottom: 0;
         }
       }
+
       .mat-tab-header-pagination {
         box-shadow: none;
         .mat-tab-header-pagination-chevron {
@@ -29,6 +40,20 @@
           display: none;
           .mat-tab-header-pagination-chevron {
             display: none;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: map-get($grid-breakpoints, xl)) {
+    :root {
+      .mat-tab-nav-bar {
+        .mat-tab-link-container {
+          .mat-tab-links {
+            .mat-tab-link {
+              margin-right: 32px;
+            }
           }
         }
       }

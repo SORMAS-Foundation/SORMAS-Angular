@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Params } from '@angular/router';
+import { Filter } from '../_models/common';
+import { EntityLink } from '../_constants/common';
 
 @Injectable({
   providedIn: 'root',
@@ -43,5 +46,28 @@ export class HelperService {
     ).getDate();
     const days = this.getRange(1, maxDays);
     return days.map((x) => ({ key: x, value: x }));
+  }
+
+  setQueryParamsInFilters(routeParams: Params): Filter[] {
+    const filters: Filter[] = [];
+    Object.keys(routeParams).forEach((el) => {
+      filters.push({ field: el, value: { uuid: routeParams[el] } });
+    });
+    return filters;
+  }
+
+  getCurrentSubpage(url: string, links: any): EntityLink {
+    const parts = url.split('/');
+    let currentLink: EntityLink = {} as EntityLink;
+    links(parts[3] || '').forEach((el: any) => {
+      if (url === el.link) {
+        currentLink = el;
+      }
+    });
+    return {
+      title: currentLink?.title || '',
+      showFormActions: currentLink?.showFormActions || false,
+      link: currentLink?.link || '',
+    };
   }
 }

@@ -3,7 +3,7 @@
 .page-content {
   position: relative;
   z-index: 1;
-  background: map-get($sormas-accent, 50);
+  background: $white;
 }
 
 header {
@@ -28,6 +28,10 @@ h1 {
   font-size: 34px;
   font-weight: 500;
   line-height: 40px;
+}
+
+.add-participant-btn {
+  margin-right: 15px;
 }
 
 .tab-nav-header {

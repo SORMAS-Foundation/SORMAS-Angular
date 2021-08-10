@@ -1,0 +1,20 @@
+<div class="documents">
+  <div class="documents-title">
+    <h2>Documents</h2>
+    <button mat-button color="primary">New document</button>
+  </div>
+  <ul *ngIf="data.length; else noDocs" class="documents-list">
+    <li *ngFor="let document of data">
+      <a mat-button href="{{ document.link }}" class="document-link">
+        <mat-icon class="material-icons-round" color="primary">file_download_black</mat-icon>
+        {{ document.name }}
+      </a>
+      <button mat-icon-button class="document-delete">
+        <mat-icon class="material-icons-round">delete_outline_black</mat-icon>
+      </button>
+    </li>
+  </ul>
+  <ng-template #noDocs>
+    <p class="no-documents">{{ 'captions.documentNoDocuments' | translate }}</p>
+  </ng-template>
+</div>

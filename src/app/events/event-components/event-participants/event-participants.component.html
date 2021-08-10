@@ -1,1 +1,18 @@
-<p>event-participants works!</p>
+<mat-checkbox
+  color="primary"
+  (change)="onChangeContactRelatedEvent()"
+  [(ngModel)]="isContactRelatedEvent"
+>
+  {{ 'captions.eventParticipantContactCountOnlyWithSourceCaseInEvent' | translate }}
+</mat-checkbox>
+
+<app-table
+  [resourceService]="eventParticipantService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [saveConfigKey]="configKey"
+  [bulkEditOptions]="actionsBulkEdit"
+></app-table>

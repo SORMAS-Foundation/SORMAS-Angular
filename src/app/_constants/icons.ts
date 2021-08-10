@@ -28,6 +28,20 @@ export enum CaseClassificationIcons {
   NO_CASE = 'how_to_reg',
 }
 
+export enum ContactClassificationIcons {
+  UNCONFIRMED = 'gpp_bad',
+  CONFIRMED = 'connect without contact',
+  NO_CONTACT = 'voice over off',
+}
+
+export enum EventStatusIcons {
+  SIGNAL = 'wifi_tethering',
+  EVENT = 'warning',
+  SCREENING = 'travel_explore',
+  CLUSTER = 'grain',
+  DROPPED = 'disabled_by default',
+}
+
 export enum CardActionsIcons {
   edit = 'edit',
   delete = 'highlight_off',

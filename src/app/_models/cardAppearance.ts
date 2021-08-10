@@ -13,6 +13,7 @@ export type CardType =
   | 'case_event'
   | 'case_contact'
   | 'case_task'
+  | 'contact'
   | 'epid_data'
   | 'address'
   | 'hospitalization'
@@ -28,4 +29,7 @@ export type CardType =
   | 'person_contact'
   | 'person_event'
   | 'download'
+  | 'attachments'
+  | 'therapy_treatments'
+  | 'therapy_prescriptions'
   | undefined;

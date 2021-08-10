@@ -14,6 +14,13 @@ import { CardEpidDataComponent } from './card-epid-data/card-epid-data.component
 import { PipesModule } from '../../_pipes/pipes.module';
 import { CardDownloadComponent } from './card-download/card-download.component';
 import { CardContactComponent } from './card-contact/card-contact.component';
+import { CardPersonCaseComponent } from './card-person-case/card-person-case.component';
+import { CardPersonContactComponent } from './card-person-contact/card-person-contact.component';
+import { CardPersonEventComponent } from './card-person-event/card-person-event.component';
+import { CardEventActionsComponent } from './card-event-actions/card-event-actions.component';
+import { CardAttachmentsComponent } from './card-attachments/card-attachments.component';
+import { CardTreatmentsComponent } from './card-treatments/card-treatments.component';
+import { CardPrescriptionsComponent } from './card-prescriptions/card-prescriptions.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
@@ -27,8 +34,15 @@ import { CardContactComponent } from './card-contact/card-contact.component';
     CardListComponent,
     CardEpidDataComponent,
     CardDownloadComponent,
+    CardTreatmentsComponent,
+    CardPrescriptionsComponent,
     CardContactComponent,
+    CardPersonCaseComponent,
+    CardPersonContactComponent,
+    CardPersonEventComponent,
+    CardEventActionsComponent,
+    CardAttachmentsComponent,
   ],
-  exports: [CardComponent, CardListComponent],
+  exports: [CardComponent, CardListComponent, CardEventActionsComponent, CardAttachmentsComponent],
 })
 export class CardModule {}

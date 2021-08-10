@@ -1,24 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { CaseControllerService } from 'api-client';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseService } from '../../_services/api/case.service';
 import { CaseClassificationIcons, EntityLink, CaseOutcomeIcons } from '../../app.constants';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CaseOrigin } from '../../_models/caseOrigin';
+import { HelperService } from '../../_services/helper.service';
 
 // case routing for tabs
 const caseLinks = (caseId: string): EntityLink[] => {
   return [
-    { link: `/cases/case/${caseId}/details`, title: 'strings.entityCase' },
-    { link: `/cases/case/${caseId}/person`, title: 'captions.View.cases.person' },
-    { link: `/cases/case/${caseId}/hospitalization`, title: 'captions.CaseHospitalization' },
-    { link: `/cases/case/${caseId}/port-health`, title: 'captions.CaseData.portHealthInfo' },
-    { link: `/cases/case/${caseId}/symptoms`, title: 'captions.Symptoms' },
-    { link: `/cases/case/${caseId}/epidemiological-data`, title: 'captions.EpiData' },
+    { link: `/cases/case/${caseId}/details`, title: 'strings.entityCase', showFormActions: true },
+    {
+      link: `/cases/case/${caseId}/person`,
+      title: 'captions.View.cases.person',
+      showFormActions: true,
+    },
+    {
+      link: `/cases/case/${caseId}/hospitalization`,
+      title: 'captions.CaseHospitalization',
+      showFormActions: true,
+    },
+    {
+      link: `/cases/case/${caseId}/port-health`,
+      title: 'captions.CaseData.portHealthInfo',
+      showFormActions: true,
+    },
+    { link: `/cases/case/${caseId}/symptoms`, title: 'captions.Symptoms', showFormActions: true },
+    {
+      link: `/cases/case/${caseId}/epidemiological-data`,
+      title: 'captions.EpiData',
+      showFormActions: true,
+    },
     { link: `/cases/case/${caseId}/therapy`, title: 'captions.CaseData.therapy' },
-    { link: `/cases/case/${caseId}/follow-up`, title: 'captions.caseFollowupVisitsView' },
-    { link: `/cases/case/${caseId}/clinical-course`, title: 'captions.View.cases.clinicalcourse' },
+    {
+      link: `/cases/case/${caseId}/follow-up`,
+      title: 'captions.caseFollowupVisitsView',
+    },
+    {
+      link: `/cases/case/${caseId}/clinical-course`,
+      title: 'captions.View.cases.clinicalcourse',
+      showFormActions: true,
+    },
     { link: `/cases/case/${caseId}/contacts`, title: 'captions.caseContacts' },
   ];
 };
@@ -35,15 +59,19 @@ export class CaseComponent implements OnInit {
   caseClassificationIcons = CaseClassificationIcons;
   links: EntityLink[] = [];
   caseId: any;
+  currentSubPage: EntityLink;
 
   constructor(
     private caseService: CaseService,
     private activeRoute: ActivatedRoute,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router,
+    private helperService: HelperService
   ) {}
 
   ngOnInit(): void {
     const routeParams = this.activeRoute.snapshot.params;
+    this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, caseLinks);
     this.caseId = routeParams.caseId;
     this.links = caseLinks(this.caseId);
     this.caseService.getById(this.caseId).subscribe({
@@ -73,5 +101,6 @@ export class CaseComponent implements OnInit {
     if (typeof componentReference.updateComponent === 'function') {
       componentReference.updateComponent(this.case, this.caseService);
     }
+    this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, caseLinks);
   }
 }

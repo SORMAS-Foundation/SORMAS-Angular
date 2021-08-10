@@ -1,0 +1,10 @@
+<div *ngIf="data" class="card-person-case">
+  <div class='disease'>{{disease[data.disease]}}</div>
+  <div class='date'>{{data.creationDate | date:'d/m/yyyy'}}</div>
+  <div class='classification'>
+    <span><mat-icon class="material-icons-round classification-icon">
+          {{ caseClassificationIcons[data.caseClassification!] }}
+        </mat-icon></span>
+    <span>{{caseClassification[data.caseClassification!]}}</span>
+  </div>
+</div>

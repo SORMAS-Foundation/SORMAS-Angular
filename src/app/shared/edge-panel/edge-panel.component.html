@@ -1,11 +1,14 @@
 <app-collapsable-box
   boxTitle="{{ config.title | translate }}"
   actionText="{{ config.action | translate }}"
+  actionLink="{{ actionLink }}"
+  [actionLinkParams]="actionLinkParams"
   [expanded]="true"
   appearance="section"
   iconExpand="arrow_drop_down"
   iconCollapse="arrow_drop_up"
   (action)="create()"
+  [showGroupLink]="showGroupLink"
 >
   <app-card-list
     *ngIf="items.length"
@@ -17,6 +20,8 @@
     [cardStatusKey]="config.cardStatusKey"
     [cardAppearance]="config.appearance"
     [cardEdit]="true"
-    [cardCollapse]="true"
+    [cardCollapse]="!!cardCollapse"
+    [cardStatus]="config.cardStatus || ''"
+    [titleUppercase]="config.titleUppercase"
   ></app-card-list>
 </app-collapsable-box>

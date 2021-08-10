@@ -123,6 +123,7 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_DATE,
         key: 'endDate',
         label: 'captions.Event.endDate',
+        dependingOn: 'multiDayEvent',
       },
       {
         ...FORM_DATA_DATE,
@@ -310,7 +311,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'verificationAtLeastTwoInfected',
-        label: 'LaboratoryDiagnosticEvidenceDetail.VERIFICATION_OF_AT_LEAST_TWO_INFECTED',
+        label: 'enum.LaboratoryDiagnosticEvidenceDetail.VERIFICATION_OF_AT_LEAST_TWO_INFECTED',
         dependingOn: 'laboratoryDiagnosticEvidence',
         dependingOnValues: ['YES'],
         newLine: true,
@@ -318,7 +319,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'compliantPathogen',
-        label: 'LaboratoryDiagnosticEvidenceDetail.COMPLIANT_PATHOGEN_FINE_TYPING',
+        label: 'enum.LaboratoryDiagnosticEvidenceDetail.COMPLIANT_PATHOGEN_FINE_TYPING',
         dependingOn: 'verificationAtLeastTwoInfected',
         className: 'sub-field',
         newLine: true,
@@ -326,7 +327,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'verificationMaterials',
-        label: 'LaboratoryDiagnosticEvidenceDetail.VERIFICATION_ON_MATERIALS',
+        label: 'enum.LaboratoryDiagnosticEvidenceDetail.VERIFICATION_ON_MATERIALS',
         dependingOn: 'laboratoryDiagnosticEvidence',
         dependingOnValues: ['YES'],
         newLine: true,
@@ -334,7 +335,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'impressionTest',
-        label: 'LaboratoryDiagnosticEvidenceDetail.IMPRESSION_TEST',
+        label: 'enum.LaboratoryDiagnosticEvidenceDetail.IMPRESSION_TEST',
         dependingOn: 'verificationMaterials',
         className: 'sub-field',
         newLine: true,
@@ -342,7 +343,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'waterSample',
-        label: 'LaboratoryDiagnosticEvidenceDetail.WATER_SAMPLE',
+        label: 'enum.LaboratoryDiagnosticEvidenceDetail.WATER_SAMPLE',
         dependingOn: 'verificationMaterials',
         className: 'sub-field',
         newLine: true,
@@ -350,7 +351,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'other',
-        label: 'LaboratoryDiagnosticEvidenceDetail.OTHER',
+        label: 'enum.LaboratoryDiagnosticEvidenceDetail.OTHER',
         dependingOn: 'verificationMaterials',
         className: 'sub-field',
         newLine: true,
@@ -358,7 +359,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_CHECKBOX,
         key: 'pathogenFineTyping',
-        label: 'LaboratoryDiagnosticEvidenceDetail.PATHOGEN_FINE_TYPING_COMPLIANT_WITH_CASE',
+        label: 'enum.LaboratoryDiagnosticEvidenceDetail.PATHOGEN_FINE_TYPING_COMPLIANT_WITH_CASE',
         dependingOn: 'verificationMaterials',
         className: 'sub-field',
         newLine: true,

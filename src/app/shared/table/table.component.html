@@ -2,7 +2,7 @@
   <app-column-picker
     *ngIf="allowToggleColumns"
     [columns]="tableColumns"
-    [selection]="getColumnsKeyByName(displayedColumns)"
+    [selection]="columnKeys"
     (selectionChange)="updateTableColumns($event)"
   ></app-column-picker>
   <app-dropdown-menu *ngIf="viewOptions" [buttonText]="'actionViewOptions' | translate">
@@ -74,7 +74,7 @@
         >
           <app-table-data
             [config]="tableColumn"
-            [data]="getRowData(element.index)"
+            [data]="dataSourceArray[element.index]"
           ></app-table-data>
         </td>
       </ng-container>

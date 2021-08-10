@@ -1,0 +1,35 @@
+<div *ngIf="data" class="action">
+  <div *ngIf="data.changeDate; else createDate" class="action-date">
+    updated at <span class="action-date-day">{{ data.changeDate | date: 'd' }}</span>
+    <span class="action-date-month">{{ data.changeDate | date: 'MMM' }}</span>
+  </div>
+  <ng-template #createDate>
+    <div class="action-date">
+      <span class="action-date-day">{{ data.creationDate | date: 'd' }}</span>
+      <span class="action-date-month">{{ data.creationDate | date: 'MMM' }}</span>
+    </div>
+  </ng-template>
+
+  <h3 *ngIf="data.actionMeasure">{{ 'enum.ActionMeasure.' + data.actionMeasure | translate }}</h3>
+
+  <h4 *ngIf="data.title">{{ data.title }}</h4>
+
+  <div class="action-props">
+    <div class="action-status status-{{ data.actionStatus }}">
+      {{ 'enum.ActionStatus.' + data.actionStatus | translate }}
+    </div>
+    <div *ngIf="data.priority && data.actionStatus !== 'DONE'" class="action-priority">
+      Priority
+      <span class="priority-{{ data.priority }}">
+        {{ 'enum.ActionPriority.' + data.priority | translate }}
+      </span>
+    </div>
+  </div>
+
+  <p *ngIf="data.description" class="action-description">{{ data.description }}</p>
+
+  <div *ngIf="data.creatorUser" class="action-creator">
+    <mat-icon class="material-icons-round">perm_contact_calendar</mat-icon>
+    {{ data.creatorUser.caption }}
+  </div>
+</div>

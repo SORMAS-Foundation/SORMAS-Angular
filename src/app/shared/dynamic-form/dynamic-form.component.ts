@@ -27,6 +27,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
   watchFields: any[] = [];
   subscription: Subscription[] = [];
+  sections: any[] = [];
 
   constructor(
     private formElementControlService: FormElementControlService,
@@ -41,6 +42,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = this.formElementControlService.toFormGroup(this.processFormArray());
+    this.sections = this.getSections();
 
     this.subscription.push(
       this.formActionsService.getSave().subscribe((response: any) => {
