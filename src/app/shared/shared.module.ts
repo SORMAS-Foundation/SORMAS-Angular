@@ -37,6 +37,7 @@ import { AddressButtonComponent } from './widgets/address-button/address-button.
 import { ColumnPickerModule } from './column-picker/column-picker.module';
 import { DirectivesModule } from '../_directives/directives.module';
 import { LastUpdateComponent } from './widgets/last-update/last-update.component';
+import { InfoBarComponent } from './info-bar/info-bar.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { LastUpdateComponent } from './widgets/last-update/last-update.component
     GpsCoordsComponent,
     AddressButtonComponent,
     LastUpdateComponent,
+    InfoBarComponent,
   ],
   imports: [
     CommonModule,
@@ -106,6 +108,7 @@ import { LastUpdateComponent } from './widgets/last-update/last-update.component
     EdgePanelComponent,
     ColumnPickerModule,
     DirectivesModule,
+    InfoBarComponent,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent],
 })

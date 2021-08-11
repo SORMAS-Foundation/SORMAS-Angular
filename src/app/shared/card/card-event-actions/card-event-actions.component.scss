@@ -1,7 +1,7 @@
 @use '/src/variables.scss' as *;
 
 .action {
-  padding-bottom: 10px;
+  padding-bottom: 24px;
   text-align: center;
 }
 
@@ -89,6 +89,9 @@ h4 {
 }
 
 .action-creator {
+  position: absolute;
+  right: 16px;
+  bottom: 8px;
   color: map-get($sormas-accent, 500);
   font-size: 12px;
   text-align: right;

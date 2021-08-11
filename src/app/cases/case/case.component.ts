@@ -6,6 +6,7 @@ import { CaseService } from '../../_services/api/case.service';
 import { CaseClassificationIcons, EntityLink, CaseOutcomeIcons } from '../../app.constants';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CaseOrigin } from '../../_models/caseOrigin';
+import { HelperService } from '../../_services/helper.service';
 
 // case routing for tabs
 const caseLinks = (caseId: string): EntityLink[] => {
@@ -64,12 +65,13 @@ export class CaseComponent implements OnInit {
     private caseService: CaseService,
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private helperService: HelperService
   ) {}
 
   ngOnInit(): void {
     const routeParams = this.activeRoute.snapshot.params;
-    this.currentSubPage = this.getCurrentSubpage(this.router.url);
+    this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, caseLinks);
     this.caseId = routeParams.caseId;
     this.links = caseLinks(this.caseId);
     this.caseService.getById(this.caseId).subscribe({
@@ -87,21 +89,6 @@ export class CaseComponent implements OnInit {
     this.caseClassificationIcons = CaseClassificationIcons;
   }
 
-  getCurrentSubpage(url: string): EntityLink {
-    const parts = url.split('/');
-    let currentCaseLink: EntityLink = {} as EntityLink;
-    caseLinks(parts[3] || '').forEach((el) => {
-      if (url === el.link) {
-        currentCaseLink = el;
-      }
-    });
-    return {
-      title: currentCaseLink?.title || '',
-      showFormActions: currentCaseLink?.showFormActions || false,
-      link: currentCaseLink?.link || '',
-    };
-  }
-
   updateCaseLinks(): void {
     if (this.case.caseOrigin === CaseOrigin.INCOUNTRY) {
       this.links = this.links.filter((item) => {
@@ -114,6 +101,6 @@ export class CaseComponent implements OnInit {
     if (typeof componentReference.updateComponent === 'function') {
       componentReference.updateComponent(this.case, this.caseService);
     }
-    this.currentSubPage = this.getCurrentSubpage(this.router.url);
+    this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, caseLinks);
   }
 }

@@ -1,0 +1,98 @@
+<div *ngIf="data" class="info-bar" [ngSwitch]="type">
+  <ng-container *ngSwitchCase="infoBarOptions.CASE" [ngTemplateOutlet]="case"></ng-container>
+  <ng-container *ngSwitchCase="infoBarOptions.EVENT" [ngTemplateOutlet]="event"></ng-container>
+  <ng-container
+    *ngSwitchCase="infoBarOptions.SAMPLE_CASE"
+    [ngTemplateOutlet]="sample_case"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="infoBarOptions.SAMPLE_EVENT_PARTICIPANT"
+    [ngTemplateOutlet]="sample_event_participant"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="infoBarOptions.SAMPLE_CONTACT"
+    [ngTemplateOutlet]="sample_contact"
+  ></ng-container>
+</div>
+
+<ng-template #case>
+  <ul>
+    <li *ngIf="data.outcome">
+      <mat-icon class="material-icons-round">
+        {{ getOutcomeIcon(data.outcome) }}
+      </mat-icon>
+      {{ data.outcome }}
+    </li>
+    <li *ngIf="data.caseClassification">
+      <mat-icon class="material-icons-round">
+        {{ getClassificationIcon(data.caseClassification) }}
+      </mat-icon>
+      {{ data.caseClassification! }}
+    </li>
+    <li *ngIf="data.disease">
+      {{ data.disease }}
+    </li>
+    <li *ngIf="data.uuid">
+      <strong i18n>{{ 'captions.CaseData.uuid' | translate }}: </strong>
+      {{ data.uuid }}
+    </li>
+    <li *ngIf="data.reportingUser?.caption">
+      <strong i18n>{{ 'captions.reportingUser' | translate }}: </strong>
+      {{ data.reportingUser.caption }}
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #event>
+  <ul>
+    <li *ngIf="data.eventStatus">
+      <strong i18n>{{ 'captions.Event.eventStatus' | translate }}: </strong>
+      {{ data.eventStatus }}
+    </li>
+    <li *ngIf="data.uuid">
+      <strong i18n>{{ 'captions.Event.uuid' | translate }}: </strong>
+      {{ data.uuid }}
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #sample_case>
+  <ul>
+    <li *ngIf="data.disease">
+      {{ data.disease }}
+      <span *ngIf="data.diseaseVariant">({{ data.diseaseVariant.caption }})</span>
+    </li>
+    <li *ngIf="data.caseClassification">
+      <mat-icon class="material-icons-round">
+        {{ getClassificationIcon(data.caseClassification) }}
+      </mat-icon>
+      {{ data.caseClassification! }}
+    </li>
+    <li *ngIf="data.person">
+      <strong i18n>{{ 'Case person' | translate }}: </strong>
+      {{ data.caseClassification }}
+    </li>
+    <li *ngIf="data.symptoms">
+      <strong i18n>{{ 'Symptoms onset' | translate }}: </strong>
+      {{ data.symptoms.changeDate | date: 'm/d/yyyy' }}
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #sample_event_participant>
+  <ul>
+    <li *ngIf="data.disease">
+      {{ data.disease }}
+      <span *ngIf="data.diseaseVariant">({{ data.diseaseVariant.caption }})</span>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #sample_contact>
+  <ul>
+    <li *ngIf="data.disease">
+      {{ data.disease }}
+      <span *ngIf="data.diseaseVariant">({{ data.diseaseVariant.caption }})</span>
+    </li>
+  </ul>
+</ng-template>

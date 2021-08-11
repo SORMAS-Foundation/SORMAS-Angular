@@ -25,6 +25,7 @@
         <mat-form-field appearance="fill" floatLabel="always">
           <mat-icon matPrefix class="material-icons-round icon-search">search</mat-icon>
           <input
+            #searchBox
             matInput
             formControlName="searchTerm"
             [placeholder]="config.placeholder || '' | translate"
@@ -45,6 +46,9 @@
         >
           {{ opt.value }}
         </mat-option>
+        <p *ngIf="searchBox.value && searchResults === 0" class="search-no-results">
+          No matches for "{{ searchBox.value }}"
+        </p>
       </div>
     </mat-select>
     <mat-icon matSuffix class="material-icons-round icon-arrow">{{
@@ -52,6 +56,17 @@
     }}</mat-icon>
     <mat-hint *ngIf="config.hint">{{ config.hint | translate }}</mat-hint>
   </mat-form-field>
+  <mat-chip-list *ngIf="config.chips && selection.length">
+    <mat-chip
+      *ngFor="let item of selection"
+      [removable]="true"
+      [disabled]="item.disabled"
+      (removed)="remove(item)"
+    >
+      {{ item.value }}
+      <mat-icon matChipRemove class="material-icons-round icon-clear">highlight_off</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
   <div class="errorMessage" color="warn" *ngIf="!isValid">
     {{ config.validationMessage || '' | translate }}
   </div>
