@@ -15,9 +15,7 @@ export class EventParticipantsComponent implements OnInit {
   configKey = CONFIG_CASES;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
 
-  constructor(
-    public eventParticipantService: EventParticipantService
-  ) {}
+  constructor(public eventParticipantService: EventParticipantService) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
