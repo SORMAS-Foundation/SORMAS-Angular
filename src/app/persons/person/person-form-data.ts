@@ -305,7 +305,7 @@ export const FORM_DATA_PERSON = [
     ],
   },
   {
-    id: 'address',
+    id: 'person.address',
     title: 'captions.Person.addresses',
     fields: [
       {

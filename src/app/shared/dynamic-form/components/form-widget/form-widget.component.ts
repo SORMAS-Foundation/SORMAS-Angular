@@ -20,6 +20,7 @@ import { PersonContactsListComponent } from '../../../widgets/person-contacts-li
 import { NewPersonContactComponent } from '../../../widgets/new-person-contact/new-person-contact.component';
 import { GpsCoordsComponent } from '../../../widgets/gps-coords/gps-coords.component';
 import { AddressButtonComponent } from '../../../widgets/address-button/address-button.component';
+import { LastUpdateComponent } from '../../../widgets/last-update/last-update.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -33,6 +34,7 @@ const COMPONENTS_MAP: any = {
   'app-new-person-contact': NewPersonContactComponent,
   'app-gps-coords': GpsCoordsComponent,
   'app-address-button': AddressButtonComponent,
+  'app-last-update': LastUpdateComponent,
 };
 
 @Component({
