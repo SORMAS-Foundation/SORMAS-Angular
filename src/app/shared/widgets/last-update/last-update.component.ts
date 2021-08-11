@@ -10,21 +10,21 @@ import { SendResourceService } from '../../../_services/send-resource.service';
   styleUrls: ['./last-update.component.scss'],
 })
 export class LastUpdateComponent implements OnInit, OnDestroy {
-  subscription: Subscription = new Subscription();
+  subscriptions: Subscription[] = [];
   participant: EventParticipantDto;
   constructor(private sendResourceService: SendResourceService) {}
 
   ngOnInit(): void {
-    this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
-      if (response.fromComponent === SentResourceTypes.EVENT_PARTICIPANT_DATA) {
-        this.participant = response?.resource;
-      }
-    });
+    this.subscriptions.push(
+      this.sendResourceService.getResource().subscribe((response: any) => {
+        if (response.fromComponent === SentResourceTypes.EVENT_PARTICIPANT_DATA) {
+          this.participant = response?.resource;
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
