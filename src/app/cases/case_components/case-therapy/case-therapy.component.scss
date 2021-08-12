@@ -9,8 +9,7 @@
   text-align: right;
 }
 
-.treatments-list,
-.prescriptions-list {
+.section-content {
   flex: 1 1 auto;
   padding: 16px 24px;
   @include mat-elevation(1);
@@ -27,11 +26,25 @@
   &:focus {
     background-color: $white;
 
-    .treatments-list,
-    .prescriptions-list {
+    .section-content {
       @include mat-elevation(6);
     }
   }
+}
+
+.operations {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin: 8px 0 24px;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+  margin-left: auto;
+  gap: 16px;
 }
 
 @media (min-width: map-get($grid-breakpoints, xl)) {

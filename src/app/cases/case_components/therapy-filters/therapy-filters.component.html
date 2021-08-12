@@ -1,0 +1,50 @@
+<form [formGroup]="formFilters" class="filters">
+  <mat-form-field appearance="outline" class="collapsable-field">
+    <mat-select
+      disableOptionCentering
+      (selectionChange)="updateFilters()"
+      formControlName="type"
+      placeholder="{{ 'captions.Prescription.prescriptionType' | translate }}"
+    >
+      <mat-option value="">
+        {{ 'captions.all' | translate }}
+      </mat-option>
+      <mat-option value="DRUG_INTAKE">
+        {{ 'enum.TreatmentType.DRUG_INTAKE' | translate }}
+      </mat-option>
+      <mat-option value="ORAL_REHYDRATION_SALTS">
+        {{ 'enum.TreatmentType.ORAL_REHYDRATION_SALTS' | translate }}
+      </mat-option>
+      <mat-option value="BLOOD_TRANSFUSION">
+        {{ 'enum.TreatmentType.BLOOD_TRANSFUSION' | translate }}
+      </mat-option>
+      <mat-option value="RENAL_REPLACEMENT_THERAPY">
+        {{ 'enum.TreatmentType.RENAL_REPLACEMENT_THERAPY' | translate }}
+      </mat-option>
+      <mat-option value="IV_FLUID_THERAPY">
+        {{ 'enum.TreatmentType.IV_FLUID_THERAPY' | translate }}
+      </mat-option>
+      <mat-option value="OXYGEN_THERAPY">
+        {{ 'enum.TreatmentType.OXYGEN_THERAPY' | translate }}
+      </mat-option>
+      <mat-option value="INVASIVE_MECHANICAL_VENTILATION">
+        {{ 'enum.TreatmentType.INVASIVE_MECHANICAL_VENTILATION' | translate }}
+      </mat-option>
+      <mat-option value="VASOPRESSORS_INOTROPES">
+        {{ 'enum.TreatmentType.VASOPRESSORS_INOTROPES' | translate }}
+      </mat-option>
+      <mat-option value="OTHER"> {{ 'enum.TreatmentType.OTHER' | translate }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field id="details" appearance="outline" floatLabel="always" class="search-field">
+    <input
+      value=""
+      type="text"
+      matInput
+      appDebounce
+      placeholder="{{ 'strings.promptPrescriptionTextFilter' | translate }}"
+      formControlName="details"
+      (debounce)="updateFilters()"
+    />
+  </mat-form-field>
+</form>
