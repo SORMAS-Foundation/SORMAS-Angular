@@ -24,7 +24,7 @@ export class TherapyFiltersComponent implements OnInit {
 
   updateFilters(): void {
     const filters = Object.entries(this.formFilters.value)
-      .filter(([key, val]) => !!val)
+      .filter((item) => !!item[1])
       .map(([key, val]) => ({ field: key, value: val }));
     this.selection.emit(filters);
   }
