@@ -10,8 +10,12 @@
         (selection)="filterPrescriptionList($event)"
       ></app-therapy-filters>
       <div class="actions">
-        <button *ngIf="prescriptions?.length" mat-stroked-button color="primary">Delete</button>
-        <button mat-flat-button color="primary">New prescription</button>
+        <button *ngIf="prescriptions?.length" mat-stroked-button color="primary">
+          {{ 'captions.actionDelete' | translate }}
+        </button>
+        <button mat-flat-button color="primary">
+          {{ 'captions.prescriptionNewPrescription' | translate }}
+        </button>
       </div>
     </div>
 
@@ -43,8 +47,12 @@
         (selection)="filterTreatmentList($event)"
       ></app-therapy-filters>
       <div class="actions">
-        <button *ngIf="treatments?.length" mat-stroked-button color="primary">Delete</button>
-        <button mat-flat-button color="primary">New prescription</button>
+        <button *ngIf="treatments?.length" mat-stroked-button color="primary">
+          {{ 'captions.actionDelete' | translate }}
+        </button>
+        <button mat-flat-button color="primary">
+          {{ 'captions.treatmentNewTreatment' | translate }}
+        </button>
       </div>
     </div>
 
