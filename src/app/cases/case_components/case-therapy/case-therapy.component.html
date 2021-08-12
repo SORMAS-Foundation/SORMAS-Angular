@@ -2,37 +2,62 @@
   <h2 class="section-title">
     {{ 'strings.entityPrescriptions' | translate }}
   </h2>
-  <app-card-list
-    class="prescriptions-list"
-    *ngIf="prescriptions?.length"
-    [data]="prescriptions"
-    [cardWidth]="250"
-    [initialPageSize]="8"
-    [cardEdit]="true"
-    [cardSelect]="true"
-    [cardEditPosition]="'BOTTOMLEFT'"
-    [cardSelectPosition]="'TOPLEFT'"
-    [cardType]="'therapy_prescriptions'"
-    [cardAppearance]="'outlined'"
-    [cardStatus]="'unclassified'"
-    [cardTitleKey]="''"
-  ></app-card-list>
+
+  <div class="section-content">
+    <div class="operations">
+      <app-therapy-filters
+        *ngIf="prescriptions?.length"
+        (selection)="filterPrescriptionList($event)"
+      ></app-therapy-filters>
+      <div class="actions">
+        <button *ngIf="prescriptions?.length" mat-stroked-button color="primary">Delete</button>
+        <button mat-flat-button color="primary">New prescription</button>
+      </div>
+    </div>
+
+    <app-card-list
+      *ngIf="prescriptions?.length"
+      [data]="filteredPrescriptions"
+      [cardWidth]="250"
+      [initialPageSize]="8"
+      [cardEdit]="true"
+      [cardSelect]="true"
+      [cardEditPosition]="'BOTTOMLEFT'"
+      [cardSelectPosition]="'TOPLEFT'"
+      [cardType]="'therapy_prescriptions'"
+      [cardAppearance]="'outlined'"
+      [cardStatus]="'unclassified'"
+    ></app-card-list>
+  </div>
 </section>
+
 <section class="left-section">
   <h2 class="section-title">
     {{ 'strings.entityTreatments' | translate }}
   </h2>
-  <app-card-list
-    class="treatments-list"
-    *ngIf="treatments?.length"
-    [data]="treatments"
-    [cardWidth]="250"
-    [initialPageSize]="8"
-    [cardEdit]="true"
-    [cardSelect]="true"
-    [cardEditPosition]="'BOTTOMLEFT'"
-    [cardSelectPosition]="'TOPLEFT'"
-    [cardType]="'therapy_treatments'"
-    [cardTitleKey]="''"
-  ></app-card-list>
+
+  <div class="section-content">
+    <div class="operations">
+      <app-therapy-filters
+        *ngIf="treatments?.length"
+        (selection)="filterTreatmentList($event)"
+      ></app-therapy-filters>
+      <div class="actions">
+        <button *ngIf="treatments?.length" mat-stroked-button color="primary">Delete</button>
+        <button mat-flat-button color="primary">New prescription</button>
+      </div>
+    </div>
+
+    <app-card-list
+      *ngIf="treatments?.length"
+      [data]="filteredTreatments"
+      [cardWidth]="250"
+      [initialPageSize]="8"
+      [cardEdit]="true"
+      [cardSelect]="true"
+      [cardEditPosition]="'BOTTOMLEFT'"
+      [cardSelectPosition]="'TOPLEFT'"
+      [cardType]="'therapy_treatments'"
+    ></app-card-list>
+  </div>
 </section>
