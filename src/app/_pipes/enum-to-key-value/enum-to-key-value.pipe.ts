@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'enum-to-key-value',
+  name: 'enumToKeyValue',
 })
 export class EnumToKeyValuePipe implements PipeTransform {
   transform(definition: any): Array<any> {
