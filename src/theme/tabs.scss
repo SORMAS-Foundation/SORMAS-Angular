@@ -6,41 +6,75 @@
   $foreground: map-get($theme, foreground);
 
   :root {
+    .mat-tab-link {
+      min-width: auto;
+      padding: 8px 0;
+      margin-right: 16px;
+      color: map-get($sormas-accent, 800);
+
+      &:hover,
+      &:focus,
+      &.mat-tab-label-active {
+        opacity: 1;
+        text-decoration: none;
+      }
+    }
+
+    .mat-ink-bar {
+      bottom: 0;
+    }
+
+    .mat-tab-header-pagination {
+      box-shadow: none;
+
+      &.mat-tab-header-pagination-disabled {
+        display: none;
+      }
+    }
+
+    .mat-tab-header-pagination-chevron {
+      border-color: map-get($sormas-primary, 700);
+    }
+
     .mat-tab-nav-bar {
       border: none;
       margin-bottom: -2px;
+    }
 
-      .mat-tab-link-container {
-        .mat-tab-links {
-          .mat-tab-link {
-            min-width: auto;
-            padding: 8px 0;
-            margin-right: 16px;
-            color: map-get($sormas-accent, 800);
+    .main-menu {
+      margin-bottom: -4px;
 
-            &:hover,
-            &:focus,
-            &.mat-tab-label-active {
-              opacity: 1;
-              text-decoration: none;
-            }
-          }
-        }
-        .mat-ink-bar {
-          bottom: 0;
-        }
+      .mat-ink-bar {
+        height: 4px;
       }
 
-      .mat-tab-header-pagination {
-        box-shadow: none;
-        .mat-tab-header-pagination-chevron {
-          border-color: map-get($sormas-primary, 700);
+      .mat-tab-list {
+        display: flex;
+      }
+
+      .mat-tab-link {
+        height: auto;
+        color: $white;
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    :root {
+      .main-menu {
+        .mat-tab-link {
+          margin: 0 12px;
         }
-        &.mat-tab-header-pagination-disabled {
-          display: none;
-          .mat-tab-header-pagination-chevron {
-            display: none;
-          }
+      }
+    }
+  }
+
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    :root {
+      .main-menu {
+        .mat-tab-link {
+          margin: 0 16px;
         }
       }
     }
@@ -48,12 +82,35 @@
 
   @media (min-width: map-get($grid-breakpoints, xl)) {
     :root {
-      .mat-tab-nav-bar {
-        .mat-tab-link-container {
-          .mat-tab-links {
-            .mat-tab-link {
-              margin-right: 32px;
-            }
+      .mat-tab-link {
+        margin-right: 32px;
+      }
+    }
+  }
+
+  @media (max-width: map-get($grid-breakpoints, md)) {
+    :root {
+      .main-menu {
+        padding: 16px 0;
+        clear: both;
+
+        .mat-ink-bar {
+          display: none;
+        }
+
+        .mat-tab-links {
+          width: 100%;
+          flex-direction: column;
+        }
+
+        .mat-tab-link {
+          display: block;
+          padding: 12px 0;
+          margin: 0;
+
+          &:hover,
+          &:focus {
+            color: map-get($sormas-primary, 700);
           }
         }
       }
