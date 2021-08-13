@@ -1,19 +1,19 @@
-<nav class="menu" [@animateMenu]="!menuOpen ? 'close' : 'open'">
+<div class="menu" [@animateMenu]="!menuOpen ? 'close' : 'open'">
   <div class="menu-overlay" (click)="toggleMenu(false)" (keyup.enter)="toggleMenu(false)"></div>
   <img class="logo" [src]="logo" i18n-alt alt="logo" />
   <button mat-icon-button (click)="toggleMenu()" (keyup.enter)="toggleMenu()">
     <mat-icon class="material-icons-round">menu</mat-icon>
   </button>
-  <div class="menu-list">
+  <nav mat-tab-nav-bar class="main-menu">
     <a
-      mat-button
+      mat-tab-link
       *ngFor="let route of routeConfig"
       [routerLink]="[route.link]"
-      [ngClass]="{'route-active': isSelectedLink(route.selectedLink)}"
+      [active]="isSelectedLink(route.selectedLink)"
       (click)="toggleMenu()"
       (keyup.enter)="toggleMenu()"
     >
       {{ route.label | translate }}
     </a>
-  </div>
-</nav>
+  </nav>
+</div>
