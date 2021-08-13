@@ -118,7 +118,7 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'person.year',
+        key: 'person.birthdateYYYY',
         label: 'captions.Person.birthdate',
         placeholder: 'strings.year',
         options: [],
@@ -127,7 +127,7 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'person.month',
+        key: 'person.birthdateMM',
         label: ' ',
         placeholder: 'strings.month',
         options: [],
@@ -135,7 +135,7 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'person.day',
+        key: 'person.birthdateDD',
         label: ' ',
         placeholder: 'strings.day',
         options: [],

@@ -10,7 +10,6 @@ import { InfoBarType, InfoBarTypeOptions } from '../../_models/common';
 export class InfoBarComponent {
   @Input() data: any;
   @Input() type: InfoBarType;
-
   caseOutcomeIcons = CaseOutcomeIcons;
   caseClassificationIcons = CaseClassificationIcons;
   infoBarOptions = InfoBarTypeOptions;

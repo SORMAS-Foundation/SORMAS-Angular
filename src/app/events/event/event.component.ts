@@ -20,6 +20,11 @@ const eventLinks = (eventId: string): EntityLink[] => {
       title: 'captions.eventEventActions',
       showFormActions: false,
     },
+    {
+      link: `/events/event/${eventId}/participants-profile`,
+      title: 'strings.entityEventParticipants',
+      showFormActions: true,
+    },
   ];
 };
 

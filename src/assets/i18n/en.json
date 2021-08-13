@@ -5542,5 +5542,6 @@
   "headingBirthdate": "Date of birth",
   "headingDateFilter": "Date filter",
   "headingMoreFilters": "More filters",
-  "involvement": "Involvement"
+  "involvement": "Involvement",
+  "lastUpdate": "Last update"
 }

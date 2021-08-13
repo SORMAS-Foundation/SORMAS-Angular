@@ -60,7 +60,7 @@ export class HelperService {
     const parts = url.split('/');
     let currentLink: EntityLink = {} as EntityLink;
     links(parts[3] || '').forEach((el: any) => {
-      if (url === el.link) {
+      if (url.includes(el.link)) {
         currentLink = el;
       }
     });

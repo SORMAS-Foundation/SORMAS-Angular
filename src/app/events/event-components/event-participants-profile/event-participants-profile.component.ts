@@ -5,6 +5,7 @@ import { SentResourceTypes } from '../../../_constants/common';
 import { EventParticipantDto } from '../../../_models/eventParticipantDto';
 import { EventParticipantService } from '../../../_services/api/event-participant.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
+import { HelperService } from '../../../_services/helper.service';
 import { NotificationService } from '../../../_services/notification.service';
 import { SendResourceService } from '../../../_services/send-resource.service';
 import { FORM_DATA_EVENT_PARTICIPANT } from './event-participant-form-data';
@@ -25,10 +26,14 @@ export class EventParticipantsProfileComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private formElementControlService: FormElementControlService,
     private notificationService: NotificationService,
-    private sendResourceService: SendResourceService
+    private sendResourceService: SendResourceService,
+    private helperService: HelperService
   ) {}
 
   ngOnInit(): void {
+    this.updateOptions('person', 'birthdateYYYY', this.helperService.getYears());
+    this.updateOptions('person', 'birthdateMM', this.helperService.getMonths());
+    this.updateOptions('person', 'birthdateDD', this.helperService.getDaysForMonth());
     const routeParams = this.activeRoute.snapshot.params;
     this.participantId = routeParams.participantId;
     this.participantService.getById(this.participantId).subscribe({
@@ -50,5 +55,27 @@ export class EventParticipantsProfileComponent implements OnInit {
       },
       complete: () => {},
     });
+  }
+
+  onFormChanged(event: any): void {
+    const yearOfPerson = 'person.birthdateYYYY';
+    this.participant.person = {
+      ...this.participant.person,
+      birthdateYYYY: event[yearOfPerson],
+    };
+    this.sendResourceService.setResource(
+      this.participant,
+      SentResourceTypes.EVENT_PARTICIPANT_DATA
+    );
+  }
+
+  updateOptions(id: string, field: string, options: any): void {
+    const section = this.formData.find((item) => {
+      return item.id === id;
+    });
+    const dayField = (section?.fields as any[]).find((item) => {
+      return item.key.includes(field);
+    });
+    dayField.options = options;
   }
 }

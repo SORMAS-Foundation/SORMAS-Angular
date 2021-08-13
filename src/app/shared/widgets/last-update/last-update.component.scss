@@ -1,8 +1,16 @@
 .last-update {
   position: absolute;
   right: 16px;
+  text-align: right;
   .value {
     font-weight: 500;
-    text-align: right;
+  }
+}
+.age {
+  position: absolute;
+  right: 105px;
+  text-align: right;
+  .value {
+    font-weight: 500;
   }
 }

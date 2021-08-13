@@ -4,5 +4,6 @@
     *ngIf="participant"
     [formElements]="myFormElements"
     [resourceService]="participantService"
+    (changed)="onFormChanged($event)"
   ></app-dynamic-form>
 </div>

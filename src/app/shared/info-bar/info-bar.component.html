@@ -56,6 +56,19 @@
   </ul>
 </ng-template>
 
+<ng-template #event_participant>
+  <ul>
+    <li *ngIf="data.eventStatus">
+      <strong i18n>{{ 'captions.Event.eventStatus' | translate }}: </strong>
+      {{ data.eventStatus }}
+    </li>
+    <li *ngIf="data.uuid">
+      <strong i18n>{{ 'captions.Event.uuid' | translate }}: </strong>
+      {{ data.uuid }}
+    </li>
+  </ul>
+</ng-template>
+
 <ng-template #sample_case>
   <ul>
     <li *ngIf="data.disease">

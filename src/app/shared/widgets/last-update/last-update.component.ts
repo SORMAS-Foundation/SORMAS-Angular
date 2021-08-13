@@ -12,6 +12,7 @@ import { SendResourceService } from '../../../_services/send-resource.service';
 export class LastUpdateComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   participant: EventParticipantDto;
+  yearOfPerson?: string;
   constructor(private sendResourceService: SendResourceService) {}
 
   ngOnInit(): void {
@@ -19,6 +20,9 @@ export class LastUpdateComponent implements OnInit, OnDestroy {
       this.sendResourceService.getResource().subscribe((response: any) => {
         if (response.fromComponent === SentResourceTypes.EVENT_PARTICIPANT_DATA) {
           this.participant = response?.resource;
+          this.yearOfPerson = (
+            new Date().getFullYear() - (this.participant?.person?.birthdateYYYY ?? 0)
+          ).toString();
         }
       })
     );

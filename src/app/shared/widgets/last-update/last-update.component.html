@@ -1,4 +1,10 @@
+<div class="age">
+  <div>{{ 'captions.Person.approximateAge' | translate }}</div>
+  <div class="value">{{ yearOfPerson }} {{ 'strings.years' | translate }}</div>
+</div>
 <div class="last-update">
-  <div>Last update:</div>
-  <div class="value">{{ participant?.person?.changeDate | date: 'd/M/yyyy' }}</div>
+  <div>{{ 'Last update' | translate }}</div>
+  <div class="value">
+    {{ participant?.person?.changeDate | date: 'd/M/yyyy' }}
+  </div>
 </div>
