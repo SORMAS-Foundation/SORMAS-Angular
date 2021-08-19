@@ -1,0 +1,30 @@
+<section *ngIf="contact">
+  <header>
+    <a [routerLink]="['/contacts/list']" mat-icon-button>
+      <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+    </a>
+    <h1>{{ contact.uuid }}</h1>
+  </header>
+
+  <div class="tab-nav-header">
+    <nav mat-tab-nav-bar>
+      <a
+        mat-tab-link
+        *ngFor="let link of links"
+        [routerLink]="link.link"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        {{ link.title | translate }}
+      </a>
+    </nav>
+    <div class="tab-nav-header-actions">
+      <app-form-actions [resource]="contact"></app-form-actions>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+</section>
