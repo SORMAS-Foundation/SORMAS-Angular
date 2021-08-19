@@ -1,0 +1,108 @@
+<div class="filters">
+  <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
+  <form class="filters-form" [formGroup]="filtersForm">
+    <mat-form-field id="freeText" appearance="outline" floatLabel="always" class="search-field">
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'strings.promptEventGroupSearchField' | translate }}"
+        formControlName="freeText"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+
+    <app-collapsable-box boxTitle="{{ 'headingBirthdate' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="birthdateYYYY"
+          placeholder="{{ 'captions.Person.birthdateYYYY' | translate }}"
+        >
+          <mat-option value="1900">1900</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="birthdateMM"
+          placeholder="{{ 'captions.Person.birthdateMM' | translate }}"
+        >
+          <mat-option value="1">January</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="birthdateDD"
+          placeholder="{{ 'captions.Person.birthdateDD' | translate }}"
+        >
+          <mat-option value="1">1</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'captions.Sample.pathogenTestResult' | translate }}">
+      <mat-radio-group
+        name="laboratoryResults"
+        formControlName="laboratoryResults"
+        (change)="onFormChange()"
+      >
+        <mat-radio-button value="INDETERMINATE" color="primary">
+          {{ 'enum.PathogenTestResultType.INDETERMINATE' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="PENDING" color="primary">
+          {{ 'enum.PathogenTestResultType.PENDING' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="NEGATIVE" color="primary">
+          {{ 'enum.PathogenTestResultType.NEGATIVE' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="POSITIVE" color="primary">
+          {{ 'enum.PathogenTestResultType.POSITIVE' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="NOT_DONE" color="primary">
+          {{ 'enum.PathogenTestResultType.NOT_DONE' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'captions.VaccinationInfo.vaccinationStatus' | translate }}">
+      <mat-radio-group
+        name="vaccinationStatus"
+        formControlName="vaccinationStatus"
+        (change)="onFormChange()"
+      >
+        <mat-radio-button value="VACCINATED" color="primary">
+          {{ 'enum.Vaccination.VACCINATED' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="UNVACCINATED" color="primary">
+          {{ 'enum.Vaccination.UNVACCINATED' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="UNKNOWN" color="primary">
+          {{ 'enum.Vaccination.UNKNOWN' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'headingMoreFilters' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          multiple
+          formControlName="moreFilters"
+          (selectionChange)="onFormChange()"
+          placeholder="{{ 'captions.contactSourceCase' | translate }}"
+          class="multiselect"
+        >
+          <mat-option value="no-geo-coordinates">
+            {{ 'captions.eventParticipantContactCountOnlyWithSourceCaseInEvent' | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+</form>
+</div>

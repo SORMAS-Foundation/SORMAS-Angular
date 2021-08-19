@@ -1,1 +1,8 @@
-<p>event-participants-profile works!</p>
+<div class="page-content">
+  <app-dynamic-form
+    main
+    *ngIf="participant"
+    [formElements]="myFormElements"
+    [resourceService]="participantService"
+  ></app-dynamic-form>
+</div>

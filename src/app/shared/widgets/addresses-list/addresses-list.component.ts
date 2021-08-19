@@ -17,8 +17,11 @@ export class AddressesListComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
-      if (response.fromComponent === SentResourceTypes.PERSON_DATA) {
-        const homeAddress = response.resource?.address;
+      if (
+        response.fromComponent === SentResourceTypes.PERSON_DATA ||
+        response.fromComponent === SentResourceTypes.EVENT_PARTICIPANT_DATA
+      ) {
+        const homeAddress = response.resource?.person?.address || response.resource?.address;
         this.addresses =
           [
             {
@@ -28,7 +31,7 @@ export class AddressesListComponent implements OnDestroy, OnInit {
               postalCode: homeAddress?.postalCode,
               uuid: homeAddress?.uuid,
             },
-          ].concat(response.resource?.addresses) || [];
+          ].concat(response.resource?.person?.addresses || response.resource?.addresses) || [];
       }
     });
   }

@@ -1,16 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { PipesModule } from '../../_pipes/pipes.module';
 
 import { UserFiltersComponent } from './user-filters.component';
 
-describe('PersonFiltersComponent', () => {
+describe('UserFiltersComponent', () => {
   let component: UserFiltersComponent;
   let fixture: ComponentFixture<UserFiltersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [UserFiltersComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [TranslateModule.forRoot(), PipesModule],
     }).compileComponents();
   });
 

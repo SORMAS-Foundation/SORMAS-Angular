@@ -16,8 +16,12 @@ export class PersonContactsListComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
-      if (response.fromComponent === SentResourceTypes.PERSON_DATA) {
-        this.contacts = response.resource?.personContactDetails;
+      if (
+        response.fromComponent === SentResourceTypes.PERSON_DATA ||
+        response.fromComponent === SentResourceTypes.EVENT_PARTICIPANT_DATA
+      ) {
+        this.contacts =
+          response.resource?.person.personContactDetails || response.resource?.personContactDetails;
       }
     });
   }

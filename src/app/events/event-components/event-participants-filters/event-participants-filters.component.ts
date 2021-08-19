@@ -1,20 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Filter } from '../../_models/common';
-import { FilterService } from '../../_services/filter.service';
-import { UserRole } from '../../_constants/enums';
+import { Filter } from '../../../_models/common';
+import { FilterService } from '../../../_services/filter.service';
 
 @Component({
-  selector: 'app-user-filters',
-  templateUrl: './user-filters.component.html',
-  styleUrls: ['./user-filters.component.scss'],
+  selector: 'app-event-participants-filters',
+  templateUrl: './event-participants-filters.component.html',
+  styleUrls: ['./event-participants-filters.component.scss'],
 })
-export class UserFiltersComponent implements OnInit, OnDestroy {
+export class EventParticipantsFiltersComponent implements OnInit, OnDestroy {
   filtersForm = new FormGroup({});
   allFilters: Filter[] = [];
   subscriptions: Subscription[] = [];
-  userRoles = UserRole;
 
   constructor(private filterService: FilterService) {}
 
@@ -32,10 +30,12 @@ export class UserFiltersComponent implements OnInit, OnDestroy {
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
       freeText: new FormControl(),
-      active: new FormControl(),
-      userRole: new FormControl(),
-      region: new FormControl(),
-      district: new FormControl(),
+      birthdateYYYY: new FormControl(),
+      birthdateMM: new FormControl(),
+      birthdateDD: new FormControl(),
+      laboratoryResults: new FormControl(),
+      vaccinationStatus: new FormControl(),
+      moreFilters: new FormControl(),
     });
   }
 

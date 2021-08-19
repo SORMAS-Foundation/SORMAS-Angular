@@ -1,4 +1,69 @@
 <div class="filters">
   <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
-  <p>user filters</p>
+  <form class="filters-form" [formGroup]="filtersForm">
+    <mat-form-field id="freeText" appearance="outline" floatLabel="always" class="search-field">
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'strings.promptUserSearch' | translate }}"
+        formControlName="freeText"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+
+    <app-collapsable-box boxTitle="{{ 'captions.User.active' | translate }}">
+      <mat-radio-group name="active" formControlName="active" (change)="onFormChange()">
+        <mat-radio-button value="true" color="primary">
+          {{ 'strings.active' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="false" color="primary">
+          {{ 'strings.inactive' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'headingAdminAspect' | translate }}">
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="userRole"
+          placeholder="{{ 'captions.User.userRoles' | translate }}"
+        >
+          <mat-option *ngFor="let role of userRoles | enumToKeyValue" [value]="role.key">
+            {{ 'enum.UserRole.' + role.key | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="region"
+          placeholder="{{ 'strings.promptRegion' | translate }}"
+        >
+          <mat-option value="region1"> {{ 'Region 1' | translate }} </mat-option>
+          <mat-option value="region2"> {{ 'Region 2' | translate }} </mat-option>
+          <mat-option value="region3"> {{ 'Region 3' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="district"
+          placeholder="{{ 'strings.promptDistrict' | translate }}"
+        >
+          <mat-option value="district1"> {{ 'District 1' | translate }} </mat-option>
+          <mat-option value="district2"> {{ 'District 2' | translate }} </mat-option>
+          <mat-option value="district3"> {{ 'District 3' | translate }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+  </form>
 </div>

@@ -1,0 +1,6 @@
+@use '/src/variables.scss' as *;
+
+.filters {
+  display: flex;
+  gap: 16px;
+}
