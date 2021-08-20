@@ -24,6 +24,10 @@ export const routesConfig: RouteItem[] = [
   { link: 'users/list', label: 'captions.mainMenuUsers', selectedLink: 'users' },
 ];
 
+export const userRoutesConfig: RouteItem[] = [
+  { link: 'configuration/outbreaks', label: 'Configuration', selectedLink: 'configuration' },
+];
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -49,11 +53,10 @@ export const routesConfig: RouteItem[] = [
 })
 export class MenuComponent implements OnDestroy {
   routeConfig: RouteItem[] = routesConfig;
+  userRouteConfig: RouteItem[] = userRoutesConfig;
   logo = logoPath;
 
-  navigation = routesConfig;
   menuOpen = false;
-
   selectedRoute = '';
 
   private subscription: Subscription[] = [];

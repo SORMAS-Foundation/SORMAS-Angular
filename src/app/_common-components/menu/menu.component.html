@@ -1,7 +1,7 @@
 <div class="menu" [@animateMenu]="!menuOpen ? 'close' : 'open'">
   <div class="menu-overlay" (click)="toggleMenu(false)" (keyup.enter)="toggleMenu(false)"></div>
   <img class="logo" [src]="logo" i18n-alt alt="logo" />
-  <button mat-icon-button (click)="toggleMenu()" (keyup.enter)="toggleMenu()">
+  <button mat-icon-button (click)="toggleMenu()" (keyup.enter)="toggleMenu()" class="button-toggle">
     <mat-icon class="material-icons-round">menu</mat-icon>
   </button>
   <nav mat-tab-nav-bar class="main-menu">
@@ -14,6 +14,20 @@
       (keyup.enter)="toggleMenu()"
     >
       {{ route.label | translate }}
+    </a>
+  </nav>
+  <nav class="user-menu">
+    <a
+      mat-icon-button
+      routerLink="/configuration"
+      (click)="toggleMenu()"
+      (keyup.enter)="toggleMenu()"
+      [ngClass]="{
+        'button-settings': true,
+        active: isSelectedLink('configuration')
+      }"
+    >
+      <mat-icon class="material-icons-round">settings</mat-icon>
     </a>
   </nav>
 </div>

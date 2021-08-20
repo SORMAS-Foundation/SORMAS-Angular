@@ -1,0 +1,32 @@
+@use '/src/variables.scss' as *;
+
+header {
+  position: sticky;
+  z-index: 2;
+  top: 68px;
+  display: flex;
+  padding: 48px 24px 0;
+  background-color: $white;
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 40px;
+}
+
+.tab-nav-header {
+  position: sticky;
+  z-index: 3;
+  top: 164px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-bottom: solid 2px map-get($sormas-accent, 200);
+  background-color: $white;
+}
+
+.mat-tab-header {
+  min-width: 0;
+  flex: 1;
+}
