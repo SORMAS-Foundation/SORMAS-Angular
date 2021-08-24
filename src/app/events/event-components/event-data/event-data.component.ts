@@ -5,6 +5,8 @@ import { BaseService } from '../../../_services/api/base.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { EventService } from '../../../_services/api/event.service';
 import { EventDto } from '../../../_models/eventDto';
+import { SampleService } from '../../../_services/api/sample.service';
+import { ContactService } from '../../../_services/api/contact.service';
 
 @Component({
   selector: 'app-event-data',
@@ -20,7 +22,9 @@ export class EventDataComponent {
 
   constructor(
     private formElementControlService: FormElementControlService,
-    public eventService: EventService
+    public eventService: EventService,
+    public sampleService: SampleService,
+    public contactService: ContactService,
   ) {}
 
   updateComponent(eventItem: EventDto, resourceService: BaseService<any>): void {

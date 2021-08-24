@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContactPersonComponent } from './contact-person.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {MatDialogModule} from '@angular/material/dialog';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('ContactPersonComponent', () => {
   let component: ContactPersonComponent;
@@ -8,7 +11,8 @@ describe('ContactPersonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactPersonComponent ]
+      declarations: [ ContactPersonComponent ],
+      imports: [HttpClientTestingModule, MatDialogModule, TranslateModule.forRoot()],
     })
     .compileComponents();
   });

@@ -25,7 +25,7 @@ export class ContactFollowUpComponent {
     this.preSetFilters = [
       {
         field: 'caze',
-        value: caseItem.uuid,
+        value: 'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI',
       },
     ];
     this.resourceService = resourceService;
