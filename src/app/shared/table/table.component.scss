@@ -21,7 +21,7 @@ table {
   th.mat-header-cell {
     border-bottom-color: map-get($sormas-accent, 200);
     border-left-width: 0;
-    background-color: unset;
+    background-color: $white;
   }
 
   tr.mat-row td.mat-cell {

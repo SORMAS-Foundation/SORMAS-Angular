@@ -1,0 +1,11 @@
+<app-table
+  [resourceService]="countryService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [appearance]="tableAppearanceOptions.MINIMAL"
+  [bulkEditOptions]="actionsBulkEdit"
+  rowStyleData="subcontinent.caption"
+></app-table>

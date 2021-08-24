@@ -82,7 +82,10 @@
       <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns"
-        [ngClass]="selection.isSelected(row) ? 'row-selected' : ''"
+        [ngClass]="[
+          selection.isSelected(row) ? 'row-selected' : '',
+          rowStyleData ? getRowStyle(row.index) : ''
+        ]"
         (click)="$event ? selection.toggle(row) : null"
       ></tr>
     </table>

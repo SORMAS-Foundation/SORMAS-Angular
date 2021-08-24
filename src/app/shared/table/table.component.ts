@@ -67,6 +67,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() viewOptions: NavItem[];
   @Input() bulkEditOptions: NavItem[];
   @Input() allowToggleColumns = false;
+  @Input() rowStyleData: string;
 
   preSetFiltersTmp: Filter[];
   @Input() set preSetFilters(value) {
@@ -292,6 +293,12 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     setTimeout(() => {
       this.formActionsService.setDiscard();
     });
+  }
+
+  getRowStyle(index: number): string {
+    const raw = this.dataSourceArray[index];
+    const data = this.rowStyleData.split('.').reduce((o, i) => o && o[i], raw);
+    return data ? data.replace(/\s+/g, '-').toLowerCase() : '';
   }
 
   ngAfterViewInit(): void {

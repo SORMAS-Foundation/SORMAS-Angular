@@ -17,6 +17,8 @@ import { EntryPointsComponent } from './entry-points/entry-points.component';
 import { PopulationComponent } from './population/population.component';
 import { LineListingComponent } from './line-listing/line-listing.component';
 import { DocumentTemplatesComponent } from './document-templates/document-templates.component';
+import { CountryListComponent } from './countries/country-list/country-list.component';
+import { CountryFiltersComponent } from './countries/country-filters/country-filters.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { DocumentTemplatesComponent } from './document-templates/document-templa
     ContinentsComponent,
     SubcontinentsComponent,
     CountriesComponent,
+    CountryListComponent,
+    CountryFiltersComponent,
     RegionsComponent,
     DistrictsComponent,
     CommunitiesComponent,
