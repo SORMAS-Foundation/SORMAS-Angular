@@ -17,6 +17,13 @@ table {
   height: 48px;
 }
 
+.list-info {
+  padding: 0 24px 16px;
+  color: map-get($sormas-accent, 500);
+  font-size: 12px;
+  text-align: right;
+}
+
 .minimal {
   th.mat-header-cell {
     border-bottom-color: map-get($sormas-accent, 200);

@@ -1,7 +1,7 @@
 <div class="filters">
   <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
-    <mat-form-field id="nameCodeLike" appearance="outline" floatLabel="always" class="search-field">
+    <mat-form-field id="nameEpidLike" appearance="outline" floatLabel="always" class="search-field">
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
       <input
         value=""
@@ -9,37 +9,39 @@
         matInput
         appDebounce
         placeholder="{{ 'strings.promptSearch' | translate }}"
-        formControlName="nameCodeLike"
+        formControlName="nameEpidLike"
         (debounce)="onFormChange()"
       />
     </mat-form-field>
 
-    <app-collapsable-box boxTitle="{{ 'strings.entityCountries' | translate }}">
+    <app-collapsable-box boxTitle="{{ 'strings.entityRegions' | translate }}">
       <mat-radio-group
         name="relevanceStatus"
         formControlName="relevanceStatus"
         (change)="onFormChange()"
       >
         <mat-radio-button value="ACTIVE" color="primary">
-          {{ 'captions.countryActiveCountries' | translate }}
+          {{ 'captions.regionActiveRegions' | translate }}
         </mat-radio-button>
         <mat-radio-button value="ARCHIVED" color="primary">
-          {{ 'captions.countryArchivedCountries' | translate }}
+          {{ 'captions.regionArchivedRegions' | translate }}
         </mat-radio-button>
         <mat-radio-button value="ALL" color="primary">
-          {{ 'captions.countryAllCountries' | translate }}
+          {{ 'captions.regionAllRegions' | translate }}
         </mat-radio-button>
       </mat-radio-group>
     </app-collapsable-box>
 
-    <mat-form-field appearance="outline" class="collapsable-field">
+    <mat-form-field formGroupName="country" appearance="outline" class="collapsable-field">
       <mat-select
         disableOptionCentering
         (selectionChange)="onFormChange()"
-        formControlName="subcontinent"
-        placeholder="{{ 'captions.subcontinent' | translate }}"
+        formControlName="uuid"
+        placeholder="{{ 'captions.country' | translate }}"
       >
-        <mat-option value="default"> {{ 'Default' | translate }} </mat-option>
+        <mat-option *ngFor="let country of countriesOptions" [value]="country.field">
+          {{ country.value }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </form>

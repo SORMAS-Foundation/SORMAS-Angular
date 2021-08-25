@@ -19,6 +19,8 @@ import { LineListingComponent } from './line-listing/line-listing.component';
 import { DocumentTemplatesComponent } from './document-templates/document-templates.component';
 import { CountryListComponent } from './countries/country-list/country-list.component';
 import { CountryFiltersComponent } from './countries/country-filters/country-filters.component';
+import { RegionListComponent } from './regions/region-list/region-list.component';
+import { RegionFiltersComponent } from './regions/region-filters/region-filters.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { CountryFiltersComponent } from './countries/country-filters/country-fil
     CountryListComponent,
     CountryFiltersComponent,
     RegionsComponent,
+    RegionListComponent,
+    RegionFiltersComponent,
     DistrictsComponent,
     CommunitiesComponent,
     FacilitiesComponent,

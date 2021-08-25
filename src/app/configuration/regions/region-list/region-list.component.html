@@ -1,5 +1,5 @@
 <app-table
-  [resourceService]="countryService"
+  [resourceService]="regionService"
   [tableColumns]="defaultColumns"
   [isSortable]="true"
   [isSelectable]="true"
@@ -7,7 +7,6 @@
   [fullHeight]="true"
   [appearance]="tableAppearanceOptions.MINIMAL"
   [bulkEditOptions]="actionsBulkEdit"
-  rowStyleData="subcontinent.caption"
   [showTotal]="true"
-  showTotalContext="{{ 'strings.entityCountries' | translate }}"
+  showTotalContext="{{ 'strings.entityRegions' | translate }}"
 ></app-table>

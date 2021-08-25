@@ -20,6 +20,8 @@
   </app-dropdown-menu>
 </div>
 
+<div *ngIf="showTotal" class="list-info">{{ totalItems }} {{ showTotalContext }}</div>
+
 <div #vsTable *ngIf="tableColumns">
   <cdk-virtual-scroll-viewport
     [tvsItemSize]="rowHeight"
