@@ -99,3 +99,11 @@ export const API_ROUTE_ACTIONS = {
   ADD: 'actions/add',
   DELETE: 'actions/delete',
 };
+
+export const API_ROUTE_COUNTRIES = {
+  ENDPOINT: 'countries',
+  GET_ALL: 'countries/indexList',
+  UPDATE: 'countries/update',
+  ADD: 'countries/add',
+  DELETE: 'countries/delete',
+};

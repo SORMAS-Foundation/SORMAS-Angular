@@ -69,14 +69,18 @@ a:not(.mat-button) {
 .page-content {
   padding: 24px;
 
-  .sidebar {
+  .sidebar,
+  .mat-drawer-container {
     margin: -24px;
   }
 }
 
 /* Table dynamic content */
-
 :root td.mat-cell {
+  &.mat-column-select {
+    width: 48px;
+  }
+
   &.visit-date {
     .visitDateTime {
       color: map-get($sormas-accent, 600);
@@ -184,6 +188,39 @@ a:not(.mat-button) {
 
   &.user-status {
     color: map-get($sormas-primary, 700);
+  }
+
+  &.configuration-country-code {
+    width: 120px;
+  }
+}
+
+:root tr.mat-row {
+  &[class*='africa'] td.mat-cell {
+    border-bottom-width: 2px;
+    border-bottom-color: map-get($sormas-warning, 200);
+  }
+
+  &[class*='asia'] td.mat-cell,
+  &[class*='middle-east'] td.mat-cell,
+  &[class*='oceania'] td.mat-cell {
+    border-bottom-width: 2px;
+    border-bottom-color: map-get($sormas-alert, 100);
+  }
+
+  &[class*='europe'] td.mat-cell {
+    border-bottom-width: 2px;
+    border-bottom-color: map-get($sormas-primary, 200);
+  }
+
+  &[class*='america'] td.mat-cell {
+    border-bottom-width: 2px;
+    border-bottom-color: map-get($sormas-primary, A100);
+  }
+
+  &[class*='australia'] td.mat-cell {
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(map-get($sormas-warning, 700), 0.5);
   }
 }
 
