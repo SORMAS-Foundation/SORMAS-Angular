@@ -1,0 +1,42 @@
+<div class="filters">
+  <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
+  <form class="filters-form" [formGroup]="filtersForm">
+    <mat-form-field id="nameCodeLike" appearance="outline" floatLabel="always" class="search-field">
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'strings.promptSearch' | translate }}"
+        formControlName="nameCodeLike"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+
+    <app-collapsable-box boxTitle="{{ 'strings.entityCountries' | translate }}">
+      <mat-radio-group name="status" formControlName="status" (change)="onFormChange()">
+        <mat-radio-button value="ACTIVE" color="primary">
+          {{ 'captions.countryActiveCountries' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="ARCHIVED" color="primary">
+          {{ 'captions.countryArchivedCountries' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="" color="primary">
+          {{ 'captions.countryAllCountries' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <mat-form-field appearance="outline" class="collapsable-field">
+      <mat-select
+        disableOptionCentering
+        (selectionChange)="onFormChange()"
+        formControlName="subcontinent"
+        placeholder="{{ 'captions.subcontinent' | translate }}"
+      >
+        <mat-option value="default"> {{ 'Default' | translate }} </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

@@ -7,6 +7,7 @@
   top: 0;
   right: 0;
   left: 0;
+  display: flex;
   height: 68px;
   background: linear-gradient(90deg, #1b1f26 0%, #2b323d 100%);
   color: $white;
@@ -22,14 +23,16 @@
     height: 100vh;
     background: transparent;
   }
-
-  .logo {
-    margin: 20px 10px 0 25px;
-    float: left;
-  }
 }
 
-.mat-icon-button {
+.logo {
+  width: 40px;
+  height: 68px;
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+.button-toggle {
   display: none;
 }
 
@@ -37,17 +40,66 @@
   height: 100%;
 }
 
+.user-menu {
+  display: flex;
+  height: 68px;
+  align-items: center;
+  margin-right: 24px;
+  margin-left: auto;
+}
+
+.button-settings {
+  width: 30px;
+  height: 30px;
+  border: 2px solid map-get($sormas-accent, 600);
+  border-radius: 50%;
+  color: map-get($sormas-primary, 50);
+  line-height: 24px;
+
+  .mat-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  &.active {
+    background-color: map-get($sormas-accent, 700);
+    color: map-get($sormas-primary, 200);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: map-get($sormas-accent, 700);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button-settings {
+    transition: 0.2s;
+  }
+}
+
 @media (max-width: map-get($grid-breakpoints, md)) {
   .menu {
     overflow: hidden;
     height: auto;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
-    .mat-icon-button {
-      top: 14px;
-      right: 40px;
-      display: block;
-      margin: 0 auto;
-    }
+  .button-toggle {
+    top: 14px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .main-menu {
+    flex-basis: 100%;
+    order: 4;
+  }
+
+  .user-menu {
+    margin-left: 0;
   }
 }

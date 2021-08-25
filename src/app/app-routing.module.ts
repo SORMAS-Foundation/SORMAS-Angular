@@ -16,7 +16,6 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    // component: AboutComponent,
     loadChildren: () => import('./about/about.module').then((m) => m.AboutModule),
     canActivate: [Guard, LeaveGuard],
   },
@@ -59,6 +58,12 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
+    canActivate: [Guard, LeaveGuard],
+  },
+  {
+    path: 'configuration',
+    loadChildren: () =>
+      import('./configuration/configuration.module').then((m) => m.ConfigurationModule),
     canActivate: [Guard, LeaveGuard],
   },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },

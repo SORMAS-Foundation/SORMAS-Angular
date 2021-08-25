@@ -25,16 +25,16 @@
       <mat-icon class="material-icons-round">
         {{ getOutcomeIcon(data.outcome) }}
       </mat-icon>
-      {{ data.outcome }}
+      {{ 'enum.CaseOutcome.' + data.outcome | translate }}
     </li>
     <li *ngIf="data.caseClassification">
       <mat-icon class="material-icons-round">
         {{ getClassificationIcon(data.caseClassification) }}
       </mat-icon>
-      {{ data.caseClassification! }}
+      {{ 'enum.CaseClassification.' + data.caseClassification | translate }}
     </li>
     <li *ngIf="data.disease">
-      {{ data.disease }}
+      {{ 'enum.Disease.' + data.disease | translate }}
     </li>
     <li *ngIf="data.uuid">
       <strong i18n>{{ 'captions.CaseData.uuid' | translate }}: </strong>
@@ -51,11 +51,19 @@
   <ul>
     <li *ngIf="data.eventStatus">
       <strong i18n>{{ 'captions.Event.eventStatus' | translate }}: </strong>
-      {{ data.eventStatus }}
+      {{ 'enum.EventStatus.' + data.eventStatus | translate }}
+    </li>
+    <li *ngIf="data.startDate">
+      <strong i18n>{{ 'captions.singleDayEventDate' | translate }}: </strong>
+      {{ data.startDate | date: 'd/M/yyyy' }}
     </li>
     <li *ngIf="data.uuid">
       <strong i18n>{{ 'captions.Event.uuid' | translate }}: </strong>
       {{ data.uuid }}
+    </li>
+    <li *ngIf="data.reportingUser">
+      <strong i18n>{{ 'captions.Event.reportingUser' | translate }}: </strong>
+      {{ data.reportingUser.caption }}
     </li>
   </ul>
 </ng-template>
@@ -63,32 +71,59 @@
 <ng-template #sample_case>
   <ul>
     <li *ngIf="data.disease">
-      {{ data.disease }}
+      {{ 'enum.Disease.' + data.disease | translate }}
       <span *ngIf="data.diseaseVariant">({{ data.diseaseVariant.caption }})</span>
     </li>
     <li *ngIf="data.caseClassification">
       <mat-icon class="material-icons-round">
         {{ getClassificationIcon(data.caseClassification) }}
       </mat-icon>
-      {{ data.caseClassification! }}
+      {{ 'enum.CaseClassification.' + data.caseClassification | translate }}
     </li>
-    <li *ngIf="data.person">
+    <li *ngIf="data.person.firstName && data.person.lastName">
       <strong i18n>{{ 'Case person' | translate }}: </strong>
-      {{ data.caseClassification }}
+      {{ data.person.firstName }} {{ data.person.lastName }}
     </li>
-    <li *ngIf="data.symptoms">
-      <strong i18n>{{ 'Symptoms onset' | translate }}: </strong>
-      {{ data.symptoms.changeDate | date: 'm/d/yyyy' }}
+    <li *ngIf="data.person.approximateAge">
+      {{ data.person.approximateAge }}
+      {{ 'enum.ApproximateAgeType.' + data.person.approximateAgeType | translate }}
+    </li>
+    <li *ngIf="data.person.sex">{{ 'enum.Sex.' + data.person.sex | translate }}</li>
+    <li *ngIf="data.symptoms.onsetDate">
+      <strong>{{ 'captions.Contact.caze.symptomsOnset' | translate }}:</strong>
+      {{ data.symptoms.onsetDate | date: 'd/M/yyyy' }}
+    </li>
+    <li *ngIf="data.clinicianName">
+      <strong>{{ 'CaseData.clinicianName' | translate }}:</strong>
+      {{ data.clinicianName }}
     </li>
   </ul>
 </ng-template>
 
 <ng-template #sample_event_participant>
   <ul>
-    <li *ngIf="data.disease">
-      {{ data.disease }}
-      <span *ngIf="data.diseaseVariant">({{ data.diseaseVariant.caption }})</span>
+    <li *ngIf="data.event">
+      <strong>{{ 'captions.Event.uuid' | translate }}:</strong>
+      {{ data.event.uuid | slice: 0:6 }}
     </li>
+    <li *ngIf="data.event.disease">{{ 'enum.Disease.' + data.event.disease | translate }}</li>
+    <li *ngIf="data.person">
+      <strong>{{ 'captions.EventParticipant.personUuid' | translate }}:</strong>
+      {{ data.person.uuid | slice: 0:6 }}
+    </li>
+    <li *ngIf="data.person.firstName && data.person.lastName">
+      <strong>{{ 'captions.EventParticipant.person' | translate }}:</strong>
+      {{ data.person.firstName }} {{ data.person.lastName }}
+    </li>
+    <li *ngIf="data.event.startDate">
+      <strong>{{ 'Event.date' | translate }}:</strong>
+      {{ data.event.startDate | date: 'd/M/yyyy' }}
+    </li>
+    <li *ngIf="data.person.approximateAge">
+      {{ data.person.approximateAge }}
+      {{ 'enum.ApproximateAgeType.' + data.person.approximateAgeType | translate }}
+    </li>
+    <li *ngIf="data.person.sex">{{ 'enum.Sex.' + data.person.sex | translate }}</li>
   </ul>
 </ng-template>
 
