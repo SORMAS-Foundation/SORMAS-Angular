@@ -7,21 +7,10 @@
   ></app-dynamic-form>
   <div *ngIf="event" aside>
     <app-edge-panel
-      type="SAMPLE"
-      [resourceService]="sampleService"
+      type="TASK"
+      [resourceService]="taskService"
       [scopeId]="'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI'"
       [cardCollapse]="true"
-    ></app-edge-panel>
-    <app-edge-panel
-      type="CONTACT"
-      [resourceService]="contactService"
-      [scopeId]="'QGH44Q-3WXSCR-WRCDJT-EVUVCJXQ'"
-      filterCriteriaEntity="person"
-      [cardCollapse]="false"
-      status="unclassified"
-      [showGroupLink]="true"
-      actionLink="/contacts/list"
-      [actionLinkParams]="{ person: 'QGH44Q-3WXSCR-WRCDJT-EVUVCJXQ' }"
     ></app-edge-panel>
   </div>
 </app-sidebar>

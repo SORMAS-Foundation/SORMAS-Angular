@@ -127,7 +127,7 @@ app.use('', (req, res, next) => {
 
 
 
-app.use('/sormas-rest/contacts/QMGFDQ-XDRGMX-EZXQ4A-OQ5C2K4Q', (req, res) => {
+app.use('/sormas-rest/contacts/QN3NKC-XLHWN6-LEH2NF-ZXRQKHOM', (req, res) => {
   let total = 1000;
 
   const arrayTmp = [];
@@ -182,11 +182,46 @@ app.use('/sormas-rest/contacts/QMGFDQ-XDRGMX-EZXQ4A-OQ5C2K4Q', (req, res) => {
   }
 
   res.status(200).send({
-    elements: arrayTmp,
-    pageNumber: 0,
-    size: 8,
-    totalElementCount: total,
-    hasNext: true,
+    "pseudonymized":false,
+    "uuid":"RK6G25-W6PUTA-67PZN5-XW4KSMT4",
+    "firstName":"John",
+    "lastName":"Smith",
+    "caze":{
+      "uuid":"WR3VXP-4MODYT-4NHOMP-JZWO2FLI",
+      "caption":"AB_4975 LN_4975 (WR3VXP)",
+      "firstName":"AB_4975",
+      "lastName":"LN_4975"
+    },
+    "person":{
+      "firstName":"John",
+      "lastName":"Smith"
+    },
+    "disease":"CORONAVIRUS",
+    "diseaseDetails":null,
+    "lastContactDate":null,
+    "contactProximity":null,
+    "contactClassification":"UNCONFIRMED",
+    "contactStatus":"ACTIVE",
+    "completeness":null,
+    "followUpStatus":"FOLLOW_UP",
+    "followUpUntil":1620943200000,
+    "symptomJournalStatus":"UNREGISTERED",
+    "vaccination":null,
+    "districtUuid":null,
+    "contactOfficerUuid":null,
+    "reportDateTime":1619787324690,
+    "contactCategory":null,
+    "caseClassification":"SUSPECT",
+    "visitCount":0,
+    "externalID":null,
+    "externalToken":null,
+    "internalToken":null,
+    "regionName":null,
+    "districtName":null,
+    "caseRegionName":null,
+    "caseDistrictName":null,
+    "inJurisdiction":true,
+    "caseInJurisdiction":true
   });
 });
 

@@ -3,8 +3,10 @@
     <a [routerLink]="['/contacts/list']" mat-icon-button>
       <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
     </a>
-    <h1>{{ contact.uuid }}</h1>
+    <h1>{{ contact.person.firstName }} {{ contact.person.lastName }}</h1>
   </header>
+
+  <app-info-bar [data]="contact" [type]="'CONTACT'"></app-info-bar>
 
   <div class="tab-nav-header">
     <nav mat-tab-nav-bar>

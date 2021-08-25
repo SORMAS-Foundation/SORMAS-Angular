@@ -15,6 +15,7 @@ import {
   TypeOfPlace,
   MeansOfTransport,
   RiskLevel,
+  FORM_DATA_WIDGET,
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -78,6 +79,17 @@ export const FORM_DATA_EVENT_ADD = [
         newLine: true,
         key: 'internalId',
         label: 'captions.Event.internalId',
+      },
+    ],
+  },
+  {
+    id: 'eventSuperordinateEvent',
+    title: 'captions.eventSuperordinateEvent',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-superordinate-event',
+        key: 'superordinateEvent',
       },
     ],
   },
@@ -424,7 +436,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'srcMediaWebsite',
-        label: 'Event.srcMediaWebsite',
+        label: 'captions.Event.srcMediaWebsite',
         dependingOn: 'sourceType',
         dependingOnValues: ['MEDIANEWS'],
         newLine: true,
@@ -432,14 +444,14 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'srcMediaName',
-        label: 'Event.srcMediaName',
+        label: 'captions.Event.srcMediaName',
         dependingOn: 'sourceType',
         dependingOnValues: ['MEDIANEWS'],
       },
       {
         ...FORM_DATA_TEXTAREA,
         key: 'srcMediaDetails',
-        label: 'Event.srcMediaDetails',
+        label: 'captions.Event.srcMediaDetails',
         dependingOn: 'sourceType',
         dependingOnValues: ['MEDIANEWS'],
       },

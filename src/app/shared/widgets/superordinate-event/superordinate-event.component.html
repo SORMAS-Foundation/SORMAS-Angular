@@ -1,0 +1,34 @@
+<div class="superordinate-event-wrapper">
+  <div *ngIf="config && config.value">
+    <p>
+      <strong>{{ config.value.eventTitle }}</strong>
+    </p>
+    <p>
+      {{ 'captions.Event.uuid' | translate }}: <strong>{{ config.value.uuid }}</strong>
+    </p>
+    <p>
+      {{ 'captions.Event.eventStatus' | translate }}: <strong>{{ config.value.eventStatus }}</strong>
+    </p>
+    <div class="bottom">
+      <p>
+        {{ 'captions.Event.reportDateTime' | translate }}: <strong>{{ config.value.reportDateTime | date: 'm/d/yyyy' }}</strong>
+      </p>
+      <div class="superordinate-btns">
+        <button
+          mat-button
+          color="primary"
+        >
+          {{ 'captions.eventUnlinkEvent' | translate }}
+        </button>
+        <button mat-stroked-button color="primary">
+          {{ 'captions.eventOpenSuperordinateEvent' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="config && !config.value">
+    <p>
+      <strong>{{ 'strings.infoNoSuperordinateEvent' | translate }}</strong>
+    </p>
+  </div>
+</div>
