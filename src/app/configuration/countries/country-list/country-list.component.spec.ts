@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { CountryListComponent } from './country-list.component';
 
@@ -11,7 +12,7 @@ describe('CountryListComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [CountryListComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 
