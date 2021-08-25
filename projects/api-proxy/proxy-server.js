@@ -125,8 +125,6 @@ app.use('', (req, res, next) => {
   }
 });
 
-
-
 app.use('/sormas-rest/contacts/QN3NKC-XLHWN6-LEH2NF-ZXRQKHOM', (req, res) => {
   let total = 1000;
 

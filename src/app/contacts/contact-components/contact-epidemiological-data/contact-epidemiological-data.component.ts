@@ -11,9 +11,8 @@ import * as data from './contact-epidemiological-form-data';
 @Component({
   selector: 'app-contact-epidemiological-data',
   templateUrl: './contact-epidemiological-data.component.html',
-  styleUrls: ['./contact-epidemiological-data.component.scss']
+  styleUrls: ['./contact-epidemiological-data.component.scss'],
 })
-
 export class ContactEpidemiologicalDataComponent {
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CONTACT_EPID_DETAILS;

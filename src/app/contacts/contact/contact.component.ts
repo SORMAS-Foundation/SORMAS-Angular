@@ -11,7 +11,10 @@ const contactLinks = (contactId: string): EntityLink[] => {
     { link: `/contacts/contact/${contactId}/details`, title: 'captions.Contact' },
     { link: `/contacts/contact/${contactId}/person`, title: 'captions.Contact.person' },
     { link: `/contacts/contact/${contactId}/epidemiological-data`, title: 'captions.EpiData' },
-    { link: `/contacts/contact/${contactId}/follow-up`, title: 'captions.contactFollowUpVisitsOverview' },
+    {
+      link: `/contacts/contact/${contactId}/follow-up`,
+      title: 'captions.contactFollowUpVisitsOverview',
+    },
   ];
 };
 

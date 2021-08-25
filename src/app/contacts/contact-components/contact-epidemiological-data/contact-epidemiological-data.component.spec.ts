@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ContactEpidemiologicalDataComponent } from './contact-epidemiological-data.component';
 
 describe('ContactEpidemiologicalDataComponent', () => {
@@ -8,9 +10,9 @@ describe('ContactEpidemiologicalDataComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactEpidemiologicalDataComponent ]
-    })
-    .compileComponents();
+      declarations: [ContactEpidemiologicalDataComponent],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

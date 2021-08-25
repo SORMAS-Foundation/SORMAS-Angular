@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { SuperordinateEventComponent } from './superordinate-event.component';
 
 describe('SuperordinateEventComponent', () => {
@@ -8,9 +9,9 @@ describe('SuperordinateEventComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SuperordinateEventComponent ]
-    })
-    .compileComponents();
+      declarations: [SuperordinateEventComponent],
+      imports: [TranslateModule.forRoot()],
+    }).compileComponents();
   });
 
   beforeEach(() => {
