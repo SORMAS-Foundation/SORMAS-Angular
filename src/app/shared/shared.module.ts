@@ -38,6 +38,7 @@ import { ColumnPickerModule } from './column-picker/column-picker.module';
 import { DirectivesModule } from '../_directives/directives.module';
 import { LastUpdateComponent } from './widgets/last-update/last-update.component';
 import { InfoBarComponent } from './info-bar/info-bar.component';
+import { SuperordinateEventComponent } from './widgets/superordinate-event/superordinate-event.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { InfoBarComponent } from './info-bar/info-bar.component';
     AddressButtonComponent,
     LastUpdateComponent,
     InfoBarComponent,
+    SuperordinateEventComponent,
   ],
   imports: [
     CommonModule,

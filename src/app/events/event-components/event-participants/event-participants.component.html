@@ -1,15 +1,19 @@
-<app-filters [fixed]="false">
-  <app-event-participants-filters filters></app-event-participants-filters>
-  <ng-container list>
-    <app-table
-      [resourceService]="eventParticipantService"
-      [tableColumns]="defaultColumns"
-      [isSortable]="true"
-      [isSelectable]="true"
-      [isHeaderSticky]="true"
-      [fullHeight]="true"
-      [saveConfigKey]="configKey"
-      [bulkEditOptions]="actionsBulkEdit"
-    ></app-table>
-  </ng-container>
-</app-filters>
+<div class="event-participants-wrapper">
+  <app-filters [fixed]="false">
+    <app-event-participants-filters filters></app-event-participants-filters>
+    <ng-container list>
+      <div class="table-wrapper">
+        <app-table
+          [resourceService]="eventParticipantService"
+          [tableColumns]="defaultColumns"
+          [isSortable]="true"
+          [isSelectable]="true"
+          [isHeaderSticky]="true"
+          [fullHeight]="true"
+          [saveConfigKey]="configKey"
+          [bulkEditOptions]="actionsBulkEdit"
+        ></app-table>
+      </div>
+    </ng-container>
+  </app-filters>
+</div>

@@ -125,220 +125,7 @@ app.use('', (req, res, next) => {
   }
 });
 
-app.use('/sormas-rest/eventparticipants/T79TR5-YVTX26-CHL6D7-Z2UPKIHI', (req, res) => {
-  res.status(200).send({
-    uuid: 'T79TR5-YVTX26-CHL6D7-Z2UPKIHI',
-    involvementDescription: 'Description etc',
-    resultingCase: {
-      uuid: 'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI',
-    },
-    event: {
-      uuid: 'TFI3ZL-VSSLDP-QUNMND-VOYFSL7Y',
-    },
-    person: {
-      creationDate: 1618911539416,
-      changeDate: 1628470801246,
-      uuid: 'Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI',
-      pseudonymized: false,
-      firstName: 'Smoke3',
-      lastName: 'Test3',
-      sex: 'OTHER',
-      birthdateDD: 23,
-      birthdateMM: 4,
-      birthdateYYYY: 1992,
-      approximateAge: 29,
-      approximateAgeType: 'YEARS',
-      approximateAgeReferenceDate: 1628499505352,
-      presentCondition: 'BURIED',
-      causeOfDeath: 'EPIDEMIC_DISEASE',
-      deathPlaceType: 'OTHER',
-      deathPlaceDescription: 'Brandenburg, LK Uckermark, Cluj-Napoca, Sarmisegetuza21',
-      burialPlaceDescription: 'Brandenburg, LK Uckermark, Cluj-Napoca, Sarmisegetuza21',
-      address: {
-        creationDate: 1618911539416,
-        changeDate: 1625850320482,
-        uuid: 'U532IX-JSP466-ITALHU-QQD7KJCE',
-        pseudonymized: false,
-        continent: {
-          uuid: 'VVGV4W-W2QPUH-LJRCKV-AMP32HIQ',
-          caption: 'Europe',
-          externalId: '31000003',
-        },
-        subcontinent: {
-          uuid: 'XGHY5X-E3TD5L-JKW3BL-2W6OKFO4',
-          caption: 'Western Europe',
-          externalId: '41000030',
-        },
-        country: {
-          uuid: 'V5IHVQ-S64X5I-LI2D3G-MBH4SIUA',
-          caption: 'Deutschland',
-          externalId: null,
-          isoCode: 'DEU',
-        },
-        region: {
-          uuid: 'UJXVK5-RWEPBX-CT3WC2-3SB42MDQ',
-          caption: 'Brandenburg',
-          externalId: '13000012',
-        },
-        district: {
-          uuid: 'TE3JVL-3HLWJ5-VRLX5X-ZGEJSCD4',
-          caption: 'LK Uckermark',
-          externalId: '11012073',
-        },
-        city: 'Cluj-Napoca',
-        areaType: 'URBAN',
-        postalCode: '400592',
-        street: 'Sarmisegetuza',
-        houseNumber: '21',
-        facilityType: 'OTHER_RESIDENCE',
-      },
-      passportNumber: '',
-      nationalHealthId: '',
-      addresses: [
-        {
-          creationDate: 1621500008479,
-          changeDate: 1621500008479,
-          uuid: 'WR74MZ-DJJ4T3-6F6OXN-QOTNKCAQ',
-          pseudonymized: false,
-          continent: {
-            uuid: 'VVGV4W-W2QPUH-LJRCKV-AMP32HIQ',
-            caption: 'Europe',
-            externalId: '31000003',
-          },
-          subcontinent: {
-            uuid: 'XH2X4U-FAZUGW-BZHQ5I-ZXSBSOGM',
-            caption: 'Southeast Europe',
-            externalId: '41000025',
-          },
-          country: {
-            uuid: 'RS5GQS-UNX6F5-62NCUK-A4ZLSF5M',
-            caption: 'Rumänien',
-            externalId: null,
-            isoCode: 'ROU',
-          },
-          city: 'Cluj-Napoca',
-          areaType: 'URBAN',
-          postalCode: '400593',
-          street: 'Dunarii',
-          houseNumber: '148',
-          addressType: 'PLACE_OF_WORK',
-          facilityType: 'BUSINESS',
-          contactPersonFirstName: 'Sorina',
-          contactPersonLastName: 'Puiac',
-          contactPersonPhone: '0741222333',
-        },
-        {
-          creationDate: 1623743487478,
-          changeDate: 1623743487478,
-          uuid: 'V6DAA7-XZ6JUI-CO6T7U-L66ECEEI',
-          pseudonymized: false,
-          continent: {
-            uuid: 'VVGV4W-W2QPUH-LJRCKV-AMP32HIQ',
-            caption: 'Europe',
-            externalId: '31000003',
-          },
-          subcontinent: {
-            uuid: 'XGHY5X-E3TD5L-JKW3BL-2W6OKFO4',
-            caption: 'Western Europe',
-            externalId: '41000030',
-          },
-          country: {
-            uuid: 'V5IHVQ-S64X5I-LI2D3G-MBH4SIUA',
-            caption: 'Deutschland',
-            externalId: null,
-            isoCode: 'DEU',
-          },
-          region: {
-            uuid: 'S63EGL-SP5NQZ-EPFZHQ-ZQ4XCDTE',
-            caption: 'Bremen',
-            externalId: '13000004',
-          },
-          district: {
-            uuid: 'X6SFH2-S6VFPQ-X6RWNM-POBJKCHU',
-            caption: 'SK Bremen',
-            externalId: '11004011',
-          },
-          city: 'Bremen',
-          areaType: 'URBAN',
-          postalCode: '564554',
-          street: 'Oslebshauser Heerstraße',
-          houseNumber: '15',
-          addressType: 'OTHER_ADDRESS',
-          addressTypeDetails: 'description',
-          facilityType: 'BAR',
-          facility: {
-            uuid: 'SORMAS-CONSTID-OTHERS-FACILITY',
-            caption: 'Andere Einrichtung',
-            externalId: null,
-          },
-          facilityDetails: 'Facility description',
-        },
-      ],
-      personContactDetails: [
-        {
-          creationDate: 1626162361210,
-          changeDate: 1626173262109,
-          uuid: 'SSXNEN-HVVBEX-RHO7S7-V3RBSOKA',
-          pseudonymized: false,
-          person: {
-            uuid: 'Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI',
-            caption: 'Smoke3 TEST3',
-            firstName: 'Smoke3',
-            lastName: 'Test3',
-          },
-          primaryContact: true,
-          personContactDetailType: 'PHONE',
-          phoneNumberType: 'MOBILE',
-          contactInformation: '+40744373681',
-          thirdParty: false,
-        },
-        {
-          creationDate: 1618911592735,
-          changeDate: 1626164060697,
-          uuid: 'RAEHBD-KKQDVD-3LVR2K-HF5GSCJQ',
-          pseudonymized: false,
-          person: {
-            uuid: 'Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI',
-            caption: 'Smoke3 TEST3',
-            firstName: 'Smoke3',
-            lastName: 'Test3',
-          },
-          primaryContact: false,
-          personContactDetailType: 'EMAIL',
-          contactInformation: 'yonar19072@zcai77.com',
-          thirdParty: true,
-          thirdPartyRole: 'brother',
-          thirdPartyName: 'Smokey Yonar',
-        },
-        {
-          creationDate: 1626162361212,
-          changeDate: 1626162361212,
-          uuid: 'TPV37I-GGICQH-2YVZGW-MRFM2IH4',
-          pseudonymized: false,
-          person: {
-            uuid: 'Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI',
-            caption: 'Smoke3 TEST3',
-            firstName: 'Smoke3',
-            lastName: 'Test3',
-          },
-          primaryContact: false,
-          personContactDetailType: 'OTHER',
-          details: 'smoke signals',
-          contactInformation: 'three puffs',
-          thirdParty: false,
-        },
-      ],
-      hasCovidApp: false,
-      covidCodeDelivered: false,
-      symptomJournalStatus: 'DELETED',
-      additionalDetails: 'general comment',
-      phone: '+40744373681',
-      emailAddress: '',
-    },
-  });
-});
-
-app.use('/sormas-rest/eventparticipants/indexList', (req, res) => {
+app.use('/sormas-rest/contacts/QN3NKC-XLHWN6-LEH2NF-ZXRQKHOM', (req, res) => {
   let total = 1000;
 
   const arrayTmp = [];
@@ -393,11 +180,46 @@ app.use('/sormas-rest/eventparticipants/indexList', (req, res) => {
   }
 
   res.status(200).send({
-    elements: arrayTmp,
-    pageNumber: 0,
-    size: 8,
-    totalElementCount: total,
-    hasNext: true,
+    "pseudonymized":false,
+    "uuid":"RK6G25-W6PUTA-67PZN5-XW4KSMT4",
+    "firstName":"John",
+    "lastName":"Smith",
+    "caze":{
+      "uuid":"WR3VXP-4MODYT-4NHOMP-JZWO2FLI",
+      "caption":"AB_4975 LN_4975 (WR3VXP)",
+      "firstName":"AB_4975",
+      "lastName":"LN_4975"
+    },
+    "person":{
+      "firstName":"John",
+      "lastName":"Smith"
+    },
+    "disease":"CORONAVIRUS",
+    "diseaseDetails":null,
+    "lastContactDate":null,
+    "contactProximity":null,
+    "contactClassification":"UNCONFIRMED",
+    "contactStatus":"ACTIVE",
+    "completeness":null,
+    "followUpStatus":"FOLLOW_UP",
+    "followUpUntil":1620943200000,
+    "symptomJournalStatus":"UNREGISTERED",
+    "vaccination":null,
+    "districtUuid":null,
+    "contactOfficerUuid":null,
+    "reportDateTime":1619787324690,
+    "contactCategory":null,
+    "caseClassification":"SUSPECT",
+    "visitCount":0,
+    "externalID":null,
+    "externalToken":null,
+    "internalToken":null,
+    "regionName":null,
+    "districtName":null,
+    "caseRegionName":null,
+    "caseDistrictName":null,
+    "inJurisdiction":true,
+    "caseInJurisdiction":true
   });
 });
 

@@ -1,0 +1,12 @@
+.superordinate-event-wrapper {
+  .bottom {
+    overflow: hidden;
+    > p {
+      float: left;
+    }
+
+    .superordinate-btns {
+      float: right;
+    }
+  }
+}

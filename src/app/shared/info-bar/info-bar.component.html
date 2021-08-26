@@ -13,6 +13,10 @@
     *ngSwitchCase="infoBarOptions.SAMPLE_CONTACT"
     [ngTemplateOutlet]="sample_contact"
   ></ng-container>
+  <ng-container
+    *ngSwitchCase="infoBarOptions.CONTACT"
+    [ngTemplateOutlet]="contact"
+  ></ng-container>
 </div>
 
 <ng-template #case>
@@ -128,6 +132,22 @@
     <li *ngIf="data.disease">
       {{ data.disease }}
       <span *ngIf="data.diseaseVariant">({{ data.diseaseVariant.caption }})</span>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #contact>
+  <ul>
+    <li *ngIf="data.disease">
+      {{ data.disease }}
+    </li>
+    <li *ngIf="data.contactClassification">
+      <strong i18n>{{ 'captions.Contact.contactClassification' | translate }}: </strong>
+      {{ data.contactClassification }}
+    </li>
+    <li *ngIf="data.contactClassification">
+      <strong i18n>{{ 'captions.CaseData.person' | translate }}: </strong>
+      {{ data.person.firstName }} {{ data.person.lastName }}
     </li>
   </ul>
 </ng-template>
