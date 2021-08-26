@@ -32,7 +32,7 @@ export class CountryFiltersComponent implements OnInit, OnDestroy {
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
       nameCodeLike: new FormControl(),
-      status: new FormControl(),
+      relevanceStatus: new FormControl(),
       subcontinent: new FormControl(),
     });
   }

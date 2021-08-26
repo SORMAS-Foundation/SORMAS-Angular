@@ -52,6 +52,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   dataSourceArray: any[] = [];
   subscriptions: Subscription[] = [];
   columnKeys: string[] = [];
+  totalItems = 0;
 
   private subscription: Subscription[] = [];
 
@@ -68,6 +69,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() bulkEditOptions: NavItem[];
   @Input() allowToggleColumns = false;
   @Input() rowStyleData: string;
+  @Input() showTotal = false;
+  @Input() showTotalContext = 'Items';
 
   preSetFiltersTmp: Filter[];
   @Input() set preSetFilters(value) {
@@ -219,6 +222,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
           for (let i = this.offset; i < this.offset + this.limit; i += 1) {
             this.dataSourceArray[i] = response.elements[i - this.offset];
           }
+
+          this.totalItems = response.totalElementCount;
 
           if (!this.fullHeight) {
             this.determineHeight();

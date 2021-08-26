@@ -3,21 +3,21 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { CountryListComponent } from './country-list.component';
+import { RegionListComponent } from './region-list.component';
 
-describe('CountryListComponent', () => {
-  let component: CountryListComponent;
-  let fixture: ComponentFixture<CountryListComponent>;
+describe('RegionListComponent', () => {
+  let component: RegionListComponent;
+  let fixture: ComponentFixture<RegionListComponent>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [CountryListComponent],
+      declarations: [RegionListComponent],
       imports: [HttpClientTestingModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CountryListComponent);
+    fixture = TestBed.createComponent(RegionListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
