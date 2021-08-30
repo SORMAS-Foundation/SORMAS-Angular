@@ -21,6 +21,8 @@ import { CountryListComponent } from './countries/country-list/country-list.comp
 import { CountryFiltersComponent } from './countries/country-filters/country-filters.component';
 import { RegionListComponent } from './regions/region-list/region-list.component';
 import { RegionFiltersComponent } from './regions/region-filters/region-filters.component';
+import { DistrictListComponent } from './districts/district-list/district-list.component';
+import { DistrictFiltersComponent } from './districts/district-filters/district-filters.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { RegionFiltersComponent } from './regions/region-filters/region-filters.
     RegionListComponent,
     RegionFiltersComponent,
     DistrictsComponent,
+    DistrictListComponent,
+    DistrictFiltersComponent,
     CommunitiesComponent,
     FacilitiesComponent,
     EntryPointsComponent,

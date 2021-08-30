@@ -115,3 +115,11 @@ export const API_ROUTE_REGIONS = {
   ADD: 'regions/add',
   DELETE: 'regions/delete',
 };
+
+export const API_ROUTE_DISTRICTS = {
+  ENDPOINT: 'districts',
+  GET_ALL: 'districts/indexList',
+  UPDATE: 'districts/update',
+  ADD: 'districts/add',
+  DELETE: 'districts/delete',
+};
