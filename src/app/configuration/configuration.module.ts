@@ -23,6 +23,8 @@ import { RegionListComponent } from './regions/region-list/region-list.component
 import { RegionFiltersComponent } from './regions/region-filters/region-filters.component';
 import { DistrictListComponent } from './districts/district-list/district-list.component';
 import { DistrictFiltersComponent } from './districts/district-filters/district-filters.component';
+import { CommunityListComponent } from './communities/community-list/community-list.component';
+import { CommunityFiltersComponent } from './communities/community-filters/community-filters.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { DistrictFiltersComponent } from './districts/district-filters/district-
     DistrictListComponent,
     DistrictFiltersComponent,
     CommunitiesComponent,
+    CommunityListComponent,
+    CommunityFiltersComponent,
     FacilitiesComponent,
     EntryPointsComponent,
     PopulationComponent,

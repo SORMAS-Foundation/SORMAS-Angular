@@ -21,7 +21,11 @@ const routes: Routes = [
         children: [
           { path: 'details', component: ContactDetailsComponent, canActivate: [LeaveGuard] },
           { path: 'person', component: ContactPersonComponent, canActivate: [LeaveGuard] },
-          { path: 'epidemiological-data', component: ContactEpidemiologicalDataComponent, canActivate: [LeaveGuard] },
+          {
+            path: 'epidemiological-data',
+            component: ContactEpidemiologicalDataComponent,
+            canActivate: [LeaveGuard],
+          },
           { path: 'follow-up', component: ContactFollowUpComponent, canActivate: [LeaveGuard] },
         ],
       },
