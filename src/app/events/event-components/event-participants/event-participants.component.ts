@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Filter, NavItem, TableColumn } from '../../../_models/common';
 import { CONFIG_CASES } from '../../../_constants/storage';
 import { defaultColumnDefs } from './event-participants-list-table-data';
@@ -16,13 +16,15 @@ export class EventParticipantsComponent implements OnInit {
   configKey = CONFIG_CASES;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   presetFilters: Filter[] = [];
-  constructor(public eventParticipantService: EventParticipantService, private route: Router) {}
+  constructor(
+    public eventParticipantService: EventParticipantService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    const urlParts = this.route.url.split('/');
-    const eventId = urlParts[3];
-
-    this.presetFilters = [{ field: 'event', value: { uuid: eventId } }];
     this.defaultColumns = defaultColumnDefs;
+    this.activatedRoute.params.subscribe((params) => {
+      this.presetFilters = [{ field: 'event', value: { uuid: params.eventId } }];
+    });
   }
 }
