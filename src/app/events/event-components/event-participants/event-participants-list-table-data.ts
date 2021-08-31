@@ -8,7 +8,7 @@ export const defaultColumnDefs: TableColumn[] = [
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/events/event/$param1/participants-profile/$param2',
-      params: ['event.uuid', 'uuid'],
+      params: ['eventUuid', 'uuid'],
       truncate: 6,
     },
   },
