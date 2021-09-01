@@ -20,6 +20,14 @@ header {
     position: unset;
     border: 0;
   }
+
+  .push-right {
+    width: auto;
+    margin-top: 8px;
+    margin-right: 0;
+    float: right;
+    text-align: right;
+  }
 }
 
 fieldset {
@@ -67,8 +75,8 @@ legend {
 }
 
 .dynamic-form-input {
-  width: 100%;
   display: inline-block;
+  width: 100%;
   margin-right: 20px;
   vertical-align: top;
 }
@@ -92,12 +100,6 @@ legend {
 
 .fullwidth {
   width: 100%;
-}
-
-.push-right {
-  margin-right: 0;
-  float: right;
-  text-align: right;
 }
 
 .required {

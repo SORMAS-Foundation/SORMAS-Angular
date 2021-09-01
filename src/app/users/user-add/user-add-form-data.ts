@@ -129,6 +129,11 @@ export const FORM_DATA_USER_ADD = [
     title: 'captions.User.address',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-address-button',
+        className: 'push-right',
+      },
+      {
         ...FORM_DATA_INPUT,
         key: 'location.street',
         label: 'captions.Facility.street',
@@ -137,10 +142,6 @@ export const FORM_DATA_USER_ADD = [
         ...FORM_DATA_INPUT,
         key: 'location.city',
         label: 'captions.Facility.city',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-address-button',
       },
       {
         ...FORM_DATA_INPUT,
@@ -172,6 +173,11 @@ export const FORM_DATA_USER_ADD = [
     title: 'headingGps',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
+        className: 'push-right',
+      },
+      {
         ...FORM_DATA_INPUT,
         key: 'location.latitude',
         label: 'captions.Location.latitude',
@@ -188,10 +194,6 @@ export const FORM_DATA_USER_ADD = [
         key: 'location.latLonAccuracy',
         label: 'captions.Location.latLonAccuracy',
         className: 'size-small',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-gps-coords',
       },
     ],
   },

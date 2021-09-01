@@ -1,7 +1,7 @@
-@use '../../../../variables' as *;
+@use '/src/variables' as *;
+
 .place-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  margin-top: -8px;
+  margin-right: -8px;
   color: map-get($sormas-primary, 700);
 }

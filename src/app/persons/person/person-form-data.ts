@@ -326,7 +326,7 @@ export const FORM_DATA_PERSON = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-new-person-contact',
-        newLine: true,
+        className: 'push-right',
       },
       {
         ...FORM_DATA_INPUT,
