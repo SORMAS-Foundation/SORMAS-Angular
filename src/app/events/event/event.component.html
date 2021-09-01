@@ -9,7 +9,7 @@
   <app-info-bar [data]="event" [type]="'EVENT'"></app-info-bar>
 
   <div class="tab-nav-header">
-    <nav mat-tab-nav-bar>
+    <nav mat-tab-nav-bar *ngIf="showTabs">
       <a
         mat-tab-link
         *ngFor="let link of links"

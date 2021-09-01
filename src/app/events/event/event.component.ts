@@ -33,6 +33,7 @@ export class EventComponent implements OnInit {
   links: EntityLink[] = [];
   currentSubPage: EntityLink;
   eventId: any;
+  showTabs = true;
 
   constructor(
     private eventService: EventService,
@@ -63,6 +64,7 @@ export class EventComponent implements OnInit {
       componentReference.updateComponent(this.event, this.eventService);
     }
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, eventLinks);
+    this.showTabs = !this.router.url.includes('participants-profile');
   }
 
   addParticipant(): void {
