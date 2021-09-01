@@ -1,0 +1,76 @@
+<div class="filters">
+  <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
+  <form class="filters-form" [formGroup]="filtersForm">
+    <mat-form-field id="nameEpidLike" appearance="outline" floatLabel="always" class="search-field">
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'strings.promptSearch' | translate }}"
+        formControlName="nameEpidLike"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+
+    <app-collapsable-box boxTitle="{{ 'strings.entityDistricts' | translate }}">
+      <mat-radio-group
+        name="relevanceStatus"
+        formControlName="relevanceStatus"
+        (change)="onFormChange()"
+      >
+        <mat-radio-button value="ACTIVE" color="primary">
+          {{ 'captions.districtActiveDistricts' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="ARCHIVED" color="primary">
+          {{ 'captions.districtArchivedDistricts' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="ALL" color="primary">
+          {{ 'captions.districtAllDistricts' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+
+    <app-collapsable-box boxTitle="{{ 'strings.headingLocation' | translate }}">
+      <mat-form-field formGroupName="country" appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onCountryChange($event)"
+          formControlName="uuid"
+          placeholder="{{ 'captions.country' | translate }}"
+        >
+          <mat-option *ngFor="let country of countriesOptions" [value]="country.field">
+            {{ country.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field formGroupName="region" appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onRegionChange($event)"
+          formControlName="uuid"
+          placeholder="{{ 'captions.region' | translate }}"
+        >
+          <mat-option *ngFor="let region of regionsOptions" [value]="region.field">
+            {{ region.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field formGroupName="district" appearance="outline" class="collapsable-field">
+        <mat-select
+          disableOptionCentering
+          (selectionChange)="onFormChange()"
+          formControlName="uuid"
+          placeholder="{{ 'captions.district' | translate }}"
+        >
+          <mat-option *ngFor="let district of districtsOptions" [value]="district.field">
+            {{ district.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-collapsable-box>
+  </form>
+</div>

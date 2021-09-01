@@ -1,0 +1,12 @@
+<app-table
+  [resourceService]="communityService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [appearance]="tableAppearanceOptions.MINIMAL"
+  [bulkEditOptions]="actionsBulkEdit"
+  [showTotal]="true"
+  showTotalContext="{{ 'strings.entityCommunities' | translate }}"
+></app-table>

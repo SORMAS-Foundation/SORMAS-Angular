@@ -123,3 +123,11 @@ export const API_ROUTE_DISTRICTS = {
   ADD: 'districts/add',
   DELETE: 'districts/delete',
 };
+
+export const API_ROUTE_COMMUNITIES = {
+  ENDPOINT: 'communities',
+  GET_ALL: 'communities/indexList',
+  UPDATE: 'communities/update',
+  ADD: 'communities/add',
+  DELETE: 'communities/delete',
+};
