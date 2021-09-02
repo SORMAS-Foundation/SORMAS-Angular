@@ -1,4 +1,6 @@
 .superordinate-event-wrapper {
+  margin-top: 8px;
+
   .bottom {
     overflow: hidden;
     > p {
@@ -9,4 +11,8 @@
       float: right;
     }
   }
+}
+
+strong {
+  font-weight: 500;
 }

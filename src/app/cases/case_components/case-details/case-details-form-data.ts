@@ -776,7 +776,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-follow-up-status',
-        className: 'size-large push-right',
+        className: 'push-right',
       },
       {
         ...FORM_DATA_NULL,
