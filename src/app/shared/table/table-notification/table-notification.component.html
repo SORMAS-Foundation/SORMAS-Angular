@@ -1,0 +1,52 @@
+<ng-container [ngSwitch]="type">
+  <ng-container
+    *ngSwitchCase="fetchStatusType.ERROR"
+    [ngTemplateOutlet]="resultsError"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="fetchStatusType.NO_DATA"
+    [ngTemplateOutlet]="resultsNoData"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="fetchStatusType.NO_MATCH"
+    [ngTemplateOutlet]="resultsNoMatch"
+  ></ng-container>
+  <ng-container *ngSwitchDefault></ng-container>
+</ng-container>
+
+<ng-template #resultsError>
+  <div class="results-error">
+    <h2>
+      <mat-icon class="material-icons-round">warning_amber</mat-icon>
+      {{ 'messageResultsError' | translate }}
+    </h2>
+    <p>
+      <strong>{{ 'promptResultsError' | translate }}</strong>
+    </p>
+    <p><button mat-stroked-button color="primary" (click)="reloadPage()">Reload</button></p>
+    <p>{{ 'messageContactSupport' | translate }}</p>
+  </div>
+</ng-template>
+
+<ng-template #resultsNoData>
+  <div class="results-no-data">
+    <div class="message">
+      <p>
+        <mat-icon class="material-icons-round">error_outline_black</mat-icon>
+        <strong>{{ 'messageResultsNoData' | translate: { dataType: context } }}</strong>
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #resultsNoMatch>
+  <div class="results-no-match">
+    <div class="message">
+      <p>
+        <mat-icon class="material-icons-round">filter_list</mat-icon>
+        <strong>{{ 'messageResultsNoMatch' | translate: { dataType: context } }}</strong>
+      </p>
+      <p>{{ 'promptResultsNoMatch' | translate }}</p>
+    </div>
+  </div>
+</ng-template>

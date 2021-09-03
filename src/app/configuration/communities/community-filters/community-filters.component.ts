@@ -44,7 +44,7 @@ export class CommunityFiltersComponent implements OnInit, OnDestroy {
 
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
-      nameEpidLike: new FormControl(),
+      nameLike: new FormControl(),
       relevanceStatus: new FormControl(),
       country: new FormGroup({
         uuid: new FormControl(),

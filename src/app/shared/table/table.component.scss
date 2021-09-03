@@ -41,3 +41,7 @@ table {
     background-color: map-get($sormas-primary, 50);
   }
 }
+
+.no-scroll {
+  overflow: hidden;
+}

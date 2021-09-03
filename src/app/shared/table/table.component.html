@@ -20,17 +20,20 @@
   </app-dropdown-menu>
 </div>
 
-<div *ngIf="showTotal" class="list-info">{{ totalItems }} {{ showTotalContext }}</div>
+<div *ngIf="showTotal && fetchStatus !== fetchStatusType.ERROR" class="list-info">
+  {{ totalItems }} {{ showTotalContext }}
+</div>
 
 <div #vsTable *ngIf="tableColumns">
   <cdk-virtual-scroll-viewport
     [tvsItemSize]="rowHeight"
     [headerHeight]="headerHeight"
     [style.height.px]="tableHeight"
-    class="viewport"
+    [ngClass]="['viewport', totalItems ? '' : 'no-scroll']"
     (scrolledIndexChange)="scrolledIndexChange($event)"
   >
     <table
+      *ngIf="fetchStatus !== fetchStatusType.ERROR"
       mat-table
       [dataSource]="dataSource"
       matSort
@@ -91,5 +94,10 @@
         (click)="$event ? selection.toggle(row) : null"
       ></tr>
     </table>
+
+    <app-table-notification
+      [type]="fetchStatus"
+      [context]="showTotalContext"
+    ></app-table-notification>
   </cdk-virtual-scroll-viewport>
 </div>

@@ -94,3 +94,11 @@ export const InfoBarTypeOptions = {
   SAMPLE_CONTACT: 'SAMPLE_CONTACT' as InfoBarType,
   CONTACT: 'CONTACT' as InfoBarType,
 };
+
+export type FetchStatus = 'ERROR' | 'NO_DATA' | 'NO_MATCH';
+
+export const FetchStatusType = {
+  ERROR: 'ERROR' as FetchStatus,
+  NO_DATA: 'NO_DATA' as FetchStatus,
+  NO_MATCH: 'NO_MATCH' as FetchStatus,
+};

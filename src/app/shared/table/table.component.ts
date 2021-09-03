@@ -21,8 +21,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
-import { NotificationService } from '../../_services/notification.service';
-import { Filter, NavItem, Sorting, TableColumn } from '../../_models/common';
+import {
+  FetchStatus,
+  FetchStatusType,
+  Filter,
+  NavItem,
+  Sorting,
+  TableColumn,
+} from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -53,6 +59,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   subscriptions: Subscription[] = [];
   columnKeys: string[] = [];
   totalItems = 0;
+  fetchStatus: FetchStatus | undefined;
+  fetchStatusType = FetchStatusType;
 
   private subscription: Subscription[] = [];
 
@@ -90,7 +98,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
   constructor(
-    private notificationService: NotificationService,
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
@@ -225,12 +232,22 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
           this.totalItems = response.totalElementCount;
 
+          if (this.totalItems) {
+            this.fetchStatus = undefined;
+          } else {
+            this.fetchStatus =
+              this.preSetFilters || this.filters?.length
+                ? this.fetchStatusType.NO_MATCH
+                : this.fetchStatusType.NO_DATA;
+            this.fetchStatus = this.fetchStatusType.NO_MATCH;
+          }
+
           if (!this.fullHeight) {
             this.determineHeight();
           }
         },
-        error: (err: any) => {
-          this.notificationService.error(err);
+        error: () => {
+          this.fetchStatus = this.fetchStatusType.ERROR;
         },
         complete: () => {},
       });

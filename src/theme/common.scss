@@ -39,6 +39,10 @@ a:not(.mat-button) {
   }
 }
 
+strong {
+  font-weight: 500;
+}
+
 .errorMessage {
   color: $warn;
 }

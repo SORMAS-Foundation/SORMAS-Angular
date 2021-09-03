@@ -1,0 +1,56 @@
+@use '/src/variables.scss' as *;
+
+.results-error {
+  padding: 48px;
+  background-color: $white;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 8px;
+    color: map-get($sormas-alert, 600);
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .mat-icon {
+    color: map-get($sormas-alert, 200);
+    line-height: 20px;
+    vertical-align: middle;
+  }
+
+  .mat-button-base {
+    margin-top: 12px;
+    margin-bottom: 36px;
+  }
+}
+
+.results-no-data,
+.results-no-match {
+  width: 100vh;
+  padding: 36px;
+  text-align: center;
+
+  .message {
+    display: inline-block;
+    padding-left: 30px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .mat-icon {
+    margin-right: 6px;
+    margin-left: -30px;
+    font-size: 22px;
+    vertical-align: middle;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.results-no-match {
+  p:first-of-type {
+    color: map-get($sormas-alert, 600);
+  }
+}
