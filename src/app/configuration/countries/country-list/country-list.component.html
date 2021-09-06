@@ -9,5 +9,7 @@
   [bulkEditOptions]="actionsBulkEdit"
   rowStyleData="subcontinent.caption"
   [showTotal]="true"
+  [isEditable]="true"
   showTotalContext="{{ 'strings.entityCountries' | translate }}"
+  (editItem)="editCountry($event)"
 ></app-table>

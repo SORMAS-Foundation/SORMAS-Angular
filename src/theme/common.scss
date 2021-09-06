@@ -93,10 +93,6 @@ a:not(.mat-button) {
 
 /* Table dynamic content */
 :root td.mat-cell {
-  &.mat-column-select {
-    width: 48px;
-  }
-
   &.visit-date {
     .visitDateTime {
       color: map-get($sormas-accent, 600);
