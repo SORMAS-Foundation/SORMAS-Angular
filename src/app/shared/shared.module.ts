@@ -39,6 +39,7 @@ import { DirectivesModule } from '../_directives/directives.module';
 import { LastUpdateComponent } from './widgets/last-update/last-update.component';
 import { InfoBarComponent } from './info-bar/info-bar.component';
 import { SuperordinateEventComponent } from './widgets/superordinate-event/superordinate-event.component';
+import { TableNotificationComponent } from './table/table-notification/table-notification.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { SuperordinateEventComponent } from './widgets/superordinate-event/super
     SidebarComponent,
     EdgePanelComponent,
     TableDataComponent,
+    TableNotificationComponent,
     PersonContactsListComponent,
     NewPersonContactComponent,
     GpsCoordsComponent,
@@ -112,6 +114,6 @@ import { SuperordinateEventComponent } from './widgets/superordinate-event/super
     DirectivesModule,
     InfoBarComponent,
   ],
-  entryComponents: [AddEditBaseModalComponent, TableDataComponent],
+  entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })
 export class SharedModule {}

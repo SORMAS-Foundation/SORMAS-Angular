@@ -1,7 +1,7 @@
 <div class="filters">
   <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
   <form class="filters-form" [formGroup]="filtersForm">
-    <mat-form-field id="nameEpidLike" appearance="outline" floatLabel="always" class="search-field">
+    <mat-form-field id="nameLike" appearance="outline" floatLabel="always" class="search-field">
       <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
       <input
         value=""
@@ -9,7 +9,7 @@
         matInput
         appDebounce
         placeholder="{{ 'strings.promptSearch' | translate }}"
-        formControlName="nameEpidLike"
+        formControlName="nameLike"
         (debounce)="onFormChange()"
       />
     </mat-form-field>

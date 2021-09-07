@@ -56,5 +56,12 @@
   "headingBirthdate": "Date of birth",
   "headingDateFilter": "Date filter",
   "headingMoreFilters": "More filters",
-  "Involvement": "Involvement"
+  "Involvement": "Involvement",
+  "messageResultsError": "No data has been retrieved.",
+  "promptResultsError": "Please try and reload the page.",
+  "messageContactSupport": "If the problem persists, please Contact support",
+  "messageResultsNoData": "There are no {{ dataType }} to be displayed.",
+  "messageResultsNoMatch": "No {{ dataType }} to display for selected filters",
+  "promptResultsNoMatch": "Please make a different filter selection.",
+  "entityUsers": "Users"
 }
