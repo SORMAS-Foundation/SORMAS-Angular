@@ -18,4 +18,9 @@ export class CountryListComponent {
   tableAppearanceOptions = TableAppearanceOptions;
 
   constructor(public countryService: CountryService) {}
+
+  editCountry(country: CountryDto): void {
+    // eslint-disable-next-line no-console
+    console.log('EDIT country => ', country.defaultName);
+  }
 }

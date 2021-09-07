@@ -59,6 +59,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() isSortable = false;
   @Input() isPageable = false;
   @Input() isSelectable = false;
+  @Input() isEditable = false;
   @Input() isHeaderSticky = false;
   @Input() tableColumns: TableColumn[] = [];
   @Input() resourceService: BaseService<any>;
@@ -85,7 +86,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
-  @Output() clickItem: EventEmitter<any> = new EventEmitter();
+  @Output() editItem: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
@@ -134,6 +135,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getColumns(): string[] {
     let columns = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
+
+    if (this.isEditable) {
+      columns.unshift('edit');
+    }
 
     if (this.isSelectable) {
       columns.unshift('select');
@@ -289,6 +294,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         // eslint-disable-next-line no-console
         console.log(event);
     }
+  }
+
+  doActionEdit(index: number): void {
+    this.editItem.emit(this.dataSourceArray[index]);
   }
 
   updateTableColumns(columns: string[]): void {

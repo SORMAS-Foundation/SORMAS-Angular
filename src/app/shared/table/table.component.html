@@ -52,6 +52,19 @@
           ></mat-checkbox>
         </td>
       </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell cdkDrag *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="$event.stopPropagation(); doActionEdit(row.index)"
+            class="small"
+          >
+            <mat-icon class="material-icons-round">edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
       <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
         <ng-container *ngIf="isSortable && tableColumn.isSortable; else notSortable">
           <th mat-header-cell cdkDrag *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
