@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { EntityLink } from '../_constants/common';
 
 const LINKS: EntityLink[] = [
-  { link: '/stats/statistics', title: 'Statistics' },
-  { link: '/stats/exports', title: 'Exports' },
+  { link: '/stats/statistics', title: 'captions.View.statistics' },
+  { link: '/stats/exports', title: 'captions.View.statistics.database-export' },
 ];
 
 @Component({

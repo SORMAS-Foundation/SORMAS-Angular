@@ -20,7 +20,7 @@ export const routesConfig: RouteItem[] = [
   { link: 'contacts/list', label: 'captions.mainMenuContacts', selectedLink: 'contacts' },
   { link: 'samples/list', label: 'captions.mainMenuSamples', selectedLink: 'samples' },
   { link: 'user-profile', label: 'mainMenuMyProfile', selectedLink: 'user-profile' },
-  { link: 'stats', label: 'Stats', selectedLink: 'stats' },
+  { link: 'stats', label: 'captions.mainMenuStatistics', selectedLink: 'stats' },
   { link: 'persons/list', label: 'captions.mainMenuPersons', selectedLink: 'persons' },
   { link: 'users/list', label: 'captions.mainMenuUsers', selectedLink: 'users' },
 ];
