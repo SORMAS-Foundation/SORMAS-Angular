@@ -30,6 +30,7 @@ export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
 
 export const HEADER_HEIGHT = 68;
+export const HEADING_TABS_HEIGHT = 108;
 
 // sidebar panels
 export const EDGE_PANEL_INITIAL_SIZE_SINGLE_COLUMN = 3;

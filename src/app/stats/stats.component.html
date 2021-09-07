@@ -1,0 +1,20 @@
+<section>
+  <div class="tab-nav-header">
+    <nav mat-tab-nav-bar class="heading-tabs">
+      <a
+        mat-tab-link
+        *ngFor="let link of links"
+        [routerLink]="link.link"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        {{ link.title | translate }}
+      </a>
+    </nav>
+  </div>
+
+  <div class="page-content">
+    <router-outlet></router-outlet>
+  </div>
+</section>
