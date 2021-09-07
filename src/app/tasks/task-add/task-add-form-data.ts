@@ -71,7 +71,7 @@ export const FORM_DATA_TASK_ADD = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'assignedUser.uuid',
+        key: 'assigneeUser.uuid',
         label: '',
         options: optionsAssignedUser,
         validation: ['required'],

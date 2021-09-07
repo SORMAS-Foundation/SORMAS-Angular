@@ -11,6 +11,7 @@ export const FORM_DATA_BASE = {
   newLine: false,
   active: true,
   separated: false,
+  radioNewLine: false,
 };
 
 export const FORM_DATA_INPUT = {

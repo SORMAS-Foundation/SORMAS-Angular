@@ -38,6 +38,9 @@ export class AddEditBaseModalComponent implements OnInit {
     } else {
       this.formActionsService.setSave(null);
     }
+    this.dialogRef.close({
+      close: true
+    });
   }
 
   discard(): void {
