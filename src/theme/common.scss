@@ -66,6 +66,32 @@ strong {
   }
 }
 
+:root .filters-field-compact {
+  .mat-form-field-appearance-outline.search-multiselect {
+    display: block;
+
+    &:not(.search-multiselect-opened) {
+      color: map-get($sormas-accent, 400);
+    }
+  }
+}
+
+:root .filters-field-expanded {
+  .mat-form-field-appearance-outline.search-multiselect {
+    width: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    &:not(.search-multiselect-opened) {
+      color: map-get($sormas-accent, 400);
+    }
+  }
+
+  .mat-chip-list {
+    margin-top: 6px;
+  }
+}
+
 // page general layout
 .page-header {
   display: flex;

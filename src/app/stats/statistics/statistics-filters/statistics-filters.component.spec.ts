@@ -1,5 +1,8 @@
 /* tslint:disable:no-unused-variable */
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { MaterialModule } from '../../../material.module';
 
 import { StatisticsFiltersComponent } from './statistics-filters.component';
 
@@ -10,6 +13,7 @@ describe('StatisticsFiltersComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [StatisticsFiltersComponent],
+      imports: [HttpClientTestingModule, MaterialModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

@@ -13,12 +13,14 @@ export class FormElementBase<T> {
   newLine: boolean | undefined; // true if the field needs to be on a new line
   separated: boolean | undefined;
   className?: string;
-  options: { key: string; value: string }[]; // the options of the field, if it is a dropdown or radio buttons
+  options: { key: any; value: string }[]; // the options of the field, if it is a dropdown or radio buttons
   active: boolean;
   dependingOn?: string; // the key of the field that the current field is depending on in order to be visible
   dependingOnValues?: any[]; // the value of the field that the current field is depending on in order to be visible
   widget?: any;
   chips?: boolean; // flag to toggle chips for multi-select
+  allowClear?: boolean; // toggles the `clear` field button
+  allowSelect?: boolean; // permists selection of all possible options with one click (multiselect, checkbox group)
 
   constructor(
     options: {
@@ -35,12 +37,14 @@ export class FormElementBase<T> {
       newLine?: boolean;
       separated?: boolean;
       className?: string;
-      options?: { key: string; value: string }[];
+      options?: { key: any; value: string }[];
       active?: boolean;
       dependingOn?: string;
       dependingOnValues?: any[];
       widget?: any;
       chips?: boolean;
+      allowClear?: boolean;
+      allowSelect?: boolean;
     } = {}
   ) {
     this.value = options.value;
@@ -62,10 +66,13 @@ export class FormElementBase<T> {
     this.dependingOnValues = options.dependingOnValues;
     this.widget = options.widget;
     this.chips = options.chips ?? false;
+    this.allowClear = options.allowClear ?? false;
+    this.allowSelect = options.allowSelect ?? false;
   }
 }
 
 export class FormBase<T> {
+  id: string;
   title: string;
   subTitle?: string;
   fields: FormElementBase<T>[];

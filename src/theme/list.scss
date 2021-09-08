@@ -1,0 +1,31 @@
+@mixin list-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-selection-list {
+      .mat-pseudo-checkbox,
+      .mat-pseudo-checkbox-checked {
+        border-width: 0;
+        background-color: transparent;
+        color: currentColor;
+      }
+
+      .mat-pseudo-checkbox::after {
+        color: currentColor;
+      }
+
+      .mat-pseudo-checkbox-checked::after {
+        width: 13px;
+        height: 5px;
+      }
+    }
+
+    .mat-list-option:not(.mat-list-item-disabled)[aria-selected='true'] {
+      background-color: map-get($primary, 50);
+    }
+  }
+}

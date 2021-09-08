@@ -22,9 +22,8 @@
 .button-reset {
   position: sticky;
   bottom: 0;
-  width: 100%;
   padding: 8px 16px;
-  color: map-get($sormas-primary, 700);
+  background-color: $white;
 }
 
 .filters-closed {
@@ -40,7 +39,27 @@
 }
 
 .filters-wrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 24px 24px 0;
+
+  &.expanded {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    .button-reset {
+      padding: 16px 0 0;
+      margin-bottom: -52px;
+    }
+  }
+}
+
+.filters-content {
+  width: 100%;
+  padding-bottom: 52px;
 }
 
 @media (max-width: map-get($grid-breakpoints, md)) {
@@ -52,9 +71,24 @@
 
   .mat-sidenav {
     width: 384px;
+
+    &.expandable {
+      width: 100%;
+    }
   }
 
   .filters-wrapper {
     padding: 24px 72px;
+
+    &.expanded {
+      padding: 24px;
+    }
+  }
+
+  .expandable {
+    .button-close,
+    .button-open {
+      display: none;
+    }
   }
 }

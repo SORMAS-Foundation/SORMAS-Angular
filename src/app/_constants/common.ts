@@ -50,3 +50,10 @@ export const DEFAULT_DATE_FORMAT = 'd/m/yyyy';
 export const DAY_DATE_FORMAT = 'dd';
 export const MONTH_DATE_TEXT_FORMAT = 'MMM';
 export const HOUR_MINUTE_TIME_FORMAT = 'h:m';
+
+export type ButtonType = 'STANDARD' | 'STROKED' | 'FLAT';
+export const BUTTON_TYPE = {
+  STANDARD: 'STANDARD' as ButtonType,
+  STROKED: 'STROKED' as ButtonType,
+  FLAT: 'FLAT' as ButtonType,
+};

@@ -40,6 +40,8 @@ import { LastUpdateComponent } from './widgets/last-update/last-update.component
 import { InfoBarComponent } from './info-bar/info-bar.component';
 import { SuperordinateEventComponent } from './widgets/superordinate-event/superordinate-event.component';
 import { TableNotificationComponent } from './table/table-notification/table-notification.component';
+import { SelectionListComponent } from './selection-list/selection-list.component';
+import { TooltipComponent } from './tooltip/tooltip.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { TableNotificationComponent } from './table/table-notification/table-not
     LastUpdateComponent,
     InfoBarComponent,
     SuperordinateEventComponent,
+    SelectionListComponent,
+    TooltipComponent,
   ],
   imports: [
     CommonModule,
@@ -113,6 +117,7 @@ import { TableNotificationComponent } from './table/table-notification/table-not
     ColumnPickerModule,
     DirectivesModule,
     InfoBarComponent,
+    SelectionListComponent,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })

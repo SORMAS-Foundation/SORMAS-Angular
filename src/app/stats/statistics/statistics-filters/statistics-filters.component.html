@@ -1,3 +1,102 @@
-<p>
-  statistics-filters works!
-</p>
+<div [ngClass]="['filters', opened ? 'filters-expanded' : 'filters-compact']">
+  <h2 class="filters-header">
+    {{ 'strings.headingFilters' | translate }}
+    <mat-icon class="material-icons-round filters-info" [appTooltip]="infotip">info</mat-icon>
+  </h2>
+
+  <ng-template #infotip>
+    <div class="info-statistics-filter">
+      <mat-icon class="material-icons-round filters-info">info</mat-icon>
+      <p [innerHtml]="'strings.infoStatisticsFilter' | translate"></p>
+    </div>
+  </ng-template>
+
+  <form class="filters-form" [formGroup]="filtersForm">
+    <section *ngFor="let section of filtersFormData">
+      <header>
+        <h3>{{ section.title | translate }}</h3>
+        <app-dropdown-menu
+          [chevron]="false"
+          [buttonText]="'captions.statisticsAddFilter' | translate"
+          [appearance]="'STANDARD'"
+          horizontalPosition="before"
+          panelClass="add-filter-menu"
+        >
+          <app-selection-list
+            #filterOptions
+            [list]="section.data"
+            key="title"
+            (selection)="addFilter($event, section.id)"
+          ></app-selection-list>
+        </app-dropdown-menu>
+      </header>
+      <div *ngFor="let group of section.data" class="filters-form-group">
+        <ng-container *ngIf="!group.hidden">
+          <button
+            mat-icon-button
+            class="button-remove-filter"
+            (click)="removeFilter(section.id, group.id)"
+          >
+            <mat-icon class="material-icons-round">highlight_off</mat-icon>
+          </button>
+          <div class="filters-form-fields">
+            <div *ngFor="let field of group.fields" [ngClass]="'filters-form-' + field.controlType">
+              <ng-container *ngIf="field.active" [ngSwitch]="field.controlType">
+                <mat-divider *ngIf="field.newLine"></mat-divider>
+                <app-form-multiselect
+                  *ngSwitchCase="'multidropdown'"
+                  [group]="filtersForm"
+                  [config]="field"
+                  [className]="opened ? 'filters-field-expanded' : 'filters-field-compact'"
+                ></app-form-multiselect>
+                <mat-form-field *ngSwitchCase="'input'" appearance="outline" floatLabel="always">
+                  <input
+                    type="text"
+                    matInput
+                    placeholder="{{ field.label | translate }}"
+                    [formControlName]="field.key"
+                  />
+                </mat-form-field>
+                <mat-form-field
+                  *ngSwitchCase="'dropdown'"
+                  appearance="outline"
+                  class="collapsable-field"
+                >
+                  <mat-select
+                    disableOptionCentering
+                    [formControlName]="field.key"
+                    placeholder="{{ field.label | translate }}"
+                  >
+                    <mat-option *ngFor="let option of field.options" [value]="option.key">
+                      {{ option.value | translate }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field
+                  *ngSwitchCase="'date'"
+                  appearance="outline"
+                  floatLabel="always"
+                  [ngClass]="[
+                    'date-filter',
+                    picker.opened ? 'datepicker-opened' : 'datepicker-closed'
+                  ]"
+                >
+                  <mat-label *ngIf="field.label">
+                    {{ field.label | translate }}
+                  </mat-label>
+                  <input matInput [matDatepicker]="picker" size="5" [formControlName]="field.key" />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                    class="datepicker-icon"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+  </form>
+</div>

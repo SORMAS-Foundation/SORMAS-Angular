@@ -1,0 +1,13 @@
+.tooltip-container {
+  opacity: 0;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tooltip-container {
+    transition: 0.3s;
+  }
+}
