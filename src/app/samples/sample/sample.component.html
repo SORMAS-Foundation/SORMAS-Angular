@@ -38,7 +38,32 @@
         [formElements]="myFormElements"
         [resourceService]="sampleService"
       ></app-dynamic-form>
-      <div aside>sidebar</div>
+      <div aside>
+        <app-edge-panel
+          type="PATHOGEN"
+          [resourceService]="pathogenTestService"
+          filterCriteriaEntity=""
+          [cardCollapse]="false"
+          status="unclassified"
+          [showGroupLink]="true"
+          actionLink=""
+          [scopeId]="sample.uuid"
+          [cardWidth]="280"
+          [showGroupLink]="false"
+        ></app-edge-panel>
+        <app-edge-panel
+          type="ADDITIONAL"
+          [resourceService]="additionalTestService"
+          filterCriteriaEntity=""
+          [cardCollapse]="true"
+          status="unclassified"
+          [showGroupLink]="true"
+          actionLink=""
+          [scopeId]="sample.uuid"
+          [cardWidth]="280"
+          [showGroupLink]="false"
+        ></app-edge-panel>
+      </div>
     </app-sidebar>
   </div>
 </section>

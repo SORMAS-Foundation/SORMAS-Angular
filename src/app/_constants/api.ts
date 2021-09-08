@@ -14,6 +14,24 @@ export const API_ROUTE_PERSONS = {
   DELETE: 'persons/delete',
 };
 
+export const API_ROUTE_PATHOGEN_TESTS = {
+  ENDPOINT: 'pathogentests',
+  GET_ALL: 'pathogentests/indexList',
+  UPDATE: 'pathogentests/update',
+  ADD: 'pathogentests/add',
+  DELETE: 'pathogentests/delete',
+  GET_BY_SAMPLE_ID: 'pathogentests/query/samples',
+};
+
+export const API_ROUTE_ADDITIONAL_TESTS = {
+  ENDPOINT: 'additionaltests',
+  GET_ALL: 'additionaltests/indexList',
+  UPDATE: 'additionaltests/update',
+  ADD: 'additionaltests/add',
+  DELETE: 'additionaltests/delete',
+  GET_BY_SAMPLE_ID: 'additionaltests/query/samples',
+};
+
 export const API_ROUTE_PRESCRIPTIONS = {
   ENDPOINT: 'prescriptions',
   GET_ALL: 'prescriptions/indexList',

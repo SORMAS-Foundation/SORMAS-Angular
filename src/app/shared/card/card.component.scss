@@ -76,6 +76,10 @@ app-card-actions + .mat-card-header {
   border-color: mat-color($sormas-alert, 100);
 }
 
+.status-pending {
+  border-color: mat-color($sormas-accent, 200);
+}
+
 .status-critical {
   border-width: 2px;
   border-color: mat-color($sormas-alert, 100);

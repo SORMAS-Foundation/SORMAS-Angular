@@ -1,0 +1,28 @@
+<div *ngIf="data" class="card-sample-pathogen">
+  <div class="sample-pathogen-details">
+    <span class="title">
+      {{ data.sample.caption | humanize }}
+    </span>
+  </div>
+  <mat-icon *ngIf="data.testResult === 'NEGATIVE'" class="material-icons-round check-icon"
+    >check_circle_outline</mat-icon
+  >
+  <div class="test-result">
+    {{ data.testResult }}
+  </div>
+  <div class="test-result-details">
+    {{ data.testResultText }}
+  </div>
+  <div class="disease">
+    {{ data.testedDisease }}
+  </div>
+  <div class="timeline">
+    <app-date-card
+      *ngIf="data.testDateTime"
+      [date]="data.testDateTime"
+      [label]="data.testDateTime | date: hourMinuteTimeFormat"
+      [showYear]="false"
+      class="date"
+    ></app-date-card>
+  </div>
+</div>

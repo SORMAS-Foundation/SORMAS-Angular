@@ -1,0 +1,24 @@
+@use '/src/variables.scss' as *;
+
+.card-sample-additional {
+  .title {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+  }
+  .list-additionals {
+    .row {
+      border-bottom: solid 1px mat-color($sormas-primary, 100);
+      margin-bottom: 12px;
+      color: mat-color($sormas-accent, 800);
+      .label {
+        font-size: 12px;
+        font-weight: 400;
+      }
+      .value {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}

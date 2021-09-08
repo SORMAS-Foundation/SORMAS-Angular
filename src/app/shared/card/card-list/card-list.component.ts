@@ -35,6 +35,7 @@ export class CardListComponent implements OnChanges {
   @Input() titleUppercase = false;
   @Input() cardStatus: CardStatus;
   @Input() cardStatusKey: string;
+  @Input() titleDateFormat: string;
 
   @Output() selectCard: EventEmitter<any> = new EventEmitter();
   @Output() editCard: EventEmitter<any> = new EventEmitter();
@@ -44,8 +45,10 @@ export class CardListComponent implements OnChanges {
   @Output() refreshCard: EventEmitter<any> = new EventEmitter();
 
   limit: number;
+  processedCardTitleKey: string | string[] = '';
 
   ngOnChanges(): void {
+    console.log('titleDateFormat222', this.titleDateFormat, this.cardStatusKey);
     this.limit = this.initialPageSize || this.data.length;
   }
 

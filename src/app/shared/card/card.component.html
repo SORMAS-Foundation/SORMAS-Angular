@@ -17,7 +17,11 @@
 
   <mat-card-header *ngIf="title || collapse" [ngClass]="collapseClass">
     <mat-card-title *ngIf="title" [ngClass]="titlePosition?.toLowerCase() || ''">
-      <span [ngClass]="titleUppercase ? 'uppercase' : ''">
+      <span
+        *ngIf="titleDateFormat"
+        [innerHtml]="title | date: titleDateFormat | wrapWord: 'title-date'"
+      ></span>
+      <span *ngIf="!titleDateFormat" [ngClass]="titleUppercase ? 'uppercase' : ''">
         {{ title | humanize | titlecase }}
       </span>
     </mat-card-title>
@@ -35,6 +39,14 @@
       *ngSwitchCase="'person_contact'"
       [data]="data"
     ></app-card-person-contact>
+    <app-card-sample-pathogen
+      *ngSwitchCase="'sample_pathogen'"
+      [data]="data"
+    ></app-card-sample-pathogen>
+    <app-card-sample-additional
+      *ngSwitchCase="'sample_additional'"
+      [data]="data"
+    ></app-card-sample-additional>
     <app-card-person-event *ngSwitchCase="'person_event'" [data]="data"></app-card-person-event>
     <app-card-sample *ngSwitchCase="'sample'" [data]="data"></app-card-sample>
     <app-card-epid-data *ngSwitchCase="'epid_data'" [data]="data"></app-card-epid-data>

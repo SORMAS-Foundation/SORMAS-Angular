@@ -232,3 +232,36 @@ a:not(.mat-button) {
 .icon-active-false {
   color: map-get($sormas-alert, 300);
 }
+
+/* card-status-overrides */
+.status-critical {
+  .card-sample-pathogen {
+    .test-result {
+      color: map-get($sormas-alert, 700);
+    }
+  }
+}
+
+.status-pending {
+  .card-sample-pathogen {
+    .test-result {
+      color: map-get($sormas-alert, 300);
+    }
+  }
+}
+
+.status-undetermined {
+  .card-sample-pathogen {
+    .test-result {
+      color: map-get($sormas-warning, 800);
+    }
+  }
+}
+
+.status-good {
+  .card-sample-pathogen {
+    .test-result {
+      color: map-get($sormas-primary, 400);
+    }
+  }
+}
