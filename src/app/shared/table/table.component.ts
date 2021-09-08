@@ -241,10 +241,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
             this.fetchStatus = undefined;
           } else {
             this.fetchStatus =
-              this.preSetFilters || this.filters?.length
+              this.preSetFilters?.length || this.filters?.length
                 ? this.fetchStatusType.NO_MATCH
                 : this.fetchStatusType.NO_DATA;
-            this.fetchStatus = this.fetchStatusType.NO_MATCH;
           }
 
           if (!this.fullHeight) {
