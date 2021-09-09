@@ -11,9 +11,11 @@ import {
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
+  FORM_DATA_WIDGET,
   Quarantine,
   TracingApp,
-  TypeOfContact, VaccinationSource,
+  TypeOfContact,
+  VaccinationSource,
   VaccinationStatus,
   YesNoUnknown,
 } from '../../../app.constants';
@@ -31,6 +33,16 @@ const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
 const optionsVaccinationSource = pipe.transform(VaccinationSource);
 
 export const FORM_DATA_CONTACT_DETAILS = [
+  {
+    id: 'caseDetails',
+    title: 'strings.entityCase',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-contact-case-details',
+      },
+    ],
+  },
   {
     id: 'contactId',
     title: 'captions.Contact.uuid',
@@ -272,7 +284,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
   },
   {
     id: 'medicallyActive',
-    title: 'captions.Contact.meddical',
+    title: 'Medical',
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -296,6 +308,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.Contact.prohibitionToWorkFrom',
         dependingOn: 'prohibitionToWork',
         dependingOnValues: ['YES'],
+        newLine: true,
       },
       {
         ...FORM_DATA_DATE,

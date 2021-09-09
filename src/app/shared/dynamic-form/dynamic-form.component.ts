@@ -71,7 +71,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           error: (err: any) => {
             this.notificationService.error(err);
           },
-          complete: () => this.notificationService.success('Successfully saved'),
+          complete: () => {
+            this.formActionsService.setCloseFormModal(true);
+            this.notificationService.success('Successfully saved')
+          },
         });
       })
     );
@@ -109,7 +112,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   updateFormRawValueWithObjects(): any {
-    const rawValueTmp: any = {};
+    const rawValueTmp: any = {
+      assigneeUser: {
+        uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U'
+      }
+    };
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
       if (key.includes('.')) {
         const keys = key.split('.');
@@ -118,6 +125,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         rawValueTmp[key] = value;
       }
     });
+
     return rawValueTmp;
   }
 

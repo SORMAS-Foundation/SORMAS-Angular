@@ -22,6 +22,8 @@ import { GpsCoordsComponent } from '../../../widgets/gps-coords/gps-coords.compo
 import { AddressButtonComponent } from '../../../widgets/address-button/address-button.component';
 import { LastUpdateComponent } from '../../../widgets/last-update/last-update.component';
 import { SuperordinateEventComponent } from '../../../widgets/superordinate-event/superordinate-event.component';
+import { ContactCaseDetailsComponent } from '../../../widgets/contact-case-details/contact-case-details.component';
+import { ContactFollowUpComponent } from '../../../widgets/contact-follow-up/contact-follow-up.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -37,6 +39,8 @@ const COMPONENTS_MAP: any = {
   'app-address-button': AddressButtonComponent,
   'app-last-update': LastUpdateComponent,
   'app-superordinate-event': SuperordinateEventComponent,
+  'app-contact-case-details': ContactCaseDetailsComponent,
+  'app-contact-follow-up': ContactFollowUpComponent,
 };
 
 @Component({

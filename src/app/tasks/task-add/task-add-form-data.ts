@@ -17,7 +17,6 @@ import {
 const pipe = new EnumToKeyValuePipe();
 
 const optionsTaskTypes = pipe.transform(TaskTypeOptions);
-const optionsAssignedUser = pipe.transform(['Default user']);
 const optionsPriority = pipe.transform(TaskPriorityOptions);
 const optionsTaskStatus = pipe.transform(TaskStatusOptions);
 
@@ -73,7 +72,12 @@ export const FORM_DATA_TASK_ADD = [
         ...FORM_DATA_SELECT,
         key: 'assigneeUser.uuid',
         label: '',
-        options: optionsAssignedUser,
+        options: [
+          {
+            key: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
+            value: 'admin'
+          }
+        ],
         validation: ['required'],
       },
     ],

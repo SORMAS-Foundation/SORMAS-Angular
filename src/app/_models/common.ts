@@ -81,6 +81,7 @@ export interface NavItem {
 export type InfoBarType =
   | 'CASE'
   | 'EVENT'
+  | 'EVENT_P'
   | 'SAMPLE_CASE'
   | 'SAMPLE_EVENT_PARTICIPANT'
   | 'SAMPLE_CONTACT'
@@ -89,6 +90,7 @@ export type InfoBarType =
 export const InfoBarTypeOptions = {
   CASE: 'CASE' as InfoBarType,
   EVENT: 'EVENT' as InfoBarType,
+  EVENT_P: 'EVENT_P' as InfoBarType,
   SAMPLE_CASE: 'SAMPLE_CASE' as InfoBarType,
   SAMPLE_EVENT_PARTICIPANT: 'SAMPLE_EVENT_PARTICIPANT' as InfoBarType,
   SAMPLE_CONTACT: 'SAMPLE_CONTACT' as InfoBarType,
