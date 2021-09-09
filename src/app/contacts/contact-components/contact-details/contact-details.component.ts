@@ -17,9 +17,7 @@ export class ContactDetailsComponent {
   subscription: Subscription = new Subscription();
   public resourceService: BaseService<any>;
 
-  constructor(
-    private formElementControlService: FormElementControlService,
-  ) {}
+  constructor(private formElementControlService: FormElementControlService) {}
 
   updateComponent(contactItem: ContactDto, resourceService: BaseService<any>): void {
     this.resourceService = resourceService;
