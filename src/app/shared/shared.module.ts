@@ -41,6 +41,7 @@ import { InfoBarComponent } from './info-bar/info-bar.component';
 import { SuperordinateEventComponent } from './widgets/superordinate-event/superordinate-event.component';
 import { ContactCaseDetailsComponent } from './widgets/contact-case-details/contact-case-details.component';
 import { ContactFollowUpComponent } from './widgets/contact-follow-up/contact-follow-up.component';
+import { TableNotificationComponent } from './table/table-notification/table-notification.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ContactFollowUpComponent } from './widgets/contact-follow-up/contact-fo
     SidebarComponent,
     EdgePanelComponent,
     TableDataComponent,
+    TableNotificationComponent,
     PersonContactsListComponent,
     NewPersonContactComponent,
     GpsCoordsComponent,
@@ -116,6 +118,6 @@ import { ContactFollowUpComponent } from './widgets/contact-follow-up/contact-fo
     DirectivesModule,
     InfoBarComponent,
   ],
-  entryComponents: [AddEditBaseModalComponent, TableDataComponent],
+  entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })
 export class SharedModule {}

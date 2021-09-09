@@ -66,6 +66,11 @@ const routes: Routes = [
       import('./configuration/configuration.module').then((m) => m.ConfigurationModule),
     canActivate: [Guard, LeaveGuard],
   },
+  {
+    path: 'stats',
+    loadChildren: () => import('./stats/stats.module').then((m) => m.StatsModule),
+    canActivate: [Guard, LeaveGuard],
+  },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
 ];

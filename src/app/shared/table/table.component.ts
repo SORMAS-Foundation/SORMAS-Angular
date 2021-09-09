@@ -21,8 +21,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
-import { NotificationService } from '../../_services/notification.service';
-import { Filter, NavItem, Sorting, TableColumn } from '../../_models/common';
+import {
+  FetchStatus,
+  FetchStatusType,
+  Filter,
+  NavItem,
+  Sorting,
+  TableColumn,
+} from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -53,12 +59,15 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   subscriptions: Subscription[] = [];
   columnKeys: string[] = [];
   totalItems = 0;
+  fetchStatus: FetchStatus | undefined;
+  fetchStatusType = FetchStatusType;
 
   private subscription: Subscription[] = [];
 
   @Input() isSortable = false;
   @Input() isPageable = false;
   @Input() isSelectable = false;
+  @Input() isEditable = false;
   @Input() isHeaderSticky = false;
   @Input() tableColumns: TableColumn[] = [];
   @Input() resourceService: BaseService<any>;
@@ -85,12 +94,11 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
-  @Output() clickItem: EventEmitter<any> = new EventEmitter();
+  @Output() editItem: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
   constructor(
-    private notificationService: NotificationService,
     private filterService: FilterService,
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
@@ -134,6 +142,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getColumns(): string[] {
     let columns = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
+
+    if (this.isEditable) {
+      columns.unshift('edit');
+    }
 
     if (this.isSelectable) {
       columns.unshift('select');
@@ -225,12 +237,21 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
           this.totalItems = response.totalElementCount;
 
+          if (this.totalItems) {
+            this.fetchStatus = undefined;
+          } else {
+            this.fetchStatus =
+              this.preSetFilters?.length || this.filters?.length
+                ? this.fetchStatusType.NO_MATCH
+                : this.fetchStatusType.NO_DATA;
+          }
+
           if (!this.fullHeight) {
             this.determineHeight();
           }
         },
-        error: (err: any) => {
-          this.notificationService.error(err);
+        error: () => {
+          this.fetchStatus = this.fetchStatusType.ERROR;
         },
         complete: () => {},
       });
@@ -289,6 +310,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         // eslint-disable-next-line no-console
         console.log(event);
     }
+  }
+
+  doActionEdit(index: number): void {
+    this.editItem.emit(this.dataSourceArray[index]);
   }
 
   updateTableColumns(columns: string[]): void {

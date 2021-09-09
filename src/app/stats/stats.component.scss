@@ -1,0 +1,14 @@
+@use '/src/variables.scss' as *;
+
+.tab-nav-header {
+  position: sticky;
+  z-index: 3;
+  top: 68px;
+  padding: 48px 48px 0;
+  border-bottom: solid 2px map-get($sormas-accent, 200);
+  background-color: $white;
+}
+
+.heading-tabs {
+  height: 60px;
+}
