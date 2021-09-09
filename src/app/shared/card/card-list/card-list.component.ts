@@ -48,7 +48,6 @@ export class CardListComponent implements OnChanges {
   processedCardTitleKey: string | string[] = '';
 
   ngOnChanges(): void {
-    console.log('titleDateFormat222', this.titleDateFormat, this.cardStatusKey);
     this.limit = this.initialPageSize || this.data.length;
   }
 
