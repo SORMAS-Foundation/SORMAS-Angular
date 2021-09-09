@@ -29,7 +29,7 @@ export const API_ROUTE_ADDITIONAL_TESTS = {
   UPDATE: 'additionaltests/update',
   ADD: 'additionaltests/add',
   DELETE: 'additionaltests/delete',
-  GET_BY_SAMPLE_ID: 'additionaltests/query/samples',
+  GET_BY_SAMPLE_ID: 'additionaltests/query/samples', // toDo: hardcoded endpoint. Needs backend
 };
 
 export const API_ROUTE_PRESCRIPTIONS = {

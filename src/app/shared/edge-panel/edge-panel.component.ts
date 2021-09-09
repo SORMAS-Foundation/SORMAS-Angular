@@ -49,7 +49,6 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
     ];
 
     this.config = PANEL_CONFIG[this.type];
-    console.log('ssssss', this.config);
     if (this.type === EDGE_PANEL_TYPE.PATHOGEN || this.type === EDGE_PANEL_TYPE.ADDITIONAL) {
       this.subscriptions.push(
         this.resourceService?.getBySampleId(this.scopeId || '').subscribe({
