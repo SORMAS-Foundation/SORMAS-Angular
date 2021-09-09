@@ -10,5 +10,17 @@
       width: 100%;
       margin: 0;
     }
+    .title-date {
+      color: map-get($sormas-accent, 600);
+      font-size: 14px;
+      .title-date-item-2,
+      .title-date-item-4 {
+        color: map-get($sormas-accent, 400);
+        font-size: 10px;
+      }
+      .title-date-item-3 {
+        font-size: 10px;
+      }
+    }
   }
 }

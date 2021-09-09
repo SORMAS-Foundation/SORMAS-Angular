@@ -56,6 +56,6 @@ export const PANEL_CONFIG = {
     action: 'strings.headingNewTestResults',
     cardType: 'sample_additional',
     cardTitleKey: 'creationDate',
-    titleDateFormat: 'd MMM h:mm',
+    titleDateFormat: 'd MMM h:mm aa',
   },
 };
