@@ -89,6 +89,7 @@ export class BaseService<T extends Resource> {
       .pipe(map((data: any) => this.serializer.fromJson(data) as T));
   }
 
+  // toDo: This needs to be eliminated when getAll is working!!!
   getBySampleId(id: number | string): Observable<T> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
