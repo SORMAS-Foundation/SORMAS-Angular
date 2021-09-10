@@ -8,6 +8,7 @@
       [ngClass]="config.separated ? 'block' : ''"
       *ngFor="let opt of config.options"
       [value]="opt.key"
+      [ngClass]="{'full-width': config.radioNewLine}"
       color="primary"
     >
       {{ opt.value }}

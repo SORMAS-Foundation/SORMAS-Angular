@@ -39,6 +39,8 @@ import { DirectivesModule } from '../_directives/directives.module';
 import { LastUpdateComponent } from './widgets/last-update/last-update.component';
 import { InfoBarComponent } from './info-bar/info-bar.component';
 import { SuperordinateEventComponent } from './widgets/superordinate-event/superordinate-event.component';
+import { ContactCaseDetailsComponent } from './widgets/contact-case-details/contact-case-details.component';
+import { ContactFollowUpComponent } from './widgets/contact-follow-up/contact-follow-up.component';
 import { TableNotificationComponent } from './table/table-notification/table-notification.component';
 
 @NgModule({
@@ -70,6 +72,8 @@ import { TableNotificationComponent } from './table/table-notification/table-not
     LastUpdateComponent,
     InfoBarComponent,
     SuperordinateEventComponent,
+    ContactCaseDetailsComponent,
+    ContactFollowUpComponent,
   ],
   imports: [
     CommonModule,

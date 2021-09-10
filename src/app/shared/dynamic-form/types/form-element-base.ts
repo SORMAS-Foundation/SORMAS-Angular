@@ -19,6 +19,7 @@ export class FormElementBase<T> {
   dependingOnValues?: any[]; // the value of the field that the current field is depending on in order to be visible
   widget?: any;
   chips?: boolean; // flag to toggle chips for multi-select
+  radioNewLine?: boolean; // radio btns displayed with full width
 
   constructor(
     options: {
@@ -41,6 +42,7 @@ export class FormElementBase<T> {
       dependingOnValues?: any[];
       widget?: any;
       chips?: boolean;
+      radioNewLine?: boolean;
     } = {}
   ) {
     this.value = options.value;
@@ -62,6 +64,7 @@ export class FormElementBase<T> {
     this.dependingOnValues = options.dependingOnValues;
     this.widget = options.widget;
     this.chips = options.chips ?? false;
+    this.radioNewLine = options.radioNewLine ?? false;
   }
 }
 

@@ -213,7 +213,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  getResources(reload: boolean = false): void {
+  public getResources(reload: boolean = false): void {
     this.resourceService
       .getAll({ offset: this.offset, size: this.limit }, this.sorting, this.filters)
       .subscribe({

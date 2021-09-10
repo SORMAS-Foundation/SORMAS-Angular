@@ -1,4 +1,7 @@
 .mat-radio-button {
+  &.full-width {
+    width: 100%;
+  }
   &.block {
     display: block;
   }

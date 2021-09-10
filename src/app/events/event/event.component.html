@@ -1,12 +1,22 @@
 <section *ngIf="event">
   <header>
-    <a [routerLink]="['/events/list']" mat-icon-button>
+    <a *ngIf="showTabs" [routerLink]="['/events/list']" mat-icon-button>
       <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
     </a>
-    <h1>{{ event.eventTitle }}</h1>
+    <a *ngIf="!showTabs" [routerLink]="['/events/event/' + eventId + '/participants']" mat-icon-button>
+      <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+    </a>
+    <h1 *ngIf="!showTabs">{{ eventParticipant?.person?.lastName }} {{ eventParticipant?.person?.firstName }} </h1>
+    <span *ngIf="!showTabs">
+      <mat-icon class="material-icons-round chevron-right-1" color="accent">chevron_right</mat-icon>
+      <mat-icon class="material-icons-round chevron-right-2" color="accent">chevron_right</mat-icon>
+    </span>
+    <h2 *ngIf="!showTabs" class="event-title">{{ event.eventTitle }} </h2>
+    <h1 *ngIf="showTabs">{{ event.eventTitle }}</h1>
   </header>
 
-  <app-info-bar [data]="event" [type]="'EVENT'"></app-info-bar>
+  <app-info-bar *ngIf="showTabs" [data]="event" [type]="'EVENT'"></app-info-bar>
+  <app-info-bar *ngIf="!showTabs" [data]="event" [type]="'EVENT_PARTICIPANT'"></app-info-bar>
 
   <div class="tab-nav-header">
     <nav mat-tab-nav-bar *ngIf="showTabs">
