@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -12,6 +12,7 @@ import { TaskAddComponent } from '../task-add/task-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { actionsBulkEditDefs } from './task-list-actions-data';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { TableComponent } from '../../shared/table/table.component';
 
 @Component({
   selector: 'app-tasks-list',
@@ -26,6 +27,8 @@ export class TasksListComponent implements OnInit, OnDestroy {
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
+
+  @ViewChild(TableComponent) tableComponent: TableComponent;
 
   constructor(
     public taskService: TaskService,
@@ -51,7 +54,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
       dialogRef.afterClosed().subscribe((result) => {
         this.formActionsService.setDiscard();
         if (result) {
-          // callback
+          this.tableComponent.getResources(true);
         }
       })
     );

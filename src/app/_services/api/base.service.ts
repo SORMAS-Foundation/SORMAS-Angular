@@ -114,7 +114,7 @@ export class BaseService<T extends Resource> {
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 
-  add(item: T): Observable<T> {
+  add(items: T[]): Observable<T> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.ADD) {
@@ -122,7 +122,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.helperService.getApiUrl()}/${endpoint}`, item)
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, items)
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 

@@ -89,6 +89,7 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-last-update',
+        className: 'push-right',
       },
       {
         ...FORM_DATA_NULL,
@@ -322,7 +323,7 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-new-person-contact',
-        newLine: true,
+        className: 'push-right',
       },
       {
         ...FORM_DATA_INPUT,

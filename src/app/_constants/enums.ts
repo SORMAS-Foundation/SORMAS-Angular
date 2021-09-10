@@ -384,10 +384,29 @@ export enum ConveyanceTypeOptions {
 }
 
 export enum TaskContextOptions {
-  CASE = 'Case',
-  CONTACT = 'Contact',
-  EVENT = 'Event',
-  GENERAL = 'General',
+  CASE = 'CASE',
+  CONTACT = 'CONTACT',
+  EVENT = 'EVENT',
+  GENERAL = 'GENERAL',
+}
+
+export enum TracingApp {
+  CORONAWARNAPP = 'Corona warn app',
+  OTHER = 'Other',
+  UNKNOWN = 'Unknown',
+}
+
+export enum TypeOfContact {
+  FACE_TO_FACE_MORE_15 = 'Face to face contact at least 15 minutes',
+  TOUCHED_FLUID = 'Touched fluid of source case',
+  PERSON_EXPOSED = 'Persons exposed to aerosol producing activities',
+  MEDICAL_PERSONNEL_HIGH = 'Medical personnel with a high risk of exposures, e.g. unprotected relevant exposure to secretion, ,exposure to aerosol from Covid-19 cases',
+  MEDICAL_PERSONNEL_LIMITED = 'Medical personnel with limited exposure, e.g. with contact < 2m to Covid-19 cases without protective equipment,,≥ 15 min face to face contact ( without exposure as described under Ia)',
+  SAME_ROOM = 'Was in same room or house with source case',
+  FACE_TO_FACE_LESS_15 = 'Face to face contact of less then 15 minutes',
+  MEDICAL_PERSONNEL_SAME_ROOM = 'Medical personnel that was in the same room or house with source case',
+  MEDICAL_PERSONNEL_SAFE = 'Medical personnel at save proximity (>2 meter) or with protective equipment ',
+  MEDICAL_PERSONNEL_SAFE_2 = 'Medical personnel at save proximity (>2 meter) without direct contact with secretions or excretions of the patient,and without aerosol exposures',
 }
 
 export enum TaskTypeOptions {
@@ -502,6 +521,14 @@ export enum ContactClassification {
   UNCONFIRMED = 'Unconfirmed contact',
   CONFIRMED = 'Confirmed contact',
   NO_CONTACT = 'Not a contact',
+}
+
+export enum ContactClassificationOptions {
+  CASE_PERSON = 'Case person',
+  CONTACT_PERSON = 'Contact person',
+  PROXIMITY_TRACING_APP = 'Proximity tracing app',
+  OTHER = 'Other',
+  UNKNOWN = 'Unknown',
 }
 
 export enum ContactStatus {

@@ -58,6 +58,21 @@
         opacity: 1;
       }
     }
+
+    .heading-tabs {
+      .mat-tab-link {
+        height: 60px;
+        align-self: baseline;
+        padding: 0 0 24px;
+        margin-right: 32px;
+        font-size: 20px;
+        opacity: 1;
+
+        &.mat-tab-label-active {
+          font-size: 34px;
+        }
+      }
+    }
   }
 
   @media (min-width: map-get($grid-breakpoints, md)) {

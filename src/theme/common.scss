@@ -39,12 +39,31 @@ a:not(.mat-button) {
   }
 }
 
+strong {
+  font-weight: 500;
+}
+
 .errorMessage {
   color: $warn;
 }
 
-.filters .mat-drawer-inner-container {
-  overflow-y: scroll;
+.filters {
+  .mat-drawer-inner-container {
+    overflow-y: scroll;
+  }
+
+  .mat-radio-label {
+    font-weight: normal;
+  }
+
+  .search-icon {
+    color: map-get($sormas-accent, 200);
+  }
+
+  .search-field ::placeholder {
+    color: map-get($sormas-accent, 200);
+    opacity: 1;
+  }
 }
 
 // page general layout
@@ -78,10 +97,6 @@ a:not(.mat-button) {
 
 /* Table dynamic content */
 :root td.mat-cell {
-  &.mat-column-select {
-    width: 48px;
-  }
-
   &.visit-date {
     .visitDateTime {
       color: map-get($sormas-accent, 600);

@@ -52,7 +52,7 @@ export const API_ROUTE_TASKS = {
   ENDPOINT: 'tasks',
   GET_ALL: 'tasks/indexList',
   UPDATE: 'tasks/update',
-  ADD: 'tasks/add',
+  ADD: 'tasks/push',
   DELETE: 'tasks/delete',
 };
 
