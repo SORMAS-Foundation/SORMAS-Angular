@@ -51,8 +51,4 @@ export class EventParticipantsProfileComponent implements OnInit {
       complete: () => {},
     });
   }
-
-  public getParticipant(): EventParticipantDto {
-    return this.participant;
-  }
 }
