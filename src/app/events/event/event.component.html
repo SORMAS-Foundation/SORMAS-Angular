@@ -3,15 +3,21 @@
     <a *ngIf="showTabs" [routerLink]="['/events/list']" mat-icon-button>
       <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
     </a>
-    <a *ngIf="!showTabs" [routerLink]="['/events/event/' + eventId + '/participants']" mat-icon-button>
+    <a
+      *ngIf="!showTabs"
+      [routerLink]="['/events/event/' + eventId + '/participants']"
+      mat-icon-button
+    >
       <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
     </a>
-    <h1 *ngIf="!showTabs">{{ eventParticipant?.person?.lastName }} {{ eventParticipant?.person?.firstName }} </h1>
+    <h1 *ngIf="!showTabs">
+      {{ eventParticipant?.person?.lastName }} {{ eventParticipant?.person?.firstName }}
+    </h1>
     <span *ngIf="!showTabs">
       <mat-icon class="material-icons-round chevron-right-1" color="accent">chevron_right</mat-icon>
       <mat-icon class="material-icons-round chevron-right-2" color="accent">chevron_right</mat-icon>
     </span>
-    <h2 *ngIf="!showTabs" class="event-title">{{ event.eventTitle }} </h2>
+    <h2 *ngIf="!showTabs" class="event-title">{{ event.eventTitle }}</h2>
     <h1 *ngIf="showTabs">{{ event.eventTitle }}</h1>
   </header>
 
@@ -32,7 +38,10 @@
       </a>
     </nav>
     <div class="tab-nav-header-actions">
-      <app-form-actions *ngIf="currentSubPage.showFormActions" [resource]="event"></app-form-actions>
+      <app-form-actions
+        *ngIf="currentSubPage.showFormActions"
+        [resource]="event"
+      ></app-form-actions>
       <div *ngIf="!currentSubPage.showFormActions && currentSubPage.link.includes('participants')">
         <button
           mat-flat-button
@@ -43,8 +52,7 @@
           {{ 'captions.eventParticipantAddPerson' | translate }}
         </button>
         <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
-          <app-action-menu
-          ></app-action-menu>
+          <app-action-menu></app-action-menu>
         </app-dropdown-menu>
       </div>
     </div>

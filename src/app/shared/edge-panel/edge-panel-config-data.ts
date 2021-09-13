@@ -44,4 +44,18 @@ export const PANEL_CONFIG = {
     appearance: 'outlined',
     titleUppercase: true,
   },
+  PATHOGEN: {
+    title: 'strings.entityPathogenTests',
+    action: 'strings.headingNewTestResults',
+    cardType: 'sample_pathogen',
+    cardTitleKey: 'sample.uuid',
+    cardStatusKey: 'testResult',
+  },
+  ADDITIONAL: {
+    title: 'strings.headingAdditionalTests',
+    action: 'strings.headingNewTestResults',
+    cardType: 'sample_additional',
+    cardTitleKey: 'creationDate',
+    titleDateFormat: 'd MMM h:mm aa',
+  },
 };

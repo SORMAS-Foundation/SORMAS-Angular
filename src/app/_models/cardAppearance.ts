@@ -32,4 +32,6 @@ export type CardType =
   | 'attachments'
   | 'therapy_treatments'
   | 'therapy_prescriptions'
+  | 'sample_pathogen'
+  | 'sample_additional'
   | undefined;
