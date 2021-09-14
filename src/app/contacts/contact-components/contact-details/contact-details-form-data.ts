@@ -36,6 +36,8 @@ export const FORM_DATA_CONTACT_DETAILS = [
   {
     id: 'caseDetails',
     title: 'strings.entityCase',
+    anchor: 'contact_data',
+    anchorLabel: 'strings.headingContactData',
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -141,6 +143,8 @@ export const FORM_DATA_CONTACT_DETAILS = [
   {
     id: 'externalData',
     title: 'CaseData.externalData',
+    anchor: 'additional_information',
+    anchorLabel: 'CaseData.additionalInfo',
     fields: [
       {
         ...FORM_DATA_INPUT,
@@ -695,7 +699,45 @@ export const FORM_DATA_CONTACT_DETAILS = [
     ],
   },
   {
+    id: 'followupStatus',
+    title: '',
+    required: false,
+    anchor: 'followup_status',
+    anchorLabel: 'captions.CaseData.followUpStatus',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-follow-up-status',
+        className: 'push-right',
+      },
+      {
+        ...FORM_DATA_NULL,
+        key: 'followUpStatus',
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'overwriteFollowUpUntil',
+        label: 'captions.CaseData.overwriteFollowUpUntil',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'followUpUntil',
+        dependingOn: 'overwriteFollowUpUntil',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'followUpComment',
+        label: 'captions.CaseData.followUpComment',
+        newLine: true,
+        className: 'size-full',
+      },
+    ],
+  },
+  {
     id: 'contactOfficer',
+    anchor: 'general_comment',
+    anchorLabel: 'captions.Contact.additionalDetails',
     title: '',
     fields: [
       {
