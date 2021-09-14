@@ -21,6 +21,8 @@ import { CardEventActionsComponent } from './card-event-actions/card-event-actio
 import { CardAttachmentsComponent } from './card-attachments/card-attachments.component';
 import { CardTreatmentsComponent } from './card-treatments/card-treatments.component';
 import { CardPrescriptionsComponent } from './card-prescriptions/card-prescriptions.component';
+import { CardSamplePathogenComponent } from './card-sample-pathogen/card-sample-pathogen.component';
+import { CardSampleAdditionalComponent } from './card-list/card-sample-additional/card-sample-additional.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
@@ -42,6 +44,8 @@ import { CardPrescriptionsComponent } from './card-prescriptions/card-prescripti
     CardPersonEventComponent,
     CardEventActionsComponent,
     CardAttachmentsComponent,
+    CardSamplePathogenComponent,
+    CardSampleAdditionalComponent,
   ],
   exports: [CardComponent, CardListComponent, CardEventActionsComponent, CardAttachmentsComponent],
 })

@@ -1,0 +1,44 @@
+@use '/src/variables.scss' as *;
+
+.card-sample-pathogen {
+  .title {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 16px;
+    color: mat-color($sormas-accent, 800);
+    font-weight: 500;
+  }
+  .test-result {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .test-result-details {
+    max-width: 160px;
+    margin-bottom: 12px;
+    color: mat-color($sormas-accent, 700);
+    font-size: 12px;
+  }
+
+  .timeline {
+    position: absolute;
+    top: 60px;
+    right: 28px;
+  }
+
+  .check-icon {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    color: mat-color($sormas-accent, 400);
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+  }
+
+  .disease {
+    color: mat-color($sormas-accent, 500);
+    font-size: 12px;
+  }
+}

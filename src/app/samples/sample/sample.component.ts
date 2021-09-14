@@ -13,6 +13,8 @@ import { InfoBarType, InfoBarTypeOptions } from '../../_models/common';
 import { EventParticipantService } from '../../_services/api/event-participant.service';
 import { PersonService } from '../../_services/api/person.service';
 import { EventService } from '../../_services/api/event.service';
+import { PathogenTestService } from '../../_services/api/pathogenTest.service';
+import { AdditionalTestService } from '../../_services/api/additionalTest.service';
 
 @Component({
   selector: 'app-sample',
@@ -32,6 +34,8 @@ export class SampleComponent implements OnInit, OnDestroy {
 
   constructor(
     public sampleService: SampleService,
+    public pathogenTestService: PathogenTestService,
+    public additionalTestService: AdditionalTestService,
     private caseService: CaseService,
     private contactService: ContactService,
     private eventparticipantService: EventParticipantService,

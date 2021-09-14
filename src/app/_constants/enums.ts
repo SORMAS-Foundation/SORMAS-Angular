@@ -350,7 +350,7 @@ export enum DateCardType {
 
 export enum CardStatusMap {
   CONFIRMED = 'confirmed',
-  PENEDING = 'undetermined',
+  PENDING = 'pending',
   INDETERMINATE = 'undetermined',
   DONE = 'completed',
   NEGATIVE = 'good',
