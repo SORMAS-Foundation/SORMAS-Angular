@@ -65,7 +65,9 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           // for (let i = 0; i < response.resource.length; i += 1) {
           //   resourceArrayTmp.push(this.updateResource(response.resource[i]));
           // }
-          RESOURCE = this.resourceService.add([this.updateFormRawValueWithObjects(true, response.resource.uuid)]);
+          RESOURCE = this.resourceService.add([
+            this.updateFormRawValueWithObjects(true, response.resource.uuid),
+          ]);
         }
 
         RESOURCE.subscribe({

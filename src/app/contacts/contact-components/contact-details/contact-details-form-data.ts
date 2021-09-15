@@ -206,7 +206,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
   },
   {
     id: 'contactType',
-    title: 'Type of contact', // todotranslate
+    title: 'Contact.typeOfContact', // todotranslate
     subtitle: 'Contact.pickClosest',
     fields: [
       {

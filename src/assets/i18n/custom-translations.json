@@ -63,5 +63,6 @@
   "messageResultsNoData": "There are no {{ dataType }} to be displayed.",
   "messageResultsNoMatch": "No {{ dataType }} to display for selected filters",
   "promptResultsNoMatch": "Please make a different filter selection.",
-  "entityUsers": "Users"
+  "entityUsers": "Users",
+  "xxx": "xxx"
 }
