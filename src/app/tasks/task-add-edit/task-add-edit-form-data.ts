@@ -20,7 +20,7 @@ const optionsTaskTypes = pipe.transform(TaskTypeOptions);
 const optionsPriority = pipe.transform(TaskPriorityOptions);
 const optionsTaskStatus = pipe.transform(TaskStatusOptions);
 
-export const FORM_DATA_TASK_ADD = [
+export const FORM_DATA_TASK_ADD_EDIT = [
   {
     id: 'taskContext',
     title: 'captions.Task.taskContext',
@@ -32,6 +32,18 @@ export const FORM_DATA_TASK_ADD = [
       },
     ],
   },
+
+  {
+    id: 'associatedCase',
+    title: 'captions.Task.caze',
+    fields: [
+      {
+        ...FORM_DATA_NULL,
+        key: 'caze.uuid',
+      },
+    ],
+  },
+
   {
     id: 'taskType',
     title: 'captions.Task.taskType',
@@ -75,8 +87,8 @@ export const FORM_DATA_TASK_ADD = [
         options: [
           {
             key: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
-            value: 'admin'
-          }
+            value: 'admin',
+          },
         ],
         validation: ['required'],
       },

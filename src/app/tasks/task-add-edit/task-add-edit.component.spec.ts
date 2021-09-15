@@ -1,21 +1,21 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaskAddComponent } from './task-add.component';
+import { TaskAddEditComponent } from './task-add-edit.component';
 
-describe('TaskAddComponent', () => {
-  let component: TaskAddComponent;
-  let fixture: ComponentFixture<TaskAddComponent>;
+describe('TaskAddEditComponent', () => {
+  let component: TaskAddEditComponent;
+  let fixture: ComponentFixture<TaskAddEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TaskAddComponent],
+      declarations: [TaskAddEditComponent],
       imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskAddComponent);
+    fixture = TestBed.createComponent(TaskAddEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
