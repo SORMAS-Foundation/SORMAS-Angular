@@ -31,7 +31,11 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     setTimeout(() => {
       const resolver = this.componentFactoryResolver.resolveComponentFactory(this.data.component);
-      this.addEditResource.createComponent(resolver);
+      const createdComponent = this.addEditResource.createComponent(resolver);
+      if (this.data.resource) {
+        // @ts-ignore
+        createdComponent.instance.selectedResource = this.data.resource;
+      }
     });
 
     this.subscription.push(
@@ -46,8 +50,8 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    if (this.data.editResources) {
-      this.formActionsService.setSave(this.data.editResources);
+    if (this.data.resource) {
+      this.formActionsService.setSave(this.data.resource);
     } else {
       this.formActionsService.setSave(null);
     }

@@ -78,6 +78,10 @@ legend {
   display: inline-block;
   margin-right: 20px;
   vertical-align: top;
+
+  &.margin-left-50 {
+    margin-left: 50px;
+  }
 }
 
 .size-small {

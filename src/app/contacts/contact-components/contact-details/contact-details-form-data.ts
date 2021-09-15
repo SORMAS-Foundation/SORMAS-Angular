@@ -123,6 +123,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
+        newLine: true,
         label: 'captions.Contact.cazeDisease',
         options: [
           {
@@ -205,7 +206,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
   },
   {
     id: 'contactType',
-    title: 'Contact.typeOfContact',
+    title: 'Type of contact', // todotranslate
     subtitle: 'Contact.pickClosest',
     fields: [
       {
@@ -235,6 +236,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
         ...FORM_DATA_RADIO,
         key: 'contactType',
         options: optionsTypeOfContact,
+        className: 'light-text',
         newLine: true,
         radioNewLine: true,
       },
@@ -292,6 +294,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
     fields: [
       {
         ...FORM_DATA_RADIO,
+        label: 'captions.Contact.careForPeopleOver60',
         key: 'careForPeopleOver60',
         options: optionsYesNoUnknown,
       },
@@ -449,18 +452,21 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.currentSmoker',
         key: 'currentSmoker',
         options: optionsYesNoUnknown,
+        className: 'light-text',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.hepatitis',
         key: 'hepatitis',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.formerSmoker',
         key: 'formerSmoker',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -468,12 +474,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.chronicLiverDisease',
         key: 'chronicLiverDisease',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.obesity',
         key: 'obesity',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -481,12 +489,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.asplenia',
         key: 'asplenia',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.cardiovascularDiseaseIncludingHypertension',
         key: 'cardiovascularDiseaseIncludingHypertension',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -494,12 +504,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.chronicNeurologicCondition',
         key: 'chronicNeurologicCondition',
         options: optionsYesNoUnknown,
+        className: 'light-text',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.chronicHeartFailure',
         key: 'chronicHeartFailure',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -507,12 +519,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.sickleCellDisease',
         key: 'sickleCellDisease',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.diabetes',
         key: 'diabetes',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -520,12 +534,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.downSyndrome',
         key: 'downSyndrome',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.asthma',
         key: 'asthma',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -533,12 +549,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.malignancyChemotherapy',
         key: 'malignancyChemotherapy',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.tuberculosis',
         key: 'tuberculosis',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -546,12 +564,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.congenitalSyphilis',
         key: 'congenitalSyphilis',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.chronicPulmonaryDisease',
         key: 'chronicPulmonaryDisease',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -559,12 +579,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.hiv',
         key: 'hiv',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.chronicKidneyDisease',
         key: 'chronicKidneyDisease',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -572,6 +594,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.immunodeficiencyOtherThanHiv',
         key: 'immunodeficiencyOtherThanHiv',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_TEXTAREA,
@@ -599,7 +622,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
   },
   {
     id: 'vaccination',
-    title: 'CaseData.vaccinationSimple',
+    title: 'Vaccination', // todotranslate
     fields: [
       {
         ...FORM_DATA_SELECT,

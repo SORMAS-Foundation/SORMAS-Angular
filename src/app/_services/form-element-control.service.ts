@@ -48,6 +48,19 @@ export class FormElementControlService {
     return formElements;
   }
 
+  resetValuesForDynamicForm(formElements: FormBase<any>[]): FormBase<any>[] {
+    formElements.forEach((formElement) => {
+      formElement.fields.forEach((field) => {
+        if (field.value) {
+          // eslint-disable-next-line no-param-reassign
+          delete field.value;
+        }
+      });
+    });
+
+    return formElements;
+  }
+
   getValidators(validators: string[]): ValidatorFn[] {
     const validatorsArray = [];
 
