@@ -52,8 +52,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           return;
         }
 
-        console.log('response', response);
-
         let RESOURCE;
         if (response.resource === null) {
           // ADD mode
