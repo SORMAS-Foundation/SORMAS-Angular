@@ -1,7 +1,6 @@
 <div [formGroup]="group">
   <mat-form-field
     [id]="config.key"
-    *ngIf="config.key"
     appearance="outline"
     floatLabel="always"
     [ngClass]="{ 'has-hint': !!config.hint, readonly: true }"

@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as data from './task-add-edit-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { TaskService } from '../../_services/api/task.service';
-import { TaskDto } from '../../../../dist/api-client/public-api';
 import { FormElementControlService } from '../../_services/form-element-control.service';
+import { TaskDto } from '../../_models/taskDto';
 
 @Component({
   selector: 'app-task-add-edit',
