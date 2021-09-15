@@ -57,13 +57,15 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           // ADD mode
           RESOURCE = this.resourceService.add([this.updateFormRawValueWithObjects()]);
         } else {
-          // EDIT mode
-          const resourceArrayTmp = [];
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < response.resource.length; i += 1) {
-            resourceArrayTmp.push(this.updateResource(response.resource[i]));
-          }
-          RESOURCE = this.resourceService.update(resourceArrayTmp);
+          // // EDIT mode
+          // const resourceArrayTmp = [];
+          // // tslint:disable-next-line:prefer-for-of
+          // for (let i = 0; i < response.resource.length; i += 1) {
+          //   resourceArrayTmp.push(this.updateResource(response.resource[i]));
+          // }
+          RESOURCE = this.resourceService.add([
+            this.updateFormRawValueWithObjects(true, response.resource.uuid),
+          ]);
         }
 
         RESOURCE.subscribe({
@@ -111,8 +113,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return paths.reduce((acc, el) => ({ [el]: acc }), { [last]: value });
   }
 
-  updateFormRawValueWithObjects(): any {
-    const rawValueTmp: any = {};
+  updateFormRawValueWithObjects(isEdit?: boolean, id?: string): any {
+    let rawValueTmp: any = {};
+    if (isEdit) {
+      rawValueTmp = {
+        uuid: id,
+      };
+    }
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
       if (key.includes('.')) {
         const keys = key.split('.');

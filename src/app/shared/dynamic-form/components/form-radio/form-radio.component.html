@@ -11,7 +11,7 @@
       [ngClass]="{'full-width': config.radioNewLine}"
       color="primary"
     >
-      {{ opt.value }}
+      <span [ngClass]="{'light-text': config.className?.includes('light-text') }"   class="light-text">{{ opt.value }}</span>
     </mat-radio-button>
   </mat-radio-group>
   <div class="errorMessage" color="warn" *ngIf="!isValid">

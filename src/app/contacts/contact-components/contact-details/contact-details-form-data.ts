@@ -36,6 +36,8 @@ export const FORM_DATA_CONTACT_DETAILS = [
   {
     id: 'caseDetails',
     title: 'strings.entityCase',
+    anchor: 'contact_data',
+    anchorLabel: 'strings.headingContactData',
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -121,6 +123,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
+        newLine: true,
         label: 'captions.Contact.cazeDisease',
         options: [
           {
@@ -141,6 +144,8 @@ export const FORM_DATA_CONTACT_DETAILS = [
   {
     id: 'externalData',
     title: 'CaseData.externalData',
+    anchor: 'additional_information',
+    anchorLabel: 'CaseData.additionalInfo',
     fields: [
       {
         ...FORM_DATA_INPUT,
@@ -201,7 +206,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
   },
   {
     id: 'contactType',
-    title: 'Contact.typeOfContact',
+    title: 'Contact.typeOfContact', // todotranslate
     subtitle: 'Contact.pickClosest',
     fields: [
       {
@@ -231,6 +236,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
         ...FORM_DATA_RADIO,
         key: 'contactType',
         options: optionsTypeOfContact,
+        className: 'light-text',
         newLine: true,
         radioNewLine: true,
       },
@@ -288,6 +294,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
     fields: [
       {
         ...FORM_DATA_RADIO,
+        label: 'captions.Contact.careForPeopleOver60',
         key: 'careForPeopleOver60',
         options: optionsYesNoUnknown,
       },
@@ -445,18 +452,21 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.currentSmoker',
         key: 'currentSmoker',
         options: optionsYesNoUnknown,
+        className: 'light-text',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.hepatitis',
         key: 'hepatitis',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.formerSmoker',
         key: 'formerSmoker',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -464,12 +474,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.chronicLiverDisease',
         key: 'chronicLiverDisease',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.obesity',
         key: 'obesity',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -477,12 +489,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.asplenia',
         key: 'asplenia',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.cardiovascularDiseaseIncludingHypertension',
         key: 'cardiovascularDiseaseIncludingHypertension',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -490,12 +504,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.chronicNeurologicCondition',
         key: 'chronicNeurologicCondition',
         options: optionsYesNoUnknown,
+        className: 'light-text',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.chronicHeartFailure',
         key: 'chronicHeartFailure',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -503,12 +519,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.sickleCellDisease',
         key: 'sickleCellDisease',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.diabetes',
         key: 'diabetes',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -516,12 +534,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.downSyndrome',
         key: 'downSyndrome',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.asthma',
         key: 'asthma',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -529,12 +549,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.malignancyChemotherapy',
         key: 'malignancyChemotherapy',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.tuberculosis',
         key: 'tuberculosis',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -542,12 +564,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.congenitalSyphilis',
         key: 'congenitalSyphilis',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.chronicPulmonaryDisease',
         key: 'chronicPulmonaryDisease',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -555,12 +579,14 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.hiv',
         key: 'hiv',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.chronicKidneyDisease',
         key: 'chronicKidneyDisease',
         options: optionsYesNoUnknown,
+        className: 'light-text',
         newLine: true,
       },
       {
@@ -568,6 +594,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.HealthConditions.immunodeficiencyOtherThanHiv',
         key: 'immunodeficiencyOtherThanHiv',
         options: optionsYesNoUnknown,
+        className: 'light-text margin-left-50',
       },
       {
         ...FORM_DATA_TEXTAREA,
@@ -595,7 +622,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
   },
   {
     id: 'vaccination',
-    title: 'CaseData.vaccinationSimple',
+    title: 'Vaccination', // todotranslate
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -695,7 +722,45 @@ export const FORM_DATA_CONTACT_DETAILS = [
     ],
   },
   {
+    id: 'followupStatus',
+    title: '',
+    required: false,
+    anchor: 'followup_status',
+    anchorLabel: 'captions.CaseData.followUpStatus',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-follow-up-status',
+        className: 'push-right',
+      },
+      {
+        ...FORM_DATA_NULL,
+        key: 'followUpStatus',
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'overwriteFollowUpUntil',
+        label: 'captions.CaseData.overwriteFollowUpUntil',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'followUpUntil',
+        dependingOn: 'overwriteFollowUpUntil',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'followUpComment',
+        label: 'captions.CaseData.followUpComment',
+        newLine: true,
+        className: 'size-full',
+      },
+    ],
+  },
+  {
     id: 'contactOfficer',
+    anchor: 'general_comment',
+    anchorLabel: 'captions.Contact.additionalDetails',
     title: '',
     fields: [
       {

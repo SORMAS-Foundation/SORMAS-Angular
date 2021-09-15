@@ -1,1 +1,6 @@
-/* stylelint-disable */
+.page-header {
+  border: 0;
+  .page-header-actions {
+    float: right;
+  }
+}
