@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import * as data from './country-add-edit-form-data';
 import { CountryService } from '../../../_services/api/country.service';
-import {CountryDto} from '../../../_models/countryDto';
-import {FormElementControlService} from '../../../_services/form-element-control.service';
+import { CountryDto } from '../../../_models/countryDto';
+import { FormElementControlService } from '../../../_services/form-element-control.service';
 
 @Component({
   selector: 'app-country-add-edit',

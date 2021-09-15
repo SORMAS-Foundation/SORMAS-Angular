@@ -39,7 +39,7 @@ export class CountryListComponent implements OnDestroy {
       data: {
         title: this.translateService.instant('Edit country'), // todotranslate
         component: CountryAddEditComponent,
-        resource: country
+        resource: country,
       },
     });
 
@@ -57,7 +57,7 @@ export class CountryListComponent implements OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Add new country'),  // todotranslate
+        title: this.translateService.instant('Add new country'), // todotranslate
         component: CountryAddEditComponent,
       },
     });
