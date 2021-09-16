@@ -22,6 +22,16 @@ const optionsTaskStatus = pipe.transform(TaskStatusOptions);
 
 export const FORM_DATA_TASK_ADD_EDIT = [
   {
+    id: 'associatedCase',
+    title: 'captions.Task.caze',
+    fields: [
+      {
+        ...FORM_DATA_NULL,
+        key: 'caze.uuid',
+      },
+    ],
+  },
+  {
     id: 'taskContext',
     title: 'captions.Task.taskContext',
     fields: [
@@ -32,18 +42,6 @@ export const FORM_DATA_TASK_ADD_EDIT = [
       },
     ],
   },
-
-  {
-    id: 'associatedCase',
-    title: 'captions.Task.caze',
-    fields: [
-      {
-        ...FORM_DATA_NULL,
-        key: 'caze.uuid',
-      },
-    ],
-  },
-
   {
     id: 'taskType',
     title: 'captions.Task.taskType',
