@@ -63,5 +63,10 @@
   "messageResultsNoData": "There are no {{ dataType }} to be displayed.",
   "messageResultsNoMatch": "No {{ dataType }} to display for selected filters",
   "promptResultsNoMatch": "Please make a different filter selection.",
-  "entityUsers": "Users"
+  "entityUsers": "Users",
+  "actionAddNewCountry": "Add new country",
+  "actionAddNewRegion": "Add new region",
+  "headingEditRegion": "Edit region",
+  "Contact.typeOfContact": "Type of contact",
+  "vaccination": "Vaccination"
 }

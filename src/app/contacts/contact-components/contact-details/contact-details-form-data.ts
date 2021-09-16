@@ -206,7 +206,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
   },
   {
     id: 'contactType',
-    title: 'Contact.typeOfContact', // todotranslate
+    title: 'Contact.typeOfContact',
     subtitle: 'Contact.pickClosest',
     fields: [
       {
@@ -622,7 +622,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
   },
   {
     id: 'vaccination',
-    title: 'Vaccination', // todotranslate
+    title: 'vaccination',
     fields: [
       {
         ...FORM_DATA_SELECT,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { Filter } from '../_models/common';
 import { EntityLink } from '../_constants/common';
+import {FormBase} from '../shared/dynamic-form/types/form-element-base';
 
 @Injectable({
   providedIn: 'root',
@@ -69,5 +70,36 @@ export class HelperService {
       showFormActions: currentLink?.showFormActions || false,
       link: currentLink?.link || '',
     };
+  }
+
+  setOptionsToInput(options: any[], type: string, formElements: FormBase<any>[]): FormBase<any>[] {
+    const newOptions = [];
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < options.length; i += 1) {
+      switch (type) {
+        case 'country':
+          newOptions.push({
+            key: options[i].uuid,
+            value: options[i].defaultName,
+          });
+          break;
+        default:
+          break;
+      }
+    }
+
+    switch (type) {
+      case 'country':
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < formElements.length; i += 1) {
+          // @ts-ignore
+          // eslint-disable-next-line no-param-reassign
+          formElements[i].fields.find((elem) => elem.key === 'country').options = newOptions;
+        }
+        break;
+      default:
+        break;
+    }
+    return formElements;
   }
 }
