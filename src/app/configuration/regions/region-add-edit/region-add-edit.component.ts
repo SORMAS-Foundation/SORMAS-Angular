@@ -36,8 +36,11 @@ export class RegionAddEditComponent implements OnInit {
             data.FORM_DATA_REGION_ADD_EDIT
           );
         }
-
-        console.log('response', this.helperService.setOptionsToInput(response.elements, 'country', this.myFormElements));
+        this.myFormElements = this.helperService.setOptionsToInput(
+          response.elements,
+          'country',
+          this.myFormElements
+        );
       },
       error: () => {},
       complete: () => {},
