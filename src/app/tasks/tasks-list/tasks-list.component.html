@@ -12,8 +12,10 @@
   [isSortable]="true"
   [isSelectable]="true"
   [isHeaderSticky]="true"
+  [isEditable]="true"
   [fullHeight]="true"
   [saveConfigKey]="configKey"
   [bulkEditOptions]="actionsBulkEdit"
   showTotalContext="{{ 'strings.entityTasks' | translate }}"
+  (editItem)="openEditTaskModal($event)"
 ></app-table>

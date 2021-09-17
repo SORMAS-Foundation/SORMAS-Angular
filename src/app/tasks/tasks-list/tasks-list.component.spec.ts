@@ -18,6 +18,7 @@ describe('TasksListComponent', () => {
         RouterTestingModule,
         MatDialogModule,
         TranslateModule.forRoot(),
+        MatDialogModule,
       ],
     }).compileComponents();
   });

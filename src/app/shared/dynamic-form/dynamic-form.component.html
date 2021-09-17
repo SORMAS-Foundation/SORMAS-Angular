@@ -4,26 +4,34 @@
   </header>
 
   <form [formGroup]="form">
-    <fieldset
-      *ngFor="let group of formElements"
-      [attr.id]="group.anchor ? group.anchor : null"
-      [ngClass]="{ section: group.anchor }"
-    >
-      <legend *ngIf="!group.hidden">
-        <h2>{{ group.title | translate }}<span class="required" *ngIf="group.required">*</span></h2>
-        <h3 *ngIf="group.subTitle">{{ group.subTitle | translate }}</h3>
-      </legend>
-      <mat-card class="dynamic-form-card">
-        <ng-container *ngFor="let field of group.fields">
-          <mat-divider *ngIf="field.active && field.newLine"></mat-divider>
-          <div
-            *ngIf="field.active"
-            [ngClass]="['dynamic-form-input', field.className || '', field.active ? '' : 'hidden']"
-          >
-            <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
-          </div>
-        </ng-container>
-      </mat-card>
-    </fieldset>
+    <ng-container *ngFor="let group of formElements">
+      <fieldset
+        [attr.id]="group.anchor ? group.anchor : null"
+        [ngClass]="{ section: group.anchor }"
+        *ngIf="!group.hidden"
+      >
+        <legend>
+          <h2>
+            {{ group.title | translate }}<span class="required" *ngIf="group.required">*</span>
+          </h2>
+          <h3 *ngIf="group.subTitle">{{ group.subTitle | translate }}</h3>
+        </legend>
+        <mat-card class="dynamic-form-card">
+          <ng-container *ngFor="let field of group.fields">
+            <mat-divider *ngIf="field.active && field.newLine"></mat-divider>
+            <div
+              *ngIf="field.active"
+              [ngClass]="[
+                'dynamic-form-input',
+                field.className || '',
+                field.active ? '' : 'hidden'
+              ]"
+            >
+              <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
+            </div>
+          </ng-container>
+        </mat-card>
+      </fieldset>
+    </ng-container>
   </form>
 </section>
