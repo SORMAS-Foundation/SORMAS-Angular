@@ -9,7 +9,7 @@
       [attr.id]="group.anchor ? group.anchor : null"
       [ngClass]="{ section: group.anchor }"
     >
-      <legend *ngIf="!group.hidden">
+      <legend *ngIf="!group.hiddenLeftSection">
         <h2>{{ group.title | translate }}<span class="required" *ngIf="group.required">*</span></h2>
         <h3 *ngIf="group.subTitle">{{ group.subTitle | translate }}</h3>
       </legend>

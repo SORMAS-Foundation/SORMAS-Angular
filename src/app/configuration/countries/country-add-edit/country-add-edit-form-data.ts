@@ -4,7 +4,7 @@ export const FORM_DATA_COUNTRY_ADD_EDIT = [
   {
     id: '',
     title: '',
-    hidden: true,
+    hiddenLeftSection: true,
     fields: [
       {
         ...FORM_DATA_INPUT,
@@ -34,7 +34,7 @@ export const FORM_DATA_COUNTRY_ADD_EDIT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'subcontinent',
+        key: 'subcontinent.uuid',
         label: 'captions.Country.subcontinent',
         validation: ['required'],
         newLine: true,

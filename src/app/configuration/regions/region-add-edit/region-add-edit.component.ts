@@ -5,7 +5,6 @@ import * as data from './region-add-edit-form-data';
 import { RegionDto } from '../../../_models/regionDto';
 import { RegionService } from '../../../_services/api/region.service';
 import { CountryService } from '../../../_services/api/country.service';
-import { HelperService } from '../../../_services/helper.service';
 
 @Component({
   selector: 'app-region-add-edit',
@@ -19,7 +18,6 @@ export class RegionAddEditComponent implements OnInit {
   constructor(
     private countryService: CountryService,
     public regionService: RegionService,
-    private helperService: HelperService,
     private formElementControlService: FormElementControlService
   ) {}
 
@@ -29,17 +27,22 @@ export class RegionAddEditComponent implements OnInit {
         if (this.selectedResource) {
           this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
             this.selectedResource,
-            data.FORM_DATA_REGION_ADD_EDIT
+            JSON.parse(JSON.stringify(data.FORM_DATA_REGION_ADD_EDIT))
+          );
+          this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+            this.myFormElements,
+            'country.uuid',
+            'disabled',
+            true
           );
         } else {
-          this.myFormElements = this.formElementControlService.resetValuesForDynamicForm(
-            data.FORM_DATA_REGION_ADD_EDIT
-          );
+          this.myFormElements = data.FORM_DATA_REGION_ADD_EDIT;
         }
-        this.myFormElements = this.helperService.setOptionsToInput(
+        this.myFormElements = this.formElementControlService.setOptionsToInput(
           response.elements,
-          'country',
-          this.myFormElements
+          this.myFormElements,
+          'country.uuid',
+          'defaultName'
         );
       },
       error: () => {},

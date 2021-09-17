@@ -19,8 +19,14 @@ export class FormElementControlService {
       }
       group[formElement.key] =
         validations.length > 0
-          ? (group[formElement.key] = new FormControl(formElement.value || '', validations))
-          : (group[formElement.key] = new FormControl(formElement.value || ''));
+          ? (group[formElement.key] = new FormControl(
+              { value: formElement.value || '', disabled: formElement.disabled },
+              validations
+            ))
+          : (group[formElement.key] = new FormControl({
+              value: formElement.value || '',
+              disabled: formElement.disabled,
+            }));
       validations = [];
     });
     return new FormGroup(group);
@@ -48,19 +54,6 @@ export class FormElementControlService {
     return formElements;
   }
 
-  resetValuesForDynamicForm(formElements: FormBase<any>[]): FormBase<any>[] {
-    formElements.forEach((formElement) => {
-      formElement.fields.forEach((field) => {
-        if (field.value) {
-          // eslint-disable-next-line no-param-reassign
-          delete field.value;
-        }
-      });
-    });
-
-    return formElements;
-  }
-
   getValidators(validators: string[]): ValidatorFn[] {
     const validatorsArray = [];
 
@@ -81,5 +74,42 @@ export class FormElementControlService {
     }
 
     return validatorsArray;
+  }
+
+  setOptionsToInput(
+    options: any[],
+    formElements: FormBase<any>[],
+    optionKey: string,
+    optionValue: string
+  ): FormBase<any>[] {
+    const newOptions = options.map((option) => {
+      return {
+        key: option.uuid,
+        value: option[optionValue],
+      };
+    });
+
+    formElements.forEach((formElement) => {
+      // @ts-ignore
+      // eslint-disable-next-line no-param-reassign
+      formElement.fields.find((elem) => elem.key === optionKey).options = newOptions;
+    });
+
+    return formElements;
+  }
+
+  setAttributeToFormElement(
+    formElements: FormBase<any>[],
+    key: string,
+    attribute: string,
+    value: any
+  ): FormBase<any>[] {
+    formElements.forEach((formElement) => {
+      // @ts-ignore
+      // eslint-disable-next-line no-param-reassign
+      formElement.fields.find((elem) => elem.key === key)[attribute] = value;
+    });
+
+    return formElements;
   }
 }

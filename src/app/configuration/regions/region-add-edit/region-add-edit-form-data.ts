@@ -4,7 +4,7 @@ export const FORM_DATA_REGION_ADD_EDIT = [
   {
     id: '',
     title: '',
-    hidden: true,
+    hiddenLeftSection: true,
     fields: [
       {
         ...FORM_DATA_INPUT,
@@ -22,19 +22,13 @@ export const FORM_DATA_REGION_ADD_EDIT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'country',
+        key: 'country.uuid',
         label: 'captions.country',
         newLine: true,
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'area',
+        key: 'area.uuid',
         label: 'captions.area',
         newLine: true,
         options: [
