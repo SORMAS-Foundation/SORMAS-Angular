@@ -7,7 +7,7 @@ import { CONFIG_TASKS } from '../../_constants/storage';
 import { TaskDto } from '../../_models/taskDto';
 import { TaskService } from '../../_services/api/task.service';
 import { defaultColumnDefs } from './tasks-list-table-data';
-import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { MODAL_MEDIUM_WIDTH } from '../../app.constants';
 import { TaskAddEditComponent } from '../task-add-edit/task-add-edit.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { actionsBulkEditDefs } from './task-list-actions-data';
@@ -43,7 +43,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
   openEditTaskModal(task: TaskDto): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: MODAL_MEDIUM_WIDTH,
       data: {
         title: this.translateService.instant('strings.headingEditTask'),
         component: TaskAddEditComponent,
@@ -63,7 +63,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
   openAddTaskModal(): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      width: MODAL_MEDIUM_WIDTH,
       data: {
         title: this.translateService.instant('strings.headingCreateNewTask'),
         component: TaskAddEditComponent,

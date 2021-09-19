@@ -90,9 +90,11 @@ export class FormElementControlService {
     });
 
     formElements.forEach((formElement) => {
-      // @ts-ignore
-      // eslint-disable-next-line no-param-reassign
-      formElement.fields.find((elem) => elem.key === optionKey).options = newOptions;
+      const attribute = 'options';
+      const formField = formElement.fields.find((elem) => elem.key === optionKey);
+      if (formField) {
+        formField[attribute] = newOptions;
+      }
     });
 
     return formElements;
@@ -105,9 +107,11 @@ export class FormElementControlService {
     value: any
   ): FormBase<any>[] {
     formElements.forEach((formElement) => {
-      // @ts-ignore
-      // eslint-disable-next-line no-param-reassign
-      formElement.fields.find((elem) => elem.key === key)[attribute] = value;
+      const formField = formElement.fields.find((elem) => elem.key === key);
+      if (formField) {
+        // @ts-ignore
+        formField[attribute] = value;
+      }
     });
 
     return formElements;
@@ -119,9 +123,11 @@ export class FormElementControlService {
     attribute: string,
     value: any
   ): FormBase<any>[] {
-    // @ts-ignore
-    // eslint-disable-next-line no-param-reassign
-    formElements.find((formElement) => formElement.id === id)[attribute] = value;
+    const formGroup = formElements.find((formElement) => formElement.id === id);
+    if (formGroup) {
+      // @ts-ignore
+      formGroup[attribute] = value;
+    }
 
     return formElements;
   }

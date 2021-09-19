@@ -26,7 +26,7 @@ export class CountryAddEditComponent implements OnInit {
         JSON.parse(JSON.stringify(data.FORM_DATA_COUNTRY_ADD_EDIT))
       );
     } else {
-      this.myFormElements = data.FORM_DATA_COUNTRY_ADD_EDIT;
+      this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_COUNTRY_ADD_EDIT));
     }
   }
 }

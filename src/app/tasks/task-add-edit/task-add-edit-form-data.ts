@@ -82,12 +82,6 @@ export const FORM_DATA_TASK_ADD_EDIT = [
         ...FORM_DATA_SELECT,
         key: 'assigneeUser.uuid',
         label: '',
-        options: [
-          {
-            key: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
-            value: 'admin',
-          },
-        ],
         validation: ['required'],
       },
     ],
@@ -111,17 +105,6 @@ export const FORM_DATA_TASK_ADD_EDIT = [
       {
         ...FORM_DATA_TEXTAREA,
         key: 'creatorComment',
-        label: '',
-      },
-    ],
-  },
-  {
-    id: 'executionComment',
-    title: 'captions.Task.assigneeReply',
-    fields: [
-      {
-        ...FORM_DATA_TEXTAREA,
-        key: 'assigneeReply',
         label: '',
       },
     ],

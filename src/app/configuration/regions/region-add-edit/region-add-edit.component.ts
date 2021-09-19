@@ -36,7 +36,7 @@ export class RegionAddEditComponent implements OnInit {
             true
           );
         } else {
-          this.myFormElements = data.FORM_DATA_REGION_ADD_EDIT;
+          this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_REGION_ADD_EDIT));
         }
         this.myFormElements = this.formElementControlService.setOptionsToInput(
           response.elements,
