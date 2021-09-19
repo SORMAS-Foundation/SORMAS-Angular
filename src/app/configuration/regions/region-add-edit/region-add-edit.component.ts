@@ -9,7 +9,7 @@ import { CountryService } from '../../../_services/api/country.service';
 @Component({
   selector: 'app-region-add-edit',
   templateUrl: './region-add-edit.component.html',
-  styleUrls: ['./region-add-edit.component.scss']
+  styleUrls: ['./region-add-edit.component.scss'],
 })
 export class RegionAddEditComponent implements OnInit {
   @Input() selectedResource: RegionDto;

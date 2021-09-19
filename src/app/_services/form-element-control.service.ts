@@ -131,4 +131,29 @@ export class FormElementControlService {
 
     return formElements;
   }
+
+  isFormElementHidden(formElements: FormBase<any>[], key: string): boolean {
+    let flag = false;
+    formElements.forEach((formElement) => {
+      flag = false;
+      const formField = formElement.fields.find((elem) => elem.key === key);
+      if (formField && formElement.hidden) {
+        flag = true;
+      }
+    });
+    return flag;
+  }
+
+  getFormElement(formElements: FormBase<any>[], key: string): FormElementBase<any> {
+    let formElementTmp: FormElementBase<any>;
+    formElements.forEach((formElement) => {
+      const formField = formElement.fields.find((elem) => elem.key === key);
+      if (formField) {
+        formElementTmp = formField;
+      }
+    });
+
+    // @ts-ignore
+    return formElementTmp;
+  }
 }

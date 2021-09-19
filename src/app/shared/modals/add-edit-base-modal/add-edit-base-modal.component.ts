@@ -65,9 +65,7 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  archive(): void {
-
-  }
+  archive(): void {}
 
   ngOnDestroy(): void {
     this.subscription.forEach((subscription) => subscription.unsubscribe());
