@@ -25,12 +25,6 @@ export class CountryAddEditComponent implements OnInit {
         this.selectedResource,
         JSON.parse(JSON.stringify(data.FORM_DATA_COUNTRY_ADD_EDIT))
       );
-      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-        this.myFormElements,
-        'subcontinent.uuid',
-        'disabled',
-        true
-      );
     } else {
       this.myFormElements = data.FORM_DATA_COUNTRY_ADD_EDIT;
     }

@@ -51,7 +51,7 @@ export const API_ROUTE_TREATMENTS = {
 export const API_ROUTE_TASKS = {
   ENDPOINT: 'tasks',
   GET_ALL: 'tasks/indexList',
-  UPDATE: 'tasks/update',
+  UPDATE: 'tasks/push',
   ADD: 'tasks/push',
   DELETE: 'tasks/delete',
 };

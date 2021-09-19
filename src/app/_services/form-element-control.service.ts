@@ -112,4 +112,17 @@ export class FormElementControlService {
 
     return formElements;
   }
+
+  setAttributeToGroupElement(
+    formElements: FormBase<any>[],
+    id: string,
+    attribute: string,
+    value: any
+  ): FormBase<any>[] {
+    // @ts-ignore
+    // eslint-disable-next-line no-param-reassign
+    formElements.find((formElement) => formElement.id === id)[attribute] = value;
+
+    return formElements;
+  }
 }
