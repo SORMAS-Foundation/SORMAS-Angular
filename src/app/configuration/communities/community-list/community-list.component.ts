@@ -36,7 +36,7 @@ export class CommunityListComponent implements OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('headingEditCommunity'), // todotranslate
+        title: this.translateService.instant('headingEditCommunity'),
         component: CommunityAddEditComponent,
         resource: community,
         archive: true,
@@ -57,7 +57,7 @@ export class CommunityListComponent implements OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('actionAddNewCommunity'), // todotranslate
+        title: this.translateService.instant('actionAddNewCommunity'),
         component: CommunityAddEditComponent,
       },
     });
