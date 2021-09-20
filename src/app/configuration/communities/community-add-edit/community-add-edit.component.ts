@@ -16,7 +16,6 @@ export class CommunityAddEditComponent implements OnInit {
   @Input() selectedResource: CommunityDto;
   myFormElements: FormBase<any>[] = [];
   selectedRegion = '';
-  requests: any[];
 
   constructor(
     public communityService: CommunityService,
@@ -26,77 +25,71 @@ export class CommunityAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.fetchRegions();
+  }
+
+  fetchRegions(): void {
     this.regionService.getAll(null, null, null, true).subscribe({
       next: (response: any) => {
         if (this.selectedResource) {
-          this.districtService
-            .getAll(
-              null,
-              null,
-              [{ field: 'region', value: { uuid: this.selectedResource.region?.uuid } }],
-              true
-            )
-            .subscribe({
-              next: (responseDistrict: any) => {
-                this.myFormElements = this.formElementControlService.setOptionsToInput(
-                  responseDistrict.elements,
-                  this.myFormElements,
-                  'district.uuid',
-                  'name'
-                );
-              },
-              error: () => {},
-              complete: () => {},
-            });
+          this.selectedRegion = this.selectedResource.region?.uuid || '';
+          this.fetchDistricts();
+          this.disableField('region.uuid');
+          this.disableField('district.uuid');
 
           this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
             this.selectedResource,
             JSON.parse(JSON.stringify(data.FORM_DATA_COMMUNITY_ADD_EDIT))
           );
-          this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-            this.myFormElements,
-            'region.uuid',
-            'disabled',
-            true
-          );
-          this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-            this.myFormElements,
-            'district.uuid',
-            'disabled',
-            true
-          );
         } else {
           this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_COMMUNITY_ADD_EDIT));
         }
-        this.myFormElements = this.formElementControlService.setOptionsToInput(
-          response.elements,
-          this.myFormElements,
-          'region.uuid',
-          'name'
-        );
+        this.updateOptionsForField('region.uuid', response.elements);
       },
       error: () => {},
       complete: () => {},
     });
   }
 
+  fetchDistricts(): void {
+    const filters = [
+      {
+        field: 'region',
+        value: { uuid: this.selectedRegion },
+      },
+    ];
+    this.districtService.getAll(null, null, filters, true).subscribe({
+      next: (response: any) => {
+        this.updateOptionsForField('district.uuid', response.elements);
+      },
+      error: () => {},
+      complete: () => {},
+    });
+  }
+
+  updateOptionsForField(field: string, options: any): void {
+    this.myFormElements = this.formElementControlService.setOptionsToInput(
+      options,
+      this.myFormElements,
+      field,
+      'name'
+    );
+  }
+
+  disableField(field: string): void {
+    this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+      this.myFormElements,
+      field,
+      'disabled',
+      true
+    );
+  }
+
   onFormChange(event: any): void {
-    if (this.selectedRegion !== event['region.uuid']) {
-      this.districtService
-        .getAll(null, null, [{ field: 'region', value: { uuid: event['region.uuid'] } }], true)
-        .subscribe({
-          next: (response: any) => {
-            this.myFormElements = this.formElementControlService.setOptionsToInput(
-              response.elements,
-              this.myFormElements,
-              'district.uuid',
-              'name'
-            );
-          },
-          error: () => {},
-          complete: () => {},
-        });
-      this.selectedRegion = event['region.uuid'];
+    const regionId = event['region.uuid'];
+    if (this.selectedRegion !== regionId) {
+      this.selectedRegion = regionId;
+      this.fetchDistricts();
     }
   }
 }
