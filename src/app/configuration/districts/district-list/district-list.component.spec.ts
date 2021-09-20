@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { MatDialogModule } from '@angular/material/dialog';
 import { DistrictListComponent } from './district-list.component';
 
 describe('DistrictListComponent', () => {
@@ -10,9 +11,9 @@ describe('DistrictListComponent', () => {
   let fixture: ComponentFixture<DistrictListComponent>;
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       declarations: [DistrictListComponent],
-      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot(), MatDialogModule],
     }).compileComponents();
   });
 

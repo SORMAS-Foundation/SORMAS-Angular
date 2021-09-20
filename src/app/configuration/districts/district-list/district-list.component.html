@@ -1,3 +1,10 @@
+<div class="page-header">
+  <div class="page-header-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddDistrictModal()">
+      {{ 'actionAddNewDistrict' | translate }}
+    </button>
+  </div>
+</div>
 <app-table
   [resourceService]="districtService"
   [tableColumns]="defaultColumns"
@@ -9,4 +16,6 @@
   [bulkEditOptions]="actionsBulkEdit"
   [showTotal]="true"
   showTotalContext="{{ 'strings.entityDistricts' | translate }}"
+  [isEditable]="true"
+  (editItem)="openEditDistrictModal($event)"
 ></app-table>

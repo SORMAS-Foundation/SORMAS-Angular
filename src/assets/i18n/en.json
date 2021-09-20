@@ -5411,7 +5411,10 @@
   "entityUsers": "Users",
   "actionAddNewCountry": "Add new country",
   "actionAddNewRegion": "Add new region",
+  "actionAddNewDistrict": "Add new district",
   "headingEditRegion": "Edit region",
+  "headingEditCountry": "Edit country",
+  "headingEditDistrict": "Edit district",
   "Contact.typeOfContact": "Type of contact",
   "vaccination": "Vaccination"
 }
