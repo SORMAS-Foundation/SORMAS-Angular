@@ -1,3 +1,11 @@
+<div class="page-header">
+  <div class="page-header-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddCommunityModal()">
+      {{ 'Add new community' | translate }}
+      <!-- toDoTranslate -->
+    </button>
+  </div>
+</div>
 <app-table
   [resourceService]="communityService"
   [tableColumns]="defaultColumns"
@@ -8,5 +16,7 @@
   [appearance]="tableAppearanceOptions.MINIMAL"
   [bulkEditOptions]="actionsBulkEdit"
   [showTotal]="true"
+  [isEditable]="true"
   showTotalContext="{{ 'strings.entityCommunities' | translate }}"
+  (editItem)="openEditCommunityModal($event)"
 ></app-table>
