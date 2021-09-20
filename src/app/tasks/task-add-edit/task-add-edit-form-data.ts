@@ -27,7 +27,7 @@ export const FORM_DATA_TASK_ADD_EDIT = [
     fields: [
       {
         ...FORM_DATA_NULL,
-        key: 'caze.uuid',
+        key: 'caze.caption',
       },
     ],
   },
@@ -82,12 +82,6 @@ export const FORM_DATA_TASK_ADD_EDIT = [
         ...FORM_DATA_SELECT,
         key: 'assigneeUser.uuid',
         label: '',
-        options: [
-          {
-            key: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
-            value: 'admin',
-          },
-        ],
         validation: ['required'],
       },
     ],

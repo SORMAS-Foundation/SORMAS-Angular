@@ -19,7 +19,6 @@ import { CountryAddEditComponent } from '../country-add-edit/country-add-edit.co
   styleUrls: ['./country-list.component.scss'],
 })
 export class CountryListComponent implements OnDestroy {
-  cases: CountryDto[] = [];
   defaultColumns: TableColumn[] = defaultColumnDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   tableAppearanceOptions = TableAppearanceOptions;
@@ -37,9 +36,10 @@ export class CountryListComponent implements OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Edit country'), // todotranslate
+        title: this.translateService.instant('headingEditCountry'),
         component: CountryAddEditComponent,
         resource: country,
+        archive: true,
       },
     });
 
@@ -57,7 +57,7 @@ export class CountryListComponent implements OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('Add new country'), // todotranslate
+        title: this.translateService.instant('actionAddNewCountry'),
         component: CountryAddEditComponent,
       },
     });

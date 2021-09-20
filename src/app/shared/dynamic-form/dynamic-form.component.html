@@ -10,7 +10,7 @@
         [ngClass]="{ section: group.anchor }"
         *ngIf="!group.hidden"
       >
-        <legend>
+        <legend *ngIf="!group.hiddenLeftSection">
           <h2>
             {{ group.title | translate }}<span class="required" *ngIf="group.required">*</span>
           </h2>

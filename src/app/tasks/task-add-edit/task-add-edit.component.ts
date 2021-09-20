@@ -4,6 +4,7 @@ import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { TaskService } from '../../_services/api/task.service';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { TaskDto } from '../../_models/taskDto';
+import { UserService } from '../../_services/api/user.service';
 
 @Component({
   selector: 'app-task-add-edit',
@@ -13,25 +14,62 @@ import { TaskDto } from '../../_models/taskDto';
 export class TaskAddEditComponent implements OnInit {
   @Input() selectedResource: TaskDto;
   myFormElements: FormBase<any>[] = [];
-  formData = data.FORM_DATA_TASK_ADD_EDIT;
+
   constructor(
     public taskService: TaskService,
+    public userService: UserService,
     private formElementControlService: FormElementControlService
   ) {}
 
   ngOnInit(): void {
-    const modifiedData: any = this.formData.find((item) => item.id === 'associatedCase');
-    if (modifiedData) {
-      modifiedData.hidden = !this.selectedResource;
-    }
+    this.userService.getAll(null, null, null, true).subscribe({
+      next: (response: any) => {
+        if (this.selectedResource) {
+          this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+            this.selectedResource,
+            JSON.parse(JSON.stringify(data.FORM_DATA_TASK_ADD_EDIT))
+          );
 
-    if (this.selectedResource) {
-      this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-        this.selectedResource,
-        this.formData
-      );
-    } else {
-      this.myFormElements = this.formElementControlService.resetValuesForDynamicForm(this.formData);
-    }
+          if (!this.selectedResource.caze) {
+            this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+              this.myFormElements,
+              'associatedCase',
+              'hidden',
+              true
+            );
+          }
+        } else {
+          this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_TASK_ADD_EDIT));
+
+          this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+            this.myFormElements,
+            'associatedCase',
+            'hidden',
+            true
+          );
+          this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+            this.myFormElements,
+            'executionComment',
+            'hidden',
+            true
+          );
+          this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+            this.myFormElements,
+            'taskStatus',
+            'hidden',
+            true
+          );
+        }
+
+        this.myFormElements = this.formElementControlService.setOptionsToInput(
+          response.elements,
+          this.myFormElements,
+          'assigneeUser.uuid',
+          'userName'
+        );
+      },
+      error: () => {},
+      complete: () => {},
+    });
   }
 }

@@ -129,8 +129,8 @@ export const API_ROUTE_COUNTRIES = {
 export const API_ROUTE_REGIONS = {
   ENDPOINT: 'regions',
   GET_ALL: 'regions/indexList',
-  UPDATE: 'regions/update',
-  ADD: 'regions/add',
+  UPDATE: 'regions/push',
+  ADD: 'regions/push',
   DELETE: 'regions/delete',
 };
 

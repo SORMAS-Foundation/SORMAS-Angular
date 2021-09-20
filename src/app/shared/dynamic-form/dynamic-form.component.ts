@@ -121,11 +121,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       };
     }
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
-      if (key.includes('.')) {
-        const keys = key.split('.');
-        rawValueTmp[keys[0]] = this.convertDotPathToNestedObject(key, value)[keys[0]];
-      } else {
-        rawValueTmp[key] = value;
+      if (!this.formElementControlService.isFormElementHidden(this.formElements, key)) {
+        if (key.includes('.')) {
+          const keys = key.split('.');
+          rawValueTmp[keys[0]] = this.convertDotPathToNestedObject(key, value)[keys[0]];
+        } else {
+          rawValueTmp[key] = value;
+        }
       }
     });
 
