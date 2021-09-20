@@ -68,5 +68,7 @@
   "actionAddNewRegion": "Add new region",
   "headingEditRegion": "Edit region",
   "Contact.typeOfContact": "Type of contact",
-  "vaccination": "Vaccination"
+  "vaccination": "Vaccination",
+  "headingEditCommunity": "Edit community",
+  "actionAddNewCommunity": "Add new community"
 }

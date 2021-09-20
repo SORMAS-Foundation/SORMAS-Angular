@@ -4,44 +4,33 @@ export const FORM_DATA_COMMUNITY_ADD_EDIT = [
   {
     id: '',
     title: '',
-    hidden: true,
+    hiddenLeftSection: true,
     fields: [
       {
         ...FORM_DATA_INPUT,
-        key: 'defaultName',
-        label: 'captions.Country.isoCode',
+        key: 'name',
+        label: 'captions.name',
         validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'region',
-        newLine: true,
-        label: 'captions.CaseData.responsibleRegion',
+        key: 'region.uuid',
+        label: 'captions.region',
         validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultRegion',
-          },
-        ],
+        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'district',
-        label: 'captions.CaseData.responsibleDistrict',
+        key: 'district.uuid',
+        label: 'captions.district',
         validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultDistrict',
-          },
-        ],
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'externalId',
-        label: 'captions.Country.isoCode',
+        key: 'externalID',
+        label: 'captions.Community.externalID',
         newLine: true,
       },
     ],
