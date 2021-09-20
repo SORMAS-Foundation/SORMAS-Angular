@@ -1,6 +1,6 @@
 import { FORM_DATA_INPUT, FORM_DATA_SELECT } from '../../../_constants/form-data';
 
-export const FORM_DATA_COUNTRY_ADD_EDIT = [
+export const FORM_DATA_REGION_ADD_EDIT = [
   {
     id: '',
     title: '',
@@ -8,35 +8,28 @@ export const FORM_DATA_COUNTRY_ADD_EDIT = [
     fields: [
       {
         ...FORM_DATA_INPUT,
-        key: 'isoCode',
-        label: 'captions.Country.isoCode',
+        key: 'name',
+        label: 'captions.name',
         validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'defaultName',
-        label: 'captions.Country.defaultName',
+        key: 'epidCode',
+        label: 'captions.Region.epidCode',
         validation: ['required'],
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'externalId',
-        label: 'captions.Country.externalId',
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'unoCode',
-        label: 'captions.Country.unoCode',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'subcontinent.uuid',
-        label: 'captions.Country.subcontinent',
-        validation: ['required'],
+        key: 'country.uuid',
+        label: 'captions.country',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'area.uuid',
+        label: 'captions.area',
         newLine: true,
         options: [
           {
@@ -44,6 +37,12 @@ export const FORM_DATA_COUNTRY_ADD_EDIT = [
             value: 'default',
           },
         ],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'externalId',
+        label: 'captions.Region.externalID',
+        newLine: true,
       },
     ],
   },

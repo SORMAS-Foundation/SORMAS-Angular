@@ -4,6 +4,9 @@
     <button mat-icon-button mat-dialog-close class="button-dialog-close">
       <mat-icon class="material-icons-round">highlight_off</mat-icon>
     </button>
+    <button mat-button color="primary" (click)="archive()" *ngIf="data.archive">
+      {{ 'captions.actionArchive' | translate }}
+    </button>
     <button mat-stroked-button color="primary" class="reset-btn" (click)="discard()">
       {{ 'Discard' | translate }}
     </button>
