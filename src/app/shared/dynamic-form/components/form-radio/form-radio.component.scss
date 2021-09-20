@@ -6,7 +6,13 @@
     display: block;
   }
 
-  .light-text {
-    font-weight: 100;
+  .medium-text-radio {
+    font-weight: 400;
+  }
+}
+
+.radio-group-label {
+  &.medium-text-radio {
+    font-weight: 500;
   }
 }
