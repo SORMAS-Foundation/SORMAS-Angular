@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommunityAddEditComponent } from './community-add-edit.component';
@@ -9,6 +10,7 @@ describe('CommunityAddEditComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CommunityAddEditComponent],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 
