@@ -29,11 +29,27 @@ export class TaskAddEditComponent implements OnInit {
             this.selectedResource,
             JSON.parse(JSON.stringify(data.FORM_DATA_TASK_ADD_EDIT))
           );
+
+          if (!this.selectedResource.caze) {
+            this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+              this.myFormElements,
+              'associatedCase',
+              'hidden',
+              true
+            );
+          }
         } else {
           this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_TASK_ADD_EDIT));
+
           this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
             this.myFormElements,
             'associatedCase',
+            'hidden',
+            true
+          );
+          this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+            this.myFormElements,
+            'executionComment',
             'hidden',
             true
           );

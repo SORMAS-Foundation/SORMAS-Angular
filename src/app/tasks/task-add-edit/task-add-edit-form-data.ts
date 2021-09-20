@@ -27,7 +27,7 @@ export const FORM_DATA_TASK_ADD_EDIT = [
     fields: [
       {
         ...FORM_DATA_NULL,
-        key: 'caze.uuid',
+        key: 'caze.caption',
       },
     ],
   },
@@ -105,6 +105,17 @@ export const FORM_DATA_TASK_ADD_EDIT = [
       {
         ...FORM_DATA_TEXTAREA,
         key: 'creatorComment',
+        label: '',
+      },
+    ],
+  },
+  {
+    id: 'executionComment',
+    title: 'captions.Task.assigneeReply',
+    fields: [
+      {
+        ...FORM_DATA_TEXTAREA,
+        key: 'assigneeReply',
         label: '',
       },
     ],
