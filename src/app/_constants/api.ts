@@ -137,8 +137,8 @@ export const API_ROUTE_REGIONS = {
 export const API_ROUTE_DISTRICTS = {
   ENDPOINT: 'districts',
   GET_ALL: 'districts/indexList',
-  UPDATE: 'districts/update',
-  ADD: 'districts/add',
+  UPDATE: 'districts/push',
+  ADD: 'districts/push',
   DELETE: 'districts/delete',
 };
 
