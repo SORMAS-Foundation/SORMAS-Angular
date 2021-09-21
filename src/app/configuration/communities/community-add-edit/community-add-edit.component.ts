@@ -34,13 +34,12 @@ export class CommunityAddEditComponent implements OnInit {
         if (this.selectedResource) {
           this.selectedRegion = this.selectedResource.region?.uuid || '';
           this.fetchDistricts();
-          this.disableField('region.uuid');
-          this.disableField('district.uuid');
-
           this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
             this.selectedResource,
             JSON.parse(JSON.stringify(data.FORM_DATA_COMMUNITY_ADD_EDIT))
           );
+          this.disableField('region.uuid');
+          this.disableField('district.uuid');
         } else {
           this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_COMMUNITY_ADD_EDIT));
         }
