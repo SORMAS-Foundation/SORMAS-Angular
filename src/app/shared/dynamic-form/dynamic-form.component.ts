@@ -91,13 +91,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       this.formActionsService.getInputValue().subscribe((response: any) => {
-        this.processFormArray().forEach((item) => {
-          if (response.key === item.key) {
-            this.form.controls[item.key].setValue(response.value);
-          } else {
-            this.form.controls[item.key].setValue(item.value);
-          }
-        });
+        this.form.controls[response.key].setValue(response.value);
       })
     );
 
