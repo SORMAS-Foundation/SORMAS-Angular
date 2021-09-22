@@ -6,6 +6,7 @@ import { CommunityService } from '../../../_services/api/community.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { RegionService } from '../../../_services/api/region.service';
 import { DistrictService } from '../../../_services/api/district.service';
+import { FormActionsService } from '../../../_services/form-actions.service';
 
 @Component({
   selector: 'app-community-add-edit',
@@ -21,7 +22,8 @@ export class CommunityAddEditComponent implements OnInit {
     public communityService: CommunityService,
     public regionService: RegionService,
     public districtService: DistrictService,
-    private formElementControlService: FormElementControlService
+    private formElementControlService: FormElementControlService,
+    private formActionService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -84,11 +86,22 @@ export class CommunityAddEditComponent implements OnInit {
     );
   }
 
+  updateFormElementsWithChanges(changes: any): void {
+    Object.entries(changes).forEach(([key, value]) => {
+      const currentField = this.myFormElements[0].fields.find((f) => f.key === key);
+      if (currentField) {
+        currentField.value = value;
+      }
+    });
+  }
+
   onFormChange(event: any): void {
+    this.updateFormElementsWithChanges(event);
     const regionId = event['region.uuid'];
     if (this.selectedRegion !== regionId) {
       this.selectedRegion = regionId;
       this.fetchDistricts();
+      this.formActionService.setInputValue('district.uuid', '');
     }
   }
 }
