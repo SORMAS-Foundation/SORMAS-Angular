@@ -90,6 +90,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.push(
+      this.formActionsService.getInputValue().subscribe((response: any) => {
+        this.form.controls[response.key].setValue(response.value);
+      })
+    );
+
+    this.subscription.push(
       this.formActionsService
         .getInputChange()
         .pipe(debounceTime(300))

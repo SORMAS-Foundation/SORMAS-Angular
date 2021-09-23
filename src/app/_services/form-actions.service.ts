@@ -7,6 +7,7 @@ export class FormActionsService {
   private subjectSave = new Subject<any>();
   private subjectInputChange = new Subject<any>();
   private subjectDiscard = new Subject<any>();
+  private subjectInputValue = new Subject<any>();
   private subjectModal = new Subject<any>();
 
   private fieldsArray: string[] = [];
@@ -35,6 +36,14 @@ export class FormActionsService {
 
   getInputChange(): Observable<any> {
     return this.subjectInputChange.asObservable();
+  }
+
+  setInputValue(key: string, value: any): void {
+    this.subjectInputValue.next({ key, value });
+  }
+
+  getInputValue(): Observable<any> {
+    return this.subjectInputValue.asObservable();
   }
 
   setDiscard(): void {

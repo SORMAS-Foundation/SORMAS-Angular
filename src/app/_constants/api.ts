@@ -145,7 +145,7 @@ export const API_ROUTE_DISTRICTS = {
 export const API_ROUTE_COMMUNITIES = {
   ENDPOINT: 'communities',
   GET_ALL: 'communities/indexList',
-  UPDATE: 'communities/update',
-  ADD: 'communities/add',
+  UPDATE: 'communities/push',
+  ADD: 'communities/push',
   DELETE: 'communities/delete',
 };
