@@ -2,7 +2,7 @@ import { FORM_DATA_RADIO } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import {
-  FORM_DATA_DATE,
+  FORM_DATA_DATETIME,
   FORM_DATA_NULL,
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
@@ -28,6 +28,7 @@ export const FORM_DATA_TASK_ADD_EDIT = [
       {
         ...FORM_DATA_NULL,
         key: 'caze.caption',
+        disabled: false,
       },
     ],
   },
@@ -39,6 +40,7 @@ export const FORM_DATA_TASK_ADD_EDIT = [
         ...FORM_DATA_NULL,
         key: 'taskContext',
         value: TaskContextOptions.GENERAL,
+        disabled: false,
       },
     ],
   },
@@ -61,15 +63,19 @@ export const FORM_DATA_TASK_ADD_EDIT = [
     title: 'captions.date',
     fields: [
       {
-        ...FORM_DATA_DATE,
+        ...FORM_DATA_DATETIME,
         label: 'captions.Task.suggestedStart',
         key: 'suggestedStart',
+        timeLabel: '',
+        newLine: true,
       },
       {
-        ...FORM_DATA_DATE,
+        ...FORM_DATA_DATETIME,
         label: 'captions.Task.dueDate',
         validation: ['required'],
         key: 'dueDate',
+        timeLabel: '',
+        newLine: true,
       },
     ],
   },
@@ -83,6 +89,7 @@ export const FORM_DATA_TASK_ADD_EDIT = [
         key: 'assigneeUser.uuid',
         label: '',
         validation: ['required'],
+        hint: 'userAssignmentHint',
       },
     ],
   },

@@ -5,6 +5,9 @@ import { TaskService } from '../../_services/api/task.service';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { TaskDto } from '../../_models/taskDto';
 import { UserService } from '../../_services/api/user.service';
+import { UserDto } from '../../_models/userDto';
+
+const ASSIGNEE_USER_KEY = 'assigneeUser.uuid';
 
 @Component({
   selector: 'app-task-add-edit',
@@ -14,6 +17,8 @@ import { UserService } from '../../_services/api/user.service';
 export class TaskAddEditComponent implements OnInit {
   @Input() selectedResource: TaskDto;
   myFormElements: FormBase<any>[] = [];
+  allUsers: UserDto[] = [];
+  selectedUserId = '';
 
   constructor(
     public taskService: TaskService,
@@ -24,6 +29,7 @@ export class TaskAddEditComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAll(null, null, null, true).subscribe({
       next: (response: any) => {
+        this.allUsers = response.elements;
         if (this.selectedResource) {
           this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
             this.selectedResource,
@@ -64,12 +70,30 @@ export class TaskAddEditComponent implements OnInit {
         this.myFormElements = this.formElementControlService.setOptionsToInput(
           response.elements,
           this.myFormElements,
-          'assigneeUser.uuid',
+          ASSIGNEE_USER_KEY,
           'userName'
         );
+        this.dontShowHint(true);
       },
       error: () => {},
       complete: () => {},
     });
+  }
+
+  dontShowHint(state: boolean): void {
+    this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+      this.myFormElements,
+      ASSIGNEE_USER_KEY,
+      'dontShowHint',
+      state
+    );
+  }
+
+  onFormChange(event: any): void {
+    if (this.selectedUserId !== event[ASSIGNEE_USER_KEY]) {
+      this.selectedUserId = event[ASSIGNEE_USER_KEY];
+      const selectedUserData = this.allUsers.find((user) => user.uuid === this.selectedUserId);
+      this.dontShowHint(selectedUserData?.userEmail !== undefined);
+    }
   }
 }

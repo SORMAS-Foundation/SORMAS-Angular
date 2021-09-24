@@ -1,4 +1,8 @@
 .datetime-picker {
-  display: flex;
-  gap: 16px;
+  display: inline-flex;
+  gap: 24px;
+
+  .time {
+    width: 93px;
+  }
 }

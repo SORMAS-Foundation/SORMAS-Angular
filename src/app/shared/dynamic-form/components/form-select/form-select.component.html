@@ -1,6 +1,7 @@
 <div [formGroup]="group">
   <mat-form-field
     appearance="outline"
+    class="data-select"
     floatLabel="always"
     [ngClass]="{ 'has-hint': !!config.hint }"
   >
@@ -19,7 +20,9 @@
         {{ opt.value }}
       </mat-option>
     </mat-select>
-    <mat-hint *ngIf="config.hint">{{ config.hint || '' | translate }}</mat-hint>
+    <mat-hint class="hint" *ngIf="config.hint && !config.dontShowHint">{{
+      config.hint || '' | translate
+    }}</mat-hint>
   </mat-form-field>
   <div class="errorMessage" color="warn" *ngIf="!isValid">
     {{ config.validationMessage || '' | translate }}
