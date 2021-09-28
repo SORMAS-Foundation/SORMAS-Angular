@@ -1,0 +1,46 @@
+<div mat-dialog-title>
+  <h2>{{ 'Select source case' | translate }}</h2>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button color="primary" class="cancel-btn" (click)="cancel()">
+      {{ 'Cancel' | translate }}
+    </button>
+    <button mat-flat-button color="primary" class="confirm-btn" (click)="confirm()">
+      {{ 'Confirm' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <form [formGroup]="filtersForm" class="filters-form">
+    <mat-form-field
+      id="nameUuidEpidNumberLike"
+      appearance="outline"
+      floatLabel="always"
+      class="search-field"
+    >
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'strings.promptCasesSearchField' | translate }}"
+        formControlName="nameUuidEpidNumberLike"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+  </form>
+  <app-table
+    [resourceService]="caseService"
+    [tableColumns]="defaultColumns"
+    [isSortable]="true"
+    [isSelectable]="true"
+    [isHeaderSticky]="true"
+    [allowToggleColumns]="false"
+    [fullHeight]="true"
+    [appearance]="tableAppearanceOptions.MINIMAL"
+  ></app-table>
+</div>

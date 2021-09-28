@@ -42,6 +42,7 @@ import { SuperordinateEventComponent } from './widgets/superordinate-event/super
 import { ContactCaseDetailsComponent } from './widgets/contact-case-details/contact-case-details.component';
 import { ContactFollowUpComponent } from './widgets/contact-follow-up/contact-follow-up.component';
 import { TableNotificationComponent } from './table/table-notification/table-notification.component';
+import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case-modal.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { TableNotificationComponent } from './table/table-notification/table-not
     SuperordinateEventComponent,
     ContactCaseDetailsComponent,
     ContactFollowUpComponent,
+    ChooseCaseModalComponent,
   ],
   imports: [
     CommonModule,
