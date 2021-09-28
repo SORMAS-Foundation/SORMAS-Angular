@@ -67,6 +67,7 @@ export const FORM_DATA_TASK_ADD_EDIT = [
         label: 'captions.Task.suggestedStart',
         key: 'suggestedStart',
         newLine: true,
+        timeLabel: 'timeHeading',
       },
       {
         ...FORM_DATA_DATETIME,
@@ -74,6 +75,7 @@ export const FORM_DATA_TASK_ADD_EDIT = [
         validation: ['required'],
         key: 'dueDate',
         newLine: true,
+        timeLabel: 'timeHeading',
       },
     ],
   },
