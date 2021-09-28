@@ -5423,5 +5423,6 @@
   "dateOfDeparture": "Date of departure",
   "timeOfDeparture": "Time of departure",
   "dateOfArrival": "Date of arrival",
-  "timeOfArrival": "Time of arrival"
+  "timeOfArrival": "Time of arrival",
+  "timeHeading": "Time"
 }
