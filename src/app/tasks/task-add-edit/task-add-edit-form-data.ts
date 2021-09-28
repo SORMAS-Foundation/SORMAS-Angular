@@ -87,7 +87,6 @@ export const FORM_DATA_TASK_ADD_EDIT = [
         key: 'assigneeUser.uuid',
         label: '',
         validation: ['required'],
-        hint: 'userAssignmentHint',
       },
     ],
   },

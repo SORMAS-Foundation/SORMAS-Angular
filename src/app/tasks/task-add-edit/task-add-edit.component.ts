@@ -73,19 +73,18 @@ export class TaskAddEditComponent implements OnInit {
           ASSIGNEE_USER_KEY,
           'userName'
         );
-        this.dontShowHint(true);
       },
       error: () => {},
       complete: () => {},
     });
   }
 
-  dontShowHint(state: boolean): void {
+  showHint(state: boolean): void {
     this.myFormElements = this.formElementControlService.setAttributeToFormElement(
       this.myFormElements,
       ASSIGNEE_USER_KEY,
-      'dontShowHint',
-      state
+      'hint',
+      state ? 'userAssignmentHint' : ''
     );
   }
 
@@ -93,7 +92,7 @@ export class TaskAddEditComponent implements OnInit {
     if (this.selectedUserId !== event[ASSIGNEE_USER_KEY]) {
       this.selectedUserId = event[ASSIGNEE_USER_KEY];
       const selectedUserData = this.allUsers.find((user) => user.uuid === this.selectedUserId);
-      this.dontShowHint(selectedUserData?.userEmail !== undefined);
+      this.showHint(selectedUserData?.userEmail === undefined);
     }
   }
 }
