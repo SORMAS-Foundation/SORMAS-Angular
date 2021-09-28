@@ -21,6 +21,7 @@ export class FormElementBase<T> {
   chips?: boolean; // flag to toggle chips for multi-select
   radioNewLine?: boolean; // radio btns displayed with full width
   disabled?: boolean; // input disabling
+  timeLabel?: string;
 
   constructor(
     options: {
@@ -45,6 +46,7 @@ export class FormElementBase<T> {
       chips?: boolean;
       radioNewLine?: boolean;
       disabled?: boolean;
+      timeLabel?: string;
     } = {}
   ) {
     this.value = options.value;
@@ -68,6 +70,7 @@ export class FormElementBase<T> {
     this.chips = options.chips ?? false;
     this.radioNewLine = options.radioNewLine ?? false;
     this.disabled = options.disabled ?? false;
+    this.timeLabel = options.timeLabel;
   }
 }
 

@@ -204,13 +204,15 @@ export const FORM_DATA_CASE_PORT_HEALTH_SEAPORT = [
       {
         ...FORM_DATA_DATETIME,
         key: 'portHealthInfo.departureDateTime',
-        label: 'captions.PortHealthInfo.departureDateTime',
+        label: 'dateOfDeparture',
+        timeLabel: 'timeOfDeparture',
         newLine: true,
       },
       {
         ...FORM_DATA_DATETIME,
         key: 'portHealthInfo.arrivalDateTime',
-        label: 'captions.PortHealthInfo.arrivalDateTime',
+        label: 'dateOfArrival',
+        timeLabel: 'timeOfArrival',
         newLine: true,
       },
     ],

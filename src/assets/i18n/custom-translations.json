@@ -73,5 +73,10 @@
   "Contact.typeOfContact": "Type of contact",
   "vaccination": "Vaccination",
   "headingEditCommunity": "Edit community",
-  "actionAddNewCommunity": "Add new community"
+  "actionAddNewCommunity": "Add new community",
+  "userAssignmentHint": "The user assigned to this task does not have an e-mail address provided, and will therefore not be notified.",
+  "dateOfDeparture": "Date of departure",
+  "timeOfDeparture": "Time of departure",
+  "dateOfArrival": "Date of arrival",
+  "timeOfArrival": "Time of arrival"
 }

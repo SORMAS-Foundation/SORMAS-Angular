@@ -31,7 +31,7 @@ export const FORM_DATA_DATETIME = {
   ...FORM_DATA_BASE,
   controlType: 'datetime',
   type: 'date',
-  className: 'size-large',
+  className: 'size-medium',
 };
 
 export const FORM_DATA_NUMBER = {
