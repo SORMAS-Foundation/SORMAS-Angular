@@ -1,16 +1,21 @@
 <div [formGroup]="group">
   <mat-radio-group [formControlName]="config.key" (change)="onChange()">
-    <mat-label *ngIf="config.label" class="radio-group-label">
-      {{ config.label || '' | translate }}
-      <span *ngIf="config.validation?.length" class="required">*</span>
+    <mat-label
+      *ngIf="config.label"
+      class="radio-group-label"
+      [ngClass]="{'medium-text-radio': config.className?.includes('medium-text-radio') }"
+    >
+        {{ config.label || '' | translate }}
+        <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
     <mat-radio-button
       [ngClass]="config.separated ? 'block' : ''"
       *ngFor="let opt of config.options"
       [value]="opt.key"
+      [ngClass]="{'full-width': config.radioNewLine}"
       color="primary"
     >
-      {{ opt.value }}
+      <span [ngClass]="{'medium-text-radio': config.className?.includes('medium-text-radio') }">{{ opt.value }}</span>
     </mat-radio-button>
   </mat-radio-group>
   <div class="errorMessage" color="warn" *ngIf="!isValid">

@@ -1,5 +1,18 @@
 .mat-radio-button {
+  &.full-width {
+    width: 100%;
+  }
   &.block {
     display: block;
+  }
+
+  .medium-text-radio {
+    font-weight: 400;
+  }
+}
+
+.radio-group-label {
+  &.medium-text-radio {
+    font-weight: 500;
   }
 }

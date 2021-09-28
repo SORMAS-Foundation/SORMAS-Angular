@@ -89,6 +89,19 @@ export class BaseService<T extends Resource> {
       .pipe(map((data: any) => this.serializer.fromJson(data) as T));
   }
 
+  // toDo: This needs to be eliminated when getAll is working!!!
+  getBySampleId(id: number | string): Observable<T> {
+    // endpoint
+    let endpoint = this.endpoint.ENDPOINT;
+    if (this.endpoint.GET_BY_SAMPLE_ID) {
+      endpoint = this.endpoint.GET_BY_SAMPLE_ID;
+    }
+
+    return this.httpClient
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, [id])
+      .pipe(map((data: any) => this.serializer.fromJson(data) as T));
+  }
+
   update(items: T[]): Observable<T> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
@@ -101,7 +114,7 @@ export class BaseService<T extends Resource> {
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 
-  add(item: T): Observable<T> {
+  add(items: T[]): Observable<T> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.ADD) {
@@ -109,7 +122,7 @@ export class BaseService<T extends Resource> {
     }
 
     return this.httpClient
-      .post(`${this.helperService.getApiUrl()}/${endpoint}`, item)
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, items)
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 

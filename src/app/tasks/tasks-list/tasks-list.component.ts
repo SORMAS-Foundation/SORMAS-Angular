@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -7,11 +7,12 @@ import { CONFIG_TASKS } from '../../_constants/storage';
 import { TaskDto } from '../../_models/taskDto';
 import { TaskService } from '../../_services/api/task.service';
 import { defaultColumnDefs } from './tasks-list-table-data';
-import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
-import { TaskAddComponent } from '../task-add/task-add.component';
+import { MODAL_MEDIUM_WIDTH } from '../../app.constants';
+import { TaskAddEditComponent } from '../task-add-edit/task-add-edit.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { actionsBulkEditDefs } from './task-list-actions-data';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { TableComponent } from '../../shared/table/table.component';
 
 @Component({
   selector: 'app-tasks-list',
@@ -27,6 +28,8 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription[] = [];
 
+  @ViewChild(TableComponent) tableComponent: TableComponent;
+
   constructor(
     public taskService: TaskService,
     private dialog: MatDialog,
@@ -38,12 +41,13 @@ export class TasksListComponent implements OnInit, OnDestroy {
     this.defaultColumns = defaultColumnDefs;
   }
 
-  openAddTaskModal(): void {
+  openEditTaskModal(task: TaskDto): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      width: MODAL_MEDIUM_WIDTH,
       data: {
-        title: this.translateService.instant('strings.headingCreateNewTask'),
-        component: TaskAddComponent,
+        title: this.translateService.instant('strings.headingEditTask'),
+        component: TaskAddEditComponent,
+        resource: task,
       },
     });
 
@@ -51,7 +55,26 @@ export class TasksListComponent implements OnInit, OnDestroy {
       dialogRef.afterClosed().subscribe((result) => {
         this.formActionsService.setDiscard();
         if (result) {
-          // callback
+          // this.tableComponent.getResources(true);
+        }
+      })
+    );
+  }
+
+  openAddTaskModal(): void {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      width: MODAL_MEDIUM_WIDTH,
+      data: {
+        title: this.translateService.instant('strings.headingCreateNewTask'),
+        component: TaskAddEditComponent,
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
+        if (result) {
+          // this.tableComponent.getResources(true);
         }
       })
     );

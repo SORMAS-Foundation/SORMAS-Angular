@@ -13,10 +13,11 @@
   <app-card-list
     *ngIf="items.length"
     [data]="items"
-    [cardWidth]="200"
+    [cardWidth]="cardWidth || 200"
     [initialPageSize]="initialSize"
     [cardType]="config.cardType"
     [cardTitleKey]="config.cardTitleKey"
+    [titleDateFormat]="config.titleDateFormat"
     [cardStatusKey]="config.cardStatusKey"
     [cardAppearance]="config.appearance"
     [cardEdit]="true"

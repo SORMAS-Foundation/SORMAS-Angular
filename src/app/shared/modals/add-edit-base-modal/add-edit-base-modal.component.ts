@@ -2,11 +2,13 @@ import {
   Component,
   ComponentFactoryResolver,
   Inject,
+  OnDestroy,
   OnInit,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { FormActionsService } from '../../../_services/form-actions.service';
 
 @Component({
@@ -14,9 +16,10 @@ import { FormActionsService } from '../../../_services/form-actions.service';
   templateUrl: './add-edit-base-modal.component.html',
   styleUrls: ['./add-edit-base-modal.component.scss'],
 })
-export class AddEditBaseModalComponent implements OnInit {
+export class AddEditBaseModalComponent implements OnInit, OnDestroy {
   @ViewChild('addEditResource', { read: ViewContainerRef })
   addEditResource: ViewContainerRef;
+  subscription: Subscription[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<AddEditBaseModalComponent>,
@@ -28,13 +31,27 @@ export class AddEditBaseModalComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       const resolver = this.componentFactoryResolver.resolveComponentFactory(this.data.component);
-      this.addEditResource.createComponent(resolver);
+      const createdComponent = this.addEditResource.createComponent(resolver);
+      if (this.data.resource) {
+        // @ts-ignore
+        createdComponent.instance.selectedResource = this.data.resource;
+      }
     });
+
+    this.subscription.push(
+      this.formActionsService.getCloseFormModal().subscribe((response: any) => {
+        if (response.closeModal) {
+          this.dialogRef.close({
+            close: true,
+          });
+        }
+      })
+    );
   }
 
   save(): void {
-    if (this.data.editResources) {
-      this.formActionsService.setSave(this.data.editResources);
+    if (this.data.resource) {
+      this.formActionsService.setSave(this.data.resource);
     } else {
       this.formActionsService.setSave(null);
     }
@@ -46,5 +63,11 @@ export class AddEditBaseModalComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  archive(): void {}
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }

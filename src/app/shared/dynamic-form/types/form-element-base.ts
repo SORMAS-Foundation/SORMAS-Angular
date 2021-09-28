@@ -21,6 +21,8 @@ export class FormElementBase<T> {
   chips?: boolean; // flag to toggle chips for multi-select
   allowClear?: boolean; // toggles the `clear` field button
   allowSelect?: boolean; // permists selection of all possible options with one click (multiselect, checkbox group)
+  radioNewLine?: boolean; // radio btns displayed with full width
+  disabled?: boolean; // input disabling
 
   constructor(
     options: {
@@ -45,6 +47,8 @@ export class FormElementBase<T> {
       chips?: boolean;
       allowClear?: boolean;
       allowSelect?: boolean;
+      radioNewLine?: boolean;
+      disabled?: boolean;
     } = {}
   ) {
     this.value = options.value;
@@ -68,6 +72,8 @@ export class FormElementBase<T> {
     this.chips = options.chips ?? false;
     this.allowClear = options.allowClear ?? false;
     this.allowSelect = options.allowSelect ?? false;
+    this.radioNewLine = options.radioNewLine ?? false;
+    this.disabled = options.disabled ?? false;
   }
 }
 
@@ -80,4 +86,5 @@ export class FormBase<T> {
   anchor?: string;
   anchorLabel?: string;
   hidden?: boolean;
+  hiddenLeftSection?: boolean;
 }

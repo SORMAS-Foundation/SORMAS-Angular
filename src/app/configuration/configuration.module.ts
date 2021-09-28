@@ -25,6 +25,10 @@ import { DistrictListComponent } from './districts/district-list/district-list.c
 import { DistrictFiltersComponent } from './districts/district-filters/district-filters.component';
 import { CommunityListComponent } from './communities/community-list/community-list.component';
 import { CommunityFiltersComponent } from './communities/community-filters/community-filters.component';
+import { CountryAddEditComponent } from './countries/country-add-edit/country-add-edit.component';
+import { CommunityAddEditComponent } from './communities/community-add-edit/community-add-edit.component';
+import { RegionAddEditComponent } from './regions/region-add-edit/region-add-edit.component';
+import { DistrictAddEditComponent } from './districts/district-add-edit/district-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import { CommunityFiltersComponent } from './communities/community-filters/commu
     PopulationComponent,
     LineListingComponent,
     DocumentTemplatesComponent,
+    CountryAddEditComponent,
+    CommunityAddEditComponent,
+    RegionAddEditComponent,
+    DistrictAddEditComponent,
   ],
   imports: [
     CommonModule,

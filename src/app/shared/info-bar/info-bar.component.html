@@ -1,6 +1,7 @@
 <div *ngIf="data" class="info-bar" [ngSwitch]="type">
   <ng-container *ngSwitchCase="infoBarOptions.CASE" [ngTemplateOutlet]="case"></ng-container>
   <ng-container *ngSwitchCase="infoBarOptions.EVENT" [ngTemplateOutlet]="event"></ng-container>
+  <ng-container *ngSwitchCase="infoBarOptions.EVENT_PARTICIPANT" [ngTemplateOutlet]="event_participant"></ng-container>
   <ng-container
     *ngSwitchCase="infoBarOptions.SAMPLE_CASE"
     [ngTemplateOutlet]="sample_case"
@@ -61,6 +62,15 @@
       <strong i18n>{{ 'captions.Event.uuid' | translate }}: </strong>
       {{ data.uuid }}
     </li>
+    <li *ngIf="data.reportingUser">
+      <strong i18n>{{ 'captions.Event.reportingUser' | translate }}: </strong>
+      {{ data.reportingUser.caption }}
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #event_participant>
+  <ul>
     <li *ngIf="data.reportingUser">
       <strong i18n>{{ 'captions.Event.reportingUser' | translate }}: </strong>
       {{ data.reportingUser.caption }}

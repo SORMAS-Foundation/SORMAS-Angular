@@ -1,0 +1,78 @@
+<div *ngIf="data" class="card-sample-additional">
+  <div class="sample-additional-details">
+    <div class="list-additionals">
+      <div class="alt-sgpt">
+        <div class="row" *ngIf="data.altSgpt">
+          <div class="label">
+            {{ 'captions.AdditionalTest.altSgpt' | translate }}
+          </div>
+          <div class="value">{{ data.altSgpt }}</div>
+        </div>
+        <div class="row" *ngIf="data.astSgot">
+          <div class="label">
+            {{ 'captions.AdditionalTest.astSgot' | translate }}
+          </div>
+          <div class="value">{{ data.astSgot }}</div>
+        </div>
+        <div class="row" *ngIf="data.creatinine">
+          <div class="label">
+            {{ 'captions.AdditionalTest.creatinine' | translate }}
+          </div>
+          <div class="value">{{ data.creatinine }}</div>
+        </div>
+        <div class="row" *ngIf="data.potassium">
+          <div class="label">
+            {{ 'captions.AdditionalTest.potassium' | translate }}
+          </div>
+          <div class="value">{{ data.potassium }}</div>
+        </div>
+        <div class="row" *ngIf="data.urea">
+          <div class="label">
+            {{ 'captions.AdditionalTest.urea' | translate }}
+          </div>
+          <div class="value">{{ data.urea }}</div>
+        </div>
+
+        <div class="row" *ngIf="data.haemoglobinuria">
+          <div class="label">
+            {{ 'captions.AdditionalTest.haemoglobinuria' | translate }}
+          </div>
+          <div class="value">{{ data.haemoglobinuria }}</div>
+        </div>
+        <div class="row" *ngIf="data.proteinuria">
+          <div class="label">
+            {{ 'captions.AdditionalTest.proteinuria' | translate }}
+          </div>
+          <div class="value">{{ data.proteinuria }}</div>
+        </div>
+        <div class="row" *ngIf="data.hematuria">
+          <div class="label">
+            {{ 'captions.AdditionalTest.hematuria' | translate }}
+          </div>
+          <div class="value">{{ data.hematuria }}</div>
+        </div>
+        <div class="row">
+          <div class="label">
+            {{ 'captions.AdditionalTest.arterialVenousBloodGas' | translate }}
+          </div>
+          <div class="value" *ngIf="data.arterialVenousGasPH">
+            {{ 'captions.AdditionalTest.arterialVenousGasPH' | translate }}:
+            {{ data.arterialVenousGasPH }}
+          </div>
+          <div class="value" *ngIf="data.arterialVenousGasPco2">
+            {{ 'captions.AdditionalTest.arterialVenousGasPco2' | translate }}:
+            {{ data.arterialVenousGasPco2 }}
+          </div>
+          <div class="value" *ngIf="data.arterialVenousGasPao2">
+            {{ 'captions.AdditionalTest.arterialVenousGasPao2' | translate }}:
+            {{ data.arterialVenousGasPao2 }}
+          </div>
+          <div class="value" *ngIf="data.arterialVenousGasHco3">
+            {{ 'captions.AdditionalTest.arterialVenousGasHco3' | translate }}:
+            {{ data.arterialVenousGasHco3 }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

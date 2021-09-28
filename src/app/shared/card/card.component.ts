@@ -41,6 +41,7 @@ export class CardComponent implements OnInit {
   @Input() appearance: CardAppearance = CardAppearanceOptions.STANDARD;
   @Input() status: CardStatus = CardStatusMap.CONFIRMED;
   @Input() data: any;
+  @Input() titleDateFormat: string;
 
   @Output() selectCard: EventEmitter<any> = new EventEmitter();
   @Output() editCard: EventEmitter<any> = new EventEmitter();

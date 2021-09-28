@@ -26,6 +26,7 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() showGroupLink = false;
   @Input() actionLink = '';
   @Input() actionLinkParams = {};
+  @Input() cardWidth?: number;
 
   items: any[] = [];
   initialSize: number;
@@ -48,18 +49,31 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
     ];
 
     this.config = PANEL_CONFIG[this.type];
-
-    this.subscriptions.push(
-      this.resourceService?.getAll(null, null, filters).subscribe({
-        next: (response: any) => {
-          this.items = response.elements;
-        },
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {},
-      })
-    );
+    if (this.type === EDGE_PANEL_TYPE.PATHOGEN || this.type === EDGE_PANEL_TYPE.ADDITIONAL) {
+      this.subscriptions.push(
+        this.resourceService?.getBySampleId(this.scopeId || '').subscribe({
+          next: (response: any) => {
+            this.items = response;
+          },
+          error: (err: any) => {
+            this.notificationService.error(err);
+          },
+          complete: () => {},
+        })
+      );
+    } else {
+      this.subscriptions.push(
+        this.resourceService?.getAll(null, null, filters).subscribe({
+          next: (response: any) => {
+            this.items = response.elements;
+          },
+          error: (err: any) => {
+            this.notificationService.error(err);
+          },
+          complete: () => {},
+        })
+      );
+    }
 
     this.subscriptions.push(
       this.breakpointObserver

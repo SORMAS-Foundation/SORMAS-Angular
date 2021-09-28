@@ -1,3 +1,10 @@
+<div class="page-header">
+  <div class="page-header-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddCountryModal()">
+      {{ 'actionAddNewCountry' | translate }}
+    </button>
+  </div>
+</div>
 <app-table
   [resourceService]="countryService"
   [tableColumns]="defaultColumns"
@@ -11,5 +18,5 @@
   [showTotal]="true"
   [isEditable]="true"
   showTotalContext="{{ 'strings.entityCountries' | translate }}"
-  (editItem)="editCountry($event)"
+  (editItem)="openEditCountryModal($event)"
 ></app-table>

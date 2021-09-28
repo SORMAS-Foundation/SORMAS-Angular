@@ -76,9 +76,12 @@ legend {
 
 .dynamic-form-input {
   display: inline-block;
-  width: 100%;
   margin-right: 20px;
-  vertical-align: top;
+  vertical-align: middle;
+
+  &.margin-left-50 {
+    margin-left: 50px;
+  }
 }
 
 .size-small {

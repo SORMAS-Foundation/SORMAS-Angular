@@ -19,8 +19,14 @@ export class FormElementControlService {
       }
       group[formElement.key] =
         validations.length > 0
-          ? (group[formElement.key] = new FormControl(formElement.value || '', validations))
-          : (group[formElement.key] = new FormControl(formElement.value || ''));
+          ? (group[formElement.key] = new FormControl(
+              { value: formElement.value || '', disabled: formElement.disabled },
+              validations
+            ))
+          : (group[formElement.key] = new FormControl({
+              value: formElement.value || '',
+              disabled: formElement.disabled,
+            }));
       validations = [];
     });
     return new FormGroup(group);
@@ -68,5 +74,86 @@ export class FormElementControlService {
     }
 
     return validatorsArray;
+  }
+
+  setOptionsToInput(
+    options: any[],
+    formElements: FormBase<any>[],
+    optionKey: string,
+    optionValue: string
+  ): FormBase<any>[] {
+    const newOptions = options.map((option) => {
+      return {
+        key: option.uuid,
+        value: option[optionValue],
+      };
+    });
+
+    formElements.forEach((formElement) => {
+      const attribute = 'options';
+      const formField = formElement.fields.find((elem) => elem.key === optionKey);
+      if (formField) {
+        formField[attribute] = newOptions;
+      }
+    });
+
+    return formElements;
+  }
+
+  setAttributeToFormElement(
+    formElements: FormBase<any>[],
+    key: string,
+    attribute: string,
+    value: any
+  ): FormBase<any>[] {
+    formElements.forEach((formElement) => {
+      const formField = formElement.fields.find((elem) => elem.key === key);
+      if (formField) {
+        // @ts-ignore
+        formField[attribute] = value;
+      }
+    });
+
+    return formElements;
+  }
+
+  setAttributeToGroupElement(
+    formElements: FormBase<any>[],
+    id: string,
+    attribute: string,
+    value: any
+  ): FormBase<any>[] {
+    const formGroup = formElements.find((formElement) => formElement.id === id);
+    if (formGroup) {
+      // @ts-ignore
+      formGroup[attribute] = value;
+    }
+
+    return formElements;
+  }
+
+  isFormElementHidden(formElements: FormBase<any>[], key: string): boolean {
+    let flag = false;
+    formElements.forEach((formElement) => {
+      flag = false;
+      const formField = formElement.fields.find((elem) => elem.key === key);
+      if (formField && formElement.hidden) {
+        flag = true;
+      }
+    });
+    return flag;
+  }
+
+  getFormElement(formElements: FormBase<any>[], key: string): FormElementBase<any> {
+    let formElementTmp: FormElementBase<any>;
+    formElements.forEach((formElement) => {
+      const formField = formElement.fields.find((elem) => elem.key === key);
+      if (formField) {
+        formElementTmp = formField;
+      }
+    });
+
+    // @ts-ignore
+    return formElementTmp;
   }
 }

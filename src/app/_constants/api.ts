@@ -14,6 +14,24 @@ export const API_ROUTE_PERSONS = {
   DELETE: 'persons/delete',
 };
 
+export const API_ROUTE_PATHOGEN_TESTS = {
+  ENDPOINT: 'pathogentests',
+  GET_ALL: 'pathogentests/indexList',
+  UPDATE: 'pathogentests/update',
+  ADD: 'pathogentests/add',
+  DELETE: 'pathogentests/delete',
+  GET_BY_SAMPLE_ID: 'pathogentests/query/samples',
+};
+
+export const API_ROUTE_ADDITIONAL_TESTS = {
+  ENDPOINT: 'additionaltests',
+  GET_ALL: 'additionaltests/indexList',
+  UPDATE: 'additionaltests/update',
+  ADD: 'additionaltests/add',
+  DELETE: 'additionaltests/delete',
+  GET_BY_SAMPLE_ID: 'additionaltests/query/samples', // toDo: hardcoded endpoint. Needs backend
+};
+
 export const API_ROUTE_PRESCRIPTIONS = {
   ENDPOINT: 'prescriptions',
   GET_ALL: 'prescriptions/indexList',
@@ -33,8 +51,8 @@ export const API_ROUTE_TREATMENTS = {
 export const API_ROUTE_TASKS = {
   ENDPOINT: 'tasks',
   GET_ALL: 'tasks/indexList',
-  UPDATE: 'tasks/update',
-  ADD: 'tasks/add',
+  UPDATE: 'tasks/push',
+  ADD: 'tasks/push',
   DELETE: 'tasks/delete',
 };
 
@@ -103,31 +121,31 @@ export const API_ROUTE_ACTIONS = {
 export const API_ROUTE_COUNTRIES = {
   ENDPOINT: 'countries',
   GET_ALL: 'countries/indexList',
-  UPDATE: 'countries/update',
-  ADD: 'countries/add',
+  UPDATE: 'countries/push',
+  ADD: 'countries/push',
   DELETE: 'countries/delete',
 };
 
 export const API_ROUTE_REGIONS = {
   ENDPOINT: 'regions',
   GET_ALL: 'regions/indexList',
-  UPDATE: 'regions/update',
-  ADD: 'regions/add',
+  UPDATE: 'regions/push',
+  ADD: 'regions/push',
   DELETE: 'regions/delete',
 };
 
 export const API_ROUTE_DISTRICTS = {
   ENDPOINT: 'districts',
   GET_ALL: 'districts/indexList',
-  UPDATE: 'districts/update',
-  ADD: 'districts/add',
+  UPDATE: 'districts/push',
+  ADD: 'districts/push',
   DELETE: 'districts/delete',
 };
 
 export const API_ROUTE_COMMUNITIES = {
   ENDPOINT: 'communities',
   GET_ALL: 'communities/indexList',
-  UPDATE: 'communities/update',
-  ADD: 'communities/add',
+  UPDATE: 'communities/push',
+  ADD: 'communities/push',
   DELETE: 'communities/delete',
 };

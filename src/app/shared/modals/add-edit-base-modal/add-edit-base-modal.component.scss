@@ -1,1 +1,12 @@
-/* stylelint-disable */
+.mat-dialog-title {
+  padding-top: 35px;
+
+  > h2 {
+    margin: 0;
+  }
+
+  .button-dialog-close {
+    top: 0;
+    right: 0;
+  }
+}

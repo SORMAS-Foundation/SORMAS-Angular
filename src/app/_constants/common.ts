@@ -25,6 +25,7 @@ export type EntityLink = {
 };
 
 // modals
+export const MODAL_MEDIUM_WIDTH = '940px';
 export const ADD_MODAL_MAX_WIDTH = '1200px';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
@@ -35,7 +36,15 @@ export const HEADING_TABS_HEIGHT = 108;
 // sidebar panels
 export const EDGE_PANEL_INITIAL_SIZE_SINGLE_COLUMN = 3;
 export const EDGE_PANEL_INITIAL_SIZE_DOUBLE_COLUMN = 4;
-export type EdgePanelType = 'TASK' | 'SAMPLE' | 'EVENT' | 'PERSON_EVENT' | 'CASE' | 'CONTACT';
+export type EdgePanelType =
+  | 'TASK'
+  | 'SAMPLE'
+  | 'EVENT'
+  | 'PERSON_EVENT'
+  | 'CASE'
+  | 'CONTACT'
+  | 'PATHOGEN'
+  | 'ADDITIONAL';
 export const EDGE_PANEL_TYPE = {
   TASK: 'TASK' as EdgePanelType,
   SAMPLE: 'SAMPLE' as EdgePanelType,
@@ -43,13 +52,15 @@ export const EDGE_PANEL_TYPE = {
   PERSON_EVENT: 'PERSON_EVENT' as EdgePanelType,
   CASE: 'CASE' as EdgePanelType,
   CONTACT: 'CONTACT' as EdgePanelType,
+  PATHOGEN: 'PATHOGEN' as EdgePanelType,
+  ADDITIONAL: 'ADDITIONAL' as EdgePanelType,
 };
 
 // date format
 export const DEFAULT_DATE_FORMAT = 'd/m/yyyy';
 export const DAY_DATE_FORMAT = 'dd';
 export const MONTH_DATE_TEXT_FORMAT = 'MMM';
-export const HOUR_MINUTE_TIME_FORMAT = 'h:m';
+export const HOUR_MINUTE_TIME_FORMAT = 'h:mm';
 
 export type ButtonType = 'STANDARD' | 'STROKED' | 'FLAT';
 export const BUTTON_TYPE = {

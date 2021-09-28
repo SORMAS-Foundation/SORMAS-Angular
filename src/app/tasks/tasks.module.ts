@@ -7,7 +7,7 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { TasksRoutingModule } from './tasks-routing.module';
 import { MaterialModule } from '../material.module';
 import { TaskFiltersComponent } from './task-filters/task-filters.component';
-import { TaskAddComponent } from './task-add/task-add.component';
+import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { TaskEditComponent } from './task-edit/task-edit.component';
     TasksComponent,
     TasksListComponent,
     TaskFiltersComponent,
-    TaskAddComponent,
+    TaskAddEditComponent,
     TaskEditComponent,
   ],
   imports: [CommonModule, TasksRoutingModule, MaterialModule, SharedModule, DynamicFormModule],

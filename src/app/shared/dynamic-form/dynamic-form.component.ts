@@ -55,15 +55,17 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         let RESOURCE;
         if (response.resource === null) {
           // ADD mode
-          RESOURCE = this.resourceService.add(this.updateFormRawValueWithObjects());
+          RESOURCE = this.resourceService.add([this.updateFormRawValueWithObjects()]);
         } else {
-          // EDIT mode
-          const resourceArrayTmp = [];
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < response.resource.length; i += 1) {
-            resourceArrayTmp.push(this.updateResource(response.resource[i]));
-          }
-          RESOURCE = this.resourceService.update(resourceArrayTmp);
+          // // EDIT mode
+          // const resourceArrayTmp = [];
+          // // tslint:disable-next-line:prefer-for-of
+          // for (let i = 0; i < response.resource.length; i += 1) {
+          //   resourceArrayTmp.push(this.updateResource(response.resource[i]));
+          // }
+          RESOURCE = this.resourceService.add([
+            this.updateFormRawValueWithObjects(true, response.resource.uuid),
+          ]);
         }
 
         RESOURCE.subscribe({
@@ -71,7 +73,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           error: (err: any) => {
             this.notificationService.error(err);
           },
-          complete: () => this.notificationService.success('Successfully saved'),
+          complete: () => {
+            this.formActionsService.setCloseFormModal(true);
+            this.notificationService.success('Successfully saved');
+          },
         });
       })
     );
@@ -81,6 +86,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         this.processFormArray().forEach((item) => {
           this.form.controls[item.key].setValue(item.value);
         });
+      })
+    );
+
+    this.subscription.push(
+      this.formActionsService.getInputValue().subscribe((response: any) => {
+        this.form.controls[response.key].setValue(response.value);
       })
     );
 
@@ -108,16 +119,24 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return paths.reduce((acc, el) => ({ [el]: acc }), { [last]: value });
   }
 
-  updateFormRawValueWithObjects(): any {
-    const rawValueTmp: any = {};
+  updateFormRawValueWithObjects(isEdit?: boolean, id?: string): any {
+    let rawValueTmp: any = {};
+    if (isEdit) {
+      rawValueTmp = {
+        uuid: id,
+      };
+    }
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
-      if (key.includes('.')) {
-        const keys = key.split('.');
-        rawValueTmp[keys[0]] = this.convertDotPathToNestedObject(key, value)[keys[0]];
-      } else {
-        rawValueTmp[key] = value;
+      if (!this.formElementControlService.isFormElementHidden(this.formElements, key)) {
+        if (key.includes('.')) {
+          const keys = key.split('.');
+          rawValueTmp[keys[0]] = this.convertDotPathToNestedObject(key, value)[keys[0]];
+        } else {
+          rawValueTmp[key] = value;
+        }
       }
     });
+
     return rawValueTmp;
   }
 

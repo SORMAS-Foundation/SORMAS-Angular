@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { MatDialogModule } from '@angular/material/dialog';
 import { CountryListComponent } from './country-list.component';
 
 describe('CountryListComponent', () => {
@@ -12,7 +13,7 @@ describe('CountryListComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [CountryListComponent],
-      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot(), MatDialogModule],
     }).compileComponents();
   });
 
