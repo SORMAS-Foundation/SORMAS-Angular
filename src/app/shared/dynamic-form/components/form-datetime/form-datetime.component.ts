@@ -34,10 +34,12 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
     if (control) {
       this.subscription.push(
         control.valueChanges.subscribe((data: any) => {
+          const processedHours = `0${data.getHours()}`.slice(-2);
+          const processedMinutes = `0${data.getMinutes()}`.slice(-2);
           this.form.patchValue(
             {
               date: data,
-              time: data ? `${data.getHours()}:${data.getMinutes()}` : null,
+              time: data ? `${processedHours}:${processedMinutes}` : null,
             },
             { emitEvent: false }
           );
