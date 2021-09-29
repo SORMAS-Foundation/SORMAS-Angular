@@ -48,6 +48,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
         title: this.translateService.instant('strings.headingEditTask'),
         component: TaskAddEditComponent,
         resource: task,
+        delete: true,
       },
     });
 

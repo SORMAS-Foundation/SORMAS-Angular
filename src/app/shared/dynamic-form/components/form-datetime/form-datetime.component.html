@@ -28,7 +28,7 @@
     <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="outline" floatLabel="always" class="time">
-    <mat-label>{{ 'Select time' | translate }}</mat-label>
+    <mat-label>{{ config.timeLabel || '' | translate }}</mat-label>
     <mat-select disableOptionCentering [formControlName]="'time'" (selectionChange)="onChange()">
       <mat-option *ngFor="let opt of options" [value]="opt.key">
         {{ opt.value }}
