@@ -49,7 +49,7 @@
           <mat-checkbox
             color="primary"
             (click)="$event.stopPropagation()"
-            (change)="$event ? selection.toggle(row) : null"
+            (change)="onSelectionChange($event, row)"
             [checked]="selection.isSelected(row)"
             class="small"
           ></mat-checkbox>
@@ -104,7 +104,7 @@
           selection.isSelected(row) ? 'row-selected' : '',
           rowStyleData ? getRowStyle(row.index) : ''
         ]"
-        (click)="$event ? selection.toggle(row) : null"
+        (click)="onSelectionChange($event, row)"
       ></tr>
     </table>
 

@@ -7,9 +7,7 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
     essential: true,
     format: {
-      type: TableDataFormatOptions.LINK,
-      pattern: '/cases/case/$param1/details',
-      params: ['uuid'],
+      type: TableDataFormatOptions.DISPLAY,
       truncate: 6,
     },
   },
@@ -17,32 +15,6 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.CaseData.externalID',
     dataKey: 'externalID',
     isSortable: true,
-  },
-  {
-    name: 'captions.disease',
-    dataKey: 'disease',
-    isSortable: true,
-  },
-  {
-    name: 'captions.CaseData.diseaseVariant',
-    dataKey: 'diseaseDetails',
-    isSortable: true,
-  },
-  {
-    name: 'captions.Contact.caze.caseClassification',
-    dataKey: 'caseClassification',
-    isSortable: true,
-  },
-  {
-    name: 'captions.CaseData.outcome',
-    dataKey: 'outcome',
-    isSortable: true,
-  },
-  {
-    name: 'captions.CaseData.investigationStatus',
-    dataKey: 'investigationStatus',
-    isSortable: true,
-    iconify: true,
   },
   {
     name: 'captions.CaseData.personFirstName',
@@ -55,50 +27,43 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.CaseData.district',
-    dataKey: 'district.caption',
+    name: 'captions.personAgeAndBirthdate',
+    dataKey: 'age',
+    isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '$param1 ($param2/$param3/$param4)',
+      params: [
+        'ageAndBirthDate.age',
+        'ageAndBirthDate.dateOfBirthDD',
+        'ageAndBirthDate.dateOfBirthMM',
+        'ageAndBirthDate.dateOfBirthYYYY',
+      ],
+    },
+  },
+  {
+    name: 'captions.CaseData.responsibleDistrict',
+    dataKey: 'responsibleDistrictName',
     isSortable: true,
   },
   {
     name: 'captions.CaseData.healthFacilityName',
-    dataKey: 'healthFacility.caption',
+    dataKey: 'healthFacilityName',
     isSortable: true,
   },
   {
-    name: 'captions.CaseData.pointOfEntry',
-    dataKey: 'pointOfEntry.caption',
+    name: 'captions.sex',
+    dataKey: 'sex',
     isSortable: true,
   },
   {
-    name: 'captions.CaseData.reportDate',
-    dataKey: 'reportDate',
-    isSortable: true,
-    format: {
-      type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
-    },
-  },
-  {
-    name: 'captions.CaseData.quarantineTo',
-    dataKey: 'quarantineTo',
-    isSortable: true,
-    format: {
-      type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
-    },
-  },
-  {
-    name: 'captions.CaseData.followUpStatus',
-    dataKey: 'followUpStatus',
+    name: 'captions.CaseData.caseClassification',
+    dataKey: 'caseClassification',
     isSortable: true,
   },
   {
-    name: 'captions.CaseData.followUpUntil',
-    dataKey: 'followUpUntil',
+    name: 'captions.CaseData.outcome',
+    dataKey: 'outcome',
     isSortable: true,
-    format: {
-      type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
-    },
-  },
+  }
 ];

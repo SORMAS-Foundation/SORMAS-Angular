@@ -4,6 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ChooseCaseModalComponent } from '../../modals/choose-case-modal/choose-case-modal.component';
 import { MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
+import { ContactService } from '../../../_services/api/contact.service';
+import { NotificationService } from '../../../_services/notification.service';
+import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 @Component({
   selector: 'app-contact-case-details',
@@ -12,8 +15,14 @@ import { MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
 })
 export class ContactCaseDetailsComponent implements OnDestroy {
   private subscription: Subscription[] = [];
+  config: FormElementBase<any>;
 
-  constructor(private dialog: MatDialog, private translateService: TranslateService) {}
+  constructor(
+    private dialog: MatDialog,
+    public translateService: TranslateService,
+    private contactService: ContactService,
+    private notificationService: NotificationService
+  ) {}
 
   openChooseCaseModal(): void {
     const dialogRef = this.dialog.open(ChooseCaseModalComponent, {
@@ -23,9 +32,15 @@ export class ContactCaseDetailsComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          console.log('result');
+          this.contactService.setCaseToContact(result.selectedCase, this.config.value).subscribe({
+            next: (response: any) => {
+            },
+            error: (err: any) => {
+              this.notificationService.error(err);
+            },
+            complete: () => {},
+          });
         }
-        console.log('result2222');
       })
     );
   }

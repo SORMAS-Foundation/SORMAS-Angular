@@ -6,6 +6,7 @@ import { defaultColumnDefs } from './choose-case-modal-table-data';
 import { Filter, TableColumn } from '../../../_models/common';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { FilterService } from '../../../_services/filter.service';
+import { CaseDataDto } from '../../../_models/caseDataDto';
 
 @Component({
   selector: 'app-choose-case-modal',
@@ -15,7 +16,7 @@ import { FilterService } from '../../../_services/filter.service';
 export class ChooseCaseModalComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
   tableAppearanceOptions = TableAppearanceOptions;
-
+  selectedCase: CaseDataDto | null;
   filtersForm = new FormGroup({});
 
   constructor(
@@ -44,15 +45,21 @@ export class ChooseCaseModalComponent implements OnInit {
     this.filterService.setFilters([filter]);
   }
 
+  onSelectCase(event: any): void {
+    this.selectedCase = null;
+    if (event.selected.length) {
+      // eslint-disable-next-line prefer-destructuring
+      this.selectedCase = event.selected[0];
+    }
+  }
+
   onFormChange(): void {
     this.filtersToArray();
   }
 
   confirm(): void {
-    console.log('confirm');
-  }
-
-  cancel(): void {
-    console.log('cancel');
+    this.dialogRef.close({
+      selectedCase: this.selectedCase,
+    });
   }
 }

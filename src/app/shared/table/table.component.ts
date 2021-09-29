@@ -45,8 +45,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   public displayedColumns: string[] = [];
   public uuidKey = constants.UUID_KEY;
   public advancedDataType = constants.AdvancedDataType;
+  public selection = new SelectionModel<any>(true, []);
 
-  selection = new SelectionModel<any>(true, []);
   offset = 0;
   limit = constants.PAGE_SIZE;
   headerHeight = constants.VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT;
@@ -259,6 +259,18 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   scrolledIndexChange(index: number): void {
     this.debouncer.next(index);
+  }
+
+  onSelectionChange(event: any, row: any): void {
+    if (event) {
+      this.selection.toggle(row);
+    }
+    const selections = this.getSelectedItems();
+    if (this.selectItem) {
+      this.selectItem.emit({
+        selected: selections,
+      });
+    }
   }
 
   sortTable(sortParameters: Sort): void {
