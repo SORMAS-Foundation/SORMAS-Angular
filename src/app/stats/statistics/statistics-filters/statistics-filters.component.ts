@@ -202,7 +202,7 @@ export class StatisticsFiltersComponent implements OnInit, OnDestroy {
     return section;
   }
 
-  getGroup(sectionId: string, groupId: string): FormBase<any> {
+  getGroup(sectionId: string, groupId: string | undefined): FormBase<any> {
     const section = this.getSection(sectionId);
     const group = section.data.find((obj: any) => obj.id === groupId);
     return group;
@@ -353,7 +353,7 @@ export class StatisticsFiltersComponent implements OnInit, OnDestroy {
     this.filtersForm.get(key)?.reset();
   }
 
-  removeFilter(sectionId: string, groupId: string): void {
+  removeFilter(sectionId: string, groupId: string | undefined): void {
     const group = this.getGroup(sectionId, groupId);
 
     if (!group) {

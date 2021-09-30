@@ -78,7 +78,7 @@ export class FormElementBase<T> {
 }
 
 export class FormBase<T> {
-  id: string;
+  id?: string;
   title: string;
   subTitle?: string;
   fields: FormElementBase<T>[];
