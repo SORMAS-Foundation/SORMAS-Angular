@@ -5769,7 +5769,7 @@
   "headingEditCommunity": "Edit community",
   "actionAddNewCommunity": "Add new community",
   "exportDatabase": "Database",
-  "userAssignmentHint": "The user assigned to this task does not have an e-mail address provided, and will therefore not be notified.",
+  "userAssignmentHint": "The user assigned will not be notified (no e-mail provided).",
   "dateOfDeparture": "Date of departure",
   "timeOfDeparture": "Time of departure",
   "dateOfArrival": "Date of arrival",
