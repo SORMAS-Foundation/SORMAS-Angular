@@ -33,8 +33,7 @@ export class ContactCaseDetailsComponent implements OnDestroy {
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           this.contactService.setCaseToContact(result.selectedCase, this.config.value).subscribe({
-            next: (response: any) => {
-            },
+            next: () => {},
             error: (err: any) => {
               this.notificationService.error(err);
             },

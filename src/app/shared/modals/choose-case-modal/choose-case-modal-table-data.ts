@@ -65,5 +65,5 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.CaseData.outcome',
     dataKey: 'outcome',
     isSortable: true,
-  }
+  },
 ];
