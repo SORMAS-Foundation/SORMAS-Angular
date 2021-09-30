@@ -105,6 +105,18 @@ legend {
   width: 100%;
 }
 
+.tab-1 {
+  margin-left: 24px;
+}
+
+.tab-2 {
+  margin-left: 48px;
+}
+
+.tab-3 {
+  margin-left: 72px;
+}
+
 .required {
   margin-left: 6px;
   color: map-get($sormas-alert, 400);

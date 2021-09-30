@@ -43,6 +43,7 @@ import { ContactCaseDetailsComponent } from './widgets/contact-case-details/cont
 import { ContactFollowUpComponent } from './widgets/contact-follow-up/contact-follow-up.component';
 import { TableNotificationComponent } from './table/table-notification/table-notification.component';
 import { SelectionListComponent } from './selection-list/selection-list.component';
+import { ExportsGroupSelectComponent } from './widgets/exports-group-select/exports-group-select.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 
 @NgModule({
@@ -78,6 +79,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
     TooltipComponent,
     ContactCaseDetailsComponent,
     ContactFollowUpComponent,
+    ExportsGroupSelectComponent,
   ],
   imports: [
     CommonModule,

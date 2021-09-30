@@ -23,6 +23,7 @@ export class FormElementBase<T> {
   allowSelect?: boolean; // permists selection of all possible options with one click (multiselect, checkbox group)
   radioNewLine?: boolean; // radio btns displayed with full width
   disabled?: boolean; // input disabling
+  timeLabel?: string;
 
   constructor(
     options: {
@@ -49,6 +50,7 @@ export class FormElementBase<T> {
       allowSelect?: boolean;
       radioNewLine?: boolean;
       disabled?: boolean;
+      timeLabel?: string;
     } = {}
   ) {
     this.value = options.value;
@@ -74,6 +76,7 @@ export class FormElementBase<T> {
     this.allowSelect = options.allowSelect ?? false;
     this.radioNewLine = options.radioNewLine ?? false;
     this.disabled = options.disabled ?? false;
+    this.timeLabel = options.timeLabel;
   }
 }
 
