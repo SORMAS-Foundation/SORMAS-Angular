@@ -6,7 +6,7 @@
   $foreground: map-get($theme, foreground);
 
   :root {
-    .mat-selection-list {
+    .mat-selection-list.selection-menu {
       .mat-pseudo-checkbox,
       .mat-pseudo-checkbox-checked {
         border-width: 0;
@@ -22,10 +22,10 @@
         width: 13px;
         height: 5px;
       }
-    }
 
-    .mat-list-option:not(.mat-list-item-disabled)[aria-selected='true'] {
-      background-color: map-get($primary, 50);
+      .mat-list-option:not(.mat-list-item-disabled)[aria-selected='true'] {
+        background-color: map-get($primary, 50);
+      }
     }
   }
 }

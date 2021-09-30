@@ -3,6 +3,7 @@
   *ngIf="list.length"
   [multiple]="multiple"
   (selectionChange)="onOptionSelected($event)"
+  class="selection-menu"
 >
   <mat-list-option *ngFor="let item of list" [value]="item">
     <span>{{ (key ? item[key] : item) | translate }}</span>

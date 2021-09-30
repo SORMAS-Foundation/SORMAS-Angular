@@ -124,7 +124,7 @@ export class StatisticsFiltersComponent implements OnInit, OnDestroy {
   monitorReset(): void {
     this.subscriptions.push(
       this.filterService.getFilters().subscribe((response: any) => {
-        if (!response.filters.length) {
+        if (!response.filters.length && this.filters.length) {
           this.removeAllFilters();
           this.filtersForm.reset();
         }
