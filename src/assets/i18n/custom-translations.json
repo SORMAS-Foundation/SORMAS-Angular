@@ -79,5 +79,6 @@
   "timeOfDeparture": "Time of departure",
   "dateOfArrival": "Date of arrival",
   "timeOfArrival": "Time of arrival",
-  "timeHeading": "Time"
+  "timeHeading": "Time",
+  "searchByCase": "Search by case"
 }
