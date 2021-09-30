@@ -24,6 +24,7 @@ import { LastUpdateComponent } from '../../../widgets/last-update/last-update.co
 import { SuperordinateEventComponent } from '../../../widgets/superordinate-event/superordinate-event.component';
 import { ContactCaseDetailsComponent } from '../../../widgets/contact-case-details/contact-case-details.component';
 import { ContactFollowUpComponent } from '../../../widgets/contact-follow-up/contact-follow-up.component';
+import { ExportsGroupSelectComponent } from '../../../widgets/exports-group-select/exports-group-select.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -41,6 +42,7 @@ const COMPONENTS_MAP: any = {
   'app-superordinate-event': SuperordinateEventComponent,
   'app-contact-case-details': ContactCaseDetailsComponent,
   'app-contact-follow-up': ContactFollowUpComponent,
+  'app-exports-group-select': ExportsGroupSelectComponent,
 };
 
 @Component({
