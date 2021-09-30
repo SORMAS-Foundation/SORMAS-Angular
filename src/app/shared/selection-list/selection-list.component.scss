@@ -1,0 +1,9 @@
+@use '/src/variables.scss' as *;
+
+.accent {
+  font-weight: 500;
+}
+
+.warn {
+  color: map-get($sormas-alert, 700);
+}

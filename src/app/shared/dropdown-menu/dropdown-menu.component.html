@@ -1,16 +1,43 @@
-<button
-  mat-stroked-button
-  color="primary"
-  #toggle="matMenuTrigger"
-  [matMenuTriggerFor]="menu"
-  [disabled]="disabled"
->
-  {{ buttonText | translate }}
-  <mat-icon class="material-icons-round">{{
-    toggle.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'
-  }}</mat-icon>
-</button>
+<ng-container [ngSwitch]="appearance">
+  <button
+    *ngSwitchCase="buttonTypes.STROKED"
+    mat-stroked-button
+    [color]="color"
+    #toggle="matMenuTrigger"
+    [matMenuTriggerFor]="menu"
+    [disabled]="disabled"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent; context: { toggle: toggle }"></ng-container>
+  </button>
+  <button
+    *ngSwitchCase="buttonTypes.FLAT"
+    mat-flat-button
+    [color]="color"
+    #toggle="matMenuTrigger"
+    [matMenuTriggerFor]="menu"
+    [disabled]="disabled"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent; context: { toggle: toggle }"></ng-container>
+  </button>
+  <button
+    *ngSwitchDefault
+    mat-button
+    [color]="color"
+    #toggle="matMenuTrigger"
+    [matMenuTriggerFor]="menu"
+    [disabled]="disabled"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent; context: { toggle: toggle }"></ng-container>
+  </button>
+</ng-container>
 
-<mat-menu #menu [class]="panelClass">
+<ng-template #buttonContent let-toggle="toggle">
+  {{ buttonText | translate }}
+  <mat-icon *ngIf="chevron" class="material-icons-round">{{
+    toggle.menuOpen ? chevronCloseIcon : chevronOpenIcon
+  }}</mat-icon>
+</ng-template>
+
+<mat-menu #menu [xPosition]="horizontalPosition" [class]="'dropdown-menu ' + panelClass">
   <ng-content></ng-content>
 </mat-menu>

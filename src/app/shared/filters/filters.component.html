@@ -1,28 +1,34 @@
-<mat-sidenav-container (backdropClick)="closeFilters()" class="filters">
+<mat-sidenav-container (backdropClick)="toggleFilters()" class="filters">
   <mat-sidenav
     #filters
-    [opened]="opened"
-    [mode]="mode"
+    [opened]="isAlwaysOpened ? true : opened"
+    [mode]="drawerMode"
     [fixedInViewport]="fixed"
     [fixedTopGap]="topGap"
     [fixedBottomGap]="bottomGap"
+    [disableClose]="true"
+    [ngClass]="expandable ? 'expandable' : ''"
+    [@onSideNavChange]="isAlwaysOpened ? (opened ? 'open' : 'close') : ''"
   >
     <button
-      *ngIf="opened"
+      *ngIf="isAlwaysOpened || opened"
       mat-icon-button
       color="primary"
       class="button-close"
-      (click)="closeFilters()"
+      (click)="toggleFilters()"
     >
       <mat-icon class="material-icons-round">{{
         isMobile ? 'highlight_off' : 'filter_list'
       }}</mat-icon>
     </button>
-    <div class="filters-wrapper">
-      <ng-content select="[filters]"></ng-content>
+    <div [ngClass]="['filters-wrapper', expandable && opened ? 'expanded' : '']">
+      <div class="filters-content">
+        <ng-content select="[filters]"></ng-content>
+      </div>
       <button
-        mat-flat-button
+        mat-button
         class="button-reset"
+        color="primary"
         (click)="resetFilters()"
         (keyup.enter)="resetFilters()"
       >
@@ -30,13 +36,17 @@
       </button>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content [ngClass]="[opened ? '' : 'filters-closed']">
+  <mat-sidenav-content
+    [appFluidHeight]="topGap + bottomGap"
+    [ngClass]="[opened ? '' : 'filters-closed', expandable ? 'expandable' : '']"
+    [@onMainContentChange]="isAlwaysOpened ? (opened ? 'open' : 'close') : ''"
+  >
     <button
-      *ngIf="!opened"
+      *ngIf="!isAlwaysOpened && !opened"
       mat-icon-button
       color="primary"
       class="button-open"
-      (click)="openFilters()"
+      (click)="toggleFilters()"
     >
       <mat-icon class="material-icons-round">filter_list</mat-icon>
     </button>

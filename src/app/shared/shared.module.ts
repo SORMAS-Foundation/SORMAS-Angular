@@ -42,7 +42,9 @@ import { SuperordinateEventComponent } from './widgets/superordinate-event/super
 import { ContactCaseDetailsComponent } from './widgets/contact-case-details/contact-case-details.component';
 import { ContactFollowUpComponent } from './widgets/contact-follow-up/contact-follow-up.component';
 import { TableNotificationComponent } from './table/table-notification/table-notification.component';
+import { SelectionListComponent } from './selection-list/selection-list.component';
 import { ExportsGroupSelectComponent } from './widgets/exports-group-select/exports-group-select.component';
+import { TooltipComponent } from './tooltip/tooltip.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { ExportsGroupSelectComponent } from './widgets/exports-group-select/expo
     LastUpdateComponent,
     InfoBarComponent,
     SuperordinateEventComponent,
+    SelectionListComponent,
+    TooltipComponent,
     ContactCaseDetailsComponent,
     ContactFollowUpComponent,
     ExportsGroupSelectComponent,
@@ -119,6 +123,7 @@ import { ExportsGroupSelectComponent } from './widgets/exports-group-select/expo
     ColumnPickerModule,
     DirectivesModule,
     InfoBarComponent,
+    SelectionListComponent,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })

@@ -1,4 +1,4 @@
-<div [formGroup]="group">
+<div [formGroup]="group" [ngClass]="className">
   <mat-form-field
     appearance="outline"
     floatLabel="always"
@@ -27,7 +27,6 @@
           <input
             #searchBox
             matInput
-            formControlName="searchTerm"
             [placeholder]="config.placeholder || '' | translate"
             appDebounce
             (debounce)="filterOptions()"
@@ -38,6 +37,24 @@
         </mat-form-field>
       </div>
       <div class="mat-select-body">
+        <div
+          *ngIf="config.allowSelect"
+          [ngClass]="[
+            'mat-option',
+            'mat-select-all',
+            selection.length === options.length ? 'mat-active mat-selected' : ''
+          ]"
+        >
+          <mat-checkbox
+            [indeterminate]="!!selection.length && selection.length !== options.length"
+            [checked]="selection.length === options.length"
+            color="primary"
+            (click)="$event.stopPropagation()"
+            (change)="toggleSelection($event)"
+          >
+            {{ 'captions.actionSelectAll' | translate }}
+          </mat-checkbox>
+        </div>
         <mat-option
           *ngFor="let opt of options"
           [value]="opt.key"
@@ -67,6 +84,16 @@
       <mat-icon matChipRemove class="material-icons-round icon-clear">highlight_off</mat-icon>
     </mat-chip>
   </mat-chip-list>
+  <div *ngIf="config.allowClear || config.allowSelect" class="actions">
+    <button
+      *ngIf="config.allowClear && selection.length"
+      mat-button
+      color="primary"
+      (click)="deselectAll()"
+    >
+      {{ 'captions.actionClearAll' | translate }}
+    </button>
+  </div>
   <div class="errorMessage" color="warn" *ngIf="!isValid">
     {{ config.validationMessage || '' | translate }}
   </div>

@@ -35,3 +35,32 @@
   padding: 16px;
   margin: 0;
 }
+
+.filters-field-expanded {
+  display: flex;
+  gap: 16px;
+}
+
+.actions {
+  .mat-button {
+    min-width: unset;
+    padding: 0;
+    margin-left: 16px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 24px;
+  }
+
+  .filters-field-compact & {
+    text-align: right;
+  }
+
+  .filters-field-expanded & {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+    margin-left: auto;
+  }
+}

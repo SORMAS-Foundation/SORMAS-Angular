@@ -8,4 +8,9 @@ import { HEADER_HEIGHT, HEADING_TABS_HEIGHT } from '../../app.constants';
 })
 export class StatisticsComponent {
   topGap = HEADER_HEIGHT + HEADING_TABS_HEIGHT;
+  filtersOpened: boolean;
+
+  onDrawerToggle(event: boolean): void {
+    this.filtersOpened = event;
+  }
 }

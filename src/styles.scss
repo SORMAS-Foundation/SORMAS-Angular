@@ -20,6 +20,7 @@
 @import './theme/menu.scss';
 @import './theme/tooltip.scss';
 @import './theme/chips.scss';
+@import './theme/list.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -71,6 +72,7 @@ $sormas-theme: mat-light-theme(
   @include menu-theme($theme);
   @include tooltip-theme($theme);
   @include chips-theme($theme);
+  @include list-theme($theme);
 }
 
 // Include theme styles for core and each component used in your app.
