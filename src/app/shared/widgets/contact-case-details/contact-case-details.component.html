@@ -1,5 +1,5 @@
 <div class="contact-case-details-wrapper">
-  <div class="with-no-caze" *ngIf="!config.value">
+  <div class="with-no-caze" *ngIf="!config?.value">
     <button mat-stroked-button color="primary" (click)="openChooseCaseModal()">
       {{ 'captions.contactChooseSourceCase' | translate }}
     </button>
@@ -8,7 +8,7 @@
       {{ 'captions.caseCreateNew' | translate }}
     </button>
   </div>
-  <div class="with-caze" *ngIf="config.value">
+  <div class="with-caze" *ngIf="config?.value">
     <div class="text">
       <p>{{ 'captions.Contact.caze.uuid' | translate }}: {{config.value.uuid}}</p>
     </div>

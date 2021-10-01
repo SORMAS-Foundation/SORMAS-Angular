@@ -80,7 +80,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() rowStyleData: string;
   @Input() showTotal = false;
   @Input() showTotalContext = 'Items';
-  @Input() preSelectedItems: any[] = [];
 
   preSetFiltersTmp: Filter[];
   @Input() set preSetFilters(value) {

@@ -52,16 +52,17 @@ export class ContactCaseDetailsComponent implements OnDestroy {
     this.notificationService
       .prompt({
         title: this.translateService.instant('strings.headingRemoveCaseFromContact'),
-        message: this.translateService.instant('strings.confirmationContactSourceCaseDiscardUnsavedChanges'),
+        message: this.translateService.instant(
+          'strings.confirmationContactSourceCaseDiscardUnsavedChanges'
+        ),
         buttonDeclineText: this.translateService.instant('captions.actionCancel'),
         buttonConfirmText: this.translateService.instant('captions.actionConfirm'),
       })
       .subscribe((result) => {
         if (result) {
           if (result === 'CONFIRM') {
-            console.log('aaaaaa');
             this.config.value = null;
-            this.group.patchValue({ caze: null });
+            this.group.patchValue({ caze: this.config.value });
           }
         }
       });
