@@ -26,6 +26,8 @@ import { ACTIONS_CASE } from '../../_constants/actions';
 import { CaseImportComponent } from '../case-import/case-import.component';
 import { HelperService } from '../../_services/helper.service';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import { FORM_DATA_CASE_FILTERS } from '../case-filters/case-filters-form-data';
 
 @Component({
   selector: 'app-cases-list',
@@ -33,6 +35,7 @@ import { FormActionsService } from '../../_services/form-actions.service';
   styleUrls: ['./cases-list.component.scss'],
 })
 export class CasesListComponent implements OnInit, OnDestroy {
+  filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_CASE_FILTERS));
   cases: CaseDataDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_CASES;

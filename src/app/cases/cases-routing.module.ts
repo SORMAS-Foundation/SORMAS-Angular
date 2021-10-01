@@ -20,7 +20,7 @@ const routes: Routes = [
     path: '',
     component: CasesComponent,
     children: [
-      { path: 'list', component: CasesListComponent, canActivate: [LeaveGuard] },
+      { path: 'list', component: CasesListComponent },
       {
         path: 'case/:caseId',
         component: CaseComponent,

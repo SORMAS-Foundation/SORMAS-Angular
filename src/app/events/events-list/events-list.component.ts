@@ -14,6 +14,8 @@ import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import { FORM_DATA_EVENT_FILTERS } from '../event-filters/event-filters-form-data';
 
 @Component({
   selector: 'app-events-list',
@@ -21,6 +23,7 @@ import { FormActionsService } from '../../_services/form-actions.service';
   styleUrls: ['./events-list.component.scss'],
 })
 export class EventsListComponent implements OnInit, OnDestroy {
+  filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_EVENT_FILTERS));
   tasks: EventDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;

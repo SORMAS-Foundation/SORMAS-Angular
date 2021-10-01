@@ -20,7 +20,7 @@ import {
 } from '../../../_models/models';
 import { FORM_DATA_NUMBER, FORM_DATA_TEXTAREA } from '../../../_constants/form-data';
 import {
-  VaccinationSource,
+  VaccinationInfoSource,
   VaccinationStatus,
   VaccineManufacturer,
   VaccineName,
@@ -38,7 +38,7 @@ const optionsArmedForces = pipe.transform(ArmedForcesRelationType);
 const optionsEducation = pipe.transform(EducationType);
 const optionsBurialConductor = pipe.transform(BurialConductor);
 const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
-const optionsVaccinationSource = pipe.transform(VaccinationSource);
+const optionsVaccinationSource = pipe.transform(VaccinationInfoSource);
 const optionsVaccineName = pipe.transform(VaccineName);
 const optionsVaccineManufacturer = pipe.transform(VaccineManufacturer);
 const optionsCountryOfBirth = pipe.transform(['default country']);

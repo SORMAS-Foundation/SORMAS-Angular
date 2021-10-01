@@ -9,7 +9,6 @@ import { MaterialModule } from '../material.module';
 import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { TableComponent } from './table/table.component';
 import { DialogModule } from './dialog';
-import { CollapsableBoxComponent } from './collapsable-box/collapsable-box.component';
 import { InpageNavModule } from './inpage-nav/inpage-nav.module';
 import { FormActionsComponent } from './form-actions/form-actions.component';
 import { CardModule } from './card/card.module';
@@ -22,8 +21,6 @@ import { ActivitiesListComponent } from './widgets/activities-list/activities-li
 import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/symptoms-group-select.component';
 import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
 import { NewAddressComponent } from './widgets/new-address/new-address.component';
-import { ContactFiltersComponent } from './contact-filters/contact-filters.component';
-import { FiltersComponent } from './filters/filters.component';
 import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
@@ -46,12 +43,14 @@ import { SelectionListComponent } from './selection-list/selection-list.componen
 import { ExportsGroupSelectComponent } from './widgets/exports-group-select/exports-group-select.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case-modal.component';
+import { CollapsableBoxModule } from './collapsable-box/collapsable-box.module';
+import { ContactFiltersModule } from './contact-filters/contact-filters.module';
+import { FiltersModule } from './filters/filters.module';
 
 @NgModule({
   declarations: [
     LocaleSelectComponent,
     TableComponent,
-    CollapsableBoxComponent,
     FormActionsComponent,
     NewEpidNumberComponent,
     FollowUpStatusComponent,
@@ -60,8 +59,6 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     SymptomsGroupSelectComponent,
     AddressesListComponent,
     NewAddressComponent,
-    ContactFiltersComponent,
-    FiltersComponent,
     AddEditBaseModalComponent,
     ActionMenuComponent,
     DropdownMenuComponent,
@@ -99,6 +96,9 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     InpageNavModule,
     ColumnPickerModule,
     DirectivesModule,
+    CollapsableBoxModule,
+    ContactFiltersModule,
+    FiltersModule,
   ],
   exports: [
     LocaleSelectComponent,
@@ -110,14 +110,11 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     ReactiveFormsModule,
     DialogModule,
     InpageNavModule,
-    CollapsableBoxComponent,
     FormActionsComponent,
     CardModule,
     DateCardModule,
     PipesModule,
     TranslateModule,
-    ContactFiltersComponent,
-    FiltersComponent,
     ActionMenuComponent,
     DropdownMenuComponent,
     SidebarComponent,
@@ -126,6 +123,9 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     DirectivesModule,
     InfoBarComponent,
     SelectionListComponent,
+    CollapsableBoxModule,
+    ContactFiltersModule,
+    FiltersModule,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })

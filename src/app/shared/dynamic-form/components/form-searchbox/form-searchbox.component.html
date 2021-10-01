@@ -1,0 +1,28 @@
+<div [formGroup]="group">
+  <mat-form-field
+    [id]="config.key"
+    appearance="outline"
+    floatLabel="always"
+    [ngClass]="{ searchbox: true, 'has-hint': !!config.hint }"
+  >
+    <mat-label *ngIf="config.label">
+      {{ config.label || '' | translate }}
+      <span *ngIf="config.validation?.length" class="required">*</span>
+    </mat-label>
+    <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+    <input
+      matInput
+      appDebounce
+      (debounce)="onChange()"
+      [value]="config.value"
+      [type]="config.type"
+      [formControlName]="config.key"
+      [placeholder]="config.placeholder || '' | translate"
+      [matTooltip]="config.label || '' | translate"
+    />
+    <mat-hint *ngIf="config.hint">{{ config.hint | translate }}</mat-hint>
+  </mat-form-field>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">
+    {{ config.validationMessage || '' | translate }}
+  </div>
+</div>

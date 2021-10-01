@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     component: ContactsComponent,
     children: [
-      { path: 'list', component: ContactsListComponent, canActivate: [LeaveGuard] },
+      { path: 'list', component: ContactsListComponent },
       {
         path: 'contact/:contactId',
         component: ContactComponent,
