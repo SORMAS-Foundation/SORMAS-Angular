@@ -195,7 +195,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   openBulkEdit(bulkEditOption: any): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
-      minWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant(bulkEditOption.componentTitle),
         component: bulkEditOption.component,
