@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EntityLink } from '../_constants/common';
+import { SideNavService } from '../_services/sidenav.service';
 
 const LINKS: EntityLink[] = [
   { link: '/stats/statistics', title: 'captions.View.statistics' },
@@ -13,4 +14,10 @@ const LINKS: EntityLink[] = [
 })
 export class StatsComponent {
   links: EntityLink[] = LINKS;
+
+  constructor(private sidenavService: SideNavService) {}
+
+  toggleSidenav(): void {
+    this.sidenavService.toggle();
+  }
 }

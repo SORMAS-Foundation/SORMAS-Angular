@@ -60,4 +60,23 @@
       }
     }
   }
+
+  .mat-select-all {
+    .mat-checkbox {
+      width: 100%;
+
+      .mat-checkbox-layout {
+        width: 100%;
+        margin: 0;
+      }
+
+      &:not(.mat-checkbox-checked) .mat-checkbox-label {
+        font-weight: normal;
+      }
+    }
+
+    .mat-checkbox-inner-container {
+      margin-left: 0;
+    }
+  }
 }

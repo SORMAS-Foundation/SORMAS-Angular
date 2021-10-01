@@ -1,9 +1,15 @@
 <p>
-  {{ 'Please tick an answer for ALL symptoms indicating if they occured at any point in time during this illness' | translate }}
+  {{ 'strings.messageSymptomsHint' | translate }}
 </p>
 
 <div class="actions">
-  <button mat-button color="primary" (click)="setAllClear()">{{ 'All Clear' | translate }}</button>
-  <button mat-button color="primary" (click)="setAllNo()">{{ 'All No' | translate }}</button>
-  <button mat-button color="primary" (click)="setAllUnknown()">{{ 'All Unknown' | translate }}</button>
+  <button mat-button color="primary" (click)="setAllClear()">
+    {{ 'captions.actionClearAll' | translate }}
+  </button>
+  <button mat-button color="primary" (click)="setAllNo()">
+    {{ 'captions.symptomsSetClearedToNo' | translate }}
+  </button>
+  <button mat-button color="primary" (click)="setAllUnknown()">
+    {{ 'captions.symptomsSetClearedToUnknown' | translate }}
+  </button>
 </div>

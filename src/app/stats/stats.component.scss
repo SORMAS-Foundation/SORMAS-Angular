@@ -12,3 +12,15 @@
 .heading-tabs {
   height: 60px;
 }
+
+.button-toggle-filters {
+  display: none;
+}
+
+@media (max-width: map-get($grid-breakpoints, md)) {
+  .button-toggle-filters {
+    display: block;
+    margin-right: 16px;
+    float: left;
+  }
+}

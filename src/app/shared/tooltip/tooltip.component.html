@@ -1,0 +1,6 @@
+<div [ngClass]="['tooltip-container', visible ? 'visible' : '']">
+  <ng-template #simpleText>
+    {{ text }}
+  </ng-template>
+  <ng-container *ngTemplateOutlet="contentTemplate || simpleText"> </ng-container>
+</div>

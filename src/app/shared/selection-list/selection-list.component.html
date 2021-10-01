@@ -1,0 +1,10 @@
+<mat-selection-list
+  #selectionList
+  *ngIf="list.length"
+  [multiple]="multiple"
+  (selectionChange)="onOptionSelected($event)"
+>
+  <mat-list-option *ngFor="let item of list" [value]="item">
+    <span>{{ (key ? item[key] : item) | translate }}</span>
+  </mat-list-option>
+</mat-selection-list>

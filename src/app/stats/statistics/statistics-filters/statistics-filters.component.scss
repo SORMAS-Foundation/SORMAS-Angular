@@ -1,1 +1,85 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+section {
+  padding: 8px 16px;
+  border: 1px solid map-get($sormas-accent, 200);
+  margin: 24px 0;
+  border-radius: 4px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: -16px;
+}
+
+.filters-header {
+  margin: 16px 0;
+  font-size: 24px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.filters-form-group {
+  display: flex;
+}
+
+.filters-form-fields {
+  flex-basis: 100%;
+}
+
+.filters-expanded {
+  .filters-form-input,
+  .filters-form-dropdown,
+  .filters-form-date {
+    display: inline-block;
+    width: 200px;
+    margin-right: 16px;
+  }
+}
+
+.mat-divider {
+  border-width: 0;
+  clear: both;
+}
+
+.button-remove-filter {
+  margin-top: 5px;
+  margin-left: -12px;
+
+  .mat-icon {
+    color: map-get($sormas-alert, 300);
+    font-size: 18px;
+  }
+}
+
+.filters-info {
+  color: map-get($sormas-primary, 500);
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.info-statistics-filter {
+  @include mat-elevation(3);
+
+  width: 300px;
+  padding: 8px 16px 8px 32px;
+  background-color: map-get($sormas-primary, 50);
+  font-size: 12px;
+
+  .filters-info {
+    margin-left: -28px;
+    float: left;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
