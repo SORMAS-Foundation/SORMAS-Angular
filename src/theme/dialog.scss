@@ -53,6 +53,7 @@
     }
 
     .mat-dialog-content {
+      max-height: calc(100vh - 120px);
       padding: 16px 64px;
       margin: 0;
       font-size: 1rem;
