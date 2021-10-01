@@ -28,7 +28,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install chrome driver
-      run: node node_modules/protractor/bin/webdriver-manager update --versions.chrome 92.0.4515.107 --gecko false --standalone false
+      run: node node_modules/protractor/bin/webdriver-manager update --versions.chrome 94.0.4606.61 --gecko false --standalone false
     - name: Lint
       run: npm run lint
     - name: TSLint
