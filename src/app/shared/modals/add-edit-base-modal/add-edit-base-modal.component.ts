@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   Component,
   ComponentFactoryResolver,
@@ -9,6 +10,7 @@ import {
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { ADD_MODAL_NARROW, ADD_MODAL_WIDE, BREAKPOINTS } from '../../../app.constants';
 import { FormActionsService } from '../../../_services/form-actions.service';
 
 @Component({
@@ -20,9 +22,11 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
   @ViewChild('addEditResource', { read: ViewContainerRef })
   addEditResource: ViewContainerRef;
   subscription: Subscription[] = [];
+  modalWidth: string;
 
   constructor(
     public dialogRef: MatDialogRef<AddEditBaseModalComponent>,
+    public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private componentFactoryResolver: ComponentFactoryResolver,
     private formActionsService: FormActionsService
@@ -44,6 +48,15 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
           this.dialogRef.close({
             close: true,
           });
+        }
+      })
+    );
+
+    this.subscription.push(
+      this.breakpointObserver.observe([`(min-width: ${BREAKPOINTS.md}px)`]).subscribe((state) => {
+        this.modalWidth = state.matches ? ADD_MODAL_WIDE : ADD_MODAL_NARROW;
+        if (this.dialogRef) {
+          this.dialogRef.updateSize(this.modalWidth);
         }
       })
     );
