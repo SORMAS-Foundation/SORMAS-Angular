@@ -1,0 +1,15 @@
+.contact-case-details-wrapper {
+  .with-caze {
+    overflow: hidden;
+    .text {
+      float: left;
+      p {
+        padding-top: 10px;
+        margin: 0;
+      }
+    }
+    .btn-content {
+      float: right;
+    }
+  }
+}

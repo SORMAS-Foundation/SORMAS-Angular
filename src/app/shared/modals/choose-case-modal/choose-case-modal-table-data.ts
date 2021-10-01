@@ -47,6 +47,15 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
+    name: 'captions.CaseData.reportDate',
+    dataKey: 'reportDate',
+    isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
+  },
+  {
     name: 'captions.CaseData.healthFacilityName',
     dataKey: 'healthFacilityName',
     isSortable: true,

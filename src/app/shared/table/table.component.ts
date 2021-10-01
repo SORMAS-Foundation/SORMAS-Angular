@@ -62,10 +62,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   fetchStatus: FetchStatus | undefined;
   fetchStatusType = FetchStatusType;
 
-  private subscription: Subscription[] = [];
-
   @Input() isSortable = false;
   @Input() isPageable = false;
+  @Input() isSelectableCheckboxHidden = false;
+  @Input() isSelectableOnce = false;
   @Input() isSelectable = false;
   @Input() isEditable = false;
   @Input() isHeaderSticky = false;
@@ -80,6 +80,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() rowStyleData: string;
   @Input() showTotal = false;
   @Input() showTotalContext = 'Items';
+  @Input() preSelectedItems: any[] = [];
 
   preSetFiltersTmp: Filter[];
   @Input() set preSetFilters(value) {
@@ -107,6 +108,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.isSelectableOnce) {
+      this.selection = new SelectionModel<any>(false, []);
+    }
+
     this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
     this.displayedColumns = this.getColumns();
     this.columnKeys = this.getColumnsKeyByName(this.displayedColumns);
@@ -203,7 +208,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       },
     });
 
-    this.subscription.push(
+    this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         this.formActionsService.setDiscard();
         if (result) {

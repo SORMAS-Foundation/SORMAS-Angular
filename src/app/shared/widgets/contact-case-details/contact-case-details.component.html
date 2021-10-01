@@ -1,10 +1,30 @@
 <div class="contact-case-details-wrapper">
-  <button mat-stroked-button color="primary" (click)="openChooseCaseModal()">
-    {{ 'captions.contactChooseSourceCase' | translate }}
-  </button>
+  <div class="with-no-caze" *ngIf="!config.value">
+    <button mat-stroked-button color="primary" (click)="openChooseCaseModal()">
+      {{ 'captions.contactChooseSourceCase' | translate }}
+    </button>
 
-  <button mat-button color="primary">
-    {{ 'captions.caseCreateNew' | translate }}
-  </button>
+    <button mat-button color="primary">
+      {{ 'captions.caseCreateNew' | translate }}
+    </button>
+  </div>
+  <div class="with-caze" *ngIf="config.value">
+    <div class="text">
+      <p>{{ 'captions.Contact.caze.uuid' | translate }}: {{config.value.uuid}}</p>
+    </div>
+    <div class="btn-content">
+      <button mat-stroked-button color="primary" (click)="openChooseCaseModal()">
+        {{ 'captions.contactChangeCase' | translate }}
+      </button>
+
+      <a mat-button color="primary" [routerLink]="['/cases/case/' + config.value.uuid + '/details']">
+        {{ 'openCase' | translate }}
+      </a>
+
+      <button mat-button color="warn" (click)="removeCase()">
+        {{ 'captions.contactRemoveCase' | translate }}
+      </button>
+    </div>
+  </div>
 </div>
 

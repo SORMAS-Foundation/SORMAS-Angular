@@ -1,14 +1,14 @@
 <div mat-dialog-title>
-  <h2>{{ 'Select source case' | translate }}</h2>
+  <h2>{{ 'strings.headingSelectSourceCase' | translate }}</h2>
   <div mat-dialog-actions>
     <button mat-icon-button mat-dialog-close class="button-dialog-close">
       <mat-icon class="material-icons-round">highlight_off</mat-icon>
     </button>
     <button mat-stroked-button color="primary" class="cancel-btn" mat-dialog-close>
-      {{ 'Cancel' | translate }}
+      {{ 'captions.actionCancel' | translate }}
     </button>
     <button mat-flat-button color="primary" class="confirm-btn" (click)="confirm()">
-      {{ 'Confirm' | translate }}
+      {{ 'captions.actionConfirm' | translate }}
     </button>
   </div>
 </div>
@@ -41,7 +41,10 @@
     [resourceService]="caseService"
     [tableColumns]="defaultColumns"
     [isSortable]="true"
+    [preSelectedItems]="['aaa']"
     [isSelectable]="true"
+    [isSelectableOnce]="true"
+    [isSelectableCheckboxHidden]="true"
     [isHeaderSticky]="true"
     [allowToggleColumns]="false"
     [fullHeight]="true"

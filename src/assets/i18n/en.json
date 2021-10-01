@@ -5425,5 +5425,6 @@
   "dateOfArrival": "Date of arrival",
   "timeOfArrival": "Time of arrival",
   "timeHeading": "Time",
-  "searchByCase": "Search by case"
+  "searchByCase": "Search by case",
+  "openCase": "Open case"
 }
