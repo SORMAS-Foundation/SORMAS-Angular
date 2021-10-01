@@ -75,8 +75,8 @@ export const API_ROUTE_SAMPLES = {
 export const API_ROUTE_CONTACTS = {
   ENDPOINT: 'contacts',
   GET_ALL: 'contacts/indexList',
-  UPDATE: 'contacts/update',
-  ADD: 'contacts/add',
+  UPDATE: 'contacts/push',
+  ADD: 'contacts/push',
   DELETE: 'contacts/delete',
 };
 

@@ -42,6 +42,8 @@ export const FORM_DATA_CONTACT_DETAILS = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-contact-case-details',
+        className: 'fullwidth',
+        key: 'caze',
       },
     ],
   },

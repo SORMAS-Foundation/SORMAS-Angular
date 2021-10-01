@@ -1,23 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ContactCaseDetailsComponent } from './contact-case-details.component';
+import { ChooseCaseModalComponent } from './choose-case-modal.component';
 
-describe('ContactCaseDetailsComponent', () => {
-  let component: ContactCaseDetailsComponent;
-  let fixture: ComponentFixture<ContactCaseDetailsComponent>;
+describe('ChooseCaseModalComponent', () => {
+  let component: ChooseCaseModalComponent;
+  let fixture: ComponentFixture<ChooseCaseModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ContactCaseDetailsComponent],
+      declarations: [ChooseCaseModalComponent],
       imports: [TranslateModule.forRoot(), MatDialogModule, HttpClientTestingModule],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContactCaseDetailsComponent);
+    fixture = TestBed.createComponent(ChooseCaseModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

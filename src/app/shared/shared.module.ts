@@ -45,6 +45,7 @@ import { TableNotificationComponent } from './table/table-notification/table-not
 import { SelectionListComponent } from './selection-list/selection-list.component';
 import { ExportsGroupSelectComponent } from './widgets/exports-group-select/exports-group-select.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
+import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case-modal.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
     ContactCaseDetailsComponent,
     ContactFollowUpComponent,
     ExportsGroupSelectComponent,
+    ChooseCaseModalComponent,
   ],
   imports: [
     CommonModule,

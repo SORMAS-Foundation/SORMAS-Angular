@@ -126,6 +126,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         uuid: id,
       };
     }
+
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
       if (!this.formElementControlService.isFormElementHidden(this.formElements, key)) {
         if (key.includes('.')) {

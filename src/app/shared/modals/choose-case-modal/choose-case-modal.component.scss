@@ -1,0 +1,39 @@
+@use '/src/variables.scss' as *;
+
+.mat-dialog-title {
+  padding-top: 40px;
+
+  > h2 {
+    margin: 0;
+    font-size: 34px;
+  }
+}
+
+.mat-dialog-content {
+  padding: 25px;
+  background: $white;
+
+  #nameUuidEpidNumberLike {
+    width: 212px;
+    margin: 20px 0;
+    margin-left: 40px;
+  }
+
+  .text {
+    overflow: hidden;
+    margin-left: 40px;
+    .mat-icon {
+      display: inline-block;
+      color: mat-color($sormas-accent, 500);
+      font-size: 18px;
+    }
+
+    > p {
+      display: inline-block;
+      width: 70%;
+      color: mat-color($sormas-accent, 500);
+      font-size: 12px;
+      vertical-align: top;
+    }
+  }
+}
