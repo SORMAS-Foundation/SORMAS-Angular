@@ -35,3 +35,14 @@ h1 {
     font-size: 20px;
   }
 }
+
+.tab-nav-header {
+  position: absolute;
+  z-index: 3;
+  top: 53px;
+  right: 7px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  background-color: $white;
+}
