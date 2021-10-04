@@ -541,7 +541,7 @@ export enum UserRole {
   ADMIN = 'Admin',
   NATIONAL_USER = 'National user',
   SURVEILLANCE_SUPERVISOR = 'Surveillance suprervisor',
-  ADMIN_SUPERVISOR = 'Admin supervisor',
+  ADMIN_SUPERVISOR = 'Admin surveillance supervisor',
   SURVEILLANCE_OFFICER = 'Surveillance officer',
   HOSPITAL_INFORMANT = 'Hospital informant',
   COMMUNITY_OFFICER = 'Community officer',
@@ -561,10 +561,10 @@ export enum UserRole {
   POE_SUPERVISOR = 'Poe supervisor',
   POE_NATIONAL_USER = 'Poe national user',
   IMPORT_USER = 'Import user',
-  REST_EXTERNAL_VISITS_USER = 'Rest external visits user',
-  REST_USER = 'Rest user',
+  REST_EXTERNAL_VISITS_USER = 'External visits user',
+  REST_USER = 'ReST user',
   SORMAS_TO_SORMAS_CLIENT = 'Sormas to Sormas client',
-  BAG_USER = 'Bag user',
+  CLINICIAN = 'Clinician',
 }
 
 export enum PointOfEntryType {
