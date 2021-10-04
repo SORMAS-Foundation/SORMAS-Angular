@@ -1,21 +1,26 @@
-<div class="page-header">
-  <h1 class="page-header-title">
-    {{ 'captions.View.users' | translate }}
-  </h1>
-  <div class="page-header-actions">
-    <button class="add-btn" mat-flat-button color="primary" (click)="openAddUserModal()">
-      {{ 'captions.userNewUser' | translate }}
-    </button>
-  </div>
-</div>
+<app-filters [topGap]="headerHeight">
+  <app-user-filters filters></app-user-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title">
+        {{ 'captions.View.users' | translate }}
+      </h1>
+      <div class="page-header-actions">
+        <button class="add-btn" mat-flat-button color="primary" (click)="openAddUserModal()">
+          {{ 'captions.userNewUser' | translate }}
+        </button>
+      </div>
+    </div>
 
-<app-table
-  [resourceService]="userService"
-  [tableColumns]="defaultColumns"
-  [isSortable]="true"
-  [isSelectable]="true"
-  [isHeaderSticky]="true"
-  [fullHeight]="true"
-  [saveConfigKey]="configKey"
-  showTotalContext="{{ 'entityUsers' | translate }}"
-></app-table>
+    <app-table
+      [resourceService]="userService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      showTotalContext="{{ 'entityUsers' | translate }}"
+    ></app-table>
+  </ng-container>
+</app-filters>

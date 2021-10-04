@@ -124,6 +124,34 @@ app.use('', (req, res, next) => {
     }
   }
 });
+app.use('/sormas-rest/users/S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U', (req, res) => {
+  res.status(200).send({
+    active: true,
+    address: {
+      creationDate: 1618404250675,
+      changeDate: 1618404250675,
+      uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
+    },
+    changeDate: 1618404250675,
+    creationDate: 1618404250675,
+    pseudonymized: false,
+    uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
+    changeDate: 1633329099202,
+    creationDate: 1618404250675,
+    firstName: 'adam',
+    userEmail: 'adamholger@gmail.com',
+    phone: '+40746658799',
+    hasConsentedToGdpr: false,
+    language: 'EN',
+    lastName: 'Holger',
+    name: 'ad min',
+    userName: 'admin',
+    userRoles: ['NATIONAL_USER', 'ADMIN'],
+    0: 'NATIONAL_USER',
+    1: 'ADMIN',
+    uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
+  });
+});
 
 app.use('/sormas-rest/contacts/QN3NKC-XLHWN6-LEH2NF-ZXRQKHOM', (req, res) => {
   let total = 1000;

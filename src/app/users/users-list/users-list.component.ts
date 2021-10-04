@@ -8,7 +8,7 @@ import { CONFIG_USERS } from '../../_constants/storage';
 import { defaultColumnDefs } from './users-list-table-data';
 import { UserService } from '../../_services/api/user.service';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
 import { UserAddComponent } from '../user-add/user-add.component';
 import { FormActionsService } from '../../_services/form-actions.service';
 
@@ -21,6 +21,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   users: UserDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_USERS;
+  headerHeight = HEADER_HEIGHT;
 
   private subscription: Subscription[] = [];
 

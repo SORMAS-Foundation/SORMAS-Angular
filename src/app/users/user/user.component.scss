@@ -1,0 +1,37 @@
+@use '../../../variables.scss' as *;
+
+.page-content {
+  position: relative;
+  z-index: 1;
+  background: map-get($sormas-accent, 50);
+}
+
+header {
+  position: sticky;
+  z-index: 2;
+  top: 68px;
+  display: flex;
+  padding: 48px 24px;
+  border-bottom: 2px solid map-get($sormas-accent, 200);
+  background: $white;
+
+  .mat-icon-button {
+    margin-right: 16px;
+    margin-left: -8px;
+  }
+
+  .mat-icon {
+    font-size: 32px;
+  }
+}
+
+h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 40px;
+
+  small {
+    font-size: 20px;
+  }
+}
