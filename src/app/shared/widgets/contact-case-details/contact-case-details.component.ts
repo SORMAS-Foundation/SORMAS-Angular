@@ -51,7 +51,6 @@ export class ContactCaseDetailsComponent implements OnDestroy {
   }
 
   openAddCaseModal(): void {
-    console.log('configconfigconfigconfig', this.config);
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
