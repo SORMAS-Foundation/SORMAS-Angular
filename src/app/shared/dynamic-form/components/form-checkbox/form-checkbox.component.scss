@@ -1,1 +1,10 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+.selection-list-label {
+  display: block;
+  margin-top: 10px;
+}
+
+.required {
+  color: map-get($sormas-alert, 300);
+}

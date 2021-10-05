@@ -261,6 +261,7 @@ export const FORM_DATA_USER_ADD = [
           'DISTRICT_OBSERVER',
           'POE_INFORMANT',
           'POE_SUPERVISOR',
+          'CLINICIAN',
         ],
       },
       {

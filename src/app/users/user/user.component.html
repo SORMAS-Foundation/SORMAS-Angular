@@ -6,8 +6,12 @@
     <h1>
       {{ user.firstName }} {{ user.lastName }} <small>({{ user.uuid | slice: 0:6 }})</small>
     </h1>
+    <div class="tab-nav-header">
+      <div class="tab-nav-header-actions">
+        <app-form-actions [resource]="user"></app-form-actions>
+      </div>
+    </div>
   </header>
-
   <div class="page-content">
     <app-dynamic-form
       main
