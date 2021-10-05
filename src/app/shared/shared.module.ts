@@ -46,6 +46,8 @@ import { SelectionListComponent } from './selection-list/selection-list.componen
 import { ExportsGroupSelectComponent } from './widgets/exports-group-select/exports-group-select.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case-modal.component';
+import { CaseAddComponent } from './case-add/case-add.component';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,7 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     ContactFollowUpComponent,
     ExportsGroupSelectComponent,
     ChooseCaseModalComponent,
+    CaseAddComponent,
   ],
   imports: [
     CommonModule,
@@ -99,6 +102,7 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     InpageNavModule,
     ColumnPickerModule,
     DirectivesModule,
+    DynamicFormModule,
   ],
   exports: [
     LocaleSelectComponent,
@@ -126,6 +130,7 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     DirectivesModule,
     InfoBarComponent,
     SelectionListComponent,
+    CaseAddComponent,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })

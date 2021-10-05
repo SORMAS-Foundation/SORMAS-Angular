@@ -4,9 +4,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { ChooseCaseModalComponent } from '../../modals/choose-case-modal/choose-case-modal.component';
-import { MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
 import { NotificationService } from '../../../_services/notification.service';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
+import { AddEditBaseModalComponent } from '../../modals/add-edit-base-modal/add-edit-base-modal.component';
+import { CaseAddComponent } from '../../case-add/case-add.component';
 
 @Component({
   selector: 'app-contact-case-details',
@@ -43,6 +45,29 @@ export class ContactCaseDetailsComponent implements OnDestroy {
             uuid: result.selectedCase.uuid,
           };
           this.group.patchValue({ caze: this.config.value });
+        }
+      })
+    );
+  }
+
+  openAddCaseModal(): void {
+    console.log('configconfigconfigconfig', this.config);
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('captions.caseCreateNew'),
+        component: CaseAddComponent,
+        resource: {
+          firstName: this.config.resource.person.firstName,
+          lastName: this.config.resource.person.lastName,
+        },
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
         }
       })
     );
