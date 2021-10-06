@@ -6,6 +6,10 @@
       p {
         padding-top: 10px;
         margin: 0;
+
+        > span.bold {
+          font-weight: 500;
+        }
       }
     }
     .btn-content {

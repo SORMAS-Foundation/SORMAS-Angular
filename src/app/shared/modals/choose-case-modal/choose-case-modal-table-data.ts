@@ -6,6 +6,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'uuid',
     isSortable: true,
     essential: true,
+    className: 'bold',
     format: {
       type: TableDataFormatOptions.DISPLAY,
       truncate: 6,

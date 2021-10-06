@@ -9,7 +9,7 @@ import { actionsBulkEditDefs } from './districts-actions-data';
 import { defaultColumnDefs } from './districts-table-data';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
 import { DistrictAddEditComponent } from '../district-add-edit/district-add-edit.component';
 import { DistrictDto } from '../../../_models/districtDto';
 
@@ -34,7 +34,7 @@ export class DistrictListComponent implements OnDestroy {
 
   openEditDistrictModal(district: DistrictDto): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
         title: this.translateService.instant('headingEditDistrict'),
         component: DistrictAddEditComponent,
@@ -55,7 +55,7 @@ export class DistrictListComponent implements OnDestroy {
 
   openAddDistrictModal(): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
         title: this.translateService.instant('actionAddNewDistrict'),
         component: DistrictAddEditComponent,

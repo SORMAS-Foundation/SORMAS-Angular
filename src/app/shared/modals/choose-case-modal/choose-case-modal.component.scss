@@ -15,8 +15,21 @@
 
   #nameUuidEpidNumberLike {
     width: 212px;
-    margin: 20px 0;
+    margin: 10px 0;
     margin-left: 40px;
+  }
+
+  .search-field {
+    .search-icon {
+      width: 14px;
+      height: 12px;
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
+    ::placeholder {
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
   }
 
   .text {

@@ -15,7 +15,6 @@ import {
   CASE_IMPORT_MODAL_WIDTH,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CaseAddComponent } from '../case-add/case-add.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
 import {
   actionsMoreDefs,
@@ -26,6 +25,7 @@ import { ACTIONS_CASE } from '../../_constants/actions';
 import { CaseImportComponent } from '../case-import/case-import.component';
 import { HelperService } from '../../_services/helper.service';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { CaseAddComponent } from '../../shared/case-add/case-add.component';
 
 @Component({
   selector: 'app-cases-list',

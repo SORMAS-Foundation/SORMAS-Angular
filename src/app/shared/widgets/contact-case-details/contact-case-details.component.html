@@ -4,13 +4,13 @@
       {{ 'captions.contactChooseSourceCase' | translate }}
     </button>
 
-    <button mat-button color="primary">
+    <button mat-button color="primary" (click)="openAddCaseModal()">
       {{ 'captions.caseCreateNew' | translate }}
     </button>
   </div>
   <div class="with-caze" *ngIf="config?.value">
     <div class="text">
-      <p>{{ 'captions.Contact.caze.uuid' | translate }}: {{config.value.uuid}}</p>
+      <p>{{ 'captions.Contact.caze.uuid' | translate }}: <span class="bold">{{config.value.uuid}}</span></p>
     </div>
     <div class="btn-content">
       <button mat-stroked-button color="primary" (click)="openChooseCaseModal()">

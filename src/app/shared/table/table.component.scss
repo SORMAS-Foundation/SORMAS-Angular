@@ -11,6 +11,10 @@
 
 table {
   width: 100%;
+
+  td.bold {
+    font-weight: 500;
+  }
 }
 
 .mat-cell {

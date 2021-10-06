@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { CommunityDto } from '../../../_models/communityDto';
@@ -34,7 +34,7 @@ export class CommunityListComponent implements OnDestroy {
 
   openEditCommunityModal(community: CommunityDto): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
         title: this.translateService.instant('headingEditCommunity'),
         component: CommunityAddEditComponent,
@@ -55,7 +55,7 @@ export class CommunityListComponent implements OnDestroy {
 
   openAddCommunityModal(): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
         title: this.translateService.instant('actionAddNewCommunity'),
         component: CommunityAddEditComponent,
