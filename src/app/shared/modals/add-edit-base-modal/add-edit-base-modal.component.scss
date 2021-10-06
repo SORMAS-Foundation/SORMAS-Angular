@@ -1,10 +1,12 @@
 @use '/src/variables.scss' as *;
 
 .mat-dialog-title {
-  padding: 48px 32px 24px 64px;
+  padding: 25px 25px;
+  padding-top: 40px;
 
   > h1 {
     margin: 0;
+    font-size: 28px;
   }
 
   .button-dialog-close {
