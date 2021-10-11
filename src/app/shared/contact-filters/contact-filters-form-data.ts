@@ -15,7 +15,6 @@ import {
   VaccinationStatus,
   FollowupStatus,
   ContactRelation,
-  FORM_DATA_CHECKBOX,
   QuarantineType,
   DateFilterOptions,
 } from '../../app.constants';
