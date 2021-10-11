@@ -5,7 +5,12 @@
       <h1 class="page-header-title">
         {{ 'captions.View.samples' | translate }}
       </h1>
-      <div class="page-header-actions"></div>
+
+      <div class="page-header-actions">
+        <button class="add-btn" mat-flat-button color="primary" (click)="openAddSampleModal()">
+          {{ 'captions.sampleCreateNew' | translate }}
+        </button>
+      </div>
     </div>
 
     <app-table

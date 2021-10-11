@@ -32,6 +32,7 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   initialSize: number;
   config: any;
   subscriptions: Subscription[] = [];
+  loadResource = false;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -49,13 +50,16 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
     ];
 
     this.config = PANEL_CONFIG[this.type];
+    this.loadResource = true;
     this.subscriptions.push(
       this.resourceService?.getAll(null, null, filters).subscribe({
         next: (response: any) => {
           this.items = response.elements;
+          this.loadResource = false;
         },
         error: (err: any) => {
           this.notificationService.error(err);
+          this.loadResource = false;
         },
         complete: () => {},
       })

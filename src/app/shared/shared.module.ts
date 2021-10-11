@@ -46,6 +46,7 @@ import { SelectionListComponent } from './selection-list/selection-list.componen
 import { ExportsGroupSelectComponent } from './widgets/exports-group-select/exports-group-select.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case-modal.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     ContactFollowUpComponent,
     ExportsGroupSelectComponent,
     ChooseCaseModalComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -126,6 +128,7 @@ import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case
     DirectivesModule,
     InfoBarComponent,
     SelectionListComponent,
+    LoaderComponent,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })

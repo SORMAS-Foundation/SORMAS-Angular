@@ -23,6 +23,8 @@ export class CaseTherapyComponent implements OnDestroy {
   formElementsTreatments: FormBase<any>[] = [];
   caseFilters: Filter[] = [];
   subscriptions: Subscription[] = [];
+  loadPrescriptions = false;
+  loadTreatments = false;
 
   constructor(
     private prescriptionService: PrescriptionService,
@@ -46,6 +48,7 @@ export class CaseTherapyComponent implements OnDestroy {
   }
 
   fetchPrescriptions(): void {
+    this.loadPrescriptions = true;
     this.subscriptions.push(
       this.prescriptionService
         .getAll({ offset: null, size: null }, false, this.caseFilters, false)
@@ -53,10 +56,12 @@ export class CaseTherapyComponent implements OnDestroy {
           next: (response: any) => {
             this.prescriptions = response || [];
             this.filteredPrescriptions = this.prescriptions.slice();
+            this.loadPrescriptions = false;
           },
           error: (err: any) => {
             this.notificationService.error(err);
             this.prescriptions = [];
+            this.loadPrescriptions = false;
           },
           complete: () => {},
         })
@@ -64,6 +69,7 @@ export class CaseTherapyComponent implements OnDestroy {
   }
 
   fetchTreatments(): void {
+    this.loadTreatments = true;
     this.subscriptions.push(
       this.treatmentService
         .getAll({ offset: null, size: null }, false, this.caseFilters, false)
@@ -71,10 +77,12 @@ export class CaseTherapyComponent implements OnDestroy {
           next: (response: any) => {
             this.treatments = response || [];
             this.filteredTreatments = this.treatments.slice();
+            this.loadTreatments = false;
           },
           error: (err: any) => {
             this.notificationService.error(err);
             this.treatments = [];
+            this.loadTreatments = false;
           },
           complete: () => {},
         })

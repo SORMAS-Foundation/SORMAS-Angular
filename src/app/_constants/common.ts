@@ -70,3 +70,6 @@ export const BUTTON_TYPE = {
   STROKED: 'STROKED' as ButtonType,
   FLAT: 'FLAT' as ButtonType,
 };
+
+// loader
+export const READY_AFTER = 100;
