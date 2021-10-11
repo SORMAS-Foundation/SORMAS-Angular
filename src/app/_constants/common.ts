@@ -73,4 +73,4 @@ export const BUTTON_TYPE = {
 };
 
 // loader
-export const READY_AFTER = 100;
+export const SPINNER_DELAY = 100;
