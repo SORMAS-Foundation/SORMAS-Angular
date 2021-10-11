@@ -24,6 +24,7 @@ export class FormElementBase<T> {
   radioNewLine?: boolean; // radio btns displayed with full width
   disabled?: boolean; // input disabling
   timeLabel?: string;
+  resource?: any;
 
   constructor(
     options: {
@@ -51,6 +52,7 @@ export class FormElementBase<T> {
       radioNewLine?: boolean;
       disabled?: boolean;
       timeLabel?: string;
+      resource?: any;
     } = {}
   ) {
     this.value = options.value;
@@ -77,6 +79,7 @@ export class FormElementBase<T> {
     this.radioNewLine = options.radioNewLine ?? false;
     this.disabled = options.disabled ?? false;
     this.timeLabel = options.timeLabel;
+    this.resource = options.resource;
   }
 }
 

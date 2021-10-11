@@ -9,6 +9,7 @@ export const FORM_DATA_REGION_ADD_EDIT = [
       {
         ...FORM_DATA_INPUT,
         key: 'name',
+        className: 'size-full',
         label: 'captions.name',
         validation: ['required'],
         newLine: true,
@@ -16,6 +17,7 @@ export const FORM_DATA_REGION_ADD_EDIT = [
       {
         ...FORM_DATA_INPUT,
         key: 'epidCode',
+        className: 'size-full',
         label: 'captions.Region.epidCode',
         validation: ['required'],
         newLine: true,
@@ -23,12 +25,14 @@ export const FORM_DATA_REGION_ADD_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
+        className: 'size-full',
         label: 'captions.country',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'area.uuid',
+        className: 'size-full',
         label: 'captions.area',
         newLine: true,
         options: [
@@ -41,6 +45,7 @@ export const FORM_DATA_REGION_ADD_EDIT = [
       {
         ...FORM_DATA_INPUT,
         key: 'externalId',
+        className: 'size-full',
         label: 'captions.Region.externalID',
         newLine: true,
       },

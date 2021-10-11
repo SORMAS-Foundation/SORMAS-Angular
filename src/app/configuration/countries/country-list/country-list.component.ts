@@ -9,7 +9,7 @@ import { CountryService } from '../../../_services/api/country.service';
 import { actionsBulkEditDefs } from './countries-actions-data';
 import { defaultColumnDefs } from './countries-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { CountryAddEditComponent } from '../country-add-edit/country-add-edit.component';
 
@@ -34,7 +34,7 @@ export class CountryListComponent implements OnDestroy {
 
   openEditCountryModal(country: CountryDto): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
         title: this.translateService.instant('headingEditCountry'),
         component: CountryAddEditComponent,
@@ -55,7 +55,7 @@ export class CountryListComponent implements OnDestroy {
 
   openAddCountryModal(): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
         title: this.translateService.instant('actionAddNewCountry'),
         component: CountryAddEditComponent,

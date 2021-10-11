@@ -7,7 +7,7 @@
     <button mat-stroked-button color="primary" class="cancel-btn" mat-dialog-close>
       {{ 'captions.actionCancel' | translate }}
     </button>
-    <button mat-flat-button color="primary" class="confirm-btn" (click)="confirm()">
+    <button [disabled]="!selectedCase?.uuid" mat-flat-button color="primary" class="confirm-btn" (click)="confirm()">
       {{ 'captions.actionConfirm' | translate }}
     </button>
   </div>

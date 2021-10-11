@@ -25,5 +25,12 @@ export class ContactDetailsComponent {
       contactItem,
       this.formData
     );
+
+    this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+      this.myFormElements,
+      'caze',
+      'resource',
+      contactItem
+    );
   }
 }

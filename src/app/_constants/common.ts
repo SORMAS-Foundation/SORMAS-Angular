@@ -31,6 +31,7 @@ export const MODAL_MEDIUM_WIDTH = '940px';
 export const ADD_MODAL_MAX_WIDTH = '100vw';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
+export const CONFIGURATION_MODAL_WIDTH = '520px';
 
 export const HEADER_HEIGHT = 68;
 export const HEADING_TABS_HEIGHT = 108;
