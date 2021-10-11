@@ -45,6 +45,8 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case-modal.component';
 import { CollapsableBoxModule } from './collapsable-box/collapsable-box.module';
 import { ContactFiltersModule } from './contact-filters/contact-filters.module';
+import { CaseAddComponent } from './case-add/case-add.component';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { FiltersModule } from './filters/filters.module';
 
 @NgModule({
@@ -79,6 +81,7 @@ import { FiltersModule } from './filters/filters.module';
     ContactFollowUpComponent,
     ExportsGroupSelectComponent,
     ChooseCaseModalComponent,
+    CaseAddComponent,
   ],
   imports: [
     CommonModule,
@@ -97,6 +100,7 @@ import { FiltersModule } from './filters/filters.module';
     ColumnPickerModule,
     DirectivesModule,
     CollapsableBoxModule,
+    DynamicFormModule,
     ContactFiltersModule,
     FiltersModule,
   ],
@@ -124,6 +128,7 @@ import { FiltersModule } from './filters/filters.module';
     InfoBarComponent,
     SelectionListComponent,
     CollapsableBoxModule,
+    CaseAddComponent,
     ContactFiltersModule,
     FiltersModule,
   ],

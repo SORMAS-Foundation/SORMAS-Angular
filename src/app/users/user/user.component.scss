@@ -3,8 +3,7 @@
 .page-content {
   position: relative;
   z-index: 1;
-  padding-top: 0;
-  background: $white;
+  background: map-get($sormas-accent, 50);
 }
 
 header {
@@ -12,7 +11,8 @@ header {
   z-index: 2;
   top: 68px;
   display: flex;
-  padding: 48px 24px 0;
+  padding: 48px 24px;
+  border-bottom: 2px solid map-get($sormas-accent, 200);
   background: $white;
 
   .mat-icon-button {
@@ -26,33 +26,23 @@ header {
 }
 
 h1 {
+  margin: 0;
   font-size: 34px;
   font-weight: 500;
   line-height: 40px;
-}
 
-.add-participant-btn {
-  margin-right: 15px;
+  small {
+    font-size: 20px;
+  }
 }
 
 .tab-nav-header {
-  position: sticky;
+  position: absolute;
   z-index: 3;
-  top: 164px;
+  top: 53px;
+  right: 7px;
   display: flex;
   justify-content: space-between;
   padding: 0 25px;
-  border-bottom: solid 2px map-get($sormas-accent, 200);
   background-color: $white;
-}
-
-.mat-tab-header {
-  min-width: 0;
-  flex: 1;
-}
-
-.tab-nav-header-actions {
-  min-width: 248px;
-  text-align: right;
-  white-space: nowrap;
 }

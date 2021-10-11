@@ -27,6 +27,7 @@ export class FormElementBase<T> {
   disabled?: boolean; // input disabling
   timeLabel?: string;
   multipleChoice?: boolean;
+  resource?: any;
 
   constructor(
     options: {
@@ -55,6 +56,7 @@ export class FormElementBase<T> {
       disabled?: boolean;
       timeLabel?: string;
       multipleChoice?: boolean;
+      resource?: any;
     } = {}
   ) {
     this.value = options.value;
@@ -82,6 +84,7 @@ export class FormElementBase<T> {
     this.disabled = options.disabled ?? false;
     this.timeLabel = options.timeLabel;
     this.multipleChoice = options.multipleChoice ?? false;
+    this.resource = options.resource;
   }
 }
 

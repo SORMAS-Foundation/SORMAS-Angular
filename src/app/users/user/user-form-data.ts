@@ -25,7 +25,7 @@ const optionsAssociatedOfficer = pipe.transform(['default officer']);
 const optionsPointOfEntries = pipe.transform(PointOfEntryType);
 const optionsLaboratories = pipe.transform(['default laboratory']);
 
-export const FORM_DATA_USER_ADD = [
+export const FORM_DATA_USER = [
   {
     id: 'personData',
     title: 'strings.headingPersonData',

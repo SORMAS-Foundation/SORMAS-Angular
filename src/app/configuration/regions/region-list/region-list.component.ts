@@ -10,7 +10,7 @@ import { actionsBulkEditDefs } from './regions-actions-data';
 import { defaultColumnDefs } from './regions-table-data';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
 import { RegionAddEditComponent } from '../region-add-edit/region-add-edit.component';
 
 @Component({
@@ -34,7 +34,7 @@ export class RegionListComponent implements OnDestroy {
 
   openEditRegionModal(region: RegionDto): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
         title: this.translateService.instant('headingEditRegion'),
         component: RegionAddEditComponent,
@@ -55,7 +55,7 @@ export class RegionListComponent implements OnDestroy {
 
   openAddRegionModal(): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
         title: this.translateService.instant('actionAddNewRegion'),
         component: RegionAddEditComponent,

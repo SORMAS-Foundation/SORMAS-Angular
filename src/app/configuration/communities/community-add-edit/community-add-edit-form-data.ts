@@ -11,6 +11,7 @@ export const FORM_DATA_COMMUNITY_ADD_EDIT = [
         key: 'name',
         label: 'captions.name',
         validation: ['required'],
+        className: 'size-full',
         newLine: true,
       },
       {
@@ -18,6 +19,7 @@ export const FORM_DATA_COMMUNITY_ADD_EDIT = [
         key: 'region.uuid',
         label: 'captions.region',
         validation: ['required'],
+        className: 'size-full',
         newLine: true,
       },
       {
@@ -25,12 +27,14 @@ export const FORM_DATA_COMMUNITY_ADD_EDIT = [
         key: 'district.uuid',
         label: 'captions.district',
         validation: ['required'],
+        className: 'size-full',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'externalID',
         label: 'captions.Community.externalID',
+        className: 'size-full',
         newLine: true,
       },
     ],

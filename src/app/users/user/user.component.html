@@ -1,0 +1,22 @@
+<section *ngIf="user">
+  <header>
+    <a [routerLink]="['/users/list']" mat-icon-button>
+      <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+    </a>
+    <h1>
+      {{ user.firstName }} {{ user.lastName }} <small>({{ user.uuid | slice: 0:6 }})</small>
+    </h1>
+    <div class="tab-nav-header">
+      <div class="tab-nav-header-actions">
+        <app-form-actions [resource]="user"></app-form-actions>
+      </div>
+    </div>
+  </header>
+  <div class="page-content">
+    <app-dynamic-form
+      main
+      [formElements]="myFormElements"
+      [resourceService]="userService"
+    ></app-dynamic-form>
+  </div>
+</section>
