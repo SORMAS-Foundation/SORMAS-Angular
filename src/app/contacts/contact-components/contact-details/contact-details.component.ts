@@ -5,6 +5,9 @@ import { ContactDto } from '../../../_models/models';
 import { BaseService } from '../../../_services/api/base.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import * as data from './contact-details-form-data';
+import {TaskService} from '../../../_services/api/task.service';
+import {SampleService} from '../../../_services/api/sample.service';
+import {EventService} from '../../../_services/api/event.service';
 
 @Component({
   selector: 'app-contact-details',
@@ -17,7 +20,12 @@ export class ContactDetailsComponent {
   subscription: Subscription = new Subscription();
   public resourceService: BaseService<any>;
 
-  constructor(private formElementControlService: FormElementControlService) {}
+  constructor(
+    private formElementControlService: FormElementControlService,
+    public taskService: TaskService,
+    public sampleService: SampleService,
+    public eventService: EventService,
+  ) {}
 
   updateComponent(contactItem: ContactDto, resourceService: BaseService<any>): void {
     this.resourceService = resourceService;

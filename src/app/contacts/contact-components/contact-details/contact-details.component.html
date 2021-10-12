@@ -1,5 +1,29 @@
-<app-dynamic-form
-  [formElements]="myFormElements"
-  [resourceService]="resourceService"
-  [withAnchor]="true"
-></app-dynamic-form>
+<app-sidebar>
+  <app-dynamic-form
+    main
+    [formElements]="myFormElements"
+    [resourceService]="resourceService"
+    [withAnchor]="true"
+  ></app-dynamic-form>
+  <div aside>
+    <app-edge-panel
+      type="EVENT"
+      [resourceService]="eventService"
+      [scopeId]="'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI'"
+      [cardCollapse]="true"
+      [showCheckBoxFilter]="true"
+    ></app-edge-panel>
+    <app-edge-panel
+      type="TASK"
+      [resourceService]="taskService"
+      [scopeId]="'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI'"
+      [cardCollapse]="true"
+    ></app-edge-panel>
+    <app-edge-panel
+      type="SAMPLE"
+      [resourceService]="sampleService"
+      [scopeId]="'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI'"
+      [cardCollapse]="true"
+    ></app-edge-panel>
+  </div>
+</app-sidebar>

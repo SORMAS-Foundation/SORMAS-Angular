@@ -27,6 +27,7 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() actionLink = '';
   @Input() actionLinkParams = {};
   @Input() cardWidth?: number;
+  @Input() showCheckBoxFilter: boolean;
 
   items: any[] = [];
   initialSize: number;
