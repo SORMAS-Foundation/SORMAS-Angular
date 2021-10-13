@@ -3,19 +3,20 @@
     <mat-label
       *ngIf="config.label"
       class="radio-group-label"
-      [ngClass]="{'medium-text-radio': config.className?.includes('medium-text-radio') }"
+      [ngClass]="{ 'medium-text-radio': config.className?.includes('medium-text-radio') }"
     >
-        {{ config.label || '' | translate }}
-        <span *ngIf="config.validation?.length" class="required">*</span>
+      {{ config.label || '' | translate }}
+      <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
     <mat-radio-button
-      [ngClass]="config.separated ? 'block' : ''"
       *ngFor="let opt of config.options"
       [value]="opt.key"
-      [ngClass]="{'full-width': config.radioNewLine}"
+      [ngClass]="{ 'full-width': config.radioNewLine, block: config.separated }"
       color="primary"
     >
-      <span [ngClass]="{'medium-text-radio': config.className?.includes('medium-text-radio') }">{{ opt.value }}</span>
+      <span [ngClass]="{ 'medium-text-radio': config.className?.includes('medium-text-radio') }">{{
+        opt.value | translate
+      }}</span>
     </mat-radio-button>
   </mat-radio-group>
   <div class="errorMessage" color="warn" *ngIf="!isValid">

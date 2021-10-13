@@ -20,6 +20,8 @@ import { FormMultiselectComponent } from './components/form-multiselect/form-mul
 import { MaterialModule } from '../../material.module';
 import { InpageNavModule } from '../inpage-nav/inpage-nav.module';
 import { DirectivesModule } from '../../_directives/directives.module';
+import { CollapsableBoxModule } from '../collapsable-box/collapsable-box.module';
+import { FormSearchboxComponent } from './components/form-searchbox/form-searchbox.component';
 
 @NgModule({
   imports: [
@@ -29,11 +31,13 @@ import { DirectivesModule } from '../../_directives/directives.module';
     TranslateModule,
     InpageNavModule,
     DirectivesModule,
+    CollapsableBoxModule,
   ],
   declarations: [
     DynamicFormComponent,
     DynamicFieldDirective,
     FormInputComponent,
+    FormSearchboxComponent,
     FormDateComponent,
     FormDatetimeComponent,
     FormCheckboxComponent,
@@ -49,6 +53,7 @@ import { DirectivesModule } from '../../_directives/directives.module';
   exports: [DynamicFormComponent, FormMultiselectComponent],
   entryComponents: [
     FormInputComponent,
+    FormSearchboxComponent,
     FormDateComponent,
     FormDatetimeComponent,
     FormCheckboxComponent,

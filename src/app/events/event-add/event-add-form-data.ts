@@ -7,8 +7,8 @@ import {
   EventManagementStatusOptions,
   YesNoUnknown,
   FORM_DATA_CHECKBOX,
-  InvestigationStatusOptions,
-  EventStatusOptionsEdit,
+  EventInvestigationStatusOptions,
+  EventStatusOptions,
   DiseaseTransmissionMode,
   InformationSource,
   InstitutionalPartnerType,
@@ -22,10 +22,10 @@ import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-v
 const pipe = new EnumToKeyValuePipe();
 
 const diseaseTransmissionMode = pipe.transform(DiseaseTransmissionMode);
-const eventStatusOptionsEdit = pipe.transform(EventStatusOptionsEdit);
+const eventStatusOptions = pipe.transform(EventStatusOptions);
 const eventManagementStatusOptions = pipe.transform(EventManagementStatusOptions);
 const yesNoUnknown = pipe.transform(YesNoUnknown);
-const investigationStatusOptions = pipe.transform(InvestigationStatusOptions);
+const investigationStatusOptions = pipe.transform(EventInvestigationStatusOptions);
 const informationSourceOptions = pipe.transform(InformationSource);
 const institutionalPartnerTypeOptions = pipe.transform(InstitutionalPartnerType);
 const typeOfPlaceOptions = pipe.transform(TypeOfPlace);
@@ -74,7 +74,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'eventStatus',
         label: 'captions.EventAction.eventStatus',
         validation: ['required'],
-        options: eventStatusOptionsEdit,
+        options: eventStatusOptions,
       },
       {
         ...FORM_DATA_SELECT,
@@ -156,7 +156,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'humanTransmission',
         label: 'captions.Event.humanTransmissionMode',
         dependingOn: 'primaryModeTransmission',
-        dependingOnValues: ['HUMANTOHUMAN'],
+        dependingOnValues: ['HUMAN_TO_HUMAN'],
         options: [
           {
             key: 'default',
@@ -192,7 +192,7 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.Event.epidemiologicalEvidence',
         newLine: true,
         dependingOn: 'primaryModeTransmission',
-        dependingOnValues: ['HUMANTOHUMAN'],
+        dependingOnValues: ['HUMAN_TO_HUMAN'],
         options: yesNoUnknown,
       },
       {
@@ -305,7 +305,7 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.Event.laboratoryDiagnosticEvidence',
         options: yesNoUnknown,
         dependingOn: 'primaryModeTransmission',
-        dependingOnValues: ['HUMANTOHUMAN'],
+        dependingOnValues: ['HUMAN_TO_HUMAN'],
         newLine: true,
       },
       {
@@ -407,31 +407,31 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_INPUT,
         key: 'srcMediaWebsite',
-        label: 'Event.srcMediaWebsite',
+        label: 'captions.Event.srcMediaWebsite',
         dependingOn: 'sourceType',
-        dependingOnValues: ['MEDIANEWS'],
+        dependingOnValues: ['MEDIA_NEWS'],
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'srcMediaName',
-        label: 'Event.srcMediaName',
+        label: 'captions.Event.srcMediaName',
         dependingOn: 'sourceType',
-        dependingOnValues: ['MEDIANEWS'],
+        dependingOnValues: ['MEDIA_NEWS'],
       },
       {
         ...FORM_DATA_TEXTAREA,
         key: 'srcMediaDetails',
-        label: 'Event.srcMediaDetails',
+        label: 'captions.Event.srcMediaDetails',
         dependingOn: 'sourceType',
-        dependingOnValues: ['MEDIANEWS'],
+        dependingOnValues: ['MEDIA_NEWS'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'srcInstitutionalPartnerType',
         label: 'captions.Event.srcInstitutionalPartnerType',
         dependingOn: 'sourceType',
-        dependingOnValues: ['INSTITUTIONALPARTNER'],
+        dependingOnValues: ['INSTITUTIONAL_PARTNER'],
         options: institutionalPartnerTypeOptions,
       },
       {
@@ -439,7 +439,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'srcFirstName',
         label: 'captions.Event.srcFirstName',
         dependingOn: 'sourceType',
-        dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
+        dependingOnValues: ['HOTLINE_PERSON', 'INSTITUTIONAL_PARTNER'],
         newLine: true,
       },
       {
@@ -447,14 +447,14 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'srcLastName',
         label: 'captions.Event.srcLastName',
         dependingOn: 'sourceType',
-        dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
+        dependingOnValues: ['HOTLINE_PERSON', 'INSTITUTIONAL_PARTNER'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'srcTelNo',
         label: 'captions.Event.srcTelNo',
         dependingOn: 'sourceType',
-        dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
+        dependingOnValues: ['HOTLINE_PERSON', 'INSTITUTIONAL_PARTNER'],
         newLine: true,
       },
       {
@@ -462,7 +462,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'srcEmail',
         label: 'captions.Event.srcEmail',
         dependingOn: 'sourceType',
-        dependingOnValues: ['HOTLINEPERSON', 'INSTITUTIONALPARTNER'],
+        dependingOnValues: ['HOTLINE_PERSON', 'INSTITUTIONAL_PARTNER'],
       },
     ],
   },
@@ -537,7 +537,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'meansOfTransport',
         label: 'TypeOfPlace.MEANS_OF_TRANSPORT',
         dependingOn: 'typeOfPlace',
-        dependingOnValues: ['MEANSOFTRANSPORT'],
+        dependingOnValues: ['MEANS_OF_TRANSPORT'],
         options: meansOfTransportOptions,
         newLine: true,
       },
@@ -546,14 +546,14 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'connectionNumber',
         label: 'Event.connectionNumber',
         dependingOn: 'typeOfPlace',
-        dependingOnValues: ['MEANSOFTRANSPORT'],
+        dependingOnValues: ['MEANS_OF_TRANSPORT'],
       },
       {
         ...FORM_DATA_DATE,
         key: 'travelDate',
         label: 'Event.travelDate',
         dependingOn: 'typeOfPlace',
-        dependingOnValues: ['MEANSOFTRANSPORT'],
+        dependingOnValues: ['MEANS_OF_TRANSPORT'],
       },
     ],
   },

@@ -1,0 +1,17 @@
+@use '/src/variables.scss' as *;
+
+.mat-form-field-prefix {
+  right: unset;
+  left: 4px;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  color: map-get($sormas-accent, 200);
+  font-size: 14px;
+}
+
+::placeholder {
+  font-size: 12px;
+}

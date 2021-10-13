@@ -10,10 +10,10 @@ import {
 } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Subscription } from 'rxjs';
-import { FilterService } from '../../_services/filter.service';
-import { BREAKPOINTS } from '../../app.constants';
+import { FilterService } from '../../../_services/filter.service';
+import { BREAKPOINTS } from '../../../app.constants';
 import { onMainContentChange, onSideNavChange } from './filters-animations';
-import { SideNavService } from '../../_services/sidenav.service';
+import { SideNavService } from '../../../_services/sidenav.service';
 
 @Component({
   selector: 'app-filters',

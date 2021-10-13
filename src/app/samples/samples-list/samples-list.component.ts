@@ -11,6 +11,8 @@ import { defaultColumnDefs } from './samples-list-table-data';
 import { SampleAddComponent } from '../sample-add/sample-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { FORM_DATA_SAMPLE_FILTERS } from '../sample-filters/sample-filters-form-data';
+import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 
 @Component({
   selector: 'app-samples-list',
@@ -18,6 +20,7 @@ import { FormActionsService } from '../../_services/form-actions.service';
   styleUrls: ['./samples-list.component.scss'],
 })
 export class SamplesListComponent implements OnInit {
+  filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_SAMPLE_FILTERS));
   samples: SampleDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_SAMPLES;

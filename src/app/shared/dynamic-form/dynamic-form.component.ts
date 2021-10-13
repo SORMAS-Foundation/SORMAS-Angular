@@ -9,6 +9,7 @@ import { NotificationService } from '../../_services/notification.service';
 import { BaseService } from '../../_services/api/base.service';
 import { Resource } from '../../_models/resource';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { FormGroupStyleType } from '../../_models/common';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -28,6 +29,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   watchFields: any[] = [];
   subscription: Subscription[] = [];
   sections: any[] = [];
+  formGroupStyleType = FormGroupStyleType;
 
   constructor(
     private formElementControlService: FormElementControlService,
