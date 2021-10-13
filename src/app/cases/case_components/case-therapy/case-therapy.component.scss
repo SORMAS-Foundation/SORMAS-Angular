@@ -35,7 +35,7 @@
 
 .operations {
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: space-between;
   margin: 8px 0 24px;
   gap: 16px;
@@ -43,7 +43,6 @@
 
 .actions {
   display: flex;
-  justify-content: end;
   margin-left: auto;
   gap: 16px;
 }

@@ -1,7 +1,7 @@
 import {
   FORM_DATA_CHECKBOX,
-  EventStatusOptionsEdit,
-  InvestigationStatusOptions,
+  EventStatusOptions,
+  EventInvestigationStatusOptions,
   FORM_DATA_RADIO,
 } from '../../app.constants';
 
@@ -9,8 +9,8 @@ import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-v
 
 const pipe = new EnumToKeyValuePipe();
 
-const eventStatusOptionsEdit = pipe.transform(EventStatusOptionsEdit);
-const investigationStatusOptions = pipe.transform(InvestigationStatusOptions);
+const eventStatusOptions = pipe.transform(EventStatusOptions);
+const investigationStatusOptions = pipe.transform(EventInvestigationStatusOptions);
 
 export const FORM_DATA_EVENT_EDIT = [
   {
@@ -26,7 +26,7 @@ export const FORM_DATA_EVENT_EDIT = [
       {
         ...FORM_DATA_RADIO,
         key: 'eventStatus',
-        options: eventStatusOptionsEdit,
+        options: eventStatusOptions,
         dependingOn: 'eventStatusVisibleCheckbox',
         newLine: true,
       },

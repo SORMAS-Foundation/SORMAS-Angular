@@ -90,5 +90,14 @@
     .mat-calendar-table-header-divider::after {
       background: mat-color(mat-palette($accent, 300));
     }
+
+    .fullwidth .mat-form-field-appearance-outline {
+      &.datepicker-closed,
+      &.datepicker-opened {
+        .mat-form-field-flex {
+          width: 100%;
+        }
+      }
+    }
   }
 }

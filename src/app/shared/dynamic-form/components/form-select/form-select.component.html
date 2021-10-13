@@ -14,10 +14,11 @@
       [formControlName]="config.key"
       [placeholder]="config.placeholder || '' | translate"
       [matTooltip]="config.label || '' | translate"
+      [multiple]="config.multipleChoice"
       (selectionChange)="onChange()"
     >
       <mat-option *ngFor="let opt of config.options" [value]="opt.key">
-        {{ opt.value }}
+        {{ opt.value | translate }}
       </mat-option>
     </mat-select>
     <mat-hint class="hint" *ngIf="config.hint">{{ config.hint || '' | translate }}</mat-hint>
