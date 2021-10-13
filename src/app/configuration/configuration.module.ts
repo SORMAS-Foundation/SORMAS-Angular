@@ -29,6 +29,9 @@ import { CountryAddEditComponent } from './countries/country-add-edit/country-ad
 import { CommunityAddEditComponent } from './communities/community-add-edit/community-add-edit.component';
 import { RegionAddEditComponent } from './regions/region-add-edit/region-add-edit.component';
 import { DistrictAddEditComponent } from './districts/district-add-edit/district-add-edit.component';
+import { ContinentListComponent } from './continents/continent-list/continent-list.component';
+import { ContinentAddEditComponent } from './continents/continent-add-edit/continent-add-edit.component';
+import { ContinentFiltersComponent } from './continents/continent-filters/continent-filters.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import { DistrictAddEditComponent } from './districts/district-add-edit/district
     CommunityAddEditComponent,
     RegionAddEditComponent,
     DistrictAddEditComponent,
+    ContinentListComponent,
+    ContinentAddEditComponent,
+    ContinentFiltersComponent,
   ],
   imports: [
     CommonModule,

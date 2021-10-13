@@ -1,0 +1,34 @@
+<div class="filters">
+  <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
+  <form class="filters-form" [formGroup]="filtersForm">
+    <mat-form-field id="nameLike" appearance="outline" floatLabel="always" class="search-field">
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'strings.promptSearch' | translate }}"
+        formControlName="nameLike"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+    <app-collapsable-box boxTitle="{{ 'strings.entityDistricts' | translate }}">
+      <mat-radio-group
+        name="relevanceStatus"
+        formControlName="relevanceStatus"
+        (change)="onFormChange()"
+      >
+        <mat-radio-button value="ACTIVE" color="primary">
+          {{ 'captions.districtActiveDistricts' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="ARCHIVED" color="primary">
+          {{ 'captions.districtArchivedDistricts' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="ALL" color="primary">
+          {{ 'captions.districtAllDistricts' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </app-collapsable-box>
+  </form>
+</div>

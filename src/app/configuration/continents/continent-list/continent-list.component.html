@@ -1,0 +1,21 @@
+<div class="page-header">
+  <div class="page-header-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddContinentModal()">
+      {{ 'actionAddNewContinent' | translate }}
+    </button>
+  </div>
+</div>
+<app-table
+  [resourceService]="continentService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [appearance]="tableAppearanceOptions.MINIMAL"
+  [bulkEditOptions]="actionsBulkEdit"
+  [showTotal]="true"
+  [isEditable]="true"
+  showTotalContext="{{ 'captions.View.configuration.continents.short' | translate }}"
+  (editItem)="openEditContinentModal($event)"
+></app-table>
