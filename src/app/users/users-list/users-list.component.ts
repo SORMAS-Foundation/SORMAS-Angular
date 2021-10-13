@@ -11,6 +11,8 @@ import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-mod
 import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
 import { UserAddComponent } from '../user-add/user-add.component';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { FORM_DATA_USER_FILTERS } from '../user-filters/user-filters-form-data';
+import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 
 @Component({
   selector: 'app-users-list',
@@ -18,6 +20,7 @@ import { FormActionsService } from '../../_services/form-actions.service';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit, OnDestroy {
+  filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_USER_FILTERS));
   users: UserDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_USERS;

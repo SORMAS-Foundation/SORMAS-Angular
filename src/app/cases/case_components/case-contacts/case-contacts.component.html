@@ -1,5 +1,5 @@
 <app-filters [fixed]="false">
-  <app-contact-filters [inTab]="true" filters></app-contact-filters>
+  <app-contact-filters [data]="filtersData" filters></app-contact-filters>
   <ng-container list>
     <app-table
       [resourceService]="contactService"

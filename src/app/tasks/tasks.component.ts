@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HEADER_HEIGHT } from '../app.constants';
+import { FormBase } from '../shared/dynamic-form/types/form-element-base';
+import { FORM_DATA_TASK_FILTERS } from './task-filters/task-filters-form-data';
 
 @Component({
   selector: 'app-tasks',
@@ -7,5 +9,6 @@ import { HEADER_HEIGHT } from '../app.constants';
   styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent {
+  filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_TASK_FILTERS));
   headerHeight = HEADER_HEIGHT;
 }

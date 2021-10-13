@@ -21,9 +21,11 @@ import { FormNumberComponent } from './form-number/form-number.component';
 import { FormWidgetComponent } from './form-widget/form-widget.component';
 import { FormDatetimeComponent } from './form-datetime/form-datetime.component';
 import { FormMultiselectComponent } from './form-multiselect/form-multiselect.component';
+import { FormSearchboxComponent } from './form-searchbox/form-searchbox.component';
 
 const components: FormFields = {
   input: FormInputComponent,
+  searchbox: FormSearchboxComponent,
   checkbox: FormCheckboxComponent,
   radio: FormRadioComponent,
   dropdown: FormSelectComponent,

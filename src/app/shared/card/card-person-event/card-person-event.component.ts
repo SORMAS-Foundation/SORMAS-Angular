@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { EventStatusOptionsEdit } from '../../../_constants/enums';
+import { EventStatusOptions } from '../../../_constants/enums';
 import { EventStatusIcons } from '../../../_constants/icons';
 import { EventDto } from '../../../_models/eventDto';
 
@@ -10,6 +10,6 @@ import { EventDto } from '../../../_models/eventDto';
 })
 export class CardPersonEventComponent {
   @Input() data: EventDto;
-  eventStatus = EventStatusOptionsEdit;
+  eventStatus = EventStatusOptions;
   eventStatusIcons = EventStatusIcons;
 }
