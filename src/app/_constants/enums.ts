@@ -478,6 +478,12 @@ export enum EntityRelevanceStatusOptions {
   ARCHIVED = 'enum.EntityRelevanceStatus.ARCHIVED',
 }
 
+export enum ContinentRelevanceStatusOptions {
+  ALL = 'captions.continentAllContinents',
+  ACTIVE = 'captions.continentActiveContinents',
+  ARCHIVED = 'captions.continentArchivedContinents',
+}
+
 export enum EventStatusOptions {
   SIGNAL = 'enum.EventStatus.SIGNAL',
   EVENT = 'enum.EventStatus.EVENT',

@@ -1,1 +1,5 @@
-<p>continent-add-edit works!</p>
+<app-dynamic-form
+  *ngIf="myFormElements.length"
+  [formElements]="myFormElements"
+  [resourceService]="continentService"
+></app-dynamic-form>

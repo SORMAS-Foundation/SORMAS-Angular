@@ -8,7 +8,7 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'captions.Continent.externalId',
-    dataKey: 'externalID',
+    dataKey: 'externalId',
     isSortable: true,
   },
 ];
