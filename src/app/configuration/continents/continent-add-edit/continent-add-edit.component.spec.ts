@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContinentAddEditComponent } from './continent-add-edit.component';
@@ -8,9 +9,9 @@ describe('ContinentAddEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContinentAddEditComponent ]
-    })
-    .compileComponents();
+      declarations: [ContinentAddEditComponent],
+      imports: [HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

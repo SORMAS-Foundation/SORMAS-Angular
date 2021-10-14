@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ContinentListComponent } from './continent-list.component';
 
@@ -8,9 +11,9 @@ describe('ContinentListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContinentListComponent ]
-    })
-    .compileComponents();
+      declarations: [ContinentListComponent],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule, MatDialogModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
