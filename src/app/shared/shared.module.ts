@@ -43,6 +43,7 @@ import { SelectionListComponent } from './selection-list/selection-list.componen
 import { ExportsGroupSelectComponent } from './widgets/exports-group-select/exports-group-select.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { ChooseCaseModalComponent } from './modals/choose-case-modal/choose-case-modal.component';
+import { LoaderComponent } from './loader/loader.component';
 import { CollapsableBoxModule } from './collapsable-box/collapsable-box.module';
 import { ContactFiltersModule } from './contact-filters/contact-filters.module';
 import { CaseAddComponent } from './case-add/case-add.component';
@@ -81,6 +82,7 @@ import { FiltersModule } from './filters/filters.module';
     ContactFollowUpComponent,
     ExportsGroupSelectComponent,
     ChooseCaseModalComponent,
+    LoaderComponent,
     CaseAddComponent,
   ],
   imports: [
@@ -127,6 +129,7 @@ import { FiltersModule } from './filters/filters.module';
     DirectivesModule,
     InfoBarComponent,
     SelectionListComponent,
+    LoaderComponent,
     CollapsableBoxModule,
     CaseAddComponent,
     ContactFiltersModule,

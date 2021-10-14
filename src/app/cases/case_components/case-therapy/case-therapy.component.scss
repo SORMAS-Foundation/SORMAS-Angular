@@ -10,6 +10,7 @@
 }
 
 .section-content {
+  position: relative;
   flex: 1 1 auto;
   padding: 16px 24px;
   @include mat-elevation(1);

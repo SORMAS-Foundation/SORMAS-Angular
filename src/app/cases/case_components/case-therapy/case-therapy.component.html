@@ -4,6 +4,7 @@
   </h2>
 
   <div class="section-content">
+    <app-loader [show]="loadPrescriptions"></app-loader>
     <div class="operations">
       <app-therapy-filters
         *ngIf="prescriptions?.length"
@@ -39,8 +40,8 @@
   <h2 class="section-title">
     {{ 'strings.entityTreatments' | translate }}
   </h2>
-
   <div class="section-content">
+    <app-loader [show]="loadTreatments"></app-loader>
     <div class="operations">
       <app-therapy-filters
         *ngIf="treatments?.length"
