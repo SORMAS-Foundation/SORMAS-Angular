@@ -78,7 +78,7 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_INPUT,
         newLine: true,
         key: 'internalId',
-        label: 'captions.Event.internalId',
+        label: 'captions.Event.internalToken',
       },
     ],
   },
