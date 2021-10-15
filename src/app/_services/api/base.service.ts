@@ -43,7 +43,7 @@ export class BaseService<T extends Resource> {
     }
 
     // sorting
-    let requestPayload: any = { caseCriteria: null, sortProperties: null };
+    let requestPayload: any = { criteria: {}, sortProperties: null };
 
     if (typeof sorting !== 'undefined' && sorting !== null) {
       requestPayload = {

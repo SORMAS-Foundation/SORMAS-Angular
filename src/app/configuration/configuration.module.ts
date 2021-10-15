@@ -32,6 +32,9 @@ import { DistrictAddEditComponent } from './districts/district-add-edit/district
 import { ContinentListComponent } from './continents/continent-list/continent-list.component';
 import { ContinentAddEditComponent } from './continents/continent-add-edit/continent-add-edit.component';
 import { ContinentFiltersComponent } from './continents/continent-filters/continent-filters.component';
+import { SubcontinentAddEditComponent } from './subcontinents/subcontinent-add-edit/subcontinent-add-edit.component';
+import { SubcontinentListComponent } from './subcontinents/subcontinent-list/subcontinent-list.component';
+import { SubcontinentFiltersComponent } from './subcontinents/subcontinent-filters/subcontinent-filters.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,9 @@ import { ContinentFiltersComponent } from './continents/continent-filters/contin
     ContinentListComponent,
     ContinentAddEditComponent,
     ContinentFiltersComponent,
+    SubcontinentAddEditComponent,
+    SubcontinentFiltersComponent,
+    SubcontinentListComponent,
   ],
   imports: [
     CommonModule,

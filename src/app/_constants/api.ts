@@ -157,3 +157,11 @@ export const API_ROUTE_CONTINENTNS = {
   ADD: 'continents/push',
   DELETE: 'continents/delete',
 };
+
+export const API_ROUTE_SUBCONTINENTNS = {
+  ENDPOINT: 'subcontinents',
+  GET_ALL: 'subcontinents/indexList',
+  UPDATE: 'subcontinents/push',
+  ADD: 'subcontinents/push',
+  DELETE: 'subcontinents/delete',
+};
