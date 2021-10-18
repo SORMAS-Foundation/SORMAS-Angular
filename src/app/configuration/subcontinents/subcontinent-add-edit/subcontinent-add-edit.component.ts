@@ -22,7 +22,6 @@ export class SubcontinentAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('selectedResource', this.selectedResource);
     this.subcontinentService.getAll(null, null, null, true).subscribe({
       next: (response: any) => {
         if (this.selectedResource) {
