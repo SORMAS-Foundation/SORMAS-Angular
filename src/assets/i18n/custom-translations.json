@@ -83,5 +83,6 @@
   "timeHeading": "Time",
   "searchByCase": "Search by case",
   "openCase": "Open case",
-  "actionAddNewContinent": "Add new continent"
+  "actionAddNewContinent": "Add new continent",
+  "actionAddNewSubcontinent": "Add new subcontinent"
 }

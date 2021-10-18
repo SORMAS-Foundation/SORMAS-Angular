@@ -1,4 +1,4 @@
-import { FORM_DATA_INPUT } from '../../../_constants/form-data';
+import { FORM_DATA_INPUT, FORM_DATA_SELECT } from '../../../_constants/form-data';
 
 export const FORM_DATA_SUBCONTINENT_ADD_EDIT = [
   {
@@ -19,6 +19,13 @@ export const FORM_DATA_SUBCONTINENT_ADD_EDIT = [
         className: 'size-full',
         label: 'captions.Subcontinent.defaultName',
         validation: ['required'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'continent.uuid',
+        className: 'size-full',
+        label: 'captions.continent',
         newLine: true,
       },
     ],

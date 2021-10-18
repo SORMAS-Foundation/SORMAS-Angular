@@ -1,3 +1,5 @@
+import { ContinentDto } from './continentDto';
+
 export interface SubcontinentDto {
   creationDate?: Date;
   changeDate?: Date;
@@ -5,4 +7,5 @@ export interface SubcontinentDto {
   defaultName?: string;
   archived?: boolean;
   externalId?: string;
+  continent?: ContinentDto;
 }

@@ -485,8 +485,8 @@ export enum ContinentRelevanceStatusOptions {
 }
 
 export enum SubcontinentRelevanceStatusOptions {
-  ALL = 'captions.SubcontinentAllSubcontinents',
-  ACTIVE = 'captions.SubcontinentActiveSubcontinents',
+  ALL = 'captions.subcontinentAllSubcontinents',
+  ACTIVE = 'captions.subcontinentActiveSubcontinents',
   ARCHIVED = 'captions.subcontinentArchivedSubcontinents',
 }
 

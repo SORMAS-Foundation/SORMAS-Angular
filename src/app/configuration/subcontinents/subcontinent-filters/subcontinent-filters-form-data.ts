@@ -1,4 +1,4 @@
-import { FORM_DATA_RADIO, FORM_DATA_SEARCHBOX } from '../../../app.constants';
+import {FORM_DATA_RADIO, FORM_DATA_SEARCHBOX, FORM_DATA_SELECT} from '../../../app.constants';
 import { SubcontinentRelevanceStatusOptions } from '../../../_constants/enums';
 import { FormGroupStyleType } from '../../../_models/common';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -30,6 +30,20 @@ export const FORM_DATA_SUBCONTINENT_FILTERS = [
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
         separated: true,
+      },
+    ],
+  },
+  {
+    id: 'more',
+    title: '',
+    appearance: FormGroupStyleType.BASIC,
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'continent',
+        placeholder: 'captions.continent',
+        options: [],
+        className: 'fullwidth',
       },
     ],
   },

@@ -4,6 +4,7 @@ import * as data from './subcontinent-add-edit-form-data';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { SubcontinentDto } from '../../../_models/subcontinentDto';
 import { SubcontinentService } from '../../../_services/api/subcontinent.service';
+import { ContinentService } from '../../../_services/api/continent.service';
 
 @Component({
   selector: 'app-subcontinent-add-edit',
@@ -16,10 +17,12 @@ export class SubcontinentAddEditComponent implements OnInit {
 
   constructor(
     public subcontinentService: SubcontinentService,
+    private continentService: ContinentService,
     private formElementControlService: FormElementControlService
   ) {}
 
   ngOnInit(): void {
+    console.log('selectedResource', this.selectedResource);
     this.subcontinentService.getAll(null, null, null, true).subscribe({
       next: (response: any) => {
         if (this.selectedResource) {
@@ -29,7 +32,7 @@ export class SubcontinentAddEditComponent implements OnInit {
           );
           this.myFormElements = this.formElementControlService.setAttributeToFormElement(
             this.myFormElements,
-            'subcontinent.uuid',
+            'continent.uuid',
             'disabled',
             true
           );
@@ -39,8 +42,8 @@ export class SubcontinentAddEditComponent implements OnInit {
         this.myFormElements = this.formElementControlService.setOptionsToInput(
           response.elements,
           this.myFormElements,
-          'subcontinent.uuid',
-          'defaultName'
+          'continent.uuid',
+          'displayName'
         );
       },
       error: () => {},
