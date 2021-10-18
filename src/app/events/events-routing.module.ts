@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     component: EventsComponent,
     children: [
-      { path: 'list', component: EventsListComponent, canActivate: [LeaveGuard] },
+      { path: 'list', component: EventsListComponent },
       {
         path: 'event/:eventId',
         component: EventComponent,

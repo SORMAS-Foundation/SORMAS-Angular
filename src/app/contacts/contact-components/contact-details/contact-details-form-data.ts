@@ -2,7 +2,7 @@ import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-ke
 import {
   ContactCategory,
   ContactClassification,
-  ContactClassificationOptions,
+  ContactIdentificationSource,
   ContactRelation,
   FORM_DATA_CHECKBOX,
   FORM_DATA_DATE,
@@ -12,10 +12,10 @@ import {
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
   FORM_DATA_WIDGET,
-  Quarantine,
+  QuarantineType,
   TracingApp,
-  TypeOfContact,
-  VaccinationSource,
+  ContactProximity,
+  VaccinationInfoSource,
   VaccinationStatus,
   YesNoUnknown,
 } from '../../../app.constants';
@@ -23,14 +23,14 @@ import {
 const pipe = new EnumToKeyValuePipe();
 const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 const optionsContactClassification = pipe.transform(ContactClassification);
-const optionsContactClassificationOptions = pipe.transform(ContactClassificationOptions);
+const optionsContactClassificationOptions = pipe.transform(ContactIdentificationSource);
 const optionsTracingApp = pipe.transform(TracingApp);
-const optionsTypeOfContact = pipe.transform(TypeOfContact);
+const optionsContactProximity = pipe.transform(ContactProximity);
 const optionsContactCategory = pipe.transform(ContactCategory);
 const optionsContactRelation = pipe.transform(ContactRelation);
-const optionsQuarantine = pipe.transform(Quarantine);
+const optionsQuarantine = pipe.transform(QuarantineType);
 const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
-const optionsVaccinationSource = pipe.transform(VaccinationSource);
+const optionsVaccinationSource = pipe.transform(VaccinationInfoSource);
 
 export const FORM_DATA_CONTACT_DETAILS = [
   {
@@ -223,7 +223,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.Contact.tracingApp',
         options: optionsTracingApp,
         dependingOn: 'contactIdentificationSource',
-        dependingOnValues: ['PROXIMITY_TRACING_APP'],
+        dependingOnValues: ['TRACING_APP'],
         newLine: true,
       },
       {
@@ -237,7 +237,7 @@ export const FORM_DATA_CONTACT_DETAILS = [
       {
         ...FORM_DATA_RADIO,
         key: 'contactType',
-        options: optionsTypeOfContact,
+        options: optionsContactProximity,
         className: 'medium-text-radio',
         newLine: true,
         radioNewLine: true,

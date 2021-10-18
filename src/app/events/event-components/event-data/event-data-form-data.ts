@@ -7,8 +7,8 @@ import {
   EventManagementStatusOptions,
   YesNoUnknown,
   FORM_DATA_CHECKBOX,
-  InvestigationStatusOptions,
-  EventStatusOptionsEdit,
+  EventInvestigationStatusOptions,
+  EventStatusOptions,
   DiseaseTransmissionMode,
   InformationSource,
   InstitutionalPartnerType,
@@ -23,10 +23,10 @@ import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-ke
 const pipe = new EnumToKeyValuePipe();
 
 const diseaseTransmissionMode = pipe.transform(DiseaseTransmissionMode);
-const eventStatusOptionsEdit = pipe.transform(EventStatusOptionsEdit);
+const eventStatusOptions = pipe.transform(EventStatusOptions);
 const eventManagementStatusOptions = pipe.transform(EventManagementStatusOptions);
 const yesNoUnknown = pipe.transform(YesNoUnknown);
-const investigationStatusOptions = pipe.transform(InvestigationStatusOptions);
+const investigationStatusOptions = pipe.transform(EventInvestigationStatusOptions);
 const informationSourceOptions = pipe.transform(InformationSource);
 const institutionalPartnerTypeOptions = pipe.transform(InstitutionalPartnerType);
 const typeOfPlaceOptions = pipe.transform(TypeOfPlace);
@@ -45,7 +45,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'eventStatus',
         label: 'captions.EventAction.eventStatus',
         validation: ['required'],
-        options: eventStatusOptionsEdit,
+        options: eventStatusOptions,
       },
       {
         ...FORM_DATA_SELECT,
@@ -78,7 +78,7 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_INPUT,
         newLine: true,
         key: 'internalId',
-        label: 'captions.Event.internalId',
+        label: 'captions.Event.internalToken',
       },
     ],
   },
@@ -110,7 +110,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'humanTransmission',
         label: 'captions.Event.humanTransmissionMode',
         dependingOn: 'primaryModeTransmission',
-        dependingOnValues: ['HUMANTOHUMAN'],
+        dependingOnValues: ['HUMAN_TO_HUMAN'],
         options: [
           {
             key: 'default',
@@ -146,7 +146,7 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.Event.epidemiologicalEvidence',
         newLine: true,
         dependingOn: 'primaryModeTransmission',
-        dependingOnValues: ['HUMANTOHUMAN'],
+        dependingOnValues: ['HUMAN_TO_HUMAN'],
         options: yesNoUnknown,
       },
       {
@@ -259,7 +259,7 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.Event.laboratoryDiagnosticEvidence',
         options: yesNoUnknown,
         dependingOn: 'primaryModeTransmission',
-        dependingOnValues: ['HUMANTOHUMAN'],
+        dependingOnValues: ['HUMAN_TO_HUMAN'],
         newLine: true,
       },
       {

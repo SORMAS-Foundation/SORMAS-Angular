@@ -61,6 +61,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   totalItems = 0;
   fetchStatus: FetchStatus | undefined;
   fetchStatusType = FetchStatusType;
+  loading = false;
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -217,6 +218,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public getResources(reload: boolean = false): void {
+    this.loading = true;
     this.resourceService
       .getAll({ offset: this.offset, size: this.limit }, this.sorting, this.filters)
       .subscribe({
@@ -252,9 +254,11 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
           if (!this.fullHeight) {
             this.determineHeight();
           }
+          this.loading = false;
         },
         error: () => {
           this.fetchStatus = this.fetchStatusType.ERROR;
+          this.loading = false;
         },
         complete: () => {},
       });

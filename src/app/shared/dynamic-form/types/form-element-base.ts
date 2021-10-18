@@ -1,4 +1,6 @@
-// eslint-disable-next-line max-classes-per-file
+/* eslint-disable max-classes-per-file */
+import { FormGroupStyle } from '../../../_models/common';
+
 export class FormElementBase<T> {
   value?: T; // the value of the field
   key: string; // the key of the field
@@ -24,6 +26,7 @@ export class FormElementBase<T> {
   radioNewLine?: boolean; // radio btns displayed with full width
   disabled?: boolean; // input disabling
   timeLabel?: string;
+  multipleChoice?: boolean;
   resource?: any;
 
   constructor(
@@ -52,6 +55,7 @@ export class FormElementBase<T> {
       radioNewLine?: boolean;
       disabled?: boolean;
       timeLabel?: string;
+      multipleChoice?: boolean;
       resource?: any;
     } = {}
   ) {
@@ -79,6 +83,7 @@ export class FormElementBase<T> {
     this.radioNewLine = options.radioNewLine ?? false;
     this.disabled = options.disabled ?? false;
     this.timeLabel = options.timeLabel;
+    this.multipleChoice = options.multipleChoice ?? false;
     this.resource = options.resource;
   }
 }
@@ -93,4 +98,5 @@ export class FormBase<T> {
   anchorLabel?: string;
   hidden?: boolean;
   hiddenLeftSection?: boolean;
+  appearance?: FormGroupStyle;
 }

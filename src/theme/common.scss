@@ -56,13 +56,12 @@ strong {
     font-weight: normal;
   }
 
-  .search-icon {
-    color: map-get($sormas-accent, 200);
+  fieldset.collapsable {
+    margin: 24px 0;
   }
 
-  .search-field ::placeholder {
-    color: map-get($sormas-accent, 200);
-    opacity: 1;
+  .mat-form-field-appearance-outline.searchbox .mat-form-field-wrapper {
+    margin: 0;
   }
 }
 

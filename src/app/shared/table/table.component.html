@@ -25,6 +25,7 @@
 </div>
 
 <div #vsTable *ngIf="tableColumns">
+  <app-loader [show]="loading"></app-loader>
   <cdk-virtual-scroll-viewport
     [tvsItemSize]="rowHeight"
     [headerHeight]="headerHeight"
@@ -91,6 +92,7 @@
           [align]="tableColumn.align"
           [ngClass]="tableColumn.className || ''"
         >
+          {{ tableColumn.className }}
           <app-table-data
             [config]="tableColumn"
             [data]="dataSourceArray[element.index]"

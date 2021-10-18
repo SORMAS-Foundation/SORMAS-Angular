@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LeaveGuard } from '../_guards/leave-guard';
 import { OutbreaksComponent } from './outbreaks/outbreaks.component';
 import { ConfigurationComponent } from './configuration.component';
 import { ContinentsComponent } from './continents/continents.component';
@@ -21,21 +20,20 @@ const routes: Routes = [
     component: ConfigurationComponent,
     children: [
       { path: '', redirectTo: 'outbreaks', pathMatch: 'full' },
-      { path: 'outbreaks', component: OutbreaksComponent, canActivate: [LeaveGuard] },
-      { path: 'continents', component: ContinentsComponent, canActivate: [LeaveGuard] },
-      { path: 'subcontinents', component: SubcontinentsComponent, canActivate: [LeaveGuard] },
-      { path: 'countries', component: CountriesComponent, canActivate: [LeaveGuard] },
-      { path: 'regions', component: RegionsComponent, canActivate: [LeaveGuard] },
-      { path: 'districts', component: DistrictsComponent, canActivate: [LeaveGuard] },
-      { path: 'communities', component: CommunitiesComponent, canActivate: [LeaveGuard] },
-      { path: 'facilities', component: FacilitiesComponent, canActivate: [LeaveGuard] },
-      { path: 'entry-points', component: EntryPointsComponent, canActivate: [LeaveGuard] },
-      { path: 'population', component: PopulationComponent, canActivate: [LeaveGuard] },
-      { path: 'line-listing', component: LineListingComponent, canActivate: [LeaveGuard] },
+      { path: 'outbreaks', component: OutbreaksComponent },
+      { path: 'continents', component: ContinentsComponent },
+      { path: 'subcontinents', component: SubcontinentsComponent },
+      { path: 'countries', component: CountriesComponent },
+      { path: 'regions', component: RegionsComponent },
+      { path: 'districts', component: DistrictsComponent },
+      { path: 'communities', component: CommunitiesComponent },
+      { path: 'facilities', component: FacilitiesComponent },
+      { path: 'entry-points', component: EntryPointsComponent },
+      { path: 'population', component: PopulationComponent },
+      { path: 'line-listing', component: LineListingComponent },
       {
         path: 'document-templates',
         component: DocumentTemplatesComponent,
-        canActivate: [LeaveGuard],
       },
     ],
   },
