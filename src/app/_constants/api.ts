@@ -165,3 +165,11 @@ export const API_ROUTE_ENTRY_POINTS = {
   ADD: 'pointsofentry/push',
   DELETE: 'pointsofentry/delete',
 };
+
+export const API_ROUTE_SUBCONTINENTNS = {
+  ENDPOINT: 'subcontinents',
+  GET_ALL: 'subcontinents/indexList',
+  UPDATE: 'subcontinents/push',
+  ADD: 'subcontinents/push',
+  DELETE: 'subcontinents/delete',
+};

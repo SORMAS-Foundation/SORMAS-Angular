@@ -1,5 +1,5 @@
 <app-table
-  [resourceService]="continentService"
+  [resourceService]="subcontinentService"
   [tableColumns]="defaultColumns"
   [isSortable]="true"
   [isSelectable]="true"
@@ -10,12 +10,12 @@
   rowStyleData="defaultName"
   [showTotal]="true"
   [isEditable]="true"
-  showTotalContext="{{ 'captions.View.configuration.continents.short' | translate }}"
-  (editItem)="openEditContinentModal($event)"
+  showTotalContext="{{ 'captions.View.configuration.subcontinents.short' | translate }}"
+  (editItem)="openEditSubcontinentModal($event)"
 >
   <div class="page-actions">
-    <button class="add-btn" mat-flat-button color="primary" (click)="openAddContinentModal()">
-      {{ 'actionAddNewContinent' | translate }}
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddSubcontinentModal()">
+      {{ 'actionAddNewSubcontinent' | translate }}
     </button>
   </div>
 </app-table>

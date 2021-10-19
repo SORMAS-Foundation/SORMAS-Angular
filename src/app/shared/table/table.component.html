@@ -18,6 +18,8 @@
       (action)="onActionSelected($event)"
     ></app-action-menu>
   </app-dropdown-menu>
+
+  <ng-content select=".page-actions"></ng-content>
 </div>
 
 <div *ngIf="showTotal && fetchStatus !== fetchStatusType.ERROR" class="list-info">
@@ -92,7 +94,6 @@
           [align]="tableColumn.align"
           [ngClass]="tableColumn.className || ''"
         >
-          {{ tableColumn.className }}
           <app-table-data
             [config]="tableColumn"
             [data]="dataSourceArray[element.index]"

@@ -1,10 +1,3 @@
-<div class="page-header">
-  <div class="page-header-actions">
-    <button class="add-btn" mat-flat-button color="primary" (click)="openAddRegionModal()">
-      {{ 'actionAddNewRegion' | translate }}
-    </button>
-  </div>
-</div>
 <app-table
   [resourceService]="regionService"
   [tableColumns]="defaultColumns"
@@ -18,4 +11,10 @@
   showTotalContext="{{ 'strings.entityRegions' | translate }}"
   [isEditable]="true"
   (editItem)="openEditRegionModal($event)"
-></app-table>
+>
+  <div class="page-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddRegionModal()">
+      {{ 'actionAddNewRegion' | translate }}
+    </button>
+  </div>
+</app-table>

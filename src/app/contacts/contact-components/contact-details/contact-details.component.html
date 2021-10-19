@@ -1,5 +1,32 @@
-<app-dynamic-form
-  [formElements]="myFormElements"
-  [resourceService]="resourceService"
-  [withAnchor]="true"
-></app-dynamic-form>
+<app-sidebar>
+  <app-dynamic-form
+    main
+    [formElements]="myFormElements"
+    [resourceService]="resourceService"
+    [withAnchor]="true"
+  ></app-dynamic-form>
+  <div aside>
+    <app-edge-panel
+      type="EVENT"
+      *ngIf="contact"
+      [resourceService]="eventService"
+      [scopeId]="contact.caze?.uuid"
+      [cardCollapse]="true"
+      [showCheckBoxFilter]="true"
+    ></app-edge-panel>
+    <app-edge-panel
+      type="TASK"
+      *ngIf="contact"
+      [resourceService]="taskService"
+      [scopeId]="contact.caze?.uuid"
+      [cardCollapse]="true"
+    ></app-edge-panel>
+    <app-edge-panel
+      type="SAMPLE"
+      *ngIf="contact"
+      [resourceService]="sampleService"
+      [scopeId]="contact.caze?.uuid"
+      [cardCollapse]="true"
+    ></app-edge-panel>
+  </div>
+</app-sidebar>

@@ -85,5 +85,6 @@
   "openCase": "Open case",
   "actionAddNewContinent": "Add new continent",
   "actionAddNewEntryPoint": "Add new POE",
-  "pointsOfEntries": "Points of entry"
+  "pointsOfEntries": "Points of entry",
+  "actionAddNewSubcontinent": "Add new subcontinent"
 }
