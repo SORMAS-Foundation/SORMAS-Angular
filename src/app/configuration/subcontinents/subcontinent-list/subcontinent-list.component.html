@@ -1,10 +1,3 @@
-<div class="page-header">
-  <div class="page-header-actions">
-    <button class="add-btn" mat-flat-button color="primary" (click)="openAddSubcontinentModal()">
-      {{ 'actionAddNewSubcontinent' | translate }}
-    </button>
-  </div>
-</div>
 <app-table
   [resourceService]="subcontinentService"
   [tableColumns]="defaultColumns"
@@ -19,4 +12,10 @@
   [isEditable]="true"
   showTotalContext="{{ 'captions.View.configuration.subcontinents.short' | translate }}"
   (editItem)="openEditSubcontinentModal($event)"
-></app-table>
+>
+  <div class="page-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddSubcontinentModal()">
+      {{ 'actionAddNewSubcontinent' | translate }}
+    </button>
+  </div>
+</app-table>
