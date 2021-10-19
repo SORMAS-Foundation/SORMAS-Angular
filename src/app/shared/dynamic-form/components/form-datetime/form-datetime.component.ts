@@ -1,17 +1,20 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FormBaseComponent } from '../form-base.component';
 import { FormElementBase } from '../../types/form-element-base';
-import { FormActionsService } from '../../../../_services/form-actions.service';
 import { DatepickerHeaderTodayComponent } from '../datepicker-header-today/datepicker-header-today.component';
+import { FormActionsService } from '../../../../_services/form-actions.service';
+import { HelperService } from '../../../../_services/helper.service';
 
 @Component({
   selector: 'app-form-datetime',
   templateUrl: './form-datetime.component.html',
   styleUrls: ['./form-datetime.component.scss'],
 })
-export class FormDatetimeComponent extends FormBaseComponent implements AfterViewInit, OnDestroy {
+export class FormDatetimeComponent
+  extends FormBaseComponent
+  implements OnInit, AfterViewInit, OnDestroy {
   config: FormElementBase<string>;
   group: FormGroup;
   form: FormGroup;
@@ -19,33 +22,27 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
   subscription: Subscription[] = [];
   header = DatepickerHeaderTodayComponent;
 
-  constructor(public formActionsService: FormActionsService, formBuilder: FormBuilder) {
+  constructor(formActionsService: FormActionsService, private helperService: HelperService) {
     super(formActionsService);
-    this.options = this.timeOptions();
-    this.form = formBuilder.group({
-      date: '',
-      time: '',
+  }
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      date: new FormControl(),
+      time: new FormControl(),
     });
+    this.updateFields(this.config.value);
+    this.updateTimeOptions();
   }
 
   ngAfterViewInit(): void {
     const control = this.group.controls[this.config.key];
 
-    if (control) {
-      this.subscription.push(
-        control.valueChanges.subscribe((data: any) => {
-          const processedHours = `0${data.getHours()}`.slice(-2);
-          const processedMinutes = `0${data.getMinutes()}`.slice(-2);
-          this.form.patchValue(
-            {
-              date: data,
-              time: data ? `${processedHours}:${processedMinutes}` : null,
-            },
-            { emitEvent: false }
-          );
-        })
-      );
+    if (!control) {
+      return;
     }
+
+    this.subscription.push(control.valueChanges.subscribe((data: any) => this.updateFields(data)));
 
     this.subscription.push(
       this.form.valueChanges.subscribe(({ date, time }) => {
@@ -58,30 +55,32 @@ export class FormDatetimeComponent extends FormBaseComponent implements AfterVie
           date.setHours(hours, minutes);
         }
 
-        const field: any = {};
-        field[this.config.key] = date;
-
-        this.group.patchValue(field);
+        control.setValue(date);
       })
     );
   }
 
-  timeOptions(): any[] {
-    const options = [];
-
-    for (let i = 0; i < 24; i += 1) {
-      for (let j = 0; j < 60; j += 15) {
-        const hour = i.toLocaleString('en', { minimumIntegerDigits: 2 });
-        const minute = j.toLocaleString('en', { minimumIntegerDigits: 2 });
-        const time = `${hour}:${minute}`;
-        options.push({
-          key: time,
-          value: time,
-        });
-      }
+  updateFields(date: any): void {
+    let time = null;
+    if (date instanceof Date) {
+      const hours = `0${date.getHours()}`.slice(-2);
+      const minutes = `0${date.getMinutes()}`.slice(-2);
+      time = `${hours}:${minutes}`;
     }
+    this.form.patchValue({ date, time }, { emitEvent: false });
+  }
 
-    return options;
+  updateTimeOptions(): void {
+    const { time } = this.form.value;
+    const result = this.helperService.getTimeOptions();
+    if (time) {
+      result.push({
+        key: time,
+        value: time,
+      });
+      result.sort((a, b) => a.key.localeCompare(b.key));
+    }
+    this.options = result;
   }
 
   ngOnDestroy(): void {

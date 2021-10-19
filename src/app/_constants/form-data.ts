@@ -2,7 +2,7 @@ export const FORM_DATA_BASE = {
   key: '',
   label: '',
   placeholder: '',
-  value: '',
+  value: undefined,
   validation: [],
   order: 1,
   controlType: 'input',
@@ -17,6 +17,12 @@ export const FORM_DATA_BASE = {
 
 export const FORM_DATA_INPUT = {
   ...FORM_DATA_BASE,
+  className: 'size-medium',
+};
+
+export const FORM_DATA_SEARCHBOX = {
+  ...FORM_DATA_BASE,
+  controlType: 'searchbox',
   className: 'size-medium',
 };
 

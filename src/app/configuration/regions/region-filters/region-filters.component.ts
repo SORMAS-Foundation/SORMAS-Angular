@@ -1,51 +1,36 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { UserRole } from '../../../_constants/enums';
-import { Filter } from '../../../_models/common';
-import { CountryDto } from '../../../_models/countryDto';
+import { Component, OnInit } from '@angular/core';
+import { FiltersFormComponent } from '../../../shared/filters/filters-form/filters-form.component';
 import { CountryService } from '../../../_services/api/country.service';
 import { FilterService } from '../../../_services/filter.service';
+import { FormActionsService } from '../../../_services/form-actions.service';
+import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { NotificationService } from '../../../_services/notification.service';
 
 @Component({
   selector: 'app-region-filters',
-  templateUrl: './region-filters.component.html',
-  styleUrls: ['./region-filters.component.scss'],
+  templateUrl: '../../../shared/filters/filters-form/filters-form.component.html',
 })
-export class RegionFiltersComponent implements OnInit, OnDestroy {
-  filtersForm = new FormGroup({});
-  allFilters: Filter[] = [];
-  subscriptions: Subscription[] = [];
-  userRoles = UserRole;
-  defaultCountryCode = 'DEU';
-  countries: CountryDto[] = [];
-  countriesOptions: any[] = [];
-
+export class RegionFiltersComponent extends FiltersFormComponent implements OnInit {
   constructor(
-    private filterService: FilterService,
+    filterService: FilterService,
+    formActionsService: FormActionsService,
+    private formElementControlService: FormElementControlService,
     private countryService: CountryService,
     private notificationService: NotificationService
-  ) {}
+  ) {
+    super(filterService, formActionsService);
+  }
 
   ngOnInit(): void {
-    this.initFiltersForm();
     this.subscriptions.push(
       this.countryService.getAll().subscribe({
         next: (response: any) => {
-          this.countries = response.elements;
-          this.countriesOptions = this.countries.map((country: any) => ({
-            field: country.uuid,
-            value: country.displayName,
-          }));
-          const defaultCountry = this.countries.find(
-            (country: any) => country.isoCode === this.defaultCountryCode
+          this.formData = this.formElementControlService.setOptionsToInput(
+            response.elements,
+            this.formData,
+            'country.uuid',
+            'defaultName'
           );
-          this.filtersForm.patchValue({
-            country: {
-              uuid: defaultCountry?.uuid,
-            },
-          });
         },
         error: (err: any) => {
           this.notificationService.error(err);
@@ -53,42 +38,5 @@ export class RegionFiltersComponent implements OnInit, OnDestroy {
         complete: () => {},
       })
     );
-    this.subscriptions.push(
-      this.filterService.getFilters().subscribe((response: any) => {
-        if (!response.filters.length) {
-          this.filtersForm.reset();
-        }
-      })
-    );
-  }
-
-  initFiltersForm(): void {
-    this.filtersForm = new FormGroup({
-      nameEpidLike: new FormControl(),
-      relevanceStatus: new FormControl(),
-      country: new FormGroup({
-        uuid: new FormControl(),
-      }),
-    });
-  }
-
-  filtersToArray(): void {
-    const keys: string[] = Object.keys(this.filtersForm.value);
-    const values: string[] = Object.values(this.filtersForm.value);
-    this.allFilters = [];
-    values.forEach((e, i) => {
-      if (values[i] !== null) {
-        this.allFilters.push({ field: keys[i], value: values[i] });
-      }
-    });
-    this.filterService.setFilters(this.allFilters);
-  }
-
-  onFormChange(): void {
-    this.filtersToArray();
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

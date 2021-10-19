@@ -71,3 +71,6 @@ export const BUTTON_TYPE = {
   STROKED: 'STROKED' as ButtonType,
   FLAT: 'FLAT' as ButtonType,
 };
+
+// loader
+export const SPINNER_DELAY = 100;

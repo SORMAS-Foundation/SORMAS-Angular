@@ -108,3 +108,11 @@ export const FetchStatusType = {
   NO_DATA: 'NO_DATA' as FetchStatus,
   NO_MATCH: 'NO_MATCH' as FetchStatus,
 };
+
+export type FormGroupStyle = 'BASIC' | 'CARD' | 'COLLAPSABLE';
+
+export const FormGroupStyleType = {
+  BASIC: 'BASIC' as FormGroupStyle,
+  CARD: 'CARD' as FormGroupStyle,
+  COLLAPSABLE: 'COLLAPSABLE' as FormGroupStyle,
+};

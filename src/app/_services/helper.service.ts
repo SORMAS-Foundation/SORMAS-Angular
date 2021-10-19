@@ -48,6 +48,22 @@ export class HelperService {
     return days.map((x) => ({ key: x, value: x }));
   }
 
+  getTimeOptions(startHour = 0, endHour = 23, minutesStep = 15): any[] {
+    const result = [];
+    for (let i = startHour; i <= endHour; i += 1) {
+      for (let j = 0; j < 60; j += minutesStep) {
+        const hour = `0${i}`.slice(-2);
+        const minute = `0${j}`.slice(-2);
+        const timeOption = `${hour}:${minute}`;
+        result.push({
+          key: timeOption,
+          value: timeOption,
+        });
+      }
+    }
+    return result;
+  }
+
   setQueryParamsInFilters(routeParams: Params): Filter[] {
     const filters: Filter[] = [];
     Object.keys(routeParams).forEach((el) => {

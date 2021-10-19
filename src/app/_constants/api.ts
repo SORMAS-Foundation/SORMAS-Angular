@@ -149,3 +149,11 @@ export const API_ROUTE_COMMUNITIES = {
   ADD: 'communities/push',
   DELETE: 'communities/delete',
 };
+
+export const API_ROUTE_CONTINENTNS = {
+  ENDPOINT: 'continents',
+  GET_ALL: 'continents/indexList',
+  UPDATE: 'continents/push',
+  ADD: 'continents/push',
+  DELETE: 'continents/delete',
+};

@@ -10,6 +10,7 @@
   (action)="create()"
   [showGroupLink]="showGroupLink"
 >
+  <app-loader [show]="loadResource"></app-loader>
   <app-card-list
     *ngIf="items.length"
     [data]="items"

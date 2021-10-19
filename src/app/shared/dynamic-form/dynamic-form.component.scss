@@ -31,11 +31,13 @@ header {
 }
 
 fieldset {
-  display: flex;
-  justify-content: stretch;
   padding: 0;
   border: 0;
   margin: 10px 0;
+
+  &.card {
+    display: flex;
+  }
 
   &.section {
     margin-top: 48px;
@@ -103,6 +105,7 @@ legend {
 
 .fullwidth {
   width: 100%;
+  margin-right: 0;
 }
 
 .tab-1 {

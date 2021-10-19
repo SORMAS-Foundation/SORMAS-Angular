@@ -14,9 +14,9 @@ import {
   Disease,
   YesNoUnknown,
   PlaceOfStay,
-  Quarantine,
+  QuarantineType,
   VaccinationStatus,
-  VaccinationSource,
+  VaccinationInfoSource,
   VaccineName,
   VaccineManufacturer,
   CaseIdentificationSource,
@@ -35,9 +35,9 @@ const optionsInvestigationStatus = pipe.transform(InvestigationStatus);
 const optionsDisese = pipe.transform(Disease);
 const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 const optionsPlaceOfStay = pipe.transform(PlaceOfStay);
-const optionsQuarantine = pipe.transform(Quarantine);
+const optionsQuarantine = pipe.transform(QuarantineType);
 const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
-const optionsVaccinationSource = pipe.transform(VaccinationSource);
+const optionsVaccinationSource = pipe.transform(VaccinationInfoSource);
 const optionsVaccineName = pipe.transform(VaccineName);
 const optionsVaccineManufacturer = pipe.transform(VaccineManufacturer);
 const optionsCaseIdentificationSource = pipe.transform(CaseIdentificationSource);

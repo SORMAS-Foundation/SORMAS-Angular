@@ -61,7 +61,7 @@
           [disabled]="opt.disabled"
           [ngClass]="{ hidden: opt.hidden }"
         >
-          {{ opt.value }}
+          {{ opt.value | translate }}
         </mat-option>
         <p *ngIf="searchBox.value && searchResults === 0" class="search-no-results">
           No matches for "{{ searchBox.value }}"
