@@ -8,21 +8,24 @@
   <div aside>
     <app-edge-panel
       type="EVENT"
+      *ngIf="contact"
       [resourceService]="eventService"
-      [scopeId]="'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI'"
+      [scopeId]="contact.caze?.uuid"
       [cardCollapse]="true"
       [showCheckBoxFilter]="true"
     ></app-edge-panel>
     <app-edge-panel
       type="TASK"
+      *ngIf="contact"
       [resourceService]="taskService"
-      [scopeId]="'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI'"
+      [scopeId]="contact.caze?.uuid"
       [cardCollapse]="true"
     ></app-edge-panel>
     <app-edge-panel
       type="SAMPLE"
+      *ngIf="contact"
       [resourceService]="sampleService"
-      [scopeId]="'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI'"
+      [scopeId]="contact.caze?.uuid"
       [cardCollapse]="true"
     ></app-edge-panel>
   </div>

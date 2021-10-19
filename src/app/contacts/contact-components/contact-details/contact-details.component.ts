@@ -5,9 +5,9 @@ import { ContactDto } from '../../../_models/models';
 import { BaseService } from '../../../_services/api/base.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import * as data from './contact-details-form-data';
-import {TaskService} from '../../../_services/api/task.service';
-import {SampleService} from '../../../_services/api/sample.service';
-import {EventService} from '../../../_services/api/event.service';
+import { TaskService } from '../../../_services/api/task.service';
+import { SampleService } from '../../../_services/api/sample.service';
+import { EventService } from '../../../_services/api/event.service';
 
 @Component({
   selector: 'app-contact-details',
@@ -18,13 +18,14 @@ export class ContactDetailsComponent {
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CONTACT_DETAILS;
   subscription: Subscription = new Subscription();
+  contact: ContactDto;
   public resourceService: BaseService<any>;
 
   constructor(
     private formElementControlService: FormElementControlService,
     public taskService: TaskService,
     public sampleService: SampleService,
-    public eventService: EventService,
+    public eventService: EventService
   ) {}
 
   updateComponent(contactItem: ContactDto, resourceService: BaseService<any>): void {
@@ -40,5 +41,7 @@ export class ContactDetailsComponent {
       'resource',
       contactItem
     );
+
+    this.contact = contactItem;
   }
 }
