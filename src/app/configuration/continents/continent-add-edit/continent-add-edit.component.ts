@@ -20,31 +20,13 @@ export class ContinentAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.continentService.getAll(null, null, null, true).subscribe({
-      next: (response: any) => {
-        if (this.selectedResource) {
-          this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-            this.selectedResource,
-            JSON.parse(JSON.stringify(data.FORM_DATA_CONTINENT_ADD_EDIT))
-          );
-          this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-            this.myFormElements,
-            'continent.uuid',
-            'disabled',
-            true
-          );
-        } else {
-          this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_CONTINENT_ADD_EDIT));
-        }
-        this.myFormElements = this.formElementControlService.setOptionsToInput(
-          response.elements,
-          this.myFormElements,
-          'continent.uuid',
-          'defaultName'
-        );
-      },
-      error: () => {},
-      complete: () => {},
-    });
+    if (this.selectedResource) {
+      this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+        this.selectedResource,
+        JSON.parse(JSON.stringify(data.FORM_DATA_CONTINENT_ADD_EDIT))
+      );
+    } else {
+      this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_CONTINENT_ADD_EDIT));
+    }
   }
 }

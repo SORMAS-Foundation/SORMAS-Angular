@@ -5777,5 +5777,7 @@
   "timeHeading": "Time",
   "searchByCase": "Search by case",
   "openCase": "Open case",
-  "actionAddNewContinent": "Add new continent"
+  "actionAddNewContinent": "Add new continent",
+  "actionAddNewEntryPoint": "Add new POE",
+  "pointsOfEntries": "Points of entry"
 }

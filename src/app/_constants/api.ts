@@ -157,3 +157,11 @@ export const API_ROUTE_CONTINENTNS = {
   ADD: 'continents/push',
   DELETE: 'continents/delete',
 };
+
+export const API_ROUTE_ENTRY_POINTS = {
+  ENDPOINT: 'pointsofentry',
+  GET_ALL: 'pointsofentry/indexList',
+  UPDATE: 'pointsofentry/push',
+  ADD: 'pointsofentry/push',
+  DELETE: 'pointsofentry/delete',
+};
