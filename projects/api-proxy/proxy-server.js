@@ -212,13 +212,12 @@ app.use('/sormas-rest/contacts/QN3NKC-XLHWN6-LEH2NF-ZXRQKHOM', (req, res) => {
     uuid: 'RK6G25-W6PUTA-67PZN5-XW4KSMT4',
     firstName: 'John',
     lastName: 'Smith',
-    // caze: {
-    //   uuid: 'T3Y32P-NWPZYS-JP4FFX-J722KFK4',
-    //   caption: 'xxx',
-    //   firstName: 'x',
-    //   lastName: 'y',
-    // },
-    caze: null,
+    caze: {
+      uuid: 'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI',
+      caption: 'xxx',
+      firstName: 'x',
+      lastName: 'y',
+    },
     person: {
       firstName: 'John',
       lastName: 'Smith',

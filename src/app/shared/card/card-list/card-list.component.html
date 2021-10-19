@@ -1,4 +1,11 @@
 <section class="card-list">
+  <mat-checkbox
+    *ngIf="showCheckBoxFilter"
+    color="primary"
+  >
+    {{ 'captions.eventOnlyWithContactSourceCaseInvolved'  | translate }}
+  </mat-checkbox>
+
   <app-card
     *ngFor="let card of data | slice: 0:limit"
     [id]="card.uuid"

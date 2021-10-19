@@ -36,6 +36,7 @@ export class CardListComponent implements OnChanges {
   @Input() cardStatus: CardStatus;
   @Input() cardStatusKey: string;
   @Input() titleDateFormat: string;
+  @Input() showCheckBoxFilter: boolean;
 
   @Output() selectCard: EventEmitter<any> = new EventEmitter();
   @Output() editCard: EventEmitter<any> = new EventEmitter();
