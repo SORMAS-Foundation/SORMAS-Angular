@@ -32,6 +32,7 @@ import { DistrictAddEditComponent } from './districts/district-add-edit/district
 import { ContinentListComponent } from './continents/continent-list/continent-list.component';
 import { ContinentAddEditComponent } from './continents/continent-add-edit/continent-add-edit.component';
 import { ContinentFiltersComponent } from './continents/continent-filters/continent-filters.component';
+import { PopulationImportComponent } from './population/population-import/population-import.component';
 import { SubcontinentAddEditComponent } from './subcontinents/subcontinent-add-edit/subcontinent-add-edit.component';
 import { SubcontinentListComponent } from './subcontinents/subcontinent-list/subcontinent-list.component';
 import { SubcontinentFiltersComponent } from './subcontinents/subcontinent-filters/subcontinent-filters.component';
@@ -66,6 +67,7 @@ import { SubcontinentFiltersComponent } from './subcontinents/subcontinent-filte
     ContinentListComponent,
     ContinentAddEditComponent,
     ContinentFiltersComponent,
+    PopulationImportComponent,
     SubcontinentAddEditComponent,
     SubcontinentFiltersComponent,
     SubcontinentListComponent,

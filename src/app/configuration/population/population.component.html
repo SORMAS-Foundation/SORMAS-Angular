@@ -1,3 +1,11 @@
-<p>
-  population works!
+<p class="info-text">
+  <mat-icon class="material-icons-round">info</mat-icon>
+  {{ 'strings.infoPopulationDataView' | translate }}
+</p>
+
+<p class="actions">
+  <button mat-stroked-button color="primary" (click)="openImportModal()">
+    {{ 'captions.actionImport' | translate }}
+  </button>
+  <button mat-stroked-button color="primary">{{ 'captions.export' | translate }}</button>
 </p>

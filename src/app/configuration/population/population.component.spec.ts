@@ -1,5 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { PopulationComponent } from './population.component';
 
@@ -10,6 +12,7 @@ describe('PopulationComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [PopulationComponent],
+      imports: [MatDialogModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 
