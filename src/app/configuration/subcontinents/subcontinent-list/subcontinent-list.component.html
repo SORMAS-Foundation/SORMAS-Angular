@@ -1,0 +1,22 @@
+<div class="page-header">
+  <div class="page-header-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddSubcontinentModal()">
+      {{ 'actionAddNewSubcontinent' | translate }}
+    </button>
+  </div>
+</div>
+<app-table
+  [resourceService]="subcontinentService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [appearance]="tableAppearanceOptions.MINIMAL"
+  [bulkEditOptions]="actionsBulkEdit"
+  rowStyleData="defaultName"
+  [showTotal]="true"
+  [isEditable]="true"
+  showTotalContext="{{ 'captions.View.configuration.subcontinents.short' | translate }}"
+  (editItem)="openEditSubcontinentModal($event)"
+></app-table>
