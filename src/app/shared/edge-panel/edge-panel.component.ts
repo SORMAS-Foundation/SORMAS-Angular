@@ -41,7 +41,6 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log('scopeId', this.scopeId);
     const filters = [
       {
         field: this.filterCriteriaEntity || 'caze',
