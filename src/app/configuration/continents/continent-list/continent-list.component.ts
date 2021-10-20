@@ -36,7 +36,7 @@ export class ContinentListComponent implements OnDestroy {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: CONFIGURATION_MODAL_WIDTH,
       data: {
-        title: this.translateService.instant('strings.headingEditContinent'),
+        title: this.translateService.instant('headingEditEntryPoint'),
         component: ContinentAddEditComponent,
         resource: continent,
         archive: true,

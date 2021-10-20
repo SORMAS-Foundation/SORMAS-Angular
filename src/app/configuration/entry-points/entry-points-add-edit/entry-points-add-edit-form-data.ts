@@ -1,25 +1,93 @@
-import { FORM_DATA_INPUT } from '../../../_constants/form-data';
+import { EntryPointTypeOptions } from '../../../_constants/enums';
+import {
+  FORM_DATA_CHECKBOX,
+  FORM_DATA_INPUT,
+  FORM_DATA_SELECT,
+} from '../../../_constants/form-data';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+
+const pipe = new EnumToKeyValuePipe();
+
+const entryPointTypeOptions = pipe.transform(EntryPointTypeOptions);
 
 export const FORM_DATA_ENTRY_POINTS_ADD_EDIT = [
   {
     id: '',
-    title: '',
-    hiddenLeftSection: true,
+    title: 'EntryPoint.short',
     fields: [
       {
         ...FORM_DATA_INPUT,
-        key: 'externalId',
-        className: 'size-full',
-        label: 'captions.Continent.externalId',
+        key: 'name',
+        label: 'captions.name',
+        validation: ['required'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'pointOfEntryType',
+        label: 'captions.PointOfEntry.pointOfEntryType',
+        options: entryPointTypeOptions,
+        validation: ['required'],
         newLine: true,
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'defaultName',
-        className: 'size-full',
-        label: 'captions.Continent.defaultName',
-        validation: ['required'],
+        ...FORM_DATA_CHECKBOX,
+        key: 'active',
+        label: 'strings.active',
         newLine: true,
+      },
+    ],
+  },
+  {
+    id: 'location',
+    title: 'captions.Location',
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'region.uui',
+        label: 'captions.region',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+        validation: ['required'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'district.uui',
+        label: 'captions.district',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+        validation: ['required'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'latitude',
+        label: 'EntryPoint.latitude',
+        newLine: true,
+        className: 'size-small',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'longitude',
+        label: 'EntryPoint.longitude',
+        className: 'size-small',
+      },
+    ],
+  },
+  {
+    id: '',
+    title: 'EntryPoint.external',
+    fields: [
+      {
+        ...FORM_DATA_INPUT,
+        key: 'externalID',
+        label: 'captions.PointOfEntry.externalID',
       },
     ],
   },

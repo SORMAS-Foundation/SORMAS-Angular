@@ -5429,7 +5429,14 @@
   "searchByCase": "Search by case",
   "openCase": "Open case",
   "actionAddNewContinent": "Add new continent",
-  "actionAddNewEntryPoint": "Add new POE",
+  "actionAddNewEntryPoint.short": "Add new POE",
+  "actionAddNewEntryPoint": "Add new Point of Entry",
   "pointsOfEntries": "Points of entry",
-  "actionAddNewSubcontinent": "Add new subcontinent"
+  "actionAddNewSubcontinent": "Add new subcontinent",
+  "EntryPointFiltersType": "Type",
+  "EntryPoint.short": "POE",
+  "EntryPoint.latitude": "Latitude",
+  "EntryPoint.longitude": "Longitude",
+  "EntryPoint.external": "External",
+  "headingEditEntryPoint": "Edit point fo entry"
 }

@@ -484,6 +484,23 @@ export enum ContinentRelevanceStatusOptions {
   ARCHIVED = 'captions.continentArchivedContinents',
 }
 
+export enum EntryPointRelevanceStatusOptions {
+  ALL = 'captions.pointOfEntryAllPointsOfEntry',
+  ACTIVE = 'captions.pointOfEntryActivePointsOfEntry',
+  ARCHIVED = 'captions.pointOfEntryArchivedPointsOfEntry',
+}
+
+export enum EntryPointTypeOptions {
+  AIRPORT = 'enum.PointOfEntryType.AIRPORT',
+  SEAPORT = 'enum.PointOfEntryType.SEAPORT',
+  GROUND_CROSSING = 'enum.PointOfEntryType.GROUND_CROSSING',
+}
+
+export enum EntryPointActiveOptions {
+  YES = 'strings.yes',
+  NO = 'strings.no',
+}
+
 export enum SubcontinentRelevanceStatusOptions {
   ALL = 'captions.subcontinentAllSubcontinents',
   ACTIVE = 'captions.subcontinentActiveSubcontinents',

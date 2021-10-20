@@ -20,31 +20,25 @@ export class EntryPointsAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.entryPointService.getAll(null, null, null, true).subscribe({
-      next: (response: any) => {
-        if (this.selectedResource) {
-          this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-            this.selectedResource,
-            JSON.parse(JSON.stringify(data.FORM_DATA_ENTRY_POINTS_ADD_EDIT))
-          );
-          this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-            this.myFormElements,
-            'uuid',
-            'disabled',
-            true
-          );
-        } else {
-          this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_ENTRY_POINTS_ADD_EDIT));
-        }
-        this.myFormElements = this.formElementControlService.setOptionsToInput(
-          response.elements,
-          this.myFormElements,
-          'uuid',
-          'defaultName'
-        );
-      },
-      error: () => {},
-      complete: () => {},
-    });
+    if (this.selectedResource) {
+      this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+        this.selectedResource,
+        JSON.parse(JSON.stringify(data.FORM_DATA_ENTRY_POINTS_ADD_EDIT))
+      );
+      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+        this.myFormElements,
+        'region.uui',
+        'disabled',
+        true
+      );
+      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+        this.myFormElements,
+        'district.uui',
+        'disabled',
+        true
+      );
+    } else {
+      this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_ENTRY_POINTS_ADD_EDIT));
+    }
   }
 }

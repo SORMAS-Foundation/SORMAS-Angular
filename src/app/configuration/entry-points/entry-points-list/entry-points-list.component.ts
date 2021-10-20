@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH } from '../../../_constants/common';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { PointOfEntryDto } from '../../../_models/pointOfEntryDto';
@@ -34,9 +34,9 @@ export class EntryPointsListComponent implements OnDestroy {
 
   openEditEntryPointModal(entryPoint: PointOfEntryDto): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: CONFIGURATION_MODAL_WIDTH,
+      maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('strings.headingEditContinent'),
+        title: this.translateService.instant('headingEditEntryPoint'),
         component: EntryPointsAddEditComponent,
         resource: entryPoint,
         archive: true,
@@ -55,9 +55,9 @@ export class EntryPointsListComponent implements OnDestroy {
 
   openAddEntryPointModal(): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: CONFIGURATION_MODAL_WIDTH,
+      maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('actionAddNewContinent'),
+        title: this.translateService.instant('actionAddNewEntryPoint'),
         component: EntryPointsAddEditComponent,
       },
     });
