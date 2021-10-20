@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { EntryPointsFiltersComponent } from './entry-points-filters.component';
 
@@ -9,6 +12,7 @@ describe('PointsOfEntriesFiltersComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [EntryPointsFiltersComponent],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule, MatDialogModule],
     }).compileComponents();
   });
 

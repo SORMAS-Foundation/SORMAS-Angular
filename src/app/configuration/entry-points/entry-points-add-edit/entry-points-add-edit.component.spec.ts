@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EntryPointsAddEditComponent } from './entry-points-add-edit.component';
@@ -8,9 +9,9 @@ describe('EntryPointsAddEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EntryPointsAddEditComponent ]
-    })
-    .compileComponents();
+      declarations: [EntryPointsAddEditComponent],
+      imports: [HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
