@@ -283,6 +283,46 @@ app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   ]);
 });
 
+app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
+  const result = {
+    elements: [
+      {
+        uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+        uploadingUser: {
+          uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
+        },
+        name: 'case_template5.docx',
+        path: 'https://test.com/doc.docx',
+        workflow: 'QUARANTINE_ORDER_CASE',
+      },
+      {
+        uuid: 'CVN34S-H78QWE-WER678-T56NVGG',
+        uploadingUser: {
+          uuid: 'R7ZT62-2X3UQL-X3JFGK-5537SNWM',
+        },
+        name: 'ExampleTemplateMicrosoftWord.docx',
+        path: 'https://test.com/doc.docx',
+        workflow: 'QUARANTINE_ORDER_CASE',
+      },
+      {
+        uuid: 'BCDSG9-QWER35-WER568-ERRYEDV',
+        uploadingUser: {
+          uuid: 'R73ITB-GJ3JN3-FEMDYC-SZJMSOFQ',
+        },
+        name: 'VorlagePositivbescheiningung.docx',
+        path: 'https://test.com/doc.docx',
+        workflow: 'QUARANTINE_ORDER_CONTACT',
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  };
+
+  res.status(200).send(result);
+});
+
 // app.use('/sormas-rest/tasks/indexList', (req, res) => {
 //
 //   let total = 1000;

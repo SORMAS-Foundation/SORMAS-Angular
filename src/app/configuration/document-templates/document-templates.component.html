@@ -1,3 +1,21 @@
-<p>
-  document-templates works!
-</p>
+<section class="section" *ngFor="let workflow of documentWorkflow">
+  <h2 class="section-title">
+    {{ 'enum.DocumentWorkflow.' + workflow | translate }}
+  </h2>
+  <mat-card class="section-list">
+    <ng-container *ngIf="documents && documents[workflow]; let templates">
+      <ul *ngIf="templates.length" class="templates">
+        <li *ngFor="let template of templates">
+          <mat-icon color="primary" class="material-icons-round">download</mat-icon>
+          <a href="{{ template.path }}" target="_blank">{{ template.name }}</a>
+          <button mat-button color="warn" class="delete">
+            {{ 'captions.actionDelete' | translate }}
+          </button>
+        </li>
+      </ul>
+    </ng-container>
+    <button mat-stroked-button color="primary" (click)="openUploadModal(workflow)">
+      {{ 'captions.DocumentTemplate.buttonUploadTemplate' | translate }}
+    </button>
+  </mat-card>
+</section>
