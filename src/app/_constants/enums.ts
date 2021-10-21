@@ -490,12 +490,6 @@ export enum EntryPointRelevanceStatusOptions {
   ARCHIVED = 'captions.pointOfEntryArchivedPointsOfEntry',
 }
 
-export enum EntryPointTypeOptions {
-  AIRPORT = 'enum.PointOfEntryType.AIRPORT',
-  SEAPORT = 'enum.PointOfEntryType.SEAPORT',
-  GROUND_CROSSING = 'enum.PointOfEntryType.GROUND_CROSSING',
-}
-
 export enum EntryPointActiveOptions {
   YES = 'strings.yes',
   NO = 'strings.no',

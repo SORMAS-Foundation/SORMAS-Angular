@@ -2,15 +2,15 @@ import { FORM_DATA_RADIO, FORM_DATA_SEARCHBOX } from '../../../app.constants';
 import {
   EntryPointActiveOptions,
   EntryPointRelevanceStatusOptions,
-  EntryPointTypeOptions,
 } from '../../../_constants/enums';
 import { FORM_DATA_SELECT } from '../../../_constants/form-data';
 import { FormGroupStyleType } from '../../../_models/common';
+import { PointOfEntryType } from '../../../_models/pointOfEntryType';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 const relevanceStatusOptions = pipe.transform(EntryPointRelevanceStatusOptions);
-const entryPointTypeOptions = pipe.transform(EntryPointTypeOptions);
+const entryPointTypeOptions = pipe.transform(PointOfEntryType);
 const entryPointActiveOptions = pipe.transform(EntryPointActiveOptions);
 
 export const FORM_DATA_ENTRY_POINT_FILTERS = [
