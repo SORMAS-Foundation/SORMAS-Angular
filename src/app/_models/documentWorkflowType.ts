@@ -1,0 +1,16 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
+
+export type DocumentWorkflowType =
+  | 'QUARANTINE_ORDER_CASE'
+  | 'QUARANTINE_ORDER_CONTACT'
+  | 'QUARANTINE_ORDER_EVENT_PARTICIPANT'
+  | 'QUARANTINE_ORDER_TRAVEL_ENTRY'
+  | 'EVENT_HANDOUT';
+
+export const DocumentWorkflowType = {
+  QUARANTINE_ORDER_CASE: 'QUARANTINE_ORDER_CASE' as DocumentWorkflowType,
+  QUARANTINE_ORDER_CONTACT: 'QUARANTINE_ORDER_CONTACT' as DocumentWorkflowType,
+  QUARANTINE_ORDER_EVENT_PARTICIPANT: 'QUARANTINE_ORDER_EVENT_PARTICIPANT' as DocumentWorkflowType,
+  QUARANTINE_ORDER_TRAVEL_ENTRY: 'QUARANTINE_ORDER_TRAVEL_ENTRY' as DocumentWorkflowType,
+  EVENT_HANDOUT: 'EVENT_HANDOUT' as DocumentWorkflowType,
+};

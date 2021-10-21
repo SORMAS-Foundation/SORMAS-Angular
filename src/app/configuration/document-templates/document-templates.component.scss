@@ -1,1 +1,64 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+.section-title {
+  flex: 0 0 176px;
+  padding: 24px 24px 24px 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.section-list {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.section {
+  display: flex;
+  justify-content: stretch;
+  margin: 10px 0;
+
+  &:hover,
+  &:focus {
+    background-color: $white;
+
+    .section-list {
+      @include mat-elevation(6);
+    }
+  }
+}
+
+.templates {
+  padding: 0;
+  margin: 0 auto 0 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    min-width: 380px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .mat-icon {
+    width: 18px;
+    font-size: 14px;
+    line-height: 28px;
+  }
+}
+
+.delete {
+  margin-left: auto;
+}
+
+@media (min-width: map-get($grid-breakpoints, xl)) {
+  .section-title {
+    flex: 0 0 248px;
+  }
+}

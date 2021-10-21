@@ -1,0 +1,113 @@
+<div mat-dialog-title>
+  <h1>Upload {{ 'enum.DocumentWorkflow.' + data.workflow | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div class="step">
+    <div class="iteration">{{ 'strings.step' | translate }} 1</div>
+    <div class="instructions">
+      <h2>{{ 'strings.headingDownloadDocumentTemplateGuide' | translate }}</h2>
+      <p>{{ 'strings.infoDownloadDocumentTemplateImportGuide' | translate }}</p>
+      <p class="actions" [ngSwitch]="data.workflow">
+        <a
+          href="/assets/document.pdf"
+          target="_blank"
+          mat-button
+          color="primary"
+          class="button-download"
+        >
+          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          {{ 'captions.DocumentTemplate.documentTemplateGuide' | translate }}
+        </a>
+        <a
+          href="/assets/document.pdf"
+          target="_blank"
+          mat-button
+          color="primary"
+          class="button-download"
+        >
+          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          {{ 'captions.importDownloadDataDictionary' | translate }}
+        </a>
+        <a
+          *ngSwitchCase="documentWorkflow.QUARANTINE_ORDER_CASE"
+          href="/assets/document.pdf"
+          target="_blank"
+          mat-button
+          color="primary"
+          class="button-download"
+        >
+          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          {{ 'captions.DocumentTemplate.exampleTemplateCases' | translate }}
+        </a>
+        <a
+          *ngSwitchCase="documentWorkflow.QUARANTINE_ORDER_CONTACT"
+          href="/assets/document.pdf"
+          target="_blank"
+          mat-button
+          color="primary"
+          class="button-download"
+        >
+          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          {{ 'captions.DocumentTemplate.exampleTemplateContacts' | translate }}
+        </a>
+        <a
+          *ngSwitchCase="documentWorkflow.QUARANTINE_ORDER_EVENT_PARTICIPANT"
+          href="/assets/document.pdf"
+          target="_blank"
+          mat-button
+          color="primary"
+          class="button-download"
+        >
+          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          {{ 'captions.DocumentTemplate.exampleTemplateEventParticipants' | translate }}
+        </a>
+        <a
+          *ngSwitchCase="documentWorkflow.QUARANTINE_ORDER_TRAVEL_ENTRY"
+          href="/assets/document.pdf"
+          target="_blank"
+          mat-button
+          color="primary"
+          class="button-download"
+        >
+          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          {{ 'captions.DocumentTemplate.exampleTemplateTravelEntries' | translate }}
+        </a>
+        <a
+          *ngSwitchCase="documentWorkflow.EVENT_HANDOUT"
+          href="/assets/document.pdf"
+          target="_blank"
+          mat-button
+          color="primary"
+          class="button-download"
+        >
+          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          {{ 'captions.DocumentTemplate.exampleTemplateEventHandout' | translate }}
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="iteration">{{ 'strings.step' | translate }} 3</div>
+    <div class="instructions">
+      <h2>{{ 'captions.DocumentTemplate.uploadTemplate' | translate }}</h2>
+      <p>{{ 'strings.infoUploadDocumentTemplate' | translate }}</p>
+      <p class="file-upload">
+        <label for="import">Choose file</label>
+        <input type="file" id="import" name="import" accept=".csv" />
+      </p>
+      <p class="actions">
+        <button mat-button color="primary" class="button-upload">
+          <mat-icon class="material-icons-round">file_upload_black</mat-icon>
+          {{ 'captions.DocumentTemplate.buttonUploadTemplate' | translate }}
+        </button>
+      </p>
+    </div>
+  </div>
+</div>

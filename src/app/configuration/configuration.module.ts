@@ -36,6 +36,7 @@ import { PopulationImportComponent } from './population/population-import/popula
 import { SubcontinentAddEditComponent } from './subcontinents/subcontinent-add-edit/subcontinent-add-edit.component';
 import { SubcontinentListComponent } from './subcontinents/subcontinent-list/subcontinent-list.component';
 import { SubcontinentFiltersComponent } from './subcontinents/subcontinent-filters/subcontinent-filters.component';
+import { UploadTemplateComponent } from './document-templates/upload-template/upload-template.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { SubcontinentFiltersComponent } from './subcontinents/subcontinent-filte
     SubcontinentAddEditComponent,
     SubcontinentFiltersComponent,
     SubcontinentListComponent,
+    UploadTemplateComponent,
   ],
   imports: [
     CommonModule,

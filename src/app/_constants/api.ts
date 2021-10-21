@@ -165,3 +165,11 @@ export const API_ROUTE_SUBCONTINENTNS = {
   ADD: 'subcontinents/push',
   DELETE: 'subcontinents/delete',
 };
+
+export const API_ROUTE_DOCUMENT_TEMPLATES = {
+  ENDPOINT: 'documenttemplates',
+  GET_ALL: 'documenttemplates/indexList',
+  UPDATE: 'documenttemplates/push',
+  ADD: 'documenttemplates/push',
+  DELETE: 'documenttemplates/delete',
+};
