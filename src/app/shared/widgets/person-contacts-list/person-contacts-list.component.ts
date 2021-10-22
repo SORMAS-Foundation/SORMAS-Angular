@@ -21,7 +21,8 @@ export class PersonContactsListComponent implements OnDestroy, OnInit {
         response.fromComponent === SentResourceTypes.EVENT_PARTICIPANT_DATA
       ) {
         this.contacts =
-          response.resource?.person.personContactDetails || response.resource?.personContactDetails;
+          response.resource?.person?.personContactDetails ||
+          response.resource?.personContactDetails;
       }
     });
   }

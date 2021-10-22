@@ -93,5 +93,8 @@
   "EntryPoint.latitude": "Latitude",
   "EntryPoint.longitude": "Longitude",
   "EntryPoint.external": "External",
-  "headingEditEntryPoint": "Edit point fo entry"
+  "headingEditEntryPoint": "Edit point fo entry",
+  "headingAddressDetails": "Address details",
+  "headingAddAddress": "Add new address",
+  "headingEditAddress": "Edit address"
 }
