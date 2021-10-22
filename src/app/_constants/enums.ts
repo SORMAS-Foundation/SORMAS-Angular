@@ -484,6 +484,17 @@ export enum ContinentRelevanceStatusOptions {
   ARCHIVED = 'captions.continentArchivedContinents',
 }
 
+export enum EntryPointRelevanceStatusOptions {
+  ALL = 'captions.pointOfEntryAllPointsOfEntry',
+  ACTIVE = 'captions.pointOfEntryActivePointsOfEntry',
+  ARCHIVED = 'captions.pointOfEntryArchivedPointsOfEntry',
+}
+
+export enum EntryPointActiveOptions {
+  YES = 'strings.yes',
+  NO = 'strings.no',
+}
+
 export enum SubcontinentRelevanceStatusOptions {
   ALL = 'captions.subcontinentAllSubcontinents',
   ACTIVE = 'captions.subcontinentActiveSubcontinents',

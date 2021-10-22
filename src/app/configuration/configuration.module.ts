@@ -13,7 +13,6 @@ import { RegionsComponent } from './regions/regions.component';
 import { DistrictsComponent } from './districts/districts.component';
 import { CommunitiesComponent } from './communities/communities.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
-import { EntryPointsComponent } from './entry-points/entry-points.component';
 import { PopulationComponent } from './population/population.component';
 import { LineListingComponent } from './line-listing/line-listing.component';
 import { DocumentTemplatesComponent } from './document-templates/document-templates.component';
@@ -32,6 +31,10 @@ import { DistrictAddEditComponent } from './districts/district-add-edit/district
 import { ContinentListComponent } from './continents/continent-list/continent-list.component';
 import { ContinentAddEditComponent } from './continents/continent-add-edit/continent-add-edit.component';
 import { ContinentFiltersComponent } from './continents/continent-filters/continent-filters.component';
+import { EntryPointsComponent } from './entry-points/entry-points.component';
+import { EntryPointsFiltersComponent } from './entry-points/entry-points-filters/entry-points-filters.component';
+import { EntryPointsListComponent } from './entry-points/entry-points-list/entry-points-list.component';
+import { EntryPointsAddEditComponent } from './entry-points/entry-points-add-edit/entry-points-add-edit.component';
 import { PopulationImportComponent } from './population/population-import/population-import.component';
 import { SubcontinentAddEditComponent } from './subcontinents/subcontinent-add-edit/subcontinent-add-edit.component';
 import { SubcontinentListComponent } from './subcontinents/subcontinent-list/subcontinent-list.component';
@@ -68,6 +71,10 @@ import { UploadTemplateComponent } from './document-templates/upload-template/up
     ContinentListComponent,
     ContinentAddEditComponent,
     ContinentFiltersComponent,
+    EntryPointsComponent,
+    EntryPointsFiltersComponent,
+    EntryPointsListComponent,
+    EntryPointsAddEditComponent,
     PopulationImportComponent,
     SubcontinentAddEditComponent,
     SubcontinentFiltersComponent,

@@ -1,0 +1,21 @@
+<app-table
+  [resourceService]="entryPointService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [appearance]="tableAppearanceOptions.MINIMAL"
+  [bulkEditOptions]="actionsBulkEdit"
+  rowStyleData="defaultName"
+  [showTotal]="true"
+  [isEditable]="true"
+  showTotalContext="{{ 'pointsOfEntries' | translate }}"
+  (editItem)="openEditEntryPointModal($event)"
+>
+  <div class="page-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddEntryPointModal()">
+      {{ 'actionAddNewEntryPoint.short' | translate }}
+    </button>
+  </div>
+</app-table>
