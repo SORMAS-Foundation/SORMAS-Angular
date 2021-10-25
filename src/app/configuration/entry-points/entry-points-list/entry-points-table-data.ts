@@ -1,4 +1,4 @@
-import { TableColumn } from '../../../_models/common';
+import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
@@ -40,5 +40,10 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.PointOfEntry.active',
     dataKey: 'active',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '<span class="active-entry-$param1">$param1</span>',
+      params: ['active'],
+    },
   },
 ];
