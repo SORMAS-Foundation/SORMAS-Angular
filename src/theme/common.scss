@@ -51,9 +51,14 @@ strong {
   .mat-drawer-inner-container {
     overflow-y: scroll;
   }
-
-  .mat-radio-label {
-    font-weight: normal;
+  .dynamic-form-input {
+    margin-right: 0;
+    .mat-radio-button {
+      margin-right: 0 !important;
+      .mat-radio-label {
+        font-weight: normal;
+      }
+    }
   }
 
   fieldset.collapsable {
@@ -218,7 +223,8 @@ strong {
     font-weight: 500;
   }
 
-  .symptoms-true {
+  .symptoms-true,
+  .active-entry-true {
     color: map-get($sormas-alert, 400);
     font-weight: 500;
   }
