@@ -1,4 +1,4 @@
-import {FORM_DATA_RADIO, FORM_DATA_SEARCHBOX, FORM_DATA_SELECT} from '../../../app.constants';
+import { FORM_DATA_RADIO, FORM_DATA_SEARCHBOX, FORM_DATA_SELECT } from '../../../app.constants';
 import { SubcontinentRelevanceStatusOptions } from '../../../_constants/enums';
 import { FormGroupStyleType } from '../../../_models/common';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
