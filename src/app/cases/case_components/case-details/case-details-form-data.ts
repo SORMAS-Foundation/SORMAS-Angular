@@ -776,22 +776,28 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-follow-up-status',
-        className: 'push-right',
+        key: 'followUpStatus',
+        className: 'fullwidth',
       },
       {
-        ...FORM_DATA_NULL,
-        key: 'followUpStatus',
+        ...FORM_DATA_DATE,
+        key: 'followUpUntil',
+        label: 'captions.CaseData.followUpUntil',
+        className: 'size-medium follow-up-date',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'expectedFollowUpUntil',
+        label: 'captions.CaseData.expectedFollowUpUntil',
+        className: 'size-medium follow-up-date',
+        disabled: true,
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'overwriteFollowUpUntil',
         label: 'captions.CaseData.overwriteFollowUpUntil',
         newLine: true,
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'followUpUntil',
-        dependingOn: 'overwriteFollowUpUntil',
       },
       {
         ...FORM_DATA_INPUT,

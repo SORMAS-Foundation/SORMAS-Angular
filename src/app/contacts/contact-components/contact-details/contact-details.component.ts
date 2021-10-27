@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { ContactDto } from '../../../_models/models';
@@ -14,12 +14,15 @@ import { EventService } from '../../../_services/api/event.service';
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.scss'],
 })
-export class ContactDetailsComponent {
+export class ContactDetailsComponent implements AfterViewInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CONTACT_DETAILS;
   subscription: Subscription = new Subscription();
   contact: ContactDto;
   public resourceService: BaseService<any>;
+
+  subscriptions: Subscription[] = [];
+  @ViewChild('form') dynamicForm: any;
 
   constructor(
     private formElementControlService: FormElementControlService,
@@ -27,6 +30,35 @@ export class ContactDetailsComponent {
     public sampleService: SampleService,
     public eventService: EventService
   ) {}
+
+  ngAfterViewInit(): void {
+    const { form } = this.dynamicForm;
+    if (form) {
+      const controlOverwrite = form.get('overwriteFollowUpUntil');
+      const controlFollowUpUntil = form.get('followUpUntil');
+      const controlFollowUpStatus = form.get('followUpStatus');
+
+      this.subscriptions.push(
+        controlOverwrite.valueChanges.subscribe((val: boolean) => {
+          if (val) {
+            controlFollowUpUntil.enable();
+          } else {
+            controlFollowUpUntil.disable();
+          }
+        })
+      );
+      this.subscriptions.push(
+        controlFollowUpStatus.valueChanges.subscribe((val: string) => {
+          if (val === 'FOLLOW_UP') {
+            controlOverwrite.enable();
+          } else {
+            controlOverwrite.setValue(false);
+            controlOverwrite.disable();
+          }
+        })
+      );
+    }
+  }
 
   updateComponent(contactItem: ContactDto, resourceService: BaseService<any>): void {
     this.resourceService = resourceService;
@@ -42,6 +74,17 @@ export class ContactDetailsComponent {
       contactItem
     );
 
+    this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+      this.myFormElements,
+      'followUpUntil',
+      'disabled',
+      !contactItem.overwriteFollowUpUntil
+    );
+
     this.contact = contactItem;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
