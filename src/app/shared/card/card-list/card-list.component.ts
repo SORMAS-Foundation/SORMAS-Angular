@@ -67,4 +67,8 @@ export class CardListComponent implements OnChanges {
   processEditCard(event: any): void {
     this.editCard.emit(event);
   }
+
+  processDeleteCard(event: any): void {
+    this.deleteCard.emit(event);
+  }
 }

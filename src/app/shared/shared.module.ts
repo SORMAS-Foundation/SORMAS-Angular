@@ -20,7 +20,6 @@ import { ExposuresListComponent } from './widgets/exposures-list/exposures-list.
 import { ActivitiesListComponent } from './widgets/activities-list/activities-list.component';
 import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/symptoms-group-select.component';
 import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
-import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
@@ -49,6 +48,7 @@ import { ContactFiltersModule } from './contact-filters/contact-filters.module';
 import { CaseAddComponent } from './case-add/case-add.component';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { FiltersModule } from './filters/filters.module';
+import { AddressAddEditComponent } from './address-add-edit/address-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,6 @@ import { FiltersModule } from './filters/filters.module';
     ActivitiesListComponent,
     SymptomsGroupSelectComponent,
     AddressesListComponent,
-    NewAddressComponent,
     AddEditBaseModalComponent,
     ActionMenuComponent,
     DropdownMenuComponent,
@@ -84,6 +83,7 @@ import { FiltersModule } from './filters/filters.module';
     ChooseCaseModalComponent,
     LoaderComponent,
     CaseAddComponent,
+    AddressAddEditComponent,
   ],
   imports: [
     CommonModule,

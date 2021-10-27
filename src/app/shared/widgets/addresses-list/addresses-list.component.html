@@ -1,9 +1,14 @@
+<p class="new-address">
+  <button mat-stroked-button color="primary" (click)="newAddress()">
+    {{ 'actionAddNewAddress' | translate }}
+  </button>
+</p>
+
 <app-card-list
   class="addresses-list"
   *ngIf="addresses.length"
   [data]="addresses"
   [cardWidth]="200"
-  [initialPageSize]="4"
   [cardEdit]="true"
   cardEditPosition="BOTTOMRIGHT"
   [cardDelete]="true"
@@ -11,4 +16,6 @@
   cardType="address"
   cardTitleKey="addressType"
   cardTitlePosition="LEFT"
+  (editCard)="editAddress($event)"
+  (deleteCard)="deleteAddress($event)"
 ></app-card-list>

@@ -97,16 +97,19 @@ export class CardComponent implements OnInit {
         this.selectCard.emit(event.checked);
         break;
       case 'edit':
-        this.editCard.emit(this.data.uuid);
+        this.editCard.emit(this.data);
+        break;
+      case 'delete':
+        this.deleteCard.emit(this.data);
         break;
       case 'link':
-        this.linkCard.emit(this.data.uuid);
+        this.linkCard.emit(this.data);
         break;
       case 'unlink':
-        this.unlinkCard.emit(this.data.uuid);
+        this.unlinkCard.emit(this.data);
         break;
       case 'refresh':
-        this.refreshCard.emit(this.data.uuid);
+        this.refreshCard.emit(this.data);
         break;
       default:
         break;

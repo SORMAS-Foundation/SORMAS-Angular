@@ -11,7 +11,6 @@ import { ActivitiesListComponent } from '../../../widgets/activities-list/activi
 // tslint:disable-next-line:max-line-length
 import { ExposuresListComponent } from '../../../widgets/exposures-list/exposures-list.component';
 import { AddressesListComponent } from '../../../widgets/addresses-list/addresses-list.component';
-import { NewAddressComponent } from '../../../widgets/new-address/new-address.component';
 import { FollowUpStatusComponent } from '../../../widgets/follow-up-status/follow-up-status.component';
 import { NewEpidNumberComponent } from '../../../widgets/new-epid-number/new-epid-number.component';
 import { SymptomsGroupSelectComponent } from '../../../widgets/symptoms-group-select/symptoms-group-select.component';
@@ -33,7 +32,6 @@ const COMPONENTS_MAP: any = {
   'app-exposures-list': ExposuresListComponent,
   'app-activities-list': ActivitiesListComponent,
   'app-addresses-list': AddressesListComponent,
-  'app-new-address': NewAddressComponent,
   'app-person-contacts-list': PersonContactsListComponent,
   'app-new-person-contact': NewPersonContactComponent,
   'app-gps-coords': GpsCoordsComponent,
