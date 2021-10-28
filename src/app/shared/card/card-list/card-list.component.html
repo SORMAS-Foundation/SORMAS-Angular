@@ -1,9 +1,6 @@
 <section class="card-list">
-  <mat-checkbox
-    *ngIf="showCheckBoxFilter"
-    color="primary"
-  >
-    {{ 'captions.eventOnlyWithContactSourceCaseInvolved'  | translate }}
+  <mat-checkbox *ngIf="showCheckBoxFilter" color="primary">
+    {{ 'captions.eventOnlyWithContactSourceCaseInvolved' | translate }}
   </mat-checkbox>
 
   <app-card
@@ -33,6 +30,7 @@
     [status]="getStatus(card)"
     [data]="card"
     (editCard)="processEditCard($event)"
+    (deleteCard)="processDeleteCard($event)"
   ></app-card>
 </section>
 

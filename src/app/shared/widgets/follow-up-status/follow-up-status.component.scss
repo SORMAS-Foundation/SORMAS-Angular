@@ -1,4 +1,9 @@
-.follow-up-status {
+.follow-up {
   display: flex;
   justify-content: space-between;
+  padding-top: 8px;
+}
+
+.status {
+  font-weight: 500;
 }

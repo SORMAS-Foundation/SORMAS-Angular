@@ -99,5 +99,23 @@
         }
       }
     }
+
+    .follow-up-date .mat-form-field-appearance-outline.mat-form-field-disabled {
+      .mat-form-field-outline > div {
+        border-width: 0;
+      }
+
+      .mat-form-field-suffix {
+        display: none;
+      }
+
+      .mat-input-element {
+        display: block;
+        margin-top: -8px;
+        margin-left: -16px;
+        color: inherit;
+        font-weight: 500;
+      }
+    }
   }
 }

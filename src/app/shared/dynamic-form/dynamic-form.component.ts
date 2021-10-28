@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { throttleTime } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { FormBase, FormElementBase } from './types/form-element-base';
@@ -100,7 +100,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.subscription.push(
       this.formActionsService
         .getInputChange()
-        .pipe(debounceTime(300))
+        .pipe(throttleTime(300))
         .subscribe(() => {
           this.changed.emit(this.form.value);
         })
@@ -130,10 +130,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }
 
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
-      if (!this.formElementControlService.isFormElementHidden(this.formElements, key)) {
+      if (
+        value !== undefined &&
+        !this.formElementControlService.isFormElementHidden(this.formElements, key)
+      ) {
         if (key.includes('.')) {
           const keys = key.split('.');
-          rawValueTmp[keys[0]] = this.convertDotPathToNestedObject(key, value)[keys[0]];
+          const tempObj = this.convertDotPathToNestedObject(key, value)[keys[0]];
+          rawValueTmp[keys[0]] = { ...rawValueTmp[keys[0]], ...tempObj };
         } else {
           rawValueTmp[key] = value;
         }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 @Component({
@@ -7,37 +8,43 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
   templateUrl: './follow-up-status.component.html',
   styleUrls: ['./follow-up-status.component.scss'],
 })
-export class FollowUpStatusComponent {
+export class FollowUpStatusComponent implements OnInit, OnDestroy {
   config: FormElementBase<string>;
   group: FormGroup;
+  control: any;
 
-  canResume(): boolean {
-    const status = this.group?.value?.followUpStatus;
-    if (!status) {
-      return true;
+  status: string;
+  activeFollowUp = false;
+  subscriptions: Subscription[] = [];
+
+  ngOnInit(): void {
+    this.control = this.group?.get(this.config.key);
+    if (this.control) {
+      this.updateStatus(this.control.value);
+      this.subscriptions.push(
+        this.control.valueChanges.subscribe((val: string) => this.updateStatus(val))
+      );
     }
-    return ['NO_FOLLOW_UP', 'CANCELED', 'LOST'].includes(status);
   }
 
-  canCancel(): boolean {
-    const status = this.group?.value?.followUpStatus;
-    return status === 'FOLLOW_UP';
-  }
-
-  canLost(): boolean {
-    const status = this.group?.value?.followUpStatus;
-    return status === 'FOLLOW_UP';
+  updateStatus(status: string): void {
+    this.status = status;
+    this.activeFollowUp = status === 'FOLLOW_UP';
   }
 
   resumeFollowUp(): void {
-    this.group.patchValue({ followUpStatus: 'FOLLOW_UP' });
+    this.control?.setValue('FOLLOW_UP');
   }
 
   cancelFollowUp(): void {
-    this.group.patchValue({ followUpStatus: 'CANCELED' });
+    this.control?.setValue('CANCELED');
   }
 
   lostFollowUp(): void {
-    this.group.patchValue({ followUpStatus: 'LOST' });
+    this.control?.setValue('LOST');
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
