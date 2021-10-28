@@ -4,6 +4,7 @@
     [formElements]="myFormElements"
     [resourceService]="resourceService"
     [withAnchor]="true"
+    (changed)="onFormChange($event)"
   ></app-dynamic-form>
   <div aside>
     <app-edge-panel
