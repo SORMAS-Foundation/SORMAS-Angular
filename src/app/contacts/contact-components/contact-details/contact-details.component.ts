@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { ContactDto } from '../../../_models/models';
 import { BaseService } from '../../../_services/api/base.service';
@@ -62,11 +63,12 @@ export class ContactDetailsComponent implements AfterViewInit, OnDestroy {
         })
       );
       this.subscriptions.push(
-        controlContactType.valueChanges.subscribe((val: string) => {
+        controlContactType.valueChanges.pipe(distinctUntilChanged()).subscribe((val: string) => {
           if (val) {
-            if (this.selectedContactType !== val) {
-              this.selectedContactType = val;
-              this.setRiskByContactType(this.selectedContactType, controlContactCategory);
+            this.selectedContactType = val;
+            const risk = CONTACT_RISKS.find((cr) => cr.values.includes(this.selectedContactType));
+            if (risk) {
+              controlContactCategory.setValue(risk.category);
             }
           }
         })
@@ -96,14 +98,6 @@ export class ContactDetailsComponent implements AfterViewInit, OnDestroy {
     );
 
     this.contact = contactItem;
-  }
-
-  setRiskByContactType(contactType: string, contactCategory: any): void {
-    CONTACT_RISKS.forEach((cr) => {
-      if (cr.values.includes(contactType)) {
-        contactCategory.setValue(cr.category);
-      }
-    });
   }
 
   ngOnDestroy(): void {
