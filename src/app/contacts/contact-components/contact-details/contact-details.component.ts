@@ -8,24 +8,7 @@ import * as data from './contact-details-form-data';
 import { TaskService } from '../../../_services/api/task.service';
 import { SampleService } from '../../../_services/api/sample.service';
 import { EventService } from '../../../_services/api/event.service';
-
-const contactRisks = [
-  { category: 'HIGH_RISK', values: ['TOUCHED_FLUID', 'FACE_TO_FACE_LONG', 'AEROSOL'] },
-  { category: 'HIGH_RISK_MED', values: ['MEDICAL_UNSAFE'] },
-  { category: 'MEDIUM_RISK_MED', values: ['MEDICAL_LIMITED'] },
-  { category: 'LOW_RISK', values: ['SAME_ROOM', 'FACE_TO_FACE_SHORT', 'MEDICAL_SAME_ROOM'] },
-  {
-    category: 'NO_RISK',
-    values: [
-      'MEDICAL_SAFE',
-      'MEDICAL_DISTANT',
-      'PHYSICAL_CONTACT',
-      'CLOTHES_OR_OTHER',
-      'CLOSE_CONTACT',
-      'AIRPLANE',
-    ],
-  },
-];
+import { CONTACT_RISKS } from '../../../_constants/common';
 
 @Component({
   selector: 'app-contact-details',
@@ -56,6 +39,8 @@ export class ContactDetailsComponent implements AfterViewInit, OnDestroy {
       const controlOverwrite = form.get('overwriteFollowUpUntil');
       const controlFollowUpUntil = form.get('followUpUntil');
       const controlFollowUpStatus = form.get('followUpStatus');
+      const controlContactType = form.get('contactType');
+      const controlContactCategory = form.get('contactCategory');
 
       this.subscriptions.push(
         controlOverwrite.valueChanges.subscribe((val: boolean) => {
@@ -73,6 +58,16 @@ export class ContactDetailsComponent implements AfterViewInit, OnDestroy {
           } else {
             controlOverwrite.setValue(false);
             controlOverwrite.disable();
+          }
+        })
+      );
+      this.subscriptions.push(
+        controlContactType.valueChanges.subscribe((val: string) => {
+          if (val) {
+            if (this.selectedContactType !== val) {
+              this.selectedContactType = val;
+              this.setRiskByContactType(this.selectedContactType, controlContactCategory);
+            }
           }
         })
       );
@@ -103,25 +98,12 @@ export class ContactDetailsComponent implements AfterViewInit, OnDestroy {
     this.contact = contactItem;
   }
 
-  setRiskByContactType(contactType: string): void {
-    contactRisks.forEach((cr) => {
+  setRiskByContactType(contactType: string, contactCategory: any): void {
+    CONTACT_RISKS.forEach((cr) => {
       if (cr.values.includes(contactType)) {
-        this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-          this.myFormElements,
-          'contactCategory',
-          'value',
-          cr.category
-        );
-        console.log('ok', cr.category, this.myFormElements);
+        contactCategory.setValue(cr.category);
       }
     });
-  }
-
-  onFormChange(event: any): void {
-    if (this.selectedContactType !== event.contactType) {
-      this.selectedContactType = event.contactType;
-      this.setRiskByContactType(this.selectedContactType);
-    }
   }
 
   ngOnDestroy(): void {
