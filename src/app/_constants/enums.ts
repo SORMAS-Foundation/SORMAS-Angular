@@ -681,3 +681,16 @@ export enum PersonAddressType {
   EVENT_LOCATION = 'enum.PersonAddressType.EVENT_LOCATION',
   OTHER_ADDRESS = 'enum.PersonAddressType.OTHER_ADDRESS',
 }
+
+export enum PersonContactDetailType {
+  PHONE = 'enum.PersonContactDetailType.PHONE',
+  EMAIL = 'enum.PersonContactDetailType.EMAIL',
+  OTHER = 'enum.PersonContactDetailType.OTHER',
+}
+
+export enum PhoneNumberType {
+  LANDLINE = 'enum.PhoneNumberType.LANDLINE',
+  MOBILE = 'enum.PhoneNumberType.MOBILE',
+  WORK = 'enum.PhoneNumberType.WORK',
+  OTHER = 'enum.PhoneNumberType.OTHER',
+}

@@ -16,11 +16,6 @@ header {
   flex: 1 1 auto;
   padding: 8px 16px;
 
-  .mat-divider-horizontal {
-    position: unset;
-    border: 0;
-  }
-
   .push-right {
     width: auto;
     margin-top: 8px;
@@ -30,6 +25,11 @@ header {
   }
 }
 
+.mat-divider-horizontal {
+  position: unset;
+  border: 0;
+}
+
 fieldset {
   padding: 0;
   border: 0;
@@ -37,19 +37,19 @@ fieldset {
 
   &.card {
     display: flex;
+
+    &:hover,
+    &:focus {
+      background-color: rgba($white, 0.8);
+
+      .mat-card {
+        @include mat-elevation(6);
+      }
+    }
   }
 
   &.section {
     margin-top: 48px;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: rgba($white, 0.8);
-
-    .mat-card {
-      @include mat-elevation(6);
-    }
   }
 }
 

@@ -2,18 +2,17 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { FORM_DATA_ADDRESS_ADD_EDIT } from './address-add-edit-form-data';
+import { FORM_DATA_CONTACT_ADD_EDIT } from './contact-add-edit-form-data';
 import { FormBase } from '../dynamic-form/types/form-element-base';
-import { PersonService } from '../../_services/api/person.service';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { ADD_MODAL_NARROW, ADD_MODAL_WIDE, BREAKPOINTS } from '../../app.constants';
 
 @Component({
-  selector: 'app-address-add-edit',
-  templateUrl: './address-add-edit.component.html',
-  styleUrls: ['./address-add-edit.component.scss'],
+  selector: 'app-contact-add-edit',
+  templateUrl: './contact-add-edit.component.html',
+  styleUrls: ['./contact-add-edit.component.scss'],
 })
-export class AddressAddEditComponent implements OnInit, OnDestroy {
+export class ContactAddEditComponent implements OnInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
   updatedResource: any;
   modalWidth: string;
@@ -21,7 +20,7 @@ export class AddressAddEditComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<AddressAddEditComponent>,
+    private dialogRef: MatDialogRef<ContactAddEditComponent>,
     public breakpointObserver: BreakpointObserver,
     private formElementControlService: FormElementControlService
   ) {}
@@ -30,10 +29,10 @@ export class AddressAddEditComponent implements OnInit, OnDestroy {
     if (this.data.resource) {
       this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
         this.data.resource,
-        JSON.parse(JSON.stringify(FORM_DATA_ADDRESS_ADD_EDIT))
+        JSON.parse(JSON.stringify(FORM_DATA_CONTACT_ADD_EDIT))
       );
     } else {
-      this.myFormElements = JSON.parse(JSON.stringify(FORM_DATA_ADDRESS_ADD_EDIT));
+      this.myFormElements = JSON.parse(JSON.stringify(FORM_DATA_CONTACT_ADD_EDIT));
     }
 
     this.subscriptions.push(

@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { FollowUpStatus } from '../../../_models/followUpStatus';
+import { FormActionsService } from '../../../_services/form-actions.service';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 @Component({
@@ -13,9 +15,12 @@ export class FollowUpStatusComponent implements OnInit, OnDestroy {
   group: FormGroup;
   control: any;
 
+  followUpStatus = FollowUpStatus;
   status: string;
   activeFollowUp = false;
   subscriptions: Subscription[] = [];
+
+  constructor(private formActionsService: FormActionsService) {}
 
   ngOnInit(): void {
     this.control = this.group?.get(this.config.key);
@@ -29,19 +34,12 @@ export class FollowUpStatusComponent implements OnInit, OnDestroy {
 
   updateStatus(status: string): void {
     this.status = status;
-    this.activeFollowUp = status === 'FOLLOW_UP';
+    this.activeFollowUp = status === this.followUpStatus.FOLLOW_UP;
   }
 
-  resumeFollowUp(): void {
-    this.control?.setValue('FOLLOW_UP');
-  }
-
-  cancelFollowUp(): void {
-    this.control?.setValue('CANCELED');
-  }
-
-  lostFollowUp(): void {
-    this.control?.setValue('LOST');
+  setStatus(status: string): void {
+    this.control?.setValue(status);
+    this.formActionsService.setInputChange(this.config.key, true);
   }
 
   ngOnDestroy(): void {
