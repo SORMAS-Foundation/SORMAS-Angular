@@ -75,3 +75,22 @@ export const BUTTON_TYPE = {
 
 // loader
 export const SPINNER_DELAY = 100;
+
+// Contact detail contact-risk mapping
+export const CONTACT_RISKS = [
+  { category: 'HIGH_RISK', values: ['TOUCHED_FLUID', 'FACE_TO_FACE_LONG', 'AEROSOL'] },
+  { category: 'HIGH_RISK_MED', values: ['MEDICAL_UNSAFE'] },
+  { category: 'MEDIUM_RISK_MED', values: ['MEDICAL_LIMITED'] },
+  { category: 'LOW_RISK', values: ['SAME_ROOM', 'FACE_TO_FACE_SHORT', 'MEDICAL_SAME_ROOM'] },
+  {
+    category: 'NO_RISK',
+    values: [
+      'MEDICAL_SAFE',
+      'MEDICAL_DISTANT',
+      'PHYSICAL_CONTACT',
+      'CLOTHES_OR_OTHER',
+      'CLOSE_CONTACT',
+      'AIRPLANE',
+    ],
+  },
+];
