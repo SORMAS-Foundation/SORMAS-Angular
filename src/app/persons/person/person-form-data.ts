@@ -453,15 +453,15 @@ export const FORM_DATA_PERSON = [
     title: 'strings.headingContactInformation',
     fields: [
       {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-new-person-contact',
-        className: 'push-right',
+        ...FORM_DATA_INPUT,
+        key: 'birthName',
+        label: 'captions.Person.birthName',
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'nickname',
         label: 'captions.Person.nickname',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -480,9 +480,36 @@ export const FORM_DATA_PERSON = [
         label: 'captions.Person.fathersName',
       },
       {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-person-contacts-list',
+        ...FORM_DATA_INPUT,
+        key: 'namesOfGuardians',
+        label: 'captions.Person.namesOfGuardians',
+        className: 'size-full',
         newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'birthCountry',
+        label: 'captions.Person.birthCountry',
+        options: [],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'citizenship',
+        label: 'captions.Person.citizenship',
+        options: [],
+      },
+    ],
+  },
+  {
+    id: 'contacts',
+    title: '',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        key: 'personContactDetails',
+        widget: 'app-person-contacts-list',
+        className: 'fullwidth',
       },
     ],
   },

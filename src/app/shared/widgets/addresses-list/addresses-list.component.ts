@@ -75,7 +75,7 @@ export class AddressesListComponent implements OnDestroy, OnInit {
     });
 
     this.subscriptions.push(
-      dialogRef.afterClosed().subscribe(({ resource, deleteResource }) => {
+      dialogRef.afterClosed().subscribe(({ resource, deleteResource } = {}) => {
         if (!resource) {
           return;
         }

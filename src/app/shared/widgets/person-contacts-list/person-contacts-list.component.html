@@ -1,3 +1,9 @@
+<p class="new-contact">
+  <button mat-stroked-button color="primary" (click)="newContact()">
+    {{ 'actionAddNewContact' | translate }}
+  </button>
+</p>
+
 <app-card-list
   class="contacts-list"
   *ngIf="contacts.length"
@@ -9,4 +15,6 @@
   [cardDelete]="true"
   cardDeletePosition="TOPRIGHT"
   cardType="contact"
+  (editCard)="editContact($event)"
+  (deleteCard)="deleteContact($event)"
 ></app-card-list>

@@ -738,6 +738,8 @@ export const FORM_DATA_CONTACT_DETAILS = [
         key: 'followUpUntil',
         label: 'captions.CaseData.followUpUntil',
         className: 'size-medium follow-up-date',
+        dependingOn: 'followUpStatus',
+        dependingOnValues: ['FOLLOW_UP', 'CANCELED', 'LOST', 'COMPLETED'],
         newLine: true,
       },
       {
@@ -745,12 +747,16 @@ export const FORM_DATA_CONTACT_DETAILS = [
         key: 'expectedFollowUpUntil',
         label: 'captions.CaseData.expectedFollowUpUntil',
         className: 'size-medium follow-up-date',
+        dependingOn: 'followUpStatus',
+        dependingOnValues: ['FOLLOW_UP', 'CANCELED', 'LOST', 'COMPLETED'],
         disabled: true,
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'overwriteFollowUpUntil',
         label: 'captions.CaseData.overwriteFollowUpUntil',
+        dependingOn: 'followUpStatus',
+        dependingOnValues: ['FOLLOW_UP', 'CANCELED', 'LOST', 'COMPLETED'],
         newLine: true,
       },
       {

@@ -1,10 +1,23 @@
 <div class="follow-up">
   <div class="status">
     {{ 'enum.FollowUpStatus.' + status | translate }}
+    <mat-icon class="material-icons-round status-info" [appTooltip]="infotip">info</mat-icon>
   </div>
 
-  <div class="actions">
-    <button *ngIf="!activeFollowUp" mat-stroked-button color="primary" (click)="resumeFollowUp()">
+  <ng-template #infotip>
+    <div class="info-followup-status">
+      <mat-icon class="material-icons-round status-info">info</mat-icon>
+      <p [innerHtml]="'descriptions.Contact.followUpStatus' | translate"></p>
+    </div>
+  </ng-template>
+
+  <div *ngIf="status !== followUpStatus.NO_FOLLOW_UP" class="actions">
+    <button
+      *ngIf="!activeFollowUp"
+      mat-stroked-button
+      color="primary"
+      (click)="setStatus(followUpStatus.FOLLOW_UP)"
+    >
       {{ 'captions.contactResumeFollowUp' | translate }}
     </button>
 
@@ -13,10 +26,10 @@
       [buttonText]="'FollowUpStatus.actions' | translate"
       horizontalPosition="before"
     >
-      <button mat-menu-item (click)="cancelFollowUp()">
+      <button mat-menu-item (click)="setStatus(followUpStatus.CANCELED)">
         {{ 'captions.contactCancelFollowUp' | translate }}
       </button>
-      <button mat-menu-item (click)="lostFollowUp()">
+      <button mat-menu-item (click)="setStatus(followUpStatus.LOST)">
         {{ 'captions.contactLostToFollowUp' | translate }}
       </button>
     </app-dropdown-menu>
