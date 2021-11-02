@@ -34,6 +34,7 @@ import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 import { FormActionsService } from '../../_services/form-actions.service';
+import { NotificationService } from '../../_services/notification.service';
 
 @Component({
   selector: 'app-table',
@@ -104,7 +105,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
     private dialog: MatDialog,
-    private formActionsService: FormActionsService
+    private formActionsService: FormActionsService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -217,6 +219,38 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
+  openBulkDelete(): void {
+    const items = this.getSelectedItems();
+    this.notificationService
+      .confirm({
+        title: this.translateService.instant('strings.headingConfirmDeletion'),
+        message: this.translateService
+          .instant(`strings.confirmationDelete${this.showTotalContext}`)
+          .replace('%d', items.length),
+        buttonDeclineText: this.translateService.instant('captions.actionCancel'),
+        buttonConfirmText: this.translateService.instant('captions.actionDelete'),
+      })
+      .subscribe((action) => {
+        if (action === 'CONFIRM') {
+          this.deleteItems();
+        }
+      });
+  }
+
+  deleteItems(): void {
+    const items = this.getSelectedItems().map((item) => item.uuid);
+    this.subscriptions.push(
+      this.resourceService.delete(items).subscribe((response) => {
+        const errors = items.filter((item) => !response.includes(item));
+        if (errors.length) {
+          // show warning with undeleted items?
+        }
+        this.selection.clear();
+        this.getResources(true);
+      })
+    );
+  }
+
   public getResources(reload: boolean = false): void {
     this.loading = true;
     this.resourceService
@@ -318,12 +352,13 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onActionSelected(event: any): void {
+    const bulkEditOption = this.bulkEditOptions.find((item) => item.action === event);
     switch (event) {
       case ACTIONS_BULK_EDIT.EDIT:
-        // @ts-ignore
-        // eslint-disable-next-line no-case-declarations
-        const bulkEditOption = this.bulkEditOptions.find((item) => item.action === event);
         this.openBulkEdit(bulkEditOption);
+        break;
+      case ACTIONS_BULK_EDIT.DELETE:
+        this.openBulkDelete();
         break;
       default:
         // eslint-disable-next-line no-console

@@ -49,6 +49,8 @@ import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { FiltersModule } from './filters/filters.module';
 import { AddressAddEditComponent } from './address-add-edit/address-add-edit.component';
 import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.component';
+import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
+import { EntityActionsComponent } from './entity-actions/entity-actions.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.com
     CaseAddComponent,
     AddressAddEditComponent,
     ContactAddEditComponent,
+    DeleteModalComponent,
+    EntityActionsComponent,
   ],
   imports: [
     CommonModule,
@@ -134,6 +138,7 @@ import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.com
     CaseAddComponent,
     ContactFiltersModule,
     FiltersModule,
+    EntityActionsComponent,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })

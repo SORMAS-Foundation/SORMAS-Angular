@@ -1,0 +1,10 @@
+<app-dropdown-menu
+  [buttonText]="'strings.entityActions' | translate"
+  horizontalPosition="before"
+  class="actions"
+>
+  <app-action-menu
+    [config]="actionEditOptions"
+    (action)="onActionSelected($event)"
+  ></app-action-menu>
+</app-dropdown-menu>
