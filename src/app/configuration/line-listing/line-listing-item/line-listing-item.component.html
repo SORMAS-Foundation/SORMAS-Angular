@@ -1,0 +1,30 @@
+<div class="line-listing-item-wrapper">
+  <div class="line-listing-btns">
+    <button mat-flat-button color="primary" (click)="openLineListingModal()">
+      {{ 'strings.headingEditLineListing' | translate }}
+    </button>
+
+    <button mat-button color="primary" (click)="disableAllLineListings()">
+      {{ 'captions.lineListingDisableAll' | translate }}
+    </button>
+  </div>
+  <div class="line-listing-content">
+    <span *ngIf="!regionId">
+      <a class="line-listing-region-item" *ngFor="let region of regions" [routerLink]="['/configuration/line-listing/' + region.uuid]"
+           [ngClass]="{'selected': getSelectedDistrictsNoForRegion(region)}">
+        <p>{{ region.name }} <span
+          *ngIf="getSelectedDistrictsNoForRegion(region)">({{ getSelectedDistrictsNoForRegion(region) }})</span></p>
+      </a>
+    </span>
+
+    <span *ngIf="regionId">
+      <div class="line-listing-district-item" *ngFor="let listing of getDistrictsForRegion()">
+        <p>{{ listing.districtName }}</p>
+        <p class="date">
+          {{ 'strings.until' | translate }}
+          <span>15 oct 2021</span>
+        </p>
+      </div>
+    </span>
+  </div>
+</div>

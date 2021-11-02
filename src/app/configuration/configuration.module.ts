@@ -40,6 +40,9 @@ import { SubcontinentAddEditComponent } from './subcontinents/subcontinent-add-e
 import { SubcontinentListComponent } from './subcontinents/subcontinent-list/subcontinent-list.component';
 import { SubcontinentFiltersComponent } from './subcontinents/subcontinent-filters/subcontinent-filters.component';
 import { UploadTemplateComponent } from './document-templates/upload-template/upload-template.component';
+import { LineListingItemComponent } from './line-listing/line-listing-item/line-listing-item.component';
+import { LineListingModalComponent } from './line-listing/line-listing-modal/line-listing-modal.component';
+import { LineListingTableComponent } from './line-listing/line-listing-table/line-listing-table.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,9 @@ import { UploadTemplateComponent } from './document-templates/upload-template/up
     SubcontinentFiltersComponent,
     SubcontinentListComponent,
     UploadTemplateComponent,
+    LineListingItemComponent,
+    LineListingModalComponent,
+    LineListingTableComponent,
   ],
   imports: [
     CommonModule,

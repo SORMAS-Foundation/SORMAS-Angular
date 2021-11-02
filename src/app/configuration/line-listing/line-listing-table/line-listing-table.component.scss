@@ -1,0 +1,26 @@
+@use '/src/variables.scss' as *;
+
+table {
+  width: 100%;
+  th.mat-header-cell {
+    border-bottom-color: map-get($sormas-accent, 200);
+    border-left-width: 0;
+    background-color: $white;
+  }
+
+  tr.mat-row td.mat-cell {
+    padding: 5px;
+    border: 0;
+    background-color: unset;
+  }
+
+  .datepicker-input {
+    cursor: pointer;
+  }
+}
+.line-listing-table-wrapper {
+  overflow: auto;
+  max-width: 100%;
+  height: 400px;
+  margin-top: 40px;
+}

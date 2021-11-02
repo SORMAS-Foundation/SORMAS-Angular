@@ -1,0 +1,85 @@
+<div mat-dialog-title>
+  <h2>{{ 'captions.lineListingEdit' | translate }}</h2>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button color="primary" class="cancel-btn" mat-dialog-close>
+      {{ 'captions.actionDiscard' | translate }}
+    </button>
+    <button mat-flat-button color="primary" class="confirm-btn">
+      {{ 'captions.actionSave' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <form [formGroup]="form" class="filters-form">
+    <div class="text">
+      <mat-icon class="material-icons-round">info</mat-icon>
+      <p>{{ 'strings.infoLineListingConfigurationRegionEdit' | translate }}</p>
+    </div>
+    <div class="action-content">
+      <mat-form-field
+        id="listingSearch"
+        appearance="outline"
+        floatLabel="always"
+        class="search-field"
+      >
+        <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+        <input
+          value=""
+          type="text"
+          matInput
+          appDebounce
+          placeholder="{{ 'searchByCase' | translate }}"
+          formControlName="listingSearch"
+          (debounce)="onFormChange()"
+        />
+      </mat-form-field>
+      <div class="btns">
+        <button mat-stroked-button color="primary" (click)="enableDisableAll(true)">
+          {{ 'captions.lineListingEnableAll' | translate }}
+        </button>
+        <button mat-button color="primary" (click)="enableDisableAll(false)">
+          {{ 'captions.lineListingDisableAllShort' | translate }}
+        </button>
+      </div>
+    </div>
+    <div class="date-content">
+      <mat-form-field
+        class="datepicker-input"
+        appearance="outline"
+        floatLabel="always"
+        [ngClass]="{
+        'datepicker-opened': picker.opened,
+        'datepicker-closed': !picker.opened
+      }"
+      >
+        <mat-label>
+          Lalalala
+        </mat-label>
+        <input
+          readonly
+          matInput
+          [matDatepicker]="picker"
+          (dateChange)="onChange()"
+          formControlName="endDateAll"
+          [placeholder]="'captions.lineListingEndDate' | translate"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
+      </mat-form-field>
+      <button mat-stroked-button color="primary" class="set-btn" (click)="setEndDatForAll()">
+        {{ 'captions.lineListingSetEndDateForAll' | translate }}
+      </button>
+    </div>
+  </form>
+
+  <app-line-listing-table
+    [listings]="data.listings"
+    [regionId]="data.regionId"
+  ></app-line-listing-table>
+</div>

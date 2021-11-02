@@ -1,0 +1,61 @@
+.line-listing-item-wrapper {
+  .line-listing-content {
+    .line-listing-district-item {
+      display: inline-block;
+      width: 300px;
+      padding: 10px 5px;
+      margin-top: 20px;
+      margin-right: 15px;
+      background: #F5F7FA;
+      border-radius: 5px;
+      cursor: pointer;
+
+      p {
+        margin: 0;
+        color: #2B323D;
+        font-size: 14px;
+        font-weight: 500;
+
+        &.date {
+          margin-top: 5px;
+          color: #6D798C;
+          font-size: 10px;
+
+          span {
+            color: #515B6B;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .line-listing-region-item {
+      display: inline-block;
+      width: 220px;
+      padding: 6px 5px;
+      border: 2px solid #8592A6;
+      margin-top: 20px;
+      margin-right: 15px;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+
+      p {
+        margin: 0;
+        color: #515B6B;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      &.selected {
+        border: 0;
+        background: #E6F4FF;
+
+        p {
+          color: #2B323D;
+        }
+      }
+    }
+  }
+}

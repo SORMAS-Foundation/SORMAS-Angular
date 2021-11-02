@@ -323,215 +323,168 @@ app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
   res.status(200).send(result);
 });
 
-// app.use('/sormas-rest/tasks/indexList', (req, res) => {
-//
-//   let total = 1000;
-//
-//   const arrayTmp = [];
-//   let offset = 0;
-//
-//   if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
-//     offset = 1000;
-//   }
-//
-//   if (req.body.filter) {
-//     total = 50;
-//   }
-//
-//   for (var i = parseInt(req.query.offset) ; i < parseInt(req.query.offset) + parseInt(req.query.size); i++) {
-//     arrayTmp.push({
-//       "pseudonymized":false,
-//       "uuid":"Q4URIL-TZKR6G-M6G6LG-KBNKSML4",
-//       "taskContext":"CASE",
-//       "caze":{
-//         "uuid":"W7ORVE-ILNJF7-O7V2P2-V6XOSNQA",
-//         "caption":"W7ORVE",
-//         "firstName":"",
-//         "lastName":""
-//       },
-//       "event":null,
-//       "contact":null,
-//       "region":"Region",
-//       "district":"District",
-//       "community":null,
-//       "taskType":"CASE_INVESTIGATION",
-//       "priority":"NORMAL",
-//       "dueDate":1617959309689,
-//       "suggestedStart":1617872909689,
-//       "taskStatus":"PENDING",
-//       "creatorUser":{
-//         "uuid":null,
-//         "caption":" ",
-//         "firstName": "first name",
-//         "lastName": "last name",
-//         "shortCaption":" "
-//       },
-//       "creatorComment":null,
-//       "assigneeUser":{
-//         "uuid":null,
-//         "caption":"  ()",
-//         "firstName":null,
-//         "lastName":null,
-//         "shortCaption":" "
-//       },
-//       "assigneeReply":null,
-//       "jurisdiction":{
-//         "creatorUserUuid":null,
-//         "assigneeUserUuid":null,
-//         "caseJurisdiction":{
-//           "reportingUserUuid":"UJEUQS-WZYRSD-THNKL5-HGQF2MWY",
-//           "regionUuid":"XG5652-O6T5KY-46BC3H-OOZ2SDC4",
-//           "districtUuid":"QEKECO-ST6YF3-ZSVWHN-VFLASBHM",
-//           "communityUuid":null,
-//           "healthFacilityUuid":"SORMAS-CONSTID-ISNONE-FACILITY",
-//           "pointOfEntryUuid":null
-//         },
-//         "contactJurisdiction":null,
-//         "eventJurisdiction":null
-//       },
-//       "contextReference":{
-//         "uuid":"W7ORVE-ILNJF7-O7V2P2-V6XOSNQA",
-//         "caption":"W7ORVE",
-//         "firstName":"",
-//         "lastName":""
-//       }
-//     });
-//   }
-//
-//
-//   res.status(200).send({
-//     "elements": arrayTmp,
-//     "pageNumber":0,
-//     "size":8,
-//     "totalElementCount": total,
-//     "hasNext":true
-//   });
-// });
-//
-// app.use('/sormas-rest/cases/indexList', (req, res) => {
-//
-//   let total = 1000;
-//
-//   const arrayTmp = [];
-//   let offset = 0;
-//
-//   if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
-//     offset = 1000;
-//   }
-//
-//   if (req.body.filter) {
-//     total = 50;
-//   }
-//
-//   for (var i = parseInt(req.query.offset) ; i < parseInt(req.query.offset) + parseInt(req.query.size); i++) {
-//     arrayTmp.push({
-//       "pseudonymized":false,
-//       "id":120,
-//       // "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(req.query.page*req.query.size + i),
-//       "uuid":"TJLH2U-7S5DFE-MHJ764-4OEZKMJ4" + "__" + parseInt(parseInt(offset) - parseInt(i)),
-//       "epidNumber":"DEF-REG-DIS-21-001",
-//       "externalID":null,
-//       "externalToken":null,
-//       "personFirstName":"Aisha Ayana",
-//       "personLastName":"Chipo-Chipo",
-//       "disease":"CORONAVIRUS",
-//       "diseaseVariant":{
-//         "uuid":null,
-//         "caption":null
-//       },
-//       "diseaseDetails":null,
-//       "caseClassification":"PROBABLE",
-//       "investigationStatus":"DISCARDED",
-//       "presentCondition":"ALIVE",
-//       "reportDate":1610865900000,
-//       "creationDate":1614335617159,
-//       "districtName":"Default District",
-//       "healthFacilityName":"Default Facility",
-//       "pointOfEntryName":"",
-//       "surveillanceOfficerUuid":"SNS6XV-XLUHRA-Y3ETEG-KCUMKAGA",
-//       "outcome":"RECOVERED",
-//       "sex":"FEMALE",
-//       "ageAndBirthDate":{
-//         "birthdateDD":null,
-//         "birthdateMM":null,
-//         "birthdateYYYY":null,
-//         "age":null,
-//         "ageType":"DAYS"
-//       },
-//       "completeness":0.55,
-//       "quarantineTo":null,
-//       "followUpStatus":"LOST",
-//       "followUpUntil":1612044000000,
-//       "symptomJournalStatus":null,
-//       "visitCount":0,
-//       "jurisdiction":{
-//         "reportingUserUuid":"QWW5JU-5ZIZSB-6YWYNM-GGLGSM2E",
-//         "regionUuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
-//         "districtUuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU",
-//         "communityUuid":"TVCEZ3-OJWUUF-34DGDV-TMFZ2BOM",
-//         "healthFacilityUuid":"QFMYC6-U27ZBE-VEK7G3-7D5XKLWA",
-//         "pointOfEntryUuid":null
-//       },
-//       "regionUuid":"WHPXQD-UREF24-26QVJC-4EFXKBWA",
-//       "districtUuid":"T3OAB7-C2K62N-JPQL2G-5CWFSFJU"
-//     });
-//   }
-//
-//
-//   res.status(200).send({
-//     "elements": arrayTmp,
-//     "pageNumber":0,
-//     "size":8,
-//     "totalElementCount": total,
-//     "hasNext":true
-//   });
-// });
-//
-// app.use('/sormas-rest/clinicalvisits/indexList', (req, res) => {
-//   let total = 12;
-//   const temperatures = [36.4, 36.8, 37.1, 37.2, 37.3, 37.8, 38.2, 387, 39.4];
-//   const heartRate = [62, 64, 65, 68, 72, 77, 86, 92];
+app.use('/sormas-rest/listings/indexList', (req, res) => {
+  if (req.body.criteria.disease) {
+    res.status(200).send([
+      {
+        "disease":"ANTHRAX",
+        "listings":[
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"THO35X-NGF7KQ-NT4AYB-CHOL2B44",
+            "districtName":"LK Alb-Donau-Kreis",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"Q5UHWR-5ILTXQ-HHDMIU-FOGWCEIU",
+            "districtName":"LK Biberach",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"QOHG6W-6IAV5A-7APQCJ-WIW72B6U",
+            "districtName":"LK Bodenseekreis",
+            "enabled":false,
+          },
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"XVELMA-PMRHR3-Y5H2JO-J7XZSI74",
+            "districtName":"LK Breisgau-Hochschwarzwald",
+            "enabled":false,
+          },
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"SQSBSU-QIPBZC-YYNAVJ-SPSCKIFM",
+            "districtName":"LK Böblingen",
+            "enabled":false,
+          },
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"V3TUDQ-47ARV6-SD4W7C-256BSBM4",
+            "districtName":"LK Calw",
+            "enabled":false,
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"ROICTH-QERRBV-2PUTLC-KBUB2MCQ",
+            "districtName":"LK Aichach-Friedberg",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"VSCBRI-7ODD4K-7ZDXC4-BHAZKIGM",
+            "districtName":"LK Altötting",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"VZ6ONL-3JCOSY-FOQGD4-YMD5CMGE",
+            "districtName":"LK Amberg-Sulzbach",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"RKEG45-RKLB22-DQDVI3-KB522FFI",
+            "districtName":"LK Ansbach",
+            "enabled":false,
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"U4LITQ-TK2YRH-CAXDBZ-HSXOKDZM",
+            "districtName":"LK Aschaffenburg",
+            "enabled":false,
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"WNWA6B-NJDI7F-LDR3HH-ZNZXSH6I",
+            "districtName":"LK Augsburg",
+            "enabled":false,
+          },
+        ]
+      },
+    ]);
+  } else {
+    res.status(200).send([
+      {
+        "disease":"ANTHRAX",
+        "listings":[
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"THO35X-NGF7KQ-NT4AYB-CHOL2B44",
+            "districtName":"LK Alb-Donau-Kreis",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"Q5UHWR-5ILTXQ-HHDMIU-FOGWCEIU",
+            "districtName":"LK Biberach",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"ROICTH-QERRBV-2PUTLC-KBUB2MCQ",
+            "districtName":"LK Aichach-Friedberg",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"VSCBRI-7ODD4K-7ZDXC4-BHAZKIGM",
+            "districtName":"LK Altötting",
+            "enabled":true,
+            "endDate":123412423
+          },
+          {
+            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
+            "name":"Bayern",
+            "districtUuid":"VZ6ONL-3JCOSY-FOQGD4-YMD5CMGE",
+            "districtName":"LK Amberg-Sulzbach",
+            "enabled":true,
+            "endDate":123412423
+          },
+        ]
+      },
+      {
+        "disease":"CORONAVIRUS",
+        "listings":[
+          {
+            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
+            "name":"Baden-Württemberg",
+            "districtUuid":"THO35X-NGF7KQ-NT4AYB-CHOL2B44",
+            "districtName":"LK Alb-Donau-Kreis",
+            "enabled":true,
+            "endDate":123412423
+          },
+        ]
+      }
 
-//   const arrayTmp = [];
-//   let offset = 0;
-
-//   if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
-//     offset = 12;
-//   }
-
-//   if (req.body.filter) {
-//     total = 12;
-//   }
-
-//   for (
-//     var i = parseInt(req.query.offset) || 0;
-//     i < (parseInt(req.query.offset) || 0) + (parseInt(req.query.size) || total);
-//     i++
-//   ) {
-//     arrayTmp.push({
-//       creationDate: new Date('05/02/2021'),
-//       uuid: 'MDFSK-ERHET-AGWHF-MGRJD',
-//       symptoms: {
-//         uuid: 'CMFJD-UMNGF-ASGSH-VMJRY',
-//         temperature: temperatures[Math.floor(Math.random() * temperatures.length)],
-//         temperatureSource: 'ORAL',
-//         heartRate: heartRate[Math.floor(Math.random() * heartRate.length)],
-//         bloodPressureSystolic: '120/40',
-//       },
-//       visitDateTime: new Date('05/02/2021'),
-//       visitingPerson: 'John Adam',
-//       visitRemarks: 'Lorem ipsum dolor sit amet',
-//     });
-//   }
-
-//   res.status(200).send({
-//     elements: arrayTmp,
-//     pageNumber: 0,
-//     size: 8,
-//     totalElementCount: 22,
-//     hasNext: true,
-//   });
-// });
+    ]);
+  }
+});
 
 app.use('/sormas-rest/actions/indexList', (req, res) => {
   let total = 7;
