@@ -6,6 +6,9 @@
     <h1>
       {{ person.firstName }} {{ person.lastName }} <small>({{ person.uuid | slice: 0:6 }})</small>
     </h1>
+    <div class="tab-nav-header-actions">
+      <app-form-actions [resource]="person"></app-form-actions>
+    </div>
   </header>
 
   <div class="page-content">

@@ -20,7 +20,6 @@ import { ExposuresListComponent } from './widgets/exposures-list/exposures-list.
 import { ActivitiesListComponent } from './widgets/activities-list/activities-list.component';
 import { SymptomsGroupSelectComponent } from './widgets/symptoms-group-select/symptoms-group-select.component';
 import { AddressesListComponent } from './widgets/addresses-list/addresses-list.component';
-import { NewAddressComponent } from './widgets/new-address/new-address.component';
 import { AddEditBaseModalComponent } from './modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ActionMenuComponent } from './action-menu/action-menu.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
@@ -28,7 +27,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { EdgePanelComponent } from './edge-panel/edge-panel.component';
 import { TableDataComponent } from './table/table-data/table-data.component';
 import { PersonContactsListComponent } from './widgets/person-contacts-list/person-contacts-list.component';
-import { NewPersonContactComponent } from './widgets/new-person-contact/new-person-contact.component';
 import { GpsCoordsComponent } from './widgets/gps-coords/gps-coords.component';
 import { AddressButtonComponent } from './widgets/address-button/address-button.component';
 import { ColumnPickerModule } from './column-picker/column-picker.module';
@@ -49,6 +47,8 @@ import { ContactFiltersModule } from './contact-filters/contact-filters.module';
 import { CaseAddComponent } from './case-add/case-add.component';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { FiltersModule } from './filters/filters.module';
+import { AddressAddEditComponent } from './address-add-edit/address-add-edit.component';
+import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,6 @@ import { FiltersModule } from './filters/filters.module';
     ActivitiesListComponent,
     SymptomsGroupSelectComponent,
     AddressesListComponent,
-    NewAddressComponent,
     AddEditBaseModalComponent,
     ActionMenuComponent,
     DropdownMenuComponent,
@@ -70,7 +69,6 @@ import { FiltersModule } from './filters/filters.module';
     TableDataComponent,
     TableNotificationComponent,
     PersonContactsListComponent,
-    NewPersonContactComponent,
     GpsCoordsComponent,
     AddressButtonComponent,
     LastUpdateComponent,
@@ -84,6 +82,8 @@ import { FiltersModule } from './filters/filters.module';
     ChooseCaseModalComponent,
     LoaderComponent,
     CaseAddComponent,
+    AddressAddEditComponent,
+    ContactAddEditComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,33 @@
-.follow-up-status {
+@use '/src/variables.scss' as *;
+
+.follow-up {
   display: flex;
   justify-content: space-between;
+  padding-top: 8px;
+}
+
+.status {
+  font-weight: 500;
+}
+
+.status-info {
+  color: map-get($sormas-primary, 500);
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.info-followup-status {
+  @include mat-elevation(3);
+
+  width: 360px;
+  padding: 8px 16px 8px 48px;
+  background-color: map-get($sormas-primary, 50);
+  font-size: 12px;
+
+  .status-info {
+    margin-left: -36px;
+    float: left;
+  }
 }

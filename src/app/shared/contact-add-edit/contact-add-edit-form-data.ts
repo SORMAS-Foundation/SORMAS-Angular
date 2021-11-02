@@ -1,0 +1,76 @@
+import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_CHECKBOX } from '../../_constants/form-data';
+import { PersonContactDetailType, PhoneNumberType } from '../../_constants/enums';
+import { FormGroupStyleType } from '../../_models/common';
+
+const pipe = new EnumToKeyValuePipe();
+
+const optionsPersonContactDetailType = pipe.transform(PersonContactDetailType);
+const optionsPhoneNumberType = pipe.transform(PhoneNumberType);
+
+export const FORM_DATA_CONTACT_ADD_EDIT = [
+  {
+    id: 'addressType',
+    title: 'captions.Location',
+    appearance: FormGroupStyleType.BASIC,
+    fields: [
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'thirdParty',
+        label: 'captions.personContactDetailThirdParty',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'thirdPartyRole',
+        label: 'captions.PersonContactDetail.thirdPartyRole',
+        dependingOn: 'thirdParty',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'thirdPartyName',
+        label: 'captions.PersonContactDetail.thirdPartyName',
+        dependingOn: 'thirdParty',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'personContactDetailType',
+        label: 'captions.PersonContactDetail.personContactDetailType',
+        options: optionsPersonContactDetailType,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'phoneNumberType',
+        label: 'captions.PersonContactDetail.phoneNumberType',
+        options: optionsPhoneNumberType,
+        dependingOn: 'personContactDetailType',
+        dependingOnValues: ['PHONE'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'details',
+        label: 'captions.PersonContactDetail.details',
+        dependingOn: 'personContactDetailType',
+        dependingOnValues: ['OTHER'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'contactInformation',
+        label: 'captions.PersonContactDetail.contactInformation',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'additionalInformation',
+        label: 'captions.PersonContactDetail.additionalInformation',
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'primaryContact',
+        label: 'captions.PersonContactDetail.primaryContact',
+        newLine: true,
+      },
+    ],
+  },
+];

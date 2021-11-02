@@ -1,22 +1,37 @@
-<div class="follow-up-actions">
-  <button *ngIf="canResume()" mat-stroked-button color="primary" (click)="resumeFollowUp()">
-    {{ 'captions.contactResumeFollowUp' | translate }}
-  </button>
+<div class="follow-up">
+  <div class="status">
+    {{ 'enum.FollowUpStatus.' + status | translate }}
+    <mat-icon class="material-icons-round status-info" [appTooltip]="infotip">info</mat-icon>
+  </div>
 
-  <button
-    *ngIf="canCancel() || canLost()"
-    mat-stroked-button
-    color="primary"
-    [matMenuTriggerFor]="menu"
-  >
-    {{ 'FollowUpStatus.actions' | translate }}
-  </button>
-  <mat-menu #menu="matMenu" xPosition="before">
-    <button *ngIf="canCancel()" mat-menu-item (click)="cancelFollowUp()">
-      {{ 'captions.contactCancelFollowUp' | translate }}
+  <ng-template #infotip>
+    <div class="info-followup-status">
+      <mat-icon class="material-icons-round status-info">info</mat-icon>
+      <p [innerHtml]="'descriptions.Contact.followUpStatus' | translate"></p>
+    </div>
+  </ng-template>
+
+  <div *ngIf="status !== followUpStatus.NO_FOLLOW_UP" class="actions">
+    <button
+      *ngIf="!activeFollowUp"
+      mat-stroked-button
+      color="primary"
+      (click)="setStatus(followUpStatus.FOLLOW_UP)"
+    >
+      {{ 'captions.contactResumeFollowUp' | translate }}
     </button>
-    <button *ngIf="canLost()" mat-menu-item (click)="lostFollowUp()">
-      {{ 'captions.contactLostToFollowUp' | translate }}
-    </button>
-  </mat-menu>
+
+    <app-dropdown-menu
+      *ngIf="activeFollowUp"
+      [buttonText]="'FollowUpStatus.actions' | translate"
+      horizontalPosition="before"
+    >
+      <button mat-menu-item (click)="setStatus(followUpStatus.CANCELED)">
+        {{ 'captions.contactCancelFollowUp' | translate }}
+      </button>
+      <button mat-menu-item (click)="setStatus(followUpStatus.LOST)">
+        {{ 'captions.contactLostToFollowUp' | translate }}
+      </button>
+    </app-dropdown-menu>
+  </div>
 </div>

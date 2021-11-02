@@ -264,7 +264,7 @@ export enum PathogenTestResultType {
   PENDING = 'enum.PathogenTestResultType.PENDING',
   NEGATIVE = 'enum.PathogenTestResultType.NEGATIVE',
   POSITIVE = 'enum.PathogenTestResultType.POSITIVE',
-  NOT_DONE = 'Not enum.PathogenTestResultType.NOT_DONE',
+  NOT_DONE = 'enum.PathogenTestResultType.NOT_DONE',
 }
 
 export enum PathogenTestType {
@@ -667,7 +667,30 @@ export enum DateFilterOptions {
 }
 
 export enum NewCaseDateType {
-  MOST_RELEVANT = 'NewCaseDateType.MOST_RELEVANT',
-  ONSET = 'NewCaseDateType.ONSET',
-  REPORT = 'NewCaseDateType.REPORT',
+  MOST_RELEVANT = 'enum.NewCaseDateType.MOST_RELEVANT',
+  ONSET = 'enum.NewCaseDateType.ONSET',
+  REPORT = 'enum.NewCaseDateType.REPORT',
+}
+
+export enum PersonAddressType {
+  HOME = 'enum.PersonAddressType.HOME',
+  PLACE_OF_RESIDENCE = 'enum.PersonAddressType.PLACE_OF_RESIDENCE',
+  PLACE_OF_EXPOSURE = 'enum.PersonAddressType.PLACE_OF_EXPOSURE',
+  PLACE_OF_WORK = 'enum.PersonAddressType.PLACE_OF_WORK',
+  PLACE_OF_ISOLATION = 'enum.PersonAddressType.PLACE_OF_ISOLATION',
+  EVENT_LOCATION = 'enum.PersonAddressType.EVENT_LOCATION',
+  OTHER_ADDRESS = 'enum.PersonAddressType.OTHER_ADDRESS',
+}
+
+export enum PersonContactDetailType {
+  PHONE = 'enum.PersonContactDetailType.PHONE',
+  EMAIL = 'enum.PersonContactDetailType.EMAIL',
+  OTHER = 'enum.PersonContactDetailType.OTHER',
+}
+
+export enum PhoneNumberType {
+  LANDLINE = 'enum.PhoneNumberType.LANDLINE',
+  MOBILE = 'enum.PhoneNumberType.MOBILE',
+  WORK = 'enum.PhoneNumberType.WORK',
+  OTHER = 'enum.PhoneNumberType.OTHER',
 }

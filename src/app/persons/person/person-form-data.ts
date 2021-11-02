@@ -4,6 +4,7 @@ import {
   FORM_DATA_SELECT,
   FORM_DATA_NULL,
   FORM_DATA_WIDGET,
+  AreaType,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -31,6 +32,7 @@ const optionsOccupationType = pipe.transform(OccupationType);
 const optionsArmedForces = pipe.transform(ArmedForcesRelationType);
 const optionsEducation = pipe.transform(EducationType);
 const optionsBurialConductor = pipe.transform(BurialConductor);
+const optionsAreaType = pipe.transform(AreaType);
 
 export const FORM_DATA_PERSON = [
   {
@@ -65,7 +67,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'year',
+        key: 'birthdateYYYY',
         label: 'captions.Person.birthdate',
         placeholder: 'strings.year',
         options: [],
@@ -74,7 +76,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'month',
+        key: 'birthdateMM',
         label: ' ',
         placeholder: 'strings.month',
         options: [],
@@ -82,7 +84,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'day',
+        key: 'birthdateDD',
         label: ' ',
         placeholder: 'strings.day',
         options: [],
@@ -97,7 +99,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.region.uuid',
+        key: 'placeOfBirthRegion.uuid',
         label: 'captions.Person.placeOfBirthRegion',
         options: [
           {
@@ -109,7 +111,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.district.uuid',
+        key: 'placeOfBirthDistrict.uuid',
         label: 'captions.Person.placeOfBirthDistrict',
         options: [
           {
@@ -120,7 +122,7 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.community.uuid',
+        key: 'placeOfBirthCommunity.uuid',
         label: 'captions.Person.placeOfBirthCommunity',
         options: [
           {
@@ -305,16 +307,143 @@ export const FORM_DATA_PERSON = [
     ],
   },
   {
-    id: 'person.address',
+    id: 'address',
+    title: 'captions.Person.address',
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'address.country.uuid',
+        label: 'captions.country',
+        options: [],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'address.region.uuid',
+        label: 'captions.region',
+        options: [],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'address.district.uuid',
+        label: 'captions.district',
+        options: [],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'address.community.uuid',
+        label: 'captions.community',
+        options: [],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'address.facilityCategory',
+        label: 'captions.facilityTypeGroup',
+        options: [],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'address.facilityType',
+        label: 'captions.Location.facilityType',
+        options: [],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'address.facility',
+        label: 'captions.Location.facility',
+        options: [],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.street',
+        label: 'captions.Location.street',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.city',
+        label: 'captions.city',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.houseNumber',
+        label: 'captions.Location.houseNumber',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'address.areaType',
+        label: 'captions.Location.areaType',
+        options: optionsAreaType,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.postalCode',
+        label: 'captions.Location.postalCode',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.additionalInformation',
+        label: 'captions.Location.additionalInformation',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.latitude',
+        label: 'captions.Location.latitude',
+        className: 'size-small',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.longitude',
+        label: 'captions.Location.longitude',
+        className: 'size-small',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.latLonAccuracy',
+        label: 'captions.Location.latLonAccuracy',
+        className: 'size-small',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.contactPersonFirstName',
+        label: 'captions.Location.contactPersonFirstName',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.contactPersonLastName',
+        label: 'captions.Location.contactPersonLastName',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.contactPersonPhone',
+        label: 'captions.Location.contactPersonPhone',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.contactPersonEmail',
+        label: 'captions.Location.contactPersonEmail',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'address.details',
+        label: 'captions.Location.details',
+        newLine: true,
+      },
+    ],
+  },
+  {
+    id: 'addresses',
     title: 'captions.Person.addresses',
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        widget: 'app-new-address',
-      },
-      {
-        ...FORM_DATA_WIDGET,
+        key: 'addresses',
         widget: 'app-addresses-list',
+        className: 'fullwidth',
         newLine: true,
       },
     ],
@@ -324,15 +453,15 @@ export const FORM_DATA_PERSON = [
     title: 'strings.headingContactInformation',
     fields: [
       {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-new-person-contact',
-        className: 'push-right',
+        ...FORM_DATA_INPUT,
+        key: 'birthName',
+        label: 'captions.Person.birthName',
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'nickname',
         label: 'captions.Person.nickname',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -351,9 +480,36 @@ export const FORM_DATA_PERSON = [
         label: 'captions.Person.fathersName',
       },
       {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-person-contacts-list',
+        ...FORM_DATA_INPUT,
+        key: 'namesOfGuardians',
+        label: 'captions.Person.namesOfGuardians',
+        className: 'size-full',
         newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'birthCountry',
+        label: 'captions.Person.birthCountry',
+        options: [],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'citizenship',
+        label: 'captions.Person.citizenship',
+        options: [],
+      },
+    ],
+  },
+  {
+    id: 'contacts',
+    title: '',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        key: 'personContactDetails',
+        widget: 'app-person-contacts-list',
+        className: 'fullwidth',
       },
     ],
   },

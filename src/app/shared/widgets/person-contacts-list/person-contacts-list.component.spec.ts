@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { PersonContactsListComponent } from './person-contacts-list.component';
 
@@ -9,6 +11,7 @@ describe('PersonContactsListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PersonContactsListComponent],
+      imports: [TranslateModule.forRoot(), MatDialogModule],
     }).compileComponents();
   });
 
