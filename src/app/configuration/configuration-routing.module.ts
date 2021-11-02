@@ -30,10 +30,12 @@ const routes: Routes = [
       { path: 'facilities', component: FacilitiesComponent },
       { path: 'entry-points', component: EntryPointsComponent },
       { path: 'population', component: PopulationComponent },
-      { path: 'line-listing', children: [
+      {
+        path: 'line-listing',
+        children: [
           { path: '', component: LineListingComponent },
           { path: ':regionId', component: LineListingComponent },
-        ]
+        ],
       },
       {
         path: 'document-templates',

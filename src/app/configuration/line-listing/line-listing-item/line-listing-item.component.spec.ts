@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LineListingItemComponent } from './line-listing-item.component';
 
 describe('LineListingItemComponent', () => {
@@ -8,9 +11,9 @@ describe('LineListingItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LineListingItemComponent ]
-    })
-    .compileComponents();
+      declarations: [LineListingItemComponent],
+      imports: [MatDialogModule, HttpClientTestingModule, TranslateModule.forRoot()],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -5,5 +5,5 @@ export interface ListingDto {
   districtUuid: string;
   districtName: string;
   enabled?: boolean;
-  endDate?: Date;
+  endDate?: Date | null;
 }

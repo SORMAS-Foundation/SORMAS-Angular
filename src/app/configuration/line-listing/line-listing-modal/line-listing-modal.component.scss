@@ -59,13 +59,17 @@
   }
 
   .date-content {
+    .mat-form-field-hint-wrapper {
+      margin-top: 10px;
+    }
+
     .datepicker-input {
       margin-right: 20px;
       float: left;
     }
 
     .set-btn {
-      margin-top: 33px;
+      margin-top: 7px;
     }
   }
 }

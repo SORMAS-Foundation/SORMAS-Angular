@@ -5,7 +5,7 @@ import { DatepickerHeaderTodayComponent } from '../../../shared/dynamic-form/com
 @Component({
   selector: 'app-line-listing-table',
   templateUrl: './line-listing-table.component.html',
-  styleUrls: ['./line-listing-table.component.scss']
+  styleUrls: ['./line-listing-table.component.scss'],
 })
 export class LineListingTableComponent implements OnInit {
   header = DatepickerHeaderTodayComponent;
@@ -15,8 +15,6 @@ export class LineListingTableComponent implements OnInit {
 
   displayedColumns: string[];
 
-  constructor() {}
-
   ngOnInit(): void {
     if (!this.regionId) {
       this.displayedColumns = ['enabled', 'name', 'districtName', 'endDate'];
@@ -25,8 +23,13 @@ export class LineListingTableComponent implements OnInit {
     }
   }
 
-  onChangeCheckbox(): void {
-
+  onChangeCheckbox(element: any): void {
+    if (element.enabled) {
+      // eslint-disable-next-line no-param-reassign
+      element.endDate = new Date();
+    } else {
+      // eslint-disable-next-line no-param-reassign
+      element.endDate = null;
+    }
   }
-
 }

@@ -8,9 +8,8 @@ describe('LineListingTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LineListingTableComponent ]
-    })
-    .compileComponents();
+      declarations: [LineListingTableComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

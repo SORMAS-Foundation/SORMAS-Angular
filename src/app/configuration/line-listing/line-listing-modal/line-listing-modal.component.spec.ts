@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { LineListingModalComponent } from './line-listing-modal.component';
 
 describe('LineListingModalComponent', () => {
@@ -8,9 +11,13 @@ describe('LineListingModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LineListingModalComponent ]
-    })
-    .compileComponents();
+      declarations: [LineListingModalComponent],
+      imports: [MatDialogModule, HttpClientTestingModule, TranslateModule.forRoot()],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

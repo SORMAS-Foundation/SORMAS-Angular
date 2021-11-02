@@ -44,7 +44,7 @@ export class LineListingComponent implements OnInit {
       this.regions = getAllRegions.elements;
 
       this.sendResourceService.setResource(
-        { regionId: this.regionId, lineListingArray: this.lineListingArray },
+        { regionId: this.regionId, regions: this.regions },
         'line-listing-component'
       );
     });

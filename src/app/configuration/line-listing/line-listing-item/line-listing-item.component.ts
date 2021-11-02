@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,7 +14,7 @@ import { ListingService } from '../../../_services/api/listing.service';
   templateUrl: './line-listing-item.component.html',
   styleUrls: ['./line-listing-item.component.scss'],
 })
-export class LineListingItemComponent implements OnInit, OnDestroy {
+export class LineListingItemComponent implements OnDestroy {
   @Input() listings: ListingDto[];
   @Input() regions: RegionDto[];
   @Input() regionId: string;
@@ -29,8 +29,6 @@ export class LineListingItemComponent implements OnInit, OnDestroy {
     private listingService: ListingService
   ) {}
 
-  ngOnInit(): void {}
-
   getSelectedDistrictsNoForRegion(region: RegionDto): number {
     return this.listings.filter((listing) => listing.regionUuid === region.uuid).length;
   }
@@ -43,9 +41,17 @@ export class LineListingItemComponent implements OnInit, OnDestroy {
     const filters = [
       {
         field: 'disease',
-        value: 'lallalala',
+        value: this.disease,
       },
     ];
+
+    if (this.regionId) {
+      filters.push({
+        field: 'region',
+        value: this.regionId,
+      });
+    }
+
     this.listingService.getAll(null, null, filters, false).subscribe({
       next: (response: any) => {
         const data = {
@@ -61,6 +67,13 @@ export class LineListingItemComponent implements OnInit, OnDestroy {
         this.subscription.push(
           dialogRef.afterClosed().subscribe((result) => {
             if (result) {
+              this.listingService.add(result.listings).subscribe({
+                next: () => {
+                  this.notificationService.success('Successfully added');
+                },
+                error: () => {},
+                complete: () => {},
+              });
             }
           })
         );
