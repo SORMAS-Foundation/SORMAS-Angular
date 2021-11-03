@@ -63,9 +63,17 @@ export class EntityActionsComponent implements OnDestroy {
       this.resourceService.delete(items).subscribe((response: any) => {
         if (response.length) {
           this.completion.emit(true);
-          this.notificationService.success(`${this.context} deleted`);
+          this.notificationService.success(
+            this.translateService.instant('messageEntityDeleted', {
+              entity: this.context,
+            })
+          );
         } else {
-          this.notificationService.error(`${this.context} not deleted`);
+          this.notificationService.error(
+            this.translateService.instant('messageEntityNotDeleted', {
+              entity: this.context,
+            })
+          );
         }
       })
     );

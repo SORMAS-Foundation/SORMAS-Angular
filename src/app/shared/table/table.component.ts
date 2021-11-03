@@ -243,8 +243,15 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       this.resourceService.delete(items).subscribe((response) => {
         const errors = items.filter((item) => !response.includes(item));
         if (errors.length) {
-          // show warning with undeleted items?
+          this.notificationService.success(
+            this.translateService.instant('messageEntitiesNotDeleted', {
+              entity: this.showTotalContext,
+            })
+          );
         }
+        this.notificationService.success(
+          this.translateService.instant('messageEntitiesDeleted', { entity: this.showTotalContext })
+        );
         this.selection.clear();
         this.getResources(true);
       })
