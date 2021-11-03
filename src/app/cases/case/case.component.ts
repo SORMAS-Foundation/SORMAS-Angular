@@ -97,7 +97,7 @@ export class CaseComponent implements OnInit, OnDestroy {
   }
 
   updateCaseLinks(): void {
-    if (this.case.caseOrigin === CaseOrigin.INCOUNTRY) {
+    if (this.case.caseOrigin === CaseOrigin.IN_COUNTRY) {
       this.links = this.links.filter((item) => {
         return !item.link.includes('port-health');
       });

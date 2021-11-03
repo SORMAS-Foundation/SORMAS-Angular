@@ -33,7 +33,7 @@ export class CasePortHealthComponent {
       case PointOfEntryType.SEAPORT:
         this.formData = FORM_DATA_CASE_PORT_HEALTH_SEAPORT;
         break;
-      case PointOfEntryType.GROUNDCROSSING:
+      case PointOfEntryType.GROUND_CROSSING:
         this.formData = FORM_DATA_CASE_PORT_HEALTH_GROUNDCROSSING;
         break;
       default:
