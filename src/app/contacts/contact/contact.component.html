@@ -4,6 +4,14 @@
       <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
     </a>
     <h1>{{ contact.person.firstName }} {{ contact.person.lastName }}</h1>
+    <app-entity-actions
+      [resource]="contact"
+      [resourceService]="contactService"
+      [actionEditOptions]="actionEditOptions"
+      [context]="'strings.entityContact' | translate"
+      (completion)="onContactDelete()"
+      class="actions"
+    ></app-entity-actions>
   </header>
 
   <app-info-bar [data]="contact" [type]="'CONTACT'"></app-info-bar>

@@ -6,6 +6,12 @@
   background: $white;
 }
 
+h1 {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 40px;
+}
+
 header {
   position: sticky;
   z-index: 2;
@@ -48,10 +54,8 @@ header {
   }
 }
 
-h1 {
-  font-size: 34px;
-  font-weight: 500;
-  line-height: 40px;
+.actions {
+  margin-left: auto;
 }
 
 .add-participant-btn {

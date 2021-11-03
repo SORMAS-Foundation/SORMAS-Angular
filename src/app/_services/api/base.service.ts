@@ -113,14 +113,14 @@ export class BaseService<T extends Resource> {
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 
-  delete(item: T): any {
+  delete(items: string[]): Observable<any> {
     // endpoint
     let endpoint = this.endpoint.ENDPOINT;
     if (this.endpoint.DELETE) {
       endpoint = this.endpoint.DELETE;
     }
 
-    return this.httpClient.delete(`${this.helperService.getApiUrl()}/${endpoint}/${item.id}`);
+    return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, items);
   }
 
   private convertData(data: any, withPagination: boolean): PaginationResponse {
