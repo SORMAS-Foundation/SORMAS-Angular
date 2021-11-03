@@ -115,44 +115,6 @@
           }
         }
       }
-    },
-    "api-client": {
-      "projectType": "library",
-      "root": "projects/api-client",
-      "sourceRoot": "projects/api-client/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "projects/api-client/tsconfig.lib.json",
-            "project": "projects/api-client/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/api-client/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/api-client/src/test.ts",
-            "tsConfig": "projects/api-client/tsconfig.spec.json",
-            "karmaConfig": "projects/api-client/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/api-client/tsconfig.lib.json",
-              "projects/api-client/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
     }
   },
   "defaultProject": "sormas"

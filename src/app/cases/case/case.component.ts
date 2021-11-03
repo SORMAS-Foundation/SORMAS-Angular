@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CaseControllerService } from 'api-client';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotificationService } from '../../_services/notification.service';
@@ -53,7 +52,6 @@ const caseLinks = (caseId: string): EntityLink[] => {
   selector: 'app-case',
   templateUrl: './case.component.html',
   styleUrls: ['./case.component.scss'],
-  providers: [CaseControllerService],
 })
 export class CaseComponent implements OnInit, OnDestroy {
   case: CaseDataDto;

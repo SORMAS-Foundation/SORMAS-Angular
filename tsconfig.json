@@ -17,10 +17,7 @@
     "resolveJsonModule": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": ["esnext", "dom"],
-    "paths": {
-      "api-client": ["dist/api-client/api-client", "dist/api-client"]
-    }
+    "lib": ["esnext", "dom"]
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
