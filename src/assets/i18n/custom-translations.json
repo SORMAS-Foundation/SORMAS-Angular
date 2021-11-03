@@ -96,5 +96,9 @@
   "headingEditEntryPoint": "Edit point fo entry",
   "headingAddressDetails": "Address details",
   "headingAddAddress": "Add new address",
-  "headingEditAddress": "Edit address"
+  "headingEditAddress": "Edit address",
+  "messageEntityDeleted": "{{ entity }} deleted",
+  "messageEntityNotDeleted": "{{ entity }} not deleted",
+  "messageEntitiesDeleted": "All selected {{ entity }} were deleted",
+  "messageEntitiesNotDeleted": "Some {{ entity }} were not deleted"
 }

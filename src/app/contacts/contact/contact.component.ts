@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EntityLink } from '../../_constants/common';
 import { NotificationService } from '../../_services/notification.service';
 import { ContactDto } from '../../_models/contactDto';
 import { ContactService } from '../../_services/api/contact.service';
+import { actionsEditDefs } from './contact-actions-data';
 
 // case routing for tabs
 const contactLinks = (contactId: string): EntityLink[] => {
@@ -28,9 +29,11 @@ export class ContactComponent implements OnInit {
   links: EntityLink[] = [];
   currentSubPage: EntityLink;
   contactId: any;
+  actionEditOptions = actionsEditDefs;
 
   constructor(
-    private contactService: ContactService,
+    public contactService: ContactService,
+    private router: Router,
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService
   ) {}
@@ -54,5 +57,9 @@ export class ContactComponent implements OnInit {
     if (typeof componentReference.updateComponent === 'function') {
       componentReference.updateComponent(this.contact, this.contactService);
     }
+  }
+
+  onContactDelete(): void {
+    this.router.navigate(['/contacts/list']);
   }
 }
