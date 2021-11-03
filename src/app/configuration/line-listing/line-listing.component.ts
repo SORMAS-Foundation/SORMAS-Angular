@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ListingService } from '../../_services/api/listing.service';
 import { RegionService } from '../../_services/api/region.service';
 import { Disease } from '../../_constants/enums';
@@ -8,7 +9,6 @@ import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-v
 import { NotificationService } from '../../_services/notification.service';
 import { SendResourceService } from '../../_services/send-resource.service';
 import { SentResourceTypes } from '../../_constants/common';
-import { TranslateService } from '@ngx-translate/core';
 
 const pipe = new EnumToKeyValuePipe();
 
