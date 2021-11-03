@@ -1,3 +1,7 @@
+import { CaseOrigin } from '../_models/caseOrigin';
+import { FollowUpStatus } from '../_models/followUpStatus';
+import { PointOfEntryType } from '../_models/pointOfEntryType';
+
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
 export const UUID_KEY = 'uuid';
@@ -94,3 +98,23 @@ export const CONTACT_RISKS = [
     ],
   },
 ];
+
+export const CASE_ORIGIN = {
+  IN_COUNTRY: 'IN_COUNTRY' as CaseOrigin,
+  POINT_OF_ENTRY: 'POINT_OF_ENTRY' as CaseOrigin,
+};
+
+export const POINT_OF_ENTRY_TYPE = {
+  AIRPORT: 'AIRPORT' as PointOfEntryType,
+  SEAPORT: 'SEAPORT' as PointOfEntryType,
+  GROUND_CROSSING: 'GROUND_CROSSING' as PointOfEntryType,
+  OTHER: 'OTHER' as PointOfEntryType,
+};
+
+export const FOLLOW_UP_STATUS = {
+  FOLLOW_UP: 'FOLLOW_UP' as FollowUpStatus,
+  COMPLETED: 'COMPLETED' as FollowUpStatus,
+  CANCELED: 'CANCELED' as FollowUpStatus,
+  LOST: 'LOST' as FollowUpStatus,
+  NO_FOLLOW_UP: 'NO_FOLLOW_UP' as FollowUpStatus,
+};

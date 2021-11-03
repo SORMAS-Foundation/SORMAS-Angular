@@ -5,8 +5,7 @@ import {
   FORM_DATA_SELECT,
   FORM_DATA_WIDGET,
 } from '../../_constants/form-data';
-import { Language } from '../../_models/models';
-import { AreaType, PointOfEntryType, UserRole } from '../../_constants/enums';
+import { AreaType, PointOfEntryType, UserRole, Language } from '../../_constants/enums';
 
 const pipe = new EnumToKeyValuePipe();
 

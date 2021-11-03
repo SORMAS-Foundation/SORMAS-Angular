@@ -9,7 +9,7 @@ import {
   FORM_DATA_CASE_PORT_HEALTH_OTHER,
 } from './case-port-health-form-data';
 import { CaseDataDto } from '../../../_models/caseDataDto';
-import { PointOfEntryType } from '../../../_models/pointOfEntryType';
+import { POINT_OF_ENTRY_TYPE } from '../../../app.constants';
 
 @Component({
   selector: 'app-case-port-health',
@@ -27,13 +27,13 @@ export class CasePortHealthComponent {
   updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
     const poe = caseItem?.pointOfEntry?.pointOfEntryType;
     switch (poe) {
-      case PointOfEntryType.AIRPORT:
+      case POINT_OF_ENTRY_TYPE.AIRPORT:
         this.formData = FORM_DATA_CASE_PORT_HEALTH_AIRPORT;
         break;
-      case PointOfEntryType.SEAPORT:
+      case POINT_OF_ENTRY_TYPE.SEAPORT:
         this.formData = FORM_DATA_CASE_PORT_HEALTH_SEAPORT;
         break;
-      case PointOfEntryType.GROUND_CROSSING:
+      case POINT_OF_ENTRY_TYPE.GROUND_CROSSING:
         this.formData = FORM_DATA_CASE_PORT_HEALTH_GROUNDCROSSING;
         break;
       default:

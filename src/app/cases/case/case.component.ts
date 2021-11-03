@@ -3,9 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseService } from '../../_services/api/case.service';
-import { CaseClassificationIcons, EntityLink, CaseOutcomeIcons } from '../../app.constants';
+import {
+  CaseClassificationIcons,
+  EntityLink,
+  CaseOutcomeIcons,
+  CASE_ORIGIN,
+} from '../../app.constants';
 import { CaseDataDto } from '../../_models/caseDataDto';
-import { CaseOrigin } from '../../_models/caseOrigin';
 import { HelperService } from '../../_services/helper.service';
 import { actionsEditDefs } from './case-actions-data';
 
@@ -95,7 +99,7 @@ export class CaseComponent implements OnInit, OnDestroy {
   }
 
   updateCaseLinks(): void {
-    if (this.case.caseOrigin === CaseOrigin.IN_COUNTRY) {
+    if (this.case.caseOrigin === CASE_ORIGIN.IN_COUNTRY) {
       this.links = this.links.filter((item) => {
         return !item.link.includes('port-health');
       });
