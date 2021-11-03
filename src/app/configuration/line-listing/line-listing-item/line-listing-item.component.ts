@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ListingDto } from '../../../_models/listingDto';
 import { RegionDto } from '../../../_models/regionDto';
 import { NotificationService } from '../../../_services/notification.service';
-import { MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
+import { DEFAULT_DATE_FORMAT, MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
 import { LineListingModalComponent } from '../line-listing-modal/line-listing-modal.component';
 import { ListingService } from '../../../_services/api/listing.service';
 
@@ -19,6 +19,8 @@ export class LineListingItemComponent implements OnDestroy {
   @Input() regions: RegionDto[];
   @Input() regionId: string;
   @Input() disease: string;
+
+  defaultDateFormat = DEFAULT_DATE_FORMAT;
 
   private subscription: Subscription[] = [];
 
@@ -54,9 +56,17 @@ export class LineListingItemComponent implements OnDestroy {
 
     this.listingService.getAll(null, null, filters, false).subscribe({
       next: (response: any) => {
+        const regionTmp = this.regions.find((region) => region.uuid === this.regionId);
+        let regionNameTmp;
+        if (regionTmp) {
+          regionNameTmp = regionTmp.name;
+        }
+
         const data = {
           listings: response[0].listings,
           regionId: this.regionId,
+          regionName: regionNameTmp,
+          disease: this.disease,
         };
 
         const dialogRef = this.dialog.open(LineListingModalComponent, {
@@ -69,7 +79,9 @@ export class LineListingItemComponent implements OnDestroy {
             if (result) {
               this.listingService.add(result.listings).subscribe({
                 next: () => {
-                  this.notificationService.success('Successfully added');
+                  this.notificationService.success(
+                    this.translateService.instant('addedSuccessfully')
+                  );
                 },
                 error: () => {},
                 complete: () => {},
@@ -102,7 +114,9 @@ export class LineListingItemComponent implements OnDestroy {
           if (result === 'CONFIRM') {
             this.listingService.deleteAll(this.disease, this.regionId).subscribe({
               next: () => {
-                this.notificationService.success('Successfully deleted');
+                this.notificationService.success(
+                  this.translateService.instant('deletedSuccessfully')
+                );
               },
               error: () => {},
               complete: () => {},

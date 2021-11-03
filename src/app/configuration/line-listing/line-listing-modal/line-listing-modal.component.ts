@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { Filter } from '../../../_models/common';
 import { DatepickerHeaderTodayComponent } from '../../../shared/dynamic-form/components/datepicker-header-today/datepicker-header-today.component';
 import { ListingDto } from '../../../_models/listingDto';
@@ -21,6 +22,7 @@ export class LineListingModalComponent implements OnInit {
     public dialogRef: MatDialogRef<LineListingModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private listingService: ListingService,
+    public translateService: TranslateService,
     private notificationService: NotificationService
   ) {}
 
@@ -74,7 +76,7 @@ export class LineListingModalComponent implements OnInit {
         listing.endDate = this.form.controls.endDateAll.value;
       });
     } else {
-      this.notificationService.error('Please set an end date');
+      this.notificationService.error(this.translateService.instant('pleaseSetEndDate'));
     }
   }
 
@@ -82,5 +84,17 @@ export class LineListingModalComponent implements OnInit {
     this.dialogRef.close({
       listings: this.data.listings,
     });
+  }
+
+  translateFunc(): string {
+    if (typeof this.data.regionId === 'undefined') {
+      return this.translateService
+        .instant('strings.infoLineListingConfigurationNationEdit')
+        .replace('%s', this.data.disease);
+    }
+    return this.translateService
+      .instant('strings.infoLineListingConfigurationRegionEdit')
+      .replace('%s', this.data.disease)
+      .replace('%s', this.data.regionName);
   }
 }

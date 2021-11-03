@@ -7,6 +7,8 @@ import { Disease } from '../../_constants/enums';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { NotificationService } from '../../_services/notification.service';
 import { SendResourceService } from '../../_services/send-resource.service';
+import { SentResourceTypes } from '../../_constants/common';
+import { TranslateService } from '@ngx-translate/core';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -27,6 +29,7 @@ export class LineListingComponent implements OnInit {
     private regionService: RegionService,
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService,
+    public translateService: TranslateService,
     private sendResourceService: SendResourceService
   ) {}
 
@@ -45,7 +48,7 @@ export class LineListingComponent implements OnInit {
 
       this.sendResourceService.setResource(
         { regionId: this.regionId, regions: this.regions },
-        'line-listing-component'
+        SentResourceTypes.LINE_LISTING_DATA
       );
     });
   }
@@ -63,7 +66,7 @@ export class LineListingComponent implements OnInit {
         listings: [],
       });
     } else {
-      this.notificationService.error('Please select a disease');
+      this.notificationService.error(this.translateService.instant('pleaseSetDisease'));
     }
   }
 }

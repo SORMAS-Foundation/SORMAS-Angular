@@ -17,7 +17,7 @@
   <form [formGroup]="form" class="filters-form">
     <div class="text">
       <mat-icon class="material-icons-round">info</mat-icon>
-      <p>{{ 'strings.infoLineListingConfigurationRegionEdit' | translate }}</p>
+      <p [innerHTML]="translateFunc()"></p>
     </div>
     <div class="action-content">
       <mat-form-field

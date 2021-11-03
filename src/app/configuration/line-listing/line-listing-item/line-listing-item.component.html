@@ -9,22 +9,22 @@
     </button>
   </div>
   <div class="line-listing-content">
-    <span *ngIf="!regionId">
+    <ng-container *ngIf="!regionId">
       <a class="line-listing-region-item" *ngFor="let region of regions" [routerLink]="['/configuration/line-listing/' + region.uuid]"
            [ngClass]="{'selected': getSelectedDistrictsNoForRegion(region)}">
         <p>{{ region.name }} <span
           *ngIf="getSelectedDistrictsNoForRegion(region)">({{ getSelectedDistrictsNoForRegion(region) }})</span></p>
       </a>
-    </span>
+    </ng-container>
 
-    <span *ngIf="regionId">
+    <ng-container *ngIf="regionId">
       <div class="line-listing-district-item" *ngFor="let listing of getDistrictsForRegion()">
         <p>{{ listing.districtName }}</p>
         <p class="date">
           {{ 'strings.until' | translate }}
-          <span>15 oct 2021</span>
+          <span>{{ listing.endDate | date:defaultDateFormat }}</span>
         </p>
       </div>
-    </span>
+    </ng-container>
   </div>
 </div>
