@@ -22,7 +22,7 @@ export class SubcontinentAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subcontinentService.getAll(null, null, null, true).subscribe({
+    this.continentService.getAll(null, null, null, true).subscribe({
       next: (response: any) => {
         if (this.selectedResource) {
           this.myFormElements = this.formElementControlService.setValuesForDynamicForm(

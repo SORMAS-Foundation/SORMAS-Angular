@@ -1,3 +1,47 @@
-<p>
-  line-listing works!
-</p>
+<div class="line-listing-wrapper">
+  <div class="line-listing-wrapper-item">
+    <div class="left"></div>
+    <div class="right">
+      <div class="text">
+        <mat-icon class="material-icons-round">info</mat-icon>
+        <p *ngIf="!regionId">{{ 'strings.infoLineListingConfigurationNation' | translate }}</p>
+        <p *ngIf="regionId">{{ 'strings.infoLineListingConfigurationRegion' | translate }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="line-listing-wrapper-item" *ngIf="lineListingArray">
+    <div class="left">
+      <h2>{{ 'strings.promptDisease' | translate }}</h2>
+    </div>
+    <div class="right">
+      <mat-card>
+        <mat-form-field appearance="outline" class="disease-dropdown">
+          <mat-select [placeholder]="'strings.promptDisease' | translate" [(ngModel)]="selectedDisease">
+            <mat-option *ngFor="let option of getOptionsDiseaseProcessed()" [value]="option.key">
+              {{ option.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="enable-disease" (click)="addLineListingItem()">
+          {{ 'captions.lineListingEnableForDisease' | translate }}
+        </button>
+      </mat-card>
+    </div>
+  </div>
+  <div class="line-listing-wrapper-item" *ngFor="let lineListingItem of lineListingArray">
+    <div class="left">
+      <h2>{{ lineListingItem.disease }}</h2>
+    </div>
+    <div class="right">
+      <mat-card>
+        <app-line-listing-item
+          [listings]="lineListingItem.listings"
+          [regions]="regions"
+          [regionId]="regionId"
+          [disease]="lineListingItem.disease"
+        ></app-line-listing-item>
+      </mat-card>
+    </div>
+  </div>
+</div>
