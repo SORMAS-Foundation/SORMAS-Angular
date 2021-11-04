@@ -1,5 +1,5 @@
 <section>
-  <header>
+  <header [ngClass]="{'listing-header-region': regionName}">
     <h1 *ngIf="!regionName">Configuration</h1>
     <div *ngIf="regionName" class="line-listing-region">
       <a [routerLink]="['/configuration/line-listing']" mat-icon-button>
