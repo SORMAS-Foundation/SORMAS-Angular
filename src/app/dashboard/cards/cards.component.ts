@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ContactDto } from 'api-client';
 import { Subscription } from 'rxjs';
+import { ContactDto } from '../../_models/contactDto';
 
 @Component({
   selector: 'app-cards',

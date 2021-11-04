@@ -3,19 +3,17 @@ import {
   FORM_DATA_INPUT,
   FORM_DATA_SELECT,
   FORM_DATA_NULL,
-} from '../../../app.constants';
-
-import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import {
+  ArmedForcesRelationType,
   CauseOfDeath,
+  DeathPlaceType,
+  EducationType,
+  OccupationType,
   PresentCondition,
   Salutation,
   Sex,
-  DeathPlaceType,
-  OccupationType,
-  ArmedForcesRelationType,
-  EducationType,
-} from '../../../_models/models';
+} from '../../../app.constants';
+
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
 
 const pipe = new EnumToKeyValuePipe();

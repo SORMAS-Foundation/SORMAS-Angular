@@ -5,20 +5,18 @@ import {
   FORM_DATA_NULL,
   FORM_DATA_WIDGET,
   AreaType,
-} from '../../app.constants';
-
-import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import {
+  ArmedForcesRelationType,
+  BurialConductor,
   CauseOfDeath,
+  DeathPlaceType,
+  EducationType,
+  OccupationType,
   PresentCondition,
   Salutation,
   Sex,
-  DeathPlaceType,
-  OccupationType,
-  ArmedForcesRelationType,
-  EducationType,
-  BurialConductor,
-} from '../../_models/models';
+} from '../../app.constants';
+
+import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { FORM_DATA_TEXTAREA } from '../../_constants/form-data';
 
 const pipe = new EnumToKeyValuePipe();

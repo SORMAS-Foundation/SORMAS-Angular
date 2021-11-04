@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "concurrently \"ng serve --proxy-config proxy.conf.json\" \"npm run start-proxy\"",
     "start-proxy": "npm run start --prefix projects/api-proxy",
-    "build": "ng build api-client && ng build --prod --base-href /sormas-angular/",
+    "build": "ng build --prod --base-href /sormas-angular/",
     "analyze-bundle": "ng build --prod --stats-json && webpack-bundle-analyzer dist/app/stats.json ",
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/en.json ./src/assets/i18n/de.json --clean --sort --format namespaced-json --format-indentation '  ' --marker _",
     "test": "ng test sormas",
