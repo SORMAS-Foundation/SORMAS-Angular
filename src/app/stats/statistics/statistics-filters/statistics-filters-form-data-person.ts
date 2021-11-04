@@ -1,6 +1,10 @@
-import { FORM_DATA_MULTISELECT, FORM_DATA_INPUT, FORM_DATA_SELECT } from '../../../app.constants';
+import {
+  FORM_DATA_MULTISELECT,
+  FORM_DATA_INPUT,
+  FORM_DATA_SELECT,
+  Sex,
+} from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
-import { Sex } from '../../../_models/models';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 

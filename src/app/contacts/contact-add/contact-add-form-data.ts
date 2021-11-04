@@ -3,6 +3,7 @@ import {
   YesNoUnknown,
   ContactCategory,
   ContactRelation,
+  Sex,
 } from '../../_constants/enums';
 import {
   FORM_DATA_CHECKBOX,
@@ -12,7 +13,6 @@ import {
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
 } from '../../_constants/form-data';
-import { Sex } from '../../_models/sex';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();

@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ApiModule } from 'api-client';
 
 import { CardsComponent } from './cards.component';
 
@@ -10,7 +9,7 @@ describe('CardsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, ApiModule],
+      imports: [HttpClientTestingModule],
       declarations: [CardsComponent],
     }).compileComponents();
   });

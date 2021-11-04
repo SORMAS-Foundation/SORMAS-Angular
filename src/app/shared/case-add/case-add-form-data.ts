@@ -3,15 +3,15 @@ import {
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
+  CauseOfDeath,
+  DeathPlaceType,
   Disease,
   PlaceOfStay,
+  PresentCondition,
+  Sex,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { Sex } from '../../_models/sex';
-import { PresentCondition } from '../../_models/presentCondition';
-import { CauseOfDeath } from '../../_models/causeOfDeath';
-import { DeathPlaceType } from '../../_models/deathPlaceType';
 
 const pipe = new EnumToKeyValuePipe();
 

@@ -5,17 +5,15 @@ import {
   FORM_DATA_NULL,
   FORM_DATA_MULTISELECT,
   FORM_DATA_RADIO,
+  AdditionalTestType,
+  PathogenTestType,
+  PathogenTestResultType,
+  SamplePurpose,
+  SamplingReason,
+  SpecimenCondition,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import {
-  SamplePurpose,
-  SamplingReason,
-  PathogenTestType,
-  AdditionalTestType,
-  SpecimenCondition,
-  PathogenTestResultType,
-} from '../../_models/models';
 import { FORM_DATA_CHECKBOX, FORM_DATA_TEXTAREA } from '../../_constants/form-data';
 
 const pipe = new EnumToKeyValuePipe();
