@@ -1,0 +1,43 @@
+<div class="location-form-container">
+  <form class="location-form" [formGroup]="locationForm">
+    <mat-form-field appearance="outline" class="data-select" floatLabel="always">
+      <mat-select
+        disableOptionCentering
+        (selectionChange)="onFormChange($event)"
+        formControlName="region"
+        aria-label="region"
+        placeholder="{{ 'region' | translate }}"
+      >
+        <mat-option *ngFor="let opt of regionOptions" [value]="opt.key">
+          {{ opt.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="data-select" floatLabel="always">
+      <mat-select
+        disableOptionCentering
+        (selectionChange)="onFormChange($event)"
+        formControlName="district"
+        aria-label="district"
+        placeholder="{{ 'district' | translate }}"
+      >
+        <mat-option *ngFor="let opt of districtOptions" [value]="opt.key">
+          {{ opt.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="data-select" floatLabel="always">
+      <mat-select
+        disableOptionCentering
+        (selectionChange)="onFormChange($event)"
+        formControlName="community"
+        aria-label="community"
+        placeholder="{{ 'community' | translate }}"
+      >
+        <mat-option *ngFor="let opt of communityOptions" [value]="opt.key">
+          {{ opt.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

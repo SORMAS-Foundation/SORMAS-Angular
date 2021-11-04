@@ -49,6 +49,7 @@ import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { FiltersModule } from './filters/filters.module';
 import { AddressAddEditComponent } from './address-add-edit/address-add-edit.component';
 import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.component';
+import { LocationDropdownsComponent } from './widgets/location-dropdowns/location-dropdowns.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.com
     CaseAddComponent,
     AddressAddEditComponent,
     ContactAddEditComponent,
+    LocationDropdownsComponent,
   ],
   imports: [
     CommonModule,

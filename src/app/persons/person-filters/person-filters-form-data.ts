@@ -5,6 +5,7 @@ import {
   Presentcondition,
 } from '../../app.constants';
 import { PersonAssociationType } from '../../_constants/enums';
+import { FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { FormGroupStyleType } from '../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -106,6 +107,11 @@ export const FORM_DATA_PERSON_FILTERS = [
         key: 'community',
         placeholder: 'captions.Contact.community',
         options: [],
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
         className: 'fullwidth',
       },
     ],

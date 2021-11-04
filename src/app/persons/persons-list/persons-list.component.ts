@@ -7,6 +7,8 @@ import { PersonDto } from '../../_models/models';
 import { HEADER_HEIGHT } from '../../app.constants';
 import { FORM_DATA_PERSON_FILTERS } from '../person-filters/person-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import { SendResourceService } from '../../_services/send-resource.service';
+import { SentResourceTypes } from '../../_constants/common';
 
 @Component({
   selector: 'app-persons-list',
@@ -20,9 +22,18 @@ export class PersonsListComponent implements OnInit {
   configKey = CONFIG_PERSONS;
   headerHeight = HEADER_HEIGHT;
 
-  constructor(public personService: PersonService) {}
+  constructor(
+    public personService: PersonService,
+    private sendResourceService: SendResourceService
+  ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+    setTimeout(() => {
+      this.sendResourceService.setResource(
+        this.filtersData[4].fields,
+        SentResourceTypes.ENTITY_FORM_DATA
+      );
+    });
   }
 }
