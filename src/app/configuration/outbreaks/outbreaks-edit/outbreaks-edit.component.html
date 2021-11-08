@@ -1,0 +1,54 @@
+<div mat-dialog-title>
+  <h2>
+    {{ 'enum.Disease.' + data.disease | translate }}
+    {{ 'strings.headingOutbreakIn' | translate }}
+    {{ data.region?.caption }}
+  </h2>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button color="primary" class="cancel-btn" mat-dialog-close>
+      {{ 'captions.actionDiscard' | translate }}
+    </button>
+    <button mat-flat-button color="primary" class="confirm-btn">
+      {{ 'captions.actionSave' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <p class="info">{{ 'strings.headingDefineOutbreakDistricts' | translate }}</p>
+
+  <div class="actions">
+    <p class="info">{{ 'strings.headingSetOutbreakStatus' | translate }}</p>
+    <button mat-button color="warn" (click)="setStatusAll(true)">
+      {{ 'captions.outbreakOutbreak' | translate }}
+    </button>
+    <button mat-button color="primary" (click)="setStatusAll(false)">
+      {{ 'captions.outbreakNormal' | translate }}
+    </button>
+    <span class="affected-districts">
+      {{ affectedDistrictsCount }}/{{ totalDistrictsCount }}
+      {{ 'captions.outbreakAffectedDistricts' | translate }}
+    </span>
+  </div>
+
+  <form *ngIf="districts.length" [formGroup]="form" class="outbreaks-form">
+    <mat-radio-group
+      *ngFor="let district of districts"
+      [formControlName]="district.uuid!"
+      [class.alert]="isDistrictSelected(district.uuid!)"
+    >
+      <mat-label class="radio-group-label">
+        {{ district.name }}
+      </mat-label>
+      <mat-radio-button [value]="true" color="primary">
+        {{ 'captions.outbreakOutbreak' | translate }}
+      </mat-radio-button>
+      <mat-radio-button [value]="false" color="primary">
+        {{ 'captions.outbreakNormal' | translate }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </form>
+</div>
