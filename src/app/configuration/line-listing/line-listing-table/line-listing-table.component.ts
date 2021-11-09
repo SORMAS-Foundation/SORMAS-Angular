@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ListingDto } from '../../../_models/listingDto';
 import { DatepickerHeaderTodayComponent } from '../../../shared/dynamic-form/components/datepicker-header-today/datepicker-header-today.component';
+import { DEFAULT_DATE_FORMAT } from '../../../_constants/common';
 
 @Component({
   selector: 'app-line-listing-table',
@@ -9,6 +10,7 @@ import { DatepickerHeaderTodayComponent } from '../../../shared/dynamic-form/com
 })
 export class LineListingTableComponent implements OnInit {
   header = DatepickerHeaderTodayComponent;
+  defaultDateFormat = DEFAULT_DATE_FORMAT;
 
   @Input() listings: ListingDto[];
   @Input() regionId: string;

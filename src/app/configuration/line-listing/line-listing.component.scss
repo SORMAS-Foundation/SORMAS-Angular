@@ -25,9 +25,16 @@
   .line-listing-wrapper-item {
     display: flex;
 
+    &.first {
+      .left {
+        padding-top: 0;
+      }
+    }
+
     .left {
       flex: 0 0 248px;
       padding: 24px;
+      padding-top: 53px;
       text-align: right;
 
       h2 {
@@ -39,6 +46,11 @@
     .right {
       flex: 1 1 auto;
       padding: 8px 16px;
+      padding-left: 0;
+
+      .mat-card {
+        padding: 24px;
+      }
 
       .disease-dropdown {
         display: inline-block;

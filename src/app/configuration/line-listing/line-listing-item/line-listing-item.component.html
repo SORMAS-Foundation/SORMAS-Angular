@@ -10,8 +10,9 @@
   </div>
   <div class="line-listing-content">
     <ng-container *ngIf="!regionId">
-      <a class="line-listing-region-item" *ngFor="let region of regions" [routerLink]="['/configuration/line-listing/' + region.uuid]"
-           [ngClass]="{'selected': getSelectedDistrictsNoForRegion(region)}">
+      <a class="line-listing-region-item" *ngFor="let region of regions"
+         [routerLink]="['/configuration/line-listing/' + region.uuid + '/' + disease]"
+         [ngClass]="{'selected': getSelectedDistrictsNoForRegion(region)}">
         <p>{{ region.name }} <span
           *ngIf="getSelectedDistrictsNoForRegion(region)">({{ getSelectedDistrictsNoForRegion(region) }})</span></p>
       </a>

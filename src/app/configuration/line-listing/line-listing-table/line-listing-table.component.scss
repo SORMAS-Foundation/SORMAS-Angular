@@ -15,7 +15,17 @@ table {
   }
 
   .datepicker-input {
+    position: absolute;
     cursor: pointer;
+    visibility: hidden;
+  }
+
+  .datepicker-text {
+    display: inline-block;
+  }
+
+  .calendar-icon {
+    color: mat-color($sormas-primary, 500);
   }
 
   .bold {

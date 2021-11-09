@@ -23,6 +23,7 @@ export class LineListingComponent implements OnInit {
   public regionId: string;
   public optionsDisease = pipe.transform(Disease);
   public selectedDisease: any;
+  public urlDisease: string;
 
   constructor(
     private listingService: ListingService,
@@ -37,6 +38,10 @@ export class LineListingComponent implements OnInit {
     const urlParams = this.activeRoute.snapshot.params;
     if (typeof urlParams.regionId !== 'undefined') {
       this.regionId = urlParams.regionId;
+    }
+
+    if (typeof urlParams.disease !== 'undefined') {
+      this.urlDisease = urlParams.disease;
     }
 
     forkJoin({
@@ -72,6 +77,10 @@ export class LineListingComponent implements OnInit {
 
   showLineListing(lineListing: any): boolean {
     if (this.regionId) {
+      if (lineListing.disease === this.urlDisease) {
+        return true;
+      }
+
       return (
         lineListing.listings.filter((listing: any) => listing.regionUuid === this.regionId).length >
         0
