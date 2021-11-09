@@ -8,6 +8,10 @@ header {
   padding: 48px 32px 0;
   background-color: $white;
 
+  &.listing-header-region {
+    border-bottom: solid 2px map-get($sormas-accent, 200);
+  }
+
   .line-listing-region {
     margin-bottom: 20px;
 

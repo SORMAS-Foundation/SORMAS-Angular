@@ -4,8 +4,8 @@
     <div class="right">
       <div class="text">
         <mat-icon class="material-icons-round">info</mat-icon>
-        <p *ngIf="!regionId">{{ 'strings.infoLineListingConfigurationNation' | translate }}</p>
-        <p *ngIf="regionId">{{ 'strings.infoLineListingConfigurationRegion' | translate }}</p>
+        <p *ngIf="!regionId" [innerHTML]="'strings.infoLineListingConfigurationNation' | translate"></p>
+        <p *ngIf="regionId" [innerHTML]="'strings.infoLineListingConfigurationRegion' | translate"></p>
       </div>
     </div>
   </div>

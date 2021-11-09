@@ -122,6 +122,12 @@ export enum VaccinationStatus {
   UNKNOWN = 'enum.VaccinationStatus.UNKNOWN',
 }
 
+export enum FacilityStatus {
+  ACTIVE = 'captions.facilityActiveFacilities',
+  ARCHIVED = 'captions.facilityArchivedFacilities',
+  ALL = 'captions.facilityAllFacilities',
+}
+
 export enum VaccinationInfoSource {
   VACCINATION_CARD = 'enum.VaccinationInfoSource.VACCINATION_CARD',
   ORAL_COMMUNICATION = 'enum.VaccinationInfoSource.ORAL_COMMUNICATION',
