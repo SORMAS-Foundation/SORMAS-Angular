@@ -1,4 +1,9 @@
 .page-actions {
   padding: 0;
   margin-left: auto;
+
+  .export-btn,
+  .import-btn {
+    margin-left: 15px;
+  }
 }
