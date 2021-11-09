@@ -58,7 +58,7 @@ export class LineListingModalComponent implements OnInit {
     this.data.listings.forEach((listing: ListingDto) => {
       if (mode && !listing.enabled) {
         // eslint-disable-next-line no-param-reassign
-        listing.endDate = new Date();
+        listing.endDate = new Date(Date.now() + 6.048e8 * 3);
       }
       if (!mode) {
         // eslint-disable-next-line no-param-reassign

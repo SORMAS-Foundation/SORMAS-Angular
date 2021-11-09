@@ -22,7 +22,8 @@
         <p>{{ listing.districtName }}</p>
         <p class="date">
           {{ 'strings.until' | translate }}
-          <span>{{ listing.endDate | date:defaultDateFormat }}</span>
+          <span class="big">{{ listing.endDate | date:'d' }}</span>
+          <span>{{ listing.endDate | date:'MMM y' }}</span>
         </p>
       </div>
     </ng-container>

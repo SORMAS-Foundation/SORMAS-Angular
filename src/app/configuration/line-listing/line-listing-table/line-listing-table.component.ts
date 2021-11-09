@@ -26,7 +26,7 @@ export class LineListingTableComponent implements OnInit {
   onChangeCheckbox(element: any): void {
     if (element.enabled) {
       // eslint-disable-next-line no-param-reassign
-      element.endDate = new Date();
+      element.endDate = new Date(Date.now() + 6.048e8 * 3);
     } else {
       // eslint-disable-next-line no-param-reassign
       element.endDate = null;

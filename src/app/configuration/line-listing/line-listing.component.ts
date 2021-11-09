@@ -69,4 +69,14 @@ export class LineListingComponent implements OnInit {
       this.notificationService.error(this.translateService.instant('pleaseSetDisease'));
     }
   }
+
+  showLineListing(lineListing: any): boolean {
+    if (this.regionId) {
+      return (
+        lineListing.listings.filter((listing: any) => listing.regionUuid === this.regionId).length >
+        0
+      );
+    }
+    return true;
+  }
 }

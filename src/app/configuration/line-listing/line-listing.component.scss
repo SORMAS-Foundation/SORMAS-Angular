@@ -1,6 +1,7 @@
 @use '/src/variables.scss' as *;
 
 .line-listing-wrapper {
+  height: 100vh;
   padding-top: 10px;
   margin: -25px;
   background: map-get($sormas-accent, 50);
