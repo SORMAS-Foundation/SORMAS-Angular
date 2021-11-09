@@ -189,3 +189,11 @@ export const API_ROUTE_LINSTINGS = {
   ADD: 'listings/push',
   DELETE: 'listings/delete',
 };
+
+export const API_ROUTE_FACILITIES = {
+  ENDPOINT: 'facilities',
+  GET_ALL: 'facilities/indexList',
+  UPDATE: 'facilities/push',
+  ADD: 'facilities/push',
+  DELETE: 'facilities/delete',
+};

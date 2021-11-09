@@ -43,6 +43,8 @@ import { UploadTemplateComponent } from './document-templates/upload-template/up
 import { LineListingItemComponent } from './line-listing/line-listing-item/line-listing-item.component';
 import { LineListingModalComponent } from './line-listing/line-listing-modal/line-listing-modal.component';
 import { LineListingTableComponent } from './line-listing/line-listing-table/line-listing-table.component';
+import { FacilityFiltersComponent } from './facilities/facility-filters/facility-filters.component';
+import { FacilityListComponent } from './facilities/facility-list/facility-list.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { LineListingTableComponent } from './line-listing/line-listing-table/lin
     LineListingItemComponent,
     LineListingModalComponent,
     LineListingTableComponent,
+    FacilityFiltersComponent,
+    FacilityListComponent,
   ],
   imports: [
     CommonModule,
