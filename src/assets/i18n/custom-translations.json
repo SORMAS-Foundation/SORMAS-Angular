@@ -104,5 +104,6 @@
   "addedSuccessfully": "Successfully added",
   "deletedSuccessfully": "Successfully deleted",
   "pleaseSetEndDate": "Please set an end date",
-  "pleaseSetDisease": "Please select a disease"
+  "pleaseSetDisease": "Please select a disease",
+  "actionAddNewFacility": "Add new facility"
 }
