@@ -18,6 +18,11 @@ header {
     > a {
       color: black;
 
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+
       .mat-icon {
         margin-top: 10px;
         margin-right: 30px;
@@ -29,6 +34,7 @@ header {
 }
 
 h1 {
+  color: map-get($sormas-accent, 800);
   font-size: 34px;
   font-weight: 500;
   line-height: 40px;
