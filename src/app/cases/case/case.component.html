@@ -4,6 +4,14 @@
       <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
     </a>
     <h1>{{ case.person?.firstName }} {{ case.person?.lastName }}</h1>
+    <app-entity-actions
+      [resource]="case"
+      [resourceService]="caseService"
+      [actionEditOptions]="actionEditOptions"
+      [context]="'strings.entityCase' | translate"
+      (completion)="onCaseDelete()"
+      class="actions"
+    ></app-entity-actions>
   </header>
 
   <app-info-bar [data]="case" [type]="'CASE'"></app-info-bar>

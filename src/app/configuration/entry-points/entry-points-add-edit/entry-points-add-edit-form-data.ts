@@ -2,9 +2,9 @@ import {
   FORM_DATA_CHECKBOX,
   FORM_DATA_INPUT,
   FORM_DATA_SELECT,
+  PointOfEntryType,
   FORM_DATA_WIDGET,
-} from '../../../_constants/form-data';
-import { PointOfEntryType } from '../../../_models/pointOfEntryType';
+} from '../../../app.constants';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();

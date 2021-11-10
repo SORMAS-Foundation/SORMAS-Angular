@@ -8,6 +8,7 @@ import { EventService } from '../../_services/api/event.service';
 import { HelperService } from '../../_services/helper.service';
 import { SendResourceService } from '../../_services/send-resource.service';
 import { EventParticipantDto } from '../../_models/eventParticipantDto';
+import { actionsEditDefs } from './event-actions-data';
 
 // case routing for tabs
 const eventLinks = (eventId: string): EntityLink[] => {
@@ -37,11 +38,12 @@ export class EventComponent implements OnInit, OnDestroy {
   currentSubPage: EntityLink;
   eventId: any;
   showTabs = true;
-  subscription: Subscription = new Subscription();
+  subscriptions: Subscription[] = [];
   eventParticipant: EventParticipantDto;
+  actionEditOptions = actionsEditDefs;
 
   constructor(
-    private eventService: EventService,
+    public eventService: EventService,
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService,
     private router: Router,
@@ -54,21 +56,32 @@ export class EventComponent implements OnInit, OnDestroy {
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, eventLinks);
     this.eventId = routeParams.eventId;
     this.links = eventLinks(this.eventId);
-    this.eventService.getById(this.eventId).subscribe({
-      next: (response: any) => {
-        this.event = response;
-      },
-      error: (err: any) => {
-        this.notificationService.error(err);
-      },
-      complete: () => {},
-    });
+    this.fetchEvent();
+    this.fetchEventParticipant();
+  }
 
-    this.subscription = this.sendResourceService.getResource().subscribe((response: any) => {
-      if (response.fromComponent === SentResourceTypes.EVENT_PARTICIPANT_DATA) {
-        this.eventParticipant = response.resource;
-      }
-    });
+  fetchEvent(): void {
+    this.subscriptions.push(
+      this.eventService.getById(this.eventId).subscribe({
+        next: (response: any) => {
+          this.event = response;
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
+  }
+
+  fetchEventParticipant(): void {
+    this.subscriptions.push(
+      this.sendResourceService.getResource().subscribe((response: any) => {
+        if (response.fromComponent === SentResourceTypes.EVENT_PARTICIPANT_DATA) {
+          this.eventParticipant = response.resource;
+        }
+      })
+    );
   }
 
   onActivate(componentReference: any): void {
@@ -85,9 +98,11 @@ export class EventComponent implements OnInit, OnDestroy {
     console.log('add participant');
   }
 
+  onEventDelete(): void {
+    this.router.navigate(['/events/list']);
+  }
+
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

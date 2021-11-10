@@ -96,5 +96,14 @@
   "headingEditEntryPoint": "Edit point fo entry",
   "headingAddressDetails": "Address details",
   "headingAddAddress": "Add new address",
-  "headingEditAddress": "Edit address"
+  "headingEditAddress": "Edit address",
+  "messageEntityDeleted": "{{ entity }} deleted",
+  "messageEntityNotDeleted": "{{ entity }} not deleted",
+  "messageEntitiesDeleted": "All selected {{ entity }} were deleted",
+  "messageEntitiesNotDeleted": "Some {{ entity }} were not deleted",
+  "addedSuccessfully": "Successfully added",
+  "deletedSuccessfully": "Successfully deleted",
+  "pleaseSetEndDate": "Please set an end date",
+  "pleaseSetDisease": "Please select a disease",
+  "actionAddNewFacility": "Add new facility"
 }

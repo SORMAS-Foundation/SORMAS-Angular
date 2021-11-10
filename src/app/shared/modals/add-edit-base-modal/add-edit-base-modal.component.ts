@@ -9,6 +9,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ADD_MODAL_NARROW, ADD_MODAL_WIDE, BREAKPOINTS } from '../../../app.constants';
 import { FormActionsService } from '../../../_services/form-actions.service';
@@ -31,7 +32,8 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private componentFactoryResolver: ComponentFactoryResolver,
     private formActionsService: FormActionsService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -100,7 +102,32 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
 
   archive(): void {}
 
-  delete(): void {}
+  delete(): void {
+    this.notificationService
+      .confirm({
+        title: this.translateService.instant('strings.headingConfirmDeletion'),
+        message: this.translateService
+          .instant('strings.confirmationDeleteEntity')
+          .replace('%s', this.data.context),
+        buttonDeclineText: this.translateService.instant('captions.actionCancel'),
+        buttonConfirmText: this.translateService.instant('captions.actionDelete'),
+      })
+      .subscribe((action) => {
+        if (action === 'CONFIRM') {
+          const items = [this.data.resource.uuid];
+          this.subscription.push(
+            this.data.service.delete(items).subscribe((response: any) => {
+              if (response.length) {
+                this.notificationService.success(`${this.data.context} deleted`);
+                this.dialogRef.close();
+              } else {
+                this.notificationService.error(`${this.data.context} not deleted`);
+              }
+            })
+          );
+        }
+      });
+  }
 
   ngOnDestroy(): void {
     this.subscription.forEach((subscription) => subscription.unsubscribe());

@@ -1,0 +1,63 @@
+@use '/src/variables.scss' as *;
+
+.line-listing-item-wrapper {
+  .line-listing-content {
+    .line-listing-district-item {
+      display: inline-block;
+      width: 300px;
+      padding: 10px 5px;
+      margin-top: 20px;
+      margin-right: 15px;
+      background: mat-color($sormas-accent, 50);
+      border-radius: 5px;
+      cursor: pointer;
+
+      p {
+        margin: 0;
+        color: mat-color($sormas-accent, 800);
+        font-size: 14px;
+        font-weight: 500;
+
+        &.date {
+          margin-top: 5px;
+          color: mat-color($sormas-accent, 500);
+          font-size: 10px;
+
+          span {
+            color: mat-color($sormas-accent, 600);
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .line-listing-region-item {
+      display: inline-block;
+      width: 220px;
+      padding: 6px 5px;
+      border: 2px solid mat-color($sormas-accent, 400);
+      margin-top: 20px;
+      margin-right: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      vertical-align: middle;
+
+      p {
+        margin: 0;
+        color: mat-color($sormas-accent, 600);
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      &.selected {
+        border: 0;
+        background: mat-color($sormas-primary, 50);
+
+        p {
+          color: mat-color($sormas-accent, 800);
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { ApiModule } from 'api-client';
 import { BidiModule } from '@angular/cdk/bidi';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -33,7 +32,6 @@ export function HttpLoaderFactory(http: HttpClient): any {
     SharedModule,
     KeycloakAngularModule,
     BrowserAnimationsModule,
-    ApiModule,
     BidiModule,
     DynamicFormModule,
     TranslateModule.forRoot({

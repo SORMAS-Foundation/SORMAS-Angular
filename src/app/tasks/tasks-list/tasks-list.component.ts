@@ -50,6 +50,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
         resource: task,
         service: this.taskService,
         delete: true,
+        context: this.translateService.instant('strings.entityTask'),
       },
     });
 

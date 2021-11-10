@@ -1,6 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 import { LineListingComponent } from './line-listing.component';
 
 describe('LineListingComponent', () => {
@@ -8,8 +12,14 @@ describe('LineListingComponent', () => {
   let fixture: ComponentFixture<LineListingComponent>;
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       declarations: [LineListingComponent],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        MatDialogModule,
+        TranslateModule.forRoot(),
+      ],
     }).compileComponents();
   });
 

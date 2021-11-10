@@ -50,6 +50,7 @@ import { FiltersModule } from './filters/filters.module';
 import { AddressAddEditComponent } from './address-add-edit/address-add-edit.component';
 import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.component';
 import { LocationDropdownsComponent } from './widgets/location-dropdowns/location-dropdowns.component';
+import { EntityActionsComponent } from './entity-actions/entity-actions.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { LocationDropdownsComponent } from './widgets/location-dropdowns/locatio
     AddressAddEditComponent,
     ContactAddEditComponent,
     LocationDropdownsComponent,
+    EntityActionsComponent,
   ],
   imports: [
     CommonModule,
@@ -136,6 +138,7 @@ import { LocationDropdownsComponent } from './widgets/location-dropdowns/locatio
     CaseAddComponent,
     ContactFiltersModule,
     FiltersModule,
+    EntityActionsComponent,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })

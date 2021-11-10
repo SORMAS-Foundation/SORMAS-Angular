@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { FollowUpStatus } from '../../../_models/followUpStatus';
+import { FOLLOW_UP_STATUS } from '../../../app.constants';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 
@@ -15,7 +15,7 @@ export class FollowUpStatusComponent implements OnInit, OnDestroy {
   group: FormGroup;
   control: any;
 
-  followUpStatus = FollowUpStatus;
+  followUpStatus = FOLLOW_UP_STATUS;
   status: string;
   activeFollowUp = false;
   subscriptions: Subscription[] = [];

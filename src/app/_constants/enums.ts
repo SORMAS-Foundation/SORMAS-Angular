@@ -122,6 +122,12 @@ export enum VaccinationStatus {
   UNKNOWN = 'enum.VaccinationStatus.UNKNOWN',
 }
 
+export enum FacilityStatus {
+  ACTIVE = 'captions.facilityActiveFacilities',
+  ARCHIVED = 'captions.facilityArchivedFacilities',
+  ALL = 'captions.facilityAllFacilities',
+}
+
 export enum VaccinationInfoSource {
   VACCINATION_CARD = 'enum.VaccinationInfoSource.VACCINATION_CARD',
   ORAL_COMMUNICATION = 'enum.VaccinationInfoSource.ORAL_COMMUNICATION',
@@ -693,4 +699,135 @@ export enum PhoneNumberType {
   MOBILE = 'enum.PhoneNumberType.MOBILE',
   WORK = 'enum.PhoneNumberType.WORK',
   OTHER = 'enum.PhoneNumberType.OTHER',
+}
+
+export enum ArmedForcesRelationType {
+  UNKNOWN = 'enum.ArmedForcesRelationType.UNKNOWN',
+  NO_RELATION = 'enum.ArmedForcesRelationType.NO_RELATION',
+  CIVIL = 'enum.ArmedForcesRelationType.CIVIL',
+  SOLDIER_OR_RELATIVE = 'enum.ArmedForcesRelationType.SOLDIER_OR_RELATIVE',
+}
+
+export enum AdditionalTestType {
+  HAEMOGLOBINURIA = 'enum.AdditionalTestType.HAEMOGLOBINURIA',
+  PROTEINURIA = 'enum.AdditionalTestType.PROTEINURIA',
+  HEMATURIA = 'enum.AdditionalTestType.HEMATURIA',
+  ARTERIAL_VENOUS_BLOOD_GAS = 'enum.AdditionalTestType.ARTERIAL_VENOUS_BLOOD_GAS',
+  ALT_SGPT = 'enum.AdditionalTestType.ALT_SGPT',
+  AST_SGOT = 'enum.AdditionalTestType.AST_SGOT',
+  CREATININE = 'enum.AdditionalTestType.CREATININE',
+  POTASSIUM = 'enum.AdditionalTestType.POTASSIUM',
+  UREA = 'enum.AdditionalTestType.UREA',
+  HAEMOGLOBIN = 'enum.AdditionalTestType.HAEMOGLOBIN',
+  TOTAL_BILIRUBIN = 'enum.AdditionalTestType.TOTAL_BILIRUBIN',
+  CONJ_BILIRUBIN = 'enum.AdditionalTestType.CONJ_BILIRUBIN',
+  WBC_COUNT = 'enum.AdditionalTestType.WBC_COUNT',
+  PLATELETS = 'enum.AdditionalTestType.PLATELETS',
+  PROTHROMBIN_TIME = 'enum.AdditionalTestType.PROTHROMBIN_TIME',
+}
+
+export enum Salutation {
+  MR = 'enum.Salutation.MR',
+  MRS = 'enum.Salutation.MRS',
+  MR_AND_MRS = 'enum.Salutation.MR_AND_MRS',
+  FAMILY = 'enum.Salutation.FAMILY',
+  GUARDIAN_OF_MINOR = 'enum.Salutation.GUARDIAN_OF_MINOR',
+  OTHER = 'enum.Salutation.OTHER',
+}
+
+export enum Sex {
+  MALE = 'enum.Sex.MALE',
+  FEMALE = 'enum.Sex.FEMALE',
+  OTHER = 'enum.Sex.OTHER',
+  UNKNOWN = 'enum.Sex.UNKNOWN',
+}
+
+export enum PresentCondition {
+  ALIVE = 'enum.PresentCondition.ALIVE',
+  DEAD = 'enum.PresentCondition.DEAD',
+  BURIED = 'enum.PresentCondition.BURIED',
+  UNKNOWN = 'enum.PresentCondition.UNKNOWN',
+}
+
+export enum CauseOfDeath {
+  EPIDEMIC_DISEASE = 'enum.CauseOfDeath.EPIDEMIC_DISEASE',
+  OTHER_CAUSE = 'enum.CauseOfDeath.OTHER_CAUSE',
+}
+
+export enum DeathPlaceType {
+  COMMUNITY = 'enum.DeathPlaceType.COMMUNITY',
+  HOSPITAL = 'enum.DeathPlaceType.HOSPITAL',
+  OTHER = 'enum.DeathPlaceType.OTHER',
+}
+
+export enum OccupationType {
+  RETAIL_AND_REPAIR_SERVICE = 'enum.OccupationType.RETAIL_AND_REPAIR_SERVICE',
+  MANUFACTURING = 'enum.OccupationType.MANUFACTURING',
+  CONSTRUCTION = 'enum.OccupationType.CONSTRUCTION',
+  TRANSPORT_AND_STORAGE = 'enum.OccupationType.TRANSPORT_AND_STORAGE',
+  HEALTH_AND_SOCIAL = 'enum.OccupationType.HEALTH_AND_SOCIAL',
+  EDUCATION = 'enum.OccupationType.EDUCATION',
+  ACCOMMODATION_AND_FOOD_SERVICES = 'enum.OccupationType.ACCOMMODATION_AND_FOOD_SERVICES',
+  ARTS_ENTERTAINMENT_AND_RECREATION = 'enum.OccupationType.ARTS_ENTERTAINMENT_AND_RECREATION',
+  PUBLIC_ADMINISTRATION_AND_DEFENCE = 'enum.OccupationType.PUBLIC_ADMINISTRATION_AND_DEFENCE',
+  FINANCE_AND_INSURANCE = 'enum.OccupationType.FINANCE_AND_INSURANCE',
+  INFORMATION_AND_COMMUNICATION = 'enum.OccupationType.INFORMATION_AND_COMMUNICATION',
+  PROFESSIONAL_SCIENTIFIC_AND_TECHNICAL = 'enum.OccupationType.PROFESSIONAL_SCIENTIFIC_AND_TECHNICAL',
+  ADMINISTRATIVE_AND_SUPPORT = 'enum.OccupationType.ADMINISTRATIVE_AND_SUPPORT',
+  SERVICE_OTHER = 'enum.OccupationType.SERVICE_OTHER',
+  REAL_ESTATE = 'enum.OccupationType.REAL_ESTATE',
+  ENERGY_SUPPLY = 'enum.OccupationType.ENERGY_SUPPLY',
+  WATER_SUPPLY_AND_WASTE = 'enum.OccupationType.WATER_SUPPLY_AND_WASTE',
+  EXTRATERRITORIAL_ORGANIZATIONS = 'enum.OccupationType.EXTRATERRITORIAL_ORGANIZATIONS',
+  AGRICULTURE = 'enum.OccupationType.AGRICULTURE',
+  MINING = 'enum.OccupationType.MINING',
+  PRIVATE_HOUSEHOLD = 'enum.OccupationType.PRIVATE_HOUSEHOLD',
+  FARMER = 'enum.OccupationType.FARMER',
+  BUTCHER = 'enum.OccupationType.BUTCHER',
+  HUNTER_MEAT_TRADER = 'enum.OccupationType.HUNTER_MEAT_TRADER',
+  MINER = 'enum.OccupationType.MINER',
+  RELIGIOUS_LEADER = 'enum.OccupationType.RELIGIOUS_LEADER',
+  HOUSEWIFE = 'enum.OccupationType.HOUSEWIFE',
+  PUPIL_STUDENT = 'enum.OccupationType.PUPIL_STUDENT',
+  CHILD = 'enum.OccupationType.CHILD',
+  BUSINESSMAN_WOMAN = 'enum.OccupationType.BUSINESSMAN_WOMAN',
+  TRANSPORTER = 'enum.OccupationType.TRANSPORTER',
+  HEALTHCARE_WORKER = 'enum.OccupationType.HEALTHCARE_WORKER',
+  TRADITIONAL_SPIRITUAL_HEALER = 'enum.OccupationType.TRADITIONAL_SPIRITUAL_HEALER',
+  WORKING_WITH_ANIMALS = 'enum.OccupationType.WORKING_WITH_ANIMALS',
+  LABORATORY_STAFF = 'enum.OccupationType.LABORATORY_STAFF',
+  OTHER = 'enum.OccupationType.OTHER',
+}
+
+export enum EducationType {
+  NONE = 'enum.EducationType.NONE',
+  NURSERY = 'enum.EducationType.NURSERY',
+  PRIMARY = 'enum.EducationType.PRIMARY',
+  SECONDARY = 'enum.EducationType.SECONDARY',
+  TERTIARY = 'enum.EducationType.TERTIARY',
+  OTHER = 'enum.EducationType.OTHER',
+}
+
+export enum BurialConductor {
+  FAMILY_COMMUNITY = 'enum.BurialConductor.FAMILY_COMMUNITY',
+  OUTBREAK_TEAM = 'enum.BurialConductor.OUTBREAK_TEAM',
+}
+
+export enum Language {
+  EN = 'enum.Language.EN',
+  EN_NG = 'enum.Language.EN_NG',
+  EN_GH = 'enum.Language.EN_GH',
+  EN_AF = 'enum.Language.EN_AF',
+  FR = 'enum.Language.FR',
+  FR_CH = 'enum.Language.FR_CH',
+  DE = 'enum.Language.DE',
+  DE_CH = 'enum.Language.DE_CH',
+  ES_EC = 'enum.Language.ES_EC',
+  ES_CU = 'enum.Language.ES_CU',
+  IT = 'enum.Language.IT',
+  IT_CH = 'enum.Language.IT_CH',
+  FI = 'enum.Language.FI',
+  PS = 'enum.Language.PS',
+  FA = 'enum.Language.FA',
+  CZ = 'enum.Language.CZ',
 }

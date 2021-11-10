@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotificationService } from '../../_services/notification.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
@@ -15,6 +15,7 @@ import { PersonService } from '../../_services/api/person.service';
 import { EventService } from '../../_services/api/event.service';
 import { PathogenTestService } from '../../_services/api/pathogenTest.service';
 import { AdditionalTestService } from '../../_services/api/additionalTest.service';
+import { actionsEditDefs } from './sample-actions-data';
 
 @Component({
   selector: 'app-sample',
@@ -30,6 +31,7 @@ export class SampleComponent implements OnInit, OnDestroy {
   infoBarOptions = InfoBarTypeOptions;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_PERSON;
+  actionEditOptions = actionsEditDefs;
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -43,7 +45,8 @@ export class SampleComponent implements OnInit, OnDestroy {
     private personService: PersonService,
     private activeRoute: ActivatedRoute,
     private formElementControlService: FormElementControlService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -175,6 +178,10 @@ export class SampleComponent implements OnInit, OnDestroy {
       default:
     }
     return url;
+  }
+
+  onSampleDelete(): void {
+    this.router.navigate(['/samples/list']);
   }
 
   ngOnDestroy(): void {

@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { CaseControllerService } from 'api-client';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseService } from '../../_services/api/case.service';
-import { CaseClassificationIcons, EntityLink, CaseOutcomeIcons } from '../../app.constants';
+import {
+  CaseClassificationIcons,
+  EntityLink,
+  CaseOutcomeIcons,
+  CASE_ORIGIN,
+} from '../../app.constants';
 import { CaseDataDto } from '../../_models/caseDataDto';
-import { CaseOrigin } from '../../_models/caseOrigin';
 import { HelperService } from '../../_services/helper.service';
+import { actionsEditDefs } from './case-actions-data';
 
 // case routing for tabs
 const caseLinks = (caseId: string): EntityLink[] => {
@@ -51,18 +56,19 @@ const caseLinks = (caseId: string): EntityLink[] => {
   selector: 'app-case',
   templateUrl: './case.component.html',
   styleUrls: ['./case.component.scss'],
-  providers: [CaseControllerService],
 })
-export class CaseComponent implements OnInit {
+export class CaseComponent implements OnInit, OnDestroy {
   case: CaseDataDto;
   caseOutcomeIcons = CaseOutcomeIcons;
   caseClassificationIcons = CaseClassificationIcons;
   links: EntityLink[] = [];
   caseId: any;
   currentSubPage: EntityLink;
+  actionEditOptions = actionsEditDefs;
+  subscriptions: Subscription[] = [];
 
   constructor(
-    private caseService: CaseService,
+    public caseService: CaseService,
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService,
     private router: Router,
@@ -74,23 +80,26 @@ export class CaseComponent implements OnInit {
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, caseLinks);
     this.caseId = routeParams.caseId;
     this.links = caseLinks(this.caseId);
-    this.caseService.getById(this.caseId).subscribe({
-      next: (response: any) => {
-        this.case = response;
-        this.updateCaseLinks();
-      },
-      error: (err: any) => {
-        this.notificationService.error(err);
-      },
-      complete: () => {},
-    });
+    this.fetchCase();
+  }
 
-    this.caseOutcomeIcons = CaseOutcomeIcons;
-    this.caseClassificationIcons = CaseClassificationIcons;
+  fetchCase(): void {
+    this.subscriptions.push(
+      this.caseService.getById(this.caseId).subscribe({
+        next: (response: any) => {
+          this.case = response;
+          this.updateCaseLinks();
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
   }
 
   updateCaseLinks(): void {
-    if (this.case.caseOrigin === CaseOrigin.INCOUNTRY) {
+    if (this.case.caseOrigin === CASE_ORIGIN.IN_COUNTRY) {
       this.links = this.links.filter((item) => {
         return !item.link.includes('port-health');
       });
@@ -102,5 +111,13 @@ export class CaseComponent implements OnInit {
       componentReference.updateComponent(this.case, this.caseService);
     }
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, caseLinks);
+  }
+
+  onCaseDelete(): void {
+    this.router.navigate(['/cases/list']);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

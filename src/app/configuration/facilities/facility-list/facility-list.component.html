@@ -1,0 +1,21 @@
+<app-table
+  [resourceService]="facilityService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isSelectable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [appearance]="tableAppearanceOptions.MINIMAL"
+  [bulkEditOptions]="actionsBulkEdit"
+  rowStyleData="subcontinent.caption"
+  [showTotal]="true"
+  [isEditable]="true"
+  showTotalContext="{{ 'strings.entityFacilities' | translate }}"
+  (editItem)="openEditFacilityModal($event)"
+>
+  <div class="page-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddFacilityModal()">
+      {{ 'actionAddNewFacility' | translate }}
+    </button>
+  </div>
+</app-table>

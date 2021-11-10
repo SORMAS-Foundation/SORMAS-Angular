@@ -1,9 +1,15 @@
 <section>
-  <header>
-    <h1>Configuration</h1>
+  <header [ngClass]="{'listing-header-region': regionName}">
+    <h1 *ngIf="!regionName">Configuration</h1>
+    <div *ngIf="regionName" class="line-listing-region">
+      <a [routerLink]="['/configuration/line-listing']" mat-icon-button>
+        <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+        <h1>{{ regionName }}</h1>
+      </a>
+    </div>
   </header>
 
-  <div class="tab-nav-header">
+  <div class="tab-nav-header" *ngIf="!regionName">
     <nav mat-tab-nav-bar>
       <a
         mat-tab-link
