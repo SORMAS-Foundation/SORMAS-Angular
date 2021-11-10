@@ -17,5 +17,10 @@
     <button class="add-btn" mat-flat-button color="primary" (click)="openAddFacilityModal()">
       {{ 'actionAddNewFacility' | translate }}
     </button>
+    <app-dropdown-menu buttonText="{{ 'captions.actionImport' | translate }}" class="import-btn">
+    </app-dropdown-menu>
+    <button mat-stroked-button color="primary" class="export-btn">
+      {{ 'captions.export' | translate }}
+    </button>
   </div>
 </app-table>
