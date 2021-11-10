@@ -172,37 +172,41 @@ export const FORM_DATA_CONTACT_DETAILS = [
     title: 'captions.Location',
     fields: [
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'region.uui',
-        label: 'captions.Contact.region',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'district.uui',
-        label: 'captions.Contact.district',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'community.uui',
-        label: 'captions.Contact.community',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        widgetInfo: {
+          region: {
+            key: 'region.uui',
+            label: 'captions.Contact.region',
+            className: 'size-medium',
           },
-        ],
+          district: {
+            key: 'district.uui',
+            label: 'captions.Contact.district',
+            className: 'size-medium',
+          },
+          community: {
+            key: 'community.uui',
+            label: 'captions.Contact.community',
+            className: 'size-medium',
+            newLine: true,
+          },
+        },
       },
     ],
   },

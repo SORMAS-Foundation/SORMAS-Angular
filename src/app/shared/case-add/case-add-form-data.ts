@@ -12,6 +12,7 @@ import { Sex } from '../../_models/sex';
 import { PresentCondition } from '../../_models/presentCondition';
 import { CauseOfDeath } from '../../_models/causeOfDeath';
 import { DeathPlaceType } from '../../_models/deathPlaceType';
+import { FORM_DATA_WIDGET } from '../../_constants/form-data';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -64,50 +65,45 @@ export const FORM_DATA_CASE_ADD = [
     required: true,
     fields: [
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'region.uuid',
-        label: 'captions.CaseData.responsibleRegion',
-        validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultRegion',
-          },
-        ],
-        className: 'size-large',
-        dependingOn: 'caseOrigin',
-        dependingOnValues: ['IN_COUNTRY'],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'district.uuid',
-        label: 'captions.CaseData.responsibleDistrict',
-        validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultDistrict',
-          },
-        ],
-        className: 'size-large',
-        dependingOn: 'caseOrigin',
-        dependingOnValues: ['IN_COUNTRY'],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'community.uuid',
-        label: 'captions.CaseData.responsibleCommunity',
-        options: [
-          {
-            key: 'default',
-            value: 'defaultCommunity',
-          },
-        ],
-        className: 'size-large',
-        dependingOn: 'caseOrigin',
-        dependingOnValues: ['IN_COUNTRY'],
+        className: 'hidden',
       },
     ],
+  },
+  {
+    ...FORM_DATA_WIDGET,
+    widget: 'app-location-dropdowns',
+    className: 'size-large',
+    widgetInfo: {
+      region: {
+        key: 'region.uuid',
+        required: true,
+        label: 'captions.CaseData.responsibleRegion',
+        newLine: true,
+      },
+      district: {
+        key: 'district.uuid',
+        required: true,
+        label: 'captions.CaseData.responsibleDistrict',
+        newLine: true,
+      },
+      community: {
+        key: 'community.uuid',
+        label: 'captions.CaseData.responsibleCommunity',
+        newLine: true,
+      },
+    },
   },
   {
     id: 'placeOfStay',

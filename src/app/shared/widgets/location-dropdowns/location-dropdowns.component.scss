@@ -1,1 +1,28 @@
-/* stylelint-disable */
+.mat-form-field {
+  &.size-small {
+    width: 150px;
+  }
+
+  &.size-medium {
+    width: 230px;
+  }
+
+  &.size-large {
+    width: 330px;
+  }
+
+  &.size-full {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  &.fullwidth {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  &.no-float {
+    display: inline-block !important;
+    margin-right: 20px;
+  }
+}

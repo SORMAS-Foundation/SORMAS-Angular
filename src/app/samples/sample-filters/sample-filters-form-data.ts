@@ -11,6 +11,7 @@ import {
   CaseClassification,
   DateFilterOptions,
 } from '../../app.constants';
+import { FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { FormGroupStyleType } from '../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -114,16 +115,29 @@ export const FORM_DATA_SAMPLE_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'region',
-        placeholder: 'Sample.responsibleRegion',
-        options: [],
-        className: 'fullwidth',
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'district',
-        placeholder: 'Sample.responsibleDistrict',
-        options: [],
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
         className: 'fullwidth',
+        widgetInfo: {
+          region: {
+            key: 'region',
+            placeholder: 'Sample.responsibleRegion',
+            className: 'size-full',
+          },
+          district: {
+            key: 'district',
+            placeholder: 'Sample.responsibleDistrict',
+            className: 'size-full',
+          },
+        },
       },
       {
         ...FORM_DATA_SELECT,

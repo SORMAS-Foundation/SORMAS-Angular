@@ -599,49 +599,50 @@ export const FORM_DATA_EVENT_ADD = [
     title: 'captions.address',
     fields: [
       {
-        ...FORM_DATA_SELECT,
-        label: 'captions.country',
+        ...FORM_DATA_INPUT,
         key: 'country',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
-        label: 'captions.region',
+        ...FORM_DATA_INPUT,
         key: 'region',
-        newLine: true,
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
-        label: 'captions.district',
+        ...FORM_DATA_INPUT,
         key: 'district',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
-        label: 'captions.community',
+        ...FORM_DATA_INPUT,
         key: 'community',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        widgetInfo: {
+          country: {
+            key: 'country',
+            label: 'captions.country',
+            className: 'size-medium',
           },
-        ],
+          region: {
+            key: 'region',
+            label: 'captions.region',
+            className: 'size-medium',
+          },
+          district: {
+            key: 'district',
+            label: 'captions.district',
+            className: 'size-medium',
+          },
+          community: {
+            key: 'community',
+            label: 'captions.community',
+            className: 'size-medium',
+          },
+        },
       },
       {
         ...FORM_DATA_INPUT,

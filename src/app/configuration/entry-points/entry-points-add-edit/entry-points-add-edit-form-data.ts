@@ -2,6 +2,7 @@ import {
   FORM_DATA_CHECKBOX,
   FORM_DATA_INPUT,
   FORM_DATA_SELECT,
+  FORM_DATA_WIDGET,
 } from '../../../_constants/form-data';
 import { PointOfEntryType } from '../../../_models/pointOfEntryType';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -42,28 +43,37 @@ export const FORM_DATA_ENTRY_POINTS_ADD_EDIT = [
     title: 'captions.Location',
     fields: [
       {
-        ...FORM_DATA_SELECT,
-        key: 'region.uui',
-        label: 'captions.region',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        ...FORM_DATA_INPUT,
+        key: 'region.uuid',
         validation: ['required'],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'district.uui',
-        label: 'captions.district',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        ...FORM_DATA_INPUT,
+        key: 'district.uuid',
         validation: ['required'],
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        className: 'no-float',
+        widgetInfo: {
+          region: {
+            key: 'region.uuid',
+            required: true,
+            label: 'captions.region',
+            className: 'size-medium',
+            newLine: false,
+          },
+          district: {
+            key: 'district.uuid',
+            required: true,
+            label: 'captions.district',
+            className: 'size-medium',
+            newLine: false,
+          },
+        },
       },
       {
         ...FORM_DATA_INPUT,

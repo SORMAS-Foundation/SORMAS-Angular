@@ -51,28 +51,32 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
     required: true,
     fields: [
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'region',
-        label: 'captions.EventParticipant.region',
-        validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultRegion',
-          },
-        ],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'district',
-        label: 'captions.EventParticipant.district',
-        validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultDistrict',
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        widgetInfo: {
+          region: {
+            key: 'region',
+            label: 'captions.EventParticipant.region',
+            required: true,
+            className: 'size-medium',
           },
-        ],
+          district: {
+            key: 'district',
+            label: 'captions.EventParticipant.district',
+            required: true,
+            className: 'size-medium',
+          },
+        },
       },
       {
         ...FORM_DATA_INPUT,

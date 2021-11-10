@@ -11,7 +11,6 @@ import { AreaType, PointOfEntryType, UserRole } from '../../_constants/enums';
 const pipe = new EnumToKeyValuePipe();
 
 const optionsLanguages = pipe.transform(Language);
-const optionsCountries = pipe.transform(['default country']);
 const optionsRegions = pipe.transform(['default region']);
 const optionsDistricts = pipe.transform(['default district']);
 const optionsCommunities = pipe.transform(['default community']);
@@ -71,27 +70,49 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'address.country.caption',
-        label: 'captions.country',
-        options: optionsCountries,
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'region.caption',
-        label: 'captions.region',
-        options: optionsRegions,
-        newLine: true,
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'district.caption',
-        label: 'captions.district',
-        options: optionsDistricts,
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.caption',
-        label: 'captions.community',
-        options: optionsCommunities,
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        className: 'no-float',
+        widgetInfo: {
+          country: {
+            key: 'address.country.caption',
+            label: 'captions.country',
+            className: 'size-medium',
+          },
+          region: {
+            key: 'region.caption',
+            label: 'captions.region',
+            className: 'size-medium',
+          },
+          district: {
+            key: 'district.caption',
+            label: 'captions.district',
+            className: 'size-medium',
+          },
+          community: {
+            key: 'community.caption',
+            label: 'captions.community',
+            className: 'size-medium',
+          },
+        },
       },
     ],
   },

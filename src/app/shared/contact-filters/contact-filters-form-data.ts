@@ -18,6 +18,7 @@ import {
   QuarantineType,
   DateFilterOptions,
 } from '../../app.constants';
+import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { FormGroupStyleType } from '../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -248,25 +249,41 @@ export const FORM_DATA_CONTACT_FILTERS = [
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'region',
-        placeholder: 'captions.Contact.regionUuid',
-        options: [],
-        className: 'fullwidth',
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'district',
-        placeholder: 'captions.Contact.districtUuid',
-        options: [],
-        className: 'fullwidth',
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'community',
-        placeholder: 'captions.Contact.communityUuid',
-        options: [],
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
         className: 'fullwidth',
+        widgetInfo: {
+          region: {
+            key: 'region',
+            placeholder: 'captions.Contact.regionUuid',
+            className: 'size-full',
+          },
+          district: {
+            key: 'district',
+            placeholder: 'captions.Contact.districtUuid',
+            className: 'size-full',
+          },
+          community: {
+            key: 'community',
+            placeholder: 'captions.Contact.communityUuid',
+            className: 'size-full',
+          },
+        },
       },
       {
         ...FORM_DATA_SELECT,
