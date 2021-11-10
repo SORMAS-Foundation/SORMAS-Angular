@@ -1,11 +1,11 @@
 <div class="line-listing-wrapper">
-  <div class="line-listing-wrapper-item">
+  <div class="line-listing-wrapper-item first">
     <div class="left"></div>
     <div class="right">
       <div class="text">
         <mat-icon class="material-icons-round">info</mat-icon>
-        <p *ngIf="!regionId">{{ 'strings.infoLineListingConfigurationNation' | translate }}</p>
-        <p *ngIf="regionId">{{ 'strings.infoLineListingConfigurationRegion' | translate }}</p>
+        <p *ngIf="!regionId" [innerHTML]="'strings.infoLineListingConfigurationNation' | translate"></p>
+        <p *ngIf="regionId" [innerHTML]="'strings.infoLineListingConfigurationRegion' | translate"></p>
       </div>
     </div>
   </div>
@@ -29,19 +29,21 @@
       </mat-card>
     </div>
   </div>
-  <div class="line-listing-wrapper-item" *ngFor="let lineListingItem of lineListingArray">
-    <div class="left">
-      <h2>{{ lineListingItem.disease }}</h2>
+  <ng-container *ngFor="let lineListingItem of lineListingArray">
+    <div class="line-listing-wrapper-item" *ngIf="showLineListing(lineListingItem)">
+      <div class="left">
+        <h2>{{ lineListingItem.disease }}</h2>
+      </div>
+      <div class="right">
+        <mat-card>
+          <app-line-listing-item
+            [listings]="lineListingItem.listings"
+            [regions]="regions"
+            [regionId]="regionId"
+            [disease]="lineListingItem.disease"
+          ></app-line-listing-item>
+        </mat-card>
+      </div>
     </div>
-    <div class="right">
-      <mat-card>
-        <app-line-listing-item
-          [listings]="lineListingItem.listings"
-          [regions]="regions"
-          [regionId]="regionId"
-          [disease]="lineListingItem.disease"
-        ></app-line-listing-item>
-      </mat-card>
-    </div>
-  </div>
+  </ng-container>
 </div>

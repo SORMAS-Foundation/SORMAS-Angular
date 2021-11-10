@@ -190,6 +190,13 @@ export const API_ROUTE_LINSTINGS = {
   DELETE: 'listings/delete',
 };
 
+export const API_ROUTE_FACILITIES = {
+  ENDPOINT: 'facilities',
+  GET_ALL: 'facilities/indexList',
+  UPDATE: 'facilities/push',
+  ADD: 'facilities/push',
+  DELETE: 'facilities/delete',
+
 export const API_ROUTE_OUTBREAKS = {
   ENDPOINT: 'outbreaks',
   GET_ALL: 'outbreaks/indexList',
