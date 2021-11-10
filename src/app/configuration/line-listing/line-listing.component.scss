@@ -1,6 +1,7 @@
 @use '/src/variables.scss' as *;
 
 .line-listing-wrapper {
+  height: 100vh;
   padding-top: 10px;
   margin: -25px;
   background: map-get($sormas-accent, 50);
@@ -24,9 +25,16 @@
   .line-listing-wrapper-item {
     display: flex;
 
+    &.first {
+      .left {
+        padding-top: 0;
+      }
+    }
+
     .left {
       flex: 0 0 248px;
       padding: 24px;
+      padding-top: 53px;
       text-align: right;
 
       h2 {
@@ -38,6 +46,11 @@
     .right {
       flex: 1 1 auto;
       padding: 8px 16px;
+      padding-left: 0;
+
+      .mat-card {
+        padding: 24px;
+      }
 
       .disease-dropdown {
         display: inline-block;
