@@ -45,6 +45,7 @@ import { LineListingModalComponent } from './line-listing/line-listing-modal/lin
 import { LineListingTableComponent } from './line-listing/line-listing-table/line-listing-table.component';
 import { FacilityFiltersComponent } from './facilities/facility-filters/facility-filters.component';
 import { FacilityListComponent } from './facilities/facility-list/facility-list.component';
+import { FacilityAddEditComponent } from './facilities/facility-add-edit/facility-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { FacilityListComponent } from './facilities/facility-list/facility-list.
     LineListingTableComponent,
     FacilityFiltersComponent,
     FacilityListComponent,
+    FacilityAddEditComponent,
   ],
   imports: [
     CommonModule,
