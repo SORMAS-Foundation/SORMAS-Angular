@@ -234,10 +234,10 @@ export class LocationDropdownsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.countryKey = this.config.widgetInfo.country?.key;
-    this.regionKey = this.config.widgetInfo.region?.key;
-    this.districtKey = this.config.widgetInfo.district?.key;
-    this.communityKey = this.config.widgetInfo.community?.key;
+    this.countryKey = this.config?.widgetInfo.country?.key;
+    this.regionKey = this.config?.widgetInfo.region?.key;
+    this.districtKey = this.config?.widgetInfo.district?.key;
+    this.communityKey = this.config?.widgetInfo.community?.key;
     this.countryControl = this.group?.get([this.countryKey]);
     this.regionControl = this.group?.get([this.regionKey]);
     this.districtControl = this.group?.get([this.districtKey]);
@@ -246,7 +246,7 @@ export class LocationDropdownsComponent implements OnInit {
     this.updateWidgetForm();
 
     this.subscriptions.push(
-      this.regionControl.valueChanges.subscribe(() => {
+      this.regionControl?.valueChanges.subscribe(() => {
         setTimeout(() => {
           if (this.allFieldsUndefined()) {
             this.resetForm();

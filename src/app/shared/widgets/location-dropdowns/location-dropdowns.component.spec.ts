@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { LocationDropdownsComponent } from './location-dropdowns.component';
 
@@ -9,6 +11,7 @@ describe('LocationDropdownsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LocationDropdownsComponent],
+      imports: [HttpClientTestingModule, MatDialogModule],
     }).compileComponents();
   });
 
