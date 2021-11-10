@@ -196,6 +196,7 @@ export const API_ROUTE_FACILITIES = {
   UPDATE: 'facilities/push',
   ADD: 'facilities/push',
   DELETE: 'facilities/delete',
+};
 
 export const API_ROUTE_OUTBREAKS = {
   ENDPOINT: 'outbreaks',
