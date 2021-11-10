@@ -34,7 +34,7 @@ const routes: Routes = [
         path: 'line-listing',
         children: [
           { path: '', component: LineListingComponent },
-          { path: ':regionId', component: LineListingComponent },
+          { path: ':regionId/:disease', component: LineListingComponent },
         ],
       },
       {
