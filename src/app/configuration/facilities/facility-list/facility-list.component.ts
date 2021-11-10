@@ -9,7 +9,7 @@ import { FacilityDto } from '../../../_models/facilityDto';
 import { defaultColumnDefs } from './facilities-table-data';
 import { actionsBulkEditDefs } from './facilities-actions-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH } from '../../../_constants/common';
 import { FacilityAddEditComponent } from '../facility-add-edit/facility-add-edit.component';
 import { FormActionsService } from '../../../_services/form-actions.service';
 
@@ -33,15 +33,31 @@ export class FacilityListComponent implements OnDestroy {
   ) {}
 
   openEditFacilityModal(facility: FacilityDto): void {
-    // eslint-disable-next-line no-console
-    console.log(facility);
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('actionEditFacility'),
+        component: FacilityAddEditComponent,
+        resource: facility,
+        archive: true,
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        this.formActionsService.setDiscard();
+        if (result) {
+          // this.tableComponent.getResources(true);
+        }
+      })
+    );
   }
 
   openAddFacilityModal(): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: CONFIGURATION_MODAL_WIDTH,
+      maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
-        title: this.translateService.instant('actionAddNewCountry'),
+        title: this.translateService.instant('actionAddNewFacility'),
         component: FacilityAddEditComponent,
       },
     });

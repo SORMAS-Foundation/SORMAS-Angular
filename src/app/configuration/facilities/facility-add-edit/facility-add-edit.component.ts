@@ -25,6 +25,37 @@ export class FacilityAddEditComponent implements OnInit {
         this.selectedResource,
         JSON.parse(JSON.stringify(data.FORM_DATA_FACILITY_ADD_EDIT))
       );
+
+      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+        this.myFormElements,
+        'facilityCategory',
+        'disabled',
+        true
+      );
+      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+        this.myFormElements,
+        'type',
+        'disabled',
+        true
+      );
+      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+        this.myFormElements,
+        'region.uuid',
+        'disabled',
+        true
+      );
+      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+        this.myFormElements,
+        'district.uuid',
+        'disabled',
+        true
+      );
+      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+        this.myFormElements,
+        'community.uuid',
+        'disabled',
+        true
+      );
     } else {
       this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_FACILITY_ADD_EDIT));
     }

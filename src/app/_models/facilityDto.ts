@@ -39,5 +39,5 @@ export interface FacilityDto {
   publicOwnership?: boolean;
   archived?: boolean;
   externalID?: string;
-  facilityCategoy?: string;
+  facilityCategory?: string;
 }
