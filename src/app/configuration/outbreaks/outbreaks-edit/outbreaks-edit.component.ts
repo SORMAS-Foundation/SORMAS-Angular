@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,7 +11,7 @@ import { DistrictDto } from '../../../_models/districtDto';
   templateUrl: './outbreaks-edit.component.html',
   styleUrls: ['./outbreaks-edit.component.scss'],
 })
-export class OutbreaksEditComponent implements OnInit {
+export class OutbreaksEditComponent implements OnInit, OnDestroy {
   form = new FormGroup({});
   districts: DistrictDto[] = [];
   affectedDistrictsCount = 0;
@@ -60,7 +60,7 @@ export class OutbreaksEditComponent implements OnInit {
   }
 
   isDistrictAffected(uuid: string): boolean {
-    return !!this.data.outbreaks.find((item: any) => item.uuid === uuid);
+    return !!this.data.outbreaks?.find((item: any) => item.uuid === uuid);
   }
 
   isDistrictSelected(uuid: string): boolean {
@@ -72,5 +72,9 @@ export class OutbreaksEditComponent implements OnInit {
     Object.keys(this.form.controls).forEach((key) => {
       this.form.get(key)?.setValue(status);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

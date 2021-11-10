@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OutbreakDto } from '../../_models/outbreakDto';
 import { OutbreakService } from '../../_services/api/outbreak.service';
@@ -8,9 +8,8 @@ import { OutbreakService } from '../../_services/api/outbreak.service';
   templateUrl: './outbreaks.component.html',
   styleUrls: ['./outbreaks.component.scss'],
 })
-export class OutbreaksComponent implements OnInit {
+export class OutbreaksComponent implements OnInit, OnDestroy {
   outbreaks: OutbreakDto[] = [];
-  data: any[] = [];
   subscriptions: Subscription[] = [];
 
   constructor(private outbreakService: OutbreakService) {}
@@ -21,5 +20,9 @@ export class OutbreaksComponent implements OnInit {
         this.outbreaks = response;
       })
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

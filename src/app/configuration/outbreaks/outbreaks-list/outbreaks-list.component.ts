@@ -52,7 +52,7 @@ export class OutbreaksListComponent implements OnDestroy {
   }
 
   createColumns(): any[] {
-    const keys = this.data[0] ? Object.keys(this.data[0]) : [];
+    const keys = this.data?.length ? Object.keys(this.data[0]) : [];
     const result = keys.map((key) => (key === 'region' ? key : `enum.Disease.${key}`));
     result.push('spacer');
     return result;
@@ -60,7 +60,7 @@ export class OutbreaksListComponent implements OnDestroy {
 
   createColumnDefs(): TableColumn[] {
     const result: TableColumn[] = [];
-    let keys = this.data[0] ? Object.keys(this.data[0]) : [];
+    let keys = this.data?.length ? Object.keys(this.data[0]) : [];
     keys = keys.filter((key) => key !== 'region');
     keys.forEach((key) => {
       result.push({
