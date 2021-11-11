@@ -186,11 +186,13 @@ export const FORM_DATA_EVENT_FILTERS = [
             key: 'district',
             placeholder: 'captions.EventParticipant.district',
             className: 'size-full',
+            dependingOn: 'region',
           },
           community: {
             key: 'community',
             placeholder: 'Event.responsibleCommunity',
             className: 'size-full',
+            dependingOn: 'district',
           },
         },
       },

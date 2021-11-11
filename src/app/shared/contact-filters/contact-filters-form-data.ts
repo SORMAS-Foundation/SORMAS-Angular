@@ -277,11 +277,13 @@ export const FORM_DATA_CONTACT_FILTERS = [
             key: 'district',
             placeholder: 'captions.Contact.districtUuid',
             className: 'size-full',
+            dependingOn: 'region',
           },
           community: {
             key: 'community',
             placeholder: 'captions.Contact.communityUuid',
             className: 'size-full',
+            dependingOn: 'district',
           },
         },
       },

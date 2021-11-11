@@ -67,22 +67,21 @@ export const FORM_DATA_USER = [
     title: 'strings.headingLocation',
     fields: [
       {
-        ...FORM_DATA_SELECT,
-        key: 'address.country.caption',
-        className: 'hidden',
+        ...FORM_DATA_INPUT,
+        key: 'country.caption',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'region.caption',
         className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'district.caption',
         className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'community.caption',
         className: 'hidden',
       },
@@ -92,7 +91,7 @@ export const FORM_DATA_USER = [
         className: 'no-float',
         widgetInfo: {
           country: {
-            key: 'address.country.caption',
+            key: 'country.caption',
             label: 'captions.country',
             className: 'size-medium',
           },
@@ -100,16 +99,19 @@ export const FORM_DATA_USER = [
             key: 'region.caption',
             label: 'captions.region',
             className: 'size-medium',
+            dependingOn: 'country',
           },
           district: {
             key: 'district.caption',
             label: 'captions.district',
             className: 'size-medium',
+            dependingOn: 'region',
           },
           community: {
             key: 'community.caption',
             label: 'captions.community',
             className: 'size-medium',
+            dependingOn: 'district',
           },
         },
       },

@@ -72,6 +72,7 @@ export const FORM_DATA_ENTRY_POINTS_ADD_EDIT = [
             label: 'captions.district',
             className: 'size-medium',
             newLine: false,
+            dependingOn: 'region',
           },
         },
       },

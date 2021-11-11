@@ -111,14 +111,19 @@ export const FORM_DATA_PERSON_FILTERS = [
           region: {
             key: 'region',
             placeholder: 'captions.Contact.region',
+            className: 'size-full',
           },
           district: {
             key: 'district',
             placeholder: 'captions.Contact.district',
+            dependingOn: 'region',
+            className: 'size-full',
           },
           community: {
             key: 'community',
             placeholder: 'captions.Contact.community',
+            dependingOn: 'district',
+            className: 'size-full',
           },
         },
       },

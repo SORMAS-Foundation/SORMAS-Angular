@@ -73,6 +73,7 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
             label: 'captions.EventParticipant.district',
             required: true,
             className: 'size-medium',
+            dependingOn: 'region',
           },
         },
       },

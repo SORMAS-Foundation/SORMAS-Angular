@@ -292,11 +292,13 @@ export const FORM_DATA_CASE_DETAILS = [
             required: true,
             label: 'captions.CaseData.responsibleDistrict',
             newLine: true,
+            dependingOn: 'region',
           },
           community: {
             key: 'community.uuid',
             label: 'captions.CaseData.responsibleCommunity',
             newLine: true,
+            dependingOn: 'district',
           },
         },
       },

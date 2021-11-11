@@ -68,6 +68,7 @@ export const FORM_DATA_DISTRICT_FILTERS = [
             key: 'region.uuid',
             placeholder: 'captions.region',
             className: 'size-full',
+            dependingOn: 'country',
           },
         },
       },

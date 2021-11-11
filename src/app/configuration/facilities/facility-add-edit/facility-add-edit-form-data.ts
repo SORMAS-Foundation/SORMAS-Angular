@@ -1,4 +1,4 @@
-import { FORM_DATA_INPUT, FORM_DATA_SELECT } from '../../../_constants/form-data';
+import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
 
 export const FORM_DATA_FACILITY_ADD_EDIT = [
   {
@@ -46,39 +46,46 @@ export const FORM_DATA_FACILITY_ADD_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        label: 'captions.Facility.region',
-        validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
-        newLine: true,
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        label: 'captions.Facility.district',
-        validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
-        label: 'captions.Facility.community',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        className: 'fullwidth',
+        widgetInfo: {
+          region: {
+            key: 'region.uuid',
+            required: true,
+            label: 'captions.Facility.region',
+            newLine: true,
+            className: 'size-full',
           },
-        ],
-        newLine: true,
+          district: {
+            key: 'district.uuid',
+            required: true,
+            label: 'captions.Facility.district',
+            newLine: true,
+            className: 'size-full',
+            dependingOn: 'region',
+          },
+          community: {
+            key: 'community.uuid',
+            label: 'captions.Facility.community',
+            newLine: true,
+            className: 'size-full',
+            dependingOn: 'district',
+          },
+        },
       },
       {
         ...FORM_DATA_INPUT,

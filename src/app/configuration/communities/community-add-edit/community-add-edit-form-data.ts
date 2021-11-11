@@ -1,4 +1,4 @@
-import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
 
 export const FORM_DATA_COMMUNITY_ADD_EDIT = [
   {
@@ -17,12 +17,12 @@ export const FORM_DATA_COMMUNITY_ADD_EDIT = [
       {
         ...FORM_DATA_INPUT,
         key: 'region.uuid',
-        className: '',
+        className: 'hidden',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'district.uuid',
-        className: '',
+        className: 'hidden',
       },
       {
         ...FORM_DATA_WIDGET,
@@ -42,6 +42,7 @@ export const FORM_DATA_COMMUNITY_ADD_EDIT = [
             label: 'captions.district',
             newLine: true,
             className: 'size-full',
+            dependingOn: 'region',
           },
         },
       },

@@ -120,6 +120,7 @@ export const FORM_DATA_TASK_FILTERS = [
             key: 'district',
             placeholder: 'captions.CaseData.responsibleDistrict',
             className: 'size-full',
+            dependingOn: 'region',
           },
         },
       },

@@ -136,6 +136,7 @@ export const FORM_DATA_SAMPLE_FILTERS = [
             key: 'district',
             placeholder: 'Sample.responsibleDistrict',
             className: 'size-full',
+            dependingOn: 'region',
           },
         },
       },

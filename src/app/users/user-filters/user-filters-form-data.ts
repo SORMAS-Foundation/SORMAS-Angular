@@ -86,6 +86,7 @@ export const FORM_DATA_USER_FILTERS = [
             key: 'district',
             placeholder: 'strings.promptDistrict',
             className: 'size-full',
+            dependingOn: 'region',
           },
         },
       },

@@ -74,11 +74,13 @@ export const FORM_DATA_COMMUNITY_FILTERS = [
             key: 'region.uuid',
             placeholder: 'captions.region',
             className: 'size-full',
+            dependingOn: 'country',
           },
           district: {
             key: 'district.uuid',
             placeholder: 'captions.district',
             className: 'size-full',
+            dependingOn: 'region',
           },
         },
       },

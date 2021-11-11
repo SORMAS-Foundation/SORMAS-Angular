@@ -214,11 +214,13 @@ export const FORM_DATA_CASE_FILTERS = [
             key: 'district',
             placeholder: 'captions.CaseData.responsibleDistrict',
             newLine: true,
+            dependingOn: 'region',
           },
           community: {
             key: 'community',
             placeholder: 'captions.CaseData.responsibleCommunity',
             newLine: true,
+            dependingOn: 'district',
           },
         },
       },

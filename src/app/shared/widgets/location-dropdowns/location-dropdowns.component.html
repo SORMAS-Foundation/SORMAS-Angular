@@ -1,105 +1,22 @@
 <div class="location-form-container">
   <form class="location-form" [formGroup]="locationForm">
     <mat-form-field
-      *ngIf="config?.widgetInfo.country"
+      *ngFor="let field of fields"
       appearance="outline"
-      [ngClass]="[
-        !config?.widgetInfo.country.newLine ? 'no-float' : '',
-        config?.widgetInfo.country.className || ''
-      ]"
+      [ngClass]="[!data[field].newLine ? 'no-float' : '', data[field].className || '']"
       floatLabel="always"
     >
-      <mat-label *ngIf="config?.widgetInfo.country.label">
-        {{ config?.widgetInfo.country.label || '' | translate }}
-        <span *ngIf="config?.widgetInfo?.country.required" class="required">*</span>
+      <mat-label *ngIf="data[field].label">
+        {{ data[field].label || '' | translate }}
+        <span *ngIf="data[field].required" class="required">*</span>
       </mat-label>
       <mat-select
         disableOptionCentering
-        (selectionChange)="onFormChange($event)"
-        formControlName="country"
-        aria-label="country"
-        [placeholder]="config?.widgetInfo.country.placeholder | translate"
-        [(value)]="selectedCountry"
+        [formControlName]="field"
+        [aria-label]="field"
+        [placeholder]="data[field].placeholder | translate"
       >
-        <mat-option *ngFor="let opt of countryOptions" [value]="opt.key">
-          {{ opt.value }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field
-      *ngIf="config?.widgetInfo.region"
-      appearance="outline"
-      [ngClass]="[
-        !config?.widgetInfo.region.newLine ? 'no-float' : '',
-        config?.widgetInfo.region.className || ''
-      ]"
-      floatLabel="always"
-    >
-      <mat-label *ngIf="config?.widgetInfo.region.label">
-        {{ config?.widgetInfo.region.label || '' | translate }}
-        <span *ngIf="config?.widgetInfo?.region.required" class="required">*</span>
-      </mat-label>
-      <mat-select
-        disableOptionCentering
-        (selectionChange)="onFormChange($event)"
-        formControlName="region"
-        aria-label="region"
-        [placeholder]="config?.widgetInfo.region.placeholder | translate"
-        [(value)]="selectedRegion"
-      >
-        <mat-option *ngFor="let opt of regionOptions" [value]="opt.key">
-          {{ opt.value }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field
-      *ngIf="config?.widgetInfo.district"
-      appearance="outline"
-      class="data-select"
-      floatLabel="always"
-      [ngClass]="[
-        !config?.widgetInfo.district.newLine ? 'no-float' : '',
-        config?.widgetInfo.district.className || ''
-      ]"
-    >
-      <mat-label *ngIf="config?.widgetInfo.district.label">
-        {{ config?.widgetInfo.district.label || '' | translate }}
-        <span *ngIf="config?.widgetInfo?.district.required" class="required">*</span>
-      </mat-label>
-      <mat-select
-        disableOptionCentering
-        (selectionChange)="onFormChange($event)"
-        formControlName="district"
-        aria-label="district"
-        [placeholder]="config?.widgetInfo.district.placeholder | translate"
-      >
-        <mat-option *ngFor="let opt of districtOptions" [value]="opt.key">
-          {{ opt.value }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field
-      *ngIf="config?.widgetInfo.community"
-      appearance="outline"
-      class="data-select"
-      floatLabel="always"
-      [ngClass]="[
-        !config?.widgetInfo.community.newLine ? 'no-float' : '',
-        config?.widgetInfo.community.className || ''
-      ]"
-    >
-      <mat-label *ngIf="config?.widgetInfo.community.label">
-        {{ config?.widgetInfo.community.label || '' | translate }}
-        <span *ngIf="config?.widgetInfo?.community.required" class="required">*</span>
-      </mat-label>
-      <mat-select
-        disableOptionCentering
-        (selectionChange)="onFormChange($event)"
-        formControlName="community"
-        aria-label="community"
-        [placeholder]="config?.widgetInfo.community.placeholder | translate"
-      >
-        <mat-option *ngFor="let opt of communityOptions" [value]="opt.key">
+        <mat-option *ngFor="let opt of data[field].options" [value]="opt.key">
           {{ opt.value }}
         </mat-option>
       </mat-select>
