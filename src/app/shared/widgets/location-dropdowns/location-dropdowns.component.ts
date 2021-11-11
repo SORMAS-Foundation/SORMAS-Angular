@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CommunityService } from '../../../_services/api/community.service';
@@ -14,7 +14,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
   templateUrl: './location-dropdowns.component.html',
   styleUrls: ['./location-dropdowns.component.scss'],
 })
-export class LocationDropdownsComponent implements OnInit {
+export class LocationDropdownsComponent implements OnInit, OnDestroy {
   config: FormElementBase<string>;
   group: FormGroup; // Main form
   countryControl: any;
@@ -114,7 +114,7 @@ export class LocationDropdownsComponent implements OnInit {
     );
   }
 
-  fetchCommunitites(selectedDistrict: string): void {
+  fetchCommunities(selectedDistrict: string): void {
     const filters = [
       {
         field: 'district',
@@ -187,7 +187,7 @@ export class LocationDropdownsComponent implements OnInit {
       this.formActionService.setInputChange(this.regionKey, true);
     }
     if (event.source.ariaLabel === 'district') {
-      this.fetchCommunitites(event.value);
+      this.fetchCommunities(event.value);
       this.districtControl?.setValue(event.value);
       this.communityControl?.setValue(undefined);
       this.formActionService.setInputChange(this.districtKey, true);
@@ -201,25 +201,25 @@ export class LocationDropdownsComponent implements OnInit {
   updateWidgetForm(): void {
     if (this.countryControl) {
       this.fetchCountries();
-      this.selectedCountry = this.group.value[this.countryKey];
+      this.selectedCountry = this.group.controls[this.countryKey].value;
       this.locationForm.controls.country?.setValue(this.selectedCountry);
       this.fetchRegions(this.selectedCountry);
     }
     if (this.regionControl) {
       this.fetchRegions(this.selectedCountry || undefined);
-      this.selectedRegion = this.group.value[this.regionKey];
+      this.selectedRegion = this.group.controls[this.regionKey].value;
       this.locationForm.controls.region?.setValue(this.selectedRegion);
       this.fetchDistricts(this.selectedRegion);
     }
     if (this.districtControl) {
-      this.selectedDistrict = this.group.value[this.districtKey];
+      this.selectedDistrict = this.group.controls[this.districtKey].value;
       this.fetchDistricts(this.selectedRegion);
       this.locationForm.controls.district?.setValue(this.selectedDistrict);
-      this.fetchCommunitites(this.selectedDistrict);
+      this.fetchCommunities(this.selectedDistrict);
     }
     if (this.communityControl) {
-      this.selectedCommunity = this.group.value[this.communityKey];
-      this.fetchCommunitites(this.group.value[this.districtKey]);
+      this.selectedCommunity = this.group.controls[this.communityKey].value;
+      this.fetchCommunities(this.group.value[this.districtKey]);
       this.locationForm.controls.community?.setValue(this.selectedCommunity);
     }
   }
@@ -254,5 +254,9 @@ export class LocationDropdownsComponent implements OnInit {
         });
       })
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
