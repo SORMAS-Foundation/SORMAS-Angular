@@ -14,17 +14,23 @@
 
     <ng-container matColumnDef="name" *ngIf="!regionId">
       <th mat-header-cell *matHeaderCellDef> {{ 'strings.entityRegion' | translate }} </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"> <span class="bold">{{element.name}}</span> </td>
     </ng-container>
 
     <ng-container matColumnDef="districtName">
       <th mat-header-cell *matHeaderCellDef> {{ 'strings.entityDistrict' | translate }} </th>
-      <td mat-cell *matCellDef="let element"> {{element.districtName}} </td>
+      <td mat-cell *matCellDef="let element"> <span class="bold">{{element.districtName}}</span> </td>
     </ng-container>
 
     <ng-container matColumnDef="endDate">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.lineListingEndDate' | translate }} </th>
       <td mat-cell *matCellDef="let element">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon class="material-icons-round calendar-icon">date_range</mat-icon>
+        </mat-datepicker-toggle>
+        <p class="datepicker-text">{{ element.endDate | date:defaultDateFormat }}</p>
+        <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
+
         <mat-form-field
           class="datepicker-input"
           appearance="outline"
@@ -41,9 +47,6 @@
             [matDatepicker]="picker"
             [placeholder]="'captions.lineListingEndDate' | translate"
           />
-          <mat-datepicker-toggle matSuffix [for]="picker">
-            <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
-          </mat-datepicker-toggle>
           <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
         </mat-form-field>
       </td>

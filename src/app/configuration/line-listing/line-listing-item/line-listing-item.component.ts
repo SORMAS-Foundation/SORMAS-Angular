@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ListingDto } from '../../../_models/listingDto';
 import { RegionDto } from '../../../_models/regionDto';
 import { NotificationService } from '../../../_services/notification.service';
-import { DEFAULT_DATE_FORMAT, MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
+import { MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
 import { LineListingModalComponent } from '../line-listing-modal/line-listing-modal.component';
 import { ListingService } from '../../../_services/api/listing.service';
 
@@ -19,8 +19,6 @@ export class LineListingItemComponent implements OnDestroy {
   @Input() regions: RegionDto[];
   @Input() regionId: string;
   @Input() disease: string;
-
-  defaultDateFormat = DEFAULT_DATE_FORMAT;
 
   private subscription: Subscription[] = [];
 

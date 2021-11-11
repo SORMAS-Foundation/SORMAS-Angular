@@ -42,12 +42,12 @@ export const FORM_DATA_FACILITY_FILTERS = [
   },
   {
     id: 'facility',
-    title: 'captions.facility',
+    title: 'facilityDetails',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'facilityCategoy',
+        key: 'facilityCategory',
         placeholder: 'captions.facilityTypeGroup',
         options: [
           {

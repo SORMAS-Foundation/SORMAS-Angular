@@ -1,0 +1,49 @@
+@use '/src/variables.scss' as *;
+
+.mat-dialog-title {
+  padding-top: 40px;
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+}
+
+.mat-dialog-content {
+  padding: 24px 64px;
+  background: $white;
+  font-size: 14px;
+}
+
+.info {
+  margin: 0;
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+
+  .info {
+    margin-right: 16px;
+  }
+
+  .affected-districts {
+    margin-left: auto;
+  }
+}
+
+.outbreaks-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px 24px;
+}
+
+.radio-group-label {
+  font-weight: 500;
+}
+
+.mat-radio-group .mat-radio-button {
+  font-weight: normal;
+}

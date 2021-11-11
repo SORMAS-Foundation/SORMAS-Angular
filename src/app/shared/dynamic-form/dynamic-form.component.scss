@@ -25,15 +25,15 @@ header {
   }
 }
 
-.mat-divider-horizontal {
-  position: unset;
-  border: 0;
-}
-
 fieldset {
   padding: 0;
   border: 0;
   margin: 10px 0;
+
+  .mat-divider-horizontal {
+    position: unset;
+    border: 0;
+  }
 
   &.card {
     display: flex;
