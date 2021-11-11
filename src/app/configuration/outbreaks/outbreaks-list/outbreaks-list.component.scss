@@ -1,0 +1,66 @@
+@use '/src/variables.scss' as *;
+
+table {
+  width: 100%;
+  font-weight: 500;
+}
+
+th.mat-header-cell {
+  border-bottom-color: map-get($sormas-accent, 200);
+  border-left-width: 0;
+  background-color: $white;
+}
+
+tr.mat-row td.mat-cell {
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  background-color: unset;
+
+  &:first-of-type {
+    padding-left: 24px;
+  }
+
+  &.disease {
+    padding: 2px;
+
+    .mat-stroked-button {
+      width: 100%;
+      border-color: transparent;
+      text-align: inherit;
+
+      &:hover {
+        border-color: map-get($sormas-primary, 100);
+      }
+    }
+  }
+}
+
+tr.mat-row.row-selected td.mat-cell {
+  background-color: map-get($sormas-primary, 50);
+}
+
+.spacer {
+  width: 100%;
+}
+
+.status-normal {
+  color: map-get($sormas-accent, 400);
+}
+
+.status-low {
+  color: map-get($sormas-primary, 600);
+}
+
+.status-medium {
+  color: map-get($sormas-warning, 600);
+}
+
+.status-medium-high {
+  color: map-get($sormas-warning, 800);
+}
+
+.status-high {
+  color: map-get($sormas-alert, 700);
+}

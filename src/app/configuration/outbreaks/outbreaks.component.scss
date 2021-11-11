@@ -1,1 +1,11 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+.info {
+  color: map-get($sormas-accent, 500);
+  font-size: 12px;
+}
+
+.mat-icon {
+  font-size: 18px;
+  vertical-align: middle;
+}

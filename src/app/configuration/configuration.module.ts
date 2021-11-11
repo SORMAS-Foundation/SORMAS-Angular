@@ -46,11 +46,15 @@ import { LineListingTableComponent } from './line-listing/line-listing-table/lin
 import { FacilityFiltersComponent } from './facilities/facility-filters/facility-filters.component';
 import { FacilityListComponent } from './facilities/facility-list/facility-list.component';
 import { FacilityAddEditComponent } from './facilities/facility-add-edit/facility-add-edit.component';
+import { OutbreaksListComponent } from './outbreaks/outbreaks-list/outbreaks-list.component';
+import { OutbreaksEditComponent } from './outbreaks/outbreaks-edit/outbreaks-edit.component';
 
 @NgModule({
   declarations: [
     ConfigurationComponent,
     OutbreaksComponent,
+    OutbreaksListComponent,
+    OutbreaksEditComponent,
     ContinentsComponent,
     SubcontinentsComponent,
     CountriesComponent,

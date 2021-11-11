@@ -1,5 +1,7 @@
 /* tslint:disable:no-unused-variable */
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { OutbreaksComponent } from './outbreaks.component';
 
@@ -10,6 +12,7 @@ describe('OutbreaksComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [OutbreaksComponent],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 
