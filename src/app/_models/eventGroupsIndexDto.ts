@@ -12,6 +12,7 @@
 import { EventGroupReferenceDto } from './eventGroupReferenceDto';
 
 export interface EventGroupsIndexDto {
+  uuid: string;
   eventGroup?: EventGroupReferenceDto;
   count?: number;
 }
