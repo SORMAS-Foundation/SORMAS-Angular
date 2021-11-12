@@ -2,14 +2,12 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { DistrictService } from '../../../_services/api/district.service';
 import { actionsBulkEditDefs } from './districts-actions-data';
 import { defaultColumnDefs } from './districts-table-data';
-import { FormActionsService } from '../../../_services/form-actions.service';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH, ADD_EDIT_FORM_ID } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH, TableAppearanceOptions } from '../../../app.constants';
 import { DistrictAddEditComponent } from '../district-add-edit/district-add-edit.component';
 import { DistrictDto } from '../../../_models/districtDto';
 
@@ -28,8 +26,7 @@ export class DistrictListComponent implements OnDestroy {
   constructor(
     public districtService: DistrictService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   openEditDistrictModal(district: DistrictDto): void {
@@ -45,7 +42,6 @@ export class DistrictListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +60,6 @@ export class DistrictListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }

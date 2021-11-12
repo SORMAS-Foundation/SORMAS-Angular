@@ -7,7 +7,7 @@
       {{ person.firstName }} {{ person.lastName }} <small>({{ person.uuid | slice: 0:6 }})</small>
     </h1>
     <div class="tab-nav-header-actions">
-      <app-form-actions formId="person" [resource]="person"></app-form-actions>
+      <app-form-actions [formId]="formId" [resource]="person"></app-form-actions>
     </div>
   </header>
 
@@ -15,7 +15,7 @@
     <app-sidebar>
       <app-dynamic-form
         main
-        formId="person"
+        [formId]="formId"
         [formElements]="myFormElements"
         [resourceService]="personService"
       ></app-dynamic-form>

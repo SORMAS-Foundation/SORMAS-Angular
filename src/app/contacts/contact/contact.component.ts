@@ -5,6 +5,7 @@ import { NotificationService } from '../../_services/notification.service';
 import { ContactDto } from '../../_models/contactDto';
 import { ContactService } from '../../_services/api/contact.service';
 import { actionsEditDefs } from './contact-actions-data';
+import { CONTACT_DETAILS_FORM_ID } from '../../app.constants';
 
 // case routing for tabs
 const contactLinks = (contactId: string): EntityLink[] => {
@@ -30,6 +31,7 @@ export class ContactComponent implements OnInit {
   currentSubPage: EntityLink;
   contactId: any;
   actionEditOptions = actionsEditDefs;
+  formId = CONTACT_DETAILS_FORM_ID;
 
   constructor(
     public contactService: ContactService,

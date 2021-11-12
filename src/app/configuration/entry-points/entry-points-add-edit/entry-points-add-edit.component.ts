@@ -4,6 +4,7 @@ import { PointOfEntryDto } from '../../../_models/pointOfEntryDto';
 import * as data from './entry-points-add-edit-form-data';
 import { EntryPointService } from '../../../_services/api/entry-point.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
+import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-entry-points-add-edit',
@@ -13,7 +14,7 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 export class EntryPointsAddEditComponent implements OnInit {
   @Input() selectedResource: PointOfEntryDto;
   myFormElements: FormBase<any>[] = [];
-  formId = 'entryPointsAddEdit';
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     public entryPointService: EntryPointService,

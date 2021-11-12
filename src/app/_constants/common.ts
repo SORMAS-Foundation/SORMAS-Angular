@@ -119,5 +119,3 @@ export const FOLLOW_UP_STATUS = {
   LOST: 'LOST' as FollowUpStatus,
   NO_FOLLOW_UP: 'NO_FOLLOW_UP' as FollowUpStatus,
 };
-
-export const ADD_EDIT_FORM_ID = 'addEditModal';

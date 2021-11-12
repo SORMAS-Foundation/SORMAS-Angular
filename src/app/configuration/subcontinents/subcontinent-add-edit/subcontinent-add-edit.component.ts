@@ -5,6 +5,7 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 import { SubcontinentDto } from '../../../_models/subcontinentDto';
 import { SubcontinentService } from '../../../_services/api/subcontinent.service';
 import { ContinentService } from '../../../_services/api/continent.service';
+import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-subcontinent-add-edit',
@@ -14,7 +15,7 @@ import { ContinentService } from '../../../_services/api/continent.service';
 export class SubcontinentAddEditComponent implements OnInit {
   @Input() selectedResource: SubcontinentDto;
   myFormElements: FormBase<any>[] = [];
-  formId = 'subcontinentAddEdit';
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     public subcontinentService: SubcontinentService,

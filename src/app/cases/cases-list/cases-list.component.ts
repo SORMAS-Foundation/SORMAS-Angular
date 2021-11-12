@@ -13,6 +13,7 @@ import {
   ADD_MODAL_MAX_WIDTH,
   CASE_EXPORT_CUSTOM_MODAL_WIDTH,
   CASE_IMPORT_MODAL_WIDTH,
+  CASE_FILTERS_FORM_ID,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -24,7 +25,6 @@ import {
 import { ACTIONS_CASE } from '../../_constants/actions';
 import { CaseImportComponent } from '../case-import/case-import.component';
 import { HelperService } from '../../_services/helper.service';
-import { FormActionsService } from '../../_services/form-actions.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { CaseAddComponent } from '../../shared/case-add/case-add.component';
 import { FORM_DATA_CASE_FILTERS } from '../case-filters/case-filters-form-data';
@@ -44,7 +44,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams: Params;
-  formId = 'caseFilters';
+  formIdFilters = CASE_FILTERS_FORM_ID;
 
   private subscription: Subscription[] = [];
 
@@ -53,8 +53,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     public helperService: HelperService,
     private activeRoute: ActivatedRoute,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -77,7 +76,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard('caseAdd');
         if (result) {
           // callback
         }

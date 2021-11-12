@@ -16,6 +16,7 @@ import { EventService } from '../../_services/api/event.service';
 import { PathogenTestService } from '../../_services/api/pathogenTest.service';
 import { AdditionalTestService } from '../../_services/api/additionalTest.service';
 import { actionsEditDefs } from './sample-actions-data';
+import { SAMPLE_DETAILS_FORM_ID } from '../../app.constants';
 
 @Component({
   selector: 'app-sample',
@@ -31,6 +32,7 @@ export class SampleComponent implements OnInit, OnDestroy {
   infoBarOptions = InfoBarTypeOptions;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_PERSON;
+  formId = SAMPLE_DETAILS_FORM_ID;
   actionEditOptions = actionsEditDefs;
   subscriptions: Subscription[] = [];
 

@@ -8,7 +8,7 @@ import { TableColumn } from '../../../_models/common';
 import { defaultColumnDefs } from './case-clinical-course-table-data';
 import { ClinicalVisitDto } from '../../../_models/clinicalVisitDto';
 import { ClinicalVisitService } from '../../../_services/api/clinical-visit.service';
-import { TableAppearanceOptions } from '../../../app.constants';
+import { CASE_CLINICAL_COURSE_FORM_ID, TableAppearanceOptions } from '../../../app.constants';
 
 @Component({
   selector: 'app-case-clinical-course',
@@ -21,6 +21,7 @@ export class CaseClinicalCourseComponent {
   formData = data.FORM_DATA_CASE_CLINICAL_COURSE;
   defaultColumns: TableColumn[] = defaultColumnDefs;
   tableAppearanceOptions = TableAppearanceOptions;
+  formId = CASE_CLINICAL_COURSE_FORM_ID;
 
   public resourceService: BaseService<any>;
 

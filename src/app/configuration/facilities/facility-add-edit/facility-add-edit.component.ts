@@ -4,6 +4,7 @@ import * as data from './facility-add-edit-form-data';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { FacilityDto } from '../../../_models/facilityDto';
 import { FacilityService } from '../../../_services/api/facility.service';
+import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-facility-add-edit',
@@ -13,7 +14,7 @@ import { FacilityService } from '../../../_services/api/facility.service';
 export class FacilityAddEditComponent implements OnInit {
   @Input() selectedResource: FacilityDto;
   myFormElements: FormBase<any>[] = [];
-  formId = 'facilityAddEdit';
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     public facilityService: FacilityService,

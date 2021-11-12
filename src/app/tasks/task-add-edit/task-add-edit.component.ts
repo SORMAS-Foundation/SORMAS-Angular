@@ -6,6 +6,7 @@ import { FormElementControlService } from '../../_services/form-element-control.
 import { TaskDto } from '../../_models/taskDto';
 import { UserService } from '../../_services/api/user.service';
 import { UserDto } from '../../_models/userDto';
+import { ADD_EDIT_FORM_ID } from '../../app.constants';
 
 const ASSIGNEE_USER_KEY = 'assigneeUser.uuid';
 
@@ -17,7 +18,7 @@ const ASSIGNEE_USER_KEY = 'assigneeUser.uuid';
 export class TaskAddEditComponent implements OnInit {
   @Input() selectedResource: TaskDto;
   myFormElements: FormBase<any>[] = [];
-  formId = 'taskAddEdit';
+  formId = ADD_EDIT_FORM_ID;
   allUsers: UserDto[] = [];
   selectedUserId = '';
 

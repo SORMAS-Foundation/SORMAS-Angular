@@ -8,6 +8,7 @@ import { CaseDataDto } from '../../../_models/caseDataDto';
 import { TaskService } from '../../../_services/api/task.service';
 import { SampleService } from '../../../_services/api/sample.service';
 import { EventService } from '../../../_services/api/event.service';
+import { CASE_DETAILS_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-case-details',
@@ -17,6 +18,7 @@ import { EventService } from '../../../_services/api/event.service';
 export class CaseDetailsComponent implements AfterViewInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CASE_DETAILS;
+  formId = CASE_DETAILS_FORM_ID;
   case: CaseDataDto;
 
   public resourceService: BaseService<any>;

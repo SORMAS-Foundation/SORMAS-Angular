@@ -5,6 +5,7 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 import * as data from './district-add-edit-form-data';
 import { DistrictDto } from '../../../_models/districtDto';
 import { DistrictService } from '../../../_services/api/district.service';
+import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-district-add-edit',
@@ -14,7 +15,7 @@ import { DistrictService } from '../../../_services/api/district.service';
 export class DistrictAddEditComponent implements OnInit {
   @Input() selectedResource: DistrictDto;
   myFormElements: FormBase<any>[] = [];
-  formId = 'districtAddEdit';
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     public districtService: DistrictService,

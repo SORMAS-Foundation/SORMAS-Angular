@@ -32,8 +32,7 @@ import {
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH, ADD_EDIT_FORM_ID } from '../../app.constants';
-import { FormActionsService } from '../../_services/form-actions.service';
+import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
 
 @Component({
@@ -105,7 +104,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
     private dialog: MatDialog,
-    private formActionsService: FormActionsService,
     private notificationService: NotificationService
   ) {}
 
@@ -211,7 +209,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // callback
         }
@@ -381,9 +378,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.displayedColumns = this.getColumnsNameByKey(columns);
     this.columnKeys = this.getColumnsKeyByName(this.displayedColumns);
     this.saveColumns();
-    // setTimeout(() => {
-    //   this.formActionsService.setDiscard();
-    // });
   }
 
   getRowStyle(index: number): string {

@@ -44,6 +44,9 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    if (this.data.formId) {
+      this.formId = this.data.formId;
+    }
     if (this.data.service) {
       this.subscription.push(
         this.data.service.getById(this.data.resource.uuid).subscribe({
@@ -82,6 +85,8 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
         }
       })
     );
+
+    this.subscription.push(this.dialogRef.beforeClosed().subscribe(() => this.discard()));
   }
 
   createComponent(): void {

@@ -4,16 +4,19 @@ import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NavItem, TableColumn } from '../../_models/common';
-import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
 import { defaultColumnDefs } from './events-list-table-data';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT, ADD_EDIT_FORM_ID } from '../../_constants/common';
+import {
+  ADD_MODAL_MAX_WIDTH,
+  CONFIG_EVENTS,
+  HEADER_HEIGHT,
+  EVENT_FILTERS_FORM_ID,
+} from '../../app.constants';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
-import { FormActionsService } from '../../_services/form-actions.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_FILTERS } from '../event-filters/event-filters-form-data';
 
@@ -31,6 +34,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   routeParams = this.activeRoute.snapshot.queryParams;
   headerHeight = HEADER_HEIGHT;
   presetFilters: any;
+  formIdFilters = EVENT_FILTERS_FORM_ID;
 
   private subscription: Subscription[] = [];
 
@@ -39,8 +43,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
     public helperService: HelperService,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private activeRoute: ActivatedRoute,
-    private formActionsService: FormActionsService
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +67,6 @@ export class EventsListComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // callback
         }

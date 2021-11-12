@@ -8,7 +8,6 @@ import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { CommunityDto } from '../../../_models/communityDto';
 import { CommunityService } from '../../../_services/api/community.service';
-import { FormActionsService } from '../../../_services/form-actions.service';
 import { CommunityAddEditComponent } from '../community-add-edit/community-add-edit.component';
 import { actionsBulkEditDefs } from './communities-actions-data';
 import { defaultColumnDefs } from './communities-table-data';
@@ -22,15 +21,13 @@ export class CommunityListComponent implements OnDestroy {
   defaultColumns: TableColumn[] = defaultColumnDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   tableAppearanceOptions = TableAppearanceOptions;
-  formId = 'communityAddEdit';
 
   private subscription: Subscription[] = [];
 
   constructor(
     public communityService: CommunityService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   openEditCommunityModal(community: CommunityDto): void {
@@ -46,7 +43,6 @@ export class CommunityListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard(this.formId);
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -65,7 +61,6 @@ export class CommunityListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard(this.formId);
         if (result) {
           // this.tableComponent.getResources(true);
         }

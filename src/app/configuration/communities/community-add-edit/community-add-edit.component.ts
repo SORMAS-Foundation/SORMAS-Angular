@@ -7,6 +7,7 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 import { RegionService } from '../../../_services/api/region.service';
 import { DistrictService } from '../../../_services/api/district.service';
 import { FormActionsService } from '../../../_services/form-actions.service';
+import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-community-add-edit',
@@ -17,7 +18,7 @@ export class CommunityAddEditComponent implements OnInit {
   @Input() selectedResource: CommunityDto;
   myFormElements: FormBase<any>[] = [];
   selectedRegion = '';
-  formId = 'communityAddEdit';
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     public communityService: CommunityService,

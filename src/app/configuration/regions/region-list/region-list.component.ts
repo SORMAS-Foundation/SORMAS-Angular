@@ -8,9 +8,8 @@ import { RegionDto } from '../../../_models/models';
 import { RegionService } from '../../../_services/api/region.service';
 import { actionsBulkEditDefs } from './regions-actions-data';
 import { defaultColumnDefs } from './regions-table-data';
-import { FormActionsService } from '../../../_services/form-actions.service';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH, ADD_EDIT_FORM_ID } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH } from '../../../app.constants';
 import { RegionAddEditComponent } from '../region-add-edit/region-add-edit.component';
 
 @Component({
@@ -28,8 +27,7 @@ export class RegionListComponent implements OnDestroy {
   constructor(
     public regionService: RegionService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   openEditRegionModal(region: RegionDto): void {
@@ -45,7 +43,6 @@ export class RegionListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +61,6 @@ export class RegionListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }
