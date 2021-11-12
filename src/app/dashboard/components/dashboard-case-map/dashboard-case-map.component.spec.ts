@@ -8,9 +8,8 @@ describe('DashboardCaseMapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardCaseMapComponent ]
-    })
-    .compileComponents();
+      declarations: [DashboardCaseMapComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-new-events',
   templateUrl: './dashboard-new-events.component.html',
-  styleUrls: ['./dashboard-new-events.component.scss']
+  styleUrls: ['./dashboard-new-events.component.scss'],
 })
-export class DashboardNewEventsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class DashboardNewEventsComponent {}

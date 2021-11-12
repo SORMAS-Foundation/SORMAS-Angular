@@ -8,9 +8,8 @@ describe('DashboardContactStatsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardContactStatsComponent ]
-    })
-    .compileComponents();
+      declarations: [DashboardContactStatsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

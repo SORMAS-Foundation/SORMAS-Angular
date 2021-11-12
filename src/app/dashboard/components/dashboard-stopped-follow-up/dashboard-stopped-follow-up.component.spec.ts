@@ -8,9 +8,8 @@ describe('DashboardStoppedFollowUpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardStoppedFollowUpComponent ]
-    })
-    .compileComponents();
+      declarations: [DashboardStoppedFollowUpComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

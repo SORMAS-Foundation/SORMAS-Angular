@@ -8,9 +8,8 @@ describe('DashboardEpidemiologicalCurveComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardEpidemiologicalCurveComponent ]
-    })
-    .compileComponents();
+      declarations: [DashboardEpidemiologicalCurveComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

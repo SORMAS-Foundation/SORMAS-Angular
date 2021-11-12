@@ -8,9 +8,8 @@ describe('DashboardTransmissionChainComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardTransmissionChainComponent ]
-    })
-    .compileComponents();
+      declarations: [DashboardTransmissionChainComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

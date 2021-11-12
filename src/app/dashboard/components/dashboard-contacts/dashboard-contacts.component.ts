@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-contacts',
   templateUrl: './dashboard-contacts.component.html',
-  styleUrls: ['./dashboard-contacts.component.scss']
+  styleUrls: ['./dashboard-contacts.component.scss'],
 })
-export class DashboardContactsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class DashboardContactsComponent {}
