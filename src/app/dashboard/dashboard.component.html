@@ -1,12 +1,12 @@
 <div class="dashboard-wrapper">
   <div class="page-header">
     <h1 class="page-header-title">
-      {{ 'captions.View.cases' | translate }}
+      <span *ngIf="currentRoute === 'surveillance'">{{ 'captions.View.dashboard.surveillance' | translate }}</span>
+      <span *ngIf="currentRoute === 'contacts'">{{ 'captions.View.dashboard.contacts' | translate }}</span>
     </h1>
     <div class="page-header-actions">
-      <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
-        <a [routerLink]="['/']">Surveilance</a>
-        <a [routerLink]="['/contacts-dashboard']">Contact</a>
+      <app-dropdown-menu [buttonText]="'actionViewOptions' | translate">
+        <app-action-menu [config]="actionsViewOptions" (action)="onActionSelected($event)"></app-action-menu>
       </app-dropdown-menu>
     </div>
   </div>

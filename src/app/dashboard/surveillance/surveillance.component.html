@@ -1,11 +1,39 @@
 <div class="dashboard-surveillance-wrapper">
-  <app-dashboard-filters></app-dashboard-filters>
-  <app-dashboard-disease-overview></app-dashboard-disease-overview>
-  <app-dashboard-difference-cases></app-dashboard-difference-cases>
-  <app-dashboard-disease-menu></app-dashboard-disease-menu>
-  <app-dashboard-new-cases></app-dashboard-new-cases>
-  <app-dashboard-new-events></app-dashboard-new-events>
-  <app-dashboard-test-results></app-dashboard-test-results>
-  <app-dashboard-epidemiological-curve></app-dashboard-epidemiological-curve>
-  <app-dashboard-case-map></app-dashboard-case-map>
+  <mat-card>
+    <app-dashboard-filters></app-dashboard-filters>
+  </mat-card>
+  <mat-card>
+    <app-dashboard-disease-overview class="width-40-mobile-100"></app-dashboard-disease-overview>
+    <app-dashboard-difference-cases class="width-60-mobile-100"></app-dashboard-difference-cases>
+  </mat-card>
+  <mat-card>
+    <app-dashboard-disease-menu></app-dashboard-disease-menu>
+  </mat-card>
+  <div class="width-50-mobile-100">
+    <mat-card class="mr-16-mobile-0">
+      <app-dashboard-new-cases></app-dashboard-new-cases>
+    </mat-card>
+  </div>
+  <div class="width-50-mobile-100">
+    <div class="width-50">
+      <mat-card class="mr-16">
+        <app-dashboard-new-events></app-dashboard-new-events>
+      </mat-card>
+    </div>
+    <div class="width-50">
+      <mat-card>
+        <app-dashboard-test-results></app-dashboard-test-results>
+      </mat-card>
+    </div>
+  </div>
+  <div class="width-50-mobile-100">
+    <mat-card class="mr-16-mobile-0">
+      <app-dashboard-epidemiological-curve></app-dashboard-epidemiological-curve>
+    </mat-card>
+  </div>
+  <div class="width-50-mobile-100">
+    <mat-card>
+      <app-dashboard-case-map></app-dashboard-case-map>
+    </mat-card>
+  </div>
 </div>

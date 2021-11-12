@@ -1,0 +1,41 @@
+@use '/src/variables.scss' as *;
+
+.dashboard-contacts-wrapper {
+  padding: 24px;
+
+  .mat-card {
+    margin-bottom: 16px;
+  }
+
+  .width-40,
+  .width-50,
+  .width-60 {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .width-40 {
+    width: 40%;
+  }
+  .width-50 {
+    width: 50%;
+  }
+  .width-60 {
+    width: 60%;
+  }
+
+  .mr-16 {
+    margin-right: 16px;
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .dashboard-contacts-wrapper {
+    .width-100-lg {
+      width: 100%;
+    }
+
+    .mr-0-lg {
+      margin-right: 0;
+    }
+  }
+}
