@@ -22,31 +22,15 @@ export class DistrictAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.regionService.getAll(null, null, null, true).subscribe({
-      next: (response: any) => {
-        if (this.selectedResource) {
-          this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-            this.selectedResource,
-            JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT))
-          );
-          this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-            this.myFormElements,
-            'region.uuid',
-            'disabled',
-            true
-          );
-        } else {
-          this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT));
-        }
-        this.myFormElements = this.formElementControlService.setOptionsToInput(
-          response.elements,
-          this.myFormElements,
-          'region.uuid',
-          'name'
-        );
-      },
-      error: () => {},
-      complete: () => {},
-    });
+    const config: any = data.FORM_DATA_DISTRICT_ADD_EDIT;
+    if (this.selectedResource) {
+      config[0].fields[3].widgetInfo.region.disabled = true;
+      this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+        this.selectedResource,
+        JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT))
+      );
+    } else {
+      this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT));
+    }
   }
 }
