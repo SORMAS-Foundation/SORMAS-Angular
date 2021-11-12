@@ -1,1 +1,16 @@
-<h1 i18n="Dashboard header">Dashboard</h1>
+<div class="dashboard-wrapper">
+  <div class="page-header">
+    <h1 class="page-header-title">
+      {{ 'captions.View.cases' | translate }}
+    </h1>
+    <div class="page-header-actions">
+      <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+        <a [routerLink]="['/']">Surveilance</a>
+        <a [routerLink]="['/contacts-dashboard']">Contact</a>
+      </app-dropdown-menu>
+    </div>
+  </div>
+  <div class="dashboard-page-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

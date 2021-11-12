@@ -1,1 +1,8 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+.dashboard-wrapper {
+  .dashboard-page-content {
+    height: 100vh;
+    background: map-get($sormas-accent, 50);
+  }
+}
