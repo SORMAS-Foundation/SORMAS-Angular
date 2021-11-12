@@ -23,7 +23,26 @@ import { DashboardContactStatsComponent } from './components/dashboard-contact-s
 import { DashboardTransmissionChainComponent } from './components/dashboard-transmission-chain/dashboard-transmission-chain.component';
 
 @NgModule({
-  declarations: [DashboardComponent, SurveillanceComponent, ContactsComponent, DashboardFiltersComponent, DashboardDiseaseOverviewComponent, DashboardDifferenceCasesComponent, DashboardDiseaseMenuComponent, DashboardNewCasesComponent, DashboardNewEventsComponent, DashboardTestResultsComponent, DashboardEpidemiologicalCurveComponent, DashboardCaseMapComponent, DashboardContactsComponent, DashboardUnderFollowUpComponent, DashboardStoppedFollowUpComponent, DashboardVisitsComponent, DashboardContactStatsComponent, DashboardTransmissionChainComponent],
+  declarations: [
+    DashboardComponent,
+    SurveillanceComponent,
+    ContactsComponent,
+    DashboardFiltersComponent,
+    DashboardDiseaseOverviewComponent,
+    DashboardDifferenceCasesComponent,
+    DashboardDiseaseMenuComponent,
+    DashboardNewCasesComponent,
+    DashboardNewEventsComponent,
+    DashboardTestResultsComponent,
+    DashboardEpidemiologicalCurveComponent,
+    DashboardCaseMapComponent,
+    DashboardContactsComponent,
+    DashboardUnderFollowUpComponent,
+    DashboardStoppedFollowUpComponent,
+    DashboardVisitsComponent,
+    DashboardContactStatsComponent,
+    DashboardTransmissionChainComponent,
+  ],
   imports: [CommonModule, DashboardRoutingModule, MaterialModule, SharedModule],
 })
 export class DashboardModule {}

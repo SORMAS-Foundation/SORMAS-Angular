@@ -19,7 +19,7 @@ export class DashboardComponent implements OnDestroy {
   constructor(private router: Router) {
     this.subscription.push(
       // @ts-ignore
-      this.router.events.subscribe((event: Event) => {
+      this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
           if (event.url === '/') {
             this.currentRoute = 'surveillance';

@@ -8,9 +8,8 @@ describe('SurveillanceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SurveillanceComponent ]
-    })
-    .compileComponents();
+      declarations: [SurveillanceComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
