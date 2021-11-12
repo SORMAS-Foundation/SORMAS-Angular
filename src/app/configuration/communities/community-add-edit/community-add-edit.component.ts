@@ -6,7 +6,6 @@ import { CommunityService } from '../../../_services/api/community.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { RegionService } from '../../../_services/api/region.service';
 import { DistrictService } from '../../../_services/api/district.service';
-import { FormActionsService } from '../../../_services/form-actions.service';
 
 @Component({
   selector: 'app-community-add-edit',
@@ -22,15 +21,19 @@ export class CommunityAddEditComponent implements OnInit {
     public communityService: CommunityService,
     public regionService: RegionService,
     public districtService: DistrictService,
-    private formElementControlService: FormElementControlService,
-    private formActionService: FormActionsService
+    private formElementControlService: FormElementControlService
   ) {}
 
   ngOnInit(): void {
     if (this.selectedResource) {
       const config: any = data.FORM_DATA_COMMUNITY_ADD_EDIT;
-      config[0].fields[3].widgetInfo.region.disabled = true;
-      config[0].fields[3].widgetInfo.district.disabled = true;
+      config.forEach((section: any) => {
+        const field = section.fields.find((f: any) => f.widgetInfo);
+        if (field) {
+          field.widgetInfo.region.disabled = true;
+          field.widgetInfo.district.disabled = true;
+        }
+      });
       this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
         this.selectedResource,
         JSON.parse(JSON.stringify(config))
