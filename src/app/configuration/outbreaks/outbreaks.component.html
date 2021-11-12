@@ -1,3 +1,6 @@
-<p>
-  outbreaks works!
+<p class="info">
+  <mat-icon class="material-icons-round">info</mat-icon>
+  {{ 'strings.infoDefineOutbreaks' | translate }}
 </p>
+
+<app-outbreaks-list [outbreaks]="outbreaks"></app-outbreaks-list>

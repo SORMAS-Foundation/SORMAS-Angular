@@ -51,6 +51,24 @@
       &.ng-touched.ng-invalid .mat-radio-button:not(.mat-radio-disabled) .mat-radio-outer-circle {
         border-color: mat-color(mat-palette($warn, 300));
       }
+
+      &.alert {
+        .radio-group-label {
+          color: map-get($sormas-alert, 700);
+        }
+
+        .mat-radio-button:not(.mat-radio-disabled).mat-radio-checked {
+          color: map-get($sormas-alert, 700);
+
+          .mat-radio-outer-circle {
+            border-color: map-get($sormas-alert, 300);
+          }
+
+          .mat-radio-inner-circle {
+            background-color: map-get($sormas-alert, 300);
+          }
+        }
+      }
     }
   }
 }

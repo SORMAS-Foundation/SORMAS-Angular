@@ -283,6 +283,43 @@ app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   ]);
 });
 
+app.use('/sormas-rest/eventgroups/indexList', (req, res) => {
+  const result = {
+    elements: [
+      {
+        uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+        eventGroup: {
+          uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+          caption: 'Group 1'
+        },
+        count: 5
+      },
+      {
+        uuid: 'TRE3TG-FGRT34-WEMNJ4-TH34QWFG',
+        eventGroup: {
+          uuid: 'TRE3TG-FGRT34-WEMNJ4-TH34QWFG',
+          caption: 'Group 2'
+        },
+        count: 2
+      },
+      {
+        uuid: 'OPB4TC-FGRT34-WEMNJ4-TH34QWFG',
+        eventGroup: {
+          uuid: 'OPB4TC-FGRT34-WEMNJ4-TH34QWFG',
+          caption: 'Group 3'
+        },
+        count: 4
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  };
+
+  res.status(200).send(result);
+});
+
 app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
   const result = {
     elements: [
@@ -327,161 +364,160 @@ app.use('/sormas-rest/listings/indexList', (req, res) => {
   if (req.body.criteria.disease) {
     res.status(200).send([
       {
-        "disease":"ANTHRAX",
-        "listings":[
+        disease: 'ANTHRAX',
+        listings: [
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"THO35X-NGF7KQ-NT4AYB-CHOL2B44",
-            "districtName":"LK Alb-Donau-Kreis",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+            districtName: 'LK Alb-Donau-Kreis',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"Q5UHWR-5ILTXQ-HHDMIU-FOGWCEIU",
-            "districtName":"LK Biberach",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'Q5UHWR-5ILTXQ-HHDMIU-FOGWCEIU',
+            districtName: 'LK Biberach',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"QOHG6W-6IAV5A-7APQCJ-WIW72B6U",
-            "districtName":"LK Bodenseekreis",
-            "enabled":false,
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'QOHG6W-6IAV5A-7APQCJ-WIW72B6U',
+            districtName: 'LK Bodenseekreis',
+            enabled: false,
           },
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"XVELMA-PMRHR3-Y5H2JO-J7XZSI74",
-            "districtName":"LK Breisgau-Hochschwarzwald",
-            "enabled":false,
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'XVELMA-PMRHR3-Y5H2JO-J7XZSI74',
+            districtName: 'LK Breisgau-Hochschwarzwald',
+            enabled: false,
           },
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"SQSBSU-QIPBZC-YYNAVJ-SPSCKIFM",
-            "districtName":"LK Böblingen",
-            "enabled":false,
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'SQSBSU-QIPBZC-YYNAVJ-SPSCKIFM',
+            districtName: 'LK Böblingen',
+            enabled: false,
           },
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"V3TUDQ-47ARV6-SD4W7C-256BSBM4",
-            "districtName":"LK Calw",
-            "enabled":false,
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'V3TUDQ-47ARV6-SD4W7C-256BSBM4',
+            districtName: 'LK Calw',
+            enabled: false,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"ROICTH-QERRBV-2PUTLC-KBUB2MCQ",
-            "districtName":"LK Aichach-Friedberg",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'ROICTH-QERRBV-2PUTLC-KBUB2MCQ',
+            districtName: 'LK Aichach-Friedberg',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"VSCBRI-7ODD4K-7ZDXC4-BHAZKIGM",
-            "districtName":"LK Altötting",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'VSCBRI-7ODD4K-7ZDXC4-BHAZKIGM',
+            districtName: 'LK Altötting',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"VZ6ONL-3JCOSY-FOQGD4-YMD5CMGE",
-            "districtName":"LK Amberg-Sulzbach",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'VZ6ONL-3JCOSY-FOQGD4-YMD5CMGE',
+            districtName: 'LK Amberg-Sulzbach',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"RKEG45-RKLB22-DQDVI3-KB522FFI",
-            "districtName":"LK Ansbach",
-            "enabled":false,
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'RKEG45-RKLB22-DQDVI3-KB522FFI',
+            districtName: 'LK Ansbach',
+            enabled: false,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"U4LITQ-TK2YRH-CAXDBZ-HSXOKDZM",
-            "districtName":"LK Aschaffenburg",
-            "enabled":false,
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'U4LITQ-TK2YRH-CAXDBZ-HSXOKDZM',
+            districtName: 'LK Aschaffenburg',
+            enabled: false,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"WNWA6B-NJDI7F-LDR3HH-ZNZXSH6I",
-            "districtName":"LK Augsburg",
-            "enabled":false,
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'WNWA6B-NJDI7F-LDR3HH-ZNZXSH6I',
+            districtName: 'LK Augsburg',
+            enabled: false,
           },
-        ]
+        ],
       },
     ]);
   } else {
     res.status(200).send([
       {
-        "disease":"ANTHRAX",
-        "listings":[
+        disease: 'ANTHRAX',
+        listings: [
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"THO35X-NGF7KQ-NT4AYB-CHOL2B44",
-            "districtName":"LK Alb-Donau-Kreis",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+            districtName: 'LK Alb-Donau-Kreis',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"Q5UHWR-5ILTXQ-HHDMIU-FOGWCEIU",
-            "districtName":"LK Biberach",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'Q5UHWR-5ILTXQ-HHDMIU-FOGWCEIU',
+            districtName: 'LK Biberach',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"ROICTH-QERRBV-2PUTLC-KBUB2MCQ",
-            "districtName":"LK Aichach-Friedberg",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'ROICTH-QERRBV-2PUTLC-KBUB2MCQ',
+            districtName: 'LK Aichach-Friedberg',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"VSCBRI-7ODD4K-7ZDXC4-BHAZKIGM",
-            "districtName":"LK Altötting",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'VSCBRI-7ODD4K-7ZDXC4-BHAZKIGM',
+            districtName: 'LK Altötting',
+            enabled: true,
+            endDate: 123412423,
           },
           {
-            "regionUuid":"TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU",
-            "name":"Bayern",
-            "districtUuid":"VZ6ONL-3JCOSY-FOQGD4-YMD5CMGE",
-            "districtName":"LK Amberg-Sulzbach",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+            name: 'Bayern',
+            districtUuid: 'VZ6ONL-3JCOSY-FOQGD4-YMD5CMGE',
+            districtName: 'LK Amberg-Sulzbach',
+            enabled: true,
+            endDate: 123412423,
           },
-        ]
+        ],
       },
       {
-        "disease":"CORONAVIRUS",
-        "listings":[
+        disease: 'CORONAVIRUS',
+        listings: [
           {
-            "regionUuid":"R4MYJ3-5KM5EF-REDZII-NYSR2EHA",
-            "name":"Baden-Württemberg",
-            "districtUuid":"THO35X-NGF7KQ-NT4AYB-CHOL2B44",
-            "districtName":"LK Alb-Donau-Kreis",
-            "enabled":true,
-            "endDate":123412423
+            regionUuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+            name: 'Baden-Württemberg',
+            districtUuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+            districtName: 'LK Alb-Donau-Kreis',
+            enabled: true,
+            endDate: 123412423,
           },
-        ]
-      }
-
+        ],
+      },
     ]);
   }
 });
@@ -551,6 +587,196 @@ app.use('/sormas-rest/actions/indexList', (req, res) => {
     totalElementCount: total,
     hasNext: true,
   });
+});
+
+app.use('/sormas-rest/outbreaks/indexList', (req, res) => {
+  res.status(200).send([
+    {
+      region: {
+        uuid: 'R4MYJ3-5KM5EF-REDZII-NYSR2EHA',
+        caption: 'Baden-Württemberg',
+        externalID: '13000008',
+      },
+      outbreaks: [
+        {
+          disease: 'CORONAVIRUS',
+          affectedDistricts: [
+            {
+              uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+              caption: 'LK Alb-Donau-Kreis',
+              externalId: 100324,
+            },
+            {
+              uuid: 'S66HMC-P6AKDJ-MPH3PO-GVPL2OI4',
+              caption: 'SK Berlin Charlottenburg-Wilmersdorf',
+              externalId: 103684,
+            },
+          ],
+          totalDistricts: 17,
+        },
+        {
+          disease: 'YELLOW_FEVER',
+          affectedDistricts: [],
+          totalDistricts: 17,
+        },
+      ],
+    },
+    {
+      region: {
+        uuid: 'TJIQ46-WO7O7Y-JAPALJ-JTLAKOEU',
+        caption: 'Bayern',
+        externalID: '13000009',
+      },
+      outbreaks: [
+        {
+          disease: 'CORONAVIRUS',
+          affectedDistricts: [],
+          totalDistricts: 96,
+        },
+        {
+          disease: 'YELLOW_FEVER',
+          affectedDistricts: [],
+          totalDistricts: 96,
+        },
+      ],
+    },
+    {
+      region: {
+        uuid: 'QVWR3V-OPPANI-WFXW3T-TUK5KO3M',
+        caption: 'Berlin',
+        externalID: '13000011',
+      },
+      outbreaks: [
+        {
+          disease: 'CORONAVIRUS',
+          affectedDistricts: [],
+          totalDistricts: 12,
+        },
+        {
+          disease: 'YELLOW_FEVER',
+          affectedDistricts: [],
+          totalDistricts: 12,
+        },
+      ],
+    },
+    {
+      region: {
+        uuid: 'UJXVK5-RWEPBX-CT3WC2-3SB42MDQ',
+        caption: 'Brandenburg',
+        externalID: '13000012',
+      },
+      outbreaks: [
+        {
+          disease: 'CORONAVIRUS',
+          affectedDistricts: [],
+          totalDistricts: 9,
+        },
+        {
+          disease: 'YELLOW_FEVER',
+          affectedDistricts: [],
+          totalDistricts: 9,
+        },
+      ],
+    },
+    {
+      region: {
+        uuid: 'S63EGL-SP5NQZ-EPFZHQ-ZQ4XCDTE',
+        caption: 'Bremen',
+        externalID: '13000004',
+      },
+      outbreaks: [
+        {
+          disease: 'CORONAVIRUS',
+          affectedDistricts: [
+            {
+              uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+              caption: 'LK Alb-Donau-Kreis',
+              externalId: 100324,
+            },
+            {
+              uuid: 'S66HMC-P6AKDJ-MPH3PO-GVPL2OI4',
+              caption: 'SK Berlin Charlottenburg-Wilmersdorf',
+              externalId: 103684,
+            },
+          ],
+          totalDistricts: 5,
+        },
+        {
+          disease: 'YELLOW_FEVER',
+          affectedDistricts: [],
+          totalDistricts: 5,
+        },
+      ],
+    },
+    {
+      region: {
+        uuid: 'U3CXN2-4TLGTL-DELLRP-IRMZCIGM',
+        caption: 'Hamburg',
+        externalID: '13000002',
+      },
+      outbreaks: [
+        {
+          disease: 'CORONAVIRUS',
+          affectedDistricts: [],
+          totalDistricts: 26,
+        },
+        {
+          disease: 'YELLOW_FEVER',
+          affectedDistricts: [],
+          totalDistricts: 26,
+        },
+      ],
+    },
+    {
+      region: {
+        uuid: 'SNFB35-PQHXTV-ISQDL6-ITGEKGXA',
+        caption: 'Hessen',
+        externalID: '13000006',
+      },
+      outbreaks: [
+        {
+          disease: 'CORONAVIRUS',
+          affectedDistricts: [],
+          totalDistricts: 3,
+        },
+        {
+          disease: 'YELLOW_FEVER',
+          affectedDistricts: [
+            {
+              uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+              caption: 'LK Alb-Donau-Kreis',
+              externalId: 100324,
+            },
+            {
+              uuid: 'S66HMC-P6AKDJ-MPH3PO-GVPL2OI4',
+              caption: 'SK Berlin Charlottenburg-Wilmersdorf',
+              externalId: 103684,
+            },
+          ],
+          totalDistricts: 3,
+        },
+      ],
+    },
+    {
+      region: {
+        uuid: 'XFUMUW-W2K6Q5-STKFLG-UCOPSKVY',
+        caption: 'Mecklenburg-Vorpommern',
+        externalID: '13000013',
+      },
+      outbreaks: [
+        {
+          disease: 'CORONAVIRUS',
+          affectedDistricts: [],
+          totalDistricts: 0,
+        },
+        {
+          disease: 'YELLOW_FEVER',
+          affectedDistricts: [],
+          totalDistricts: 0,
+        },
+      ],
+    },
+  ]);
 });
 
 app.use(
