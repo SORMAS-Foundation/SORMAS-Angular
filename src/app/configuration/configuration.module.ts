@@ -45,11 +45,16 @@ import { LineListingModalComponent } from './line-listing/line-listing-modal/lin
 import { LineListingTableComponent } from './line-listing/line-listing-table/line-listing-table.component';
 import { FacilityFiltersComponent } from './facilities/facility-filters/facility-filters.component';
 import { FacilityListComponent } from './facilities/facility-list/facility-list.component';
+import { FacilityAddEditComponent } from './facilities/facility-add-edit/facility-add-edit.component';
+import { OutbreaksListComponent } from './outbreaks/outbreaks-list/outbreaks-list.component';
+import { OutbreaksEditComponent } from './outbreaks/outbreaks-edit/outbreaks-edit.component';
 
 @NgModule({
   declarations: [
     ConfigurationComponent,
     OutbreaksComponent,
+    OutbreaksListComponent,
+    OutbreaksEditComponent,
     ContinentsComponent,
     SubcontinentsComponent,
     CountriesComponent,
@@ -90,6 +95,7 @@ import { FacilityListComponent } from './facilities/facility-list/facility-list.
     LineListingTableComponent,
     FacilityFiltersComponent,
     FacilityListComponent,
+    FacilityAddEditComponent,
   ],
   imports: [
     CommonModule,

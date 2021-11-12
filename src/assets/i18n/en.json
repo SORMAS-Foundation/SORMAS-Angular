@@ -5450,5 +5450,7 @@
   "deletedSuccessfully": "Successfully deleted",
   "pleaseSetEndDate": "Please set an end date",
   "pleaseSetDisease": "Please select a disease",
-  "actionAddNewFacility": "Add new facility"
+  "actionAddNewFacility": "Add new facility",
+  "facilityDetails": "Facility details",
+  "actionEditFacility": "Edit facility"
 }

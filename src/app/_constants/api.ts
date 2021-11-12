@@ -197,3 +197,11 @@ export const API_ROUTE_FACILITIES = {
   ADD: 'facilities/push',
   DELETE: 'facilities/delete',
 };
+
+export const API_ROUTE_OUTBREAKS = {
+  ENDPOINT: 'outbreaks',
+  GET_ALL: 'outbreaks/indexList',
+  UPDATE: 'outbreaks/push',
+  ADD: 'outbreaks/push',
+  DELETE: 'outbreaks/delete',
+};
