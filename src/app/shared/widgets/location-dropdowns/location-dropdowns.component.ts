@@ -77,7 +77,7 @@ export class LocationDropdownsComponent implements OnInit, OnDestroy {
         return;
       }
       const dependeeControl = this.locationForm.controls[this.data[field].dependingOn];
-      if (dependeeControl?.value || field === this.fields[0]) {
+      if (!dependeeControl || dependeeControl?.value) {
         this.fetchDataForField(
           field,
           this[`${field}Service` as keyof this],
