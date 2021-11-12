@@ -10,6 +10,7 @@ import { SampleService } from '../../_services/api/sample.service';
 })
 export class SampleAddComponent {
   public formData: FormBase<any>[] = data.FORM_DATA_SAMPLE_ADD;
+  formId = 'sampleAdd';
 
   constructor(public sampleService: SampleService) {}
 }

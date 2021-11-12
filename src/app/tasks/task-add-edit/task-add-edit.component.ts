@@ -17,6 +17,7 @@ const ASSIGNEE_USER_KEY = 'assigneeUser.uuid';
 export class TaskAddEditComponent implements OnInit {
   @Input() selectedResource: TaskDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'taskAddEdit';
   allUsers: UserDto[] = [];
   selectedUserId = '';
 

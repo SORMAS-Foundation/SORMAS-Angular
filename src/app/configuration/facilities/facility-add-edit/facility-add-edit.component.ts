@@ -13,6 +13,7 @@ import { FacilityService } from '../../../_services/api/facility.service';
 export class FacilityAddEditComponent implements OnInit {
   @Input() selectedResource: FacilityDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'facilityAddEdit';
 
   constructor(
     public facilityService: FacilityService,

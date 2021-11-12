@@ -8,7 +8,7 @@ import { CONFIG_USERS } from '../../_constants/storage';
 import { defaultColumnDefs } from './users-list-table-data';
 import { UserService } from '../../_services/api/user.service';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT, ADD_EDIT_FORM_ID } from '../../_constants/common';
 import { UserAddComponent } from '../user-add/user-add.component';
 import { FormActionsService } from '../../_services/form-actions.service';
 import { FORM_DATA_USER_FILTERS } from '../user-filters/user-filters-form-data';
@@ -50,7 +50,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // callback
         }

@@ -22,6 +22,7 @@ export class CommunityListComponent implements OnDestroy {
   defaultColumns: TableColumn[] = defaultColumnDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   tableAppearanceOptions = TableAppearanceOptions;
+  formId = 'communityAddEdit';
 
   private subscription: Subscription[] = [];
 
@@ -45,7 +46,7 @@ export class CommunityListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(this.formId);
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +65,7 @@ export class CommunityListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(this.formId);
         if (result) {
           // this.tableComponent.getResources(true);
         }

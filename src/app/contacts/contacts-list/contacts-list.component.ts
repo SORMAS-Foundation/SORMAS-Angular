@@ -8,7 +8,7 @@ import { TableColumn } from '../../_models/common';
 import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './contacts-list-table-data';
-import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT, ADD_EDIT_FORM_ID } from '../../_constants/common';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { HelperService } from '../../_services/helper.service';
@@ -60,7 +60,7 @@ export class ContactsListComponent implements OnInit {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // callback
         }

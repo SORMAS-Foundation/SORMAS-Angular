@@ -14,6 +14,7 @@ import { ContinentService } from '../../../_services/api/continent.service';
 export class SubcontinentAddEditComponent implements OnInit {
   @Input() selectedResource: SubcontinentDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'subcontinentAddEdit';
 
   constructor(
     public subcontinentService: SubcontinentService,

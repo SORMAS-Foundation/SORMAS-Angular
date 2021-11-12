@@ -17,6 +17,7 @@ export class CommunityAddEditComponent implements OnInit {
   @Input() selectedResource: CommunityDto;
   myFormElements: FormBase<any>[] = [];
   selectedRegion = '';
+  formId = 'communityAddEdit';
 
   constructor(
     public communityService: CommunityService,
@@ -101,7 +102,7 @@ export class CommunityAddEditComponent implements OnInit {
     if (this.selectedRegion !== regionId) {
       this.selectedRegion = regionId;
       this.fetchDistricts();
-      this.formActionService.setInputValue('district.uuid', '');
+      this.formActionService.setInputValue(this.formId, 'district.uuid', '');
     }
   }
 }

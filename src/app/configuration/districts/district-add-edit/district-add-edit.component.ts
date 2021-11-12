@@ -14,6 +14,7 @@ import { DistrictService } from '../../../_services/api/district.service';
 export class DistrictAddEditComponent implements OnInit {
   @Input() selectedResource: DistrictDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'districtAddEdit';
 
   constructor(
     public districtService: DistrictService,

@@ -10,6 +10,7 @@ import { EventService } from '../../_services/api/event.service';
 })
 export class EventEditComponent {
   public formData: FormBase<any>[] = data.FORM_DATA_EVENT_EDIT;
+  formId = 'eventEdit';
 
   constructor(public eventService: EventService) {}
 }

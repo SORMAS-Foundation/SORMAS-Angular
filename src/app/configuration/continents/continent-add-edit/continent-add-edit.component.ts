@@ -13,6 +13,7 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 export class ContinentAddEditComponent implements OnInit {
   @Input() selectedResource: ContinentDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'continentAddEdit';
 
   constructor(
     public continentService: ContinentService,

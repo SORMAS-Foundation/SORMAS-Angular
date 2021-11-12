@@ -48,6 +48,7 @@
     <div class="tab-nav-header-actions">
       <app-form-actions
         *ngIf="currentSubPage.showFormActions"
+        formId="event"
         [resource]="event"
       ></app-form-actions>
       <div *ngIf="!currentSubPage.showFormActions && currentSubPage.link.includes('participants')">

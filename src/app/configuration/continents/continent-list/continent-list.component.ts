@@ -45,7 +45,7 @@ export class ContinentListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard('continentAddEdit');
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +64,7 @@ export class ContinentListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard('continentAddEdit');
         if (result) {
           // this.tableComponent.getResources(true);
         }

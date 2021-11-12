@@ -14,6 +14,7 @@ import { ADD_MODAL_NARROW, ADD_MODAL_WIDE, BREAKPOINTS } from '../../app.constan
 })
 export class ContactAddEditComponent implements OnInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
+  formId = 'contactAddEdit';
   updatedResource: any;
   modalWidth: string;
   subscriptions: Subscription[] = [];

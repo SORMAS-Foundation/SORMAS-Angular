@@ -13,6 +13,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 export class FollowUpStatusComponent implements OnInit, OnDestroy {
   config: FormElementBase<string>;
   group: FormGroup;
+  formId: string;
   control: any;
 
   followUpStatus = FOLLOW_UP_STATUS;
@@ -39,7 +40,7 @@ export class FollowUpStatusComponent implements OnInit, OnDestroy {
 
   setStatus(status: string): void {
     this.control?.setValue(status);
-    this.formActionsService.setInputChange(this.config.key, true);
+    this.formActionsService.setInputChange(this.formId, this.config.key, true);
   }
 
   ngOnDestroy(): void {

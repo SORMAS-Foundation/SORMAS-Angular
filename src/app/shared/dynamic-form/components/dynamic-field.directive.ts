@@ -46,6 +46,7 @@ export class DynamicFieldDirective implements OnInit {
     ...FORM_DATA_BASE,
   };
   @Input() group: FormGroup = new FormGroup({});
+  @Input() formId: string;
   component: any;
 
   constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) {}
@@ -56,5 +57,6 @@ export class DynamicFieldDirective implements OnInit {
     this.component = this.container.createComponent(factory);
     this.component.instance.config = this.config;
     this.component.instance.group = this.group;
+    this.component.instance.formId = this.formId;
   }
 }

@@ -13,6 +13,7 @@ import { FormElementControlService } from '../../_services/form-element-control.
 export class CaseAddComponent implements OnInit {
   @Input() selectedResource: CaseDataDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'caseAdd';
 
   constructor(
     public caseService: CaseService,

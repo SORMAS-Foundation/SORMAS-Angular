@@ -10,6 +10,7 @@ import { CaseService } from '../../_services/api/case.service';
 })
 export class CaseEditComponent {
   public formData: FormBase<any>[] = data.FORM_DATA_CASE_EDIT;
+  formId = 'caseEdit';
 
   constructor(public caseService: CaseService) {}
 }

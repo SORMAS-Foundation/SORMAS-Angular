@@ -10,6 +10,7 @@ import { ContactService } from '../../_services/api/contact.service';
 })
 export class ContactAddComponent {
   public formData: FormBase<any>[] = data.FORM_DATA_CONTACT_ADD;
+  formId = 'contactAdd';
 
   constructor(public contactService: ContactService) {}
 }

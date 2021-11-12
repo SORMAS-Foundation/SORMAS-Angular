@@ -1,4 +1,8 @@
 <app-filters [fixed]="false">
-  <app-facility-filters [data]="filtersData" filters></app-facility-filters>
+  <app-facility-filters
+    formId="facilitiesFilters"
+    [data]="filtersData"
+    filters
+  ></app-facility-filters>
   <app-facility-list list></app-facility-list>
 </app-filters>

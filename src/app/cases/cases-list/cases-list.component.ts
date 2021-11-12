@@ -44,6 +44,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams: Params;
+  formId = 'caseFilters';
 
   private subscription: Subscription[] = [];
 
@@ -76,7 +77,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard('caseAdd');
         if (result) {
           // callback
         }

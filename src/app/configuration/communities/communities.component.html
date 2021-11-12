@@ -1,4 +1,8 @@
 <app-filters [fixed]="false">
-  <app-community-filters [data]="filtersData" filters></app-community-filters>
+  <app-community-filters
+    formId="communityFilters"
+    [data]="filtersData"
+    filters
+  ></app-community-filters>
   <app-community-list list></app-community-list>
 </app-filters>

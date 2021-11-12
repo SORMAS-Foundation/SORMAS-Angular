@@ -10,6 +10,7 @@ import { UserService } from '../../_services/api/user.service';
 })
 export class UserAddComponent {
   public formData: FormBase<any>[] = data.FORM_DATA_USER_ADD;
+  formId = 'userAdd';
 
   constructor(public userService: UserService) {}
 }

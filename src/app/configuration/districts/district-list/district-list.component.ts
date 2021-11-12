@@ -9,7 +9,7 @@ import { actionsBulkEditDefs } from './districts-actions-data';
 import { defaultColumnDefs } from './districts-table-data';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH, ADD_EDIT_FORM_ID } from '../../../_constants/common';
 import { DistrictAddEditComponent } from '../district-add-edit/district-add-edit.component';
 import { DistrictDto } from '../../../_models/districtDto';
 
@@ -45,7 +45,7 @@ export class DistrictListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +64,7 @@ export class DistrictListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }

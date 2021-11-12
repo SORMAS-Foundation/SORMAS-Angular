@@ -14,6 +14,7 @@ import { CountryService } from '../../../_services/api/country.service';
 export class RegionAddEditComponent implements OnInit {
   @Input() selectedResource: RegionDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'regionAddEdit';
 
   constructor(
     private countryService: CountryService,

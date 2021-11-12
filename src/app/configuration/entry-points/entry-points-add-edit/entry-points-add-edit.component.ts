@@ -13,6 +13,7 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 export class EntryPointsAddEditComponent implements OnInit {
   @Input() selectedResource: PointOfEntryDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'entryPointsAddEdit';
 
   constructor(
     public entryPointService: EntryPointService,

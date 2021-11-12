@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { ADD_MODAL_NARROW, SentResourceTypes } from '../../../app.constants';
 import { PersonDto, ContactDto } from '../../../_models/models';
 import { FormActionsService } from '../../../_services/form-actions.service';
@@ -18,6 +19,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 export class PersonContactsListComponent implements OnDestroy, OnInit {
   config: FormElementBase<any>;
   group: FormGroup;
+  formId: string;
 
   person: PersonDto;
   contacts: any[] = [];
@@ -43,9 +45,12 @@ export class PersonContactsListComponent implements OnDestroy, OnInit {
       })
     );
     this.subscriptions.push(
-      this.formActionsService.getDiscard().subscribe(() => {
-        this.contacts = JSON.parse(JSON.stringify(this.person.personContactDetails));
-      })
+      this.formActionsService
+        .getDiscard()
+        .pipe(filter(({ formId }) => this.formId === formId))
+        .subscribe(() => {
+          this.contacts = JSON.parse(JSON.stringify(this.person.personContactDetails));
+        })
     );
   }
 
@@ -65,7 +70,7 @@ export class PersonContactsListComponent implements OnDestroy, OnInit {
   deleteContact(address: any): void {
     this.contacts = this.contacts.filter((item) => item.uuid !== address.uuid);
     this.group.get(this.config.key)?.setValue(this.contacts);
-    this.formActionsService.setInputChange(this.config.key, true);
+    this.formActionsService.setInputChange(this.formId, this.config.key, true);
   }
 
   openModal(data: any): void {

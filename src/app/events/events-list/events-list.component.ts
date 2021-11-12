@@ -9,7 +9,7 @@ import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
 import { defaultColumnDefs } from './events-list-table-data';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT, ADD_EDIT_FORM_ID } from '../../_constants/common';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
@@ -64,7 +64,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // callback
         }

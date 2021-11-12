@@ -12,7 +12,7 @@ import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-mod
 import { actionsBulkEditDefs } from './task-list-actions-data';
 import { FormActionsService } from '../../_services/form-actions.service';
 import { TableComponent } from '../../shared/table/table.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { ADD_MODAL_MAX_WIDTH, ADD_EDIT_FORM_ID } from '../../app.constants';
 
 @Component({
   selector: 'app-tasks-list',
@@ -56,7 +56,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -75,7 +75,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }

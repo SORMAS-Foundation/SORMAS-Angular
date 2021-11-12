@@ -9,7 +9,7 @@ import { FacilityDto } from '../../../_models/facilityDto';
 import { defaultColumnDefs } from './facilities-table-data';
 import { actionsBulkEditDefs } from './facilities-actions-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, ADD_EDIT_FORM_ID } from '../../../_constants/common';
 import { FacilityAddEditComponent } from '../facility-add-edit/facility-add-edit.component';
 import { FormActionsService } from '../../../_services/form-actions.service';
 
@@ -45,7 +45,7 @@ export class FacilityListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +64,7 @@ export class FacilityListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }

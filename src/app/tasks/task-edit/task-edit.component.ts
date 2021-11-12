@@ -10,6 +10,7 @@ import { TaskService } from '../../_services/api/task.service';
 })
 export class TaskEditComponent {
   public formData: FormBase<any>[] = data.FORM_DATA_TASK_EDIT;
+  formId = 'taskEdit';
 
   constructor(public taskService: TaskService) {}
 }

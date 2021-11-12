@@ -13,6 +13,7 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 export class CountryAddEditComponent implements OnInit {
   @Input() selectedResource: CountryDto;
   myFormElements: FormBase<any>[] = [];
+  formId = 'countryAddEdit';
 
   constructor(
     public countryService: CountryService,

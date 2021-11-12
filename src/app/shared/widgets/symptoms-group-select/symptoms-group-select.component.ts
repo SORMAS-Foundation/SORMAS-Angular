@@ -12,6 +12,7 @@ import * as data from '../../../cases/case_components/case-symptoms/case-symptom
 export class SymptomsGroupSelectComponent {
   config: FormElementBase<string>;
   group: FormGroup;
+  formId: string;
   dataForm = data.FORM_DATA_CASE_SYMPTOMS;
 
   constructor(private formActionsService: FormActionsService) {}
@@ -35,7 +36,7 @@ export class SymptomsGroupSelectComponent {
           const control = this.group.controls[field.key];
           const changed = control.value !== value;
           control?.patchValue(value);
-          this.formActionsService.setInputChange(field.key, changed);
+          this.formActionsService.setInputChange(this.formId, field.key, changed);
         }
       });
     });

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH, ADD_EDIT_FORM_ID } from '../../../_constants/common';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { FormActionsService } from '../../../_services/form-actions.service';
@@ -45,7 +45,7 @@ export class SubcontinentListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +64,7 @@ export class SubcontinentListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
+        this.formActionsService.setDiscard(ADD_EDIT_FORM_ID);
         if (result) {
           // this.tableComponent.getResources(true);
         }

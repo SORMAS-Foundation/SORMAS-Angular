@@ -11,7 +11,13 @@ import {
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { ADD_MODAL_NARROW, ADD_MODAL_WIDE, BREAKPOINTS } from '../../../app.constants';
+import { filter } from 'rxjs/operators';
+import {
+  ADD_MODAL_NARROW,
+  ADD_MODAL_WIDE,
+  BREAKPOINTS,
+  ADD_EDIT_FORM_ID,
+} from '../../../app.constants';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { NotificationService } from '../../../_services/notification.service';
 
@@ -25,6 +31,7 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
   addEditResource: ViewContainerRef;
   subscription: Subscription[] = [];
   modalWidth: string;
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     public dialogRef: MatDialogRef<AddEditBaseModalComponent>,
@@ -55,13 +62,16 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
     }
 
     this.subscription.push(
-      this.formActionsService.getCloseFormModal().subscribe((response: any) => {
-        if (response.closeModal) {
-          this.dialogRef.close({
-            close: true,
-          });
-        }
-      })
+      this.formActionsService
+        .getCloseFormModal()
+        .pipe(filter(({ formId }) => this.formId === formId))
+        .subscribe((response: any) => {
+          if (response.closeModal) {
+            this.dialogRef.close({
+              close: true,
+            });
+          }
+        })
     );
 
     this.subscription.push(
@@ -79,6 +89,7 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
       this.data.component
     );
     const createdComponent = this.addEditResource.createComponent(resolver);
+    createdComponent.instance.formId = this.formId;
     if (this.data.resource) {
       createdComponent.instance.selectedResource = this.data.resource;
     }
@@ -86,14 +97,14 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
 
   save(): void {
     if (this.data.resource) {
-      this.formActionsService.setSave(this.data.resource);
+      this.formActionsService.setSave(this.formId, this.data.resource);
     } else {
-      this.formActionsService.setSave(null);
+      this.formActionsService.setSave(this.formId, null);
     }
   }
 
   discard(): void {
-    this.formActionsService.setDiscard();
+    this.formActionsService.setDiscard(this.formId);
   }
 
   onNoClick(): void {
