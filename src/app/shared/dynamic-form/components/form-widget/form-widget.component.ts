@@ -23,6 +23,7 @@ import { SuperordinateEventComponent } from '../../../widgets/superordinate-even
 import { ContactCaseDetailsComponent } from '../../../widgets/contact-case-details/contact-case-details.component';
 import { ContactFollowUpComponent } from '../../../widgets/contact-follow-up/contact-follow-up.component';
 import { ExportsGroupSelectComponent } from '../../../widgets/exports-group-select/exports-group-select.component';
+import { LocationDropdownsComponent } from '../../../widgets/location-dropdowns/location-dropdowns.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -39,6 +40,7 @@ const COMPONENTS_MAP: any = {
   'app-contact-case-details': ContactCaseDetailsComponent,
   'app-contact-follow-up': ContactFollowUpComponent,
   'app-exports-group-select': ExportsGroupSelectComponent,
+  'app-location-dropdowns': LocationDropdownsComponent,
 };
 
 @Component({
@@ -49,6 +51,7 @@ const COMPONENTS_MAP: any = {
 export class FormWidgetComponent implements AfterViewInit {
   config: FormElementBase<string>;
   group: FormGroup;
+  formId: string;
   components = COMPONENTS_MAP;
 
   @ViewChild('dynamic', { read: ViewContainerRef }) dynamic: ViewContainerRef;
@@ -66,6 +69,7 @@ export class FormWidgetComponent implements AfterViewInit {
     const componentRef = this.dynamic.createComponent<any>(componentFactory);
     componentRef.instance.group = this.group;
     componentRef.instance.config = this.config;
+    componentRef.instance.formId = this.formId;
     this.changeDetectorRef.detectChanges();
   }
 }

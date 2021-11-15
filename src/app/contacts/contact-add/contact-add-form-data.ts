@@ -12,15 +12,13 @@ import {
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
+  FORM_DATA_WIDGET,
 } from '../../_constants/form-data';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 const optionsSex = pipe.transform(Sex);
 const optionsReturningTraveler = pipe.transform(YesNoUnknown);
-const optionsRegion = pipe.transform(['Default region']);
-const optionsDistrict = pipe.transform(['Default district']);
-const optionsCommunity = pipe.transform(['Default community']);
 const optionsContactProximity = pipe.transform(ContactProximity);
 const optionsContactCategory = pipe.transform(ContactCategory);
 const optionsRelationToCase = pipe.transform(ContactRelation);
@@ -137,20 +135,41 @@ export const FORM_DATA_CONTACT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'region',
-        label: 'captions.region',
-        options: optionsRegion,
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'district',
-        label: 'captions.district',
-        options: optionsDistrict,
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community',
-        label: 'captions.community',
-        options: optionsCommunity,
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        widgetInfo: {
+          region: {
+            key: 'region',
+            label: 'captions.region',
+            className: 'size-medium',
+          },
+          district: {
+            key: 'district',
+            label: 'captions.district',
+            className: 'size-medium',
+            dependingOn: 'region',
+          },
+          community: {
+            key: 'community',
+            label: 'captions.community',
+            className: 'size-medium',
+            newLine: true,
+            dependingOn: 'district',
+          },
+        },
       },
     ],
   },

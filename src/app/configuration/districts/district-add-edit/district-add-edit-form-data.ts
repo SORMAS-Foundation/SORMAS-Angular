@@ -1,8 +1,8 @@
-import { FORM_DATA_INPUT, FORM_DATA_SELECT } from '../../../_constants/form-data';
+import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
 
 export const FORM_DATA_DISTRICT_ADD_EDIT = [
   {
-    id: '',
+    id: 'details',
     title: '',
     hiddenLeftSection: true,
     fields: [
@@ -23,12 +23,23 @@ export const FORM_DATA_DISTRICT_ADD_EDIT = [
         newLine: true,
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'region.uuid',
-        className: 'size-full',
-        label: 'captions.region',
-        validation: ['required'],
-        newLine: true,
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        className: 'fullwidth',
+        widgetInfo: {
+          region: {
+            key: 'region.uuid',
+            label: 'captions.region',
+            className: 'size-full',
+            required: true,
+            newLine: true,
+          },
+        },
       },
       {
         ...FORM_DATA_INPUT,
