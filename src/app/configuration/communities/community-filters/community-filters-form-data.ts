@@ -4,6 +4,7 @@ import {
   FORM_DATA_SEARCHBOX,
   EntityRelevanceStatusOptions,
 } from '../../../app.constants';
+import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
 import { FormGroupStyleType } from '../../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -47,23 +48,41 @@ export const FORM_DATA_COMMUNITY_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        placeholder: 'captions.country',
-        options: [],
-        className: 'fullwidth',
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        placeholder: 'captions.region',
-        options: [],
-        className: 'fullwidth',
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        placeholder: 'captions.district',
-        options: [],
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
         className: 'fullwidth',
+        widgetInfo: {
+          country: {
+            key: 'country.uuid',
+            placeholder: 'captions.country',
+            className: 'size-full',
+          },
+          region: {
+            key: 'region.uuid',
+            placeholder: 'captions.region',
+            className: 'size-full',
+            dependingOn: 'country',
+          },
+          district: {
+            key: 'district.uuid',
+            placeholder: 'captions.district',
+            className: 'size-full',
+            dependingOn: 'region',
+          },
+        },
       },
     ],
   },

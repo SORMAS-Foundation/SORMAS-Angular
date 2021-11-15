@@ -96,38 +96,43 @@ export const FORM_DATA_PERSON = [
         className: 'size-small',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'placeOfBirthRegion.uuid',
-        label: 'captions.Person.placeOfBirthRegion',
-        options: [
-          {
-            key: 'default',
-            value: 'Default region',
-          },
-        ],
-        newLine: true,
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'placeOfBirthDistrict.uuid',
-        label: 'captions.Person.placeOfBirthDistrict',
-        options: [
-          {
-            key: 'default',
-            value: 'Default district',
-          },
-        ],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'placeOfBirthCommunity.uuid',
-        label: 'captions.Person.placeOfBirthCommunity',
-        options: [
-          {
-            key: 'default',
-            value: 'Default community',
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        className: 'no-float',
+        widgetInfo: {
+          region: {
+            key: 'placeOfBirthRegion.uuid',
+            label: 'captions.Person.placeOfBirthRegion',
+            className: 'size-medium',
           },
-        ],
+          district: {
+            key: 'placeOfBirthDistrict.uuid',
+            label: 'captions.Person.placeOfBirthDistrict',
+            className: 'size-medium',
+            dependingOn: 'region',
+          },
+          community: {
+            key: 'placeOfBirthCommunity.uuid',
+            label: 'captions.Person.placeOfBirthCommunity',
+            className: 'size-medium',
+            dependingOn: 'district',
+          },
+        },
       },
       {
         ...FORM_DATA_SELECT,
@@ -309,29 +314,56 @@ export const FORM_DATA_PERSON = [
     title: 'captions.Person.address',
     fields: [
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'address.country.uuid',
-        label: 'captions.country',
-        options: [],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'address.region.uuid',
-        label: 'captions.region',
-        options: [],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'address.district.uuid',
-        label: 'captions.district',
-        options: [],
         newLine: true,
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'address.community.uuid',
         label: 'captions.community',
-        options: [],
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        className: 'no-float',
+        widgetInfo: {
+          country: {
+            key: 'address.country.uuid',
+            label: 'captions.country',
+            className: 'size-medium',
+          },
+          region: {
+            key: 'address.region.uuid',
+            label: 'captions.region',
+            className: 'size-medium',
+            dependingOn: 'country',
+          },
+          district: {
+            key: 'address.district.uuid',
+            label: 'captions.district',
+            className: 'size-medium',
+            dependingOn: 'region',
+          },
+          community: {
+            key: 'address.community.uuid',
+            label: 'captions.community',
+            className: 'size-medium',
+            dependingOn: 'district',
+          },
+        },
       },
       {
         ...FORM_DATA_SELECT,

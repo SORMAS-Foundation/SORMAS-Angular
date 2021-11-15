@@ -28,6 +28,7 @@ export class FormElementBase<T> {
   timeLabel?: string;
   multipleChoice?: boolean;
   resource?: any;
+  widgetInfo?: any;
 
   constructor(
     options: {
@@ -57,6 +58,7 @@ export class FormElementBase<T> {
       timeLabel?: string;
       multipleChoice?: boolean;
       resource?: any;
+      widgetInfo?: any;
     } = {}
   ) {
     this.value = options.value;
@@ -85,6 +87,7 @@ export class FormElementBase<T> {
     this.timeLabel = options.timeLabel;
     this.multipleChoice = options.multipleChoice ?? false;
     this.resource = options.resource;
+    this.widgetInfo = options.widgetInfo;
   }
 }
 
