@@ -1,9 +1,9 @@
 import {
   FORM_DATA_RADIO,
-  FORM_DATA_SELECT,
   FORM_DATA_SEARCHBOX,
   EntityRelevanceStatusOptions,
 } from '../../../app.constants';
+import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
 import { FormGroupStyleType } from '../../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -45,11 +45,22 @@ export const FORM_DATA_REGION_FILTERS = [
     appearance: FormGroupStyleType.BASIC,
     fields: [
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'country.uuid',
-        placeholder: 'captions.country',
-        options: [],
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
         className: 'fullwidth',
+        widgetInfo: {
+          country: {
+            key: 'country.uuid',
+            label: 'captions.country',
+            newLine: true,
+            className: 'size-full',
+          },
+        },
       },
     ],
   },

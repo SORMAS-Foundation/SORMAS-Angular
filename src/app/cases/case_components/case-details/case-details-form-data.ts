@@ -257,53 +257,50 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_NULL,
         key: 'caseOrigin',
+        newLine: true,
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'region.uuid',
-        label: 'captions.CaseData.responsibleRegion',
-        validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultRegion',
-          },
-        ],
-        newLine: true,
-        className: 'size-large',
-        dependingOn: 'caseOrigin',
-        dependingOnValues: ['IN_COUNTRY'],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'district.uuid',
-        label: 'captions.CaseData.responsibleDistrict',
-        validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultDistrict',
-          },
-        ],
-        newLine: true,
-        className: 'size-large',
-        dependingOn: 'caseOrigin',
-        dependingOnValues: ['IN_COUNTRY'],
+        className: 'hidden',
       },
       {
-        ...FORM_DATA_SELECT,
+        ...FORM_DATA_INPUT,
         key: 'community.uuid',
-        label: 'captions.CaseData.responsibleCommunity',
-        options: [
-          {
-            key: 'default',
-            value: 'defaultCommunity',
-          },
-        ],
-        newLine: true,
+        className: 'hidden',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
         className: 'size-large',
         dependingOn: 'caseOrigin',
         dependingOnValues: ['IN_COUNTRY'],
+        widgetInfo: {
+          region: {
+            key: 'region.uuid',
+            required: true,
+            label: 'captions.CaseData.responsibleRegion',
+            newLine: true,
+          },
+          district: {
+            key: 'district.uuid',
+            required: true,
+            label: 'captions.CaseData.responsibleDistrict',
+            newLine: true,
+            dependingOn: 'region',
+          },
+          community: {
+            key: 'community.uuid',
+            label: 'captions.CaseData.responsibleCommunity',
+            newLine: true,
+            dependingOn: 'district',
+          },
+        },
       },
       {
         ...FORM_DATA_NULL,
