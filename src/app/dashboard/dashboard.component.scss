@@ -1,8 +1,9 @@
 @use '/src/variables.scss' as *;
 
 .dashboard-wrapper {
-  .dashboard-page-content {
-    height: 100vh;
-    background: map-get($sormas-accent, 50);
+  min-height: 100%;
+  background-color: map-get($sormas-accent, 50);
+  .page-header {
+    background-color: $white;
   }
 }
