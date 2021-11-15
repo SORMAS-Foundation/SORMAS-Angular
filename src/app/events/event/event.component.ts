@@ -9,6 +9,7 @@ import { HelperService } from '../../_services/helper.service';
 import { SendResourceService } from '../../_services/send-resource.service';
 import { EventParticipantDto } from '../../_models/eventParticipantDto';
 import { actionsEditDefs } from './event-actions-data';
+import { EVENT_DETAILS_FORM_ID } from '../../app.constants';
 
 // case routing for tabs
 const eventLinks = (eventId: string): EntityLink[] => {
@@ -41,6 +42,7 @@ export class EventComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   eventParticipant: EventParticipantDto;
   actionEditOptions = actionsEditDefs;
+  formId = EVENT_DETAILS_FORM_ID;
 
   constructor(
     public eventService: EventService,

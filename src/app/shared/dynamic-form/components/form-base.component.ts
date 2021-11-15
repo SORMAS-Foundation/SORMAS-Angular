@@ -13,6 +13,7 @@ export class FormBaseComponent implements OnInit {
     ...FORM_DATA_BASE,
   };
   group: FormGroup = new FormGroup({});
+  formId: string;
   initialValue: any;
 
   constructor(public formActionsService: FormActionsService) {}
@@ -29,9 +30,9 @@ export class FormBaseComponent implements OnInit {
 
   onChange(): void {
     if (this.initialValue === this.group.controls[this.config.key].value) {
-      this.formActionsService.setInputChange(this.config.key, false);
+      this.formActionsService.setInputChange(this.formId, this.config.key, false);
     } else {
-      this.formActionsService.setInputChange(this.config.key, true);
+      this.formActionsService.setInputChange(this.formId, this.config.key, true);
     }
   }
 }

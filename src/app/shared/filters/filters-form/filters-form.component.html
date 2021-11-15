@@ -1,4 +1,8 @@
 <div class="filters">
   <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
-  <app-dynamic-form [formElements]="formData" (changed)="updateFilters($event)"></app-dynamic-form>
+  <app-dynamic-form
+    [formId]="formId"
+    [formElements]="formData"
+    (changed)="updateFilters($event)"
+  ></app-dynamic-form>
 </div>

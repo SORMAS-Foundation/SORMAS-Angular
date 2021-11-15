@@ -4,6 +4,7 @@ import { CaseService } from '../../_services/api/case.service';
 import { FormBase } from '../dynamic-form/types/form-element-base';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { FormElementControlService } from '../../_services/form-element-control.service';
+import { ADD_EDIT_FORM_ID } from '../../app.constants';
 
 @Component({
   selector: 'app-case-add',
@@ -13,6 +14,7 @@ import { FormElementControlService } from '../../_services/form-element-control.
 export class CaseAddComponent implements OnInit {
   @Input() selectedResource: CaseDataDto;
   myFormElements: FormBase<any>[] = [];
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     public caseService: CaseService,

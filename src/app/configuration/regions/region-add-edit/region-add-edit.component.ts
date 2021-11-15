@@ -5,6 +5,7 @@ import * as data from './region-add-edit-form-data';
 import { RegionDto } from '../../../_models/regionDto';
 import { RegionService } from '../../../_services/api/region.service';
 import { CountryService } from '../../../_services/api/country.service';
+import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-region-add-edit',
@@ -14,6 +15,7 @@ import { CountryService } from '../../../_services/api/country.service';
 export class RegionAddEditComponent implements OnInit {
   @Input() selectedResource: RegionDto;
   myFormElements: FormBase<any>[] = [];
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     private countryService: CountryService,

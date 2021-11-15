@@ -2,15 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../app.constants';
+import { ADD_MODAL_MAX_WIDTH, CONFIG_SAMPLES, HEADER_HEIGHT } from '../../app.constants';
 import { TableColumn } from '../../_models/common';
-import { CONFIG_SAMPLES } from '../../_constants/storage';
 import { SampleDto } from '../../_models/sampleDto';
 import { SampleService } from '../../_services/api/sample.service';
 import { defaultColumnDefs } from './samples-list-table-data';
 import { SampleAddComponent } from '../sample-add/sample-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { FormActionsService } from '../../_services/form-actions.service';
 import { FORM_DATA_SAMPLE_FILTERS } from '../sample-filters/sample-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 
@@ -31,8 +29,7 @@ export class SamplesListComponent implements OnInit {
   constructor(
     public sampleService: SampleService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +47,6 @@ export class SamplesListComponent implements OnInit {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }

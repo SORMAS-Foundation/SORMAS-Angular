@@ -5,7 +5,12 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { FORM_DATA_CONTACT_ADD_EDIT } from './contact-add-edit-form-data';
 import { FormBase } from '../dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../_services/form-element-control.service';
-import { ADD_MODAL_NARROW, ADD_MODAL_WIDE, BREAKPOINTS } from '../../app.constants';
+import {
+  ADD_EDIT_FORM_ID,
+  ADD_MODAL_NARROW,
+  ADD_MODAL_WIDE,
+  BREAKPOINTS,
+} from '../../app.constants';
 
 @Component({
   selector: 'app-contact-add-edit',
@@ -14,6 +19,7 @@ import { ADD_MODAL_NARROW, ADD_MODAL_WIDE, BREAKPOINTS } from '../../app.constan
 })
 export class ContactAddEditComponent implements OnInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
+  formId = ADD_EDIT_FORM_ID;
   updatedResource: any;
   modalWidth: string;
   subscriptions: Subscription[] = [];

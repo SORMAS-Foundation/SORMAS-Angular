@@ -35,7 +35,7 @@
       </a>
     </nav>
     <div class="tab-nav-header-actions">
-      <app-form-actions [resource]="sample"></app-form-actions>
+      <app-form-actions [formId]="formId" [resource]="sample"></app-form-actions>
     </div>
   </div>
 
@@ -43,6 +43,7 @@
     <app-sidebar>
       <app-dynamic-form
         main
+        [formId]="formId"
         [formElements]="myFormElements"
         [resourceService]="sampleService"
       ></app-dynamic-form>

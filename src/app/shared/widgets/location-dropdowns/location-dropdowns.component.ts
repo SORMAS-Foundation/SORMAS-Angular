@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { CommunityService } from '../../../_services/api/community.service';
 import { CountryService } from '../../../_services/api/country.service';
 import { DistrictService } from '../../../_services/api/district.service';
@@ -17,6 +18,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 export class LocationDropdownsComponent implements OnInit, OnDestroy {
   config: FormElementBase<string>;
   group: FormGroup;
+  formId: string;
 
   data: any;
   fields: string[] = [];
@@ -52,13 +54,18 @@ export class LocationDropdownsComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
           control.valueChanges.subscribe((val: any) => {
             originalControl?.setValue(val);
-            this.formActionService.setInputChange(this.data[field].key, true);
+            this.formActionService.setInputChange(this.formId, this.data[field].key, true);
             this.updateDependents(field, val);
           })
         );
       }
     });
-    this.subscriptions.push(this.formActionService.getDiscard().subscribe(() => this.resetForm()));
+    this.subscriptions.push(
+      this.formActionService
+        .getDiscard()
+        .pipe(filter(({ formId }) => this.formId === formId))
+        .subscribe(() => this.resetForm())
+    );
   }
 
   resetForm(): void {

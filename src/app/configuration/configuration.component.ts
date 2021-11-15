@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EntityLink, SentResourceTypes } from '../_constants/common';
 import { SendResourceService } from '../_services/send-resource.service';
@@ -31,7 +30,7 @@ export class ConfigurationComponent implements OnDestroy {
   private subscription: Subscription[] = [];
   public regionName: string | null;
 
-  constructor(private router: Router, private sendResourceService: SendResourceService) {
+  constructor(private sendResourceService: SendResourceService) {
     this.subscription.push(
       this.sendResourceService.getResource().subscribe((response: any) => {
         if (response.fromComponent === SentResourceTypes.LINE_LISTING_DATA) {

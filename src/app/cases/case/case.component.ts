@@ -8,6 +8,7 @@ import {
   EntityLink,
   CaseOutcomeIcons,
   CASE_ORIGIN,
+  CASE_DETAILS_FORM_ID,
 } from '../../app.constants';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { HelperService } from '../../_services/helper.service';
@@ -65,6 +66,7 @@ export class CaseComponent implements OnInit, OnDestroy {
   caseId: any;
   currentSubPage: EntityLink;
   actionEditOptions = actionsEditDefs;
+  formId = CASE_DETAILS_FORM_ID;
   subscriptions: Subscription[] = [];
 
   constructor(

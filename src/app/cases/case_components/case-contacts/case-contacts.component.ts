@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as data from '../case-hospitalization/case-hospitalization-form-data';
 import { BaseService } from '../../../_services/api/base.service';
 import { CaseDataDto } from '../../../_models/caseDataDto';
 import { Filter, TableColumn } from '../../../_models/common';
@@ -16,7 +15,6 @@ import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 })
 export class CaseContactsComponent {
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_CASE_CONTACT_FILTERS));
-  formData = data.FORM_DATA_CASE_HOSPITALIZATION;
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_CASES;
   preSetFilters: Filter[];

@@ -51,6 +51,7 @@ const COMPONENTS_MAP: any = {
 export class FormWidgetComponent implements AfterViewInit {
   config: FormElementBase<string>;
   group: FormGroup;
+  formId: string;
   components = COMPONENTS_MAP;
 
   @ViewChild('dynamic', { read: ViewContainerRef }) dynamic: ViewContainerRef;
@@ -68,6 +69,7 @@ export class FormWidgetComponent implements AfterViewInit {
     const componentRef = this.dynamic.createComponent<any>(componentFactory);
     componentRef.instance.group = this.group;
     componentRef.instance.config = this.config;
+    componentRef.instance.formId = this.formId;
     this.changeDetectorRef.detectChanges();
   }
 }

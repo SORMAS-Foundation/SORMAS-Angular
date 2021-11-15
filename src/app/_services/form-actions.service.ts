@@ -10,54 +10,57 @@ export class FormActionsService {
   private subjectInputValue = new Subject<any>();
   private subjectModal = new Subject<any>();
 
-  private fieldsArray: string[] = [];
+  private fieldsArray: { [key: string]: string[] } = {};
 
-  setSave(resource: Resource | null): void {
-    this.subjectSave.next({ resource });
+  setSave(formId: string, resource: Resource | null): void {
+    this.subjectSave.next({ formId, resource });
   }
 
   getSave(): Observable<any> {
     return this.subjectSave.asObservable();
   }
 
-  setInputChange(field: string, isInputChanged: boolean): void {
+  setInputChange(formId: string, field: string, isInputChanged: boolean): void {
     if (isInputChanged) {
-      this.fieldsArray.push(field);
-    } else if (this.fieldsArray.includes(field)) {
-      this.fieldsArray = this.fieldsArray.filter((item) => item !== field);
+      if (!this.fieldsArray[formId]) {
+        this.fieldsArray[formId] = [];
+      }
+      this.fieldsArray[formId].push(field);
+    } else if (this.fieldsArray[formId]?.includes(field)) {
+      this.fieldsArray[formId] = this.fieldsArray[formId].filter((item) => item !== field);
     }
-    this.subjectInputChange.next({ inputChange: this.fieldsArray.length });
+    this.subjectInputChange.next({ formId, inputChange: this.fieldsArray[formId].length });
   }
 
-  resetInputChange(): void {
-    this.fieldsArray = [];
-    this.subjectInputChange.next({ inputChange: false });
+  resetInputChange(formId: string): void {
+    this.fieldsArray[formId] = [];
+    this.subjectInputChange.next({ formId, inputChange: false });
   }
 
   getInputChange(): Observable<any> {
     return this.subjectInputChange.asObservable();
   }
 
-  setInputValue(key: string, value: any): void {
-    this.subjectInputValue.next({ key, value });
+  setInputValue(formId: string, key: string, value: any): void {
+    this.subjectInputValue.next({ formId, key, value });
   }
 
   getInputValue(): Observable<any> {
     return this.subjectInputValue.asObservable();
   }
 
-  setDiscard(): void {
-    this.fieldsArray = [];
-    this.subjectDiscard.next({});
-    this.subjectInputChange.next({ inputChange: false });
+  setDiscard(formId: string): void {
+    this.fieldsArray[formId] = [];
+    this.subjectDiscard.next({ formId });
+    this.subjectInputChange.next({ formId, inputChange: false });
   }
 
   getDiscard(): Observable<any> {
     return this.subjectDiscard.asObservable();
   }
 
-  setCloseFormModal(closeModal: boolean): void {
-    this.subjectModal.next({ closeModal });
+  setCloseFormModal(formId: string, closeModal: boolean): void {
+    this.subjectModal.next({ formId, closeModal });
   }
 
   getCloseFormModal(): Observable<any> {

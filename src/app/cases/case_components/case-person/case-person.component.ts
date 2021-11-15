@@ -8,7 +8,7 @@ import { PersonService } from '../../../_services/api/person.service';
 import { NotificationService } from '../../../_services/notification.service';
 import { HelperService } from '../../../_services/helper.service';
 import { SendResourceService } from '../../../_services/send-resource.service';
-import { SentResourceTypes } from '../../../app.constants';
+import { CASE_PERSON_FORM_ID, SentResourceTypes } from '../../../app.constants';
 
 @Component({
   selector: 'app-case-person',
@@ -19,6 +19,7 @@ export class CasePersonComponent implements OnInit {
   person: PersonDto;
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CASE_PERSON_DETAILS;
+  formId = CASE_PERSON_FORM_ID;
 
   public resourceService: BaseService<any>;
 
