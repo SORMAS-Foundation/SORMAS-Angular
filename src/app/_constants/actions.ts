@@ -50,3 +50,8 @@ export const ACTIONS_SAMPLE_EDIT = {
   DELETE: 'DELETE',
   REFER: 'REFER',
 };
+
+export const ACTIONS_DASHBOARD_VIEW_OPTIONS = {
+  SURVEILLANCE: 'surveillance',
+  CONTACTS: 'contacts',
+};

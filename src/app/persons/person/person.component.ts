@@ -7,7 +7,7 @@ import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_PERSON } from './person-form-data';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { SendResourceService } from '../../_services/send-resource.service';
-import { SentResourceTypes } from '../../app.constants';
+import { PERSON_DETAILS_FORM_ID, SentResourceTypes } from '../../app.constants';
 import { EventService } from '../../_services/api/event.service';
 import { CaseService } from '../../_services/api/case.service';
 import { ContactService } from '../../_services/api/contact.service';
@@ -22,6 +22,7 @@ export class PersonComponent implements OnInit {
   personId: string;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_PERSON;
+  formId = PERSON_DETAILS_FORM_ID;
   constructor(
     public personService: PersonService,
     public eventService: EventService,

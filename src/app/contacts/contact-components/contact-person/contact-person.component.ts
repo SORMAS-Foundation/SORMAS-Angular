@@ -9,6 +9,7 @@ import { NotificationService } from '../../../_services/notification.service';
 import { HelperService } from '../../../_services/helper.service';
 import { SendResourceService } from '../../../_services/send-resource.service';
 import { SentResourceTypes } from '../../../app.constants';
+import { CONTACT_PERSON_FORM_ID } from '../../../_constants/form-identifiers';
 
 @Component({
   selector: 'app-contact-person',
@@ -19,6 +20,7 @@ export class ContactPersonComponent implements OnInit {
   person: PersonDto;
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CONTACT_PERSON_DETAILS;
+  formId = CONTACT_PERSON_FORM_ID;
 
   public resourceService: BaseService<any>;
 

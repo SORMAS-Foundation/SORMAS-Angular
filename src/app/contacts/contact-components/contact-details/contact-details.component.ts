@@ -10,6 +10,7 @@ import { TaskService } from '../../../_services/api/task.service';
 import { SampleService } from '../../../_services/api/sample.service';
 import { EventService } from '../../../_services/api/event.service';
 import { CONTACT_RISKS } from '../../../_constants/common';
+import { CONTACT_DETAILS_FORM_ID } from '../../../_constants/form-identifiers';
 
 @Component({
   selector: 'app-contact-details',
@@ -19,6 +20,7 @@ import { CONTACT_RISKS } from '../../../_constants/common';
 export class ContactDetailsComponent implements AfterViewInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CONTACT_DETAILS;
+  formId = CONTACT_DETAILS_FORM_ID;
   subscription: Subscription = new Subscription();
   contact: ContactDto;
   selectedContactType = '';

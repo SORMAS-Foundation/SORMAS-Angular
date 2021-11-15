@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EVENT_PARTICIPANTS_PROFILE_FORM_ID } from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { SentResourceTypes } from '../../../_constants/common';
 import { EventParticipantDto } from '../../../_models/eventParticipantDto';
@@ -19,6 +20,7 @@ export class EventParticipantsProfileComponent implements OnInit {
   participantId: string;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_EVENT_PARTICIPANT;
+  formId = EVENT_PARTICIPANTS_PROFILE_FORM_ID;
 
   constructor(
     public participantService: EventParticipantService,

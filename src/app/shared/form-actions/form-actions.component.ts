@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { filter } from 'rxjs/operators';
 import { FormActionsService } from '../../_services/form-actions.service';
 import { Resource } from '../../_models/resource';
 import { NotificationService } from '../../_services/notification.service';
@@ -13,6 +14,7 @@ import { NotificationService } from '../../_services/notification.service';
 })
 export class FormActionsComponent implements OnInit, OnDestroy {
   @Input() resource: Resource;
+  @Input() formId: string;
 
   hasInputsChanged = false;
   subscription: Subscription[] = [];
@@ -37,7 +39,7 @@ export class FormActionsComponent implements OnInit, OnDestroy {
             .subscribe((result) => {
               if (result) {
                 if (result === 'CONFIRM') {
-                  this.formActionsService.resetInputChange();
+                  this.formActionsService.resetInputChange(this.formId);
                   this.router.navigate([event.url]);
                 }
               }
@@ -49,9 +51,12 @@ export class FormActionsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.push(
-      this.formActionsService.getInputChange().subscribe((response: any) => {
-        this.hasInputsChanged = response.inputChange;
-      })
+      this.formActionsService
+        .getInputChange()
+        .pipe(filter(({ formId }) => this.formId === formId))
+        .subscribe((response: any) => {
+          this.hasInputsChanged = response.inputChange;
+        })
     );
   }
 
@@ -66,7 +71,7 @@ export class FormActionsComponent implements OnInit, OnDestroy {
       .subscribe((result) => {
         if (result) {
           if (result === 'CONFIRM') {
-            this.formActionsService.setDiscard();
+            this.formActionsService.setDiscard(this.formId);
             this.hasInputsChanged = false;
           }
         }
@@ -74,7 +79,7 @@ export class FormActionsComponent implements OnInit, OnDestroy {
   }
 
   saveForm(): void {
-    this.formActionsService.setSave(this.resource);
+    this.formActionsService.setSave(this.formId, this.resource);
   }
 
   ngOnDestroy(): void {

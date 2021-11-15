@@ -3,10 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
+import { CONFIGURATION_MODAL_WIDTH } from '../../../app.constants';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
-import { FormActionsService } from '../../../_services/form-actions.service';
 import { actionsBulkEditDefs } from './subcontinents-actions-data';
 import { defaultColumnDefs } from './subcontinents-table-data';
 import { SubcontinentService } from '../../../_services/api/subcontinent.service';
@@ -28,8 +27,7 @@ export class SubcontinentListComponent implements OnDestroy {
   constructor(
     public subcontinentService: SubcontinentService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   openEditSubcontinentModal(subcontinent: SubcontinentDto): void {
@@ -45,7 +43,6 @@ export class SubcontinentListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +61,6 @@ export class SubcontinentListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // this.tableComponent.getResources(true);
         }

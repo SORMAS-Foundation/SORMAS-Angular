@@ -3,12 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH } from '../../../_constants/common';
-import { TableAppearanceOptions } from '../../../_constants/enums';
+import { ADD_MODAL_MAX_WIDTH, TableAppearanceOptions } from '../../../app.constants';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { PointOfEntryDto } from '../../../_models/pointOfEntryDto';
 import { EntryPointService } from '../../../_services/api/entry-point.service';
-import { FormActionsService } from '../../../_services/form-actions.service';
 import { EntryPointsAddEditComponent } from '../entry-points-add-edit/entry-points-add-edit.component';
 import { actionsBulkEditDefs } from './entry-points-actions-data';
 import { defaultColumnDefs } from './entry-points-table-data';
@@ -28,8 +26,7 @@ export class EntryPointsListComponent implements OnDestroy {
   constructor(
     public entryPointService: EntryPointService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   openEditEntryPointModal(entryPoint: PointOfEntryDto): void {
@@ -45,7 +42,6 @@ export class EntryPointsListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +60,6 @@ export class EntryPointsListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // this.tableComponent.getResources(true);
         }

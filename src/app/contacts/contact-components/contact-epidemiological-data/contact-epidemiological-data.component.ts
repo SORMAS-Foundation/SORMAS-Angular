@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SentResourceTypes } from '../../../app.constants';
+import { CONTACT_EPIDEMIOLOGICAL_DATA_FORM_ID, SentResourceTypes } from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { CaseDataDto } from '../../../_models/models';
 import { BaseService } from '../../../_services/api/base.service';
@@ -16,6 +16,7 @@ import * as data from './contact-epidemiological-form-data';
 export class ContactEpidemiologicalDataComponent {
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CONTACT_EPID_DETAILS;
+  formId = CONTACT_EPIDEMIOLOGICAL_DATA_FORM_ID;
   subscription: Subscription = new Subscription();
   public resourceService: BaseService<any>;
 

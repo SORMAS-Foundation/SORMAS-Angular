@@ -10,7 +10,6 @@ import { actionsBulkEditDefs } from './countries-actions-data';
 import { defaultColumnDefs } from './countries-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
-import { FormActionsService } from '../../../_services/form-actions.service';
 import { CountryAddEditComponent } from '../country-add-edit/country-add-edit.component';
 
 @Component({
@@ -28,8 +27,7 @@ export class CountryListComponent implements OnDestroy {
   constructor(
     public countryService: CountryService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   openEditCountryModal(country: CountryDto): void {
@@ -45,7 +43,6 @@ export class CountryListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +61,6 @@ export class CountryListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // this.tableComponent.getResources(true);
         }

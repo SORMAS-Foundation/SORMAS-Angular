@@ -1,1 +1,16 @@
-<h1 i18n="Dashboard header">Dashboard</h1>
+<div class="dashboard-wrapper">
+  <div class="page-header">
+    <h1 class="page-header-title">
+      <span *ngIf="currentRoute === 'surveillance'">{{ 'captions.View.dashboard.surveillance' | translate }}</span>
+      <span *ngIf="currentRoute === 'contacts'">{{ 'captions.View.dashboard.contacts' | translate }}</span>
+    </h1>
+    <div class="page-header-actions">
+      <app-dropdown-menu [buttonText]="'actionViewOptions' | translate">
+        <app-action-menu [config]="actionsViewOptions" (action)="onActionSelected($event)"></app-action-menu>
+      </app-dropdown-menu>
+    </div>
+  </div>
+  <div class="dashboard-page-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

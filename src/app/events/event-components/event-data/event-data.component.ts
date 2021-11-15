@@ -6,6 +6,7 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 import { EventService } from '../../../_services/api/event.service';
 import { EventDto } from '../../../_models/eventDto';
 import { TaskService } from '../../../_services/api/task.service';
+import { EVENT_DETAILS_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-event-data',
@@ -15,6 +16,7 @@ import { TaskService } from '../../../_services/api/task.service';
 export class EventDataComponent {
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_EVENT_ADD;
+  formId = EVENT_DETAILS_FORM_ID;
   event: EventDto;
 
   public resourceService: BaseService<any>;

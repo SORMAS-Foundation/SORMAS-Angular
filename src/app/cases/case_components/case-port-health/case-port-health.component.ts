@@ -9,7 +9,7 @@ import {
   FORM_DATA_CASE_PORT_HEALTH_OTHER,
 } from './case-port-health-form-data';
 import { CaseDataDto } from '../../../_models/caseDataDto';
-import { POINT_OF_ENTRY_TYPE } from '../../../app.constants';
+import { CASE_PORT_HEALTH_FORM_ID, POINT_OF_ENTRY_TYPE } from '../../../app.constants';
 
 @Component({
   selector: 'app-case-port-health',
@@ -19,6 +19,7 @@ import { POINT_OF_ENTRY_TYPE } from '../../../app.constants';
 export class CasePortHealthComponent {
   myFormElements: FormBase<any>[] = [];
   formData: any;
+  formId = CASE_PORT_HEALTH_FORM_ID;
 
   public resourceService: BaseService<any>;
 

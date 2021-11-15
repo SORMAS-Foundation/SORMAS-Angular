@@ -19,6 +19,7 @@
 <div mat-dialog-content>
   <app-dynamic-form
     *ngIf="myFormElements.length"
+    [formId]="formId"
     [formElements]="myFormElements"
     (changed)="updateValues($event)"
   ></app-dynamic-form>

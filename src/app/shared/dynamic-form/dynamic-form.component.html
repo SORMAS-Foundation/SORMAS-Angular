@@ -53,7 +53,12 @@
         *ngIf="field.active"
         [ngClass]="['dynamic-form-input', field.className || '', field.active ? '' : 'hidden']"
       >
-        <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
+        <ng-container
+          appDynamicField
+          [config]="field"
+          [group]="form"
+          [formId]="formId"
+        ></ng-container>
       </div>
     </ng-container>
   </mat-card>
@@ -66,7 +71,12 @@
       *ngIf="field.active"
       [ngClass]="['dynamic-form-input', field.className || '', field.active ? '' : 'hidden']"
     >
-      <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
+      <ng-container
+        appDynamicField
+        [config]="field"
+        [group]="form"
+        [formId]="formId"
+      ></ng-container>
     </div>
   </ng-container>
 </ng-template>
@@ -79,7 +89,12 @@
         *ngIf="field.active"
         [ngClass]="['dynamic-form-input', field.className || '', field.active ? '' : 'hidden']"
       >
-        <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
+        <ng-container
+          appDynamicField
+          [config]="field"
+          [group]="form"
+          [formId]="formId"
+        ></ng-container>
       </div>
     </ng-container>
   </app-collapsable-box>

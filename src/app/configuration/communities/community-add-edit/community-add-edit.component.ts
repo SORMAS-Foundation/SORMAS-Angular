@@ -6,7 +6,7 @@ import { CommunityService } from '../../../_services/api/community.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { RegionService } from '../../../_services/api/region.service';
 import { DistrictService } from '../../../_services/api/district.service';
-import { FormActionsService } from '../../../_services/form-actions.service';
+import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-community-add-edit',
@@ -17,91 +17,30 @@ export class CommunityAddEditComponent implements OnInit {
   @Input() selectedResource: CommunityDto;
   myFormElements: FormBase<any>[] = [];
   selectedRegion = '';
+  formId = ADD_EDIT_FORM_ID;
 
   constructor(
     public communityService: CommunityService,
     public regionService: RegionService,
     public districtService: DistrictService,
-    private formElementControlService: FormElementControlService,
-    private formActionService: FormActionsService
+    private formElementControlService: FormElementControlService
   ) {}
 
   ngOnInit(): void {
-    this.fetchRegions();
-  }
-
-  fetchRegions(): void {
-    this.regionService.getAll(null, null, null, true).subscribe({
-      next: (response: any) => {
-        if (this.selectedResource) {
-          this.selectedRegion = this.selectedResource.region?.uuid || '';
-          this.fetchDistricts();
-          this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-            this.selectedResource,
-            JSON.parse(JSON.stringify(data.FORM_DATA_COMMUNITY_ADD_EDIT))
-          );
-          this.disableField('region.uuid');
-          this.disableField('district.uuid');
-        } else {
-          this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_COMMUNITY_ADD_EDIT));
-        }
-        this.updateOptionsForField('region.uuid', response.elements);
-      },
-      error: () => {},
-      complete: () => {},
-    });
-  }
-
-  fetchDistricts(): void {
-    const filters = [
-      {
-        field: 'region',
-        value: { uuid: this.selectedRegion },
-      },
-    ];
-    this.districtService.getAll(null, null, filters, true).subscribe({
-      next: (response: any) => {
-        this.updateOptionsForField('district.uuid', response.elements);
-      },
-      error: () => {},
-      complete: () => {},
-    });
-  }
-
-  updateOptionsForField(field: string, options: any): void {
-    this.myFormElements = this.formElementControlService.setOptionsToInput(
-      options,
-      this.myFormElements,
-      field,
-      'name'
-    );
-  }
-
-  disableField(field: string): void {
-    this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-      this.myFormElements,
-      field,
-      'disabled',
-      true
-    );
-  }
-
-  updateFormElementsWithChanges(changes: any): void {
-    Object.entries(changes).forEach(([key, value]) => {
-      const currentField = this.myFormElements[0].fields.find((f) => f.key === key);
-      if (currentField) {
-        currentField.value = value;
+    if (this.selectedResource) {
+      const config: any = data.FORM_DATA_COMMUNITY_ADD_EDIT;
+      const section: any = config.find((s: any) => s.id === 'details');
+      const field: any = section.fields.find((f: any) => f.widget === 'app-location-dropdowns');
+      if (field) {
+        field.widgetInfo.region.disabled = true;
+        field.widgetInfo.district.disabled = true;
       }
-    });
-  }
-
-  onFormChange(event: any): void {
-    this.updateFormElementsWithChanges(event);
-    const regionId = event['region.uuid'];
-    if (this.selectedRegion !== regionId) {
-      this.selectedRegion = regionId;
-      this.fetchDistricts();
-      this.formActionService.setInputValue('district.uuid', '');
+      this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+        this.selectedResource,
+        JSON.parse(JSON.stringify(config))
+      );
+    } else {
+      this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_COMMUNITY_ADD_EDIT));
     }
   }
 }

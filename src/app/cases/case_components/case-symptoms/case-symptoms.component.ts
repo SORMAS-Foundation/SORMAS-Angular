@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CASE_SYMPTOMS_FORM_ID } from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { CaseDataDto } from '../../../_models/caseDataDto';
 import { BaseService } from '../../../_services/api/base.service';
@@ -37,6 +38,7 @@ enum SymptomsMap {
 export class CaseSymptomsComponent {
   myFormElements: FormBase<any>[] = [];
   formData = [...data.FORM_DATA_CASE_SYMPTOMS];
+  formId = CASE_SYMPTOMS_FORM_ID;
 
   public resourceService: BaseService<any>;
 

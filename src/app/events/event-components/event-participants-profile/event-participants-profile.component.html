@@ -2,6 +2,7 @@
   <app-dynamic-form
     main
     *ngIf="participant"
+    [formId]="formId"
     [formElements]="myFormElements"
     [resourceService]="participantService"
   ></app-dynamic-form>

@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
-import { RegionService } from '../../../_services/api/region.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import * as data from './district-add-edit-form-data';
 import { DistrictDto } from '../../../_models/districtDto';
-import { DistrictService } from '../../../_services/api/district.service';
+import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-district-add-edit',
@@ -14,39 +13,24 @@ import { DistrictService } from '../../../_services/api/district.service';
 export class DistrictAddEditComponent implements OnInit {
   @Input() selectedResource: DistrictDto;
   myFormElements: FormBase<any>[] = [];
+  formId = ADD_EDIT_FORM_ID;
 
-  constructor(
-    public districtService: DistrictService,
-    private regionService: RegionService,
-    private formElementControlService: FormElementControlService
-  ) {}
+  constructor(private formElementControlService: FormElementControlService) {}
 
   ngOnInit(): void {
-    this.regionService.getAll(null, null, null, true).subscribe({
-      next: (response: any) => {
-        if (this.selectedResource) {
-          this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-            this.selectedResource,
-            JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT))
-          );
-          this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-            this.myFormElements,
-            'region.uuid',
-            'disabled',
-            true
-          );
-        } else {
-          this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT));
-        }
-        this.myFormElements = this.formElementControlService.setOptionsToInput(
-          response.elements,
-          this.myFormElements,
-          'region.uuid',
-          'name'
-        );
-      },
-      error: () => {},
-      complete: () => {},
-    });
+    const config: any = data.FORM_DATA_DISTRICT_ADD_EDIT;
+    if (this.selectedResource) {
+      const section: any = config.find((s: any) => s.id === 'details');
+      const field: any = section.fields.find((f: any) => f.widget === 'app-location-dropdowns');
+      if (field) {
+        field.widgetInfo.region.disabled = true;
+      }
+      this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+        this.selectedResource,
+        JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT))
+      );
+    } else {
+      this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT));
+    }
   }
 }

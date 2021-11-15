@@ -11,6 +11,7 @@ import { FormBase } from '../../dynamic-form/types/form-element-base';
   styleUrls: ['./filters-form.component.scss'],
 })
 export class FiltersFormComponent implements OnInit, OnDestroy {
+  @Input() formId: string;
   @Input() set data(raw: FormBase<any>[]) {
     this.formData = JSON.parse(JSON.stringify(raw));
   }
@@ -27,7 +28,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.filterService.getFilters().subscribe((response: any) => {
         if (!response.filters.length && this.filters.length) {
-          this.formActionsService.setDiscard();
+          this.formActionsService.setDiscard(this.formId);
         }
       })
     );

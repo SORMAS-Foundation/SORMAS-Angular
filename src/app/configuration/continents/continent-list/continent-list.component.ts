@@ -8,7 +8,6 @@ import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { ContinentDto } from '../../../_models/continentDto';
 import { ContinentService } from '../../../_services/api/continent.service';
-import { FormActionsService } from '../../../_services/form-actions.service';
 import { ContinentAddEditComponent } from '../continent-add-edit/continent-add-edit.component';
 import { actionsBulkEditDefs } from './continents-actions-data';
 import { defaultColumnDefs } from './continents-table-data';
@@ -28,8 +27,7 @@ export class ContinentListComponent implements OnDestroy {
   constructor(
     public continentService: ContinentService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
-    private formActionsService: FormActionsService
+    private translateService: TranslateService
   ) {}
 
   openEditContinentModal(continent: ContinentDto): void {
@@ -45,7 +43,6 @@ export class ContinentListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // this.tableComponent.getResources(true);
         }
@@ -64,7 +61,6 @@ export class ContinentListComponent implements OnDestroy {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // this.tableComponent.getResources(true);
         }

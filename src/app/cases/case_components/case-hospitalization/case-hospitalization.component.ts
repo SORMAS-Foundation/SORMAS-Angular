@@ -4,6 +4,7 @@ import { BaseService } from '../../../_services/api/base.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import * as data from './case-hospitalization-form-data';
 import { CaseDataDto } from '../../../_models/caseDataDto';
+import { CASE_HOSPITALIZATION_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-case-hospitalization',
@@ -13,6 +14,7 @@ import { CaseDataDto } from '../../../_models/caseDataDto';
 export class CaseHospitalizationComponent {
   myFormElements: FormBase<any>[] = [];
   formData = data.FORM_DATA_CASE_HOSPITALIZATION;
+  formId = CASE_HOSPITALIZATION_FORM_ID;
 
   public resourceService: BaseService<any>;
 

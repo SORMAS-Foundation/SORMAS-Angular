@@ -5,14 +5,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ContactService } from '../../_services/api/contact.service';
 import { TableColumn } from '../../_models/common';
-import { CONFIG_EVENTS } from '../../_constants/storage';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './contacts-list-table-data';
-import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH, CONFIG_EVENTS, HEADER_HEIGHT } from '../../app.constants';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { HelperService } from '../../_services/helper.service';
-import { FormActionsService } from '../../_services/form-actions.service';
 import { FORM_DATA_CONTACT_FILTERS } from '../../shared/contact-filters/contact-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 
@@ -36,8 +34,7 @@ export class ContactsListComponent implements OnInit {
     public helperService: HelperService,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private activeRoute: ActivatedRoute,
-    private formActionsService: FormActionsService
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +57,6 @@ export class ContactsListComponent implements OnInit {
 
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
-        this.formActionsService.setDiscard();
         if (result) {
           // callback
         }
