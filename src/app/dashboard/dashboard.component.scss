@@ -1,1 +1,9 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+.dashboard-wrapper {
+  min-height: 100%;
+  background-color: map-get($sormas-accent, 50);
+  .page-header {
+    background-color: $white;
+  }
+}

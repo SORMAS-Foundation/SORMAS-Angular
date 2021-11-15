@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapComponent } from './map.component';
+import { DashboardFiltersComponent } from './dashboard-filters.component';
 
-describe('MapComponent', () => {
-  let component: MapComponent;
-  let fixture: ComponentFixture<MapComponent>;
+describe('DashboardFiltersComponent', () => {
+  let component: DashboardFiltersComponent;
+  let fixture: ComponentFixture<DashboardFiltersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MapComponent],
+      declarations: [DashboardFiltersComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MapComponent);
+    fixture = TestBed.createComponent(DashboardFiltersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
