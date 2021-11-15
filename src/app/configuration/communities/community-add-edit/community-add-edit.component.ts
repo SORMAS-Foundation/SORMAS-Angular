@@ -27,13 +27,12 @@ export class CommunityAddEditComponent implements OnInit {
   ngOnInit(): void {
     if (this.selectedResource) {
       const config: any = data.FORM_DATA_COMMUNITY_ADD_EDIT;
-      config.forEach((section: any) => {
-        const field = section.fields.find((f: any) => f.widgetInfo);
-        if (field) {
-          field.widgetInfo.region.disabled = true;
-          field.widgetInfo.district.disabled = true;
-        }
-      });
+      const section: any = config.find((s: any) => s.id === 'details');
+      const field: any = section.fields.find((f: any) => f.widget === 'app-location-dropdowns');
+      if (field) {
+        field.widgetInfo.region.disabled = true;
+        field.widgetInfo.district.disabled = true;
+      }
       this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
         this.selectedResource,
         JSON.parse(JSON.stringify(config))

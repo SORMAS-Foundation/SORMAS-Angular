@@ -2,7 +2,7 @@ import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../../_constants/form-data
 
 export const FORM_DATA_DISTRICT_ADD_EDIT = [
   {
-    id: '',
+    id: 'details',
     title: '',
     hiddenLeftSection: true,
     fields: [
