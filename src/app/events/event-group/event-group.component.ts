@@ -7,7 +7,7 @@ import { EventDto } from '../../_models/eventDto';
 import { EventGroupService } from '../../_services/api/event-group.service';
 import { EventService } from '../../_services/api/event.service';
 import { EventGroupDto } from '../../_models/eventGroupDto';
-import { EVENT_DETAILS_FORM_ID } from '../../app.constants';
+import { EVENT_GROUPS_FORM_ID } from '../../app.constants';
 import { FORM_DATA_EVENT_GROUP } from './event-group-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../_services/form-element-control.service';
@@ -23,7 +23,7 @@ export class EventGroupComponent implements OnInit, OnDestroy {
   eventGroupId: any;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_EVENT_GROUP;
-  formId = EVENT_DETAILS_FORM_ID;
+  formId = EVENT_GROUPS_FORM_ID;
   loading = false;
 
   subscriptions: Subscription[] = [];
