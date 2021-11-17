@@ -2,7 +2,7 @@ import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET } from '../../../_c
 
 export const FORM_DATA_REGION_ADD_EDIT = [
   {
-    id: '',
+    id: 'details',
     title: '',
     hiddenLeftSection: true,
     fields: [
