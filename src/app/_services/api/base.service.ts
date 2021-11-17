@@ -18,8 +18,8 @@ export class BaseService<T extends Resource> {
     protected httpClient: HttpClient,
     protected helperService: HelperService,
     @Inject('string') private url: string,
-    @Inject('any') private endpoint: any,
-    @Inject('Serializer') private serializer: Serializer
+    @Inject('any') protected endpoint: any,
+    @Inject('Serializer') protected serializer: Serializer
   ) {}
 
   getAll(
