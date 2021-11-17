@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { CommunityService } from '../../../_services/api/community.service';
@@ -7,6 +7,7 @@ import { CountryService } from '../../../_services/api/country.service';
 import { DistrictService } from '../../../_services/api/district.service';
 import { RegionService } from '../../../_services/api/region.service';
 import { FormActionsService } from '../../../_services/form-actions.service';
+import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { NotificationService } from '../../../_services/notification.service';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 
@@ -32,7 +33,8 @@ export class LocationDropdownsComponent implements OnInit, OnDestroy {
     public districtService: DistrictService,
     public communityService: CommunityService,
     private notificationService: NotificationService,
-    private formActionService: FormActionsService
+    private formActionService: FormActionsService,
+    private formElementControlService: FormElementControlService
   ) {}
 
   ngOnInit(): void {
@@ -43,12 +45,18 @@ export class LocationDropdownsComponent implements OnInit, OnDestroy {
   }
 
   createForm(): void {
+    let validations: ValidatorFn[] = [];
     this.fields.forEach((field) => {
       const originalControl = this.group.controls[this.data[field].key];
-      this.locationForm.addControl(field, new FormControl(originalControl?.value));
-      if (this.data[field].disabled) {
-        this.locationForm.controls[field].disable();
-      }
+      const validate: boolean = this.data[field].required;
+      validations = validate ? this.formElementControlService.getValidators(['required']) : [];
+      this.locationForm.addControl(
+        field,
+        new FormControl(
+          { value: originalControl?.value, disabled: this.data[field].disabled },
+          validations
+        )
+      );
       const control = this.locationForm.get(field);
       if (control) {
         this.subscriptions.push(

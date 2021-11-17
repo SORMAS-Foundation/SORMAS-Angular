@@ -3,8 +3,6 @@ import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import * as data from './region-add-edit-form-data';
 import { RegionDto } from '../../../_models/regionDto';
-import { RegionService } from '../../../_services/api/region.service';
-import { CountryService } from '../../../_services/api/country.service';
 import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 
 @Component({
@@ -17,38 +15,25 @@ export class RegionAddEditComponent implements OnInit {
   myFormElements: FormBase<any>[] = [];
   formId = ADD_EDIT_FORM_ID;
 
-  constructor(
-    private countryService: CountryService,
-    public regionService: RegionService,
-    private formElementControlService: FormElementControlService
-  ) {}
+  constructor(private formElementControlService: FormElementControlService) {}
 
   ngOnInit(): void {
-    this.countryService.getAll(null, null, null, true).subscribe({
-      next: (response: any) => {
-        if (this.selectedResource) {
-          this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-            this.selectedResource,
-            JSON.parse(JSON.stringify(data.FORM_DATA_REGION_ADD_EDIT))
-          );
-          this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-            this.myFormElements,
-            'country.uuid',
-            'disabled',
-            true
-          );
-        } else {
-          this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_REGION_ADD_EDIT));
-        }
-        this.myFormElements = this.formElementControlService.setOptionsToInput(
-          response.elements,
-          this.myFormElements,
-          'country.uuid',
-          'defaultName'
-        );
-      },
-      error: () => {},
-      complete: () => {},
-    });
+    const config: any = data.FORM_DATA_REGION_ADD_EDIT;
+    const section: any = config.find((s: any) => s.id === 'details');
+    const field: any = section.fields.find((f: any) => f.widget === 'app-location-dropdowns');
+    if (this.selectedResource) {
+      if (field) {
+        field.widgetInfo.country.disabled = true;
+      }
+      this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+        this.selectedResource,
+        JSON.parse(JSON.stringify(config))
+      );
+    } else {
+      if (field) {
+        field.widgetInfo.country.disabled = false;
+      }
+      this.myFormElements = JSON.parse(JSON.stringify(config));
+    }
   }
 }

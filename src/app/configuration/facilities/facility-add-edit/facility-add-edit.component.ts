@@ -22,7 +22,14 @@ export class FacilityAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const section: any = data.FORM_DATA_FACILITY_ADD_EDIT.find((s: any) => s.id === 'location');
+    const field: any = section.fields.find((f: any) => f.widget === 'app-location-dropdowns');
     if (this.selectedResource) {
+      if (field) {
+        field.widgetInfo.region.disabled = true;
+        field.widgetInfo.district.disabled = true;
+        field.widgetInfo.community.disabled = true;
+      }
       this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
         this.selectedResource,
         JSON.parse(JSON.stringify(data.FORM_DATA_FACILITY_ADD_EDIT))
@@ -40,25 +47,12 @@ export class FacilityAddEditComponent implements OnInit {
         'disabled',
         true
       );
-      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-        this.myFormElements,
-        'region.uuid',
-        'disabled',
-        true
-      );
-      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-        this.myFormElements,
-        'district.uuid',
-        'disabled',
-        true
-      );
-      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
-        this.myFormElements,
-        'community.uuid',
-        'disabled',
-        true
-      );
     } else {
+      if (field) {
+        field.widgetInfo.region.disabled = false;
+        field.widgetInfo.district.disabled = false;
+        field.widgetInfo.community.disabled = false;
+      }
       this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_FACILITY_ADD_EDIT));
     }
   }
