@@ -6,10 +6,7 @@
     (selectionChange)="updateTableColumns($event)"
   ></app-column-picker>
   <app-dropdown-menu *ngIf="viewOptions" [buttonText]="'actionViewOptions' | translate">
-    <app-action-menu
-      [config]="viewOptions"
-      (action)="onActionSelectedFn ? onActionSelectedFn($event) : onActionSelected($event)"
-    ></app-action-menu>
+    <app-action-menu [config]="viewOptions" (action)="onActionSelected($event)"></app-action-menu>
   </app-dropdown-menu>
   <app-dropdown-menu
     *ngIf="bulkEditOptions"
