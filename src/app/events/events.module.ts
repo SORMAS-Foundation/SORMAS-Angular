@@ -15,6 +15,9 @@ import { EventParticipantsProfileComponent } from './event-components/event-part
 import { EventActionsComponent } from './event-components/event-actions/event-actions.component';
 import { EventComponent } from './event/event.component';
 import { EventParticipantsFiltersComponent } from './event-components/event-participants-filters/event-participants-filters.component';
+import { EventGroupsComponent } from './event-components/event-groups/event-groups.component';
+import { EventGroupFiltersComponent } from './event-components/event-group-filters/event-group-filters.component';
+import { EventGroupsListComponent } from './event-components/event-groups-list/event-groups-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { EventParticipantsFiltersComponent } from './event-components/event-part
     EventActionsComponent,
     EventComponent,
     EventParticipantsFiltersComponent,
+    EventGroupsComponent,
+    EventGroupFiltersComponent,
+    EventGroupsListComponent,
   ],
   imports: [CommonModule, EventsRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

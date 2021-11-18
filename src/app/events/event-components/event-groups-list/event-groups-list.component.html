@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1 class="page-header-title">
+    {{ 'captions.View.groups' | translate }}
+  </h1>
+</div>
+<app-table
+  [resourceService]="eventGroupService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [appearance]="tableAppearanceOptions.MINIMAL"
+  [showTotal]="true"
+  [viewOptions]="actionsViewOption"
+  showTotalContext="{{ 'captions.eventGroups' | translate }}"
+>
+</app-table>

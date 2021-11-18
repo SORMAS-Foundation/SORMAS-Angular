@@ -8,6 +8,7 @@ import { EventDataComponent } from './event-components/event-data/event-data.com
 import { EventParticipantsComponent } from './event-components/event-participants/event-participants.component';
 import { EventActionsComponent } from './event-components/event-actions/event-actions.component';
 import { EventParticipantsProfileComponent } from './event-components/event-participants-profile/event-participants-profile.component';
+import { EventGroupsComponent } from './event-components/event-groups/event-groups.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,11 @@ const routes: Routes = [
     component: EventsComponent,
     children: [
       { path: 'list', component: EventsListComponent },
+      {
+        path: 'event-groups',
+        component: EventGroupsComponent,
+        canActivate: [LeaveGuard],
+      },
       {
         path: 'event/:eventId',
         component: EventComponent,

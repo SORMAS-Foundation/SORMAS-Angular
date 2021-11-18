@@ -5452,5 +5452,8 @@
   "pleaseSetDisease": "Please select a disease",
   "actionAddNewFacility": "Add new facility",
   "facilityDetails": "Facility details",
-  "actionEditFacility": "Edit facility"
+  "actionEditFacility": "Edit facility",
+  "eventGroup.responsibleRegion": "Responsible region",
+  "eventGroup.responsibleDistrict": "Responsible district",
+  "eventGroup.responsibleCommunity": "Responsible community"
 }

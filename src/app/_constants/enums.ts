@@ -496,6 +496,12 @@ export enum EntryPointRelevanceStatusOptions {
   ARCHIVED = 'captions.pointOfEntryArchivedPointsOfEntry',
 }
 
+export enum EventGroupRelevanceStatusOptions {
+  ALL = 'enum.EntityRelevanceStatus.ALL',
+  ACTIVE = 'enum.EntityRelevanceStatus.ACTIVE',
+  ARCHIVED = 'enum.EntityRelevanceStatus.ARCHIVED',
+}
+
 export enum EntryPointActiveOptions {
   YES = 'strings.yes',
   NO = 'strings.no',
