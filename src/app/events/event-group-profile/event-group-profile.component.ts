@@ -8,16 +8,16 @@ import { EventGroupService } from '../../_services/api/event-group.service';
 import { EventService } from '../../_services/api/event.service';
 import { EventGroupDto } from '../../_models/eventGroupDto';
 import { EVENT_GROUPS_FORM_ID } from '../../app.constants';
-import { FORM_DATA_EVENT_GROUP } from './event-group-form-data';
+import { FORM_DATA_EVENT_GROUP } from './event-group-profile-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 
 @Component({
-  selector: 'app-event-group',
-  templateUrl: './event-group.component.html',
-  styleUrls: ['./event-group.component.scss'],
+  selector: 'app-event-group-profile',
+  templateUrl: './event-group-profile.component.html',
+  styleUrls: ['./event-group-profile.component.scss'],
 })
-export class EventGroupComponent implements OnInit, OnDestroy {
+export class EventGroupProfileComponent implements OnInit, OnDestroy {
   eventGroup: EventGroupDto;
   events: EventDto[];
   eventGroupId: any;

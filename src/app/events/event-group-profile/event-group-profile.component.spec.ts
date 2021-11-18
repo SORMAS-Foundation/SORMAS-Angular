@@ -4,15 +4,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { EventGroupComponent } from './event-group.component';
+import { EventGroupProfileComponent } from './event-group-profile.component';
 
-describe('EventGroupComponent', () => {
-  let component: EventGroupComponent;
-  let fixture: ComponentFixture<EventGroupComponent>;
+describe('EventGroupProfileComponent', () => {
+  let component: EventGroupProfileComponent;
+  let fixture: ComponentFixture<EventGroupProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EventGroupComponent],
+      declarations: [EventGroupProfileComponent],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
@@ -23,7 +23,7 @@ describe('EventGroupComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventGroupComponent);
+    fixture = TestBed.createComponent(EventGroupProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
