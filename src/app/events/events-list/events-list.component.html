@@ -21,6 +21,7 @@
       [saveConfigKey]="configKey"
       [bulkEditOptions]="actionsBulkEdit"
       [preSetFilters]="presetFilters"
+      (triggerGroupEvent)="onGroupEvents($event)"
       showTotalContext="{{ 'strings.entityEvents' | translate }}"
     ></app-table>
   </ng-container>

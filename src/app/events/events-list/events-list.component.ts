@@ -74,6 +74,10 @@ export class EventsListComponent implements OnInit, OnDestroy {
     );
   }
 
+  onGroupEvents(event: any): void {
+    console.log('eventeventeventevent', event);
+  }
+
   ngOnDestroy(): void {
     this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
