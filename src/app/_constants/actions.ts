@@ -20,9 +20,9 @@ export const ACTIONS_BULK_EDIT = {
 };
 
 export const ACTIONS_VIEW_OPTION = {
-  EVENTS: 'EVENTS',
-  ACTIONS: 'ACTIONS',
-  GROUPS: 'GROUPS',
+  EVENTS: '/events/list',
+  ACTIONS: '/events/event-actions/list',
+  GROUPS: '/events/event-groups/list',
 };
 
 export const ACTIONS_CASE_VIEW_OPTIONS = {

@@ -20,7 +20,6 @@ import { HelperService } from '../../_services/helper.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_FILTERS } from '../event-filters/event-filters-form-data';
 import { viewOptionsDefs } from '../event-components/event-groups-list/event-groups-list-action-data';
-import { ACTIONS_VIEW_OPTION } from '../../_constants/actions';
 
 @Component({
   selector: 'app-events-list',
@@ -76,22 +75,6 @@ export class EventsListComponent implements OnInit, OnDestroy {
         }
       })
     );
-  }
-
-  onActionSelected(event: any): void {
-    switch (event) {
-      case ACTIONS_VIEW_OPTION.EVENTS:
-        this.router.navigate(['/events/list']);
-        break;
-      case ACTIONS_VIEW_OPTION.ACTIONS:
-        this.router.navigate(['/events/event-actions/list']);
-        break;
-      case ACTIONS_VIEW_OPTION.GROUPS:
-        this.router.navigate(['/events/event-groups/list']);
-        break;
-      default:
-        break;
-    }
   }
 
   ngOnDestroy(): void {

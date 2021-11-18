@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ACTIONS_VIEW_OPTION } from '../../../_constants/actions';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { EventGroupService } from '../../../_services/api/event-group.service';
@@ -19,24 +18,7 @@ export class EventGroupsListComponent implements OnDestroy {
   tableAppearanceOptions = TableAppearanceOptions;
 
   private subscription: Subscription[] = [];
-
   constructor(public eventGroupService: EventGroupService, private router: Router) {}
-
-  onActionSelected(event: any): void {
-    switch (event) {
-      case ACTIONS_VIEW_OPTION.EVENTS:
-        this.router.navigate(['/events/list']);
-        break;
-      case ACTIONS_VIEW_OPTION.ACTIONS:
-        this.router.navigate(['/events/event-actions/list']);
-        break;
-      case ACTIONS_VIEW_OPTION.GROUPS:
-        this.router.navigate(['/events/event-groups/list']);
-        break;
-      default:
-        break;
-    }
-  }
 
   ngOnDestroy(): void {
     this.subscription.forEach((subscription) => subscription.unsubscribe());
