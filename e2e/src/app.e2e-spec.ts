@@ -2,7 +2,8 @@
 import { browser, protractor } from 'protractor';
 import { AppPage } from './app.po';
 
-const TEST_CREDENTIALS = 'SurvOff';
+const TEST_CREDENTIALS_USER = 'admin';
+const TEST_CREDENTIALS_PASS = 'sadmin';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -27,8 +28,8 @@ describe('workspace-project App', () => {
     const username = await page.getUserNameInput();
     const pw = await page.getPwInput();
 
-    username.sendKeys(TEST_CREDENTIALS);
-    pw.sendKeys(TEST_CREDENTIALS);
+    username.sendKeys(TEST_CREDENTIALS_USER);
+    pw.sendKeys(TEST_CREDENTIALS_PASS);
 
     const submitBtn = await page.getSubmitBtn();
     submitBtn.click();

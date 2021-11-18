@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NavigationEnd, Router} from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NavItem } from '../_models/common';
 import { actionsViewOptionsDefs } from './dashboard-actions-data';
