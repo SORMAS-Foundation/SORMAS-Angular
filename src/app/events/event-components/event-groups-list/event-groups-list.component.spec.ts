@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { EventGroupsListComponent } from './event-groups-list.component';
 
 describe('EventGroupsListComponent', () => {
@@ -8,9 +10,9 @@ describe('EventGroupsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EventGroupsListComponent ]
-    })
-    .compileComponents();
+      declarations: [EventGroupsListComponent],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule, RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

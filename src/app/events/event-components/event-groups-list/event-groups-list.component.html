@@ -11,6 +11,6 @@
   [fullHeight]="true"
   [appearance]="tableAppearanceOptions.MINIMAL"
   [viewOptions]="actionsViewOption"
-  [onActionSelectedFn]="onActionSelected"
+  (onActionSelectedFn)="(onActionSelected)"
 >
 </app-table>
