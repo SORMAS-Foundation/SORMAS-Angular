@@ -18,7 +18,7 @@ const routes: Routes = [
     children: [
       { path: 'list', component: EventsListComponent },
       {
-        path: 'event-groups',
+        path: 'event-groups/list',
         component: EventGroupsComponent,
         canActivate: [LeaveGuard],
       },
@@ -43,7 +43,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'event-group/:eventGroupId',
+    path: 'event-groups/:eventGroupId',
     component: EventGroupProfileComponent,
   },
 ];

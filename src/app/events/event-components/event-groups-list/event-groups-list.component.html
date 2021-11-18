@@ -10,8 +10,7 @@
   [isHeaderSticky]="true"
   [fullHeight]="true"
   [appearance]="tableAppearanceOptions.MINIMAL"
-  [showTotal]="true"
   [viewOptions]="actionsViewOption"
-  showTotalContext="{{ 'captions.eventGroups' | translate }}"
+  [onActionSelectedFn]="onActionSelected"
 >
 </app-table>

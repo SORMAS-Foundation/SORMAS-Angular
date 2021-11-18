@@ -19,6 +19,7 @@ import { debounceTime } from 'rxjs/operators';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
 import {
@@ -81,6 +82,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() rowStyleData: string;
   @Input() showTotal = false;
   @Input() showTotalContext = 'Items';
+  @Input() onActionSelectedFn: (event: any) => void;
 
   preSetFiltersTmp: Filter[];
   @Input() set preSetFilters(value) {
@@ -104,7 +106,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
     private dialog: MatDialog,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router // this is needed for the onActionSelectFn to do redirects if neccessary
   ) {}
 
   ngOnInit(): void {
