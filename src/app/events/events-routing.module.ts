@@ -8,7 +8,7 @@ import { EventDataComponent } from './event-components/event-data/event-data.com
 import { EventParticipantsComponent } from './event-components/event-participants/event-participants.component';
 import { EventActionsComponent } from './event-components/event-actions/event-actions.component';
 import { EventParticipantsProfileComponent } from './event-components/event-participants-profile/event-participants-profile.component';
-import { EventGroupComponent } from './event-group/event-group.component';
+import { EventGroupProfileComponent } from './event-group-profile/event-group-profile.component';
 
 const routes: Routes = [
   {
@@ -38,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'event-group/:eventGroupId',
-    component: EventGroupComponent,
+    component: EventGroupProfileComponent,
   },
 ];
 
