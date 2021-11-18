@@ -19,7 +19,7 @@ export const ACTIONS_BULK_EDIT = {
   QUARANTINE_DOCUMENTS: 'CREATE_QUARANTINE_ORDER_DOCUMENTS',
 };
 
-export const ACTIONS_VIEW_OPTION = {
+export const ACTIONS_EVENTS_VIEW_OPTIONS = {
   EVENTS: '/events/list',
   ACTIONS: '/events/event-actions/list',
   GROUPS: '/events/event-groups/list',
