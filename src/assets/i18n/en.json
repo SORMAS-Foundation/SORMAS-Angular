@@ -5857,7 +5857,13 @@
   "actionAddNewFacility": "Add new facility",
   "facilityDetails": "Facility details",
   "actionEditFacility": "Edit facility",
-  "descriptionAboutUs": "SORMAS (Surveillance Outbreak Response Management & Analysis System) is the digital solution for mHealth and eHealth surveillance for epidemics world wide. It covers infectious diseases from COVID-19 to Ebola and provides digital infrastructure for timely management and control measures to verify disease cases.",
+  "descriptionAboutUs": "SORMAS (Surveillance Outbreak Response Management & Analysis System) is the digital solution for mHealth and eHealth surveillance for epidemics world wide.<br>It covers infectious diseases from COVID-19 to Ebola and provides digital infrastructure for timely management and control measures to verify disease cases.",
   "headingConfirmUnlink": "Confirm unlink",
-  "confirmationUnlinkEventFromGroup": "Are you sure you want to unlink this event from this group?"
+  "confirmationUnlinkEventFromGroup": "Are you sure you want to unlink this event from this group?",
+  "aboutSormasGithub": "SORMAS Github",
+  "aboutContactSupport": "Contact support",
+  "aboutGiveFeedback": "Give feedback",
+  "aboutGeoData": "Geo data provided by:",
+  "aboutHotline": "Hotline:",
+  "aboutPoweredBy": "Powered by"
 }
