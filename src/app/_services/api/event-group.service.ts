@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
 import { BaseService } from './base.service';
 
 import * as constants from '../../app.constants';
@@ -19,6 +20,15 @@ export class EventGroupService extends BaseService<EventGroupsIndexDto> {
       '',
       constants.API_ROUTE_EVENT_GROUPS,
       new EventGroupSerializer()
+    );
+  }
+
+  unlinkEvent(groupId: string, eventId: string): Observable<any> {
+    const endpoint = this.endpoint.ENDPOINT;
+
+    return this.httpClient.post(
+      `${this.helperService.getApiUrl()}/${endpoint}/${groupId}/unlinkEvent?eventUuid=${eventId}`,
+      null
     );
   }
 }

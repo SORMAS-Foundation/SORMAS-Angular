@@ -1,0 +1,45 @@
+<section *ngIf="eventGroup">
+  <header>
+    <a [routerLink]="['/eventGroups/list']" mat-icon-button>
+      <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+    </a>
+    <h1>{{ eventGroup?.name }}</h1>
+    <div class="tab-nav-header-actions">
+      <app-form-actions [formId]="formId" [resource]="eventGroup"></app-form-actions>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <app-dynamic-form
+      *ngIf="myFormElements.length"
+      [formId]="formId"
+      [formElements]="myFormElements"
+      [resourceService]="eventGroupService"
+    ></app-dynamic-form>
+
+    <section class="events">
+      <h2 class="events-title">
+        {{ 'strings.entityEvents' | translate }}
+      </h2>
+      <mat-card class="events-list">
+        <p class="events-actions">
+          <button mat-stroked-button color="primary">{{ 'captions.linkEvent' | translate }}</button>
+        </p>
+        <app-loader [show]="loading"></app-loader>
+        <app-card-list
+          *ngIf="events && events.length"
+          [data]="events"
+          [cardWidth]="200"
+          [initialPageSize]="6"
+          [cardType]="'case_event'"
+          [cardEdit]="true"
+          [cardUnlink]="true"
+          [cardUnlinkPosition]="'BOTTOMLEFT'"
+          cardTitleKey="eventTitle"
+          (unlinkCard)="unlinkEvent($event)"
+          (editCard)="editEvent($event)"
+        ></app-card-list>
+      </mat-card>
+    </section>
+  </div>
+</section>
