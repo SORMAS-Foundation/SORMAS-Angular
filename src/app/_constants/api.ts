@@ -206,11 +206,10 @@ export const API_ROUTE_OUTBREAKS = {
   DELETE: 'outbreaks/delete',
 };
 
-// toDO: hardcoded endpoint. Needs backend
 export const API_ROUTE_EVENT_GROUPS = {
-  ENDPOINT: 'eventgroups',
-  GET_ALL: 'eventgroups/indexList',
-  UPDATE: 'eventgroups/push',
-  ADD: 'eventgroups/push',
-  DELETE: 'eventgroups/delete',
+  ENDPOINT: 'eventGroups',
+  GET_ALL: 'eventGroups/indexList',
+  UPDATE: 'eventGroups/push',
+  ADD: 'eventGroups/push',
+  DELETE: 'eventGroups/delete',
 };
