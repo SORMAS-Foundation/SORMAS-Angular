@@ -107,5 +107,6 @@
   "pleaseSetDisease": "Please select a disease",
   "actionAddNewFacility": "Add new facility",
   "facilityDetails": "Facility details",
-  "actionEditFacility": "Edit facility"
+  "actionEditFacility": "Edit facility",
+  "descriptionAboutUs": "SORMAS (Surveillance Outbreak Response Management & Analysis System) is the digital solution for mHealth and eHealth surveillance for epidemics world wide. It covers infectious diseases from COVID-19 to Ebola and provides digital infrastructure for timely management and control measures to verify disease cases."
 }
