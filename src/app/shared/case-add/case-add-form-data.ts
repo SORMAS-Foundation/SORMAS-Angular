@@ -78,33 +78,33 @@ export const FORM_DATA_CASE_ADD = [
         key: 'community.uuid',
         className: 'hidden',
       },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-location-dropdowns',
+        className: 'size-large',
+        widgetInfo: {
+          region: {
+            key: 'region.uuid',
+            required: true,
+            label: 'captions.CaseData.responsibleRegion',
+            newLine: true,
+          },
+          district: {
+            key: 'district.uuid',
+            required: true,
+            label: 'captions.CaseData.responsibleDistrict',
+            newLine: true,
+            dependingOn: 'region',
+          },
+          community: {
+            key: 'community.uuid',
+            label: 'captions.CaseData.responsibleCommunity',
+            newLine: true,
+            dependingOn: 'district',
+          },
+        },
+      },
     ],
-  },
-  {
-    ...FORM_DATA_WIDGET,
-    widget: 'app-location-dropdowns',
-    className: 'size-large',
-    widgetInfo: {
-      region: {
-        key: 'region.uuid',
-        required: true,
-        label: 'captions.CaseData.responsibleRegion',
-        newLine: true,
-      },
-      district: {
-        key: 'district.uuid',
-        required: true,
-        label: 'captions.CaseData.responsibleDistrict',
-        newLine: true,
-        dependingOn: 'region',
-      },
-      community: {
-        key: 'community.uuid',
-        label: 'captions.CaseData.responsibleCommunity',
-        newLine: true,
-        dependingOn: 'district',
-      },
-    },
   },
   {
     id: 'placeOfStay',
