@@ -108,6 +108,9 @@
   "actionAddNewFacility": "Add new facility",
   "facilityDetails": "Facility details",
   "actionEditFacility": "Edit facility",
+  "eventGroup.responsibleRegion": "Responsible region",
+  "eventGroup.responsibleDistrict": "Responsible district",
+  "eventGroup.responsibleCommunity": "Responsible community",
   "headingConfirmUnlink": "Confirm unlink",
   "confirmationUnlinkEventFromGroup": "Are you sure you want to unlink this event from this group?"
 }
