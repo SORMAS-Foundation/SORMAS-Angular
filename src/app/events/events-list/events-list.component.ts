@@ -12,7 +12,9 @@ import {
   ADD_MODAL_MAX_WIDTH,
   CONFIG_EVENTS,
   HEADER_HEIGHT,
-  EVENT_FILTERS_FORM_ID, MODAL_MEDIUM_WIDTH,
+  EVENT_FILTERS_FORM_ID,
+  MODAL_MEDIUM_WIDTH,
+  ADD_EVENT_GROUP_FORM_ID,
 } from '../../app.constants';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
@@ -21,6 +23,9 @@ import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_FILTERS } from '../event-filters/event-filters-form-data';
 import { EventGroupAddEventsModalComponent } from '../event-group-add-events-modal/event-group-add-events-modal.component';
 import { EventGroupAddModalComponent } from '../event-group-add-modal/event-group-add-modal.component';
+import { EventGroupService } from '../../_services/api/event-group.service';
+import { NotificationService } from '../../_services/notification.service';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-events-list',
@@ -38,20 +43,23 @@ export class EventsListComponent implements OnInit, OnDestroy {
   presetFilters: any;
   formIdFilters = EVENT_FILTERS_FORM_ID;
 
-  private subscription: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
 
   constructor(
     public eventService: EventService,
     public helperService: HelperService,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private eventGroupService: EventGroupService,
+    private notificationService: NotificationService,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
     this.presetFilters = this.helperService.setQueryParamsInFilters(this.routeParams);
-    this.subscription.push(
+    this.subscriptions.push(
       this.activeRoute.queryParams.subscribe((params: Params) => {
         this.routeParams = params;
       })
@@ -67,7 +75,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
       },
     });
 
-    this.subscription.push(
+    this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           // callback
@@ -81,11 +89,23 @@ export class EventsListComponent implements OnInit, OnDestroy {
       maxWidth: MODAL_MEDIUM_WIDTH,
     });
 
-    this.subscription.push(
+    this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // callback
+          this.formActionsService.setSave(ADD_EVENT_GROUP_FORM_ID, result.eventGroupAdded);
         }
+      })
+    );
+  }
+
+  linkEvents(eventGroupId: string, events: any[]): void {
+    this.subscriptions.push(
+      this.eventGroupService.linkEvent(eventGroupId, events).subscribe({
+        next: (response: any) => {},
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
       })
     );
   }
@@ -95,21 +115,20 @@ export class EventsListComponent implements OnInit, OnDestroy {
       maxWidth: MODAL_MEDIUM_WIDTH,
     });
 
-    this.subscription.push(
+    this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           if (result.selectedEventGroup === null) {
             this.addNewEventGroup();
+          } else {
+            this.linkEvents(result.selectedEventGroup.uuid, events);
           }
-          console.log('events', events);
-          console.log('result', result);
-          // callback
         }
       })
     );
   }
 
   ngOnDestroy(): void {
-    this.subscription.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

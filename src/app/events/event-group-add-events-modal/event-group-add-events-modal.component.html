@@ -25,7 +25,7 @@
   </div>
   <form [formGroup]="filtersForm" class="filters-form">
     <mat-form-field
-      id="nameUuidEpidNumberLike"
+      id="searchEventGroup"
       appearance="outline"
       floatLabel="always"
       class="search-field"
@@ -37,7 +37,7 @@
         matInput
         appDebounce
         placeholder="{{ 'Search' | translate }}"
-        formControlName="nameUuidEpidNumberLike"
+        formControlName="searchEventGroup"
         (debounce)="onFormChange()"
       />
     </mat-form-field>

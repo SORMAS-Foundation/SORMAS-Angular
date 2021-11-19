@@ -107,5 +107,7 @@
   "pleaseSetDisease": "Please select a disease",
   "actionAddNewFacility": "Add new facility",
   "facilityDetails": "Facility details",
-  "actionEditFacility": "Edit facility"
+  "actionEditFacility": "Edit facility",
+  "headingConfirmUnlink": "Confirm unlink",
+  "confirmationUnlinkEventFromGroup": "Are you sure you want to unlink this event from this group?"
 }

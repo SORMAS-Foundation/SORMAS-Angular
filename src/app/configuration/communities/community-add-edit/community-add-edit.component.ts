@@ -27,10 +27,10 @@ export class CommunityAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const config: any = data.FORM_DATA_COMMUNITY_ADD_EDIT;
+    const section: any = config.find((s: any) => s.id === 'details');
+    const field: any = section.fields.find((f: any) => f.widget === 'app-location-dropdowns');
     if (this.selectedResource) {
-      const config: any = data.FORM_DATA_COMMUNITY_ADD_EDIT;
-      const section: any = config.find((s: any) => s.id === 'details');
-      const field: any = section.fields.find((f: any) => f.widget === 'app-location-dropdowns');
       if (field) {
         field.widgetInfo.region.disabled = true;
         field.widgetInfo.district.disabled = true;
@@ -40,7 +40,11 @@ export class CommunityAddEditComponent implements OnInit {
         JSON.parse(JSON.stringify(config))
       );
     } else {
-      this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_COMMUNITY_ADD_EDIT));
+      if (field) {
+        field.widgetInfo.region.disabled = false;
+        field.widgetInfo.district.disabled = false;
+      }
+      this.myFormElements = JSON.parse(JSON.stringify(config));
     }
   }
 }

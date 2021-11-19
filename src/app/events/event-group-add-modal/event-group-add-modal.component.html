@@ -7,8 +7,8 @@
     <button mat-stroked-button color="primary" class="cancel-btn" mat-dialog-close>
       {{ 'captions.actionCancel' | translate }}
     </button>
-    <button mat-flat-button color="primary" class="confirm-btn">
-      {{ 'captions.actionConfirm' | translate }}
+    <button mat-flat-button color="primary" class="confirm-btn" (click)="save()">
+      {{ 'captions.actionSave' | translate }}
     </button>
   </div>
 </div>

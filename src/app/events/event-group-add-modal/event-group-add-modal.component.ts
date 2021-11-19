@@ -20,6 +20,14 @@ export class EventGroupAddModalComponent implements OnInit {
     public eventGroupService: EventGroupService
   ) {}
 
+  save(): void {
+    this.dialogRef.close({
+      eventGroupAdded: {
+        name: '',
+      },
+    });
+  }
+
   ngOnInit(): void {
     this.myFormElements = JSON.parse(JSON.stringify(formData.FORM_DATA_EVENT_GROUP_ADD));
   }

@@ -69,6 +69,7 @@ export const FORM_DATA_USER = [
       {
         ...FORM_DATA_INPUT,
         key: 'country.caption',
+        className: 'hidden',
       },
       {
         ...FORM_DATA_INPUT,

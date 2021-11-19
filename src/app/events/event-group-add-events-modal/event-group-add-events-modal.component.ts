@@ -33,14 +33,14 @@ export class EventGroupAddEventsModalComponent implements OnInit {
 
   initFiltersForm(): void {
     this.filtersForm = new FormGroup({
-      nameUuidEpidNumberLike: new FormControl(),
+      searchEventGroup: new FormControl(),
     });
   }
 
   filtersToArray(): void {
     const filter: Filter = {
-      field: 'nameUuidEpidNumberLike',
-      value: this.filtersForm.value.nameUuidEpidNumberLike,
+      field: 'searchEventGroup',
+      value: this.filtersForm.value.searchEventGroup,
     };
     this.filterService.setFilters([filter]);
   }
