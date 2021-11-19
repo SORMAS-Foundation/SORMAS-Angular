@@ -283,43 +283,6 @@ app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   ]);
 });
 
-app.use('/sormas-rest/eventgroups/indexList', (req, res) => {
-  const result = {
-    elements: [
-      {
-        uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
-        eventGroup: {
-          uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
-          caption: 'Group 1'
-        },
-        count: 5
-      },
-      {
-        uuid: 'TRE3TG-FGRT34-WEMNJ4-TH34QWFG',
-        eventGroup: {
-          uuid: 'TRE3TG-FGRT34-WEMNJ4-TH34QWFG',
-          caption: 'Group 2'
-        },
-        count: 2
-      },
-      {
-        uuid: 'OPB4TC-FGRT34-WEMNJ4-TH34QWFG',
-        eventGroup: {
-          uuid: 'OPB4TC-FGRT34-WEMNJ4-TH34QWFG',
-          caption: 'Group 3'
-        },
-        count: 4
-      },
-    ],
-    pageNumber: 0,
-    size: 8,
-    totalElementCount: 3,
-    hasNext: false,
-  };
-
-  res.status(200).send(result);
-});
-
 app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
   const result = {
     elements: [

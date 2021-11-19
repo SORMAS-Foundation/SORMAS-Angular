@@ -1,0 +1,22 @@
+<div mat-dialog-title>
+  <h2>{{ 'strings.headingCreateNewEventGroup' | translate }}</h2>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button color="primary" class="cancel-btn" mat-dialog-close>
+      {{ 'captions.actionCancel' | translate }}
+    </button>
+    <button mat-flat-button color="primary" class="confirm-btn">
+      {{ 'captions.actionConfirm' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <app-dynamic-form
+    [formId]="formId"
+    [formElements]="myFormElements"
+    [resourceService]="eventGroupService"
+  ></app-dynamic-form>
+</div>

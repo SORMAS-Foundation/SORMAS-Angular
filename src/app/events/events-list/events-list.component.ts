@@ -12,13 +12,15 @@ import {
   ADD_MODAL_MAX_WIDTH,
   CONFIG_EVENTS,
   HEADER_HEIGHT,
-  EVENT_FILTERS_FORM_ID,
+  EVENT_FILTERS_FORM_ID, MODAL_MEDIUM_WIDTH,
 } from '../../app.constants';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_FILTERS } from '../event-filters/event-filters-form-data';
+import { EventGroupAddEventsModalComponent } from '../event-group-add-events-modal/event-group-add-events-modal.component';
+import { EventGroupAddModalComponent } from '../event-group-add-modal/event-group-add-modal.component';
 
 @Component({
   selector: 'app-events-list',
@@ -74,8 +76,37 @@ export class EventsListComponent implements OnInit, OnDestroy {
     );
   }
 
-  onGroupEvents(event: any): void {
-    console.log('eventeventeventevent', event);
+  addNewEventGroup(): void {
+    const dialogRef = this.dialog.open(EventGroupAddModalComponent, {
+      maxWidth: MODAL_MEDIUM_WIDTH,
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
+  }
+
+  onGroupEvents(events: any): void {
+    const dialogRef = this.dialog.open(EventGroupAddEventsModalComponent, {
+      maxWidth: MODAL_MEDIUM_WIDTH,
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          if (result.selectedEventGroup === null) {
+            this.addNewEventGroup();
+          }
+          console.log('events', events);
+          console.log('result', result);
+          // callback
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {
