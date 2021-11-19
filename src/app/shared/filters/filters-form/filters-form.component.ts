@@ -77,6 +77,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.formActionsService.setDiscard(this.formId);
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

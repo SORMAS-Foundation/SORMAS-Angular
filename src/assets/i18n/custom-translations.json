@@ -112,5 +112,6 @@
   "eventGroup.responsibleDistrict": "Responsible district",
   "eventGroup.responsibleCommunity": "Responsible community",
   "headingConfirmUnlink": "Confirm unlink",
-  "confirmationUnlinkEventFromGroup": "Are you sure you want to unlink this event from this group?"
+  "confirmationUnlinkEventFromGroup": "Are you sure you want to unlink this event from this group?",
+  "eventGroupEventSearch": "Search by Event, title, description"
 }
