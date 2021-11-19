@@ -8,6 +8,7 @@ import { EventDataComponent } from './event-components/event-data/event-data.com
 import { EventParticipantsComponent } from './event-components/event-participants/event-participants.component';
 import { EventActionsComponent } from './event-components/event-actions/event-actions.component';
 import { EventParticipantsProfileComponent } from './event-components/event-participants-profile/event-participants-profile.component';
+import { EventGroupsComponent } from './event-components/event-groups/event-groups.component';
 import { EventGroupProfileComponent } from './event-group-profile/event-group-profile.component';
 
 const routes: Routes = [
@@ -16,6 +17,11 @@ const routes: Routes = [
     component: EventsComponent,
     children: [
       { path: 'list', component: EventsListComponent },
+      {
+        path: 'event-groups/list',
+        component: EventGroupsComponent,
+        canActivate: [LeaveGuard],
+      },
       {
         path: 'event/:eventId',
         component: EventComponent,
@@ -37,7 +43,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'event-group/:eventGroupId',
+    path: 'event-groups/:eventGroupId',
     component: EventGroupProfileComponent,
   },
 ];
