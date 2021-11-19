@@ -15,8 +15,8 @@ export const FORM_DATA_EVENT_GROUP_FILTERS = [
     fields: [
       {
         ...FORM_DATA_SEARCHBOX,
-        key: 'nameEpidLike',
-        placeholder: 'strings.promptSearch',
+        key: 'freeText',
+        placeholder: 'strings.promptEventsSearchFieldEventGroups',
         className: 'fullwidth',
       },
     ],
@@ -41,8 +41,8 @@ export const FORM_DATA_EVENT_GROUP_FILTERS = [
     fields: [
       {
         ...FORM_DATA_SEARCHBOX,
-        key: 'eventLike',
-        placeholder: 'strings.promptEventsSearchFieldEventGroups',
+        key: 'freeTextEvent',
+        placeholder: 'eventGroupEventSearch',
         className: 'fullwidth',
       },
     ],
