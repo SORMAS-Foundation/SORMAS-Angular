@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import * as data from './case-details-form-data';
@@ -9,15 +9,19 @@ import { TaskService } from '../../../_services/api/task.service';
 import { SampleService } from '../../../_services/api/sample.service';
 import { EventService } from '../../../_services/api/event.service';
 import { CASE_DETAILS_FORM_ID } from '../../../app.constants';
+import { HelperService } from '../../../_services/helper.service';
+import { RegionService } from '../../../_services/api/region.service';
+import { DistrictService } from '../../../_services/api/district.service';
+import { CommunityService } from '../../../_services/api/community.service';
 
 @Component({
   selector: 'app-case-details',
   templateUrl: './case-details.component.html',
   styleUrls: ['./case-details.component.scss'],
 })
-export class CaseDetailsComponent implements AfterViewInit, OnDestroy {
+export class CaseDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
-  formData = data.FORM_DATA_CASE_DETAILS;
+  formData: FormBase<any>[] = data.FORM_DATA_CASE_DETAILS;
   formId = CASE_DETAILS_FORM_ID;
   case: CaseDataDto;
 
@@ -29,8 +33,23 @@ export class CaseDetailsComponent implements AfterViewInit, OnDestroy {
     private formElementControlService: FormElementControlService,
     public taskService: TaskService,
     public sampleService: SampleService,
-    public eventService: EventService
+    public eventService: EventService,
+    protected regionService: RegionService,
+    protected districtService: DistrictService,
+    protected communityService: CommunityService,
+    protected helperService: HelperService
   ) {}
+
+  ngOnInit(): void {
+    this.formData.forEach((section) => {
+      section?.fields.forEach((field) => {
+        if (field.service) {
+          // eslint-disable-next-line no-param-reassign
+          field.service = this[field.service as keyof this];
+        }
+      });
+    });
+  }
 
   ngAfterViewInit(): void {
     const { form } = this.dynamicForm;
