@@ -61,7 +61,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           let RESOURCE;
           if (response.resource === null) {
             // ADD mode
-            RESOURCE = this.resourceService.add([this.updateFormRawValueWithObjects()]);
+            if (response.multiple) {
+              RESOURCE = this.resourceService.add([this.updateFormRawValueWithObjects()]);
+            } else {
+              RESOURCE = this.resourceService.add(this.updateFormRawValueWithObjects());
+            }
           } else {
             // // EDIT mode
             // const resourceArrayTmp = [];
@@ -75,14 +79,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           }
 
           RESOURCE.subscribe({
-            next: () => {},
+            next: (requestResponse: any) => {
+              this.formActionsService.setCloseFormModal(this.formId, true, requestResponse);
+              this.notificationService.success('Successfully saved');
+            },
             error: (err: any) => {
               this.notificationService.error(err);
             },
-            complete: () => {
-              this.formActionsService.setCloseFormModal(this.formId, true);
-              this.notificationService.success('Successfully saved');
-            },
+            complete: () => {},
           });
         })
     );

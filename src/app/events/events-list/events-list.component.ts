@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,7 +14,6 @@ import {
   HEADER_HEIGHT,
   EVENT_FILTERS_FORM_ID,
   MODAL_MEDIUM_WIDTH,
-  ADD_EVENT_GROUP_FORM_ID,
 } from '../../app.constants';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
@@ -26,8 +25,7 @@ import { EventGroupAddEventsModalComponent } from '../event-group-add-events-mod
 import { EventGroupAddModalComponent } from '../event-group-add-modal/event-group-add-modal.component';
 import { EventGroupService } from '../../_services/api/event-group.service';
 import { NotificationService } from '../../_services/notification.service';
-import { FormActionsService } from '../../_services/form-actions.service';
-
+import { TableComponent } from '../../shared/table/table.component';
 
 @Component({
   selector: 'app-events-list',
@@ -48,6 +46,8 @@ export class EventsListComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
+  @ViewChild(TableComponent) tableComponent: TableComponent;
+
   constructor(
     public eventService: EventService,
     public helperService: HelperService,
@@ -56,8 +56,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private eventGroupService: EventGroupService,
-    private notificationService: NotificationService,
-    private formActionsService: FormActionsService
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -88,7 +87,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
     );
   }
 
-  addNewEventGroup(): void {
+  addNewEventGroup(events: any): void {
     const dialogRef = this.dialog.open(EventGroupAddModalComponent, {
       maxWidth: MODAL_MEDIUM_WIDTH,
     });
@@ -96,16 +95,28 @@ export class EventsListComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          this.formActionsService.setSave(ADD_EVENT_GROUP_FORM_ID, result.eventGroupAdded);
+          this.linkEvents(result.response.requestResponse.uuid, events);
         }
       })
     );
   }
 
   linkEvents(eventGroupId: string, events: any[]): void {
+    const eventsTmp: any = [];
+    events.forEach((item: any) => {
+      eventsTmp.push({
+        uuid: item.uuid,
+      });
+    });
+
     this.subscriptions.push(
-      this.eventGroupService.linkEvent(eventGroupId, events).subscribe({
-        next: (response: any) => {},
+      this.eventGroupService.linkEvent(eventGroupId, eventsTmp).subscribe({
+        next: () => {
+          this.notificationService.success(
+            this.translateService.instant('strings.messageEventLinkedToGroup')
+          );
+          this.tableComponent.getResources(true);
+        },
         error: (err: any) => {
           this.notificationService.error(err);
         },
@@ -123,7 +134,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           if (result.selectedEventGroup === null) {
-            this.addNewEventGroup();
+            this.addNewEventGroup(events);
           } else {
             this.linkEvents(result.selectedEventGroup.uuid, events);
           }

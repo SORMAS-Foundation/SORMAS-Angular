@@ -36,7 +36,7 @@ export class EventGroupService extends BaseService<EventGroupsIndexDto> {
     const endpoint = this.endpoint.ENDPOINT;
 
     return this.httpClient.post(
-      `${this.helperService.getApiUrl()}/${endpoint}/${groupId}/linkEvent`,
+      `${this.helperService.getApiUrl()}/${endpoint}/${groupId}/linkEvents`,
       events
     );
   }

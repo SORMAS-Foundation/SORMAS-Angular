@@ -8,9 +8,8 @@ describe('EventGroupAddModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EventGroupAddModalComponent ]
-    })
-    .compileComponents();
+      declarations: [EventGroupAddModalComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -12,8 +12,8 @@ export class FormActionsService {
 
   private fieldsArray: { [key: string]: string[] } = {};
 
-  setSave(formId: string, resource: Resource | null): void {
-    this.subjectSave.next({ formId, resource });
+  setSave(formId: string, resource: Resource | null, multiple = true): void {
+    this.subjectSave.next({ formId, resource, multiple });
   }
 
   getSave(): Observable<any> {
@@ -59,8 +59,8 @@ export class FormActionsService {
     return this.subjectDiscard.asObservable();
   }
 
-  setCloseFormModal(formId: string, closeModal: boolean): void {
-    this.subjectModal.next({ formId, closeModal });
+  setCloseFormModal(formId: string, closeModal: boolean, requestResponse: any = null): void {
+    this.subjectModal.next({ formId, closeModal, requestResponse });
   }
 
   getCloseFormModal(): Observable<any> {

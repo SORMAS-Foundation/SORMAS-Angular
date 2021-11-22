@@ -8,7 +8,7 @@ export const FORM_DATA_EVENT_GROUP_ADD = [
     fields: [
       {
         ...FORM_DATA_INPUT,
-        key: 'isoCode',
+        key: 'name',
         label: 'captions.EventGroup.name',
         className: 'size-full',
         validation: ['required'],
