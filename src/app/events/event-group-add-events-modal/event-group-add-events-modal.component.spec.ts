@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 import { EventGroupAddEventsModalComponent } from './event-group-add-events-modal.component';
 
 describe('EventGroupAddEventsModalComponent', () => {
@@ -10,7 +12,11 @@ describe('EventGroupAddEventsModalComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [EventGroupAddEventsModalComponent],
-      imports: [HttpClientTestingModule],
+      imports: [TranslateModule.forRoot(), MatDialogModule, HttpClientTestingModule],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
     }).compileComponents();
   });
 
