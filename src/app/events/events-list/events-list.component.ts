@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NavItem, TableColumn } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
@@ -21,11 +21,13 @@ import { actionsBulkEditDefs } from './event-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_FILTERS } from '../event-filters/event-filters-form-data';
+import { viewOptionsDefs } from '../event-components/event-groups-list/event-groups-list-action-data';
 import { EventGroupAddEventsModalComponent } from '../event-group-add-events-modal/event-group-add-events-modal.component';
 import { EventGroupAddModalComponent } from '../event-group-add-modal/event-group-add-modal.component';
 import { EventGroupService } from '../../_services/api/event-group.service';
 import { NotificationService } from '../../_services/notification.service';
 import { FormActionsService } from '../../_services/form-actions.service';
+
 
 @Component({
   selector: 'app-events-list',
@@ -42,6 +44,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   headerHeight = HEADER_HEIGHT;
   presetFilters: any;
   formIdFilters = EVENT_FILTERS_FORM_ID;
+  actionsViewOption: NavItem[] = viewOptionsDefs;
 
   private subscriptions: Subscription[] = [];
 
@@ -51,6 +54,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private translateService: TranslateService,
     private activeRoute: ActivatedRoute,
+    private router: Router,
     private eventGroupService: EventGroupService,
     private notificationService: NotificationService,
     private formActionsService: FormActionsService
