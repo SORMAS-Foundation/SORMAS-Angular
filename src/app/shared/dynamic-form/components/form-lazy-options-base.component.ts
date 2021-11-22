@@ -1,6 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, pairwise } from 'rxjs/operators';
+import { CommunityService } from '../../../_services/api/community.service';
+import { DistrictService } from '../../../_services/api/district.service';
+import { RegionService } from '../../../_services/api/region.service';
+import { FormActionsService } from '../../../_services/form-actions.service';
 import { FormBaseComponent } from './form-base.component';
 
 @Component({
@@ -8,7 +12,17 @@ import { FormBaseComponent } from './form-base.component';
   template: ``,
 })
 export class FormLazyOptionsBaseComponent extends FormBaseComponent implements OnInit, OnDestroy {
+  service: any;
   subscriptions: Subscription[] = [];
+
+  constructor(
+    public formActionsService: FormActionsService,
+    public regionService: RegionService,
+    public districtService: DistrictService,
+    public communityService: CommunityService
+  ) {
+    super(formActionsService);
+  }
 
   ngOnInit(): void {
     super.ngOnInit();
@@ -16,6 +30,7 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     this.toggleControl(!!this.config.options.length);
 
     if (this.config.service) {
+      this.service = this[this.config.service as keyof this];
       this.populateOptions();
     }
   }
@@ -47,7 +62,7 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
   fetchOptions(determinantValue?: any): void {
     const filters = this.makeFiltersFromValue(determinantValue);
     this.subscriptions.push(
-      this.config.service.getAll(null, null, filters).subscribe({
+      this.service.getAll(null, null, filters).subscribe({
         next: (response: any) => {
           this.config.options = this.makeOptions(response.elements);
           this.toggleControl(!!this.config.options.length);
