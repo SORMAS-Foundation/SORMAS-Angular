@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1 class="page-header-title">
+    {{ 'captions.View.groups' | translate }}
+  </h1>
+  <div class="page-header-actions">
+    <button mat-flat-button color="primary" (click)="openAddEventModal()">
+      {{ 'captions.eventNewEvent' | translate }}
+    </button>
+  </div>
+</div>
+<app-table
+  [resourceService]="eventGroupService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isHeaderSticky]="true"
+  [fullHeight]="true"
+  [viewOptions]="actionsViewOption"
+>
+</app-table>
