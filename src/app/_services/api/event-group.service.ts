@@ -31,4 +31,13 @@ export class EventGroupService extends BaseService<EventGroupsIndexDto> {
       null
     );
   }
+
+  linkEvent(groupId: string, events: any[]): Observable<any> {
+    const endpoint = this.endpoint.ENDPOINT;
+
+    return this.httpClient.post(
+      `${this.helperService.getApiUrl()}/${endpoint}/${groupId}/linkEvents`,
+      events
+    );
+  }
 }

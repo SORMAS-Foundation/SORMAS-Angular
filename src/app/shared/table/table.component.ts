@@ -96,6 +96,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() editItem: EventEmitter<any> = new EventEmitter();
+  @Output() triggerGroupEvent: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
@@ -363,6 +364,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       case ACTIONS_BULK_EDIT.DELETE:
         this.openBulkDelete();
+        break;
+      case ACTIONS_BULK_EDIT.GROUP:
+        this.triggerGroupEvent.emit(this.getSelectedItems());
         break;
       default:
         // eslint-disable-next-line no-console
