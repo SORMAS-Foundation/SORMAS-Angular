@@ -1,0 +1,10 @@
+@use '/src/variables.scss' as *;
+
+.mat-dialog-title {
+  padding-top: 40px;
+
+  > h2 {
+    margin: 0;
+    font-size: 34px;
+  }
+}

@@ -1,0 +1,58 @@
+<div mat-dialog-title>
+  <h2>{{ 'strings.headingPickOrCreateEventGroup' | translate }}</h2>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button color="primary" class="cancel-btn" mat-dialog-close>
+      {{ 'captions.actionCancel' | translate }}
+    </button>
+    <button [disabled]="!selectedEventGroup?.uuid" mat-flat-button color="primary" class="confirm-btn" (click)="confirm()">
+      {{ 'captions.actionConfirm' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div class="top">
+    <div class="text">
+      <mat-icon class="material-icons-round">info</mat-icon>
+      <p>{{ 'strings.infoPickOrCreateEventGroupForEvent' | translate }}</p>
+    </div>
+    <button mat-stroked-button color="primary" class="new-event-group-btn" (click)="newEventGroup()">
+      {{ 'captions.eventNewEventGroup' | translate }}
+    </button>
+  </div>
+  <form [formGroup]="filtersForm" class="filters-form">
+    <mat-form-field
+      id="searchEventGroup"
+      appearance="outline"
+      floatLabel="always"
+      class="search-field"
+    >
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'Search' | translate }}"
+        formControlName="searchEventGroup"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+  </form>
+  <app-table
+    [resourceService]="eventGroupService"
+    [tableColumns]="defaultColumns"
+    [isSortable]="true"
+    [isSelectable]="true"
+    [isSelectableOnce]="true"
+    [isSelectableCheckboxHidden]="true"
+    [isHeaderSticky]="true"
+    [allowToggleColumns]="false"
+    [fullHeight]="true"
+    [appearance]="tableAppearanceOptions.MINIMAL"
+    (selectItem)="onSelectEventGroup($event)"
+  ></app-table>
+</div>

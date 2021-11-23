@@ -22,6 +22,7 @@
       [bulkEditOptions]="actionsBulkEdit"
       [viewOptions]="actionsViewOption"
       [preSetFilters]="presetFilters"
+      (triggerGroupEvent)="onGroupEvents($event)"
       showTotalContext="{{ 'strings.entityEvents' | translate }}"
     ></app-table>
   </ng-container>

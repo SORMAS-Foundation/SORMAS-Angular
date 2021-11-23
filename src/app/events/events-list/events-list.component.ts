@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,6 +13,7 @@ import {
   CONFIG_EVENTS,
   HEADER_HEIGHT,
   EVENT_FILTERS_FORM_ID,
+  MODAL_MEDIUM_WIDTH,
 } from '../../app.constants';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs } from './event-list-actions-data';
@@ -20,6 +21,11 @@ import { HelperService } from '../../_services/helper.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_FILTERS } from '../event-filters/event-filters-form-data';
 import { viewOptionsDefs } from '../event-components/event-groups-list/event-groups-list-action-data';
+import { EventGroupAddEventsModalComponent } from '../event-group-add-events-modal/event-group-add-events-modal.component';
+import { EventGroupAddModalComponent } from '../event-group-add-modal/event-group-add-modal.component';
+import { EventGroupService } from '../../_services/api/event-group.service';
+import { NotificationService } from '../../_services/notification.service';
+import { TableComponent } from '../../shared/table/table.component';
 
 @Component({
   selector: 'app-events-list',
@@ -38,7 +44,9 @@ export class EventsListComponent implements OnInit, OnDestroy {
   formIdFilters = EVENT_FILTERS_FORM_ID;
   actionsViewOption: NavItem[] = viewOptionsDefs;
 
-  private subscription: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
+
+  @ViewChild(TableComponent) tableComponent: TableComponent;
 
   constructor(
     public eventService: EventService,
@@ -46,13 +54,15 @@ export class EventsListComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private translateService: TranslateService,
     private activeRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private eventGroupService: EventGroupService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
     this.presetFilters = this.helperService.setQueryParamsInFilters(this.routeParams);
-    this.subscription.push(
+    this.subscriptions.push(
       this.activeRoute.queryParams.subscribe((params: Params) => {
         this.routeParams = params;
       })
@@ -68,7 +78,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
       },
     });
 
-    this.subscription.push(
+    this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           // callback
@@ -77,7 +87,63 @@ export class EventsListComponent implements OnInit, OnDestroy {
     );
   }
 
+  addNewEventGroup(events: any): void {
+    const dialogRef = this.dialog.open(EventGroupAddModalComponent, {
+      maxWidth: MODAL_MEDIUM_WIDTH,
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.linkEvents(result.response.requestResponse.uuid, events);
+        }
+      })
+    );
+  }
+
+  linkEvents(eventGroupId: string, events: any[]): void {
+    const eventsTmp: any = [];
+    events.forEach((item: any) => {
+      eventsTmp.push({
+        uuid: item.uuid,
+      });
+    });
+
+    this.subscriptions.push(
+      this.eventGroupService.linkEvent(eventGroupId, eventsTmp).subscribe({
+        next: () => {
+          this.notificationService.success(
+            this.translateService.instant('strings.messageEventLinkedToGroup')
+          );
+          this.tableComponent.getResources(true);
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
+  }
+
+  onGroupEvents(events: any): void {
+    const dialogRef = this.dialog.open(EventGroupAddEventsModalComponent, {
+      maxWidth: MODAL_MEDIUM_WIDTH,
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          if (result.selectedEventGroup === null) {
+            this.addNewEventGroup(events);
+          } else {
+            this.linkEvents(result.selectedEventGroup.uuid, events);
+          }
+        }
+      })
+    );
+  }
+
   ngOnDestroy(): void {
-    this.subscription.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
