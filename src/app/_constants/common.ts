@@ -67,10 +67,12 @@ export const EDGE_PANEL_TYPE = {
 };
 
 // date format
-export const DEFAULT_DATE_FORMAT = 'd/m/yyyy';
+export const DEFAULT_DATE_FORMAT = 'd/M/yyyy';
 export const DAY_DATE_FORMAT = 'dd';
 export const MONTH_DATE_TEXT_FORMAT = 'MMM';
 export const HOUR_MINUTE_TIME_FORMAT = 'h:mm';
+export const BRIEF_DATE_FORMAT = 'M/d';
+export const COMMON_DATE_FORMAT = 'M/d/yyyy';
 
 export type ButtonType = 'STANDARD' | 'STROKED' | 'FLAT';
 export const BUTTON_TYPE = {

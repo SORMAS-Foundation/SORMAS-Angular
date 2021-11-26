@@ -32,10 +32,12 @@
 </ng-container>
 
 <ng-template #buttonContent let-toggle="toggle">
-  {{ buttonText | translate }}
-  <mat-icon *ngIf="chevron" class="material-icons-round">{{
-    toggle.menuOpen ? chevronCloseIcon : chevronOpenIcon
-  }}</mat-icon>
+  <span class="button-text-wrapper">
+    <span class="button-text">{{ buttonText | translate }}</span>
+    <mat-icon *ngIf="chevron" class="material-icons-round">{{
+      toggle.menuOpen ? chevronCloseIcon : chevronOpenIcon
+    }}</mat-icon>
+  </span>
 </ng-template>
 
 <mat-menu #menu [xPosition]="horizontalPosition" [class]="'dropdown-menu ' + panelClass">
