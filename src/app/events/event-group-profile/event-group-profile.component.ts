@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../../_services/notification.service';
 import { EventDto } from '../../_models/eventDto';
 import { EventGroupService } from '../../_services/api/event-group.service';
@@ -11,6 +12,8 @@ import { EVENT_GROUPS_FORM_ID } from '../../app.constants';
 import { FORM_DATA_EVENT_GROUP } from './event-group-profile-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../_services/form-element-control.service';
+import { EventGroupLinkEventsModalComponent } from '../event-group-link-events-modal/event-group-link-events-modal.component';
+import { MODAL_MEDIUM_WIDTH } from '../../_constants/common';
 
 @Component({
   selector: 'app-event-group-profile',
@@ -20,6 +23,7 @@ import { FormElementControlService } from '../../_services/form-element-control.
 export class EventGroupProfileComponent implements OnInit, OnDestroy {
   eventGroup: EventGroupDto;
   events: EventDto[];
+  allEvents: EventDto[];
   eventGroupId: any;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_EVENT_GROUP;
@@ -34,6 +38,7 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService,
     private router: Router,
+    private dialog: MatDialog,
     private formElementControlService: FormElementControlService,
     private translateService: TranslateService
   ) {}
@@ -43,6 +48,7 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
     this.eventGroupId = routeParams.eventGroupId;
     this.fetchGroup();
     this.fetchEvents();
+    this.fetchAllEvents();
   }
 
   fetchGroup(): void {
@@ -86,6 +92,23 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
     );
   }
 
+  fetchAllEvents(): void {
+    this.loading = true;
+    this.subscriptions.push(
+      this.eventService.getAll(null, null, []).subscribe({
+        next: (response: any) => {
+          this.allEvents = response.elements;
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {
+          this.loading = false;
+        },
+      })
+    );
+  }
+
   editEvent(event: any): void {
     this.router.navigate([`/events/event/${event.uuid}/details`]);
   }
@@ -113,6 +136,43 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
           );
         }
       });
+  }
+
+  linkEvents(eventGroupId: string, events: any[]): void {
+    const eventsTmp: any = [];
+    events.forEach((item: any) => {
+      eventsTmp.push({
+        uuid: item.uuid,
+      });
+    });
+
+    this.subscriptions.push(
+      this.eventGroupService.linkEvent(eventGroupId, eventsTmp).subscribe({
+        next: () => {
+          this.notificationService.success(
+            this.translateService.instant('strings.messageEventLinkedToGroup')
+          );
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
+  }
+
+  onLinkEvent(events: any): void {
+    const dialogRef = this.dialog.open(EventGroupLinkEventsModalComponent, {
+      maxWidth: MODAL_MEDIUM_WIDTH,
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.linkEvents(result.selectedEvent.uuid, events);
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {

@@ -21,6 +21,8 @@ import { EventGroupsListComponent } from './event-components/event-groups-list/e
 import { EventGroupProfileComponent } from './event-group-profile/event-group-profile.component';
 import { EventGroupAddEventsModalComponent } from './event-group-add-events-modal/event-group-add-events-modal.component';
 import { EventGroupAddModalComponent } from './event-group-add-modal/event-group-add-modal.component';
+import { EventGroupLinkEventsModalComponent } from './event-group-link-events-modal/event-group-link-events-modal.component';
+import { EventGroupLinkEventsModalFiltersComponent } from './event-group-link-events-modal-filters/event-group-link-events-modal-filters.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { EventGroupAddModalComponent } from './event-group-add-modal/event-group
     EventGroupProfileComponent,
     EventGroupAddEventsModalComponent,
     EventGroupAddModalComponent,
+    EventGroupLinkEventsModalComponent,
+    EventGroupLinkEventsModalFiltersComponent,
   ],
   imports: [CommonModule, EventsRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

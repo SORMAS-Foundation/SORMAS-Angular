@@ -1,0 +1,82 @@
+@use '/src/variables.scss' as *;
+
+.mat-dialog-title {
+  padding-top: 40px;
+
+  > h2 {
+    margin: 0;
+    font-size: 34px;
+  }
+}
+
+.mat-dialog-content {
+  padding: 25px;
+  background: $white;
+
+  #searchEventGroup {
+    width: 212px;
+    margin: 10px 0;
+    margin-left: 40px;
+  }
+
+  .search-field {
+    .search-icon {
+      width: 14px;
+      height: 12px;
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
+    ::placeholder {
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
+  }
+
+  .top {
+    overflow: hidden;
+
+    .text {
+      overflow: hidden;
+      max-width: 600px;
+      margin-left: 40px;
+      float: left;
+      .mat-icon {
+        display: inline-block;
+        color: mat-color($sormas-accent, 500);
+        font-size: 18px;
+      }
+
+      > p {
+        display: inline-block;
+        width: 70%;
+        color: mat-color($sormas-accent, 500);
+        font-size: 12px;
+        vertical-align: top;
+      }
+    }
+    .new-event-group-btn {
+      float: right;
+    }
+  }
+}
+
+.event-group-link-event-container {
+  display: flex;
+  flex-direction: row;
+
+  .filters {
+    max-width: 228px;
+    border: solid 1px mat-color($sormas-accent, 200);
+    padding: 24px 24px 0;
+    margin: 0 15px 0 0;
+    border-radius: 4px;
+
+    .searchbox {
+      margin-bottom: 8px;
+    }
+  }
+
+  .event-group-link-event-table {
+    width: 100%;
+  }
+}

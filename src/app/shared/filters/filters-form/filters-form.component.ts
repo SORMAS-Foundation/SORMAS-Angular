@@ -12,6 +12,7 @@ import { FormBase } from '../../dynamic-form/types/form-element-base';
 })
 export class FiltersFormComponent implements OnInit, OnDestroy {
   @Input() formId: string;
+  @Input() showFilterHeader = true;
   @Input() set data(raw: FormBase<any>[]) {
     this.formData = JSON.parse(JSON.stringify(raw));
   }
