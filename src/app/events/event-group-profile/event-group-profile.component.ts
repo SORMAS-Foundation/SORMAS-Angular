@@ -23,7 +23,6 @@ import { MODAL_MEDIUM_WIDTH } from '../../_constants/common';
 export class EventGroupProfileComponent implements OnInit, OnDestroy {
   eventGroup: EventGroupDto;
   events: EventDto[];
-  allEvents: EventDto[];
   eventGroupId: any;
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_EVENT_GROUP;
@@ -48,7 +47,6 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
     this.eventGroupId = routeParams.eventGroupId;
     this.fetchGroup();
     this.fetchEvents();
-    this.fetchAllEvents();
   }
 
   fetchGroup(): void {
@@ -81,23 +79,6 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
       this.eventService.getAll(null, null, filters).subscribe({
         next: (response: any) => {
           this.events = response.elements;
-        },
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {
-          this.loading = false;
-        },
-      })
-    );
-  }
-
-  fetchAllEvents(): void {
-    this.loading = true;
-    this.subscriptions.push(
-      this.eventService.getAll(null, null, []).subscribe({
-        next: (response: any) => {
-          this.allEvents = response.elements;
         },
         error: (err: any) => {
           this.notificationService.error(err);
@@ -152,6 +133,7 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
           this.notificationService.success(
             this.translateService.instant('strings.messageEventLinkedToGroup')
           );
+          this.fetchEvents();
         },
         error: (err: any) => {
           this.notificationService.error(err);
@@ -161,15 +143,18 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
     );
   }
 
-  onLinkEvent(events: any): void {
+  onLinkEvent(): void {
     const dialogRef = this.dialog.open(EventGroupLinkEventsModalComponent, {
       maxWidth: MODAL_MEDIUM_WIDTH,
+      data: {
+        excludeIds: this.events.map((item) => item.uuid),
+      },
     });
 
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          this.linkEvents(result.selectedEvent.uuid, events);
+          this.linkEvents(this.eventGroupId, [result.selectedEvent]);
         }
       })
     );

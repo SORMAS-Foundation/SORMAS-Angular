@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { TableAppearanceOptions } from '../../_constants/enums';
 import { EVENT_GROUP_LINK_EVENT_FILTERS_FORM_ID } from '../../_constants/form-identifiers';
-import { TableColumn } from '../../_models/common';
+import { Filter, TableColumn } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
 import { FORM_DATA_EVENT_GROUP_LINK_EVENT_FILTERS } from '../event-group-link-events-modal-filters/event-group-link-events-modal-filters-form-data';
@@ -19,6 +19,7 @@ export class EventGroupLinkEventsModalComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
   filtersForm = new FormGroup({});
   selectedEvent: EventDto | null;
+  presetFilters: Filter[];
   tableAppearanceOptions = TableAppearanceOptions;
   filtersData: FormBase<any>[] = JSON.parse(
     JSON.stringify(FORM_DATA_EVENT_GROUP_LINK_EVENT_FILTERS)
@@ -33,6 +34,12 @@ export class EventGroupLinkEventsModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+    this.presetFilters = [
+      {
+        field: 'excludedUuids',
+        value: this.data.excludeIds,
+      },
+    ];
   }
 
   onSelectEvent(event: any): void {
