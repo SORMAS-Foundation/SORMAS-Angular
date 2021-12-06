@@ -10,7 +10,7 @@ import { TaskAddEditComponent } from '../task-add-edit/task-add-edit.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { actionsBulkEditDefs } from './task-list-actions-data';
 import { TableComponent } from '../../shared/table/table.component';
-import { ADD_MODAL_MAX_WIDTH, CONFIG_TASKS } from '../../app.constants';
+import { ADD_MODAL_MAX_WIDTH, CONFIG_TASKS, TASK_FILTERS_FORM_ID } from '../../app.constants';
 
 @Component({
   selector: 'app-tasks-list',
@@ -21,6 +21,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
   tasks: TaskDto[] = [];
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_TASKS;
+  formId = TASK_FILTERS_FORM_ID;
 
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
 

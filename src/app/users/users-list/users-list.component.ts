@@ -8,7 +8,7 @@ import { CONFIG_USERS } from '../../_constants/storage';
 import { defaultColumnDefs } from './users-list-table-data';
 import { UserService } from '../../_services/api/user.service';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT } from '../../app.constants';
+import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT, USER_FILTERS_FORM_ID } from '../../app.constants';
 import { UserAddComponent } from '../user-add/user-add.component';
 import { FORM_DATA_USER_FILTERS } from '../user-filters/user-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
@@ -24,6 +24,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_USERS;
   headerHeight = HEADER_HEIGHT;
+  formId = USER_FILTERS_FORM_ID;
 
   private subscription: Subscription[] = [];
 

@@ -9,6 +9,7 @@
     </div>
 
     <app-table
+      [filterFormId]="formId"
       [resourceService]="personService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"

@@ -6,11 +6,11 @@ import { Filter } from '../_models/common';
 export class FilterService {
   private subject = new Subject<any>();
 
-  setFilters(filters: Filter[]): void {
-    this.subject.next({ filters });
+  setFilters(filters: Filter[], formId: string = ''): void {
+    this.subject.next({ filters, formId });
   }
 
-  getFilters(): Observable<Filter[]> {
+  getFilters(): Observable<any> {
     return this.subject.asObservable();
   }
 }
