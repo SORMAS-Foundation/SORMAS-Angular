@@ -7,6 +7,7 @@ import { CONFIG_CASES } from '../../../_constants/storage';
 import { ContactService } from '../../../_services/api/contact.service';
 import { FORM_DATA_CASE_CONTACT_FILTERS } from '../../../shared/contact-filters/contact-filters-form-data';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
+import { CONTACT_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
 
 @Component({
   selector: 'app-case-contacts',
@@ -18,6 +19,7 @@ export class CaseContactsComponent {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_CASES;
   preSetFilters: Filter[];
+  formIdFilters = CONTACT_FILTERS_FORM_ID;
 
   public resourceService: BaseService<any>;
 

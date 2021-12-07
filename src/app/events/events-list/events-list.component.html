@@ -12,6 +12,7 @@
       </div>
     </div>
     <app-table
+      [filterFormId]="formIdFilters"
       [resourceService]="eventService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"

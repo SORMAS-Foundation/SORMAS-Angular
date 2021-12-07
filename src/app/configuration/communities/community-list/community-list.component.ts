@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import {Component, OnDestroy, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -11,6 +11,8 @@ import { CommunityService } from '../../../_services/api/community.service';
 import { CommunityAddEditComponent } from '../community-add-edit/community-add-edit.component';
 import { actionsBulkEditDefs } from './communities-actions-data';
 import { defaultColumnDefs } from './communities-table-data';
+import { TableComponent } from '../../../shared/table/table.component';
+import { CONFIGURATION_COMMUNITY_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
 
 @Component({
   selector: 'app-community-list',
@@ -21,8 +23,11 @@ export class CommunityListComponent implements OnDestroy {
   defaultColumns: TableColumn[] = defaultColumnDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   tableAppearanceOptions = TableAppearanceOptions;
+  formId = CONFIGURATION_COMMUNITY_FILTERS_FORM_ID;
 
   private subscription: Subscription[] = [];
+
+  @ViewChild(TableComponent) tableComponent: TableComponent;
 
   constructor(
     public communityService: CommunityService,
@@ -44,7 +49,7 @@ export class CommunityListComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // this.tableComponent.getResources(true);
+          this.tableComponent.getResources(true);
         }
       })
     );
@@ -62,7 +67,7 @@ export class CommunityListComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // this.tableComponent.getResources(true);
+          this.tableComponent.getResources(true);
         }
       })
     );

@@ -2,6 +2,7 @@
   <app-contact-filters [data]="filtersData" filters></app-contact-filters>
   <ng-container list>
     <app-table
+      [filterFormId]="formIdFilters"
       [resourceService]="contactService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"

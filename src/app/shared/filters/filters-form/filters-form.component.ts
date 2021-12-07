@@ -74,7 +74,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
         this.filters.push({ field: keys[i], value: values[i] });
       }
     });
-    this.filterService.setFilters(this.filters);
+    this.filterService.setFilters(this.filters, this.formId);
   }
 
   ngOnDestroy(): void {
