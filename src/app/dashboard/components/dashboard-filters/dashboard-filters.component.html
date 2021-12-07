@@ -78,7 +78,7 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field
-              *ngIf="form.value.customDateType === 'EPI_WEEK'"
+              *ngIf="form.value.customDateType === dateTypeOptions.EPI_WEEK"
               appearance="outline"
               floatLabel="always"
               (click)="$event.stopPropagation()"
@@ -98,7 +98,7 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field
-              *ngIf="form.value.customDateType === 'EPI_WEEK'"
+              *ngIf="form.value.customDateType === dateTypeOptions.EPI_WEEK"
               appearance="outline"
               floatLabel="always"
               (click)="$event.stopPropagation()"
@@ -118,7 +118,7 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field
-              *ngIf="form.value.customDateType === 'DATE'"
+              *ngIf="form.value.customDateType === dateTypeOptions.DATE"
               appearance="outline"
               floatLabel="always"
               (click)="$event.stopPropagation()"
@@ -137,7 +137,7 @@
               <mat-datepicker #pickerFrom></mat-datepicker>
             </mat-form-field>
             <mat-form-field
-              *ngIf="form.value.customDateType === 'DATE'"
+              *ngIf="form.value.customDateType === dateTypeOptions.DATE"
               appearance="outline"
               floatLabel="always"
               (click)="$event.stopPropagation()"
@@ -174,7 +174,11 @@
           panelClass="dashboard-filters"
           class="fullwidth"
         >
-          <button mat-menu-item *ngFor="let option of previousPeriodOptions">
+          <button
+            mat-menu-item
+            *ngFor="let option of previousPeriodOptions"
+            (click)="onPreviousPeriodSelected(option.key)"
+          >
             {{ option.name | translate | replace: '%s':option.displayValue }}
           </button>
         </app-dropdown-menu>
@@ -189,14 +193,8 @@
         formControlName="newCaseDateType"
         [placeholder]="'strings.promptNewCaseDateType' | translate"
       >
-        <mat-option value="MOST_RELEVANT">
-          {{ 'enum.NewCaseDateType.MOST_RELEVANT' | translate }}
-        </mat-option>
-        <mat-option value="ONSET">
-          {{ 'enum.NewCaseDateType.ONSET' | translate }}
-        </mat-option>
-        <mat-option value="REPORT">
-          {{ 'enum.NewCaseDateType.REPORT' | translate }}
+        <mat-option *ngFor="let option of newCaseDateType | enumToKeyValue" [value]="option.key">
+          {{ option.value | translate }}
         </mat-option>
         <mat-option [disabled]="!newCaseDateTypeField.value" class="select-clear-option">
           <span>{{ 'captions.actionClear' | translate }}</span>
@@ -214,6 +212,21 @@
           {{ region.name }}
         </mat-option>
         <mat-option [disabled]="!regionField.value" class="select-clear-option">
+          <span>{{ 'captions.actionClear' | translate }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="showDisease" appearance="outline" class="filter-field">
+      <mat-select
+        #diseaseField
+        disableOptionCentering
+        formControlName="disease"
+        [placeholder]="'strings.promptDisease' | translate"
+      >
+        <mat-option *ngFor="let option of diseases | enumToKeyValue" [value]="option.key">
+          {{ option.value }}
+        </mat-option>
+        <mat-option [disabled]="!diseaseField.value" class="select-clear-option">
           <span>{{ 'captions.actionClear' | translate }}</span>
         </mat-option>
       </mat-select>

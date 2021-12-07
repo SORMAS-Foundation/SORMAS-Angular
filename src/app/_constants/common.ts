@@ -1,6 +1,7 @@
 import { CaseOrigin } from '../_models/caseOrigin';
 import { FollowUpStatus } from '../_models/followUpStatus';
 import { PointOfEntryType } from '../_models/pointOfEntryType';
+import { DateFilterOptions } from './enums';
 
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
@@ -121,4 +122,9 @@ export const FOLLOW_UP_STATUS = {
   CANCELED: 'CANCELED' as FollowUpStatus,
   LOST: 'LOST' as FollowUpStatus,
   NO_FOLLOW_UP: 'NO_FOLLOW_UP' as FollowUpStatus,
+};
+
+export const DATE_TYPE_OPTIONS = {
+  DATE: 'DATE' as DateFilterOptions,
+  EPI_WEEK: 'EPI_WEEK' as DateFilterOptions,
 };

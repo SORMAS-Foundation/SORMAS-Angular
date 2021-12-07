@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { DatePipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import {
@@ -14,7 +13,14 @@ import {
   differenceInDays,
   endOfISOWeek,
 } from 'date-fns';
-import { BRIEF_DATE_FORMAT, COMMON_DATE_FORMAT, DateFilterOptions } from '../../../app.constants';
+import {
+  BRIEF_DATE_FORMAT,
+  COMMON_DATE_FORMAT,
+  DATE_TYPE_OPTIONS,
+  DateFilterOptions,
+  NewCaseDateType,
+  Disease,
+} from '../../../app.constants';
 import { Filter } from '../../../_models/common';
 import { RegionDto } from '../../../_models/models';
 import { RegionService } from '../../../_services/api/region.service';
@@ -25,9 +31,10 @@ import { PERIOD_DATA } from './dashboard-filters-data';
   selector: 'app-dashboard-filters',
   templateUrl: './dashboard-filters.component.html',
   styleUrls: ['./dashboard-filters.component.scss'],
-  providers: [DatePipe],
 })
 export class DashboardFiltersComponent implements OnInit, OnDestroy {
+  @Input() showDisease = true;
+
   form = new FormGroup({});
   filters: Filter[] = [];
   regions: RegionDto[] = [];
@@ -37,6 +44,9 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
   previousPeriodSelected: any;
   defaultPeriod = 'THIS_EPI_WEEK';
   dateFilterOption = DateFilterOptions;
+  dateTypeOptions = DATE_TYPE_OPTIONS;
+  newCaseDateType = NewCaseDateType;
+  diseases = Disease;
   weekOptions: any[] = [];
 
   subscriptions: Subscription[] = [];
@@ -64,6 +74,7 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
       previousDateTo: new FormControl(),
       newCaseDateType: new FormControl(),
       region: new FormControl(),
+      disease: new FormControl(),
       customDateType: new FormControl(),
       customFrom: new FormControl(),
       customTo: new FormControl(),
@@ -170,6 +181,15 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
     }
   }
 
+  getDatesOfWeek(week: number, year: number): any {
+    const date = new Date(year, 0, 1 + (week - 1) * 7);
+    date.setDate(date.getDate() + (1 - date.getDay()));
+    return {
+      start: date,
+      end: addDays(date, 6),
+    };
+  }
+
   generateCustomPeriodOptions(): void {
     const currentPeriod = this.periodOptions.find((item: any) => item.key === 'CUSTOM');
     const before = currentPeriod.previous?.find((obj: any) => obj.key === 'BEFORE');
@@ -187,20 +207,16 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
     if (dateType === 'EPI_WEEK') {
       const fromWeek = this.form.get('customWeekFrom')?.value.split('-');
       const toWeek = this.form.get('customWeekTo')?.value.split('-');
-      const startWeek = this.weekOptions.find(
-        (item) => item.key === this.form.get('customWeekFrom')?.value
-      );
-      const endWeek = this.weekOptions.find(
-        (item) => item.key === this.form.get('customWeekTo')?.value
-      );
+      const startWeek = this.getDatesOfWeek(fromWeek[0], fromWeek[1]);
+      const endWeek = this.getDatesOfWeek(toWeek[0], toWeek[1]);
       const diff = differenceInDays(startWeek.start, endWeek.start);
       this.setWeekPeriod(currentPeriod, fromWeek[0], fromWeek[1], toWeek[0], toWeek[1]);
       this.setWeekPeriod(
         before,
-        getWeek(addDays(startWeek.start, diff - 1)),
-        getYear(addDays(startWeek.start, diff - 1)),
-        getWeek(addDays(endWeek.start, diff - 1)),
-        getYear(addDays(endWeek.start, diff - 1))
+        getWeek(addDays(startWeek.start, diff - 7)),
+        getYear(addDays(startWeek.start, diff - 7)),
+        getWeek(addDays(endWeek.start, diff - 7)),
+        getYear(addDays(endWeek.start, diff - 7))
       );
       this.setWeekPeriod(lastYear, fromWeek[0], fromWeek[1] - 1, toWeek[0], toWeek[1] - 1);
     }
@@ -248,7 +264,7 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
             lastWeek > 1 ? lastWeek - 1 : getWeek(addDays(lastWeek, -7)),
             lastWeek > 1 ? lastWeekYear : lastWeekYear - 1
           );
-          this.setWeekPeriod(lastYear, week, year - 1);
+          this.setWeekPeriod(lastYear, lastWeek, year - 1);
           break;
         case 'THIS_YEAR':
           this.setPeriod(currentPeriod, startOfYear(today), today);
@@ -280,10 +296,8 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
     if (!obj) {
       return;
     }
-    const firstWeek = this.weekOptions.find((item) => item.key === `${startWeek}-${startYear}`);
-    const lastWeek = endWeek
-      ? this.weekOptions.find((item) => item.key === `${endWeek}-${endYear}`)
-      : null;
+    const firstWeek = this.getDatesOfWeek(startWeek, startYear);
+    const lastWeek = endWeek && endYear ? this.getDatesOfWeek(endWeek, endYear) : null;
     obj.dateFrom = firstWeek?.start;
     obj.dateTo = lastWeek?.end || firstWeek?.end;
     obj.displayValue = endWeek
@@ -298,8 +312,14 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
     this.form.get('period')?.setValue(event);
   }
 
+  onPreviousPeriodSelected(event: any): void {
+    this.form.get('previousPeriod')?.setValue(event);
+  }
+
   resetFilters(): void {
     this.setDefaults();
+    this.form.get('region')?.setValue(null);
+    this.form.get('newCaseDateType')?.setValue(null);
     this.form.get('period')?.setValue(this.defaultPeriod);
   }
 
