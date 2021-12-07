@@ -50,7 +50,11 @@
           </ng-container>
         </app-dropdown-menu>
         <mat-menu #customForm="matMenu">
-          <div class="form-custom-period" (click)="$event.stopPropagation()">
+          <div
+            class="form-custom-period"
+            (click)="$event.stopPropagation()"
+            (keyup)="$event.stopPropagation()"
+          >
             <mat-form-field
               appearance="outline"
               floatLabel="always"

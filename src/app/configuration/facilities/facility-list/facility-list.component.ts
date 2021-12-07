@@ -9,7 +9,10 @@ import { FacilityDto } from '../../../_models/facilityDto';
 import { defaultColumnDefs } from './facilities-table-data';
 import { actionsBulkEditDefs } from './facilities-actions-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH, CONFIGURATION_FACILITY_FILTERS_FORM_ID } from '../../../app.constants';
+import {
+  ADD_MODAL_MAX_WIDTH,
+  CONFIGURATION_FACILITY_FILTERS_FORM_ID,
+} from '../../../app.constants';
 import { FacilityAddEditComponent } from '../facility-add-edit/facility-add-edit.component';
 import { TableComponent } from '../../../shared/table/table.component';
 

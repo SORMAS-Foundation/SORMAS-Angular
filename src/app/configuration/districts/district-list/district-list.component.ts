@@ -7,7 +7,11 @@ import { DistrictService } from '../../../_services/api/district.service';
 import { actionsBulkEditDefs } from './districts-actions-data';
 import { defaultColumnDefs } from './districts-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_DISTRICT_FILTERS_FORM_ID, CONFIGURATION_MODAL_WIDTH, TableAppearanceOptions } from '../../../app.constants';
+import {
+  CONFIGURATION_DISTRICT_FILTERS_FORM_ID,
+  CONFIGURATION_MODAL_WIDTH,
+  TableAppearanceOptions,
+} from '../../../app.constants';
 import { DistrictAddEditComponent } from '../district-add-edit/district-add-edit.component';
 import { DistrictDto } from '../../../_models/districtDto';
 import { TableComponent } from '../../../shared/table/table.component';
