@@ -13,7 +13,7 @@ import { FORM_DATA_EVENT_GROUP } from './event-group-profile-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { EventGroupLinkEventsModalComponent } from '../event-group-link-events-modal/event-group-link-events-modal.component';
-import { MODAL_MEDIUM_WIDTH } from '../../_constants/common';
+import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 
 @Component({
   selector: 'app-event-group-profile',
@@ -145,7 +145,7 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
 
   onLinkEvent(): void {
     const dialogRef = this.dialog.open(EventGroupLinkEventsModalComponent, {
-      maxWidth: MODAL_MEDIUM_WIDTH,
+      width: ADD_MODAL_MAX_WIDTH,
       data: {
         excludeIds: this.events.map((item) => item.uuid),
       },

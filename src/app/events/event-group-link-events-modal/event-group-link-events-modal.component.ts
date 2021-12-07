@@ -7,6 +7,7 @@ import { EVENT_GROUP_LINK_EVENT_FILTERS_FORM_ID } from '../../_constants/form-id
 import { Filter, TableColumn } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
+import { FilterService } from '../../_services/filter.service';
 import { FORM_DATA_EVENT_GROUP_LINK_EVENT_FILTERS } from '../event-group-link-events-modal-filters/event-group-link-events-modal-filters-form-data';
 import { defaultColumnDefs } from './event-group-link-events-modal-table-data';
 
@@ -29,7 +30,8 @@ export class EventGroupLinkEventsModalComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EventGroupLinkEventsModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public eventService: EventService
+    public eventService: EventService,
+    public filterService: FilterService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +50,10 @@ export class EventGroupLinkEventsModalComponent implements OnInit {
       // eslint-disable-next-line prefer-destructuring
       this.selectedEvent = event.selected[0];
     }
+  }
+
+  resetFilters(): void {
+    this.filterService.setFilters([]);
   }
 
   confirm(): void {

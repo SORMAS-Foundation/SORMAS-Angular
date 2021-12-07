@@ -18,7 +18,7 @@ export const FORM_DATA_EVENT_GROUP_LINK_EVENT_FILTERS = [
         ...FORM_DATA_SEARCHBOX,
         key: 'freeText',
         placeholder: 'strings.promptSearch',
-        className: 'fullwidth',
+        className: 'fullwidth search-box',
       },
       {
         ...FORM_DATA_SELECT,
@@ -30,7 +30,7 @@ export const FORM_DATA_EVENT_GROUP_LINK_EVENT_FILTERS = [
       {
         ...FORM_DATA_DATE,
         key: 'eventDateFrom',
-        hint: 'strings.promptEventDateFrom',
+        hint: 'eventGroup.linkEvent.filters.from',
         className: 'fullwidth',
       },
       {

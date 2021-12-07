@@ -28,13 +28,25 @@
   </div>
 
   <div class="event-group-link-event-container">
-    <app-event-group-link-events-modal-filters
-      class="filters"
-      [formId]="formId"
-      [data]="filtersData"
-      [showFilterHeader]="false"
-      filters
-    ></app-event-group-link-events-modal-filters>
+    <div class="filters-container">
+      <app-event-group-link-events-modal-filters
+        class="filters"
+        [formId]="formId"
+        [data]="filtersData"
+        [showFilterHeader]="false"
+        filters
+      >
+      </app-event-group-link-events-modal-filters>
+      <button
+        mat-button
+        class="button-reset"
+        color="primary"
+        (click)="resetFilters()"
+        (keyup.enter)="resetFilters()"
+      >
+        {{ 'captions.actionResetFilters' | translate }}
+      </button>
+    </div>
     <app-table
       class="event-group-link-event-table"
       [resourceService]="eventService"
