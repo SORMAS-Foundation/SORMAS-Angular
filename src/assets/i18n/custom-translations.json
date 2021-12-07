@@ -122,5 +122,9 @@
   "aboutHotline": "Hotline:",
   "aboutPoweredBy": "Powered by",
   "editedSuccessfully": "Successfully edited",
-  "dashboardPeriod": "Period"
+  "dashboardPeriod": "Period",
+  "eventGroup.linkEvent.status": "Status",
+  "eventGroup.linkEvent.reportDate": "Report date",
+  "eventGroup.linkEvent.filters.sortBy": "Sort by",
+  "eventGroup.linkEvent.filters.from": "Event from"
 }
