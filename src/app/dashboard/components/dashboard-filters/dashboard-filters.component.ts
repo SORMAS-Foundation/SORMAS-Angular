@@ -13,7 +13,6 @@ import {
   startOfYear,
   differenceInDays,
   endOfISOWeek,
-  differenceInWeeks,
 } from 'date-fns';
 import { BRIEF_DATE_FORMAT, COMMON_DATE_FORMAT, DateFilterOptions } from '../../../app.constants';
 import { Filter } from '../../../_models/common';
