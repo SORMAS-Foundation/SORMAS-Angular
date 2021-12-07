@@ -8,6 +8,7 @@ import { BidiModule } from '@angular/cdk/bidi';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { DateFnsModule } from 'ngx-date-fns';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeAuth } from './shared/auth/init-auth';
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
         deps: [HttpClient],
       },
     }),
+    DateFnsModule.forRoot(),
   ],
   providers: [
     { provide: ENV, useFactory: getEnv },
