@@ -184,7 +184,7 @@ export const API_ROUTE_DOCUMENT_TEMPLATES = {
 
 export const API_ROUTE_LINSTINGS = {
   ENDPOINT: 'listings',
-  GET_ALL: 'listings/indexList',
+  GET_ALL: 'lineListing/indexList',
   UPDATE: 'listings/push',
   ADD: 'listings/push',
   DELETE: 'listings/delete',

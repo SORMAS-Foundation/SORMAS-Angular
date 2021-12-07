@@ -1,5 +1,5 @@
 <app-filters [topGap]="headerHeight">
-  <app-contact-filters formId="contactsFilters" [data]="filtersData" filters></app-contact-filters>
+  <app-contact-filters [formId]="formIdFilters" [data]="filtersData" filters></app-contact-filters>
   <ng-container list>
     <div class="page-header">
       <h1 class="page-header-title">
@@ -12,6 +12,7 @@
       </div>
     </div>
     <app-table
+      [filterFormId]="formIdFilters"
       [resourceService]="contactService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"

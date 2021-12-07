@@ -34,7 +34,23 @@
       width: 100%;
     }
 
+    .width-50-lg {
+      width: 50%;
+    }
+
     .mr-0-lg {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+  .dashboard-contacts-wrapper {
+    .width-100-sm {
+      width: 100%;
+    }
+
+    .mr-0-sm {
       margin-right: 0;
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
@@ -7,9 +7,10 @@ import { DistrictService } from '../../../_services/api/district.service';
 import { actionsBulkEditDefs } from './districts-actions-data';
 import { defaultColumnDefs } from './districts-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH, TableAppearanceOptions } from '../../../app.constants';
+import { CONFIGURATION_DISTRICT_FILTERS_FORM_ID, CONFIGURATION_MODAL_WIDTH, TableAppearanceOptions } from '../../../app.constants';
 import { DistrictAddEditComponent } from '../district-add-edit/district-add-edit.component';
 import { DistrictDto } from '../../../_models/districtDto';
+import { TableComponent } from '../../../shared/table/table.component';
 
 @Component({
   selector: 'app-district-list',
@@ -20,8 +21,11 @@ export class DistrictListComponent implements OnDestroy {
   defaultColumns: TableColumn[] = defaultColumnDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   tableAppearanceOptions = TableAppearanceOptions;
+  formId = CONFIGURATION_DISTRICT_FILTERS_FORM_ID;
 
   private subscription: Subscription[] = [];
+
+  @ViewChild(TableComponent) tableComponent: TableComponent;
 
   constructor(
     public districtService: DistrictService,
@@ -43,7 +47,7 @@ export class DistrictListComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // this.tableComponent.getResources(true);
+          this.tableComponent.getResources(true);
         }
       })
     );
@@ -61,7 +65,7 @@ export class DistrictListComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // this.tableComponent.getResources(true);
+          this.tableComponent.getResources(true);
         }
       })
     );

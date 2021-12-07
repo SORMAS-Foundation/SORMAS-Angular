@@ -45,7 +45,7 @@ export class LineListingComponent implements OnInit {
     }
 
     forkJoin({
-      getAllListings: this.listingService.getAll(null, null, null, false),
+      getAllListings: this.listingService.getAllEnabled(),
       getAllRegions: this.regionService.getAll(null, null, null, false),
     }).subscribe(({ getAllListings, getAllRegions }) => {
       this.lineListingArray = getAllListings;

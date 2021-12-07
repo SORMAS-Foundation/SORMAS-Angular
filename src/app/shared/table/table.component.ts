@@ -81,6 +81,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() rowStyleData: string;
   @Input() showTotal = false;
   @Input() showTotalContext = 'Items';
+  @Input() filterFormId: string;
 
   preSetFiltersTmp: Filter[];
   @Input() set preSetFilters(value) {
@@ -96,6 +97,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() editItem: EventEmitter<any> = new EventEmitter();
+  @Output() triggerGroupEvent: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
@@ -128,11 +130,13 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.subscriptions.push(
       this.filterService.getFilters().subscribe((response: any) => {
-        this.filters = response.filters;
-        if (this.preSetFilters) {
-          this.filters = this.filters.concat(this.preSetFilters);
+        if (response.formId === this.filterFormId) {
+          this.filters = response.filters;
+          if (this.preSetFilters) {
+            this.filters = this.filters.concat(this.preSetFilters);
+          }
+          this.getResources(true);
         }
-        this.getResources(true);
       })
     );
   }
@@ -363,6 +367,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       case ACTIONS_BULK_EDIT.DELETE:
         this.openBulkDelete();
+        break;
+      case ACTIONS_BULK_EDIT.GROUP:
+        this.triggerGroupEvent.emit(this.getSelectedItems());
         break;
       default:
         // eslint-disable-next-line no-console
