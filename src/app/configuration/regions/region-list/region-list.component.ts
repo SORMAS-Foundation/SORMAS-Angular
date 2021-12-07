@@ -9,7 +9,10 @@ import { RegionService } from '../../../_services/api/region.service';
 import { actionsBulkEditDefs } from './regions-actions-data';
 import { defaultColumnDefs } from './regions-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH, CONFIGURATION_REGION_FILTERS_FORM_ID } from '../../../app.constants';
+import {
+  CONFIGURATION_MODAL_WIDTH,
+  CONFIGURATION_REGION_FILTERS_FORM_ID,
+} from '../../../app.constants';
 import { RegionAddEditComponent } from '../region-add-edit/region-add-edit.component';
 import { TableComponent } from '../../../shared/table/table.component';
 

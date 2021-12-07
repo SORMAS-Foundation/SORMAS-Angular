@@ -1,6 +1,7 @@
 import { CaseOrigin } from '../_models/caseOrigin';
 import { FollowUpStatus } from '../_models/followUpStatus';
 import { PointOfEntryType } from '../_models/pointOfEntryType';
+import { DateFilterOptions } from './enums';
 
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
@@ -67,10 +68,12 @@ export const EDGE_PANEL_TYPE = {
 };
 
 // date format
-export const DEFAULT_DATE_FORMAT = 'd/m/yyyy';
+export const DEFAULT_DATE_FORMAT = 'd/M/yyyy';
 export const DAY_DATE_FORMAT = 'dd';
 export const MONTH_DATE_TEXT_FORMAT = 'MMM';
 export const HOUR_MINUTE_TIME_FORMAT = 'h:mm';
+export const BRIEF_DATE_FORMAT = 'M/d';
+export const COMMON_DATE_FORMAT = 'M/d/yyyy';
 
 export type ButtonType = 'STANDARD' | 'STROKED' | 'FLAT';
 export const BUTTON_TYPE = {
@@ -119,4 +122,9 @@ export const FOLLOW_UP_STATUS = {
   CANCELED: 'CANCELED' as FollowUpStatus,
   LOST: 'LOST' as FollowUpStatus,
   NO_FOLLOW_UP: 'NO_FOLLOW_UP' as FollowUpStatus,
+};
+
+export const DATE_TYPE_OPTIONS = {
+  DATE: 'DATE' as DateFilterOptions,
+  EPI_WEEK: 'EPI_WEEK' as DateFilterOptions,
 };

@@ -1,1 +1,235 @@
-<p>dashboard-filters works!</p>
+<div class="filters-header">
+  <h2>{{ 'strings.headingFilters' | translate }}</h2>
+  <div class="filters-actions">
+    <button mat-stroked-button color="primary" (click)="resetFilters()">
+      {{ 'captions.actionResetFilters' | translate }}
+    </button>
+    <button mat-flat-button color="primary" (click)="applyFilters()">
+      {{ 'captions.actionApplyFilters' | translate }}
+    </button>
+  </div>
+</div>
+
+<form class="filters" [formGroup]="form">
+  <fieldset>
+    <div class="period-field">
+      <div class="period-field-wrapper">
+        <mat-label>{{ 'dashboardPeriod' | translate }}</mat-label>
+        <app-dropdown-menu
+          [buttonText]="
+            periodSelected.key === 'CUSTOM'
+              ? periodSelected.displayValue
+              : (periodSelected.name | translate | replace: '%s':periodSelected.displayValue)
+          "
+          color="accent"
+          chevronOpenIcon="expand_more"
+          chevronCloseIcon="expand_less"
+          panelClass="dashboard-filters"
+          class="fullwidth"
+        >
+          <ng-container *ngFor="let option of periodOptions">
+            <button
+              *ngIf="option.key === 'CUSTOM'"
+              mat-menu-item
+              (click)="
+                onPeriodSelected(option.key); menuTrigger.openMenu(); $event.stopPropagation()
+              "
+              class="custom-period-option"
+            >
+              {{ option.name | translate }}
+              <span #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="customForm"></span>
+              <mat-icon class="material-icons-round">chevron_right</mat-icon>
+            </button>
+            <button
+              *ngIf="option.key !== 'CUSTOM'"
+              mat-menu-item
+              (click)="onPeriodSelected(option.key)"
+            >
+              {{ option.name | translate | replace: '%s':option.displayValue }}
+            </button>
+          </ng-container>
+        </app-dropdown-menu>
+        <mat-menu #customForm="matMenu">
+          <div
+            class="form-custom-period"
+            (click)="$event.stopPropagation()"
+            (keyup)="$event.stopPropagation()"
+          >
+            <mat-form-field
+              appearance="outline"
+              floatLabel="always"
+              (click)="$event.stopPropagation()"
+            >
+              <mat-label (click)="$event.stopPropagation()">
+                {{ 'captions.dashboardCustomPeriod' | translate }}
+              </mat-label>
+              <mat-select
+                disableOptionCentering
+                panelClass="dashboard-filter"
+                formControlName="customDateType"
+                (click)="$event.stopPropagation()"
+              >
+                <mat-option
+                  *ngFor="let option of dateFilterOption | enumToKeyValue"
+                  [value]="option.key"
+                >
+                  {{ option.value | translate }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field
+              *ngIf="form.value.customDateType === dateTypeOptions.EPI_WEEK"
+              appearance="outline"
+              floatLabel="always"
+              (click)="$event.stopPropagation()"
+            >
+              <mat-label (click)="$event.stopPropagation()">
+                {{ 'captions.epiWeekFrom' | translate }}
+              </mat-label>
+              <mat-select
+                disableOptionCentering
+                panelClass="dashboard-filter"
+                formControlName="customWeekFrom"
+                (click)="$event.stopPropagation()"
+              >
+                <mat-option *ngFor="let week of weekOptions" [value]="week.key">
+                  {{ week.value }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field
+              *ngIf="form.value.customDateType === dateTypeOptions.EPI_WEEK"
+              appearance="outline"
+              floatLabel="always"
+              (click)="$event.stopPropagation()"
+            >
+              <mat-label (click)="$event.stopPropagation()">
+                {{ 'captions.epiWeekTo' | translate }}
+              </mat-label>
+              <mat-select
+                disableOptionCentering
+                panelClass="dashboard-filter"
+                formControlName="customWeekTo"
+                (click)="$event.stopPropagation()"
+              >
+                <mat-option *ngFor="let week of weekOptions" [value]="week.key">
+                  {{ week.value }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field
+              *ngIf="form.value.customDateType === dateTypeOptions.DATE"
+              appearance="outline"
+              floatLabel="always"
+              (click)="$event.stopPropagation()"
+              [ngClass]="{
+                'datepicker-opened': pickerFrom.opened,
+                'datepicker-closed': !pickerFrom.opened
+              }"
+            >
+              <mat-label (click)="$event.stopPropagation()">
+                {{ 'captions.from' | translate }}
+              </mat-label>
+              <input matInput readonly [matDatepicker]="pickerFrom" formControlName="customFrom" />
+              <mat-datepicker-toggle matSuffix [for]="pickerFrom">
+                <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #pickerFrom></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field
+              *ngIf="form.value.customDateType === dateTypeOptions.DATE"
+              appearance="outline"
+              floatLabel="always"
+              (click)="$event.stopPropagation()"
+              [ngClass]="{
+                'datepicker-opened': pickerTo.opened,
+                'datepicker-closed': !pickerTo.opened
+              }"
+            >
+              <mat-label (click)="$event.stopPropagation()">
+                {{ 'captions.to' | translate }}
+              </mat-label>
+              <input matInput readonly [matDatepicker]="pickerTo" formControlName="customTo" />
+              <mat-datepicker-toggle matSuffix [for]="pickerTo">
+                <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #pickerTo></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </mat-menu>
+      </div>
+    </div>
+    <div class="period-field">
+      <div class="period-field-wrapper">
+        <mat-label>{{ 'captions.dashboardComparedTo' | translate }}</mat-label>
+        <app-dropdown-menu
+          [buttonText]="
+            previousPeriodSelected.name
+              | translate
+              | replace: '%s':previousPeriodSelected.displayValue
+          "
+          color="accent"
+          chevronOpenIcon="expand_more"
+          chevronCloseIcon="expand_less"
+          panelClass="dashboard-filters"
+          class="fullwidth"
+        >
+          <button
+            mat-menu-item
+            *ngFor="let option of previousPeriodOptions"
+            (click)="onPreviousPeriodSelected(option.key)"
+          >
+            {{ option.name | translate | replace: '%s':option.displayValue }}
+          </button>
+        </app-dropdown-menu>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-select
+        #newCaseDateTypeField
+        disableOptionCentering
+        formControlName="newCaseDateType"
+        [placeholder]="'strings.promptNewCaseDateType' | translate"
+      >
+        <mat-option *ngFor="let option of newCaseDateType | enumToKeyValue" [value]="option.key">
+          {{ option.value | translate }}
+        </mat-option>
+        <mat-option [disabled]="!newCaseDateTypeField.value" class="select-clear-option">
+          <span>{{ 'captions.actionClear' | translate }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-select
+        #regionField
+        disableOptionCentering
+        formControlName="region"
+        [placeholder]="'strings.promptRegion' | translate"
+      >
+        <mat-option *ngFor="let region of regions" [value]="region.uuid">
+          {{ region.name }}
+        </mat-option>
+        <mat-option [disabled]="!regionField.value" class="select-clear-option">
+          <span>{{ 'captions.actionClear' | translate }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="showDisease" appearance="outline" class="filter-field">
+      <mat-select
+        #diseaseField
+        disableOptionCentering
+        formControlName="disease"
+        [placeholder]="'strings.promptDisease' | translate"
+      >
+        <mat-option *ngFor="let option of diseases | enumToKeyValue" [value]="option.key">
+          {{ option.value }}
+        </mat-option>
+        <mat-option [disabled]="!diseaseField.value" class="select-clear-option">
+          <span>{{ 'captions.actionClear' | translate }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </fieldset>
+</form>
