@@ -23,7 +23,9 @@
       </h2>
       <mat-card class="events-list">
         <p class="events-actions">
-          <button mat-stroked-button color="primary">{{ 'captions.linkEvent' | translate }}</button>
+          <button (click)="onLinkEvent()" mat-stroked-button color="primary">
+            {{ 'captions.linkEvent' | translate }}
+          </button>
         </p>
         <app-loader [show]="loading"></app-loader>
         <app-card-list

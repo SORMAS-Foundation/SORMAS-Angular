@@ -1,5 +1,7 @@
 <div class="filters">
-  <h2 class="filters-header">{{ 'strings.headingFilters' | translate }}</h2>
+  <h2 *ngIf="showFilterHeader" class="filters-header">
+    {{ 'strings.headingFilters' | translate }}
+  </h2>
   <app-dynamic-form
     [formId]="formId"
     [formElements]="formData"

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../../_services/notification.service';
 import { EventDto } from '../../_models/eventDto';
 import { EventGroupService } from '../../_services/api/event-group.service';
@@ -11,6 +12,8 @@ import { EVENT_GROUPS_FORM_ID } from '../../app.constants';
 import { FORM_DATA_EVENT_GROUP } from './event-group-profile-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../_services/form-element-control.service';
+import { EventGroupLinkEventsModalComponent } from '../event-group-link-events-modal/event-group-link-events-modal.component';
+import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
 
 @Component({
   selector: 'app-event-group-profile',
@@ -34,6 +37,7 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService,
     private router: Router,
+    private dialog: MatDialog,
     private formElementControlService: FormElementControlService,
     private translateService: TranslateService
   ) {}
@@ -113,6 +117,47 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
           );
         }
       });
+  }
+
+  linkEvents(eventGroupId: string, events: any[]): void {
+    const eventsTmp: any = [];
+    events.forEach((item: any) => {
+      eventsTmp.push({
+        uuid: item.uuid,
+      });
+    });
+
+    this.subscriptions.push(
+      this.eventGroupService.linkEvent(eventGroupId, eventsTmp).subscribe({
+        next: () => {
+          this.notificationService.success(
+            this.translateService.instant('strings.messageEventLinkedToGroup')
+          );
+          this.fetchEvents();
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
+  }
+
+  onLinkEvent(): void {
+    const dialogRef = this.dialog.open(EventGroupLinkEventsModalComponent, {
+      width: ADD_MODAL_MAX_WIDTH,
+      data: {
+        excludeIds: this.events.map((item) => item.uuid),
+      },
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.linkEvents(this.eventGroupId, [result.selectedEvent]);
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {
