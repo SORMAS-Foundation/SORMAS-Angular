@@ -18,6 +18,23 @@ export class ListingService extends BaseService<ListingDto> {
     super(httpClient, helperService, '', constants.API_ROUTE_LINSTINGS, new ListingSerializer());
   }
 
+  getAllEnabled(): Observable<any> {
+    // endpoint
+    const endpoint = 'lineListing/enabled';
+
+    const requestPayload = {
+      featureTypes: ['LINE_LISTING'],
+    };
+
+    return this.httpClient
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, requestPayload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
+  }
+
   deleteAll(disease?: any, regionId?: any): Observable<any> {
     // endpoint
     const endpoint = constants.API_ROUTE_LINSTINGS.DELETE;

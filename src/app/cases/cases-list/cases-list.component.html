@@ -23,6 +23,7 @@
       </div>
     </div>
     <app-table
+      [filterFormId]="formIdFilters"
       [resourceService]="caseService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"

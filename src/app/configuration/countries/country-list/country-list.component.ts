@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,6 +11,8 @@ import { defaultColumnDefs } from './countries-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
 import { CountryAddEditComponent } from '../country-add-edit/country-add-edit.component';
+import { TableComponent } from '../../../shared/table/table.component';
+import { CONFIGURATION_COUNTRY_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
 
 @Component({
   selector: 'app-country-list',
@@ -21,8 +23,11 @@ export class CountryListComponent implements OnDestroy {
   defaultColumns: TableColumn[] = defaultColumnDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   tableAppearanceOptions = TableAppearanceOptions;
+  formId = CONFIGURATION_COUNTRY_FILTERS_FORM_ID;
 
   private subscription: Subscription[] = [];
+
+  @ViewChild(TableComponent) tableComponent: TableComponent;
 
   constructor(
     public countryService: CountryService,
@@ -44,7 +49,7 @@ export class CountryListComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // this.tableComponent.getResources(true);
+          this.tableComponent.getResources(true);
         }
       })
     );
@@ -62,7 +67,7 @@ export class CountryListComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // this.tableComponent.getResources(true);
+          this.tableComponent.getResources(true);
         }
       })
     );
