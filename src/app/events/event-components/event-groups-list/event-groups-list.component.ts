@@ -10,6 +10,7 @@ import { EventGroupService } from '../../../_services/api/event-group.service';
 import { EventAddComponent } from '../../event-add/event-add.component';
 import { viewOptionsDefs } from './event-groups-list-action-data';
 import { defaultColumnDefs } from './event-groups-list-table-data';
+import { EVENT_GROUP_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
 
 @Component({
   selector: 'app-event-groups-list',
@@ -20,6 +21,7 @@ export class EventGroupsListComponent implements OnDestroy {
   defaultColumns: TableColumn[] = defaultColumnDefs;
   actionsViewOption: NavItem[] = viewOptionsDefs;
   tableAppearanceOptions = TableAppearanceOptions;
+  formId = EVENT_GROUP_FILTERS_FORM_ID;
 
   private subscription: Subscription[] = [];
   constructor(

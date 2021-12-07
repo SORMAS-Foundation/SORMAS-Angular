@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,8 +9,9 @@ import { RegionService } from '../../../_services/api/region.service';
 import { actionsBulkEditDefs } from './regions-actions-data';
 import { defaultColumnDefs } from './regions-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../app.constants';
+import { CONFIGURATION_MODAL_WIDTH, CONFIGURATION_REGION_FILTERS_FORM_ID } from '../../../app.constants';
 import { RegionAddEditComponent } from '../region-add-edit/region-add-edit.component';
+import { TableComponent } from '../../../shared/table/table.component';
 
 @Component({
   selector: 'app-region-list',
@@ -21,8 +22,11 @@ export class RegionListComponent implements OnDestroy {
   defaultColumns: TableColumn[] = defaultColumnDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   tableAppearanceOptions = TableAppearanceOptions;
+  formId = CONFIGURATION_REGION_FILTERS_FORM_ID;
 
   private subscription: Subscription[] = [];
+
+  @ViewChild(TableComponent) tableComponent: TableComponent;
 
   constructor(
     public regionService: RegionService,
@@ -44,7 +48,7 @@ export class RegionListComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // this.tableComponent.getResources(true);
+          this.tableComponent.getResources(true);
         }
       })
     );
@@ -62,7 +66,7 @@ export class RegionListComponent implements OnDestroy {
     this.subscription.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          // this.tableComponent.getResources(true);
+          this.tableComponent.getResources(true);
         }
       })
     );

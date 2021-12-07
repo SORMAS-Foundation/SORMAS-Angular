@@ -9,6 +9,7 @@
   </div>
 </div>
 <app-table
+  [filterFormId]="formId"
   [resourceService]="eventGroupService"
   [tableColumns]="defaultColumns"
   [isSortable]="true"

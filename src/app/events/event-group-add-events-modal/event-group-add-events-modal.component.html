@@ -43,6 +43,7 @@
     </mat-form-field>
   </form>
   <app-table
+    [filterFormId]="formId"
     [resourceService]="eventGroupService"
     [tableColumns]="defaultColumns"
     [isSortable]="true"
