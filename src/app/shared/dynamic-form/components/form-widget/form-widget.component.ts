@@ -23,7 +23,6 @@ import { SuperordinateEventComponent } from '../../../widgets/superordinate-even
 import { ContactCaseDetailsComponent } from '../../../widgets/contact-case-details/contact-case-details.component';
 import { ContactFollowUpComponent } from '../../../widgets/contact-follow-up/contact-follow-up.component';
 import { ExportsGroupSelectComponent } from '../../../widgets/exports-group-select/exports-group-select.component';
-import { LocationDropdownsComponent } from '../../../widgets/location-dropdowns/location-dropdowns.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -40,7 +39,6 @@ const COMPONENTS_MAP: any = {
   'app-contact-case-details': ContactCaseDetailsComponent,
   'app-contact-follow-up': ContactFollowUpComponent,
   'app-exports-group-select': ExportsGroupSelectComponent,
-  'app-location-dropdowns': LocationDropdownsComponent,
 };
 
 @Component({

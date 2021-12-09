@@ -46,9 +46,10 @@ export const FORM_DATA_COUNTRY_FILTERS = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'subcontinent',
+        key: 'subcontinent.uuid',
         placeholder: 'captions.subcontinent',
         options: [],
+        service: 'subcontinentService',
         className: 'fullwidth',
       },
     ],

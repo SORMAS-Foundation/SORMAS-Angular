@@ -16,7 +16,6 @@ import {
   DateFilterOptions,
   NewCaseDateType,
 } from '../../app.constants';
-import { FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { FormGroupStyleType } from '../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -187,42 +186,29 @@ export const FORM_DATA_CASE_FILTERS = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'region',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'district',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'community',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
+        key: 'region.uuid',
+        options: [],
+        service: 'regionService',
+        placeholder: 'captions.CaseData.responsibleRegion',
         className: 'fullwidth',
-        widgetInfo: {
-          region: {
-            key: 'region',
-            placeholder: 'captions.CaseData.responsibleRegion',
-            newLine: true,
-          },
-          district: {
-            key: 'district',
-            placeholder: 'captions.CaseData.responsibleDistrict',
-            newLine: true,
-            dependingOn: 'region',
-          },
-          community: {
-            key: 'community',
-            placeholder: 'captions.CaseData.responsibleCommunity',
-            newLine: true,
-            dependingOn: 'district',
-          },
-        },
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'district.uuid',
+        options: [],
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        placeholder: 'captions.CaseData.responsibleDistrict',
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'community.uuid',
+        options: [],
+        service: 'communityService',
+        determinedBy: 'district.uuid',
+        placeholder: 'captions.CaseData.responsibleCommunity',
+        className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,

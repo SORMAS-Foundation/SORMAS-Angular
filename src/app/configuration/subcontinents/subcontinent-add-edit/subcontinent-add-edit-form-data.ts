@@ -26,6 +26,8 @@ export const FORM_DATA_SUBCONTINENT_ADD_EDIT = [
         key: 'continent.uuid',
         className: 'size-full',
         label: 'captions.continent',
+        service: 'continentService',
+        validation: ['required'],
         newLine: true,
       },
     ],

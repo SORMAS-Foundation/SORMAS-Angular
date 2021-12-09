@@ -49,33 +49,19 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
     required: true,
     fields: [
       {
-        ...FORM_DATA_INPUT,
-        key: 'region',
-        className: 'hidden',
+        ...FORM_DATA_SELECT,
+        key: 'region.uuid',
+        label: 'captions.EventParticipant.region',
+        service: 'regionService',
+        className: 'size-medium',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'district',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        widgetInfo: {
-          region: {
-            key: 'region',
-            label: 'captions.EventParticipant.region',
-            required: true,
-            className: 'size-medium',
-          },
-          district: {
-            key: 'district',
-            label: 'captions.EventParticipant.district',
-            required: true,
-            className: 'size-medium',
-            dependingOn: 'region',
-          },
-        },
+        ...FORM_DATA_SELECT,
+        key: 'district.uuid',
+        label: 'captions.EventParticipant.district',
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_INPUT,
@@ -310,11 +296,8 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        widget: 'app-new-address',
-      },
-      {
-        ...FORM_DATA_WIDGET,
         widget: 'app-addresses-list',
+        className: 'fullwidth',
         newLine: true,
       },
     ],
@@ -323,11 +306,6 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
     id: 'contact',
     title: 'strings.headingContactInformation',
     fields: [
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-new-person-contact',
-        className: 'push-right',
-      },
       {
         ...FORM_DATA_INPUT,
         key: 'person.birthName',
@@ -394,6 +372,7 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-person-contacts-list',
+        className: 'fullwidth',
         newLine: true,
       },
     ],

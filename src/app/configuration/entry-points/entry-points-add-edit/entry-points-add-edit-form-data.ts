@@ -3,7 +3,6 @@ import {
   FORM_DATA_INPUT,
   FORM_DATA_SELECT,
   PointOfEntryType,
-  FORM_DATA_WIDGET,
 } from '../../../app.constants';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
@@ -43,38 +42,25 @@ export const FORM_DATA_ENTRY_POINTS_ADD_EDIT = [
     title: 'captions.Location',
     fields: [
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'region.uuid',
+        required: true,
+        label: 'captions.region',
+        service: 'regionService',
         validation: ['required'],
-        className: 'hidden',
+        className: 'size-medium',
+        newLine: false,
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'district.uuid',
+        required: true,
+        label: 'captions.district',
+        service: 'districtService',
+        determinedBy: 'region.uuid',
         validation: ['required'],
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        className: 'no-float',
-        widgetInfo: {
-          region: {
-            key: 'region.uuid',
-            required: true,
-            label: 'captions.region',
-            className: 'size-medium',
-            newLine: false,
-          },
-          district: {
-            key: 'district.uuid',
-            required: true,
-            label: 'captions.district',
-            className: 'size-medium',
-            newLine: false,
-            dependingOn: 'region',
-          },
-        },
+        className: 'size-medium',
+        newLine: false,
       },
       {
         ...FORM_DATA_INPUT,
