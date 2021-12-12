@@ -1,0 +1,27 @@
+<app-filters [topGap]="headerHeight">
+  <app-immunization-filters [formId]="formIdFilters" [data]="filtersData" filters></app-immunization-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title">
+        {{ 'immunizationHeading' | translate }}
+      </h1>
+      <div class="page-header-actions">
+        <button mat-flat-button color="primary" (click)="openAddImmunizationModal()">
+          {{ 'immunizationAddAction' | translate }}
+        </button>
+      </div>
+    </div>
+    <app-table
+      [filterFormId]="formIdFilters"
+      [resourceService]="immunizationService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [allowToggleColumns]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      showTotalContext="{{ 'strings.entityCases' | translate }}"
+    ></app-table>
+  </ng-container>
+</app-filters>
