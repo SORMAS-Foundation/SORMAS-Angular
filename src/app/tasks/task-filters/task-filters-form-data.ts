@@ -148,6 +148,7 @@ export const FORM_DATA_TASK_FILTERS = [
         key: 'dateFilterOption',
         options: dateFilterOptions,
         value: 'DATE',
+        allowClear: false,
         className: 'fullwidth',
       },
       {
