@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, pairwise } from 'rxjs/operators';
+import { DEFAULT_FETCH_METHOD } from '../../../app.constants';
 import { CommunityService } from '../../../_services/api/community.service';
 import { ContinentService } from '../../../_services/api/continent.service';
 import { CountryService } from '../../../_services/api/country.service';
@@ -16,6 +18,7 @@ import { FormBaseComponent } from './form-base.component';
 })
 export class FormLazyOptionsBaseComponent extends FormBaseComponent implements OnInit, OnDestroy {
   service: any;
+  method: string;
   subscriptions: Subscription[] = [];
   enabled: boolean;
 
@@ -39,6 +42,7 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
 
     if (this.config.service) {
       this.service = this[this.config.service as keyof this];
+      this.method = this.config.serviceMethod || DEFAULT_FETCH_METHOD;
       this.populateOptions();
     }
   }
@@ -57,7 +61,7 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
           this.control?.reset();
           this.control?.disable();
           this.config.options = [];
-          if (val) {
+          if (val !== undefined) {
             this.fetchOptions(val);
           }
         })
@@ -69,10 +73,12 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
 
   fetchOptions(determinantValue?: any): void {
     const filters = this.makeFiltersFromValue(determinantValue);
+
     this.subscriptions.push(
-      this.service.getAll(null, null, filters).subscribe({
+      // tslint:disable-next-line: no-string-literal
+      this.service[this.method](filters).subscribe({
         next: (response: any) => {
-          this.config.options = this.makeOptions(response.elements);
+          this.config.options = response;
           this.toggleControl(!!this.config.options.length);
         },
         error: () => {},
@@ -118,13 +124,6 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     }
     obj[arr[arr.length - 1]] = value;
     return result;
-  }
-
-  makeOptions(list: any[]): any[] {
-    return list.map((item: any) => ({
-      key: item.uuid,
-      value: item.name || item.displayName,
-    }));
   }
 
   toggleControl(active: boolean): void {

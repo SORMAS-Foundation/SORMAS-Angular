@@ -321,6 +321,7 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
     this.form.get('region')?.setValue(null);
     this.form.get('newCaseDateType')?.setValue(null);
     this.form.get('period')?.setValue(this.defaultPeriod);
+    this.applyFilters();
   }
 
   applyFilters(): void {
