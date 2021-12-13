@@ -1,1 +1,77 @@
-<p>dashboard-new-cases works!</p>
+<div class="dashboard-new-cases" *ngIf="newCases">
+  <h1>
+    <span class="nr-of-cases">{{ newCases.caseCount }}</span> New Cases
+  </h1>
+  <div class="cases-container">
+    <div class="left-part">
+      <div class="row grey">
+        <div class="number">{{ newCases.caseNotClassifiedCount }}</div>
+        <div class="icon"><mat-icon class="material-icons-round">cached</mat-icon></div>
+        <div class="text">{{ 'captions.dashboardNotYetClassified' | translate }}</div>
+      </div>
+      <div class="row yellow">
+        <div class="number">{{ newCases.caseSuspectCount }}</div>
+        <div class="icon"><mat-icon class="material-icons-round">person_search</mat-icon></div>
+        <div class="text">{{ 'captions.dashboardSuspect' | translate }}</div>
+      </div>
+      <div class="row orange">
+        <div class="number">{{ newCases.caseProbableCount }}</div>
+        <div class="icon"><mat-icon class="material-icons-round">queue</mat-icon></div>
+        <div class="text">{{ 'captions.dashboardProbable' | translate }}</div>
+      </div>
+      <div class="row red">
+        <div class="number">{{ newCases.caseConfirmedCount }}</div>
+        <div class="icon"><mat-icon class="material-icons-round">new_releases</mat-icon></div>
+        <div class="text">{{ 'captions.dashboardConfirmed' | translate }}</div>
+      </div>
+      <div class="row pink">
+        <div class="number">{{ newCases.caseConfirmedAsymptomaticCount }}</div>
+        <div class="icon">
+          <mat-icon class="material-icons-round">sentiment_satisfied_alt</mat-icon>
+        </div>
+        <div class="text">{{ 'captions.dashboardConfirmedNoSymptoms' | translate }}</div>
+      </div>
+      <div class="row brown">
+        <div class="number">{{ newCases.caseConfirmedUnkownSymptomsCount }}</div>
+        <div class="icon"><mat-icon class="material-icons-round">sick</mat-icon></div>
+        <div class="text">{{ 'captions.dashboardConfirmedUnknownSymptoms' | translate }}</div>
+      </div>
+      <div class="row blue">
+        <div class="number">{{ newCases.notCaseCount }}</div>
+        <div class="icon"><mat-icon class="material-icons-round">how_to_reg</mat-icon></div>
+        <div class="text">{{ 'captions.dashboardNotACase' | translate }}</div>
+      </div>
+    </div>
+    <div class="right-part">
+      <div class="fatalities">
+        {{ 'strings.headingFatalities' | translate }}
+        <span class="value">{{ newCases.fatalities }}</span> <br />Rate
+        <span class="value">{{ newCases.fatalitiesPercent }}</span>
+      </div>
+      <div class="districts">
+        {{ 'strings.headingOutbreakDistricts' | translate }}
+        <span class="value">{{ newCases.outbreakDistictCount }}</span>
+      </div>
+      <div class="row">
+        {{ 'strings.headingCasesInQuarantine' | translate }}
+        <span class="value">{{ newCases.casesInQuarantineCount }}</span>
+      </div>
+      <div class="row">
+        {{ 'strings.headingCasesPlacedInQuarantine' | translate }}
+        <span class="value">{{ newCases.casesPlacedInQuarantineCount }}</span>
+      </div>
+      <div class="row">
+        {{ 'dashboard.newCase.casesWithDefinition' | translate }}
+        <span class="value">{{ newCases.casesWithReferenceFulfilledCount }}</span>
+      </div>
+      <div class="row">
+        {{ 'strings.headingCasesResultingFromContacts' | translate }}
+        <span class="value">{{ newCases.casesResultFromContactsCount }}</span>
+      </div>
+      <div class="last-reported-district">
+        <span class="hint">{{ 'strings.headingLastReportedDistrict' | translate }}</span>
+        {{ newCases.lastReportedDistrictName }}
+      </div>
+    </div>
+  </div>
+</div>
