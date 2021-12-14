@@ -54,6 +54,7 @@ export const FORM_DATA_RADIO = {
 export const FORM_DATA_SELECT = {
   ...FORM_DATA_BASE,
   controlType: 'dropdown',
+  allowClear: true,
   type: 'simple',
   className: 'size-medium',
 };

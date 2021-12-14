@@ -356,6 +356,7 @@ export const FORM_DATA_CONTACT_FILTERS = [
         key: 'dateFilterOption',
         options: dateFilterOptions,
         value: 'DATE',
+        allowClear: false,
         className: 'fullwidth',
       },
       {
