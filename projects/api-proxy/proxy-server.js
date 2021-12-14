@@ -153,6 +153,27 @@ app.use('/sormas-rest/users/S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/dashboard/newCases', (req, res) => {
+  res.status(200).send({
+    caseCount: 328,
+    caseNotClassifiedCount: 120,
+    caseSuspectCount: 37,
+    caseProbableCount: 45,
+    caseConfirmedCount: 103,
+    caseConfirmedAsymptomaticCount: 78,
+    caseConfirmedUnkownSymptomsCount: 25,
+    notCaseCount: 23,
+    outbreakDistictCount: 3,
+    casesInQuarantineCount: 165,
+    casesPlacedInQuarantineCount: 120,
+    casesResultFromContactsCount: 17,
+    casesWithReferenceFulfilledCount: 79,
+    lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
+    fatalities: '^3',
+    fatalitiesPercent: '0.2%',
+  });
+});
+
 // app.use('/sormas-rest/listings/indexList', (req, res) => {
 //   if (req.body.criteria.disease) {
 //     res.status(200).send([

@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import {
@@ -32,7 +32,7 @@ import { PERIOD_DATA } from './dashboard-filters-data';
   templateUrl: './dashboard-filters.component.html',
   styleUrls: ['./dashboard-filters.component.scss'],
 })
-export class DashboardFiltersComponent implements OnInit, OnDestroy {
+export class DashboardFiltersComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() showDisease = true;
 
   form = new FormGroup({});
@@ -53,6 +53,10 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
 
   constructor(private filterService: FilterService, private regionService: RegionService) {}
 
+  ngAfterViewInit(): void {
+    this.applyFilters();
+  }
+
   ngOnInit(): void {
     this.fetchRegions();
     this.generateWeekOptions();
@@ -61,7 +65,6 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy {
     this.setDefaults();
     this.monitorPeriodSelection();
     this.form.get('period')?.setValue(this.defaultPeriod);
-    this.applyFilters();
   }
 
   initFiltersForm(): void {
