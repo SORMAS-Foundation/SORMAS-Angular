@@ -4,7 +4,6 @@ import {
   Disease,
   FORM_DATA_DATE,
   DateFilterOptions,
-  NewCaseDateType,
 } from '../../app.constants';
 import { FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { FormGroupStyleType } from '../../_models/common';
@@ -15,7 +14,6 @@ const pipe = new EnumToKeyValuePipe();
 
 const diseaseOptions = pipe.transform(Disease);
 const dateFilterOptions = pipe.transform(DateFilterOptions);
-const newCaseDateType = pipe.transform(NewCaseDateType);
 
 export const FORM_DATA_IMMUNIZATION_FILTERS = [
   {
