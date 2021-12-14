@@ -1,6 +1,7 @@
 @use '../../../../variables.scss' as *;
 
 .dashboard-new-cases {
+  margin: 8px;
   h1 {
     color: map-get($sormas-accent, 500);
     font-weight: 500;
@@ -10,32 +11,32 @@
   }
   .cases-container {
     display: flex;
-    .left-part {
-      flex: 49%;
-      margin-right: 2%;
+    column-gap: 24px;
+    .case-types {
+      flex-basis: 50%;
       .row {
         display: flex;
         border-bottom: solid 1px map-get($sormas-accent, 500);
         margin-top: 10px;
-        &.grey {
+        &.not-classified {
           color: map-get($sormas-accent, 500);
         }
-        &.yellow {
+        &.suspect {
           color: map-get($sormas-warning, 400);
         }
-        &.orange {
+        &.probable {
           color: map-get($sormas-warning, 800);
         }
-        &.red {
+        &.confirmed {
           color: map-get($sormas-alert, 700);
         }
-        &.pink {
+        &.confirmed-asymptomatic {
           color: map-get($sormas-alert, 300);
         }
-        &.brown {
+        &.confirmed-unknown {
           color: map-get($sormas-alert, 900);
         }
-        &.blue {
+        &.not-case {
           color: map-get($sormas-primary, 500);
         }
         .number {
@@ -58,8 +59,8 @@
         }
       }
     }
-    .right-part {
-      flex: 49%;
+    .case-data {
+      flex-basis: 50%;
       .fatalities {
         width: 102px;
         height: 53px;
