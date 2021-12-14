@@ -159,6 +159,7 @@ export const FORM_DATA_SAMPLE_FILTERS = [
         key: 'dateFilterOption',
         options: dateFilterOptions,
         value: 'DATE',
+        allowClear: false,
         className: 'fullwidth',
       },
       {
