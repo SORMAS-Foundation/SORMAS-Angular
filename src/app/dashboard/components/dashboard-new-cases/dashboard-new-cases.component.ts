@@ -25,7 +25,7 @@ export class DashboardNewCasesComponent implements OnDestroy, OnInit {
     this.subscriptions.push(
       this.filterService.getFilters().subscribe((response) => {
         this.filters = response.filters;
-        this.dashboardNewCasesService.getAll(null, null, this.filters, false).subscribe({
+        this.dashboardNewCasesService.getCalculated(this.filters).subscribe({
           next: (data: any) => {
             this.newCases = data;
           },
