@@ -25,8 +25,8 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
     fields: [
       {
         ...FORM_DATA_SEARCHBOX,
-        key: 'caseLike',
-        placeholder: 'strings.promptCasesSearchField',
+        key: 'immunizationLike',
+        placeholder: 'strings.promptCampaignSearch',
         className: 'fullwidth',
       },
     ],
@@ -100,18 +100,18 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
         widgetInfo: {
           region: {
             key: 'region',
-            placeholder: 'captions.CaseData.responsibleRegion',
+            placeholder: 'strings.entityRegion',
             newLine: true,
           },
           district: {
             key: 'district',
-            placeholder: 'captions.CaseData.responsibleDistrict',
+            placeholder: 'strings.entityDistricts',
             newLine: true,
             dependingOn: 'region',
           },
           community: {
             key: 'community',
-            placeholder: 'captions.CaseData.responsibleCommunity',
+            placeholder: 'strings.entityCommunities',
             newLine: true,
             dependingOn: 'district',
           },
@@ -160,34 +160,15 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
         className: 'fullwidth',
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'newCaseDateType',
-        options: newCaseDateType,
-        placeholder: 'strings.promptNewCaseDateType',
+        ...FORM_DATA_DATE,
+        key: 'newImmunizationDateFrom',
+        hint: 'strings.date',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_DATE,
-        key: 'newCaseDateFrom',
-        hint: 'strings.promptCasesDateFrom',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'newCaseDateTo',
-        hint: 'strings.promptDateTo',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'quarantineTo',
-        hint: 'captions.CaseData.quarantineTo',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'followUpUntilTo',
-        hint: 'captions.CaseData.followUpUntil',
+        key: 'newImmunizationDateTo',
+        hint: 'strings.date.to',
         className: 'fullwidth',
       },
     ],

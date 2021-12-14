@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { ImmunizationListComponent } from './immunization-list.component';
 
 describe('ImmunizationListComponent', () => {
@@ -8,9 +12,14 @@ describe('ImmunizationListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImmunizationListComponent ]
-    })
-    .compileComponents();
+      declarations: [ImmunizationListComponent],
+      imports: [
+        MatDialogModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
