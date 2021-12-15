@@ -43,13 +43,13 @@
       </div>
     </div>
     <div class="case-data">
-      <div class="fatalities">
+      <div [ngClass]="['fatalities', newCases.fatalities === 0 ? 'no-fatalities' : '']">
         {{ 'strings.headingFatalities' | translate }}
         <span class="value">
           <mat-icon class="material-icons-round">keyboard_arrow_up</mat-icon
           >{{ newCases.fatalities }}</span
         >
-        <br />Rate
+        <br />{{ 'dashboard.newCase.rate' | translate }}
         <span class="value">{{ newCases.fatalitiesPercent }}</span>
       </div>
       <div class="districts">

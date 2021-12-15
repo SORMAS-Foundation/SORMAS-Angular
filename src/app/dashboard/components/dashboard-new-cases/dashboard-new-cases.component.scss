@@ -66,6 +66,7 @@
       .fatalities {
         width: fit-content;
         height: fit-content;
+        text-align: right;
         padding: 6px 10px;
         color: map-get($sormas-accent, 400);
         border: solid 2px map-get($sormas-alert, 200);
@@ -77,6 +78,15 @@
             width: 14px;
             height: 14px;
             font-size: 14px;
+          }
+        }
+        &.no-fatalities {
+          border: solid 2px map-get($sormas-accent, 100);
+          .value {
+            color: map-get($sormas-accent, 500);
+            .mat-icon {
+              visibility: hidden;
+            }
           }
         }
       }
