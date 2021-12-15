@@ -1,9 +1,11 @@
-import { FORM_DATA_RADIO, FORM_DATA_SEARCHBOX, PointOfEntryType } from '../../../app.constants';
 import {
+  FORM_DATA_RADIO,
+  FORM_DATA_SEARCHBOX,
+  FORM_DATA_SELECT,
+  PointOfEntryType,
   EntryPointActiveOptions,
   EntryPointRelevanceStatusOptions,
-} from '../../../_constants/enums';
-import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
+} from '../../../app.constants';
 import { FormGroupStyleType } from '../../../_models/common';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
@@ -68,46 +70,30 @@ export const FORM_DATA_ENTRY_POINT_FILTERS = [
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        className: 'hidden',
+        placeholder: 'captions.country',
+        service: 'countryService',
+        newLine: false,
+        className: 'size-full',
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        className: 'hidden',
+        placeholder: 'captions.region',
+        service: 'regionService',
+        determinedBy: 'country.uuid',
+        newLine: false,
+        className: 'size-full',
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        className: 'fullwidth',
-        widgetInfo: {
-          country: {
-            key: 'country.uuid',
-            placeholder: 'captions.country',
-            newLine: false,
-            className: 'size-full',
-          },
-          region: {
-            key: 'region.uuid',
-            placeholder: 'captions.region',
-            newLine: false,
-            className: 'size-full',
-            dependingOn: 'country',
-          },
-          district: {
-            key: 'district.uuid',
-            placeholder: 'captions.district',
-            newLine: false,
-            className: 'size-full',
-            dependingOn: 'region',
-          },
-        },
+        placeholder: 'captions.district',
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        newLine: false,
+        className: 'size-full',
       },
     ],
   },

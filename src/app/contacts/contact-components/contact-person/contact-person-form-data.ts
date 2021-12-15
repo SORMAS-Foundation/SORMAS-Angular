@@ -35,7 +35,7 @@ export const FORM_DATA_CONTACT_PERSON_DETAILS = [
     fields: [
       {
         ...FORM_DATA_NULL,
-        key: 'uuid',
+        key: 'person.uuid',
         label: 'captions.Person.uuid',
         sameLine: true,
       },
@@ -207,10 +207,6 @@ export const FORM_DATA_CONTACT_PERSON_DETAILS = [
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        widget: 'app-new-address',
-      },
-      {
-        ...FORM_DATA_WIDGET,
         widget: 'app-addresses-list',
         newLine: true,
       },
@@ -259,9 +255,10 @@ export const FORM_DATA_CONTACT_PERSON_DETAILS = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'countryOfBirth',
+        key: 'birthCountry',
         label: 'captions.Person.birthCountry',
-        options: [{ key: 'defaultCountry', value: 'Default country' }],
+        service: 'countryService',
+        options: [],
         newLine: true,
       },
       {

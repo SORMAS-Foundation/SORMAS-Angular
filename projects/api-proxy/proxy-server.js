@@ -169,7 +169,7 @@ app.use('/sormas-rest/dashboard/newCases', (req, res) => {
     casesResultFromContactsCount: 17,
     casesWithReferenceFulfilledCount: 79,
     lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
-    fatalities: '^3',
+    fatalities: 3,
     fatalitiesPercent: '0.2%',
   });
 });

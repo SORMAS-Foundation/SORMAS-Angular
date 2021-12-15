@@ -207,10 +207,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        widget: 'app-new-address',
-      },
-      {
-        ...FORM_DATA_WIDGET,
         widget: 'app-addresses-list',
         newLine: true,
       },
@@ -220,11 +216,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
     id: 'contact',
     title: 'strings.headingContactInformation',
     fields: [
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-new-person-contact',
-        className: 'push-right',
-      },
       {
         ...FORM_DATA_INPUT,
         key: 'nickname',

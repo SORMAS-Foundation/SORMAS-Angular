@@ -29,6 +29,9 @@ export class FormElementBase<T> {
   multipleChoice?: boolean;
   resource?: any;
   widgetInfo?: any;
+  service?: string;
+  serviceMethod?: string;
+  determinedBy?: string;
 
   constructor(
     options: {
@@ -59,6 +62,9 @@ export class FormElementBase<T> {
       multipleChoice?: boolean;
       resource?: any;
       widgetInfo?: any;
+      service?: string;
+      serviceMethod?: string;
+      determinedBy?: string;
     } = {}
   ) {
     this.value = options.value;
@@ -88,6 +94,9 @@ export class FormElementBase<T> {
     this.multipleChoice = options.multipleChoice ?? false;
     this.resource = options.resource;
     this.widgetInfo = options.widgetInfo;
+    this.service = options.service;
+    this.serviceMethod = options.serviceMethod;
+    this.determinedBy = options.determinedBy;
   }
 }
 

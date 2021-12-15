@@ -42,13 +42,8 @@ export const FORM_DATA_COUNTRY_ADD_EDIT = [
         className: 'size-full',
         label: 'captions.Country.subcontinent',
         validation: ['required'],
+        service: 'subcontinentService',
         newLine: true,
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
       },
     ],
   },
