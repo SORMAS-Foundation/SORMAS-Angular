@@ -127,5 +127,6 @@
   "eventGroup.linkEvent.reportDate": "Report date",
   "eventGroup.linkEvent.filters.sortBy": "Sort by",
   "eventGroup.linkEvent.filters.from": "Event from",
-  "dashboard.newCase.casesWithDefinition": "Cases with reference definotion fulfilled"
+  "dashboard.newCase.casesWithDefinition": "Cases with reference definotion fulfilled",
+  "dashboard.newCase.rate": "Rate"
 }
