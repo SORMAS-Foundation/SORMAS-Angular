@@ -1,6 +1,7 @@
 <div class="dashboard-new-cases" *ngIf="newCases">
   <h1>
-    <span class="nr-of-cases">{{ newCases.caseCount }}</span> New Cases
+    <span class="nr-of-cases">{{ newCases.caseCount }}</span>
+    {{ 'dashboard.newCase.newCases' | translate }}
   </h1>
   <div class="cases-container">
     <div class="case-types">
