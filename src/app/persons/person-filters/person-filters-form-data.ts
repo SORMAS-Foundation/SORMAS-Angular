@@ -5,7 +5,6 @@ import {
   Presentcondition,
 } from '../../app.constants';
 import { PersonAssociationType } from '../../_constants/enums';
-import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { FormGroupStyleType } from '../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -89,43 +88,30 @@ export const FORM_DATA_PERSON_FILTERS = [
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
-        ...FORM_DATA_INPUT,
-        key: 'region',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'district',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'community',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
+        ...FORM_DATA_SELECT,
+        key: 'region.uuid',
+        options: [],
+        service: 'regionService',
+        placeholder: 'captions.Contact.region',
         className: 'fullwidth',
-        widgetInfo: {
-          region: {
-            key: 'region',
-            placeholder: 'captions.Contact.region',
-            className: 'size-full',
-          },
-          district: {
-            key: 'district',
-            placeholder: 'captions.Contact.district',
-            dependingOn: 'region',
-            className: 'size-full',
-          },
-          community: {
-            key: 'community',
-            placeholder: 'captions.Contact.community',
-            dependingOn: 'district',
-            className: 'size-full',
-          },
-        },
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'district.uuid',
+        options: [],
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        placeholder: 'captions.Contact.district',
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'community.uuid',
+        options: [],
+        service: 'communityService',
+        determinedBy: 'district.uuid',
+        placeholder: 'captions.Contact.community',
+        className: 'fullwidth',
       },
     ],
   },

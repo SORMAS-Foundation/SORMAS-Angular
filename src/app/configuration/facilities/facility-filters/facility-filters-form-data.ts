@@ -4,7 +4,6 @@ import {
   FORM_DATA_SEARCHBOX,
   FacilityStatus,
 } from '../../../app.constants';
-import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
 import { FormGroupStyleType } from '../../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -77,54 +76,35 @@ export const FORM_DATA_FACILITY_FILTERS = [
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        className: 'hidden',
+        placeholder: 'captions.country',
+        service: 'countryService',
+        className: 'size-full',
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        className: 'hidden',
+        placeholder: 'captions.Facility.region',
+        service: 'regionService',
+        determinedBy: 'country.uuid',
+        className: 'size-full',
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        className: 'hidden',
+        placeholder: 'captions.Facility.district',
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        className: 'size-full',
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'community.uuid',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        className: 'fullwidth',
-        widgetInfo: {
-          country: {
-            key: 'country.uuid',
-            placeholder: 'captions.country',
-            className: 'size-full',
-          },
-          region: {
-            key: 'region.uuid',
-            placeholder: 'captions.Facility.region',
-            className: 'size-full',
-            dependingOn: 'country',
-          },
-          district: {
-            key: 'district.uuid',
-            placeholder: 'captions.Facility.district',
-            className: 'size-full',
-            dependingOn: 'region',
-          },
-          community: {
-            key: 'community.uuid',
-            placeholder: 'captions.Facility.community',
-            className: 'size-full',
-            dependingOn: 'district',
-          },
-        },
+        placeholder: 'captions.Facility.community',
+        service: 'communityService',
+        determinedBy: 'district.uuid',
+        className: 'size-full',
       },
     ],
   },

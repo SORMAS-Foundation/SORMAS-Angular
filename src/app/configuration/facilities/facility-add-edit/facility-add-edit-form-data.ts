@@ -1,4 +1,4 @@
-import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import { FORM_DATA_INPUT, FORM_DATA_SELECT } from '../../../_constants/form-data';
 
 export const FORM_DATA_FACILITY_ADD_EDIT = [
   {
@@ -46,41 +46,25 @@ export const FORM_DATA_FACILITY_ADD_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        className: 'hidden',
+        label: 'captions.Facility.region',
+        service: 'regionService',
+        validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        className: 'hidden',
+        label: 'captions.Facility.district',
+        service: 'districtService',
+        validation: ['required'],
+        determinedBy: 'region.uuid',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        className: 'fullwidth',
-        widgetInfo: {
-          region: {
-            key: 'region.uuid',
-            required: true,
-            label: 'captions.Facility.region',
-          },
-          district: {
-            key: 'district.uuid',
-            required: true,
-            label: 'captions.Facility.district',
-            dependingOn: 'region',
-          },
-          community: {
-            key: 'community.uuid',
-            label: 'captions.Facility.community',
-            dependingOn: 'district',
-            newLine: true,
-          },
-        },
+        label: 'captions.Facility.community',
+        service: 'communityService',
+        determinedBy: 'district.uuid',
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
