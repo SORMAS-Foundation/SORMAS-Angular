@@ -1,1 +1,13 @@
-<p>dashboard-difference-cases works!</p>
+<section>
+  <h2>{{ 'captions.dashboardDiseaseDifference' | translate }}</h2>
+  <p>
+    {{
+      'captions.dashboardComparedToPreviousPeriod'
+        | translate
+        | replace: '%s':period
+        | replace: '%s':previousPeriod
+    }}
+  </p>
+
+  <div>graph here</div>
+</section>

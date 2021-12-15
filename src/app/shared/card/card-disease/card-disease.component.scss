@@ -1,0 +1,179 @@
+@use '/src/variables.scss' as *;
+
+h3 {
+  padding: 0 6px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 28px;
+  border-radius: 2px;
+  color: $white;
+
+  &.afp {
+    background-color: map-get($sormas-primary, 800);
+  }
+
+  &.anthrax {
+    background-color: map-get($sormas-success, 200);
+  }
+
+  &.coronavirus {
+    background-color: map-get($sormas-success, 600);
+  }
+
+  &.cholera {
+    background-color: map-get($sormas-warning, 700);
+  }
+
+  &.congenital_rubella {
+    background-color: map-get($sormas-alert, 400);
+  }
+
+  &.dengue {
+    background-color: map-get($sormas-primary, A100);
+  }
+
+  &.evd {
+    background-color: map-get($sormas-warning, 900);
+  }
+
+  &.guinea_worm {
+    background-color: map-get($sormas-accent, 300);
+  }
+
+  &.rabies {
+    background-color: map-get($sormas-accent, A700);
+  }
+
+  &.lassa {
+    background-color: map-get($sormas-warning, 800);
+  }
+
+  &.measles {
+    background-color: map-get($sormas-alert, 200);
+  }
+
+  &.csm {
+    background-color: map-get($sormas-accent, A100);
+  }
+
+  &.monkeypox {
+    background-color: map-get($sormas-accent, A200);
+  }
+
+  &.new_influenza {
+    background-color: map-get($sormas-primary, 700);
+  }
+
+  &.undefined {
+    background-color: map-get($sormas-accent, 600);
+  }
+
+  &.other {
+    background-color: map-get($sormas-accent, 900);
+  }
+
+  &.plague {
+    background-color: map-get($sormas-alert, 700);
+  }
+
+  &.polio {
+    background-color: map-get($sormas-primary, A700);
+  }
+
+  &.unspecified_vhf {
+    background-color: map-get($sormas-alert, 800);
+  }
+}
+
+.statistics {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    margin: 0;
+  }
+}
+
+.count {
+  font-size: 16px;
+  font-weight: 500;
+  color: map-get($sormas-accent, 800);
+}
+
+.label {
+  font-size: 10px;
+  color: map-get($sormas-accent, 400);
+}
+
+.name {
+  font-size: 12px;
+  color: map-get($sormas-accent, 600);
+}
+
+.district {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+
+  .label {
+    flex-shrink: 0;
+  }
+}
+
+.statistics-fatalities {
+  .positive {
+    padding: 0 4px;
+    border: 1px solid map-get($sormas-alert, 200);
+    border-radius: 2px;
+  }
+}
+
+.statistics-cases {
+  .positive {
+    width: fit-content;
+    padding: 4px 8px;
+    text-align: right;
+    border-radius: 2px;
+
+    .current {
+      display: block;
+      font-size: 24px;
+    }
+  }
+
+  .rising {
+    background-color: map-get($sormas-alert, 50);
+
+    .mat-icon {
+      color: map-get($sormas-alert, 600);
+    }
+  }
+
+  .falling {
+    background-color: map-get($sormas-success, 50);
+
+    .mat-icon {
+      color: map-get($sormas-success, 600);
+    }
+  }
+
+  .stagnant {
+    background-color: map-get($sormas-accent, 50);
+  }
+
+  .previous {
+    font-size: 12px;
+    line-height: 1;
+    color: map-get($sormas-accent, 600);
+
+    .mat-icon {
+      width: 12px;
+      height: 14px;
+      font-size: 14px;
+      line-height: 12px;
+      vertical-align: middle;
+    }
+  }
+}

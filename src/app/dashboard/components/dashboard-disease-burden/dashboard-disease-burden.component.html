@@ -1,0 +1,16 @@
+<ng-container *ngIf="data">
+  <div [ngClass]="visible ? 'hide-section' : 'show-section'">
+    <mat-checkbox color="primary" class="small" (change)="toggleSection($event)">
+      {{ 'captions.dashboardHideOverview' | translate }}
+    </mat-checkbox>
+  </div>
+
+  <mat-card *ngIf="visible">
+    <app-dashboard-disease-overview [data]="data" class="overview"></app-dashboard-disease-overview>
+    <app-dashboard-difference-cases
+      [data]="data"
+      [filters]="filters"
+      class="graph"
+    ></app-dashboard-difference-cases>
+  </mat-card>
+</ng-container>

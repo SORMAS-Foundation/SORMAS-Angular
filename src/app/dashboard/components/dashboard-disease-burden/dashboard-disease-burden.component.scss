@@ -1,0 +1,51 @@
+@use '/src/variables.scss' as *;
+
+:host {
+  display: block;
+  position: relative;
+}
+
+.mat-card {
+  padding: 24px;
+  margin-bottom: 16px;
+  z-index: 1;
+}
+
+.overview,
+.graph {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.show-section {
+  padding-right: 24px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.hide-section {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 2;
+
+  .mat-label {
+    font-weight: normal;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, xl)) {
+  .mat-card {
+    display: flex;
+    gap: 24px;
+  }
+
+  .overview {
+    flex-basis: 40%;
+  }
+
+  .graph {
+    flex-basis: 60%;
+  }
+}

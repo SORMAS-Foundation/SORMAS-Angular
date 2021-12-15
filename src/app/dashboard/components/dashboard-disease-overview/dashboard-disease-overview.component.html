@@ -1,1 +1,11 @@
-<p>dashboard-disease-overview works!</p>
+<section>
+  <h2>{{ 'dashboardDiseaseOverview' | translate }}</h2>
+  <app-card-list
+    *ngIf="data?.length"
+    [data]="data"
+    [cardWidth]="242"
+    [initialPageSize]="6"
+    [cardType]="'disease'"
+    class="disease-list"
+  ></app-card-list>
+</section>
