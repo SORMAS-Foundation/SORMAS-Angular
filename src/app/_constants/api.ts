@@ -218,3 +218,11 @@ export const API_ROUTE_EVENT_GROUPS = {
   ADD: 'eventGroups/push',
   DELETE: 'eventGroups/delete',
 };
+
+export const API_ROUTE_IMMUNIZATIONS = {
+  ENDPOINT: 'immunizations',
+  GET_ALL: 'immunizations/indexList',
+  UPDATE: 'immunizations/push',
+  ADD: 'immunizations/push',
+  DELETE: 'immunizations/delete',
+};
