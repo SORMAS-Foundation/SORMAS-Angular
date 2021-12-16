@@ -16,7 +16,6 @@ import {
   MeansOfTransport,
   RiskLevel,
 } from '../../app.constants';
-import { FORM_DATA_WIDGET } from '../../_constants/form-data';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
@@ -563,53 +562,35 @@ export const FORM_DATA_EVENT_ADD = [
     title: 'captions.address',
     fields: [
       {
-        ...FORM_DATA_INPUT,
-        key: 'country',
-        className: 'hidden',
+        ...FORM_DATA_SELECT,
+        key: 'country.uuid',
+        label: 'captions.country',
+        options: [],
+        service: 'countryService',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'region',
-        className: 'hidden',
+        ...FORM_DATA_SELECT,
+        key: 'region.uuid',
+        label: 'captions.region',
+        options: [],
+        service: 'regionService',
+        determinedBy: 'country.uuid',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'district',
-        className: 'hidden',
+        ...FORM_DATA_SELECT,
+        key: 'district.uuid',
+        label: 'captions.district',
+        options: [],
+        service: 'districtService',
+        determinedBy: 'region.uuid',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'community',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        widgetInfo: {
-          country: {
-            key: 'country',
-            label: 'captions.country',
-            className: 'size-medium',
-          },
-          region: {
-            key: 'region',
-            label: 'captions.region',
-            className: 'size-medium',
-            dependingOn: 'country',
-          },
-          district: {
-            key: 'district',
-            label: 'captions.district',
-            className: 'size-medium',
-            dependingOn: 'region',
-          },
-          community: {
-            key: 'community',
-            label: 'captions.community',
-            className: 'size-medium',
-            dependingOn: 'district',
-          },
-        },
+        ...FORM_DATA_SELECT,
+        key: 'community.uuid',
+        label: 'captions.community',
+        options: [],
+        service: 'communityService',
+        determinedBy: 'district.uuid',
       },
       {
         ...FORM_DATA_INPUT,

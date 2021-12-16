@@ -54,9 +54,9 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
           ref[props[i]] = val;
           return obj;
         };
-        result = strToObj(key, value);
+        const partialResult = strToObj(key, value);
+        result = { ...result, ...partialResult };
       } else {
-        // eslint-disable-next-line no-param-reassign
         result[key] = value;
       }
     });

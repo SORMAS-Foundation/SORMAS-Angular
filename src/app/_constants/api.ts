@@ -126,6 +126,11 @@ export const API_ROUTE_COUNTRIES = {
   DELETE: 'countries/delete',
 };
 
+export const API_ROUTE_DASHBOARD_NEW_CASES = {
+  ENDPOINT: 'dashboard/newCases',
+  GET_ALL: 'dashboard/newCases/indexList',
+};
+
 export const API_ROUTE_REGIONS = {
   ENDPOINT: 'regions',
   GET_ALL: 'regions/indexList',

@@ -14,7 +14,6 @@ import {
   TypeOfPlace,
   DateFilterOptions,
 } from '../../app.constants';
-import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { FormGroupStyleType } from '../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -158,43 +157,30 @@ export const FORM_DATA_EVENT_FILTERS = [
         className: 'fullwidth',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'region',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'district',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'community',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
+        ...FORM_DATA_SELECT,
+        key: 'region.uuid',
+        options: [],
+        service: 'regionService',
+        placeholder: 'captions.EventParticipant.region',
         className: 'fullwidth',
-        widgetInfo: {
-          region: {
-            key: 'region',
-            placeholder: 'captions.EventParticipant.region',
-            className: 'size-full',
-          },
-          district: {
-            key: 'district',
-            placeholder: 'captions.EventParticipant.district',
-            className: 'size-full',
-            dependingOn: 'region',
-          },
-          community: {
-            key: 'community',
-            placeholder: 'Event.responsibleCommunity',
-            className: 'size-full',
-            dependingOn: 'district',
-          },
-        },
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'district.uuid',
+        options: [],
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        placeholder: 'captions.EventParticipant.district',
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'community.uuid',
+        options: [],
+        service: 'communityService',
+        determinedBy: 'district.uuid',
+        placeholder: 'Event.responsibleCommunity',
+        className: 'fullwidth',
       },
     ],
   },
@@ -208,6 +194,7 @@ export const FORM_DATA_EVENT_FILTERS = [
         key: 'dateFilterOption',
         options: dateFilterOptions,
         value: 'DATE',
+        allowClear: false,
         className: 'fullwidth',
       },
       {

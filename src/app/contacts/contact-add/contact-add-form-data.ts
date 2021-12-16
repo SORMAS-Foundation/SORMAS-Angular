@@ -12,7 +12,6 @@ import {
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
-  FORM_DATA_WIDGET,
 } from '../../_constants/form-data';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
@@ -134,42 +133,26 @@ export const FORM_DATA_CONTACT_ADD = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'region',
-        className: 'hidden',
+        key: 'region.uuid',
+        label: 'captions.region',
+        options: [],
+        service: 'regionService',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'district',
-        className: 'hidden',
+        key: 'district.uuid',
+        label: 'captions.district',
+        options: [],
+        service: 'districtService',
+        determinedBy: 'region.uuid',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'community',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        widgetInfo: {
-          region: {
-            key: 'region',
-            label: 'captions.region',
-            className: 'size-medium',
-          },
-          district: {
-            key: 'district',
-            label: 'captions.district',
-            className: 'size-medium',
-            dependingOn: 'region',
-          },
-          community: {
-            key: 'community',
-            label: 'captions.community',
-            className: 'size-medium',
-            newLine: true,
-            dependingOn: 'district',
-          },
-        },
+        key: 'community.uuid',
+        label: 'captions.community',
+        options: [],
+        service: 'communityService',
+        determinedBy: 'district.uuid',
       },
     ],
   },
@@ -180,7 +163,7 @@ export const FORM_DATA_CONTACT_ADD = [
     fields: [
       {
         ...FORM_DATA_RADIO,
-        key: 'region',
+        key: 'contactProximity',
         label: '',
         options: optionsContactProximity,
         separated: true,

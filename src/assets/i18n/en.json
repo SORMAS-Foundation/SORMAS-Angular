@@ -5480,5 +5480,7 @@
   "endDate": "End date",
   "recoveryDate": "Recovery date",
   "immunizationHeading": "Immunization directory",
-  "immunizationAddAction": "Add new immunization"
+  "immunizationAddAction": "Add new immunization",
+  "dashboard.newCase.casesWithDefinition": "Cases with reference definotion fulfilled",
+  "dashboard.newCase.rate": "Rate"
 }

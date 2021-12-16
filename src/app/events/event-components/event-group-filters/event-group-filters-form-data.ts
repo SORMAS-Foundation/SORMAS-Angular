@@ -1,6 +1,9 @@
-import { FORM_DATA_SEARCHBOX } from '../../../app.constants';
-import { EventGroupRelevanceStatusOptions } from '../../../_constants/enums';
-import { FORM_DATA_INPUT, FORM_DATA_RADIO, FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import {
+  FORM_DATA_SEARCHBOX,
+  FORM_DATA_RADIO,
+  FORM_DATA_SELECT,
+  EventGroupRelevanceStatusOptions,
+} from '../../../app.constants';
 import { FormGroupStyleType } from '../../../_models/common';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
@@ -53,43 +56,27 @@ export const FORM_DATA_EVENT_GROUP_FILTERS = [
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
-        ...FORM_DATA_INPUT,
-        key: 'region',
-        className: 'hidden',
+        ...FORM_DATA_SELECT,
+        key: 'region.uuid',
+        placeholder: 'eventGroup.responsibleRegion',
+        service: 'regionService',
+        className: 'size-full',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'district',
-        className: 'hidden',
+        ...FORM_DATA_SELECT,
+        key: 'district.uuid',
+        placeholder: 'eventGroup.responsibleDistrict',
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        className: 'size-full',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'community',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        className: 'fullwidth',
-        widgetInfo: {
-          region: {
-            key: 'region',
-            placeholder: 'eventGroup.responsibleRegion',
-            className: 'size-full',
-          },
-          district: {
-            key: 'district',
-            placeholder: 'eventGroup.responsibleDistrict',
-            className: 'size-full',
-            dependingOn: 'region',
-          },
-          community: {
-            key: 'community',
-            placeholder: 'eventGroup.responsibleCommunity',
-            className: 'size-full',
-            dependingOn: 'district',
-          },
-        },
+        ...FORM_DATA_SELECT,
+        key: 'community.uuid',
+        placeholder: 'eventGroup.responsibleCommunity',
+        service: 'communityService',
+        determinedBy: 'district.uuid',
+        className: 'size-full',
       },
     ],
   },

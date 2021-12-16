@@ -18,22 +18,19 @@ export class DistrictAddEditComponent implements OnInit {
   constructor(private formElementControlService: FormElementControlService) {}
 
   ngOnInit(): void {
-    const config: any = data.FORM_DATA_DISTRICT_ADD_EDIT;
-    const section: any = config.find((s: any) => s.id === 'details');
-    const field: any = section.fields.find((f: any) => f.widget === 'app-location-dropdowns');
     if (this.selectedResource) {
-      if (field) {
-        field.widgetInfo.region.disabled = true;
-      }
       this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
         this.selectedResource,
-        JSON.parse(JSON.stringify(config))
+        JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT))
+      );
+      this.myFormElements = this.formElementControlService.setAttributeToFormElement(
+        this.myFormElements,
+        'region.uuid',
+        'disabled',
+        true
       );
     } else {
-      if (field) {
-        field.widgetInfo.region.disabled = false;
-      }
-      this.myFormElements = JSON.parse(JSON.stringify(config));
+      this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_DISTRICT_ADD_EDIT));
     }
   }
 }

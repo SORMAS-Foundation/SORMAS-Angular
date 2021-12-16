@@ -4,7 +4,6 @@ import {
   FORM_DATA_SEARCHBOX,
   UserRole,
 } from '../../app.constants';
-import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { FormGroupStyleType } from '../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -63,32 +62,21 @@ export const FORM_DATA_USER_FILTERS = [
         className: 'fullwidth',
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'region',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'district',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
+        ...FORM_DATA_SELECT,
+        key: 'region.uuid',
+        options: [],
+        service: 'regionService',
+        placeholder: 'strings.promptRegion',
         className: 'fullwidth',
-        widgetInfo: {
-          region: {
-            key: 'region',
-            placeholder: 'strings.promptRegion',
-            className: 'size-full',
-          },
-          district: {
-            key: 'district',
-            placeholder: 'strings.promptDistrict',
-            className: 'size-full',
-            dependingOn: 'region',
-          },
-        },
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'district.uuid',
+        options: [],
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        placeholder: 'strings.promptDistrict',
+        className: 'fullwidth',
       },
     ],
   },

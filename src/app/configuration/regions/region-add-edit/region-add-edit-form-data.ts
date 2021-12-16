@@ -1,4 +1,4 @@
-import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import { FORM_DATA_INPUT, FORM_DATA_SELECT } from '../../../_constants/form-data';
 
 export const FORM_DATA_REGION_ADD_EDIT = [
   {
@@ -25,20 +25,10 @@ export const FORM_DATA_REGION_ADD_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        className: 'fullwidth',
-        widgetInfo: {
-          country: {
-            key: 'country.uuid',
-            label: 'captions.country',
-            newLine: true,
-            className: 'size-full',
-          },
-        },
+        label: 'captions.country',
+        service: 'countryService',
+        className: 'size-full',
+        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,

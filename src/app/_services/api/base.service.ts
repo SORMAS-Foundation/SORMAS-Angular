@@ -123,6 +123,17 @@ export class BaseService<T extends Resource> {
     return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, items);
   }
 
+  getAllAsOptions(filters: any): Observable<any> {
+    return this.getAll(null, null, filters).pipe(
+      map((data: any) => {
+        return data.elements.map((item: any) => ({
+          key: item.uuid,
+          value: item.name || item.displayName,
+        }));
+      })
+    );
+  }
+
   private convertData(data: any, withPagination: boolean): PaginationResponse {
     return withPagination
       ? { ...data, elements: data.elements.map((item: any) => this.serializer.fromJson(item)) }

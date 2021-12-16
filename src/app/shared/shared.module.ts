@@ -49,7 +49,6 @@ import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { FiltersModule } from './filters/filters.module';
 import { AddressAddEditComponent } from './address-add-edit/address-add-edit.component';
 import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.component';
-import { LocationDropdownsComponent } from './widgets/location-dropdowns/location-dropdowns.component';
 import { EntityActionsComponent } from './entity-actions/entity-actions.component';
 
 @NgModule({
@@ -86,7 +85,6 @@ import { EntityActionsComponent } from './entity-actions/entity-actions.componen
     CaseAddComponent,
     AddressAddEditComponent,
     ContactAddEditComponent,
-    LocationDropdownsComponent,
     EntityActionsComponent,
   ],
   imports: [
