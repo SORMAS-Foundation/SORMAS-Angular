@@ -17,7 +17,7 @@ import { CASE_DETAILS_FORM_ID } from '../../../app.constants';
 })
 export class CaseDetailsComponent implements AfterViewInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
-  formData = data.FORM_DATA_CASE_DETAILS;
+  formData: FormBase<any>[] = data.FORM_DATA_CASE_DETAILS;
   formId = CASE_DETAILS_FORM_ID;
   case: CaseDataDto;
 

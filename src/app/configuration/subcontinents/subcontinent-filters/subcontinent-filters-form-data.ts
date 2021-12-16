@@ -40,9 +40,10 @@ export const FORM_DATA_SUBCONTINENT_FILTERS = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'continent',
+        key: 'continent.uuid',
         placeholder: 'captions.continent',
         options: [],
+        service: 'continentService',
         className: 'fullwidth',
       },
     ],

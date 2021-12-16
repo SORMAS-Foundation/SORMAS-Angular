@@ -43,9 +43,13 @@
       </div>
     </div>
     <div class="case-data">
-      <div class="fatalities">
+      <div [ngClass]="['fatalities', newCases.fatalities === 0 ? 'no-fatalities' : '']">
         {{ 'strings.headingFatalities' | translate }}
-        <span class="value">{{ newCases.fatalities }}</span> <br />Rate
+        <span class="value">
+          <mat-icon class="material-icons-round">keyboard_arrow_up</mat-icon
+          >{{ newCases.fatalities }}</span
+        >
+        <br />{{ 'dashboard.newCase.rate' | translate }}
         <span class="value">{{ newCases.fatalitiesPercent }}</span>
       </div>
       <div class="districts">
@@ -64,7 +68,7 @@
         {{ 'dashboard.newCase.casesWithDefinition' | translate }}
         <span class="value">{{ newCases.casesWithReferenceFulfilledCount }}</span>
       </div>
-      <div class="row">
+      <div class="row cases-resulting">
         {{ 'strings.headingCasesResultingFromContacts' | translate }}
         <span class="value">{{ newCases.casesResultFromContactsCount }}</span>
       </div>

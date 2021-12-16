@@ -223,3 +223,11 @@ export const API_ROUTE_DISEASE_BURDEN = {
   ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/diseaseBurden',
 };
+
+export const API_ROUTE_IMMUNIZATIONS = {
+  ENDPOINT: 'immunizations',
+  GET_ALL: 'immunizations/indexList',
+  UPDATE: 'immunizations/push',
+  ADD: 'immunizations/push',
+  DELETE: 'immunizations/delete',
+};

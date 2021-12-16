@@ -92,7 +92,9 @@ export class EventComponent implements OnInit, OnDestroy {
     }
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, eventLinks);
     const isParticipantProfile = this.router.url.includes('participants-profile');
-    this.showTabs = !isParticipantProfile;
+    setTimeout(() => {
+      this.showTabs = !isParticipantProfile;
+    });
   }
 
   addParticipant(): void {

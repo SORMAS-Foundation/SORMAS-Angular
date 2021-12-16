@@ -6,7 +6,7 @@
     color: map-get($sormas-accent, 500);
     font-weight: 500;
     .nr-of-cases {
-      color: $black;
+      color: map-get($sormas-accent, 800);
     }
   }
   .cases-container {
@@ -16,7 +16,7 @@
       flex-basis: 50%;
       .row {
         display: flex;
-        border-bottom: solid 1px map-get($sormas-accent, 500);
+        border-bottom: solid 1px map-get($sormas-accent, 200);
         margin-top: 10px;
         &.not-classified {
           color: map-get($sormas-accent, 500);
@@ -45,11 +45,13 @@
         }
         .icon {
           flex: 8%;
+          padding-left: 5px;
           text-align: center;
           .mat-icon {
-            width: 16px;
             height: 16px;
             font-size: 16px;
+            position: relative;
+            top: 1px;
           }
         }
         .text {
@@ -62,8 +64,9 @@
     .case-data {
       flex-basis: 50%;
       .fatalities {
-        width: 102px;
-        height: 53px;
+        width: fit-content;
+        height: fit-content;
+        text-align: right;
         padding: 6px 10px;
         color: map-get($sormas-accent, 400);
         border: solid 2px map-get($sormas-alert, 200);
@@ -71,6 +74,20 @@
         .value {
           color: map-get($sormas-alert, 700);
           font-weight: 700;
+          .mat-icon {
+            width: 14px;
+            height: 14px;
+            font-size: 14px;
+          }
+        }
+        &.no-fatalities {
+          border: solid 2px map-get($sormas-accent, 100);
+          .value {
+            color: map-get($sormas-accent, 500);
+            .mat-icon {
+              visibility: hidden;
+            }
+          }
         }
       }
       .districts {
@@ -88,8 +105,10 @@
         width: fit-content;
         margin-top: 8px;
         color: map-get($sormas-accent, 400);
-        &.bordered {
+        &.cases-resulting {
           border: solid 1px map-get($sormas-primary, 200);
+          padding: 0 6px;
+          border-radius: 2px;
         }
         .value {
           font-size: 16px;

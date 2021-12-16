@@ -15,24 +15,26 @@ export class FormBaseComponent implements OnInit {
   group: FormGroup = new FormGroup({});
   formId: string;
   initialValue: any;
+  control: any;
 
   constructor(public formActionsService: FormActionsService) {}
 
   ngOnInit(): void {
-    if (typeof this.group.controls[this.config.key] !== 'undefined') {
-      this.initialValue = this.group.controls[this.config.key].value;
+    this.control = this.group.controls[this.config.key];
+    if (typeof this.control !== 'undefined') {
+      this.initialValue = this.control.value;
     }
   }
 
   get isValid(): boolean {
-    return this.group.controls[this.config.key]?.valid;
+    return this.control?.valid;
   }
 
   onChange(): void {
-    if (this.initialValue === this.group.controls[this.config.key].value) {
-      this.formActionsService.setInputChange(this.formId, this.config.key, false);
-    } else {
-      this.formActionsService.setInputChange(this.formId, this.config.key, true);
-    }
+    this.formActionsService.setInputChange(
+      this.formId,
+      this.config.key,
+      this.initialValue !== this.control.value
+    );
   }
 }
