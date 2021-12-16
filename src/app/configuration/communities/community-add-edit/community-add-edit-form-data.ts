@@ -1,4 +1,4 @@
-import { FORM_DATA_INPUT, FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import { FORM_DATA_INPUT, FORM_DATA_SELECT } from '../../../_constants/form-data';
 
 export const FORM_DATA_COMMUNITY_ADD_EDIT = [
   {
@@ -15,36 +15,23 @@ export const FORM_DATA_COMMUNITY_ADD_EDIT = [
         newLine: true,
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        className: 'hidden',
+        label: 'captions.region',
+        service: 'regionService',
+        validation: ['required'],
+        className: 'size-full',
+        newLine: true,
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        className: 'fullwidth',
-        widgetInfo: {
-          region: {
-            key: 'region.uuid',
-            required: true,
-            label: 'captions.region',
-            newLine: true,
-            className: 'size-full',
-          },
-          district: {
-            key: 'district.uuid',
-            required: true,
-            label: 'captions.district',
-            newLine: true,
-            className: 'size-full',
-            dependingOn: 'region',
-          },
-        },
+        label: 'captions.district',
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        validation: ['required'],
+        newLine: true,
+        className: 'size-full',
       },
       {
         ...FORM_DATA_INPUT,

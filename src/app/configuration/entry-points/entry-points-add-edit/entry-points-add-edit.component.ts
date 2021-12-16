@@ -29,13 +29,13 @@ export class EntryPointsAddEditComponent implements OnInit {
       );
       this.myFormElements = this.formElementControlService.setAttributeToFormElement(
         this.myFormElements,
-        'region.uui',
+        'region.uuid',
         'disabled',
         true
       );
       this.myFormElements = this.formElementControlService.setAttributeToFormElement(
         this.myFormElements,
-        'district.uui',
+        'district.uuid',
         'disabled',
         true
       );

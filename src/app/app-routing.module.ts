@@ -44,6 +44,12 @@ const routes: Routes = [
     canActivate: [Guard],
   },
   {
+    path: 'immunizations',
+    loadChildren: () =>
+      import('./immunizations/immunizations.module').then((m) => m.ImmunizationsModule),
+    canActivate: [Guard],
+  },
+  {
     path: 'user-profile',
     loadChildren: () =>
       import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),

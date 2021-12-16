@@ -11,7 +11,6 @@ import {
   Sex,
 } from '../../app.constants';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { FORM_DATA_WIDGET } from '../../_constants/form-data';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -64,45 +63,29 @@ export const FORM_DATA_CASE_ADD = [
     required: true,
     fields: [
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        className: 'hidden',
+        label: 'captions.CaseData.responsibleRegion',
+        service: 'regionService',
+        validation: ['required'],
+        newLine: true,
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        className: 'hidden',
+        label: 'captions.CaseData.responsibleDistrict',
+        service: 'districtService',
+        determinedBy: 'region.uuid',
+        validation: ['required'],
+        newLine: true,
       },
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SELECT,
         key: 'community.uuid',
-        className: 'hidden',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-location-dropdowns',
-        className: 'size-large',
-        widgetInfo: {
-          region: {
-            key: 'region.uuid',
-            required: true,
-            label: 'captions.CaseData.responsibleRegion',
-            newLine: true,
-          },
-          district: {
-            key: 'district.uuid',
-            required: true,
-            label: 'captions.CaseData.responsibleDistrict',
-            newLine: true,
-            dependingOn: 'region',
-          },
-          community: {
-            key: 'community.uuid',
-            label: 'captions.CaseData.responsibleCommunity',
-            newLine: true,
-            dependingOn: 'district',
-          },
-        },
+        label: 'captions.CaseData.responsibleCommunity',
+        service: 'communityService',
+        determinedBy: 'district.uuid',
+        newLine: true,
       },
     ],
   },

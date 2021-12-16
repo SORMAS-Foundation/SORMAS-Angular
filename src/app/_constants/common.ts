@@ -128,3 +128,5 @@ export const DATE_TYPE_OPTIONS = {
   DATE: 'DATE' as DateFilterOptions,
   EPI_WEEK: 'EPI_WEEK' as DateFilterOptions,
 };
+
+export const DEFAULT_FETCH_METHOD = 'getAllAsOptions';
