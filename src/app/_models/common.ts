@@ -87,6 +87,7 @@ export type InfoBarType =
   | 'SAMPLE_CONTACT'
   | 'SAMPLE_PATHOGEN'
   | 'SAMPLE_ADDITIONAL'
+  | 'IMMUNIZATION'
   | 'CONTACT';
 
 export const InfoBarTypeOptions = {
@@ -99,6 +100,7 @@ export const InfoBarTypeOptions = {
   SAMPLE_PATHOGEN: 'SAMPLE_PATHOGEN' as InfoBarType,
   SAMPLE_ADDITIONAL: 'SAMPLE_ADDITIONAL' as InfoBarType,
   CONTACT: 'CONTACT' as InfoBarType,
+  IMMUNIZATION: 'IMMUNIZATION' as InfoBarType,
 };
 
 export type FetchStatus = 'ERROR' | 'NO_DATA' | 'NO_MATCH';

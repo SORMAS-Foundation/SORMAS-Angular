@@ -7,9 +7,12 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { ImmunizationFiltersComponent } from './immunization-filters/immunization-filters.component';
+import { ImmunizationComponent } from './immunization/immunization.component';
+import { ImmunizationProfileComponent } from './immunization-components/immunization-profile/immunization-profile.component';
+import { ImmunizationPersonComponent } from './immunization-components/immunization-person/immunization-person.component';
 
 @NgModule({
-  declarations: [ImmunizationsComponent, ImmunizationFiltersComponent, ImmunizationListComponent],
+  declarations: [ImmunizationsComponent, ImmunizationFiltersComponent, ImmunizationListComponent, ImmunizationComponent, ImmunizationProfileComponent, ImmunizationPersonComponent],
   imports: [
     CommonModule,
     ImmunizationsRoutingModule,

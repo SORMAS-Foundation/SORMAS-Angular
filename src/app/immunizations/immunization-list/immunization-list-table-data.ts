@@ -8,7 +8,7 @@ export const defaultColumnDefs: TableColumn[] = [
     essential: true,
     format: {
       type: TableDataFormatOptions.LINK,
-      pattern: '/immunizations/immunization/$param1/details',
+      pattern: '/immunizations/immunization/$param1/profile',
       params: ['uuid'],
       truncate: 6,
     },
