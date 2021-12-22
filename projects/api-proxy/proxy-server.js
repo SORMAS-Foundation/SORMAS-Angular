@@ -174,17 +174,6 @@ app.use('/sormas-rest/dashboard/newCases', (req, res) => {
   });
 });
 
-app.use('/sormas-rest/dashboard/newEvents', (req, res) => {
-  res.status(200).send({
-    eventCount: 123,
-    cluster: 103,
-    event: 45,
-    signal: 37,
-    screening: 23,
-    dropped: 120,
-  });
-});
-
 // app.use('/sormas-rest/listings/indexList', (req, res) => {
 //   if (req.body.criteria.disease) {
 //     res.status(200).send([

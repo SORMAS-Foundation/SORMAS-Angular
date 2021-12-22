@@ -1,32 +1,38 @@
 <div class="dashboard-new-events" *ngIf="newEvents">
   <h1>
-    <span class="nr-of-events">{{ newEvents.eventCount }}</span>
-    {{ 'dashboard.newEvent.newEvents' | translate }}
+    <span class="nr-of-events">{{
+      newEvents.CLUSTER +
+        newEvents.EVENT +
+        newEvents.SIGNAL +
+        newEvents.SCREENING +
+        newEvents.DROPPED || 0
+    }}</span>
+    {{ 'captions.dashboardNewEvents' | translate }}
   </h1>
   <div class="events-container">
     <div class="event-types">
       <div class="row cluster">
-        <div class="number">{{ newEvents.cluster }}</div>
+        <div class="number">{{ newEvents.CLUSTER || 0 }}</div>
         <div class="icon"><mat-icon class="material-icons-round">grain</mat-icon></div>
         <div class="text">{{ 'enum.EventStatus.CLUSTER' | translate }}</div>
       </div>
       <div class="row event">
-        <div class="number">{{ newEvents.event }}</div>
+        <div class="number">{{ newEvents.EVENT || 0 }}</div>
         <div class="icon"><mat-icon class="material-icons-round">warning</mat-icon></div>
         <div class="text">{{ 'enum.EventStatus.EVENT' | translate }}</div>
       </div>
       <div class="row signal">
-        <div class="number">{{ newEvents.signal }}</div>
+        <div class="number">{{ newEvents.SIGNAL || 0 }}</div>
         <div class="icon"><mat-icon class="material-icons-round">wifi_tethering</mat-icon></div>
         <div class="text">{{ 'enum.EventStatus.SIGNAL' | translate }}</div>
       </div>
       <div class="row screening">
-        <div class="number">{{ newEvents.screening }}</div>
+        <div class="number">{{ newEvents.SCREENING || 0 }}</div>
         <div class="icon"><mat-icon class="material-icons-round">travel_explore</mat-icon></div>
         <div class="text">{{ 'enum.EventStatus.SCREENING' | translate }}</div>
       </div>
       <div class="row dropped">
-        <div class="number">{{ newEvents.dropped }}</div>
+        <div class="number">{{ newEvents.DROPPED || 0 }}</div>
         <div class="icon">
           <mat-icon class="material-icons-round">disabled_by_default</mat-icon>
         </div>

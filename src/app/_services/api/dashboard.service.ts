@@ -28,16 +28,12 @@ export class DashboardService {
       endpoint = this.endpoint.GET_ALL;
     }
 
-    const requestPayload: any = { criteria: {} };
+    const requestPayload: any = {};
 
-    // filters
-    if (typeof filters !== 'undefined' && filters !== null) {
-      requestPayload.criteria = {};
-      if (!filters.length) {
-        requestPayload.criteria = {};
-      }
+    if (filters.length) {
+      requestPayload.disease = 'CORONAVIRUS'; // TODO: DELETE THIS WHEN DISEASE SELECTION IS IMPLEMENTED
       filters.forEach((filter: any) => {
-        requestPayload.criteria[filter.field] = filter.value;
+        requestPayload[filter.field] = filter.value;
       });
     }
 

@@ -133,7 +133,12 @@ export const API_ROUTE_DASHBOARD_NEW_CASES = {
 
 export const API_ROUTE_DASHBOARD_NEW_EVENTS = {
   ENDPOINT: 'dashboard/newEvents',
-  GET_ALL: 'dashboard/newEvents/indexList',
+  GET_ALL: 'dashboard/newEvents',
+};
+
+export const API_ROUTE_DASHBOARD_TEST_RESULTS = {
+  ENDPOINT: 'dashboard/testResults',
+  GET_ALL: 'dashboard/testResults',
 };
 
 export const API_ROUTE_REGIONS = {

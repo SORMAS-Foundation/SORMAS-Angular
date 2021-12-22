@@ -1,1 +1,39 @@
-<p>dashboard-test-results works!</p>
+<div class="dashboard-test-results" *ngIf="testResults">
+  <h1>
+    <span class="nr-of-test-results">{{
+      testResults.POSITIVE +
+        testResults.NEGATIVE +
+        testResults.PENDING +
+        testResults.INDETERMINATE || 0
+    }}</span>
+    {{ 'captions.dashboardNewTestResults' | translate }}
+  </h1>
+  <div class="test-results-container">
+    <div class="results">
+      <div class="row positive">
+        <div class="number">{{ testResults.POSITIVE || 0 }}</div>
+        <div class="icon">
+          <mat-icon class="material-icons-round">add_circle_outline_black</mat-icon>
+        </div>
+        <div class="text">{{ 'enum.SimpleTestResultType.POSITIVE' | translate }}</div>
+      </div>
+      <div class="row negative">
+        <div class="number">{{ testResults.NEGATIVE || 0 }}</div>
+        <div class="icon">
+          <mat-icon class="material-icons-round">remove_circle_outline_black</mat-icon>
+        </div>
+        <div class="text">{{ 'enum.SimpleTestResultType.NEGATIVE' | translate }}</div>
+      </div>
+      <div class="row pending">
+        <div class="number">{{ testResults.PENDING || 0 }}</div>
+        <div class="icon"><mat-icon class="material-icons-round">pending_black</mat-icon></div>
+        <div class="text">{{ 'captions.dashboardPending' | translate }}</div>
+      </div>
+      <div class="row indeterminate">
+        <div class="number">{{ testResults.INDETERMINATE || 0 }}</div>
+        <div class="icon"><mat-icon class="material-icons-round">flaky_black</mat-icon></div>
+        <div class="text">{{ 'enum.SimpleTestResultType.INDETERMINATE' | translate }}</div>
+      </div>
+    </div>
+  </div>
+</div>
