@@ -1,12 +1,6 @@
 <div class="dashboard-new-events" *ngIf="newEvents">
   <h1>
-    <span class="nr-of-events">{{
-      newEvents.CLUSTER +
-        newEvents.EVENT +
-        newEvents.SIGNAL +
-        newEvents.SCREENING +
-        newEvents.DROPPED || 0
-    }}</span>
+    <span class="nr-of-events">{{ sumEvents }}</span>
     {{ 'captions.dashboardNewEvents' | translate }}
   </h1>
   <div class="events-container">

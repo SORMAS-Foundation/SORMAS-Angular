@@ -1,11 +1,6 @@
 <div class="dashboard-test-results" *ngIf="testResults">
   <h1>
-    <span class="nr-of-test-results">{{
-      testResults.POSITIVE +
-        testResults.NEGATIVE +
-        testResults.PENDING +
-        testResults.INDETERMINATE || 0
-    }}</span>
+    <span class="nr-of-test-results">{{ sumTestResults }}</span>
     {{ 'captions.dashboardNewTestResults' | translate }}
   </h1>
   <div class="test-results-container">

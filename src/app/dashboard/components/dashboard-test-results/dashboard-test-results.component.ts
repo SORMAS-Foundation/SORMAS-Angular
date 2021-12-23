@@ -14,6 +14,7 @@ export class DashboardTestResultsComponent implements OnInit, OnDestroy {
   testResults: any;
   subscriptions: Subscription[] = [];
   filters: Filter[] = [];
+  sumTestResults = 0;
 
   constructor(
     private dashboardTestResultsService: DashboardTestResultsService,
@@ -28,6 +29,7 @@ export class DashboardTestResultsComponent implements OnInit, OnDestroy {
         this.dashboardTestResultsService.getCalculated(this.filters).subscribe({
           next: (data: any) => {
             this.testResults = data;
+            this.sumTestResults = this.sumOfTestResults();
           },
           error: (err: any) => {
             this.notificationService.error(err);
@@ -35,6 +37,15 @@ export class DashboardTestResultsComponent implements OnInit, OnDestroy {
           complete: () => {},
         });
       })
+    );
+  }
+
+  sumOfTestResults(): number {
+    return (
+      this.testResults.POSITIVE +
+        this.testResults.NEGATIVE +
+        this.testResults.PENDING +
+        this.testResults.INDETERMINATE || 0
     );
   }
 

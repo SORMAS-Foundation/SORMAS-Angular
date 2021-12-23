@@ -14,12 +14,23 @@ export class DashboardNewEventsComponent implements OnInit, OnDestroy {
   newEvents: any;
   subscriptions: Subscription[] = [];
   filters: Filter[] = [];
+  sumEvents = 0;
 
   constructor(
     private dashboardNewEventsService: DashboardNewEventsService,
     public filterService: FilterService,
     private notificationService: NotificationService
   ) {}
+
+  sumOfEvents(): number {
+    return (
+      this.newEvents.CLUSTER +
+        this.newEvents.EVENT +
+        this.newEvents.SIGNAL +
+        this.newEvents.SCREENING +
+        this.newEvents.DROPPED || 0
+    );
+  }
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -28,6 +39,7 @@ export class DashboardNewEventsComponent implements OnInit, OnDestroy {
         this.dashboardNewEventsService.getCalculated(this.filters).subscribe({
           next: (data: any) => {
             this.newEvents = data;
+            this.sumEvents = this.sumOfEvents();
           },
           error: (err: any) => {
             this.notificationService.error(err);
