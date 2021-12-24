@@ -1,1 +1,7 @@
-<p>immunization-person works!</p>
+<app-dynamic-form
+  *ngIf="person"
+  [formId]="formId"
+  [formElements]="myFormElements"
+  [resourceService]="resourceService"
+  (changed)="onFormChanged($event)"
+></app-dynamic-form>
