@@ -25,8 +25,9 @@ export class DashboardService {
     const endpoint = this.endpoint.GET_ALL || this.endpoint.ENDPOINT;
     const requestPayload: any = {};
 
-    // filters
-    if (typeof filters !== 'undefined' && filters !== null) {
+
+    if (filters.length) {
+      requestPayload.disease = 'CORONAVIRUS'; // TODO: DELETE THIS WHEN DISEASE SELECTION IS IMPLEMENTED
       filters.forEach((filter: any) => {
         requestPayload[filter.field] = filter.value;
       });
