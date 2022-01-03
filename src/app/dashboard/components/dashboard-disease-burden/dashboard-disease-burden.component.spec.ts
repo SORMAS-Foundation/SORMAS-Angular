@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '../../../material.module';
 
 import { DashboardDiseaseBurdenComponent } from './dashboard-disease-burden.component';
 
@@ -9,6 +11,7 @@ describe('DashboardDiseaseBurdenComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DashboardDiseaseBurdenComponent],
+      imports: [HttpClientTestingModule, MaterialModule],
     }).compileComponents();
   });
 

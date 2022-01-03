@@ -1,0 +1,33 @@
+@mixin toggle-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  :root {
+    .mat-button-toggle-group {
+      border: none;
+    }
+
+    .mat-button-toggle + .mat-button-toggle {
+      border-left: none;
+    }
+
+    .mat-button-toggle-checked {
+      background-color: none;
+    }
+
+    .mat-button-toggle-focus-overlay {
+      opacity: 0 !important;
+    }
+
+    .mat-button-toggle-label-content {
+      line-height: unset;
+    }
+
+    .mat-icon {
+      line-height: 24px;
+    }
+  }
+}

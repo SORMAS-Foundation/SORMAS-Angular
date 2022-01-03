@@ -14,8 +14,8 @@ export class CardDiseaseComponent implements OnInit {
   icon: string;
 
   ngOnInit(): void {
-    this.disease = Disease[this.data.disease as keyof typeof Disease];
-    if (this.data.caseCount || this.data.previousCaseCount) {
+    this.disease = Disease[this.data?.disease as keyof typeof Disease];
+    if (this.data?.caseCount || this.data?.previousCaseCount) {
       if (this.data.caseCount > this.data.previousCaseCount) {
         this.progress = 'rising';
       } else if (this.data.caseCount < this.data.previousCaseCount) {

@@ -1,0 +1,32 @@
+<table #table mat-table matSort matSortDisableClear [dataSource]="data" [ngClass]="[appearance]">
+  <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.dataKey">
+    <ng-container *ngIf="tableColumn.isSortable; else notSortable">
+      <th mat-header-cell *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
+        <span>{{ tableColumn.name | translate }}</span>
+        <mat-icon
+          *ngIf="sort?.active === tableColumn.dataKey"
+          class="material-icons-round icon-sort"
+        >
+          {{ sort?.direction === 'asc' ? 'arrow_drop_up' : 'arrow_drop_down' }}
+        </mat-icon>
+      </th>
+    </ng-container>
+
+    <ng-template #notSortable>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ tableColumn.name | translate }}
+      </th>
+    </ng-template>
+
+    <td
+      mat-cell
+      *matCellDef="let element"
+      [align]="tableColumn.align"
+      [ngClass]="tableColumn.className || ''"
+    >
+      <app-table-data [config]="tableColumn" [data]="element"></app-table-data>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="[getRowStyle(row)]"></tr>
+</table>

@@ -116,3 +116,10 @@ export const FormGroupStyleType = {
   CARD: 'CARD' as FormGroupStyle,
   COLLAPSABLE: 'COLLAPSABLE' as FormGroupStyle,
 };
+
+export type ViewOptions = 'PRIMARY' | 'SECONDARY';
+
+export const VIEW_OPTIONS = {
+  PRIMARY: 'PRIMARY' as ViewOptions,
+  SECONDARY: 'SECONDARY' as ViewOptions,
+};

@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { VIEW_OPTIONS } from '../../../_models/common';
+import { defaultColumnDefs } from './dashboard-disease-overview-table-data';
 
 @Component({
   selector: 'app-dashboard-disease-overview',
@@ -7,4 +9,17 @@ import { Component, Input } from '@angular/core';
 })
 export class DashboardDiseaseOverviewComponent {
   @Input() data: any;
+
+  columnDefs = defaultColumnDefs;
+  viewOptions = VIEW_OPTIONS;
+
+  determineDiseaseProgress(obj: any): string {
+    if (obj.casesDifference > 0) {
+      return 'rising';
+    }
+    if (obj.casesDifference < 0) {
+      return 'falling';
+    }
+    return 'stagnant';
+  }
 }

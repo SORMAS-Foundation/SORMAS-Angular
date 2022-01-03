@@ -35,17 +35,15 @@
   }
 }
 
+.expand-view {
+  margin-bottom: -16px !important;
+  text-align: center;
+}
+
 @media (min-width: map-get($grid-breakpoints, xl)) {
-  .mat-card {
-    display: flex;
-    gap: 24px;
-  }
-
-  .overview {
-    flex-basis: 40%;
-  }
-
-  .graph {
-    flex-basis: 60%;
+  .grid {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    column-gap: 24px;
   }
 }

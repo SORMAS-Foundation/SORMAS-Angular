@@ -1,11 +1,23 @@
 <section>
-  <h2>{{ 'dashboardDiseaseOverview' | translate }}</h2>
-  <app-card-list
-    *ngIf="data?.length"
-    [data]="data"
-    [cardWidth]="242"
-    [initialPageSize]="6"
-    [cardType]="'disease'"
-    class="disease-list"
-  ></app-card-list>
+  <h2>
+    {{ 'dashboardDiseaseOverview' | translate }}
+    <app-toggle-view #view></app-toggle-view>
+  </h2>
+
+  <div *ngIf="view.value === viewOptions.PRIMARY" class="overview-disease-list">
+    <app-card-list
+      *ngIf="data?.length"
+      [data]="data"
+      [cardWidth]="242"
+      [cardType]="'disease'"
+    ></app-card-list>
+  </div>
+
+  <div *ngIf="view.value === viewOptions.SECONDARY" class="overview-disease-table">
+    <app-table-static
+      [data]="data"
+      [tableColumns]="columnDefs"
+      [styleRow]="determineDiseaseProgress"
+    ></app-table-static>
+  </div>
 </section>

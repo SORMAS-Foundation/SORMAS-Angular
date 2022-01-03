@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Filter } from '../../../_models/common';
+import { Filter, VIEW_OPTIONS } from '../../../_models/common';
 import { DiseaseBurdenService } from '../../../_services/api/disease-burden';
 import { FilterService } from '../../../_services/filter.service';
 import { NotificationService } from '../../../_services/notification.service';
@@ -15,6 +15,7 @@ export class DashboardDiseaseBurdenComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   filters: Filter[] = [];
   visible = true;
+  viewOptions = VIEW_OPTIONS;
 
   constructor(
     private diseaseBurdenService: DiseaseBurdenService,

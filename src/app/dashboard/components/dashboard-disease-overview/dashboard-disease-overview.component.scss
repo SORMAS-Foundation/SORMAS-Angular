@@ -5,8 +5,12 @@ h2 {
   line-height: 1;
 }
 
+.overview-disease-table {
+  overflow-x: auto;
+}
+
 @media (max-width: map-get($grid-breakpoints, xl)) {
-  .disease-list {
+  .overview-disease-list {
     width: fit-content;
     margin: auto;
   }

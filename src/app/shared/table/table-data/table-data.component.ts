@@ -79,9 +79,9 @@ export class TableDataComponent implements OnChanges {
     const value = this.getData(this.config.dataKey);
     const raw = parseFloat(value);
 
-    if (match && raw) {
+    if (match && !Number.isNaN(raw)) {
       Object.entries(match).find(([key, range]) => {
-        const check = raw > range[0] && raw < range[1];
+        const check = range[0] === range[1] ? raw === range[0] : raw > range[0] && raw < range[1];
         if (check) {
           this.dataClass = key;
         }
@@ -121,7 +121,7 @@ export class TableDataComponent implements OnChanges {
 
     this.config.format?.params?.forEach((key: any, index: number) => {
       const param = this.getRawData(key);
-      if (param) {
+      if (param !== undefined && param !== null) {
         paramHasValue = true;
       }
       result = result.replaceAll(`$param${index + 1}`, param ?? '');
