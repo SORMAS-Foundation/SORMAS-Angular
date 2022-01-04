@@ -22,9 +22,7 @@ export class ImmunizationProfileComponent implements OnDestroy {
   subscriptions: Subscription[] = [];
   @ViewChild('form') dynamicForm: any;
 
-  constructor(
-    private formElementControlService: FormElementControlService,
-  ) {}
+  constructor(private formElementControlService: FormElementControlService) {}
 
   updateComponent(immunizationItem: ImmunizationDto, resourceService: BaseService<any>): void {
     this.immunization = immunizationItem;

@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: '',
     component: ImmunizationsComponent,
-    children: [{ path: 'list', component: ImmunizationListComponent },
+    children: [
+      { path: 'list', component: ImmunizationListComponent },
       {
         path: 'immunization/:immunizationId',
         component: ImmunizationComponent,

@@ -12,7 +12,14 @@ import { ImmunizationProfileComponent } from './immunization-components/immuniza
 import { ImmunizationPersonComponent } from './immunization-components/immunization-person/immunization-person.component';
 
 @NgModule({
-  declarations: [ImmunizationsComponent, ImmunizationFiltersComponent, ImmunizationListComponent, ImmunizationComponent, ImmunizationProfileComponent, ImmunizationPersonComponent],
+  declarations: [
+    ImmunizationsComponent,
+    ImmunizationFiltersComponent,
+    ImmunizationListComponent,
+    ImmunizationComponent,
+    ImmunizationProfileComponent,
+    ImmunizationPersonComponent,
+  ],
   imports: [
     CommonModule,
     ImmunizationsRoutingModule,

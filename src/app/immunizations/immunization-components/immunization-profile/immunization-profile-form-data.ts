@@ -1,10 +1,14 @@
 import {
   Disease,
-  FORM_DATA_DATE, FORM_DATA_INPUT, FORM_DATA_RADIO, FORM_DATA_SELECT, MeansOfImmunization, YesNoUnknown,
+  FORM_DATA_DATE,
+  FORM_DATA_INPUT,
+  FORM_DATA_RADIO,
+  FORM_DATA_SELECT,
+  MeansOfImmunization,
+  YesNoUnknown,
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import {FormGroupStyleType} from '../../../_models/common';
 
 const pipe = new EnumToKeyValuePipe();
 

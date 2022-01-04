@@ -3,7 +3,7 @@ import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import * as data from './immunization-person-form-data';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { BaseService } from '../../../_services/api/base.service';
-import {CaseDataDto, ImmunizationDto, PersonDto} from '../../../_models/models';
+import { ImmunizationDto, PersonDto } from '../../../_models/models';
 import { PersonService } from '../../../_services/api/person.service';
 import { NotificationService } from '../../../_services/notification.service';
 import { HelperService } from '../../../_services/helper.service';
@@ -14,7 +14,7 @@ import { CONTACT_PERSON_FORM_ID } from '../../../_constants/form-identifiers';
 @Component({
   selector: 'app-immunization-person',
   templateUrl: './immunization-person.component.html',
-  styleUrls: ['./immunization-person.component.scss']
+  styleUrls: ['./immunization-person.component.scss'],
 })
 export class ImmunizationPersonComponent implements OnInit {
   person: PersonDto;

@@ -31,11 +31,14 @@ export class ListingService extends BaseService<ListingDto> {
       .pipe(
         map((data: any) => {
           const newData = [];
-          for (let key in data){
-            newData.push({
-              disease: key,
-              listings: data[key],
-            });
+          // eslint-disable-next-line no-restricted-syntax
+          for (const key in data) {
+            if (key) {
+              newData.push({
+                disease: key,
+                listings: data[key],
+              });
+            }
           }
           return newData;
         })

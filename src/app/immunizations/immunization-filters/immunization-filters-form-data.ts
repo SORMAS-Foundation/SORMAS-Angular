@@ -3,7 +3,11 @@ import {
   FORM_DATA_SEARCHBOX,
   Disease,
   FORM_DATA_DATE,
-  DateFilterOptions, MeansOfImmunization, ImmunizationManagementStatus, ImmunizationStatus, ImmunizationReferenceDate,
+  DateFilterOptions,
+  MeansOfImmunization,
+  ImmunizationManagementStatus,
+  ImmunizationStatus,
+  ImmunizationReferenceDate,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
