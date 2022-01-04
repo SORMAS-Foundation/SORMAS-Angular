@@ -30,7 +30,7 @@ export class InpageNavComponent implements OnInit {
       this.fragment = fragment;
       window.scrollTo({
         left: 0,
-        top: window.top.scrollY + currentPosition.top - this.pageOffset,
+        top: (window.top?.scrollY || 0) + currentPosition.top - this.pageOffset,
         behavior: 'smooth',
       });
     });
