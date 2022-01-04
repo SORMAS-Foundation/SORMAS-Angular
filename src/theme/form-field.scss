@@ -31,7 +31,7 @@
 
       .mat-form-field-flex {
         align-items: center;
-        background-color: map-get($sormas-accent, 50);
+        background-color: mat.get-color-from-palette(mat.define-palette($accent, 50));
         border-radius: 4px;
       }
     }

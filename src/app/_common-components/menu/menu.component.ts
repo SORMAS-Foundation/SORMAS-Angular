@@ -3,7 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
-import logoPath from '../../../assets/img/sormas-logo.svg';
+// import logoPath from '../../../assets/img/sormas-logo.svg';
 
 export interface RouteItem {
   link: string;
@@ -56,7 +56,7 @@ export const userRoutesConfig: RouteItem[] = [
 export class MenuComponent implements OnDestroy {
   routeConfig: RouteItem[] = routesConfig;
   userRouteConfig: RouteItem[] = userRoutesConfig;
-  logo = logoPath;
+  // logo = logoPath;
 
   menuOpen = false;
   selectedRoute = '';

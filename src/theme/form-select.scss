@@ -15,7 +15,7 @@
 
     .mat-option-pseudo-checkbox {
       margin-top: 3px;
-      color: map-get($sormas-primary, 700);
+      color: mat.get-color-from-palette(mat.define-palette($primary, 700));
     }
 
     .mat-select-panel-wrap {

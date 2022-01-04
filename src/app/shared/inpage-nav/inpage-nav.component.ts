@@ -22,6 +22,9 @@ export class InpageNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.fragment.subscribe((fragment) => {
+      if (!fragment) {
+        return;
+      }
       const element = document.getElementById(fragment);
       const currentPosition = this.getScrollingOffset(element);
       this.fragment = fragment;
