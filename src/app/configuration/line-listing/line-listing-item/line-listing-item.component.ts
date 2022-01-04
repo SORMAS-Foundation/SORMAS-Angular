@@ -61,7 +61,7 @@ export class LineListingItemComponent implements OnDestroy {
         }
 
         const data = {
-          listings: response[0].listings,
+          listings: response.elements,
           regionId: this.regionId,
           regionName: regionNameTmp,
           disease: this.disease,
