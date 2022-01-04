@@ -1,12 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { map } from 'rxjs/operators';
-
 import { Resource } from '../../_models/resource';
 import { Serializer } from '../../_serializers/base.serializer';
-
 import { HelperService } from '../helper.service';
 
 @Injectable({
@@ -24,7 +21,6 @@ export class DashboardService {
   getCalculated(filters?: any): Observable<Resource> {
     const endpoint = this.endpoint.GET_ALL || this.endpoint.ENDPOINT;
     const requestPayload: any = {};
-
 
     if (filters.length) {
       requestPayload.disease = 'CORONAVIRUS'; // TODO: DELETE THIS WHEN DISEASE SELECTION IS IMPLEMENTED

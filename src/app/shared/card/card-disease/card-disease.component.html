@@ -9,13 +9,13 @@
           {{ data.previousCaseCount }}
         </span>
       </div>
-      <div class="label">Cases</div>
+      <div class="label">{{ 'dashboardCases' | translate }}</div>
     </li>
     <li class="statistics-events">
       <div class="count">
         <span class="current">{{ data.eventCount }}</span>
       </div>
-      <div class="label">Events</div>
+      <div class="label">{{ 'dashboardNumberOfEvents' | translate }}</div>
     </li>
     <li class="statistics-fatalities">
       <div class="count">
@@ -23,11 +23,11 @@
           {{ data.caseDeathCount }}
         </span>
       </div>
-      <div class="label">Fatalities</div>
+      <div class="label">{{ 'captions.dashboardFatalities' | translate }}</div>
     </li>
   </ul>
   <p *ngIf="data.lastReportedDistrictName" class="district">
-    <span class="label">Last report:</span>
+    <span class="label">{{ 'cations.dashboardLastReport' | translate }}</span>
     <span class="name">{{ data.lastReportedDistrictName }}</span>
   </p>
 </div>
