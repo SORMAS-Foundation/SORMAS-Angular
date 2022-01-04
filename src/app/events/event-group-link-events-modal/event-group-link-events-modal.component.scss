@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .mat-dialog-title {
@@ -42,14 +43,14 @@
       float: left;
       .mat-icon {
         display: inline-block;
-        color: mat-color($sormas-accent, 500);
+        color: mat.get-color-from-palette($sormas-accent, 500);
         font-size: 18px;
       }
 
       > p {
         display: inline-block;
         width: 95%;
-        color: mat-color($sormas-accent, 500);
+        color: mat.get-color-from-palette($sormas-accent, 500);
         font-size: 12px;
         vertical-align: top;
       }
@@ -67,7 +68,7 @@
     max-width: 228px;
     height: fit-content;
     text-align: center;
-    border: solid 1px mat-color($sormas-accent, 200);
+    border: solid 1px mat.get-color-from-palette($sormas-accent, 200);
     padding: 24px 24px 0;
     margin: 0 15px 0 0;
     border-radius: 4px;

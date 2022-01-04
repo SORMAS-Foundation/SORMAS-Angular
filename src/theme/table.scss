@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin table-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -10,14 +11,14 @@
     td.mat-cell {
       padding: 1em 1rem;
       border-bottom-width: 2px;
-      color: mat-color(mat-palette($accent, 800));
+      color: mat.get-color-from-palette(mat.define-palette($accent, 800));
       white-space: nowrap;
     }
 
     th.mat-header-cell {
       border-bottom-color: inherit;
-      border-left: 1px solid mat-color(mat-palette($accent, 300));
-      background-color: mat-color(mat-palette($accent, 50));
+      border-left: 1px solid mat.get-color-from-palette(mat.define-palette($accent, 300));
+      background-color: mat.get-color-from-palette(mat.define-palette($accent, 50));
       font-size: 1rem;
 
       &:first-child {
@@ -26,7 +27,7 @@
     }
 
     td.mat-cell {
-      border-bottom-color: mat-color(mat-palette($accent, 100));
+      border-bottom-color: mat.get-color-from-palette(mat.define-palette($accent, 100));
       font-size: 0.875rem;
 
       .mat-icon {
@@ -35,11 +36,11 @@
     }
 
     tr.mat-row:nth-child(even) td.mat-cell {
-      background-color: mat-color(mat-palette($accent, 50));
+      background-color: mat.get-color-from-palette(mat.define-palette($accent, 50));
     }
 
     tr.mat-row.row-selected td.mat-cell {
-      background-color: mat-color(mat-palette($primary, 50));
+      background-color: mat.get-color-from-palette(mat.define-palette($primary, 50));
     }
 
     .mat-sort-header-content {

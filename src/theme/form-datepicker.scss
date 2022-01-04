@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin form-datepicker-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -29,7 +30,7 @@
       .mat-form-field-flex:focus,
       .mat-form-field-flex:hover {
         .mat-datepicker-toggle {
-          color: mat-color(mat-palette($primary, 700));
+          color: mat.get-color-from-palette(mat.define-palette($primary, 700));
         }
       }
 
@@ -43,12 +44,12 @@
 
       &.datepicker-opened {
         .mat-form-field-outline {
-          border-color: mat-color(mat-palette($primary, 700));
-          color: mat-color(mat-palette($primary, 700));
+          border-color: mat.get-color-from-palette(mat.define-palette($primary, 700));
+          color: mat.get-color-from-palette(mat.define-palette($primary, 700));
         }
         .mat-form-field-infix,
         .mat-button-wrapper {
-          color: mat-color(mat-palette($primary, 700));
+          color: mat.get-color-from-palette(mat.define-palette($primary, 700));
         }
       }
 
@@ -66,12 +67,12 @@
     }
 
     .mat-calendar-body-selected {
-      background-color: mat-color(mat-palette($primary, 700));
+      background-color: mat.get-color-from-palette(mat.define-palette($primary, 700));
     }
 
     .mat-datepicker-content .mat-calendar-next-button,
     .mat-datepicker-content .mat-calendar-previous-button {
-      color: mat-color(mat-palette($primary, 600));
+      color: mat.get-color-from-palette(mat.define-palette($primary, 600));
     }
 
     .cdk-keyboard-focused
@@ -84,11 +85,11 @@
       > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
     .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
       > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
-      background-color: mat-color(mat-palette($primary, 50));
+      background-color: mat.get-color-from-palette(mat.define-palette($primary, 50));
     }
 
     .mat-calendar-table-header-divider::after {
-      background: mat-color(mat-palette($accent, 300));
+      background: mat.get-color-from-palette(mat.define-palette($accent, 300));
     }
 
     .fullwidth .mat-form-field-appearance-outline {

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 :host {
@@ -5,12 +6,12 @@
 }
 
 .mat-card {
-  @include mat-elevation(0);
+  @include mat.elevation(0);
 
   display: flex;
   flex-direction: column;
   padding: 0.5rem 1rem;
-  border: 1px solid mat-color($sormas-accent, 200);
+  border: 1px solid mat.get-color-from-palette($sormas-accent, 200);
   border-radius: 5px;
 }
 
@@ -63,41 +64,41 @@ app-card-actions + .mat-card-header {
 
 .status-confirmed {
   border-width: 1px;
-  border-color: mat-color($sormas-accent, 200);
+  border-color: mat.get-color-from-palette($sormas-accent, 200);
 }
 
 .status-completed {
   border-width: 0;
-  background-color: mat-color($sormas-accent, 50);
+  background-color: mat.get-color-from-palette($sormas-accent, 50);
 }
 
 .status-undetermined {
   border-width: 2px;
-  border-color: mat-color($sormas-alert, 100);
+  border-color: mat.get-color-from-palette($sormas-alert, 100);
 }
 
 .status-pending {
-  border-color: mat-color($sormas-accent, 200);
+  border-color: mat.get-color-from-palette($sormas-accent, 200);
 }
 
 .status-critical {
   border-width: 2px;
-  border-color: mat-color($sormas-alert, 100);
-  background-color: rgba(mat-color($sormas-alert, 50), 0.3);
+  border-color: mat.get-color-from-palette($sormas-alert, 100);
+  background-color: rgba(mat.get-color-from-palette($sormas-alert, 50), 0.3);
 }
 
 .status-good {
   border-width: 1px;
-  border-color: mat-color($sormas-primary, 100);
+  border-color: mat.get-color-from-palette($sormas-primary, 100);
 }
 
 .status-unclassified {
   border-width: 1px;
-  border-color: mat-color($sormas-primary, A100);
+  border-color: mat.get-color-from-palette($sormas-primary, A100);
 }
 
 .appearance-card {
-  @include mat-elevation(3);
+  @include mat.elevation(3);
   border-width: 0;
 }
 
@@ -107,9 +108,9 @@ app-card-actions + .mat-card-header {
 }
 
 .selected {
-  @include mat-elevation(0);
-  border-color: mat-color($sormas-primary, 200);
-  background-color: rgba(mat-color($sormas-primary, 50), 0.5);
+  @include mat.elevation(0);
+  border-color: mat.get-color-from-palette($sormas-primary, 200);
+  background-color: rgba(mat.get-color-from-palette($sormas-primary, 50), 0.5);
 }
 
 .type-epid_data {

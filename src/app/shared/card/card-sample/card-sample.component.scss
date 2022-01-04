@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 :host {
@@ -5,7 +6,7 @@
 }
 
 .sample-details {
-  color: mat-color($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
 }
 
 .sample-status {
@@ -27,7 +28,7 @@
 }
 
 .assignee {
-  color: mat-color($sormas-accent, 600);
+  color: mat.get-color-from-palette($sormas-accent, 600);
   font-size: 12px;
 
   .mat-icon {
@@ -46,17 +47,17 @@
 
 .status-pending,
 .status-not_done {
-  color: mat-color($sormas-alert, 300);
+  color: mat.get-color-from-palette($sormas-alert, 300);
 }
 
 .status-indeterminate {
-  color: mat-color($sormas-warning, 800);
+  color: mat.get-color-from-palette($sormas-warning, 800);
 }
 
 .status-positive {
-  color: mat-color($sormas-alert, 700);
+  color: mat.get-color-from-palette($sormas-alert, 700);
 }
 
 .status-negative {
-  color: mat-color($sormas-primary, 400);
+  color: mat.get-color-from-palette($sormas-primary, 400);
 }

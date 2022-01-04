@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin button-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -14,7 +15,7 @@
       &:hover,
       &:focus,
       &:active {
-        color: mat-color(mat-palette($primary, 800));
+        color: mat.get-color-from-palette(mat.define-palette($primary, 800));
       }
     }
 
@@ -22,12 +23,12 @@
       &:hover,
       &:focus,
       &:active {
-        color: mat-color(mat-palette($warn, 800));
+        color: mat.get-color-from-palette(mat.define-palette($warn, 800));
       }
     }
 
     .mat-button.mat-button-disabled {
-      color: mat-color(mat-palette($accent, 400));
+      color: mat.get-color-from-palette(mat.define-palette($accent, 400));
     }
 
     .mat-stroked-button {
@@ -39,58 +40,58 @@
       border-color: currentColor;
 
       &:hover {
-        color: mat-color(mat-palette($primary, 800));
+        color: mat.get-color-from-palette(mat.define-palette($primary, 800));
       }
 
       &:active,
       &:focus {
-        background-color: mat-color(mat-palette($primary, 50));
-        color: mat-color(mat-palette($primary, 700));
+        background-color: mat.get-color-from-palette(mat.define-palette($primary, 50));
+        color: mat.get-color-from-palette(mat.define-palette($primary, 700));
       }
     }
 
     .mat-stroked-button.mat-warn:not(.mat-button-disabled) {
       &:hover {
-        color: mat-color(mat-palette($warn, 800));
+        color: mat.get-color-from-palette(mat.define-palette($warn, 800));
       }
 
       &:active,
       &:focus {
-        background-color: mat-color(mat-palette($warn, 50));
-        color: mat-color(mat-palette($warn, 700));
+        background-color: mat.get-color-from-palette(mat.define-palette($warn, 50));
+        color: mat.get-color-from-palette(mat.define-palette($warn, 700));
       }
     }
 
     .mat-stroked-button.mat-button-disabled {
-      border-color: mat-color(mat-palette($accent, 200));
-      color: mat-color(mat-palette($accent, 400));
+      border-color: mat.get-color-from-palette(mat.define-palette($accent, 200));
+      color: mat.get-color-from-palette(mat.define-palette($accent, 400));
     }
 
     .mat-flat-button.mat-primary:not(.mat-button-disabled) {
       &:hover {
-        background-color: mat-color(mat-palette($primary, 800));
+        background-color: mat.get-color-from-palette(mat.define-palette($primary, 800));
       }
 
       &:active,
       &:focus {
-        background-color: mat-color(mat-palette($primary, 900));
+        background-color: mat.get-color-from-palette(mat.define-palette($primary, 900));
       }
     }
 
     .mat-flat-button.mat-warn:not(.mat-button-disabled) {
       &:hover {
-        background-color: mat-color(mat-palette($warn, 800));
+        background-color: mat.get-color-from-palette(mat.define-palette($warn, 800));
       }
 
       &:active,
       &:focus {
-        background-color: mat-color(mat-palette($warn, 900));
+        background-color: mat.get-color-from-palette(mat.define-palette($warn, 900));
       }
     }
 
     .mat-flat-button.mat-button-disabled {
-      background-color: mat-color(mat-palette($accent, 50));
-      color: mat-color(mat-palette($accent, 400));
+      background-color: mat.get-color-from-palette(mat.define-palette($accent, 50));
+      color: mat.get-color-from-palette(mat.define-palette($accent, 400));
     }
 
     .mat-icon-button.small {

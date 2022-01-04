@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .mat-button-base {
@@ -11,20 +12,20 @@
 }
 
 .mat-stroked-button.mat-primary[aria-expanded='true'] {
-  background-color: mat-color($sormas-primary, 50);
+  background-color: mat.get-color-from-palette($sormas-primary, 50);
 }
 
 .mat-stroked-button.mat-accent {
   font-weight: normal;
-  color: mat-color($sormas-accent, 400);
+  color: mat.get-color-from-palette($sormas-accent, 400);
 
   .button-text {
-    color: mat-color($sormas-accent, 800);
+    color: mat.get-color-from-palette($sormas-accent, 800);
   }
 
   &:hover,
   &[aria-expanded='true'] {
-    color: mat-color($sormas-primary, 700);
+    color: mat.get-color-from-palette($sormas-primary, 700);
   }
 }
 

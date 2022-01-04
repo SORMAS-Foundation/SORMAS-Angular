@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin form-field-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -69,16 +70,16 @@
       }
 
       &:not(.mat-form-field-disabled, .mat-form-field-invalid) .mat-form-field-outline {
-        color: mat-color(mat-palette($accent, 400));
+        color: mat.get-color-from-palette(mat.define-palette($accent, 400));
       }
 
       &.mat-form-field-disabled .mat-form-field-outline {
-        color: mat-color(mat-palette($accent, 200));
+        color: mat.get-color-from-palette(mat.define-palette($accent, 200));
       }
 
       &:not(.mat-form-field-invalid) {
         .mat-form-field-outline-thick {
-          color: mat-color(mat-palette($primary, 700));
+          color: mat.get-color-from-palette(mat.define-palette($primary, 700));
         }
       }
 
@@ -86,7 +87,7 @@
         .mat-form-field-outline-thick,
         .mat-select-arrow,
         .mat-button-wrapper {
-          color: mat-color(mat-palette($warn, 300));
+          color: mat.get-color-from-palette(mat.define-palette($warn, 300));
         }
 
         .mat-form-field-label {
@@ -163,16 +164,16 @@
       }
 
       .required {
-        color: mat-color(mat-palette($warn, 300));
+        color: mat.get-color-from-palette(mat.define-palette($warn, 300));
       }
 
       &.search-multiselect {
         display: inline-block;
-        color: mat-color(mat-palette($primary, 700));
+        color: mat.get-color-from-palette(mat.define-palette($primary, 700));
 
         &:hover,
         &:focus {
-          color: mat-color(mat-palette($primary, 800));
+          color: mat.get-color-from-palette(mat.define-palette($primary, 800));
         }
 
         &.mat-form-field-has-label .mat-form-field-label-wrapper {
@@ -191,7 +192,7 @@
 
         &.search-multiselect-opened {
           .mat-form-field-outline > * {
-            background-color: mat-color(mat-palette($primary, 50));
+            background-color: mat.get-color-from-palette(mat.define-palette($primary, 50));
           }
         }
 

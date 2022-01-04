@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 :host {
@@ -9,7 +10,7 @@
 }
 
 .task-priority {
-  color: mat-color($sormas-accent, 300);
+  color: mat.get-color-from-palette($sormas-accent, 300);
 }
 
 .task-status {
@@ -31,7 +32,7 @@
 }
 
 .assignee {
-  color: mat-color($sormas-accent, 600);
+  color: mat.get-color-from-palette($sormas-accent, 600);
   font-size: 12px;
 
   .mat-icon {
@@ -49,19 +50,19 @@
 }
 
 .priority-high {
-  color: mat-color($sormas-warning, 800);
+  color: mat.get-color-from-palette($sormas-warning, 800);
   font-weight: 500;
   text-transform: uppercase;
 }
 
 .status-pending {
-  color: mat-color($sormas-alert, 300);
+  color: mat.get-color-from-palette($sormas-alert, 300);
 }
 
 .status-done {
-  color: mat-color($sormas-success, 700);
+  color: mat.get-color-from-palette($sormas-success, 700);
 }
 
 .status-not_executable {
-  color: mat-color($sormas-alert, 700);
+  color: mat.get-color-from-palette($sormas-alert, 700);
 }

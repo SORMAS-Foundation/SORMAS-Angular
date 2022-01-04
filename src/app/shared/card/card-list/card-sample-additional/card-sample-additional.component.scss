@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .card-sample-additional {
@@ -8,9 +9,9 @@
   }
   .list-additionals {
     .row {
-      border-bottom: solid 1px mat-color($sormas-primary, 100);
+      border-bottom: solid 1px mat.get-color-from-palette($sormas-primary, 100);
       margin-bottom: 12px;
-      color: mat-color($sormas-accent, 800);
+      color: mat.get-color-from-palette($sormas-accent, 800);
       .label {
         font-size: 12px;
         font-weight: 400;

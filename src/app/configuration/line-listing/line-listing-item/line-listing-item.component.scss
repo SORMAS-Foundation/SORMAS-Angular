@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .line-listing-item-wrapper {
@@ -8,19 +9,19 @@
       padding: 12px 16px;
       margin-top: 20px;
       margin-right: 15px;
-      background: mat-color($sormas-accent, 50);
+      background: mat.get-color-from-palette($sormas-accent, 50);
       border-radius: 5px;
       cursor: pointer;
 
       p {
         margin: 0;
-        color: mat-color($sormas-accent, 800);
+        color: mat.get-color-from-palette($sormas-accent, 800);
         font-size: 14px;
         font-weight: 500;
 
         &.date {
           margin-top: 5px;
-          color: mat-color($sormas-accent, 500);
+          color: mat.get-color-from-palette($sormas-accent, 500);
           font-size: 10px;
 
           span {
@@ -29,7 +30,7 @@
 
           span.big {
             margin: 0 2px;
-            color: mat-color($sormas-accent, 600);
+            color: mat.get-color-from-palette($sormas-accent, 600);
             font-size: 14px;
           }
         }
@@ -40,7 +41,7 @@
       display: inline-block;
       width: 220px;
       padding: 6px 5px;
-      border: 2px solid mat-color($sormas-accent, 400);
+      border: 2px solid mat.get-color-from-palette($sormas-accent, 400);
       margin-top: 20px;
       margin-right: 15px;
       border-radius: 5px;
@@ -50,33 +51,33 @@
 
       p {
         margin: 0;
-        color: mat-color($sormas-accent, 600);
+        color: mat.get-color-from-palette($sormas-accent, 600);
         font-size: 14px;
         font-weight: 500;
       }
 
       &:hover,
       &:focus {
-        border: 2px solid mat-color($sormas-accent, 500);
-        background: mat-color($sormas-accent, 100);
+        border: 2px solid mat.get-color-from-palette($sormas-accent, 500);
+        background: mat.get-color-from-palette($sormas-accent, 100);
         text-decoration: none;
 
         p {
-          color: mat-color($sormas-accent, 900);
+          color: mat.get-color-from-palette($sormas-accent, 900);
         }
       }
 
       &.selected {
         border: 0;
-        background: mat-color($sormas-primary, 50);
+        background: mat.get-color-from-palette($sormas-primary, 50);
 
         p {
-          color: mat-color($sormas-accent, 800);
+          color: mat.get-color-from-palette($sormas-accent, 800);
         }
 
         &:hover,
         &:focus {
-          background: mat-color($brand-primary, 100);
+          background: mat.get-color-from-palette($brand-primary, 100);
         }
       }
     }

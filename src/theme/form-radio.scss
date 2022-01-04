@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin form-radio-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -35,21 +36,21 @@
         text-align: left;
 
         &:not(.mat-radio-disabled) .mat-radio-outer-circle {
-          border-color: mat-color(mat-palette($primary, 700));
+          border-color: mat.get-color-from-palette(mat.define-palette($primary, 700));
         }
 
         &:focus,
         &:hover {
-          color: mat-color(mat-palette($primary, 700));
+          color: mat.get-color-from-palette(mat.define-palette($primary, 700));
         }
 
         &.mat-radio-checked {
-          color: mat-color(mat-palette($primary, 700));
+          color: mat.get-color-from-palette(mat.define-palette($primary, 700));
         }
       }
 
       &.ng-touched.ng-invalid .mat-radio-button:not(.mat-radio-disabled) .mat-radio-outer-circle {
-        border-color: mat-color(mat-palette($warn, 300));
+        border-color: mat.get-color-from-palette(mat.define-palette($warn, 300));
       }
 
       &.alert {

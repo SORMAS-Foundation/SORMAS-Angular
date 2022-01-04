@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .step {
@@ -15,7 +16,7 @@
 }
 
 .instructions {
-  @include mat-elevation(1);
+  @include mat.elevation(1);
 
   flex: 1 1 100%;
   padding: 24px;

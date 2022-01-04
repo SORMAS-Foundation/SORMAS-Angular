@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 :host {
@@ -63,7 +64,7 @@ footer {
 }
 
 .mat-card {
-  @include mat-elevation(3);
+  @include mat.elevation(3);
 
   width: 296px;
   padding: 32px;
