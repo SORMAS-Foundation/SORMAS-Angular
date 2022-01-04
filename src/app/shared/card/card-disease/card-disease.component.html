@@ -1,0 +1,33 @@
+<div *ngIf="data">
+  <h3 [ngClass]="data.disease | lowercase">{{ disease | translate }}</h3>
+  <ul class="statistics">
+    <li class="statistics-cases">
+      <div [ngClass]="['count', progress ? 'positive ' + progress : '']">
+        <span class="current">{{ data.caseCount }}</span>
+        <span *ngIf="data.previousCaseCount" class="previous">
+          <mat-icon class="material-icons-round">{{ icon }}</mat-icon>
+          {{ data.previousCaseCount }}
+        </span>
+      </div>
+      <div class="label">{{ 'dashboardCases' | translate }}</div>
+    </li>
+    <li class="statistics-events">
+      <div class="count">
+        <span class="current">{{ data.eventCount }}</span>
+      </div>
+      <div class="label">{{ 'dashboardNumberOfEvents' | translate }}</div>
+    </li>
+    <li class="statistics-fatalities">
+      <div class="count">
+        <span [ngClass]="{ current: true, positive: !!data.caseDeathCount }">
+          {{ data.caseDeathCount }}
+        </span>
+      </div>
+      <div class="label">{{ 'captions.dashboardFatalities' | translate }}</div>
+    </li>
+  </ul>
+  <p *ngIf="data.lastReportedDistrictName" class="district">
+    <span class="label">{{ 'cations.dashboardLastReport' | translate }}</span>
+    <span class="name">{{ data.lastReportedDistrictName }}</span>
+  </p>
+</div>

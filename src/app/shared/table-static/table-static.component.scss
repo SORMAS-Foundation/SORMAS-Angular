@@ -1,0 +1,30 @@
+@use '/src/variables.scss' as *;
+
+table {
+  width: 100%;
+}
+
+.icon-sort {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.minimal {
+  th.mat-header-cell {
+    border-bottom-color: map-get($sormas-accent, 200);
+    border-left-width: 0;
+    background-color: $white;
+  }
+
+  tr.mat-row td.mat-cell {
+    background-color: unset;
+
+    &:first-of-type {
+      padding-left: 24px;
+    }
+  }
+
+  tr.mat-row.row-selected td.mat-cell {
+    background-color: map-get($sormas-primary, 50);
+  }
+}

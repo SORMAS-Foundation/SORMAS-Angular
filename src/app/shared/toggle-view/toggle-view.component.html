@@ -1,0 +1,12 @@
+<mat-button-toggle-group [(ngModel)]="value">
+  <mat-button-toggle [value]="viewOptions.PRIMARY" [hidden]="value === viewOptions.PRIMARY">
+    <mat-icon color="primary" [ngClass]="['material-icons-round', iconSize]">{{
+      iconViewPrimary
+    }}</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle [value]="viewOptions.SECONDARY" [hidden]="value === viewOptions.SECONDARY">
+    <mat-icon color="primary" [ngClass]="['material-icons-round', iconSize]">{{
+      iconViewSecondary
+    }}</mat-icon>
+  </mat-button-toggle>
+</mat-button-toggle-group>
