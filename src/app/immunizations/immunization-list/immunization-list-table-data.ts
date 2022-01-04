@@ -34,6 +34,16 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
+    name: 'Age and birthday',
+    dataKey: 'disease1',
+    isSortable: true,
+  },
+  {
+    name: 'Sex',
+    dataKey: 'disease1',
+    isSortable: true,
+  },
+  {
     name: 'captions.district',
     dataKey: 'responsibleDistrict.caption',
     isSortable: true,
