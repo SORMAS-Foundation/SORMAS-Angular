@@ -8,7 +8,7 @@ import { ImmunizationDto } from '../../_models/immunizationDto';
 import { ImmunizationService } from '../../_services/api/immunization.service';
 import { actionsEditDefs } from './immunization-actions-data';
 
-// case routing for tabs
+// immunization routing for tabs
 const immunizationLinks = (immunizationId: string): EntityLink[] => {
   return [
     {
@@ -75,8 +75,8 @@ export class ImmunizationComponent implements OnInit, OnDestroy {
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, immunizationLinks);
   }
 
-  onCaseDelete(): void {
-    this.router.navigate(['/cases/list']);
+  onImmunizationDelete(): void {
+    this.router.navigate(['/immunizations/list']);
   }
 
   ngOnDestroy(): void {

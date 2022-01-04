@@ -44,6 +44,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('formElements', this.formElements);
     this.form = this.formElementControlService.toFormGroup(this.processFormArray());
     this.sections = this.getSections();
 

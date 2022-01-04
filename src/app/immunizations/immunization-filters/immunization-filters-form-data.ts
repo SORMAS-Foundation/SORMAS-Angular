@@ -3,7 +3,7 @@ import {
   FORM_DATA_SEARCHBOX,
   Disease,
   FORM_DATA_DATE,
-  DateFilterOptions,
+  DateFilterOptions, MeansOfImmunization, ImmunizationManagementStatus, ImmunizationStatus, ImmunizationReferenceDate,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
@@ -13,6 +13,10 @@ const pipe = new EnumToKeyValuePipe();
 
 const diseaseOptions = pipe.transform(Disease);
 const dateFilterOptions = pipe.transform(DateFilterOptions);
+const meansOfImmunizationOptions = pipe.transform(MeansOfImmunization);
+const immunizationManagementStatusOptions = pipe.transform(ImmunizationManagementStatus);
+const immunizationStatusOptions = pipe.transform(ImmunizationStatus);
+const immunizationReferenceDateOptions = pipe.transform(ImmunizationReferenceDate);
 
 export const FORM_DATA_IMMUNIZATION_FILTERS = [
   {
@@ -92,38 +96,23 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'disease1',
-        placeholder: 'Means of immunization',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        key: 'meansOfImmunization',
+        placeholder: 'meansOfImmunization',
+        options: meansOfImmunizationOptions,
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'disease2',
-        placeholder: 'Management status',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        key: 'immunizationManagementStatus',
+        placeholder: 'immunizationManagementStatus',
+        options: immunizationManagementStatusOptions,
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'disease3',
-        placeholder: 'Immunization status',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        key: 'immunizationStatus',
+        placeholder: 'immunizationStatus',
+        options: immunizationStatusOptions,
         className: 'fullwidth',
       },
     ],
@@ -207,7 +196,6 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
   {
     id: 'date',
     title: 'headingDateFilter',
-    appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -218,14 +206,9 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'reff',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
-        placeholder: 'Immunization reference',
+        key: 'immunizationReference',
+        options: immunizationReferenceDateOptions,
+        placeholder: 'immunizationReference',
         className: 'fullwidth',
       },
       {

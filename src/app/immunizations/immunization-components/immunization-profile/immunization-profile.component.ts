@@ -29,6 +29,11 @@ export class ImmunizationProfileComponent implements OnDestroy {
   updateComponent(immunizationItem: ImmunizationDto, resourceService: BaseService<any>): void {
     this.immunization = immunizationItem;
     this.resourceService = resourceService;
+
+    this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+      immunizationItem,
+      this.formData
+    );
   }
 
   ngOnDestroy(): void {

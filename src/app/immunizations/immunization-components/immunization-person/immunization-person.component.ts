@@ -3,7 +3,7 @@ import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import * as data from './immunization-person-form-data';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { BaseService } from '../../../_services/api/base.service';
-import { CaseDataDto, PersonDto } from '../../../_models/models';
+import {CaseDataDto, ImmunizationDto, PersonDto} from '../../../_models/models';
 import { PersonService } from '../../../_services/api/person.service';
 import { NotificationService } from '../../../_services/notification.service';
 import { HelperService } from '../../../_services/helper.service';
@@ -45,8 +45,8 @@ export class ImmunizationPersonComponent implements OnInit {
     );
   }
 
-  updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
-    this.personService.getById('WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI').subscribe({
+  updateComponent(immunizationItem: ImmunizationDto, resourceService: BaseService<any>): void {
+    this.personService.getById(immunizationItem.person.uuid).subscribe({
       next: (response: any) => {
         this.person = response || ({} as PersonDto);
         this.resourceService = resourceService;

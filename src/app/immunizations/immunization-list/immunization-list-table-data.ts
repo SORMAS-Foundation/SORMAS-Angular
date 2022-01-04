@@ -34,13 +34,13 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'Age and birthday',
-    dataKey: 'disease1',
+    name: 'captions.personAgeAndBirthdate',
+    dataKey: 'age',
     isSortable: true,
   },
   {
-    name: 'Sex',
-    dataKey: 'disease1',
+    name: 'captions.sex',
+    dataKey: 'sex',
     isSortable: true,
   },
   {
