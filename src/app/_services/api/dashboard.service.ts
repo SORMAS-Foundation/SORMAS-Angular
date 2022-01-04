@@ -31,7 +31,6 @@ export class DashboardService {
     const requestPayload: any = {};
 
     if (filters.length) {
-      requestPayload.disease = 'CORONAVIRUS'; // TODO: DELETE THIS WHEN DISEASE SELECTION IS IMPLEMENTED
       filters.forEach((filter: any) => {
         requestPayload[filter.field] = filter.value;
       });
