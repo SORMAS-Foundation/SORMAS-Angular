@@ -369,3 +369,23 @@ strong {
     margin-bottom: 10px;
   }
 }
+
+// dashboard-disease-menu
+.dashboard-disease-menu {
+  .mat-tab-label {
+    min-width: 100px;
+    padding: 15px;
+  }
+
+  .mat-tab-header {
+    border: none;
+  }
+
+  .mat-tab-group {
+    &.mat-primary {
+      .mat-ink-bar {
+        background-color: black;
+      }
+    }
+  }
+}

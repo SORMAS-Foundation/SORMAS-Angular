@@ -335,6 +335,7 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy, AfterViewIn
       previousDateTo,
       newCaseDateType,
       region,
+      disease,
     }) => ({
       dateFrom,
       dateTo,
@@ -342,6 +343,7 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy, AfterViewIn
       previousDateTo,
       newCaseDateType,
       region,
+      disease,
     }))(this.form.value);
     const filters: any[] = [];
     Object.entries(relevantValues).forEach(([field, value]) => {
