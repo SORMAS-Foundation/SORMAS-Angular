@@ -9,6 +9,9 @@ export enum IconsMap {
   false = 'not_interested',
   EMAIL = 'mail_outline',
   PHONE = 'call',
+  RISING = 'keyboard_arrow_up',
+  FALLING = 'keyboard_arrow_down',
+  STAGNANT = 'keyboard_arrow_right',
 }
 
 export enum CaseOutcomeIcons {

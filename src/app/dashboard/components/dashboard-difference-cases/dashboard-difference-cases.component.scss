@@ -1,1 +1,11 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+h2 {
+  font-size: 16px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+p {
+  color: map-get($sormas-accent, 500);
+}

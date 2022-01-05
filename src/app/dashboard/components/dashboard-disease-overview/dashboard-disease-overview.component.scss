@@ -1,1 +1,17 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+h2 {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.overview-disease-table {
+  overflow-x: auto;
+}
+
+@media (max-width: map-get($grid-breakpoints, xl)) {
+  .overview-disease-list {
+    width: fit-content;
+    margin: auto;
+  }
+}

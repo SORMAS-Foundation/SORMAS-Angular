@@ -50,6 +50,8 @@ import { FiltersModule } from './filters/filters.module';
 import { AddressAddEditComponent } from './address-add-edit/address-add-edit.component';
 import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.component';
 import { EntityActionsComponent } from './entity-actions/entity-actions.component';
+import { TableStaticComponent } from './table-static/table-static.component';
+import { ToggleViewComponent } from './toggle-view/toggle-view.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { EntityActionsComponent } from './entity-actions/entity-actions.componen
     AddressAddEditComponent,
     ContactAddEditComponent,
     EntityActionsComponent,
+    TableStaticComponent,
+    ToggleViewComponent,
   ],
   imports: [
     CommonModule,
@@ -137,6 +141,8 @@ import { EntityActionsComponent } from './entity-actions/entity-actions.componen
     ContactFiltersModule,
     FiltersModule,
     EntityActionsComponent,
+    TableStaticComponent,
+    ToggleViewComponent,
   ],
   entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })
