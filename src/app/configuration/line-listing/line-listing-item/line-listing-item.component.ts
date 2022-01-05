@@ -8,7 +8,6 @@ import { NotificationService } from '../../../_services/notification.service';
 import { MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
 import { LineListingModalComponent } from '../line-listing-modal/line-listing-modal.component';
 import { ListingService } from '../../../_services/api/listing.service';
-import {FORM_DATA_CASE_CONTACT_FILTERS} from '../../../shared/contact-filters/contact-filters-form-data';
 
 @Component({
   selector: 'app-line-listing-item',
@@ -82,7 +81,10 @@ export class LineListingItemComponent implements OnDestroy {
               const newArray: any[] = [];
 
               resultTmp.forEach((value: any, index: any) => {
-                if (value.uuid === responseTmp[index].uuid && value.enabled !== responseTmp[index].enabled) {
+                if (
+                  value.uuid === responseTmp[index].uuid &&
+                  value.enabled !== responseTmp[index].enabled
+                ) {
                   // eslint-disable-next-line no-param-reassign
                   value.disease = this.disease;
                   newArray.push(value);
