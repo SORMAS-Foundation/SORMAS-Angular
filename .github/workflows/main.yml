@@ -31,8 +31,6 @@ jobs:
       run: node node_modules/protractor/bin/webdriver-manager update --versions.chrome 96.0.4664.45 --gecko false --standalone false
     - name: Lint
       run: npm run lint
-    - name: TSLint
-      run: npm run tslint
     - name: Build
       run: npm run build
     - name: Test
