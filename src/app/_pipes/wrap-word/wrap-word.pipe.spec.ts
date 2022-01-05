@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { WrapWordPipe } from './wrap-word.pipe';
 
 describe('Pipe: Wrap word', () => {

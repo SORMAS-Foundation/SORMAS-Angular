@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HumanizePipe } from '../../../_pipes/humanize/humanize.pipe';
 
