@@ -49,13 +49,13 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_DATE,
         key: 'validFrom',
-        label: 'Valid from',
+        label: 'validFrom',
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'validUntil',
-        label: 'Valid until',
+        label: 'validUntil',
       },
     ],
   },
@@ -100,7 +100,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_RADIO,
         key: 'previousInfection',
-        label: 'Previous infection with this disease',
+        label: 'previousInfectionDisease',
         options: optionsYesNoUnknown,
         newLine: true,
       },
@@ -197,7 +197,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        label: 'immunization country',
+        label: 'immunizationCountry',
         options: [],
         service: 'countryService',
       },

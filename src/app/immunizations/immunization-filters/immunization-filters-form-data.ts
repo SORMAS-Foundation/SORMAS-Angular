@@ -217,13 +217,13 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
       },
       {
         ...FORM_DATA_DATE,
-        key: 'newImmunizationDateTo',
+        key: 'newImmunizationDateFrom',
         hint: 'From',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_DATE,
-        key: 'newImmunizationDateTo222',
+        key: 'newImmunizationDateTo',
         hint: 'to',
         className: 'fullwidth',
       },

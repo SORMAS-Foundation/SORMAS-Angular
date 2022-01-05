@@ -5505,5 +5505,8 @@
   "immunizationData": "Immunization data",
   "recovery": "recovery",
   "firstPositiveTestResult": "Date of first positive test results",
-  "previousInfectionDisease": "Previous infection with this disease"
+  "previousInfectionDisease": "Previous infection with this disease",
+  "immunizationCountry": "Immunization country",
+  "validFrom": "Valid from",
+  "validUntil": "Valid until"
 }
