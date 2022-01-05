@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EntityLink } from '../../../_constants/common';
 import { Disease } from '../../../_constants/enums';
 import { Filter } from '../../../_models/common';
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -10,22 +9,18 @@ import { FilterService } from '../../../_services/filter.service';
   selector: 'app-dashboard-disease-menu',
   templateUrl: './dashboard-disease-menu.component.html',
   styleUrls: ['./dashboard-disease-menu.component.scss'],
+  providers: [EnumToKeyValuePipe],
 })
 export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
-  links: EntityLink[] = [];
-  pipe = new EnumToKeyValuePipe();
   currentFilters: Filter[] = [];
-  diseases = this.pipe.transform(Disease);
+  diseases: any[] = [];
   subscriptions: Subscription[] = [];
-  constructor(public filterService: FilterService) {}
+  constructor(public filterService: FilterService, public enumToKeyValuePipe: EnumToKeyValuePipe) {
+    this.diseases = enumToKeyValuePipe.transform(Disease);
+  }
 
   removePrevDiseaseFilter(): void {
-    const newFilters: Filter[] = [];
-    this.currentFilters.forEach((f: Filter) => {
-      if (f.field !== 'disease') {
-        newFilters.push(f);
-      }
-    });
+    const newFilters: Filter[] = this.currentFilters.filter((f) => f.field !== 'disease');
     this.currentFilters = newFilters;
   }
 
@@ -37,9 +32,11 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.filterService.getFilters().subscribe((val) => {
-      this.currentFilters = val.filters;
-    });
+    this.subscriptions.push(
+      this.filterService.getFilters().subscribe((val) => {
+        this.currentFilters = val.filters;
+      })
+    );
   }
 
   ngOnDestroy(): void {
