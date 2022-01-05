@@ -5501,5 +5501,9 @@
   "immunizationReferenceDate.recovery_date": "Date of recovery",
   "immunizationReferenceDate.last_vaccination": "Date of last vaccination",
   "immunizationReferenceDate.first_vaccination": "Date of first vaccination",
-  "immunizationReference": "Immunization reference"
+  "immunizationReference": "Immunization reference",
+  "immunizationData": "Immunization data",
+  "recovery": "recovery",
+  "firstPositiveTestResult": "Date of first positive test results",
+  "previousInfectionDisease": "Previous infection with this disease"
 }

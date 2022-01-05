@@ -19,7 +19,7 @@ const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 export const FORM_DATA_IMMUNIZATION_PROFILE = [
   {
     id: 'immunizationData',
-    title: 'Immunization data',
+    title: 'immunizationData',
     fields: [
       {
         ...FORM_DATA_DATE,
@@ -60,13 +60,13 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
     ],
   },
   {
-    id: 'immunizationData',
-    title: 'Immunization data',
+    id: 'recovery',
+    title: 'recovery',
     fields: [
       {
         ...FORM_DATA_DATE,
         key: 'positiveTestResultDate',
-        label: 'Date of first positive test results',
+        label: 'firstPositiveTestResult',
       },
       {
         ...FORM_DATA_DATE,
