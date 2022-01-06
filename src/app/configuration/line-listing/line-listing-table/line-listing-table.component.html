@@ -14,7 +14,7 @@
 
     <ng-container matColumnDef="name" *ngIf="!regionId">
       <th mat-header-cell *matHeaderCellDef> {{ 'strings.entityRegion' | translate }} </th>
-      <td mat-cell *matCellDef="let element"> <span class="bold">{{element.name}}</span> </td>
+      <td mat-cell *matCellDef="let element"> <span class="bold">{{element.regionName}}</span> </td>
     </ng-container>
 
     <ng-container matColumnDef="districtName">

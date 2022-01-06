@@ -61,3 +61,8 @@ export const ACTIONS_DASHBOARD_VIEW_OPTIONS = {
   SURVEILLANCE: 'surveillance',
   CONTACTS: 'contacts',
 };
+
+export const ACTIONS_IMMUNIZATION_EDIT = {
+  ARCHIVE: 'ARCHIVE',
+  DELETE: 'DELETE',
+};

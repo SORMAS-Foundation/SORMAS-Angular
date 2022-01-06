@@ -4,6 +4,10 @@ import {
   Disease,
   FORM_DATA_DATE,
   DateFilterOptions,
+  MeansOfImmunization,
+  ImmunizationManagementStatus,
+  ImmunizationStatus,
+  ImmunizationReferenceDate,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
@@ -13,6 +17,10 @@ const pipe = new EnumToKeyValuePipe();
 
 const diseaseOptions = pipe.transform(Disease);
 const dateFilterOptions = pipe.transform(DateFilterOptions);
+const meansOfImmunizationOptions = pipe.transform(MeansOfImmunization);
+const immunizationManagementStatusOptions = pipe.transform(ImmunizationManagementStatus);
+const immunizationStatusOptions = pipe.transform(ImmunizationStatus);
+const immunizationReferenceDateOptions = pipe.transform(ImmunizationReferenceDate);
 
 export const FORM_DATA_IMMUNIZATION_FILTERS = [
   {
@@ -29,34 +37,6 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
     ],
   },
   {
-    id: 'birthdate',
-    title: 'headingBirthdate',
-    appearance: FormGroupStyleType.COLLAPSABLE,
-    fields: [
-      {
-        ...FORM_DATA_SELECT,
-        key: 'birthdateYYYY',
-        options: [],
-        placeholder: 'captions.Person.birthdateYYYY',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'birthdateMM',
-        options: [],
-        placeholder: 'captions.Person.birthdateMM',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'birthdateDD',
-        options: [],
-        placeholder: 'captions.Person.birthdateDD',
-        className: 'fullwidth',
-      },
-    ],
-  },
-  {
     id: 'medicalAspect',
     title: 'headingMedicalAspects',
     appearance: FormGroupStyleType.COLLAPSABLE,
@@ -66,6 +46,77 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
         key: 'disease',
         placeholder: 'captions.disease',
         options: diseaseOptions,
+        className: 'fullwidth',
+      },
+    ],
+  },
+  {
+    id: 'birthdate',
+    title: 'headingBirthdate',
+    appearance: FormGroupStyleType.COLLAPSABLE,
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'birthdateYYYY',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+        placeholder: 'captions.Person.birthdateYYYY',
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'birthdateMM',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+        placeholder: 'captions.Person.birthdateMM',
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'birthdateDD',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
+        placeholder: 'captions.Person.birthdateDD',
+        className: 'fullwidth',
+      },
+    ],
+  },
+  {
+    id: 'immunization',
+    title: 'Immunization',
+    appearance: FormGroupStyleType.COLLAPSABLE,
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'meansOfImmunization',
+        placeholder: 'captions.Immunization.meansOfImmunization',
+        options: meansOfImmunizationOptions,
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'immunizationManagementStatus',
+        placeholder: 'captions.Immunization.immunizationManagementStatus',
+        options: immunizationManagementStatusOptions,
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'immunizationStatus',
+        placeholder: 'captions.Immunization.immunizationStatus',
+        options: immunizationStatusOptions,
         className: 'fullwidth',
       },
     ],
@@ -112,21 +163,36 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
         ...FORM_DATA_SELECT,
         key: 'facilityTypeGroup',
         placeholder: 'captions.facilityTypeGroup',
-        options: [],
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        placeholder: 'captions.CaseData.facilityType',
-        options: [],
+        placeholder: 'captions.facilityType',
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility',
         placeholder: 'captions.facility',
-        options: [],
+        options: [
+          {
+            key: 'default',
+            value: 'default',
+          },
+        ],
         className: 'fullwidth',
       },
     ],
@@ -134,7 +200,6 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
   {
     id: 'date',
     title: 'headingDateFilter',
-    appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -144,15 +209,22 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
         className: 'fullwidth',
       },
       {
+        ...FORM_DATA_SELECT,
+        key: 'immunizationReference',
+        options: immunizationReferenceDateOptions,
+        placeholder: 'immunizationReference',
+        className: 'fullwidth',
+      },
+      {
         ...FORM_DATA_DATE,
         key: 'newImmunizationDateFrom',
-        hint: 'strings.date',
+        hint: 'From',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_DATE,
         key: 'newImmunizationDateTo',
-        hint: 'strings.date.to',
+        hint: 'to',
         className: 'fullwidth',
       },
     ],

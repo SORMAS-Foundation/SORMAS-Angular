@@ -30,7 +30,17 @@ export class ListingService extends BaseService<ListingDto> {
       .post(`${this.helperService.getApiUrl()}/${endpoint}`, requestPayload)
       .pipe(
         map((data: any) => {
-          return data;
+          const newData = [];
+          // eslint-disable-next-line no-restricted-syntax
+          for (const key in data) {
+            if (key) {
+              newData.push({
+                disease: key,
+                listings: data[key],
+              });
+            }
+          }
+          return newData;
         })
       );
   }

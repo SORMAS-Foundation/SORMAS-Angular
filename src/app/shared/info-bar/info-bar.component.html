@@ -18,6 +18,10 @@
     *ngSwitchCase="infoBarOptions.CONTACT"
     [ngTemplateOutlet]="contact"
   ></ng-container>
+  <ng-container
+    *ngSwitchCase="infoBarOptions.IMMUNIZATION"
+    [ngTemplateOutlet]="immunization"
+  ></ng-container>
 </div>
 
 <ng-template #case>
@@ -158,6 +162,14 @@
     <li *ngIf="data.contactClassification">
       <strong i18n>{{ 'captions.CaseData.person' | translate }}: </strong>
       {{ data.person.firstName }} {{ data.person.lastName }}
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #immunization>
+  <ul>
+    <li *ngIf="data.disease">
+      {{ data.disease }}
     </li>
   </ul>
 </ng-template>

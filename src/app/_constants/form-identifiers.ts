@@ -46,3 +46,4 @@ export const USER_DETAILS_FORM_ID = 'user';
 export const USER_FILTERS_FORM_ID = 'userFilters';
 
 export const IMMUNIZATION_FILTERS_FORM_ID = 'immunizationFilters';
+export const IMMUNIZATION_PROFILE_FORM_ID = 'immunizationProfile';

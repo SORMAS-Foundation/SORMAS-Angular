@@ -61,7 +61,7 @@ export class LineListingItemComponent implements OnDestroy {
         }
 
         const data = {
-          listings: response[0].listings,
+          listings: response.elements,
           regionId: this.regionId,
           regionName: regionNameTmp,
           disease: this.disease,
@@ -72,10 +72,26 @@ export class LineListingItemComponent implements OnDestroy {
           data,
         });
 
+        const responseTmp = JSON.parse(JSON.stringify(response.elements));
+
         this.subscription.push(
           dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-              this.listingService.add(result.listings).subscribe({
+              const resultTmp = result.listings;
+              const newArray: any[] = [];
+
+              resultTmp.forEach((value: any, index: any) => {
+                if (
+                  value.uuid === responseTmp[index].uuid &&
+                  value.enabled !== responseTmp[index].enabled
+                ) {
+                  // eslint-disable-next-line no-param-reassign
+                  value.disease = this.disease;
+                  newArray.push(value);
+                }
+              });
+
+              this.listingService.add(newArray).subscribe({
                 next: () => {
                   this.notificationService.success(
                     this.translateService.instant('addedSuccessfully')
