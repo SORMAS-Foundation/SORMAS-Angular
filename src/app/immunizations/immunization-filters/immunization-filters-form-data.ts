@@ -101,21 +101,21 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'meansOfImmunization',
-        placeholder: 'meansOfImmunization',
+        placeholder: 'captions.Immunization.meansOfImmunization',
         options: meansOfImmunizationOptions,
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'immunizationManagementStatus',
-        placeholder: 'immunizationManagementStatus',
+        placeholder: 'captions.Immunization.immunizationManagementStatus',
         options: immunizationManagementStatusOptions,
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'immunizationStatus',
-        placeholder: 'immunizationStatus',
+        placeholder: 'captions.Immunization.immunizationStatus',
         options: immunizationStatusOptions,
         className: 'fullwidth',
       },
@@ -174,7 +174,7 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        placeholder: 'captions.CaseData.facilityType',
+        placeholder: 'captions.facilityType',
         options: [
           {
             key: 'default',

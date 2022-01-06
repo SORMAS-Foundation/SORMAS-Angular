@@ -2,7 +2,7 @@ import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'immunizationId',
+    name: 'captions.Immunization.uuid',
     dataKey: 'uuid',
     isSortable: true,
     essential: true,
@@ -14,27 +14,27 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'captions.Person.uuid',
+    name: 'captions.Immunization.personUuid',
     dataKey: 'person.uui',
     isSortable: true,
   },
   {
-    name: 'captions.firstName',
+    name: 'captions.Immunization.personFirstName',
     dataKey: 'person.firstName',
     isSortable: true,
   },
   {
-    name: 'captions.lastName',
+    name: 'captions.Immunization.personLastName',
     dataKey: 'person.lastName',
     isSortable: true,
   },
   {
-    name: 'captions.disease',
+    name: 'captions.Immunization.disease',
     dataKey: 'disease',
     isSortable: true,
   },
   {
-    name: 'captions.personAgeAndBirthdate',
+    name: 'captions.Immunization.ageAndBirthDate',
     dataKey: 'age',
     isSortable: true,
   },
@@ -44,37 +44,37 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.district',
+    name: 'captions.Immunization.responsibleDistrict',
     dataKey: 'responsibleDistrict.caption',
     isSortable: true,
   },
   {
-    name: 'meansOfImmunization',
+    name: 'captions.Immunization.meansOfImmunization',
     dataKey: 'meansOfImmunization',
     isSortable: true,
   },
   {
-    name: 'immunizationManagementStatus',
+    name: 'captions.Immunization.immunizationManagementStatus',
     dataKey: 'immunizationManagementStatus',
     isSortable: true,
   },
   {
-    name: 'immunizationStatus',
+    name: 'captions.Immunization.immunizationStatus',
     dataKey: 'immunizationStatus',
     isSortable: true,
   },
   {
-    name: 'startDate',
+    name: 'captions.Immunization.startDate',
     dataKey: 'startDate',
     isSortable: true,
   },
   {
-    name: 'endDate',
+    name: 'captions.Immunization.endDate',
     dataKey: 'endDate',
     isSortable: true,
   },
   {
-    name: 'recoveryDate',
+    name: 'captions.Immunization.recoveryDate',
     dataKey: 'recoveryDate',
     isSortable: true,
   },

@@ -839,31 +839,31 @@ export enum Language {
 }
 
 export enum MeansOfImmunization {
-  VACCINATION = 'meansOfImmunization.vaccination',
-  RECOVERY = 'meansOfImmunization.recovery',
-  VACCINATION_RECOVERY = 'meansOfImmunization.vaccination_recovery',
-  OTHER = 'meansOfImmunization.other',
+  VACCINATION = 'enum.MeansOfImmunization.VACCINATION',
+  RECOVERY = 'enum.MeansOfImmunization.RECOVERY',
+  VACCINATION_RECOVERY = 'enum.MeansOfImmunization.VACCINATION_RECOVERY',
+  OTHER = 'enum.MeansOfImmunization.OTHER',
 }
 
 export enum ImmunizationManagementStatus {
-  SCHEDULED = 'immunizationManagementStatus.scheduled',
-  ONGOING = 'immunizationManagementStatus.ongoing',
-  COMPLETED = 'immunizationManagementStatus.completed',
-  CANCELED = 'immunizationManagementStatus.canceled',
+  SCHEDULED = 'enum.ImmunizationManagementStatus.SCHEDULED',
+  ONGOING = 'enum.ImmunizationManagementStatus.ONGOING',
+  COMPLETED = 'enum.ImmunizationManagementStatus.COMPLETED',
+  CANCELED = 'enum.ImmunizationManagementStatus.CANCELED',
 }
 
 export enum ImmunizationStatus {
-  PENDING = 'immunizationStatus.pending',
-  ACQUIRED = 'immunizationStatus.acquired',
-  NOT_ACQUIRED = 'immunizationStatus.not_acquired',
-  EXPIRED = 'immunizationStatus.expired',
+  PENDING = 'enum.ImmunizationStatus.PENDING',
+  ACQUIRED = 'enum.ImmunizationStatus.ACQUIRED',
+  NOT_ACQUIRED = 'enum.ImmunizationStatus.NOT_ACQUIRED',
+  EXPIRED = 'enum.ImmunizationStatus.EXPIRED',
 }
 
 export enum ImmunizationReferenceDate {
-  REPORT_DATE = 'immunizationReferenceDate.report_date',
-  IMMUNIZATION_END = 'immunizationReferenceDate.immunization_end',
-  VALID_UNTIL = 'immunizationReferenceDate.valid_until',
-  RECOVERY_DATE = 'immunizationReferenceDate.recovery_date',
-  LAST_VACCINATION = 'immunizationReferenceDate.last_vaccination',
-  FIRST_VACCINATION = 'immunizationReferenceDate.first_vaccination',
+  REPORT_DATE = 'enum.ImmunizationDateType.REPORT_DATE',
+  IMMUNIZATION_END = 'enum.ImmunizationDateType.IMMUNIZATION_END',
+  VALID_UNTIL = 'enum.ImmunizationDateType.VALID_UNTIL',
+  RECOVERY_DATE = 'enum.ImmunizationDateType.RECOVERY_DATE',
+  LAST_VACCINATION = 'enum.ImmunizationDateType.LAST_VACCINATION_DATE',
+  FIRST_VACCINATION = 'enum.ImmunizationDateType.FIRST_VACCINATION_DATE',
 }

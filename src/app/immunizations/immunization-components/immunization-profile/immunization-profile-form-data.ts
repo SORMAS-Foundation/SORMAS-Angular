@@ -24,13 +24,13 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_DATE,
         key: 'reportDate',
-        label: 'captions.CaseData.reportDate',
+        label: 'captions.Immunization.reportDate',
         validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'meansOfImmunization',
-        label: 'meansOfImmunization',
+        label: 'captions.Immunization.meansOfImmunization',
         options: meansOfImmunizationOptions,
         validation: ['required'],
         newLine: true,
@@ -38,88 +38,88 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_DATE,
         key: 'startDate',
-        label: 'startDate',
+        label: 'captions.Immunization.startDate',
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'endDate',
-        label: 'endDate',
+        label: 'captions.Immunization.endDate',
       },
       {
         ...FORM_DATA_DATE,
         key: 'validFrom',
-        label: 'validFrom',
+        label: 'captions.Immunization.validFrom',
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'validUntil',
-        label: 'validUntil',
+        label: 'captions.Immunization.validUntil',
       },
     ],
   },
   {
     id: 'recovery',
-    title: 'recovery',
+    title: 'strings.headingRecovery',
     fields: [
       {
         ...FORM_DATA_DATE,
         key: 'positiveTestResultDate',
-        label: 'firstPositiveTestResult',
+        label: 'captions.Immunization.positiveTestResultDate',
       },
       {
         ...FORM_DATA_DATE,
         key: 'recoveryDate',
-        label: 'immunizationReferenceDate.recovery_date',
+        label: 'captions.Immunization.recoveryDate',
       },
     ],
   },
   {
     id: 'externalData',
-    title: 'CaseData.externalData',
+    title: 'externalData',
     fields: [
       {
         ...FORM_DATA_INPUT,
         key: 'externalID',
-        label: 'captions.CaseData.externalID',
+        label: 'captions.Immunization.externalId',
       },
     ],
   },
   {
     id: 'disease',
-    title: 'captions.disease',
+    title: 'captions.Immunization.disease',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
-        placeholder: 'captions.disease',
+        label: 'captions.Immunization.disease',
         options: diseaseOptions,
         validation: ['required'],
       },
       {
         ...FORM_DATA_RADIO,
         key: 'previousInfection',
-        label: 'previousInfectionDisease',
+        label: 'captions.Immunization.previousInfection',
         options: optionsYesNoUnknown,
         newLine: true,
       },
       {
         ...FORM_DATA_DATE,
         key: 'lastInfectionDate',
-        label: 'captions.CaseData.previousInfectionDate',
+        label: 'captions.Immunization.lastInfectionDate',
         options: optionsYesNoUnknown,
       },
     ],
   },
   {
     id: 'responsibleJurisdiction',
-    title: 'strings.headingCaseResponsibleJurisidction',
+    title: 'strings.headingResponsibleJurisdiction',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'responsibleRegion.uuid',
-        label: 'captions.CaseData.responsibleRegion',
+        label: 'captions.Immunization.responsibleRegion',
         options: [],
         service: 'regionService',
         required: true,
@@ -128,7 +128,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_SELECT,
         key: 'responsibleDistrict.uuid',
-        label: 'captions.CaseData.responsibleDistrict',
+        label: 'captions.Immunization.responsibleDistrict',
         options: [],
         service: 'districtService',
         determinedBy: 'responsibleRegion.uuid',
@@ -137,7 +137,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_SELECT,
         key: 'responsibleCommunity.uuid',
-        label: 'captions.CaseData.responsibleCommunity',
+        label: 'captions.Immunization.responsibleCommunity',
         options: [],
         service: 'communityService',
         determinedBy: 'responsibleDistrict.uuid',
@@ -163,7 +163,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: 'captions.CaseData.facilityType',
+        label: 'captions.facilityType',
         options: [
           {
             key: 'default',
@@ -174,7 +174,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility',
-        label: 'captions.facility',
+        label: 'captions.Immunization.healthFacility',
         options: [
           {
             key: 'default',
@@ -186,7 +186,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails',
         newLine: true,
-        label: 'captions.CaseData.healthFacilityDetails',
+        label: 'captions.Immunization.healthFacilityDetails',
       },
     ],
   },
@@ -197,7 +197,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        label: 'immunizationCountry',
+        label: 'captions.Immunization.country',
         options: [],
         service: 'countryService',
       },
