@@ -144,6 +144,5 @@ import { ToggleViewComponent } from './toggle-view/toggle-view.component';
     TableStaticComponent,
     ToggleViewComponent,
   ],
-  entryComponents: [AddEditBaseModalComponent, TableDataComponent, TableNotificationComponent],
 })
 export class SharedModule {}

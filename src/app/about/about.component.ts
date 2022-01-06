@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { version } from '../../../package.json';
 
 @Component({
   selector: 'app-about',
@@ -7,7 +6,7 @@ import { version } from '../../../package.json';
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent {
-  version: string = version;
+  version = '0.0.1';
   brand = 'SORMAS';
   phoneNumber = '+01 2345 67890';
 }

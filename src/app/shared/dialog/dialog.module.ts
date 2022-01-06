@@ -9,7 +9,6 @@ import { DialogService } from '../../_services/dialog.service';
   imports: [CommonModule, MaterialModule],
   declarations: [DialogComponent],
   exports: [DialogComponent],
-  entryComponents: [DialogComponent],
   providers: [DialogService],
 })
 export class DialogModule {}

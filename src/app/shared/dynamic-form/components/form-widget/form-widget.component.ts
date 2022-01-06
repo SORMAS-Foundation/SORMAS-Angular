@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivitiesListComponent } from '../../../widgets/activities-list/activities-list.component';
-// tslint:disable-next-line:max-line-length
+// eslint-disable-next-line max-len
 import { ExposuresListComponent } from '../../../widgets/exposures-list/exposures-list.component';
 import { AddressesListComponent } from '../../../widgets/addresses-list/addresses-list.component';
 import { FollowUpStatusComponent } from '../../../widgets/follow-up-status/follow-up-status.component';

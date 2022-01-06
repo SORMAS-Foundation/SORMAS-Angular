@@ -75,7 +75,7 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     const filters = this.makeFiltersFromValue(determinantValue);
 
     this.subscriptions.push(
-      // tslint:disable-next-line: no-string-literal
+      // eslint-disable-next-line @typescript-eslint/dot-notation
       this.service[this.method](filters).subscribe({
         next: (response: any) => {
           this.config.options = response;

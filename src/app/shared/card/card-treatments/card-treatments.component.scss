@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .card-treatment {
@@ -6,7 +7,7 @@
     top: -4px;
     display: table-cell;
     height: 53px;
-    color: mat-color($sormas-accent, 600);
+    color: mat.get-color-from-palette($sormas-accent, 600);
     font-size: 16px;
     font-weight: 500;
     vertical-align: bottom;
@@ -21,7 +22,7 @@
     height: 1px;
     border-bottom: solid 1px;
     margin-bottom: 12px;
-    color: mat-color($sormas-alert, 100);
+    color: mat.get-color-from-palette($sormas-alert, 100);
   }
   .date {
     position: absolute;
@@ -29,21 +30,21 @@
     right: 24px;
   }
   .drug {
-    color: mat-color($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
     font-size: 14px;
     font-weight: 500;
   }
 
   .prescription {
     margin-top: 4px;
-    color: mat-color($sormas-primary, A700);
+    color: mat.get-color-from-palette($sormas-primary, A700);
     font-weight: 500;
   }
 
   .clinician {
     margin-top: 5px;
     margin-right: 8px;
-    color: mat-color($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
     float: right;
     font-weight: 500;
     .mat-icon {

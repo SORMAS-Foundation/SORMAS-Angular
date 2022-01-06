@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .assessments-title {
@@ -24,7 +25,7 @@
     background-color: $white;
 
     .assessments-list {
-      @include mat-elevation(6);
+      @include mat.elevation(6);
     }
   }
 }
