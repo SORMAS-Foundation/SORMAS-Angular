@@ -322,7 +322,11 @@ strong {
 .dashboard-disease-menu {
   .mat-tab-label {
     min-width: 100px;
-    padding: 15px;
+    height: auto;
+    padding: 5px 15px;
+    .mat-tab-label-content {
+      color: rgba(map-get($sormas-accent, 600), 1);
+    }
   }
 
   .mat-tab-header {
@@ -332,7 +336,7 @@ strong {
   .mat-tab-group {
     &.mat-primary {
       .mat-ink-bar {
-        background-color: black;
+        background-color: map-get($sormas-accent, 600);
       }
     }
   }
