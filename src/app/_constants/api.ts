@@ -198,17 +198,17 @@ export const API_ROUTE_DOCUMENT_TEMPLATES = {
 };
 
 export const API_ROUTE_LINSTINGS = {
-  ENDPOINT: 'listings',
+  ENDPOINT: 'lineListing',
   GET_ALL: 'lineListing/indexList',
-  UPDATE: 'listings/push',
-  ADD: 'listings/push',
-  DELETE: 'listings/delete',
+  UPDATE: 'lineListing/push',
+  ADD: 'lineListing/push',
+  DELETE: 'lineListing/delete',
 };
 
 export const API_ROUTE_FACILITIES = {
   ENDPOINT: 'facilities',
   GET_ALL: 'facilities/indexList',
-  UPDATE: 'facilities/push',
+  UPDATE: 'facilities/pushListing',
   ADD: 'facilities/push',
   DELETE: 'facilities/delete',
 };
@@ -227,6 +227,11 @@ export const API_ROUTE_EVENT_GROUPS = {
   UPDATE: 'eventGroups/push',
   ADD: 'eventGroups/push',
   DELETE: 'eventGroups/delete',
+};
+
+export const API_ROUTE_DISEASE_BURDEN = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/diseaseBurden',
 };
 
 export const API_ROUTE_IMMUNIZATIONS = {

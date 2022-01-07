@@ -1,6 +1,6 @@
 <div class="menu" [@animateMenu]="!menuOpen ? 'close' : 'open'">
   <div class="menu-overlay" (click)="toggleMenu(false)" (keyup.enter)="toggleMenu(false)"></div>
-  <img class="logo" [src]="logo" i18n-alt alt="logo" />
+  <img class="logo" src="/assets/img/sormas-logo.svg" i18n-alt alt="logo" />
   <button mat-icon-button (click)="toggleMenu()" (keyup.enter)="toggleMenu()" class="button-toggle">
     <mat-icon class="material-icons-round">menu</mat-icon>
   </button>

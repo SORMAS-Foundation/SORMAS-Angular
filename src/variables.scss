@@ -1,11 +1,11 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 @import './theme/palettes.scss';
 
-$sormas-primary: mat-palette($brand-primary);
-$sormas-accent: mat-palette($brand-neutrals);
-$sormas-alert: mat-palette($brand-alert);
-$sormas-warning: mat-palette($brand-warning);
-$sormas-success: mat-palette($brand-success);
+$sormas-primary: mat.define-palette($brand-primary);
+$sormas-accent: mat.define-palette($brand-neutrals);
+$sormas-alert: mat.define-palette($brand-alert);
+$sormas-warning: mat.define-palette($brand-warning);
+$sormas-success: mat.define-palette($brand-success);
 
 $grid-breakpoints: (
   xs: 0,
@@ -16,10 +16,10 @@ $grid-breakpoints: (
   xxl: 1680px,
 );
 
-$primary: mat-color($sormas-primary, 700);
-$primary-light: mat-color($sormas-primary, 400);
-$accent: mat-color($sormas-accent, 800);
-$warn: mat-color($sormas-alert, 700);
+$primary: mat.get-color-from-palette($sormas-primary, 700);
+$primary-light: mat.get-color-from-palette($sormas-primary, 400);
+$accent: mat.get-color-from-palette($sormas-accent, 800);
+$warn: mat.get-color-from-palette($sormas-alert, 700);
 $white: #ffffff;
 $black: #000000;
 

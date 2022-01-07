@@ -127,15 +127,12 @@
   "eventGroup.linkEvent.reportDate": "Report date",
   "eventGroup.linkEvent.filters.sortBy": "Sort by",
   "eventGroup.linkEvent.filters.from": "Event from",
-  "immunizationId": "Immunization id",
-  "meansOfImmunization": "Means of immunization",
-  "immunizationManagementStatus": "Management status",
-  "immunizationStatus": "Immunization status",
-  "startDate": "Start date",
-  "endDate": "End date",
-  "recoveryDate": "Recovery date",
-  "immunizationHeading": "Immunization directory",
-  "immunizationAddAction": "Add new immunization",
+  "dashboardDiseaseOverview": "Disease overview",
+  "dashboardCases": "Cases",
+  "dashboardNumberOfEvents": "Events",
   "dashboard.newCase.casesWithDefinition": "Cases with reference definition fulfilled",
-  "dashboard.newCase.rate": "Rate"
+  "dashboard.newCase.rate": "Rate",
+  "immunizationData": "Immunization data",
+  "externalData": "External data",
+  "immunizationReference": "Immunization reference"
 }

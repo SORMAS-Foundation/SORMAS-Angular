@@ -51,18 +51,5 @@ import { FormSearchboxComponent } from './components/form-searchbox/form-searchb
     FormMultiselectComponent,
   ],
   exports: [DynamicFormComponent, FormMultiselectComponent],
-  entryComponents: [
-    FormInputComponent,
-    FormSearchboxComponent,
-    FormDateComponent,
-    FormDatetimeComponent,
-    FormCheckboxComponent,
-    FormSelectComponent,
-    FormRadioComponent,
-    FormTextareaComponent,
-    FormNullComponent,
-    FormNumberComponent,
-    FormWidgetComponent,
-  ],
 })
 export class DynamicFormModule {}

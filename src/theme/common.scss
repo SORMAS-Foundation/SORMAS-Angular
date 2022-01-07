@@ -240,6 +240,10 @@ strong {
   &.configuration-country-code {
     width: 120px;
   }
+
+  .positive-fatalities {
+    color: map-get($sormas-alert, 700);
+  }
 }
 
 :root tr.mat-row {
@@ -268,6 +272,54 @@ strong {
   &[class*='australia'] td.mat-cell {
     border-bottom-width: 2px;
     border-bottom-color: rgba(map-get($sormas-warning, 700), 0.5);
+  }
+
+  &.rising {
+    background-color: map-get($sormas-alert, 50);
+
+    td.mat-cell {
+      border-bottom-width: 2px;
+      border-bottom-color: map-get($sormas-alert, 100);
+    }
+
+    .positive-value {
+      color: map-get($sormas-alert, 700);
+
+      .material-icons-round {
+        vertical-align: middle;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &.falling {
+    background-color: map-get($sormas-success, 50);
+
+    .positive-value {
+      color: map-get($sormas-success, 700);
+
+      .material-icons-round {
+        vertical-align: middle;
+        transform: rotate(180deg);
+        font-size: 18px;
+      }
+    }
+  }
+
+  &.stagnant {
+    .no-value {
+      color: map-get($sormas-accent, 300);
+
+      .material-icons-round {
+        display: none;
+      }
+    }
+  }
+}
+
+.overview-disease-table {
+  td.mat-cell {
+    font-weight: 500;
   }
 }
 
@@ -325,7 +377,7 @@ strong {
     height: auto;
     padding: 5px 15px;
     .mat-tab-label-content {
-      color: rgba(map-get($sormas-accent, 600), 1);
+      color: map-get($sormas-accent, 600);
     }
   }
 

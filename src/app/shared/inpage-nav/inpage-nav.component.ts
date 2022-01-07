@@ -22,12 +22,15 @@ export class InpageNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.fragment.subscribe((fragment) => {
+      if (!fragment) {
+        return;
+      }
       const element = document.getElementById(fragment);
       const currentPosition = this.getScrollingOffset(element);
       this.fragment = fragment;
       window.scrollTo({
         left: 0,
-        top: window.top.scrollY + currentPosition.top - this.pageOffset,
+        top: (window.top?.scrollY || 0) + currentPosition.top - this.pageOffset,
         behavior: 'smooth',
       });
     });

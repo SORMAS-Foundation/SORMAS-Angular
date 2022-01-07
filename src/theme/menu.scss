@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
 @mixin menu-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -7,7 +9,7 @@
 
   :root {
     .mat-menu-panel {
-      @include mat-elevation(6);
+      @include mat.elevation(6);
 
       border: 1px solid map-get($sormas-accent, 200);
       margin-top: 5px;
