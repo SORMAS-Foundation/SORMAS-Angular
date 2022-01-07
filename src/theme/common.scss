@@ -373,9 +373,11 @@ strong {
 // dashboard-disease-menu
 .dashboard-disease-menu {
   .mat-tab-label {
-    min-width: 100px;
+    min-width: min-content;
     height: auto;
-    padding: 5px 15px;
+    padding: 5px 0;
+    margin-right: 16px;
+    opacity: 1;
     .mat-tab-label-content {
       color: map-get($sormas-accent, 600);
     }
