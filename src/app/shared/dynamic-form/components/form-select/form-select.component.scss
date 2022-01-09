@@ -1,8 +1,9 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .data-select {
   .hint {
-    color: mat-color($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
     font-size: 12px;
   }
 }

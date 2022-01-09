@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '../variables.scss' as *;
 
 :root {
@@ -27,21 +28,21 @@
       background-color: map-get($sormas-primary, 50);
       border-radius: 5px;
       font-size: 1rem;
-      @include mat-elevation(4);
+      @include mat.elevation(4);
 
       &.ajs-success {
         background-color: map-get($sormas-success, 50);
-        @include mat-elevation(4);
+        @include mat.elevation(4);
       }
 
       &.ajs-error {
         background-color: map-get($sormas-alert, 50);
-        @include mat-elevation(15);
+        @include mat.elevation(15);
       }
 
       &.ajs-warning {
         background-color: map-get($sormas-warning, 50);
-        @include mat-elevation(15);
+        @include mat.elevation(15);
       }
     }
   }

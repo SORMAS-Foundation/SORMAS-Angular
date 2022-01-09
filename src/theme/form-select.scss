@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @mixin form-select-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -14,7 +15,7 @@
 
     .mat-option-pseudo-checkbox {
       margin-top: 3px;
-      color: map-get($sormas-primary, 700);
+      color: mat.get-color-from-palette(mat.define-palette($primary, 700));
     }
 
     .mat-select-panel-wrap {
@@ -37,7 +38,7 @@
       .mat-option.mat-selected,
       .mat-option:not(.mat-option-disabled):hover,
       .mat-option:not(.mat-option-disabled):focus {
-        background-color: mat-color(mat-palette($accent, 50));
+        background-color: mat.get-color-from-palette(mat.define-palette($accent, 50));
         color: currentColor;
       }
 
@@ -84,11 +85,11 @@
         .mat-form-field-flex:focus,
         .mat-form-field-flex:hover {
           .mat-select-arrow {
-            border-color: mat-color(mat-palette($primary, 700));
+            border-color: mat.get-color-from-palette(mat.define-palette($primary, 700));
           }
 
           .mat-select-value {
-            color: mat-color(mat-palette($primary, 700));
+            color: mat.get-color-from-palette(mat.define-palette($primary, 700));
           }
         }
       }

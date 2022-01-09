@@ -21,6 +21,7 @@ import { DashboardStoppedFollowUpComponent } from './components/dashboard-stoppe
 import { DashboardVisitsComponent } from './components/dashboard-visits/dashboard-visits.component';
 import { DashboardContactStatsComponent } from './components/dashboard-contact-stats/dashboard-contact-stats.component';
 import { DashboardTransmissionChainComponent } from './components/dashboard-transmission-chain/dashboard-transmission-chain.component';
+import { DashboardDiseaseBurdenComponent } from './components/dashboard-disease-burden/dashboard-disease-burden.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DashboardTransmissionChainComponent } from './components/dashboard-tran
     SurveillanceComponent,
     ContactsComponent,
     DashboardFiltersComponent,
+    DashboardDiseaseBurdenComponent,
     DashboardDiseaseOverviewComponent,
     DashboardDifferenceCasesComponent,
     DashboardDiseaseMenuComponent,

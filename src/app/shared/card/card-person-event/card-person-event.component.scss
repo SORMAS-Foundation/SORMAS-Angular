@@ -1,12 +1,13 @@
+@use '@angular/material' as mat;
 @use '../../../../variables.scss' as *;
 
 .card-person-event {
   padding-top: 10px;
-  border-top: solid 2px mat-color($sormas-alert, 100);
+  border-top: solid 2px mat.get-color-from-palette($sormas-alert, 100);
   margin-top: -4px;
   .status {
     display: flex;
-    color: mat-color($sormas-primary, A700);
+    color: mat.get-color-from-palette($sormas-primary, A700);
     font-weight: 500;
     gap: 5px;
     .mat-icon {
@@ -17,7 +18,7 @@
   }
   .responsible-user {
     margin-bottom: 5px;
-    color: mat-color($sormas-accent, 800);
+    color: mat.get-color-from-palette($sormas-accent, 800);
     font-size: 14px;
     font-weight: 500;
   }
@@ -25,12 +26,12 @@
     position: absolute;
     top: -2px;
     right: 24px;
-    color: mat-color($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
     font-size: 14px;
     .label {
       position: relative;
       top: 4px;
-      color: mat-color($sormas-accent, 400);
+      color: mat.get-color-from-palette($sormas-accent, 400);
       font-size: 10px;
       text-align: right;
     }

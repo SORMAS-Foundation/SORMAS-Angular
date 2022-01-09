@@ -1,0 +1,43 @@
+<section *ngIf="immunization">
+  <header>
+    <a [routerLink]="['/immunizations/list']" mat-icon-button>
+      <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+    </a>
+    <h1>{{ immunization.person?.firstName }} {{ immunization.person?.lastName }}</h1>
+    <app-entity-actions
+      [resource]="immunization"
+      [resourceService]="immunizationService"
+      [actionEditOptions]="actionEditOptions"
+      [context]="'immunizationId' | translate"
+      class="actions"
+    ></app-entity-actions>
+  </header>
+
+  <app-info-bar [data]="immunization" [type]="'IMMUNIZATION'"></app-info-bar>
+
+  <div class="tab-nav-header">
+    <nav mat-tab-nav-bar>
+      <a
+        mat-tab-link
+        *ngFor="let link of links"
+        [routerLink]="link.link"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        {{ link.title | translate }}
+      </a>
+    </nav>
+    <div class="tab-nav-header-actions">
+      <app-form-actions
+        *ngIf="currentSubPage.showFormActions"
+        [resource]="immunization"
+        [formId]="formId"
+      ></app-form-actions>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+</section>

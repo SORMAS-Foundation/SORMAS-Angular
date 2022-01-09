@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
 @mixin dialog-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -94,7 +96,7 @@
 
     .dialog-confirm {
       .mat-dialog-title h1 {
-        color: mat-color(mat-palette($warn, 700));
+        color: mat.get-color-from-palette(mat.define-palette($warn, 700));
         font-size: 24px;
       }
     }
@@ -104,7 +106,7 @@
         padding-left: 88px;
 
         h1 {
-          color: mat-color(mat-palette($warn, 700));
+          color: mat.get-color-from-palette(mat.define-palette($warn, 700));
           font-size: 24px;
         }
       }
@@ -119,7 +121,7 @@
 
       li::before {
         margin-right: 0.5rem;
-        color: mat-color(mat-palette($warn, 700));
+        color: mat.get-color-from-palette(mat.define-palette($warn, 700));
         content: '•';
       }
     }

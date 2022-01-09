@@ -837,3 +837,33 @@ export enum Language {
   FA = 'enum.Language.FA',
   CZ = 'enum.Language.CZ',
 }
+
+export enum MeansOfImmunization {
+  VACCINATION = 'enum.MeansOfImmunization.VACCINATION',
+  RECOVERY = 'enum.MeansOfImmunization.RECOVERY',
+  VACCINATION_RECOVERY = 'enum.MeansOfImmunization.VACCINATION_RECOVERY',
+  OTHER = 'enum.MeansOfImmunization.OTHER',
+}
+
+export enum ImmunizationManagementStatus {
+  SCHEDULED = 'enum.ImmunizationManagementStatus.SCHEDULED',
+  ONGOING = 'enum.ImmunizationManagementStatus.ONGOING',
+  COMPLETED = 'enum.ImmunizationManagementStatus.COMPLETED',
+  CANCELED = 'enum.ImmunizationManagementStatus.CANCELED',
+}
+
+export enum ImmunizationStatus {
+  PENDING = 'enum.ImmunizationStatus.PENDING',
+  ACQUIRED = 'enum.ImmunizationStatus.ACQUIRED',
+  NOT_ACQUIRED = 'enum.ImmunizationStatus.NOT_ACQUIRED',
+  EXPIRED = 'enum.ImmunizationStatus.EXPIRED',
+}
+
+export enum ImmunizationReferenceDate {
+  REPORT_DATE = 'enum.ImmunizationDateType.REPORT_DATE',
+  IMMUNIZATION_END = 'enum.ImmunizationDateType.IMMUNIZATION_END',
+  VALID_UNTIL = 'enum.ImmunizationDateType.VALID_UNTIL',
+  RECOVERY_DATE = 'enum.ImmunizationDateType.RECOVERY_DATE',
+  LAST_VACCINATION = 'enum.ImmunizationDateType.LAST_VACCINATION_DATE',
+  FIRST_VACCINATION = 'enum.ImmunizationDateType.FIRST_VACCINATION_DATE',
+}

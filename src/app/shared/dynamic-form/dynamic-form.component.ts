@@ -69,7 +69,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
           } else {
             // // EDIT mode
             // const resourceArrayTmp = [];
-            // // tslint:disable-next-line:prefer-for-of
+            // eslint-disable-next-line
             // for (let i = 0; i < response.resource.length; i += 1) {
             //   resourceArrayTmp.push(this.updateResource(response.resource[i]));
             // }

@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @mixin form-checkbox-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -16,11 +17,11 @@
       }
 
       &:not(.mat-checkbox-disabled) .mat-checkbox-frame {
-        border-color: mat-color(mat-palette($primary, 700));
+        border-color: mat.get-color-from-palette(mat.define-palette($primary, 700));
       }
 
       &.ng-touched.ng-invalid .mat-checkbox-frame {
-        border-color: mat-color(mat-palette($warn, 300));
+        border-color: mat.get-color-from-palette(mat.define-palette($warn, 300));
       }
 
       &.small {
@@ -55,7 +56,7 @@
           font-weight: 500;
         }
         .mat-pseudo-checkbox {
-          border-color: map-get($sormas-primary, 700);
+          border-color: mat.get-color-from-palette(mat.define-palette($primary, 700));
         }
       }
     }
