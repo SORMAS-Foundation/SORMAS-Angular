@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Filter, VIEW_OPTIONS } from '../../../_models/common';
+import { Filter, ViewOptions, VIEW_OPTIONS } from '../../../_models/common';
 import { DiseaseBurdenService } from '../../../_services/api/disease-burden';
 import { FilterService } from '../../../_services/filter.service';
 import { NotificationService } from '../../../_services/notification.service';
@@ -11,11 +11,13 @@ import { NotificationService } from '../../../_services/notification.service';
   styleUrls: ['./dashboard-disease-burden.component.scss'],
 })
 export class DashboardDiseaseBurdenComponent implements OnInit, OnDestroy {
+  diseases: any;
   data: any;
   subscriptions: Subscription[] = [];
   filters: Filter[] = [];
   visible = true;
   viewOptions = VIEW_OPTIONS;
+  activeView: ViewOptions = VIEW_OPTIONS.PRIMARY;
 
   constructor(
     private diseaseBurdenService: DiseaseBurdenService,
@@ -36,7 +38,11 @@ export class DashboardDiseaseBurdenComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.diseaseBurdenService.getCalculated(this.filters).subscribe({
         next: (data: any) => {
-          this.data = data;
+          this.diseases = data;
+          this.data =
+            this.activeView === this.viewOptions.PRIMARY
+              ? this.diseases.slice(0, 6)
+              : this.diseases;
         },
         error: (err: any) => {
           this.notificationService.error(err);
@@ -48,6 +54,12 @@ export class DashboardDiseaseBurdenComponent implements OnInit, OnDestroy {
 
   toggleSection(event: any): void {
     this.visible = !event.checked;
+  }
+
+  onViewChange(event: ViewOptions): void {
+    this.activeView = event;
+    this.data =
+      this.activeView === this.viewOptions.PRIMARY ? this.diseases.slice(0, 6) : this.diseases;
   }
 
   ngOnDestroy(): void {

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { VIEW_OPTIONS } from '../../../_models/common';
+import { ViewOptions, VIEW_OPTIONS } from '../../../_models/common';
 import { defaultColumnDefs } from './dashboard-disease-overview-table-data';
 
 @Component({
@@ -12,6 +12,7 @@ export class DashboardDiseaseOverviewComponent {
 
   columnDefs = defaultColumnDefs;
   viewOptions = VIEW_OPTIONS;
+  viewMode: ViewOptions = VIEW_OPTIONS.PRIMARY;
 
   determineDiseaseProgress(obj: any): string {
     if (obj.casesDifference > 0) {
@@ -21,5 +22,9 @@ export class DashboardDiseaseOverviewComponent {
       return 'falling';
     }
     return 'stagnant';
+  }
+
+  onViewChange(event: ViewOptions): void {
+    this.viewMode = event;
   }
 }
