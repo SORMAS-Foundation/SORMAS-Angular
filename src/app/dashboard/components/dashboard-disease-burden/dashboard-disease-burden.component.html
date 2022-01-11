@@ -6,23 +6,23 @@
   </div>
 
   <mat-card *ngIf="visible">
-    <div [ngClass]="{ grid: view.value === viewOptions.PRIMARY }">
+    <div [ngClass]="activeView === viewOptions.PRIMARY ? 'grid' : ''">
       <app-dashboard-disease-overview
-        [data]="view.value === viewOptions.PRIMARY ? data.slice(0, 6) : data"
+        [data]="data"
         class="overview"
       ></app-dashboard-disease-overview>
       <app-dashboard-difference-cases
-        [data]="view.value === viewOptions.PRIMARY ? data.slice(0, 6) : data"
+        [data]="data"
         [filters]="filters"
         class="graph"
       ></app-dashboard-difference-cases>
     </div>
-    <div [hidden]="data.length <= 6" class="expand-view">
+    <div [hidden]="diseases.length <= 6" class="expand-view">
       <app-toggle-view
-        #view
         iconViewPrimary="expand_less_black"
         iconViewSecondary="expand_more_black"
         iconSize="large"
+        (selection)="onViewChange($event)"
       ></app-toggle-view>
     </div>
   </mat-card>

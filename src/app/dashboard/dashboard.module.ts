@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxEchartsModule } from 'ngx-echarts';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
@@ -45,6 +46,14 @@ import { DashboardDiseaseBurdenComponent } from './components/dashboard-disease-
     DashboardContactStatsComponent,
     DashboardTransmissionChainComponent,
   ],
-  imports: [CommonModule, DashboardRoutingModule, MaterialModule, SharedModule],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    MaterialModule,
+    SharedModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
+  ],
 })
 export class DashboardModule {}
