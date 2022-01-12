@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -19,6 +19,8 @@ export class LineListingItemComponent implements OnDestroy {
   @Input() regions: RegionDto[];
   @Input() regionId: string;
   @Input() disease: string;
+
+  @Output() reload: EventEmitter<any> = new EventEmitter();
 
   private subscription: Subscription[] = [];
 
@@ -93,6 +95,7 @@ export class LineListingItemComponent implements OnDestroy {
 
               this.listingService.add(newArray).subscribe({
                 next: () => {
+                  this.reload.emit();
                   this.notificationService.success(
                     this.translateService.instant('addedSuccessfully')
                   );
@@ -126,15 +129,45 @@ export class LineListingItemComponent implements OnDestroy {
       .subscribe((result) => {
         if (result) {
           if (result === 'CONFIRM') {
-            this.listingService.deleteAll(this.disease, this.regionId).subscribe({
+
+            let newArray: any[] = [];
+
+            if (this.regionId) {
+              this.listings.forEach((value: any, index: any) => {
+                // eslint-disable-next-line no-param-reassign
+                value.enabled = false;
+                if (value.regionUuid === this.regionId) {
+                  newArray.push(value);
+                }
+              });
+            } else {
+              this.listings.forEach((value: any, index: any) => {
+                // eslint-disable-next-line no-param-reassign
+                value.enabled = false;
+                newArray.push(value);
+              });
+            }
+
+            this.listingService.add(newArray).subscribe({
               next: () => {
+                this.reload.emit();
                 this.notificationService.success(
-                  this.translateService.instant('deletedSuccessfully')
+                  this.translateService.instant('addedSuccessfully')
                 );
               },
               error: () => {},
               complete: () => {},
             });
+
+            // this.listingService.deleteAll(this.disease, this.regionId).subscribe({
+            //   next: () => {
+            //     this.notificationService.success(
+            //       this.translateService.instant('deletedSuccessfully')
+            //     );
+            //   },
+            //   error: () => {},
+            //   complete: () => {},
+            // });
           }
         }
       });

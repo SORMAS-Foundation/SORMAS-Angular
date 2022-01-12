@@ -32,7 +32,7 @@
           type="text"
           matInput
           appDebounce
-          placeholder="'Search'"
+          [placeholder]="'Search'"
           formControlName="listingSearch"
           (debounce)="onFormChange()"
         />

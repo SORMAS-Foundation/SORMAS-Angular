@@ -3,11 +3,11 @@
   <ng-container list>
     <div class="page-header">
       <h1 class="page-header-title">
-        {{ 'immunizationHeading' | translate }}
+        {{ 'strings.entityImmunization' | translate }}
       </h1>
       <div class="page-header-actions">
         <button mat-flat-button color="primary" (click)="openAddImmunizationModal()">
-          {{ 'immunizationAddAction' | translate }}
+          {{ 'addImmunization' | translate }}
         </button>
       </div>
     </div>
@@ -18,7 +18,7 @@
       [isSortable]="true"
       [isSelectable]="true"
       [isHeaderSticky]="true"
-      [allowToggleColumns]="true"
+      [allowToggleColumns]="false"
       [fullHeight]="true"
       [saveConfigKey]="configKey"
       showTotalContext="{{ 'strings.entityCases' | translate }}"

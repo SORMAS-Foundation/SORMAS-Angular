@@ -7,7 +7,7 @@ import {
   MeansOfImmunization,
   ImmunizationManagementStatus,
   ImmunizationStatus,
-  ImmunizationReferenceDate,
+  ImmunizationReferenceDate, FORM_DATA_CHECKBOX,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
@@ -122,6 +122,19 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
     ],
   },
   {
+    id: 'overdueImmunization',
+    title: 'overdueImmunization',
+    appearance: FormGroupStyleType.COLLAPSABLE,
+    fields: [
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'overdueImmunization',
+        label: 'captions.immunizationOnlyPersonsWithOverdueImmunization',
+        className: 'filter-checkbox',
+      },
+    ],
+  },
+  {
     id: 'adminAspect',
     title: 'headingAdminAspect',
     appearance: FormGroupStyleType.COLLAPSABLE,
@@ -200,6 +213,7 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
   {
     id: 'date',
     title: 'headingDateFilter',
+    appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -216,16 +230,36 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
         className: 'fullwidth',
       },
       {
+        ...FORM_DATA_SELECT,
+        key: 'newImmunizationEpidFrom',
+        options: [],
+        className: 'fullwidth',
+        dependingOn: 'dateFilterOption',
+        dependingOnValues: ['EPI_WEEK'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'newImmunizationEpidTo',
+        options: [],
+        className: 'fullwidth',
+        dependingOn: 'dateFilterOption',
+        dependingOnValues: ['EPI_WEEK'],
+      },
+      {
         ...FORM_DATA_DATE,
         key: 'newImmunizationDateFrom',
         hint: 'From',
         className: 'fullwidth',
+        dependingOn: 'dateFilterOption',
+        dependingOnValues: ['DATE'],
       },
       {
         ...FORM_DATA_DATE,
         key: 'newImmunizationDateTo',
         hint: 'to',
         className: 'fullwidth',
+        dependingOn: 'dateFilterOption',
+        dependingOnValues: ['DATE'],
       },
     ],
   },

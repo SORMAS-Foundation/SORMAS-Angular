@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { Filter } from '../_models/common';
-import { EntityLink } from '../_constants/common';
+import {BRIEF_DATE_FORMAT, EntityLink} from '../_constants/common';
+import {addDays, addYears, endOfISOWeek, format, getWeek, getYear, startOfISOWeek} from 'date-fns';
 
 @Injectable({
   providedIn: 'root',
@@ -85,5 +86,28 @@ export class HelperService {
       showFormActions: currentLink?.showFormActions || false,
       link: currentLink?.link || '',
     };
+  }
+
+  generateWeekOptions(): any[] {
+    const weekOptions: any[] = [];
+    let today = new Date();
+    const lastYear = addYears(today, -1);
+    while (today > lastYear) {
+      const weekNumber = getWeek(today);
+      const start = startOfISOWeek(today);
+      const end = endOfISOWeek(today);
+      const year = getYear(end);
+      weekOptions.push({
+        key: `${weekNumber}-${year}`,
+        value: `Wk ${weekNumber}-${year} (${format(start, BRIEF_DATE_FORMAT)}-${format(
+          end,
+          BRIEF_DATE_FORMAT
+        )})`,
+        start,
+        end,
+      });
+      today = addDays(today, -7);
+    }
+    return weekOptions;
   }
 }

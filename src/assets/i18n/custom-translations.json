@@ -134,5 +134,10 @@
   "dashboard.newCase.rate": "Rate",
   "immunizationData": "Immunization data",
   "externalData": "External data",
-  "immunizationReference": "Immunization reference"
+  "immunizationReference": "Immunization reference",
+  "immunizationPerson": "Immunization person",
+  "addImmunization": "Add new immunization",
+  "managementImmunization": "Management",
+  "overdueImmunization": "Overdue immunization",
+  "personalInformation": "Personal information"
 }
