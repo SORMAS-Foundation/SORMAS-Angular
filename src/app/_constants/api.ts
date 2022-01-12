@@ -229,6 +229,12 @@ export const API_ROUTE_EVENT_GROUPS = {
   DELETE: 'eventGroups/delete',
 };
 
+export const API_ROUTE_EPIDEMIOLOGICAL_DATA = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/epiCurveDataPerCaseClassification',
+  GET_ALL_PER_PRESENT: 'dashboard/epiCurveDataPerPresentCondition',
+};
+
 export const API_ROUTE_DISEASE_BURDEN = {
   ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/diseaseBurden',

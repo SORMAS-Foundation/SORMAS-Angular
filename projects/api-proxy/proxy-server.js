@@ -124,54 +124,66 @@ app.use('', (req, res, next) => {
     }
   }
 });
-app.use('/sormas-rest/users/S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U', (req, res) => {
-  res.status(200).send({
-    active: true,
-    address: {
-      creationDate: 1618404250675,
-      changeDate: 1618404250675,
-      uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
-    },
-    changeDate: 1618404250675,
-    creationDate: 1618404250675,
-    pseudonymized: false,
-    uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
-    changeDate: 1633329099202,
-    creationDate: 1618404250675,
-    firstName: 'adam',
-    userEmail: 'adamholger@gmail.com',
-    phone: '+40746658799',
-    hasConsentedToGdpr: false,
-    language: 'EN',
-    lastName: 'Holger',
-    name: 'ad min',
-    userName: 'admin',
-    userRoles: ['NATIONAL_USER', 'ADMIN'],
-    0: 'NATIONAL_USER',
-    1: 'ADMIN',
-    uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
-  });
-});
 
-app.use('/sormas-rest/dashboard/newCases', (req, res) => {
-  res.status(200).send({
-    caseCount: 328,
-    caseNotClassifiedCount: 120,
-    caseSuspectCount: 37,
-    caseProbableCount: 45,
-    caseConfirmedCount: 103,
-    caseConfirmedAsymptomaticCount: 78,
-    caseConfirmedUnkownSymptomsCount: 25,
-    notCaseCount: 23,
-    outbreakDistictCount: 3,
-    casesInQuarantineCount: 165,
-    casesPlacedInQuarantineCount: 120,
-    casesResultFromContactsCount: 17,
-    casesWithReferenceFulfilledCount: 79,
-    lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
-    fatalities: 3,
-    fatalitiesPercent: '0.2%',
-  });
+app.use('/sormas-rest/dashboard/epiCurveDataPerCaseClassification', (req, res) => {
+  res.status(200).send([
+    {
+      '1/5/2022': {
+        caseCount: 328,
+        caseNotClassifiedCount: 120,
+        caseSuspectCount: 37,
+        caseProbableCount: 45,
+        caseConfirmedCount: 103,
+        caseConfirmedAsymptomaticCount: 78,
+        caseConfirmedUnkownSymptomsCount: 25,
+        notCaseCount: 23,
+        outbreakDistictCount: 3,
+        casesInQuarantineCount: 165,
+        casesPlacedInQuarantineCount: 120,
+        casesResultFromContactsCount: 17,
+        casesWithReferenceFulfilledCount: 79,
+        lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
+        fatalities: 3,
+        fatalitiesPercent: '0.2%',
+      },
+      '1/6/2022': {
+        caseCount: 224,
+        caseNotClassifiedCount: 45,
+        caseSuspectCount: 23,
+        caseProbableCount: 77,
+        caseConfirmedCount: 108,
+        caseConfirmedAsymptomaticCount: 24,
+        caseConfirmedUnkownSymptomsCount: 36,
+        notCaseCount: 48,
+        outbreakDistictCount: 2,
+        casesInQuarantineCount: 165,
+        casesPlacedInQuarantineCount: 120,
+        casesResultFromContactsCount: 17,
+        casesWithReferenceFulfilledCount: 79,
+        lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
+        fatalities: 17,
+        fatalitiesPercent: '1.3%',
+      },
+      '1/7/2022': {
+        caseCount: 328,
+        caseNotClassifiedCount: 120,
+        caseSuspectCount: 37,
+        caseProbableCount: 45,
+        caseConfirmedCount: 103,
+        caseConfirmedAsymptomaticCount: 78,
+        caseConfirmedUnkownSymptomsCount: 25,
+        notCaseCount: 23,
+        outbreakDistictCount: 3,
+        casesInQuarantineCount: 165,
+        casesPlacedInQuarantineCount: 120,
+        casesResultFromContactsCount: 17,
+        casesWithReferenceFulfilledCount: 79,
+        lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
+        fatalities: 3,
+        fatalitiesPercent: '0.2%',
+      },
+    },
+  ]);
 });
 
 // app.use('/sormas-rest/lineListing/enabled', (req, res) => {
@@ -272,104 +284,6 @@ app.use('/sormas-rest/dashboard/newCases', (req, res) => {
 //     },
 //   ]);
 // });
-
-app.use('/sormas-rest/contacts/QN3NKC-XLHWN6-LEH2NF-ZXRQKHOM', (req, res) => {
-  let total = 1000;
-
-  const arrayTmp = [];
-  let offset = 0;
-
-  if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
-    offset = 1000;
-  }
-
-  if (req.body.filter) {
-    total = 50;
-  }
-
-  for (
-    var i = parseInt(req.query.offset);
-    i < parseInt(req.query.offset) + parseInt(req.query.size);
-    i++
-  ) {
-    arrayTmp.push({
-      uuid: 'T79TR5-YVTX26-CHL6D7-Z2UPKIHI',
-      involvementDescription: 'Description etc',
-      resultingCase: {
-        uuid: 'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI',
-      },
-      event: {
-        uuid: 'TFI3ZL-VSSLDP-QUNMND-VOYFSL7Y',
-      },
-      person: {
-        pseudonymized: false,
-        uuid: 'Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI',
-        firstName: 'Smoke3',
-        lastName: 'Test3',
-        ageAndBirthDate: {
-          dateOfBirthDD: 23,
-          dateOfBirthMM: 4,
-          dateOfBirthYYYY: 1992,
-          age: 29,
-          ageType: 'YEARS',
-        },
-        sex: 'OTHER',
-        district: 'LK Uckermark',
-        street: 'Sarmisegetuza',
-        houseNumber: '21',
-        postalCode: '400592',
-        city: 'Cluj-Napoca',
-        phone: '+40744373681',
-        emailAddress: null,
-        changeDate: 1628038802556,
-        inJurisdiction: true,
-      },
-    });
-  }
-
-  res.status(200).send({
-    pseudonymized: false,
-    uuid: 'RK6G25-W6PUTA-67PZN5-XW4KSMT4',
-    firstName: 'John',
-    lastName: 'Smith',
-    caze: {
-      uuid: 'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI',
-      caption: 'xxx',
-      firstName: 'x',
-      lastName: 'y',
-    },
-    person: {
-      firstName: 'John',
-      lastName: 'Smith',
-    },
-    disease: 'CORONAVIRUS',
-    diseaseDetails: null,
-    lastContactDate: null,
-    contactProximity: null,
-    contactClassification: 'UNCONFIRMED',
-    contactStatus: 'ACTIVE',
-    completeness: null,
-    followUpStatus: 'FOLLOW_UP',
-    followUpUntil: 1620943200000,
-    symptomJournalStatus: 'UNREGISTERED',
-    vaccination: null,
-    districtUuid: null,
-    contactOfficerUuid: null,
-    reportDateTime: 1619787324690,
-    contactCategory: null,
-    caseClassification: 'SUSPECT',
-    visitCount: 0,
-    externalID: null,
-    externalToken: null,
-    internalToken: null,
-    regionName: null,
-    districtName: null,
-    caseRegionName: null,
-    caseDistrictName: null,
-    inJurisdiction: true,
-    caseInJurisdiction: true,
-  });
-});
 
 app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   res.status(200).send([
