@@ -1,1 +1,20 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.map {
+  height: 427px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.map-layers-wrapper {
+  padding: 0 16px;
+}

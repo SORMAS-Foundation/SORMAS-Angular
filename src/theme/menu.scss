@@ -38,5 +38,11 @@
       width: 360px;
       max-width: unset;
     }
+
+    .dashboard-map-legend {
+      max-width: unset;
+      min-width: 420px;
+      width: 45vw;
+    }
   }
 }
