@@ -5,10 +5,11 @@
       iconViewPrimary="fullscreen_exit_black"
       iconViewSecondary="fullscreen"
       iconSize="large"
+      (selection)="onViewChange($event)"
     ></app-toggle-view>
   </header>
 
-  <div class="map" leaflet [leafletOptions]="options"></div>
+  <div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)"></div>
 
   <div class="actions">
     <app-dropdown-menu

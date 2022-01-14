@@ -2,35 +2,41 @@
   <mat-card>
     <app-dashboard-filters [showDisease]="false"></app-dashboard-filters>
   </mat-card>
-  <app-dashboard-disease-burden></app-dashboard-disease-burden>
+
+  <app-dashboard-disease-burden *ngIf="showDiseaseBurden"></app-dashboard-disease-burden>
   <mat-card>
     <app-dashboard-disease-menu></app-dashboard-disease-menu>
   </mat-card>
-  <div class="width-50-mobile-100">
-    <mat-card class="mr-16-mobile-0">
-      <app-dashboard-new-cases></app-dashboard-new-cases>
-    </mat-card>
-  </div>
-  <div class="width-50-mobile-100">
-    <div class="width-50">
-      <mat-card class="mr-16">
-        <app-dashboard-new-events></app-dashboard-new-events>
+
+  <ng-container *ngIf="showNewData">
+    <div class="width-50-mobile-100">
+      <mat-card class="mr-16-mobile-0">
+        <app-dashboard-new-cases></app-dashboard-new-cases>
       </mat-card>
     </div>
-    <div class="width-50">
-      <mat-card>
-        <app-dashboard-test-results></app-dashboard-test-results>
-      </mat-card>
+    <div class="width-50-mobile-100">
+      <div class="width-50">
+        <mat-card class="mr-16">
+          <app-dashboard-new-events></app-dashboard-new-events>
+        </mat-card>
+      </div>
+      <div class="width-50">
+        <mat-card>
+          <app-dashboard-test-results></app-dashboard-test-results>
+        </mat-card>
+      </div>
     </div>
-  </div>
-  <div class="width-50-mobile-100">
+  </ng-container>
+
+  <div *ngIf="showEpiCurve" class="width-50-mobile-100">
     <mat-card class="mr-16-mobile-0">
       <app-dashboard-epidemiological-curve></app-dashboard-epidemiological-curve>
     </mat-card>
   </div>
-  <div class="width-50-mobile-100">
+
+  <div *ngIf="showMap" [ngClass]="{ 'width-50-mobile-100': showEpiCurve }">
     <mat-card>
-      <app-dashboard-case-map></app-dashboard-case-map>
+      <app-dashboard-case-map (mapViewUpdate)="onMapViewChange($event)"></app-dashboard-case-map>
     </mat-card>
   </div>
 </div>
