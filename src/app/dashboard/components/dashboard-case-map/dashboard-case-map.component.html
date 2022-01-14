@@ -1,1 +1,27 @@
-<p>dashboard-case-map works!</p>
+<section>
+  <header>
+    <h2>{{ 'strings.headingCaseStatusMap' | translate }}</h2>
+    <app-toggle-view
+      iconViewPrimary="fullscreen_exit_black"
+      iconViewSecondary="fullscreen"
+      iconSize="large"
+    ></app-toggle-view>
+  </header>
+
+  <div class="map" leaflet [leafletOptions]="options"></div>
+
+  <div class="actions">
+    <app-dropdown-menu
+      buttonText="{{ 'captions.dashboardMapKey' | translate }}"
+      panelClass="dashboard-map-legend"
+    >
+      <app-map-legend></app-map-legend>
+    </app-dropdown-menu>
+
+    <app-dropdown-menu buttonText="{{ 'captions.dashboardMapLayers' | translate }}">
+      <div class="map-layers-wrapper" (click)="$event.stopPropagation()">
+        <app-map-layers (selection)="onLayerUpdate($event)"></app-map-layers>
+      </div>
+    </app-dropdown-menu>
+  </div>
+</section>

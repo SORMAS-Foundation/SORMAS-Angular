@@ -22,6 +22,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  color: mat.get-color-from-palette($sormas-accent, 800);
 }
 
 .noscroll {

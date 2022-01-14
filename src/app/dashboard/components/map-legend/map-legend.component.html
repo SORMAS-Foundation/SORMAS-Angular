@@ -1,0 +1,106 @@
+<dl class="legend">
+  <dt>{{ 'strings.entityFacilities' | translate }}</dt>
+  <dd>
+    <ul>
+      <li>
+        <mat-icon class="material-icons-round facility-not-classified">home_work_black</mat-icon>
+        {{ 'captions.dashboardNotYetClassifiedOnly' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round facility-suspect">home_work_black</mat-icon>
+        {{ 'captions.dashboardGt1SuspectCases' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round facility-probable">home_work_black</mat-icon>
+        {{ 'captions.dashboardGt1ProbableCases' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round facility-confirmed">home_work_black</mat-icon>
+        {{ 'captions.dashboardGt1ConfirmedCases' | translate }}
+      </li>
+    </ul>
+  </dd>
+  <dt>{{ 'strings.entityCases' | translate }}</dt>
+  <dd>
+    <ul>
+      <li>
+        <mat-icon class="material-icons-round cases-not-classified">cached</mat-icon>
+        {{ 'captions.dashboardNotYetClassified' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round cases-suspect">person_search</mat-icon>
+        {{ 'captions.dashboardSuspect' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round cases-probable">queue</mat-icon>
+        {{ 'captions.dashboardProbable' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round cases-confirmed">new_releases</mat-icon>
+        {{ 'captions.dashboardConfirmed' | translate }}
+      </li>
+    </ul>
+  </dd>
+  <dt>{{ 'strings.entityEvents' | translate }}</dt>
+  <dd>
+    <ul>
+      <li>
+        <mat-icon class="material-icons-round events-signal">wifi_tethering</mat-icon>
+        {{ 'enum.EventStatus.SIGNAL' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round events-event">warning</mat-icon>
+        {{ 'enum.EventStatus.EVENT' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round events-screening">travel_explore</mat-icon>
+        {{ 'enum.EventStatus.SCREENING' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round events-dropped">disabled_by_default</mat-icon>
+        {{ 'enum.EventStatus.DROPPED' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round events-cluster">grain</mat-icon>
+        {{ 'enum.EventStatus.CLUSTER' | translate }}
+      </li>
+    </ul>
+  </dd>
+  <dt>{{ 'strings.entityDistricts' | translate }}</dt>
+  <dd>
+    <ul>
+      <li>
+        <mat-icon class="material-icons-round districts-low">circle</mat-icon>
+        ???
+      </li>
+      <li>
+        <mat-icon class="material-icons-round districts-medium">circle</mat-icon>
+        ???
+      </li>
+      <li>
+        <mat-icon class="material-icons-round districts-high">circle</mat-icon>
+        ???
+      </li>
+    </ul>
+    <p>{{ 'strings.infoDashboardIncidence' | translate }}</p>
+  </dd>
+  <dt>{{ 'strings.entityContacts' | translate }}</dt>
+  <dd>
+    <ul>
+      <li>
+        <mat-icon class="material-icons-round contacts-not-contact">voice_over_off_black</mat-icon>
+        {{ 'captions.dashboardNotAContact' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round contacts-unconfirmed">gpp_bad_black</mat-icon>
+        {{ 'captions.dashboardUnconfirmedContact' | translate }}
+      </li>
+      <li>
+        <mat-icon class="material-icons-round contacts-confirmed">
+          connect_without_contact_black
+        </mat-icon>
+        {{ 'captions.dashboardConfirmedContact' | translate }}
+      </li>
+    </ul>
+  </dd>
+</dl>

@@ -9,7 +9,7 @@ import { FormActionsService } from '../../../_services/form-actions.service';
   template: ``,
 })
 export class FormBaseComponent implements OnInit {
-  config: FormElementBase<string> = {
+  config: FormElementBase<any> = {
     ...FORM_DATA_BASE,
   };
   group: FormGroup = new FormGroup({});
