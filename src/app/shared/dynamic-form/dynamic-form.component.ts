@@ -18,14 +18,14 @@ import { FormGroupStyleType } from '../../_models/common';
   providers: [FormElementControlService],
 })
 export class DynamicFormComponent implements OnInit, OnDestroy {
-  @Input() formElements: FormBase<string>[] = [];
+  @Input() formElements: FormBase<any>[] = [];
   @Input() resourceService: BaseService<any>;
   @Input() withAnchor = false;
   @Input() formId: string;
 
   @Output() changed: EventEmitter<any> = new EventEmitter();
 
-  formElementsProcessed: FormElementBase<string>[] = [];
+  formElementsProcessed: FormElementBase<any>[] = [];
   form: FormGroup;
   watchFields: any[] = [];
   subscription: Subscription[] = [];
@@ -187,8 +187,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return resource;
   }
 
-  processFormArray(): FormElementBase<string>[] {
-    let arrayTmp: FormElementBase<string>[] = [];
+  processFormArray(): FormElementBase<any>[] {
+    let arrayTmp: FormElementBase<any>[] = [];
 
     this.formElements.forEach((formElement) => {
       arrayTmp = arrayTmp.concat(formElement.fields);
@@ -245,8 +245,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  getTargetField(target: string): FormElementBase<string> | undefined {
-    let result: FormElementBase<string> | undefined;
+  getTargetField(target: string): FormElementBase<any> | undefined {
+    let result: FormElementBase<any> | undefined;
     this.formElements.some((group) => {
       result = group.fields.find((field) => field.key === target);
       return result;
@@ -257,7 +257,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   getSections(): any {
     return this.formElements
       .filter((item) => item.anchor)
-      .map((item: FormBase<string>) => ({ id: item.anchor, label: item.anchorLabel }));
+      .map((item: FormBase<any>) => ({ id: item.anchor, label: item.anchorLabel }));
   }
 
   ngOnDestroy(): void {

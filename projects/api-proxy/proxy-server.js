@@ -124,7 +124,6 @@ app.use('', (req, res, next) => {
     }
   }
 });
-
 app.use('/sormas-rest/dashboard/epiCurveDataPerCaseClassification', (req, res) => {
   res.status(200).send([
     {
@@ -184,7 +183,6 @@ app.use('/sormas-rest/dashboard/epiCurveDataPerCaseClassification', (req, res) =
       },
     },
   ]);
-});
 
 // app.use('/sormas-rest/lineListing/enabled', (req, res) => {
 //   res.status(200).send([
