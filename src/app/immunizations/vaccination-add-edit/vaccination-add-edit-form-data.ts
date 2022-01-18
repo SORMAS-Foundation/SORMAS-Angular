@@ -1,4 +1,10 @@
-import {FORM_DATA_DATE, FORM_DATA_INPUT, FORM_DATA_RADIO, FORM_DATA_SELECT, FORM_DATA_TEXTAREA} from '../../_constants/form-data';
+import {
+  FORM_DATA_DATE,
+  FORM_DATA_INPUT,
+  FORM_DATA_RADIO,
+  FORM_DATA_SELECT,
+  FORM_DATA_TEXTAREA,
+} from '../../_constants/form-data';
 import { YesNoUnknown } from '../../_constants/enums';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 

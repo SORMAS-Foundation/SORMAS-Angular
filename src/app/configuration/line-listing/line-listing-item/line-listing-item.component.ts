@@ -129,11 +129,10 @@ export class LineListingItemComponent implements OnDestroy {
       .subscribe((result) => {
         if (result) {
           if (result === 'CONFIRM') {
-
-            let newArray: any[] = [];
+            const newArray: any[] = [];
 
             if (this.regionId) {
-              this.listings.forEach((value: any, index: any) => {
+              this.listings.forEach((value: any) => {
                 // eslint-disable-next-line no-param-reassign
                 value.enabled = false;
                 if (value.regionUuid === this.regionId) {
@@ -141,7 +140,7 @@ export class LineListingItemComponent implements OnDestroy {
                 }
               });
             } else {
-              this.listings.forEach((value: any, index: any) => {
+              this.listings.forEach((value: any) => {
                 // eslint-disable-next-line no-param-reassign
                 value.enabled = false;
                 newArray.push(value);
@@ -158,16 +157,6 @@ export class LineListingItemComponent implements OnDestroy {
               error: () => {},
               complete: () => {},
             });
-
-            // this.listingService.deleteAll(this.disease, this.regionId).subscribe({
-            //   next: () => {
-            //     this.notificationService.success(
-            //       this.translateService.instant('deletedSuccessfully')
-            //     );
-            //   },
-            //   error: () => {},
-            //   complete: () => {},
-            // });
           }
         }
       });

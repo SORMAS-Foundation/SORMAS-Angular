@@ -9,7 +9,6 @@ import { BaseService } from '../../../_services/api/base.service';
 import { ADD_MODAL_MAX_WIDTH, IMMUNIZATION_PROFILE_FORM_ID } from '../../../app.constants';
 import { ImmunizationDto } from '../../../_models/immunizationDto';
 import { SampleService } from '../../../_services/api/sample.service';
-import { ImmunizationAddComponent } from '../../immunization-add/immunization-add.component';
 import { VaccinationAddEditComponent } from '../../vaccination-add-edit/vaccination-add-edit.component';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 
@@ -32,7 +31,7 @@ export class ImmunizationProfileComponent implements AfterViewInit, OnDestroy {
     private formElementControlService: FormElementControlService,
     public sampleService: SampleService,
     private dialog: MatDialog,
-    private translateService: TranslateService,
+    private translateService: TranslateService
   ) {}
 
   ngAfterViewInit(): void {

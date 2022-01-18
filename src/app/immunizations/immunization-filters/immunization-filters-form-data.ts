@@ -7,7 +7,8 @@ import {
   MeansOfImmunization,
   ImmunizationManagementStatus,
   ImmunizationStatus,
-  ImmunizationReferenceDate, FORM_DATA_CHECKBOX,
+  ImmunizationReferenceDate,
+  FORM_DATA_CHECKBOX,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
