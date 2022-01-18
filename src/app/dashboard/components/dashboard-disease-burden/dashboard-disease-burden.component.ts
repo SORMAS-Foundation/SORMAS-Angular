@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Filter, ViewOptions, VIEW_OPTIONS } from '../../../_models/common';
-import { DiseaseBurdenService } from '../../../_services/api/disease-burden';
+import { DiseaseBurdenService } from '../../../_services/api/disease-burden.service';
 import { FilterService } from '../../../_services/filter.service';
 import { NotificationService } from '../../../_services/notification.service';
 

@@ -7,14 +7,20 @@ import { ViewOptions, VIEW_OPTIONS } from '../../_models/common';
   styleUrls: ['./surveillance.component.scss'],
 })
 export class SurveillanceComponent {
-  showDiseaseBurden = true;
-  showNewData = true;
-  showEpiCurve = true;
-  showMap = true;
+  hideDiseaseBurden = false;
+  hideNewData = false;
+  hideEpiCurve = false;
+  hideMap = false;
 
   onMapViewChange(event: ViewOptions): void {
-    this.showDiseaseBurden = event === VIEW_OPTIONS.PRIMARY;
-    this.showNewData = event === VIEW_OPTIONS.PRIMARY;
-    this.showEpiCurve = event === VIEW_OPTIONS.PRIMARY;
+    this.hideDiseaseBurden = event === VIEW_OPTIONS.SECONDARY;
+    this.hideNewData = event === VIEW_OPTIONS.SECONDARY;
+    this.hideEpiCurve = event === VIEW_OPTIONS.SECONDARY;
+  }
+
+  onEpiCurveViewChange(event: ViewOptions): void {
+    this.hideDiseaseBurden = event === VIEW_OPTIONS.SECONDARY;
+    this.hideNewData = event === VIEW_OPTIONS.SECONDARY;
+    this.hideMap = event === VIEW_OPTIONS.SECONDARY;
   }
 }
