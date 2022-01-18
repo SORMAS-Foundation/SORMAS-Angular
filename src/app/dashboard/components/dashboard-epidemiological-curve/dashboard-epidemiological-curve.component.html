@@ -1,1 +1,62 @@
-<p>dashboard-epidemiological-curve works!</p>
+<section>
+  <header>
+    <h2>{{ 'strings.headingEpiCurve' | translate }}</h2>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="material-icons-round" color="primary">more_horiz_black</mat-icon>
+    </button>
+
+    <app-toggle-view
+      iconViewPrimary="fullscreen_exit_black"
+      iconViewSecondary="fullscreen"
+      iconSize="large"
+      (selection)="onViewChange($event)"
+    ></app-toggle-view>
+  </header>
+
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button mat-menu-item>{{ 'actionPrint' | translate }}</button>
+    <button mat-menu-item>{{ 'actionDownloadPNG' | translate }}</button>
+    <button mat-menu-item>{{ 'actionDownloadJPG' | translate }}</button>
+    <button mat-menu-item>{{ 'actionDownloadPDF' | translate }}</button>
+    <button mat-menu-item>{{ 'actionDownloadSVG' | translate }}</button>
+    <button mat-menu-item>{{ 'actionDownloadCSV' | translate }}</button>
+    <button mat-menu-item>{{ 'actionDownloadXLS' | translate }}</button>
+  </mat-menu>
+
+  <div echarts [options]="chartOption" class="graph"></div>
+
+  <form class="actions" [formGroup]="form">
+    <div class="filters">
+      <mat-radio-group formControlName="epiCurveGrouping">
+        <mat-label class="radio-group-label">
+          {{ 'captions.dashboardGrouping' | translate }}
+        </mat-label>
+        <mat-radio-button value="DAY" color="primary">
+          <span>{{ 'enum.EpiCurveGrouping.DAY' | translate }}</span>
+        </mat-radio-button>
+        <mat-radio-button value="WEEK" color="primary">
+          <span>{{ 'enum.EpiCurveGrouping.WEEK' | translate }}</span>
+        </mat-radio-button>
+        <mat-radio-button value="MONTH" color="primary">
+          <span>{{ 'enum.EpiCurveGrouping.MONTH' | translate }}</span>
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <mat-checkbox color="primary" formControlName="showMinimumEntries">
+        {{ 'captions.dashboardShowMinimumEntries' | translate }}
+      </mat-checkbox>
+    </div>
+
+    <div class="condition">
+      <mat-radio-group formControlName="dataType">
+        <mat-radio-button value="CASE_STATUS" color="primary">
+          <span>{{ 'enum.EpiCurveSurveillanceMode.CASE_STATUS' | translate }}</span>
+        </mat-radio-button>
+        <mat-radio-button value="ALIVE_OR_DEAD" color="primary">
+          <span>{{ 'enum.EpiCurveSurveillanceMode.ALIVE_OR_DEAD' | translate }}</span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </form>
+</section>

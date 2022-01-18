@@ -74,6 +74,8 @@ export const MONTH_DATE_TEXT_FORMAT = 'MMM';
 export const HOUR_MINUTE_TIME_FORMAT = 'h:mm';
 export const BRIEF_DATE_FORMAT = 'M/d';
 export const COMMON_DATE_FORMAT = 'M/d/yyyy';
+export const MONTH_MEDIUM_DATE_FORMAT = 'MMM yyyy';
+export const WEEK_OF_YEAR_DATE_FORMAT = 'w-yyyy';
 
 export type ButtonType = 'STANDARD' | 'STROKED' | 'FLAT';
 export const BUTTON_TYPE = {

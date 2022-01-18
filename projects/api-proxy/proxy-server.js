@@ -124,65 +124,6 @@ app.use('', (req, res, next) => {
     }
   }
 });
-app.use('/sormas-rest/dashboard/epiCurveDataPerCaseClassification', (req, res) => {
-  res.status(200).send([
-    {
-      '1/5/2022': {
-        caseCount: 328,
-        caseNotClassifiedCount: 120,
-        caseSuspectCount: 37,
-        caseProbableCount: 45,
-        caseConfirmedCount: 103,
-        caseConfirmedAsymptomaticCount: 78,
-        caseConfirmedUnkownSymptomsCount: 25,
-        notCaseCount: 23,
-        outbreakDistictCount: 3,
-        casesInQuarantineCount: 165,
-        casesPlacedInQuarantineCount: 120,
-        casesResultFromContactsCount: 17,
-        casesWithReferenceFulfilledCount: 79,
-        lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
-        fatalities: 3,
-        fatalitiesPercent: '0.2%',
-      },
-      '1/6/2022': {
-        caseCount: 224,
-        caseNotClassifiedCount: 45,
-        caseSuspectCount: 23,
-        caseProbableCount: 77,
-        caseConfirmedCount: 108,
-        caseConfirmedAsymptomaticCount: 24,
-        caseConfirmedUnkownSymptomsCount: 36,
-        notCaseCount: 48,
-        outbreakDistictCount: 2,
-        casesInQuarantineCount: 165,
-        casesPlacedInQuarantineCount: 120,
-        casesResultFromContactsCount: 17,
-        casesWithReferenceFulfilledCount: 79,
-        lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
-        fatalities: 17,
-        fatalitiesPercent: '1.3%',
-      },
-      '1/7/2022': {
-        caseCount: 328,
-        caseNotClassifiedCount: 120,
-        caseSuspectCount: 37,
-        caseProbableCount: 45,
-        caseConfirmedCount: 103,
-        caseConfirmedAsymptomaticCount: 78,
-        caseConfirmedUnkownSymptomsCount: 25,
-        notCaseCount: 23,
-        outbreakDistictCount: 3,
-        casesInQuarantineCount: 165,
-        casesPlacedInQuarantineCount: 120,
-        casesResultFromContactsCount: 17,
-        casesWithReferenceFulfilledCount: 79,
-        lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
-        fatalities: 3,
-        fatalitiesPercent: '0.2%',
-      },
-    },
-  ]);
 
 // app.use('/sormas-rest/lineListing/enabled', (req, res) => {
 //   res.status(200).send([

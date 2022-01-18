@@ -3,12 +3,15 @@
     <app-dashboard-filters [showDisease]="false"></app-dashboard-filters>
   </mat-card>
 
-  <app-dashboard-disease-burden *ngIf="showDiseaseBurden"></app-dashboard-disease-burden>
+  <div [hidden]="hideDiseaseBurden">
+    <app-dashboard-disease-burden></app-dashboard-disease-burden>
+  </div>
+
   <mat-card>
     <app-dashboard-disease-menu></app-dashboard-disease-menu>
   </mat-card>
 
-  <ng-container *ngIf="showNewData">
+  <div [hidden]="hideNewData">
     <div class="width-50-mobile-100">
       <mat-card class="mr-16-mobile-0">
         <app-dashboard-new-cases></app-dashboard-new-cases>
@@ -26,16 +29,16 @@
         </mat-card>
       </div>
     </div>
-  </ng-container>
-
-  <div *ngIf="showEpiCurve" class="width-50-mobile-100">
-    <mat-card class="mr-16-mobile-0">
-      <app-dashboard-epidemiological-curve></app-dashboard-epidemiological-curve>
-    </mat-card>
   </div>
 
-  <div *ngIf="showMap" [ngClass]="{ 'width-50-mobile-100': showEpiCurve }">
-    <mat-card>
+  <div [ngClass]="hideMap || hideEpiCurve ? '' : 'epi-visuals'">
+    <mat-card [hidden]="hideEpiCurve" class="epi-curve">
+      <app-dashboard-epidemiological-curve
+        (epiCurveViewUpdate)="onEpiCurveViewChange($event)"
+      ></app-dashboard-epidemiological-curve>
+    </mat-card>
+
+    <mat-card [hidden]="hideMap" class="map">
       <app-dashboard-case-map (mapViewUpdate)="onMapViewChange($event)"></app-dashboard-case-map>
     </mat-card>
   </div>

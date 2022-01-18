@@ -134,5 +134,12 @@
   "dashboard.newCase.rate": "Rate",
   "immunizationData": "Immunization data",
   "externalData": "External data",
-  "immunizationReference": "Immunization reference"
+  "immunizationReference": "Immunization reference",
+  "actionPrint": "Print",
+  "actionDownloadPNG": "Download PNG image",
+  "actionDownloadJPG": "Download JPG image",
+  "actionDownloadPDF": "Download PDF document",
+  "actionDownloadSVG": "Download SVG vector image",
+  "actionDownloadCSV": "Download CSV",
+  "actionDownloadXLS": "Download XLS"
 }

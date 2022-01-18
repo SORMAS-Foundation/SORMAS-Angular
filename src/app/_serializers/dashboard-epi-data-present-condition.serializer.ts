@@ -2,9 +2,8 @@
 import { Serializer } from './base.serializer';
 import { deserializeDates, serializeDates } from './date-parse';
 
-export class DashboardEpidemiologicalDataSerializer implements Serializer {
+export class DashboardEpiDataPresentConditionSerializer implements Serializer {
   fromJson(json: any): any {
-    json.id = json.id ?? json.uuid;
     deserializeDates(json);
     return json;
   }
