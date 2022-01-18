@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
+import {
+  addDays,
+  addYears,
+  endOfISOWeek,
+  format,
+  getWeek,
+  getYear,
+  startOfISOWeek,
+} from 'date-fns';
 import { Filter } from '../_models/common';
 import { BRIEF_DATE_FORMAT, EntityLink } from '../_constants/common';
-import { addDays, addYears, endOfISOWeek, format, getWeek, getYear, startOfISOWeek } from 'date-fns';
 
 @Injectable({
   providedIn: 'root',

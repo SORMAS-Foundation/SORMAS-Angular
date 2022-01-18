@@ -7,7 +7,6 @@ import {
   addYears,
   getWeek,
   getYear,
-  startOfISOWeek,
   format,
   startOfYear,
   differenceInDays,
@@ -26,7 +25,7 @@ import { RegionDto } from '../../../_models/models';
 import { RegionService } from '../../../_services/api/region.service';
 import { FilterService } from '../../../_services/filter.service';
 import { PERIOD_DATA } from './dashboard-filters-data';
-import {HelperService} from '../../../_services/helper.service';
+import { HelperService } from '../../../_services/helper.service';
 
 @Component({
   selector: 'app-dashboard-filters',
