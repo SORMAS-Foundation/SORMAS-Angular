@@ -1,0 +1,63 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+:host {
+  text-align: center;
+}
+
+.sample-details {
+  color: mat.get-color-from-palette($sormas-accent, 500);
+}
+
+.sample-status {
+  display: block;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.show-priority {
+  display: flex;
+  justify-content: space-between;
+}
+.timeline {
+  margin: 0.75rem 0;
+
+  .date {
+    margin: 0 0.5rem;
+  }
+}
+
+.assignee {
+  color: mat.get-color-from-palette($sormas-accent, 600);
+  font-size: 12px;
+
+  .mat-icon {
+    width: 14px;
+    height: 14px;
+    margin: 3px 6px 0 0;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.status-pending,
+.status-not_done {
+  color: mat.get-color-from-palette($sormas-alert, 300);
+}
+
+.status-indeterminate {
+  color: mat.get-color-from-palette($sormas-warning, 800);
+}
+
+.status-positive {
+  color: mat.get-color-from-palette($sormas-alert, 700);
+}
+
+.status-negative {
+  color: mat.get-color-from-palette($sormas-primary, 400);
+}

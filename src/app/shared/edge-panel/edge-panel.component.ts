@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import {
@@ -28,6 +28,8 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() actionLinkParams = {};
   @Input() cardWidth?: number;
   @Input() showCheckBoxFilter: boolean;
+
+  @Output() addItem: EventEmitter<any> = new EventEmitter();
 
   items: any[] = [];
   initialSize: number;
@@ -78,8 +80,7 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   }
 
   create(): void {
-    // eslint-disable-next-line no-console
-    console.log('open modal');
+    this.addItem.emit();
   }
 
   ngOnDestroy(): void {

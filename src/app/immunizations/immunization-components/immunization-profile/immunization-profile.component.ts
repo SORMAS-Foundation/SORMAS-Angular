@@ -1,11 +1,17 @@
 import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import * as data from './immunization-profile-form-data';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { BaseService } from '../../../_services/api/base.service';
-import { IMMUNIZATION_PROFILE_FORM_ID } from '../../../app.constants';
+import { ADD_MODAL_MAX_WIDTH, IMMUNIZATION_PROFILE_FORM_ID } from '../../../app.constants';
 import { ImmunizationDto } from '../../../_models/immunizationDto';
+import { SampleService } from '../../../_services/api/sample.service';
+import { ImmunizationAddComponent } from '../../immunization-add/immunization-add.component';
+import { VaccinationAddEditComponent } from '../../vaccination-add-edit/vaccination-add-edit.component';
+import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 
 @Component({
   selector: 'app-immunization-profile',
@@ -22,7 +28,12 @@ export class ImmunizationProfileComponent implements AfterViewInit, OnDestroy {
   subscriptions: Subscription[] = [];
   @ViewChild('form') dynamicForm: any;
 
-  constructor(private formElementControlService: FormElementControlService) {}
+  constructor(
+    private formElementControlService: FormElementControlService,
+    public sampleService: SampleService,
+    private dialog: MatDialog,
+    private translateService: TranslateService,
+  ) {}
 
   ngAfterViewInit(): void {
     const { form } = this.dynamicForm;
@@ -85,6 +96,24 @@ export class ImmunizationProfileComponent implements AfterViewInit, OnDestroy {
     this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
       immunizationItem,
       this.formData
+    );
+  }
+
+  addVaccination(): void {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('addImmunization'),
+        component: VaccinationAddEditComponent,
+      },
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
     );
   }
 

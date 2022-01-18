@@ -139,5 +139,7 @@
   "addImmunization": "Add new immunization",
   "managementImmunization": "Management",
   "overdueImmunization": "Overdue immunization",
-  "personalInformation": "Personal information"
+  "personalInformation": "Personal information",
+  "pregnancy": "Pregnancy",
+  "report": "Report"
 }

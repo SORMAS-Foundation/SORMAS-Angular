@@ -1,6 +1,19 @@
-<app-dynamic-form
-  #form
-  [formId]="formId"
-  [formElements]="myFormElements"
-  [resourceService]="resourceService"
-></app-dynamic-form>
+<app-sidebar>
+  <app-dynamic-form
+    #form
+    main
+    [formId]="formId"
+    [formElements]="myFormElements"
+    [resourceService]="resourceService"
+  ></app-dynamic-form>
+  <div aside>
+    <app-edge-panel
+      type="VACCINATION"
+      *ngIf="immunization"
+      [resourceService]="sampleService"
+      [scopeId]="'WXLOJN-O523NX-B4M2CQ-OMNOCI6Y'"
+      (addItem)="addVaccination()"
+      [cardCollapse]="true"
+    ></app-edge-panel>
+  </div>
+</app-sidebar>
