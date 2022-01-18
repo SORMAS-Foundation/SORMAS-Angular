@@ -254,5 +254,34 @@
         width: auto;
       }
     }
+
+    .compact {
+      .mat-checkbox .mat-checkbox-layout {
+        margin: 0;
+      }
+
+      .mat-radio-group {
+        .mat-radio-button {
+          line-height: unset;
+        }
+
+        .mat-radio-container {
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+
+        .mat-radio-label-content {
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+      }
+    }
+
+    .font-normal {
+      .mat-checkbox .mat-checkbox-label,
+      .mat-radio-group .mat-radio-button {
+        font-weight: normal;
+      }
+    }
   }
 }

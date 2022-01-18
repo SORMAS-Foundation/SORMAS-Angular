@@ -126,168 +126,6 @@ app.use('', (req, res, next) => {
 });
 
 // app.use('/sormas-rest/lineListing/enabled', (req, res) => {
-//   res.status(200).send({
-//     active: true,
-//     address: {
-//       creationDate: 1618404250675,
-//       changeDate: 1618404250675,
-//       uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
-//     },
-//     person: {
-//       pseudonymized: false,
-//       uuid: 'Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI',
-//       firstName: 'Smoke3',
-//       lastName: 'Test3',
-//       ageAndBirthDate: {
-//         dateOfBirthDD: 23,
-//         dateOfBirthMM: 4,
-//         dateOfBirthYYYY: 1992,
-//         age: 29,
-//         ageType: 'YEARS',
-//       },
-//       sex: 'OTHER',
-//       district: 'LK Uckermark',
-//       street: 'Sarmisegetuza',
-//       houseNumber: '21',
-//       postalCode: '400592',
-//       city: 'Cluj-Napoca',
-//       phone: '+40744373681',
-//       emailAddress: null,
-//       changeDate: 1628038802556,
-//       inJurisdiction: true,
-//     },
-//     changeDate: 1618404250675,
-//     creationDate: 1618404250675,
-//     pseudonymized: false,
-//     uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
-//     changeDate: 1633329099202,
-//     creationDate: 1618404250675,
-//     firstName: 'adam',
-//     userEmail: 'adamholger@gmail.com',
-//     phone: '+40746658799',
-//     hasConsentedToGdpr: false,
-//     language: 'EN',
-//     lastName: 'Holger',
-//     name: 'ad min',
-//     userName: 'admin',
-//     userRoles: ['NATIONAL_USER', 'ADMIN'],
-//     0: 'NATIONAL_USER',
-//     1: 'ADMIN',
-//     uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
-//   });
-// });
-//
-// app.use('/sormas-rest/immunizations/SAWKKV-NPMRN7-JLIC65-EMOBKCSE', (req, res) => {
-//   res.status(200).send({
-//     active: true,
-//     address: {
-//       creationDate: 1618404250675,
-//       changeDate: 1618404250675,
-//       uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
-//     },
-//     person: {
-//       pseudonymized: false,
-//       uuid: 'Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI',
-//       firstName: 'Smoke3',
-//       lastName: 'Test3',
-//       ageAndBirthDate: {
-//         dateOfBirthDD: 23,
-//         dateOfBirthMM: 4,
-//         dateOfBirthYYYY: 1992,
-//         age: 29,
-//         ageType: 'YEARS',
-//       },
-//       sex: 'OTHER',
-//       district: 'LK Uckermark',
-//       street: 'Sarmisegetuza',
-//       houseNumber: '21',
-//       postalCode: '400592',
-//       city: 'Cluj-Napoca',
-//       phone: '+40744373681',
-//       emailAddress: null,
-//       changeDate: 1628038802556,
-//       inJurisdiction: true,
-//     },
-//     changeDate: 1618404250675,
-//     creationDate: 1618404250675,
-//     pseudonymized: false,
-//     uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
-//     changeDate: 1633329099202,
-//     creationDate: 1618404250675,
-//     firstName: 'adam',
-//     userEmail: 'adamholger@gmail.com',
-//     phone: '+40746658799',
-//     hasConsentedToGdpr: false,
-//     language: 'EN',
-//     lastName: 'Holger',
-//     name: 'ad min',
-//     userName: 'admin',
-//     userRoles: ['NATIONAL_USER', 'ADMIN'],
-//     0: 'NATIONAL_USER',
-//     1: 'ADMIN',
-//     uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
-//   });
-// });
-//
-// app.use('/sormas-rest/regions/indexList', (req, res) => {
-//   res.status(200).send([]);
-// });
-//
-// app.use('/sormas-rest/lineListing/indexList', (req, res) => {
-//   res.status(200).send([]);
-// });
-//
-// app.use('/sormas-rest/users/S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U', (req, res) => {
-//   res.status(200).send({
-//     active: true,
-//     address: {
-//       creationDate: 1618404250675,
-//       changeDate: 1618404250675,
-//       uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
-//     },
-//     changeDate: 1618404250675,
-//     creationDate: 1618404250675,
-//     pseudonymized: false,
-//     uuid: 'TB7SZV-QIGJK3-DOL4QT-HSCECNDE',
-//     changeDate: 1633329099202,
-//     creationDate: 1618404250675,
-//     firstName: 'adam',
-//     userEmail: 'adamholger@gmail.com',
-//     phone: '+40746658799',
-//     hasConsentedToGdpr: false,
-//     language: 'EN',
-//     lastName: 'Holger',
-//     name: 'ad min',
-//     userName: 'admin',
-//     userRoles: ['NATIONAL_USER', 'ADMIN'],
-//     0: 'NATIONAL_USER',
-//     1: 'ADMIN',
-//     uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
-//   });
-// });
-//
-// app.use('/sormas-rest/dashboard/newCases', (req, res) => {
-//   res.status(200).send({
-//     caseCount: 328,
-//     caseNotClassifiedCount: 120,
-//     caseSuspectCount: 37,
-//     caseProbableCount: 45,
-//     caseConfirmedCount: 103,
-//     caseConfirmedAsymptomaticCount: 78,
-//     caseConfirmedUnkownSymptomsCount: 25,
-//     notCaseCount: 23,
-//     outbreakDistictCount: 3,
-//     casesInQuarantineCount: 165,
-//     casesPlacedInQuarantineCount: 120,
-//     casesResultFromContactsCount: 17,
-//     casesWithReferenceFulfilledCount: 79,
-//     lastReportedDistrictName: 'SK Berlin Charlottenbourg-Wilmersdorf',
-//     fatalities: 3,
-//     fatalitiesPercent: '0.2%',
-//   });
-// });
-
-// app.use('/sormas-rest/lineListing/enabled', (req, res) => {
 //   res.status(200).send([
 //     {
 //       disease: 'ANTHRAX',
@@ -386,175 +224,77 @@ app.use('', (req, res, next) => {
 //   ]);
 // });
 
-// app.use('/sormas-rest/contacts/QN3NKC-XLHWN6-LEH2NF-ZXRQKHOM', (req, res) => {
-//   let total = 1000;
-//
-//   const arrayTmp = [];
-//   let offset = 0;
-//
-//   if (req.body.sortProperties && !req.body.sortProperties[0].ascending) {
-//     offset = 1000;
-//   }
-//
-//   if (req.body.filter) {
-//     total = 50;
-//   }
-//
-//   for (
-//     var i = parseInt(req.query.offset);
-//     i < parseInt(req.query.offset) + parseInt(req.query.size);
-//     i++
-//   ) {
-//     arrayTmp.push({
-//       uuid: 'T79TR5-YVTX26-CHL6D7-Z2UPKIHI',
-//       involvementDescription: 'Description etc',
-//       resultingCase: {
-//         uuid: 'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI',
-//       },
-//       event: {
-//         uuid: 'TFI3ZL-VSSLDP-QUNMND-VOYFSL7Y',
-//       },
-//       person: {
-//         pseudonymized: false,
-//         uuid: 'Q7D3RP-YVTX26-CHL6D7-Z2UPKIHI',
-//         firstName: 'Smoke3',
-//         lastName: 'Test3',
-//         ageAndBirthDate: {
-//           dateOfBirthDD: 23,
-//           dateOfBirthMM: 4,
-//           dateOfBirthYYYY: 1992,
-//           age: 29,
-//           ageType: 'YEARS',
-//         },
-//         sex: 'OTHER',
-//         district: 'LK Uckermark',
-//         street: 'Sarmisegetuza',
-//         houseNumber: '21',
-//         postalCode: '400592',
-//         city: 'Cluj-Napoca',
-//         phone: '+40744373681',
-//         emailAddress: null,
-//         changeDate: 1628038802556,
-//         inJurisdiction: true,
-//       },
-//     });
-//   }
-//
-//   res.status(200).send({
-//     pseudonymized: false,
-//     uuid: 'RK6G25-W6PUTA-67PZN5-XW4KSMT4',
-//     firstName: 'John',
-//     lastName: 'Smith',
-//     caze: {
-//       uuid: 'WXKKDI-W5LSJ2-YWK5SP-U7ZH2MQI',
-//       caption: 'xxx',
-//       firstName: 'x',
-//       lastName: 'y',
-//     },
-//     person: {
-//       firstName: 'John',
-//       lastName: 'Smith',
-//     },
-//     disease: 'CORONAVIRUS',
-//     diseaseDetails: null,
-//     lastContactDate: null,
-//     contactProximity: null,
-//     contactClassification: 'UNCONFIRMED',
-//     contactStatus: 'ACTIVE',
-//     completeness: null,
-//     followUpStatus: 'FOLLOW_UP',
-//     followUpUntil: 1620943200000,
-//     symptomJournalStatus: 'UNREGISTERED',
-//     vaccination: null,
-//     districtUuid: null,
-//     contactOfficerUuid: null,
-//     reportDateTime: 1619787324690,
-//     contactCategory: null,
-//     caseClassification: 'SUSPECT',
-//     visitCount: 0,
-//     externalID: null,
-//     externalToken: null,
-//     internalToken: null,
-//     regionName: null,
-//     districtName: null,
-//     caseRegionName: null,
-//     caseDistrictName: null,
-//     inJurisdiction: true,
-//     caseInJurisdiction: true,
-//   });
-// });
-//
-// app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
-//   res.status(200).send([
-//     {
-//       creationDate: 1617959309689,
-//       changeDate: 1617872909689,
-//       uuid: 'RK6G25-W6PUTA-67PZN5-XW4KSMT4',
-//       sample: { uuid: 'Q4URIL-TZKR6G-M6G6LG-KBNKSML4', caption: 'caption for sample' },
-//       testDateTime: 1617872909689,
-//       haemoglobinuria: 'NEGATIVE',
-//       proteinuria: 'POSITIVE',
-//       hematuria: 'INDETERMINATE',
-//       arterialVenousGasPH: 1,
-//       arterialVenousGasPco2: 2,
-//       arterialVenousGasPao2: 3,
-//       arterialVenousGasHco3: 4,
-//       gasOxygenTherapy: 5,
-//       altSgpt: 6,
-//       astSgot: 7,
-//       creatinine: 8,
-//       potassium: 9,
-//       urea: 10,
-//       haemoglobin: 20,
-//       totalBilirubin: 30,
-//       conjBilirubin: 40,
-//       wbcCount: 50,
-//       platelets: 60,
-//       prothrombinTime: 70,
-//       otherTestResults: 80,
-//     },
-//   ]);
-// });
-//
-// app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
-//   const result = {
-//     elements: [
-//       {
-//         uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
-//         uploadingUser: {
-//           uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
-//         },
-//         name: 'case_template5.docx',
-//         path: 'https://test.com/doc.docx',
-//         workflow: 'QUARANTINE_ORDER_CASE',
-//       },
-//       {
-//         uuid: 'CVN34S-H78QWE-WER678-T56NVGG',
-//         uploadingUser: {
-//           uuid: 'R7ZT62-2X3UQL-X3JFGK-5537SNWM',
-//         },
-//         name: 'ExampleTemplateMicrosoftWord.docx',
-//         path: 'https://test.com/doc.docx',
-//         workflow: 'QUARANTINE_ORDER_CASE',
-//       },
-//       {
-//         uuid: 'BCDSG9-QWER35-WER568-ERRYEDV',
-//         uploadingUser: {
-//           uuid: 'R73ITB-GJ3JN3-FEMDYC-SZJMSOFQ',
-//         },
-//         name: 'VorlagePositivbescheiningung.docx',
-//         path: 'https://test.com/doc.docx',
-//         workflow: 'QUARANTINE_ORDER_CONTACT',
-//       },
-//     ],
-//     pageNumber: 0,
-//     size: 8,
-//     totalElementCount: 3,
-//     hasNext: false,
-//   };
-//
-//   res.status(200).send(result);
-// });
+app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
+  res.status(200).send([
+    {
+      creationDate: 1617959309689,
+      changeDate: 1617872909689,
+      uuid: 'RK6G25-W6PUTA-67PZN5-XW4KSMT4',
+      sample: { uuid: 'Q4URIL-TZKR6G-M6G6LG-KBNKSML4', caption: 'caption for sample' },
+      testDateTime: 1617872909689,
+      haemoglobinuria: 'NEGATIVE',
+      proteinuria: 'POSITIVE',
+      hematuria: 'INDETERMINATE',
+      arterialVenousGasPH: 1,
+      arterialVenousGasPco2: 2,
+      arterialVenousGasPao2: 3,
+      arterialVenousGasHco3: 4,
+      gasOxygenTherapy: 5,
+      altSgpt: 6,
+      astSgot: 7,
+      creatinine: 8,
+      potassium: 9,
+      urea: 10,
+      haemoglobin: 20,
+      totalBilirubin: 30,
+      conjBilirubin: 40,
+      wbcCount: 50,
+      platelets: 60,
+      prothrombinTime: 70,
+      otherTestResults: 80,
+    },
+  ]);
+});
+
+app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
+  const result = {
+    elements: [
+      {
+        uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+        uploadingUser: {
+          uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
+        },
+        name: 'case_template5.docx',
+        path: 'https://test.com/doc.docx',
+        workflow: 'QUARANTINE_ORDER_CASE',
+      },
+      {
+        uuid: 'CVN34S-H78QWE-WER678-T56NVGG',
+        uploadingUser: {
+          uuid: 'R7ZT62-2X3UQL-X3JFGK-5537SNWM',
+        },
+        name: 'ExampleTemplateMicrosoftWord.docx',
+        path: 'https://test.com/doc.docx',
+        workflow: 'QUARANTINE_ORDER_CASE',
+      },
+      {
+        uuid: 'BCDSG9-QWER35-WER568-ERRYEDV',
+        uploadingUser: {
+          uuid: 'R73ITB-GJ3JN3-FEMDYC-SZJMSOFQ',
+        },
+        name: 'VorlagePositivbescheiningung.docx',
+        path: 'https://test.com/doc.docx',
+        workflow: 'QUARANTINE_ORDER_CONTACT',
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  };
+
+  res.status(200).send(result);
+});
 
 // app.use('/sormas-rest/listings/indexList', (req, res) => {
 //   if (req.body.criteria.disease) {

@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { DashboardCaseMapComponent } from './dashboard-case-map.component';
+import { MapLegendComponent } from './map-legend.component';
 
-describe('DashboardCaseMapComponent', () => {
-  let component: DashboardCaseMapComponent;
-  let fixture: ComponentFixture<DashboardCaseMapComponent>;
+describe('MapLegendComponent', () => {
+  let component: MapLegendComponent;
+  let fixture: ComponentFixture<MapLegendComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DashboardCaseMapComponent],
+      declarations: [MapLegendComponent],
       imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardCaseMapComponent);
+    fixture = TestBed.createComponent(MapLegendComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

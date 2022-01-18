@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Filter } from '../../../_models/common';
-import { DashboardNewEventsService } from '../../../_services/api/dashboard-new-events-service';
+import { DashboardNewEventsService } from '../../../_services/api/dashboard-new-events.service';
 import { FilterService } from '../../../_services/filter.service';
 import { NotificationService } from '../../../_services/notification.service';
 

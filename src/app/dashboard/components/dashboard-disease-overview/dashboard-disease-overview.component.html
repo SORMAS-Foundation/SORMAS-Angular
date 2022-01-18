@@ -1,10 +1,10 @@
 <section>
   <h2>
     {{ 'dashboardDiseaseOverview' | translate }}
-    <app-toggle-view #view></app-toggle-view>
+    <app-toggle-view (selection)="onViewChange($event)"></app-toggle-view>
   </h2>
 
-  <div *ngIf="view.value === viewOptions.PRIMARY" class="overview-disease-list">
+  <div *ngIf="viewMode === viewOptions.PRIMARY" class="overview-disease-list">
     <app-card-list
       *ngIf="data?.length"
       [data]="data"
@@ -13,7 +13,7 @@
     ></app-card-list>
   </div>
 
-  <div *ngIf="view.value === viewOptions.SECONDARY" class="overview-disease-table">
+  <div *ngIf="viewMode === viewOptions.SECONDARY" class="overview-disease-table">
     <app-table-static
       [data]="data"
       [tableColumns]="columnDefs"

@@ -1,0 +1,89 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.legend {
+  display: grid;
+  grid-template-columns: min-content auto;
+  padding: 16px;
+  margin: 0;
+}
+
+dd,
+dt {
+  padding: 8px 0;
+  border-bottom: 1px solid mat.get-color-from-palette($sormas-primary, 200);
+}
+
+dt {
+  font-size: 10px;
+  padding-right: 16px;
+}
+
+dd {
+  margin: 0;
+  font-size: 12px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 16px;
+  }
+
+  li {
+    margin: 0;
+  }
+}
+
+.mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
+.facility-not-classified,
+.cases-not-classified,
+.events-dropped,
+.contacts-unconfirmed {
+  color: mat.get-color-from-palette($sormas-accent, 500);
+}
+
+.facility-suspect,
+.cases-suspect {
+  color: mat.get-color-from-palette($sormas-alert, 200);
+}
+
+.facility-probable,
+.cases-probable,
+.districts-medium {
+  color: mat.get-color-from-palette($sormas-warning, 700);
+}
+
+.facility-confirmed,
+.cases-confirmed,
+.events-cluster,
+.contacts-confirmed {
+  color: mat.get-color-from-palette($sormas-alert, 700);
+}
+
+.events-signal,
+.districts-high {
+  color: mat.get-color-from-palette($sormas-alert, 300);
+}
+
+.events-event {
+  color: mat.get-color-from-palette($sormas-warning, 600);
+}
+
+.events-screening,
+.contacts-not-contact {
+  color: mat.get-color-from-palette($sormas-primary, 500);
+}
+
+.districts-low {
+  color: mat.get-color-from-palette($sormas-warning, 400);
+}
