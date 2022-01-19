@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { DateCardType } from '../../../_constants/enums';
-import { SampleDto } from '../../../_models/sampleDto';
 
 @Component({
   selector: 'app-card-vaccination',
@@ -8,6 +7,6 @@ import { SampleDto } from '../../../_models/sampleDto';
   styleUrls: ['./card-vaccination.component.scss'],
 })
 export class CardVaccinationComponent {
-  @Input() data: SampleDto;
+  @Input() data: any;
   dateCardType = DateCardType;
 }

@@ -5,59 +5,37 @@
   text-align: center;
 }
 
-.sample-details {
-  color: mat.get-color-from-palette($sormas-accent, 500);
-}
-
-.sample-status {
-  display: block;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.show-priority {
-  display: flex;
-  justify-content: space-between;
-}
-.timeline {
-  margin: 0.75rem 0;
-
-  .date {
-    margin: 0 0.5rem;
-  }
-}
-
-.assignee {
-  color: mat.get-color-from-palette($sormas-accent, 600);
-  font-size: 12px;
-
-  .mat-icon {
-    width: 14px;
-    height: 14px;
-    margin: 3px 6px 0 0;
-    font-size: 14px;
-    vertical-align: top;
+.card-vaccination {
+  .vaccine-name {
+    font-size: 16px;
+    text-align: left;
+    color: mat.get-color-from-palette($sormas-accent, 800);
+    font-weight: 500;
   }
 
-  span {
-    display: inline-block;
-    vertical-align: top;
+  .vaccine-manufacturer {
+    text-align: center;
+    color: mat.get-color-from-palette($sormas-accent, 900);
+    font-weight: 500;
   }
-}
 
-.status-pending,
-.status-not_done {
-  color: mat.get-color-from-palette($sormas-alert, 300);
-}
+  .middle {
+    overflow: hidden;
 
-.status-indeterminate {
-  color: mat.get-color-from-palette($sormas-warning, 800);
-}
+    > p {
+      color: mat.get-color-from-palette($sormas-primary, A700);
+      float: left;
+    }
 
-.status-positive {
-  color: mat.get-color-from-palette($sormas-alert, 700);
-}
-
-.status-negative {
-  color: mat.get-color-from-palette($sormas-primary, 400);
+    .dose-number {
+      width: 25px;
+      height: 25px;
+      color: $white;
+      background: mat.get-color-from-palette($sormas-primary, 500);
+      font-size: 16px;
+      padding-top: 3px;
+      border-radius: 5px;
+      float: right;
+    }
+  }
 }

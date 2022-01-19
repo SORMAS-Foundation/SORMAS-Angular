@@ -59,8 +59,8 @@ export const PANEL_CONFIG = {
     titleDateFormat: 'd MMM h:mm aa',
   },
   VACCINATION: {
-    title: 'strings.headingAdditionalTests',
-    action: 'strings.headingNewTestResults',
+    title: 'captions.Immunization.vaccinations',
+    action: 'newVaccine',
     cardType: 'vaccination',
     cardTitleKey: 'creationDate',
     titleDateFormat: 'd MMM h:mm aa',

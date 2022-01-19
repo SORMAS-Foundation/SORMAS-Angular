@@ -28,6 +28,7 @@ export const FORM_DATA_EVENT_EDIT = [
         key: 'eventStatus',
         options: eventStatusOptions,
         dependingOn: 'eventStatusVisibleCheckbox',
+        validation: ['required'],
         newLine: true,
       },
       {

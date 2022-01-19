@@ -1,39 +1,10 @@
-<div *ngIf="data" class="card-sample">
-  <div class="sample-details">
-    <span [ngClass]="['sample-status', 'status-' + data.pathogenTestResult | lowercase]">
-      {{ data.pathogenTestResult | humanize }}
-    </span>
-    <strong *ngIf="!data.shipmentDate">Not shipped yet</strong>
-  </div>
-
-  <div class="timeline">
-    <app-date-card
-      *ngIf="data.shipmentDate && !data.receivedDate"
-      [date]="data.shipmentDate"
-      label="shipped"
-      [showYear]="false"
-      [appearance]="dateCardType.ACCENT"
-      class="date"
-    ></app-date-card>
-    <app-date-card
-      *ngIf="data.receivedDate"
-      [date]="data.receivedDate"
-      label="recieved"
-      [showYear]="false"
-      [appearance]="dateCardType.HIGHLIGHT"
-      class="date"
-    ></app-date-card>
-    <app-date-card
-      *ngIf="data.sampleDateTime"
-      [date]="data.sampleDateTime"
-      label="collected"
-      [showYear]="false"
-      class="date"
-    ></app-date-card>
-  </div>
-
-  <div class="assignee">
-    <mat-icon class="material-icons-round">perm_contact_calendar</mat-icon>
-    <span>{{ data.lab?.caption }}</span>
+<div *ngIf="data" class="card-vaccination">
+  <p class="vaccine-name">ULF7SS</p>
+  <p class="vaccine-manufacturer">Oxford–AstraZeneca COVID-19 vaccine</p>
+  <div class="middle">
+    <p>Viraler Vector</p>
+    <div class="dose-number">
+      2
+    </div>
   </div>
 </div>
