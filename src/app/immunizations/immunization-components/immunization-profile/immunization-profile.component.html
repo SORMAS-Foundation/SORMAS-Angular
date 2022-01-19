@@ -10,7 +10,7 @@
     <app-edge-panel
       type="VACCINATION"
       *ngIf="immunization"
-      [resourceService]="sampleService"
+      [resourceService]="vaccinationService"
       [scopeId]="'WXLOJN-O523NX-B4M2CQ-OMNOCI6Y'"
       (addItem)="addVaccination()"
       [cardCollapse]="true"

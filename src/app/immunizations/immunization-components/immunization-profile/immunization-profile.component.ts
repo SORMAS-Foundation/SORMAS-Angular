@@ -8,9 +8,9 @@ import { FormElementControlService } from '../../../_services/form-element-contr
 import { BaseService } from '../../../_services/api/base.service';
 import { ADD_MODAL_MAX_WIDTH, IMMUNIZATION_PROFILE_FORM_ID } from '../../../app.constants';
 import { ImmunizationDto } from '../../../_models/immunizationDto';
-import { SampleService } from '../../../_services/api/sample.service';
 import { VaccinationAddEditComponent } from '../../vaccination-add-edit/vaccination-add-edit.component';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
+import { VaccinationService } from '../../../_services/api/vaccination.service';
 
 @Component({
   selector: 'app-immunization-profile',
@@ -29,7 +29,7 @@ export class ImmunizationProfileComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private formElementControlService: FormElementControlService,
-    public sampleService: SampleService,
+    public vaccinationService: VaccinationService,
     private dialog: MatDialog,
     private translateService: TranslateService
   ) {}
