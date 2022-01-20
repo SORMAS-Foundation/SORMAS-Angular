@@ -7,6 +7,8 @@ import { CommunityService } from '../../../_services/api/community.service';
 import { ContinentService } from '../../../_services/api/continent.service';
 import { CountryService } from '../../../_services/api/country.service';
 import { DistrictService } from '../../../_services/api/district.service';
+import { EntryPointService } from '../../../_services/api/entry-point.service';
+import { FacilityService } from '../../../_services/api/facility.service';
 import { RegionService } from '../../../_services/api/region.service';
 import { SubcontinentService } from '../../../_services/api/subcontinent.service';
 import { FormActionsService } from '../../../_services/form-actions.service';
@@ -29,7 +31,9 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     public countryService: CountryService,
     public regionService: RegionService,
     public districtService: DistrictService,
-    public communityService: CommunityService
+    public communityService: CommunityService,
+    public entryPointService: EntryPointService,
+    public facilityService: FacilityService
   ) {
     super(formActionsService);
   }
