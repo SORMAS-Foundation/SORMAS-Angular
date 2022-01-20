@@ -10,15 +10,47 @@
  * Do not edit the class manually.
  */
 
+import { DistrictReferenceDto } from './districtReferenceDto';
+import { PersonReferenceDto } from './models';
+import { PointOfEntryReferenceDto } from './pointOfEntryReferenceDto';
+import { UserReferenceDto } from './userReferenceDto';
+
 export interface TravelEntryDto {
   uuid: string;
   externalId?: string;
-  firstName: string;
-  lastName: string;
-  district: string;
-  pointOfEntry: string;
+  responsibleRegion: string;
+  responsibleDistrict: DistrictReferenceDto;
+  responsibleCommunity: string;
+  pointOfEntryRegion: string;
+  pointOfEntryDistrict: DistrictReferenceDto;
+  person: PersonReferenceDto;
+  pointOfEntry: PointOfEntryReferenceDto;
+  pointOfEntryDetails: string;
   recovered: boolean;
   vaccinated: boolean;
   testedNegative: boolean;
+  reportingUser: UserReferenceDto;
+  reportDate: Date;
   quarantineEnd: Date;
+  disease: string;
+  diseaseVariant: string;
+  diseaseDetails: string;
+  diseaseVariantDetails: string;
+  quarantineHomePossible: boolean;
+  quarantineHomePossibleComment: string;
+  quarantineHomeSupplyEnsured: boolean;
+  quarantineHomeSupplyEnsuredComment: string;
+  quarantine: string;
+  quarantineFrom: Date;
+  quarantineTo: Date;
+  quarantineExtended: boolean;
+  quarantineReduced: boolean;
+  quarantineTypeDetails: string;
+  quarantineOrderedVerbally: boolean;
+  quarantineOrderedVerballyDate: Date;
+  quarantineOrderedOfficialDocument: boolean;
+  quarantineOrderedOfficialDocumentDate: Date;
+  quarantineOfficialOrderSent: boolean;
+  quarantineOfficialOrderSentDate: Date;
+  quarantineHelpNeeded: boolean;
 }

@@ -38,7 +38,7 @@ export const FORM_DATA_ENTRY_FILTERS = [
     ],
   },
   {
-    id: 'medical',
+    id: 'medicalAspects',
     title: 'headingMedicalAspects',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
@@ -56,6 +56,18 @@ export const FORM_DATA_ENTRY_FILTERS = [
         ...FORM_DATA_CHECKBOX,
         key: 'testedNegative',
         label: 'captions.travelEntryOnlyEntriesTestedNegative',
+      },
+    ],
+  },
+  {
+    id: 'adminAspects',
+    title: 'headingAdminAspect',
+    appearance: FormGroupStyleType.COLLAPSABLE,
+    fields: [
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'converted',
+        label: 'captions.travelEntryOnlyEntriesConvertedToCase',
       },
     ],
   },

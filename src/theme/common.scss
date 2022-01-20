@@ -398,3 +398,11 @@ strong {
     }
   }
 }
+
+// filter checkboxes
+.filters {
+  .mat-checkbox-layout {
+    display: -webkit-inline-box;
+    white-space: break-spaces;
+  }
+}

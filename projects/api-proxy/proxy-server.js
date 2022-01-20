@@ -262,10 +262,17 @@ app.use('/sormas-rest/travelentries/indexList', (req, res) => {
       {
         uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
         externalId: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
-        firstName: 'John',
-        lastName: 'Snow',
-        district: 'Bremen',
-        pointOfEntry: 'POI',
+        person: {
+          uuid: 'AQD5GY-FGRT34-WEMNJ4-TH34QWFG',
+          firstName: 'John',
+          lastName: 'Snow',
+        },
+        responsibleDistrict: {
+          caption: 'Bremen',
+        },
+        pointOfEntry: {
+          caption: 'Test',
+        },
         recovered: false,
         vaccinated: false,
         testedNegative: true,
@@ -274,10 +281,17 @@ app.use('/sormas-rest/travelentries/indexList', (req, res) => {
       {
         uuid: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
         externalId: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
-        firstName: 'John',
-        lastName: 'Snow',
-        district: 'Bremen',
-        pointOfEntry: 'POI',
+        person: {
+          uuid: 'AQD5GY-FGRT34-WEMNJ4-TH34QWFG',
+          firstName: 'John',
+          lastName: 'Snow',
+        },
+        responsibleDistrict: {
+          caption: 'Bremen',
+        },
+        pointOfEntry: {
+          caption: 'Test',
+        },
         recovered: false,
         vaccinated: false,
         testedNegative: true,
@@ -286,10 +300,17 @@ app.use('/sormas-rest/travelentries/indexList', (req, res) => {
       {
         uuid: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
         externalId: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
-        firstName: 'John',
-        lastName: 'Snow',
-        district: 'Bremen',
-        pointOfEntry: 'POI',
+        person: {
+          uuid: 'AQD5GY-FGRT34-WEMNJ4-TH34QWFG',
+          firstName: 'John',
+          lastName: 'Snow',
+        },
+        responsibleDistrict: {
+          caption: 'Bremen',
+        },
+        pointOfEntry: {
+          caption: 'Test',
+        },
         recovered: false,
         vaccinated: false,
         testedNegative: true,

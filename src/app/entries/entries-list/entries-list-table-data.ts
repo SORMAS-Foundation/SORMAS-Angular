@@ -19,22 +19,22 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'captions.TravelEntry.personFirstName',
-    dataKey: 'firstName',
+    dataKey: 'person.firstName',
     isSortable: true,
   },
   {
     name: 'captions.TravelEntry.personLastName',
-    dataKey: 'lastName',
+    dataKey: 'person.lastName',
     isSortable: true,
   },
   {
     name: 'captions.TravelEntry.homeDistrictName',
-    dataKey: 'district',
+    dataKey: 'responsibleDistrict.caption',
     isSortable: true,
   },
   {
     name: 'captions.TravelEntry.pointOfEntryName',
-    dataKey: 'pointOfEntry',
+    dataKey: 'pointOfEntry.caption',
     isSortable: true,
   },
   {
