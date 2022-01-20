@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ImmunizationProfileComponent } from './immunization-profile.component';
 
 describe('ImmunizationProfileComponent', () => {
@@ -11,7 +12,7 @@ describe('ImmunizationProfileComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ImmunizationProfileComponent],
-      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+      imports: [HttpClientTestingModule, MatDialogModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

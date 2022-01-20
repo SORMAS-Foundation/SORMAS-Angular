@@ -168,8 +168,16 @@
 
 <ng-template #immunization>
   <ul>
+    <li *ngIf="data.uuid">
+      <strong>{{ 'captions.Immunization.uuid' | translate }}:</strong>
+      {{ data.uuid }}
+    </li>
     <li *ngIf="data.disease">
-      {{ data.disease }}
+      <strong>{{ data.disease }}</strong>
+    </li>
+    <li *ngIf="data.reportingUser">
+      <strong>{{ 'captions.reportingUser' | translate }}:</strong>
+      {{ data.reportingUser.caption }}
     </li>
   </ul>
 </ng-template>

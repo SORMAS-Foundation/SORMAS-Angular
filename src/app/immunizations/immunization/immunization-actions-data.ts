@@ -4,12 +4,12 @@ import { ACTIONS_IMMUNIZATION_EDIT } from '../../_constants/actions';
 export const actionsEditDefs: NavItem[] = [
   {
     role: NavItemRole.ACTION,
-    name: 'archive',
+    name: 'captions.actionArchive',
     action: ACTIONS_IMMUNIZATION_EDIT.ARCHIVE,
   },
   {
     role: NavItemRole.ACTION,
-    name: 'delete',
+    name: 'captions.actionDelete',
     action: ACTIONS_IMMUNIZATION_EDIT.DELETE,
     className: 'warn',
   },

@@ -88,4 +88,8 @@ export class LineListingComponent implements OnInit {
     }
     return true;
   }
+
+  reloadData(): void {
+    this.ngOnInit();
+  }
 }

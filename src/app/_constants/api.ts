@@ -259,3 +259,11 @@ export const API_ROUTE_AGGREGATE_REPORTS = {
   ADD: 'aggregateReports/push',
   DELETE: 'aggregateReports/delete',
 };
+
+export const API_ROUTE_VACCINATIONS = {
+  ENDPOINT: 'vaccinations',
+  GET_ALL: 'vaccinations/indexList',
+  UPDATE: 'vaccinations/push',
+  ADD: 'vaccinations/push',
+  DELETE: 'vaccinations/delete',
+};

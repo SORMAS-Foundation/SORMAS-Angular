@@ -1,27 +1,26 @@
 import {
+  MeansOfImmunization,
   Disease,
+  ImmunizationManagementStatus,
+  ImmunizationStatus,
+  Sex,
+} from '../../_constants/enums';
+import {
   FORM_DATA_CHECKBOX,
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
-  FORM_DATA_RADIO,
   FORM_DATA_SELECT,
-  ImmunizationManagementStatus,
-  ImmunizationStatus,
-  MeansOfImmunization,
-  YesNoUnknown,
-} from '../../../app.constants';
-
-import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+} from '../../_constants/form-data';
+import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
-
 const meansOfImmunizationOptions = pipe.transform(MeansOfImmunization);
 const diseaseOptions = pipe.transform(Disease);
-const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 const immunizationManagementStatusOptions = pipe.transform(ImmunizationManagementStatus);
 const immunizationStatusOptions = pipe.transform(ImmunizationStatus);
+const optionsSex = pipe.transform(Sex);
 
-export const FORM_DATA_IMMUNIZATION_PROFILE = [
+export const FORM_DATA_IMMUNIZATION_ADD = [
   {
     id: 'immunizationData',
     title: 'immunizationData',
@@ -30,6 +29,14 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_DATE,
         key: 'reportDate',
         label: 'captions.Immunization.reportDate',
+        validation: ['required'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'disease',
+        newLine: true,
+        label: 'captions.Immunization.disease',
+        options: diseaseOptions,
         validation: ['required'],
       },
       {
@@ -46,6 +53,11 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         label: 'captions.Immunization.meansOfImmunizationDetails',
         dependingOn: 'meansOfImmunization',
         dependingOnValues: ['OTHER'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'numberOfDoses',
+        label: 'captions.Immunization.numberOfDoses',
       },
       {
         ...FORM_DATA_DATE,
@@ -72,22 +84,6 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
     ],
   },
   {
-    id: 'recovery',
-    title: 'strings.headingRecovery',
-    fields: [
-      {
-        ...FORM_DATA_DATE,
-        key: 'positiveTestResultDate',
-        label: 'captions.Immunization.positiveTestResultDate',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'recoveryDate',
-        label: 'captions.Immunization.recoveryDate',
-      },
-    ],
-  },
-  {
     id: 'externalData',
     title: 'externalData',
     fields: [
@@ -95,34 +91,6 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_INPUT,
         key: 'externalID',
         label: 'captions.Immunization.externalId',
-      },
-    ],
-  },
-  {
-    id: 'disease',
-    title: 'captions.Immunization.disease',
-    fields: [
-      {
-        ...FORM_DATA_SELECT,
-        key: 'disease',
-        label: 'captions.Immunization.disease',
-        options: diseaseOptions,
-        validation: ['required'],
-      },
-      {
-        ...FORM_DATA_RADIO,
-        key: 'previousInfection',
-        label: 'captions.Immunization.previousInfection',
-        options: optionsYesNoUnknown,
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'lastInfectionDate',
-        label: 'captions.Immunization.lastInfectionDate',
-        options: optionsYesNoUnknown,
-        dependingOn: 'previousInfection',
-        dependingOnValues: ['YES'],
       },
     ],
   },
@@ -173,6 +141,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         service: 'districtService',
         determinedBy: 'responsibleRegion.uuid',
         required: true,
+        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -182,6 +151,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         service: 'communityService',
         determinedBy: 'responsibleDistrict.uuid',
         required: true,
+        newLine: true,
       },
     ],
   },
@@ -204,6 +174,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_SELECT,
         key: 'facilityType',
         label: 'captions.facilityType',
+        newLine: true,
         options: [
           {
             key: 'default',
@@ -215,6 +186,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_SELECT,
         key: 'healthFacility',
         label: 'captions.Immunization.healthFacility',
+        newLine: true,
         options: [
           {
             key: 'default',
@@ -231,15 +203,76 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
     ],
   },
   {
-    id: 'country',
-    title: 'captions.country',
+    id: 'personalInformation',
+    title: 'personalInformation',
     fields: [
       {
+        ...FORM_DATA_INPUT,
+        key: 'firstName',
+        label: 'captions.firstName',
+        validation: ['required'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'lastName',
+        label: 'captions.lastName',
+        validation: ['required'],
+      },
+      {
         ...FORM_DATA_SELECT,
-        key: 'country.uuid',
-        label: 'captions.Immunization.country',
+        key: 'year',
+        label: 'captions.Person.birthdate',
+        placeholder: 'strings.year',
         options: [],
-        service: 'countryService',
+        className: 'size-small',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'month',
+        label: ' ',
+        placeholder: 'strings.month',
+        options: [],
+        className: 'size-small',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'day',
+        label: ' ',
+        placeholder: 'strings.day',
+        options: [],
+        className: 'size-small',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'sex',
+        label: 'captions.Person.sex',
+        options: optionsSex,
+        className: 'size-small',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'healthId',
+        label: 'captions.Person.nationalHealthId',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'passportNumber',
+        label: 'captions.Person.passportNumber',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'phoneNumber',
+        label: 'captions.Person.phone',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'email',
+        label: 'captions.Person.emailAddress',
       },
     ],
   },
