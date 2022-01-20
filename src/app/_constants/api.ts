@@ -72,6 +72,14 @@ export const API_ROUTE_SAMPLES = {
   DELETE: 'samples/delete',
 };
 
+export const API_ROUTE_TRAVEL_ENTRIES = {
+  ENDPOINT: 'travelentries',
+  GET_ALL: 'travelentries/indexList',
+  UPDATE: 'travelentries/update',
+  ADD: 'travelentries/add',
+  DELETE: 'travelentries/delete',
+};
+
 export const API_ROUTE_CONTACTS = {
   ENDPOINT: 'contacts',
   GET_ALL: 'contacts/indexList',

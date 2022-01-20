@@ -1,0 +1,22 @@
+<app-filters [topGap]="headerHeight">
+  <app-entries-filters [formId]="formIdFilters" [data]="filtersData" filters></app-entries-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title">
+        {{ 'strings.entityTravelEntries' | translate }}
+      </h1>
+    </div>
+
+    <app-table
+      [filterFormId]="formIdFilters"
+      [resourceService]="entryService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      showTotalContext="{{ 'strings.entityTravelEntries' | translate }}"
+    ></app-table>
+  </ng-container>
+</app-filters>
