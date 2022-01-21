@@ -18,7 +18,7 @@ export const FORM_DATA_ENTRY_FILTERS = [
     fields: [
       {
         ...FORM_DATA_SEARCHBOX,
-        key: 'IdLike',
+        key: 'nameUuidExternalIDLike',
         placeholder: 'strings.promptTravelEntrySearchField',
         className: 'fullwidth',
       },
@@ -44,17 +44,17 @@ export const FORM_DATA_ENTRY_FILTERS = [
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'recovered',
+        key: 'onlyRecoveredEntries',
         label: 'captions.travelEntryOnlyRecoveredEntries',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'vaccinated',
+        key: 'onlyVaccinatedEntries',
         label: 'captions.travelEntryOnlyVaccinatedEntries',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'testedNegative',
+        key: 'onlyEntriesTestedNegative',
         label: 'captions.travelEntryOnlyEntriesTestedNegative',
       },
     ],
@@ -66,7 +66,7 @@ export const FORM_DATA_ENTRY_FILTERS = [
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'converted',
+        key: 'onlyEntriesConvertedToCase',
         label: 'captions.travelEntryOnlyEntriesConvertedToCase',
       },
     ],
