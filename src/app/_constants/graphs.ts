@@ -20,6 +20,21 @@ export const DISEASES_COLORS_MAP = {
   UNSPECIFIED_VHF: '#b30000',
 };
 
+export const CASE_CLASIFICATION_COLORS_MAP = {
+  NOT_YET_CLASSIFIED: '#6D798C',
+  SUSPECT: '#fdd926',
+  PROBABLE: '#fda312',
+  CONFIRMED: '#d90000',
+  CONFIRMED_NO_SYMPTOMS: '#ff8080',
+  CONFIRMED_UNKNOWN_SYMPTOMS: '#800000',
+};
+
+export const PRESENT_CONDITION_COLORS_MAP = {
+  ALIVE: '#21d951',
+  DEAD: '#2b323d',
+  UNKNOWN: '#a1adbf',
+};
+
 export const CHART_SPLIT_LINE_COLOR = '#e1e8f2';
 export const CHART_SPLIT_LINE_WIDTH = 2;
 export const CHART_AXIS_LINE_COLOR = '#a6d8ff';

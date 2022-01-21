@@ -16,6 +16,7 @@ export const routesConfig: RouteItem[] = [
   { link: 'about', label: 'captions.mainMenuAbout', selectedLink: 'about' },
   { link: 'tasks/list', label: 'captions.mainMenuTasks', selectedLink: 'tasks' },
   { link: 'cases/list', label: 'captions.mainMenuCases', selectedLink: 'cases' },
+  { link: 'msers/list', label: 'captions.mainMenuAggregateReports', selectedLink: 'msers' },
   { link: 'events/list', label: 'captions.mainMenuEvents', selectedLink: 'events' },
   { link: 'contacts/list', label: 'captions.mainMenuContacts', selectedLink: 'contacts' },
   { link: 'samples/list', label: 'captions.mainMenuSamples', selectedLink: 'samples' },

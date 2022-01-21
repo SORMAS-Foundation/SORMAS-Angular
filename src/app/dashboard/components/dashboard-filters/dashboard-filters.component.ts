@@ -7,7 +7,6 @@ import {
   addYears,
   getWeek,
   getYear,
-  startOfISOWeek,
   format,
   startOfYear,
   differenceInDays,
@@ -26,6 +25,7 @@ import { RegionDto } from '../../../_models/models';
 import { RegionService } from '../../../_services/api/region.service';
 import { FilterService } from '../../../_services/filter.service';
 import { PERIOD_DATA } from './dashboard-filters-data';
+import { HelperService } from '../../../_services/helper.service';
 
 @Component({
   selector: 'app-dashboard-filters',
@@ -51,7 +51,11 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy, AfterViewIn
 
   subscriptions: Subscription[] = [];
 
-  constructor(private filterService: FilterService, private regionService: RegionService) {}
+  constructor(
+    private filterService: FilterService,
+    private regionService: RegionService,
+    private helperService: HelperService
+  ) {}
 
   ngAfterViewInit(): void {
     this.applyFilters();
@@ -164,24 +168,7 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy, AfterViewIn
   }
 
   generateWeekOptions(): void {
-    let today = new Date();
-    const lastYear = addYears(today, -1);
-    while (today > lastYear) {
-      const weekNumber = getWeek(today);
-      const start = startOfISOWeek(today);
-      const end = endOfISOWeek(today);
-      const year = getYear(end);
-      this.weekOptions.push({
-        key: `${weekNumber}-${year}`,
-        value: `Wk ${weekNumber}-${year} (${format(start, BRIEF_DATE_FORMAT)}-${format(
-          end,
-          BRIEF_DATE_FORMAT
-        )})`,
-        start,
-        end,
-      });
-      today = addDays(today, -7);
-    }
+    this.weekOptions = this.helperService.generateWeekOptions();
   }
 
   getDatesOfWeek(week: number, year: number): any {

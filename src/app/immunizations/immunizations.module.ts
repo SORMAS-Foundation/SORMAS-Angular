@@ -10,6 +10,8 @@ import { ImmunizationFiltersComponent } from './immunization-filters/immunizatio
 import { ImmunizationComponent } from './immunization/immunization.component';
 import { ImmunizationProfileComponent } from './immunization-components/immunization-profile/immunization-profile.component';
 import { ImmunizationPersonComponent } from './immunization-components/immunization-person/immunization-person.component';
+import { ImmunizationAddComponent } from './immunization-add/immunization-add.component';
+import { VaccinationAddEditComponent } from './vaccination-add-edit/vaccination-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ImmunizationPersonComponent } from './immunization-components/immunizat
     ImmunizationComponent,
     ImmunizationProfileComponent,
     ImmunizationPersonComponent,
+    ImmunizationAddComponent,
+    VaccinationAddEditComponent,
   ],
   imports: [
     CommonModule,

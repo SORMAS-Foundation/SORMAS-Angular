@@ -35,4 +35,5 @@ export type CardType =
   | 'sample_pathogen'
   | 'sample_additional'
   | 'disease'
+  | 'vaccination'
   | undefined;

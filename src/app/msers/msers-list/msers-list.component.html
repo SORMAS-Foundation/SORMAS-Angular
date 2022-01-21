@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1 class="page-header-title">{{ 'captions.View.aggregatereports' | translate }}</h1>
+  <div class="page-header-actions">
+    <button class="add-btn" mat-flat-button color="primary" (click)="openAddModal()">
+      {{ 'captions.aggregateReportNewAggregateReport' | translate }}
+    </button>
+  </div>
+</div>
+<div [style.padding.px]="24">
+  <app-table
+    [filterFormId]="formId"
+    [resourceService]="mserService"
+    [tableColumns]="defaultColumns"
+    [isSortable]="true"
+    [isHeaderSticky]="true"
+    [saveConfigKey]="configKey"
+    [appearance]="'minimal'"
+  ></app-table>
+</div>

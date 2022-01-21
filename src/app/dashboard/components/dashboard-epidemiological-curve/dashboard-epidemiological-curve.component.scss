@@ -1,1 +1,26 @@
-/* stylelint-disable */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-right: -8px;
+}
+
+h2 {
+  margin: 0 auto 0 0;
+}
+
+.graph {
+  min-height: 380px;
+}
+
+.actions {
+  padding-left: 32px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}

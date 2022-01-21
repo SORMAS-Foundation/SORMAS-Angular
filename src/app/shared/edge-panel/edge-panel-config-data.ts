@@ -58,4 +58,11 @@ export const PANEL_CONFIG = {
     cardTitleKey: 'creationDate',
     titleDateFormat: 'd MMM h:mm aa',
   },
+  VACCINATION: {
+    title: 'captions.Immunization.vaccinations',
+    action: 'newVaccine',
+    cardType: 'vaccination',
+    cardTitleKey: 'creationDate',
+    titleDateFormat: 'd MMM h:mm aa',
+  },
 };
