@@ -34,6 +34,11 @@ const routes: Routes = [
     canActivate: [Guard],
   },
   {
+    path: 'entries',
+    loadChildren: () => import('./entries/entries.module').then((m) => m.EntriesModule),
+    canActivate: [Guard],
+  },
+  {
     path: 'cases',
     loadChildren: () => import('./cases/cases.module').then((m) => m.CasesModule),
     canActivate: [Guard],

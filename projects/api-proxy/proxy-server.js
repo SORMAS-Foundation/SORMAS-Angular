@@ -256,6 +256,76 @@ app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   ]);
 });
 
+app.use('/sormas-rest/travelentries/indexList', (req, res) => {
+  const result = {
+    elements: [
+      {
+        uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+        externalId: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
+        person: {
+          uuid: 'AQD5GY-FGRT34-WEMNJ4-TH34QWFG',
+          firstName: 'John',
+          lastName: 'Snow',
+        },
+        responsibleDistrict: {
+          caption: 'Bremen',
+        },
+        pointOfEntry: {
+          caption: 'Test',
+        },
+        recovered: false,
+        vaccinated: false,
+        testedNegative: true,
+        quarantineEnd: 1617959309689,
+      },
+      {
+        uuid: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
+        externalId: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
+        person: {
+          uuid: 'AQD5GY-FGRT34-WEMNJ4-TH34QWFG',
+          firstName: 'John',
+          lastName: 'Snow',
+        },
+        responsibleDistrict: {
+          caption: 'Bremen',
+        },
+        pointOfEntry: {
+          caption: 'Test',
+        },
+        recovered: false,
+        vaccinated: false,
+        testedNegative: true,
+        quarantineEnd: 1617959309689,
+      },
+      {
+        uuid: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
+        externalId: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
+        person: {
+          uuid: 'AQD5GY-FGRT34-WEMNJ4-TH34QWFG',
+          firstName: 'John',
+          lastName: 'Snow',
+        },
+        responsibleDistrict: {
+          caption: 'Bremen',
+        },
+        pointOfEntry: {
+          caption: 'Test',
+        },
+        recovered: false,
+        vaccinated: false,
+        testedNegative: true,
+        quarantineEnd: 1617959309689,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  };
+
+  res.status(200).send(result);
+});
+
 app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
   const result = {
     elements: [
