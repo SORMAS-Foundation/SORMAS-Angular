@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Filter } from '../../../_models/common';
-import { DashboardTestResultsService } from '../../../_services/api/dashboard-test-results-service';
+import { DashboardTestResultsService } from '../../../_services/api/dashboard-test-results.service';
 import { FilterService } from '../../../_services/filter.service';
 import { NotificationService } from '../../../_services/notification.service';
 

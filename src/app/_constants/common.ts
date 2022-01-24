@@ -55,7 +55,8 @@ export type EdgePanelType =
   | 'CASE'
   | 'CONTACT'
   | 'PATHOGEN'
-  | 'ADDITIONAL';
+  | 'ADDITIONAL'
+  | 'VACCINATION';
 export const EDGE_PANEL_TYPE = {
   TASK: 'TASK' as EdgePanelType,
   SAMPLE: 'SAMPLE' as EdgePanelType,
@@ -65,6 +66,7 @@ export const EDGE_PANEL_TYPE = {
   CONTACT: 'CONTACT' as EdgePanelType,
   PATHOGEN: 'PATHOGEN' as EdgePanelType,
   ADDITIONAL: 'ADDITIONAL' as EdgePanelType,
+  VACCINATION: 'VACCINATION' as EdgePanelType,
 };
 
 // date format
@@ -74,6 +76,8 @@ export const MONTH_DATE_TEXT_FORMAT = 'MMM';
 export const HOUR_MINUTE_TIME_FORMAT = 'h:mm';
 export const BRIEF_DATE_FORMAT = 'M/d';
 export const COMMON_DATE_FORMAT = 'M/d/yyyy';
+export const MONTH_MEDIUM_DATE_FORMAT = 'MMM yyyy';
+export const WEEK_OF_YEAR_DATE_FORMAT = 'w-yyyy';
 
 export type ButtonType = 'STANDARD' | 'STROKED' | 'FLAT';
 export const BUTTON_TYPE = {

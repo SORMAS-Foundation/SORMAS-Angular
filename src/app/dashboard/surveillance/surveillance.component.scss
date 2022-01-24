@@ -31,6 +31,21 @@
   }
 }
 
+.epi-visuals {
+  display: flex;
+  gap: 16px;
+
+  .epi-curve,
+  .map {
+    flex: 1 1 50%;
+    max-width: calc(50% - 8px);
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
 @media (max-width: map-get($grid-breakpoints, lg)) {
   .dashboard-surveillance-wrapper {
     .width-40-mobile-100,
@@ -42,5 +57,9 @@
     .mr-16-mobile-0 {
       margin-right: 0;
     }
+  }
+
+  .epi-visuals {
+    display: block;
   }
 }

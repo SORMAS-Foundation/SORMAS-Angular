@@ -8,8 +8,19 @@
 
   :root {
     .mat-checkbox {
+      &.filter-checkbox {
+        .mat-checkbox-label {
+          font-weight: 400;
+        }
+
+        .mat-checkbox-inner-container {
+          margin-top: 4px;
+        }
+      }
+
       .mat-checkbox-layout {
         margin: 8px 0;
+        white-space: normal;
       }
 
       .mat-checkbox-label {

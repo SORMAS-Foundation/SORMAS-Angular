@@ -72,6 +72,14 @@ export const API_ROUTE_SAMPLES = {
   DELETE: 'samples/delete',
 };
 
+export const API_ROUTE_TRAVEL_ENTRIES = {
+  ENDPOINT: 'travelentries',
+  GET_ALL: 'travelentries/indexList',
+  UPDATE: 'travelentries/update',
+  ADD: 'travelentries/add',
+  DELETE: 'travelentries/delete',
+};
+
 export const API_ROUTE_CONTACTS = {
   ENDPOINT: 'contacts',
   GET_ALL: 'contacts/indexList',
@@ -127,17 +135,17 @@ export const API_ROUTE_COUNTRIES = {
 };
 
 export const API_ROUTE_DASHBOARD_NEW_CASES = {
-  ENDPOINT: 'dashboard/newCases',
-  GET_ALL: 'dashboard/newCases/indexList',
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/newCases',
 };
 
 export const API_ROUTE_DASHBOARD_NEW_EVENTS = {
-  ENDPOINT: 'dashboard/newEvents',
+  ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/newEvents',
 };
 
 export const API_ROUTE_DASHBOARD_TEST_RESULTS = {
-  ENDPOINT: 'dashboard/testResults',
+  ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/testResults',
 };
 
@@ -229,6 +237,16 @@ export const API_ROUTE_EVENT_GROUPS = {
   DELETE: 'eventGroups/delete',
 };
 
+export const API_ROUTE_EPI_DATA_CASE_CLASSIFICATION = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/epiCurveDataPerCaseClassification',
+};
+
+export const API_ROUTE_EPI_DATA_PRESENT_CONDITION = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/epiCurveDataPerPresentCondition',
+};
+
 export const API_ROUTE_DISEASE_BURDEN = {
   ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/diseaseBurden',
@@ -240,4 +258,20 @@ export const API_ROUTE_IMMUNIZATIONS = {
   UPDATE: 'immunizations/push',
   ADD: 'immunizations/push',
   DELETE: 'immunizations/delete',
+};
+
+export const API_ROUTE_AGGREGATE_REPORTS = {
+  ENDPOINT: 'aggregateReports',
+  GET_ALL: 'aggregateReports/indexList',
+  UPDATE: 'aggregateReports/push',
+  ADD: 'aggregateReports/push',
+  DELETE: 'aggregateReports/delete',
+};
+
+export const API_ROUTE_VACCINATIONS = {
+  ENDPOINT: 'vaccinations',
+  GET_ALL: 'vaccinations/indexList',
+  UPDATE: 'vaccinations/push',
+  ADD: 'vaccinations/push',
+  DELETE: 'vaccinations/delete',
 };

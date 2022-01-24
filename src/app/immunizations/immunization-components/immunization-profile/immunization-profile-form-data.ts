@@ -1,9 +1,12 @@
 import {
   Disease,
+  FORM_DATA_CHECKBOX,
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
+  ImmunizationManagementStatus,
+  ImmunizationStatus,
   MeansOfImmunization,
   YesNoUnknown,
 } from '../../../app.constants';
@@ -15,6 +18,8 @@ const pipe = new EnumToKeyValuePipe();
 const meansOfImmunizationOptions = pipe.transform(MeansOfImmunization);
 const diseaseOptions = pipe.transform(Disease);
 const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
+const immunizationManagementStatusOptions = pipe.transform(ImmunizationManagementStatus);
+const immunizationStatusOptions = pipe.transform(ImmunizationStatus);
 
 export const FORM_DATA_IMMUNIZATION_PROFILE = [
   {
@@ -34,6 +39,13 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         options: meansOfImmunizationOptions,
         validation: ['required'],
         newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'additionalDetails',
+        label: 'captions.Immunization.meansOfImmunizationDetails',
+        dependingOn: 'meansOfImmunization',
+        dependingOnValues: ['OTHER'],
       },
       {
         ...FORM_DATA_DATE,
@@ -109,6 +121,34 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         key: 'lastInfectionDate',
         label: 'captions.Immunization.lastInfectionDate',
         options: optionsYesNoUnknown,
+        dependingOn: 'previousInfection',
+        dependingOnValues: ['YES'],
+      },
+    ],
+  },
+  {
+    id: 'managementImmunization',
+    title: 'managementImmunization',
+    fields: [
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'immunizationManagementOverwrite',
+        label: 'captions.Immunization.overwriteImmunizationManagementStatus',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'immunizationManagementStatus',
+        label: 'captions.Immunization.immunizationManagementStatus',
+        options: immunizationManagementStatusOptions,
+        disabled: true,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'immunizationStatus',
+        label: 'captions.Immunization.immunizationStatus',
+        disabled: true,
+        options: immunizationStatusOptions,
       },
     ],
   },

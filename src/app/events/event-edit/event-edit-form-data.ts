@@ -25,9 +25,10 @@ export const FORM_DATA_EVENT_EDIT = [
       },
       {
         ...FORM_DATA_RADIO,
-        key: 'eventStatus',
+        key: 'eventStatus.tt',
         options: eventStatusOptions,
         dependingOn: 'eventStatusVisibleCheckbox',
+        validation: ['required'],
         newLine: true,
       },
       {

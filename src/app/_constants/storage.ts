@@ -5,3 +5,5 @@ export const CONFIG_SAMPLES = 'configSamples';
 export const CONFIG_PERSONS = 'configPersons';
 export const CONFIG_USERS = 'configUsers';
 export const CONFIG_IMMUNIZATIONS = 'configImmunizations';
+export const CONFIG_ENTRIES = 'configEntries';
+export const CONFIG_MSERS = 'configMsers';

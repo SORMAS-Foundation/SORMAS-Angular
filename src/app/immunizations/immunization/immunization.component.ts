@@ -13,12 +13,12 @@ const immunizationLinks = (immunizationId: string): EntityLink[] => {
   return [
     {
       link: `/immunizations/immunization/${immunizationId}/profile`,
-      title: 'Immunization',
+      title: 'strings.entityImmunization',
       showFormActions: true,
     },
     {
       link: `/immunizations/immunization/${immunizationId}/person`,
-      title: 'Immunization person',
+      title: 'immunizationPerson',
       showFormActions: true,
     },
   ];

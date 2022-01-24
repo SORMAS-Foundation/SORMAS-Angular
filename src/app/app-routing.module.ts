@@ -34,6 +34,11 @@ const routes: Routes = [
     canActivate: [Guard],
   },
   {
+    path: 'entries',
+    loadChildren: () => import('./entries/entries.module').then((m) => m.EntriesModule),
+    canActivate: [Guard],
+  },
+  {
     path: 'cases',
     loadChildren: () => import('./cases/cases.module').then((m) => m.CasesModule),
     canActivate: [Guard],
@@ -74,6 +79,11 @@ const routes: Routes = [
   {
     path: 'stats',
     loadChildren: () => import('./stats/stats.module').then((m) => m.StatsModule),
+    canActivate: [Guard],
+  },
+  {
+    path: 'msers',
+    loadChildren: () => import('./msers/msers.module').then((m) => m.MsersModule),
     canActivate: [Guard],
   },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },

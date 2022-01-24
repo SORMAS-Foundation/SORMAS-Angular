@@ -1,6 +1,8 @@
 <div [formGroup]="group">
   <mat-checkbox
     color="primary"
+    [ngClass]="{'filter-checkbox' : config.className}"
+    class="light-font"
     (change)="onChange()"
     [formControlName]="config.key"
     *ngIf="!config.options.length"

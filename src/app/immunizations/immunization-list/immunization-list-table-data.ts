@@ -15,17 +15,23 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'captions.Immunization.personUuid',
-    dataKey: 'person.uui',
+    dataKey: 'personUuid',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.LINK,
+      pattern: '/persons/person/$param1',
+      params: ['personUuid'],
+      truncate: 6,
+    },
   },
   {
     name: 'captions.Immunization.personFirstName',
-    dataKey: 'person.firstName',
+    dataKey: 'personFirstName',
     isSortable: true,
   },
   {
     name: 'captions.Immunization.personLastName',
-    dataKey: 'person.lastName',
+    dataKey: 'personLastName',
     isSortable: true,
   },
   {
@@ -67,15 +73,32 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.Immunization.startDate',
     dataKey: 'startDate',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
   },
   {
     name: 'captions.Immunization.endDate',
     dataKey: 'endDate',
+    isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
+  },
+  {
+    name: 'captions.Immunization.lastVaccineType',
+    dataKey: 'lastVaccineType',
     isSortable: true,
   },
   {
     name: 'captions.Immunization.recoveryDate',
     dataKey: 'recoveryDate',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
   },
 ];

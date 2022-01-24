@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+:host {
+  text-align: center;
+}
+
+.card-vaccination {
+  .vaccine-name {
+    font-size: 16px;
+    text-align: left;
+    color: mat.get-color-from-palette($sormas-accent, 800);
+    font-weight: 500;
+  }
+
+  .vaccine-manufacturer {
+    text-align: center;
+    color: mat.get-color-from-palette($sormas-accent, 900);
+    font-weight: 500;
+  }
+
+  .middle {
+    overflow: hidden;
+
+    > p {
+      color: mat.get-color-from-palette($sormas-primary, A700);
+      float: left;
+    }
+
+    .dose-number {
+      width: 25px;
+      height: 25px;
+      color: $white;
+      background: mat.get-color-from-palette($sormas-primary, 500);
+      font-size: 16px;
+      padding-top: 3px;
+      border-radius: 5px;
+      float: right;
+    }
+  }
+}

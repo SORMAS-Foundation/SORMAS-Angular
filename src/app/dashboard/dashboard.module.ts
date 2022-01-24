@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
@@ -22,6 +24,9 @@ import { DashboardVisitsComponent } from './components/dashboard-visits/dashboar
 import { DashboardContactStatsComponent } from './components/dashboard-contact-stats/dashboard-contact-stats.component';
 import { DashboardTransmissionChainComponent } from './components/dashboard-transmission-chain/dashboard-transmission-chain.component';
 import { DashboardDiseaseBurdenComponent } from './components/dashboard-disease-burden/dashboard-disease-burden.component';
+import { MapLegendComponent } from './components/map-legend/map-legend.component';
+import { MapLayersComponent } from './components/map-layers/map-layers.component';
+import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,19 @@ import { DashboardDiseaseBurdenComponent } from './components/dashboard-disease-
     DashboardVisitsComponent,
     DashboardContactStatsComponent,
     DashboardTransmissionChainComponent,
+    MapLegendComponent,
+    MapLayersComponent,
   ],
-  imports: [CommonModule, DashboardRoutingModule, MaterialModule, SharedModule],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    MaterialModule,
+    SharedModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
+    LeafletModule,
+    DynamicFormModule,
+  ],
 })
 export class DashboardModule {}

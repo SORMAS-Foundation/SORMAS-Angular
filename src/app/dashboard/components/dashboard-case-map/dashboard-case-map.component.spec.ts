@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { DashboardCaseMapComponent } from './dashboard-case-map.component';
 
@@ -9,6 +10,7 @@ describe('DashboardCaseMapComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DashboardCaseMapComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
