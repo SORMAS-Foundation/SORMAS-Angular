@@ -1,19 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search-case-modal',
   templateUrl: './search-case-modal.component.html',
-  styleUrls: ['./search-case-modal.component.scss']
+  styleUrls: ['./search-case-modal.component.scss'],
 })
-export class SearchCaseModalComponent implements OnInit {
+export class SearchCaseModalComponent {
   filtersForm = new FormGroup({});
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  onFormChange(): void {
-  }
+  onFormChange(): void {}
 }
