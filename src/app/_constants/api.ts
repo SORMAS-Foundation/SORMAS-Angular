@@ -275,3 +275,11 @@ export const API_ROUTE_VACCINATIONS = {
   ADD: 'vaccinations/push',
   DELETE: 'vaccinations/delete',
 };
+
+export const API_ROUTE_DISEASES = {
+  ENDPOINT: 'diseases',
+  GET_ALL: 'diseases/indexList',
+  UPDATE: 'diseases/push',
+  ADD: 'diseases/push',
+  DELETE: 'diseases/delete',
+};

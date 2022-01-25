@@ -1,0 +1,15 @@
+.disease {
+  display: flex;
+  gap: 32px;
+}
+
+.disease-name {
+  flex: 1 1 auto;
+  text-align: right;
+  padding-top: 10px;
+  font-weight: 500;
+}
+
+.disease-field {
+  flex: 0 0 120px;
+}
