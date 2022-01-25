@@ -1,0 +1,37 @@
+<div mat-dialog-title>
+  <h2>{{ 'captions.caseSearchSpecificCase' | translate }}</h2>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button color="primary" class="cancel-btn" mat-dialog-close>
+      {{ 'captions.actionCancel' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div class="text">
+    <mat-icon class="material-icons-round">info</mat-icon>
+    <p>{{ 'strings.infoSpecificCaseSearch' | translate }}</p>
+  </div>
+  <form [formGroup]="filtersForm" class="filters-form">
+    <mat-form-field
+      id="nameUuidEpidNumberLike"
+      appearance="outline"
+      floatLabel="always"
+      class="search-field"
+    >
+      <mat-icon matPrefix class="search-icon material-icons-round">search</mat-icon>
+      <input
+        value=""
+        type="text"
+        matInput
+        appDebounce
+        placeholder="{{ 'searchByCase' | translate }}"
+        formControlName="nameUuidEpidNumberLike"
+        (debounce)="onFormChange()"
+      />
+    </mat-form-field>
+  </form>
+</div>

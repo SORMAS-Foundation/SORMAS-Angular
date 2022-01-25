@@ -52,6 +52,8 @@ import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.com
 import { EntityActionsComponent } from './entity-actions/entity-actions.component';
 import { TableStaticComponent } from './table-static/table-static.component';
 import { ToggleViewComponent } from './toggle-view/toggle-view.component';
+import { ImmunizationRecoveryComponent } from './widgets/immunization-recovery/immunization-recovery.component';
+import { SearchCaseModalComponent } from './modals/search-case-modal/search-case-modal.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +92,8 @@ import { ToggleViewComponent } from './toggle-view/toggle-view.component';
     EntityActionsComponent,
     TableStaticComponent,
     ToggleViewComponent,
+    ImmunizationRecoveryComponent,
+    SearchCaseModalComponent,
   ],
   imports: [
     CommonModule,

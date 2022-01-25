@@ -25,7 +25,7 @@ export const FORM_DATA_EVENT_EDIT = [
       },
       {
         ...FORM_DATA_RADIO,
-        key: 'eventStatus.tt',
+        key: 'eventStatus_tt',
         options: eventStatusOptions,
         dependingOn: 'eventStatusVisibleCheckbox',
         validation: ['required'],
