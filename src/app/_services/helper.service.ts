@@ -128,6 +128,7 @@ export class HelperService {
 
   getEpiWeeksForYear(filters: any) {
     const year = filters[0].value;
-    return of(this.generateWeekOptions(new Date(year, 11, 31)));
+    const options = this.generateWeekOptions(new Date(year, 11, 31));
+    return of(options.filter((item) => item.key.includes(year)).reverse());
   }
 }

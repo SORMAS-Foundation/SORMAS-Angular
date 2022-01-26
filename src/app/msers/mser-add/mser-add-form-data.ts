@@ -20,7 +20,6 @@ export const FORM_DATA_MSERS_ADD = [
         ...FORM_DATA_RADIO,
         key: 'epiWeekFilter',
         options: epiWeekFilterOption,
-        value: 'SPECIFY_WEEK',
       },
       {
         ...FORM_DATA_SELECT,
@@ -39,7 +38,6 @@ export const FORM_DATA_MSERS_ADD = [
         service: 'helperService',
         serviceMethod: 'getEpiWeeksForYear',
         determinedBy: 'year',
-        className: 'size-small',
         allowClear: false,
       },
     ],
