@@ -17,6 +17,10 @@ export class FormElementControlService {
       if (formElement.validation) {
         validations = this.getValidators(formElement.validation);
       }
+
+      // eslint-disable-next-line no-param-reassign
+      formElement.key = formElement.key.replace('.', '__');
+
       group[formElement.key] =
         validations.length > 0
           ? (group[formElement.key] = new FormControl(
@@ -35,9 +39,9 @@ export class FormElementControlService {
   setValuesForDynamicForm(resource: Resource, formElements: FormBase<any>[]): FormBase<any>[] {
     formElements.forEach((formElement) => {
       formElement.fields.forEach((field) => {
-        if (field.key.includes('.')) {
+        if (field.key.includes('__')) {
           const getProp = (obj: any, prop: any) => {
-            return prop.split('.').reduce((r: any, e: any) => {
+            return prop.split('__').reduce((r: any, e: any) => {
               return r && r[e];
             }, obj);
           };
