@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MsersListComponent } from './msers-list.component';
 
 describe('MsersListComponent', () => {
@@ -12,7 +13,12 @@ describe('MsersListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MsersListComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule, TranslateModule.forRoot()],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+        MatDialogModule,
+      ],
     }).compileComponents();
   });
 

@@ -9,6 +9,7 @@ import {
   getYear,
   startOfISOWeek,
 } from 'date-fns';
+import { of } from 'rxjs';
 import { Filter } from '../_models/common';
 import { BRIEF_DATE_FORMAT, EntityLink } from '../_constants/common';
 
@@ -96,26 +97,37 @@ export class HelperService {
     };
   }
 
-  generateWeekOptions(): any[] {
-    const weekOptions: any[] = [];
-    let today = new Date();
-    const lastYear = addYears(today, -1);
-    while (today > lastYear) {
-      const weekNumber = getWeek(today);
-      const start = startOfISOWeek(today);
-      const end = endOfISOWeek(today);
-      const year = getYear(end);
-      weekOptions.push({
-        key: `${weekNumber}-${year}`,
-        value: `Wk ${weekNumber}-${year} (${format(start, BRIEF_DATE_FORMAT)}-${format(
-          end,
-          BRIEF_DATE_FORMAT
-        )})`,
-        start,
+  generateWeekForDate(date = new Date()): any {
+    const weekNumber = getWeek(date, {
+      weekStartsOn: 1,
+    });
+    const start = startOfISOWeek(date);
+    const end = endOfISOWeek(date);
+    const year = getYear(end);
+    return {
+      key: `${weekNumber}-${year}`,
+      value: `Wk ${weekNumber}-${year} (${format(start, BRIEF_DATE_FORMAT)}-${format(
         end,
-      });
-      today = addDays(today, -7);
+        BRIEF_DATE_FORMAT
+      )})`,
+      start,
+      end,
+    };
+  }
+
+  generateWeekOptions(date = new Date()): any[] {
+    const weekOptions: any[] = [];
+    let startDate = date;
+    const endDate = addYears(startDate, -1);
+    while (startDate > endDate) {
+      weekOptions.push(this.generateWeekForDate(startDate));
+      startDate = addDays(startDate, -7);
     }
     return weekOptions;
+  }
+
+  getEpiWeeksForYear(filters: any) {
+    const year = filters[0].value;
+    return of(this.generateWeekOptions(new Date(year, 11, 31)));
   }
 }

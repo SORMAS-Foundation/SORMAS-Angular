@@ -1,0 +1,26 @@
+<form *ngIf="diseases.length" [formGroup]="form">
+  <div *ngFor="let disease of diseases" class="disease">
+    <div class="disease-name">{{ 'enum.Disease.' + disease.disease | translate }}</div>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="disease-field size-small">
+      <mat-label>
+        {{ 'captions.AggregateReport.newCases' | translate }}
+      </mat-label>
+      <input matInput type="text" [formControlName]="'newCases__' + disease.disease" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="disease-field">
+      <mat-label>
+        {{ 'captions.AggregateReport.labConfirmations' | translate }}
+      </mat-label>
+      <input matInput type="text" [formControlName]="'labConfirmations__' + disease.disease" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="disease-field">
+      <mat-label>
+        {{ 'captions.AggregateReport.deaths' | translate }}
+      </mat-label>
+      <input matInput type="text" [formControlName]="'deaths__' + disease.disease" />
+    </mat-form-field>
+  </div>
+</form>

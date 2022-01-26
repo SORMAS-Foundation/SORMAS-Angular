@@ -52,6 +52,7 @@ import { ContactAddEditComponent } from './contact-add-edit/contact-add-edit.com
 import { EntityActionsComponent } from './entity-actions/entity-actions.component';
 import { TableStaticComponent } from './table-static/table-static.component';
 import { ToggleViewComponent } from './toggle-view/toggle-view.component';
+import { MsersDiseasesComponent } from './widgets/msers-diseases/msers-diseases.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { ToggleViewComponent } from './toggle-view/toggle-view.component';
     EntityActionsComponent,
     TableStaticComponent,
     ToggleViewComponent,
+    MsersDiseasesComponent,
   ],
   imports: [
     CommonModule,
