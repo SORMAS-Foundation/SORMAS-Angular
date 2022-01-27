@@ -399,10 +399,29 @@ app.use('/sormas-rest/aggregateReports/indexList', (req, res) => {
         deaths: 1,
       },
       {
-        disease: 'COVID',
+        disease: 'CORONAVIRUS',
         newCases: 120,
         labConfirmations: 2600,
         deaths: 8,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 2,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/diseases/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'SDF56-H7SF6-SG56FD-ASF346C',
+        disease: 'ANTHRAX',
+      },
+      {
+        uuid: 'XCSGT-AF467-KG3AFT-G346BN6',
+        disease: 'CORONAVIRUS',
       },
     ],
     pageNumber: 0,
