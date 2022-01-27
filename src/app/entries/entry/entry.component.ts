@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EntityLink, ENTRY_DETAILS_FORM_ID, SentResourceTypes } from '../../app.constants';
+import { EntityLink, ENTRY_DETAILS_FORM_ID } from '../../app.constants';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { TravelEntryDto } from '../../_models/travelEntryDto';
 import { TravelEntryService } from '../../_services/api/travel-entry-service';
@@ -75,6 +75,7 @@ export class EntryComponent implements OnInit {
   }
 
   onEntryDelete(): void {
+    // eslint-disable-next-line no-console
     console.log('Delete travel entry');
   }
 
