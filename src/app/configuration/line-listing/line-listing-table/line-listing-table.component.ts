@@ -25,6 +25,10 @@ export class LineListingTableComponent implements OnInit {
     }
   }
 
+  triggerDatePicker(picker: any): void {
+    picker.open();
+  }
+
   onChangeCheckbox(element: any): void {
     if (element.enabled) {
       // eslint-disable-next-line no-param-reassign

@@ -5,12 +5,16 @@ import {
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
 } from '../../_constants/form-data';
-import { YesNoUnknown } from '../../_constants/enums';
+import { Trimester, VaccinationInfoSource, VaccineManufacturer, VaccineName, YesNoUnknown } from '../../_constants/enums';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
 const yesNoUnknown = pipe.transform(YesNoUnknown);
+const vaccineNameOptions = pipe.transform(VaccineName);
+const vaccineManufacturerOptions = pipe.transform(VaccineManufacturer);
+const vaccineInfoSourceOptions = pipe.transform(VaccinationInfoSource);
+const optionsTrimester = pipe.transform(Trimester);
 
 export const FORM_DATA_VACCINATION_ADD_EDIT = [
   {
@@ -39,29 +43,21 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
         key: 'vaccineName',
         newLine: true,
         label: 'captions.Vaccination.vaccineName',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        options: vaccineNameOptions,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'vaccineNameDetails',
         label: 'captions.Vaccination.otherVaccineName',
+        dependingOn: 'vaccineName',
+        dependingOnValues: ['OTHER'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'vaccineManufacturer',
         newLine: true,
         label: 'captions.Vaccination.vaccineManufacturer',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        options: vaccineManufacturerOptions,
       },
       {
         ...FORM_DATA_INPUT,
@@ -78,12 +74,7 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
         ...FORM_DATA_SELECT,
         key: 'vaccinationInfoSource',
         label: 'captions.Vaccination.vaccinationInfoSource',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        options: vaccineInfoSourceOptions,
       },
       {
         ...FORM_DATA_INPUT,
@@ -130,8 +121,10 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
         ...FORM_DATA_RADIO,
         key: 'trimester',
         label: 'Vaccination.trimester',
-        options: yesNoUnknown,
+        options: optionsTrimester,
         newLine: true,
+        dependingOn: 'pregnancy',
+        dependingOnValues: ['YES'],
       },
     ],
   },
@@ -141,60 +134,162 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
     fields: [
       {
         ...FORM_DATA_RADIO,
-        key: 'diabetes',
-        label: 'captions.HealthConditions.diabetes',
+        label: 'captions.HealthConditions.tuberculosis',
+        key: 'tuberculosis',
         options: yesNoUnknown,
+        className: 'medium-text-radio',
         newLine: true,
       },
       {
         ...FORM_DATA_RADIO,
-        key: 'chronicPulmonaryDisease',
+        label: 'captions.HealthConditions.chronicHeartFailure',
+        key: 'chronicHeartFailure',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.asplenia',
+        key: 'asplenia',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.chronicPulmonaryDisease',
+        key: 'chronicPulmonaryDisease',
         options: yesNoUnknown,
+        className: 'medium-text-radio',
       },
       {
         ...FORM_DATA_RADIO,
-        key: 'chronicKidneyDisease',
+        label: 'captions.HealthConditions.hepatitis',
+        key: 'hepatitis',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
         label: 'captions.HealthConditions.chronicKidneyDisease',
+        key: 'renalDisease',
         options: yesNoUnknown,
+        className: 'medium-text-radio',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.diabetes',
+        key: 'diabetes',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
         newLine: true,
       },
       {
         ...FORM_DATA_RADIO,
-        key: 'immunodeficiencyOtherThanHiv',
-        label: 'captions.HealthConditions.immunodeficiencyOtherThanHiv',
-        options: yesNoUnknown,
-      },
-      {
-        ...FORM_DATA_RADIO,
-        key: 'chronicLiverDisease',
-        label: 'captions.HealthConditions.chronicLiverDisease',
-        options: yesNoUnknown,
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_RADIO,
-        key: 'chronicNeurologicCondition',
         label: 'captions.HealthConditions.chronicNeurologicCondition',
+        key: 'chronicNeurologicCondition',
         options: yesNoUnknown,
+        className: 'medium-text-radio',
       },
       {
         ...FORM_DATA_RADIO,
-        key: 'malignancyChemotherapy',
-        label: 'captions.HealthConditions.malignancyChemotherapy',
+        label: 'captions.HealthConditions.immunodeficiencyOtherThanHiv',
+        key: 'immunodeficiencyOtherThanHiv',
         options: yesNoUnknown,
+        className: 'medium-text-radio',
         newLine: true,
       },
       {
         ...FORM_DATA_RADIO,
-        key: 'cardiovascularDiseaseIncludingHypertension',
         label: 'captions.HealthConditions.cardiovascularDiseaseIncludingHypertension',
+        key: 'cardiovascularDiseaseIncludingHypertension',
         options: yesNoUnknown,
+        className: 'medium-text-radio',
       },
       {
-        ...FORM_DATA_TEXTAREA,
-        key: 'otherConditions',
-        label: 'captions.HealthConditions.otherConditions',
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.hiv',
+        key: 'hiv',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.obesity',
+        key: 'obesity',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.hivArt',
+        key: 'hivArt',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+        newLine: true,
+        dependingOn: 'hiv',
+        dependingOnValues: ['YES'],
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.currentSmoker',
+        key: 'currentSmoker',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.congenitalSyphilis',
+        key: 'congenitalSyphilis',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.formerSmoker',
+        key: 'formerSmoker',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.downSyndrome',
+        key: 'downSyndrome',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.asthma',
+        key: 'asthma',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.chronicLiverDisease',
+        key: 'chronicLiverDisease',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.sickleCellDisease',
+        key: 'sickleCellDisease',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        label: 'captions.HealthConditions.malignancyChemotherapy',
+        key: 'malignancyChemotherapy',
+        options: yesNoUnknown,
+        className: 'medium-text-radio',
         newLine: true,
       },
     ],

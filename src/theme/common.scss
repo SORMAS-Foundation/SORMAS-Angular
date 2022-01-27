@@ -30,6 +30,10 @@ body {
   overflow: hidden;
 }
 
+.float-right {
+  float: right;
+}
+
 a:not(.mat-button) {
   color: mat.get-color-from-palette($sormas-primary, 700);
   text-decoration: none;

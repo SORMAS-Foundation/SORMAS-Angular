@@ -25,30 +25,32 @@
     <ng-container matColumnDef="endDate">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.lineListingEndDate' | translate }} </th>
       <td mat-cell *matCellDef="let element">
-        <mat-datepicker-toggle matSuffix [for]="picker">
-          <mat-icon matDatepickerToggleIcon class="material-icons-round calendar-icon">date_range</mat-icon>
-        </mat-datepicker-toggle>
-        <p class="datepicker-text">{{ element.endDate | date:defaultDateFormat }}</p>
-        <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
+        <div class="date-input">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon class="material-icons-round calendar-icon">date_range</mat-icon>
+          </mat-datepicker-toggle>
+          <p class="datepicker-text" (click)="triggerDatePicker(picker)">{{ element.endDate | date:defaultDateFormat }}</p>
+          <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
 
-        <mat-form-field
-          class="datepicker-input"
-          appearance="outline"
-          floatLabel="always"
-          [ngClass]="{
+          <mat-form-field
+            class="datepicker-input"
+            appearance="outline"
+            floatLabel="always"
+            [ngClass]="{
         'datepicker-opened': picker.opened,
         'datepicker-closed': !picker.opened
       }"
-        >
-          <input
-            matInput
-            readonly
-            [(ngModel)]="element.endDate"
-            [matDatepicker]="picker"
-            [placeholder]="'captions.lineListingEndDate' | translate"
-          />
-          <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
-        </mat-form-field>
+          >
+            <input
+              matInput
+              readonly
+              [(ngModel)]="element.endDate"
+              [matDatepicker]="picker"
+              [placeholder]="'captions.lineListingEndDate' | translate"
+            />
+            <mat-datepicker #picker [calendarHeaderComponent]="header"></mat-datepicker>
+          </mat-form-field>
+        </div>
       </td>
     </ng-container>
 

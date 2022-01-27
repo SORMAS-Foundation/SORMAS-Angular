@@ -1,10 +1,19 @@
 <div *ngIf="data" class="card-vaccination">
-  <p class="vaccine-name">ULF7SS</p>
+  <p class="date">10/1/2021</p>
+  <div class="header">
+    <p class="vaccine-name">ULF7SS</p>
+  </div>
   <p class="vaccine-manufacturer">Oxford–AstraZeneca COVID-19 vaccine</p>
   <div class="middle">
-    <p>Viraler Vector</p>
-    <div class="dose-number">
-      2
+    <div class="left">
+      <p class="vaccine-type">Viraler Vector</p>
+      <p class="vaccine-type-label">{{ 'captions.Vaccination.vaccineType' | translate }}</p>
+    </div>
+    <div class="right">
+      <div class="dose-number">
+        2
+      </div>
+      <p>{{ 'dose' | translate }}</p>
     </div>
   </div>
 </div>

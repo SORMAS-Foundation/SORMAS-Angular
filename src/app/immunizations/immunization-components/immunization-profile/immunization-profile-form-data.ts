@@ -89,7 +89,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-immunization-recovery',
-        className: 'fullwidth',
+        className: 'float-right',
         key: 'caze',
       },
     ],
