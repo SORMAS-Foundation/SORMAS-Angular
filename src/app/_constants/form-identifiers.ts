@@ -38,6 +38,7 @@ export const PERSON_FILTERS_FORM_ID = 'personFilters';
 export const SAMPLE_DETAILS_FORM_ID = 'sample';
 export const SAMPLE_FILTERS_FORM_ID = 'sampleFilters';
 
+export const ENTRY_DETAILS_FORM_ID = 'entry';
 export const ENTRY_FILTERS_FORM_ID = 'entryFilters';
 
 export const STATS_EXPORTS_FORM_ID = 'exports';
