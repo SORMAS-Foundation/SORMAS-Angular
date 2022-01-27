@@ -6046,5 +6046,6 @@
   "travelEntries.placeOfQuarantine": "Place of quarantine",
   "travelEntries.quarantinePeriod": "Quarantine period",
   "travelEntries.startDate": "Start date",
-  "travelEntries.endDate": "End date"
+  "travelEntries.endDate": "End date",
+  "headingAggregateReports": "mSERS"
 }

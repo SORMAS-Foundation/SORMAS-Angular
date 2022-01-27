@@ -12,6 +12,7 @@ import { FacilityService } from '../../../_services/api/facility.service';
 import { RegionService } from '../../../_services/api/region.service';
 import { SubcontinentService } from '../../../_services/api/subcontinent.service';
 import { FormActionsService } from '../../../_services/form-actions.service';
+import { HelperService } from '../../../_services/helper.service';
 import { FormBaseComponent } from './form-base.component';
 
 @Component({
@@ -33,7 +34,8 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     public districtService: DistrictService,
     public communityService: CommunityService,
     public entryPointService: EntryPointService,
-    public facilityService: FacilityService
+    public facilityService: FacilityService,
+    public helperService: HelperService
   ) {
     super(formActionsService);
   }
