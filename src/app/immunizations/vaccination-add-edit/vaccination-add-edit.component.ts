@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { ContinentDto } from '../../_models/continentDto';
 import * as data from './vaccination-add-edit-form-data';
-import { FormElementControlService } from '../../_services/form-element-control.service';
 import { VACCINATION_ADD_EDIT_FORM_ID } from '../../app.constants';
 import { VaccinationService } from '../../_services/api/vaccination.service';
 
@@ -19,10 +18,7 @@ export class VaccinationAddEditComponent implements AfterViewInit, OnDestroy {
   subscriptions: Subscription[] = [];
   @ViewChild('form') dynamicForm: any;
 
-  constructor(
-    public vaccinationService: VaccinationService,
-    private formElementControlService: FormElementControlService
-  ) {}
+  constructor(public vaccinationService: VaccinationService) {}
 
   ngAfterViewInit(): void {
     const { form } = this.dynamicForm;
