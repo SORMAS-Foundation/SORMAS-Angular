@@ -52,6 +52,10 @@ export class MserAddComponent implements OnInit, AfterViewInit, OnDestroy {
           }
         })
       );
+
+      setTimeout(() => {
+        controlEpiWeekFilter.setValue('THIS_WEEK');
+      });
     }
   }
 
