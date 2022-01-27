@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { TravelEntryComponent } from './travel-entry.component';
 
@@ -8,9 +10,9 @@ describe('TravelEntryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TravelEntryComponent ]
-    })
-    .compileComponents();
+      declarations: [TravelEntryComponent],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
