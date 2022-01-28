@@ -867,3 +867,9 @@ export enum ImmunizationReferenceDate {
   LAST_VACCINATION = 'enum.ImmunizationDateType.LAST_VACCINATION_DATE',
   FIRST_VACCINATION = 'enum.ImmunizationDateType.FIRST_VACCINATION_DATE',
 }
+
+export enum EpiWeekFilterOption {
+  LAST_WEEK = 'enum.EpiWeekFilterOption.LAST_WEEK',
+  THIS_WEEK = 'enum.EpiWeekFilterOption.THIS_WEEK',
+  SPECIFY_WEEK = 'enum.EpiWeekFilterOption.SPECIFY_WEEK',
+}

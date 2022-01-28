@@ -38,6 +38,7 @@ export const PERSON_FILTERS_FORM_ID = 'personFilters';
 export const SAMPLE_DETAILS_FORM_ID = 'sample';
 export const SAMPLE_FILTERS_FORM_ID = 'sampleFilters';
 
+export const ENTRY_DETAILS_FORM_ID = 'entry';
 export const ENTRY_FILTERS_FORM_ID = 'entryFilters';
 
 export const STATS_EXPORTS_FORM_ID = 'exports';
@@ -51,6 +52,7 @@ export const IMMUNIZATION_FILTERS_FORM_ID = 'immunizationFilters';
 export const IMMUNIZATION_PROFILE_FORM_ID = 'immunizationProfile';
 
 export const MSERS_FILTERS_FORM_ID = 'msersFilters';
+export const MSERS_ADD_FORM_ID = 'msersAdd';
 
 export const IMMUNIZATION_ADD_FORM_ID = 'immunizationAdd';
 export const VACCINATION_ADD_EDIT_FORM_ID = 'vaccinationAddEdit';

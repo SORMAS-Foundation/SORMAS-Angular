@@ -6,11 +6,25 @@
 }
 
 .card-vaccination {
-  .vaccine-name {
-    font-size: 16px;
-    text-align: left;
-    color: mat.get-color-from-palette($sormas-accent, 800);
-    font-weight: 500;
+  .date {
+    font-size: 10px;
+    color: mat.get-color-from-palette($sormas-accent, 400);
+    margin: 0;
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
+
+  .header {
+    border-bottom: 2px solid mat.get-color-from-palette($sormas-alert, 100);
+    margin-bottom: 10px;
+
+    .vaccine-name {
+      font-size: 16px;
+      text-align: left;
+      color: mat.get-color-from-palette($sormas-accent, 800);
+      font-weight: 500;
+    }
   }
 
   .vaccine-manufacturer {
@@ -21,21 +35,51 @@
 
   .middle {
     overflow: hidden;
+    margin-bottom: -10px;
 
-    > p {
-      color: mat.get-color-from-palette($sormas-primary, A700);
+    .left {
       float: left;
+      .vaccine-type {
+        color: mat.get-color-from-palette($sormas-primary, A700);
+        margin: 0;
+      }
+      .vaccine-type-label {
+        font-size: 10px;
+        color: mat.get-color-from-palette($sormas-accent, 400);
+        margin: 0;
+        text-align: left;
+      }
     }
 
-    .dose-number {
-      width: 25px;
-      height: 25px;
-      color: $white;
-      background: mat.get-color-from-palette($sormas-primary, 500);
-      font-size: 16px;
-      padding-top: 3px;
-      border-radius: 5px;
+    .right {
       float: right;
+
+      > p {
+        font-size: 10px;
+        color: mat.get-color-from-palette($sormas-accent, 400);
+      }
+
+      .dose-number {
+        width: 25px;
+        height: 25px;
+        color: $white;
+        background: mat.get-color-from-palette($sormas-primary, 500);
+        font-size: 16px;
+        padding-top: 3px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .file {
+    font-size: 12px;
+    color: mat.get-color-from-palette($sormas-accent, 600);
+    cursor: pointer;
+    float: right;
+
+    .mat-icon {
+      font-size: 14px;
+      margin-right: -4px;
     }
   }
 }

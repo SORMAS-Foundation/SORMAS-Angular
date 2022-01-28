@@ -1,0 +1,43 @@
+<section *ngIf="entry">
+  <header>
+    <a [routerLink]="['/persons/list']" mat-icon-button>
+      <mat-icon class="material-icons-round" color="accent">keyboard_backspace</mat-icon>
+    </a>
+    <h1>
+      {{ entry.person.firstName }} {{ entry.person.lastName }}
+      <small>({{ entry.uuid | slice: 0:6 }})</small>
+    </h1>
+    <div class="tab-nav-header-actions">
+      <app-entity-actions
+        [resource]="entry"
+        [resourceService]="entryService"
+        [actionEditOptions]="actionEditOptions"
+        [context]="'captions.TravelEntry' | translate"
+        (completion)="onEntryDelete()"
+        class="actions"
+      ></app-entity-actions>
+    </div>
+  </header>
+
+  <app-info-bar *ngIf="showTabs" [data]="entry" [type]="'ENTRY'"></app-info-bar>
+
+  <div class="tab-nav-header">
+    <nav mat-tab-nav-bar *ngIf="showTabs">
+      <a
+        mat-tab-link
+        *ngFor="let link of links"
+        [routerLink]="link.link"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        {{ link.title | translate }}
+      </a>
+    </nav>
+    <app-form-actions [formId]="formId" [resource]="entry"></app-form-actions>
+  </div>
+
+  <div class="page-content">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+</section>

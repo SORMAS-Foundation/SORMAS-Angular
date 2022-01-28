@@ -13,6 +13,11 @@
   padding: 0.5rem 1rem;
   border: 1px solid mat.get-color-from-palette($sormas-accent, 200);
   border-radius: 5px;
+
+  &.type-vaccination {
+    border: 1px solid mat.get-color-from-palette($sormas-primary, A100);
+    border-left: 4px solid mat.get-color-from-palette($sormas-primary, A100);
+  }
 }
 
 .mat-card-header {

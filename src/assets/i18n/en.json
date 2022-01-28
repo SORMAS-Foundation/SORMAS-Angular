@@ -6042,5 +6042,10 @@
   "personalInformation": "Personal information",
   "pregnancy": "Pregnancy",
   "report": "Report",
-  "newVaccine": "New vaccine"
+  "newVaccine": "New vaccine",
+  "travelEntries.placeOfQuarantine": "Place of quarantine",
+  "travelEntries.quarantinePeriod": "Quarantine period",
+  "travelEntries.startDate": "Start date",
+  "travelEntries.endDate": "End date",
+  "headingAggregateReports": "mSERS"
 }

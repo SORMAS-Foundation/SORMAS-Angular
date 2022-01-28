@@ -1,10 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './msers-list-table-data';
-import { CONFIG_MSERS, MSERS_FILTERS_FORM_ID } from '../../app.constants';
+import { ADD_MODAL_MAX_WIDTH, CONFIG_MSERS, MSERS_FILTERS_FORM_ID } from '../../app.constants';
 import { AggregateReportService } from '../../_services/api/aggregate-report.service';
 import { RegionService } from '../../_services/api/region.service';
+import { MserAddComponent } from '../mser-add/mser-add.component';
+import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 
 @Component({
   selector: 'app-msers-list',
@@ -17,14 +21,33 @@ export class MsersListComponent implements OnInit, OnDestroy {
   formId = MSERS_FILTERS_FORM_ID;
   private subscription: Subscription[] = [];
 
-  constructor(public mserService: AggregateReportService, public testService: RegionService) {}
+  constructor(
+    public mserService: AggregateReportService,
+    public testService: RegionService,
+    public translateService: TranslateService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
   }
 
   openAddModal(): void {
-    // open add form
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('strings.headingCreateNewAggregateReport'),
+        component: MserAddComponent,
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // this.tableComponent.getResources(true);
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {
