@@ -256,6 +256,41 @@ app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   ]);
 });
 
+app.use('/sormas-rest/travelentries/FGRT34-WEMNJ4-TH34QWFG-ADEJSA', (req, res) => {
+  const result = {
+    uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+    externalId: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
+    person: {
+      uuid: 'AQD5GY-FGRT34-WEMNJ4-TH34QWFG',
+      firstName: 'John',
+      lastName: 'Snow',
+    },
+    responsibleRegion: {
+      uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+      caption: 'testRegion',
+    },
+    responsibleDistrict: {
+      caption: 'Bremen',
+      uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+    },
+    responsibleCommunity: {
+      captions: 'testCommunity',
+      uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+    },
+    pointOfEntry: {
+      caption: 'Test',
+    },
+    reportingUser: { caption: 'National User' },
+    recovered: false,
+    vaccinated: false,
+    testedNegative: true,
+    quarantineEnd: 1617959309689,
+    quarantineHomePossible: 'YES',
+  };
+
+  res.status(200).send(result);
+});
+
 app.use('/sormas-rest/travelentries/indexList', (req, res) => {
   const result = {
     elements: [
@@ -267,8 +302,14 @@ app.use('/sormas-rest/travelentries/indexList', (req, res) => {
           firstName: 'John',
           lastName: 'Snow',
         },
+        responsibleRegion: {
+          caption: 'testRegion',
+        },
         responsibleDistrict: {
           caption: 'Bremen',
+        },
+        responsibleCommunity: {
+          captions: 'testCommunity',
         },
         pointOfEntry: {
           caption: 'Test',
