@@ -10,7 +10,9 @@
     font-size: 10px;
     color: mat.get-color-from-palette($sormas-accent, 400);
     margin: 0;
-    float: right;
+    display: block;
+    width: 100%;
+    text-align: right;
   }
 
   .header {
