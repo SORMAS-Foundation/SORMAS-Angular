@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .actions {
@@ -14,6 +15,10 @@ table {
 
   td.bold {
     font-weight: 500;
+  }
+
+  .disabled {
+    color: mat.get-color-from-palette($sormas-accent, 600);
   }
 }
 
@@ -55,4 +60,15 @@ table {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.table-wrapper {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-color: rgba($white, 0.6);
 }

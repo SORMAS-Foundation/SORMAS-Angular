@@ -14,6 +14,7 @@ import { FORM_DATA_IMMUNIZATION_FILTERS } from '../immunization-filters/immuniza
 import { defaultColumnDefs } from './immunization-list-table-data';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { ImmunizationAddComponent } from '../immunization-add/immunization-add.component';
+import { PickPersonModalComponent } from '../../shared/modals/pick-person-modal/pick-person-modal.component';
 
 @Component({
   selector: 'app-immunization-list',
@@ -42,12 +43,39 @@ export class ImmunizationListComponent implements OnInit, OnDestroy {
   }
 
   openAddImmunizationModal(): void {
+    this.openPickPersonModal();
+    return;
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('addImmunization'),
         component: ImmunizationAddComponent,
       },
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+          this.openPickPersonModal();
+        }
+      })
+    );
+  }
+
+  openPickPersonModal(): void {
+    const data = {
+      info: this.translateService.instant('strings.infoSelectOrCreatePersonForImmunization'),
+      person: {
+        firstName: 'dani',
+        lastName: 'rus',
+        sex: 'MALE',
+      },
+    };
+    const dialogRef = this.dialog.open(PickPersonModalComponent, {
+      width: ADD_MODAL_MAX_WIDTH,
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      data,
     });
 
     this.subscriptions.push(

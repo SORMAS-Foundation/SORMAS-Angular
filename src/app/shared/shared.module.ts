@@ -53,6 +53,7 @@ import { EntityActionsComponent } from './entity-actions/entity-actions.componen
 import { TableStaticComponent } from './table-static/table-static.component';
 import { ToggleViewComponent } from './toggle-view/toggle-view.component';
 import { MsersDiseasesComponent } from './widgets/msers-diseases/msers-diseases.component';
+import { PickPersonModalComponent } from './modals/pick-person-modal/pick-person-modal.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { MsersDiseasesComponent } from './widgets/msers-diseases/msers-diseases.
     TableStaticComponent,
     ToggleViewComponent,
     MsersDiseasesComponent,
+    PickPersonModalComponent,
   ],
   imports: [
     CommonModule,
