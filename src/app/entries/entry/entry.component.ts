@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { EntityLink, ENTRY_DETAILS_FORM_ID } from '../../app.constants';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { TravelEntryDto } from '../../_models/travelEntryDto';
@@ -30,7 +31,7 @@ const entryLinks = (entryId: string): EntityLink[] => {
   templateUrl: './entry.component.html',
   styleUrls: ['./entry.component.scss'],
 })
-export class EntryComponent implements OnInit {
+export class EntryComponent implements OnInit, OnDestroy {
   entry: TravelEntryDto;
   entryId: string;
   links: EntityLink[] = [];
@@ -40,6 +41,9 @@ export class EntryComponent implements OnInit {
   actionEditOptions = actionsEditDefs;
   formData = FORM_DATA_ENTRY;
   formId = ENTRY_DETAILS_FORM_ID;
+
+  private subscription: Subscription[] = [];
+
   constructor(
     public entryService: TravelEntryService,
     private activeRoute: ActivatedRoute,
@@ -59,19 +63,21 @@ export class EntryComponent implements OnInit {
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, entryLinks);
     this.entryId = routeParams.entryId;
     this.links = entryLinks(this.entryId);
-    this.entryService.getById(this.entryId).subscribe({
-      next: (response: any) => {
-        this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
-          response,
-          this.formData
-        );
-        this.entry = response;
-      },
-      error: (err: any) => {
-        this.notificationService.error(err);
-      },
-      complete: () => {},
-    });
+    this.subscription.push(
+      this.entryService.getById(this.entryId).subscribe({
+        next: (response: any) => {
+          this.myFormElements = this.formElementControlService.setValuesForDynamicForm(
+            response,
+            this.formData
+          );
+          this.entry = response;
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
   }
 
   onEntryDelete(): void {
@@ -88,5 +94,9 @@ export class EntryComponent implements OnInit {
     setTimeout(() => {
       this.showTabs = !isTravelEntryPerson;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }

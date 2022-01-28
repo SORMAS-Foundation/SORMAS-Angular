@@ -22,7 +22,7 @@
   <app-info-bar *ngIf="showTabs" [data]="entry" [type]="'ENTRY'"></app-info-bar>
 
   <div class="tab-nav-header">
-    <nav mat-tab-nav-bar *ngIf="true">
+    <nav mat-tab-nav-bar *ngIf="showTabs">
       <a
         mat-tab-link
         *ngFor="let link of links"
