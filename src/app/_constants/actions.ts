@@ -57,6 +57,10 @@ export const ACTIONS_SAMPLE_EDIT = {
   REFER: 'REFER',
 };
 
+export const ACTIONS_ENTRY_EDIT = {
+  DELETE: 'DELETE',
+};
+
 export const ACTIONS_DASHBOARD_VIEW_OPTIONS = {
   SURVEILLANCE: 'surveillance',
   CONTACTS: 'contacts',

@@ -1,7 +1,11 @@
 <div *ngIf="data" class="info-bar" [ngSwitch]="type">
   <ng-container *ngSwitchCase="infoBarOptions.CASE" [ngTemplateOutlet]="case"></ng-container>
   <ng-container *ngSwitchCase="infoBarOptions.EVENT" [ngTemplateOutlet]="event"></ng-container>
-  <ng-container *ngSwitchCase="infoBarOptions.EVENT_PARTICIPANT" [ngTemplateOutlet]="event_participant"></ng-container>
+  <ng-container *ngSwitchCase="infoBarOptions.ENTRY" [ngTemplateOutlet]="entry"></ng-container>
+  <ng-container
+    *ngSwitchCase="infoBarOptions.EVENT_PARTICIPANT"
+    [ngTemplateOutlet]="event_participant"
+  ></ng-container>
   <ng-container
     *ngSwitchCase="infoBarOptions.SAMPLE_CASE"
     [ngTemplateOutlet]="sample_case"
@@ -14,10 +18,7 @@
     *ngSwitchCase="infoBarOptions.SAMPLE_CONTACT"
     [ngTemplateOutlet]="sample_contact"
   ></ng-container>
-  <ng-container
-    *ngSwitchCase="infoBarOptions.CONTACT"
-    [ngTemplateOutlet]="contact"
-  ></ng-container>
+  <ng-container *ngSwitchCase="infoBarOptions.CONTACT" [ngTemplateOutlet]="contact"></ng-container>
   <ng-container
     *ngSwitchCase="infoBarOptions.IMMUNIZATION"
     [ngTemplateOutlet]="immunization"
@@ -110,6 +111,19 @@
     <li *ngIf="data.clinicianName">
       <strong>{{ 'CaseData.clinicianName' | translate }}:</strong>
       {{ data.clinicianName }}
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #entry>
+  <ul>
+    <li *ngIf="data.uuid">
+      <strong i18n>{{ 'captions.TravelEntry.uuid' | translate }}: </strong>
+      {{ data.uuid | translate }}
+    </li>
+    <li *ngIf="data.reportingUser">
+      <strong i18n>{{ 'captions.Event.reportingUser' | translate }}: </strong>
+      {{ data.reportingUser.caption }}
     </li>
   </ul>
 </ng-template>
