@@ -1,0 +1,13 @@
+<div class="immunization-recovery-wrapper">
+  <div class="with-no-caze" *ngIf="!config?.value">
+    <button mat-stroked-button color="primary" (click)="openSearchCaseModal()">
+      {{ 'captions.linkImmunizationToCaseButton' | translate }}
+    </button>
+  </div>
+  <div class="with-caze" *ngIf="config?.value">
+    <a mat-button color="primary" [routerLink]="['/cases/case/' + config.value.uuid + '/details']">
+      {{ 'openCase' | translate }}
+    </a>
+  </div>
+</div>
+

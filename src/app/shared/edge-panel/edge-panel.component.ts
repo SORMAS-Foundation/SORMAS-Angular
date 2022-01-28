@@ -6,11 +6,12 @@ import {
   EDGE_PANEL_INITIAL_SIZE_DOUBLE_COLUMN,
   EDGE_PANEL_TYPE,
   EdgePanelType,
-  BREAKPOINTS,
+  BREAKPOINTS, Position,
 } from '../../app.constants';
 import { PANEL_CONFIG } from './edge-panel-config-data';
 import { BaseService } from '../../_services/api/base.service';
 import { NotificationService } from '../../_services/notification.service';
+import { PositionType } from '../../_models/positionType';
 
 @Component({
   selector: 'app-edge-panel',
@@ -28,6 +29,7 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() actionLinkParams = {};
   @Input() cardWidth?: number;
   @Input() showCheckBoxFilter: boolean;
+  @Input() cardEditPosition: PositionType = Position.BOTTOMRIGHT;
 
   @Output() addItem: EventEmitter<any> = new EventEmitter();
 

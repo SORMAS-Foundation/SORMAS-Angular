@@ -1,0 +1,8 @@
+.immunization-recovery-wrapper {
+  .with-caze, .with-no-caze {
+    overflow: hidden;
+    > button, > a {
+      float: right;
+    }
+  }
+}

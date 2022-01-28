@@ -407,6 +407,29 @@ app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
   res.status(200).send(result);
 });
 
+app.use('/sormas-rest/vaccinations/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        disease: 'ANTHRAX',
+        newCases: 27,
+        labConfirmations: 118,
+        deaths: 1,
+      },
+      {
+        disease: 'COVID',
+        newCases: 120,
+        labConfirmations: 2600,
+        deaths: 8,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 2,
+    hasNext: false,
+  });
+});
+
 app.use('/sormas-rest/aggregateReports/indexList', (req, res) => {
   res.status(200).send({
     elements: [

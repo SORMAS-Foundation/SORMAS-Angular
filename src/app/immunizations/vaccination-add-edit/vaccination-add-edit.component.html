@@ -1,6 +1,6 @@
 <app-dynamic-form
-  *ngIf="myFormElements.length"
+  #form
   [formId]="formId"
-  [formElements]="myFormElements"
+  [formElements]="formData"
   [resourceService]="vaccinationService"
 ></app-dynamic-form>

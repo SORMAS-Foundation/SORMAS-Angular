@@ -1,0 +1,73 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.mat-dialog-title {
+  padding-top: 40px;
+
+  > h2 {
+    margin: 0;
+    font-size: 34px;
+  }
+}
+
+.cancel-btn {
+  font-size: 14px;
+  color: mat.get-color-from-palette($sormas-alert, 700);
+  font-weight: 500;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.mat-dialog-content {
+  padding: 25px;
+  background: $white;
+
+  #nameUuidEpidNumberLike {
+    width: 212px;
+    margin: 10px 0;
+    margin-left: 40px;
+    margin-right: 70px;
+    float: left;
+  }
+
+  .btns {
+    float: right;
+    margin-right: 30px;
+    margin-top: 15px;
+  }
+
+  .search-field {
+    .search-icon {
+      width: 14px;
+      height: 12px;
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
+    ::placeholder {
+      color: map-get($sormas-accent, 200);
+      font-size: 12px;
+    }
+  }
+
+  .text {
+    overflow: hidden;
+    margin-left: 40px;
+    .mat-icon {
+      display: inline-block;
+      color: mat.get-color-from-palette($sormas-accent, 500);
+      font-size: 18px;
+    }
+
+    > p {
+      display: inline-block;
+      width: 70%;
+      color: mat.get-color-from-palette($sormas-accent, 500);
+      font-size: 12px;
+      vertical-align: top;
+    }
+  }
+
+  .search-input {
+    width: 500px;
+  }
+}

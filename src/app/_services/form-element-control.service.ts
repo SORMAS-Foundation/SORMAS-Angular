@@ -17,6 +17,7 @@ export class FormElementControlService {
       if (formElement.validation) {
         validations = this.getValidators(formElement.validation);
       }
+
       group[formElement.key] =
         validations.length > 0
           ? (group[formElement.key] = new FormControl(
