@@ -224,7 +224,7 @@ app.use('', (req, res, next) => {
 //   ]);
 // });
 
-app.use('/sormas-rest/immunizations/SAWKKV-NPMRN7-JLIC65-EMOBKCSE', (req, res) => {
+app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   res.status(200).send([
     {
       creationDate: 1617959309689,
