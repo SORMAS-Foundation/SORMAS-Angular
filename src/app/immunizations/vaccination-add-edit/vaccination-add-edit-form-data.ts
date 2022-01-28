@@ -2,7 +2,7 @@ import {
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
-  FORM_DATA_SELECT,
+  FORM_DATA_SELECT, FORM_DATA_TEXTAREA,
 } from '../../_constants/form-data';
 import {
   Trimester,
@@ -295,6 +295,12 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
         key: 'malignancyChemotherapy',
         options: yesNoUnknown,
         className: 'medium-text-radio',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_TEXTAREA,
+        key: 'additionalDetails',
+        label: 'captions.HealthConditions.otherConditions',
         newLine: true,
       },
     ],
