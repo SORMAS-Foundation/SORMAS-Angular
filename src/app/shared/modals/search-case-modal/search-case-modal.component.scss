@@ -31,7 +31,9 @@
   }
 
   .btns {
-    padding-top: 16px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 15px;
   }
 
   .search-field {
@@ -63,5 +65,9 @@
       font-size: 12px;
       vertical-align: top;
     }
+  }
+
+  .search-input {
+    width: 500px;
   }
 }
