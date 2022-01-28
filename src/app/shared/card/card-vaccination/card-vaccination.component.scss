@@ -33,6 +33,7 @@
 
   .middle {
     overflow: hidden;
+    margin-bottom: -10px;
 
     .left {
       float: left;
@@ -65,6 +66,18 @@
         padding-top: 3px;
         border-radius: 5px;
       }
+    }
+  }
+
+  .file {
+    font-size: 12px;
+    color: mat.get-color-from-palette($sormas-accent, 600);
+    cursor: pointer;
+    float: right;
+
+    .mat-icon {
+      font-size: 14px;
+      margin-right: -4px;
     }
   }
 }
