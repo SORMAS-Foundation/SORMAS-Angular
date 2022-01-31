@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { BREAKPOINTS } from '../../app.constants';
 
@@ -9,6 +9,8 @@ import { BREAKPOINTS } from '../../app.constants';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  @Input() hideSidebar: boolean = false;
+
   mode: MatDrawerMode = 'side';
   position: 'start' | 'end' = 'end';
   opened = true;
