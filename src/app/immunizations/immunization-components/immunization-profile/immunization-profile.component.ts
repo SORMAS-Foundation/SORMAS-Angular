@@ -131,23 +131,6 @@ export class ImmunizationProfileComponent implements AfterViewInit, OnDestroy {
               );
               break;
           }
-
-          //
-          // if (val === 'RECOVERY' || val === 'VACCINATION_RECOVERY') {
-          //   this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-          //     this.myFormElements,
-          //     'recovery',
-          //     'hidden',
-          //     false
-          //   );
-          // } else {
-          //   this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-          //     this.myFormElements,
-          //     'recovery',
-          //     'hidden',
-          //     true
-          //   );
-          // }
         })
       );
     }
