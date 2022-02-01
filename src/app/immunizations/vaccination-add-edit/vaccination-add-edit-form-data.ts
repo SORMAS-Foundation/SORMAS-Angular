@@ -1,8 +1,10 @@
 import {
   FORM_DATA_DATE,
-  FORM_DATA_INPUT, FORM_DATA_NULL,
+  FORM_DATA_INPUT,
+  FORM_DATA_NULL,
   FORM_DATA_RADIO,
-  FORM_DATA_SELECT, FORM_DATA_TEXTAREA,
+  FORM_DATA_SELECT,
+  FORM_DATA_TEXTAREA,
 } from '../../_constants/form-data';
 import {
   Trimester,

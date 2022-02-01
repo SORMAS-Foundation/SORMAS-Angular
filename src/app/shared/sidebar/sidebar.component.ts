@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { BREAKPOINTS } from '../../app.constants';
 
