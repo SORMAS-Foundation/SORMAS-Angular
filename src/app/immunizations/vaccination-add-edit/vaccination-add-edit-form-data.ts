@@ -38,8 +38,6 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
         ...FORM_DATA_NULL,
         key: 'personName',
         label: 'captions.Vaccination.reportingUser',
-        value: 'UserUser Lastname',
-        className: 'bold',
         newLine: true,
       },
     ],
