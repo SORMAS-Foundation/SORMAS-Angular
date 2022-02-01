@@ -2,7 +2,7 @@
   <main>
     <ng-content select="[main]"></ng-content>
   </main>
-  <aside [ngClass]="opened ? 'opened' : 'closed'">
+  <aside [ngClass]="opened ? 'opened' : 'closed'" *ngIf="!hideSidebar">
     <button
       *ngIf="mode === 'over'"
       mat-icon-button
