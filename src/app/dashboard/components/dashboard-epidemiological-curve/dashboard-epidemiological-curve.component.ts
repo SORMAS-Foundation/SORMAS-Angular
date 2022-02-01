@@ -2,10 +2,11 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { format } from 'date-fns';
-import { EChartsOption } from 'echarts';
+import { ECharts, EChartsOption } from 'echarts';
 import { Subscription } from 'rxjs';
 import {
   CASE_CLASIFICATION_COLORS_MAP,
+  CHART_TOOLTIP_COLORS_MAP,
   CHART_LABEL_COLOR,
   CHART_LABEL_FONT_FAMILY,
   CHART_LABEL_FONT_SIZE,
@@ -20,6 +21,23 @@ import { DashboardEpiDataPresentConditionService } from '../../../_services/api/
 import { FilterService } from '../../../_services/filter.service';
 import { NotificationService } from '../../../_services/notification.service';
 
+const SERIES_OPTIONS = {
+  type: 'bar',
+  stack: 'Cases',
+  emphasis: {
+    focus: 'series',
+  },
+  barMaxWidth: 30,
+  barMinWidth: 18,
+  label: {
+    show: true,
+    color: '#2B323D',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    borderRadius: 2,
+    padding: [1, 5],
+  },
+};
+
 @Component({
   selector: 'app-dashboard-epidemiological-curve',
   templateUrl: './dashboard-epidemiological-curve.component.html',
@@ -29,10 +47,15 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
   @Output() epiCurveViewUpdate: EventEmitter<ViewOptions> = new EventEmitter();
 
   data: any[] = [];
+  originalData: any[] = [];
   filters: Filter[] = [];
   subscriptions: Subscription[] = [];
+  chart: ECharts;
   chartOption: EChartsOption;
   form = new FormGroup({});
+  viewMode: ViewOptions = 'PRIMARY';
+  optimalEntriesNumber = 7;
+  optimalEntriesNumberWide = 12;
 
   constructor(
     private epiDataCaseClassificationService: DashboardEpiDataCaseClassificationService,
@@ -86,7 +109,8 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
     this.subscriptions.push(
       service.getCalculated(filters).subscribe({
         next: (data: any) => {
-          this.data = data;
+          this.originalData = data;
+          this.data = this.parseData(this.originalData);
           this.setGraphOptions();
         },
         error: (err: any) => {
@@ -97,6 +121,50 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
     );
   }
 
+  parseData(data: any): any {
+    const result = { ...data };
+    const optimalEntriesNumber =
+      this.viewMode === 'PRIMARY' ? this.optimalEntriesNumber : this.optimalEntriesNumberWide;
+    let entries = Object.entries(result);
+    let ratio = Math.ceil(entries.length / optimalEntriesNumber) - 1;
+
+    if (ratio < 2) {
+      return result;
+    }
+
+    entries.forEach(([key, val]: [string, any]) => {
+      if (!Object.keys(val).length) {
+        delete result[key];
+      }
+    });
+    entries = Object.entries(result);
+    ratio = Math.ceil(entries.length / optimalEntriesNumber) - 1;
+
+    if (ratio < 2) {
+      return result;
+    }
+
+    for (let i = 0; i < entries.length; i += 1) {
+      if (i % ratio !== 0) {
+        delete result[entries[i][0]];
+      }
+    }
+
+    return result;
+  }
+
+  onChartInit(event: ECharts) {
+    this.chart = event;
+    this.chart.on('mouseover', { seriesType: 'bar' }, (series) => {
+      this.chart.setOption({
+        tooltip: {
+          backgroundColor:
+            CHART_TOOLTIP_COLORS_MAP[series.seriesId as keyof typeof CHART_TOOLTIP_COLORS_MAP],
+        },
+      });
+    });
+  }
+
   setGraphOptions(): void {
     this.chartOption = {
       tooltip: {
@@ -104,7 +172,7 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
         axisPointer: {
           type: 'shadow',
         },
-        backgroundColor: 'rgba(255, 89, 89, 0.8)',
+        backgroundColor: 'rgba(50, 50, 50, 0.7)',
         textStyle: {
           color: '#ffffff',
         },
@@ -121,7 +189,7 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
       },
       grid: {
         top: 72,
-        left: 48,
+        left: 56,
         right: 16,
         bottom: 72,
       },
@@ -143,8 +211,8 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
           nameTextStyle: {
             fontFamily: CHART_LABEL_FONT_FAMILY,
             color: CHART_LABEL_COLOR,
-            fontSize: 17,
-            lineHeight: 32,
+            fontSize: 16,
+            padding: [0, 0, 20, 0],
           },
         },
       ],
@@ -180,64 +248,45 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
   getDataCasesStatus(): any[] {
     return [
       {
+        ...SERIES_OPTIONS,
+        id: 'NOT_CLASSIFIED',
         name: this.translateService.instant('captions.dashboardNotYetClassified'),
-        type: 'bar',
-        stack: 'Cases',
-        color: CASE_CLASIFICATION_COLORS_MAP.NOT_YET_CLASSIFIED,
-        emphasis: {
-          focus: 'series',
-        },
+        color: CASE_CLASIFICATION_COLORS_MAP.NOT_CLASSIFIED,
         data: Object.values(this.data).map((item) => item.NOT_CLASSIFIED),
-        barWidth: 30,
       },
       {
+        ...SERIES_OPTIONS,
+        id: 'SUSPECT',
         name: this.translateService.instant('captions.dashboardSuspect'),
-        type: 'bar',
-        stack: 'Cases',
         color: CASE_CLASIFICATION_COLORS_MAP.SUSPECT,
-        emphasis: {
-          focus: 'series',
-        },
         data: Object.values(this.data).map((item) => item.SUSPECT),
       },
       {
+        ...SERIES_OPTIONS,
+        id: 'PROBABLE',
         name: this.translateService.instant('captions.dashboardProbable'),
-        type: 'bar',
-        stack: 'Cases',
         color: CASE_CLASIFICATION_COLORS_MAP.PROBABLE,
-        emphasis: {
-          focus: 'series',
-        },
         data: Object.values(this.data).map((item) => item.PROBABLE),
       },
       {
+        ...SERIES_OPTIONS,
+        id: 'CONFIRMED_UNKNOWN_SYMPTOMS',
         name: this.translateService.instant('captions.dashboardConfirmedUnknownSymptoms'),
-        type: 'bar',
-        stack: 'Cases',
         color: CASE_CLASIFICATION_COLORS_MAP.CONFIRMED_UNKNOWN_SYMPTOMS,
-        emphasis: {
-          focus: 'series',
-        },
         data: Object.values(this.data).map((item) => item.CONFIRMED_UNKNOWN_SYMPTOMS),
       },
       {
+        ...SERIES_OPTIONS,
+        id: 'CONFIRMED_NO_SYMPTOMS',
         name: this.translateService.instant('captions.dashboardConfirmedNoSymptoms'),
-        type: 'bar',
-        stack: 'Cases',
         color: CASE_CLASIFICATION_COLORS_MAP.CONFIRMED_NO_SYMPTOMS,
-        emphasis: {
-          focus: 'series',
-        },
         data: Object.values(this.data).map((item) => item.CONFIRMED_NO_SYMPTOMS),
       },
       {
+        ...SERIES_OPTIONS,
+        id: 'CONFIRMED',
         name: this.translateService.instant('captions.dashboardConfirmed'),
-        type: 'bar',
-        stack: 'Cases',
         color: CASE_CLASIFICATION_COLORS_MAP.CONFIRMED,
-        emphasis: {
-          focus: 'series',
-        },
         data: Object.values(this.data).map((item) => item.CONFIRMED),
       },
     ];
@@ -246,43 +295,34 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
   getDataPresentCondition(): any[] {
     return [
       {
+        ...SERIES_OPTIONS,
+        id: 'ALIVE',
         name: this.translateService.instant('captions.dashboardAlive'),
-        type: 'bar',
-        stack: 'Cases',
         color: PRESENT_CONDITION_COLORS_MAP.ALIVE,
-        emphasis: {
-          focus: 'series',
-        },
         data: Object.values(this.data).map((item) => item.ALIVE),
-        barWidth: 30,
       },
       {
+        ...SERIES_OPTIONS,
+        id: 'DEAD',
         name: this.translateService.instant('captions.dashboardDead'),
-        type: 'bar',
-        stack: 'Cases',
         color: PRESENT_CONDITION_COLORS_MAP.DEAD,
-        emphasis: {
-          focus: 'series',
-        },
         data: Object.values(this.data).map((item) => item.DEAD),
-        barWidth: 30,
       },
       {
+        ...SERIES_OPTIONS,
+        id: 'UNKNOWN',
         name: this.translateService.instant('captions.dashboardUnknown'),
-        type: 'bar',
-        stack: 'Cases',
         color: PRESENT_CONDITION_COLORS_MAP.UNKNOWN,
-        emphasis: {
-          focus: 'series',
-        },
         data: Object.values(this.data).map((item) => item.UNKNOWN),
-        barWidth: 30,
       },
     ];
   }
 
   onViewChange(event: ViewOptions): void {
+    this.viewMode = event;
     this.epiCurveViewUpdate.emit(event);
+    this.data = this.parseData(this.originalData);
+    this.setGraphOptions();
   }
 
   ngOnDestroy(): void {

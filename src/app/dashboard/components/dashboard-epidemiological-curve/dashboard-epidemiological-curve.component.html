@@ -24,7 +24,7 @@
     <button mat-menu-item>{{ 'actionDownloadXLS' | translate }}</button>
   </mat-menu>
 
-  <div echarts [options]="chartOption" class="graph"></div>
+  <div echarts [options]="chartOption" class="graph" (chartInit)="onChartInit($event)"></div>
 
   <form class="actions" [formGroup]="form">
     <div class="filters">
