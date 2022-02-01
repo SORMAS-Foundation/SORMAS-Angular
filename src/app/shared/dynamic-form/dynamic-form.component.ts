@@ -149,8 +149,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         value !== undefined &&
         !this.formElementControlService.isFormElementHidden(this.formElements, key)
       ) {
-        if (key.includes('.')) {
-          const keys = key.split('.');
+        if (key.includes('__')) {
+          const keys = key.split('__');
           const tempObj = this.convertDotPathToNestedObject(key, value)[keys[0]];
           rawValueTmp[keys[0]] = { ...rawValueTmp[keys[0]], ...tempObj };
         } else {
@@ -164,11 +164,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   updateResource(resource: any): Resource {
     Object.entries(this.form.getRawValue()).forEach(([key, value]) => {
-      if (key.includes('.')) {
+      if (key.includes('__')) {
         const setToValue = (obj: any, prop: any) => {
           let i;
           // eslint-disable-next-line no-param-reassign
-          prop = prop.split('.');
+          prop = prop.split('__');
           // eslint-disable-next-line no-plusplus
           for (i = 0; i < prop.length - 1; i++) {
             // eslint-disable-next-line no-param-reassign
@@ -198,7 +198,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       .filter((item) => item.dependingOn)
       .map((item) => ({
         watch: item.dependingOn,
-        target: item.key,
+        target: item.key.replace(/\./g, '__'),
         values: item.dependingOnValues,
       }));
 
