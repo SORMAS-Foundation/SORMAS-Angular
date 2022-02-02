@@ -155,5 +155,6 @@
   "travelEntries.startDate": "Start date",
   "travelEntries.endDate": "End date",
   "headingAggregateReports": "mSERS",
-  "dose": "Dose"
+  "dose": "Dose",
+  "travelEntries.buttonCreateNewTravelEntry": "Create new travel entry"
 }
