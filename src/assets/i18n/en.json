@@ -6047,5 +6047,6 @@
   "travelEntries.quarantinePeriod": "Quarantine period",
   "travelEntries.startDate": "Start date",
   "travelEntries.endDate": "End date",
-  "headingAggregateReports": "mSERS"
+  "headingAggregateReports": "mSERS",
+  "travelEntries.buttonCreateNewTravelEntry": "Create new travel entry"
 }

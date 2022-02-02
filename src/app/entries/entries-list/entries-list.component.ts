@@ -1,11 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { CONFIG_ENTRIES, ENTRY_FILTERS_FORM_ID, HEADER_HEIGHT } from '../../app.constants';
+import {
+  ADD_MODAL_MAX_WIDTH,
+  CONFIG_ENTRIES,
+  ENTRY_FILTERS_FORM_ID,
+  HEADER_HEIGHT,
+} from '../../app.constants';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { TableColumn } from '../../_models/common';
 import { TravelEntryDto } from '../../_models/travelEntryDto';
 import { TravelEntryService } from '../../_services/api/travel-entry-service';
 import { FORM_DATA_ENTRY_FILTERS } from '../entries-filters/entry-filters-form-data';
+import { EntryAddComponent } from '../entry-add/entry-add.component';
 import { defaultColumnDefs } from './entries-list-table-data';
 
 @Component({
@@ -23,7 +32,29 @@ export class EntriesListComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription[] = [];
 
-  constructor(public entryService: TravelEntryService) {}
+  constructor(
+    public entryService: TravelEntryService,
+    private dialog: MatDialog,
+    private translateService: TranslateService
+  ) {}
+
+  openAddTravelEntryModal(): void {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('strings.headingCreateNewTravelEntry'),
+        component: EntryAddComponent,
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
+  }
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
