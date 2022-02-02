@@ -1,8 +1,10 @@
 import {
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
+  FORM_DATA_NULL,
   FORM_DATA_RADIO,
-  FORM_DATA_SELECT, FORM_DATA_TEXTAREA,
+  FORM_DATA_SELECT,
+  FORM_DATA_TEXTAREA,
 } from '../../_constants/form-data';
 import {
   Trimester,
@@ -31,6 +33,12 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
         key: 'reportDate',
         label: 'captions.Immunization.reportDate',
         validation: ['required'],
+      },
+      {
+        ...FORM_DATA_NULL,
+        key: 'personName',
+        label: 'captions.Vaccination.reportingUser',
+        newLine: true,
       },
     ],
   },
@@ -222,8 +230,8 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
       },
       {
         ...FORM_DATA_RADIO,
-        label: 'captions.HealthConditions.hiv',
-        key: 'hiv',
+        label: 'captions.HealthConditions.malignancyChemotherapy',
+        key: 'malignancyChemotherapy',
         options: yesNoUnknown,
         className: 'medium-text-radio',
       },
@@ -237,12 +245,10 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
       },
       {
         ...FORM_DATA_RADIO,
-        label: 'captions.HealthConditions.hivArt',
-        key: 'hivArt',
+        label: 'captions.HealthConditions.sickleCellDisease',
+        key: 'sickleCellDisease',
         options: yesNoUnknown,
         className: 'medium-text-radio',
-        dependingOn: 'hiv',
-        dependingOnValues: ['YES'],
       },
       {
         ...FORM_DATA_RADIO,
@@ -284,17 +290,19 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
       },
       {
         ...FORM_DATA_RADIO,
-        label: 'captions.HealthConditions.sickleCellDisease',
-        key: 'sickleCellDisease',
+        label: 'captions.HealthConditions.hiv',
+        key: 'hiv',
         options: yesNoUnknown,
         className: 'medium-text-radio',
       },
       {
         ...FORM_DATA_RADIO,
-        label: 'captions.HealthConditions.malignancyChemotherapy',
-        key: 'malignancyChemotherapy',
+        label: 'captions.HealthConditions.hivArt',
+        key: 'hivArt',
         options: yesNoUnknown,
         className: 'medium-text-radio',
+        dependingOn: 'hiv',
+        dependingOnValues: ['YES'],
         newLine: true,
       },
       {

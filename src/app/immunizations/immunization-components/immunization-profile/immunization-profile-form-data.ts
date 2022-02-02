@@ -95,6 +95,17 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
     ],
   },
   {
+    id: 'vaccination',
+    title: 'strings.headingVaccination',
+    fields: [
+      {
+        ...FORM_DATA_INPUT,
+        key: 'vaccineDose',
+        label: 'captions.Immunization.numberOfDoses',
+      },
+    ],
+  },
+  {
     id: 'externalData',
     title: 'externalData',
     fields: [

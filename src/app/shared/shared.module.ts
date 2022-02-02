@@ -56,7 +56,6 @@ import { MsersDiseasesComponent } from './widgets/msers-diseases/msers-diseases.
 import { ImmunizationRecoveryComponent } from './widgets/immunization-recovery/immunization-recovery.component';
 import { SearchCaseModalComponent } from './modals/search-case-modal/search-case-modal.component';
 
-
 @NgModule({
   declarations: [
     LocaleSelectComponent,
