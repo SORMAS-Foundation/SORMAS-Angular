@@ -5,6 +5,11 @@
       <h1 class="page-header-title">
         {{ 'strings.entityTravelEntries' | translate }}
       </h1>
+      <div class="page-header-actions">
+        <button class="add-btn" mat-flat-button color="primary" (click)="openAddTravelEntryModal()">
+          {{ 'strings.headingCreateNewTravelEntry' | translate }}
+        </button>
+      </div>
     </div>
 
     <app-table

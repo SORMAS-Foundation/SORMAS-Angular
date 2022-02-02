@@ -10,6 +10,7 @@ import { EntriesComponent } from './entries.component';
 import { EntryComponent } from './entry/entry.component';
 import { TravelEntryComponent } from './travel-entry/travel-entry.component';
 import { TravelEntryPersonComponent } from './travel-entry-person/travel-entry-person.component';
+import { EntryAddComponent } from './entry-add/entry-add.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TravelEntryPersonComponent } from './travel-entry-person/travel-entry-p
     EntryComponent,
     TravelEntryComponent,
     TravelEntryPersonComponent,
+    EntryAddComponent,
   ],
   imports: [CommonModule, EntriesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
