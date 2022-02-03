@@ -9,6 +9,11 @@ import {
   PlaceOfStay,
   PresentCondition,
   Sex,
+  CaseOrigin,
+  FORM_DATA_CHECKBOX,
+  PointOfEntryType,
+  FORM_DATA_WIDGET,
+  AreaType,
 } from '../../app.constants';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
@@ -20,6 +25,9 @@ const optionsSex = pipe.transform(Sex);
 const optionsPresentCondition = pipe.transform(PresentCondition);
 const optionsCauseOfDeath = pipe.transform(CauseOfDeath);
 const optionsDeathPlaceType = pipe.transform(DeathPlaceType);
+const optionsCaseOrigin = pipe.transform(CaseOrigin);
+const optionsPointOfEntryType = pipe.transform(PointOfEntryType);
+const optionsAreaTypes = pipe.transform(AreaType);
 
 export const FORM_DATA_CASE_ADD = [
   {
@@ -36,6 +44,12 @@ export const FORM_DATA_CASE_ADD = [
         validation: ['required'],
       },
       {
+        ...FORM_DATA_INPUT,
+        key: 'epidNumber',
+        label: 'captions.CaseData.epidNumber',
+        validation: ['required'],
+      },
+      {
         ...FORM_DATA_SELECT,
         key: 'disease',
         label: 'captions.disease',
@@ -48,12 +62,13 @@ export const FORM_DATA_CASE_ADD = [
         key: 'diseaseVariant.uuid',
         label: 'captions.CaseData.diseaseVariant',
         options: optionsDisease,
+        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'epidNumber',
-        label: 'captions.CaseData.epidNumber',
-        validation: ['required'],
+        key: 'diseaseDetails',
+        label: 'captions.diseaseVariantDetails',
+        newLine: true,
       },
     ],
   },
@@ -61,6 +76,50 @@ export const FORM_DATA_CASE_ADD = [
     id: 'caseOrigin',
     title: 'captions.CaseData.caseOrigin',
     required: true,
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'caseOrigin',
+        validation: ['required'],
+        options: optionsCaseOrigin,
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'pointOfEntryDiffer',
+        label: 'captions.CaseData.differentPointOfEntryJurisdiction',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'regionPointOfEntry.uuid',
+        label: 'captions.CaseData.pointOfEntryRegion',
+        service: 'regionService',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'districtPointOfEntry.uuid',
+        label: 'captions.CaseData.pointOfEntryDistrict',
+        service: 'districtService',
+        determinedBy: 'regionPointOfEntry.uuid',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'pointOfEntry.uuid',
+        label: 'captions.pointOfEntry',
+        options: optionsPointOfEntryType,
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'pointOfEntryDetails',
+        label: 'pointOfEntryDetails',
+      },
+    ],
+  },
+  {
+    id: 'responsibleJurisdiction',
+    title: 'strings.headingResponsibleJurisdiction',
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -284,6 +343,90 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_DATE,
         label: 'captions.Symptoms.onsetDate',
         key: 'symptomOnset',
+      },
+    ],
+  },
+  {
+    id: 'address',
+    title: 'captions.User.address',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-address-button',
+        className: 'push-right',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'location.street',
+        label: 'captions.Facility.street',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'location.city',
+        label: 'captions.Facility.city',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'location.houseNumber',
+        label: 'captions.Facility.houseNumber',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'location.areaType',
+        label: 'captions.Facility.areaType',
+        options: optionsAreaTypes,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'location.postalCode',
+        label: 'captions.Facility.postalCode',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'location.additionalInformation',
+        label: 'captions.Facility.additionalInformation',
+      },
+    ],
+  },
+  {
+    id: 'gps',
+    title: 'headingGps',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
+        className: 'push-right',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'location.latitude',
+        label: 'captions.Location.latitude',
+        className: 'size-small',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'location.longitude',
+        label: 'captions.Location.longitude',
+        className: 'size-small',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'location.latLonAccuracy',
+        label: 'captions.Location.latLonAccuracy',
+        className: 'size-small',
+      },
+    ],
+  },
+  {
+    id: 'communityContact',
+    title: 'captions.Contact',
+    fields: [
+      {
+        ...FORM_DATA_INPUT,
+        key: 'communityContactPerson',
+        label: 'captions.Location.details',
       },
     ],
   },
