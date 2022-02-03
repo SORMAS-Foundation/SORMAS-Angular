@@ -21,7 +21,7 @@ export const DISEASES_COLORS_MAP = {
 };
 
 export const CASE_CLASIFICATION_COLORS_MAP = {
-  NOT_YET_CLASSIFIED: '#6D798C',
+  NOT_CLASSIFIED: '#6D798C',
   SUSPECT: '#fdd926',
   PROBABLE: '#fda312',
   CONFIRMED: '#d90000',
@@ -33,6 +33,18 @@ export const PRESENT_CONDITION_COLORS_MAP = {
   ALIVE: '#21d951',
   DEAD: '#2b323d',
   UNKNOWN: '#a1adbf',
+};
+
+export const CHART_TOOLTIP_COLORS_MAP = {
+  NOT_CLASSIFIED: 'rgba(109, 121, 140, 0.8)',
+  SUSPECT: 'rgba(253, 217, 38, 0.8)',
+  PROBABLE: 'rgba(253, 163, 18, 0.8)',
+  CONFIRMED: 'rgba(217, 0, 0, 0.8)',
+  CONFIRMED_NO_SYMPTOMS: 'rgba(255, 128, 128, 0.8)',
+  CONFIRMED_UNKNOWN_SYMPTOMS: 'rgba(128, 0, 0, 0.8)',
+  ALIVE: 'rgba(33, 217, 81, 0.8)',
+  DEAD: 'rgba(43, 50, 61, 0.8)',
+  UNKNOWN: 'rgba(161, 173, 191, 0.8)',
 };
 
 export const CHART_SPLIT_LINE_COLOR = '#e1e8f2';

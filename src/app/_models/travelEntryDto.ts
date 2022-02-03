@@ -11,6 +11,7 @@
  */
 
 import { YesNoUnknown } from '../app.constants';
+import { DiseaseVariant } from './diseaseVariant';
 import { DistrictReferenceDto } from './districtReferenceDto';
 import { CommunityReferenceDto, PersonReferenceDto } from './models';
 import { PointOfEntryReferenceDto } from './pointOfEntryReferenceDto';
@@ -35,7 +36,7 @@ export interface TravelEntryDto {
   reportDate: Date;
   quarantineEnd: Date;
   disease: string;
-  diseaseVariant: string;
+  diseaseVariant: DiseaseVariant;
   diseaseDetails: string;
   diseaseVariantDetails: string;
   quarantineHomePossible: YesNoUnknown;
