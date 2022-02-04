@@ -6,6 +6,13 @@
       [formElements]="myFormElements"
       [resourceService]="entryService"
     ></app-dynamic-form>
-    <div aside></div>
+    <div aside>
+      <app-edge-panel
+        type="TASK"
+        [resourceService]="taskService"
+        [scopeId]="entry.uuid"
+        [cardCollapse]="true"
+      ></app-edge-panel>
+    </div>
   </app-sidebar>
 </div>
