@@ -44,6 +44,7 @@ export interface TableDataFormat {
 
 export interface TableColumn {
   name: string;
+  additionalName?: string;
   dataKey: string;
   isSortable?: boolean;
   iconify?: boolean;

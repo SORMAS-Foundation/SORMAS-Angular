@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .actions {
@@ -26,6 +27,16 @@ table {
   color: map-get($sormas-accent, 500);
   font-size: 12px;
   text-align: right;
+}
+
+tr.additional-header-row {
+  height: auto;
+}
+
+th.additional-header {
+  border-bottom: none;
+  color: mat.get-color-from-palette($sormas-primary, 600);
+  text-transform: uppercase;
 }
 
 .minimal {

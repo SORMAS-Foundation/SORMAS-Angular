@@ -7,3 +7,4 @@ export const CONFIG_USERS = 'configUsers';
 export const CONFIG_IMMUNIZATIONS = 'configImmunizations';
 export const CONFIG_ENTRIES = 'configEntries';
 export const CONFIG_MSERS = 'configMsers';
+export const CONFIG_WEEKLY_REPORTS = 'configWeeklyReports';
