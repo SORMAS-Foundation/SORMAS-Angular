@@ -45,7 +45,7 @@ export const FORM_DATA_ENTRY = [
     ],
   },
   {
-    id: 'disease',
+    id: 'diseases',
     title: 'captions.disease',
     fields: [
       {
@@ -53,6 +53,14 @@ export const FORM_DATA_ENTRY = [
         key: 'disease',
         label: 'captions.disease',
         options: diseaseOptions,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'diseaseVariant',
+        label: 'captions.TravelEntry.diseaseVariant',
+        options: ['default'],
+        // dependingOn: 'disease',
+        // dependingOnValues: ['CORONAVIRUS'],
       },
       {
         ...FORM_DATA_CHECKBOX,

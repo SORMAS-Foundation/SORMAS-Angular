@@ -8,6 +8,7 @@
     ></app-dynamic-form>
     <div aside>
       <app-edge-panel
+        *ngIf="entry"
         type="TASK"
         [resourceService]="taskService"
         [scopeId]="entry.uuid"

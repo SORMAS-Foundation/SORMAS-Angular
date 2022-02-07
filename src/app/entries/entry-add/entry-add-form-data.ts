@@ -40,6 +40,8 @@ export const FORM_DATA_ENTRY_ADD = [
         key: 'diseaseVariant.caption',
         label: 'captions.TravelEntry.diseaseVariant',
         options: ['default'],
+        dependingOn: 'disease',
+        dependingOnValues: ['CORONAVIRUS'],
       },
     ],
   },
