@@ -9,7 +9,7 @@ import { NotificationService } from '../../_services/notification.service';
 import { HelperService } from '../../_services/helper.service';
 import { SendResourceService } from '../../_services/send-resource.service';
 import { ENTRY_PERSON_FORM_ID, SentResourceTypes } from '../../app.constants';
-import {TravelEntryDto} from '../../_models/travelEntryDto';
+import { TravelEntryDto } from '../../_models/travelEntryDto';
 
 @Component({
   selector: 'app-travel-entry-person',
