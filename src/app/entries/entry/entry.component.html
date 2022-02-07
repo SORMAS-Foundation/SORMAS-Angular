@@ -19,10 +19,10 @@
     </div>
   </header>
 
-  <app-info-bar *ngIf="showTabs" [data]="entry" [type]="'ENTRY'"></app-info-bar>
+  <app-info-bar [data]="entry" [type]="'ENTRY'"></app-info-bar>
 
   <div class="tab-nav-header">
-    <nav mat-tab-nav-bar *ngIf="showTabs">
+    <nav mat-tab-nav-bar>
       <a
         mat-tab-link
         *ngFor="let link of links"
@@ -37,7 +37,5 @@
     <app-form-actions [formId]="formId" [resource]="entry"></app-form-actions>
   </div>
 
-  <div class="page-content">
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
-  </div>
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
 </section>
