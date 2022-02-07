@@ -1,19 +1,17 @@
-<div class="page-content">
-  <app-sidebar>
-    <app-dynamic-form
-      main
-      [formId]="formId"
-      [formElements]="myFormElements"
-      [resourceService]="entryService"
-    ></app-dynamic-form>
-    <div aside>
-      <app-edge-panel
-        *ngIf="entry"
-        type="TASK"
-        [resourceService]="taskService"
-        [scopeId]="entry.uuid"
-        [cardCollapse]="true"
-      ></app-edge-panel>
-    </div>
-  </app-sidebar>
-</div>
+<app-sidebar>
+  <app-dynamic-form
+    main
+    [formId]="formId"
+    [formElements]="myFormElements"
+    [resourceService]="entryService"
+  ></app-dynamic-form>
+  <div aside>
+    <app-edge-panel
+      *ngIf="entry"
+      type="TASK"
+      [resourceService]="taskService"
+      [scopeId]="entry.uuid"
+      [cardCollapse]="true"
+    ></app-edge-panel>
+  </div>
+</app-sidebar>
