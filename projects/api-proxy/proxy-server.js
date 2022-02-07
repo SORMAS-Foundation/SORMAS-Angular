@@ -721,6 +721,69 @@ app.use('/sormas-rest/weeklyReports/indexList', (req, res) => {
 //   }
 // });
 
+app.use('/sormas-rest/tasks/indexList', (req, res) => {
+  if (req.body.criteria.caze) {
+    if (req.body.criteria.caze.uuid === 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG') {
+      res.status(200).send({
+        elements: [
+          {
+            pseudonymized: false,
+            uuid: 'VVEWGK-LVXBUC-GROMWB-VJQMKKRM',
+            taskContext: 'CASE',
+            caze: {
+              uuid: 'W4KVGK-HBGKQT-ZFTUSQ-UUTOSDH4',
+              caption: 'UI 16.01 (W4KVGK)',
+              firstName: 'UI',
+              lastName: '16.01',
+            },
+            event: null,
+            contact: null,
+            travelEntry: null,
+            region: null,
+            district: null,
+            community: null,
+            perceivedStart: 1643621220000,
+            taskType: 'SAMPLE_COLLECTION',
+            priority: 'NORMAL',
+            dueDate: 1643707620000,
+            suggestedStart: 1643621220000,
+            taskStatus: 'PENDING',
+            disease: 'CORONAVIRUS',
+            creatorUser: {
+              uuid: 'QX4VBW-O5ASAJ-3Z5TVW-KI4OKN4M',
+              caption: 'ad MIN',
+              firstName: 'ad',
+              lastName: 'min',
+            },
+            creatorComment: null,
+            assigneeUser: {
+              uuid: 'QX4VBW-O5ASAJ-3Z5TVW-KI4OKN4M',
+              caption: 'ad MIN ()',
+              firstName: 'ad',
+              lastName: 'min',
+            },
+            assigneeReply: null,
+            taskJurisdictionFlagsDto: {
+              inJurisdiction: true,
+              caseInJurisdiction: true,
+              contactInJurisdiction: false,
+              contactCaseInJurisdiction: false,
+              eventInJurisdiction: false,
+              travelEntryInJurisdiction: false,
+            },
+            contextReference: {
+              uuid: 'W4KVGK-HBGKQT-ZFTUSQ-UUTOSDH4',
+              caption: 'UI 16.01 (W4KVGK)',
+              firstName: 'UI',
+              lastName: '16.01',
+            },
+          },
+        ],
+      });
+    }
+  }
+});
+
 app.use('/sormas-rest/actions/indexList', (req, res) => {
   let total = 7;
   const priorityOptions = ['LOW', 'NORMAL', 'HIGH'];
