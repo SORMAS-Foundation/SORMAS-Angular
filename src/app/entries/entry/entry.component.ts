@@ -35,7 +35,6 @@ export class EntryComponent implements OnInit, OnDestroy {
   entry: TravelEntryDto;
   entryId: string;
   links: EntityLink[] = [];
-  showTabs = true;
   currentSubPage: EntityLink;
   myFormElements: FormBase<any>[] = [];
   actionEditOptions = actionsEditDefs;
@@ -90,10 +89,6 @@ export class EntryComponent implements OnInit, OnDestroy {
       componentReference.updateComponent(this.entry, this.entryService);
     }
     this.currentSubPage = this.helperService.getCurrentSubpage(this.router.url, entryLinks);
-    const isTravelEntryPerson = this.router.url.includes('travel-entry-person');
-    setTimeout(() => {
-      this.showTabs = !isTravelEntryPerson;
-    });
   }
 
   ngOnDestroy(): void {
