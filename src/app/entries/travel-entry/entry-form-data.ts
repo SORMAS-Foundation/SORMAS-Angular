@@ -55,6 +55,14 @@ export const FORM_DATA_ENTRY = [
         options: diseaseOptions,
       },
       {
+        ...FORM_DATA_SELECT,
+        key: 'diseaseVariant',
+        label: 'captions.TravelEntry.diseaseVariant',
+        options: [],
+        dependingOn: 'disease',
+        dependingOnValues: ['CORONAVIRUS'],
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'recovered',
         label: 'captions.TravelEntry.recovered',
