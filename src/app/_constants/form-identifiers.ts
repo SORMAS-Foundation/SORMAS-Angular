@@ -40,6 +40,7 @@ export const SAMPLE_FILTERS_FORM_ID = 'sampleFilters';
 
 export const ENTRY_DETAILS_FORM_ID = 'entry';
 export const ENTRY_FILTERS_FORM_ID = 'entryFilters';
+export const ENTRY_PERSON_FORM_ID = 'entryPerson';
 
 export const STATS_EXPORTS_FORM_ID = 'exports';
 
