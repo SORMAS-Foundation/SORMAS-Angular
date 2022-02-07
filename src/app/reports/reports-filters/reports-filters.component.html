@@ -1,0 +1,23 @@
+<form class="filters" [formGroup]="form">
+  <mat-form-field appearance="outline" floatLabel="always" class="filter-years">
+    <mat-label>{{ 'strings.year' | translate }}</mat-label>
+    <mat-select disableOptionCentering formControlName="year">
+      <mat-option *ngFor="let option of yearsOptions" [value]="option.key">
+        {{ option.value | translate }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" floatLabel="always" class="filter-epi-week">
+    <mat-label>{{ 'strings.epiWeek' | translate }}</mat-label>
+    <mat-select disableOptionCentering formControlName="epiWeek">
+      <mat-option *ngFor="let option of epiWeeksOptions" [value]="option.key">
+        {{ option.value | translate }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-stroked-button color="primary" class="filter-last-week" (click)="useLastWeek()">
+    {{ 'captions.dashboardLastWeek' | translate | replace: '%s':lastWeek.value }}
+  </button>
+</form>

@@ -472,6 +472,93 @@ app.use('/sormas-rest/diseases/indexList', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/weeklyReports/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        region: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Berlin',
+        },
+        officers: 6,
+        officerReports: 0,
+        officerCaseReports: 0,
+        officerZeroReports: 0,
+        officerMissingReports: 0,
+        officerReportPercentage: 60,
+        informants: 6,
+        informantReports: 0,
+        informantCaseReports: 0,
+        informantZeroReports: 0,
+        informantMissingReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        region: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Brandemburg',
+        },
+        officers: 4,
+        officerReports: 0,
+        officerCaseReports: 0,
+        officerZeroReports: 0,
+        officerMissingReports: 0,
+        officerReportPercentage: 0,
+        informants: 4,
+        informantReports: 0,
+        informantCaseReports: 0,
+        informantZeroReports: 0,
+        informantMissingReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        region: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Vorengellstellte Region',
+        },
+        officers: 2,
+        officerReports: 0,
+        officerCaseReports: 0,
+        officerZeroReports: 0,
+        officerMissingReports: 0,
+        officerReportPercentage: 35,
+        informants: 3,
+        informantReports: 2,
+        informantCaseReports: 1,
+        informantZeroReports: 0,
+        informantMissingReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        region: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Bavaria',
+        },
+        officers: 8,
+        officerReports: 5,
+        officerCaseReports: 0,
+        officerZeroReports: 1,
+        officerMissingReports: 2,
+        officerReportPercentage: 80,
+        informants: 5,
+        informantReports: 5,
+        informantCaseReports: 5,
+        informantZeroReports: 0,
+        informantMissingReports: 0,
+        informantReportPercentage: 0,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 4,
+    hasNext: false,
+  });
+});
+
 // app.use('/sormas-rest/listings/indexList', (req, res) => {
 //   if (req.body.criteria.disease) {
 //     res.status(200).send([

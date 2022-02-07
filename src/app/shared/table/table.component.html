@@ -100,6 +100,25 @@
           ></app-table-data>
         </td>
       </ng-container>
+
+      <ng-container *ngFor="let header of additionalHeaderDefs" [matColumnDef]="header.name">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [attr.colspan]="header.span"
+          class="additional-header"
+        >
+          <span *ngIf="header.name !== '$empty$'">{{ header.name | translate }}</span>
+        </th>
+      </ng-container>
+
+      <ng-container *ngIf="additionalHeader.length">
+        <tr
+          mat-header-row
+          *matHeaderRowDef="additionalHeader; sticky: isHeaderSticky"
+          class="additional-header-row"
+        ></tr>
+      </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
       <tr
         mat-row

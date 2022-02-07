@@ -283,3 +283,11 @@ export const API_ROUTE_DISEASES = {
   ADD: 'diseases/push',
   DELETE: 'diseases/delete',
 };
+
+export const API_ROUTE_WEEKLY_REPORTS = {
+  ENDPOINT: 'weeklyReports',
+  GET_ALL: 'weeklyReports/indexList',
+  UPDATE: 'weeklyReports/push',
+  ADD: 'weeklyReports/push',
+  DELETE: 'weeklyReports/delete',
+};
