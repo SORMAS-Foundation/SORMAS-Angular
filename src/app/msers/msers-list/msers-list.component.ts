@@ -6,7 +6,6 @@ import { TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './msers-list-table-data';
 import { ADD_MODAL_MAX_WIDTH, CONFIG_MSERS, MSERS_FILTERS_FORM_ID } from '../../app.constants';
 import { AggregateReportService } from '../../_services/api/aggregate-report.service';
-import { RegionService } from '../../_services/api/region.service';
 import { MserAddComponent } from '../mser-add/mser-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 
@@ -23,7 +22,6 @@ export class MsersListComponent implements OnInit, OnDestroy {
 
   constructor(
     public mserService: AggregateReportService,
-    public testService: RegionService,
     public translateService: TranslateService,
     private dialog: MatDialog
   ) {}

@@ -62,6 +62,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   fetchStatus: FetchStatus | undefined;
   fetchStatusType = FetchStatusType;
   loading = false;
+  additionalHeaderDefs: any[] = [];
+  additionalHeader: string[] = [];
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -117,6 +119,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
     this.displayedColumns = this.getColumns();
     this.columnKeys = this.getColumnsKeyByName(this.displayedColumns);
+    this.additionalHeaderDefs = this.getAdditionalHeader();
+    this.additionalHeader = this.additionalHeaderDefs.map((item) => item.name);
 
     this.determineHeight(this.fullHeight);
 
@@ -146,6 +150,29 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.selection.selected.forEach((row) => {
       result.push(this.dataSourceArray[row.index]);
     });
+    return result;
+  }
+
+  getAdditionalHeader(): any {
+    const result: any[] = [];
+    this.tableColumns.forEach((item) => {
+      if (item.additionalName) {
+        result.push({
+          name: item.additionalName,
+          span: 1,
+        });
+      } else if (result.length) {
+        result[result.length - 1].span += 1;
+      } else {
+        result.push({
+          name: '$empty$',
+          span: 1,
+        });
+      }
+    });
+    if (result.length === 1 && result[0].name === '$empty$') {
+      return [];
+    }
     return result;
   }
 

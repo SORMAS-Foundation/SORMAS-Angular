@@ -86,6 +86,11 @@ const routes: Routes = [
     loadChildren: () => import('./msers/msers.module').then((m) => m.MsersModule),
     canActivate: [Guard],
   },
+  {
+    path: 'reports',
+    loadChildren: () => import('./reports/reports.module').then((m) => m.ReportsModule),
+    canActivate: [Guard],
+  },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
 ];
