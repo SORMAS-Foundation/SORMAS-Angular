@@ -291,3 +291,19 @@ export const API_ROUTE_WEEKLY_REPORTS = {
   ADD: 'weeklyReports/push',
   DELETE: 'weeklyReports/delete',
 };
+
+export const API_ROUTE_WEEKLY_REPORTS_OFFICER_SUMMARY = {
+  ENDPOINT: 'weeklyReportsOfficerSummary',
+  GET_ALL: 'weeklyReportsOfficerSummary/indexList',
+  UPDATE: 'weeklyReportsOfficerSummary/push',
+  ADD: 'weeklyReportsOfficerSummary/push',
+  DELETE: 'weeklyReportsOfficerSummary/delete',
+};
+
+export const API_ROUTE_WEEKLY_REPORTS_REGION_SUMMARY = {
+  ENDPOINT: 'weeklyReportsRegionSummary',
+  GET_ALL: 'weeklyReportsRegionSummary/indexList',
+  UPDATE: 'weeklyReportsRegionSummary/push',
+  ADD: 'weeklyReportsRegionSummary/push',
+  DELETE: 'weeklyReportsRegionSummary/delete',
+};

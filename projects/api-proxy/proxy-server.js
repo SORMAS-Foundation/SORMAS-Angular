@@ -472,7 +472,7 @@ app.use('/sormas-rest/diseases/indexList', (req, res) => {
   });
 });
 
-app.use('/sormas-rest/weeklyReports/indexList', (req, res) => {
+app.use('/sormas-rest/weeklyReportsRegionSummary/indexList', (req, res) => {
   res.status(200).send({
     elements: [
       {
@@ -555,6 +555,115 @@ app.use('/sormas-rest/weeklyReports/indexList', (req, res) => {
     pageNumber: 0,
     size: 8,
     totalElementCount: 4,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/weeklyReportsOfficerSummary/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesterller Landkreis',
+        },
+        officer: {
+          uuid: 'SDHH-JDFDJD-DSHFHHFDHF',
+          caption: 'Mila Adam - Surveillance Officer',
+        },
+        officerReportDate: null,
+        totalCaseCount: 60,
+        informants: 6,
+        informantReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesterller Landkreis',
+        },
+        officer: {
+          uuid: 'SDHH-JDFDJD-DSHFHHFDHF',
+          caption: 'Anselm Kiefer - Surveillance Officer',
+        },
+        officerReportDate: null,
+        totalCaseCount: 27,
+        informants: 3,
+        informantReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesterller Landkreis',
+        },
+        officer: {
+          uuid: 'SDHH-JDFDJD-DSHFHHFDHF',
+          caption: 'Maria Wolf - Surveillance Officer',
+        },
+        officerReportDate: null,
+        totalCaseCount: 44,
+        informants: 12,
+        informantReports: 5,
+        informantReportPercentage: 42,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/weeklyReports/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesteller Landkries',
+        },
+        coomunity: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'VL Borchellan Mittel',
+        },
+        healthFacility: {
+          uuid: 'SFGDSG-SDG-SDGDGS-DGSDGSG',
+          caption: 'Voreingestelle Gesundheitseinrichtung',
+        },
+        assignedOfficer: {
+          uuid: 'SGDSG-SDGDS-WERWY-RIYIU',
+          caption: 'Hospital INFORMANT - Hospital informant',
+        },
+        totalNumberOfCases: 7,
+        reportDateTime: null,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesteller Landkries',
+        },
+        coomunity: null,
+        healthFacility: {
+          uuid: 'SFGDSG-SDG-SDGDGS-DGSDGSG',
+          caption: 'Voreingestelle Gesundheitseinrichtung',
+        },
+        assignedOfficer: {
+          uuid: 'SGDSG-SDGDS-WERWY-RIYIU',
+          caption: 'Hospital INFORMANT - Hospital informant',
+        },
+        totalNumberOfCases: 11,
+        reportDateTime: 1644480071438,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 2,
     hasNext: false,
   });
 });

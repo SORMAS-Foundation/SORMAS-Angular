@@ -1,0 +1,12 @@
+<app-table
+  [filterFormId]="formId"
+  [resourceService]="reportService"
+  [tableColumns]="defaultColumns"
+  [isViewable]="true"
+  [isSortable]="true"
+  [isHeaderSticky]="true"
+  [saveConfigKey]="configKey"
+  [appearance]="'minimal'"
+  [fullHeight]="true"
+  (viewItem)="showReport($event)"
+></app-table>
