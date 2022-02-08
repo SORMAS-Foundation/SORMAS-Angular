@@ -42,10 +42,10 @@ export class DashboardTestResultsComponent implements OnInit, OnDestroy {
 
   sumOfTestResults(): number {
     return (
-      this.testResults.POSITIVE +
-        this.testResults.NEGATIVE +
-        this.testResults.PENDING +
-        this.testResults.INDETERMINATE || 0
+      (this.testResults.POSITIVE || 0) +
+      (this.testResults.NEGATIVE || 0) +
+      (this.testResults.PENDING || 0) +
+      (this.testResults.INDETERMINATE || 0)
     );
   }
 

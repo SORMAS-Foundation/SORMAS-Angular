@@ -24,11 +24,11 @@ export class DashboardNewEventsComponent implements OnInit, OnDestroy {
 
   sumOfEvents(): number {
     return (
-      this.newEvents.CLUSTER +
-        this.newEvents.EVENT +
-        this.newEvents.SIGNAL +
-        this.newEvents.SCREENING +
-        this.newEvents.DROPPED || 0
+      (this.newEvents.CLUSTER || 0) +
+      (this.newEvents.EVENT || 0) +
+      (this.newEvents.SIGNAL || 0) +
+      (this.newEvents.SCREENING || 0) +
+      (this.newEvents.DROPPED || 0)
     );
   }
 
