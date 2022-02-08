@@ -55,7 +55,8 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
 
   populateOptions(): void {
     const determinantControl =
-      this.config.determinedBy && this.group.controls[this.config.determinedBy];
+      this.config.determinedBy &&
+      this.group.controls[this.config.determinedBy.replaceAll('.', '__')];
     if (!determinantControl) {
       this.fetchOptions();
       return;
@@ -98,7 +99,7 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     if (!key) {
       return null;
     }
-    const field = this.makeKey(key);
+    const field = this.makeKey(key.replaceAll('.', '__'));
     const filters = Object.entries(this.makeObject(field, val))[0];
     return [
       {
@@ -122,7 +123,7 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
 
   makeObject(path: string, value: string): any {
     const result: any = {};
-    const arr = path.split('.');
+    const arr = path.split('__');
     let obj: any = result;
     for (let i = 0; i < arr.length - 1; i += 1) {
       obj[arr[i]] = {};

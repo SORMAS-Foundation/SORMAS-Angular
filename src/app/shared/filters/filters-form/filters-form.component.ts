@@ -41,9 +41,9 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
       if (value === undefined || value === null) {
         return;
       }
-      if (key.includes('.')) {
+      if (key.includes('__')) {
         const strToObj = (str: string, val: any) => {
-          const props = str.split('.');
+          const props = str.split('__');
           const obj: any = {};
           let ref = obj;
           let i;

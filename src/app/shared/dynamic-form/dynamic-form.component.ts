@@ -131,7 +131,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   convertDotPathToNestedObject(path: string, value: any): any {
-    const [last, ...paths] = path.split('.').reverse();
+    const [last, ...paths] = path.split('__').reverse();
     // @ts-ignore
     return paths.reduce((acc, el) => ({ [el]: acc }), { [last]: value });
   }
