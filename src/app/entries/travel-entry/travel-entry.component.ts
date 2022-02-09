@@ -3,6 +3,7 @@ import { ENTRY_DETAILS_FORM_ID } from '../../app.constants';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { TravelEntryDto } from '../../_models/travelEntryDto';
 import { BaseService } from '../../_services/api/base.service';
+import { TaskService } from '../../_services/api/task.service';
 import { TravelEntryService } from '../../_services/api/travel-entry-service';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import * as data from './entry-form-data';
@@ -22,7 +23,8 @@ export class TravelEntryComponent {
 
   constructor(
     private formElementControlService: FormElementControlService,
-    public entryService: TravelEntryService
+    public entryService: TravelEntryService,
+    public taskService: TaskService
   ) {}
 
   updateComponent(entryItem: TravelEntryDto, resourceService: BaseService<any>): void {
