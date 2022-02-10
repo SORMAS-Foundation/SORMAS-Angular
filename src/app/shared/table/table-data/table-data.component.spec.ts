@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { PipesModule } from '../../../_pipes/pipes.module';
 
 import { TableDataComponent } from './table-data.component';
@@ -11,7 +12,7 @@ describe('CellDataComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [TableDataComponent],
-      imports: [PipesModule],
+      imports: [PipesModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

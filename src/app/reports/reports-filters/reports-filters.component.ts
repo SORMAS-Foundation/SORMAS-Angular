@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import addDays from 'date-fns/addDays';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { HelperService } from '../../_services/helper.service';
   templateUrl: './reports-filters.component.html',
   styleUrls: ['./reports-filters.component.scss'],
 })
-export class ReportsFiltersComponent implements OnInit, OnDestroy {
+export class ReportsFiltersComponent implements OnInit, OnDestroy, AfterViewInit {
   form: FormGroup;
   today = new Date();
   lastWeek: any;
@@ -22,13 +22,16 @@ export class ReportsFiltersComponent implements OnInit, OnDestroy {
   constructor(private filterService: FilterService, private helperService: HelperService) {}
 
   ngOnInit(): void {
-    const thisWeek = this.helperService.generateWeekForDate(this.today);
     this.lastWeek = this.helperService.generateWeekForDate(addDays(this.today, -7));
     this.yearsOptions = this.helperService.getYears().reverse();
     this.initFiltersForm();
     this.watchFields();
-    this.form.get('year')?.setValue(this.today.getFullYear());
-    this.form.get('epiWeek')?.setValue(thisWeek.key);
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.useLastWeek();
+    });
   }
 
   initFiltersForm(): void {
