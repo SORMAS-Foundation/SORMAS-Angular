@@ -157,5 +157,6 @@
   "headingAggregateReports": "mSERS",
   "dose": "Dose",
   "travelEntries.buttonCreateNewTravelEntry": "Create new travel entry",
-  "pointOfEntryDetails": "Point of entry details"
+  "pointOfEntryDetails": "Point of entry details",
+  "headingSharesStatus": "Shares status"
 }
