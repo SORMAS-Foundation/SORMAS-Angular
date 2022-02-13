@@ -46,6 +46,7 @@ export interface TableColumn {
   name: string;
   additionalName?: string;
   dataKey: string;
+  alternateData?: string;
   isSortable?: boolean;
   iconify?: boolean;
   align?: string;

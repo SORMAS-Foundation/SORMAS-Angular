@@ -44,6 +44,11 @@ a.mat-button {
   color: mat.get-color-from-palette($sormas-success, 700);
 }
 
+.no-data {
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-alert, 300);
+}
+
 @media (prefers-reduced-motion) {
   .row-skeleton {
     animation: none;

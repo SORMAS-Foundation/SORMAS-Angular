@@ -71,6 +71,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() isSelectableOnce = false;
   @Input() isSelectable = false;
   @Input() isEditable = false;
+  @Input() isViewable = false;
   @Input() isHeaderSticky = false;
   @Input() tableColumns: TableColumn[] = [];
   @Input() resourceService: BaseService<any>;
@@ -99,6 +100,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() editItem: EventEmitter<any> = new EventEmitter();
+  @Output() viewItem: EventEmitter<any> = new EventEmitter();
   @Output() triggerGroupEvent: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
@@ -155,6 +157,14 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getAdditionalHeader(): any {
     const result: any[] = [];
+    const actionCols =
+      Number(this.isEditable) + Number(this.isSelectable) + Number(this.isViewable);
+    if (actionCols) {
+      result.push({
+        name: '$empty$',
+        span: actionCols,
+      });
+    }
     this.tableColumns.forEach((item) => {
       if (item.additionalName) {
         result.push({
@@ -178,6 +188,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getColumns(): string[] {
     let columns = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
+
+    if (this.isViewable) {
+      columns.unshift('view');
+    }
 
     if (this.isEditable) {
       columns.unshift('edit');
@@ -338,6 +352,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onSelectionChange(event: any, row: any): void {
+    if (!this.isSelectable) {
+      return;
+    }
     if (event) {
       this.selection.toggle(row);
     }
@@ -406,6 +423,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   doActionEdit(index: number): void {
     this.editItem.emit(this.dataSourceArray[index]);
+  }
+
+  doActionView(index: number): void {
+    this.viewItem.emit(this.dataSourceArray[index]);
   }
 
   updateTableColumns(columns: string[]): void {

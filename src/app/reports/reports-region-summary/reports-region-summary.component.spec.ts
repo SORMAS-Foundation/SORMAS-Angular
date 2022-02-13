@@ -4,28 +4,28 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ReportsListComponent } from './reports-list.component';
-import { PipesModule } from '../../_pipes/pipes.module';
+import { ReportsRegionSummaryComponent } from './reports-region-summary.component';
+import { MaterialModule } from '../../material.module';
 
-describe('ReportsListComponent', () => {
-  let component: ReportsListComponent;
-  let fixture: ComponentFixture<ReportsListComponent>;
+describe('ReportsRegionSummaryComponent', () => {
+  let component: ReportsRegionSummaryComponent;
+  let fixture: ComponentFixture<ReportsRegionSummaryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ReportsListComponent],
+      declarations: [ReportsRegionSummaryComponent],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
         TranslateModule.forRoot(),
-        PipesModule,
+        MaterialModule,
       ],
       providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReportsListComponent);
+    fixture = TestBed.createComponent(ReportsRegionSummaryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
