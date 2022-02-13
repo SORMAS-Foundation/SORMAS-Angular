@@ -57,9 +57,25 @@ export const defaultColumnDefs: TableColumn[] = [
     className: 'share-requests-comment',
   },
   {
-    name: ' ',
+    name: '$actions',
     dataKey: '',
-    isSortable: true,
-    className: 'share-requests-actions',
+    actions: [
+      {
+        type: 'ACCEPT',
+        icon: 'check_circle_outline',
+        text: 'Accept',
+        className: 'button-accept',
+        dependingOn: 'status',
+        dependingOnValues: ['PENDING'],
+      },
+      {
+        type: 'REJECT',
+        icon: 'highlight_off',
+        text: 'Reject',
+        className: 'button-reject',
+        dependingOn: 'status',
+        dependingOnValues: ['PENDING'],
+      },
+    ],
   },
 ];
