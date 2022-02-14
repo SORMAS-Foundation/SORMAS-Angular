@@ -63,12 +63,16 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.diseaseVariant',
         options: optionsDisease,
         newLine: true,
+        dependingOn: 'disease',
+        dependingOnValues: ['CORONAVIRUS'],
       },
       {
         ...FORM_DATA_INPUT,
         key: 'diseaseDetails',
         label: 'captions.diseaseVariantDetails',
         newLine: true,
+        dependingOn: 'disease',
+        dependingOnValues: ['CORONAVIRUS'],
       },
     ],
   },
@@ -95,6 +99,7 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.pointOfEntryRegion',
         service: 'regionService',
         newLine: true,
+        dependingOn: 'pointOfEntryDiffer',
       },
       {
         ...FORM_DATA_SELECT,
@@ -102,6 +107,7 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.pointOfEntryDistrict',
         service: 'districtService',
         determinedBy: 'regionPointOfEntry.uuid',
+        dependingOn: 'pointOfEntryDiffer',
       },
       {
         ...FORM_DATA_SELECT,
@@ -109,11 +115,13 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.pointOfEntry',
         options: optionsPointOfEntryType,
         newLine: true,
+        dependingOn: 'pointOfEntryDiffer',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'pointOfEntryDetails',
         label: 'pointOfEntryDetails',
+        dependingOn: 'pointOfEntryDiffer',
       },
     ],
   },
@@ -122,12 +130,19 @@ export const FORM_DATA_CASE_ADD = [
     title: 'strings.headingResponsibleJurisdiction',
     fields: [
       {
+        ...FORM_DATA_CHECKBOX,
+        key: 'dontShareWithReportingTool',
+        label: 'captions.CaseData.dontShareWithReportingTool',
+        newLine: true,
+      },
+      {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
         label: 'captions.CaseData.responsibleRegion',
         service: 'regionService',
         validation: ['required'],
         newLine: true,
+        dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
         ...FORM_DATA_SELECT,
@@ -137,6 +152,7 @@ export const FORM_DATA_CASE_ADD = [
         determinedBy: 'region.uuid',
         validation: ['required'],
         newLine: true,
+        dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
         ...FORM_DATA_SELECT,
@@ -144,6 +160,13 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.responsibleCommunity',
         service: 'communityService',
         determinedBy: 'district.uuid',
+        newLine: true,
+        dependingOn: 'differentPlaceOfStayJurisdiction',
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'differentPlaceOfStayJurisdiction',
+        label: 'captions.CaseData.differentPlaceOfStayJurisdiction',
         newLine: true,
       },
     ],
@@ -347,6 +370,46 @@ export const FORM_DATA_CASE_ADD = [
     ],
   },
   {
+    id: 'homeAddress',
+    title: 'captions.Person.address',
+    fields: [
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'caseDataEnterHomeAddressNow',
+        label: 'captions.caseDataEnterHomeAddressNow',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'person.region.uuid',
+        label: 'captions.CaseData.responsibleRegion',
+        service: 'regionService',
+        validation: ['required'],
+        newLine: true,
+        dependingOn: 'caseDataEnterHomeAddressNow',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'person.district.uuid',
+        label: 'captions.CaseData.responsibleDistrict',
+        service: 'districtService',
+        determinedBy: 'person.region.uuid',
+        validation: ['required'],
+        newLine: true,
+        dependingOn: 'caseDataEnterHomeAddressNow',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'person.community.uuid',
+        label: 'captions.CaseData.responsibleCommunity',
+        service: 'communityService',
+        determinedBy: 'person.district.uuid',
+        newLine: true,
+        dependingOn: 'caseDataEnterHomeAddressNow',
+      },
+    ],
+  },
+  {
     id: 'address',
     title: 'captions.User.address',
     fields: [
@@ -416,17 +479,6 @@ export const FORM_DATA_CASE_ADD = [
         key: 'location.latLonAccuracy',
         label: 'captions.Location.latLonAccuracy',
         className: 'size-small',
-      },
-    ],
-  },
-  {
-    id: 'communityContact',
-    title: 'captions.Contact',
-    fields: [
-      {
-        ...FORM_DATA_INPUT,
-        key: 'communityContactPerson',
-        label: 'captions.Location.details',
       },
     ],
   },
