@@ -58,6 +58,8 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         ...FORM_DATA_INPUT,
         key: 'numberOfDoses',
         label: 'captions.Immunization.numberOfDoses',
+        dependingOn: 'meansOfImmunization',
+        dependingOnValues: ['VACCINATION', 'VACCINATION_RECOVERY'],
       },
       {
         ...FORM_DATA_DATE,
