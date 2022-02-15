@@ -307,3 +307,11 @@ export const API_ROUTE_WEEKLY_REPORTS_REGION_SUMMARY = {
   ADD: 'weeklyReportsRegionSummary/push',
   DELETE: 'weeklyReportsRegionSummary/delete',
 };
+
+export const API_ROUTE_SHARE_REQUESTS = {
+  ENDPOINT: 'shareRequests',
+  GET_ALL: 'shareRequests/indexList',
+  UPDATE: 'shareRequests/push',
+  ADD: 'shareRequests/push',
+  DELETE: 'shareRequests/delete',
+};

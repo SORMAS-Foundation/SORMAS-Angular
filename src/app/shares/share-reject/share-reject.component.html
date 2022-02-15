@@ -1,0 +1,25 @@
+<div mat-dialog-title>
+  <h1>{{ 'strings.headingRejectSormasToSormasShareRequest' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button mat-dialog-close color="primary">
+      {{ 'captions.actionNo' | translate }}
+    </button>
+    <button mat-flat-button color="primary" (click)="acceptRequest()">
+      {{ 'captions.actionYes' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <h2>{{ 'strings.confirmationRejectSormasToSormasShareRequest' | translate }}</h2>
+
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>{{ 'captions.SormasToSormasShareRequest.comment' | translate }}</mat-label>
+      <textarea matInput formControlName="comment"></textarea>
+    </mat-form-field>
+  </form>
+</div>

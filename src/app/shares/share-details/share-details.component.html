@@ -1,0 +1,19 @@
+<div mat-dialog-title>
+  <h1>{{ 'strings.headingShareRequestDetails' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div *ngIf="cases.length" class="data-details">
+    <h2>{{ 'strings.headingShareRequestCases' | translate }}</h2>
+    <app-table-static [data]="cases" [tableColumns]="columnsCases"></app-table-static>
+  </div>
+  <div *ngIf="contacts.length" class="data-details">
+    <h2>{{ 'strings.headingShareRequestContacts' | translate }}</h2>
+    <app-table-static [data]="contacts" [tableColumns]="columnsContacts"></app-table-static>
+  </div>
+</div>
