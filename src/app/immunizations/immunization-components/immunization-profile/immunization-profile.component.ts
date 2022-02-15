@@ -67,72 +67,77 @@ export class ImmunizationProfileComponent implements AfterViewInit, OnDestroy {
         })
       );
 
+      this.meansOfImmunizationUpdate(meansOfImmunization.value);
       this.subscriptions.push(
         meansOfImmunization.valueChanges.subscribe((val: string) => {
-          switch (val) {
-            case 'RECOVERY':
-              this.showVaccinationRight = false;
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'recovery',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'vaccination',
-                'hidden',
-                true
-              );
-              break;
-            case 'VACCINATION_RECOVERY':
-              this.showVaccinationRight = true;
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'recovery',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'vaccination',
-                'hidden',
-                false
-              );
-              break;
-            case 'VACCINATION':
-              this.showVaccinationRight = true;
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'recovery',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'vaccination',
-                'hidden',
-                false
-              );
-              break;
-            default:
-              this.showVaccinationRight = false;
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'recovery',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'vaccination',
-                'hidden',
-                true
-              );
-              break;
-          }
+          this.meansOfImmunizationUpdate(val);
         })
       );
+    }
+  }
+
+  meansOfImmunizationUpdate(val: string): void {
+    switch (val) {
+      case 'RECOVERY':
+        this.showVaccinationRight = false;
+        this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+          this.myFormElements,
+          'recovery',
+          'hidden',
+          false
+        );
+        this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+          this.myFormElements,
+          'vaccination',
+          'hidden',
+          true
+        );
+        break;
+      case 'VACCINATION_RECOVERY':
+        this.showVaccinationRight = true;
+        this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+          this.myFormElements,
+          'recovery',
+          'hidden',
+          false
+        );
+        this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+          this.myFormElements,
+          'vaccination',
+          'hidden',
+          false
+        );
+        break;
+      case 'VACCINATION':
+        this.showVaccinationRight = true;
+        this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+          this.myFormElements,
+          'recovery',
+          'hidden',
+          true
+        );
+        this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+          this.myFormElements,
+          'vaccination',
+          'hidden',
+          false
+        );
+        break;
+      default:
+        this.showVaccinationRight = false;
+        this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+          this.myFormElements,
+          'recovery',
+          'hidden',
+          true
+        );
+        this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+          this.myFormElements,
+          'vaccination',
+          'hidden',
+          true
+        );
+        break;
     }
   }
 
