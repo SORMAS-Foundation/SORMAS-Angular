@@ -1,7 +1,7 @@
 <div mat-dialog-title>
   <h1>
     {{
-      'captions.weeklyReportsInDistrict' | translate | replace: '%':data?.report?.district?.caption
+      'captions.weeklyReportsInDistrict' | translate | replace: '%':data?.report?.region?.caption
     }}
     -
     {{ 'strings.epiWeek' | translate }}
@@ -18,9 +18,11 @@
   <app-table
     [resourceService]="reportService"
     [tableColumns]="defaultColumns"
+    [isViewable]="true"
     [isSortable]="true"
     [isHeaderSticky]="true"
     [saveConfigKey]="configKey"
     [appearance]="'minimal'"
+    (viewItem)="showReport($event)"
   ></app-table>
 </div>

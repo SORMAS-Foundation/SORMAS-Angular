@@ -322,5 +322,7 @@ export * from './visitStatus';
 export * from './waterSource';
 export * from './weeklyReportDto';
 export * from './weeklyReportEntryDto';
+export * from './weeklyReportOfficerSummaryDto';
+export * from './weeklyReportRegionSummaryDto';
 export * from './workEnvironment';
 export * from './yesNoUnknown';
