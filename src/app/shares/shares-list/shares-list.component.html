@@ -10,4 +10,6 @@
   [isViewable]="true"
   [isHeaderSticky]="true"
   [saveConfigKey]="configKey"
+  (viewItem)="showShareRequest($event)"
+  (rowAction)="doRowAction($event)"
 ></app-table>

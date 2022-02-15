@@ -6074,5 +6074,6 @@
   "dose": "Dose",
   "travelEntries.buttonCreateNewTravelEntry": "Create new travel entry",
   "pointOfEntryDetails": "Point of entry details",
-  "headingSharesStatus": "Shares status"
+  "headingSharesStatus": "Shares status",
+  "CaseData.onsetDate": "Onset date"
 }

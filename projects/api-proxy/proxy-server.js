@@ -745,6 +745,84 @@ app.use('/sormas-rest/shareRequests/indexList', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/shareRequests/******-*', (req, res) => {
+  res.status(200).send({
+    uuid: 'FTH7UJ-SED452-T67N5F-ERT56Y78U',
+    dataType: 'CASE',
+    status: 'PENDING',
+    originInfo: {},
+    cases: [
+      {
+        uuid: 'VBNHYT-WD45W3-NBMHJY-SDFG3214',
+        reportDate: 1644761193620,
+        disease: 'CORONAVIRUS',
+        diseaseDetails: null,
+        diseaseVariant: null,
+        caseClassification: 'NOT_CLASSIFIED',
+        outcome: 'NO_OUTCOME',
+        investigationStatus: 'PENDING',
+        onsetDate: 1644761193620,
+        person: {
+          uuid: 'QASDFG-POKJHG-NH76R4-DF67HN65',
+          firstName: 'Dani',
+          lastName: 'Rus',
+          sex: 'MALE',
+          address: {},
+          birthdateDD: 22,
+          birthdateMM: 12,
+          birthdateYYYY: 1979,
+        },
+        region: {
+          uuid: 'RGTYUI-NB45W2-BN3456-BD4R5TYU',
+          caption: 'Baden-Wurttemberg',
+        },
+        district: {
+          uuid: 'WERBNH-RTYGFD-HJK789-D234WQWC',
+          caption: 'LK Alb-Donau-Kreis',
+        },
+        community: null,
+        facilityType: null,
+        healthFacility: null,
+        healthFacilityDetails: null,
+        pointOfEntry: null,
+        pointOfEntryDetails: null,
+      },
+    ],
+    contacts: [
+      {
+        uuid: 'BHJKUI-MN78Y56-VDFGT3E-RT6G5R3H',
+        reportDateTime: 1644761193620,
+        disease: 'CORONAVIRUS',
+        diseaseDetails: null,
+        lastContactDate: 1644761193620,
+        contactClassification: 'CONFIRMED',
+        contactCategory: 'HIGH_RISK_MED',
+        contactStatus: 'ACTIVE',
+        person: {
+          uuid: 'QASDFG-POKJHG-NH76R4-DF67HN65',
+          firstName: 'Dani',
+          lastName: 'Rus',
+          sex: 'MALE',
+          address: {},
+          birthdateDD: 22,
+          birthdateMM: 12,
+          birthdateYYYY: 1979,
+        },
+        region: {
+          uuid: 'RGTYUI-NB45W2-BN3456-BD4R5TYU',
+          caption: 'Baden-Wurttemberg',
+        },
+        district: {
+          uuid: 'WERBNH-RTYGFD-HJK789-D234WQWC',
+          caption: 'LK Alb-Donau-Kreis',
+        },
+        community: null,
+      },
+    ],
+    events: null,
+  });
+});
+
 // app.use('/sormas-rest/listings/indexList', (req, res) => {
 //   if (req.body.criteria.disease) {
 //     res.status(200).send([
