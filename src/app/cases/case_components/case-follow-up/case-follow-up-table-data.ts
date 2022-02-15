@@ -18,6 +18,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'visitStatus',
     isSortable: true,
     className: 'visit-status',
+    translationName: 'CaseFollowupStatus',
     format: {
       type: TableDataFormatOptions.DISPLAY,
       pattern: '<span class="visit-status-$param1">$param1</span>',

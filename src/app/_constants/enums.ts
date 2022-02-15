@@ -20,6 +20,12 @@ export enum CaseOrigin {
   POINT_OF_ENTRY = 'enum.CaseOrigin.POINT_OF_ENTRY',
 }
 
+export enum CaseFollowupStatus {
+  COOPERATIVE = 'enum.VisitStatus.Short.COOPERATIVE',
+  UNAVAILABLE = 'enum.VisitStatus.Short.UNAVAILABLE',
+  UNCOOPERATIVE = 'enum.VisitStatus.Short.UNCOOPERATIVE',
+}
+
 export enum FollowupStatus {
   FOLLOW_UP = 'enum.FollowUpStatus.FOLLOW_UP',
   COMPLETED = 'enum.FollowUpStatus.COMPLETED',
@@ -304,6 +310,12 @@ export enum PathogenTestType {
   OTHER = 'enum.PathogenTestType.OTHER',
 }
 
+export enum AdditionalTestingStatus {
+  NOT_REQUESTED = 'enum.AdditionalTestingStatus.NOT_REQUESTED',
+  REQUESTED = 'enum.AdditionalTestingStatus.REQUESTED',
+  PERFORMED = 'enum.AdditionalTestingStatus.PERFORMED',
+}
+
 export enum CaseIdentificationSource {
   UNKNOWN = 'enum.CaseIdentificationSource.UNKNOWN',
   OUTBREAK_INVESTIGATION = 'enum.CaseIdentificationSource.OUTBREAK_INVESTIGATION',
@@ -427,6 +439,7 @@ export enum TaskContextOptions {
   CONTACT = 'enum.TaskContext.CONTACT',
   EVENT = 'enum.TaskContext.EVENT',
   GENERAL = 'enum.TaskContext.GENERAL',
+  TRAVEL_ENTRY = 'enum.TaskContext.TRAVEL_ENTRY',
 }
 
 export enum TracingApp {

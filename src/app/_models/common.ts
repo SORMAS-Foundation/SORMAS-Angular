@@ -52,6 +52,7 @@ export interface TableColumn {
   className?: string;
   format?: TableDataFormat;
   essential?: boolean;
+  translationName?: string;
 }
 
 // scrolling

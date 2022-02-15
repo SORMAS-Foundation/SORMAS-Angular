@@ -19,6 +19,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Task.taskContext',
     dataKey: 'taskContext',
+    translationName: 'TaskContextOptions',
     isSortable: true,
   },
   {

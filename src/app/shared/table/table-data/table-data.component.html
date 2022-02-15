@@ -35,11 +35,12 @@
       "
     ></span>
   </ng-container>
-
   <ng-container *ngSwitchDefault>
     <span
       [innerHtml]="
-        config.format?.breakSpaces ? (dataDisplay | wrapWord: config.dataKey) : dataDisplay
+        config.format?.breakSpaces
+          ? (dataDisplay | wrapWord: config.dataKey)
+          : (dataDisplay! | translate)
       "
     ></span>
   </ng-container>

@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 import { IconsMap } from '../../../app.constants';
+import * as enums from '../../../_constants/enums';
 
 @Component({
   selector: 'app-table-data',
@@ -45,6 +46,18 @@ export class TableDataComponent implements OnChanges {
     return this.config.format?.type;
   }
 
+  translateData(): void {
+    const rawData: string = this.getData(this.config.dataKey);
+    if (rawData) {
+      if (this.config.translationName) {
+        // @ts-ignore
+        this.dataDisplay = enums[this.config.translationName][rawData];
+      } else {
+        this.dataDisplay = rawData;
+      }
+    }
+  }
+
   formatData(): void {
     this.dataType = this.getType();
     switch (this.config.format?.type) {
@@ -58,10 +71,13 @@ export class TableDataComponent implements OnChanges {
         this.formatNumber();
         break;
       case this.formats.DISPLAY:
+        this.translateData();
         this.formatDisplay();
         break;
-      default:
+      default: {
         this.dataDisplay = this.getData(this.config.dataKey);
+        this.translateData();
+      }
     }
   }
 
