@@ -41,9 +41,7 @@
   <ng-container *ngSwitchDefault>
     <span
       [innerHtml]="
-        config.format?.breakSpaces
-          ? (dataDisplay | wrapWord: config.dataKey)
-          : (dataDisplay! | translate)
+        config.format?.breakSpaces ? (dataDisplay | wrapWord: config.dataKey) : dataDisplay
       "
     ></span>
   </ng-container>
