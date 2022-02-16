@@ -50,12 +50,12 @@ export class TableDataComponent implements OnChanges {
   }
 
   translateData(rawData: string): string {
-    let translatedData: string = '';
+    let translatedData: string = rawData || '';
     if (rawData) {
       if (this.config.translationName) {
         // @ts-ignore
         translatedData = enums[this.config.translationName][rawData];
-        translatedData = this.translateService.instant(translatedData || '');
+        translatedData = this.translateService.instant(translatedData);
       }
     }
     return translatedData;
