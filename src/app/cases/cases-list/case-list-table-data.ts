@@ -21,6 +21,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.disease',
     dataKey: 'disease',
+    translationName: 'Disease',
     isSortable: true,
   },
   {
@@ -31,16 +32,19 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Contact.caze.caseClassification',
     dataKey: 'caseClassification',
+    translationName: 'CaseClassification',
     isSortable: true,
   },
   {
     name: 'captions.CaseData.outcome',
     dataKey: 'outcome',
+    translationName: 'CaseOutcome',
     isSortable: true,
   },
   {
     name: 'captions.CaseData.investigationStatus',
     dataKey: 'investigationStatus',
+    translationName: 'InvestigationStatus',
     isSortable: true,
     iconify: true,
   },
@@ -90,6 +94,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.CaseData.followUpStatus',
     dataKey: 'followUpStatus',
+    translationName: 'FollowupStatus',
     isSortable: true,
   },
   {

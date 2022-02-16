@@ -25,6 +25,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Sample.diseaseShort',
     dataKey: 'disease',
+    translationName: 'Disease',
     isSortable: true,
   },
   {
@@ -55,21 +56,25 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Sample.sampleMaterial',
     dataKey: 'sampleMaterial',
+    translationName: 'SampleMaterial',
     isSortable: true,
   },
   {
     name: 'captions.Sample.samplePurpose',
     dataKey: 'samplePurpose',
+    translationName: 'SamplePurpose',
     isSortable: true,
   },
   {
     name: 'captions.Sample.pathogenTestResult',
     dataKey: 'pathogenTestResult',
+    translationName: 'PathogenTestResultType',
     isSortable: true,
   },
   {
     name: 'captions.Sample.additionalTestingStatus',
     dataKey: 'additionalTestingStatus',
+    translationName: 'AdditionalTestingStatus',
     isSortable: true,
   },
 ];
