@@ -186,7 +186,8 @@ strong {
     display: inline;
   }
 
-  &.visit-remarks {
+  &.visit-remarks,
+  &.share-requests-comment {
     font-size: 12px;
   }
 
@@ -236,7 +237,13 @@ strong {
     font-weight: 500;
   }
 
-  .symptoms-false {
+  .symptoms-false,
+  .handover-false {
+    font-weight: 500;
+  }
+
+  .handover-true {
+    color: mat.get-color-from-palette($sormas-alert, 400);
     font-weight: 500;
   }
 

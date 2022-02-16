@@ -59,3 +59,5 @@ export const IMMUNIZATION_ADD_FORM_ID = 'immunizationAdd';
 export const VACCINATION_ADD_EDIT_FORM_ID = 'vaccinationAddEdit';
 
 export const WEEKLY_REPORT_FILTERS_FORM_ID = 'weeklyReportFilters';
+
+export const SHARE_REQUEST_FILTERS_FORM_ID = 'shareRequestFilters';

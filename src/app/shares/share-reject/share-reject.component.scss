@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.mat-dialog-content {
+  background-color: $white;
+}
+
+h2 {
+  font-size: 14px;
+}

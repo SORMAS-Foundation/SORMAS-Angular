@@ -37,6 +37,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Immunization.disease',
     dataKey: 'disease',
+    translationName: 'Disease',
     isSortable: true,
   },
   {
@@ -47,6 +48,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.sex',
     dataKey: 'sex',
+    translationName: 'Sex',
     isSortable: true,
   },
   {
@@ -57,16 +59,19 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Immunization.meansOfImmunization',
     dataKey: 'meansOfImmunization',
+    translationName: 'MeansOfImmunization',
     isSortable: true,
   },
   {
     name: 'captions.Immunization.immunizationManagementStatus',
     dataKey: 'immunizationManagementStatus',
+    translationName: 'ImmunizationManagementStatus',
     isSortable: true,
   },
   {
     name: 'captions.Immunization.immunizationStatus',
     dataKey: 'immunizationStatus',
+    translationName: 'ImmunizationStatus',
     isSortable: true,
   },
   {

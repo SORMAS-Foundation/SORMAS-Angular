@@ -1,4 +1,4 @@
-<mat-icon *ngIf="iconName" [ngClass]="['material-icons-round', iconClass]">
+<mat-icon *ngIf="iconName" [ngClass]="['material-icons-round', 'icon-data', iconClass]">
   {{ iconName }}
 </mat-icon>
 
@@ -38,7 +38,6 @@
       "
     ></span>
   </ng-container>
-
   <ng-container *ngSwitchDefault>
     <span
       [innerHtml]="

@@ -100,7 +100,9 @@
 
         <ng-template #notSortable>
           <th mat-header-cell cdkDrag *matHeaderCellDef>
-            {{ tableColumn.name | translate }}
+            <span *ngIf="!tableColumn.name.startsWith('$')">
+              {{ tableColumn.name | translate }}
+            </span>
           </th>
         </ng-template>
 
@@ -111,9 +113,33 @@
           [ngClass]="tableColumn.className || ''"
         >
           <app-table-data
+            *ngIf="!tableColumn.actions"
             [config]="tableColumn"
             [data]="dataSourceArray[element.index]"
           ></app-table-data>
+          <ng-container *ngFor="let action of tableColumn.actions">
+            <button
+              *ngIf="
+                !action.dependingOn ||
+                (action.dependingOnValues
+                  ? action.dependingOnValues.includes(
+                      dataSourceArray[element.index][action.dependingOn]
+                    )
+                  : dataSourceArray[element.index][action.dependingOn])
+              "
+              mat-button
+              [color]="action.color"
+              [ngClass]="['button-action', action.className]"
+              (click)="doRowAction(element.index, action.type)"
+            >
+              <mat-icon *ngIf="action.icon" class="material-icons-round icon-action">
+                {{ action.icon }}
+              </mat-icon>
+              <span *ngIf="action.text">
+                {{ action.text | translate }}
+              </span>
+            </button>
+          </ng-container>
         </td>
       </ng-container>
 
@@ -124,7 +150,7 @@
           [attr.colspan]="header.span"
           class="additional-header"
         >
-          <span *ngIf="header.name !== '$empty$'">{{ header.name | translate }}</span>
+          <span *ngIf="!header.name.startsWith('$')">{{ header.name | translate }}</span>
         </th>
       </ng-container>
 

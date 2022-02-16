@@ -15,16 +15,19 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.disease',
     dataKey: 'disease',
+    translationName: 'Disease',
     isSortable: true,
   },
   {
     name: 'captions.Contact.contactClassification',
     dataKey: 'contactClassification',
+    translationName: 'ContactClassification',
     isSortable: true,
   },
   {
     name: 'captions.Contact.contactStatus',
     dataKey: 'contactStatus',
+    translationName: 'ContactStatus',
     isSortable: true,
   },
   {
@@ -40,11 +43,13 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Contact.contactProximity',
     dataKey: 'contactProximity',
+    translationName: 'ContactProximity',
     isSortable: true,
   },
   {
     name: 'captions.Contact.followUpStatus',
     dataKey: 'followUpStatus',
+    translationName: 'FollowupStatus',
     isSortable: true,
   },
   {

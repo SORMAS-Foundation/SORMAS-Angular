@@ -4,6 +4,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.AggregateReport.disease',
     dataKey: 'disease',
+    translationName: 'Disease',
     isSortable: true,
   },
   {

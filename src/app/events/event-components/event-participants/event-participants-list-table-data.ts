@@ -36,6 +36,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.sex',
     dataKey: 'person.sex',
+    translationName: 'Sex',
     isSortable: true,
   },
   {
