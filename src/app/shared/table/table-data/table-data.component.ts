@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 import { IconsMap } from '../../../app.constants';
 import * as enums from '../../../_constants/enums';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-table-data',
