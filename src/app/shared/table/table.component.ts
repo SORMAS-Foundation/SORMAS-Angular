@@ -101,6 +101,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() editItem: EventEmitter<any> = new EventEmitter();
   @Output() viewItem: EventEmitter<any> = new EventEmitter();
+  @Output() rowAction: EventEmitter<any> = new EventEmitter();
   @Output() triggerGroupEvent: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
@@ -427,6 +428,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   doActionView(index: number): void {
     this.viewItem.emit(this.dataSourceArray[index]);
+  }
+
+  doRowAction(index: number, $event: string): void {
+    this.rowAction.emit([this.dataSourceArray[index], $event]);
   }
 
   updateTableColumns(columns: string[]): void {

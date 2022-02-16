@@ -42,6 +42,16 @@ export interface TableDataFormat {
   breakSpaces?: boolean;
 }
 
+export interface TableDataAction {
+  type: string;
+  icon?: string;
+  text?: string;
+  color?: string;
+  className?: string;
+  dependingOn?: string;
+  dependingOnValues?: string[];
+}
+
 export interface TableColumn {
   name: string;
   additionalName?: string;
@@ -54,6 +64,7 @@ export interface TableColumn {
   format?: TableDataFormat;
   essential?: boolean;
   translationName?: string;
+  actions?: TableDataAction[];
 }
 
 // scrolling
