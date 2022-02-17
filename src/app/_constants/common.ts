@@ -134,3 +134,5 @@ export const DATE_TYPE_OPTIONS = {
 };
 
 export const DEFAULT_FETCH_METHOD = 'getAllAsOptions';
+
+export const DASHBOARD_CONTACTS_DISEASE_LIMIT = 5;
