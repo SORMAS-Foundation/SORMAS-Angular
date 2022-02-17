@@ -3,49 +3,49 @@
   {{ 'strings.headingAllContacts' | translate }}
 </h2>
 
-<ul
-  *ngIf="contacts?.contactClassificationCount; let summary"
-  [ngClass]="{ summary: true, compact: contacts.diseases }"
->
+<ul *ngIf="contacts" [ngClass]="{ summary: true, compact: diseases.length }">
   <li class="contact-unconfirmed">
-    <span class="count">{{ summary.UNCONFIRMED }}</span>
-    <span class="percentage">{{ summary.UNCONFIRMED / total | percent }}</span>
+    <span class="count">{{ contacts.UNCONFIRMED }}</span>
+    <span class="percentage">{{ contacts.UNCONFIRMED / total | percent }}</span>
     <mat-icon class="material-icons-round icon">gpp_bad</mat-icon>
     <span class="info">{{ 'captions.dashboardUnconfirmedContact' | translate }}</span>
-    <mat-progress-bar [value]="(summary.UNCONFIRMED / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="(contacts.UNCONFIRMED / total) * 100"></mat-progress-bar>
   </li>
   <li class="contact-confirmed">
-    <span class="count">{{ summary.CONFIRMED }}</span>
-    <span class="percentage">{{ summary.CONFIRMED / total | percent }}</span>
+    <span class="count">{{ contacts.CONFIRMED }}</span>
+    <span class="percentage">{{ contacts.CONFIRMED / total | percent }}</span>
     <mat-icon class="material-icons-round icon">connect_without_contact</mat-icon>
     <span class="info">{{ 'captions.dashboardConfirmedContact' | translate }}</span>
-    <mat-progress-bar [value]="(summary.CONFIRMED / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="(contacts.CONFIRMED / total) * 100"></mat-progress-bar>
   </li>
   <li class="contact-not">
-    <span class="count">{{ summary.NOT_CONTACT }}</span>
-    <span class="percentage">{{ summary.NOT_CONTACT / total | percent }}</span>
+    <span class="count">{{ contacts.NOT_CONTACT }}</span>
+    <span class="percentage">{{ contacts.NOT_CONTACT / total | percent }}</span>
     <mat-icon class="material-icons-round icon">voice_over_off</mat-icon>
     <span class="info">{{ 'captions.dashboardNotAContact' | translate }}</span>
-    <mat-progress-bar [value]="(summary.NOT_CONTACT / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="(contacts.NOT_CONTACT / total) * 100"></mat-progress-bar>
   </li>
   <li class="contact-new">
-    <span class="count">{{ summary.NEW_CONTACT }}</span>
-    <span class="percentage">{{ summary.NEW_CONTACT / total | percent }}</span>
+    <span class="count">{{ contacts.NEW_CONTACT }}</span>
+    <span class="percentage">{{ contacts.NEW_CONTACT / total | percent }}</span>
     <mat-icon class="material-icons-round icon">person_add</mat-icon>
     <span class="info">{{ 'captions.dashboardNew' | translate }}</span>
-    <mat-progress-bar [value]="(summary.NEW_CONTACT / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="(contacts.NEW_CONTACT / total) * 100"></mat-progress-bar>
   </li>
   <li class="contact-symptomatic">
-    <span class="count">{{ summary.SYMPTOMATIC }}</span>
-    <span class="percentage">{{ summary.SYMPTOMATIC / total | percent }}</span>
+    <span class="count">{{ contacts.SYMPTOMATIC }}</span>
+    <span class="percentage">{{ contacts.SYMPTOMATIC / total | percent }}</span>
     <mat-icon class="material-icons-round icon">sick</mat-icon>
     <span class="info">{{ 'captions.dashboardSymptomatic' | translate }}</span>
-    <mat-progress-bar [value]="(summary.SYMPTOMATIC / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="(contacts.SYMPTOMATIC / total) * 100"></mat-progress-bar>
   </li>
 </ul>
 
-<ul *ngIf="contacts?.diseases" class="diseases">
-  <li *ngFor="let disease of contacts.diseases" [ngClass]="{ rising: disease.rising }">
+<ul *ngIf="diseases.length" class="diseases">
+  <li
+    *ngFor="let disease of diseases.slice(0, diseaseLimit)"
+    [ngClass]="{ rising: disease.rising }"
+  >
     <span class="name">{{ 'enum.Disease.' + disease.disease | translate }}</span>
     <span class="count">{{ disease.count }}</span>
     <mat-icon class="material-icons-round">
@@ -53,3 +53,15 @@
     </mat-icon>
   </li>
 </ul>
+
+<button
+  *ngIf="diseases.length > diseaseLimit || showAllDiseases"
+  mat-icon-button
+  color="primary"
+  class="button-toggle-diseases"
+  (click)="toggleDiseaseLimit()"
+>
+  <mat-icon class="material-icons-round">
+    {{ showAllDiseases ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+  </mat-icon>
+</button>

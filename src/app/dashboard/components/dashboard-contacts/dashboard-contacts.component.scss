@@ -159,6 +159,11 @@ h2 {
   }
 }
 
+.button-toggle-diseases {
+  float: right;
+  margin-top: -40px;
+}
+
 @media (min-width: map-get($grid-breakpoints, md)) {
   .compact {
     margin: 0;

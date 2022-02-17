@@ -1267,6 +1267,31 @@ app.use('/sormas-rest/dashboard/contacts', (req, res) => {
         count: 9,
         rising: false,
       },
+      {
+        disease: 'AFP',
+        count: 5,
+        rising: false,
+      },
+      {
+        disease: 'CHOLERA',
+        count: 11,
+        rising: false,
+      },
+      {
+        disease: 'POLIO',
+        count: 2,
+        rising: false,
+      },
+      {
+        disease: 'MALARIA',
+        count: 1,
+        rising: false,
+      },
+      {
+        disease: 'PNEUMONIA',
+        count: 17,
+        rising: false,
+      },
     ],
   });
 });

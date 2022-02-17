@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DASHBOARD_CONTACTS_DISEASE_LIMIT } from '../../../app.constants';
 import { Filter } from '../../../_models/common';
 import { DashboardContactsService } from '../../../_services/api/dashboard-contacts.service';
 import { FilterService } from '../../../_services/filter.service';
@@ -12,7 +13,10 @@ import { NotificationService } from '../../../_services/notification.service';
 })
 export class DashboardContactsComponent implements OnInit, OnDestroy {
   contacts: any;
+  diseases: any[] = [];
   total: number;
+  diseaseLimit = DASHBOARD_CONTACTS_DISEASE_LIMIT;
+  showAllDiseases: boolean;
   filters: Filter[] = [];
   subscriptions: Subscription[] = [];
 
@@ -35,11 +39,9 @@ export class DashboardContactsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.dashboardContactsService.getCalculated(this.filters).subscribe({
         next: (data: any) => {
-          this.contacts = data;
-          this.total = Object.values(this.contacts.contactClassificationCount).reduce(
-            (a: number, b) => a + Number(b),
-            0
-          );
+          this.contacts = data.contactClassificationCount;
+          this.diseases = data.diseases || [];
+          this.total = Object.values(this.contacts).reduce((a: number, b) => a + Number(b), 0);
         },
         error: (err: any) => {
           this.notificationService.error(err);
@@ -47,6 +49,13 @@ export class DashboardContactsComponent implements OnInit, OnDestroy {
         complete: () => {},
       })
     );
+  }
+
+  toggleDiseaseLimit(): void {
+    this.showAllDiseases = !this.showAllDiseases;
+    this.diseaseLimit = this.showAllDiseases
+      ? this.diseases.length
+      : DASHBOARD_CONTACTS_DISEASE_LIMIT;
   }
 
   ngOnDestroy(): void {
