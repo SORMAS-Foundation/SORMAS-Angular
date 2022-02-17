@@ -5,36 +5,36 @@
 
 <ul *ngIf="contacts" [ngClass]="{ summary: true, compact: diseases.length }">
   <li class="contact-unconfirmed">
-    <span class="count">{{ contacts.UNCONFIRMED }}</span>
-    <span class="percentage">{{ contacts.UNCONFIRMED / total | percent }}</span>
+    <span class="count">{{ contacts.UNCONFIRMED ?? 0 }}</span>
+    <span class="percentage">{{ (total ? contacts.UNCONFIRMED / total : 0) | percent }}</span>
     <mat-icon class="material-icons-round icon">gpp_bad</mat-icon>
     <span class="info">{{ 'captions.dashboardUnconfirmedContact' | translate }}</span>
     <mat-progress-bar [value]="(contacts.UNCONFIRMED / total) * 100"></mat-progress-bar>
   </li>
   <li class="contact-confirmed">
-    <span class="count">{{ contacts.CONFIRMED }}</span>
-    <span class="percentage">{{ contacts.CONFIRMED / total | percent }}</span>
+    <span class="count">{{ contacts.CONFIRMED ?? 0 }}</span>
+    <span class="percentage">{{ (total ? contacts.CONFIRMED / total : 0) | percent }}</span>
     <mat-icon class="material-icons-round icon">connect_without_contact</mat-icon>
     <span class="info">{{ 'captions.dashboardConfirmedContact' | translate }}</span>
     <mat-progress-bar [value]="(contacts.CONFIRMED / total) * 100"></mat-progress-bar>
   </li>
   <li class="contact-not">
-    <span class="count">{{ contacts.NOT_CONTACT }}</span>
-    <span class="percentage">{{ contacts.NOT_CONTACT / total | percent }}</span>
+    <span class="count">{{ contacts.NOT_CONTACT ?? 0 }}</span>
+    <span class="percentage">{{ (total ? contacts.NOT_CONTACT / total : 0) | percent }}</span>
     <mat-icon class="material-icons-round icon">voice_over_off</mat-icon>
     <span class="info">{{ 'captions.dashboardNotAContact' | translate }}</span>
     <mat-progress-bar [value]="(contacts.NOT_CONTACT / total) * 100"></mat-progress-bar>
   </li>
   <li class="contact-new">
-    <span class="count">{{ contacts.NEW_CONTACT }}</span>
-    <span class="percentage">{{ contacts.NEW_CONTACT / total | percent }}</span>
+    <span class="count">{{ contacts.NEW_CONTACT ?? 0 }}</span>
+    <span class="percentage">{{ (total ? contacts.NEW_CONTACT / total : 0) | percent }}</span>
     <mat-icon class="material-icons-round icon">person_add</mat-icon>
     <span class="info">{{ 'captions.dashboardNew' | translate }}</span>
     <mat-progress-bar [value]="(contacts.NEW_CONTACT / total) * 100"></mat-progress-bar>
   </li>
   <li class="contact-symptomatic">
-    <span class="count">{{ contacts.SYMPTOMATIC }}</span>
-    <span class="percentage">{{ contacts.SYMPTOMATIC / total | percent }}</span>
+    <span class="count">{{ contacts.SYMPTOMATIC ?? 0 }}</span>
+    <span class="percentage">{{ (total ? contacts.SYMPTOMATIC / total : 0) | percent }}</span>
     <mat-icon class="material-icons-round icon">sick</mat-icon>
     <span class="info">{{ 'captions.dashboardSymptomatic' | translate }}</span>
     <mat-progress-bar [value]="(contacts.SYMPTOMATIC / total) * 100"></mat-progress-bar>
