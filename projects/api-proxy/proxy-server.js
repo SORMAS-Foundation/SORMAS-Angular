@@ -1242,6 +1242,35 @@ app.use('/sormas-rest/outbreaks/indexList', (req, res) => {
   ]);
 });
 
+app.use('/sormas-rest/dashboard/contacts', (req, res) => {
+  res.status(200).send({
+    contactClassificationCount: {
+      UNCONFIRMED: 27,
+      CONFIRMED: 102,
+      NOT_CONTACT: 31,
+      NEW_CONTACT: 18,
+      SYMPTOMATIC: 69,
+    },
+    diseases: [
+      {
+        disease: 'CORONAVIRUS',
+        count: 132,
+        rising: true,
+      },
+      {
+        disease: 'MEASLES',
+        count: 4,
+        rising: true,
+      },
+      {
+        disease: 'ANTHRAX',
+        count: 9,
+        rising: false,
+      },
+    ],
+  });
+});
+
 app.use(
   '/sormas-rest',
   createProxyMiddleware({
