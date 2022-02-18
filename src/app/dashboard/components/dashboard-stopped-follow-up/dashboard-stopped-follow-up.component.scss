@@ -1,1 +1,78 @@
-/* stylelint-disable */
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+h2 {
+  font-size: 24px;
+  color: mat.get-color-from-palette($sormas-accent, 400);
+
+  strong {
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-accent, 800);
+  }
+}
+
+.stopped-follow-up {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-accent, 600);
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 32px;
+  }
+
+  .count {
+    flex: 0 0 36px;
+    text-align: right;
+  }
+
+  .percentage {
+    flex: 0 0 48px;
+    text-align: right;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    line-height: inherit;
+    font-size: 18px;
+    margin-left: 16px;
+    margin-right: 8px;
+  }
+
+  .mat-progress-bar {
+    height: 2px;
+  }
+}
+
+.follow-up-completed {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-primary, 400);
+  }
+}
+
+.follow-up-canceled {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-accent, 500);
+  }
+}
+
+.follow-up-lost {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-warning, 700);
+  }
+}
+
+.follow-up-converted {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-alert, 300);
+  }
+}

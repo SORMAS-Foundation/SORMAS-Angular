@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { MaterialModule } from '../../../material.module';
 
 import { DashboardStoppedFollowUpComponent } from './dashboard-stopped-follow-up.component';
 
@@ -9,6 +12,7 @@ describe('DashboardStoppedFollowUpComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DashboardStoppedFollowUpComponent],
+      imports: [HttpClientTestingModule, MaterialModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 
