@@ -25,11 +25,13 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Event.eventStatus',
     dataKey: 'eventStatus',
+    translationName: 'EventStatusOptions',
     isSortable: true,
   },
   {
     name: 'captions.Event.riskLevel',
     dataKey: 'riskLevel',
+    translationName: 'RiskLevel',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DISPLAY,
@@ -40,12 +42,14 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Event.eventInvestigationStatus',
     dataKey: 'eventInvestigationStatus',
+    translationName: 'InvestigationStatus',
     isSortable: true,
     iconify: true,
   },
   {
     name: 'captions.Event.eventManagementStatus',
     dataKey: 'eventManagementStatus',
+    translationName: 'EventManagementStatusOptions',
     isSortable: true,
   },
   {
@@ -69,6 +73,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Event.diseaseShort',
     dataKey: 'disease',
+    translationName: 'Disease',
     isSortable: true,
   },
   {
@@ -104,6 +109,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Event.srcType',
     dataKey: 'srcType',
+    translationName: 'InformationSource',
     isSortable: true,
   },
   {

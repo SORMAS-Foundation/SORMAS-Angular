@@ -10,18 +10,21 @@
  * Do not edit the class manually.
  */
 
+import { YesNoUnknown } from '../app.constants';
+import { DiseaseVariant } from './diseaseVariant';
 import { DistrictReferenceDto } from './districtReferenceDto';
-import { PersonReferenceDto } from './models';
+import { CommunityReferenceDto, PersonReferenceDto } from './models';
 import { PointOfEntryReferenceDto } from './pointOfEntryReferenceDto';
+import { RegionReferenceDto } from './regionReferenceDto';
 import { UserReferenceDto } from './userReferenceDto';
 
 export interface TravelEntryDto {
   uuid: string;
   externalId?: string;
-  responsibleRegion: string;
+  responsibleRegion: RegionReferenceDto;
   responsibleDistrict: DistrictReferenceDto;
-  responsibleCommunity: string;
-  pointOfEntryRegion: string;
+  responsibleCommunity: CommunityReferenceDto;
+  pointOfEntryRegion: RegionReferenceDto;
   pointOfEntryDistrict: DistrictReferenceDto;
   person: PersonReferenceDto;
   pointOfEntry: PointOfEntryReferenceDto;
@@ -33,12 +36,12 @@ export interface TravelEntryDto {
   reportDate: Date;
   quarantineEnd: Date;
   disease: string;
-  diseaseVariant: string;
+  diseaseVariant: DiseaseVariant;
   diseaseDetails: string;
   diseaseVariantDetails: string;
-  quarantineHomePossible: boolean;
+  quarantineHomePossible: YesNoUnknown;
   quarantineHomePossibleComment: string;
-  quarantineHomeSupplyEnsured: boolean;
+  quarantineHomeSupplyEnsured: YesNoUnknown;
   quarantineHomeSupplyEnsuredComment: string;
   quarantine: string;
   quarantineFrom: Date;

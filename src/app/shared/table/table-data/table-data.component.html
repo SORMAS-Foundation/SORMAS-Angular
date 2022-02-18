@@ -1,8 +1,11 @@
-<mat-icon *ngIf="iconName" [ngClass]="['material-icons-round', iconClass]">
+<mat-icon *ngIf="iconName" [ngClass]="['material-icons-round', 'icon-data', iconClass]">
   {{ iconName }}
 </mat-icon>
 
-<ng-container [ngSwitch]="dataType">
+<ng-container
+  *ngIf="dataDisplay !== null && dataDisplay !== undefined; else noData"
+  [ngSwitch]="dataType"
+>
   <ng-container *ngSwitchCase="formats.LOADING">
     <div class="row-skeleton"></div>
   </ng-container>
@@ -35,7 +38,6 @@
       "
     ></span>
   </ng-container>
-
   <ng-container *ngSwitchDefault>
     <span
       [innerHtml]="
@@ -44,3 +46,7 @@
     ></span>
   </ng-container>
 </ng-container>
+
+<ng-template #noData>
+  <span class="no-data">{{ config.alternateData || '' | translate }}</span>
+</ng-template>

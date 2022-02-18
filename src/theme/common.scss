@@ -30,6 +30,10 @@ body {
   overflow: hidden;
 }
 
+.float-right {
+  float: right;
+}
+
 a:not(.mat-button) {
   color: mat.get-color-from-palette($sormas-primary, 700);
   text-decoration: none;
@@ -182,7 +186,8 @@ strong {
     display: inline;
   }
 
-  &.visit-remarks {
+  &.visit-remarks,
+  &.share-requests-comment {
     font-size: 12px;
   }
 
@@ -232,7 +237,13 @@ strong {
     font-weight: 500;
   }
 
-  .symptoms-false {
+  .symptoms-false,
+  .handover-false {
+    font-weight: 500;
+  }
+
+  .handover-true {
+    color: mat.get-color-from-palette($sormas-alert, 400);
     font-weight: 500;
   }
 
@@ -397,4 +408,24 @@ strong {
       }
     }
   }
+}
+
+.contact-unconfirmed .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-accent, 500);
+}
+
+.contact-confirmed .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-alert, 700);
+}
+
+.contact-not .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-primary, 500);
+}
+
+.contact-new .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-warning, 700);
+}
+
+.contact-symptomatic .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-alert, 300);
 }

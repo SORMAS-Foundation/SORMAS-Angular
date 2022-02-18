@@ -150,5 +150,14 @@
   "pregnancy": "Pregnancy",
   "report": "Report",
   "newVaccine": "New vaccine",
-  "headingAggregateReports": "mSERS"
+  "travelEntries.placeOfQuarantine": "Place of quarantine",
+  "travelEntries.quarantinePeriod": "Quarantine period",
+  "travelEntries.startDate": "Start date",
+  "travelEntries.endDate": "End date",
+  "headingAggregateReports": "mSERS",
+  "dose": "Dose",
+  "travelEntries.buttonCreateNewTravelEntry": "Create new travel entry",
+  "pointOfEntryDetails": "Point of entry details",
+  "headingSharesStatus": "Shares status",
+  "CaseData.onsetDate": "Onset date"
 }

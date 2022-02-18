@@ -1,6 +1,7 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
-.mat-icon {
+.icon-data {
   width: 14px;
   height: 14px;
   margin: -8px 8px 0 0;
@@ -19,8 +20,33 @@ a.mat-button {
   animation: skeleton 3s ease;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
-  background-color: map-get($sormas-accent, 200);
+  background-color: mat.get-color-from-palette($sormas-accent, 200);
   opacity: 0;
+}
+
+.value-low {
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-alert, 700);
+}
+
+.value-medium {
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-warning, 800);
+}
+
+.value-normal {
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-warning, 600);
+}
+
+.value-high {
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-success, 700);
+}
+
+.no-data {
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-alert, 300);
 }
 
 @media (prefers-reduced-motion) {

@@ -1,0 +1,6 @@
+@use '/src/variables.scss' as *;
+
+.mat-dialog-content {
+  padding: 24px;
+  background-color: $white;
+}

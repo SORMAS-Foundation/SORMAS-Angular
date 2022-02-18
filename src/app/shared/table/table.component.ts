@@ -62,6 +62,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   fetchStatus: FetchStatus | undefined;
   fetchStatusType = FetchStatusType;
   loading = false;
+  additionalHeaderDefs: any[] = [];
+  additionalHeader: string[] = [];
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -69,6 +71,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() isSelectableOnce = false;
   @Input() isSelectable = false;
   @Input() isEditable = false;
+  @Input() isViewable = false;
   @Input() isHeaderSticky = false;
   @Input() tableColumns: TableColumn[] = [];
   @Input() resourceService: BaseService<any>;
@@ -98,6 +101,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter();
   @Output() editItem: EventEmitter<any> = new EventEmitter();
+  @Output() viewItem: EventEmitter<any> = new EventEmitter();
+  @Output() rowAction: EventEmitter<any> = new EventEmitter();
   @Output() triggerGroupEvent: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
@@ -118,6 +123,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
     this.displayedColumns = this.getColumns();
     this.columnKeys = this.getColumnsKeyByName(this.displayedColumns);
+    this.additionalHeaderDefs = this.getAdditionalHeader();
+    this.additionalHeader = this.additionalHeaderDefs.map((item) => item.name);
 
     this.determineHeight(this.fullHeight);
 
@@ -150,8 +157,43 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     return result;
   }
 
+  getAdditionalHeader(): any {
+    const result: any[] = [];
+    const actionCols =
+      Number(this.isEditable) + Number(this.isSelectable) + Number(this.isViewable);
+    if (actionCols) {
+      result.push({
+        name: '$empty$',
+        span: actionCols,
+      });
+    }
+    this.tableColumns.forEach((item) => {
+      if (item.additionalName) {
+        result.push({
+          name: item.additionalName,
+          span: 1,
+        });
+      } else if (result.length) {
+        result[result.length - 1].span += 1;
+      } else {
+        result.push({
+          name: '$empty$',
+          span: 1,
+        });
+      }
+    });
+    if (result.length === 1 && result[0].name === '$empty$') {
+      return [];
+    }
+    return result;
+  }
+
   getColumns(): string[] {
     let columns = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
+
+    if (this.isViewable) {
+      columns.unshift('view');
+    }
 
     if (this.isEditable) {
       columns.unshift('edit');
@@ -312,6 +354,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onSelectionChange(event: any, row: any): void {
+    if (!this.isSelectable) {
+      return;
+    }
     if (event) {
       this.selection.toggle(row);
     }
@@ -380,6 +425,14 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   doActionEdit(index: number): void {
     this.editItem.emit(this.dataSourceArray[index]);
+  }
+
+  doActionView(index: number): void {
+    this.viewItem.emit(this.dataSourceArray[index]);
+  }
+
+  doRowAction(index: number, $event: string): void {
+    this.rowAction.emit([this.dataSourceArray[index], $event]);
   }
 
   updateTableColumns(columns: string[]): void {

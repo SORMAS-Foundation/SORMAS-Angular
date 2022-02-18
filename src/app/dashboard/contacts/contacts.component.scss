@@ -1,57 +1,95 @@
 @use '/src/variables.scss' as *;
 
 .dashboard-contacts-wrapper {
+  display: grid;
   padding: 24px;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'filter filter'
+    'contacts contacts'
+    'under_follow_up stopped_follow_up'
+    'visits contact_stats'
+    'epi_curve epi_curve'
+    'map map'
+    'transmission_chain transmission_chain';
+}
 
-  .mat-card {
-    margin-bottom: 16px;
-  }
+.dashboard-contacts-filters {
+  grid-area: filter;
+}
 
-  .width-40,
-  .width-50,
-  .width-60 {
-    display: inline-block;
-    vertical-align: top;
-  }
-  .width-40 {
-    width: 40%;
-  }
-  .width-50 {
-    width: 50%;
-  }
-  .width-60 {
-    width: 60%;
-  }
+.dashboard-contacts-contacts {
+  grid-area: contacts;
+}
 
-  .mr-16 {
-    margin-right: 16px;
+.dashboard-contacts-under-follow-up {
+  grid-area: under_follow_up;
+}
+
+.dashboard-contacts-stopped-follow-up {
+  grid-area: stopped_follow_up;
+}
+
+.dashboard-contacts-visits {
+  grid-area: visits;
+}
+
+.dashboard-contacts-contact-stats {
+  grid-area: contact_stats;
+}
+
+.dashboard-contacts-epi-curve {
+  grid-area: epi_curve;
+}
+
+.dashboard-contacts-map {
+  grid-area: map;
+}
+
+.dashboard-transmission-chain {
+  grid-area: transmission_chain;
+}
+
+.mat-card {
+  padding: 24px;
+}
+
+@media (min-width: map-get($grid-breakpoints, md)) {
+  .dashboard-contacts-wrapper {
+    grid-template-columns: 8.33fr 1fr 7.33fr;
+    grid-template-areas:
+      'filter filter filter'
+      'contacts contacts under_follow_up'
+      'stopped_follow_up visits visits'
+      'contact_stats contact_stats contact_stats'
+      'epi_curve epi_curve epi_curve'
+      'map map map'
+      'transmission_chain transmission_chain transmission_chain';
   }
 }
 
-@media (max-width: map-get($grid-breakpoints, lg)) {
+@media (min-width: map-get($grid-breakpoints, lg)) {
   .dashboard-contacts-wrapper {
-    .width-100-lg {
-      width: 100%;
-    }
-
-    .width-50-lg {
-      width: 50%;
-    }
-
-    .mr-0-lg {
-      margin-right: 0;
-    }
+    grid-template-columns: 2.6fr 1fr 1.5fr 2fr;
+    grid-template-areas:
+      'filter filter filter filter'
+      'contacts contacts under_follow_up under_follow_up'
+      'stopped_follow_up visits visits contact_stats'
+      'epi_curve epi_curve epi_curve epi_curve'
+      'map map map map'
+      'transmission_chain transmission_chain transmission_chain transmission_chain';
   }
 }
 
-@media (max-width: map-get($grid-breakpoints, sm)) {
+@media (min-width: map-get($grid-breakpoints, xl)) {
   .dashboard-contacts-wrapper {
-    .width-100-sm {
-      width: 100%;
-    }
-
-    .mr-0-sm {
-      margin-right: 0;
-    }
+    grid-template-columns: 4.25fr 1.75fr 1fr 2.75fr 2.75fr;
+    grid-template-areas:
+      'filter filter filter filter filter'
+      'contacts under_follow_up under_follow_up stopped_follow_up visits'
+      'contact_stats contact_stats contact_stats contact_stats contact_stats'
+      'epi_curve epi_curve map map map'
+      'transmission_chain transmission_chain transmission_chain transmission_chain transmission_chain';
   }
 }

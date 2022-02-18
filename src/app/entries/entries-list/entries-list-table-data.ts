@@ -7,7 +7,7 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
     format: {
       type: TableDataFormatOptions.LINK,
-      pattern: '/travelentries/entry/$param1',
+      pattern: '/entries/entry/$param1/travel-entry',
       params: ['uuid'],
       truncate: 6,
     },

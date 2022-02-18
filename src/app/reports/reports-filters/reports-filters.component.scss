@@ -1,0 +1,18 @@
+.filters {
+  display: flex;
+  gap: 32px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.filter-years {
+  width: 150px;
+}
+
+.filter-epi-week {
+  width: 230px;
+}
+
+.filter-last-week {
+  margin: 8px 0;
+}

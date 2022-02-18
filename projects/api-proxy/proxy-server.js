@@ -256,6 +256,41 @@ app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   ]);
 });
 
+app.use('/sormas-rest/travelentries/FGRT34-WEMNJ4-TH34QWFG-ADEJSA', (req, res) => {
+  const result = {
+    uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+    externalId: 'FGRT34-WEMNJ4-TH34QWFG-ADEJSA',
+    person: {
+      uuid: 'AQD5GY-FGRT34-WEMNJ4-TH34QWFG',
+      firstName: 'John',
+      lastName: 'Snow',
+    },
+    responsibleRegion: {
+      uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+      caption: 'testRegion',
+    },
+    responsibleDistrict: {
+      caption: 'Bremen',
+      uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+    },
+    responsibleCommunity: {
+      captions: 'testCommunity',
+      uuid: 'XWD5GY-FGRT34-WEMNJ4-TH34QWFG',
+    },
+    pointOfEntry: {
+      caption: 'Test',
+    },
+    reportingUser: { caption: 'National User' },
+    recovered: false,
+    vaccinated: false,
+    testedNegative: true,
+    quarantineEnd: 1617959309689,
+    quarantineHomePossible: 'YES',
+  };
+
+  res.status(200).send(result);
+});
+
 app.use('/sormas-rest/travelentries/indexList', (req, res) => {
   const result = {
     elements: [
@@ -267,8 +302,14 @@ app.use('/sormas-rest/travelentries/indexList', (req, res) => {
           firstName: 'John',
           lastName: 'Snow',
         },
+        responsibleRegion: {
+          caption: 'testRegion',
+        },
         responsibleDistrict: {
           caption: 'Bremen',
+        },
+        responsibleCommunity: {
+          captions: 'testCommunity',
         },
         pointOfEntry: {
           caption: 'Test',
@@ -366,6 +407,29 @@ app.use('/sormas-rest/documenttemplates/indexList', (req, res) => {
   res.status(200).send(result);
 });
 
+app.use('/sormas-rest/vaccinations/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        disease: 'ANTHRAX',
+        newCases: 27,
+        labConfirmations: 118,
+        deaths: 1,
+      },
+      {
+        disease: 'COVID',
+        newCases: 120,
+        labConfirmations: 2600,
+        deaths: 8,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 2,
+    hasNext: false,
+  });
+});
+
 app.use('/sormas-rest/aggregateReports/indexList', (req, res) => {
   res.status(200).send({
     elements: [
@@ -418,6 +482,357 @@ app.use('/sormas-rest/immunizations/push', (req, res) => {
       birthdateMM: undefined,
       birthdateYYYY: undefined,
     },
+  });
+});
+
+app.use('/sormas-rest/weeklyReportsRegionSummary/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        region: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Berlin',
+        },
+        officers: 6,
+        officerReports: 0,
+        officerCaseReports: 0,
+        officerZeroReports: 0,
+        officerMissingReports: 0,
+        officerReportPercentage: 60,
+        informants: 6,
+        informantReports: 0,
+        informantCaseReports: 0,
+        informantZeroReports: 0,
+        informantMissingReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        region: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Brandemburg',
+        },
+        officers: 4,
+        officerReports: 0,
+        officerCaseReports: 0,
+        officerZeroReports: 0,
+        officerMissingReports: 0,
+        officerReportPercentage: 0,
+        informants: 4,
+        informantReports: 0,
+        informantCaseReports: 0,
+        informantZeroReports: 0,
+        informantMissingReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        region: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Vorengellstellte Region',
+        },
+        officers: 2,
+        officerReports: 0,
+        officerCaseReports: 0,
+        officerZeroReports: 0,
+        officerMissingReports: 0,
+        officerReportPercentage: 35,
+        informants: 3,
+        informantReports: 2,
+        informantCaseReports: 1,
+        informantZeroReports: 0,
+        informantMissingReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        region: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Bavaria',
+        },
+        officers: 8,
+        officerReports: 5,
+        officerCaseReports: 0,
+        officerZeroReports: 1,
+        officerMissingReports: 2,
+        officerReportPercentage: 80,
+        informants: 5,
+        informantReports: 5,
+        informantCaseReports: 5,
+        informantZeroReports: 0,
+        informantMissingReports: 0,
+        informantReportPercentage: 0,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 4,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/weeklyReportsOfficerSummary/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesterller Landkreis',
+        },
+        officer: {
+          uuid: 'SDHH-JDFDJD-DSHFHHFDHF',
+          caption: 'Mila Adam - Surveillance Officer',
+        },
+        officerReportDate: null,
+        totalCaseCount: 60,
+        informants: 6,
+        informantReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesterller Landkreis',
+        },
+        officer: {
+          uuid: 'SDHH-JDFDJD-DSHFHHFDHF',
+          caption: 'Anselm Kiefer - Surveillance Officer',
+        },
+        officerReportDate: null,
+        totalCaseCount: 27,
+        informants: 3,
+        informantReports: 0,
+        informantReportPercentage: 0,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesterller Landkreis',
+        },
+        officer: {
+          uuid: 'SDHH-JDFDJD-DSHFHHFDHF',
+          caption: 'Maria Wolf - Surveillance Officer',
+        },
+        officerReportDate: null,
+        totalCaseCount: 44,
+        informants: 12,
+        informantReports: 5,
+        informantReportPercentage: 42,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/weeklyReports/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesteller Landkries',
+        },
+        coomunity: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'VL Borchellan Mittel',
+        },
+        healthFacility: {
+          uuid: 'SFGDSG-SDG-SDGDGS-DGSDGSG',
+          caption: 'Voreingestelle Gesundheitseinrichtung',
+        },
+        assignedOfficer: {
+          uuid: 'SGDSG-SDGDS-WERWY-RIYIU',
+          caption: 'Hospital INFORMANT - Hospital informant',
+        },
+        totalNumberOfCases: 7,
+        reportDateTime: null,
+      },
+      {
+        uuid: 'SDGSG-SHSFH-ASFASGG',
+        district: {
+          uuid: 'THO35X-NGF7KQ-NT4AYB-CHOL2B44',
+          caption: 'Voreingesteller Landkries',
+        },
+        coomunity: null,
+        healthFacility: {
+          uuid: 'SFGDSG-SDG-SDGDGS-DGSDGSG',
+          caption: 'Voreingestelle Gesundheitseinrichtung',
+        },
+        assignedOfficer: {
+          uuid: 'SGDSG-SDGDS-WERWY-RIYIU',
+          caption: 'Hospital INFORMANT - Hospital informant',
+        },
+        totalNumberOfCases: 11,
+        reportDateTime: 1644480071438,
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 2,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/shareRequests/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        creationDate: 1644480071438,
+        dataType: 'CASE',
+        status: 'PENDING',
+        organizationId: 'YWTEWY-ETSDGFDB-MNBSVA',
+        organizationName: 'test-de2.sormas.netzlink.com',
+        senderName: 'National user',
+        ownershipHandedOver: true,
+        comment: null,
+      },
+      {
+        uuid: 'SDGSG4-SHSFH-ASFASGG',
+        creationDate: 1644480071438,
+        dataType: 'CASE',
+        status: 'ACCEPTED',
+        organizationId: 'YWTEWY-ETSDGFDB-MNBSVA',
+        organizationName: 'test-de1.sormas.netzlink.com',
+        senderName: 'Admin',
+        ownershipHandedOver: true,
+        comment: 'this is a special case',
+      },
+      {
+        uuid: 'HJ8U78-SHSFH-ASFASGG',
+        creationDate: 1644480071438,
+        dataType: 'EVENT',
+        status: 'REJECTED',
+        organizationId: 'YWTEWY-ETSDGFDB-MNBSVA',
+        organizationName: 'test-de2.sormas.netzlink.com',
+        senderName: 'National user',
+        ownershipHandedOver: false,
+        comment: null,
+      },
+      {
+        uuid: 'MNWT9B-SHSFH-ASFASGG',
+        creationDate: 1644480071438,
+        dataType: 'CONTACT',
+        status: 'REVOKED',
+        organizationId: 'YWTEWY-ETSDGFDB-MNBSVA',
+        organizationName: 'test-de1.sormas.netzlink.com',
+        senderName: 'Surveillance officer',
+        ownershipHandedOver: false,
+        comment: null,
+      },
+      {
+        uuid: 'QWNO65-SHSFH-ASFASGG',
+        creationDate: 1644480071438,
+        dataType: 'CONTACT',
+        status: 'ACCEPTED',
+        organizationId: 'YWTEWY-ETSDGFDB-MNBSVA',
+        organizationName: 'test-de2.sormas.netzlink.com',
+        senderName: 'National user',
+        ownershipHandedOver: false,
+        comment: null,
+      },
+      {
+        uuid: 'CF456W-SHSFH-ASFASGG',
+        creationDate: 1644480071438,
+        dataType: 'CASE',
+        status: 'REJECTED',
+        organizationId: 'YWTEWY-ETSDGFDB-MNBSVA',
+        organizationName: 'test.sormas.netzlink.com',
+        senderName: 'National user',
+        ownershipHandedOver: true,
+        comment: 'raccoon city patient zero, he bites',
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 6,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/shareRequests/******-*', (req, res) => {
+  res.status(200).send({
+    uuid: 'FTH7UJ-SED452-T67N5F-ERT56Y78U',
+    dataType: 'CASE',
+    status: 'PENDING',
+    originInfo: {},
+    cases: [
+      {
+        uuid: 'VBNHYT-WD45W3-NBMHJY-SDFG3214',
+        reportDate: 1644761193620,
+        disease: 'CORONAVIRUS',
+        diseaseDetails: null,
+        diseaseVariant: null,
+        caseClassification: 'NOT_CLASSIFIED',
+        outcome: 'NO_OUTCOME',
+        investigationStatus: 'PENDING',
+        onsetDate: 1644761193620,
+        person: {
+          uuid: 'QASDFG-POKJHG-NH76R4-DF67HN65',
+          firstName: 'Dani',
+          lastName: 'Rus',
+          sex: 'MALE',
+          address: {},
+          birthdateDD: 22,
+          birthdateMM: 12,
+          birthdateYYYY: 1979,
+        },
+        region: {
+          uuid: 'RGTYUI-NB45W2-BN3456-BD4R5TYU',
+          caption: 'Baden-Wurttemberg',
+        },
+        district: {
+          uuid: 'WERBNH-RTYGFD-HJK789-D234WQWC',
+          caption: 'LK Alb-Donau-Kreis',
+        },
+        community: null,
+        facilityType: null,
+        healthFacility: null,
+        healthFacilityDetails: null,
+        pointOfEntry: null,
+        pointOfEntryDetails: null,
+      },
+    ],
+    contacts: [
+      {
+        uuid: 'BHJKUI-MN78Y56-VDFGT3E-RT6G5R3H',
+        reportDateTime: 1644761193620,
+        disease: 'CORONAVIRUS',
+        diseaseDetails: null,
+        lastContactDate: 1644761193620,
+        contactClassification: 'CONFIRMED',
+        contactCategory: 'HIGH_RISK_MED',
+        contactStatus: 'ACTIVE',
+        person: {
+          uuid: 'QASDFG-POKJHG-NH76R4-DF67HN65',
+          firstName: 'Dani',
+          lastName: 'Rus',
+          sex: 'MALE',
+          address: {},
+          birthdateDD: 22,
+          birthdateMM: 12,
+          birthdateYYYY: 1979,
+        },
+        region: {
+          uuid: 'RGTYUI-NB45W2-BN3456-BD4R5TYU',
+          caption: 'Baden-Wurttemberg',
+        },
+        district: {
+          uuid: 'WERBNH-RTYGFD-HJK789-D234WQWC',
+          caption: 'LK Alb-Donau-Kreis',
+        },
+        community: null,
+      },
+    ],
+    events: null,
   });
 });
 
@@ -838,6 +1253,60 @@ app.use('/sormas-rest/outbreaks/indexList', (req, res) => {
       ],
     },
   ]);
+});
+
+app.use('/sormas-rest/dashboard/contacts', (req, res) => {
+  res.status(200).send({
+    contactClassificationCount: {
+      UNCONFIRMED: 27,
+      CONFIRMED: 102,
+      NOT_CONTACT: 31,
+      NEW_CONTACT: 18,
+      SYMPTOMATIC: 69,
+    },
+    diseases: [
+      {
+        disease: 'CORONAVIRUS',
+        count: 132,
+        rising: true,
+      },
+      {
+        disease: 'MEASLES',
+        count: 4,
+        rising: true,
+      },
+      {
+        disease: 'ANTHRAX',
+        count: 9,
+        rising: false,
+      },
+      {
+        disease: 'AFP',
+        count: 5,
+        rising: false,
+      },
+      {
+        disease: 'CHOLERA',
+        count: 11,
+        rising: false,
+      },
+      {
+        disease: 'POLIO',
+        count: 2,
+        rising: false,
+      },
+      {
+        disease: 'MALARIA',
+        count: 1,
+        rising: false,
+      },
+      {
+        disease: 'PNEUMONIA',
+        count: 17,
+        rising: false,
+      },
+    ],
+  });
 });
 
 app.use(

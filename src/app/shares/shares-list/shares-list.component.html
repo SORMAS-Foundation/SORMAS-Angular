@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h1 class="page-header-title">{{ 'captions.View.shareRequests' | translate }}</h1>
+</div>
+
+<app-table
+  [filterFormId]="formId"
+  [resourceService]="shareRequestService"
+  [tableColumns]="defaultColumns"
+  [isSortable]="true"
+  [isViewable]="true"
+  [isHeaderSticky]="true"
+  [saveConfigKey]="configKey"
+  (viewItem)="showShareRequest($event)"
+  (rowAction)="doRowAction($event)"
+></app-table>

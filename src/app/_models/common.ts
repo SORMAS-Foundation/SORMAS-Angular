@@ -42,15 +42,29 @@ export interface TableDataFormat {
   breakSpaces?: boolean;
 }
 
+export interface TableDataAction {
+  type: string;
+  icon?: string;
+  text?: string;
+  color?: string;
+  className?: string;
+  dependingOn?: string;
+  dependingOnValues?: string[];
+}
+
 export interface TableColumn {
   name: string;
+  additionalName?: string;
   dataKey: string;
+  alternateData?: string;
   isSortable?: boolean;
   iconify?: boolean;
   align?: string;
   className?: string;
   format?: TableDataFormat;
   essential?: boolean;
+  translationName?: string;
+  actions?: TableDataAction[];
 }
 
 // scrolling
@@ -88,6 +102,7 @@ export type InfoBarType =
   | 'SAMPLE_PATHOGEN'
   | 'SAMPLE_ADDITIONAL'
   | 'IMMUNIZATION'
+  | 'ENTRY'
   | 'CONTACT';
 
 export const InfoBarTypeOptions = {
@@ -101,6 +116,7 @@ export const InfoBarTypeOptions = {
   SAMPLE_ADDITIONAL: 'SAMPLE_ADDITIONAL' as InfoBarType,
   CONTACT: 'CONTACT' as InfoBarType,
   IMMUNIZATION: 'IMMUNIZATION' as InfoBarType,
+  ENTRY: 'ENTRY' as InfoBarType,
 };
 
 export type FetchStatus = 'ERROR' | 'NO_DATA' | 'NO_MATCH';

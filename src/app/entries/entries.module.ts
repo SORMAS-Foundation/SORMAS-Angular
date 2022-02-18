@@ -7,9 +7,21 @@ import { EntriesRoutingModule } from './entries.routing-module';
 import { EntriesListComponent } from './entries-list/entries-list.component';
 import { EntriesFiltersComponent } from './entries-filters/entries-filters.component';
 import { EntriesComponent } from './entries.component';
+import { EntryComponent } from './entry/entry.component';
+import { TravelEntryComponent } from './travel-entry/travel-entry.component';
+import { TravelEntryPersonComponent } from './travel-entry-person/travel-entry-person.component';
+import { EntryAddComponent } from './entry-add/entry-add.component';
 
 @NgModule({
-  declarations: [EntriesComponent, EntriesListComponent, EntriesFiltersComponent],
+  declarations: [
+    EntriesComponent,
+    EntriesListComponent,
+    EntriesFiltersComponent,
+    EntryComponent,
+    TravelEntryComponent,
+    TravelEntryPersonComponent,
+    EntryAddComponent,
+  ],
   imports: [CommonModule, EntriesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class EntriesModule {}

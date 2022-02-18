@@ -149,6 +149,11 @@ export const API_ROUTE_DASHBOARD_TEST_RESULTS = {
   GET_ALL: 'dashboard/testResults',
 };
 
+export const API_ROUTE_DASHBOARD_CONTACTS = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/contacts',
+};
+
 export const API_ROUTE_REGIONS = {
   ENDPOINT: 'regions',
   GET_ALL: 'regions/indexList',
@@ -282,4 +287,36 @@ export const API_ROUTE_DISEASES = {
   UPDATE: 'diseases/push',
   ADD: 'diseases/push',
   DELETE: 'diseases/delete',
+};
+
+export const API_ROUTE_WEEKLY_REPORTS = {
+  ENDPOINT: 'weeklyReports',
+  GET_ALL: 'weeklyReports/indexList',
+  UPDATE: 'weeklyReports/push',
+  ADD: 'weeklyReports/push',
+  DELETE: 'weeklyReports/delete',
+};
+
+export const API_ROUTE_WEEKLY_REPORTS_OFFICER_SUMMARY = {
+  ENDPOINT: 'weeklyReportsOfficerSummary',
+  GET_ALL: 'weeklyReportsOfficerSummary/indexList',
+  UPDATE: 'weeklyReportsOfficerSummary/push',
+  ADD: 'weeklyReportsOfficerSummary/push',
+  DELETE: 'weeklyReportsOfficerSummary/delete',
+};
+
+export const API_ROUTE_WEEKLY_REPORTS_REGION_SUMMARY = {
+  ENDPOINT: 'weeklyReportsRegionSummary',
+  GET_ALL: 'weeklyReportsRegionSummary/indexList',
+  UPDATE: 'weeklyReportsRegionSummary/push',
+  ADD: 'weeklyReportsRegionSummary/push',
+  DELETE: 'weeklyReportsRegionSummary/delete',
+};
+
+export const API_ROUTE_SHARE_REQUESTS = {
+  ENDPOINT: 'shareRequests',
+  GET_ALL: 'shareRequests/indexList',
+  UPDATE: 'shareRequests/push',
+  ADD: 'shareRequests/push',
+  DELETE: 'shareRequests/delete',
 };

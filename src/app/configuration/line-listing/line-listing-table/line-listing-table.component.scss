@@ -15,6 +15,18 @@ table {
     background-color: unset;
   }
 
+  .date-input {
+    display: inline;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 5px;
+    cursor: pointer;
+    &:hover {
+      border: 2px solid mat.get-color-from-palette($sormas-primary, 100);
+    }
+  }
+
   .datepicker-input {
     position: absolute;
     cursor: pointer;

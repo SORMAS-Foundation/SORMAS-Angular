@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 import { IconsMap } from '../../../app.constants';
+import * as enums from '../../../_constants/enums';
 
 @Component({
   selector: 'app-table-data',
@@ -20,6 +22,8 @@ export class TableDataComponent implements OnChanges {
 
   iconName: string;
   iconClass: string;
+
+  constructor(private translateService: TranslateService) {}
 
   ngOnChanges(): void {
     this.formatData();
@@ -45,6 +49,18 @@ export class TableDataComponent implements OnChanges {
     return this.config.format?.type;
   }
 
+  translateData(rawData: string): string {
+    let translatedData: string = rawData || '';
+    if (rawData) {
+      if (this.config.translationName) {
+        // @ts-ignore
+        translatedData = enums[this.config.translationName][rawData];
+        translatedData = this.translateService.instant(translatedData);
+      }
+    }
+    return translatedData;
+  }
+
   formatData(): void {
     this.dataType = this.getType();
     switch (this.config.format?.type) {
@@ -60,8 +76,9 @@ export class TableDataComponent implements OnChanges {
       case this.formats.DISPLAY:
         this.formatDisplay();
         break;
-      default:
-        this.dataDisplay = this.getData(this.config.dataKey);
+      default: {
+        this.dataDisplay = this.translateData(this.getData(this.config.dataKey));
+      }
     }
   }
 
@@ -120,13 +137,17 @@ export class TableDataComponent implements OnChanges {
     let paramHasValue = false;
 
     this.config.format?.params?.forEach((key: any, index: number) => {
-      const param = this.getRawData(key);
+      let param = this.getRawData(key);
+      const unTranslatedParam = param;
+      if (param && this.config.translationName) {
+        param = this.translateData(param);
+      }
       if (param !== undefined && param !== null) {
         paramHasValue = true;
       }
-      result = result.replaceAll(`$param${index + 1}`, param ?? '');
+      result = result.replaceAll(`>$param${index + 1}<`, `>${param}<` ?? '');
+      result = result.replaceAll(`$param${index + 1}`, unTranslatedParam);
     });
-
     return paramHasValue ? result : '';
   }
 }

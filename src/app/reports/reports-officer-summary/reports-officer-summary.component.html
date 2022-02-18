@@ -1,0 +1,28 @@
+<div mat-dialog-title>
+  <h1>
+    {{
+      'captions.weeklyReportsInDistrict' | translate | replace: '%s':data?.report?.region?.caption
+    }}
+    -
+    {{ 'strings.epiWeek' | translate }}
+    {{ data?.epiWeek | replace: '-':'/' }}
+  </h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <app-table
+    [resourceService]="reportService"
+    [tableColumns]="defaultColumns"
+    [isViewable]="true"
+    [isSortable]="true"
+    [isHeaderSticky]="true"
+    [saveConfigKey]="configKey"
+    [appearance]="'minimal'"
+    (viewItem)="showReport($event)"
+  ></app-table>
+</div>

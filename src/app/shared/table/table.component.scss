@@ -33,6 +33,47 @@ table {
   text-align: right;
 }
 
+tr.additional-header-row {
+  height: auto;
+}
+
+th.additional-header {
+  border-bottom: none;
+  color: mat.get-color-from-palette($sormas-primary, 600);
+  text-transform: uppercase;
+}
+
+.button-action {
+  padding: 0;
+  line-height: unset;
+
+  .mat-icon {
+    font-size: 18px;
+  }
+
+  & + & {
+    margin-left: 16px;
+  }
+
+  &.button-accept {
+    color: mat.get-color-from-palette($sormas-primary, 700);
+
+    &:hover,
+    &:focus {
+      color: mat.get-color-from-palette($sormas-primary, 800);
+    }
+  }
+
+  &.button-reject {
+    color: mat.get-color-from-palette($sormas-alert, 400);
+
+    &:hover,
+    &:focus {
+      color: mat.get-color-from-palette($sormas-alert, 700);
+    }
+  }
+}
+
 .minimal {
   th.mat-header-cell {
     border-bottom-color: map-get($sormas-accent, 200);
