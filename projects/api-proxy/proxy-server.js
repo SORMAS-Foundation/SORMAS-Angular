@@ -1296,6 +1296,17 @@ app.use('/sormas-rest/dashboard/contacts', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/dashboard/stoppedFollowUp', (req, res) => {
+  res.status(200).send({
+    followUp: {
+      COMPLETED: 9,
+      CANCELLED: 2,
+      LOST: 17,
+    },
+    converted: 8,
+  });
+});
+
 app.use(
   '/sormas-rest',
   createProxyMiddleware({

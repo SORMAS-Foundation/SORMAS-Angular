@@ -410,7 +410,8 @@ strong {
   }
 }
 
-.contact-unconfirmed .mat-progress-bar-fill::after {
+.contact-unconfirmed .mat-progress-bar-fill::after,
+.follow-up-canceled .mat-progress-bar-fill::after {
   background-color: mat.get-color-from-palette($sormas-accent, 500);
 }
 
@@ -418,14 +419,17 @@ strong {
   background-color: mat.get-color-from-palette($sormas-alert, 700);
 }
 
-.contact-not .mat-progress-bar-fill::after {
+.contact-not .mat-progress-bar-fill::after,
+.follow-up-completed .mat-progress-bar-fill::after {
   background-color: mat.get-color-from-palette($sormas-primary, 500);
 }
 
-.contact-new .mat-progress-bar-fill::after {
+.contact-new .mat-progress-bar-fill::after,
+.follow-up-lost .mat-progress-bar-fill::after {
   background-color: mat.get-color-from-palette($sormas-warning, 700);
 }
 
-.contact-symptomatic .mat-progress-bar-fill::after {
+.contact-symptomatic .mat-progress-bar-fill::after,
+.follow-up-converted .mat-progress-bar-fill::after {
   background-color: mat.get-color-from-palette($sormas-alert, 300);
 }
