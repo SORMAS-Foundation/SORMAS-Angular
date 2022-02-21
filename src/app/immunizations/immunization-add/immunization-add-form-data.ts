@@ -210,20 +210,20 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
     fields: [
       {
         ...FORM_DATA_INPUT,
-        key: 'firstName',
+        key: 'person.firstName',
         label: 'captions.firstName',
         validation: ['required'],
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'lastName',
+        key: 'person.lastName',
         label: 'captions.lastName',
         validation: ['required'],
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'year',
+        key: 'person.birthdateYYYY',
         label: 'captions.Person.birthdate',
         placeholder: 'strings.year',
         options: [],
@@ -232,7 +232,7 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'month',
+        key: 'person.birthdateMM',
         label: ' ',
         placeholder: 'strings.month',
         options: [],
@@ -240,7 +240,7 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'day',
+        key: 'person.birthdateDD',
         label: ' ',
         placeholder: 'strings.day',
         options: [],
@@ -248,7 +248,7 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'sex',
+        key: 'person.sex',
         label: 'captions.Person.sex',
         options: optionsSex,
         className: 'size-small',
@@ -256,24 +256,24 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'healthId',
+        key: 'person.nationalHealthId',
         label: 'captions.Person.nationalHealthId',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'passportNumber',
+        key: 'person.passportNumber',
         label: 'captions.Person.passportNumber',
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'phoneNumber',
+        key: 'person.phone',
         label: 'captions.Person.phone',
         newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
-        key: 'email',
+        key: 'person.emailAddress',
         label: 'captions.Person.emailAddress',
       },
     ],

@@ -118,6 +118,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         .pipe(filter(({ formId }) => this.formId === formId))
         .subscribe(() => {
           this.changed.emit(this.form.value);
+          this.formActionsService.setCurrent(this.formId, this.updateFormRawValueWithObjects());
         })
     );
 

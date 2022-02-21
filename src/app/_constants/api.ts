@@ -12,6 +12,7 @@ export const API_ROUTE_PERSONS = {
   UPDATE: 'persons/update',
   ADD: 'persons/add',
   DELETE: 'persons/delete',
+  MATCH: 'persons/similarPersons',
 };
 
 export const API_ROUTE_PATHOGEN_TESTS = {

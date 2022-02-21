@@ -18,6 +18,9 @@ import {
   BREAKPOINTS,
   ADD_EDIT_FORM_ID,
 } from '../../../app.constants';
+import { Filter } from '../../../_models/common';
+import { PersonDto } from '../../../_models/personDto';
+import { PersonService } from '../../../_services/api/person.service';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { NotificationService } from '../../../_services/notification.service';
 
@@ -40,7 +43,8 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver,
     private formActionsService: FormActionsService,
     private notificationService: NotificationService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private personService: PersonService
   ) {}
 
   ngOnInit(): void {
@@ -100,12 +104,61 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  save(): void {
-    if (this.data.resource) {
-      this.formActionsService.setSave(this.formId, this.data.resource);
-    } else {
-      this.formActionsService.setSave(this.formId, null);
+  checkForSimilarPerson(person: PersonDto | undefined): void {
+    if (!person) {
+      this.saveData();
+      return;
     }
+    const criteria = [
+      'firstName',
+      'lastName',
+      'sex',
+      'birthdateDD',
+      'birthdateMM',
+      'birthdateYYYY',
+      'passportNumber',
+      'nationalHealthId',
+      'uuidExternalIdExternalTokenLike',
+    ];
+    const filters: Filter[] = Object.entries(person)
+      .map((prop) => ({
+        field: prop[0],
+        value: prop[1],
+      }))
+      .filter((prop) => criteria.includes(prop.field));
+    this.subscription.push(
+      this.personService.getSimilar(filters).subscribe((result) => {
+        if (result.length) {
+          // we have a match -> pick person modal
+        } else {
+          // create person
+          // then save - how??
+        }
+      })
+    );
+  }
+
+  checkData(): void {
+    this.subscription.push(
+      this.formActionsService
+        .getCurrent()
+        .pipe(filter(({ formId }) => this.formId === formId))
+        .subscribe(({ resource }: any) => {
+          this.checkForSimilarPerson(resource?.person);
+        })
+    );
+  }
+
+  saveData() {
+    this.formActionsService.setSave(this.formId, this.data.resource ?? null);
+  }
+
+  save(): void {
+    if (this.data.checkSimilarPerson) {
+      this.checkData();
+      return;
+    }
+    this.saveData();
   }
 
   discard(): void {

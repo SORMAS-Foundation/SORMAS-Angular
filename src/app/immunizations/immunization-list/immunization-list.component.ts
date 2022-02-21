@@ -43,13 +43,12 @@ export class ImmunizationListComponent implements OnInit, OnDestroy {
   }
 
   openAddImmunizationModal(): void {
-    this.openPickPersonModal();
-    return;
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data: {
         title: this.translateService.instant('addImmunization'),
         component: ImmunizationAddComponent,
+        checkSimilarPerson: true,
       },
     });
 
@@ -57,7 +56,6 @@ export class ImmunizationListComponent implements OnInit, OnDestroy {
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           // callback
-          this.openPickPersonModal();
         }
       })
     );

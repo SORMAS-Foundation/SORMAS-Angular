@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Resource } from '../_models/resource';
 
 @Injectable({ providedIn: 'root' })
 export class FormActionsService {
   private subjectSave = new Subject<any>();
+  private subjectCurrent = new BehaviorSubject<any>({});
   private subjectInputChange = new Subject<any>();
   private subjectDiscard = new Subject<any>();
   private subjectInputValue = new Subject<any>();
@@ -18,6 +19,14 @@ export class FormActionsService {
 
   getSave(): Observable<any> {
     return this.subjectSave.asObservable();
+  }
+
+  setCurrent(formId: string, resource: Resource | null): void {
+    this.subjectCurrent.next({ formId, resource });
+  }
+
+  getCurrent(): Observable<any> {
+    return this.subjectCurrent.asObservable();
   }
 
   setInputChange(formId: string, field: string, isInputChanged: boolean): void {
