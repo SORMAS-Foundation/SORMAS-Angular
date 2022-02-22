@@ -55,7 +55,6 @@ import { ToggleViewComponent } from './toggle-view/toggle-view.component';
 import { MsersDiseasesComponent } from './widgets/msers-diseases/msers-diseases.component';
 import { ImmunizationRecoveryComponent } from './widgets/immunization-recovery/immunization-recovery.component';
 import { SearchCaseModalComponent } from './modals/search-case-modal/search-case-modal.component';
-import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +96,6 @@ import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.c
     MsersDiseasesComponent,
     ImmunizationRecoveryComponent,
     SearchCaseModalComponent,
-    AddCaseLabelComponent,
   ],
   imports: [
     CommonModule,

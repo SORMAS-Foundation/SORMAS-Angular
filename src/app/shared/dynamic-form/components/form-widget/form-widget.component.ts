@@ -25,7 +25,6 @@ import { ContactFollowUpComponent } from '../../../widgets/contact-follow-up/con
 import { ExportsGroupSelectComponent } from '../../../widgets/exports-group-select/exports-group-select.component';
 import { MsersDiseasesComponent } from '../../../widgets/msers-diseases/msers-diseases.component';
 import { ImmunizationRecoveryComponent } from '../../../widgets/immunization-recovery/immunization-recovery.component';
-import { AddCaseLabelComponent } from '../../../widgets/add-case-label/add-case-label.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -44,7 +43,6 @@ const COMPONENTS_MAP: any = {
   'app-exports-group-select': ExportsGroupSelectComponent,
   'app-msers-diseases': MsersDiseasesComponent,
   'app-immunization-recovery': ImmunizationRecoveryComponent,
-  'app-add-case-label': AddCaseLabelComponent,
 };
 
 @Component({

@@ -101,13 +101,9 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     }
     const field = this.makeKey(key.replaceAll('.', '__'));
     const filters = Object.entries(this.makeObject(field, val))[0];
-
-    const keyMap = ['country', 'region', 'district', 'community'];
-    const filterName = keyMap.find((item) => key.toLowerCase().includes(item));
-
     return [
       {
-        field: filterName,
+        field: filters[0],
         value: filters[1],
       },
     ];

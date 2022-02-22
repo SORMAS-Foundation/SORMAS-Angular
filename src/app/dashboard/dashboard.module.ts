@@ -27,7 +27,6 @@ import { DashboardDiseaseBurdenComponent } from './components/dashboard-disease-
 import { MapLegendComponent } from './components/map-legend/map-legend.component';
 import { MapLayersComponent } from './components/map-layers/map-layers.component';
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
-import { ProgressBarColor } from '../_directives/progress-bar-color.directive';
 
 @NgModule({
   declarations: [
@@ -52,7 +51,6 @@ import { ProgressBarColor } from '../_directives/progress-bar-color.directive';
     DashboardTransmissionChainComponent,
     MapLegendComponent,
     MapLayersComponent,
-    ProgressBarColor,
   ],
   imports: [
     CommonModule,
