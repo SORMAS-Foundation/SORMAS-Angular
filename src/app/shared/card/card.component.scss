@@ -17,6 +17,7 @@
   &.type-vaccination {
     border: 1px solid mat.get-color-from-palette($sormas-primary, A100);
     border-left: 4px solid mat.get-color-from-palette($sormas-primary, A100);
+    border-radius: 0 5px 5px 0;
   }
 }
 
