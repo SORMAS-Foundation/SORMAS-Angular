@@ -1,5 +1,20 @@
 <div class="dashboard-disease-menu">
-  <mat-tab-group (selectedTabChange)="tabChange($event)">
-    <mat-tab *ngFor="let disease of diseases" [label]="disease.value"></mat-tab>
+  <div class="actions">
+    <mat-icon class="material-icons-round start-stop-btn" color="primary" (click)="toggleTimer(duration, true)">slideshow</mat-icon>
+    <mat-form-field appearance="fill">
+      <mat-select [(ngModel)]="duration">
+        <mat-option [value]="30">30</mat-option>
+        <mat-option [value]="60">60</mat-option>
+        <mat-option [value]="90">90</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-tab-group (selectedTabChange)="tabChange($event)" [(selectedIndex)]="selectedIndex">
+    <mat-tab *ngFor="let disease of diseases ; let index=index" [label]="disease.value">
+      <ng-template mat-tab-label>
+        <span [ngClass]="'mat-tab-' + disease.key" class="mat-tab-span">{{disease.value}}</span>
+      </ng-template>
+    </mat-tab>
   </mat-tab-group>
+  <mat-progress-bar mode="determinate" [value]="progressbarValue" [appProgressBarColor]="progressBarColor"></mat-progress-bar>
 </div>

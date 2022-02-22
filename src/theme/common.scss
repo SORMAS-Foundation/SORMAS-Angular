@@ -386,12 +386,86 @@ strong {
 
 // dashboard-disease-menu
 .dashboard-disease-menu {
+  .mat-tab-span {
+    padding: 20px 10px 0 10px;
+  }
+  .mat-tab-label-active {
+    .mat-tab-span {
+      background: mat.get-color-from-palette($brand-neutrals, 600);
+
+      &.mat-tab-AFP {
+        background: #1646e0;
+      }
+      &.mat-tab-ANTHRAX {
+        background: #6df290;
+      }
+      &.mat-tab-CORONAVIRUS {
+        background: #00b32f;
+      }
+      &.mat-tab-CHOLERA {
+        background: #fda312;
+      }
+      &.mat-tab-CONGENITAL_RUBELLA {
+        background: #ff5959;
+      }
+      &.mat-tab-DENGUE {
+        background: #b2e1e6;
+      }
+      &.mat-tab-EVD {
+        background: #e05600;
+      }
+      &.mat-tab-GUINEA_WORM {
+        background: #a1adbf;
+      }
+      &.mat-tab-RABIES {
+        background: #4a1c8c;
+      }
+      &.mat-tab-LASSA {
+        background: #fd7600;
+      }
+      &.mat-tab-MEASLES {
+        background: #ffa6a6;
+      }
+      &.mat-tab-CSM {
+        background: #ce93d8;
+      }
+      &.mat-tab-MONKEYPOX {
+        background: #9c27b0;
+      }
+      &.mat-tab-NEW_INFLUENZA {
+        background: #3281fa;
+      }
+      &.mat-tab-UNDEFINED {
+        background: #515b6b;
+      }
+      &.mat-tab-OTHER {
+        background: #1b1f26;
+      }
+      &.mat-tab-PLAGUE {
+        background: #d90000;
+      }
+      &.mat-tab-POLIO {
+        background: #009cac;
+      }
+      &.mat-tab-UNSPECIFIED_VHF {
+        background: #b30000;
+      }
+    }
+  }
+
   .mat-tab-label {
     min-width: min-content;
     height: auto;
     padding: 5px 0;
     margin-right: 16px;
     opacity: 1;
+
+    &.mat-tab-label-active {
+      .mat-tab-label-content {
+        color: $white;
+      }
+    }
+
     .mat-tab-label-content {
       color: mat.get-color-from-palette($sormas-accent, 600);
     }
@@ -405,6 +479,7 @@ strong {
     &.mat-primary {
       .mat-ink-bar {
         background-color: mat.get-color-from-palette($sormas-accent, 600);
+        display: none;
       }
     }
   }
