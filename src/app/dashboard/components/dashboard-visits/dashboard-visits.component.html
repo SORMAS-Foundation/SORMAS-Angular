@@ -6,70 +6,90 @@
 <ul *ngIf="data" class="visits">
   <li class="visits-unavailable">
     <span class="count">{{ data.visits.UNAVAILABLE ?? 0 }}</span>
-    <span class="statistic down" *ngIf="unavailablePercent < 0"
-      ><mat-icon class="material-icons-round icon">keyboard_arrow_down</mat-icon></span
+    <span
+      class="statistic"
+      [ngClass]="{
+        down: unavailablePercent < 0,
+        up: unavailablePercent > 0,
+        equal: unavailablePercent === 0
+      }"
     >
-    <span class="statistic up" *ngIf="unavailablePercent > 0"
-      ><mat-icon class="material-icons-round icon">keyboard_arrow_up</mat-icon></span
-    >
-    <span class="statistic equal" *ngIf="unavailablePercent === 0"
-      ><mat-icon class="material-icons-round icon">remove</mat-icon></span
-    >
+      <mat-icon class="material-icons-round icon">
+        <ng-container *ngIf="unavailablePercent < 0">keyboard_arrow_down</ng-container>
+        <ng-container *ngIf="unavailablePercent > 0">keyboard_arrow_up</ng-container>
+        <ng-container *ngIf="unavailablePercent === 0">remove</ng-container>
+      </mat-icon>
+    </span>
     <span class="percentage">{{ unavailablePercent | percent }}</span>
     <mat-icon class="material-icons-round icon">block</mat-icon>
     <span class="info">{{ 'captions.dashboardUnavailable' | translate }}</span>
-    <mat-progress-bar [value]="(data.visits.UNAVAILABLE / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="unavailablePercent * 100"></mat-progress-bar>
   </li>
   <li class="visits-uncooperative">
     <span class="count">{{ data.visits.UNCOOPERATIVE ?? 0 }}</span>
-    <span class="statistic down" *ngIf="uncooperativePercent < 0"
-      ><mat-icon class="material-icons-round icon">keyboard_arrow_down</mat-icon></span
+    <span
+      class="statistic"
+      [ngClass]="{
+        down: uncooperativePercent < 0,
+        up: uncooperativePercent > 0,
+        equal: uncooperativePercent === 0
+      }"
     >
-    <span class="statistic up" *ngIf="uncooperativePercent > 0"
-      ><mat-icon class="material-icons-round icon">keyboard_arrow_up</mat-icon></span
-    >
-    <span class="statistic equal" *ngIf="uncooperativePercent === 0"
-      ><mat-icon class="material-icons-round icon">remove</mat-icon></span
-    >
+      <mat-icon class="material-icons-round icon">
+        <ng-container *ngIf="uncooperativePercent < 0">keyboard_arrow_down</ng-container>
+        <ng-container *ngIf="uncooperativePercent > 0">keyboard_arrow_up</ng-container>
+        <ng-container *ngIf="uncooperativePercent === 0">remove</ng-container>
+      </mat-icon>
+    </span>
     <span class="percentage">
       {{ uncooperativePercent | percent }}
     </span>
     <mat-icon class="material-icons-round icon">cancel</mat-icon>
     <span class="info">{{ 'captions.dashboardUncooperative' | translate }}</span>
-    <mat-progress-bar [value]="(data.visits.UNCOOPERATIVE / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="uncooperativePercent * 100"></mat-progress-bar>
   </li>
   <li class="visits-cooperative">
     <span class="count">{{ data.visits.COOPERATIVE ?? 0 }}</span>
-    <span class="statistic down" *ngIf="cooperativePercent < 0"
-      ><mat-icon class="material-icons-round icon">keyboard_arrow_down</mat-icon></span
+    <span
+      class="statistic"
+      [ngClass]="{
+        down: cooperativePercent < 0,
+        up: cooperativePercent > 0,
+        equal: cooperativePercent === 0
+      }"
     >
-    <span class="statistic up" *ngIf="cooperativePercent > 0"
-      ><mat-icon class="material-icons-round icon">keyboard_arrow_up</mat-icon></span
-    >
-    <span class="statistic equal" *ngIf="cooperativePercent === 0"
-      ><mat-icon class="material-icons-round icon">remove</mat-icon></span
-    >
+      <mat-icon class="material-icons-round icon">
+        <ng-container *ngIf="cooperativePercent < 0">keyboard_arrow_down</ng-container>
+        <ng-container *ngIf="cooperativePercent > 0">keyboard_arrow_up</ng-container>
+        <ng-container *ngIf="cooperativePercent === 0">remove</ng-container>
+      </mat-icon>
+    </span>
     <span class="percentage">
       {{ cooperativePercent | percent }}
     </span>
     <mat-icon class="material-icons-round icon">sentiment_satisfied_alt</mat-icon>
     <span class="info">{{ 'captions.dashboardCooperative' | translate }}</span>
-    <mat-progress-bar [value]="(data.visits.COOPERATIVE / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="cooperativePercent * 100"></mat-progress-bar>
   </li>
   <li class="visits-missed">
     <span class="count">{{ data.visits.MISSED ?? 0 }}</span>
-    <span class="statistic down" *ngIf="missedPercent < 0"
-      ><mat-icon class="material-icons-round icon">keyboard_arrow_down</mat-icon></span
+    <span
+      class="statistic"
+      [ngClass]="{
+        down: missedPercent < 0,
+        up: missedPercent > 0,
+        equal: missedPercent === 0
+      }"
     >
-    <span class="statistic up" *ngIf="missedPercent > 0"
-      ><mat-icon class="material-icons-round icon">keyboard_arrow_up</mat-icon></span
-    >
-    <span class="statistic equal" *ngIf="missedPercent === 0"
-      ><mat-icon class="material-icons-round icon">remove</mat-icon></span
-    >
+      <mat-icon class="material-icons-round icon">
+        <ng-container *ngIf="missedPercent < 0">keyboard_arrow_down</ng-container>
+        <ng-container *ngIf="missedPercent > 0">keyboard_arrow_up</ng-container>
+        <ng-container *ngIf="missedPercent === 0">remove</ng-container>
+      </mat-icon>
+    </span>
     <span class="percentage">{{ missedPercent | percent }}</span>
     <mat-icon class="material-icons-round icon">remove</mat-icon>
     <span class="info">{{ 'captions.dashboardMissed' | translate }}</span>
-    <mat-progress-bar [value]="(data.visits.MISSED / total) * 100"></mat-progress-bar>
+    <mat-progress-bar [value]="missedPercent * 100"></mat-progress-bar>
   </li>
 </ul>
