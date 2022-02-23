@@ -29,7 +29,7 @@ h3 {
 }
 
 .not-visited-days-count {
-  margin-bottom: 5px !important;
+  margin-bottom: 5px;
 }
 
 .not-visited-days {
@@ -58,22 +58,18 @@ h3 {
 
   .day1 {
     color: mat.get-color-from-palette($sormas-accent, 300);
-    text-align: center !important;
     border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 300);
   }
   .day2 {
     color: mat.get-color-from-palette($sormas-accent, 500);
-    text-align: center !important;
     border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 500);
   }
   .day3 {
     color: mat.get-color-from-palette($sormas-warning, 700);
-    text-align: center !important;
     border-bottom: solid 2px mat.get-color-from-palette($sormas-warning, 700);
   }
   .day4 {
     color: mat.get-color-from-palette($sormas-alert, 300);
-    text-align: center !important;
     border-bottom: solid 2px mat.get-color-from-palette($sormas-alert, 300);
   }
 }

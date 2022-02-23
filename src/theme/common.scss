@@ -468,9 +468,11 @@ strong {
 
 mat-tooltip-component {
   .mat-tooltip {
-    color: mat.get-color-from-palette($sormas-accent, 800);
-    @include mat.elevation(2);
-    background-color: mat.get-color-from-palette($sormas-primary, 50) !important;
-    padding: 8px 10px;
+    &.follow-up-tooltip {
+      color: mat.get-color-from-palette($sormas-accent, 800);
+      @include mat.elevation(2);
+      background-color: mat.get-color-from-palette($sormas-primary, 50);
+      padding: 8px 10px;
+    }
   }
 }

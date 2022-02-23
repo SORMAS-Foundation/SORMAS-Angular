@@ -13,7 +13,6 @@ import { NotificationService } from '../../../_services/notification.service';
 export class DashboardUnderFollowUpComponent implements OnInit, OnDestroy {
   data: any;
   total: number;
-  totalNotVisited: number;
   filters: Filter[] = [];
   subscriptions: Subscription[] = [];
 
@@ -42,8 +41,6 @@ export class DashboardUnderFollowUpComponent implements OnInit, OnDestroy {
             (this.data.followUp.UNCOOPERATIVE || 0) +
             (this.data.followUp.UNAVAILABLE || 0) +
             (this.data.followUp.NOT_VISITED || 0);
-          // this.total = Object.values(this.data.followUp).reduce((a: number, b) => a + Number(b), 0);
-          this.totalNotVisited = 0;
         },
         error: (err: any) => {
           this.notificationService.error(err);
