@@ -6075,5 +6075,6 @@
   "travelEntries.buttonCreateNewTravelEntry": "Create new travel entry",
   "pointOfEntryDetails": "Point of entry details",
   "headingSharesStatus": "Shares status",
-  "CaseData.onsetDate": "Onset date"
+  "CaseData.onsetDate": "Onset date",
+  "dashboard.notVisited": "Not visited"
 }
