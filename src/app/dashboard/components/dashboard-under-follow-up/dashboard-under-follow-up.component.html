@@ -1,1 +1,70 @@
-<p>dashboard-under-follow-up works!</p>
+<h2>
+  <strong>{{ total }}</strong>
+  {{ 'strings.headingUnderFollowUp' | translate }}
+  <mat-icon
+    [matTooltip]="'descriptions.descDashboardFollowUpInfo' | translate"
+    matTooltipPosition="below"
+    matTooltipClass="follow-up-tooltip"
+    class="material-icons-round icon"
+    >info</mat-icon
+  >
+</h2>
+
+<ul *ngIf="data" class="under-follow-up">
+  <li class="follow-up-cooperative">
+    <span class="count">{{ data.followUp.COOPERATIVE ?? 0 }}</span>
+    <span class="percentage">
+      {{ (total ? (data.followUp.COOPERATIVE ?? 0) / total : 0) | percent }}
+    </span>
+    <mat-icon class="material-icons-round icon">sentiment_satisfied_alt</mat-icon>
+    <span class="info">{{ 'captions.dashboardCooperative' | translate }}</span>
+    <mat-progress-bar [value]="(data.followUp.COOPERATIVE / total) * 100"></mat-progress-bar>
+  </li>
+  <li class="follow-up-uncooperative">
+    <span class="count">{{ data.followUp.UNCOOPERATIVE ?? 0 }}</span>
+    <span class="percentage">
+      {{ (total ? (data.followUp.UNCOOPERATIVE ?? 0) / total : 0) | percent }}
+    </span>
+    <mat-icon class="material-icons-round icon">cancel</mat-icon>
+    <span class="info">{{ 'captions.dashboardUncooperative' | translate }}</span>
+    <mat-progress-bar [value]="(data.followUp.UNCOOPERATIVE / total) * 100"></mat-progress-bar>
+  </li>
+  <li class="follow-up-unavailable">
+    <span class="count">{{ data.followUp.UNAVAILABLE ?? 0 }}</span>
+    <span
+      class="percentage"
+      >{{ (total ? (data.followUp.UNAVAILABLE ?? 0) / total : 0) | percent }}</span
+    >
+    <mat-icon class="material-icons-round icon">block</mat-icon>
+    <span class="info">{{ 'captions.dashboardUnavailable' | translate }}</span>
+    <mat-progress-bar [value]="(data.followUp.UNAVAILABLE / total) * 100"></mat-progress-bar>
+  </li>
+  <li class="follow-up-not-visited">
+    <span class="count">{{ data.followUp.NOT_VISITED ?? 0 }}</span>
+    <span
+      class="percentage"
+      >{{ (total ? (data.followUp.NOT_VISITED ?? 0) / total : 0) | percent }}</span
+    >
+    <mat-icon class="material-icons-round icon">remove</mat-icon>
+    <span class="info">{{ 'dashboard.notVisited' | translate }}</span>
+    <mat-progress-bar [value]="(data.followUp.NOT_VISITED / total) * 100"></mat-progress-bar>
+  </li>
+</ul>
+
+<h3>
+  {{ 'captions.dashboardNotVisitedFor' | translate }}
+</h3>
+<ul *ngIf="data" class="not-visited-days">
+  <li class="not-visited-days-count">
+    <span class="count day day1">{{ data.followUp.DAY1 ?? 0 }}</span>
+    <span class="count day day2">{{ data.followUp.DAY2 ?? 0 }}</span>
+    <span class="count day day3">{{ data.followUp.DAY3 ?? 0 }}</span>
+    <span class="count day day4">{{ data.followUp.DAY4 ?? 0 }}</span>
+  </li>
+  <li class="not-visited-day-texts">
+    <span class="text">{{ 'captions.dashboardOneDay' | translate }}</span>
+    <span class="text">{{ 'captions.dashboardTwoDays' | translate }}</span>
+    <span class="text">{{ 'captions.dashboardThreeDays' | translate }}</span>
+    <span class="text">{{ 'captions.dashboardGtThreeDays' | translate }}</span>
+  </li>
+</ul>

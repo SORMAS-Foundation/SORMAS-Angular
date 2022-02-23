@@ -1296,6 +1296,32 @@ app.use('/sormas-rest/dashboard/contacts', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/dashboard/underFollowUp', (req, res) => {
+  res.status(200).send({
+    followUp: {
+      COOPERATIVE: 1,
+      UNCOOPERATIVE: 5,
+      UNAVAILABLE: 6,
+      NOT_VISITED: 17,
+      DAY1: 1,
+      DAY2: 2,
+      DAY3: 3,
+      DAY4: 4,
+    },
+  });
+});
+
+app.use('/sormas-rest/dashboard/visits', (req, res) => {
+  res.status(200).send({
+    visits: {
+      COOPERATIVE: 100,
+      UNCOOPERATIVE: 0,
+      UNAVAILABLE: -4,
+      MISSED: 17,
+    },
+  });
+});
+
 app.use('/sormas-rest/dashboard/stoppedFollowUp', (req, res) => {
   res.status(200).send({
     followUp: {

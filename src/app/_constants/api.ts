@@ -154,6 +154,16 @@ export const API_ROUTE_DASHBOARD_CONTACTS = {
   GET_ALL: 'dashboard/contacts',
 };
 
+export const API_ROUTE_DASHBOARD_UNDER_FOLLOW_UP = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/underFollowUp',
+};
+
+export const API_ROUTE_DASHBOARD_VISITS = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/visits',
+};
+
 export const API_ROUTE_DASHBOARD_STOPPED_FOLLOW_UP = {
   ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/stoppedFollowUp',
