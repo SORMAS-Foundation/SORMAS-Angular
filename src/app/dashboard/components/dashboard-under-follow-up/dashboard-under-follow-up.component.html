@@ -1,13 +1,14 @@
 <h2>
   <strong>{{ total }}</strong>
   {{ 'strings.headingUnderFollowUp' | translate }}
-  <mat-icon
-    [matTooltip]="'descriptions.descDashboardFollowUpInfo' | translate"
-    matTooltipPosition="below"
-    matTooltipClass="follow-up-tooltip"
-    class="material-icons-round icon"
-    >info</mat-icon
-  >
+  <mat-icon class="material-icons-round icon-info" [appTooltip]="infotip">info</mat-icon>
+
+  <ng-template #infotip>
+    <div class="info-under-follow-up">
+      <mat-icon class="material-icons-round icon-info">info</mat-icon>
+      <p [innerHtml]="'descriptions.descDashboardFollowUpInfo' | translate"></p>
+    </div>
+  </ng-template>
 </h2>
 
 <ul *ngIf="data" class="under-follow-up">
