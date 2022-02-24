@@ -10,7 +10,7 @@ export const API_ROUTE_PERSONS = {
   ENDPOINT: 'persons',
   GET_ALL: 'persons/indexList',
   UPDATE: 'persons/update',
-  ADD: 'persons/add',
+  ADD: 'persons/push',
   DELETE: 'persons/delete',
   MATCH: 'persons/similarPersons',
 };

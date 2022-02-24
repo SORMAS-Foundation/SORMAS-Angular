@@ -30,6 +30,7 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         key: 'reportDate',
         label: 'captions.Immunization.reportDate',
         validation: ['required'],
+        value: new Date(),
       },
       {
         ...FORM_DATA_SELECT,
@@ -251,6 +252,7 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         key: 'person.sex',
         label: 'captions.Person.sex',
         options: optionsSex,
+        validation: ['required'],
         className: 'size-small',
         newLine: true,
       },

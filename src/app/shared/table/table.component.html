@@ -26,9 +26,8 @@
   {{ totalItems }} {{ showTotalContext }}
 </div>
 
-<div #vsTable *ngIf="tableColumns" [ngClass]="{ 'table-wrapper': true, disabled: disabled }">
+<div #vsTable *ngIf="tableColumns">
   <app-loader [show]="loading"></app-loader>
-  <div *ngIf="disabled" class="overlay"></div>
   <cdk-virtual-scroll-viewport
     [tvsItemSize]="rowHeight"
     [headerHeight]="headerHeight"

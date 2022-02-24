@@ -1,11 +1,15 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TableAppearanceOptions } from '../../../app.constants';
+import { Subscription } from 'rxjs';
+import {
+  PickPersonType,
+  PICK_PERSON_OPTIONS,
+  TableAppearanceOptions,
+} from '../../../app.constants';
 import { Filter, TableColumn } from '../../../_models/common';
-import { PersonDto } from '../../../_models/models';
+import { PersonDto, SimilarPersonDto } from '../../../_models/models';
 import { PersonService } from '../../../_services/api/person.service';
-import { FilterService } from '../../../_services/filter.service';
 import { defaultColumnDefs } from './pick-person-modal-table-data';
 
 @Component({
@@ -13,71 +17,94 @@ import { defaultColumnDefs } from './pick-person-modal-table-data';
   templateUrl: './pick-person-modal.component.html',
   styleUrls: ['./pick-person-modal.component.scss'],
 })
-export class PickPersonModalComponent implements OnInit {
-  formId = 'pickPerson';
-  defaultColumns: TableColumn[] = [];
-  presetFilters: Filter[] = [];
+export class PickPersonModalComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  selection: PersonDto | null;
-  action: string = 'MATCHING_PERSON';
+  defaultColumns: TableColumn[] = [];
+  person: SimilarPersonDto;
+  matchingPersons: SimilarPersonDto[] = [];
+  differentPersons: SimilarPersonDto[] = [];
+  selection: SimilarPersonDto | null;
+  action: PickPersonType = PICK_PERSON_OPTIONS.SELECT;
+  selectOptions = PICK_PERSON_OPTIONS;
   tableAppearanceOptions = TableAppearanceOptions;
-  disableTable = false;
+  subscriptions: Subscription[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<PickPersonModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public personService: PersonService,
-    private filterService: FilterService
+    public personService: PersonService
   ) {}
 
   ngOnInit(): void {
-    this.presetFilters = [
-      {
-        field: 'nameAddressPhoneEmailLike',
-        value: 'test',
-      },
-    ];
+    this.person = this.data.person;
+    this.matchingPersons = this.data.similarPersons;
     this.defaultColumns = defaultColumnDefs;
     this.initFiltersForm();
+  }
+
+  fetchSimilarPersons(): void {
+    const filters = this.createFilters();
+    this.subscriptions.push(
+      this.personService.getSimilar(filters).subscribe((result) => {
+        this.selection = null;
+        this.differentPersons = result;
+      })
+    );
   }
 
   initFiltersForm(): void {
     this.form = new FormGroup({
       action: new FormControl(this.action),
-      firstName: new FormControl(this.data.person.firstName),
-      lastName: new FormControl(this.data.person.lastName),
+      firstName: new FormControl(this.person?.firstName),
+      lastName: new FormControl(this.person?.lastName),
       uuidExternalIdExternalTokenLike: new FormControl(),
     });
-  }
-
-  filtersToArray(): void {
-    const filter: Filter = {
-      field: 'nameUuidEpidNumberLike',
-      value: this.form.value.nameUuidEpidNumberLike,
-    };
-    this.filterService.setFilters([filter]);
-  }
-
-  onSelectEvent(event: any): void {
-    this.selection = null;
-    if (event.selected.length) {
-      // eslint-disable-next-line prefer-destructuring
-      this.selection = event.selected[0];
+    const controlAction = this.form.get('action');
+    if (controlAction) {
+      this.subscriptions.push(
+        controlAction.valueChanges.subscribe((val) => {
+          this.action = val;
+          if (this.action === this.selectOptions.SEARCH_AND_SELECT) {
+            this.fetchSimilarPersons();
+          }
+        })
+      );
     }
   }
 
-  onAction(event: any): void {
-    this.action = event.value;
-    this.disableTable = this.action === 'CREATE_PERSON';
+  createFilters(): Filter[] {
+    const filters: Filter[] = [];
+    Object.entries(this.form.value).forEach(([field, value]) => {
+      if (field !== 'action' && value !== null && value !== undefined) {
+        filters.push({ field, value });
+      }
+    });
+    return filters;
   }
 
-  onFormChange(): void {
-    console.log(this.form.value);
+  onSelectEvent(event: any): void {
+    this.selection = event?.selected[0] ?? null;
+  }
+
+  onFilterChange(): void {
+    this.fetchSimilarPersons();
   }
 
   confirm(): void {
-    this.dialogRef.close({
-      selection: this.selection,
+    if (this.selection) {
+      this.dialogRef.close({
+        selection: this.selection,
+      });
+      return;
+    }
+    this.personService.add([this.person as PersonDto]).subscribe((result) => {
+      this.dialogRef.close({
+        selection: result,
+      });
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

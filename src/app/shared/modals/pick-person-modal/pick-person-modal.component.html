@@ -8,7 +8,7 @@
       {{ 'captions.actionCancel' | translate }}
     </button>
     <button
-      [disabled]="!selection?.uuid"
+      [disabled]="!selection?.uuid && action !== selectOptions.CREATE_NEW"
       mat-flat-button
       color="primary"
       class="confirm-btn"
@@ -25,79 +25,91 @@
     <p [innerHtml]="data.info"></p>
   </div>
 
-  <div class="person">
+  <div *ngIf="person" class="person">
     <div class="person-attribute">
       <span class="label">{{ 'captions.firstName' | translate }}</span>
-      <strong>{{ data.person.firstName }}</strong>
+      <strong>{{ person.firstName }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.lastName' | translate }}</span>
-      <strong>{{ data.person.lastName }}</strong>
+      <strong>{{ person.lastName }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Person.nickname' | translate }}</span>
-      <strong>{{ data.person.nickname }}</strong>
+      <strong>{{ person.nickname }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Person.ageAndBirthDate' | translate }}</span>
-      <strong>{{ data.person.age }}</strong>
+      <strong>{{ person.ageAndBirthDate }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Person.sex' | translate }}</span>
-      <strong>{{ data.person.sex }}</strong>
+      <strong>{{ person.sex }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Person.presentCondition' | translate }}</span>
-      <strong>{{ data.person.presentCondition }}</strong>
+      <strong>{{ person.presentCondition }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Person.phone' | translate }}</span>
-      <strong>{{ data.person.phone }}</strong>
+      <strong>{{ person.phone }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.district' | translate }}</span>
-      <strong>{{ data.person.districtName }}</strong>
+      <strong>{{ person.districtName }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.community' | translate }}</span>
-      <strong>{{ data.person.community }}</strong>
+      <strong>{{ person.communityName }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Location.postalCode' | translate }}</span>
-      <strong>{{ data.person.postalCode }}</strong>
+      <strong>{{ person.postalCode }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.city' | translate }}</span>
-      <strong>{{ data.person.city }}</strong>
+      <strong>{{ person.city }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Location.street' | translate }}</span>
-      <strong>{{ data.person.street }}</strong>
+      <strong>{{ person.street }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Location.houseNumber' | translate }}</span>
-      <strong>{{ data.person.houseNumber }}</strong>
+      <strong>{{ person.houseNumber }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Person.nationalHealthId' | translate }}</span>
-      <strong>{{ data.person.nationalHealthId }}</strong>
+      <strong>{{ person.nationalHealthId }}</strong>
     </div>
     <div class="person-attribute">
       <span class="label">{{ 'captions.Person.passportNumber' | translate }}</span>
-      <strong>{{ data.person.passportNumber }}</strong>
+      <strong>{{ person.passportNumber }}</strong>
     </div>
   </div>
 
   <form [formGroup]="form">
-    <mat-radio-group formControlName="action" (change)="onAction($event)">
-      <mat-radio-button value="MATCHING_PERSON" color="primary">
+    <mat-radio-group formControlName="action">
+      <mat-radio-button [value]="selectOptions.SELECT" color="primary">
         {{ 'captions.personSelect' | translate }}
       </mat-radio-button>
-      <mat-radio-button value="DIFFERENT_PERSON" color="primary">
+      <div class="similar-persons" *ngIf="action === selectOptions.SELECT">
+        <app-table-static
+          [data]="matchingPersons"
+          [tableColumns]="defaultColumns"
+          [isSelectable]="true"
+          [isHeaderSticky]="true"
+          [showCheckbox]="false"
+          [appearance]="tableAppearanceOptions.MINIMAL"
+          (selectItem)="onSelectEvent($event)"
+        ></app-table-static>
+      </div>
+
+      <mat-radio-button [value]="selectOptions.SEARCH_AND_SELECT" color="primary">
         {{ 'captions.personSearchAndSelect' | translate }}
       </mat-radio-button>
 
-      <div *ngIf="action === 'DIFFERENT_PERSON'" class="filters">
+      <div *ngIf="action === selectOptions.SEARCH_AND_SELECT" class="filters">
         <mat-form-field appearance="outline" floatLabel="always" class="search-field">
           <input
             type="text"
@@ -105,7 +117,7 @@
             appDebounce
             placeholder="{{ 'captions.firstName' | translate }}"
             formControlName="firstName"
-            (debounce)="onFormChange()"
+            (debounce)="onFilterChange()"
           />
         </mat-form-field>
         <mat-form-field appearance="outline" floatLabel="always" class="search-field">
@@ -115,7 +127,7 @@
             appDebounce
             placeholder="{{ 'captions.lastName' | translate }}"
             formControlName="lastName"
-            (debounce)="onFormChange()"
+            (debounce)="onFilterChange()"
           />
         </mat-form-field>
         <mat-form-field appearance="outline" floatLabel="always" class="search-field">
@@ -125,27 +137,23 @@
             appDebounce
             placeholder="{{ 'strings.promptPersonDuplicateSearchIdExternalId' | translate }}"
             formControlName="uuidExternalIdExternalTokenLike"
-            (debounce)="onFormChange()"
+            (debounce)="onFilterChange()"
           />
         </mat-form-field>
       </div>
+      <div class="similar-persons" *ngIf="action === selectOptions.SEARCH_AND_SELECT">
+        <app-table-static
+          [data]="differentPersons"
+          [tableColumns]="defaultColumns"
+          [isSelectable]="true"
+          [isHeaderSticky]="true"
+          [showCheckbox]="false"
+          [appearance]="tableAppearanceOptions.MINIMAL"
+          (selectItem)="onSelectEvent($event)"
+        ></app-table-static>
+      </div>
 
-      <app-table
-        [resourceService]="personService"
-        [tableColumns]="defaultColumns"
-        [isSortable]="true"
-        [isSelectable]="true"
-        [isSelectableOnce]="true"
-        [isSelectableCheckboxHidden]="true"
-        [isHeaderSticky]="true"
-        [allowToggleColumns]="false"
-        [fullHeight]="true"
-        [appearance]="tableAppearanceOptions.MINIMAL"
-        [disabled]="disableTable"
-        (selectItem)="onSelectEvent($event)"
-      ></app-table>
-
-      <mat-radio-button value="CREATE_PERSON" color="primary">
+      <mat-radio-button [value]="selectOptions.CREATE_NEW" color="primary">
         {{ 'captions.personCreateNew' | translate }}
       </mat-radio-button>
     </mat-radio-group>

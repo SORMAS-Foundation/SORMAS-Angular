@@ -59,6 +59,11 @@
   margin: 8px 0;
 }
 
+.similar-persons {
+  max-height: 334px;
+  overflow-y: auto;
+}
+
 .filters {
   display: flex;
   gap: 24px;

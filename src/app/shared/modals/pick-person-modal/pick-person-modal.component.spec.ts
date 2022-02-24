@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { PickPersonModalComponent } from './pick-person-modal.component';
 
@@ -13,6 +13,10 @@ describe('PickPersonModalComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PickPersonModalComponent],
       imports: [HttpClientTestingModule, MatDialogModule, TranslateModule.forRoot()],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+      ],
     }).compileComponents();
   });
 

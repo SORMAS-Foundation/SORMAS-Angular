@@ -1,4 +1,17 @@
 <table #table mat-table matSort matSortDisableClear [dataSource]="data" [ngClass]="[appearance]">
+  <ng-container matColumnDef="select">
+    <th [hidden]="!showCheckbox" mat-header-cell cdkDrag *matHeaderCellDef></th>
+    <td [hidden]="!showCheckbox" mat-cell *matCellDef="let row">
+      <mat-checkbox
+        color="primary"
+        (click)="$event.stopPropagation()"
+        (change)="onSelectionChange($event, row)"
+        [checked]="selection.isSelected(row)"
+        class="small"
+      ></mat-checkbox>
+    </td>
+  </ng-container>
+
   <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.dataKey">
     <ng-container *ngIf="tableColumn.isSortable; else notSortable">
       <th mat-header-cell *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
@@ -27,6 +40,11 @@
       <app-table-data [config]="tableColumn" [data]="element"></app-table-data>
     </td>
   </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="[getRowStyle(row)]"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    [ngClass]="[selection.isSelected(row) ? 'row-selected' : '', getRowStyle(row)]"
+    (click)="onSelectionChange($event, row)"
+  ></tr>
 </table>

@@ -472,19 +472,6 @@ app.use('/sormas-rest/diseases/indexList', (req, res) => {
   });
 });
 
-app.use('/sormas-rest/immunizations/push', (req, res) => {
-  res.status(200).send({
-    matchingPerson: {
-      firstName: 'test',
-      lastName: 'test',
-      sex: undefined,
-      birthdateDD: undefined,
-      birthdateMM: undefined,
-      birthdateYYYY: undefined,
-    },
-  });
-});
-
 app.use('/sormas-rest/weeklyReportsRegionSummary/indexList', (req, res) => {
   res.status(200).send({
     elements: [

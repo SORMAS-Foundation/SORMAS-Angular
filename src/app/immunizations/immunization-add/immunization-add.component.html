@@ -3,4 +3,6 @@
   [formId]="formId"
   [formElements]="formData"
   [resourceService]="immunizationService"
+  [outsourceSubmit]="true"
+  (formSubmit)="handleSubmit($event)"
 ></app-dynamic-form>
