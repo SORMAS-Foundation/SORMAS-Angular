@@ -14,7 +14,8 @@ import {
   ADD_MODAL_MAX_WIDTH,
   CASE_EXPORT_CUSTOM_MODAL_WIDTH,
   CASE_IMPORT_MODAL_WIDTH,
-  CASE_FILTERS_FORM_ID, ACTIONS_VIEW_OPTIONS, ACTIONS_BULK_EDIT,
+  CASE_FILTERS_FORM_ID,
+  ACTIONS_VIEW_OPTIONS,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
