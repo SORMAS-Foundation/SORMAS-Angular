@@ -1,1 +1,34 @@
-/* stylelint-disable */
+.dashboard-disease-menu {
+  .actions {
+    float: left;
+
+    .duration-content {
+      position: relative;
+      display: inline-block;
+      margin: 0 10px;
+
+      mat-form-field {
+        width: 22px;
+        height: 23px;
+        position: absolute;
+        left: 0;
+        opacity: 0;
+      }
+    }
+
+    .mat-form-field {
+      width: 100px;
+      display: inline-block;
+    }
+
+    .start-stop-btn {
+      font-size: 24px;
+      cursor: pointer;
+      display: inline;
+    }
+  }
+
+  .mat-progress-bar {
+    margin-bottom: -16px;
+  }
+}
