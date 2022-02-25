@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CaseService } from '../../_services/api/case.service';
 import { NavItem, TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
+import { defaultColumnDetailedDefs } from './case-list-detailed-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
 import {
@@ -45,6 +46,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams: Params;
   formIdFilters = CASE_FILTERS_FORM_ID;
+  showTable = true;
 
   private subscription: Subscription[] = [];
 
@@ -63,6 +65,14 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.routeParams = params;
       })
     );
+  }
+
+  setDetailedView(): void {
+    this.showTable = false;
+    this.defaultColumns = defaultColumnDetailedDefs;
+    setTimeout(() => {
+      this.showTable = true;
+    });
   }
 
   openAddCaseModal(): void {
@@ -90,6 +100,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   onActionSelected(event: any): void {
+    console.log('eventeventeventeventevent', event);
     switch (event) {
       case ACTIONS_CASE.BASIC_EXPORT:
         break;

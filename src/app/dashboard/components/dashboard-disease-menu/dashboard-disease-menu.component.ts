@@ -75,11 +75,7 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
 
   tabChange(event: any): void {
     const newColor = this.colorMap[this.diseases[event.index].key];
-    if (newColor) {
-      this.progressBarColor = newColor;
-    } else {
-      this.progressBarColor = this.defaultProgressBarColor;
-    }
+    this.progressBarColor = newColor || this.defaultProgressBarColor;
 
     const selectedFilter = { field: 'disease', value: this.diseases[event.index].key };
     this.removePrevDiseaseFilter();
@@ -89,6 +85,8 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
-    this.toggleTimer(0, false);
+    if (this.intervalTimer) {
+      this.intervalTimer.unsubscribe();
+    }
   }
 }
