@@ -91,6 +91,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
   }
 
+  changeFormElementAttribute(key: string, attribute: string, value: any): void {
+    const target = this.getTargetField(key.replace(/\./g, '__'));
+    if (target) {
+      // @ts-ignore
+      target[attribute] = value;
+    }
+  }
+
   validateForm(): boolean {
     if (this.form.invalid) {
       this.form.markAllAsTouched();

@@ -1,6 +1,6 @@
 import { NavItem, NavItemRole } from '../../_models/common';
 import { ACTIONS_CASE } from '../../app.constants';
-import { ACTIONS_BULK_EDIT, ACTIONS_CASE_VIEW_OPTIONS } from '../../_constants/actions';
+import { ACTIONS_BULK_EDIT, ACTIONS_VIEW_OPTIONS } from '../../_constants/actions';
 import { CaseEditComponent } from '../case-edit/case-edit.component';
 
 export const actionsMoreDefs: NavItem[] = [
@@ -60,17 +60,17 @@ export const actionsViewOptionsDefs: NavItem[] = [
   {
     role: NavItemRole.ACTION,
     name: 'captions.caseDefaultView',
-    action: ACTIONS_CASE_VIEW_OPTIONS.DEFAULT,
+    action: ACTIONS_VIEW_OPTIONS.DEFAULT,
   },
   {
     role: NavItemRole.ACTION,
     name: 'captions.caseDetailedView',
-    action: ACTIONS_CASE_VIEW_OPTIONS.DETAILED,
+    action: ACTIONS_VIEW_OPTIONS.DETAILED,
   },
   {
     role: NavItemRole.ACTION,
     name: 'captions.caseFollowupVisitsView',
-    action: ACTIONS_CASE_VIEW_OPTIONS.FOLLOW_UP,
+    action: ACTIONS_VIEW_OPTIONS.FOLLOW_UP,
   },
 ];
 

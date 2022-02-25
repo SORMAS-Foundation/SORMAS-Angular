@@ -1,1 +1,168 @@
-/* stylelint-disable */
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+h2 {
+  font-size: 24px;
+  color: mat.get-color-from-palette($sormas-accent, 400);
+
+  strong {
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-accent, 800);
+  }
+  .icon {
+    color: mat.get-color-from-palette($sormas-primary, 500);
+    vertical-align: middle;
+    font-size: 20px;
+  }
+}
+
+h3 {
+  font-size: 20px;
+  color: mat.get-color-from-palette($sormas-accent, 500);
+  text-align: center;
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+.icon-info {
+  color: map-get($sormas-primary, 500);
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.info-under-follow-up {
+  @include mat.elevation(3);
+
+  width: 300px;
+  padding: 8px 16px 8px 32px;
+  background-color: map-get($sormas-primary, 50);
+  font-size: 12px;
+
+  .icon-info {
+    margin-left: -28px;
+    float: left;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.not-visited-day-texts {
+  margin: 5px 0;
+}
+
+.not-visited-days-count {
+  margin-bottom: 5px;
+}
+
+.not-visited-days {
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-accent, 500);
+
+  .day {
+    line-height: 20px;
+    padding: 0 12px;
+    margin: 0 10px;
+  }
+
+  .text {
+    line-height: 20px;
+    padding: 0;
+    margin: 0 7px;
+    font-size: 12px;
+    font-weight: normal;
+  }
+
+  .day1 {
+    color: mat.get-color-from-palette($sormas-accent, 300);
+    border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 300);
+  }
+  .day2 {
+    color: mat.get-color-from-palette($sormas-accent, 500);
+    border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 500);
+  }
+  .day3 {
+    color: mat.get-color-from-palette($sormas-warning, 700);
+    border-bottom: solid 2px mat.get-color-from-palette($sormas-warning, 700);
+  }
+  .day4 {
+    color: mat.get-color-from-palette($sormas-alert, 300);
+    border-bottom: solid 2px mat.get-color-from-palette($sormas-alert, 300);
+  }
+}
+
+.under-follow-up {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-accent, 600);
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 32px;
+  }
+
+  .count {
+    flex: 0 0 36px;
+    text-align: right;
+  }
+
+  .percentage {
+    flex: 0 0 48px;
+    text-align: right;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    line-height: inherit;
+    font-size: 18px;
+    margin-left: 16px;
+    margin-right: 8px;
+  }
+
+  .mat-progress-bar {
+    height: 2px;
+  }
+}
+
+.follow-up-cooperative {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-success, 600);
+  }
+}
+
+.follow-up-uncooperative {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-alert, 700);
+  }
+}
+
+.follow-up-unavailable {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-warning, 700);
+  }
+}
+
+.follow-up-not-visited {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-accent, 500);
+  }
+}

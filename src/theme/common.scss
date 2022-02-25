@@ -386,12 +386,86 @@ strong {
 
 // dashboard-disease-menu
 .dashboard-disease-menu {
+  .mat-tab-span {
+    padding: 20px 10px 0 10px;
+  }
+  .mat-tab-label-active {
+    .mat-tab-span {
+      background: mat.get-color-from-palette($brand-neutrals, 600);
+
+      &.mat-tab-AFP {
+        background: mat.get-color-from-palette($sormas-primary, 800);
+      }
+      &.mat-tab-ANTHRAX {
+        background: mat.get-color-from-palette($sormas-success, 200);
+      }
+      &.mat-tab-CORONAVIRUS {
+        background: mat.get-color-from-palette($sormas-success, 600);
+      }
+      &.mat-tab-CHOLERA {
+        background: mat.get-color-from-palette($sormas-warning, 700);
+      }
+      &.mat-tab-CONGENITAL_RUBELLA {
+        background: mat.get-color-from-palette($sormas-alert, 400);
+      }
+      &.mat-tab-DENGUE {
+        background: mat.get-color-from-palette($sormas-primary, A100);
+      }
+      &.mat-tab-EVD {
+        background: mat.get-color-from-palette($sormas-warning, 900);
+      }
+      &.mat-tab-GUINEA_WORM {
+        background: mat.get-color-from-palette($sormas-accent, 300);
+      }
+      &.mat-tab-RABIES {
+        background: mat.get-color-from-palette($sormas-accent, A700);
+      }
+      &.mat-tab-LASSA {
+        background: mat.get-color-from-palette($sormas-warning, 800);
+      }
+      &.mat-tab-MEASLES {
+        background: mat.get-color-from-palette($sormas-alert, 200);
+      }
+      &.mat-tab-CSM {
+        background: mat.get-color-from-palette($sormas-accent, A100);
+      }
+      &.mat-tab-MONKEYPOX {
+        background: mat.get-color-from-palette($sormas-accent, A200);
+      }
+      &.mat-tab-NEW_INFLUENZA {
+        background: mat.get-color-from-palette($sormas-primary, 700);
+      }
+      &.mat-tab-UNDEFINED {
+        background: mat.get-color-from-palette($sormas-accent, 600);
+      }
+      &.mat-tab-OTHER {
+        background: mat.get-color-from-palette($sormas-accent, 900);
+      }
+      &.mat-tab-PLAGUE {
+        background: mat.get-color-from-palette($sormas-alert, 700);
+      }
+      &.mat-tab-POLIO {
+        background: mat.get-color-from-palette($sormas-primary, A700);
+      }
+      &.mat-tab-UNSPECIFIED_VHF {
+        background: mat.get-color-from-palette($sormas-alert, 800);
+      }
+    }
+  }
+
   .mat-tab-label {
     min-width: min-content;
     height: auto;
     padding: 5px 0;
     margin-right: 16px;
     opacity: 1;
+
+    &.mat-tab-label-active {
+      .mat-tab-label-content {
+        color: $white;
+      }
+    }
+
     .mat-tab-label-content {
       color: mat.get-color-from-palette($sormas-accent, 600);
     }
@@ -405,12 +479,14 @@ strong {
     &.mat-primary {
       .mat-ink-bar {
         background-color: mat.get-color-from-palette($sormas-accent, 600);
+        display: none;
       }
     }
   }
 }
 
-.contact-unconfirmed .mat-progress-bar-fill::after {
+.contact-unconfirmed .mat-progress-bar-fill::after,
+.follow-up-canceled .mat-progress-bar-fill::after {
   background-color: mat.get-color-from-palette($sormas-accent, 500);
 }
 
@@ -418,14 +494,49 @@ strong {
   background-color: mat.get-color-from-palette($sormas-alert, 700);
 }
 
-.contact-not .mat-progress-bar-fill::after {
+.contact-not .mat-progress-bar-fill::after,
+.follow-up-completed .mat-progress-bar-fill::after {
   background-color: mat.get-color-from-palette($sormas-primary, 500);
 }
 
-.contact-new .mat-progress-bar-fill::after {
+.contact-new .mat-progress-bar-fill::after,
+.follow-up-lost .mat-progress-bar-fill::after {
   background-color: mat.get-color-from-palette($sormas-warning, 700);
 }
 
-.contact-symptomatic .mat-progress-bar-fill::after {
+.contact-symptomatic .mat-progress-bar-fill::after,
+.follow-up-converted .mat-progress-bar-fill::after {
   background-color: mat.get-color-from-palette($sormas-alert, 300);
+}
+
+.follow-up-cooperative .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-success, 600);
+}
+
+.follow-up-uncooperative .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-alert, 700);
+}
+
+.follow-up-unavailable .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-warning, 700);
+}
+
+.follow-up-not-visited .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-accent, 500);
+}
+
+.visits-cooperative .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-success, 600);
+}
+
+.visits-uncooperative .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-alert, 700);
+}
+
+.visits-unavailable .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-warning, 700);
+}
+
+.visits-missed .mat-progress-bar-fill::after {
+  background-color: mat.get-color-from-palette($sormas-warning, 800);
 }

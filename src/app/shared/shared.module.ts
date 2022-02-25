@@ -56,6 +56,7 @@ import { MsersDiseasesComponent } from './widgets/msers-diseases/msers-diseases.
 import { PickPersonModalComponent } from './modals/pick-person-modal/pick-person-modal.component';
 import { ImmunizationRecoveryComponent } from './widgets/immunization-recovery/immunization-recovery.component';
 import { SearchCaseModalComponent } from './modals/search-case-modal/search-case-modal.component';
+import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { SearchCaseModalComponent } from './modals/search-case-modal/search-case
     PickPersonModalComponent,
     ImmunizationRecoveryComponent,
     SearchCaseModalComponent,
+    AddCaseLabelComponent,
   ],
   imports: [
     CommonModule,

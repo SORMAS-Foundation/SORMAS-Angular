@@ -25,7 +25,7 @@ export const ACTIONS_EVENTS_VIEW_OPTIONS = {
   GROUPS: '/events/event-groups/list',
 };
 
-export const ACTIONS_CASE_VIEW_OPTIONS = {
+export const ACTIONS_VIEW_OPTIONS = {
   DEFAULT: 'DEFAULT',
   DETAILED: 'DETAILED',
   FOLLOW_UP: 'FOLLOW_UP',
