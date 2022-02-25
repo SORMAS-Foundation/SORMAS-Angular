@@ -84,11 +84,6 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.Location.postalCode',
-    dataKey: 'postalCode',
-    isSortable: true,
-  },
-  {
     name: 'captions.city',
     dataKey: 'city',
     isSortable: true,
@@ -208,12 +203,6 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
       type: TableDataFormatOptions.DATE,
       pattern: 'M/d/yyyy',
     },
-  },
-  {
-    name: 'captions.CaseData.followUpStatus',
-    dataKey: 'followUpStatus',
-    translationName: 'FollowupStatus',
-    isSortable: true,
   },
   {
     name: 'captions.reportingUser',

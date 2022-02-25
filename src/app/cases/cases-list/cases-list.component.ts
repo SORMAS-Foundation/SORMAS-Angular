@@ -14,7 +14,7 @@ import {
   ADD_MODAL_MAX_WIDTH,
   CASE_EXPORT_CUSTOM_MODAL_WIDTH,
   CASE_IMPORT_MODAL_WIDTH,
-  CASE_FILTERS_FORM_ID,
+  CASE_FILTERS_FORM_ID, ACTIONS_VIEW_OPTIONS, ACTIONS_BULK_EDIT,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -67,9 +67,19 @@ export class CasesListComponent implements OnInit, OnDestroy {
     );
   }
 
-  setDetailedView(): void {
+  changeOptionView(event: any): void {
     this.showTable = false;
-    this.defaultColumns = defaultColumnDetailedDefs;
+    switch (event) {
+      case ACTIONS_VIEW_OPTIONS.DEFAULT:
+        this.defaultColumns = defaultColumnDefs;
+        break;
+      case ACTIONS_VIEW_OPTIONS.DETAILED:
+        this.defaultColumns = defaultColumnDetailedDefs;
+        break;
+      default:
+        // eslint-disable-next-line no-console
+        console.log(event);
+    }
     setTimeout(() => {
       this.showTable = true;
     });
@@ -100,7 +110,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   onActionSelected(event: any): void {
-    console.log('eventeventeventeventevent', event);
     switch (event) {
       case ACTIONS_CASE.BASIC_EXPORT:
         break;

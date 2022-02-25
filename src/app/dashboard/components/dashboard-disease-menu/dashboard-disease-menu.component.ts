@@ -33,11 +33,7 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
 
     if (this.diseases.length) {
       const newColor = this.colorMap[this.diseases[0].key];
-      if (newColor) {
-        this.progressBarColor = newColor;
-      } else {
-        this.progressBarColor = this.defaultProgressBarColor;
-      }
+      this.progressBarColor = newColor || this.defaultProgressBarColor;
     }
   }
 

@@ -32,7 +32,7 @@ import {
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ACTIONS_BULK_EDIT, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import { ACTIONS_BULK_EDIT, ACTIONS_VIEW_OPTIONS, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
 
 @Component({
@@ -103,6 +103,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Output() viewItem: EventEmitter<any> = new EventEmitter();
   @Output() rowAction: EventEmitter<any> = new EventEmitter();
   @Output() triggerGroupEvent: EventEmitter<any> = new EventEmitter();
+  @Output() viewOptionEvent: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('vsTable', { read: ElementRef, static: false }) vsTable: ElementRef;
 
@@ -415,6 +416,12 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       case ACTIONS_BULK_EDIT.GROUP:
         this.triggerGroupEvent.emit(this.getSelectedItems());
+        break;
+      case ACTIONS_VIEW_OPTIONS.DEFAULT:
+        this.viewOptionEvent.emit(ACTIONS_VIEW_OPTIONS.DEFAULT);
+        break;
+      case ACTIONS_VIEW_OPTIONS.DETAILED:
+        this.viewOptionEvent.emit(ACTIONS_VIEW_OPTIONS.DETAILED);
         break;
       default:
         // eslint-disable-next-line no-console
