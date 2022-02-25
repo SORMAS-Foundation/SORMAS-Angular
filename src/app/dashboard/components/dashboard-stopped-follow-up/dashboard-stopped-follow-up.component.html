@@ -1,1 +1,39 @@
-<p>dashboard-stopped-follow-up works!</p>
+<h2>
+  <strong>{{ total }}</strong>
+  {{ 'strings.headingStoppedFollowUp' | translate }}
+</h2>
+
+<ul *ngIf="data" class="stopped-follow-up">
+  <li class="follow-up-completed">
+    <span class="count">{{ data.followUp.COMPLETED ?? 0 }}</span>
+    <span class="percentage">
+      {{ (total ? (data.followUp.COMPLETED ?? 0) / total : 0) | percent }}
+    </span>
+    <mat-icon class="material-icons-round icon">task_alt</mat-icon>
+    <span class="info">{{ 'captions.dashboardCompletedFollowUp' | translate }}</span>
+    <mat-progress-bar [value]="(data.followUp.COMPLETED / total) * 100"></mat-progress-bar>
+  </li>
+  <li class="follow-up-canceled">
+    <span class="count">{{ data.followUp.CANCELLED ?? 0 }}</span>
+    <span class="percentage">
+      {{ (total ? (data.followUp.CANCELLED ?? 0) / total : 0) | percent }}
+    </span>
+    <mat-icon class="material-icons-round icon">event_busy</mat-icon>
+    <span class="info">{{ 'captions.dashboardCanceledFollowUp' | translate }}</span>
+    <mat-progress-bar [value]="(data.followUp.CANCELLED / total) * 100"></mat-progress-bar>
+  </li>
+  <li class="follow-up-lost">
+    <span class="count">{{ data.followUp.LOST ?? 0 }}</span>
+    <span class="percentage">{{ (total ? (data.followUp.LOST ?? 0) / total : 0) | percent }}</span>
+    <mat-icon class="material-icons-round icon">find_replace</mat-icon>
+    <span class="info">{{ 'captions.dashboardLostToFollowUp' | translate }}</span>
+    <mat-progress-bar [value]="(data.followUp.LOST / total) * 100"></mat-progress-bar>
+  </li>
+  <li class="follow-up-converted">
+    <span class="count">{{ data.converted ?? 0 }}</span>
+    <span class="percentage">{{ (total ? (data.converted ?? 0) / total : 0) | percent }}</span>
+    <mat-icon class="material-icons-round icon">data_saver_on</mat-icon>
+    <span class="info">{{ 'captions.dashboardConvertedToCase' | translate }}</span>
+    <mat-progress-bar [value]="(data.converted / total) * 100"></mat-progress-bar>
+  </li>
+</ul>

@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CaseService } from '../../_services/api/case.service';
 import { NavItem, TableColumn } from '../../_models/common';
 import { defaultColumnDefs } from './case-list-table-data';
+import { defaultColumnDetailedDefs } from './case-list-detailed-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
 import {
@@ -14,6 +15,7 @@ import {
   CASE_EXPORT_CUSTOM_MODAL_WIDTH,
   CASE_IMPORT_MODAL_WIDTH,
   CASE_FILTERS_FORM_ID,
+  ACTIONS_VIEW_OPTIONS,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -45,6 +47,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams: Params;
   formIdFilters = CASE_FILTERS_FORM_ID;
+  showTable = true;
 
   private subscription: Subscription[] = [];
 
@@ -63,6 +66,24 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.routeParams = params;
       })
     );
+  }
+
+  changeOptionView(event: any): void {
+    this.showTable = false;
+    switch (event) {
+      case ACTIONS_VIEW_OPTIONS.DEFAULT:
+        this.defaultColumns = defaultColumnDefs;
+        break;
+      case ACTIONS_VIEW_OPTIONS.DETAILED:
+        this.defaultColumns = defaultColumnDetailedDefs;
+        break;
+      default:
+        // eslint-disable-next-line no-console
+        console.log(event);
+    }
+    setTimeout(() => {
+      this.showTable = true;
+    });
   }
 
   openAddCaseModal(): void {

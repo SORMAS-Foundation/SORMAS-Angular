@@ -1242,6 +1242,97 @@ app.use('/sormas-rest/outbreaks/indexList', (req, res) => {
   ]);
 });
 
+app.use('/sormas-rest/dashboard/contacts', (req, res) => {
+  res.status(200).send({
+    contactClassificationCount: {
+      UNCONFIRMED: 27,
+      CONFIRMED: 102,
+      NOT_CONTACT: 31,
+      NEW_CONTACT: 18,
+      SYMPTOMATIC: 69,
+    },
+    diseases: [
+      {
+        disease: 'CORONAVIRUS',
+        count: 132,
+        rising: true,
+      },
+      {
+        disease: 'MEASLES',
+        count: 4,
+        rising: true,
+      },
+      {
+        disease: 'ANTHRAX',
+        count: 9,
+        rising: false,
+      },
+      {
+        disease: 'AFP',
+        count: 5,
+        rising: false,
+      },
+      {
+        disease: 'CHOLERA',
+        count: 11,
+        rising: false,
+      },
+      {
+        disease: 'POLIO',
+        count: 2,
+        rising: false,
+      },
+      {
+        disease: 'MALARIA',
+        count: 1,
+        rising: false,
+      },
+      {
+        disease: 'PNEUMONIA',
+        count: 17,
+        rising: false,
+      },
+    ],
+  });
+});
+
+app.use('/sormas-rest/dashboard/underFollowUp', (req, res) => {
+  res.status(200).send({
+    followUp: {
+      COOPERATIVE: 1,
+      UNCOOPERATIVE: 5,
+      UNAVAILABLE: 6,
+      NOT_VISITED: 17,
+      DAY1: 1,
+      DAY2: 2,
+      DAY3: 3,
+      DAY4: 4,
+    },
+  });
+});
+
+app.use('/sormas-rest/dashboard/visits', (req, res) => {
+  res.status(200).send({
+    visits: {
+      COOPERATIVE: 100,
+      UNCOOPERATIVE: 0,
+      UNAVAILABLE: -4,
+      MISSED: 17,
+    },
+  });
+});
+
+app.use('/sormas-rest/dashboard/stoppedFollowUp', (req, res) => {
+  res.status(200).send({
+    followUp: {
+      COMPLETED: 9,
+      CANCELLED: 2,
+      LOST: 17,
+    },
+    converted: 8,
+  });
+});
+
 app.use(
   '/sormas-rest',
   createProxyMiddleware({

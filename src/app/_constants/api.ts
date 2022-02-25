@@ -149,6 +149,26 @@ export const API_ROUTE_DASHBOARD_TEST_RESULTS = {
   GET_ALL: 'dashboard/testResults',
 };
 
+export const API_ROUTE_DASHBOARD_CONTACTS = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/contacts',
+};
+
+export const API_ROUTE_DASHBOARD_UNDER_FOLLOW_UP = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/underFollowUp',
+};
+
+export const API_ROUTE_DASHBOARD_VISITS = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/visits',
+};
+
+export const API_ROUTE_DASHBOARD_STOPPED_FOLLOW_UP = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/stoppedFollowUp',
+};
+
 export const API_ROUTE_REGIONS = {
   ENDPOINT: 'regions',
   GET_ALL: 'regions/indexList',

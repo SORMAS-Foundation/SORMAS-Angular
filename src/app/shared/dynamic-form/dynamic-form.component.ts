@@ -130,6 +130,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
   }
 
+  changeFormElementAttribute(key: string, attribute: string, value: any): void {
+    const target = this.getTargetField(key.replace(/\./g, '__'));
+    if (target) {
+      // @ts-ignore
+      target[attribute] = value;
+    }
+  }
+
   convertDotPathToNestedObject(path: string, value: any): any {
     const [last, ...paths] = path.split('__').reverse();
     // @ts-ignore

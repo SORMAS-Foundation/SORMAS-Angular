@@ -23,6 +23,7 @@
       </div>
     </div>
     <app-table
+      *ngIf="showTable"
       [filterFormId]="formIdFilters"
       [resourceService]="caseService"
       [tableColumns]="defaultColumns"
@@ -35,6 +36,7 @@
       [viewOptions]="actionsViewOptions"
       [bulkEditOptions]="actionsBulkEdit"
       [preSetFilters]="helperService.setQueryParamsInFilters(routeParams)"
+      (viewOptionEvent)="changeOptionView($event)"
       showTotalContext="{{ 'strings.entityCases' | translate }}"
     ></app-table>
   </ng-container>

@@ -14,6 +14,11 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
+    name: 'captions.CaseData.reInfection',
+    dataKey: 'reInfection',
+    isSortable: true,
+  },
+  {
     name: 'captions.CaseData.externalID',
     dataKey: 'externalID',
     isSortable: true,

@@ -1,1 +1,172 @@
-/* stylelint-disable */
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+h2 {
+  font-size: 24px;
+  color: mat.get-color-from-palette($sormas-accent, 400);
+
+  strong {
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-accent, 800);
+  }
+}
+
+.summary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: mat.get-color-from-palette($sormas-accent, 600);
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 32px;
+  }
+
+  .count {
+    flex: 0 0 52px;
+    text-align: right;
+  }
+
+  .percentage {
+    flex: 0 0 64px;
+    text-align: right;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    line-height: inherit;
+    font-size: 18px;
+    margin-left: 16px;
+    margin-right: 8px;
+  }
+
+  .mat-progress-bar {
+    height: 2px;
+  }
+}
+
+.contact-unconfirmed {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-accent, 500);
+  }
+}
+
+.contact-confirmed {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-alert, 700);
+  }
+}
+
+.contact-not {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-primary, 500);
+  }
+}
+
+.contact-new {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-warning, 700);
+  }
+}
+
+.contact-symptomatic {
+  .count,
+  .icon {
+    color: mat.get-color-from-palette($sormas-alert, 300);
+  }
+}
+
+.compact {
+  max-width: 400px;
+  margin: 0 auto;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: start;
+
+  li {
+    line-height: 1;
+    text-align: center;
+  }
+
+  .count,
+  .percentage {
+    text-align: left;
+    flex-basis: 50%;
+    line-height: 24px;
+    order: 1;
+  }
+
+  .icon {
+    flex-basis: 100%;
+    margin: 5px;
+    font-size: 14px;
+    height: 14px;
+    order: 3;
+  }
+
+  .info {
+    flex-basis: 100%;
+    font-size: 12px;
+    order: 4;
+  }
+
+  .mat-progress-bar {
+    order: 2;
+  }
+}
+
+.diseases {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+  }
+
+  .name {
+    flex-basis: 50%;
+    font-size: 16px;
+    color: mat.get-color-from-palette($sormas-accent, 500);
+  }
+
+  .count {
+    flex-basis: 64px;
+    text-align: right;
+  }
+
+  .count,
+  .mat-icon {
+    color: mat.get-color-from-palette($sormas-success, 700);
+  }
+
+  .rising {
+    .count,
+    .mat-icon {
+      color: mat.get-color-from-palette($sormas-alert, 700);
+    }
+  }
+}
+
+.button-toggle-diseases {
+  float: right;
+  margin-top: -40px;
+}
+
+@media (min-width: map-get($grid-breakpoints, md)) {
+  .compact {
+    margin: 0;
+    max-width: unset;
+  }
+}

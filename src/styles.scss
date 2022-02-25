@@ -22,6 +22,7 @@
 @import './theme/chips.scss';
 @import './theme/list.scss';
 @import './theme/toggle.scss';
+@import './theme/progress-bar.scss';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -75,6 +76,7 @@ $sormas-theme: mat.define-light-theme(
   @include chips-theme($theme);
   @include list-theme($theme);
   @include toggle-theme($theme);
+  @include progress-bar-theme($theme);
 }
 
 // Include theme styles for core and each component used in your app.
