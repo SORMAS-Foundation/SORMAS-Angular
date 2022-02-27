@@ -24,6 +24,7 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
   curSec: number = 0;
   duration: number = 5;
   colorMap: any = DISEASES_COLORS_MAP;
+  isSlideshowOn: boolean = false;
 
   progressBarColor: string;
   defaultProgressBarColor: string = '#515B6B';
@@ -47,6 +48,7 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
 
   toggleTimer(seconds: number, isStart: boolean): void {
     if (isStart) {
+      this.isSlideshowOn = true;
       const timer$ = interval(1000);
 
       this.intervalTimer = timer$.subscribe((sec: number) => {
@@ -60,6 +62,7 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
         }
       });
     } else {
+      this.isSlideshowOn = false;
       this.intervalTimer.unsubscribe();
     }
   }
