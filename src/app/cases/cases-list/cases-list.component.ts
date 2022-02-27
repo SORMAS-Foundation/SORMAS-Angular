@@ -30,8 +30,7 @@ import { HelperService } from '../../_services/helper.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { CaseAddComponent } from '../../shared/case-add/case-add.component';
 import { FORM_DATA_CASE_FILTERS } from '../case-filters/case-filters-form-data';
-import {TableComponent} from '../../shared/table/table.component';
-import {LocalStorageService} from '../../_services/local-storage.service';
+import { LocalStorageService } from '../../_services/local-storage.service';
 
 @Component({
   selector: 'app-cases-list',
