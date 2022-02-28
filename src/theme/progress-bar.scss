@@ -7,7 +7,7 @@
 
   :root {
     .mat-progress-bar-buffer {
-      background-color: mat.get-color-from-palette($sormas-accent, 100);
+      background-color: mat.get-color-from-palette($sormas-primary, 50);
     }
   }
 }

@@ -1,6 +1,6 @@
 export const DISEASES_COLORS_MAP = {
   AFP: '#1646e0',
-  ANTHRAX: '#6df290',
+  ANTHRAX: '#A6D8FF',
   CORONAVIRUS: '#00b32f',
   CHOLERA: '#fda312',
   CONGENITAL_RUBELLA: '#ff5959',
@@ -18,6 +18,7 @@ export const DISEASES_COLORS_MAP = {
   PLAGUE: '#d90000',
   POLIO: '#009cac',
   UNSPECIFIED_VHF: '#b30000',
+  YELLOW_FEVER: '#FDCA23',
 };
 
 export const CASE_CLASIFICATION_COLORS_MAP = {

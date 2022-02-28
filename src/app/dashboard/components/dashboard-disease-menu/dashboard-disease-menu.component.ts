@@ -20,7 +20,7 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
   isIntervalOn: boolean = false;
   selectedIndex: number = 0;
 
-  progressbarValue = 100;
+  progressbarValue = 0;
   curSec: number = 0;
   duration: number = 5;
   colorMap: any = DISEASES_COLORS_MAP;
@@ -52,10 +52,10 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
       const timer$ = interval(1000);
 
       this.intervalTimer = timer$.subscribe((sec: number) => {
-        this.progressbarValue = 100 - (sec * 100) / seconds;
+        this.progressbarValue = (sec * 100) / seconds;
         this.curSec = sec;
 
-        if (this.curSec === seconds) {
+        if (this.curSec > seconds) {
           if (this.diseases.length - 1 === this.selectedIndex) {
             this.selectedIndex = 0;
           } else {
