@@ -17,7 +17,6 @@
     </div>
     <p class="duration-label">{{ duration }}s</p>
     <div class="duration-content">
-      <mat-icon class="material-icons-round" color="primary">av_timer</mat-icon>
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="duration">
           <mat-option [value]="30">30</mat-option>
@@ -25,6 +24,7 @@
           <mat-option [value]="90">90</mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-icon class="material-icons-round duration-icon" color="primary">av_timer</mat-icon>
     </div>
   </div>
   <mat-tab-group (selectedTabChange)="tabChange($event)" [(selectedIndex)]="selectedIndex">
