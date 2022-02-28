@@ -48,6 +48,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams: Params;
   formIdFilters = CASE_FILTERS_FORM_ID;
+  tableView = ACTIONS_VIEW_OPTIONS.DEFAULT;
+  detailedTableView = ACTIONS_VIEW_OPTIONS.DETAILED;
   showTable = true;
 
   private subscription: Subscription[] = [];
@@ -73,6 +75,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   changeOptionView(event: any): void {
     this.localStorageService.remove(this.configKey);
     this.showTable = false;
+    this.tableView = event;
     switch (event) {
       case ACTIONS_VIEW_OPTIONS.DEFAULT:
         this.defaultColumns = defaultColumnDefs;

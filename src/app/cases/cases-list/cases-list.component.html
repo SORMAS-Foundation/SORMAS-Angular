@@ -4,6 +4,7 @@
     <div class="page-header">
       <h1 class="page-header-title">
         {{ 'captions.View.cases' | translate }}
+        <span *ngIf="tableView === detailedTableView">{{ 'captions.caseDetailedView' | translate }}</span>
       </h1>
       <div class="page-header-actions">
         <button mat-flat-button color="primary" (click)="openAddCaseModal()">
