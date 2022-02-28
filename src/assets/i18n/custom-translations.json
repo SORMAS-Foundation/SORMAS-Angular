@@ -163,5 +163,6 @@
   "dashboard.notVisited": "Not visited",
   "perCase": "Per case",
   "headingContactsInQuarantineShort": "in quarantine",
-  "headingContactsPlacedInQuarantineShort": "placed in quarantine"
+  "headingContactsPlacedInQuarantineShort": "placed in quarantine",
+  "secondsShort": "s"
 }
