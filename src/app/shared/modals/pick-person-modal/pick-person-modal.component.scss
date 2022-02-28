@@ -1,0 +1,70 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.mat-dialog-title {
+  padding-top: 40px;
+
+  h2 {
+    margin: 0;
+    font-size: 34px;
+  }
+}
+
+.mat-dialog-content {
+  padding: 24px 32px;
+  background: $white;
+  font-size: 14px;
+}
+
+.info-text {
+  margin-left: 32px;
+  color: mat.get-color-from-palette($sormas-accent, 500);
+  font-size: 12px;
+
+  .mat-icon {
+    float: left;
+    margin-left: -32px;
+    font-size: 18px;
+  }
+}
+
+.person {
+  display: flex;
+  gap: 32px;
+  padding: 16px 0;
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.person-attribute {
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+  color: mat.get-color-from-palette($sormas-accent, 600);
+}
+
+.mat-radio-group {
+  display: block;
+}
+
+.mat-radio-button {
+  display: block;
+  width: fit-content;
+  margin: 8px 0;
+}
+
+.similar-persons {
+  max-height: 334px;
+  overflow-y: auto;
+}
+
+.filters {
+  display: flex;
+  gap: 24px;
+}

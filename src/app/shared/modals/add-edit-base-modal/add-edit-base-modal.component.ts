@@ -101,11 +101,7 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    if (this.data.resource) {
-      this.formActionsService.setSave(this.formId, this.data.resource);
-    } else {
-      this.formActionsService.setSave(this.formId, null);
-    }
+    this.formActionsService.setSave(this.formId, this.data.resource ?? null);
   }
 
   discard(): void {

@@ -10,8 +10,9 @@ export const API_ROUTE_PERSONS = {
   ENDPOINT: 'persons',
   GET_ALL: 'persons/indexList',
   UPDATE: 'persons/update',
-  ADD: 'persons/add',
+  ADD: 'persons/push',
   DELETE: 'persons/delete',
+  MATCH: 'persons/similarPersons',
 };
 
 export const API_ROUTE_PATHOGEN_TESTS = {
@@ -152,6 +153,11 @@ export const API_ROUTE_DASHBOARD_TEST_RESULTS = {
 export const API_ROUTE_DASHBOARD_CONTACTS = {
   ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/contacts',
+};
+
+export const API_ROUTE_DASHBOARD_CONTACT_STATS = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/contactStats',
 };
 
 export const API_ROUTE_DASHBOARD_UNDER_FOLLOW_UP = {

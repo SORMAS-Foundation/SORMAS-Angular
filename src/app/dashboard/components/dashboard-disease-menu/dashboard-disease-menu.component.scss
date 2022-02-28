@@ -1,11 +1,61 @@
+@use '/src/variables.scss' as *;
+@use '@angular/material' as mat;
+
 .dashboard-disease-menu {
   .actions {
     float: left;
+    position: relative;
+    margin-top: 13px;
+
+    .slideshow-btns {
+      .start-btn {
+        font-size: 24px;
+        cursor: pointer;
+        display: inline;
+        position: absolute;
+      }
+
+      .slideshow-close {
+        display: inline;
+        position: absolute;
+        cursor: pointer;
+
+        .slideshow-close-background {
+          position: absolute;
+          top: 0;
+          bottom: 4px;
+          left: 0;
+          right: 0;
+          background: mat.get-color-from-palette($sormas-primary, 700);
+          border-radius: 5px;
+
+          p {
+            display: none;
+          }
+        }
+
+        .mat-icon {
+          color: $white;
+          z-index: 99;
+          position: relative;
+        }
+      }
+    }
+
+    .duration-label {
+      position: absolute;
+      top: -20px;
+      right: 15px;
+      font-size: 10px;
+      font-weight: 400;
+      color: mat.get-color-from-palette($sormas-accent, 400);
+    }
 
     .duration-content {
       position: relative;
       display: inline-block;
       margin: 0 10px;
+      margin-left: 30px;
 
       mat-form-field {
         width: 22px;
@@ -19,12 +69,6 @@
     .mat-form-field {
       width: 100px;
       display: inline-block;
-    }
-
-    .start-stop-btn {
-      font-size: 24px;
-      cursor: pointer;
-      display: inline;
     }
   }
 

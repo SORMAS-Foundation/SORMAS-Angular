@@ -265,6 +265,7 @@ export * from './samplingReason';
 export * from './screeningType';
 export * from './sex';
 export * from './simpleTestResultType';
+export * from './similarPersonDto';
 export * from './shareRequestDataType';
 export * from './shareRequestStatus';
 export * from './sormasToSormasEncryptedDataDto';

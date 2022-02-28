@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { DashboardContactStatsComponent } from './dashboard-contact-stats.component';
+import { MaterialModule } from '../../../material.module';
 
 describe('DashboardContactStatsComponent', () => {
   let component: DashboardContactStatsComponent;
@@ -9,6 +12,7 @@ describe('DashboardContactStatsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DashboardContactStatsComponent],
+      imports: [HttpClientTestingModule, MaterialModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

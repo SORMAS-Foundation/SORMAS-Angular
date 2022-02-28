@@ -2,7 +2,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter, throttleTime } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { FormBase, FormElementBase } from './types/form-element-base';
 import { NotificationService } from '../../_services/notification.service';
@@ -22,8 +23,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() resourceService: BaseService<any>;
   @Input() withAnchor = false;
   @Input() formId: string;
+  @Input() outsourceSubmit = false;
 
   @Output() changed: EventEmitter<any> = new EventEmitter();
+  @Output() formSubmit: EventEmitter<any> = new EventEmitter();
 
   formElementsProcessed: FormElementBase<any>[] = [];
   form: FormGroup;
@@ -34,77 +37,34 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private formElementControlService: FormElementControlService,
-    form: FormBuilder,
     private formActionsService: FormActionsService,
-    private notificationService: NotificationService
-  ) {
-    this.form = form.group({
-      title: form.control('initial value', Validators.required),
-    });
-  }
+    private notificationService: NotificationService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
-    this.form = this.formElementControlService.toFormGroup(this.processFormArray());
-    this.sections = this.getSections();
+    const $formSave = this.formActionsService.getSave();
+    const $formReset = this.formActionsService.getDiscard();
+    const $fieldUpdate = this.formActionsService.getInputValue();
+    const $fieldChanged = this.formActionsService.getInputChange();
 
     this.subscription.push(
-      this.formActionsService
-        .getSave()
+      $formSave
         .pipe(filter(({ formId }) => this.formId === formId))
-        .subscribe((response: any) => {
-          if (this.form.invalid) {
-            this.form.markAllAsTouched();
-            this.notificationService.error('Please fill in all the mandatory fields');
-            return;
-          }
-
-          let RESOURCE;
-          if (response.resource === null) {
-            // ADD mode
-            if (response.multiple) {
-              RESOURCE = this.resourceService.add([this.updateFormRawValueWithObjects()]);
-            } else {
-              RESOURCE = this.resourceService.add(this.updateFormRawValueWithObjects());
-            }
-          } else {
-            // // EDIT mode
-            // const resourceArrayTmp = [];
-            // eslint-disable-next-line
-            // for (let i = 0; i < response.resource.length; i += 1) {
-            //   resourceArrayTmp.push(this.updateResource(response.resource[i]));
-            // }
-            RESOURCE = this.resourceService.add([
-              this.updateFormRawValueWithObjects(true, response.resource.uuid),
-            ]);
-          }
-
-          RESOURCE.subscribe({
-            next: (requestResponse: any) => {
-              this.formActionsService.setCloseFormModal(this.formId, true, requestResponse);
-              this.notificationService.success('Successfully saved');
-            },
-            error: (err: any) => {
-              this.notificationService.error(err);
-            },
-            complete: () => {},
-          });
-        })
+        .pipe(filter(() => this.validateForm()))
+        .subscribe((response) => this.submitForm(response))
     );
 
     this.subscription.push(
-      this.formActionsService
-        .getDiscard()
-        .pipe(filter(({ formId }) => this.formId === formId))
-        .subscribe(() => {
-          this.processFormArray().forEach((item) => {
-            this.form.controls[item.key].setValue(item.value);
-          });
-        })
+      $formReset.pipe(filter(({ formId }) => this.formId === formId)).subscribe(() => {
+        this.processFormArray().forEach((item) => {
+          this.form.controls[item.key].setValue(item.value);
+        });
+      })
     );
 
     this.subscription.push(
-      this.formActionsService
-        .getInputValue()
+      $fieldUpdate
         .pipe(filter(({ formId }) => this.formId === formId))
         .subscribe((response: any) => {
           this.form.controls[response.key].setValue(response.value);
@@ -112,8 +72,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.push(
-      this.formActionsService
-        .getInputChange()
+      $fieldChanged
         .pipe(throttleTime(300))
         .pipe(filter(({ formId }) => this.formId === formId))
         .subscribe(() => {
@@ -121,6 +80,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         })
     );
 
+    this.form = this.formElementControlService.toFormGroup(this.processFormArray());
+    this.sections = this.getSections();
     this.detectChanges();
 
     // trigger 'valueChanges' on each form control to update their dependent fields
@@ -138,17 +99,57 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }
   }
 
+  validateForm(): boolean {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      this.notificationService.error(
+        this.translateService.instant('strings.errorFieldValidationFailed')
+      );
+    }
+    return this.form.valid;
+  }
+
+  submitForm(response: any): void {
+    const data = this.updateFormRawValueWithObjects(response?.resource?.uuid);
+
+    if (this.outsourceSubmit) {
+      this.formSubmit.emit([data, this.resourceService]);
+      return;
+    }
+
+    const $service = this.resourceService.add(!response.multiple ? data : [data]);
+    this.subscription.push(
+      $service.subscribe({
+        next: (requestResponse: any) => {
+          this.formActionsService.setCloseFormModal(this.formId, true, requestResponse);
+          this.notificationService.success(
+            this.translateService.instant(
+              response.resource === null
+                ? 'strings.addedSuccessfully'
+                : 'strings.editedSuccessfully'
+            )
+          );
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
+  }
+
   convertDotPathToNestedObject(path: string, value: any): any {
     const [last, ...paths] = path.split('__').reverse();
     // @ts-ignore
     return paths.reduce((acc, el) => ({ [el]: acc }), { [last]: value });
   }
 
-  updateFormRawValueWithObjects(isEdit?: boolean, id?: string): any {
+  updateFormRawValueWithObjects(uuid?: string): any {
     let rawValueTmp: any = {};
-    if (isEdit) {
+
+    if (uuid) {
       rawValueTmp = {
-        uuid: id,
+        uuid,
       };
     }
 
