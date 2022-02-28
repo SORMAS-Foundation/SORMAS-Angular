@@ -56,7 +56,11 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
         this.curSec = sec;
 
         if (this.curSec === seconds) {
-          this.selectedIndex += 1;
+          if (this.diseases.length - 1 === this.selectedIndex) {
+            this.selectedIndex = 0;
+          } else {
+            this.selectedIndex += 1;
+          }
           this.intervalTimer.unsubscribe();
           this.toggleTimer(this.duration, true);
         }
