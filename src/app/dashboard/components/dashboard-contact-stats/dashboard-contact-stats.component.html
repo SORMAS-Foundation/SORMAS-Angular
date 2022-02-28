@@ -1,32 +1,32 @@
 <div class="dashboard-contact-stats-wrapper" *ngIf="data">
   <div class="title dashboard-contact-stats-row">
-    <p>Contacts</p>
+    <p>{{ 'enum.DashboardType.CONTACTS' | translate }}</p>
   </div>
   <div class="per-case dashboard-contact-stats-row">
-    <p class="label-md">Per case</p>
+    <p class="label-md">{{ 'perCase' | translate }}</p>
     <div class="per-case-data">
       <div class="per-case-box-wrapper">
         <div class="per-case-box">
           <p>{{ data.PER_CASE }}</p>
         </div>
-        <p class="label-sm">min</p>
+        <p class="label-sm">{{ 'strings.min' | translate }}</p>
       </div>
       <div class="per-case-box-wrapper">
         <div class="per-case-box">
           <p class="max">{{ data.MAX }}</p>
         </div>
-        <p class="label-sm">max</p>
+        <p class="label-sm">{{ 'strings.max' | translate }}</p>
       </div>
       <div class="per-case-box-wrapper">
         <div class="per-case-box average">
           <p class="average">{{ data.AVERAGE }}</p>
         </div>
-        <p class="label-sm">average</p>
+        <p class="label-sm">{{ 'strings.average' | translate }}</p>
       </div>
     </div>
   </div>
   <div class="new-cases dashboard-contact-stats-row">
-    <p class="label-md">New case not previously known to be contacts</p>
+    <p class="label-md">{{ 'strings.headingNewSourceCases' | translate }}</p>
     <div class="new-cases-data">
       <div class="number">
         {{ data.NEW_CASE }}
@@ -37,16 +37,16 @@
     </div>
   </div>
   <div class="quarantine dashboard-contact-stats-row">
-    <p class="label-md">Quarantine</p>
+    <p class="label-md">{{ 'captions.CaseData.quarantine' | translate }}</p>
     <div class="quarantine-data">
       <div class="quarantine-box quarantine">
         <p>
-          <span>{{ data.QUARANTINE }}</span> in quarantine
+          <span>{{ data.QUARANTINE }}</span> {{ 'strings.headingContactsInQuarantine' | translate }}
         </p>
       </div>
       <div class="quarantine-box quarantine-placed">
         <p>
-          <span>{{ data.QUARANTINE_PLACED }}</span> placed in quarantine
+          <span>{{ data.QUARANTINE_PLACED }}</span> {{ 'strings.headingContactsPlacedInQuarantine' | translate }}
         </p>
       </div>
     </div>

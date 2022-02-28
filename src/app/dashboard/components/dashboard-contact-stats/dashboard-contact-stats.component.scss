@@ -10,6 +10,7 @@
     font-size: 10px;
     font-weight: 400;
     color: mat.get-color-from-palette($sormas-accent, 400);
+    text-transform: lowercase;
   }
 
   .label-md {
@@ -64,7 +65,7 @@
 
     &.new-cases {
       > p {
-        max-width: 130px;
+        max-width: 140px;
         line-height: 1.333;
         margin-bottom: 5px;
       }

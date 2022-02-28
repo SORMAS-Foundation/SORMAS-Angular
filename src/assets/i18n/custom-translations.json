@@ -160,5 +160,6 @@
   "pointOfEntryDetails": "Point of entry details",
   "headingSharesStatus": "Shares status",
   "CaseData.onsetDate": "Onset date",
-  "dashboard.notVisited": "Not visited"
+  "dashboard.notVisited": "Not visited",
+  "perCase": "Per case"
 }
