@@ -48,7 +48,7 @@ export enum InvestigationStatus {
 }
 
 export enum Disease {
-  AFP = 'Acute Flaccid Paralysis',
+  AFP = 'Acute Flaccid Paralysis1',
   ANTHRAX = 'Anthrax',
   CORONAVIRUS = 'COVID-19',
   CHOLERA = 'Cholera',
