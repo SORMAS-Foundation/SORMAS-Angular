@@ -161,5 +161,8 @@
   "headingSharesStatus": "Shares status",
   "CaseData.onsetDate": "Onset date",
   "dashboard.notVisited": "Not visited",
-  "perCase": "Per case"
+  "perCase": "Per case",
+  "headingContactsInQuarantineShort": "in quarantine",
+  "headingContactsPlacedInQuarantineShort": "placed in quarantine",
+  "secondsShort": "s"
 }

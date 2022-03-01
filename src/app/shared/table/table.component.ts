@@ -407,7 +407,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onActionSelected(event: any): void {
-    const bulkEditOption = this.bulkEditOptions.find((item) => item.action === event);
+    const bulkEditOption = this.bulkEditOptions?.find((item) => item.action === event);
     switch (event) {
       case ACTIONS_BULK_EDIT.EDIT:
         this.openBulkEdit(bulkEditOption);
