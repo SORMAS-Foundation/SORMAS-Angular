@@ -21,6 +21,7 @@ import { FORM_DATA_CONTACT_FILTERS } from '../../shared/contact-filters/contact-
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { defaultColumnDetailedDefs } from './contacts-list-detailed-table-data';
 import { actionsViewOptionsDefs } from './contact-list-actions-data';
+import { LocalStorageService } from '../../_services/local-storage.service';
 
 @Component({
   selector: 'app-contacts-list',
@@ -47,7 +48,8 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     public helperService: HelperService,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   }
 
   changeOptionView(event: any): void {
+    this.localStorageService.remove(this.configKey);
     this.showTable = false;
     this.tableView = event;
     switch (event) {
