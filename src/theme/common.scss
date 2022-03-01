@@ -231,6 +231,31 @@ strong {
     font-weight: 500;
   }
 
+  .contact-category-HIGH_RISK {
+    color: mat.get-color-from-palette($sormas-alert, 500);
+    font-weight: 500;
+  }
+
+  .contact-category-HIGH_RISK_MED {
+    color: mat.get-color-from-palette($sormas-alert, 300);
+    font-weight: 500;
+  }
+
+  .contact-category-MEDIUM_RISK_MED {
+    color: mat.get-color-from-palette($sormas-warning, 800);
+    font-weight: 500;
+  }
+
+  .contact-category-LOW_RISK {
+    color: mat.get-color-from-palette($sormas-warning, 700);
+    font-weight: 500;
+  }
+
+  .contact-category-NO_RISK {
+    color: mat.get-color-from-palette($sormas-success, 700);
+    font-weight: 500;
+  }
+
   .symptoms-true,
   .active-entry-true {
     color: mat.get-color-from-palette($sormas-alert, 400);
