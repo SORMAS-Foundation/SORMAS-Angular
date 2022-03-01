@@ -4,10 +4,11 @@ import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ContactService } from '../../_services/api/contact.service';
-import { TableColumn } from '../../_models/common';
+import { NavItem, TableColumn } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './contacts-list-table-data';
 import {
+  ACTIONS_VIEW_OPTIONS,
   ADD_MODAL_MAX_WIDTH,
   CONFIG_EVENTS,
   CONTACT_FILTERS_FORM_ID,
@@ -18,6 +19,8 @@ import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-mod
 import { HelperService } from '../../_services/helper.service';
 import { FORM_DATA_CONTACT_FILTERS } from '../../shared/contact-filters/contact-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import { defaultColumnDetailedDefs } from './contacts-list-detailed-table-data';
+import { actionsViewOptionsDefs } from './contact-list-actions-data';
 
 @Component({
   selector: 'app-contacts-list',
@@ -30,8 +33,10 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   defaultColumns: TableColumn[] = [];
   configKey = CONFIG_EVENTS;
   routeParams = this.activeRoute.snapshot.queryParams;
+  actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   headerHeight = HEADER_HEIGHT;
   formIdFilters = CONTACT_FILTERS_FORM_ID;
+  showTable = true;
 
   private subscriptions: Subscription[] = [];
 
@@ -50,6 +55,26 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.routeParams = params;
       })
     );
+  }
+
+  changeOptionView(event: any): void {
+    this.showTable = false;
+    switch (event) {
+      case ACTIONS_VIEW_OPTIONS.DEFAULT:
+        this.defaultColumns = defaultColumnDefs;
+        console.log('1');
+        break;
+      case ACTIONS_VIEW_OPTIONS.DETAILED:
+        this.defaultColumns = defaultColumnDetailedDefs;
+        console.log('2');
+        break;
+      default:
+        // eslint-disable-next-line no-console
+        console.log(event);
+    }
+    setTimeout(() => {
+      this.showTable = true;
+    });
   }
 
   openAddContactModal(): void {

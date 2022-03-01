@@ -12,6 +12,7 @@
       </div>
     </div>
     <app-table
+      *ngIf="showTable"
       [filterFormId]="formIdFilters"
       [resourceService]="contactService"
       [tableColumns]="defaultColumns"
@@ -20,6 +21,8 @@
       [isHeaderSticky]="true"
       [fullHeight]="true"
       [saveConfigKey]="configKey"
+      [viewOptions]="actionsViewOptions"
+      (viewOptionEvent)="changeOptionView($event)"
       [preSetFilters]="helperService.setQueryParamsInFilters(routeParams)"
       showTotalContext="{{ 'strings.entityContacts' | translate }}"
     ></app-table>
