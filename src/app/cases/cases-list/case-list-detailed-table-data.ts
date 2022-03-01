@@ -19,6 +19,16 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     isSortable: true,
   },
   {
+    name: 'captions.CaseData.externalToken',
+    dataKey: 'externalToken',
+    isSortable: true,
+  },
+  {
+    name: 'captions.CaseData.internalToken',
+    dataKey: 'internalToken',
+    isSortable: true,
+  },
+  {
     name: 'captions.disease',
     dataKey: 'disease',
     translationName: 'Disease',
@@ -52,6 +62,18 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     translationName: 'InvestigationStatus',
     isSortable: true,
     iconify: true,
+  },
+  {
+    name: 'captions.CaseData.personUuid',
+    dataKey: 'personUuid',
+    isSortable: true,
+    essential: true,
+    format: {
+      type: TableDataFormatOptions.LINK,
+      pattern: '/persons/person/$param1',
+      params: ['personUuid'],
+      truncate: 6,
+    },
   },
   {
     name: 'captions.CaseData.personFirstName',
@@ -147,13 +169,13 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     },
   },
   {
-    name: 'captions.CaseData.responsibleDistrict',
-    dataKey: 'responsibleDistrict',
+    name: 'captions.CaseData.responsibleRegion',
+    dataKey: 'responsibleRegion',
     isSortable: true,
   },
   {
-    name: 'captions.CaseData.responsibleRegion',
-    dataKey: 'responsibleRegion',
+    name: 'captions.CaseData.responsibleDistrict',
+    dataKey: 'responsibleDistrict',
     isSortable: true,
   },
   {
@@ -190,6 +212,15 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     },
   },
   {
+    name: 'captions.creationDate',
+    dataKey: 'creationDate',
+    isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
+  },
+  {
     name: 'captions.CaseData.followUpStatus',
     dataKey: 'followUpStatus',
     translationName: 'FollowupStatus',
@@ -205,7 +236,38 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     },
   },
   {
-    name: 'captions.reportingUser',
+    name: 'captions.CaseData.symptomJournalStatus',
+    dataKey: 'symptomJournalStatus',
+    isSortable: true,
+  },
+  {
+    name: 'captions.CaseData.numberOfVisits',
+    dataKey: 'numberOfVisits',
+    isSortable: true,
+  },
+  {
+    name: 'captions.CaseData.vaccinationStatus',
+    dataKey: 'vaccinationStatus',
+    isSortable: true,
+  },
+  {
+    name: 'strings.headingCompleteness',
+    dataKey: 'completeness',
+    isSortable: true,
+    format: {
+      type: TableDataFormatOptions.NUMBER,
+      pattern: '$param1%',
+      params: ['completeness'],
+      match: {
+        'value-low': [-0.01, 25.01],
+        'value-medium': [25, 50.01],
+        'value-normal': [50, 75.01],
+        'value-high': [75, 100.01],
+      },
+    },
+  },
+  {
+    name: 'captions.CaseData.reportingUser',
     dataKey: 'reportingUser',
     isSortable: true,
   },
