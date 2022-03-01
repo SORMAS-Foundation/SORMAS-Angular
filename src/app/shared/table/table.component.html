@@ -154,6 +154,19 @@
         </th>
       </ng-container>
 
+      <ng-container matColumnDef="legend">
+        <th
+          mat-footer-cell
+          *matFooterCellDef
+          [attr.colspan]="tableColumns.length"
+          class="table-footer-legend"
+        >
+          <div class="table-legend">
+            <ng-content select=".legend"></ng-content>
+          </div>
+        </th>
+      </ng-container>
+
       <ng-container *ngIf="additionalHeader.length">
         <tr
           mat-header-row
@@ -171,6 +184,9 @@
         ]"
         (click)="onSelectionChange($event, row)"
       ></tr>
+      <ng-container *ngIf="showLegend">
+        <tr mat-footer-row *matFooterRowDef="['legend']; sticky: true"></tr>
+      </ng-container>
     </table>
 
     <app-table-notification

@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CaseService } from '../../_services/api/case.service';
 import { NavItem, TableColumn } from '../../_models/common';
-import { defaultColumnDefs } from './case-list-table-data';
+import { defaultColumnDefs, legendDefs } from './case-list-table-data';
 import { defaultColumnDetailedDefs } from './case-list-detailed-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
@@ -41,6 +41,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_CASE_FILTERS));
   cases: CaseDataDto[] = [];
   defaultColumns: TableColumn[] = [];
+  legend: any[];
   configKey = CONFIG_CASES;
   headerHeight = HEADER_HEIGHT;
   actionsMore: NavItem[] = actionsMoreDefs;
@@ -63,6 +64,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+    this.legend = legendDefs;
     this.subscription.push(
       this.activeRoute.queryParams.subscribe((params: any) => {
         this.routeParams = params;

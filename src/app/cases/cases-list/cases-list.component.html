@@ -36,8 +36,11 @@
       [viewOptions]="actionsViewOptions"
       [bulkEditOptions]="actionsBulkEdit"
       [preSetFilters]="helperService.setQueryParamsInFilters(routeParams)"
+      [showLegend]="true"
       (viewOptionEvent)="changeOptionView($event)"
       showTotalContext="{{ 'strings.entityCases' | translate }}"
-    ></app-table>
+    >
+      <app-legend [data]="legend" class="legend"></app-legend>
+    </app-table>
   </ng-container>
 </app-filters>

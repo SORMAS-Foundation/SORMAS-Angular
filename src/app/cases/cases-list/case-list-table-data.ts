@@ -1,3 +1,4 @@
+import { LegendFollowUpIcons } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -110,5 +111,33 @@ export const defaultColumnDefs: TableColumn[] = [
       type: TableDataFormatOptions.DATE,
       pattern: 'M/d/yyyy',
     },
+  },
+];
+
+export const legendDefs: any[] = [
+  {
+    iconName: LegendFollowUpIcons.NOT_SYMPTOMATIC,
+    iconClass: 'visit-result-not-symptomatic',
+    description: 'enum.VisitResult.NOT_SYMPTOMATIC',
+  },
+  {
+    iconName: LegendFollowUpIcons.SYMPTOMATIC,
+    iconClass: 'visit-result-symptomatic',
+    description: 'enum.VisitResult.SYMPTOMATIC',
+  },
+  {
+    iconName: LegendFollowUpIcons.UNAVAILABLE,
+    iconClass: 'visit-result-unavailable',
+    description: 'enum.VisitResult.UNAVAILABLE',
+  },
+  {
+    iconName: LegendFollowUpIcons.UNCOOPERATIVE,
+    iconClass: 'visit-result-uncooperative',
+    description: 'enum.VisitResult.UNCOOPERATIVE',
+  },
+  {
+    iconName: LegendFollowUpIcons.NOT_PERFORMED,
+    iconClass: 'visit-result-not-performed',
+    description: 'enum.VisitResult.NOT_PERFORMED',
   },
 ];

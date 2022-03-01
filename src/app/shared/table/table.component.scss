@@ -70,6 +70,16 @@ th.additional-header {
   }
 }
 
+.table-footer-legend {
+  text-align: left;
+}
+
+.table-legend {
+  width: fit-content;
+  position: sticky;
+  left: 0;
+}
+
 .minimal {
   th.mat-header-cell {
     border-bottom-color: map-get($sormas-accent, 200);

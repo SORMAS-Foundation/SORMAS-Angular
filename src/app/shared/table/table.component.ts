@@ -85,6 +85,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() showTotal = false;
   @Input() showTotalContext = 'Items';
   @Input() filterFormId: string;
+  @Input() showLegend = false;
 
   preSetFiltersTmp: Filter[];
   @Input() set preSetFilters(value) {

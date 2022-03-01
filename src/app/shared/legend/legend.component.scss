@@ -1,0 +1,37 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.legend {
+  display: flex;
+  width: fit-content;
+  list-style: none;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.mat-icon {
+  margin-right: 8px;
+}
+
+.visit-result-not-symptomatic {
+  color: mat.get-color-from-palette($sormas-success, 600);
+}
+
+.visit-result-symptomatic {
+  color: mat.get-color-from-palette($sormas-alert, 300);
+}
+
+.visit-result-unavailable,
+.visit-result-not-performed {
+  color: mat.get-color-from-palette($sormas-accent, 800);
+}
+
+.visit-result-uncooperative {
+  color: mat.get-color-from-palette($sormas-alert, 700);
+}
