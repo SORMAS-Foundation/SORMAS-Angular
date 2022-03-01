@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { DashboardDiseaseMenuComponent } from './dashboard-disease-menu.component';
 
 describe('DashboardDiseaseMenuComponent', () => {
@@ -9,6 +10,7 @@ describe('DashboardDiseaseMenuComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DashboardDiseaseMenuComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 

@@ -136,3 +136,10 @@ export const DATE_TYPE_OPTIONS = {
 export const DEFAULT_FETCH_METHOD = 'getAllAsOptions';
 
 export const DASHBOARD_CONTACTS_DISEASE_LIMIT = 5;
+
+export type PickPersonType = 'SELECT' | 'SEARCH_AND_SELECT' | 'CREATE_NEW';
+export const PICK_PERSON_OPTIONS = {
+  SELECT: 'SELECT' as PickPersonType,
+  SEARCH_AND_SELECT: 'SEARCH_AND_SELECT' as PickPersonType,
+  CREATE_NEW: 'CREATE_NEW' as PickPersonType,
+};

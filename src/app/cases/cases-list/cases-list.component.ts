@@ -30,6 +30,7 @@ import { HelperService } from '../../_services/helper.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { CaseAddComponent } from '../../shared/case-add/case-add.component';
 import { FORM_DATA_CASE_FILTERS } from '../case-filters/case-filters-form-data';
+import { LocalStorageService } from '../../_services/local-storage.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -47,6 +48,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams: Params;
   formIdFilters = CASE_FILTERS_FORM_ID;
+  tableView = ACTIONS_VIEW_OPTIONS.DEFAULT;
+  detailedTableView = ACTIONS_VIEW_OPTIONS.DETAILED;
   showTable = true;
 
   private subscription: Subscription[] = [];
@@ -56,7 +59,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     public helperService: HelperService,
     private activeRoute: ActivatedRoute,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -69,7 +73,9 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   changeOptionView(event: any): void {
+    this.localStorageService.remove(this.configKey);
     this.showTable = false;
+    this.tableView = event;
     switch (event) {
       case ACTIONS_VIEW_OPTIONS.DEFAULT:
         this.defaultColumns = defaultColumnDefs;

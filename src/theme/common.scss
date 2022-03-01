@@ -411,6 +411,9 @@ strong {
 
 // dashboard-disease-menu
 .dashboard-disease-menu {
+  .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    padding-top: 10px;
+  }
   .mat-tab-span {
     padding: 20px 10px 0 10px;
   }
@@ -422,7 +425,8 @@ strong {
         background: mat.get-color-from-palette($sormas-primary, 800);
       }
       &.mat-tab-ANTHRAX {
-        background: mat.get-color-from-palette($sormas-success, 200);
+        background: mat.get-color-from-palette($sormas-primary, 200);
+        color: mat.get-color-from-palette($sormas-accent, 800);
       }
       &.mat-tab-CORONAVIRUS {
         background: mat.get-color-from-palette($sormas-success, 600);
@@ -435,6 +439,7 @@ strong {
       }
       &.mat-tab-DENGUE {
         background: mat.get-color-from-palette($sormas-primary, A100);
+        color: mat.get-color-from-palette($sormas-accent, 800);
       }
       &.mat-tab-EVD {
         background: mat.get-color-from-palette($sormas-warning, 900);
@@ -475,6 +480,10 @@ strong {
       &.mat-tab-UNSPECIFIED_VHF {
         background: mat.get-color-from-palette($sormas-alert, 800);
       }
+      &.mat-tab-YELLOW_FEVER {
+        background: mat.get-color-from-palette($sormas-warning, 500);
+        color: mat.get-color-from-palette($sormas-accent, 800);
+      }
     }
   }
 
@@ -484,6 +493,7 @@ strong {
     padding: 5px 0;
     margin-right: 16px;
     opacity: 1;
+    padding-top: 0;
 
     &.mat-tab-label-active {
       .mat-tab-label-content {

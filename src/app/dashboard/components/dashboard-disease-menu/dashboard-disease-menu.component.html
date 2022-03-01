@@ -1,16 +1,30 @@
 <div class="dashboard-disease-menu">
   <div class="actions">
-    <mat-icon class="material-icons-round start-stop-btn" color="primary" (click)="toggleTimer(duration, true)">slideshow</mat-icon>
-    <p></p>
+    <div class="slideshow-btns">
+      <mat-icon
+        *ngIf="!isSlideshowOn"
+        class="material-icons-round start-btn"
+        color="primary"
+        (click)="toggleTimer(duration, true)">
+        slideshow
+      </mat-icon>
+      <div class="slideshow-close" *ngIf="isSlideshowOn">
+        <div class="slideshow-close-background">
+          <p>empty</p>
+        </div>
+        <mat-icon class="material-icons-round stop-btn" color="primary" (click)="toggleTimer(0, false)">slideshow</mat-icon>
+      </div>
+    </div>
+    <p class="duration-label">{{ duration }}{{ 'secondsShort' | translate }}</p>
     <div class="duration-content">
-      <mat-icon class="material-icons-round" color="primary">av_timer</mat-icon>
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="duration">
-          <mat-option [value]="30">30</mat-option>
-          <mat-option [value]="60">60</mat-option>
-          <mat-option [value]="90">90</mat-option>
+          <mat-option [value]="30">30{{ 'secondsShort' | translate }}</mat-option>
+          <mat-option [value]="60">60{{ 'secondsShort' | translate }}</mat-option>
+          <mat-option [value]="90">90{{ 'secondsShort' | translate }}</mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-icon class="material-icons-round duration-icon" color="primary">av_timer</mat-icon>
     </div>
   </div>
   <mat-tab-group (selectedTabChange)="tabChange($event)" [(selectedIndex)]="selectedIndex">
@@ -20,5 +34,10 @@
       </ng-template>
     </mat-tab>
   </mat-tab-group>
-  <mat-progress-bar mode="determinate" [value]="progressbarValue" [appProgressBarColor]="progressBarColor"></mat-progress-bar>
+  <mat-progress-bar
+    *ngIf="isSlideshowOn"
+    mode="determinate"
+    [value]="progressbarValue"
+    [appProgressBarColor]="progressBarColor"
+  ></mat-progress-bar>
 </div>

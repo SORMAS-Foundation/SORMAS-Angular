@@ -1296,6 +1296,20 @@ app.use('/sormas-rest/dashboard/contacts', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/dashboard/contactStats', (req, res) => {
+  res.status(200).send({
+    contactStats: {
+      PER_CASE: 1,
+      MAX: 458,
+      AVERAGE: 41,
+      NEW_CASE: 72,
+      PERCENT_NEW_CASE: 40,
+      QUARANTINE: 17,
+      QUARANTINE_PLACED: 4,
+    },
+  });
+});
+
 app.use('/sormas-rest/dashboard/underFollowUp', (req, res) => {
   res.status(200).send({
     followUp: {

@@ -1,11 +1,67 @@
+@use '/src/variables.scss' as *;
+@use '@angular/material' as mat;
+
 .dashboard-disease-menu {
+  position: relative;
+  margin-left: 8px;
+
   .actions {
     float: left;
+    position: relative;
+    margin-top: 17px;
+
+    .slideshow-btns {
+      .start-btn {
+        font-size: 24px;
+        cursor: pointer;
+        display: inline;
+        position: absolute;
+
+        &:hover {
+          background: mat.get-color-from-palette($sormas-primary, 50);
+        }
+      }
+
+      .slideshow-close {
+        display: inline;
+        position: absolute;
+        cursor: pointer;
+
+        .slideshow-close-background {
+          position: absolute;
+          top: 0;
+          bottom: 4px;
+          left: 0;
+          right: 0;
+          background: mat.get-color-from-palette($sormas-primary, 700);
+          border-radius: 5px;
+
+          p {
+            display: none;
+          }
+        }
+
+        .mat-icon {
+          color: $white;
+          z-index: 99;
+          position: relative;
+        }
+      }
+    }
+
+    .duration-label {
+      position: absolute;
+      top: -16px;
+      right: 29px;
+      font-size: 10px;
+      font-weight: 400;
+      color: mat.get-color-from-palette($sormas-accent, 400);
+    }
 
     .duration-content {
       position: relative;
       display: inline-block;
-      margin: 0 10px;
+      margin: 0 24px 0 44px;
 
       mat-form-field {
         width: 22px;
@@ -14,21 +70,24 @@
         left: 0;
         opacity: 0;
       }
+
+      mat-form-field:hover + .duration-icon {
+        background: mat.get-color-from-palette($sormas-primary, 50);
+      }
     }
 
     .mat-form-field {
       width: 100px;
       display: inline-block;
     }
-
-    .start-stop-btn {
-      font-size: 24px;
-      cursor: pointer;
-      display: inline;
-    }
   }
 
   .mat-progress-bar {
+    position: absolute;
+    bottom: 0;
     margin-bottom: -16px;
+    left: -23px;
+    right: -14px;
+    width: auto;
   }
 }

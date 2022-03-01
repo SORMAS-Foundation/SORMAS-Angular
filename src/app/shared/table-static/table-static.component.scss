@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 table {
@@ -11,7 +12,7 @@ table {
 
 .minimal {
   th.mat-header-cell {
-    border-bottom-color: map-get($sormas-accent, 200);
+    border-bottom-color: mat.get-color-from-palette($sormas-accent, 200);
     border-left-width: 0;
     background-color: $white;
   }
@@ -25,6 +26,6 @@ table {
   }
 
   tr.mat-row.row-selected td.mat-cell {
-    background-color: map-get($sormas-primary, 50);
+    background-color: mat.get-color-from-palette($sormas-primary, 50);
   }
 }
