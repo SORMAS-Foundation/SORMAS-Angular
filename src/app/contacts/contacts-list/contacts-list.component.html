@@ -4,6 +4,9 @@
     <div class="page-header">
       <h1 class="page-header-title">
         {{ 'captions.View.contacts' | translate }}
+        <span *ngIf="tableView === detailedTableView">{{
+          'captions.caseDetailedView' | translate
+        }}</span>
       </h1>
       <div class="page-header-actions">
         <button class="add-btn" mat-flat-button color="primary" (click)="openAddContactModal()">
