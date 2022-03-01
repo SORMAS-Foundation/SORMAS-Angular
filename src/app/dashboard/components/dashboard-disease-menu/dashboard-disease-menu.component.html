@@ -15,13 +15,13 @@
         <mat-icon class="material-icons-round stop-btn" color="primary" (click)="toggleTimer(0, false)">slideshow</mat-icon>
       </div>
     </div>
-    <p class="duration-label">{{ duration }}s</p>
+    <p class="duration-label">{{ duration }}{{ 'secondsShort' | translate }}</p>
     <div class="duration-content">
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="duration">
-          <mat-option [value]="30">30</mat-option>
-          <mat-option [value]="60">60</mat-option>
-          <mat-option [value]="90">90</mat-option>
+          <mat-option [value]="30">30{{ 'secondsShort' | translate }}</mat-option>
+          <mat-option [value]="60">60{{ 'secondsShort' | translate }}</mat-option>
+          <mat-option [value]="90">90{{ 'secondsShort' | translate }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-icon class="material-icons-round duration-icon" color="primary">av_timer</mat-icon>

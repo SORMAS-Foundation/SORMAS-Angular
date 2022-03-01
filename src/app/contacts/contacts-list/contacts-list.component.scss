@@ -1,1 +1,11 @@
-/* stylelint-disable */
+@use '/src/variables.scss' as *;
+@use '@angular/material' as mat;
+
+.page-header-title {
+  span {
+    font-size: 20px;
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-accent, 600);
+    margin-left: 10px;
+  }
+}
