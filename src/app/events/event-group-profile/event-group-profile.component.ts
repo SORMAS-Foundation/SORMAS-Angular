@@ -8,7 +8,11 @@ import { EventDto } from '../../_models/eventDto';
 import { EventGroupService } from '../../_services/api/event-group.service';
 import { EventService } from '../../_services/api/event.service';
 import { EventGroupDto } from '../../_models/eventGroupDto';
-import { EVENT_GROUP_PROFILE_FILTERS_FORM_ID, EVENT_GROUPS_FORM_ID } from '../../app.constants';
+import {
+  DISPLAY_MODE,
+  EVENT_GROUP_PROFILE_FILTERS_FORM_ID,
+  EVENT_GROUPS_FORM_ID,
+} from '../../app.constants';
 import { FORM_DATA_EVENT_GROUP } from './event-group-profile-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../_services/form-element-control.service';
@@ -34,7 +38,8 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
   loading = false;
   presetFilters: any;
   showTable = true;
-  viewMode = 'list';
+  displayMode = DISPLAY_MODE;
+  viewMode = DISPLAY_MODE.LIST;
 
   subscriptions: Subscription[] = [];
 

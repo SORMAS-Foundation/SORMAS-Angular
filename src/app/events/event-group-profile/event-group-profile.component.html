@@ -28,18 +28,18 @@
           </button>
         </p>
         <mat-icon
-          *ngIf="viewMode === 'list'"
+          *ngIf="viewMode === displayMode.LIST"
           class="material-icons-round toggle-table-list-icon"
-          (click)="toggleView('table')"
+          (click)="toggleView(displayMode.TABLE)"
         >view_list_black</mat-icon>
         <mat-icon
-          *ngIf="viewMode === 'table'"
+          *ngIf="viewMode === displayMode.TABLE"
           class="material-icons-round toggle-table-list-icon"
-          (click)="toggleView('list')"
+          (click)="toggleView(displayMode.LIST)"
         >grid_view_black</mat-icon>
         <app-loader [show]="loading"></app-loader>
         <app-card-list
-          *ngIf="events && events.length && viewMode === 'list'"
+          *ngIf="events && events.length && viewMode === displayMode.LIST"
           [data]="events"
           [cardWidth]="200"
           [initialPageSize]="6"
@@ -52,7 +52,7 @@
           (editCard)="editEvent($event)"
         ></app-card-list>
         <app-table
-          *ngIf="showTable && viewMode === 'table'"
+          *ngIf="showTable && viewMode === displayMode.TABLE"
           [filterFormId]="formIdFilters"
           [resourceService]="eventService"
           [tableColumns]="defaultColumns"
