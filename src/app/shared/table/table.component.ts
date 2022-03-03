@@ -72,6 +72,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() isSelectable = false;
   @Input() isEditable = false;
   @Input() isViewable = false;
+  @Input() viewableIcon = 'wysiwyg';
   @Input() isHeaderSticky = false;
   @Input() tableColumns: TableColumn[] = [];
   @Input() resourceService: BaseService<any>;
