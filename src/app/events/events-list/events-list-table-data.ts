@@ -87,17 +87,17 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.region',
+    name: 'captions.regionName',
     dataKey: 'region',
     isSortable: true,
   },
   {
-    name: 'captions.district',
+    name: 'captions.districtName',
     dataKey: 'district',
     isSortable: true,
   },
   {
-    name: 'captions.community',
+    name: 'captions.communityName',
     dataKey: 'community',
     isSortable: true,
   },

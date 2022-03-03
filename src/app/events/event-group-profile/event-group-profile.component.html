@@ -27,9 +27,19 @@
             {{ 'captions.linkEvent' | translate }}
           </button>
         </p>
+        <mat-icon
+          *ngIf="viewMode === 'list'"
+          class="material-icons-round toggle-table-list-icon"
+          (click)="toggleView('table')"
+        >view_list_black</mat-icon>
+        <mat-icon
+          *ngIf="viewMode === 'table'"
+          class="material-icons-round toggle-table-list-icon"
+          (click)="toggleView('list')"
+        >grid_view_black</mat-icon>
         <app-loader [show]="loading"></app-loader>
         <app-card-list
-          *ngIf="events && events.length"
+          *ngIf="events && events.length && viewMode === 'list'"
           [data]="events"
           [cardWidth]="200"
           [initialPageSize]="6"
@@ -41,6 +51,21 @@
           (unlinkCard)="unlinkEvent($event)"
           (editCard)="editEvent($event)"
         ></app-card-list>
+        <app-table
+          *ngIf="showTable && viewMode === 'table'"
+          [filterFormId]="formIdFilters"
+          [resourceService]="eventService"
+          [tableColumns]="defaultColumns"
+          [isSortable]="false"
+          [isSelectable]="false"
+          [isHeaderSticky]="true"
+          [fullHeight]="true"
+          [preSetFilters]="presetFilters"
+          [appearance]="'minimal'"
+          [isViewable]="true"
+          [viewableIcon]="'link_off'"
+          (viewItem)="unlinkEvent($event)"
+        ></app-table>
       </mat-card>
     </section>
   </div>
