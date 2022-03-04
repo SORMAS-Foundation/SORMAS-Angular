@@ -2481,7 +2481,13 @@
     "TaskExport.personPhone": "Person phone",
     "TaskExport.personPhoneOwner": "Person phone owner",
     "TaskExport.personEmailAddress": "Person email address",
-    "TaskExport.personOtherContactDetails": "Person contact details"
+    "TaskExport.personOtherContactDetails": "Person contact details",
+    "NotFound.ops": "Ooops!",
+    "NotFound.wentWrong": "Something went wrong",
+    "NotFound.notPandemic": "It is not a pandemic",
+    "NotFound.backTo": "Back to",
+    "NotFound.needHelp": "need help?",
+    "NotFound.contactUs": "Contact Us"
   },
   "continents": {
     "continent.AFRICA.name": "Africa",
