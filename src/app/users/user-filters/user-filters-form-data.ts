@@ -74,7 +74,7 @@ export const FORM_DATA_USER_FILTERS = [
         key: 'district.uuid',
         options: [],
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: ['region.uuid'],
         placeholder: 'strings.promptDistrict',
         className: 'fullwidth',
       },

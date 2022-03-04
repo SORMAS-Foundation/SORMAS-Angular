@@ -124,7 +124,7 @@ export const FORM_DATA_SAMPLE_FILTERS = [
         key: 'district.uuid',
         options: [],
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: ['region.uuid'],
         placeholder: 'Sample.responsibleDistrict',
         className: 'fullwidth',
       },

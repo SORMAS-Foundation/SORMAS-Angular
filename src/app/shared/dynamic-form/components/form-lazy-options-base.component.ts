@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, pairwise } from 'rxjs/operators';
 import { DEFAULT_FETCH_METHOD } from '../../../app.constants';
@@ -54,17 +55,26 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
   }
 
   populateOptions(): void {
-    const determinantControl =
-      this.config.determinedBy &&
-      this.group.controls[this.config.determinedBy.replaceAll('.', '__')];
-    if (!determinantControl) {
+    // const determinedByProcessed = '';
+    const determinantControl: AbstractControl[] | undefined = [];
+    if (this.config.determinedBy) {
+      this.config.determinedBy.forEach((el) => {
+        determinantControl.push(this.group.controls[el.replaceAll('.', '__')]);
+      });
+    }
+    // determinantControl =
+    //   this.config.determinedBy &&
+    //   this.group.controls[this.config.determinedBy.replaceAll('.', '__')];
+    if (!determinantControl || determinantControl.length === 0) {
+      console.log('asd', determinantControl);
       this.fetchOptions();
       return;
     }
-    this.subscriptions.push(
-      determinantControl.valueChanges
-        .pipe(distinctUntilChanged(), pairwise())
-        .subscribe(([, val]) => {
+    console.log('determined', this.config.determinedBy, determinantControl);
+
+    determinantControl.forEach((el) => {
+      this.subscriptions.push(
+        el.valueChanges.pipe(distinctUntilChanged(), pairwise()).subscribe(([, val]) => {
           this.control?.reset();
           this.control?.disable();
           this.config.options = [];
@@ -72,15 +82,16 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
             this.fetchOptions(val);
           }
         })
-    );
-    if (determinantControl.value) {
-      this.fetchOptions(determinantControl.value);
-    }
+      );
+      if (el.value) {
+        this.fetchOptions(el.value);
+      }
+    });
   }
 
   fetchOptions(determinantValue?: any): void {
     const filters = this.makeFiltersFromValue(determinantValue);
-
+    console.log('this.method', this.service, this.method);
     this.subscriptions.push(
       // eslint-disable-next-line @typescript-eslint/dot-notation
       this.service[this.method](filters).subscribe({
@@ -95,22 +106,30 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
   }
 
   makeFiltersFromValue(val: any): any[] | null {
-    const key = this.config.determinedBy;
-    if (!key) {
+    const keys: string[] = [];
+    this.config.determinedBy?.forEach((el) => {
+      keys.push(el);
+    });
+    if (!keys || keys.length === 0) {
       return null;
     }
-    const field = this.makeKey(key.replaceAll('.', '__'));
-    const filters = Object.entries(this.makeObject(field, val))[0];
+    const fields: string[] = [];
+    const result: any[] = [];
+    const keyMap: string[] = ['country', 'region', 'district', 'community'];
+    let filters: any[] = [];
+    let filterName: string | undefined = '';
+    keys?.forEach((key, i) => {
+      fields[i] = this.makeKey(key.replaceAll('.', '__'));
+      filters = Object.entries(this.makeObject(fields[i], val))[0];
+      filterName = keyMap.find((item) => key.toLowerCase().includes(item));
 
-    const keyMap = ['country', 'region', 'district', 'community'];
-    const filterName = keyMap.find((item) => key.toLowerCase().includes(item));
-
-    return [
-      {
+      result.push({
         field: filterName,
         value: filters[1],
-      },
-    ];
+      });
+    });
+
+    return result;
   }
 
   makeKey(key: string): string {

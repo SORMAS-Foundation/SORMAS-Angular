@@ -189,7 +189,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         label: 'captions.Immunization.responsibleDistrict',
         options: [],
         service: 'districtService',
-        determinedBy: 'responsibleRegion.uuid',
+        determinedBy: ['responsibleRegion.uuid'],
         required: true,
       },
       {
@@ -198,7 +198,7 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         label: 'captions.Immunization.responsibleCommunity',
         options: [],
         service: 'communityService',
-        determinedBy: 'responsibleDistrict.uuid',
+        determinedBy: ['responsibleDistrict.uuid'],
         required: true,
       },
     ],

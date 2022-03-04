@@ -109,7 +109,7 @@ export const FORM_DATA_PERSON = [
         label: 'captions.Person.placeOfBirthDistrict',
         options: [],
         service: 'districtService',
-        determinedBy: 'placeOfBirthRegion.uuid',
+        determinedBy: ['placeOfBirthRegion.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -117,7 +117,7 @@ export const FORM_DATA_PERSON = [
         label: 'captions.Person.placeOfBirthCommunity',
         options: [],
         service: 'communityService',
-        determinedBy: 'placeOfBirthDistrict.uuid',
+        determinedBy: ['placeOfBirthDistrict.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -311,7 +311,7 @@ export const FORM_DATA_PERSON = [
         label: 'captions.region',
         options: [],
         service: 'regionService',
-        determinedBy: 'address.country.uuid',
+        determinedBy: ['address.country.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -319,7 +319,7 @@ export const FORM_DATA_PERSON = [
         label: 'captions.district',
         options: [],
         service: 'districtService',
-        determinedBy: 'address.region.uuid',
+        determinedBy: ['address.region.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -327,7 +327,7 @@ export const FORM_DATA_PERSON = [
         label: 'captions.community',
         options: [],
         service: 'communityService',
-        determinedBy: 'address.district.uuid',
+        determinedBy: ['address.district.uuid'],
       },
       {
         ...FORM_DATA_SELECT,

@@ -108,7 +108,7 @@ export const FORM_DATA_TASK_FILTERS = [
         key: 'district.uuid',
         options: [],
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: ['region.uuid'],
         placeholder: 'captions.CaseData.responsibleDistrict',
         className: 'fullwidth',
       },

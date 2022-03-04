@@ -78,7 +78,7 @@ export const FORM_DATA_USER_ADD = [
         key: 'address.region.uuid',
         options: [],
         service: 'regionService',
-        determinedBy: 'address.country.uuid',
+        determinedBy: ['address.country.uuid'],
         label: 'captions.region',
       },
       {
@@ -86,7 +86,7 @@ export const FORM_DATA_USER_ADD = [
         key: 'address.district.uuid',
         options: [],
         service: 'districtService',
-        determinedBy: 'address.region.uuid',
+        determinedBy: ['address.region.uuid'],
         label: 'captions.district',
       },
       {
@@ -94,7 +94,7 @@ export const FORM_DATA_USER_ADD = [
         key: 'address.community.uuid',
         options: [],
         service: 'communityService',
-        determinedBy: 'address.district.uuid',
+        determinedBy: ['address.district.uuid'],
         label: 'captions.community',
       },
     ],

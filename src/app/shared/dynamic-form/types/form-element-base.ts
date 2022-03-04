@@ -31,7 +31,7 @@ export class FormElementBase<T> {
   widgetInfo?: any;
   service?: string;
   serviceMethod?: string;
-  determinedBy?: string;
+  determinedBy?: string[];
 
   constructor(
     options: {
@@ -64,7 +64,7 @@ export class FormElementBase<T> {
       widgetInfo?: any;
       service?: string;
       serviceMethod?: string;
-      determinedBy?: string;
+      determinedBy?: string[];
     } = {}
   ) {
     this.value = options.value;

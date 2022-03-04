@@ -67,7 +67,7 @@ export const FORM_DATA_EVENT_GROUP_FILTERS = [
         key: 'district.uuid',
         placeholder: 'eventGroup.responsibleDistrict',
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: ['region.uuid'],
         className: 'size-full',
       },
       {
@@ -75,7 +75,7 @@ export const FORM_DATA_EVENT_GROUP_FILTERS = [
         key: 'community.uuid',
         placeholder: 'eventGroup.responsibleCommunity',
         service: 'communityService',
-        determinedBy: 'district.uuid',
+        determinedBy: ['district.uuid'],
         className: 'size-full',
       },
     ],

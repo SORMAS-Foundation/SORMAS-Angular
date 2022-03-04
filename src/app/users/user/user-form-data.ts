@@ -79,7 +79,7 @@ export const FORM_DATA_USER = [
         label: 'captions.region',
         options: [],
         service: 'regionService',
-        determinedBy: 'address.country.uuid',
+        determinedBy: ['address.country.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -87,7 +87,7 @@ export const FORM_DATA_USER = [
         label: 'captions.district',
         options: [],
         service: 'districtService',
-        determinedBy: 'address.region.uuid',
+        determinedBy: ['address.region.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -95,7 +95,7 @@ export const FORM_DATA_USER = [
         label: 'captions.community',
         options: [],
         service: 'communityService',
-        determinedBy: 'address.district.uuid',
+        determinedBy: ['address.district.uuid'],
       },
     ],
   },

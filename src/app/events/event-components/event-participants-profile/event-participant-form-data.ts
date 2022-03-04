@@ -60,7 +60,7 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
         key: 'district.uuid',
         label: 'captions.EventParticipant.district',
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: ['region.uuid'],
         className: 'size-medium',
       },
       {

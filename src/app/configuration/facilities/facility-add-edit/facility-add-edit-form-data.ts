@@ -56,14 +56,14 @@ export const FORM_DATA_FACILITY_ADD_EDIT = [
         label: 'captions.Facility.district',
         service: 'districtService',
         validation: ['required'],
-        determinedBy: 'region.uuid',
+        determinedBy: ['region.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
         label: 'captions.Facility.community',
         service: 'communityService',
-        determinedBy: 'district.uuid',
+        determinedBy: ['district.uuid'],
         newLine: true,
       },
       {

@@ -574,7 +574,7 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.region',
         options: [],
         service: 'regionService',
-        determinedBy: 'country.uuid',
+        determinedBy: ['country.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -582,7 +582,7 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.district',
         options: [],
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: ['region.uuid'],
       },
       {
         ...FORM_DATA_SELECT,
@@ -590,7 +590,7 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.community',
         options: [],
         service: 'communityService',
-        determinedBy: 'district.uuid',
+        determinedBy: ['district.uuid'],
       },
       {
         ...FORM_DATA_INPUT,
