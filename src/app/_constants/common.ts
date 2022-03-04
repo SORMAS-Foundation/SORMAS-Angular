@@ -143,3 +143,8 @@ export const PICK_PERSON_OPTIONS = {
   SEARCH_AND_SELECT: 'SEARCH_AND_SELECT' as PickPersonType,
   CREATE_NEW: 'CREATE_NEW' as PickPersonType,
 };
+
+export const DISPLAY_MODE = {
+  LIST: 'LIST',
+  TABLE: 'TABLE',
+};

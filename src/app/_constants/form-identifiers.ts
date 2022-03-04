@@ -31,6 +31,7 @@ export const EVENT_GROUPS_FORM_ID = 'eventGroups';
 export const ADD_EVENT_GROUP_FORM_ID = 'addEventGroup';
 export const EVENT_GROUP_LINK_EVENT_FILTERS_FORM_ID = 'eventGroupLinkEventFilters';
 export const EVENT_GROUP_FILTERS_ADD_EVENTS_MODAL_FORM_ID = 'eventGroupAddEventModalFilters';
+export const EVENT_GROUP_PROFILE_FILTERS_FORM_ID = 'eventGroupProfileFilters';
 
 export const PERSON_DETAILS_FORM_ID = 'person';
 export const PERSON_FILTERS_FORM_ID = 'personFilters';
