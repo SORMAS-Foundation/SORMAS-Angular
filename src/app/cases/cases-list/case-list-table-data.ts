@@ -56,7 +56,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'investigationStatus',
     translationName: 'InvestigationStatus',
     isSortable: true,
-    iconify: true,
+    iconify: 'IconsMap',
   },
   {
     name: 'captions.CaseData.personUuid',
@@ -169,3 +169,5 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
 ];
+
+export const legendDefs = undefined;

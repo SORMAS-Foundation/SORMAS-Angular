@@ -187,7 +187,7 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
     this.showTable = false;
     setTimeout(() => {
       this.showTable = true;
-    })
+    });
   }
 
   toggleView(type: string): void {

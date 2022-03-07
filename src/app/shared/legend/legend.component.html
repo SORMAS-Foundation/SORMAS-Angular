@@ -1,0 +1,10 @@
+<ul class="legend">
+  <li *ngFor="let item of data">
+    <mat-icon *ngIf="item.iconName" [ngClass]="['material-icons-round', item.iconClass]">
+      {{ item.iconName }}
+    </mat-icon>
+    <span>
+      {{ item.description | translate }}
+    </span>
+  </li>
+</ul>
