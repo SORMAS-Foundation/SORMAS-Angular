@@ -2,7 +2,7 @@ import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'captions.region',
+    name: 'captions.regionName',
     dataKey: 'region.caption',
     isSortable: true,
   },

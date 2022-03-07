@@ -3,11 +3,16 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   padding: 24px;
 
   & > * {
     margin-right: 16px;
   }
+}
+
+.table-filters {
+  margin-left: auto;
 }
 
 table {
@@ -68,6 +73,16 @@ th.additional-header {
       color: mat.get-color-from-palette($sormas-alert, 700);
     }
   }
+}
+
+.footer-legend {
+  text-align: left;
+}
+
+.legend {
+  width: fit-content;
+  position: sticky;
+  left: 0;
 }
 
 .minimal {

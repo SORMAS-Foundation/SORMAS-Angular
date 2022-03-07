@@ -6,6 +6,11 @@ export const API_ROUTE_CASES = {
   DELETE: 'cases/delete',
 };
 
+export const API_ROUTE_CASES_FOLLOW_UP = {
+  ENDPOINT: 'cases',
+  GET_ALL: 'cases/followUp',
+};
+
 export const API_ROUTE_PERSONS = {
   ENDPOINT: 'persons',
   GET_ALL: 'persons/indexList',

@@ -52,3 +52,11 @@ export enum CardActionsIcons {
   unlink = 'link_off',
   refresh = 'sync',
 }
+
+export enum LegendFollowUpIcons {
+  NOT_SYMPTOMATIC = 'sentiment_satisfied_alt',
+  SYMPTOMATIC = 'sick',
+  UNAVAILABLE = 'block',
+  UNCOOPERATIVE = 'highlight_off',
+  NOT_PERFORMED = 'remove',
+}

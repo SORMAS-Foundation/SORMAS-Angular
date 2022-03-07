@@ -16,7 +16,7 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.User.active',
     dataKey: 'active',
     isSortable: true,
-    iconify: true,
+    iconify: 'IconsMap',
     align: 'center',
     className: 'user-status',
     format: {
