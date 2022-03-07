@@ -9,7 +9,7 @@
     <app-action-menu [config]="viewOptions" (action)="onActionSelected($event)"></app-action-menu>
   </app-dropdown-menu>
   <app-dropdown-menu
-    *ngIf="bulkEditOptions"
+    *ngIf="bulkEditOptions?.length"
     [buttonText]="'captions.bulkActions' | translate"
     [disabled]="selection.isEmpty()"
   >
@@ -20,6 +20,7 @@
   </app-dropdown-menu>
 
   <ng-content select=".page-actions"></ng-content>
+  <ng-content select=".table-filters"></ng-content>
 </div>
 
 <div *ngIf="showTotal && fetchStatus !== fetchStatusType.ERROR" class="list-info">
@@ -158,11 +159,11 @@
         <th
           mat-footer-cell
           *matFooterCellDef
-          [attr.colspan]="tableColumns.length"
-          class="table-footer-legend"
+          [attr.colspan]="displayedColumns.length"
+          class="footer-legend"
         >
-          <div class="table-legend">
-            <ng-content select=".legend"></ng-content>
+          <div class="legend">
+            <ng-content select=".table-legend"></ng-content>
           </div>
         </th>
       </ng-container>

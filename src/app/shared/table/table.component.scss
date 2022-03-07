@@ -3,11 +3,16 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   padding: 24px;
 
   & > * {
     margin-right: 16px;
   }
+}
+
+.table-filters {
+  margin-left: auto;
 }
 
 table {
@@ -70,11 +75,11 @@ th.additional-header {
   }
 }
 
-.table-footer-legend {
+.footer-legend {
   text-align: left;
 }
 
-.table-legend {
+.legend {
   width: fit-content;
   position: sticky;
   left: 0;

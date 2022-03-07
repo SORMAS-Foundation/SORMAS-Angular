@@ -34,7 +34,7 @@ export const defaultColumnCasesDefs: TableColumn[] = [
     name: 'captions.CaseData.investigationStatus',
     dataKey: 'investigationStatus',
     isSortable: true,
-    iconify: true,
+    iconify: 'IconsMap',
   },
   {
     name: 'captions.CaseData.outcome',

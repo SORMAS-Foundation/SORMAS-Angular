@@ -58,7 +58,7 @@ export interface TableColumn {
   dataKey: string;
   alternateData?: string;
   isSortable?: boolean;
-  iconify?: boolean;
+  iconify?: string;
   align?: string;
   className?: string;
   format?: TableDataFormat;

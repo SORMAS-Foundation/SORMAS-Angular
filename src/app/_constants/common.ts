@@ -136,6 +136,8 @@ export const DATE_TYPE_OPTIONS = {
 export const DEFAULT_FETCH_METHOD = 'getAllAsOptions';
 
 export const DASHBOARD_CONTACTS_DISEASE_LIMIT = 5;
+export const PERIOD_PICKER_DEFAULT_RANGE = 14;
+export const PERIOD_PICKER_MAX_RANGE = 90;
 
 export type PickPersonType = 'SELECT' | 'SEARCH_AND_SELECT' | 'CREATE_NEW';
 export const PICK_PERSON_OPTIONS = {

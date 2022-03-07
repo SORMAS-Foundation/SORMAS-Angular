@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
-.icon-data {
+.icon-data:not([class*='icon-status-']) {
   width: 14px;
   height: 14px;
   margin: -8px 8px 0 0;
@@ -47,6 +47,23 @@ a.mat-button {
 .no-data {
   font-weight: 500;
   color: mat.get-color-from-palette($sormas-alert, 300);
+}
+
+.icon-status-NOT_SYMPTOMATIC {
+  color: mat.get-color-from-palette($sormas-success, 600);
+}
+
+.icon-status-SYMPTOMATIC {
+  color: mat.get-color-from-palette($sormas-alert, 300);
+}
+
+.icon-status-UNAVAILABLE,
+.icon-status-NOT_PERFORMED {
+  color: mat.get-color-from-palette($sormas-accent, 800);
+}
+
+.icon-status-UNCOOPERATIVE {
+  color: mat.get-color-from-palette($sormas-alert, 700);
 }
 
 @media (prefers-reduced-motion) {

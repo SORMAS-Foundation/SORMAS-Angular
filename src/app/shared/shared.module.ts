@@ -58,6 +58,7 @@ import { ImmunizationRecoveryComponent } from './widgets/immunization-recovery/i
 import { SearchCaseModalComponent } from './modals/search-case-modal/search-case-modal.component';
 import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.component';
 import { LegendComponent } from './legend/legend.component';
+import { PeriodPickerComponent } from './period-picker/period-picker.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { LegendComponent } from './legend/legend.component';
     SearchCaseModalComponent,
     AddCaseLabelComponent,
     LegendComponent,
+    PeriodPickerComponent,
   ],
   imports: [
     CommonModule,
@@ -156,6 +158,7 @@ import { LegendComponent } from './legend/legend.component';
     TableStaticComponent,
     ToggleViewComponent,
     LegendComponent,
+    PeriodPickerComponent,
   ],
 })
 export class SharedModule {}
