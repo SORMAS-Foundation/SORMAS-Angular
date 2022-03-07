@@ -1,14 +1,12 @@
 <div class="not-found-container">
     <div class="not-found-code">404</div>
-    <div class="message-info message-info-line message-info__first-line">
-        {{ 'captions.NotFound.ops' | translate }}
-    </div>
-    <div class="message-info message-info-line"> {{ 'captions.NotFound.wentWrong' | translate }}</div>
-    <div class="message-details"> {{ 'captions.NotFound.notPandemic' | translate }}</div>
-    <div class="message-info message-info-line back-to-button"> {{ 'captions.NotFound.backTo' | translate }}</div>
-    <button mat-flat-button color="primary" [routerLink]="['/']">>
-        {{ 'captions.mainMenuDashboard' | translate }}
+    <div class="message-info message-info-line message-info__first-line"> {{ 'NotFound.ops' | translate }}</div>
+    <div class="message-info message-info-line"> {{ 'NotFound.wentWrong' | translate }}</div>
+    <div class="message-details"> {{ 'NotFound.notPandemic' | translate }}</div>
+    <div class="message-info message-info-line back-to-button"> {{ 'NotFound.backTo' | translate }}</div>
+    <button mat-flat-button color="primary" (click)="navigateToDashboard()">
+        {{ 'mainMenuDashboard' | translate }}
     </button>
-    <div class="need-help"> {{ 'captions.NotFound.needHelp' | translate }}</div>
-    <a [routerLink]="['/about']">{{ 'captions.NotFound.contactUs' | translate }}</a>
+    <div class="need-help"> {{ 'NotFound.needHelp' | translate }}</div>
+    <a routerLink="/about">{{ 'NotFound.contactUs' | translate }}</a>
 </div>
