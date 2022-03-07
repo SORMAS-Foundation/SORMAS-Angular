@@ -1,14 +1,17 @@
-<div class="not-found-container">
-    <div class="not-found-code">404</div>
-    <div class="message-info message-info-line message-info__first-line">
-        {{ 'NotFound.ops' | translate }}
+<div class="not-found-wrapper"
+    [ngStyle]="{'background-image': 'url(' + helperService.getImagePath('background-about.png') + ')'}">
+    <div class="not-found-container">
+        <div class="not-found-code">404</div>
+        <div class="message-info message-info-line message-info__first-line">
+            {{ 'NotFound.ops' | translate }}
+        </div>
+        <div class="message-info message-info-line"> {{ 'NotFound.wentWrong' | translate }}</div>
+        <div class="message-details"> {{ 'NotFound.notPandemic' | translate }}</div>
+        <div class="message-info message-info-line back-to-button"> {{ 'NotFound.backTo' | translate }}</div>
+        <button mat-flat-button color="primary" [routerLink]="['/']">
+            {{ 'captions.mainMenuDashboard' | translate }}
+        </button>
+        <div class="need-help"> {{ 'NotFound.needHelp' | translate }}</div>
+        <a [routerLink]="['/about']">{{ 'NotFound.contactUs' | translate }}</a>
     </div>
-    <div class="message-info message-info-line"> {{ 'NotFound.wentWrong' | translate }}</div>
-    <div class="message-details"> {{ 'NotFound.notPandemic' | translate }}</div>
-    <div class="message-info message-info-line back-to-button"> {{ 'NotFound.backTo' | translate }}</div>
-    <button mat-flat-button color="primary" [routerLink]="['/']">
-        {{ 'captions.mainMenuDashboard' | translate }}
-    </button>
-    <div class="need-help"> {{ 'NotFound.needHelp' | translate }}</div>
-    <a [routerLink]="['/about']">{{ 'NotFound.contactUs' | translate }}</a>
 </div>
