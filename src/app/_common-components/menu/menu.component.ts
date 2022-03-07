@@ -3,7 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
-// import logoPath from '../../../assets/img/sormas-logo.svg';
+import { HelperService } from '../../_services/helper.service';
 
 export interface RouteItem {
   link: string;
@@ -67,7 +67,11 @@ export class MenuComponent implements OnDestroy {
 
   private subscription: Subscription[] = [];
 
-  constructor(public translateService: TranslateService, public router: Router) {
+  constructor(
+    public translateService: TranslateService,
+    public router: Router,
+    public helperService: HelperService
+  ) {
     translateService.setDefaultLang('en');
     translateService.use('en');
 

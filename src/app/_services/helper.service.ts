@@ -18,6 +18,7 @@ import { BRIEF_DATE_FORMAT, EntityLink } from '../_constants/common';
 })
 export class HelperService {
   private apiUrl: string;
+  private domainSubfolder: string;
 
   setApiUrl(apiUrl: string): void {
     this.apiUrl = apiUrl;
@@ -25,6 +26,17 @@ export class HelperService {
 
   getApiUrl(): string {
     return this.apiUrl;
+  }
+
+  setDomainFolder(domainFolder: string): void {
+    this.domainSubfolder = domainFolder;
+  }
+
+  getImagePath(imageName: string): string {
+    if (this.domainSubfolder) {
+      return `${this.domainSubfolder}assets/img/${imageName}`;
+    }
+    return `/assets/img/${imageName}`;
   }
 
   getRange(start: number, end: number, step = 1): number[] {
