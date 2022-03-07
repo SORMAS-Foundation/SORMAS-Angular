@@ -3,10 +3,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { addDays, format } from 'date-fns';
+import { filter } from 'rxjs/operators';
 import { CaseService } from '../../_services/api/case.service';
-import { NavItem, TableColumn } from '../../_models/common';
-import { defaultColumnDefs } from './case-list-table-data';
-import { defaultColumnDetailedDefs } from './case-list-detailed-table-data';
+import { Filter, NavItem, TableColumn, TableDataFormatOptions } from '../../_models/common';
+import * as tableDataDefault from './case-list-table-data';
+import * as tableDataDetailed from './case-list-detailed-table-data';
+import * as tableDataFollowUp from './case-list-follow-up-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { CONFIG_CASES } from '../../_constants/storage';
 import {
@@ -16,6 +19,7 @@ import {
   CASE_IMPORT_MODAL_WIDTH,
   CASE_FILTERS_FORM_ID,
   ACTIONS_VIEW_OPTIONS,
+  PERIOD_PICKER_DEFAULT_RANGE,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -31,6 +35,8 @@ import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { CaseAddComponent } from '../../shared/case-add/case-add.component';
 import { FORM_DATA_CASE_FILTERS } from '../case-filters/case-filters-form-data';
 import { LocalStorageService } from '../../_services/local-storage.service';
+import { CaseFollowUpService } from '../../_services/api/case-follow-up.service';
+import { FilterService } from '../../_services/filter.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -41,6 +47,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_CASE_FILTERS));
   cases: CaseDataDto[] = [];
   defaultColumns: TableColumn[] = [];
+  legend: any[] | undefined;
   configKey = CONFIG_CASES;
   headerHeight = HEADER_HEIGHT;
   actionsMore: NavItem[] = actionsMoreDefs;
@@ -49,26 +56,41 @@ export class CasesListComponent implements OnInit, OnDestroy {
   routeParams: Params;
   formIdFilters = CASE_FILTERS_FORM_ID;
   tableView = ACTIONS_VIEW_OPTIONS.DEFAULT;
-  detailedTableView = ACTIONS_VIEW_OPTIONS.DETAILED;
+  views = ACTIONS_VIEW_OPTIONS;
   showTable = true;
+  $service: any;
+  presetFilters: Filter[] = [];
+  to: Date = new Date();
+  from: Date = addDays(new Date(), -PERIOD_PICKER_DEFAULT_RANGE + 1);
 
-  private subscription: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
 
   constructor(
-    public caseService: CaseService,
+    private caseService: CaseService,
+    private caseFollowUpService: CaseFollowUpService,
     public helperService: HelperService,
     private activeRoute: ActivatedRoute,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {
-    this.defaultColumns = defaultColumnDefs;
-    this.subscription.push(
+    this.$service = this.caseService;
+    this.defaultColumns = tableDataDefault.defaultColumnDefs;
+    this.legend = tableDataDefault.legendDefs;
+    this.subscriptions.push(
       this.activeRoute.queryParams.subscribe((params: any) => {
         this.routeParams = params;
+        this.presetFilters = this.helperService.setQueryParamsInFilters(this.routeParams);
       })
+    );
+    this.subscriptions.push(
+      this.filterService
+        .getFilters()
+        .pipe(filter(({ formId }) => formId === this.formIdFilters))
+        .subscribe(({ filters }) => this.updateFollowUpTable(filters))
     );
   }
 
@@ -77,15 +99,21 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.showTable = false;
     this.tableView = event;
     switch (event) {
-      case ACTIONS_VIEW_OPTIONS.DEFAULT:
-        this.defaultColumns = defaultColumnDefs;
-        break;
       case ACTIONS_VIEW_OPTIONS.DETAILED:
-        this.defaultColumns = defaultColumnDetailedDefs;
+        this.$service = this.caseService;
+        this.legend = tableDataDetailed.legendDefs;
+        this.defaultColumns = tableDataDetailed.defaultColumnDefs;
         break;
+      case ACTIONS_VIEW_OPTIONS.FOLLOW_UP:
+        this.$service = this.caseFollowUpService;
+        this.legend = tableDataFollowUp.legendDefs;
+        this.defaultColumns = this.generateFollowUpColumns();
+        break;
+      case ACTIONS_VIEW_OPTIONS.DEFAULT:
       default:
-        // eslint-disable-next-line no-console
-        console.log(event);
+        this.$service = this.caseService;
+        this.legend = tableDataDefault.legendDefs;
+        this.defaultColumns = tableDataDefault.defaultColumnDefs;
     }
     setTimeout(() => {
       this.showTable = true;
@@ -101,7 +129,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       },
     });
 
-    this.subscription.push(
+    this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           // callback
@@ -145,7 +173,33 @@ export class CasesListComponent implements OnInit, OnDestroy {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
+
+  updateFollowUpTable(filters?: Filter[]): void {
+    this.defaultColumns = this.generateFollowUpColumns(filters);
+  }
+
+  generateFollowUpColumns(filters?: Filter[]): TableColumn[] {
+    const base = tableDataFollowUp.defaultColumnDefs;
+    const result = [...base];
+    const from = filters?.[0] ? filters[0].value : this.from;
+    const interval = filters?.[1] ? filters[1].value : PERIOD_PICKER_DEFAULT_RANGE;
+    for (let i = 0; i < interval; i += 1) {
+      result.push({
+        name: format(addDays(from, i), 'd/M/yyyy'),
+        dataKey: `visitResults[${i}].status`,
+        isSortable: true,
+        iconify: 'LegendFollowUpIcons',
+        format: {
+          type: TableDataFormatOptions.DISPLAY,
+          pattern: ' ',
+          params: [],
+        },
+      });
+    }
+    return result;
+  }
+
   ngOnDestroy(): void {
-    this.subscription.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions.forEach((subscriptions) => subscriptions.unsubscribe());
   }
 }

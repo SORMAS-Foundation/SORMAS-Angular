@@ -44,7 +44,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'eventInvestigationStatus',
     translationName: 'InvestigationStatus',
     isSortable: true,
-    iconify: true,
+    iconify: 'IconsMap',
   },
   {
     name: 'captions.Event.eventManagementStatus',

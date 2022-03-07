@@ -10,11 +10,16 @@
   max-height: 208px;
 }
 
+.mat-form-field-appearance-fill.mat-form-field {
+  margin: 0;
+}
+
 .icon-search {
   width: 16px;
   height: 12px;
   color: map-get($sormas-accent, 300);
   font-size: 12px;
+  line-height: 12px;
 }
 
 .icon-clear {

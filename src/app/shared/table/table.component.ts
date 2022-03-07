@@ -14,7 +14,7 @@ import { Sort } from '@angular/material/sort';
 
 import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
 import { Subject, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, filter } from 'rxjs/operators';
 
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TranslateService } from '@ngx-translate/core';
@@ -74,7 +74,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() isViewable = false;
   @Input() viewableIcon = 'wysiwyg';
   @Input() isHeaderSticky = false;
-  @Input() tableColumns: TableColumn[] = [];
   @Input() resourceService: BaseService<any>;
   @Input() saveConfigKey: string | undefined;
   @Input() fullHeight: boolean;
@@ -86,6 +85,16 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() showTotal = false;
   @Input() showTotalContext = 'Items';
   @Input() filterFormId: string;
+  @Input() showLegend = false;
+
+  _tableColumns: TableColumn[] = [];
+  @Input() set tableColumns(value) {
+    this._tableColumns = value;
+    this.setColumns();
+  }
+  get tableColumns(): TableColumn[] {
+    return this._tableColumns;
+  }
 
   preSetFiltersTmp: Filter[];
   @Input() set preSetFilters(value) {
@@ -121,33 +130,40 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       this.selection = new SelectionModel<any>(false, []);
     }
 
-    this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
-    this.displayedColumns = this.getColumns();
-    this.columnKeys = this.getColumnsKeyByName(this.displayedColumns);
-    this.additionalHeaderDefs = this.getAdditionalHeader();
-    this.additionalHeader = this.additionalHeaderDefs.map((item) => item.name);
+    this.setColumns();
 
+    this.tableHeight = this.fullHeight ? window.innerHeight : this.limit * this.rowHeight;
     this.determineHeight(this.fullHeight);
 
-    this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
-      if (this.preSetFilters) {
-        this.filters = this.preSetFilters;
-      }
-      this.offset = value;
-      this.getResources(!value);
-    });
+    this.subscriptions.push(
+      this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
+        if (this.preSetFilters) {
+          this.filters = this.preSetFilters;
+        }
+        this.offset = value;
+        this.getResources(!value);
+      })
+    );
 
     this.subscriptions.push(
-      this.filterService.getFilters().subscribe((response: any) => {
-        if (response.formId === this.filterFormId) {
+      this.filterService
+        .getFilters()
+        .pipe(filter(({ formId }) => formId === this.filterFormId))
+        .subscribe((response: any) => {
           this.filters = response.filters;
           if (this.preSetFilters) {
             this.filters = this.filters.concat(this.preSetFilters);
           }
           this.getResources(true);
-        }
-      })
+        })
     );
+  }
+
+  setColumns(): void {
+    this.displayedColumns = this.getColumns();
+    this.columnKeys = this.getColumnsKeyByName(this.displayedColumns);
+    this.additionalHeaderDefs = this.getAdditionalHeader();
+    this.additionalHeader = this.additionalHeaderDefs.map((item) => item.name);
   }
 
   getSelectedItems(): any[] {
@@ -423,6 +439,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       case ACTIONS_VIEW_OPTIONS.DETAILED:
         this.viewOptionEvent.emit(ACTIONS_VIEW_OPTIONS.DETAILED);
+        break;
+      case ACTIONS_VIEW_OPTIONS.FOLLOW_UP:
+        this.viewOptionEvent.emit(ACTIONS_VIEW_OPTIONS.FOLLOW_UP);
         break;
       default:
         // eslint-disable-next-line no-console

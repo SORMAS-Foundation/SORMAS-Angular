@@ -34,7 +34,7 @@ export const defaultColumnContactsDefs: TableColumn[] = [
     name: 'captions.Contact.contactClassification',
     dataKey: 'contactClassification',
     isSortable: true,
-    iconify: true,
+    iconify: 'IconsMap',
   },
   {
     name: 'captions.Contact.contactCategory',

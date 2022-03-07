@@ -668,6 +668,122 @@ app.use('/sormas-rest/weeklyReports/indexList', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/cases/followUp', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        changeDate: 1644480071438,
+        personFirstName: 'Jessie',
+        personLastName: 'James',
+        follupUpUntil: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'COOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'COOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'UNAVAILABLE',
+          },
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+        ],
+      },
+      {
+        uuid: 'GHG87N-DFGSFA-WE457GVB',
+        changeDate: 1644480071438,
+        personFirstName: 'Doc',
+        personLastName: 'Scurlock',
+        follupUpUntil: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+        ],
+      },
+      {
+        uuid: 'RTGJSV-D567K9-MGNBVD',
+        changeDate: 1644480071438,
+        personFirstName: 'William H',
+        personLastName: 'Bonney',
+        follupUpUntil: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'UNAVAILABLE',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+        ],
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  });
+});
+
 app.use('/sormas-rest/shareRequests/indexList', (req, res) => {
   res.status(200).send({
     elements: [

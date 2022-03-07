@@ -1,0 +1,25 @@
+.filters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  .mat-form-field {
+    margin: 0;
+  }
+}
+
+.prev {
+  margin-right: -16px;
+
+  .mat-icon {
+    transform: rotate(90deg);
+  }
+}
+
+.next {
+  margin-left: -16px;
+
+  .mat-icon {
+    transform: rotate(-90deg);
+  }
+}

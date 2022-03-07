@@ -1,0 +1,41 @@
+<form class="filters" [formGroup]="form">
+  <button mat-icon-button color="primary" (click)="movePeriod()" class="prev">
+    <mat-icon class="material-icons-round">arrow_circle_down</mat-icon>
+  </button>
+
+  <mat-form-field
+    appearance="outline"
+    floatLabel="always"
+    [ngClass]="{
+      'datepicker-opened': pickerFrom.opened,
+      'datepicker-closed': !pickerFrom.opened
+    }"
+  >
+    <input matInput readonly [matDatepicker]="pickerFrom" formControlName="from" />
+    <mat-hint>{{ 'captions.from' | translate }}</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="pickerFrom">
+      <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #pickerFrom></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="outline"
+    floatLabel="always"
+    [ngClass]="{
+      'datepicker-opened': pickerTo.opened,
+      'datepicker-closed': !pickerTo.opened
+    }"
+  >
+    <input matInput readonly [matDatepicker]="pickerTo" formControlName="to" />
+    <mat-hint>{{ 'captions.from' | translate }}</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="pickerTo">
+      <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #pickerTo></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-icon-button color="primary" (click)="movePeriod(true)" class="next">
+    <mat-icon class="material-icons-round">arrow_circle_down</mat-icon>
+  </button>
+</form>

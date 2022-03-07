@@ -23,6 +23,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasShareRequest.dataType',
     dataKey: 'dataType',
+    translationName: 'ShareRequestDataType',
     isSortable: true,
   },
   {
@@ -48,6 +49,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasShareRequest.status',
     dataKey: 'status',
+    translationName: 'ShareRequestStatus',
     isSortable: true,
   },
   {
