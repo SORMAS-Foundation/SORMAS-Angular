@@ -11,7 +11,8 @@ cat <<EOT >> $configurationPath
   "keycloakRealm": "$KEYCLOAK_REALM",
   "keycloakClientId": "$KEYCLOAK_CLIENT_ID",
   "keycloakUrl": "$KEYCLOAK_URL",
-  "apiUrl": "$SORMAS_REST_API_URL"
+  "apiUrl": "$SORMAS_REST_API_URL",
+  "domainSubfolder": "'/sormas-angular/'"
 }
 EOT
 
