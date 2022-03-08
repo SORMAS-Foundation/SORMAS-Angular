@@ -7,5 +7,5 @@ import { HelperService } from 'src/app/_services/helper.service';
   styleUrls: ['./not-found.component.scss'],
 })
 export class NotFoundComponent {
-  constructor(public helperService: HelperService) { }
+  constructor(public helperService: HelperService) {}
 }
