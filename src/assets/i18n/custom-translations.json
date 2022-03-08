@@ -164,5 +164,11 @@
   "perCase": "Per case",
   "headingContactsInQuarantineShort": "in quarantine",
   "headingContactsPlacedInQuarantineShort": "placed in quarantine",
-  "secondsShort": "s"
+  "secondsShort": "s",
+  "NotFound.ops": "Ooops!",
+  "NotFound.wentWrong": "Something went wrong",
+  "NotFound.notPandemic": "It is not a pandemic",
+  "NotFound.backTo": "Back to",
+  "NotFound.needHelp": "need help?",
+  "NotFound.contactUs": "Contact Us"
 }

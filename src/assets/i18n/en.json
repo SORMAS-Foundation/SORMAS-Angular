@@ -4026,6 +4026,7 @@
     "UserRight.TRAVEL_ENTRY_ARCHIVE": "Archive travel entries",
     "UserRight.EXPORT_DATA_PROTECTION_DATA": "Export data protection data",
     "UserRight.OUTBREAK_VIEW": "View outbreaks",
+    "UserRight.OUTBREAK_EDIT": "Edit outbreaks",
     "UserRightGroup.CASE_INVESTIGATION": "Case Investigation",
     "UserRightGroup.CONTACT_TRACING": "Contact Tracing",
     "UserRightGroup.EVENT_MANAGEMENT": "Event Management",
@@ -6107,5 +6108,11 @@
   "perCase": "Per case",
   "headingContactsInQuarantineShort": "in quarantine",
   "headingContactsPlacedInQuarantineShort": "placed in quarantine",
-  "secondsShort": "s"
+  "secondsShort": "s",
+  "NotFound.ops": "Ooops!",
+  "NotFound.wentWrong": "Something went wrong",
+  "NotFound.notPandemic": "It is not a pandemic",
+  "NotFound.backTo": "Back to",
+  "NotFound.needHelp": "need help?",
+  "NotFound.contactUs": "Contact Us"
 }
