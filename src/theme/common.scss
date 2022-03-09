@@ -295,6 +295,18 @@ strong {
   .task-priority-LOW {
     color: mat.get-color-from-palette($sormas-accent, 500);
   }
+
+  .lab-message-status-UNPROCESSED {
+    display: none;
+  }
+
+  .lab-message-status-FORWARDED {
+    color: mat.get-color-from-palette($sormas-success, 700);
+  }
+
+  .lab-message-status-UNCLEAR {
+    color: mat.get-color-from-palette($sormas-alert, 400);
+  }
 }
 
 :root tr.mat-row {

@@ -4,15 +4,21 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 
 import * as constants from '../../app.constants';
-import { SampleDto } from '../../_models/sampleDto';
 import { HelperService } from '../helper.service';
-import { SampleSerializer } from '../../_serializers/sample.serializer';
+import { LabMessageDto } from '../../_models/labMessageDto';
+import { LabMessageSerializer } from '../../_serializers/lab-message.serializer';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SampleService extends BaseService<SampleDto> {
+export class LabMessageService extends BaseService<LabMessageDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(httpClient, helperService, '', constants.API_ROUTE_SAMPLES, new SampleSerializer());
+    super(
+      httpClient,
+      helperService,
+      '',
+      constants.API_ROUTE_LAB_MESSAGES,
+      new LabMessageSerializer()
+    );
   }
 }

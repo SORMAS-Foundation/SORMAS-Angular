@@ -6,3 +6,12 @@
     width: 93px;
   }
 }
+
+:host-context(.filters) .datetime-picker {
+  display: block;
+
+  .time {
+    width: unset;
+    margin-top: -24px;
+  }
+}

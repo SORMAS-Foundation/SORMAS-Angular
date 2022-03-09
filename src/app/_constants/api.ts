@@ -346,3 +346,11 @@ export const API_ROUTE_SHARE_REQUESTS = {
   ADD: 'shareRequests/push',
   DELETE: 'shareRequests/delete',
 };
+
+export const API_ROUTE_LAB_MESSAGES = {
+  ENDPOINT: 'labMessage',
+  GET_ALL: 'labMessage/indexList',
+  UPDATE: 'labMessage/push',
+  ADD: 'labMessage/push',
+  DELETE: 'labMessage/delete',
+};

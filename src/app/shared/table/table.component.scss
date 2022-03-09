@@ -25,6 +25,7 @@ table {
   .column-edit,
   .column-view,
   .column-select {
+    width: 24px;
     border-left: 0;
 
     &:not(:first-child) {
@@ -56,37 +57,6 @@ th.additional-header {
   border-bottom: none;
   color: mat.get-color-from-palette($sormas-primary, 600);
   text-transform: uppercase;
-}
-
-.button-action {
-  padding: 0;
-  line-height: unset;
-
-  .mat-icon {
-    font-size: 18px;
-  }
-
-  & + & {
-    margin-left: 16px;
-  }
-
-  &.button-accept {
-    color: mat.get-color-from-palette($sormas-primary, 700);
-
-    &:hover,
-    &:focus {
-      color: mat.get-color-from-palette($sormas-primary, 800);
-    }
-  }
-
-  &.button-reject {
-    color: mat.get-color-from-palette($sormas-alert, 400);
-
-    &:hover,
-    &:focus {
-      color: mat.get-color-from-palette($sormas-alert, 700);
-    }
-  }
 }
 
 .footer-legend {
@@ -134,6 +104,6 @@ th.additional-header {
   overflow: hidden;
 }
 
-.cell-actions {
-  white-space: nowrap;
+.lab-message-assignee > app-table-data {
+  display: none;
 }

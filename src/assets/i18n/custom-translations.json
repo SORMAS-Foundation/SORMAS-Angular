@@ -170,5 +170,6 @@
   "NotFound.notPandemic": "It is not a pandemic",
   "NotFound.backTo": "Back to",
   "NotFound.needHelp": "need help?",
-  "NotFound.contactUs": "Contact Us"
+  "NotFound.contactUs": "Contact Us",
+  "headingLabMessages": "Lab messages"
 }

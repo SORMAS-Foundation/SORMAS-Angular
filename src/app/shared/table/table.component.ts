@@ -462,8 +462,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.viewItem.emit(this.dataSourceArray[index]);
   }
 
-  doRowAction(index: number, $event: string): void {
-    this.rowAction.emit([this.dataSourceArray[index], $event]);
+  doRowAction($event: any): void {
+    this.rowAction.emit($event);
   }
 
   updateTableColumns(columns: string[]): void {

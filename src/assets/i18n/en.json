@@ -5008,6 +5008,7 @@
     "infoActivityAsCaseInvestigation": "<i>Please document ALL relevant activities after infection:</i>",
     "infoAddTestsToSample": "To add a test result to this sample, it has to be marked as received first.",
     "infoArchivedCases": "Cases are automatically archived after %d days without changes to the data.",
+    "infoArchivedContacts": "Contacts are automatically archived after %d days without changes to the data.",
     "infoArchivedEvents": "Events are automatically archived after %d days without changes to the data.",
     "infoArchivedEventParticipants": "Event participants are automatically archived after %d days without changes to the data.",
     "infoArchivedTravelEntries": "Travel entries are automatically archived after %d days without changes to the data.",
@@ -6114,5 +6115,6 @@
   "NotFound.notPandemic": "It is not a pandemic",
   "NotFound.backTo": "Back to",
   "NotFound.needHelp": "need help?",
-  "NotFound.contactUs": "Contact Us"
+  "NotFound.contactUs": "Contact Us",
+  "headingLabMessages": "Lab messages"
 }
