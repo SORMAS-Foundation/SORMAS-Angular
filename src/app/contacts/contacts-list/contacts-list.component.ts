@@ -2,17 +2,19 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { addDays, format } from 'date-fns';
+import { filter } from 'rxjs/operators';
 import { ContactService } from '../../_services/api/contact.service';
-import {Filter, NavItem, TableColumn, TableDataFormatOptions} from '../../_models/common';
+import { Filter, NavItem, TableColumn, TableDataFormatOptions } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
-import { defaultColumnDefs } from './contacts-list-table-data';
 import {
   ACTIONS_VIEW_OPTIONS,
   ADD_MODAL_MAX_WIDTH,
   CONFIG_EVENTS,
   CONTACT_FILTERS_FORM_ID,
-  HEADER_HEIGHT, PERIOD_PICKER_DEFAULT_RANGE,
+  HEADER_HEIGHT,
+  PERIOD_PICKER_DEFAULT_RANGE,
 } from '../../app.constants';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -21,13 +23,11 @@ import { FORM_DATA_CONTACT_FILTERS } from '../../shared/contact-filters/contact-
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { actionsViewOptionsDefs } from './contact-list-actions-data';
 import { LocalStorageService } from '../../_services/local-storage.service';
-import {addDays, format} from 'date-fns';
-import {ContactFollowUpService} from '../../_services/api/contact-follow-up.service';
-import {FilterService} from '../../_services/filter.service';
+import { ContactFollowUpService } from '../../_services/api/contact-follow-up.service';
+import { FilterService } from '../../_services/filter.service';
 import * as tableDataDefault from './contacts-list-table-data';
 import * as tableDataDetailed from './contacts-list-detailed-table-data';
 import * as tableDataFollowUp from './contacts-list-follow-up-table-data';
-import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-contacts-list',
