@@ -14,6 +14,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasShareRequest.creationDate',
     dataKey: 'creationDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -39,6 +40,8 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasShareRequest.ownershipHandedOver',
     dataKey: 'ownershipHandedOver',
+    translationName: 'BooleanOption',
+    align: 'center',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DISPLAY,

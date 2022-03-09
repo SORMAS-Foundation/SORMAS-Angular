@@ -25,6 +25,7 @@ export const CONTACT_FILTERS_FORM_ID = 'contactFilters';
 
 export const EVENT_DETAILS_FORM_ID = 'event';
 export const EVENT_PARTICIPANTS_PROFILE_FORM_ID = 'event';
+export const EVENT_PARTICIPANTS_FILTERS_FORM_ID = 'eventParticipantsFilters';
 export const EVENT_FILTERS_FORM_ID = 'eventFilters';
 export const EVENT_GROUP_FILTERS_FORM_ID = 'eventGroupFilters';
 export const EVENT_GROUPS_FORM_ID = 'eventGroups';

@@ -19,11 +19,13 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.District.population',
     dataKey: 'population',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.District.growthRate',
     dataKey: 'growthRate',
+    align: 'right',
     isSortable: true,
   },
 ];

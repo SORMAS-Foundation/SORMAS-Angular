@@ -5,6 +5,8 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.User.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/users/user/$param1',
@@ -28,6 +30,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.User.userRoles',
     dataKey: 'userRoles',
+    translationName: 'UserRole',
     isSortable: true,
   },
   {
@@ -56,7 +59,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'captions.district',
+    name: 'captions.districtName',
     dataKey: 'district.caption',
     isSortable: true,
   },

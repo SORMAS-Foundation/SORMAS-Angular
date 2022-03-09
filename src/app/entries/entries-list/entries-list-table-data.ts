@@ -1,3 +1,4 @@
+import { COMMON_DATE_FORMAT } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -5,6 +6,8 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.TravelEntry.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/entries/entry/$param1/travel-entry',
@@ -41,20 +44,46 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.TravelEntry.recovered',
     dataKey: 'recovered',
     isSortable: true,
+    iconify: 'IconsMap',
+    align: 'center',
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: ' ',
+      params: [],
+    },
   },
   {
     name: 'captions.TravelEntry.vaccinated',
     dataKey: 'vaccinated',
     isSortable: true,
+    iconify: 'IconsMap',
+    align: 'center',
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: ' ',
+      params: [],
+    },
   },
   {
     name: 'captions.TravelEntry.testedNegative',
     dataKey: 'testedNegative',
     isSortable: true,
+    iconify: 'IconsMap',
+    align: 'center',
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: ' ',
+      params: [],
+    },
   },
   {
     name: 'captions.TravelEntry.quarantineTo',
     dataKey: 'quarantineEnd',
+    align: 'right',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: COMMON_DATE_FORMAT,
+    },
   },
 ];
