@@ -1,6 +1,6 @@
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
-export const defaultColumnDetailedDefs: TableColumn[] = [
+export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Contact.uuid',
     dataKey: 'uuid',
@@ -193,3 +193,5 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     isSortable: true,
   },
 ];
+
+export const legendDefs = undefined;

@@ -72,3 +72,5 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
 ];
+
+export const legendDefs = undefined;
