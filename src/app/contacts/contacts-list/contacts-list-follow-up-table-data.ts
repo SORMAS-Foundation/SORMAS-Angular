@@ -25,6 +25,20 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
+    name: 'captions.Contact.contactOfficer',
+    dataKey: 'resposibleContactOfficer',
+    isSortable: true,
+  },
+  {
+    name: 'captions.Contact.lastContactDate',
+    dataKey: 'dateLastContact',
+    isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: 'M/d/yyyy',
+    },
+  },
+  {
     name: 'captions.FollowUp.reportDate',
     dataKey: 'reportDate',
     isSortable: true,

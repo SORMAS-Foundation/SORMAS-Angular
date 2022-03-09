@@ -677,8 +677,10 @@ app.use('/sormas-rest/contacts/followUp', (req, res) => {
         personFirstName: 'Jessie',
         personLastName: 'James',
         follupUpUntil: 1644480071438,
+        dateLastContact: 1644480071438,
         symptomJournalStatus: 'UNREGISTERED',
         disease: 'CORONAVIRUS',
+        resposibleContactOfficer: 'James2',
         visitResults: [
           {
             user: 'admin',
@@ -712,8 +714,10 @@ app.use('/sormas-rest/contacts/followUp', (req, res) => {
         personFirstName: 'Doc',
         personLastName: 'Scurlock',
         follupUpUntil: 1644480071438,
+        dateLastContact: 1644480071438,
         symptomJournalStatus: 'UNREGISTERED',
         disease: 'CORONAVIRUS',
+        resposibleContactOfficer: 'James3',
         visitResults: [
           {
             user: 'admin',
@@ -747,8 +751,10 @@ app.use('/sormas-rest/contacts/followUp', (req, res) => {
         personFirstName: 'William H',
         personLastName: 'Bonney',
         follupUpUntil: 1644480071438,
+        dateLastContact: 1644480071438,
         symptomJournalStatus: 'UNREGISTERED',
         disease: 'CORONAVIRUS',
+        resposibleContactOfficer: 'James4',
         visitResults: [
           {
             user: 'admin',
