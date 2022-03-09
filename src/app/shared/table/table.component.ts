@@ -86,6 +86,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() showTotalContext = 'Items';
   @Input() filterFormId: string;
   @Input() showLegend = false;
+  @Input() spacerRight = true;
 
   _tableColumns: TableColumn[] = [];
   @Input() set tableColumns(value) {
@@ -208,6 +209,14 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   getColumns(): string[] {
     let columns = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
 
+    if (this.saveConfigKey) {
+      const config = this.localStorageService.get(this.saveConfigKey);
+
+      if (config) {
+        columns = this.getColumnsNameByKey(config);
+      }
+    }
+
     if (this.isViewable) {
       columns.unshift('view');
     }
@@ -220,15 +229,11 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       columns.unshift('select');
     }
 
-    if (this.saveConfigKey) {
-      const config = this.localStorageService.get(this.saveConfigKey);
-
-      if (config) {
-        columns = this.getColumnsNameByKey(config);
-      }
+    if (this.spacerRight) {
+      columns.push('$spacerRight$');
     }
 
-    return columns;
+    return [...new Set(columns)];
   }
 
   saveColumns(): void {

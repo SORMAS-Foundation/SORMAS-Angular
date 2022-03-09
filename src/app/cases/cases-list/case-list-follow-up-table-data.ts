@@ -7,6 +7,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'uuid',
     isSortable: true,
     essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/cases/case/$param1/details',

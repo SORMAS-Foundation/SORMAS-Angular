@@ -1,16 +1,29 @@
 @use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
-.icon-data:not([class*='icon-status-']) {
-  width: 14px;
-  height: 14px;
-  margin: -8px 8px 0 0;
+:host {
+  display: block;
+  width: max-content;
+  max-width: 200px;
+}
+
+.icon-data {
   font-size: 14px;
   line-height: inherit;
+
+  &:is([class*='icon-status-']) {
+    font-size: 24px;
+  }
+
+  &.icon-testedNegative-true {
+    font-size: 18px;
+  }
 }
 
 a.mat-button {
   line-height: inherit;
+  padding: 0;
+  min-width: unset;
 }
 
 .row-skeleton {
@@ -64,6 +77,18 @@ a.mat-button {
 
 .icon-status-UNCOOPERATIVE {
   color: mat.get-color-from-palette($sormas-alert, 700);
+}
+
+.icon-recovered-false,
+.icon-vaccinated-false,
+.icon-testedNegative-false {
+  display: none;
+}
+
+.icon-recovered-true,
+.icon-vaccinated-true,
+.icon-testedNegative-true {
+  color: mat.get-color-from-palette($sormas-primary, 400);
 }
 
 @media (prefers-reduced-motion) {

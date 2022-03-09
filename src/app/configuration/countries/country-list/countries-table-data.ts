@@ -20,11 +20,13 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Country.externalId',
     dataKey: 'externalId',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.Country.unoCode',
     dataKey: 'unoCode',
+    align: 'right',
     isSortable: true,
     className: 'configuration-country-code',
   },

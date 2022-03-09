@@ -1,9 +1,14 @@
 <div class="event-participants-wrapper">
   <app-filters [fixed]="false">
-    <app-event-participants-filters filters></app-event-participants-filters>
+    <app-event-participants-filters
+      filters
+      [formId]="formId"
+      [data]="filtersData"
+    ></app-event-participants-filters>
     <ng-container list>
       <div class="table-wrapper">
         <app-table
+          [filterFormId]="formId"
           [resourceService]="eventParticipantService"
           [tableColumns]="defaultColumns"
           [isSortable]="true"

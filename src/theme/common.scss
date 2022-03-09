@@ -283,6 +283,18 @@ strong {
   .positive-fatalities {
     color: mat.get-color-from-palette($sormas-alert, 700);
   }
+
+  .task-priority-HIGH {
+    color: mat.get-color-from-palette($sormas-alert, 300);
+  }
+
+  .task-priority-NORMAL {
+    color: mat.get-color-from-palette($sormas-primary, 400);
+  }
+
+  .task-priority-LOW {
+    color: mat.get-color-from-palette($sormas-accent, 500);
+  }
 }
 
 :root tr.mat-row {

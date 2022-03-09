@@ -21,10 +21,24 @@ table {
   td.bold {
     font-weight: 500;
   }
-}
 
-.mat-cell {
-  height: 48px;
+  .column-edit,
+  .column-view,
+  .column-select {
+    border-left: 0;
+
+    &:not(:first-child) {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
+  th.spacer-right,
+  td.spacer-right {
+    border-left: 0;
+    padding: 0;
+    width: 100%;
+  }
 }
 
 .list-info {
@@ -103,6 +117,12 @@ th.additional-header {
     &:first-of-type {
       padding-left: 24px;
     }
+
+    &.column-edit,
+    &.column-view,
+    &.column-select {
+      background-color: $white;
+    }
   }
 
   tr.mat-row.row-selected td.mat-cell {
@@ -112,4 +132,8 @@ th.additional-header {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.cell-actions {
+  white-space: nowrap;
 }
