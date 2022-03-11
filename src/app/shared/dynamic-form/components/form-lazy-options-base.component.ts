@@ -62,17 +62,23 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
         determinantControl.push(this.group.controls[el.replaceAll('.', '__')]);
       });
     }
+    console.log('determinedBy', determinantControl);
+
     // determinantControl =
     //   this.config.determinedBy &&
     //   this.group.controls[this.config.determinedBy.replaceAll('.', '__')];
-    if (!determinantControl || determinantControl.length === 0) {
-      console.log('asd', determinantControl);
+    if (
+      !determinantControl ||
+      determinantControl.length === 0 ||
+      determinantControl[0] === undefined
+    ) {
       this.fetchOptions();
       return;
     }
-    console.log('determined', this.config.determinedBy, determinantControl);
+    // console.log('determined', this.config.determinedBy, determinantControl);
 
     determinantControl.forEach((el) => {
+      console.log('el', el);
       this.subscriptions.push(
         el.valueChanges.pipe(distinctUntilChanged(), pairwise()).subscribe(([, val]) => {
           this.control?.reset();
@@ -91,7 +97,8 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
 
   fetchOptions(determinantValue?: any): void {
     const filters = this.makeFiltersFromValue(determinantValue);
-    console.log('this.method', this.service, this.method);
+    console.log('filters', filters, determinantValue);
+    // console.log('this.method', this.service[this.method], this.method, filters);
     this.subscriptions.push(
       // eslint-disable-next-line @typescript-eslint/dot-notation
       this.service[this.method](filters).subscribe({

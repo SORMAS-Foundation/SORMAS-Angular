@@ -6107,5 +6107,9 @@
   "perCase": "Per case",
   "headingContactsInQuarantineShort": "in quarantine",
   "headingContactsPlacedInQuarantineShort": "placed in quarantine",
-  "secondsShort": "s"
+  "secondsShort": "s",
+  "Facility.accomodation": "Accomodation",
+  "Facility.care": "Care facility",
+  "Facility.medical": "Medical facility",
+  "Facility.residence": "Residence"
 }
