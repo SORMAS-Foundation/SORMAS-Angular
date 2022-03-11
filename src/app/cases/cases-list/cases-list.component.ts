@@ -187,7 +187,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       result.push({
         name: format(addDays(from, i), 'd/M/yyyy'),
         dataKey: `visitResults[${i}].status`,
-        isSortable: true,
+        align: 'center',
         iconify: 'LegendFollowUpIcons',
         format: {
           type: TableDataFormatOptions.DISPLAY,

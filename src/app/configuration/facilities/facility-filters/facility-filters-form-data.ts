@@ -28,7 +28,7 @@ export const FORM_DATA_FACILITY_FILTERS = [
   },
   {
     id: 'facilityStatus',
-    title: 'captions.facility',
+    title: 'captions.View.configuration.facilities.short',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
@@ -78,7 +78,7 @@ export const FORM_DATA_FACILITY_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        placeholder: 'captions.country',
+        placeholder: 'captions.Country',
         service: 'countryService',
         className: 'size-full',
       },

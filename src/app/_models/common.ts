@@ -65,6 +65,7 @@ export interface TableColumn {
   essential?: boolean;
   translationName?: string;
   actions?: TableDataAction[];
+  sticky?: boolean;
 }
 
 // scrolling

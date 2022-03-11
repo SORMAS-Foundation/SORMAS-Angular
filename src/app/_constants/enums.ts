@@ -899,3 +899,8 @@ export enum ShareRequestStatus {
   REJECTED = 'enum.ShareRequestStatus.REJECTED',
   REVOKED = 'enum.ShareRequestStatus.REVOKED',
 }
+
+export enum BooleanOption {
+  true = 'strings.yes',
+  false = 'strings.no',
+}

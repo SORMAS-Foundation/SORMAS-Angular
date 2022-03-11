@@ -6,6 +6,9 @@ import { CONFIG_CASES } from '../../../_constants/storage';
 import { defaultColumnDefs } from './event-participants-list-table-data';
 import { EventParticipantService } from '../../../_services/api/event-participant.service';
 import { actionsBulkEditDefs } from './event-participants-list-actions-data';
+import { EVENT_PARTICIPANTS_FILTERS_FORM_ID } from '../../../app.constants';
+import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
+import { FORM_DATA_EVENT_PARTICIPANTS_FILTERS } from '../event-participants-filters/event-participants-filters-form-data';
 
 @Component({
   selector: 'app-event-participants',
@@ -17,6 +20,8 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
   configKey = CONFIG_CASES;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   presetFilters: Filter[] = [];
+  formId = EVENT_PARTICIPANTS_FILTERS_FORM_ID;
+  filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_EVENT_PARTICIPANTS_FILTERS));
 
   private subscription: Subscription[] = [];
 

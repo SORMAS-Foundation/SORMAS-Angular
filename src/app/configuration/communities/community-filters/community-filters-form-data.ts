@@ -28,7 +28,7 @@ export const FORM_DATA_COMMUNITY_FILTERS = [
   },
   {
     id: 'relevanceStatus',
-    title: 'strings.entityCountries',
+    title: 'captions.View.configuration.communities.short',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
@@ -47,14 +47,14 @@ export const FORM_DATA_COMMUNITY_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        placeholder: 'captions.country',
+        placeholder: 'captions.Country',
         service: 'countryService',
         className: 'size-full',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        placeholder: 'captions.region',
+        placeholder: 'captions.Region',
         service: 'regionService',
         determinedBy: 'country.uuid',
         className: 'size-full',
@@ -62,7 +62,7 @@ export const FORM_DATA_COMMUNITY_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        placeholder: 'captions.district',
+        placeholder: 'captions.District',
         service: 'districtService',
         determinedBy: 'region.uuid',
         className: 'size-full',
