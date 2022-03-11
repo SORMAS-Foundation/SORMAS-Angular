@@ -144,3 +144,5 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
 ];
+
+export const legendDefs = undefined;
