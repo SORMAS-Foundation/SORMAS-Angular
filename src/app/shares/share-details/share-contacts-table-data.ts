@@ -14,6 +14,7 @@ export const defaultColumnContactsDefs: TableColumn[] = [
   {
     name: 'captions.CaseData.reportDate',
     dataKey: 'reportDateTime',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -23,22 +24,26 @@ export const defaultColumnContactsDefs: TableColumn[] = [
   {
     name: 'captions.Contact.disease',
     dataKey: 'disease',
+    translationName: 'Disease',
     isSortable: true,
   },
   {
     name: 'captions.Contact.contactStatus',
     dataKey: 'contactStatus',
+    translationName: 'ContactStatus',
     isSortable: true,
   },
   {
     name: 'captions.Contact.contactClassification',
     dataKey: 'contactClassification',
+    translationName: 'ContactClassification',
     isSortable: true,
     iconify: 'IconsMap',
   },
   {
     name: 'captions.Contact.contactCategory',
     dataKey: 'contactCategory',
+    translationName: 'ContactCategory',
     isSortable: true,
   },
   {
@@ -54,6 +59,7 @@ export const defaultColumnContactsDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasPerson.birthdDate',
     dataKey: 'person.birthdateDD',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DISPLAY,
@@ -64,6 +70,7 @@ export const defaultColumnContactsDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasPerson.sex',
     dataKey: 'person.sex',
+    translationName: 'Sex',
     isSortable: true,
   },
   {
@@ -99,6 +106,7 @@ export const defaultColumnContactsDefs: TableColumn[] = [
   {
     name: 'captions.Contact.lastContactDate',
     dataKey: 'onsetDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,

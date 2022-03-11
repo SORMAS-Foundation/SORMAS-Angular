@@ -34,16 +34,19 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Facility.latitude',
     dataKey: 'latitude',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.Facility.longitude',
     dataKey: 'longitude',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.Facility.externalID',
     dataKey: 'externalID',
+    align: 'right',
     isSortable: true,
   },
 ];

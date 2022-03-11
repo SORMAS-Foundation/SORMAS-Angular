@@ -32,6 +32,12 @@ export const defaultColumnDefs: TableColumn[] = [
     className: 'visit-remarks',
   },
   {
+    name: 'captions.Visit.disease',
+    dataKey: 'disease',
+    translationName: 'Disease',
+    isSortable: true,
+  },
+  {
     name: 'captions.Symptoms.symptomatic',
     dataKey: 'symptomatic',
     isSortable: true,

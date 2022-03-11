@@ -17,6 +17,7 @@ tr.mat-row td.mat-cell {
   padding-bottom: 8px;
   padding-left: 16px;
   background-color: unset;
+  white-space: nowrap;
 
   &:first-of-type {
     padding-left: 24px;

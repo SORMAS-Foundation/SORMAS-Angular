@@ -3,33 +3,47 @@ import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'captions.FollowUp.uuid',
+    name: 'captions.Contact.uuid',
     dataKey: 'uuid',
     isSortable: true,
     essential: true,
-    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
-      pattern: '/cases/case/$param1/details',
+      pattern: '/contacts/contact/$param1/details',
       params: ['uuid'],
       truncate: 6,
     },
   },
   {
-    name: 'captions.CaseData.personFirstName',
+    name: 'captions.Contact.firstName',
     dataKey: 'personFirstName',
     isSortable: true,
   },
   {
-    name: 'captions.CaseData.personLastName',
+    name: 'captions.Contact.lastName',
     dataKey: 'personLastName',
     isSortable: true,
   },
   {
+    name: 'captions.Contact.contactOfficer',
+    dataKey: 'resposibleContactOfficer',
+    isSortable: true,
+  },
+  {
+    name: 'captions.Contact.lastContactDate',
+    dataKey: 'dateLastContact',
+    isSortable: true,
+    align: 'right',
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: COMMON_DATE_FORMAT,
+    },
+  },
+  {
     name: 'captions.FollowUp.reportDate',
     dataKey: 'reportDate',
-    align: 'right',
     isSortable: true,
+    align: 'right',
     format: {
       type: TableDataFormatOptions.DATE,
       pattern: COMMON_DATE_FORMAT,
@@ -38,15 +52,15 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.FollowUp.followUpUntil',
     dataKey: 'followUpUntil',
-    align: 'right',
     isSortable: true,
+    align: 'right',
     format: {
       type: TableDataFormatOptions.DATE,
       pattern: COMMON_DATE_FORMAT,
     },
   },
   {
-    name: 'captions.CaseData.symptomJournalStatus',
+    name: 'captions.Contact.symptomJournalStatus',
     dataKey: 'symptomJournalStatus',
     translationName: 'SymptomJournalStatus',
     isSortable: true,

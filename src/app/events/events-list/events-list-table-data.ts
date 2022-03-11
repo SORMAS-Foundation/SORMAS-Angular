@@ -1,3 +1,4 @@
+import { COMMON_DATE_FORMAT } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -5,6 +6,8 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.Event.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/events/event/$param1/details',
@@ -20,6 +23,11 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Event.externalToken',
     dataKey: 'externalToken',
+    isSortable: true,
+  },
+  {
+    name: 'captions.Event.internalToken',
+    dataKey: 'internalToken',
     isSortable: true,
   },
   {
@@ -55,19 +63,21 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.EventActionExport.eventDate',
     dataKey: 'startDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: 'DATE',
-      pattern: 'd/M/yyyy',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
   {
     name: 'captions.Event.evolutionDate',
     dataKey: 'evolutionDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: 'DATE',
-      pattern: 'd/M/yyyy',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
   {
@@ -85,6 +95,13 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.Event.eventGroups',
     dataKey: 'eventGroups.eventGroup.uuid',
     isSortable: true,
+    sticky: true,
+    format: {
+      type: TableDataFormatOptions.LINK,
+      pattern: '/events/event-groups/$param1',
+      params: ['eventGroups.eventGroup.uuid'],
+      truncate: 6,
+    },
   },
   {
     name: 'captions.regionName',
@@ -120,10 +137,11 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Event.reportDateTime',
     dataKey: 'reportDateTime',
+    align: 'right',
     isSortable: true,
     format: {
       type: 'DATE',
-      pattern: 'd/M/yyyy h:mm aa',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
   {
@@ -139,26 +157,31 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Event.numberOfPendingTasks',
     dataKey: 'contactCountSourceInEvent',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.Event.participantCount',
     dataKey: 'participantCount',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.Event.caseCount',
     dataKey: 'caseCount',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.Event.deathCount',
     dataKey: 'deathCount',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.Event.contactCount',
     dataKey: 'contactCount',
+    align: 'right',
     isSortable: true,
   },
 ];

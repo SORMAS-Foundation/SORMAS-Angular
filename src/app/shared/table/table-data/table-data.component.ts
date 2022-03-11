@@ -47,8 +47,11 @@ export class TableDataComponent implements OnChanges {
   }
 
   translateData(rawData: string): string {
-    let translatedData: string = rawData || '';
-    if (rawData && this.config.translationName) {
+    if (rawData === undefined || rawData === null) {
+      return rawData;
+    }
+    let translatedData: string = String(rawData);
+    if (this.config.translationName) {
       // @ts-ignore
       translatedData = enums[this.config.translationName][rawData];
       translatedData = this.translateService.instant(translatedData);
@@ -72,7 +75,8 @@ export class TableDataComponent implements OnChanges {
         this.formatDisplay();
         break;
       default: {
-        this.dataDisplay = this.translateData(this.getData(this.config.dataKey));
+        const data = this.getData(this.config.dataKey);
+        this.dataDisplay = this.config.translationName ? this.translateData(data) : data;
       }
     }
   }
@@ -140,11 +144,11 @@ export class TableDataComponent implements OnChanges {
     this.config.format?.params?.forEach((key: any, index: number) => {
       let param = this.getRawData(key);
       const unTranslatedParam = param;
-      if (param && this.config.translationName) {
-        param = this.translateData(param);
-      }
       if (param !== undefined && param !== null) {
         paramHasValue = true;
+        if (this.config.translationName) {
+          param = this.translateData(param);
+        }
       }
       result = result.replaceAll(`>$param${index + 1}<`, `>${param}<` ?? '');
       result = result.replaceAll(`$param${index + 1}`, unTranslatedParam);
