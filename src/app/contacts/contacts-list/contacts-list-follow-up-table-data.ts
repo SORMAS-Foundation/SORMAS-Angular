@@ -1,4 +1,4 @@
-import { LegendFollowUpIcons } from '../../app.constants';
+import { COMMON_DATE_FORMAT, LegendFollowUpIcons } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -33,27 +33,30 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.Contact.lastContactDate',
     dataKey: 'dateLastContact',
     isSortable: true,
+    align: 'right',
     format: {
       type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
   {
     name: 'captions.FollowUp.reportDate',
     dataKey: 'reportDate',
     isSortable: true,
+    align: 'right',
     format: {
       type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
   {
     name: 'captions.FollowUp.followUpUntil',
     dataKey: 'followUpUntil',
     isSortable: true,
+    align: 'right',
     format: {
       type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
   {
