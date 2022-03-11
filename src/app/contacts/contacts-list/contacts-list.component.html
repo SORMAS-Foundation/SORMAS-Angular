@@ -3,12 +3,17 @@
   <ng-container list>
     <div class="page-header">
       <h1 class="page-header-title">
-        {{ 'captions.View.contacts' | translate }}
-        <span *ngIf="tableView === detailedTableView">{{
-          'captions.caseDetailedView' | translate
-        }}</span>
+        <ng-container *ngIf="tableView !== views.FOLLOW_UP">
+          {{ 'captions.View.contacts' | translate }}
+        </ng-container>
+        <ng-container *ngIf="tableView === views.FOLLOW_UP">
+          {{ 'contactFollowupVisitsView' | translate }}
+        </ng-container>
+        <span *ngIf="tableView === views.DETAILED">
+          {{ 'captions.contactDetailedView' | translate }}
+        </span>
       </h1>
-      <div class="page-header-actions">
+      <div *ngIf="tableView !== views.FOLLOW_UP" class="page-header-actions">
         <button class="add-btn" mat-flat-button color="primary" (click)="openAddContactModal()">
           {{ 'captions.contactCreateNew' | translate }}
         </button>
@@ -17,17 +22,27 @@
     <app-table
       *ngIf="showTable"
       [filterFormId]="formIdFilters"
-      [resourceService]="contactService"
+      [resourceService]="$service"
       [tableColumns]="defaultColumns"
       [isSortable]="true"
-      [isSelectable]="true"
+      [isSelectable]="tableView !== views.FOLLOW_UP"
       [isHeaderSticky]="true"
       [fullHeight]="true"
       [saveConfigKey]="configKey"
       [viewOptions]="actionsViewOptions"
       (viewOptionEvent)="changeOptionView($event)"
-      [preSetFilters]="helperService.setQueryParamsInFilters(routeParams)"
+      [preSetFilters]="presetFilters"
+      [showLegend]="!!legend?.length"
       showTotalContext="{{ 'strings.entityContacts' | translate }}"
-    ></app-table>
+    >
+      <app-legend *ngIf="legend?.length" [data]="legend" class="table-legend"></app-legend>
+      <app-period-picker
+        *ngIf="tableView === views.FOLLOW_UP"
+        [from]="from"
+        [to]="to"
+        [filterId]="formIdFilters"
+        class="table-filters"
+      ></app-period-picker>
+    </app-table>
   </ng-container>
 </app-filters>

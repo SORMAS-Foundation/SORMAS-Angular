@@ -11,6 +11,11 @@ export const API_ROUTE_CASES_FOLLOW_UP = {
   GET_ALL: 'cases/followUp',
 };
 
+export const API_ROUTE_CONTACTS_FOLLOW_UP = {
+  ENDPOINT: 'contacts',
+  GET_ALL: 'contacts/followUp',
+};
+
 export const API_ROUTE_PERSONS = {
   ENDPOINT: 'persons',
   GET_ALL: 'persons/indexList',

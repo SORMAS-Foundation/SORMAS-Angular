@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { addDays, differenceInDays, isAfter } from 'date-fns';
 import { Subscription } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
-import { CASE_FILTERS_FORM_ID, PERIOD_PICKER_MAX_RANGE } from '../../app.constants';
+import { PERIOD_PICKER_MAX_RANGE } from '../../app.constants';
 import { Filter } from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 import { NotificationService } from '../../_services/notification.service';
@@ -18,6 +18,7 @@ export class PeriodPickerComponent implements OnInit, OnDestroy {
   @Input() from: Date;
   @Input() to: Date;
   @Input() maxRange = PERIOD_PICKER_MAX_RANGE;
+  @Input() filterId: string;
 
   form: FormGroup;
   subscriptions: Subscription[] = [];
@@ -79,7 +80,7 @@ export class PeriodPickerComponent implements OnInit, OnDestroy {
         value: duration,
       },
     ];
-    this.filterService.setFilters(filters, CASE_FILTERS_FORM_ID);
+    this.filterService.setFilters(filters, this.filterId);
   }
 
   movePeriod(forward?: boolean): void {
