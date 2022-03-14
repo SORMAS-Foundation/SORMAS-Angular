@@ -20,6 +20,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.EventGroup.eventCount',
     dataKey: 'eventCount',
+    align: 'right',
     isSortable: true,
   },
 ];

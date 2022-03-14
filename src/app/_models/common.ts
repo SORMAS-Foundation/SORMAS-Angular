@@ -66,6 +66,7 @@ export interface TableColumn {
   translationName?: string;
   actions?: TableDataAction[];
   sticky?: boolean;
+  maxWidth?: number;
 }
 
 // scrolling

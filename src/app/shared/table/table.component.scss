@@ -17,6 +17,7 @@
 
 table {
   width: 100%;
+  white-space: nowrap;
 
   td.bold {
     font-weight: 500;
@@ -37,7 +38,7 @@ table {
   td.spacer-right {
     border-left: 0;
     padding: 0;
-    width: 100%;
+    width: 50%;
   }
 }
 

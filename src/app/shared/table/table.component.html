@@ -126,6 +126,8 @@
             *ngIf="!tableColumn.actions"
             [config]="tableColumn"
             [data]="dataSourceArray[element.index]"
+            [style.maxWidth.px]="tableColumn.maxWidth"
+            [ngClass]="tableColumn.maxWidth ? 'constrain-data' : ''"
           ></app-table-data>
           <div *ngIf="tableColumn.actions?.length" class="cell-actions">
             <ng-container *ngFor="let action of tableColumn.actions">
