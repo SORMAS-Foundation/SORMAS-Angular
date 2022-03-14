@@ -1,4 +1,4 @@
-import { COMMON_DATE_FORMAT } from '../../app.constants';
+import { COMMON_DATE_FORMAT, TABLE_MAX_COLUMN_WIDTH } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -19,6 +19,7 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.Task.taskType',
     dataKey: 'taskType',
     translationName: 'TaskTypeOptions',
+    maxWidth: TABLE_MAX_COLUMN_WIDTH,
     isSortable: true,
   },
   {
@@ -76,11 +77,13 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Task.assigneeReply',
     dataKey: 'assigneeReply',
+    maxWidth: TABLE_MAX_COLUMN_WIDTH,
     isSortable: true,
   },
   {
     name: 'captions.Task.creatorComment',
     dataKey: 'creatorComment',
+    maxWidth: TABLE_MAX_COLUMN_WIDTH,
     isSortable: true,
   },
   {
