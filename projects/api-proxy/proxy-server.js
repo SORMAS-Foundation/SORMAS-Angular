@@ -790,8 +790,6 @@ app.use('/sormas-rest/contacts/followUp', (req, res) => {
   });
 });
 
-
-
 app.use('/sormas-rest/cases/followUp', (req, res) => {
   res.status(200).send({
     elements: [
@@ -934,7 +932,7 @@ app.use('/sormas-rest/labMessage/indexList', (req, res) => {
         labName: 'Testlabor',
         labPostalCode: 12345,
         testedDisease: 'CORONAVIRUS',
-        sampleOverallTestResult: 'POSITIVE',
+        sampleOverallTestResult: 'INDETERMINATE',
         personFirstName: 'Ionut',
         personLastName: 'Caprioara',
         personBirthDate: '6/22/1999',
@@ -948,7 +946,7 @@ app.use('/sormas-rest/labMessage/indexList', (req, res) => {
         labName: 'Testlabor',
         labPostalCode: 12345,
         testedDisease: 'CORONAVIRUS',
-        sampleOverallTestResult: 'POSITIVE',
+        sampleOverallTestResult: 'NEGATIVE',
         personFirstName: 'Ionut',
         personLastName: 'Caprioara',
         personBirthDate: '6/22/1999',
@@ -962,7 +960,7 @@ app.use('/sormas-rest/labMessage/indexList', (req, res) => {
         labName: 'Testlabor',
         labPostalCode: 12345,
         testedDisease: 'CORONAVIRUS',
-        sampleOverallTestResult: 'POSITIVE',
+        sampleOverallTestResult: 'PENDING',
         personFirstName: 'Ionut',
         personLastName: 'Caprioara',
         personBirthDate: '6/22/1999',
