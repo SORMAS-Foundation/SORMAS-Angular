@@ -307,6 +307,26 @@ strong {
   .lab-message-status-UNCLEAR {
     color: mat.get-color-from-palette($sormas-alert, 400);
   }
+
+  .pathogen-test-result-INDETERMINATE {
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-warning, 800);
+  }
+
+  .pathogen-test-result-PENDING {
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-alert, 300);
+  }
+
+  .pathogen-test-result-NEGATIVE {
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-primary, 400);
+  }
+
+  .pathogen-test-result-POSITIVE {
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-alert, 700);
+  }
 }
 
 :root tr.mat-row {

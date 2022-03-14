@@ -41,6 +41,11 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.LabMessage.sampleOverallTestResult',
     dataKey: 'sampleOverallTestResult',
     translationName: 'PathogenTestResultType',
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '<span class="pathogen-test-result-$param1">$param1</span>',
+      params: ['sampleOverallTestResult'],
+    },
     isSortable: true,
   },
   {
