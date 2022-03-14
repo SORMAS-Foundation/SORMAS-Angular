@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import {
+  ACTIONS_LAB_MESSAGE,
   ADD_MODAL_NARROW,
   CONFIG_SAMPLES,
   HEADER_HEIGHT,
@@ -58,14 +59,14 @@ export class LabMessagesListComponent implements OnInit, OnDestroy {
 
   doLabMessageAction([data, action]: [unknown, string]): void {
     switch (action) {
-      case 'ASSIGN':
+      case ACTIONS_LAB_MESSAGE.ASSIGN:
         this.assignUser(data);
         break;
-      case 'PROCESS':
+      case ACTIONS_LAB_MESSAGE.PROCESS:
         // eslint-disable-next-line no-console
         console.log(action, data);
         break;
-      case 'DOWNLOAD':
+      case ACTIONS_LAB_MESSAGE.DOWNLOAD:
         // eslint-disable-next-line no-console
         console.log(action, data);
         break;

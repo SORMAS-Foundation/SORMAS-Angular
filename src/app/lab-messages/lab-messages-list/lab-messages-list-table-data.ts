@@ -1,4 +1,4 @@
-import { COMMON_DATE_FORMAT } from '../../app.constants';
+import { ACTIONS_LAB_MESSAGE, COMMON_DATE_FORMAT } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -68,11 +68,10 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.LabMessage.assignee',
     dataKey: 'assignee.caption',
-    // align: 'center',
     className: 'lab-message-assignee',
     actions: [
       {
-        type: 'ASSIGN',
+        type: ACTIONS_LAB_MESSAGE.ASSIGN,
         icon: 'assignment_ind',
         className: 'button-assign',
         color: 'primary',
@@ -80,7 +79,7 @@ export const defaultColumnDefs: TableColumn[] = [
         dependingOnValues: [null],
       },
       {
-        type: 'ASSIGN',
+        type: ACTIONS_LAB_MESSAGE.ASSIGN,
         useValue: true,
         color: 'primary',
         buttonStyle: 'STROKED',
@@ -101,7 +100,7 @@ export const defaultColumnDefs: TableColumn[] = [
     },
     actions: [
       {
-        type: 'PROCESS',
+        type: ACTIONS_LAB_MESSAGE.PROCESS,
         text: 'captions.labMessageProcess',
         color: 'primary',
         buttonStyle: 'FLAT',
@@ -115,7 +114,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: '',
     actions: [
       {
-        type: 'DOWNLOAD',
+        type: ACTIONS_LAB_MESSAGE.DOWNLOAD,
         text: 'actionDownload',
         color: 'primary',
         icon: 'file_download',
