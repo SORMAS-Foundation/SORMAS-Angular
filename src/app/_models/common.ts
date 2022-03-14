@@ -1,3 +1,4 @@
+import { ButtonType } from '../app.constants';
 import { Resource } from './resource';
 
 // pagination
@@ -48,8 +49,10 @@ export interface TableDataAction {
   text?: string;
   color?: string;
   className?: string;
+  useValue?: boolean;
+  buttonStyle?: ButtonType;
   dependingOn?: string;
-  dependingOnValues?: string[];
+  dependingOnValues?: (string | null)[];
 }
 
 export interface TableColumn {

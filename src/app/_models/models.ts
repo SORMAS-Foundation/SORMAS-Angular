@@ -179,6 +179,8 @@ export * from './institutionalPartnerType';
 export * from './investigationStatus';
 export * from './jsonNode';
 export * from './jsonNodeType';
+export * from './labMessageDto';
+export * from './labMessageStatus';
 export * from './language';
 export * from './locationDto';
 export * from './maternalHistoryDto';

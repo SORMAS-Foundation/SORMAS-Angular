@@ -904,3 +904,10 @@ export enum BooleanOption {
   true = 'strings.yes',
   false = 'strings.no',
 }
+
+export enum LabMessageStatus {
+  UNPROCESSED = 'enum.LabMessageStatus.UNPROCESSED',
+  PROCESSED = 'enum.LabMessageStatus.PROCESSED',
+  FORWARDED = 'enum.LabMessageStatus.FORWARDED',
+  UNCLEAR = 'enum.LabMessageStatus.UNCLEAR',
+}

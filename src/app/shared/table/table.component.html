@@ -100,7 +100,13 @@
         [sticky]="tableColumn.sticky"
       >
         <ng-container *ngIf="isSortable && tableColumn.isSortable; else notSortable">
-          <th mat-header-cell cdkDrag *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
+          <th
+            mat-header-cell
+            cdkDrag
+            *matHeaderCellDef
+            [mat-sort-header]="tableColumn.dataKey"
+            [align]="tableColumn.align"
+          >
             <span>{{ tableColumn.name | translate }}</span>
             <mat-icon *ngIf="sorting?.field === tableColumn.dataKey" class="material-icons-round">
               {{ sorting?.ascending ? 'arrow_drop_up' : 'arrow_drop_down' }}
@@ -123,35 +129,15 @@
           [ngClass]="tableColumn.className || ''"
         >
           <app-table-data
-            *ngIf="!tableColumn.actions"
             [config]="tableColumn"
             [data]="dataSourceArray[element.index]"
           ></app-table-data>
-          <div *ngIf="tableColumn.actions?.length" class="cell-actions">
-            <ng-container *ngFor="let action of tableColumn.actions">
-              <button
-                *ngIf="
-                  !action.dependingOn ||
-                  (action.dependingOnValues
-                    ? action.dependingOnValues.includes(
-                        dataSourceArray[element.index][action.dependingOn]
-                      )
-                    : dataSourceArray[element.index][action.dependingOn])
-                "
-                mat-button
-                [color]="action.color"
-                [ngClass]="['button-action', action.className]"
-                (click)="doRowAction(element.index, action.type)"
-              >
-                <mat-icon *ngIf="action.icon" class="material-icons-round icon-action">
-                  {{ action.icon }}
-                </mat-icon>
-                <span *ngIf="action.text">
-                  {{ action.text | translate }}
-                </span>
-              </button>
-            </ng-container>
-          </div>
+          <app-table-actions
+            *ngIf="tableColumn.actions?.length"
+            [config]="tableColumn"
+            [data]="dataSourceArray[element.index]"
+            (action)="doRowAction($event)"
+          ></app-table-actions>
         </td>
       </ng-container>
 

@@ -63,3 +63,5 @@ export const VACCINATION_ADD_EDIT_FORM_ID = 'vaccinationAddEdit';
 export const WEEKLY_REPORT_FILTERS_FORM_ID = 'weeklyReportFilters';
 
 export const SHARE_REQUEST_FILTERS_FORM_ID = 'shareRequestFilters';
+
+export const LAB_MESSAGE_FILTERS_FORM_ID = 'labMessageFilters';
