@@ -34,7 +34,7 @@ const SERIES_OPTIONS = {
   emphasis: {
     focus: 'series',
   },
-  barMaxWidth: 30,
+  barWidth: '100%',
   barMinWidth: 18,
   label: {
     show: true,
