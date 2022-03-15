@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { format } from 'date-fns';
@@ -14,12 +14,19 @@ import {
   MONTH_MEDIUM_DATE_FORMAT,
   PRESENT_CONDITION_COLORS_MAP,
   WEEK_OF_YEAR_DATE_FORMAT,
+  DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE,
+  FOLLOW_UP_STATUS_COLORS_MAP,
+  CONTACT_CLASSIFICATION_COLORS_MAP,
+  FOLLOW_UP_UNTIL_COLORS_MAP,
 } from '../../../app.constants';
 import { Filter, ViewOptions } from '../../../_models/common';
 import { DashboardEpiDataCaseClassificationService } from '../../../_services/api/dashboard-epi-data-case-classification.service';
 import { DashboardEpiDataPresentConditionService } from '../../../_services/api/dashboard-epi-data-present-condition.service';
 import { FilterService } from '../../../_services/filter.service';
 import { NotificationService } from '../../../_services/notification.service';
+import { DashboardEpiDataFollowUpStatusService } from '../../../_services/api/dashboard-epi-data-follow-up-status.service';
+import { DashboardEpiDataContactClassificationService } from '../../../_services/api/dashboard-epi-data-contact-classification.service';
+import { DashboardEpiDataFollowUpUntilService } from '../../../_services/api/dashboard-epi-data-follow-up-until.service';
 
 const SERIES_OPTIONS = {
   type: 'bar',
@@ -44,6 +51,8 @@ const SERIES_OPTIONS = {
   styleUrls: ['./dashboard-epidemiological-curve.component.scss'],
 })
 export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy {
+  @Input() type: string;
+
   @Output() epiCurveViewUpdate: EventEmitter<ViewOptions> = new EventEmitter();
 
   data: any[] = [];
@@ -56,10 +65,14 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
   viewMode: ViewOptions = 'PRIMARY';
   optimalEntriesNumber = 7;
   optimalEntriesNumberWide = 12;
+  dashboardEpidemiologicalCurveType = DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE;
 
   constructor(
     private epiDataCaseClassificationService: DashboardEpiDataCaseClassificationService,
     private epiDataPresentConditionService: DashboardEpiDataPresentConditionService,
+    private epiDataFollowUpStatusService: DashboardEpiDataFollowUpStatusService,
+    private epiDataContactClassificationService: DashboardEpiDataContactClassificationService,
+    private epiDataFollowUpUntilService: DashboardEpiDataFollowUpUntilService,
     public filterService: FilterService,
     private notificationService: NotificationService,
     private translateService: TranslateService
@@ -74,7 +87,9 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
     this.form = new FormGroup({
       epiCurveGrouping: new FormControl('WEEK'),
       showMinimumEntries: new FormControl(true),
-      dataType: new FormControl('CASE_STATUS'),
+      dataType: new FormControl(
+        this.type === DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE.CASE ? 'CASE_STATUS' : 'FOLLOW_UP_STATUS'
+      ),
     });
     this.subscriptions.push(
       this.form.valueChanges.subscribe(() => {
@@ -94,10 +109,27 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
 
   fetchEpiData(): void {
     const validFilters = ['dateFrom', 'dateTo', 'disease'];
-    const service =
-      this.form.value.dataType === 'CASE_STATUS'
-        ? this.epiDataCaseClassificationService
-        : this.epiDataPresentConditionService;
+    let service;
+    if (this.type === DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE.CASE) {
+      service =
+        this.form.value.dataType === 'CASE_STATUS'
+          ? this.epiDataCaseClassificationService
+          : this.epiDataPresentConditionService;
+    } else {
+      switch (this.form.value.dataType) {
+        case 'FOLLOW_UP_STATUS':
+          service = this.epiDataFollowUpStatusService;
+          break;
+        case 'CONTACT_CLASSIFICATION':
+          service = this.epiDataContactClassificationService;
+          break;
+        case 'FOLLOW_UP_UNTIL':
+          service = this.epiDataFollowUpUntilService;
+          break;
+        default:
+          break;
+      }
+    }
     const formValues = Object.entries(this.form.value).map(([field, value]) => ({
       field,
       value,
@@ -107,6 +139,7 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
       ...formValues.filter((item: any) => item.field !== 'dataType'),
     ];
     this.subscriptions.push(
+      // @ts-ignore
       service.getCalculated(filters).subscribe({
         next: (data: any) => {
           this.originalData = data;
@@ -216,11 +249,30 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
           },
         },
       ],
-      series:
-        this.form.value.dataType === 'CASE_STATUS'
-          ? this.getDataCasesStatus()
-          : this.getDataPresentCondition(),
+      series: this.getSeries(),
     };
+  }
+
+  getSeries(): any[] {
+    if (this.type === DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE.CASE) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      return this.form.value.dataType === 'CASE_STATUS'
+        ? this.getDataCasesStatus()
+        : this.getDataPresentCondition();
+    }
+
+    switch (this.form.value.dataType) {
+      case 'FOLLOW_UP_STATUS':
+        return this.getDataFollowUpStatus();
+      case 'CONTACT_CLASSIFICATION':
+        return this.getDataContactClassification();
+      case 'FOLLOW_UP_UNTIL':
+        return this.getDataFollowUpUntil();
+      default:
+        break;
+    }
+
+    return [];
   }
 
   getDataCategories(): string[] {
@@ -243,6 +295,77 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
         break;
     }
     return categories;
+  }
+
+  getDataFollowUpUntil(): any[] {
+    return [
+      {
+        ...SERIES_OPTIONS,
+        id: 'F_U_UNTIL',
+        name: this.translateService.instant('captions.dashboardFollowUpUntilShort'),
+        color: FOLLOW_UP_UNTIL_COLORS_MAP.F_U_UNTIL,
+        data: Object.values(this.data).map((item) => item.F_U_UNTIL),
+      },
+    ];
+  }
+
+  getDataContactClassification(): any[] {
+    return [
+      {
+        ...SERIES_OPTIONS,
+        id: 'UNCONFIRMED',
+        name: this.translateService.instant('captions.dashboardUnconfirmed'),
+        color: CONTACT_CLASSIFICATION_COLORS_MAP.UNCONFIRMED,
+        data: Object.values(this.data).map((item) => item.UNCONFIRMED),
+      },
+      {
+        ...SERIES_OPTIONS,
+        id: 'CONFIRMED',
+        name: this.translateService.instant('captions.dashboardConfirmed'),
+        color: CONTACT_CLASSIFICATION_COLORS_MAP.CONFIRMED,
+        data: Object.values(this.data).map((item) => item.CONFIRMED),
+      },
+    ];
+  }
+
+  getDataFollowUpStatus(): any[] {
+    return [
+      {
+        ...SERIES_OPTIONS,
+        id: 'UNDER_F_U',
+        name: this.translateService.instant('captions.dashboardUnderFollowUpShort'),
+        color: FOLLOW_UP_STATUS_COLORS_MAP.UNDER_F_U,
+        data: Object.values(this.data).map((item) => item.UNDER_F_U),
+      },
+      {
+        ...SERIES_OPTIONS,
+        id: 'CANCELED_F_U',
+        name: this.translateService.instant('captions.dashboardCanceledFollowUpShort'),
+        color: FOLLOW_UP_STATUS_COLORS_MAP.CANCELED_F_U,
+        data: Object.values(this.data).map((item) => item.CANCELED_F_U),
+      },
+      {
+        ...SERIES_OPTIONS,
+        id: 'LOST_F_U',
+        name: this.translateService.instant('captions.dashboardLostToFollowUpShort'),
+        color: FOLLOW_UP_STATUS_COLORS_MAP.LOST_F_U,
+        data: Object.values(this.data).map((item) => item.LOST_F_U),
+      },
+      {
+        ...SERIES_OPTIONS,
+        id: 'COMPETED_F_U',
+        name: this.translateService.instant('captions.dashboardCompletedFollowUpShort'),
+        color: FOLLOW_UP_STATUS_COLORS_MAP.COMPETED_F_U,
+        data: Object.values(this.data).map((item) => item.COMPETED_F_U),
+      },
+      {
+        ...SERIES_OPTIONS,
+        id: 'CONVERTED_CASE',
+        name: this.translateService.instant('captions.dashboardConvertedToCase'),
+        color: FOLLOW_UP_STATUS_COLORS_MAP.CONVERTED_CASE,
+        data: Object.values(this.data).map((item) => item.CONVERTED_CASE),
+      },
+    ];
   }
 
   getDataCasesStatus(): any[] {

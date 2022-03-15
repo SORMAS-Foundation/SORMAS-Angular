@@ -34,6 +34,7 @@
   <div [ngClass]="hideMap || hideEpiCurve ? '' : 'epi-visuals'">
     <mat-card [hidden]="hideEpiCurve" class="epi-curve">
       <app-dashboard-epidemiological-curve
+        [type]="dashboardEpidemiologicalCurveType.CASE"
         (epiCurveViewUpdate)="onEpiCurveViewChange($event)"
       ></app-dashboard-epidemiological-curve>
     </mat-card>
