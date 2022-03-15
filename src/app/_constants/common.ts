@@ -151,3 +151,8 @@ export const DISPLAY_MODE = {
   LIST: 'LIST',
   TABLE: 'TABLE',
 };
+
+export const DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE = {
+  CASE: 'CASE',
+  CONTACT: 'CONTACT',
+};

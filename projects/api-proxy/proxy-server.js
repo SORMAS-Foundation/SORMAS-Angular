@@ -906,6 +906,99 @@ app.use('/sormas-rest/cases/followUp', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/dashboard/epiCurveDataPerFollowUpStatus', (req, res) => {
+  res.status(200).send(
+    {
+      "2022-02-05T23:00:00.000+00:00":{
+
+      },
+      "2022-02-12T23:00:00.000+00:00":{
+        "COMPETED_F_U":8,
+        "CONVERTED_CASE":12
+      },
+      "2022-02-19T23:00:00.000+00:00":{
+
+      },
+      "2022-02-26T23:00:00.000+00:00":{
+        "UNDER_F_U":1,
+        "CANCELED_F_U":2,
+        "LOST_F_U":1,
+        "COMPETED_F_U":5,
+        "CONVERTED_CASE":10
+      },
+      "2022-03-05T23:00:00.000+00:00":{
+        "COMPETED_F_U":8,
+      },
+      "2022-03-12T23:00:00.000+00:00":{
+
+      },
+      "2022-03-19T23:00:00.000+00:00":{
+
+      }
+    }
+  );
+});
+
+app.use('/sormas-rest/dashboard/epiCurveDataPerContactClassification', (req, res) => {
+  res.status(200).send(
+    {
+      "2022-02-05T23:00:00.000+00:00":{
+
+      },
+      "2022-02-12T23:00:00.000+00:00":{
+        "UNCONFIRMED":8,
+        "CONFIRMED":3,
+      },
+      "2022-02-19T23:00:00.000+00:00":{
+
+      },
+      "2022-02-26T23:00:00.000+00:00":{
+        "UNCONFIRMED":5,
+        "CONFIRMED":2,
+      },
+      "2022-03-05T23:00:00.000+00:00":{
+        "UNCONFIRMED":3,
+        "CONFIRMED":2,
+      },
+      "2022-03-12T23:00:00.000+00:00":{
+        "UNCONFIRMED":9,
+        "CONFIRMED":8,
+      },
+      "2022-03-19T23:00:00.000+00:00":{
+
+      }
+    }
+  );
+});
+
+app.use('/sormas-rest/dashboard/epiCurveDataPerFollowUpUntil', (req, res) => {
+  res.status(200).send(
+    {
+      "2022-02-05T23:00:00.000+00:00":{
+
+      },
+      "2022-02-12T23:00:00.000+00:00":{
+        "F_U_UNTIL":8,
+      },
+      "2022-02-19T23:00:00.000+00:00":{
+
+      },
+      "2022-02-26T23:00:00.000+00:00":{
+        "F_U_UNTIL":8,
+      },
+      "2022-03-05T23:00:00.000+00:00":{
+        "F_U_UNTIL":2,
+      },
+      "2022-03-12T23:00:00.000+00:00":{
+
+      },
+      "2022-03-19T23:00:00.000+00:00":{
+
+      }
+    }
+  );
+});
+
 app.use('/sormas-rest/labMessage/indexList', (req, res) => {
   res.status(200).send({
     elements: [
