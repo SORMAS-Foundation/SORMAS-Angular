@@ -790,8 +790,6 @@ app.use('/sormas-rest/contacts/followUp', (req, res) => {
   });
 });
 
-
-
 app.use('/sormas-rest/cases/followUp', (req, res) => {
   res.status(200).send({
     elements: [
@@ -908,7 +906,6 @@ app.use('/sormas-rest/cases/followUp', (req, res) => {
   });
 });
 
-
 app.use('/sormas-rest/dashboard/epiCurveDataPerFollowUpStatus', (req, res) => {
   res.status(200).send(
     {
@@ -1000,6 +997,79 @@ app.use('/sormas-rest/dashboard/epiCurveDataPerFollowUpUntil', (req, res) => {
       }
     }
   );
+});
+
+app.use('/sormas-rest/labMessage/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'POSITIVE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNPROCESSED',
+        assignee: {
+          uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
+          caption: 'admin',
+        },
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'INDETERMINATE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNPROCESSED',
+        assignee: null,
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'NEGATIVE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'FORWARDED',
+        assignee: null,
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'PENDING',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNCLEAR',
+        assignee: {
+          uuid: 'VXDHVQ-AHH47Z-322YEK-UBB5CB24',
+          caption: 'Surveillance SUPERVISOR',
+        },
+      },
+    ],
+    pageNumber: 0,
+    size: 4,
+    totalElementCount: 4,
+    hasNext: false,
+  });
 });
 
 app.use('/sormas-rest/shareRequests/indexList', (req, res) => {

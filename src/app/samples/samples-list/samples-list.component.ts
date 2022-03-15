@@ -8,7 +8,7 @@ import {
   HEADER_HEIGHT,
   SAMPLE_FILTERS_FORM_ID,
 } from '../../app.constants';
-import { TableColumn } from '../../_models/common';
+import { NavItem, TableColumn } from '../../_models/common';
 import { SampleDto } from '../../_models/sampleDto';
 import { SampleService } from '../../_services/api/sample.service';
 import { defaultColumnDefs } from './samples-list-table-data';
@@ -16,6 +16,7 @@ import { SampleAddComponent } from '../sample-add/sample-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { FORM_DATA_SAMPLE_FILTERS } from '../sample-filters/sample-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import { actionsViewOptionsDefs, actionsBulkEditDefs } from './samples-list-actions-data';
 
 @Component({
   selector: 'app-samples-list',
@@ -29,6 +30,8 @@ export class SamplesListComponent implements OnInit, OnDestroy {
   configKey = CONFIG_SAMPLES;
   headerHeight = HEADER_HEIGHT;
   formIdFilters = SAMPLE_FILTERS_FORM_ID;
+  actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
+  actionsBulkEditOptions: NavItem[] = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
 

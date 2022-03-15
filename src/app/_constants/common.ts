@@ -5,6 +5,7 @@ import { DateFilterOptions } from './enums';
 
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
+export const TABLE_MAX_COLUMN_WIDTH = 200;
 export const UUID_KEY = 'uuid';
 
 export enum AdvancedDataType {

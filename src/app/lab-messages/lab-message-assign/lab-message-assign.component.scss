@@ -1,0 +1,19 @@
+@use '/src/variables.scss' as *;
+
+.mat-dialog-content {
+  padding-top: 24px;
+  padding-bottom: 48px;
+  background-color: $white;
+  font-size: 14px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .mat-form-field {
+    width: 330px;
+    margin: 0;
+  }
+}

@@ -1,4 +1,4 @@
-import { COMMON_DATE_FORMAT } from '../../app.constants';
+import { COMMON_DATE_FORMAT, TABLE_MAX_COLUMN_WIDTH } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -121,6 +121,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.address',
     dataKey: 'address',
+    maxWidth: TABLE_MAX_COLUMN_WIDTH,
     isSortable: true,
   },
   {
