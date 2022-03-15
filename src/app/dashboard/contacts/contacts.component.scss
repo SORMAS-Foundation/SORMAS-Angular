@@ -1,5 +1,24 @@
 @use '/src/variables.scss' as *;
 
+.epi-fullscreen {
+  .dashboard-contacts-contacts, .dashboard-contacts-under-follow-up, .dashboard-contacts-stopped-follow-up,
+  .dashboard-contacts-visits, .dashboard-contacts-contact-stats, .dashboard-contacts-map, .dashboard-transmission-chain {
+    display: none;
+  }
+
+  &.dashboard-contacts-wrapper {
+    grid-template-columns: 8.33fr 1fr 7.33fr;
+    grid-template-areas:
+      'filter filter filter'
+      'contacts contacts under_follow_up'
+      'stopped_follow_up visits visits'
+      'contact_stats contact_stats contact_stats'
+      'epi_curve epi_curve epi_curve'
+      'map map map'
+      'transmission_chain transmission_chain transmission_chain';
+  }
+}
+
 .dashboard-contacts-wrapper {
   display: grid;
   padding: 24px;
