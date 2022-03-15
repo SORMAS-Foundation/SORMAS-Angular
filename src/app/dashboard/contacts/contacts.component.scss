@@ -1,5 +1,19 @@
 @use '/src/variables.scss' as *;
 
+.epi-fullscreen {
+  .dashboard-contacts-contacts, .dashboard-contacts-under-follow-up, .dashboard-contacts-stopped-follow-up,
+  .dashboard-contacts-visits, .dashboard-contacts-contact-stats, .dashboard-contacts-map, .dashboard-transmission-chain {
+    display: none;
+  }
+
+  &.dashboard-contacts-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      'filter filter filter'
+      'epi_curve epi_curve epi_curve'
+  }
+}
+
 .dashboard-contacts-wrapper {
   display: grid;
   padding: 24px;
