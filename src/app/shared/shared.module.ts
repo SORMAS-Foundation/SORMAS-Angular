@@ -59,6 +59,7 @@ import { SearchCaseModalComponent } from './modals/search-case-modal/search-case
 import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.component';
 import { LegendComponent } from './legend/legend.component';
 import { PeriodPickerComponent } from './period-picker/period-picker.component';
+import { TableActionsComponent } from './table/table-actions/table-actions.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { PeriodPickerComponent } from './period-picker/period-picker.component';
     DropdownMenuComponent,
     SidebarComponent,
     EdgePanelComponent,
+    TableActionsComponent,
     TableDataComponent,
     TableNotificationComponent,
     PersonContactsListComponent,

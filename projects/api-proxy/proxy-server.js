@@ -790,8 +790,6 @@ app.use('/sormas-rest/contacts/followUp', (req, res) => {
   });
 });
 
-
-
 app.use('/sormas-rest/cases/followUp', (req, res) => {
   res.status(200).send({
     elements: [
@@ -904,6 +902,172 @@ app.use('/sormas-rest/cases/followUp', (req, res) => {
     pageNumber: 0,
     size: 8,
     totalElementCount: 3,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/dashboard/epiCurveDataPerFollowUpStatus', (req, res) => {
+  res.status(200).send(
+    {
+      "2022-02-05T23:00:00.000+00:00":{
+
+      },
+      "2022-02-12T23:00:00.000+00:00":{
+        "COMPETED_F_U":8,
+        "CONVERTED_CASE":12
+      },
+      "2022-02-19T23:00:00.000+00:00":{
+
+      },
+      "2022-02-26T23:00:00.000+00:00":{
+        "UNDER_F_U":1,
+        "CANCELED_F_U":2,
+        "LOST_F_U":1,
+        "COMPETED_F_U":5,
+        "CONVERTED_CASE":10
+      },
+      "2022-03-05T23:00:00.000+00:00":{
+        "COMPETED_F_U":8,
+      },
+      "2022-03-12T23:00:00.000+00:00":{
+
+      },
+      "2022-03-19T23:00:00.000+00:00":{
+
+      }
+    }
+  );
+});
+
+app.use('/sormas-rest/dashboard/epiCurveDataPerContactClassification', (req, res) => {
+  res.status(200).send(
+    {
+      "2022-02-05T23:00:00.000+00:00":{
+
+      },
+      "2022-02-12T23:00:00.000+00:00":{
+        "UNCONFIRMED":8,
+        "CONFIRMED":3,
+      },
+      "2022-02-19T23:00:00.000+00:00":{
+
+      },
+      "2022-02-26T23:00:00.000+00:00":{
+        "UNCONFIRMED":5,
+        "CONFIRMED":2,
+      },
+      "2022-03-05T23:00:00.000+00:00":{
+        "UNCONFIRMED":3,
+        "CONFIRMED":2,
+      },
+      "2022-03-12T23:00:00.000+00:00":{
+        "UNCONFIRMED":9,
+        "CONFIRMED":8,
+      },
+      "2022-03-19T23:00:00.000+00:00":{
+
+      }
+    }
+  );
+});
+
+app.use('/sormas-rest/dashboard/epiCurveDataPerFollowUpUntil', (req, res) => {
+  res.status(200).send(
+    {
+      "2022-02-05T23:00:00.000+00:00":{
+
+      },
+      "2022-02-12T23:00:00.000+00:00":{
+        "F_U_UNTIL":8,
+      },
+      "2022-02-19T23:00:00.000+00:00":{
+
+      },
+      "2022-02-26T23:00:00.000+00:00":{
+        "F_U_UNTIL":8,
+      },
+      "2022-03-05T23:00:00.000+00:00":{
+        "F_U_UNTIL":2,
+      },
+      "2022-03-12T23:00:00.000+00:00":{
+
+      },
+      "2022-03-19T23:00:00.000+00:00":{
+
+      }
+    }
+  );
+});
+
+app.use('/sormas-rest/labMessage/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'POSITIVE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNPROCESSED',
+        assignee: {
+          uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
+          caption: 'admin',
+        },
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'INDETERMINATE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNPROCESSED',
+        assignee: null,
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'NEGATIVE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'FORWARDED',
+        assignee: null,
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'PENDING',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNCLEAR',
+        assignee: {
+          uuid: 'VXDHVQ-AHH47Z-322YEK-UBB5CB24',
+          caption: 'Surveillance SUPERVISOR',
+        },
+      },
+    ],
+    pageNumber: 0,
+    size: 4,
+    totalElementCount: 4,
     hasNext: false,
   });
 });

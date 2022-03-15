@@ -99,6 +99,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.columnLastPathogenTest',
     dataKey: 'typeOfLastTest',
+    translationName: 'PathogenTestType',
   },
   {
     name: 'captions.Sample.pathogenTestCount',

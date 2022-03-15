@@ -283,6 +283,21 @@ export const API_ROUTE_EPI_DATA_PRESENT_CONDITION = {
   GET_ALL: 'dashboard/epiCurveDataPerPresentCondition',
 };
 
+export const API_ROUTE_EPI_DATA_FOLLOW_UP_STATUS = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/epiCurveDataPerFollowUpStatus',
+};
+
+export const API_ROUTE_EPI_DATA_CONTACT_CLASSIFICATION = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/epiCurveDataPerContactClassification',
+};
+
+export const API_ROUTE_EPI_DATA_FOLLOW_UP_UNTIL = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/epiCurveDataPerFollowUpUntil',
+};
+
 export const API_ROUTE_DISEASE_BURDEN = {
   ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/diseaseBurden',
@@ -350,4 +365,12 @@ export const API_ROUTE_SHARE_REQUESTS = {
   UPDATE: 'shareRequests/push',
   ADD: 'shareRequests/push',
   DELETE: 'shareRequests/delete',
+};
+
+export const API_ROUTE_LAB_MESSAGES = {
+  ENDPOINT: 'labMessage',
+  GET_ALL: 'labMessage/indexList',
+  UPDATE: 'labMessage/push',
+  ADD: 'labMessage/push',
+  DELETE: 'labMessage/delete',
 };
