@@ -7,15 +7,10 @@
   }
 
   &.dashboard-contacts-wrapper {
-    grid-template-columns: 8.33fr 1fr 7.33fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
       'filter filter filter'
-      'contacts contacts under_follow_up'
-      'stopped_follow_up visits visits'
-      'contact_stats contact_stats contact_stats'
       'epi_curve epi_curve epi_curve'
-      'map map map'
-      'transmission_chain transmission_chain transmission_chain';
   }
 }
 
