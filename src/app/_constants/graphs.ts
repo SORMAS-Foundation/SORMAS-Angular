@@ -63,6 +63,13 @@ export const CHART_TOOLTIP_COLORS_MAP = {
   ALIVE: 'rgba(33, 217, 81, 0.8)',
   DEAD: 'rgba(43, 50, 61, 0.8)',
   UNKNOWN: 'rgba(161, 173, 191, 0.8)',
+  UNDER_F_U: '#FD7600',
+  CANCELED_F_U: '#6D798C',
+  LOST_F_U: '#FDA312',
+  COMPETED_F_U: '#59B2FF',
+  CONVERTED_CASE: '#FFA6A6',
+  UNCONFIRMED: '#FD7600',
+  F_U_UNTIL: '#FD7600',
 };
 
 export const CHART_SPLIT_LINE_COLOR = '#e1e8f2';
