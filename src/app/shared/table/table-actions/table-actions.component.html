@@ -1,0 +1,57 @@
+<ng-container *ngFor="let action of config.actions">
+  <ng-container
+    *ngIf="
+      !action.dependingOn ||
+      (action.dependingOnValues
+        ? action.dependingOnValues.includes(data[action.dependingOn])
+        : data[action.dependingOn])
+    "
+    [ngSwitch]="action.buttonStyle"
+  >
+    <button
+      *ngSwitchDefault
+      mat-button
+      [color]="action.color"
+      [ngClass]="action.className || ''"
+      (click)="$event.stopPropagation(); doAction(action.type)"
+    >
+      <ng-container
+        *ngTemplateOutlet="buttonContent; context: { action: action, data: data }"
+      ></ng-container>
+    </button>
+
+    <button
+      *ngSwitchCase="buttonType.FLAT"
+      mat-flat-button
+      [color]="action.color"
+      [ngClass]="action.className || ''"
+      (click)="$event.stopPropagation(); doAction(action.type)"
+    >
+      <ng-container
+        *ngTemplateOutlet="buttonContent; context: { action: action, data: data }"
+      ></ng-container>
+    </button>
+
+    <button
+      *ngSwitchCase="buttonType.STROKED"
+      mat-stroked-button
+      [color]="action.color"
+      [ngClass]="action.className || ''"
+      (click)="$event.stopPropagation(); doAction(action.type)"
+    >
+      <ng-container
+        *ngTemplateOutlet="buttonContent; context: { action: action, data: data }"
+      ></ng-container>
+    </button>
+  </ng-container>
+</ng-container>
+
+<ng-template #buttonContent let-action="action" let-data="data">
+  <mat-icon *ngIf="action.icon" class="material-icons-round icon-action">
+    {{ action.icon }}
+  </mat-icon>
+  <span *ngIf="action.text">
+    {{ action.text | translate }}
+  </span>
+  <app-table-data *ngIf="action.useValue" [config]="config" [data]="data"></app-table-data>
+</ng-template>

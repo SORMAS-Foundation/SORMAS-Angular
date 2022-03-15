@@ -961,3 +961,28 @@ export enum EpiWeekFilterOption {
   THIS_WEEK = 'enum.EpiWeekFilterOption.THIS_WEEK',
   SPECIFY_WEEK = 'enum.EpiWeekFilterOption.SPECIFY_WEEK',
 }
+
+export enum ShareRequestDataType {
+  CASE = 'enum.ShareRequestDataType.CASE',
+  CONTACT = 'enum.ShareRequestDataType.CONTACT',
+  EVENT = 'enum.ShareRequestDataType.EVENT',
+}
+
+export enum ShareRequestStatus {
+  PENDING = 'enum.ShareRequestStatus.PENDING',
+  ACCEPTED = 'enum.ShareRequestStatus.ACCEPTED',
+  REJECTED = 'enum.ShareRequestStatus.REJECTED',
+  REVOKED = 'enum.ShareRequestStatus.REVOKED',
+}
+
+export enum BooleanOption {
+  true = 'strings.yes',
+  false = 'strings.no',
+}
+
+export enum LabMessageStatus {
+  UNPROCESSED = 'enum.LabMessageStatus.UNPROCESSED',
+  PROCESSED = 'enum.LabMessageStatus.PROCESSED',
+  FORWARDED = 'enum.LabMessageStatus.FORWARDED',
+  UNCLEAR = 'enum.LabMessageStatus.UNCLEAR',
+}

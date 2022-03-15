@@ -3,10 +3,18 @@
   <ng-container list>
     <div class="page-header">
       <h1 class="page-header-title">
-        {{ 'captions.View.cases' | translate }}
-        <span *ngIf="tableView === detailedTableView">{{ 'captions.caseDetailedView' | translate }}</span>
+        <ng-container *ngIf="tableView !== views.FOLLOW_UP">
+          {{ 'captions.View.cases' | translate }}
+        </ng-container>
+        <ng-container *ngIf="tableView === views.FOLLOW_UP">
+          {{ 'captions.caseFollowupVisitsView' | translate }}
+        </ng-container>
+        <span *ngIf="tableView === views.DETAILED">
+          {{ 'captions.caseDetailedView' | translate }}
+        </span>
       </h1>
-      <div class="page-header-actions">
+
+      <div *ngIf="tableView !== views.FOLLOW_UP" class="page-header-actions">
         <button mat-flat-button color="primary" (click)="openAddCaseModal()">
           {{ 'captions.caseNewCase' | translate }}
         </button>
@@ -26,19 +34,29 @@
     <app-table
       *ngIf="showTable"
       [filterFormId]="formIdFilters"
-      [resourceService]="caseService"
+      [resourceService]="$service"
       [tableColumns]="defaultColumns"
       [isSortable]="true"
-      [isSelectable]="true"
+      [isSelectable]="tableView !== views.FOLLOW_UP"
       [isHeaderSticky]="true"
       [allowToggleColumns]="true"
       [fullHeight]="true"
       [saveConfigKey]="configKey"
       [viewOptions]="actionsViewOptions"
-      [bulkEditOptions]="actionsBulkEdit"
-      [preSetFilters]="helperService.setQueryParamsInFilters(routeParams)"
+      [bulkEditOptions]="tableView !== views.FOLLOW_UP ? actionsBulkEdit : []"
+      [preSetFilters]="presetFilters"
+      [showLegend]="!!legend?.length"
       (viewOptionEvent)="changeOptionView($event)"
       showTotalContext="{{ 'strings.entityCases' | translate }}"
-    ></app-table>
+    >
+      <app-legend *ngIf="legend?.length" [data]="legend" class="table-legend"></app-legend>
+      <app-period-picker
+        *ngIf="tableView === views.FOLLOW_UP"
+        [from]="from"
+        [to]="to"
+        [filterId]="formIdFilters"
+        class="table-filters"
+      ></app-period-picker>
+    </app-table>
   </ng-container>
 </app-filters>

@@ -12,6 +12,7 @@ import { EntryPointService } from '../../../_services/api/entry-point.service';
 import { FacilityService } from '../../../_services/api/facility.service';
 import { RegionService } from '../../../_services/api/region.service';
 import { SubcontinentService } from '../../../_services/api/subcontinent.service';
+import { UserService } from '../../../_services/api/user.service';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { HelperService } from '../../../_services/helper.service';
 import { FormBaseComponent } from './form-base.component';
@@ -38,7 +39,8 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     public communityService: CommunityService,
     public entryPointService: EntryPointService,
     public facilityService: FacilityService,
-    public helperService: HelperService
+    public helperService: HelperService,
+    public userService: UserService
   ) {
     super(formActionsService);
   }

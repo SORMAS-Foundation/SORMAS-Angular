@@ -30,7 +30,7 @@ export const FORM_DATA_ENTRY_POINT_FILTERS = [
   },
   {
     id: 'relevanceStatus',
-    title: 'captions.pointOfEntry',
+    title: 'captions.View.configuration.pointsofentry.short',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
@@ -72,7 +72,7 @@ export const FORM_DATA_ENTRY_POINT_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        placeholder: 'captions.country',
+        placeholder: 'captions.Country',
         service: 'countryService',
         newLine: false,
         className: 'size-full',
@@ -80,7 +80,7 @@ export const FORM_DATA_ENTRY_POINT_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        placeholder: 'captions.region',
+        placeholder: 'captions.Region',
         service: 'regionService',
         determinedBy: ['country.uuid'],
         newLine: false,
@@ -89,7 +89,7 @@ export const FORM_DATA_ENTRY_POINT_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        placeholder: 'captions.district',
+        placeholder: 'captions.District',
         service: 'districtService',
         determinedBy: ['region.uuid'],
         newLine: false,

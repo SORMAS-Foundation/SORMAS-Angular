@@ -8,12 +8,18 @@ import { EventDto } from '../../_models/eventDto';
 import { EventGroupService } from '../../_services/api/event-group.service';
 import { EventService } from '../../_services/api/event.service';
 import { EventGroupDto } from '../../_models/eventGroupDto';
-import { EVENT_GROUPS_FORM_ID } from '../../app.constants';
+import {
+  DISPLAY_MODE,
+  EVENT_GROUP_PROFILE_FILTERS_FORM_ID,
+  EVENT_GROUPS_FORM_ID,
+} from '../../app.constants';
 import { FORM_DATA_EVENT_GROUP } from './event-group-profile-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { EventGroupLinkEventsModalComponent } from '../event-group-link-events-modal/event-group-link-events-modal.component';
 import { ADD_MODAL_MAX_WIDTH } from '../../_constants/common';
+import { TableColumn } from '../../_models/common';
+import { defaultColumnDefs } from './events-in-group-list-table-data';
 
 @Component({
   selector: 'app-event-group-profile',
@@ -27,13 +33,19 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
   formData = FORM_DATA_EVENT_GROUP;
   formId = EVENT_GROUPS_FORM_ID;
+  formIdFilters = EVENT_GROUP_PROFILE_FILTERS_FORM_ID;
+  defaultColumns: TableColumn[] = [];
   loading = false;
+  presetFilters: any;
+  showTable = true;
+  displayMode = DISPLAY_MODE;
+  viewMode = DISPLAY_MODE.LIST;
 
   subscriptions: Subscription[] = [];
 
   constructor(
     public eventGroupService: EventGroupService,
-    private eventService: EventService,
+    public eventService: EventService,
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService,
     private router: Router,
@@ -45,6 +57,15 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const routeParams = this.activeRoute.snapshot.params;
     this.eventGroupId = routeParams.eventGroupId;
+
+    this.presetFilters = [
+      {
+        field: 'eventGroup',
+        value: this.eventGroupId,
+      },
+    ];
+
+    this.defaultColumns = defaultColumnDefs;
     this.fetchGroup();
     this.fetchEvents();
   }
@@ -108,6 +129,7 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
             this.eventGroupService.unlinkEvent(this.eventGroupId, event.uuid).subscribe({
               next: () => {
                 this.fetchEvents();
+                this.refreshTable();
               },
               error: (err: any) => {
                 this.notificationService.error(err);
@@ -133,6 +155,7 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
           this.notificationService.success(
             this.translateService.instant('strings.messageEventLinkedToGroup')
           );
+          this.refreshTable();
           this.fetchEvents();
         },
         error: (err: any) => {
@@ -158,6 +181,17 @@ export class EventGroupProfileComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  refreshTable(): void {
+    this.showTable = false;
+    setTimeout(() => {
+      this.showTable = true;
+    });
+  }
+
+  toggleView(type: string): void {
+    this.viewMode = type;
   }
 
   ngOnDestroy(): void {

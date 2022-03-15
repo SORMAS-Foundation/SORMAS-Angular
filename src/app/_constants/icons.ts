@@ -33,8 +33,8 @@ export enum CaseClassificationIcons {
 
 export enum ContactClassificationIcons {
   UNCONFIRMED = 'gpp_bad',
-  CONFIRMED = 'connect without contact',
-  NO_CONTACT = 'voice over off',
+  CONFIRMED = 'connect_without_contact',
+  NO_CONTACT = 'voice_over_off',
 }
 
 export enum EventStatusIcons {
@@ -51,4 +51,12 @@ export enum CardActionsIcons {
   link = 'link',
   unlink = 'link_off',
   refresh = 'sync',
+}
+
+export enum LegendFollowUpIcons {
+  NOT_SYMPTOMATIC = 'sentiment_satisfied_alt',
+  SYMPTOMATIC = 'sick',
+  UNAVAILABLE = 'block',
+  UNCOOPERATIVE = 'cancel',
+  NOT_PERFORMED = 'remove',
 }

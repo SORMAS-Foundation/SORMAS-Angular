@@ -13,7 +13,8 @@ export const defaultColumnCasesDefs: TableColumn[] = [
   },
   {
     name: 'captions.CaseData.reportDate',
-    dataKey: 'district.reportDate',
+    dataKey: 'reportDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -23,22 +24,26 @@ export const defaultColumnCasesDefs: TableColumn[] = [
   {
     name: 'captions.columnDiseaseShort',
     dataKey: 'disease',
+    translationName: 'Disease',
     isSortable: true,
   },
   {
     name: 'captions.CaseData.caseClassification',
     dataKey: 'caseClassification',
+    translationName: 'CaseClassification',
     isSortable: true,
   },
   {
     name: 'captions.CaseData.investigationStatus',
     dataKey: 'investigationStatus',
+    translationName: 'InvestigationStatus',
     isSortable: true,
-    iconify: true,
+    iconify: 'IconsMap',
   },
   {
     name: 'captions.CaseData.outcome',
     dataKey: 'outcome',
+    translationName: 'CaseOutcome',
     isSortable: true,
   },
   {
@@ -54,6 +59,7 @@ export const defaultColumnCasesDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasPerson.birthdDate',
     dataKey: 'person.birthdateDD',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DISPLAY,
@@ -64,6 +70,7 @@ export const defaultColumnCasesDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasPerson.sex',
     dataKey: 'person.sex',
+    translationName: 'Sex',
     isSortable: true,
   },
   {
@@ -109,6 +116,7 @@ export const defaultColumnCasesDefs: TableColumn[] = [
   {
     name: 'CaseData.onsetDate',
     dataKey: 'onsetDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,

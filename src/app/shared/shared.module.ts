@@ -57,6 +57,9 @@ import { PickPersonModalComponent } from './modals/pick-person-modal/pick-person
 import { ImmunizationRecoveryComponent } from './widgets/immunization-recovery/immunization-recovery.component';
 import { SearchCaseModalComponent } from './modals/search-case-modal/search-case-modal.component';
 import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.component';
+import { LegendComponent } from './legend/legend.component';
+import { PeriodPickerComponent } from './period-picker/period-picker.component';
+import { TableActionsComponent } from './table/table-actions/table-actions.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +77,7 @@ import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.c
     DropdownMenuComponent,
     SidebarComponent,
     EdgePanelComponent,
+    TableActionsComponent,
     TableDataComponent,
     TableNotificationComponent,
     PersonContactsListComponent,
@@ -100,6 +104,8 @@ import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.c
     ImmunizationRecoveryComponent,
     SearchCaseModalComponent,
     AddCaseLabelComponent,
+    LegendComponent,
+    PeriodPickerComponent,
   ],
   imports: [
     CommonModule,
@@ -153,6 +159,8 @@ import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.c
     EntityActionsComponent,
     TableStaticComponent,
     ToggleViewComponent,
+    LegendComponent,
+    PeriodPickerComponent,
   ],
 })
 export class SharedModule {}

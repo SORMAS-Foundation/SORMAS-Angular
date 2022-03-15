@@ -19,6 +19,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Community.externalID',
     dataKey: 'externalID',
+    align: 'right',
     isSortable: true,
   },
 ];

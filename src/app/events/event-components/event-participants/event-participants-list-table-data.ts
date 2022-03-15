@@ -1,3 +1,4 @@
+import { COMMON_DATE_FORMAT } from '../../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -14,34 +15,34 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'captions.EventParticipant.personUuid',
-    dataKey: 'person.uuid',
+    dataKey: 'personUuid',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.LINK,
-      pattern: '/persons/person/$param1/details',
-      params: ['person.uuid'],
+      pattern: '/persons/person/$param1',
+      params: ['personUuid'],
       truncate: 6,
     },
   },
   {
     name: 'captions.firstName',
-    dataKey: 'person.firstName',
+    dataKey: 'firstName',
     isSortable: true,
   },
   {
     name: 'captions.lastName',
-    dataKey: 'person.lastName',
+    dataKey: 'lastName',
     isSortable: true,
   },
   {
-    name: 'captions.sex',
-    dataKey: 'person.sex',
+    name: 'captions.EventParticipant.sex',
+    dataKey: 'sex',
     translationName: 'Sex',
     isSortable: true,
   },
   {
     name: 'captions.EventParticipant.approximateAge',
-    dataKey: 'person.ageAndBirthDate.age',
+    dataKey: 'approximateAge',
     isSortable: true,
   },
   {
@@ -51,13 +52,41 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'captions.EventParticipant.caseUuid',
-    dataKey: 'resultingCase.uuid',
+    dataKey: 'caseUuid',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/cases/case/$param1/details',
-      params: ['resultingCase.uuid'],
+      params: ['caseUuid'],
       truncate: 6,
     },
+  },
+  {
+    name: 'captions.EventParticipant.contactCount',
+    dataKey: 'contactCount',
+    align: 'right',
+    isSortable: true,
+  },
+  {
+    name: 'captions.Sample.pathogenTestResult',
+    dataKey: 'pathogenTestResult',
+    translationName: 'PathogenTestResultType',
+    alternateData: 'captions.notTestedYet',
+    isSortable: true,
+  },
+  {
+    name: 'captions.Sample.sampleDateTime',
+    dataKey: 'sampleDateTime',
+    align: 'right',
+    isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DATE,
+      pattern: COMMON_DATE_FORMAT,
+    },
+  },
+  {
+    name: 'captions.EventParticipant.vaccinationStatus',
+    dataKey: 'vaccinationStatus',
+    isSortable: true,
   },
 ];

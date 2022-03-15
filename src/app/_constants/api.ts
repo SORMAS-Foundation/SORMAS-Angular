@@ -6,6 +6,16 @@ export const API_ROUTE_CASES = {
   DELETE: 'cases/delete',
 };
 
+export const API_ROUTE_CASES_FOLLOW_UP = {
+  ENDPOINT: 'cases',
+  GET_ALL: 'cases/followUp',
+};
+
+export const API_ROUTE_CONTACTS_FOLLOW_UP = {
+  ENDPOINT: 'contacts',
+  GET_ALL: 'contacts/followUp',
+};
+
 export const API_ROUTE_PERSONS = {
   ENDPOINT: 'persons',
   GET_ALL: 'persons/indexList',
@@ -340,4 +350,12 @@ export const API_ROUTE_SHARE_REQUESTS = {
   UPDATE: 'shareRequests/push',
   ADD: 'shareRequests/push',
   DELETE: 'shareRequests/delete',
+};
+
+export const API_ROUTE_LAB_MESSAGES = {
+  ENDPOINT: 'labMessage',
+  GET_ALL: 'labMessage/indexList',
+  UPDATE: 'labMessage/push',
+  ADD: 'labMessage/push',
+  DELETE: 'labMessage/delete',
 };

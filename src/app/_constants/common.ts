@@ -5,6 +5,7 @@ import { DateFilterOptions } from './enums';
 
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
 export const VIRTUAL_SCROLL_DEFAULT_HEADER_HEIGHT = 56;
+export const TABLE_MAX_COLUMN_WIDTH = 200;
 export const UUID_KEY = 'uuid';
 
 export enum AdvancedDataType {
@@ -136,12 +137,19 @@ export const DATE_TYPE_OPTIONS = {
 export const DEFAULT_FETCH_METHOD = 'getAllAsOptions';
 
 export const DASHBOARD_CONTACTS_DISEASE_LIMIT = 5;
+export const PERIOD_PICKER_DEFAULT_RANGE = 14;
+export const PERIOD_PICKER_MAX_RANGE = 90;
 
 export type PickPersonType = 'SELECT' | 'SEARCH_AND_SELECT' | 'CREATE_NEW';
 export const PICK_PERSON_OPTIONS = {
   SELECT: 'SELECT' as PickPersonType,
   SEARCH_AND_SELECT: 'SEARCH_AND_SELECT' as PickPersonType,
   CREATE_NEW: 'CREATE_NEW' as PickPersonType,
+};
+
+export const DISPLAY_MODE = {
+  LIST: 'LIST',
+  TABLE: 'TABLE',
 };
 
 export const FacilityCategoryGroups = {

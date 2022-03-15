@@ -8,7 +8,7 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.community',
+    name: 'captions.communityName',
     dataKey: 'community.caption',
     isSortable: true,
   },

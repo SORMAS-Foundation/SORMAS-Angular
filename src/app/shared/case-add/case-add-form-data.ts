@@ -219,7 +219,7 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'facility',
-        label: 'captions.facility',
+        label: 'captions.CaseData.healthFacility',
         validation: ['required'],
         options: [
           {
@@ -254,7 +254,7 @@ export const FORM_DATA_CASE_ADD = [
   },
   {
     id: 'pointOfEntry',
-    title: 'captions.pointOfEntry',
+    title: 'captions.CaseData.pointOfEntry',
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -275,7 +275,7 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'pointOfEntry',
-        label: 'captions.pointOfEntry',
+        label: 'captions.CaseData.pointOfEntry',
         options: optionsPointOfEntry,
         newLine: true,
       },
@@ -394,7 +394,7 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'person.country.uuid',
-        label: 'captions.country',
+        label: 'captions.Country',
         service: 'countryService',
         validation: ['required'],
         newLine: true,
@@ -433,7 +433,7 @@ export const FORM_DATA_CASE_ADD = [
   },
   {
     id: 'facility',
-    title: 'captions.facility',
+    title: 'captions.CaseData.healthFacility',
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -464,7 +464,7 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'facility2',
-        label: 'captions.facility',
+        label: 'captions.CaseData.healthFacility',
         options: [
           {
             key: 'default',

@@ -1,0 +1,7 @@
+{
+  "keycloakRealm": "SORMAS",
+  "keycloakClientId": "sormas-angular",
+  "keycloakUrl": "https://test-de2.sormas.netzlink.com/keycloak/auth/",
+  "apiUrl": "http://localhost:4201/sormas-rest",
+  "domainSubfolder": "/sormas-ui/"
+}

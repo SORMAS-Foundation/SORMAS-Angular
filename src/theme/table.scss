@@ -9,10 +9,9 @@
   :root {
     th.mat-header-cell,
     td.mat-cell {
-      padding: 1em 1rem;
+      padding: 10px 16px;
       border-bottom-width: 2px;
       color: mat.get-color-from-palette(mat.define-palette($accent, 800));
-      white-space: nowrap;
     }
 
     th.mat-header-cell {
@@ -20,6 +19,7 @@
       border-left: 1px solid mat.get-color-from-palette(mat.define-palette($accent, 300));
       background-color: mat.get-color-from-palette(mat.define-palette($accent, 50));
       font-size: 1rem;
+      white-space: nowrap;
 
       &:first-child {
         border-left-width: 0;
@@ -27,6 +27,9 @@
     }
 
     td.mat-cell {
+      height: 24px;
+      line-height: 24px;
+      vertical-align: top;
       border-bottom-color: mat.get-color-from-palette(mat.define-palette($accent, 100));
       font-size: 0.875rem;
 
@@ -47,6 +50,10 @@
       display: flex;
       width: 100%;
       justify-content: space-between;
+    }
+
+    th[align='right'] .mat-sort-header-content {
+      justify-content: flex-end;
     }
 
     .mat-sort-header-arrow {

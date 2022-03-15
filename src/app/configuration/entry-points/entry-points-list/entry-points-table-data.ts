@@ -2,7 +2,7 @@ import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
   {
-    name: 'captions.pointOfEntry',
+    name: 'captions.name',
     dataKey: 'name',
     isSortable: true,
   },
@@ -12,33 +12,37 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'strings.entityRegion',
+    name: 'captions.Region',
     dataKey: 'region.caption',
     isSortable: true,
   },
   {
-    name: 'strings.entityDistrict',
+    name: 'captions.District',
     dataKey: 'district.caption',
     isSortable: true,
   },
   {
     name: 'captions.PointOfEntry.latitude',
     dataKey: 'latitude',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.PointOfEntry.longitude',
     dataKey: 'longitude',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.PointOfEntry.externalID',
     dataKey: 'externalID',
+    align: 'right',
     isSortable: true,
   },
   {
     name: 'captions.PointOfEntry.active',
     dataKey: 'active',
+    translationName: 'BooleanOption',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DISPLAY,

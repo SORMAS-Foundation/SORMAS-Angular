@@ -25,12 +25,14 @@ export const CONTACT_FILTERS_FORM_ID = 'contactFilters';
 
 export const EVENT_DETAILS_FORM_ID = 'event';
 export const EVENT_PARTICIPANTS_PROFILE_FORM_ID = 'event';
+export const EVENT_PARTICIPANTS_FILTERS_FORM_ID = 'eventParticipantsFilters';
 export const EVENT_FILTERS_FORM_ID = 'eventFilters';
 export const EVENT_GROUP_FILTERS_FORM_ID = 'eventGroupFilters';
 export const EVENT_GROUPS_FORM_ID = 'eventGroups';
 export const ADD_EVENT_GROUP_FORM_ID = 'addEventGroup';
 export const EVENT_GROUP_LINK_EVENT_FILTERS_FORM_ID = 'eventGroupLinkEventFilters';
 export const EVENT_GROUP_FILTERS_ADD_EVENTS_MODAL_FORM_ID = 'eventGroupAddEventModalFilters';
+export const EVENT_GROUP_PROFILE_FILTERS_FORM_ID = 'eventGroupProfileFilters';
 
 export const PERSON_DETAILS_FORM_ID = 'person';
 export const PERSON_FILTERS_FORM_ID = 'personFilters';
@@ -61,3 +63,5 @@ export const VACCINATION_ADD_EDIT_FORM_ID = 'vaccinationAddEdit';
 export const WEEKLY_REPORT_FILTERS_FORM_ID = 'weeklyReportFilters';
 
 export const SHARE_REQUEST_FILTERS_FORM_ID = 'shareRequestFilters';
+
+export const LAB_MESSAGE_FILTERS_FORM_ID = 'labMessageFilters';

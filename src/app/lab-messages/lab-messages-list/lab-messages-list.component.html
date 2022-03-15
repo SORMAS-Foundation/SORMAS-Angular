@@ -1,0 +1,36 @@
+<app-filters [topGap]="headerHeight">
+  <app-lab-messages-filters
+    [formId]="formIdFilters"
+    [data]="filtersData"
+    filters
+  ></app-lab-messages-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title">
+        {{ 'captions.View.samples.labMessages' | translate }}
+      </h1>
+
+      <div class="page-header-actions">
+        <button class="add-btn" mat-flat-button color="primary">
+          {{ 'captions.sampleCreateNew' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <app-table
+      [filterFormId]="formIdFilters"
+      [resourceService]="labMessageService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isSelectable]="true"
+      [isViewable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      [viewOptions]="actionsViewOptions"
+      [bulkEditOptions]="actionsBulkEditOptions"
+      (rowAction)="doLabMessageAction($event)"
+      showTotalContext="{{ 'strings.entitySamples' | translate }}"
+    ></app-table>
+  </ng-container>
+</app-filters>

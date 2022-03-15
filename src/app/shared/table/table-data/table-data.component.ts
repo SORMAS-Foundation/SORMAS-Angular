@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TableColumn, TableDataFormatOptions } from '../../../_models/common';
-import { IconsMap } from '../../../app.constants';
+import * as icons from '../../../_constants/icons';
 import * as enums from '../../../_constants/enums';
 
 @Component({
@@ -17,7 +17,6 @@ export class TableDataComponent implements OnChanges {
   dataLink: string | undefined;
   dataDisplay: string | undefined;
   dataClass = '';
-  icons = IconsMap;
   formats = TableDataFormatOptions;
 
   iconName: string;
@@ -27,19 +26,17 @@ export class TableDataComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.formatData();
-    if (this.config.iconify) {
-      this.iconName = this.getIcon();
-      this.iconClass = this.getIconClass();
+    this.setIcon();
+  }
+
+  setIcon(): void {
+    const { dataKey, iconify } = this.config;
+    if (iconify) {
+      const key = this.getData(dataKey);
+      const iconsSet: any = icons[iconify as keyof typeof icons];
+      this.iconName = iconsSet[key];
+      this.iconClass = `icon-${dataKey.split('.').pop()}-${this.getRawData(dataKey)}`;
     }
-  }
-
-  getIcon(): string {
-    const key = this.getData(this.config.dataKey);
-    return this.icons[key as keyof typeof IconsMap];
-  }
-
-  getIconClass(): string {
-    return `icon-${this.config.dataKey}-${this.getRawData(this.config.dataKey)}`;
   }
 
   getType(): string | undefined {
@@ -50,13 +47,14 @@ export class TableDataComponent implements OnChanges {
   }
 
   translateData(rawData: string): string {
-    let translatedData: string = rawData || '';
-    if (rawData) {
-      if (this.config.translationName) {
-        // @ts-ignore
-        translatedData = enums[this.config.translationName][rawData];
-        translatedData = this.translateService.instant(translatedData);
-      }
+    if (rawData === undefined || rawData === null) {
+      return rawData;
+    }
+    let translatedData: string = String(rawData);
+    if (this.config.translationName) {
+      // @ts-ignore
+      translatedData = enums[this.config.translationName][rawData];
+      translatedData = this.translateService.instant(translatedData);
     }
     return translatedData;
   }
@@ -77,7 +75,8 @@ export class TableDataComponent implements OnChanges {
         this.formatDisplay();
         break;
       default: {
-        this.dataDisplay = this.translateData(this.getData(this.config.dataKey));
+        const data = this.getData(this.config.dataKey);
+        this.dataDisplay = this.config.translationName ? this.translateData(data) : data;
       }
     }
   }
@@ -114,7 +113,13 @@ export class TableDataComponent implements OnChanges {
   }
 
   getRawData(key: string): any {
-    return key.split('.').reduce((o, i) => o && o[i], this.data);
+    return key.split('.').reduce((o, i) => {
+      if (!o) {
+        return o;
+      }
+      const [partialKey, partialIndex] = i.split(/[[\]]/).filter(Boolean);
+      return partialIndex ? o[partialKey][partialIndex] : o[partialKey];
+    }, this.data);
   }
 
   getData(key: string): any {
@@ -139,11 +144,11 @@ export class TableDataComponent implements OnChanges {
     this.config.format?.params?.forEach((key: any, index: number) => {
       let param = this.getRawData(key);
       const unTranslatedParam = param;
-      if (param && this.config.translationName) {
-        param = this.translateData(param);
-      }
       if (param !== undefined && param !== null) {
         paramHasValue = true;
+        if (this.config.translationName) {
+          param = this.translateData(param);
+        }
       }
       result = result.replaceAll(`>$param${index + 1}<`, `>${param}<` ?? '');
       result = result.replaceAll(`$param${index + 1}`, unTranslatedParam);

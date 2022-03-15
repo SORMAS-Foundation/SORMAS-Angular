@@ -1,4 +1,4 @@
-import { COMMON_DATE_FORMAT } from '../../app.constants';
+import { COMMON_DATE_FORMAT, TABLE_MAX_COLUMN_WIDTH } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -14,6 +14,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasShareRequest.creationDate',
     dataKey: 'creationDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -23,6 +24,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasShareRequest.dataType',
     dataKey: 'dataType',
+    translationName: 'ShareRequestDataType',
     isSortable: true,
   },
   {
@@ -38,6 +40,8 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasShareRequest.ownershipHandedOver',
     dataKey: 'ownershipHandedOver',
+    translationName: 'BooleanOption',
+    align: 'center',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DISPLAY,
@@ -48,11 +52,13 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.SormasToSormasShareRequest.status',
     dataKey: 'status',
+    translationName: 'ShareRequestStatus',
     isSortable: true,
   },
   {
     name: 'captions.SormasToSormasShareRequest.comment',
     dataKey: 'comment',
+    maxWidth: TABLE_MAX_COLUMN_WIDTH,
     isSortable: true,
     className: 'share-requests-comment',
   },
@@ -63,15 +69,15 @@ export const defaultColumnDefs: TableColumn[] = [
       {
         type: 'ACCEPT',
         icon: 'check_circle_outline',
-        text: 'Accept',
-        className: 'button-accept',
+        text: 'captions.actionAccept',
+        color: 'primary',
         dependingOn: 'status',
         dependingOnValues: ['PENDING'],
       },
       {
         type: 'REJECT',
         icon: 'highlight_off',
-        text: 'Reject',
+        text: 'captions.actionReject',
         className: 'button-reject',
         dependingOn: 'status',
         dependingOnValues: ['PENDING'],

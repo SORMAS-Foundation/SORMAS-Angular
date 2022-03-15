@@ -28,7 +28,7 @@ export const FORM_DATA_DISTRICT_FILTERS = [
   },
   {
     id: 'relevanceStatus',
-    title: 'strings.entityCountries',
+    title: 'captions.View.configuration.districts.short',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
@@ -47,14 +47,14 @@ export const FORM_DATA_DISTRICT_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
-        placeholder: 'captions.country',
+        placeholder: 'captions.Country',
         service: 'countryService',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        placeholder: 'captions.region',
+        placeholder: 'captions.Region',
         service: 'regionService',
         determinedBy: ['country.uuid'],
         className: 'fullwidth',

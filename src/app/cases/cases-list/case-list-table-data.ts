@@ -6,6 +6,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'uuid',
     isSortable: true,
     essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/cases/case/$param1/details',
@@ -40,7 +41,7 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.Contact.caze.caseClassification',
+    name: 'captions.CaseData.caseClassification',
     dataKey: 'caseClassification',
     translationName: 'CaseClassification',
     isSortable: true,
@@ -56,13 +57,14 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'investigationStatus',
     translationName: 'InvestigationStatus',
     isSortable: true,
-    iconify: true,
+    iconify: 'IconsMap',
   },
   {
     name: 'captions.CaseData.personUuid',
     dataKey: 'personUuid',
     isSortable: true,
     essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/persons/person/$param1',
@@ -81,23 +83,24 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.CaseData.district',
-    dataKey: 'district.caption',
+    name: 'captions.CaseData.responsibleDistrictName',
+    dataKey: 'responsibleDistrictName',
     isSortable: true,
   },
   {
     name: 'captions.CaseData.healthFacilityName',
-    dataKey: 'healthFacility.caption',
+    dataKey: 'healthFacilityName',
     isSortable: true,
   },
   {
-    name: 'captions.CaseData.pointOfEntry',
-    dataKey: 'pointOfEntry.caption',
+    name: 'captions.CaseData.pointOfEntryName',
+    dataKey: 'pointOfEntryName',
     isSortable: true,
   },
   {
     name: 'captions.CaseData.reportDate',
     dataKey: 'reportDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -107,6 +110,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.CaseData.quarantineTo',
     dataKey: 'quarantineTo',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -116,6 +120,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.creationDate',
     dataKey: 'creationDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -131,6 +136,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.CaseData.followUpUntil',
     dataKey: 'followUpUntil',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -140,11 +146,13 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.CaseData.symptomJournalStatus',
     dataKey: 'symptomJournalStatus',
+    translationName: 'SymptomJournalStatus',
     isSortable: true,
   },
   {
     name: 'captions.CaseData.numberOfVisits',
-    dataKey: 'numberOfVisits',
+    dataKey: 'visitCount',
+    align: 'right',
     isSortable: true,
   },
   {
@@ -155,6 +163,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'strings.headingCompleteness',
     dataKey: 'completeness',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.NUMBER,
@@ -169,3 +178,5 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
 ];
+
+export const legendDefs = undefined;

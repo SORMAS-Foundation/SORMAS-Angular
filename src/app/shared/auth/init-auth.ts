@@ -23,6 +23,9 @@ export function initializeAuth(
         })
         .toPromise()
         .then((result: any) => {
+          if (result.domainSubfolder) {
+            helperService.setDomainFolder(result.domainSubfolder);
+          }
           helperService.setApiUrl(result.apiUrl);
           return resolve(
             authService.init({

@@ -5,6 +5,8 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.Person.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/persons/person/$param1',
@@ -24,16 +26,17 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'captions.Person.ageAndBirthDate',
-    dataKey: 'age',
+    dataKey: 'ageAndBirthDate.age',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DISPLAY,
       pattern: '$param1 ($param2/$param3/$param4)',
       params: [
         'ageAndBirthDate.age',
-        'ageAndBirthDate.birthdateDD',
-        'ageAndBirthDate.birthdateMM',
-        'ageAndBirthDate.birthdateYYYY',
+        'ageAndBirthDate.dateOfBirthMM',
+        'ageAndBirthDate.dateOfBirthDD',
+        'ageAndBirthDate.dateOfBirthYYYY',
       ],
     },
   },
@@ -49,18 +52,31 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.address',
+    name: 'captions.Location.street',
+    dataKey: 'street',
+    isSortable: true,
+  },
+  {
+    name: 'captions.Location.houseNumber',
+    dataKey: 'houseNumber',
+    align: 'right',
+    isSortable: true,
+  },
+  {
+    name: 'captions.Location.postalCode',
+    dataKey: 'postalCode',
+    align: 'right',
+    isSortable: true,
+  },
+  {
+    name: 'captions.city',
     dataKey: 'city',
     isSortable: true,
-    format: {
-      type: TableDataFormatOptions.DISPLAY,
-      pattern: '$param1, $param2, $param3, $param4',
-      params: ['city', 'street', 'houseNumber', 'postalCode'],
-    },
   },
   {
     name: 'captions.Person.phone',
     dataKey: 'phone',
+    align: 'right',
     isSortable: true,
   },
   {

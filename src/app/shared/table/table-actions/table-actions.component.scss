@@ -1,0 +1,49 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+:host {
+  display: block;
+  white-space: nowrap;
+  margin-top: -6px;
+  margin-bottom: -6px;
+}
+
+.mat-button-base + .mat-button-base {
+  margin-left: 16px;
+}
+
+.mat-button {
+  padding: 0;
+}
+
+.icon-action {
+  font-size: 18px;
+}
+
+.button-reject {
+  color: mat.get-color-from-palette($sormas-alert, 400);
+
+  &:hover,
+  &:focus {
+    color: mat.get-color-from-palette($sormas-alert, 700);
+  }
+}
+
+.button-assign {
+  display: block;
+  min-width: unset;
+  padding-inline: 16px;
+  margin-inline: auto;
+}
+
+:host .mat-stroked-button.button-reassign {
+  margin-inline: -16px;
+  border-color: transparent;
+  color: mat.get-color-from-palette($sormas-accent, 800);
+
+  &:hover,
+  &:focus {
+    border-color: mat.get-color-from-palette($sormas-primary, 100);
+    color: mat.get-color-from-palette($sormas-primary, 700);
+  }
+}

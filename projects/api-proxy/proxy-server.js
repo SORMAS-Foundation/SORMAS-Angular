@@ -668,6 +668,317 @@ app.use('/sormas-rest/weeklyReports/indexList', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/contacts/followUp', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        changeDate: 1644480071438,
+        personFirstName: 'Jessie',
+        personLastName: 'James',
+        follupUpUntil: 1644480071438,
+        dateLastContact: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        resposibleContactOfficer: 'James2',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'COOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'COOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'UNAVAILABLE',
+          },
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+        ],
+      },
+      {
+        uuid: 'GHG87N-DFGSFA-WE457GVB',
+        changeDate: 1644480071438,
+        personFirstName: 'Doc',
+        personLastName: 'Scurlock',
+        follupUpUntil: 1644480071438,
+        dateLastContact: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        resposibleContactOfficer: 'James3',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+        ],
+      },
+      {
+        uuid: 'RTGJSV-D567K9-MGNBVD',
+        changeDate: 1644480071438,
+        personFirstName: 'William H',
+        personLastName: 'Bonney',
+        follupUpUntil: 1644480071438,
+        dateLastContact: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        resposibleContactOfficer: 'James4',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'UNAVAILABLE',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+        ],
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/cases/followUp', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        changeDate: 1644480071438,
+        personFirstName: 'Jessie',
+        personLastName: 'James',
+        follupUpUntil: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'COOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'COOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'UNAVAILABLE',
+          },
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+        ],
+      },
+      {
+        uuid: 'GHG87N-DFGSFA-WE457GVB',
+        changeDate: 1644480071438,
+        personFirstName: 'Doc',
+        personLastName: 'Scurlock',
+        follupUpUntil: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'UNCOOPERATIVE',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+        ],
+      },
+      {
+        uuid: 'RTGJSV-D567K9-MGNBVD',
+        changeDate: 1644480071438,
+        personFirstName: 'William H',
+        personLastName: 'Bonney',
+        follupUpUntil: 1644480071438,
+        symptomJournalStatus: 'UNREGISTERED',
+        disease: 'CORONAVIRUS',
+        visitResults: [
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+          {
+            user: 'admin',
+            status: 'UNAVAILABLE',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'SYMPTOMATIC',
+          },
+          {
+            user: 'admin',
+            status: 'NOT_PERFORMED',
+          },
+        ],
+      },
+    ],
+    pageNumber: 0,
+    size: 8,
+    totalElementCount: 3,
+    hasNext: false,
+  });
+});
+
+app.use('/sormas-rest/labMessage/indexList', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'POSITIVE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNPROCESSED',
+        assignee: {
+          uuid: 'S3ROT2-XAXJYF-VMIN7W-NA5ASJ7U',
+          caption: 'admin',
+        },
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'INDETERMINATE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNPROCESSED',
+        assignee: null,
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'NEGATIVE',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'FORWARDED',
+        assignee: null,
+      },
+      {
+        uuid: 'HD4H3J-SHSFH-ASFASGG',
+        messageDateTime: 1644480071438,
+        labName: 'Testlabor',
+        labPostalCode: 12345,
+        testedDisease: 'CORONAVIRUS',
+        sampleOverallTestResult: 'PENDING',
+        personFirstName: 'Ionut',
+        personLastName: 'Caprioara',
+        personBirthDate: '6/22/1999',
+        personPostalCode: 45678,
+        status: 'UNCLEAR',
+        assignee: {
+          uuid: 'VXDHVQ-AHH47Z-322YEK-UBB5CB24',
+          caption: 'Surveillance SUPERVISOR',
+        },
+      },
+    ],
+    pageNumber: 0,
+    size: 4,
+    totalElementCount: 4,
+    hasNext: false,
+  });
+});
+
 app.use('/sormas-rest/shareRequests/indexList', (req, res) => {
   res.status(200).send({
     elements: [

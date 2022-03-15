@@ -1,10 +1,12 @@
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
-export const defaultColumnDetailedDefs: TableColumn[] = [
+export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Contact.uuid',
     dataKey: 'uuid',
     isSortable: true,
+    essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/contacts/contact/$param1/details',
@@ -16,11 +18,6 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     name: 'captions.Contact.externalID',
     dataKey: 'externalID',
     isSortable: true,
-    format: {
-      type: TableDataFormatOptions.DISPLAY,
-      pattern: '{$param1}',
-      params: ['externalID'],
-    },
   },
   {
     name: 'captions.Contact.externalToken',
@@ -111,6 +108,8 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     name: 'captions.Contact.latestEventId',
     dataKey: 'latestEventId',
     isSortable: true,
+    essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/events/event/$param1/details',
@@ -193,3 +192,5 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     isSortable: true,
   },
 ];
+
+export const legendDefs = undefined;

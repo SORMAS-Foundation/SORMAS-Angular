@@ -1,11 +1,12 @@
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
-export const defaultColumnDetailedDefs: TableColumn[] = [
+export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.CaseData.uuid',
     dataKey: 'uuid',
     isSortable: true,
     essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/cases/case/$param1/details',
@@ -61,13 +62,14 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     dataKey: 'investigationStatus',
     translationName: 'InvestigationStatus',
     isSortable: true,
-    iconify: true,
+    iconify: 'IconsMap',
   },
   {
     name: 'captions.CaseData.personUuid',
     dataKey: 'personUuid',
     isSortable: true,
     essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/persons/person/$param1',
@@ -272,3 +274,5 @@ export const defaultColumnDetailedDefs: TableColumn[] = [
     isSortable: true,
   },
 ];
+
+export const legendDefs = undefined;

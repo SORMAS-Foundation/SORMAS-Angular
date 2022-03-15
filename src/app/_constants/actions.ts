@@ -70,3 +70,14 @@ export const ACTIONS_IMMUNIZATION_EDIT = {
   ARCHIVE: 'ARCHIVE',
   DELETE: 'DELETE',
 };
+
+export const ACTIONS_SAMPLES_VIEW_OPTIONS = {
+  SAMPLES: '/samples/list',
+  LAB_MESSAGES: '/lab-messages/list',
+};
+
+export const ACTIONS_LAB_MESSAGE = {
+  ASSIGN: 'ASSIGN',
+  PROCESS: 'PROCESS',
+  DOWNLOAD: 'DOWNLOAD',
+};

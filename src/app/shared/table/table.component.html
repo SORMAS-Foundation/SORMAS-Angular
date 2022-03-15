@@ -9,7 +9,7 @@
     <app-action-menu [config]="viewOptions" (action)="onActionSelected($event)"></app-action-menu>
   </app-dropdown-menu>
   <app-dropdown-menu
-    *ngIf="bulkEditOptions"
+    *ngIf="bulkEditOptions?.length"
     [buttonText]="'captions.bulkActions' | translate"
     [disabled]="selection.isEmpty()"
   >
@@ -20,6 +20,7 @@
   </app-dropdown-menu>
 
   <ng-content select=".page-actions"></ng-content>
+  <ng-content select=".table-filters"></ng-content>
 </div>
 
 <div *ngIf="showTotal && fetchStatus !== fetchStatusType.ERROR" class="list-info">
@@ -46,9 +47,9 @@
       (cdkDropListDropped)="drop($event)"
       [ngClass]="[appearance]"
     >
-      <ng-container matColumnDef="select">
-        <th mat-header-cell cdkDrag *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let row">
+      <ng-container matColumnDef="select" sticky>
+        <th mat-header-cell *matHeaderCellDef class="column-select"></th>
+        <td mat-cell *matCellDef="let row" class="column-select">
           <mat-checkbox
             *ngIf="!isSelectableCheckboxHidden"
             color="primary"
@@ -60,23 +61,23 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="view">
-        <th mat-header-cell cdkDrag *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let row">
+      <ng-container matColumnDef="view" sticky>
+        <th mat-header-cell *matHeaderCellDef class="column-view"></th>
+        <td mat-cell *matCellDef="let row" class="column-view">
           <button
             mat-icon-button
             color="primary"
             (click)="$event.stopPropagation(); doActionView(row.index)"
             class="small"
           >
-            <mat-icon class="material-icons-round">wysiwyg</mat-icon>
+            <mat-icon class="material-icons-round">{{ viewableIcon }}</mat-icon>
           </button>
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell cdkDrag *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let row">
+      <ng-container matColumnDef="edit" sticky>
+        <th mat-header-cell *matHeaderCellDef class="column-edit"></th>
+        <td mat-cell *matCellDef="let row" class="column-edit">
           <button
             mat-icon-button
             color="primary"
@@ -88,9 +89,24 @@
         </td>
       </ng-container>
 
-      <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
+      <ng-container matColumnDef="$spacerRight$">
+        <th mat-header-cell *matHeaderCellDef class="spacer-right"></th>
+        <td mat-cell *matCellDef class="spacer-right"></td>
+      </ng-container>
+
+      <ng-container
+        *ngFor="let tableColumn of tableColumns"
+        [matColumnDef]="tableColumn.name"
+        [sticky]="tableColumn.sticky"
+      >
         <ng-container *ngIf="isSortable && tableColumn.isSortable; else notSortable">
-          <th mat-header-cell cdkDrag *matHeaderCellDef [mat-sort-header]="tableColumn.dataKey">
+          <th
+            mat-header-cell
+            cdkDrag
+            *matHeaderCellDef
+            [mat-sort-header]="tableColumn.dataKey"
+            [align]="tableColumn.align"
+          >
             <span>{{ tableColumn.name | translate }}</span>
             <mat-icon *ngIf="sorting?.field === tableColumn.dataKey" class="material-icons-round">
               {{ sorting?.ascending ? 'arrow_drop_up' : 'arrow_drop_down' }}
@@ -113,33 +129,17 @@
           [ngClass]="tableColumn.className || ''"
         >
           <app-table-data
-            *ngIf="!tableColumn.actions"
             [config]="tableColumn"
             [data]="dataSourceArray[element.index]"
+            [style.maxWidth.px]="tableColumn.maxWidth"
+            [ngClass]="tableColumn.maxWidth ? 'constrain-data' : ''"
           ></app-table-data>
-          <ng-container *ngFor="let action of tableColumn.actions">
-            <button
-              *ngIf="
-                !action.dependingOn ||
-                (action.dependingOnValues
-                  ? action.dependingOnValues.includes(
-                      dataSourceArray[element.index][action.dependingOn]
-                    )
-                  : dataSourceArray[element.index][action.dependingOn])
-              "
-              mat-button
-              [color]="action.color"
-              [ngClass]="['button-action', action.className]"
-              (click)="doRowAction(element.index, action.type)"
-            >
-              <mat-icon *ngIf="action.icon" class="material-icons-round icon-action">
-                {{ action.icon }}
-              </mat-icon>
-              <span *ngIf="action.text">
-                {{ action.text | translate }}
-              </span>
-            </button>
-          </ng-container>
+          <app-table-actions
+            *ngIf="tableColumn.actions?.length"
+            [config]="tableColumn"
+            [data]="dataSourceArray[element.index]"
+            (action)="doRowAction($event)"
+          ></app-table-actions>
         </td>
       </ng-container>
 
@@ -151,6 +151,19 @@
           class="additional-header"
         >
           <span *ngIf="!header.name.startsWith('$')">{{ header.name | translate }}</span>
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="legend">
+        <th
+          mat-footer-cell
+          *matFooterCellDef
+          [attr.colspan]="displayedColumns.length"
+          class="footer-legend"
+        >
+          <div class="legend">
+            <ng-content select=".table-legend"></ng-content>
+          </div>
         </th>
       </ng-container>
 
@@ -171,6 +184,9 @@
         ]"
         (click)="onSelectionChange($event, row)"
       ></tr>
+      <ng-container *ngIf="showLegend">
+        <tr mat-footer-row *matFooterRowDef="['legend']; sticky: true"></tr>
+      </ng-container>
     </table>
 
     <app-table-notification

@@ -3,6 +3,7 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   padding: 24px;
 
   & > * {
@@ -10,16 +11,36 @@
   }
 }
 
+.table-filters {
+  margin-left: auto;
+}
+
 table {
   width: 100%;
+  white-space: nowrap;
 
   td.bold {
     font-weight: 500;
   }
-}
 
-.mat-cell {
-  height: 48px;
+  .column-edit,
+  .column-view,
+  .column-select {
+    width: 24px;
+    border-left: 0;
+
+    &:not(:first-child) {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
+  th.spacer-right,
+  td.spacer-right {
+    border-left: 0;
+    padding: 0;
+    width: 50%;
+  }
 }
 
 .list-info {
@@ -39,35 +60,14 @@ th.additional-header {
   text-transform: uppercase;
 }
 
-.button-action {
-  padding: 0;
-  line-height: unset;
+.footer-legend {
+  text-align: left;
+}
 
-  .mat-icon {
-    font-size: 18px;
-  }
-
-  & + & {
-    margin-left: 16px;
-  }
-
-  &.button-accept {
-    color: mat.get-color-from-palette($sormas-primary, 700);
-
-    &:hover,
-    &:focus {
-      color: mat.get-color-from-palette($sormas-primary, 800);
-    }
-  }
-
-  &.button-reject {
-    color: mat.get-color-from-palette($sormas-alert, 400);
-
-    &:hover,
-    &:focus {
-      color: mat.get-color-from-palette($sormas-alert, 700);
-    }
-  }
+.legend {
+  width: fit-content;
+  position: sticky;
+  left: 0;
 }
 
 .minimal {
@@ -88,6 +88,12 @@ th.additional-header {
     &:first-of-type {
       padding-left: 24px;
     }
+
+    &.column-edit,
+    &.column-view,
+    &.column-select {
+      background-color: $white;
+    }
   }
 
   tr.mat-row.row-selected td.mat-cell {
@@ -97,4 +103,8 @@ th.additional-header {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.lab-message-assignee > app-table-data {
+  display: none;
 }

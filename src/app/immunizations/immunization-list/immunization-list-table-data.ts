@@ -1,3 +1,4 @@
+import { COMMON_DATE_FORMAT } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -6,6 +7,7 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'uuid',
     isSortable: true,
     essential: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/immunizations/immunization/$param1/profile',
@@ -17,6 +19,7 @@ export const defaultColumnDefs: TableColumn[] = [
     name: 'captions.Immunization.personUuid',
     dataKey: 'personUuid',
     isSortable: true,
+    sticky: true,
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/persons/person/$param1',
@@ -42,8 +45,20 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'captions.Immunization.ageAndBirthDate',
-    dataKey: 'age',
+    dataKey: 'ageAndBirthDate.age',
+    align: 'right',
     isSortable: true,
+    format: {
+      type: TableDataFormatOptions.DISPLAY,
+      pattern: '$param1 ($param2/$param3/$param4)',
+      params: [
+        'ageAndBirthDate.age',
+        'ageAndBirthDate.dateOfBirthMM',
+        'ageAndBirthDate.dateOfBirthDD',
+        'ageAndBirthDate.dateOfBirthYYYY',
+      ],
+      truncate: 6,
+    },
   },
   {
     name: 'captions.sex',
@@ -64,7 +79,7 @@ export const defaultColumnDefs: TableColumn[] = [
   },
   {
     name: 'captions.Immunization.immunizationManagementStatus',
-    dataKey: 'immunizationManagementStatus',
+    dataKey: 'managementStatus',
     translationName: 'ImmunizationManagementStatus',
     isSortable: true,
   },
@@ -77,19 +92,21 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Immunization.startDate',
     dataKey: 'startDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
   {
     name: 'captions.Immunization.endDate',
     dataKey: 'endDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
   {
@@ -100,10 +117,11 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.Immunization.recoveryDate',
     dataKey: 'recoveryDate',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
+      pattern: COMMON_DATE_FORMAT,
     },
   },
 ];
