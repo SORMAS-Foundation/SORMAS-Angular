@@ -11,8 +11,13 @@ import {
 } from 'date-fns';
 import { of } from 'rxjs';
 import { Filter } from '../_models/common';
-import { BRIEF_DATE_FORMAT, EntityLink } from '../_constants/common';
-import { FacilityCategory, FacilityType } from '../app.constants';
+import {
+  BRIEF_DATE_FORMAT,
+  EntityLink,
+  FacilityCategoryGroups,
+  FacilityCategory,
+  FacilityType,
+} from '../app.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -137,7 +142,13 @@ export class HelperService {
     return of(Object.entries(FacilityCategory).map(([key, value]) => ({ key, value })));
   }
 
-  getFacilityTypes() {
-    return of(Object.entries(FacilityType).map(([key, value]) => ({ key, value })));
+  getFacilityTypes(filters: any) {
+    const type = filters[0].value;
+    const typesMap: any = FacilityCategoryGroups;
+    return of(
+      Object.entries(FacilityType)
+        .map(([key, value]) => ({ key, value }))
+        .filter((item) => typesMap[type].includes(item.key))
+    );
   }
 }

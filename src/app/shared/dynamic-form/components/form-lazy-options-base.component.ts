@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { distinctUntilChanged, pairwise } from 'rxjs/operators';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { distinctUntilChanged, filter, pairwise, startWith } from 'rxjs/operators';
 import { DEFAULT_FETCH_METHOD } from '../../../app.constants';
+import { Filter } from '../../../_models/common';
 import { CommunityService } from '../../../_services/api/community.service';
 import { ContinentService } from '../../../_services/api/continent.service';
 import { CountryService } from '../../../_services/api/country.service';
@@ -25,6 +25,8 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
   method: string;
   subscriptions: Subscription[] = [];
   enabled: boolean;
+  private determinantValues: any = {};
+  private watchDeterminants: BehaviorSubject<any>;
 
   constructor(
     public formActionsService: FormActionsService,
@@ -54,53 +56,61 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     }
   }
 
-  populateOptions(): void {
-    // const determinedByProcessed = '';
-    const determinantControl: AbstractControl[] | undefined = [];
-    if (this.config.determinedBy) {
-      this.config.determinedBy.forEach((el) => {
-        determinantControl.push(this.group.controls[el.replaceAll('.', '__')]);
-      });
-    }
-    console.log('determinedBy', determinantControl);
-
-    // determinantControl =
-    //   this.config.determinedBy &&
-    //   this.group.controls[this.config.determinedBy.replaceAll('.', '__')];
-    if (
-      !determinantControl ||
-      determinantControl.length === 0 ||
-      determinantControl[0] === undefined
-    ) {
-      this.fetchOptions();
-      return;
-    }
-    // console.log('determined', this.config.determinedBy, determinantControl);
-
-    determinantControl.forEach((el) => {
-      console.log('el', el);
-      this.subscriptions.push(
-        el.valueChanges.pipe(distinctUntilChanged(), pairwise()).subscribe(([, val]) => {
-          this.control?.reset();
-          this.control?.disable();
-          this.config.options = [];
-          if (val !== undefined) {
-            this.fetchOptions(val);
-          }
-        })
-      );
-      if (el.value) {
-        this.fetchOptions(el.value);
+  validateFilters(filters: any): boolean {
+    return Object.entries(filters).every(([key, value]) => {
+      const index = this.config.determinedBy?.indexOf(key);
+      if (
+        index &&
+        this.config.determinedByMandatory?.length &&
+        !this.config.determinedByMandatory[index]
+      ) {
+        return true;
       }
+      if (value === null || value === undefined) {
+        return false;
+      }
+      return true;
     });
   }
 
-  fetchOptions(determinantValue?: any): void {
-    const filters = this.makeFiltersFromValue(determinantValue);
-    console.log('filters', filters, determinantValue);
-    // console.log('this.method', this.service[this.method], this.method, filters);
+  populateOptions(): void {
+    this.config.determinedBy?.forEach((key) => {
+      const determinantControl = this.group.controls[key.replaceAll('.', '__')];
+      if (determinantControl) {
+        this.determinantValues[key] = determinantControl.value;
+        this.subscriptions.push(
+          determinantControl.valueChanges
+            .pipe(startWith(undefined), distinctUntilChanged(), pairwise())
+            .subscribe(([, val]) => {
+              this.control?.reset();
+              this.control?.disable();
+              this.config.options = [];
+              this.determinantValues[key] = val;
+              this.watchDeterminants.next(this.determinantValues);
+            })
+        );
+      }
+    });
+
+    if (this.config.determinedBy?.length) {
+      this.watchFields();
+    } else {
+      this.fetchOptions();
+    }
+  }
+
+  watchFields(): void {
+    this.watchDeterminants = new BehaviorSubject(this.determinantValues);
     this.subscriptions.push(
-      // eslint-disable-next-line @typescript-eslint/dot-notation
+      this.watchDeterminants
+        .pipe(filter((val) => this.validateFilters(val)))
+        .subscribe(() => this.fetchOptions())
+    );
+  }
+
+  fetchOptions(): void {
+    const filters = this.makeFilters();
+    this.subscriptions.push(
       this.service[this.method](filters).subscribe({
         next: (response: any) => {
           this.config.options = response;
@@ -112,48 +122,29 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     );
   }
 
-  makeFiltersFromValue(val: any): any[] | null {
-    const keys: string[] = [];
-    this.config.determinedBy?.forEach((el) => {
-      keys.push(el);
-    });
-    if (!keys || keys.length === 0) {
+  makeFilters(): Filter[] | null {
+    if (!this.config.determinedBy?.length) {
       return null;
     }
-    const fields: string[] = [];
-    const result: any[] = [];
-    const keyMap: string[] = ['country', 'region', 'district', 'community'];
-    let filters: any[] = [];
-    let filterName: string | undefined = '';
-    keys?.forEach((key, i) => {
-      fields[i] = this.makeKey(key.replaceAll('.', '__'));
-      filters = Object.entries(this.makeObject(fields[i], val))[0];
-      filterName = keyMap.find((item) => key.toLowerCase().includes(item));
-
-      result.push({
-        field: filterName,
-        value: filters[1],
+    return Object.entries(this.determinantValues)
+      .filter(([, val]) => !!val)
+      .map(([key, val]) => {
+        const [field, value] = Object.entries(this.makeObject(key, val))[0];
+        return {
+          field: this.makeKey(field),
+          value,
+        };
       });
-    });
-
-    return result;
   }
 
   makeKey(key: string): string {
     const keyMap = ['country', 'region', 'district', 'community'];
-    const test = keyMap.find((item) => key.toLowerCase().includes(item));
-    if (!test) {
-      return key;
-    }
-    const index = key.toLowerCase().indexOf(test);
-    let result = key.substr(index);
-    result = result[0].toLowerCase() + result.slice(1);
-    return result;
+    return keyMap.find((item) => key.toLowerCase().includes(item)) ?? key;
   }
 
-  makeObject(path: string, value: string): any {
+  makeObject(path: string, value: unknown): any {
     const result: any = {};
-    const arr = path.split('__');
+    const arr = path.split('.');
     let obj: any = result;
     for (let i = 0; i < arr.length - 1; i += 1) {
       obj[arr[i]] = {};

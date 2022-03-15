@@ -135,10 +135,15 @@ export enum FacilityStatus {
 }
 
 export enum FacilityCategory {
-  ACCOMODATION = 'Facility.accomodation',
-  CARE_FACILITY = 'Facility.care',
-  MEDICAL_FACILITY = 'Facility.medical',
-  RESIDENCE = 'Facility.residence',
+  ACCOMMODATION = 'enum.FacilityTypeGroup.ACCOMMODATION',
+  CARE_FACILITY = 'enum.FacilityTypeGroup.CARE_FACILITY',
+  // CATERING_OUTLET = 'enum.FacilityTypeGroup.CATERING_OUTLET',
+  // EDUCATIONAL_FACILITY = 'enum.FacilityTypeGroup.EDUCATIONAL_FACILITY',
+  // LEISURE_FACILITY = 'enum.FacilityTypeGroup.LEISURE_FACILITY',
+  MEDICAL_FACILITY = 'enum.FacilityTypeGroup.MEDICAL_FACILITY',
+  RESIDENCE = 'enum.FacilityTypeGroup.RESIDENCE',
+  // WORKING_PLACE = 'enum.FacilityTypeGroup.WORKING_PLACE',
+  // COMMERCE = 'enum.FacilityTypeGroup.COMMERCE',
 }
 
 export enum FacilityType {
