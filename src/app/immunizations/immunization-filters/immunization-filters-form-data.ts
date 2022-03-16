@@ -136,14 +136,13 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
     ],
   },
   {
-    id: 'adminAspect',
-    title: 'headingAdminAspect',
+    id: 'location',
+    title: 'captions.Location',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        options: [],
         service: 'regionService',
         placeholder: 'strings.entityRegion',
         className: 'fullwidth',
@@ -151,36 +150,36 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        options: [],
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         placeholder: 'strings.entityDistricts',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
-        options: [],
         service: 'communityService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         placeholder: 'strings.entityCommunities',
         className: 'fullwidth',
       },
-    ],
-  },
-  {
-    id: 'facility',
-    title: 'captions.facility',
-    appearance: FormGroupStyleType.COLLAPSABLE,
-    fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityTypeGroup',
-        placeholder: 'captions.facilityTypeGroup',
-        options: [
+        placeholder: 'captions.Facility.typeGroup',
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'district.uuid',
           },
         ],
         className: 'fullwidth',
@@ -188,11 +187,12 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        placeholder: 'captions.facilityType',
-        options: [
+        placeholder: 'captions.Facility.type',
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'facilityTypeGroup',
           },
         ],
         className: 'fullwidth',
@@ -200,11 +200,23 @@ export const FORM_DATA_IMMUNIZATION_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility',
-        placeholder: 'captions.facility',
-        options: [
+        placeholder: 'captions.Facility',
+        service: 'facilityService',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'district.uuid',
+          },
+          {
+            key: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
           },
         ],
         className: 'fullwidth',

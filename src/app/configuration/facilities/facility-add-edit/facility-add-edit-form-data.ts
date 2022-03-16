@@ -14,28 +14,25 @@ export const FORM_DATA_FACILITY_ADD_EDIT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'facilityCategory',
+        key: 'typeGroup',
         label: 'captions.Facility.typeGroup',
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
         validation: ['required'],
         newLine: true,
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'type',
         label: 'captions.Facility.type',
-        validation: ['required'],
-        options: [
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'typeGroup',
           },
         ],
+        validation: ['required'],
       },
     ],
   },
@@ -56,14 +53,22 @@ export const FORM_DATA_FACILITY_ADD_EDIT = [
         label: 'captions.Facility.district',
         service: 'districtService',
         validation: ['required'],
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
         label: 'captions.Facility.community',
         service: 'communityService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         newLine: true,
       },
       {

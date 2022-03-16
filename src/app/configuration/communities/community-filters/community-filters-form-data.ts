@@ -56,7 +56,11 @@ export const FORM_DATA_COMMUNITY_FILTERS = [
         key: 'region.uuid',
         placeholder: 'captions.Region',
         service: 'regionService',
-        determinedBy: ['country.uuid'],
+        determinedBy: [
+          {
+            key: 'country.uuid',
+          },
+        ],
         className: 'size-full',
       },
       {
@@ -64,7 +68,11 @@ export const FORM_DATA_COMMUNITY_FILTERS = [
         key: 'district.uuid',
         placeholder: 'captions.District',
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         className: 'size-full',
       },
     ],

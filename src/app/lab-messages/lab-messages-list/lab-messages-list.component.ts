@@ -75,6 +75,10 @@ export class LabMessagesListComponent implements OnInit, OnDestroy {
     }
   }
 
+  refresh(): void {
+    // call to backend? ask them to refresh list?
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }

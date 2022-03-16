@@ -64,7 +64,6 @@ export const FORM_DATA_USER_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        options: [],
         service: 'regionService',
         placeholder: 'strings.promptRegion',
         className: 'fullwidth',
@@ -72,9 +71,12 @@ export const FORM_DATA_USER_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        options: [],
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         placeholder: 'strings.promptDistrict',
         className: 'fullwidth',
       },

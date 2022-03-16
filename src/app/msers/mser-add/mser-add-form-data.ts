@@ -37,7 +37,11 @@ export const FORM_DATA_MSERS_ADD = [
         label: 'strings.epiWeek',
         service: 'helperService',
         serviceMethod: 'getEpiWeeksForYear',
-        determinedBy: ['year'],
+        determinedBy: [
+          {
+            key: 'year',
+          },
+        ],
         allowClear: false,
       },
     ],
@@ -57,14 +61,22 @@ export const FORM_DATA_MSERS_ADD = [
         key: 'district.uuid',
         label: 'captions.district',
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility.uuid',
         label: 'captions.facility',
         service: 'facilityService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         newLine: true,
       },
       {
@@ -72,7 +84,11 @@ export const FORM_DATA_MSERS_ADD = [
         key: 'pointOfEntry.uuid',
         label: 'captions.pointOfEntry',
         service: 'entryPointService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
       },
     ],
   },

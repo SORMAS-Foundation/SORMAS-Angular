@@ -100,7 +100,11 @@ export const FORM_DATA_PERSON_FILTERS = [
         key: 'district.uuid',
         options: [],
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         placeholder: 'captions.Contact.district',
         className: 'fullwidth',
       },
@@ -109,7 +113,11 @@ export const FORM_DATA_PERSON_FILTERS = [
         key: 'community.uuid',
         options: [],
         service: 'communityService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         placeholder: 'captions.Contact.community',
         className: 'fullwidth',
       },

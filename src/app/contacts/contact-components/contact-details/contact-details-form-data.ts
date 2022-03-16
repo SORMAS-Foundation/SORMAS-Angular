@@ -184,7 +184,11 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.Contact.district',
         options: [],
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
@@ -192,7 +196,11 @@ export const FORM_DATA_CONTACT_DETAILS = [
         label: 'captions.Contact.community',
         options: [],
         service: 'communityService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
       },
     ],
   },

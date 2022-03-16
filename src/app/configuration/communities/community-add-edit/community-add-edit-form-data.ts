@@ -28,7 +28,11 @@ export const FORM_DATA_COMMUNITY_ADD_EDIT = [
         key: 'district.uuid',
         label: 'captions.district',
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         validation: ['required'],
         newLine: true,
         className: 'size-full',

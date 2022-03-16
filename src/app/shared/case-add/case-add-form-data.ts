@@ -125,7 +125,11 @@ export const FORM_DATA_CASE_ADD = [
         key: 'district.uuid',
         label: 'captions.CaseData.responsibleDistrict',
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         validation: ['required'],
         newLine: true,
       },
@@ -134,7 +138,11 @@ export const FORM_DATA_CASE_ADD = [
         key: 'community.uuid',
         label: 'captions.CaseData.responsibleCommunity',
         service: 'communityService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         newLine: true,
       },
       {
@@ -170,7 +178,12 @@ export const FORM_DATA_CASE_ADD = [
         key: 'districtPlaceOfStay.uuid',
         label: 'captions.CaseData.district',
         service: 'districtService',
-        determinedBy: ['regionPlaceOfStay.uuid'],
+        determinedBy: [
+          {
+            key: 'regionPlaceOfStay.uuid',
+            keyMap: 'region.uuid',
+          },
+        ],
         validation: ['required'],
         newLine: true,
         dependingOn: 'differentPlaceOfStayJurisdiction',
@@ -180,21 +193,22 @@ export const FORM_DATA_CASE_ADD = [
         key: 'communityPlaceOfStay.uuid',
         label: 'captions.CaseData.community',
         service: 'communityService',
-        determinedBy: ['districtPlaceOfStay.uuid'],
+        determinedBy: [
+          {
+            key: 'districtPlaceOfStay.uuid',
+            keyMap: 'district.uuid',
+          },
+        ],
         newLine: true,
         dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'healthFacility.uuid',
+        key: 'facilityTypeGroup',
         label: 'captions.facilityTypeGroup',
         validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultRegion',
-          },
-        ],
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
         newLine: true,
         className: 'size-large',
         dependingOn: 'placeOfStay',
@@ -205,10 +219,11 @@ export const FORM_DATA_CASE_ADD = [
         key: 'facilityType',
         label: 'captions.CaseData.facilityType',
         validation: ['required'],
-        options: [
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'defaultRegion',
+            key: 'facilityTypeGroup',
           },
         ],
         newLine: true,
@@ -221,10 +236,22 @@ export const FORM_DATA_CASE_ADD = [
         key: 'facility',
         label: 'captions.CaseData.healthFacility',
         validation: ['required'],
-        options: [
+        service: 'facilityService',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'defaultRegion',
+            key: 'district.uuid',
+          },
+          {
+            key: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
           },
         ],
         newLine: true,
@@ -269,7 +296,12 @@ export const FORM_DATA_CASE_ADD = [
         key: 'districtPointOfEntry.uuid',
         label: 'captions.CaseData.pointOfEntryDistrict',
         service: 'districtService',
-        determinedBy: ['regionPointOfEntry.uuid'],
+        determinedBy: [
+          {
+            key: 'regionPointOfEntry.uuid',
+            keyMap: 'region.uuid',
+          },
+        ],
         dependingOn: 'pointOfEntryDiffer',
       },
       {
@@ -405,7 +437,12 @@ export const FORM_DATA_CASE_ADD = [
         key: 'person.region.uuid',
         label: 'captions.CaseData.region',
         service: 'regionService',
-        determinedBy: ['person.country.uuid'],
+        determinedBy: [
+          {
+            key: 'person.country.uuid',
+            keyMap: 'country.uuid',
+          },
+        ],
         validation: ['required'],
         newLine: true,
         dependingOn: 'caseDataEnterHomeAddressNow',
@@ -415,7 +452,12 @@ export const FORM_DATA_CASE_ADD = [
         key: 'person.district.uuid',
         label: 'captions.CaseData.district',
         service: 'districtService',
-        determinedBy: ['person.region.uuid'],
+        determinedBy: [
+          {
+            key: 'person.region.uuid',
+            keyMap: 'region.uuid',
+          },
+        ],
         validation: ['required'],
         newLine: true,
         dependingOn: 'caseDataEnterHomeAddressNow',
@@ -425,7 +467,12 @@ export const FORM_DATA_CASE_ADD = [
         key: 'person.community.uuid',
         label: 'captions.CaseData.community',
         service: 'communityService',
-        determinedBy: ['person.district.uuid'],
+        determinedBy: [
+          {
+            key: 'person.district.uuid',
+            keyMap: 'district.uuid',
+          },
+        ],
         newLine: true,
         dependingOn: 'caseDataEnterHomeAddressNow',
       },

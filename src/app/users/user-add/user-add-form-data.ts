@@ -10,12 +10,6 @@ import { AreaType, PointOfEntryType, UserRole, Language } from '../../_constants
 const pipe = new EnumToKeyValuePipe();
 
 const optionsLanguages = pipe.transform(Language);
-const optionsRegions = pipe.transform(['default region']);
-const optionsDistricts = pipe.transform(['default district']);
-const optionsCommunities = pipe.transform(['default community']);
-const optionsFacilityCategories = pipe.transform(['default category']);
-const optionsFacilityTypes = pipe.transform(['default type']);
-const optionsFacilities = pipe.transform(['default facility']);
 const optionsAreaTypes = pipe.transform(AreaType);
 const optionsLimitedDisease = pipe.transform(['default disease']);
 const optionsUserRoles = pipe.transform(UserRole);
@@ -69,60 +63,97 @@ export const FORM_DATA_USER_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'address.country.uuid',
-        options: [],
+        label: 'captions.Country',
         service: 'countryService',
-        label: 'captions.country',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.region.uuid',
-        options: [],
+        label: 'captions.regionName',
         service: 'regionService',
-        determinedBy: ['address.country.uuid'],
-        label: 'captions.region',
+        determinedBy: [
+          {
+            key: 'address.country.uuid',
+            keyMap: 'country.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.district.uuid',
-        options: [],
+        label: 'captions.districtName',
         service: 'districtService',
-        determinedBy: ['address.region.uuid'],
-        label: 'captions.district',
+        determinedBy: [
+          {
+            key: 'address.region.uuid',
+            keyMap: 'region.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.community.uuid',
-        options: [],
+        label: 'captions.communityName',
         service: 'communityService',
-        determinedBy: ['address.district.uuid'],
-        label: 'captions.community',
+        determinedBy: [
+          {
+            key: 'address.district.uuid',
+            keyMap: 'district.uuid',
+          },
+        ],
       },
     ],
   },
   {
     id: 'facility',
-    title: 'captions.facility',
+    title: 'captions.Facility',
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facilityDetails',
-        label: 'captions.facilityTypeGroup',
-        options: optionsFacilityCategories,
+        key: 'facilityTypeGroup',
+        label: 'captions.Facility.typeGroup',
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
         className: 'size-large',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facilityType',
-        label: 'captions.facilityType',
-        options: optionsFacilityTypes,
+        key: 'facilityType',
+        label: 'captions.Facility.type',
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
+          {
+            key: 'facilityTypeGroup',
+          },
+        ],
         newLine: true,
         className: 'size-large',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facility',
-        label: 'captions.facility',
-        options: optionsFacilities,
+        key: 'address.Facility',
+        label: 'captions.Facility',
+        service: 'facilityService',
+        determinedBy: [
+          {
+            key: 'address.district.uuid',
+            keyMap: 'district.uuid',
+          },
+          {
+            key: 'address.community.uuid',
+            keyMap: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
+          },
+        ],
         newLine: true,
         className: 'size-large',
       },
@@ -245,9 +276,9 @@ export const FORM_DATA_USER_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'region',
+        key: 'region.uuid',
         label: 'captions.region',
-        options: optionsRegions,
+        service: 'regionService',
         newLine: true,
         validation: ['required'],
         dependingOn: 'userRoles',
@@ -270,9 +301,14 @@ export const FORM_DATA_USER_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'district',
+        key: 'district.uuid',
         label: 'captions.district',
-        options: optionsDistricts,
+        service: 'districtService',
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         validation: ['required'],
         dependingOn: 'userRoles',
         dependingOnValues: [
@@ -288,9 +324,14 @@ export const FORM_DATA_USER_ADD = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'community',
+        key: 'community.uuid',
         label: 'captions.community',
-        options: optionsCommunities,
+        service: 'communityService',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         validation: ['required'],
         dependingOn: 'userRoles',
         dependingOnValues: ['COMMUNITY_OFFICER', 'COMMUNITY_INFORMANT'],
@@ -299,7 +340,7 @@ export const FORM_DATA_USER_ADD = [
         ...FORM_DATA_SELECT,
         key: 'facility',
         label: 'captions.facility',
-        options: optionsFacilities,
+        options: [],
         newLine: true,
         dependingOn: 'userRoles',
         dependingOnValues: [

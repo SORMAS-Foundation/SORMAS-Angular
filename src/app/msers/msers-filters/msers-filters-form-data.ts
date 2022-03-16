@@ -22,7 +22,6 @@ export const FORM_DATA_MSERS_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        options: [],
         service: 'regionService',
         placeholder: 'captions.CaseData.responsibleRegion',
         className: 'fullwidth',
@@ -30,18 +29,24 @@ export const FORM_DATA_MSERS_FILTERS = [
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        options: [],
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         placeholder: 'captions.CaseData.responsibleDistrict',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'healthFacility.uuid',
-        options: [],
         service: 'facilityService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         placeholder: 'captions.CaseData.healthFacility',
         className: 'fullwidth',
       },
@@ -50,7 +55,11 @@ export const FORM_DATA_MSERS_FILTERS = [
         key: 'pointOfEntry.uuid',
         options: [],
         service: 'entryPointService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         placeholder: 'captions.CaseData.pointOfEntry',
         className: 'fullwidth',
       },

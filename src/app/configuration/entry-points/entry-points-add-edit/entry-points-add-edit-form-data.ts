@@ -57,7 +57,11 @@ export const FORM_DATA_ENTRY_POINTS_ADD_EDIT = [
         required: true,
         label: 'captions.district',
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         validation: ['required'],
         className: 'size-medium',
         newLine: false,

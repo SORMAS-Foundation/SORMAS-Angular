@@ -260,7 +260,11 @@ export const FORM_DATA_CONTACT_FILTERS = [
         key: 'district.uuid',
         options: [],
         service: 'districtService',
-        determinedBy: ['region.uuid'],
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         placeholder: 'captions.Contact.districtUuid',
         className: 'fullwidth',
       },
@@ -269,7 +273,11 @@ export const FORM_DATA_CONTACT_FILTERS = [
         key: 'community.uuid',
         options: [],
         service: 'communityService',
-        determinedBy: ['district.uuid'],
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         placeholder: 'captions.Contact.communityUuid',
         className: 'fullwidth',
       },

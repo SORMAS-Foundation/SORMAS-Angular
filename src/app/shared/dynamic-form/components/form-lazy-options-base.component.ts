@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { distinctUntilChanged, filter, pairwise, startWith } from 'rxjs/operators';
+import { distinctUntilChanged, filter } from 'rxjs/operators';
 import { DEFAULT_FETCH_METHOD } from '../../../app.constants';
 import { Filter } from '../../../_models/common';
 import { CommunityService } from '../../../_services/api/community.service';
@@ -60,12 +60,8 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
 
   validateFilters(filters: any): boolean {
     return Object.entries(filters).every(([key, value]) => {
-      const index = this.config.determinedBy?.indexOf(key);
-      if (
-        index &&
-        this.config.determinedByMandatory?.length &&
-        !this.config.determinedByMandatory[index]
-      ) {
+      const dependency = this.config.determinedBy?.find((item) => item.key === key);
+      if (dependency?.optional) {
         return true;
       }
       if (value === null || value === undefined) {
@@ -76,20 +72,18 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
   }
 
   populateOptions(): void {
-    this.config.determinedBy?.forEach((key) => {
-      const determinantControl = this.group.controls[key.replaceAll('.', '__')];
+    this.config.determinedBy?.forEach((dependency) => {
+      const determinantControl = this.group.controls[dependency.key.replaceAll('.', '__')];
       if (determinantControl) {
-        this.determinantValues[key] = determinantControl.value;
+        this.determinantValues[dependency.key] = determinantControl.value;
         this.subscriptions.push(
-          determinantControl.valueChanges
-            .pipe(startWith(undefined), distinctUntilChanged(), pairwise())
-            .subscribe(([, val]) => {
-              this.control?.reset();
-              this.control?.disable();
-              this.config.options = [];
-              this.determinantValues[key] = val;
-              this.watchDeterminants.next(this.determinantValues);
-            })
+          determinantControl.valueChanges.pipe(distinctUntilChanged()).subscribe((val) => {
+            this.control?.reset();
+            this.control?.disable();
+            this.config.options = [];
+            this.determinantValues[dependency.key] = val;
+            this.watchDeterminants.next(this.determinantValues);
+          })
         );
       }
     });
@@ -131,17 +125,13 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
     return Object.entries(this.determinantValues)
       .filter(([, val]) => !!val)
       .map(([key, val]) => {
-        const [field, value] = Object.entries(this.makeObject(key, val))[0];
+        const dependency = this.config.determinedBy?.find((item) => item.key === key);
+        const [field, value] = Object.entries(this.makeObject(dependency?.keyMap || key, val))[0];
         return {
-          field: this.makeKey(field),
+          field,
           value,
         };
       });
-  }
-
-  makeKey(key: string): string {
-    const keyMap = ['country', 'region', 'district', 'community'];
-    return keyMap.find((item) => key.toLowerCase().includes(item)) ?? key;
   }
 
   makeObject(path: string, value: unknown): any {
