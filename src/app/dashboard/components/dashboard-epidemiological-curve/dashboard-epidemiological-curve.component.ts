@@ -320,17 +320,17 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
     return [
       {
         ...SERIES_OPTIONS,
-        id: 'UNCONFIRMED',
+        id: 'CONTACT_UNCONFIRMED',
         name: this.translateService.instant('captions.dashboardUnconfirmed'),
-        color: CONTACT_CLASSIFICATION_COLORS_MAP.UNCONFIRMED,
-        data: Object.values(this.data).map((item) => item.UNCONFIRMED),
+        color: CONTACT_CLASSIFICATION_COLORS_MAP.CONTACT_UNCONFIRMED,
+        data: Object.values(this.data).map((item) => item.CONTACT_UNCONFIRMED),
       },
       {
         ...SERIES_OPTIONS,
-        id: 'CONFIRMED',
+        id: 'CONTACT_CONFIRMED',
         name: this.translateService.instant('captions.dashboardConfirmed'),
-        color: CONTACT_CLASSIFICATION_COLORS_MAP.CONFIRMED,
-        data: Object.values(this.data).map((item) => item.CONFIRMED),
+        color: CONTACT_CLASSIFICATION_COLORS_MAP.CONTACT_CONFIRMED,
+        data: Object.values(this.data).map((item) => item.CONTACT_CONFIRMED),
       },
     ];
   }

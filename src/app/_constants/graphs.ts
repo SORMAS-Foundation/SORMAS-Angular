@@ -45,8 +45,8 @@ export const FOLLOW_UP_STATUS_COLORS_MAP = {
 };
 
 export const CONTACT_CLASSIFICATION_COLORS_MAP = {
-  UNCONFIRMED: '#D90000',
-  CONFIRMED: '#6D798C',
+  CONTACT_UNCONFIRMED: '#6D798C',
+  CONTACT_CONFIRMED: '#D90000',
 };
 
 export const FOLLOW_UP_UNTIL_COLORS_MAP = {
@@ -68,7 +68,8 @@ export const CHART_TOOLTIP_COLORS_MAP = {
   LOST_F_U: 'rgba(253, 163, 18, 0.8)',
   COMPETED_F_U: 'rgba(89, 178, 255, 0.8)',
   CONVERTED_CASE: 'rgba(255, 166, 166, 0.8)',
-  UNCONFIRMED: 'rgba(217, 0, 0, 0.8)',
+  CONTACT_CONFIRMED: 'rgba(217, 0, 0, 0.8)',
+  CONTACT_UNCONFIRMED: 'rgba(109, 121, 140, 0.8)',
   F_U_UNTIL: 'rgba(89, 178, 255, 0.8)',
 };
 
@@ -87,7 +88,8 @@ export const CHART_TOOLTIP_TEXT_COLORS_MAP = {
   LOST_F_U: '#2B323D',
   COMPETED_F_U: '#2B323D',
   CONVERTED_CASE: '#2B323D',
-  UNCONFIRMED: '#ffffff',
+  CONTACT_CONFIRMED: '#ffffff',
+  CONTACT_UNCONFIRMED: '#ffffff',
   F_U_UNTIL: '#2B323D',
 };
 

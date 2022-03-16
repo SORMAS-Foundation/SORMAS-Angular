@@ -946,23 +946,23 @@ app.use('/sormas-rest/dashboard/epiCurveDataPerContactClassification', (req, res
 
       },
       "2022-02-12T23:00:00.000+00:00":{
-        "UNCONFIRMED":8,
-        "CONFIRMED":3,
+        "CONTACT_UNCONFIRMED":8,
+        "CONTACT_CONFIRMED":3,
       },
       "2022-02-19T23:00:00.000+00:00":{
 
       },
       "2022-02-26T23:00:00.000+00:00":{
-        "UNCONFIRMED":5,
-        "CONFIRMED":2,
+        "CONTACT_UNCONFIRMED":5,
+        "CONTACT_CONFIRMED":2,
       },
       "2022-03-05T23:00:00.000+00:00":{
-        "UNCONFIRMED":3,
-        "CONFIRMED":2,
+        "CONTACT_UNCONFIRMED":3,
+        "CONTACT_CONFIRMED":2,
       },
       "2022-03-12T23:00:00.000+00:00":{
-        "UNCONFIRMED":9,
-        "CONFIRMED":8,
+        "CONTACT_UNCONFIRMED":9,
+        "CONTACT_CONFIRMED":8,
       },
       "2022-03-19T23:00:00.000+00:00":{
 
