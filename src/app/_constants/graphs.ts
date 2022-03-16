@@ -76,9 +76,9 @@ export const CHART_TOOLTIP_COLORS_MAP = {
 export const CHART_TOOLTIP_TEXT_COLORS_MAP = {
   NOT_CLASSIFIED: '#ffffff',
   SUSPECT: '#2B323D',
-  PROBABLE: '#ffffff',
-  CONFIRMED: '#2B323D',
-  CONFIRMED_NO_SYMPTOMS: '#ffffff',
+  PROBABLE: '#2B323D',
+  CONFIRMED: '#ffffff',
+  CONFIRMED_NO_SYMPTOMS: '#2B323D',
   CONFIRMED_UNKNOWN_SYMPTOMS: '#ffffff',
   ALIVE: '#2B323D',
   DEAD: '#ffffff',
