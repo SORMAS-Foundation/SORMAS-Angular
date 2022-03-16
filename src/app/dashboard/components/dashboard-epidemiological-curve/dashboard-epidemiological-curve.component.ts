@@ -18,6 +18,7 @@ import {
   FOLLOW_UP_STATUS_COLORS_MAP,
   CONTACT_CLASSIFICATION_COLORS_MAP,
   FOLLOW_UP_UNTIL_COLORS_MAP,
+  CHART_TOOLTIP_TEXT_COLORS_MAP,
 } from '../../../app.constants';
 import { Filter, ViewOptions } from '../../../_models/common';
 import { DashboardEpiDataCaseClassificationService } from '../../../_services/api/dashboard-epi-data-case-classification.service';
@@ -193,6 +194,12 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
         tooltip: {
           backgroundColor:
             CHART_TOOLTIP_COLORS_MAP[series.seriesId as keyof typeof CHART_TOOLTIP_COLORS_MAP],
+          textStyle: {
+            color:
+              CHART_TOOLTIP_TEXT_COLORS_MAP[
+                series.seriesId as keyof typeof CHART_TOOLTIP_TEXT_COLORS_MAP
+              ],
+          },
         },
       });
     });
