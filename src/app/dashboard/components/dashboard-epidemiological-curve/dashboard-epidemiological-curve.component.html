@@ -49,12 +49,24 @@
     </div>
 
     <div class="condition">
-      <mat-radio-group formControlName="dataType">
+      <mat-radio-group formControlName="dataType" *ngIf="type === dashboardEpidemiologicalCurveType.CASE">
         <mat-radio-button value="CASE_STATUS" color="primary">
           <span>{{ 'enum.EpiCurveSurveillanceMode.CASE_STATUS' | translate }}</span>
         </mat-radio-button>
         <mat-radio-button value="ALIVE_OR_DEAD" color="primary">
           <span>{{ 'enum.EpiCurveSurveillanceMode.ALIVE_OR_DEAD' | translate }}</span>
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <mat-radio-group formControlName="dataType" *ngIf="type === dashboardEpidemiologicalCurveType.CONTACT">
+        <mat-radio-button value="FOLLOW_UP_STATUS" color="primary">
+          <span>{{ 'enum.EpiCurveContactsMode.FOLLOW_UP_STATUS' | translate }}</span>
+        </mat-radio-button>
+        <mat-radio-button value="CONTACT_CLASSIFICATION" color="primary">
+          <span>{{ 'enum.EpiCurveContactsMode.CONTACT_CLASSIFICATION' | translate }}</span>
+        </mat-radio-button>
+        <mat-radio-button value="FOLLOW_UP_UNTIL" color="primary">
+          <span>{{ 'enum.EpiCurveContactsMode.FOLLOW_UP_UNTIL' | translate }}</span>
         </mat-radio-button>
       </mat-radio-group>
     </div>

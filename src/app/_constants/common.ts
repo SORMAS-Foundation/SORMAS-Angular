@@ -152,6 +152,11 @@ export const DISPLAY_MODE = {
   TABLE: 'TABLE',
 };
 
+export const DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE = {
+  CASE: 'CASE',
+  CONTACT: 'CONTACT',
+};
+
 export const FacilityCategoryGroups = {
   ACCOMMODATION: [
     'CAMPSITE',

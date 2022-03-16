@@ -22,7 +22,7 @@ export class DashboardDiseaseMenuComponent implements OnInit, OnDestroy {
 
   progressbarValue = 0;
   curSec: number = 0;
-  duration: number = 5;
+  duration: number = 90;
   colorMap: any = DISEASES_COLORS_MAP;
   isSlideshowOn: boolean = false;
 
