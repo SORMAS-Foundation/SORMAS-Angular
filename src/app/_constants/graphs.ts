@@ -45,8 +45,8 @@ export const FOLLOW_UP_STATUS_COLORS_MAP = {
 };
 
 export const CONTACT_CLASSIFICATION_COLORS_MAP = {
-  UNCONFIRMED: '#D90000',
-  CONFIRMED: '#6D798C',
+  CONTACT_UNCONFIRMED: '#6D798C',
+  CONTACT_CONFIRMED: '#D90000',
 };
 
 export const FOLLOW_UP_UNTIL_COLORS_MAP = {
@@ -63,13 +63,34 @@ export const CHART_TOOLTIP_COLORS_MAP = {
   ALIVE: 'rgba(33, 217, 81, 0.8)',
   DEAD: 'rgba(43, 50, 61, 0.8)',
   UNKNOWN: 'rgba(161, 173, 191, 0.8)',
-  UNDER_F_U: '#FD7600',
-  CANCELED_F_U: '#6D798C',
-  LOST_F_U: '#FDA312',
-  COMPETED_F_U: '#59B2FF',
-  CONVERTED_CASE: '#FFA6A6',
-  UNCONFIRMED: '#D90000',
-  F_U_UNTIL: '#59B2FF',
+  UNDER_F_U: 'rgba(253, 118, 0, 0.8)',
+  CANCELED_F_U: 'rgba(109, 121, 140, 0.8)',
+  LOST_F_U: 'rgba(253, 163, 18, 0.8)',
+  COMPETED_F_U: 'rgba(89, 178, 255, 0.8)',
+  CONVERTED_CASE: 'rgba(255, 166, 166, 0.8)',
+  CONTACT_CONFIRMED: 'rgba(217, 0, 0, 0.8)',
+  CONTACT_UNCONFIRMED: 'rgba(109, 121, 140, 0.8)',
+  F_U_UNTIL: 'rgba(89, 178, 255, 0.8)',
+};
+
+export const CHART_TOOLTIP_TEXT_COLORS_MAP = {
+  NOT_CLASSIFIED: '#ffffff',
+  SUSPECT: '#2B323D',
+  PROBABLE: '#2B323D',
+  CONFIRMED: '#ffffff',
+  CONFIRMED_NO_SYMPTOMS: '#2B323D',
+  CONFIRMED_UNKNOWN_SYMPTOMS: '#ffffff',
+  ALIVE: '#2B323D',
+  DEAD: '#ffffff',
+  UNKNOWN: '#ffffff',
+  UNDER_F_U: '#ffffff',
+  CANCELED_F_U: '#ffffff',
+  LOST_F_U: '#2B323D',
+  COMPETED_F_U: '#2B323D',
+  CONVERTED_CASE: '#2B323D',
+  CONTACT_CONFIRMED: '#ffffff',
+  CONTACT_UNCONFIRMED: '#ffffff',
+  F_U_UNTIL: '#2B323D',
 };
 
 export const CHART_SPLIT_LINE_COLOR = '#e1e8f2';

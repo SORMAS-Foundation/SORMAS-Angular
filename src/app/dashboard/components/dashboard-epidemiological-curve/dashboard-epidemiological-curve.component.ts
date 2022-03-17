@@ -18,6 +18,7 @@ import {
   FOLLOW_UP_STATUS_COLORS_MAP,
   CONTACT_CLASSIFICATION_COLORS_MAP,
   FOLLOW_UP_UNTIL_COLORS_MAP,
+  CHART_TOOLTIP_TEXT_COLORS_MAP,
 } from '../../../app.constants';
 import { Filter, ViewOptions } from '../../../_models/common';
 import { DashboardEpiDataCaseClassificationService } from '../../../_services/api/dashboard-epi-data-case-classification.service';
@@ -193,6 +194,12 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
         tooltip: {
           backgroundColor:
             CHART_TOOLTIP_COLORS_MAP[series.seriesId as keyof typeof CHART_TOOLTIP_COLORS_MAP],
+          textStyle: {
+            color:
+              CHART_TOOLTIP_TEXT_COLORS_MAP[
+                series.seriesId as keyof typeof CHART_TOOLTIP_TEXT_COLORS_MAP
+              ],
+          },
         },
       });
     });
@@ -313,17 +320,17 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
     return [
       {
         ...SERIES_OPTIONS,
-        id: 'UNCONFIRMED',
+        id: 'CONTACT_UNCONFIRMED',
         name: this.translateService.instant('captions.dashboardUnconfirmed'),
-        color: CONTACT_CLASSIFICATION_COLORS_MAP.UNCONFIRMED,
-        data: Object.values(this.data).map((item) => item.UNCONFIRMED),
+        color: CONTACT_CLASSIFICATION_COLORS_MAP.CONTACT_UNCONFIRMED,
+        data: Object.values(this.data).map((item) => item.CONTACT_UNCONFIRMED),
       },
       {
         ...SERIES_OPTIONS,
-        id: 'CONFIRMED',
+        id: 'CONTACT_CONFIRMED',
         name: this.translateService.instant('captions.dashboardConfirmed'),
-        color: CONTACT_CLASSIFICATION_COLORS_MAP.CONFIRMED,
-        data: Object.values(this.data).map((item) => item.CONFIRMED),
+        color: CONTACT_CLASSIFICATION_COLORS_MAP.CONTACT_CONFIRMED,
+        data: Object.values(this.data).map((item) => item.CONTACT_CONFIRMED),
       },
     ];
   }
