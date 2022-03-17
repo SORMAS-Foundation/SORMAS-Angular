@@ -46,24 +46,21 @@ export const FORM_DATA_FACILITY_FILTERS = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'facilityCategory',
-        placeholder: 'captions.facilityTypeGroup',
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        key: 'typeGroup',
+        placeholder: 'captions.Facility.typeGroup',
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'type',
         placeholder: 'captions.Facility.type',
-        options: [
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'typeGroup',
           },
         ],
         className: 'fullwidth',
@@ -87,7 +84,11 @@ export const FORM_DATA_FACILITY_FILTERS = [
         key: 'region.uuid',
         placeholder: 'captions.Facility.region',
         service: 'regionService',
-        determinedBy: 'country.uuid',
+        determinedBy: [
+          {
+            key: 'country.uuid',
+          },
+        ],
         className: 'size-full',
       },
       {
@@ -95,7 +96,11 @@ export const FORM_DATA_FACILITY_FILTERS = [
         key: 'district.uuid',
         placeholder: 'captions.Facility.district',
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         className: 'size-full',
       },
       {
@@ -103,7 +108,11 @@ export const FORM_DATA_FACILITY_FILTERS = [
         key: 'community.uuid',
         placeholder: 'captions.Facility.community',
         service: 'communityService',
-        determinedBy: 'district.uuid',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         className: 'size-full',
       },
     ],

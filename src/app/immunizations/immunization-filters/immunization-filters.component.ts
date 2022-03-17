@@ -20,6 +20,7 @@ export class ImmunizationFiltersComponent extends FiltersFormComponent implement
   }
 
   ngOnInit(): void {
+    super.ngOnInit();
     this.formData = this.formElementControlService.setOptionsToInput(
       this.helperService.generateWeekOptions(),
       this.formData,

@@ -27,54 +27,98 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
         label: 'captions.country',
-        options: [],
+        service: 'countryService',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
         label: 'captions.region',
-        options: [],
+        service: 'regionService',
+        determinedBy: [
+          {
+            key: 'country.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
         label: 'captions.district',
-        options: [],
+        service: 'districtService',
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
         label: 'captions.community',
-        options: [],
+        service: 'communityService',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
       },
     ],
   },
   {
     id: 'facility',
-    title: 'captions.facility',
+    title: 'captions.Facility',
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'facilityCategory',
-        label: 'captions.facilityTypeGroup',
+        key: 'facilityTypeGroup',
+        label: 'captions.Facility.typeGroup',
         className: 'size-large',
-        options: [],
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: 'captions.Location.facilityType',
-        options: [],
+        label: 'captions.Facility.type',
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
+          {
+            key: 'facilityTypeGroup',
+          },
+        ],
         className: 'size-large',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'facility',
-        label: 'captions.Location.facility',
-        options: [],
+        key: 'healthFacility.uuid',
+        label: 'captions.Facility',
+        service: 'facilityService',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+          {
+            key: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
+          },
+        ],
         className: 'size-large',
         newLine: true,
       },

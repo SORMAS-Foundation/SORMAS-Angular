@@ -14,6 +14,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.LabMessage.messageDateTime',
     dataKey: 'messageDateTime',
+    align: 'right',
     isSortable: true,
     format: {
       type: TableDataFormatOptions.DATE,
@@ -73,6 +74,7 @@ export const defaultColumnDefs: TableColumn[] = [
   {
     name: 'captions.LabMessage.assignee',
     dataKey: 'assignee.caption',
+    align: 'center',
     className: 'lab-message-assignee',
     actions: [
       {

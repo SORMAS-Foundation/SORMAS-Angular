@@ -9,9 +9,9 @@ export const FORM_DATA_STATISTICS_FILTERS_PLACE: FormBase<any>[] = [
     fields: [
       {
         ...FORM_DATA_MULTISELECT,
-        key: 'regions',
+        key: 'region.uuid',
         label: 'enum.StatisticsCaseSubAttribute.REGION',
-        options: [],
+        service: 'regionService',
         chips: true,
         allowClear: true,
         allowSelect: true,
@@ -19,9 +19,9 @@ export const FORM_DATA_STATISTICS_FILTERS_PLACE: FormBase<any>[] = [
       },
       {
         ...FORM_DATA_MULTISELECT,
-        key: 'districts',
+        key: 'district.uuid',
         label: 'enum.StatisticsCaseSubAttribute.DISTRICT',
-        options: [],
+        service: 'districtService',
         chips: true,
         allowClear: true,
         allowSelect: true,
@@ -29,9 +29,14 @@ export const FORM_DATA_STATISTICS_FILTERS_PLACE: FormBase<any>[] = [
       },
       {
         ...FORM_DATA_MULTISELECT,
-        key: 'communities',
+        key: 'community.uuid',
         label: 'enum.StatisticsCaseSubAttribute.COMMUNITY',
-        options: [],
+        service: 'communityService',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
         chips: true,
         allowClear: true,
         allowSelect: true,
@@ -39,22 +44,46 @@ export const FORM_DATA_STATISTICS_FILTERS_PLACE: FormBase<any>[] = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'healthFacilitiesCategory',
-        label: 'captions.facilityTypeGroup',
-        options: [],
+        key: 'facilityTypeGroup',
+        label: 'captions.Facility.typeGroup',
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'healthFacilitiesType',
-        label: 'captions.facilityType',
-        options: [],
+        key: 'facilityType',
+        label: 'captions.Facility.type',
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
+          {
+            key: 'facilityTypeGroup',
+          },
+        ],
       },
       {
         ...FORM_DATA_MULTISELECT,
-        key: 'healthFacilities',
+        key: 'healthFacility.uuid',
         label: 'enum.StatisticsCaseSubAttribute.FACILITY',
-        options: [],
+        service: 'facilityService',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+          {
+            key: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
+          },
+        ],
         chips: true,
         allowClear: true,
         allowSelect: true,
