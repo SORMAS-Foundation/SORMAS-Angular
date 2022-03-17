@@ -56,7 +56,11 @@ export const FORM_DATA_DISTRICT_FILTERS = [
         key: 'region.uuid',
         placeholder: 'captions.Region',
         service: 'regionService',
-        determinedBy: 'country.uuid',
+        determinedBy: [
+          {
+            key: 'country.uuid',
+          },
+        ],
         className: 'fullwidth',
       },
     ],

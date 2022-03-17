@@ -263,7 +263,6 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'responsibleRegion.uuid',
         label: 'captions.CaseData.responsibleRegion',
-        options: [],
         service: 'regionService',
         required: true,
         dependingOn: 'caseOrigin',
@@ -273,9 +272,13 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'responsibleDistrict.uuid',
-        options: [],
         service: 'districtService',
-        determinedBy: 'responsibleRegion.uuid',
+        determinedBy: [
+          {
+            key: 'responsibleRegion.uuid',
+            keyMap: 'region.uuid',
+          },
+        ],
         required: true,
         dependingOn: 'caseOrigin',
         dependingOnValues: ['IN_COUNTRY'],
@@ -284,9 +287,13 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'responsibleCommunity.uuid',
-        options: [],
         service: 'communityService',
-        determinedBy: 'responsibleDistrict.uuid',
+        determinedBy: [
+          {
+            key: 'responsibleDistrict.uuid',
+            keyMap: 'district.uuid',
+          },
+        ],
         required: true,
         dependingOn: 'caseOrigin',
         dependingOnValues: ['IN_COUNTRY'],
@@ -321,25 +328,26 @@ export const FORM_DATA_CASE_DETAILS = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'healthFacility.uuid',
-        label: 'captions.facilityTypeGroup',
+        key: 'facilityTypeGroup',
+        label: 'captions.Facility.typeGroup',
         validation: ['required'],
-        options: [],
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
         newLine: true,
         className: 'size-large',
         dependingOn: 'placeOfStaty',
         dependingOnValues: ['FACILITY'],
-        service: 'helperService',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: 'captions.CaseData.facilityType',
+        label: 'captions.Facility.type',
         validation: ['required'],
-        options: [
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
           {
-            key: 'LABORATORY',
-            value: 'FacilityType.LABORATORY',
+            key: 'facilityTypeGroup',
           },
         ],
         newLine: true,
@@ -348,9 +356,29 @@ export const FORM_DATA_CASE_DETAILS = [
         dependingOnValues: ['FACILITY'],
       },
       {
-        ...FORM_DATA_INPUT,
-        key: 'healthFacilityDetails',
-        label: 'captions.CaseData.healthFacilityDetails',
+        ...FORM_DATA_SELECT,
+        key: 'healthFacility.uuid',
+        label: 'captions.Facility',
+        service: 'facilityService',
+        determinedBy: [
+          {
+            key: 'responsibleDistrict.uuid',
+            keyMap: 'district.uuid',
+          },
+          {
+            key: 'responsibleCommunity.uuid',
+            keyMap: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
+          },
+        ],
         newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStaty',
