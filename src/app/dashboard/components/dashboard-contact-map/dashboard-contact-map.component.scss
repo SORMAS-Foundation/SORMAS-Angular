@@ -1,0 +1,27 @@
+@use '/src/variables.scss' as *;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-right: -8px;
+}
+
+h2 {
+  margin: 0 auto 0 0;
+}
+
+.map {
+  height: 436px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.map-layers-wrapper {
+  padding: 0 16px;
+}

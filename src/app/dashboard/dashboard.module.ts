@@ -28,6 +28,7 @@ import { MapLegendComponent } from './components/map-legend/map-legend.component
 import { MapLayersComponent } from './components/map-layers/map-layers.component';
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { ProgressBarColor } from '../_directives/progress-bar-color.directive';
+import { DashboardContactMapComponent } from './components/dashboard-contact-map/dashboard-contact-map.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ProgressBarColor } from '../_directives/progress-bar-color.directive';
     MapLegendComponent,
     MapLayersComponent,
     ProgressBarColor,
+    DashboardContactMapComponent,
   ],
   imports: [
     CommonModule,

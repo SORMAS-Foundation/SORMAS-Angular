@@ -1,4 +1,7 @@
-<section class="dashboard-contacts-wrapper" [ngClass]="{'epi-fullscreen': fullscreenEpi}">
+<section
+  class="dashboard-contacts-wrapper"
+  [ngClass]="{ 'epi-fullscreen': fullscreenEpi, 'map-fullscreen': fullScreenMap }"
+>
   <mat-card class="dashboard-contacts-filters">
     <app-dashboard-filters></app-dashboard-filters>
   </mat-card>
@@ -24,7 +27,9 @@
     ></app-dashboard-epidemiological-curve>
   </mat-card>
   <mat-card class="dashboard-contacts-map">
-    <app-dashboard-case-map></app-dashboard-case-map>
+    <app-dashboard-contact-map
+      (mapViewUpdate)="onMapViewChange($event)"
+    ></app-dashboard-contact-map>
   </mat-card>
   <mat-card class="dashboard-transmission-chain">
     <app-dashboard-transmission-chain></app-dashboard-transmission-chain>

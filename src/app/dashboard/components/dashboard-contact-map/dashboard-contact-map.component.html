@@ -1,0 +1,28 @@
+<section>
+  <header>
+    <h2>{{ 'strings.headingContactMap' | translate }}</h2>
+    <app-toggle-view
+      iconViewPrimary="fullscreen_exit_black"
+      iconViewSecondary="fullscreen"
+      iconSize="large"
+      (selection)="onViewChange($event)"
+    ></app-toggle-view>
+  </header>
+
+  <div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)"></div>
+
+  <div class="actions">
+    <app-dropdown-menu
+      buttonText="{{ 'captions.dashboardMapKey' | translate }}"
+      panelClass="dashboard-map-legend"
+    >
+      <app-map-legend></app-map-legend>
+    </app-dropdown-menu>
+
+    <app-dropdown-menu buttonText="{{ 'captions.dashboardMapLayers' | translate }}">
+      <div class="map-layers-wrapper" (click)="$event.stopPropagation()">
+        <app-map-layers (selection)="onLayerUpdate($event)"></app-map-layers>
+      </div>
+    </app-dropdown-menu>
+  </div>
+</section>
