@@ -160,7 +160,7 @@ export const DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE = {
 export enum MapType {
   Surveillance,
   Contacts,
-};
+}
 
 export const FacilityCategoryGroups = {
   ACCOMMODATION: [
