@@ -105,28 +105,23 @@ export const FORM_DATA_CASE_EDIT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'region',
+        key: 'region.uuid',
         newLine: true,
         label: 'captions.CaseData.responsibleRegion',
         validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultRegion',
-          },
-        ],
+        service: 'regionService',
         className: 'size-large',
         dependingOn: 'locationVisibleCheckbox',
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'district',
+        key: 'district.uuid',
         label: 'captions.CaseData.responsibleDistrict',
         validation: ['required'],
-        options: [
+        service: 'districtService',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'defaultDistrict',
+            key: 'region.uuid',
           },
         ],
         className: 'size-large',
@@ -134,12 +129,12 @@ export const FORM_DATA_CASE_EDIT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'community',
+        key: 'community.uuid',
         label: 'captions.CaseData.responsibleCommunity',
-        options: [
+        service: 'communityService',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'defaultCommunity',
+            key: 'district.uuid',
           },
         ],
         className: 'size-large',
@@ -156,14 +151,10 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityTypeGroup',
-        label: 'captions.facilityTypeGroup',
+        label: 'captions.Facility.typeGroup',
         validation: ['required'],
-        options: [
-          {
-            key: 'default',
-            value: 'defaultRegion',
-          },
-        ],
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
         newLine: true,
         className: 'size-large',
         dependingOn: 'placeOfStaty',
@@ -172,12 +163,13 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: 'captions.CaseData.facilityType',
+        label: 'captions.Facility.type',
         validation: ['required'],
-        options: [
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
           {
-            key: 'LABORATORY',
-            value: 'FacilityType.LABORATORY',
+            key: 'facilityTypeGroup',
           },
         ],
         newLine: true,
@@ -188,12 +180,24 @@ export const FORM_DATA_CASE_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'facility',
-        label: 'captions.facility',
+        label: 'captions.Facility',
         validation: ['required'],
-        options: [
+        service: 'facilityService',
+        determinedBy: [
           {
-            key: 'LABORATORY',
-            value: 'FacilityType.LABORATORY',
+            key: 'district.uuid',
+          },
+          {
+            key: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
           },
         ],
         newLine: true,

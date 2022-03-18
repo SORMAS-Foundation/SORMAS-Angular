@@ -74,7 +74,11 @@ export const FORM_DATA_ENTRY_ADD = [
         key: 'district.uuid',
         label: 'captions.TravelEntry.responsibleDistrict',
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         validation: ['required'],
       },
       {
@@ -82,7 +86,11 @@ export const FORM_DATA_ENTRY_ADD = [
         key: 'community.uuid',
         label: 'captions.TravelEntry.responsibleCommunity',
         service: 'communityService',
-        determinedBy: 'district.uuid',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
       },
     ],
   },
@@ -110,7 +118,11 @@ export const FORM_DATA_ENTRY_ADD = [
         key: 'pointOfEntryDistrict.uuid',
         label: 'captions.TravelEntry.pointOfEntryDistrict',
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         validation: ['required'],
         dependingOn: 'differentJurisdiction',
         dependingOnValues: [true],

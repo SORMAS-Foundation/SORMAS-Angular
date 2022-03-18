@@ -89,6 +89,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.filterService
         .getFilters()
+        .pipe(filter(() => this.tableView === ACTIONS_VIEW_OPTIONS.FOLLOW_UP))
         .pipe(filter(({ formId }) => formId === this.formIdFilters))
         .subscribe(({ filters }) => this.updateFollowUpTable(filters))
     );

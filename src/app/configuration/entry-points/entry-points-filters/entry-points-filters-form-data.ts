@@ -82,7 +82,11 @@ export const FORM_DATA_ENTRY_POINT_FILTERS = [
         key: 'region.uuid',
         placeholder: 'captions.Region',
         service: 'regionService',
-        determinedBy: 'country.uuid',
+        determinedBy: [
+          {
+            key: 'country.uuid',
+          },
+        ],
         newLine: false,
         className: 'size-full',
       },
@@ -91,7 +95,11 @@ export const FORM_DATA_ENTRY_POINT_FILTERS = [
         key: 'district.uuid',
         placeholder: 'captions.District',
         service: 'districtService',
-        determinedBy: 'region.uuid',
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
         newLine: false,
         className: 'size-full',
       },

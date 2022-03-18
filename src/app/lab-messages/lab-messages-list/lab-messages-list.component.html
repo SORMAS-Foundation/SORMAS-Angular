@@ -11,8 +11,8 @@
       </h1>
 
       <div class="page-header-actions">
-        <button class="add-btn" mat-flat-button color="primary">
-          {{ 'captions.sampleCreateNew' | translate }}
+        <button mat-flat-button color="primary" (click)="refresh()">
+          {{ 'captions.labMessageFetch' | translate }}
         </button>
       </div>
     </div>

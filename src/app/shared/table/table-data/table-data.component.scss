@@ -5,6 +5,8 @@
   display: block;
   width: max-content;
   white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .icon-data {
