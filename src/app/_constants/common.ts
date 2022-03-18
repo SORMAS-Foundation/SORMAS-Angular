@@ -156,3 +156,8 @@ export const DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE = {
   CASE: 'CASE',
   CONTACT: 'CONTACT',
 };
+
+export enum MapType {
+  Surveillance,
+  Contacts,
+}

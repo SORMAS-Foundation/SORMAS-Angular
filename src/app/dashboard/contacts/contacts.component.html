@@ -27,9 +27,9 @@
     ></app-dashboard-epidemiological-curve>
   </mat-card>
   <mat-card class="dashboard-contacts-map">
-    <app-dashboard-contact-map
+    <app-dashboard-map [mapType]="MapType.Contacts"
       (mapViewUpdate)="onMapViewChange($event)"
-    ></app-dashboard-contact-map>
+    ></app-dashboard-map>
   </mat-card>
   <mat-card class="dashboard-transmission-chain">
     <app-dashboard-transmission-chain></app-dashboard-transmission-chain>
