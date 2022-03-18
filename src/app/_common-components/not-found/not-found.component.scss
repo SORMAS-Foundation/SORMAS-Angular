@@ -19,9 +19,9 @@
 
         .not-found-code {
             color: mat.get-color-from-palette($sormas-primary, A700);
-            font-size: 10em;
-            margin-bottom: 130px;
-            font-weight: 500;
+            font-size: 72px;
+            margin-bottom: 70px;
+            font-weight: 700;
         }
         .message-info{
             font-size: 2em;
@@ -46,7 +46,10 @@
             margin-top: 60px;
             margin-bottom: 10px;
             font-weight: 500;
-            color: mat.get-color-from-palette($brand-neutrals, 600);
+            color: mat.get-color-from-palette($brand-neutrals, 500);
+        }
+        .go-to-dashoard-button:hover {
+            text-decoration: none;
         }
     }
 }
