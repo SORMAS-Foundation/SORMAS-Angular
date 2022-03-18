@@ -32,10 +32,12 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/leaflet/dist/leaflet.css",
-              "node_modules/alertifyjs/build/css/alertify.min.css"
+              "node_modules/alertifyjs/build/css/alertify.min.css",
+              "./node_modules/leaflet.fullscreen/Control.FullScreen.css"
             ],
             "scripts": [
-              "node_modules/alertifyjs/build/alertify.min.js"
+              "node_modules/alertifyjs/build/alertify.min.js",
+              "./node_modules/leaflet.fullscreen/Control.FullScreen.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
