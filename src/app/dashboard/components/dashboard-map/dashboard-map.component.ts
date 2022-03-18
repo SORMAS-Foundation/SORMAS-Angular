@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { latLng, Map, tileLayer } from 'leaflet';
+import 'leaflet.fullscreen';
 import { TranslateService } from '@ngx-translate/core';
 import { ViewOptions } from '../../../_models/common';
 import { MapType } from '../../../_constants/common';
@@ -43,6 +44,7 @@ export class DashboardMapComponent implements OnInit {
 
   onViewChange(event: ViewOptions): void {
     this.mapViewUpdate.emit(event);
+
     setTimeout(() => {
       this.map.invalidateSize();
     });
