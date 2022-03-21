@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE } from '../../_constants/common';
+import { DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE, MapType } from '../../_constants/common';
 import { VIEW_OPTIONS, ViewOptions } from '../../_models/common';
 
 @Component({
@@ -10,8 +10,14 @@ import { VIEW_OPTIONS, ViewOptions } from '../../_models/common';
 export class ContactsComponent {
   dashboardEpidemiologicalCurveType = DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE;
   fullscreenEpi = false;
+  fullScreenMap = false;
+  MapType = MapType;
 
   onEpiCurveViewChange(event: ViewOptions): void {
     this.fullscreenEpi = event === VIEW_OPTIONS.SECONDARY;
+  }
+
+  onMapViewChange(event: ViewOptions): void {
+    this.fullScreenMap = event === VIEW_OPTIONS.SECONDARY;
   }
 }
