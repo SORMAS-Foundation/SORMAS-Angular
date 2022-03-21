@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { latLng, Map, tileLayer } from 'leaflet';
-import 'leaflet.fullscreen';
+import '@bepo65/leaflet.fullscreen';
 import { TranslateService } from '@ngx-translate/core';
 import { ViewOptions } from '../../../_models/common';
 import { MapType } from '../../../_constants/common';
@@ -25,15 +25,40 @@ export class DashboardMapComponent implements OnInit {
 
   ngOnInit(): void {
     this.options = {
-      layers: [tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '' })],
+      layers: [
+        tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '' }),
+      ],
       zoom: this.initialZoom,
       center: latLng(this.initialLat, this.initialLong),
+      fullscreenControl: true,
+      fullscreenControlOptions: {
+        position: 'topleft',
+        title: this.translateService.instant('viewFullscreen'),
+        titleCancel: this.translateService.instant('exitFullscreen'),
+        forceSeparateButton: true,
+        content:
+          '<mat-icon id="full-screen-map-btn" class="material-icons-round">fullscreen</mat-icon>',
+      },
     };
     this.setMapTitle();
   }
 
   onMapReady(map: Map): void {
     this.map = map;
+
+    this.map.on('enterFullscreen', () => {
+      // @ts-ignore
+      document.getElementById('full-screen-map-btn').innerHTML = 'fullscreen_exit_black';
+      // @ts-ignore
+      document.getElementById('full-screen-map-btn').classList.add('fullscreen');
+    });
+
+    this.map.on('exitFullscreen', () => {
+      // @ts-ignore
+      document.getElementById('full-screen-map-btn').innerHTML = 'fullscreen';
+      // @ts-ignore
+      document.getElementById('full-screen-map-btn').classList.remove('fullscreen');
+    });
   }
 
   onLayerUpdate(event: any): void {

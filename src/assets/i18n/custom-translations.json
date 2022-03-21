@@ -172,5 +172,7 @@
   "NotFound.needHelp": "need help?",
   "NotFound.contactUs": "Contact Us",
   "contactFollowupVisitsView": "Follow-up",
-  "headingLabMessages": "Lab messages"
+  "headingLabMessages": "Lab messages",
+  "viewFullscreen": "View fullscreen",
+  "exitFullscreen": "Exit fullscreen"
 }
