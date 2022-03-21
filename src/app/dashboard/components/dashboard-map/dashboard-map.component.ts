@@ -32,7 +32,7 @@ export class DashboardMapComponent implements OnInit {
       center: latLng(this.initialLat, this.initialLong),
       fullscreenControl: true,
       fullscreenControlOptions: {
-        position: 'topleft',
+        position: 'topright',
         title: this.translateService.instant('viewFullscreen'),
         titleCancel: this.translateService.instant('exitFullscreen'),
         forceSeparateButton: true,
@@ -44,6 +44,7 @@ export class DashboardMapComponent implements OnInit {
   }
 
   onMapReady(map: Map): void {
+    map.zoomControl.setPosition('bottomright');
     this.map = map;
 
     this.map.on('enterFullscreen', () => {
