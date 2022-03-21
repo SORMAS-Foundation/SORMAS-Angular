@@ -40,7 +40,7 @@
     </mat-card>
 
     <mat-card [hidden]="hideMap" class="map">
-      <app-dashboard-case-map (mapViewUpdate)="onMapViewChange($event)"></app-dashboard-case-map>
+      <app-dashboard-map [mapType]="MapType.Surveillance" (mapViewUpdate)="onMapViewChange($event)"></app-dashboard-map>
     </mat-card>
   </div>
 </div>

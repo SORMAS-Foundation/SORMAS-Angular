@@ -16,7 +16,6 @@ import { DashboardNewCasesComponent } from './components/dashboard-new-cases/das
 import { DashboardNewEventsComponent } from './components/dashboard-new-events/dashboard-new-events.component';
 import { DashboardTestResultsComponent } from './components/dashboard-test-results/dashboard-test-results.component';
 import { DashboardEpidemiologicalCurveComponent } from './components/dashboard-epidemiological-curve/dashboard-epidemiological-curve.component';
-import { DashboardCaseMapComponent } from './components/dashboard-case-map/dashboard-case-map.component';
 import { DashboardContactsComponent } from './components/dashboard-contacts/dashboard-contacts.component';
 import { DashboardUnderFollowUpComponent } from './components/dashboard-under-follow-up/dashboard-under-follow-up.component';
 import { DashboardStoppedFollowUpComponent } from './components/dashboard-stopped-follow-up/dashboard-stopped-follow-up.component';
@@ -28,6 +27,7 @@ import { MapLegendComponent } from './components/map-legend/map-legend.component
 import { MapLayersComponent } from './components/map-layers/map-layers.component';
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { ProgressBarColor } from '../_directives/progress-bar-color.directive';
+import { DashboardMapComponent } from './components/dashboard-map/dashboard-map.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,6 @@ import { ProgressBarColor } from '../_directives/progress-bar-color.directive';
     DashboardNewEventsComponent,
     DashboardTestResultsComponent,
     DashboardEpidemiologicalCurveComponent,
-    DashboardCaseMapComponent,
     DashboardContactsComponent,
     DashboardUnderFollowUpComponent,
     DashboardStoppedFollowUpComponent,
@@ -53,6 +52,7 @@ import { ProgressBarColor } from '../_directives/progress-bar-color.directive';
     MapLegendComponent,
     MapLayersComponent,
     ProgressBarColor,
+    DashboardMapComponent,
   ],
   imports: [
     CommonModule,

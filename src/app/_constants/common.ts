@@ -157,6 +157,11 @@ export const DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE = {
   CONTACT: 'CONTACT',
 };
 
+export enum MapType {
+  Surveillance,
+  Contacts,
+}
+
 export const FacilityCategoryGroups = {
   ACCOMMODATION: [
     'CAMPSITE',
