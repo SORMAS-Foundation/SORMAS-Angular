@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { Params } from '@angular/router';
 import {
   addDays,
@@ -11,7 +11,13 @@ import {
 } from 'date-fns';
 import { of } from 'rxjs';
 import { Filter } from '../_models/common';
-import { BRIEF_DATE_FORMAT, EntityLink } from '../_constants/common';
+import {
+  BRIEF_DATE_FORMAT,
+  EntityLink,
+  FacilityCategoryGroups,
+  FacilityCategory,
+  FacilityType,
+} from '../app.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +25,8 @@ import { BRIEF_DATE_FORMAT, EntityLink } from '../_constants/common';
 export class HelperService {
   private apiUrl: string;
   private domainSubfolder: string;
+
+  constructor(@Inject(LOCALE_ID) protected localeId: string) {}
 
   setApiUrl(apiUrl: string): void {
     this.apiUrl = apiUrl;
@@ -52,11 +60,13 @@ export class HelperService {
     return years.map((x) => ({ key: x, value: x }));
   }
 
-  getMonths(language = 'en'): any[] {
+  getMonths(): any[] {
     const months = this.getRange(0, 11);
     return months.map((x) => ({
       key: x,
-      value: new Intl.DateTimeFormat(language, { month: 'long' }).format(new Date().setMonth(x)),
+      value: new Intl.DateTimeFormat(this.localeId, { month: 'long' }).format(
+        new Date().setMonth(x)
+      ),
     }));
   }
 
@@ -142,5 +152,19 @@ export class HelperService {
     const year = filters[0].value;
     const options = this.generateWeekOptions(new Date(year, 11, 31));
     return of(options.filter((item) => item.key.includes(year)).reverse());
+  }
+
+  getFacilityCategories() {
+    return of(Object.entries(FacilityCategory).map(([key, value]) => ({ key, value })));
+  }
+
+  getFacilityTypes(filters: any) {
+    const type = filters[0].value;
+    const typesMap: any = FacilityCategoryGroups;
+    return of(
+      Object.entries(FacilityType)
+        .map(([key, value]) => ({ key, value }))
+        .filter((item) => typesMap[type].includes(item.key))
+    );
   }
 }

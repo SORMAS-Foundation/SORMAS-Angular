@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import { FormGroupStyle } from '../../../_models/common';
+import { FormElementDependency } from './form-element-dependency';
 
 export class FormElementBase<T> {
   value?: T; // the value of the field
@@ -31,7 +32,7 @@ export class FormElementBase<T> {
   widgetInfo?: any;
   service?: string;
   serviceMethod?: string;
-  determinedBy?: string;
+  determinedBy?: FormElementDependency[];
 
   constructor(
     options: {
@@ -64,7 +65,7 @@ export class FormElementBase<T> {
       widgetInfo?: any;
       service?: string;
       serviceMethod?: string;
-      determinedBy?: string;
+      determinedBy?: FormElementDependency[];
     } = {}
   ) {
     this.value = options.value;

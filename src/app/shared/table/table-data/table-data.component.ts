@@ -46,17 +46,17 @@ export class TableDataComponent implements OnChanges {
     return this.config.format?.type;
   }
 
-  translateData(rawData: string): string {
+  translateData(rawData: string | string[]): string {
     if (rawData === undefined || rawData === null) {
       return rawData;
     }
-    let translatedData: string = String(rawData);
-    if (this.config.translationName) {
-      // @ts-ignore
-      translatedData = enums[this.config.translationName][rawData];
-      translatedData = this.translateService.instant(translatedData);
-    }
-    return translatedData;
+    const data = rawData instanceof Array ? [...rawData] : [rawData];
+    return data
+      .map((item) =>
+        // @ts-ignore
+        this.translateService.instant(enums[this.config.translationName][item] || ' ')
+      )
+      .join(', ');
   }
 
   formatData(): void {

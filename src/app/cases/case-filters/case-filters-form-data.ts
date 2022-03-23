@@ -173,6 +173,94 @@ export const FORM_DATA_CASE_FILTERS = [
     ],
   },
   {
+    id: 'location',
+    title: 'captions.Location',
+    appearance: FormGroupStyleType.COLLAPSABLE,
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'region.uuid',
+        service: 'regionService',
+        placeholder: 'captions.CaseData.responsibleRegion',
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'district.uuid',
+        service: 'districtService',
+        determinedBy: [
+          {
+            key: 'region.uuid',
+          },
+        ],
+        placeholder: 'captions.CaseData.responsibleDistrict',
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'community.uuid',
+        service: 'communityService',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
+        placeholder: 'captions.CaseData.responsibleCommunity',
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'facilityTypeGroup',
+        placeholder: 'captions.Facility.typeGroup',
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+        ],
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'facilityType',
+        placeholder: 'captions.Facility.type',
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
+          {
+            key: 'facilityTypeGroup',
+          },
+        ],
+        className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'healthFacility.uuid',
+        placeholder: 'captions.Facility',
+        service: 'facilityService',
+        determinedBy: [
+          {
+            key: 'district.uuid',
+          },
+          {
+            key: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
+          },
+        ],
+        className: 'fullwidth',
+      },
+    ],
+  },
+  {
     id: 'adminAspect',
     title: 'headingAdminAspect',
     appearance: FormGroupStyleType.COLLAPSABLE,
@@ -182,32 +270,6 @@ export const FORM_DATA_CASE_FILTERS = [
         key: 'presentCondition',
         placeholder: 'captions.Person.presentCondition',
         options: presentConditionOptions,
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'region.uuid',
-        options: [],
-        service: 'regionService',
-        placeholder: 'captions.CaseData.responsibleRegion',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'district.uuid',
-        options: [],
-        service: 'districtService',
-        determinedBy: 'region.uuid',
-        placeholder: 'captions.CaseData.responsibleDistrict',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'community.uuid',
-        options: [],
-        service: 'communityService',
-        determinedBy: 'district.uuid',
-        placeholder: 'captions.CaseData.responsibleCommunity',
         className: 'fullwidth',
       },
       {
@@ -234,34 +296,6 @@ export const FORM_DATA_CASE_FILTERS = [
         ...FORM_DATA_INPUT,
         key: 'creatorUserLike',
         placeholder: 'captions.Task.creatorUser',
-        className: 'fullwidth',
-      },
-    ],
-  },
-  {
-    id: 'facility',
-    title: 'captions.facility',
-    appearance: FormGroupStyleType.COLLAPSABLE,
-    fields: [
-      {
-        ...FORM_DATA_SELECT,
-        key: 'facilityTypeGroup',
-        placeholder: 'captions.facilityTypeGroup',
-        options: [],
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'facilityType',
-        placeholder: 'captions.CaseData.facilityType',
-        options: [],
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'healthFacility',
-        placeholder: 'captions.facility',
-        options: [],
         className: 'fullwidth',
       },
     ],

@@ -99,7 +99,6 @@ export const FORM_DATA_PERSON = [
         ...FORM_DATA_SELECT,
         key: 'placeOfBirthRegion.uuid',
         label: 'captions.Person.placeOfBirthRegion',
-        options: [],
         service: 'regionService',
         newLine: true,
       },
@@ -107,17 +106,25 @@ export const FORM_DATA_PERSON = [
         ...FORM_DATA_SELECT,
         key: 'placeOfBirthDistrict.uuid',
         label: 'captions.Person.placeOfBirthDistrict',
-        options: [],
         service: 'districtService',
-        determinedBy: 'placeOfBirthRegion.uuid',
+        determinedBy: [
+          {
+            key: 'placeOfBirthRegion.uuid',
+            keyMap: 'region.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'placeOfBirthCommunity.uuid',
         label: 'captions.Person.placeOfBirthCommunity',
-        options: [],
         service: 'communityService',
-        determinedBy: 'placeOfBirthDistrict.uuid',
+        determinedBy: [
+          {
+            key: 'placeOfBirthDistrict.uuid',
+            keyMap: 'district.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
@@ -302,32 +309,43 @@ export const FORM_DATA_PERSON = [
         ...FORM_DATA_SELECT,
         key: 'address.country.uuid',
         label: 'captions.country',
-        options: [],
         service: 'countryService',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.region.uuid',
         label: 'captions.region',
-        options: [],
         service: 'regionService',
-        determinedBy: 'address.country.uuid',
+        determinedBy: [
+          {
+            key: 'address.country.uuid',
+            keyMap: 'country.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.district.uuid',
         label: 'captions.district',
-        options: [],
         service: 'districtService',
-        determinedBy: 'address.region.uuid',
+        determinedBy: [
+          {
+            key: 'address.region.uuid',
+            keyMap: 'region.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.community.uuid',
         label: 'captions.community',
-        options: [],
         service: 'communityService',
-        determinedBy: 'address.district.uuid',
+        determinedBy: [
+          {
+            key: 'address.district.uuid',
+            keyMap: 'district.uuid',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,

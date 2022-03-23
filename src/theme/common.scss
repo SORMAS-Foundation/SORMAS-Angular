@@ -626,3 +626,11 @@ strong {
     margin: 0 auto;
   }
 }
+
+#full-screen-map-btn {
+  margin-top: 2px;
+
+  &.fullscreen {
+    margin-left: 3px;
+  }
+}

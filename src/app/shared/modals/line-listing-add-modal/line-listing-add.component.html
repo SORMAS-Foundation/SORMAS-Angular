@@ -1,0 +1,22 @@
+<div mat-dialog-title>
+  <h1>{{ 'strings.headingLineListing' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button mat-dialog-close color="primary" class="reset-btn">
+      {{ 'captions.actionDiscard' | translate }}
+    </button>
+    <button mat-flat-button color="primary" class="save-btn" (click)="save()">
+      {{ 'captions.actionSave' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <app-dynamic-form
+    [formId]="formId"
+    [formElements]="myFormElements"
+    [resourceService]="listingService"
+  ></app-dynamic-form>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewOptions, VIEW_OPTIONS } from '../../_models/common';
-import { DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE } from '../../_constants/common';
+import { DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE, MapType } from '../../_constants/common';
 
 @Component({
   selector: 'app-surveillance',
@@ -13,6 +13,7 @@ export class SurveillanceComponent {
   hideEpiCurve = false;
   hideMap = false;
   dashboardEpidemiologicalCurveType = DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE;
+  MapType = MapType;
 
   onMapViewChange(event: ViewOptions): void {
     this.hideDiseaseBurden = event === VIEW_OPTIONS.SECONDARY;

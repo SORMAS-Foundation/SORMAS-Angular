@@ -1,0 +1,104 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.form-grid {
+  overflow-x: scroll;
+}
+
+.form-grid > * {
+  flex-shrink: 0;
+}
+
+.form-grid-columns {
+  list-style: none;
+  display: flex;
+  column-gap: 4px;
+  padding-block: 16px;
+  border-bottom: 2px solid mat.get-color-from-palette($sormas-accent, 300);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+
+  li {
+    padding-left: 16px;
+    margin: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.form-grid-row {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 4px;
+  padding-block: 13px 10px;
+  border-bottom: 2px solid mat.get-color-from-palette($sormas-accent, 100);
+
+  > * {
+    flex-shrink: 0;
+  }
+}
+
+:host .mat-form-field {
+  margin: 0;
+}
+
+.button-remove {
+  height: 32px;
+  line-height: 32px;
+
+  .mat-icon {
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  &:not(.mat-button-disabled) {
+    color: mat.get-color-from-palette($sormas-alert, 300);
+  }
+}
+
+.required {
+  color: mat.get-color-from-palette($sormas-alert, 400);
+}
+
+.column-report-date,
+.column-first-symptom-date,
+.column-first-name,
+.column-last-name,
+.column-birth-month {
+  width: 130px;
+}
+
+.column-community,
+.column-facility-other {
+  width: 160px;
+}
+
+.column-facility {
+  width: 300px;
+}
+
+.column-facility-name {
+  width: 136px;
+}
+
+.column-birth-year,
+.column-birth-day,
+.column-sex {
+  width: 100px;
+}
+
+.column-symptoms-date {
+  width: 170px;
+}
+
+.column-birth-date {
+  width: 330px;
+}
+
+.actions {
+  padding-block: 24px 8px;
+  text-align: right;
+}

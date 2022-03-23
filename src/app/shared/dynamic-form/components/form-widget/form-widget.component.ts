@@ -27,6 +27,7 @@ import { MsersDiseasesComponent } from '../../../widgets/msers-diseases/msers-di
 import { ImmunizationRecoveryComponent } from '../../../widgets/immunization-recovery/immunization-recovery.component';
 import { AddCaseLabelComponent } from '../../../widgets/add-case-label/add-case-label.component';
 import { CasePersonContactsListComponent } from '../../../widgets/case-person-contacts-list/case-person-contacts-list.component';
+import { LineListingNewCasesComponent } from '../../../widgets/line-listing-new-cases/line-listing-new-cases.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -47,6 +48,7 @@ const COMPONENTS_MAP: any = {
   'app-msers-diseases': MsersDiseasesComponent,
   'app-immunization-recovery': ImmunizationRecoveryComponent,
   'app-add-case-label': AddCaseLabelComponent,
+  'app-line-listing-new-cases': LineListingNewCasesComponent,
 };
 
 @Component({

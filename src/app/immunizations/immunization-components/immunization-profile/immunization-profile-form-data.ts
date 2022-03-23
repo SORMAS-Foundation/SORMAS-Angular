@@ -178,7 +178,6 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_SELECT,
         key: 'responsibleRegion.uuid',
         label: 'captions.Immunization.responsibleRegion',
-        options: [],
         service: 'regionService',
         required: true,
         newLine: true,
@@ -187,56 +186,80 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_SELECT,
         key: 'responsibleDistrict.uuid',
         label: 'captions.Immunization.responsibleDistrict',
-        options: [],
         service: 'districtService',
-        determinedBy: 'responsibleRegion.uuid',
+        determinedBy: [
+          {
+            key: 'responsibleRegion.uuid',
+            keyMap: 'region.uuid',
+          },
+        ],
         required: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'responsibleCommunity.uuid',
         label: 'captions.Immunization.responsibleCommunity',
-        options: [],
         service: 'communityService',
-        determinedBy: 'responsibleDistrict.uuid',
+        determinedBy: [
+          {
+            key: 'responsibleDistrict.uuid',
+            keyMap: 'district.uuid',
+          },
+        ],
         required: true,
       },
     ],
   },
   {
     id: 'facility',
-    title: 'captions.facility',
+    title: 'captions.Facility',
     fields: [
       {
         ...FORM_DATA_SELECT,
         key: 'facilityTypeGroup',
-        label: 'captions.facilityTypeGroup',
-        options: [
+        label: 'captions.Facility.typeGroup',
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'responsibleDistrict.uuid',
           },
         ],
       },
       {
         ...FORM_DATA_SELECT,
         key: 'facilityType',
-        label: 'captions.facilityType',
-        options: [
+        label: 'captions.Facility.type',
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'facilityTypeGroup',
           },
         ],
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'healthFacility',
+        key: 'healthFacility.uuid',
         label: 'captions.Immunization.healthFacility',
-        options: [
+        service: 'facilityService',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'responsibleDistrict.uuid',
+            keyMap: 'district.uuid',
+          },
+          {
+            key: 'responsibleCommunity.uuid',
+            keyMap: 'community.uuid',
+            optional: true,
+          },
+          {
+            key: 'facilityTypeGroup',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
           },
         ],
       },
