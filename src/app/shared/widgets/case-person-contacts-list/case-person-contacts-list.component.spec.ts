@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { MaterialModule } from '../../../material.module';
 
 import { CasePersonContactsListComponent } from './case-person-contacts-list.component';
 
@@ -8,9 +10,9 @@ describe('CasePersonContactsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CasePersonContactsListComponent ]
-    })
-    .compileComponents();
+      declarations: [CasePersonContactsListComponent],
+      imports: [MaterialModule, TranslateModule.forRoot()],
+    }).compileComponents();
   });
 
   beforeEach(() => {
