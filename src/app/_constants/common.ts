@@ -20,6 +20,7 @@ export enum SentResourceTypes {
   EVENT_PARTICIPANT_DATA = 'event_participant_data',
   ENTITY_FORM_DATA = 'entity_form_data',
   LINE_LISTING_DATA = 'line_listing_data',
+  CONTACT_DATA = 'contact_data',
 }
 
 // pagination
