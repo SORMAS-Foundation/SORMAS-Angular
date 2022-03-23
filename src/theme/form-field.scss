@@ -1,4 +1,6 @@
 @use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
 @mixin form-field-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -170,6 +172,27 @@
         color: mat.get-color-from-palette(mat.define-palette($warn, 300));
       }
 
+      &.field-borderless:not(.mat-focused, .mat-form-field-invalid) {
+        .mat-form-field-outline {
+          .mat-form-field-outline-start,
+          .mat-form-field-outline-gap,
+          .mat-form-field-outline-end {
+            border-color: transparent;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .mat-form-field-outline {
+            .mat-form-field-outline-start,
+            .mat-form-field-outline-gap,
+            .mat-form-field-outline-end {
+              border-color: mat.get-color-from-palette($sormas-primary, 100);
+            }
+          }
+        }
+      }
+
       &.search-multiselect {
         display: inline-block;
         color: mat.get-color-from-palette(mat.define-palette($primary, 700));
@@ -285,6 +308,12 @@
       .mat-radio-group .mat-radio-button {
         font-weight: normal;
       }
+    }
+
+    ::placeholder,
+    .mat-select-placeholder {
+      opacity: 1;
+      color: mat.get-color-from-palette($sormas-accent, 300);
     }
   }
 }

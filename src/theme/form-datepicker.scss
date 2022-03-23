@@ -34,6 +34,14 @@
         }
       }
 
+      &.field-borderless:not(.mat-focused),
+      .mat-form-field-flex:focus,
+      .mat-form-field-flex:hover {
+        .mat-datepicker-toggle {
+          color: mat.get-color-from-palette(mat.define-palette($primary, 500));
+        }
+      }
+
       &.datepicker-closed,
       &.datepicker-opened {
         .mat-form-field-flex {
