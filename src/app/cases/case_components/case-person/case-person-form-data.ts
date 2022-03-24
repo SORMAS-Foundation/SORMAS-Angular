@@ -208,6 +208,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-addresses-list',
+        className: 'fullwidth',
         newLine: true,
       },
     ],
@@ -265,6 +266,12 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'citizenship',
         label: 'captions.Person.citizenship',
         options: [{ key: 'defaultCitizenship', value: 'Default citizenship' }],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-case-person-contacts-list',
+        className: 'fullwidth',
         newLine: true,
       },
     ],

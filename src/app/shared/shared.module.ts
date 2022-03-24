@@ -62,6 +62,8 @@ import { PeriodPickerComponent } from './period-picker/period-picker.component';
 import { TableActionsComponent } from './table/table-actions/table-actions.component';
 import { LineListingNewCasesComponent } from './widgets/line-listing-new-cases/line-listing-new-cases.component';
 import { LineListingAddComponent } from './modals/line-listing-add-modal/line-listing-add.component';
+import { CasePersonContactsListComponent } from './widgets/case-person-contacts-list/case-person-contacts-list.component';
+import { CasePersonContactAddEditComponent } from './case-person-contact-add-edit/case-person-contact-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +112,8 @@ import { LineListingAddComponent } from './modals/line-listing-add-modal/line-li
     PeriodPickerComponent,
     LineListingAddComponent,
     LineListingNewCasesComponent,
+    CasePersonContactsListComponent,
+    CasePersonContactAddEditComponent,
   ],
   imports: [
     CommonModule,
