@@ -1,0 +1,242 @@
+<form [formGroup]="group" #container>
+  <div
+    *ngIf="showform"
+    formArrayName="contacts"
+    [style.width.px]="containerWidth"
+    class="form-grid"
+  >
+    <ul [style.width.px]="actualWidth" class="form-grid-columns">
+      <li class="column-report-date">
+        {{ 'captions.Contact.reportDateTime' | translate }} <span class="required">*</span>
+      </li>
+      <li class="column-multiday">{{ 'captions.Contact.multiDayContact' | translate }}</li>
+      <li class="column-first-contact">
+        {{ 'captions.Contact.firstContactDate' | translate }}
+      </li>
+      <li class="column-last-contact">
+        {{ 'captions.Contact.lastContactDate' | translate }}
+      </li>
+      <li class="column-proximity">
+        {{ 'captions.Contact.contactProximity' | translate }}
+      </li>
+      <li class="column-relation">
+        {{ 'captions.Contact.relationToCase' | translate }}
+      </li>
+      <li class="column-first-name">
+        {{ 'captions.CaseData.personFirstName' | translate }} <span class="required">*</span>
+      </li>
+      <li class="column-last-name">
+        {{ 'captions.CaseData.personLastName' | translate }} <span class="required">*</span>
+      </li>
+      <li class="column-birth-date">{{ 'captions.Person.birthdate' | translate }}</li>
+      <li class="column-sex">
+        {{ 'captions.Person.sex' | translate }} <span class="required">*</span>
+      </li>
+    </ul>
+    <div
+      *ngFor="let contact of contacts.controls; let i = index"
+      [formGroupName]="i"
+      [style.width.px]="actualWidth"
+      class="form-grid-row"
+    >
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        [ngClass]="{
+          'column-report-date field-borderless': true,
+          'datepicker-opened': pickerReportDateTime.opened,
+          'datepicker-closed': !pickerReportDateTime.opened
+        }"
+      >
+        <input
+          matInput
+          readonly
+          [matDatepicker]="pickerReportDateTime"
+          formControlName="reportDateTime"
+          placeholder="M/D/YYYY"
+        />
+        <mat-datepicker-toggle matPrefix [for]="pickerReportDateTime">
+          <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #pickerReportDateTime></mat-datepicker>
+      </mat-form-field>
+
+      <div class="column-multiday">
+        <mat-checkbox
+          color="primary"
+          class="light-font"
+          formControlName="multiDayContact"
+          class="small"
+        ></mat-checkbox>
+      </div>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        [ngClass]="{
+          'column-first-contact field-borderless': true,
+          'datepicker-opened': pickerFirstContactDate.opened,
+          'datepicker-closed': !pickerFirstContactDate.opened
+        }"
+      >
+        <input
+          matInput
+          readonly
+          [matDatepicker]="pickerFirstContactDate"
+          formControlName="firstContactDate"
+          placeholder="M/D/YYYY"
+        />
+        <mat-datepicker-toggle matPrefix [for]="pickerFirstContactDate">
+          <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #pickerFirstContactDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        [ngClass]="{
+          'column-last-contact field-borderless': true,
+          'datepicker-opened': pickerLastContactDate.opened,
+          'datepicker-closed': !pickerLastContactDate.opened
+        }"
+      >
+        <input
+          matInput
+          readonly
+          [matDatepicker]="pickerLastContactDate"
+          formControlName="lastContactDate"
+          placeholder="M/D/YYYY"
+        />
+        <mat-datepicker-toggle matPrefix [for]="pickerLastContactDate">
+          <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #pickerLastContactDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-proximity field-borderless"
+      >
+        <mat-select disableOptionCentering formControlName="contactProximity">
+          <mat-option *ngFor="let option of optionsProximity | enumToKeyValue" [value]="option.key">
+            {{ option.value | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-relation field-borderless"
+      >
+        <mat-select disableOptionCentering formControlName="relationToCase">
+          <mat-option *ngFor="let option of optionsRelation | enumToKeyValue" [value]="option.key">
+            {{ option.value | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-first-name field-borderless"
+      >
+        <input
+          matInput
+          type="text"
+          formControlName="firstName"
+          [placeholder]="'captions.CaseData.personFirstName' | translate"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-last-name field-borderless"
+      >
+        <input
+          matInput
+          type="text"
+          formControlName="lastName"
+          [placeholder]="'captions.CaseData.personLastName' | translate"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-birth-year field-borderless"
+      >
+        <mat-select
+          #year
+          disableOptionCentering
+          formControlName="birthDateYYYY"
+          [placeholder]="'strings.year' | translate"
+        >
+          <mat-option *ngFor="let option of optionsYears" [value]="option.key">
+            {{ option.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-birth-month field-borderless"
+      >
+        <mat-select
+          #month
+          disableOptionCentering
+          formControlName="birthDateMM"
+          [placeholder]="'strings.month' | translate"
+        >
+          <mat-option *ngFor="let option of optionsMonths" [value]="option.key">
+            {{ option.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-birth-day field-borderless"
+      >
+        <mat-select
+          disableOptionCentering
+          formControlName="birthDateDD"
+          [placeholder]="'strings.day' | translate"
+        >
+          <mat-option *ngFor="let option of optionsDays[contact.value.id]" [value]="option.key">
+            {{ option.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="column-sex field-borderless">
+        <mat-select disableOptionCentering formControlName="sex">
+          <mat-option *ngFor="let option of optionsSex | enumToKeyValue" [value]="option.key">
+            {{ option.value | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        mat-icon-button
+        type="button"
+        (click)="removeContact(i)"
+        [disabled]="contacts.controls.length === 1"
+        class="button-remove"
+      >
+        <mat-icon class="material-icons-round">highlight_off</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-flat-button type="button" color="primary" (click)="addContact()">
+      {{ 'captions.lineListingAddLine' | translate }}
+    </button>
+  </div>
+</form>

@@ -182,7 +182,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   addLineListing(): void {
     const dialogRef = this.dialog.open(LineListingAddComponent, {
       width: ADD_MODAL_MAX_WIDTH,
-      maxWidth: ADD_MODAL_MAX_WIDTH,
+      maxWidth: `calc(${ADD_MODAL_MAX_WIDTH} - 16px)`,
       data: {
         formId: CASE_LINE_LISTING_FORM_ID,
         formData: FORM_DATA_LINE_LISTING_ADD,

@@ -1,10 +1,15 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
 .contact-case-details-wrapper {
   .with-caze {
-    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
     .text {
-      float: left;
       p {
-        padding-top: 10px;
+        line-height: 36px;
         margin: 0;
 
         > span.bold {
@@ -12,8 +17,22 @@
         }
       }
     }
-    .btn-content {
-      float: right;
-    }
+  }
+}
+
+.info {
+  margin-top: 10px;
+  font-size: 12px;
+  color: mat.get-color-from-palette($sormas-accent, 500);
+}
+
+:host-context(.line-listing-add) {
+  .with-caze {
+    display: block;
+  }
+
+  .button-add-case,
+  .button-open-case {
+    display: none;
   }
 }

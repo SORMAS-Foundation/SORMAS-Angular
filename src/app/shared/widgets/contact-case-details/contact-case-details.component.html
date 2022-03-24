@@ -1,23 +1,34 @@
 <div class="contact-case-details-wrapper">
   <div class="with-no-caze" *ngIf="!config?.value">
+    <p class="info">
+      {{ 'strings.infoNoSourceCaseSelected' | translate }}
+    </p>
     <button mat-stroked-button color="primary" (click)="openChooseCaseModal()">
       {{ 'captions.contactChooseSourceCase' | translate }}
     </button>
 
-    <button mat-button color="primary" (click)="openAddCaseModal()">
+    <button mat-button color="primary" (click)="openAddCaseModal()" class="button-add-case">
       {{ 'captions.caseCreateNew' | translate }}
     </button>
   </div>
   <div class="with-caze" *ngIf="config?.value">
     <div class="text">
-      <p>{{ 'captions.Contact.caze.uuid' | translate }}: <span class="bold">{{config.value.uuid}}</span></p>
+      <p>
+        {{ 'captions.Contact.caze.uuid' | translate }}:
+        <span class="bold">{{ config.value.uuid }}</span>
+      </p>
     </div>
     <div class="btn-content">
       <button mat-stroked-button color="primary" (click)="openChooseCaseModal()">
         {{ 'captions.contactChangeCase' | translate }}
       </button>
 
-      <a mat-button color="primary" [routerLink]="['/cases/case/' + config.value.uuid + '/details']">
+      <a
+        mat-button
+        color="primary"
+        [routerLink]="['/cases/case/' + config.value.uuid + '/details']"
+        class="button-open-case"
+      >
         {{ 'openCase' | translate }}
       </a>
 
@@ -27,4 +38,3 @@
     </div>
   </div>
 </div>
-

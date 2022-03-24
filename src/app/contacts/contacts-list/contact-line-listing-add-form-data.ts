@@ -7,6 +7,18 @@ const optionsDisease = pipe.transform(Disease);
 
 export const FORM_DATA_LINE_LISTING_ADD = [
   {
+    id: 'case',
+    title: 'captions.contactSourceCase',
+    fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        key: 'caze',
+        widget: 'app-contact-case-details',
+        className: 'fullwidth',
+      },
+    ],
+  },
+  {
     id: 'disease',
     title: 'lineListingSharedDisease',
     fields: [
@@ -42,38 +54,16 @@ export const FORM_DATA_LINE_LISTING_ADD = [
           },
         ],
       },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'facilityTypeGroup',
-        label: 'captions.facilityTypeGroup',
-        validation: ['required'],
-        service: 'helperService',
-        serviceMethod: 'getFacilityCategories',
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'facilityType',
-        label: 'captions.facilityType',
-        validation: ['required'],
-        service: 'helperService',
-        serviceMethod: 'getFacilityTypes',
-        determinedBy: [
-          {
-            key: 'facilityTypeGroup',
-          },
-        ],
-      },
     ],
   },
   {
-    id: 'newCases',
-    title: 'strings.headingNewCases',
+    id: 'newContacts',
+    title: 'captions.lineListingNewContactsList',
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        key: 'cases',
-        widget: 'app-line-listing-new-cases',
+        key: 'contacts',
+        widget: 'app-line-listing-new-contacts',
         className: 'fullwidth',
       },
     ],

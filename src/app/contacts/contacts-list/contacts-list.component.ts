@@ -9,10 +9,12 @@ import { ContactService } from '../../_services/api/contact.service';
 import { Filter, NavItem, TableColumn, TableDataFormatOptions } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
 import {
+  ACTIONS_CONTACT,
   ACTIONS_VIEW_OPTIONS,
   ADD_MODAL_MAX_WIDTH,
   CONFIG_EVENTS,
   CONTACT_FILTERS_FORM_ID,
+  CONTACT_LINE_LISTING_FORM_ID,
   HEADER_HEIGHT,
   PERIOD_PICKER_DEFAULT_RANGE,
 } from '../../app.constants';
@@ -21,13 +23,15 @@ import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-mod
 import { HelperService } from '../../_services/helper.service';
 import { FORM_DATA_CONTACT_FILTERS } from '../../shared/contact-filters/contact-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
-import { actionsViewOptionsDefs } from './contact-list-actions-data';
+import { actionsMoreDefs, actionsViewOptionsDefs } from './contact-list-actions-data';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { ContactFollowUpService } from '../../_services/api/contact-follow-up.service';
 import { FilterService } from '../../_services/filter.service';
 import * as tableDataDefault from './contacts-list-table-data';
 import * as tableDataDetailed from './contacts-list-detailed-table-data';
 import * as tableDataFollowUp from './contacts-list-follow-up-table-data';
+import { LineListingAddComponent } from '../../shared/modals/line-listing-add-modal/line-listing-add.component';
+import { FORM_DATA_LINE_LISTING_ADD } from './contact-line-listing-add-form-data';
 
 @Component({
   selector: 'app-contacts-list',
@@ -41,6 +45,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   configKey = CONFIG_EVENTS;
   routeParams = this.activeRoute.snapshot.queryParams;
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
+  actionsMore: NavItem[] = actionsMoreDefs;
   headerHeight = HEADER_HEIGHT;
   formIdFilters = CONTACT_FILTERS_FORM_ID;
   tableView = ACTIONS_VIEW_OPTIONS.DEFAULT;
@@ -141,6 +146,45 @@ export class ContactsListComponent implements OnInit, OnDestroy {
       data: {
         title: this.translateService.instant('captions.contactCreateNew'),
         component: ContactAddComponent,
+      },
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
+  }
+
+  onActionSelected(event: any): void {
+    switch (event) {
+      case ACTIONS_CONTACT.BASIC_EXPORT:
+        break;
+      case ACTIONS_CONTACT.DETAILED_EXPORT:
+        break;
+      case ACTIONS_CONTACT.FOLLOW_UP_EXPORT:
+        break;
+      case ACTIONS_CONTACT.CUSTOM_EXPORT:
+        break;
+      case ACTIONS_CONTACT.LINE_LISTING:
+        this.addLineListing();
+        break;
+      case ACTIONS_CONTACT.MERGE_DUPLICATES:
+        break;
+      default:
+        break;
+    }
+  }
+
+  addLineListing(): void {
+    const dialogRef = this.dialog.open(LineListingAddComponent, {
+      width: ADD_MODAL_MAX_WIDTH,
+      maxWidth: `calc(${ADD_MODAL_MAX_WIDTH} - 16px)`,
+      data: {
+        formId: CONTACT_LINE_LISTING_FORM_ID,
+        formData: FORM_DATA_LINE_LISTING_ADD,
       },
     });
 
