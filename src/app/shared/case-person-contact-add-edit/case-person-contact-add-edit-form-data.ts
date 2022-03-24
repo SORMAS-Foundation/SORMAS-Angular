@@ -1,9 +1,7 @@
 import {
-  AreaType,
   FORM_DATA_CHECKBOX,
   FORM_DATA_INPUT,
   FORM_DATA_SELECT,
-  PersonAddressType,
   PersonContactDetailType,
   PhoneNumberType,
 } from '../../app.constants';
@@ -63,14 +61,6 @@ export const FORM_DATA_CASE_PERSON_CONTACT_ADD_EDIT = [
         dependingOn: 'personContactDetailType',
         dependingOnValues: ['PHONE'],
       },
-      // {
-      //   ...FORM_DATA_INPUT,
-      //   key: 'details',
-      //   label: 'captions.PersonContactDetail.details',
-      //   dependingOn: 'phoneNumberType',
-      //   dependingOnValues: ['OTHER'],
-      //   newLine: true,
-      // },
       {
         ...FORM_DATA_INPUT,
         key: 'contactInformation',
