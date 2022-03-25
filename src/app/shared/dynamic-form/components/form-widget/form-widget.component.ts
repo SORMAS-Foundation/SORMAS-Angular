@@ -26,6 +26,7 @@ import { ExportsGroupSelectComponent } from '../../../widgets/exports-group-sele
 import { MsersDiseasesComponent } from '../../../widgets/msers-diseases/msers-diseases.component';
 import { ImmunizationRecoveryComponent } from '../../../widgets/immunization-recovery/immunization-recovery.component';
 import { AddCaseLabelComponent } from '../../../widgets/add-case-label/add-case-label.component';
+import { CasePersonContactsListComponent } from '../../../widgets/case-person-contacts-list/case-person-contacts-list.component';
 import { LineListingNewCasesComponent } from '../../../widgets/line-listing-new-cases/line-listing-new-cases.component';
 import { LineListingNewContactsComponent } from '../../../widgets/line-listing-new-contacts/line-listing-new-contacts.component';
 
@@ -36,6 +37,7 @@ const COMPONENTS_MAP: any = {
   'app-exposures-list': ExposuresListComponent,
   'app-activities-list': ActivitiesListComponent,
   'app-addresses-list': AddressesListComponent,
+  'app-case-person-contacts-list': CasePersonContactsListComponent,
   'app-person-contacts-list': PersonContactsListComponent,
   'app-gps-coords': GpsCoordsComponent,
   'app-address-button': AddressButtonComponent,
