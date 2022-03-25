@@ -15,13 +15,14 @@
     </button>
   </div>
 </div>
-
 <div mat-dialog-content class="dialog-content">
-  <app-dynamic-form
-    class="case-person-contact-form"
-    *ngIf="myFormElements.length"
-    [formId]="formId"
-    [formElements]="myFormElements"
-    (changed)="updateValues($event)"
-  ></app-dynamic-form>
+  <div class="dialog-wrapper">
+    <app-dynamic-form
+      class="case-person-contact-form"
+      *ngIf="myFormElements.length"
+      [formId]="formId"
+      [formElements]="myFormElements"
+      (changed)="updateValues($event)"
+    ></app-dynamic-form>
+  </div>
 </div>
