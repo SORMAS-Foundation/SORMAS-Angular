@@ -11,7 +11,7 @@
 }
 
 .mat-dialog-content {
-  padding: 25px;
+  padding: 24px 24px 0;
   background: $white;
 
   #nameUuidEpidNumberLike {
@@ -23,18 +23,18 @@
   .search-field {
     .search-icon {
       width: 14px;
-      height: 12px;
-      color: map-get($sormas-accent, 200);
+      color: mat.get-color-from-palette($sormas-accent, 200);
       font-size: 12px;
     }
     ::placeholder {
-      color: map-get($sormas-accent, 200);
+      color: mat.get-color-from-palette($sormas-accent, 200);
       font-size: 12px;
     }
   }
 
   .text {
     overflow: hidden;
+    padding-top: 24px;
     margin-left: 40px;
     .mat-icon {
       display: inline-block;

@@ -23,6 +23,7 @@ export const CONTACT_DETAILS_FORM_ID = 'contact';
 export const CONTACT_EPIDEMIOLOGICAL_DATA_FORM_ID = 'contact';
 export const CONTACT_PERSON_FORM_ID = 'contact';
 export const CONTACT_FILTERS_FORM_ID = 'contactFilters';
+export const CONTACT_LINE_LISTING_FORM_ID = 'contactLineListing';
 
 export const EVENT_DETAILS_FORM_ID = 'event';
 export const EVENT_PARTICIPANTS_PROFILE_FORM_ID = 'event';
