@@ -50,7 +50,7 @@ export class CasePersonContactsListComponent implements OnDestroy, OnInit {
         .getDiscard()
         .pipe(filter(({ formId }) => this.formId === formId))
         .subscribe(() => {
-          this.contacts = JSON.parse(JSON.stringify(this.person));
+          this.contacts = JSON.parse(JSON.stringify(this.person.personContactDetails));
         })
     );
   }
@@ -96,8 +96,9 @@ export class CasePersonContactsListComponent implements OnDestroy, OnInit {
             target[key] = resource[key as keyof ContactDto];
           });
         } else {
-          this.contacts = [...this.contacts, resource];
+          this.contacts.push(resource);
         }
+        this.contacts = JSON.parse(JSON.stringify(this.contacts));
         this.group.get(this.config.key)?.setValue(this.contacts);
       })
     );
