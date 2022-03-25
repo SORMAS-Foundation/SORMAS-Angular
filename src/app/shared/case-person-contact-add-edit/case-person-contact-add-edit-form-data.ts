@@ -11,6 +11,7 @@ import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-v
 const pipe = new EnumToKeyValuePipe();
 
 const optionsPhoneNumberType = pipe.transform(PhoneNumberType);
+
 const optionsPersonContactDetailType = pipe.transform(PersonContactDetailType);
 
 export const FORM_DATA_CASE_PERSON_CONTACT_ADD_EDIT = [

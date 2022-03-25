@@ -79,7 +79,6 @@ export class CasePersonContactsListComponent implements OnDestroy, OnInit {
       maxWidth: ADD_MODAL_MAX_WIDTH,
       data,
     });
-
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe(({ resource, deleteResource } = {}) => {
         if (!resource) {
