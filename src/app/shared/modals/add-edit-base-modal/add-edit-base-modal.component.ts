@@ -1,13 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {
-  Component,
-  ComponentFactoryResolver,
-  Inject,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -37,7 +29,6 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<AddEditBaseModalComponent>,
     public breakpointObserver: BreakpointObserver,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private formActionsService: FormActionsService,
     private notificationService: NotificationService,
     private translateService: TranslateService
@@ -90,10 +81,7 @@ export class AddEditBaseModalComponent implements OnInit, OnDestroy {
   }
 
   createComponent(): void {
-    const resolver = this.componentFactoryResolver.resolveComponentFactory<any>(
-      this.data.component
-    );
-    const createdComponent = this.addEditResource.createComponent(resolver);
+    const createdComponent: any = this.addEditResource.createComponent(this.data.component);
     createdComponent.instance.formId = this.formId;
     if (this.data.resource) {
       createdComponent.instance.selectedResource = this.data.resource;

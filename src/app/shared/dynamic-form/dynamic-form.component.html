@@ -8,12 +8,14 @@
       <fieldset
         *ngIf="!group.hidden"
         [attr.id]="group.anchor ? group.anchor : null"
-        [ngClass]="{
-          section: group.anchor,
-          basic: group.appearance === formGroupStyleType.BASIC,
-          collapsable: group.appearance === formGroupStyleType.COLLAPSABLE,
-          card: !group.appearance || group.appearance === formGroupStyleType.CARD
-        }"
+        [ngClass]="[
+          group.className || '',
+          group.anchor ? 'section' : '',
+          group.appearance === formGroupStyleType.BASIC ? 'basic' : '',
+          group.appearance === formGroupStyleType.COLLAPSABLE ? 'collapsable' : '',
+          group.appearance === formGroupStyleType.CARD ? 'card' : '',
+          !group.appearance ? 'card' : ''
+        ]"
         [ngSwitch]="group.appearance"
       >
         <ng-container
