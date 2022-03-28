@@ -1,0 +1,223 @@
+<form [formGroup]="group" #container>
+  <div *ngIf="showform" formArrayName="cases" [style.width.px]="containerWidth" class="form-grid">
+    <ul [style.width.px]="actualWidth" class="form-grid-columns">
+      <li class="column-report-date">
+        {{ 'captions.CaseData.reportDate' | translate }} <span class="required">*</span>
+      </li>
+      <li class="column-community">{{ 'captions.CaseData.community' | translate }}</li>
+      <li class="column-facility">
+        {{ 'captions.CaseData.healthFacility' | translate }} <span class="required">*</span>
+      </li>
+      <li class="column-first-name">
+        {{ 'captions.CaseData.personFirstName' | translate }} <span class="required">*</span>
+      </li>
+      <li class="column-last-name">
+        {{ 'captions.CaseData.personLastName' | translate }} <span class="required">*</span>
+      </li>
+      <li class="column-birth-date">{{ 'captions.Person.birthdate' | translate }}</li>
+      <li class="column-sex">
+        {{ 'captions.Person.sex' | translate }} <span class="required">*</span>
+      </li>
+      <li class="column-symptoms-date">{{ 'captions.Symptoms.onsetDate' | translate }}</li>
+    </ul>
+    <div
+      *ngFor="let case of cases.controls; let i = index"
+      [formGroupName]="i"
+      [style.width.px]="actualWidth"
+      class="form-grid-row"
+    >
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        [ngClass]="{
+          'column-report-date field-borderless': true,
+          'datepicker-opened': pickerReportDate.opened,
+          'datepicker-closed': !pickerReportDate.opened
+        }"
+      >
+        <input
+          matInput
+          readonly
+          [matDatepicker]="pickerReportDate"
+          formControlName="reportDate"
+          placeholder="M/D/YYYY"
+        />
+        <mat-datepicker-toggle matPrefix [for]="pickerReportDate">
+          <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #pickerReportDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-community field-borderless"
+      >
+        <mat-select #communitySelect disableOptionCentering formControlName="community">
+          <mat-option *ngFor="let community of communities" [value]="community.uuid">
+            {{ community.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        [ngClass]="[
+          facility.value === 'OTHER_FACILITY' ? 'column-facility-other' : 'column-facility',
+          'field-borderless'
+        ]"
+      >
+        <mat-select #facility disableOptionCentering formControlName="healthFacility">
+          <ng-container *ngFor="let facility of facilities">
+            <mat-option
+              *ngIf="communitySelect.value === facility.community?.uuid"
+              [value]="facility.uuid"
+            >
+              {{ facility.name }}
+            </mat-option>
+          </ng-container>
+          <mat-option *ngIf="facilities" value="OTHER_FACILITY">
+            {{ 'captions.Facility.OTHER_FACILITY' | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        *ngIf="facility.value === 'OTHER_FACILITY'"
+        appearance="outline"
+        floatLabel="always"
+        class="column-facility-name field-borderless"
+      >
+        <input
+          matInput
+          type="text"
+          formControlName="healthFacilityDetails"
+          [placeholder]="'captions.caseFacilityDetailsShort' | translate"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-first-name field-borderless"
+      >
+        <input
+          matInput
+          type="text"
+          formControlName="firstName"
+          [placeholder]="'captions.CaseData.personFirstName' | translate"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-last-name field-borderless"
+      >
+        <input
+          matInput
+          type="text"
+          formControlName="lastName"
+          [placeholder]="'captions.CaseData.personLastName' | translate"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-birth-year field-borderless"
+      >
+        <mat-select
+          #year
+          disableOptionCentering
+          formControlName="birthDateYYYY"
+          [placeholder]="'strings.year' | translate"
+        >
+          <mat-option *ngFor="let option of optionsYears" [value]="option.key">
+            {{ option.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-birth-month field-borderless"
+      >
+        <mat-select
+          #month
+          disableOptionCentering
+          formControlName="birthDateMM"
+          [placeholder]="'strings.month' | translate"
+        >
+          <mat-option *ngFor="let option of optionsMonths" [value]="option.key">
+            {{ option.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="column-birth-day field-borderless"
+      >
+        <mat-select
+          disableOptionCentering
+          formControlName="birthDateDD"
+          [placeholder]="'strings.day' | translate"
+        >
+          <mat-option *ngFor="let option of optionsDays[case.value.id]" [value]="option.key">
+            {{ option.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="column-sex field-borderless">
+        <mat-select disableOptionCentering formControlName="sex">
+          <mat-option *ngFor="let option of optionsSex | enumToKeyValue" [value]="option.key">
+            {{ option.value | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        [ngClass]="{
+          'column-first-symptom-date field-borderless': true,
+          'datepicker-opened': pickerOnsetDate.opened,
+          'datepicker-closed': !pickerOnsetDate.opened
+        }"
+      >
+        <input
+          matInput
+          readonly
+          [matDatepicker]="pickerOnsetDate"
+          formControlName="onsetDate"
+          placeholder="M/D/YYYY"
+        />
+        <mat-datepicker-toggle matPrefix [for]="pickerOnsetDate">
+          <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #pickerOnsetDate></mat-datepicker>
+      </mat-form-field>
+
+      <button
+        mat-icon-button
+        type="button"
+        (click)="removeCase(i)"
+        [disabled]="cases.controls.length === 1"
+        class="button-remove"
+      >
+        <mat-icon class="material-icons-round">highlight_off</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-flat-button type="button" color="primary" (click)="addCase()">
+      {{ 'captions.lineListingAddLine' | translate }}
+    </button>
+  </div>
+</form>

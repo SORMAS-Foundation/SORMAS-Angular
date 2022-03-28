@@ -1,5 +1,9 @@
 @use '/src/variables.scss' as *;
 
+.dialog-wrapper {
+  width: 500px;
+  margin: 0 auto;
+}
 .mat-dialog-title {
   padding: 40px 25px 25px;
 
@@ -7,7 +11,6 @@
     margin: 0;
     font-size: 28px;
   }
-
   .button-dialog-close {
     top: 2px;
     right: 2px;
@@ -15,6 +18,12 @@
 }
 
 .mat-dialog-content {
+  padding: 14px 16px;
   background: $white;
-  padding: 14px 110px;
+}
+
+@media (min-width: map-get($grid-breakpoints, md)) {
+  .mat-dialog-content {
+    padding: 14px 24px;
+  }
 }

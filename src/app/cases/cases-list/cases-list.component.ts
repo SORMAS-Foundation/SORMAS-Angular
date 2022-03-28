@@ -20,6 +20,7 @@ import {
   CASE_FILTERS_FORM_ID,
   ACTIONS_VIEW_OPTIONS,
   PERIOD_PICKER_DEFAULT_RANGE,
+  CASE_LINE_LISTING_FORM_ID,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -37,6 +38,8 @@ import { FORM_DATA_CASE_FILTERS } from '../case-filters/case-filters-form-data';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { CaseFollowUpService } from '../../_services/api/case-follow-up.service';
 import { FilterService } from '../../_services/filter.service';
+import { LineListingAddComponent } from '../../shared/modals/line-listing-add-modal/line-listing-add.component';
+import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
 
 @Component({
   selector: 'app-cases-list',
@@ -159,6 +162,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.exportCustomCase();
         break;
       case ACTIONS_CASE.LINE_LISTING:
+        this.addLineListing();
         break;
       case ACTIONS_CASE.CASE_GUIDE:
         break;
@@ -173,6 +177,25 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.dialog.open(CustomCaseExportComponent, {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
+  }
+
+  addLineListing(): void {
+    const dialogRef = this.dialog.open(LineListingAddComponent, {
+      width: ADD_MODAL_MAX_WIDTH,
+      maxWidth: `calc(${ADD_MODAL_MAX_WIDTH} - 16px)`,
+      data: {
+        formId: CASE_LINE_LISTING_FORM_ID,
+        formData: FORM_DATA_LINE_LISTING_ADD,
+      },
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
   }
 
   updateFollowUpTable(filters?: Filter[]): void {

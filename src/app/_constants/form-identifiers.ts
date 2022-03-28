@@ -8,6 +8,7 @@ export const CASE_PERSON_FORM_ID = 'case';
 export const CASE_PORT_HEALTH_FORM_ID = 'case';
 export const CASE_SYMPTOMS_FORM_ID = 'case';
 export const CASE_FILTERS_FORM_ID = 'caseFilters';
+export const CASE_LINE_LISTING_FORM_ID = 'caseLineListing';
 
 export const CONFIGURATION_COMMUNITY_FILTERS_FORM_ID = 'communityFilters';
 export const CONFIGURATION_CONTINENT_FILTERS_FORM_ID = 'continentFilters';
@@ -22,6 +23,7 @@ export const CONTACT_DETAILS_FORM_ID = 'contact';
 export const CONTACT_EPIDEMIOLOGICAL_DATA_FORM_ID = 'contact';
 export const CONTACT_PERSON_FORM_ID = 'contact';
 export const CONTACT_FILTERS_FORM_ID = 'contactFilters';
+export const CONTACT_LINE_LISTING_FORM_ID = 'contactLineListing';
 
 export const EVENT_DETAILS_FORM_ID = 'event';
 export const EVENT_PARTICIPANTS_PROFILE_FORM_ID = 'event';

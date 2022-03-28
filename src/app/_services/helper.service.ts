@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { Params } from '@angular/router';
 import {
   addDays,
@@ -25,6 +25,8 @@ import {
 export class HelperService {
   private apiUrl: string;
   private domainSubfolder: string;
+
+  constructor(@Inject(LOCALE_ID) protected localeId: string) {}
 
   setApiUrl(apiUrl: string): void {
     this.apiUrl = apiUrl;
@@ -58,11 +60,13 @@ export class HelperService {
     return years.map((x) => ({ key: x, value: x }));
   }
 
-  getMonths(language = 'en'): any[] {
+  getMonths(): any[] {
     const months = this.getRange(0, 11);
     return months.map((x) => ({
       key: x,
-      value: new Intl.DateTimeFormat(language, { month: 'long' }).format(new Date().setMonth(x)),
+      value: new Intl.DateTimeFormat(this.localeId, { month: 'long' }).format(
+        new Date().setMonth(x)
+      ),
     }));
   }
 

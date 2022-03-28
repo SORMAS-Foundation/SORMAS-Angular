@@ -60,6 +60,11 @@ import { AddCaseLabelComponent } from './widgets/add-case-label/add-case-label.c
 import { LegendComponent } from './legend/legend.component';
 import { PeriodPickerComponent } from './period-picker/period-picker.component';
 import { TableActionsComponent } from './table/table-actions/table-actions.component';
+import { LineListingNewCasesComponent } from './widgets/line-listing-new-cases/line-listing-new-cases.component';
+import { LineListingAddComponent } from './modals/line-listing-add-modal/line-listing-add.component';
+import { LineListingNewContactsComponent } from './widgets/line-listing-new-contacts/line-listing-new-contacts.component';
+import { CasePersonContactsListComponent } from './widgets/case-person-contacts-list/case-person-contacts-list.component';
+import { CasePersonContactAddEditComponent } from './case-person-contact-add-edit/case-person-contact-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +111,11 @@ import { TableActionsComponent } from './table/table-actions/table-actions.compo
     AddCaseLabelComponent,
     LegendComponent,
     PeriodPickerComponent,
+    LineListingAddComponent,
+    LineListingNewCasesComponent,
+    LineListingNewContactsComponent,
+    CasePersonContactsListComponent,
+    CasePersonContactAddEditComponent,
   ],
   imports: [
     CommonModule,

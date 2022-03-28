@@ -174,5 +174,7 @@
   "contactFollowupVisitsView": "Follow-up",
   "headingLabMessages": "Lab messages",
   "viewFullscreen": "View fullscreen",
-  "exitFullscreen": "Exit fullscreen"
+  "exitFullscreen": "Exit fullscreen",
+  "lineListingSharedDisease": "Shared disease",
+  "lineListingSharedLocation": "Shared location"
 }

@@ -1,0 +1,46 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.mat-dialog-title {
+  padding: 40px 25px 25px;
+
+  > h1 {
+    margin: 0;
+    font-size: 28px;
+  }
+
+  .button-dialog-close {
+    top: 2px;
+    right: 2px;
+  }
+}
+
+.mat-dialog-content {
+  padding: 14px 16px;
+}
+
+.info-text {
+  color: mat.get-color-from-palette($sormas-accent, 500);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.list-heading {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 0;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.list-holder {
+  margin: 24px 0 36px;
+}
+
+@media (min-width: map-get($grid-breakpoints, md)) {
+  .mat-dialog-content {
+    padding: 14px 24px;
+  }
+}

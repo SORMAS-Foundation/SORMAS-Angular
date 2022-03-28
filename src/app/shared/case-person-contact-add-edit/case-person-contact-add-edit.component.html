@@ -1,0 +1,28 @@
+<div mat-dialog-title>
+  <h1>{{ data.title }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-button color="warn" (click)="delete()" *ngIf="data.resource">
+      {{ 'captions.actionDelete' | translate }}
+    </button>
+    <button mat-stroked-button color="primary" class="reset-btn" (click)="discard()">
+      {{ 'captions.actionDiscard' | translate }}
+    </button>
+    <button mat-flat-button color="primary" class="save-btn" (click)="save()">
+      {{ 'captions.actionSave' | translate }}
+    </button>
+  </div>
+</div>
+<div mat-dialog-content class="dialog-content">
+  <div class="dialog-wrapper">
+    <app-dynamic-form
+      class="case-person-contact-form"
+      *ngIf="myFormElements.length"
+      [formId]="formId"
+      [formElements]="myFormElements"
+      (changed)="updateValues($event)"
+    ></app-dynamic-form>
+  </div>
+</div>

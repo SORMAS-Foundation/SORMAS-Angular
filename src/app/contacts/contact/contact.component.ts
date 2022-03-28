@@ -5,7 +5,8 @@ import { NotificationService } from '../../_services/notification.service';
 import { ContactDto } from '../../_models/contactDto';
 import { ContactService } from '../../_services/api/contact.service';
 import { actionsEditDefs } from './contact-actions-data';
-import { CONTACT_DETAILS_FORM_ID } from '../../app.constants';
+import { CONTACT_DETAILS_FORM_ID, SentResourceTypes } from '../../app.constants';
+import { SendResourceService } from '../../_services/send-resource.service';
 
 // case routing for tabs
 const contactLinks = (contactId: string): EntityLink[] => {
@@ -37,7 +38,8 @@ export class ContactComponent implements OnInit {
     public contactService: ContactService,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private sendResourceService: SendResourceService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +49,9 @@ export class ContactComponent implements OnInit {
     this.contactService.getById(this.contactId).subscribe({
       next: (response: any) => {
         this.contact = response;
+        setTimeout(() => {
+          this.sendResourceService.setResource(this.contact, SentResourceTypes.CONTACT_DATA);
+        });
       },
       error: (err: any) => {
         this.notificationService.error(err);
