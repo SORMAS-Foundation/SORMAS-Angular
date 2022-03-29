@@ -42,6 +42,7 @@ import { FilterService } from '../../_services/filter.service';
 import { LineListingAddComponent } from '../../shared/modals/line-listing-add-modal/line-listing-add.component';
 import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
 import { NotificationService } from '../../_services/notification.service';
+import { CaseGuideComponent } from '../case-guide/case-guide.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -169,6 +170,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.addLineListing();
         break;
       case ACTIONS_CASE.CASE_GUIDE:
+        this.openCaseGuide();
         break;
       case ACTIONS_CASE.MERGE_DUPLICATES:
         break;
@@ -243,6 +245,12 @@ export class CasesListComponent implements OnInit, OnDestroy {
       });
     }
     return result;
+  }
+
+  openCaseGuide(): void {
+    this.dialog.open(CaseGuideComponent, {
+      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+    });
   }
 
   ngOnDestroy(): void {
