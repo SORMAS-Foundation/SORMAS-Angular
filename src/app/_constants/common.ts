@@ -163,6 +163,10 @@ export enum MapType {
   Contacts,
 }
 
+export const CASE_EXPORT_TYPES = {
+  BASIC: 'basic',
+};
+
 export const FacilityCategoryGroups = {
   ACCOMMODATION: [
     'CAMPSITE',

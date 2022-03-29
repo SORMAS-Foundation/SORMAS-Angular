@@ -68,7 +68,7 @@ export class AddressesListComponent implements OnDestroy, OnInit {
   }
 
   deleteAddress(address: LocationDto): void {
-    this.addresses = this.addresses.filter((item) => item.uuid !== address.uuid);
+    this.addresses = this.addresses.filter((item) => item !== address);
     this.group.get(this.config.key)?.setValue(this.addresses);
     this.formActionsService.setInputChange(this.formId, this.config.key, true);
   }

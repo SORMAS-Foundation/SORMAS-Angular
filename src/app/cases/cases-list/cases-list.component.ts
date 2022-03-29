@@ -21,6 +21,7 @@ import {
   ACTIONS_VIEW_OPTIONS,
   PERIOD_PICKER_DEFAULT_RANGE,
   CASE_LINE_LISTING_FORM_ID,
+  CASE_EXPORT_TYPES,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -40,6 +41,7 @@ import { CaseFollowUpService } from '../../_services/api/case-follow-up.service'
 import { FilterService } from '../../_services/filter.service';
 import { LineListingAddComponent } from '../../shared/modals/line-listing-add-modal/line-listing-add.component';
 import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
+import { NotificationService } from '../../_services/notification.service';
 import { CaseGuideComponent } from '../case-guide/case-guide.component';
 
 @Component({
@@ -77,7 +79,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private translateService: TranslateService,
     private localStorageService: LocalStorageService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -152,6 +155,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   onActionSelected(event: any): void {
     switch (event) {
       case ACTIONS_CASE.BASIC_EXPORT:
+        this.exportBasicCase();
         break;
       case ACTIONS_CASE.DETAILED_EXPORT:
         break;
@@ -179,6 +183,24 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.dialog.open(CustomCaseExportComponent, {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
+  }
+
+  exportBasicCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: 335,
+    });
+
+    this.subscriptions.push(
+      this.caseService.export(CASE_EXPORT_TYPES.BASIC).subscribe({
+        next: () => {},
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
   }
 
   addLineListing(): void {
