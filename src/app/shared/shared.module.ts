@@ -65,6 +65,7 @@ import { LineListingAddComponent } from './modals/line-listing-add-modal/line-li
 import { LineListingNewContactsComponent } from './widgets/line-listing-new-contacts/line-listing-new-contacts.component';
 import { CasePersonContactsListComponent } from './widgets/case-person-contacts-list/case-person-contacts-list.component';
 import { CasePersonContactAddEditComponent } from './case-person-contact-add-edit/case-person-contact-add-edit.component';
+import { GroupSelectComponent } from './widgets/group-select/group-select.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import { CasePersonContactAddEditComponent } from './case-person-contact-add-edi
     LineListingNewContactsComponent,
     CasePersonContactsListComponent,
     CasePersonContactAddEditComponent,
+    GroupSelectComponent,
   ],
   imports: [
     CommonModule,

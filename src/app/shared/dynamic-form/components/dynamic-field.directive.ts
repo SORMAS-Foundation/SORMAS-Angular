@@ -1,10 +1,4 @@
-import {
-  ComponentFactoryResolver,
-  Directive,
-  Input,
-  OnInit,
-  ViewContainerRef,
-} from '@angular/core';
+import { Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormElementBase } from '../types/form-element-base';
 import { FormFields } from '../types/form-fields';
@@ -49,12 +43,10 @@ export class DynamicFieldDirective implements OnInit {
   @Input() formId: string;
   component: any;
 
-  constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) {}
+  constructor(private container: ViewContainerRef) {}
 
   ngOnInit(): void {
-    const component = components[this.config.controlType];
-    const factory = this.resolver.resolveComponentFactory<any>(component);
-    this.component = this.container.createComponent(factory);
+    this.component = this.container.createComponent(components[this.config.controlType]);
     this.component.instance.config = this.config;
     this.component.instance.group = this.group;
     this.component.instance.formId = this.formId;

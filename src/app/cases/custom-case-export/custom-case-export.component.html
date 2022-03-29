@@ -13,7 +13,7 @@
   <div class="list-heading">
     <h2>{{ 'captions.ExportConfiguration.myExports' | translate }}</h2>
     <div class="list-heading-actions">
-      <button mat-flat-button color="primary">
+      <button mat-flat-button color="primary" (click)="addEditExportConfiguration()">
         {{ 'captions.exportNewExportConfiguration' | translate }}
       </button>
     </div>
@@ -30,6 +30,7 @@
       cardTitleKey="title"
       [cardAppearance]="appearance.OUTLINED"
       cardStatus="unclassified"
+      (editCard)="addEditExportConfiguration($event)"
     ></app-card-list>
   </div>
 

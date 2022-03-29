@@ -37,6 +37,7 @@ export type EntityLink = {
 export const ADD_MODAL_NARROW = '720px';
 export const ADD_MODAL_WIDE = '840px';
 export const MODAL_MEDIUM_WIDTH = '940px';
+export const MODAL_LARGE_WIDTH = '1024px';
 export const ADD_MODAL_MAX_WIDTH = '100vw';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
