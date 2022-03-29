@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { combineLatest, Subscription } from 'rxjs';
-import { debounceTime, filter } from 'rxjs/operators';
+import { debounceTime, filter, startWith } from 'rxjs/operators';
 import { Sex } from '../../../app.constants';
 import { CommunityService } from '../../../_services/api/community.service';
 import { FacilityService } from '../../../_services/api/facility.service';
@@ -34,6 +34,7 @@ export class LineListingNewCasesComponent implements OnInit, AfterViewInit, OnDe
   optionsSex = Sex;
   communities: any[] = [];
   facilities: any[] | undefined;
+  today = new Date();
   subscriptions: Subscription[] = [];
 
   @ViewChild('container') container: ElementRef;
@@ -99,16 +100,18 @@ export class LineListingNewCasesComponent implements OnInit, AfterViewInit, OnDe
       );
     }
     if ($watchYears && $watchMonths) {
-      combineLatest([$watchYears, $watchMonths]).subscribe(([year, month]: any) => {
-        this.optionsDays[newCase.value.id] = this.helperService.getDaysForMonth(month, year);
-        const $controlBirthDay = newCase.get('birthDateDD');
-        const checkDay = this.optionsDays[newCase.value.id].find(
-          (item: any) => item.key === $controlBirthDay?.value
-        );
-        if ($controlBirthDay?.value && !checkDay) {
-          $controlBirthDay?.setValue(null);
+      combineLatest([$watchYears.pipe(startWith(undefined)), $watchMonths]).subscribe(
+        ([year, month]: any) => {
+          this.optionsDays[newCase.value.id] = this.helperService.getDaysForMonth(month, year);
+          const $controlBirthDay = newCase.get('birthDateDD');
+          const checkDay = this.optionsDays[newCase.value.id].find(
+            (item: any) => item.key === $controlBirthDay?.value
+          );
+          if ($controlBirthDay?.value && !checkDay) {
+            $controlBirthDay?.setValue(null);
+          }
         }
-      });
+      );
     }
     if ($watchHealthFacility) {
       this.subscriptions.push(
