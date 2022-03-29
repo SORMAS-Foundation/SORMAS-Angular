@@ -39,7 +39,6 @@ export const ADD_MODAL_WIDE = '840px';
 export const MODAL_MEDIUM_WIDTH = '940px';
 export const ADD_MODAL_MAX_WIDTH = '100vw';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
-export const CASE_EXPORT_BASIC_MODAL_WIDTH = '335px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
 export const CONFIGURATION_MODAL_WIDTH = '550px';
 export const POPULATION_IMPORT_MODAL_WIDTH = '720px';

@@ -21,7 +21,6 @@ import {
   ACTIONS_VIEW_OPTIONS,
   PERIOD_PICKER_DEFAULT_RANGE,
   CASE_LINE_LISTING_FORM_ID,
-  CASE_EXPORT_BASIC_MODAL_WIDTH,
   CASE_EXPORT_TYPES,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -42,7 +41,6 @@ import { CaseFollowUpService } from '../../_services/api/case-follow-up.service'
 import { FilterService } from '../../_services/filter.service';
 import { LineListingAddComponent } from '../../shared/modals/line-listing-add-modal/line-listing-add.component';
 import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
-import { BasicCaseExportComponent } from '../basic-case-export/basic-case-export.component';
 import { NotificationService } from '../../_services/notification.service';
 
 @Component({
@@ -186,8 +184,10 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   exportBasicCase(): void {
-    this.dialog.open(BasicCaseExportComponent, {
-      width: CASE_EXPORT_BASIC_MODAL_WIDTH,
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: 335,
     });
 
     this.subscriptions.push(
