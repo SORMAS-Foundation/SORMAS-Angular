@@ -69,8 +69,6 @@ export class CasePersonContactsListComponent implements OnDestroy, OnInit {
   }
 
   deleteContact(contact: ContactDto): void {
-    console.log('contacts', this.contacts, contact);
-    // if()
     this.contacts = this.contacts.filter((item) => item !== contact);
     this.group.get(this.config.key)?.setValue(this.contacts);
     this.formActionsService.setInputChange(this.formId, this.config.key, true);
