@@ -374,3 +374,11 @@ export const API_ROUTE_LAB_MESSAGES = {
   ADD: 'labMessage/push',
   DELETE: 'labMessage/delete',
 };
+
+export const API_ROUTE_MERGE_DUPLICATES = {
+  ENDPOINT: 'mergeDuplicates',
+  GET_ALL: 'mergeDuplicates/indexList',
+  UPDATE: 'mergeDuplicates/update',
+  ADD: 'mergeDuplicates/add',
+  DELETE: 'mergeDuplicates/delete',
+};

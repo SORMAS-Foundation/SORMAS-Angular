@@ -102,6 +102,12 @@ const routes: Routes = [
       import('./lab-messages/lab-messages.module').then((m) => m.LabMessagesModule),
     canActivate: [Guard],
   },
+  {
+    path: 'merge-duplicates',
+    loadChildren: () =>
+      import('./merge-duplicates/merge-duplicates.module').then((m) => m.MergeDuplicatesModule),
+    canActivate: [Guard],
+  },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
 ];

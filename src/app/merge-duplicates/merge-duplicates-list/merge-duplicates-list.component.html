@@ -1,0 +1,15 @@
+<app-filters [topGap]="headerHeight">
+  <app-merge-duplicate-filters [formId]="formIdFilters" [data]="filtersData" filters></app-merge-duplicate-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title">
+        <ng-container>
+          {{ 'captions.caseMergeDuplicates' | translate }}
+        </ng-container>
+      </h1>
+    </div>
+    <app-merge-duplicates-table
+      [mergeDuplicates]="mergeDuplicates"
+    ></app-merge-duplicates-table>
+  </ng-container>
+</app-filters>
