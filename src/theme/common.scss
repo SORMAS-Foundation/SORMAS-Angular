@@ -627,3 +627,19 @@ strong {
     margin-left: 3px;
   }
 }
+
+:root .guide-info {
+  ul {
+    list-style-type: none;
+    padding-left: 24px;
+  }
+
+  li::before {
+    content: '\27A4';
+    float: left;
+    margin-left: -24px;
+    font-size: 13px;
+    line-height: 21px;
+    color: mat.get-color-from-palette($sormas-alert, 300);
+  }
+}
