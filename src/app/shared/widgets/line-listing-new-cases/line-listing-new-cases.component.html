@@ -41,6 +41,7 @@
           [matDatepicker]="pickerReportDate"
           formControlName="reportDate"
           placeholder="M/D/YYYY"
+          [max]="today"
         />
         <mat-datepicker-toggle matPrefix [for]="pickerReportDate">
           <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>

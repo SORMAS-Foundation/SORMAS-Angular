@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { combineLatest, Subscription } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 import { ContactProximity, ContactRelation, Sex } from '../../../app.constants';
 import { HelperService } from '../../../_services/helper.service';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
@@ -24,6 +25,7 @@ export class LineListingNewContactsComponent implements OnInit, AfterViewInit, O
   optionsSex = Sex;
   optionsProximity = ContactProximity;
   optionsRelation = ContactRelation;
+  today = new Date();
   subscriptions: Subscription[] = [];
 
   @ViewChild('container') container: ElementRef;
@@ -79,16 +81,18 @@ export class LineListingNewContactsComponent implements OnInit, AfterViewInit, O
     const controlFirstContact = newContact.get('firstContactDate');
     controlFirstContact?.disable();
     if ($watchYears && $watchMonths) {
-      combineLatest([$watchYears, $watchMonths]).subscribe(([year, month]: any) => {
-        this.optionsDays[newContact.value.id] = this.helperService.getDaysForMonth(month, year);
-        const $controlBirthDay = newContact.get('birthDateDD');
-        const checkDay = this.optionsDays[newContact.value.id].find(
-          (item: any) => item.key === $controlBirthDay?.value
-        );
-        if ($controlBirthDay?.value && !checkDay) {
-          $controlBirthDay?.setValue(null);
+      combineLatest([$watchYears.pipe(startWith(undefined)), $watchMonths]).subscribe(
+        ([year, month]: any) => {
+          this.optionsDays[newContact.value.id] = this.helperService.getDaysForMonth(month, year);
+          const $controlBirthDay = newContact.get('birthDateDD');
+          const checkDay = this.optionsDays[newContact.value.id].find(
+            (item: any) => item.key === $controlBirthDay?.value
+          );
+          if ($controlBirthDay?.value && !checkDay) {
+            $controlBirthDay?.setValue(null);
+          }
         }
-      });
+      );
     }
     if ($watchMultiday) {
       this.subscriptions.push(

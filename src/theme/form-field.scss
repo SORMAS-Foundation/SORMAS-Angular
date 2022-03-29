@@ -181,8 +181,8 @@
           }
         }
 
-        &:hover,
-        &:focus {
+        &:not(.mat-form-field-disabled):hover,
+        &:not(.mat-form-field-disabled):focus {
           .mat-form-field-outline {
             .mat-form-field-outline-start,
             .mat-form-field-outline-gap,
