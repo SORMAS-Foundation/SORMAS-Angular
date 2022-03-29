@@ -165,6 +165,9 @@ export enum MapType {
 
 export const CASE_EXPORT_TYPES = {
   BASIC: 'basic',
+  DETAILED: 'detailed',
+  CASE_MANAGEMENT: 'management',
+  SAMPLE: 'sample',
 };
 
 export const FacilityCategoryGroups = {

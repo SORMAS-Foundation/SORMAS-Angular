@@ -158,10 +158,13 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.exportBasicCase();
         break;
       case ACTIONS_CASE.DETAILED_EXPORT:
+        this.exportDetailedCase();
         break;
       case ACTIONS_CASE.CASE_EXPORT:
+        this.exportManagementCase();
         break;
       case ACTIONS_CASE.SAMPLE_EXPORT:
+        this.exportSampleCase();
         break;
       case ACTIONS_CASE.CUSTOM_EXPORT:
         this.exportCustomCase();
@@ -185,15 +188,9 @@ export class CasesListComponent implements OnInit, OnDestroy {
     });
   }
 
-  exportBasicCase(): void {
-    this.notificationService.prompt({
-      title: this.translateService.instant('captions.exportBasic'),
-      message: this.translateService.instant('strings.infoDownloadExport'),
-      maxWidth: 335,
-    });
-
+  executeExport(exportType: string): void {
     this.subscriptions.push(
-      this.caseService.export(CASE_EXPORT_TYPES.BASIC).subscribe({
+      this.caseService.export(exportType).subscribe({
         next: () => {},
         error: (err: any) => {
           this.notificationService.error(err);
@@ -201,6 +198,46 @@ export class CasesListComponent implements OnInit, OnDestroy {
         complete: () => {},
       })
     );
+  }
+
+  exportBasicCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: 335,
+    });
+
+    this.executeExport(CASE_EXPORT_TYPES.BASIC);
+  }
+
+  exportDetailedCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportDetailed'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: 335,
+    });
+
+    this.executeExport(CASE_EXPORT_TYPES.DETAILED);
+  }
+
+  exportManagementCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportCaseManagement'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: 335,
+    });
+
+    this.executeExport(CASE_EXPORT_TYPES.CASE_MANAGEMENT);
+  }
+
+  exportSampleCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportSamples'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: 335,
+    });
+
+    this.executeExport(CASE_EXPORT_TYPES.SAMPLE);
   }
 
   addLineListing(): void {
