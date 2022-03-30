@@ -22,6 +22,7 @@ import {
   PERIOD_PICKER_DEFAULT_RANGE,
   CASE_LINE_LISTING_FORM_ID,
   CASE_EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -204,7 +205,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportBasic'),
       message: this.translateService.instant('strings.infoDownloadExport'),
-      maxWidth: 335,
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
     this.executeExport(CASE_EXPORT_TYPES.BASIC);
@@ -214,7 +215,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportDetailed'),
       message: this.translateService.instant('strings.infoDownloadExport'),
-      maxWidth: 335,
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
     this.executeExport(CASE_EXPORT_TYPES.DETAILED);
@@ -224,7 +225,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportCaseManagement'),
       message: this.translateService.instant('strings.infoDownloadExport'),
-      maxWidth: 335,
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
     this.executeExport(CASE_EXPORT_TYPES.CASE_MANAGEMENT);
@@ -234,7 +235,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportSamples'),
       message: this.translateService.instant('strings.infoDownloadExport'),
-      maxWidth: 335,
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
     this.executeExport(CASE_EXPORT_TYPES.SAMPLE);
