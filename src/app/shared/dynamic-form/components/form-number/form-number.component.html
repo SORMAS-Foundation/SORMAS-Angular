@@ -7,7 +7,6 @@
   >
     <mat-label *ngIf="config.label">
       {{ config.label || '' | translate }}
-      <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
     <input
       matInput

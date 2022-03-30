@@ -2,7 +2,7 @@
 @use '/src/variables.scss' as *;
 
 .mat-dialog-content {
-  padding: 24px 64px;
+  padding: 24px 64px 32px;
   font-size: 14px;
   background-color: $white;
 }
