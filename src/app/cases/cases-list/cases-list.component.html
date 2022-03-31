@@ -23,8 +23,12 @@
           {{ 'captions.actionImport' | translate }}
         </button>
 
-        <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+        <app-dropdown-menu
+          buttonText="{{ 'captions.moreActions' | translate }}"
+          (menuExpanded)="onMenuExpanded($event)"
+        >
           <app-action-menu
+            *ngIf="menuMoreOpened"
             [config]="actionsMore"
             (action)="onActionSelected($event)"
           ></app-action-menu>

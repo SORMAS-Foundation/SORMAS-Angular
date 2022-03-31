@@ -6,6 +6,8 @@
     #toggle="matMenuTrigger"
     [matMenuTriggerFor]="menu"
     [disabled]="disabled"
+    (menuOpened)="onMenuExpanded(true)"
+    (menuClosed)="onMenuExpanded(false)"
   >
     <ng-container *ngTemplateOutlet="buttonContent; context: { toggle: toggle }"></ng-container>
   </button>
@@ -16,6 +18,8 @@
     #toggle="matMenuTrigger"
     [matMenuTriggerFor]="menu"
     [disabled]="disabled"
+    (menuOpened)="onMenuExpanded(true)"
+    (menuClosed)="onMenuExpanded(false)"
   >
     <ng-container *ngTemplateOutlet="buttonContent; context: { toggle: toggle }"></ng-container>
   </button>
@@ -26,6 +30,8 @@
     #toggle="matMenuTrigger"
     [matMenuTriggerFor]="menu"
     [disabled]="disabled"
+    (menuOpened)="onMenuExpanded(true)"
+    (menuClosed)="onMenuExpanded(false)"
   >
     <ng-container *ngTemplateOutlet="buttonContent; context: { toggle: toggle }"></ng-container>
   </button>

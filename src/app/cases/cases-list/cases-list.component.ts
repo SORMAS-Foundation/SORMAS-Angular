@@ -69,6 +69,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   presetFilters: Filter[] = [];
   to: Date = new Date();
   from: Date = addDays(new Date(), -PERIOD_PICKER_DEFAULT_RANGE + 1);
+  menuMoreOpened = false;
 
   private subscriptions: Subscription[] = [];
 
@@ -289,6 +290,10 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.dialog.open(CaseGuideComponent, {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
+  }
+
+  onMenuExpanded(event: boolean): void {
+    this.menuMoreOpened = event;
   }
 
   ngOnDestroy(): void {

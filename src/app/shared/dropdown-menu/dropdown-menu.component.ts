@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MenuPositionX } from '@angular/material/menu';
 import { ButtonType, BUTTON_TYPE } from '../../app.constants';
 
@@ -18,5 +18,11 @@ export class DropdownMenuComponent {
   @Input() chevronCloseIcon = 'arrow_drop_up';
   @Input() horizontalPosition: MenuPositionX = 'after';
 
+  @Output() menuExpanded: EventEmitter<boolean> = new EventEmitter();
+
   buttonTypes = BUTTON_TYPE;
+
+  onMenuExpanded(status: boolean): void {
+    this.menuExpanded.emit(status);
+  }
 }
