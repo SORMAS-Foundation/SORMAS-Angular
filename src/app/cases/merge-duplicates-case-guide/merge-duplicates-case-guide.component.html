@@ -1,0 +1,33 @@
+<div mat-dialog-title>
+  <h1>{{ 'strings.headingMergeGuide' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <h2>{{ 'strings.headingIntroduction' | translate }}</h2>
+  <div [innerHtml]="'strings.infoMergingExplanation' | translate" class="guide-info"></div>
+  <br />
+  <h2>{{ 'strings.headingHowToMergeCases' | translate }}</h2>
+  <div [innerHtml]="'strings.infoHowToMergeCases' | translate" class="guide-info"></div>
+  <br />
+  <h2>{{ 'captions.actionMerge' | translate }}</h2>
+  <div [innerHtml]="'strings.infoMergingMergeDescription' | translate" class="guide-info"></div>
+  <br />
+  <h2>{{ 'captions.actionPick' | translate }}</h2>
+  <div [innerHtml]="'strings.infoMergingPickDescription' | translate" class="guide-info"></div>
+  <br />
+  <h2>{{ 'captions.actionHide' | translate }}</h2>
+  <div [innerHtml]="'strings.infoMergingHideDescription' | translate" class="guide-info"></div>
+  <br />
+  <h2>{{ 'strings.headingExplanationOfTerms' | translate }}</h2>
+  <h3>{{ 'strings.headingCompleteness' | translate }}</h3>
+  <div [innerHtml]="'strings.infoCaseCompleteness' | translate" class="guide-info"></div>
+  <div [innerHtml]="'strings.infoContactCompletenessMerge' | translate" class="guide-info"></div>
+  <br />
+  <h2>{{ 'captions.caseFilterWithDifferentRegion' | translate }}</h2>
+  <div [innerHtml]="'strings.infoMergeIgnoreRegion' | translate" class="guide-info"></div>
+</div>
