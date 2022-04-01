@@ -91,6 +91,11 @@
     .dialog-prompt {
       .mat-dialog-title h1 {
         font-size: 24px;
+        margin: 24px 0 -6px;
+      }
+
+      .mat-dialog-content {
+        padding: 16px 64px 48px;
       }
     }
 

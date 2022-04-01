@@ -37,11 +37,14 @@ export type EntityLink = {
 export const ADD_MODAL_NARROW = '720px';
 export const ADD_MODAL_WIDE = '840px';
 export const MODAL_MEDIUM_WIDTH = '940px';
+export const MODAL_LARGE_WIDTH = '1024px';
 export const ADD_MODAL_MAX_WIDTH = '100vw';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
 export const CONFIGURATION_MODAL_WIDTH = '550px';
 export const POPULATION_IMPORT_MODAL_WIDTH = '720px';
+
+export const SMALL_NOTIFICATION_MODAL_WIDTH = 335;
 
 export const HEADER_HEIGHT = 68;
 export const HEADING_TABS_HEIGHT = 108;
@@ -162,6 +165,13 @@ export enum MapType {
   Surveillance,
   Contacts,
 }
+
+export const CASE_EXPORT_TYPES = {
+  BASIC: 'basic',
+  DETAILED: 'detailed',
+  CASE_MANAGEMENT: 'management',
+  SAMPLE: 'sample',
+};
 
 export const FacilityCategoryGroups = {
   ACCOMMODATION: [

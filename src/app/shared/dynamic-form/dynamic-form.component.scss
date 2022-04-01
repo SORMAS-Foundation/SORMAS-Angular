@@ -146,6 +146,16 @@ legend {
   legend {
     padding: 24px;
   }
+
+  .columns-md-2 .dynamic-form-card {
+    columns: 2;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, lg)) {
+  .columns-lg-3 .dynamic-form-card {
+    columns: 3;
+  }
 }
 
 @media (min-width: map-get($grid-breakpoints, xl)) {

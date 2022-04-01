@@ -78,8 +78,8 @@
       background-color: mat.get-color-from-palette(mat.define-palette($primary, 700));
     }
 
-    .mat-datepicker-content .mat-calendar-next-button,
-    .mat-datepicker-content .mat-calendar-previous-button {
+    .mat-datepicker-content .mat-calendar-next-button:not(.mat-button-disabled),
+    .mat-datepicker-content .mat-calendar-previous-button:not(.mat-button-disabled) {
       color: mat.get-color-from-palette(mat.define-palette($primary, 600));
     }
 

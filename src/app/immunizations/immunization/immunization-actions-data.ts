@@ -4,7 +4,7 @@ import { ACTIONS_IMMUNIZATION_EDIT } from '../../_constants/actions';
 export const actionsEditDefs: NavItem[] = [
   {
     role: NavItemRole.ACTION,
-    name: 'captions.actionArchive',
+    name: 'captions.actionArchiveCoreEntity',
     action: ACTIONS_IMMUNIZATION_EDIT.ARCHIVE,
   },
   {

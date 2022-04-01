@@ -54,6 +54,7 @@
           [matDatepicker]="pickerReportDateTime"
           formControlName="reportDateTime"
           placeholder="M/D/YYYY"
+          [max]="today"
         />
         <mat-datepicker-toggle matPrefix [for]="pickerReportDateTime">
           <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
@@ -64,7 +65,6 @@
       <div class="column-multiday">
         <mat-checkbox
           color="primary"
-          class="light-font"
           formControlName="multiDayContact"
           class="small"
         ></mat-checkbox>
@@ -85,6 +85,7 @@
           [matDatepicker]="pickerFirstContactDate"
           formControlName="firstContactDate"
           placeholder="M/D/YYYY"
+          [max]="today"
         />
         <mat-datepicker-toggle matPrefix [for]="pickerFirstContactDate">
           <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
@@ -107,6 +108,7 @@
           [matDatepicker]="pickerLastContactDate"
           formControlName="lastContactDate"
           placeholder="M/D/YYYY"
+          [max]="today"
         />
         <mat-datepicker-toggle matPrefix [for]="pickerLastContactDate">
           <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>

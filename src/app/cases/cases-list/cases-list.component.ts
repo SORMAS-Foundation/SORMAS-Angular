@@ -21,6 +21,8 @@ import {
   ACTIONS_VIEW_OPTIONS,
   PERIOD_PICKER_DEFAULT_RANGE,
   CASE_LINE_LISTING_FORM_ID,
+  CASE_EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
@@ -40,6 +42,7 @@ import { CaseFollowUpService } from '../../_services/api/case-follow-up.service'
 import { FilterService } from '../../_services/filter.service';
 import { LineListingAddComponent } from '../../shared/modals/line-listing-add-modal/line-listing-add.component';
 import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
+import { NotificationService } from '../../_services/notification.service';
 import { CaseGuideComponent } from '../case-guide/case-guide.component';
 
 @Component({
@@ -77,7 +80,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private translateService: TranslateService,
     private localStorageService: LocalStorageService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -152,12 +156,16 @@ export class CasesListComponent implements OnInit, OnDestroy {
   onActionSelected(event: any): void {
     switch (event) {
       case ACTIONS_CASE.BASIC_EXPORT:
+        this.exportBasicCase();
         break;
       case ACTIONS_CASE.DETAILED_EXPORT:
+        this.exportDetailedCase();
         break;
       case ACTIONS_CASE.CASE_EXPORT:
+        this.exportManagementCase();
         break;
       case ACTIONS_CASE.SAMPLE_EXPORT:
+        this.exportSampleCase();
         break;
       case ACTIONS_CASE.CUSTOM_EXPORT:
         this.exportCustomCase();
@@ -179,6 +187,58 @@ export class CasesListComponent implements OnInit, OnDestroy {
     this.dialog.open(CustomCaseExportComponent, {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
+  }
+
+  executeExport(exportType: string): void {
+    this.subscriptions.push(
+      this.caseService.export(exportType).subscribe({
+        next: () => {},
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
+  }
+
+  exportBasicCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(CASE_EXPORT_TYPES.BASIC);
+  }
+
+  exportDetailedCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportDetailed'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(CASE_EXPORT_TYPES.DETAILED);
+  }
+
+  exportManagementCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportCaseManagement'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(CASE_EXPORT_TYPES.CASE_MANAGEMENT);
+  }
+
+  exportSampleCase(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportSamples'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(CASE_EXPORT_TYPES.SAMPLE);
   }
 
   addLineListing(): void {

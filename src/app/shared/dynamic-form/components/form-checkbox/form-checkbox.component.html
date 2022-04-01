@@ -1,8 +1,7 @@
 <div [formGroup]="group">
   <mat-checkbox
     color="primary"
-    [ngClass]="{'filter-checkbox' : config.className}"
-    class="light-font"
+    [ngClass]="[config.className || '']"
     (change)="onChange()"
     [formControlName]="config.key"
     *ngIf="!config.options.length"
@@ -13,7 +12,6 @@
   <div *ngIf="config.options.length">
     <mat-label *ngIf="config.label" class="selection-list-label">
       {{ config.label || '' | translate }}
-      <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
     <mat-selection-list [formControlName]="config.key" (change)="onChange()">
       <mat-list-option

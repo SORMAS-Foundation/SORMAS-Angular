@@ -4,6 +4,7 @@ export const API_ROUTE_CASES = {
   UPDATE: 'cases/update',
   ADD: 'cases/add',
   DELETE: 'cases/delete',
+  EXPORT: 'cases/export',
 };
 
 export const API_ROUTE_CASES_FOLLOW_UP = {
