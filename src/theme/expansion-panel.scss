@@ -12,6 +12,7 @@
       @include mat.elevation(0);
 
       border: solid 1px map-get($sormas-accent, 200);
+      color: unset;
     }
 
     .mat-expansion-panel-header {
@@ -30,6 +31,7 @@
       margin: 0;
       font-weight: 500;
       line-height: 24px;
+      color: unset;
     }
 
     .dropdown-menu {
