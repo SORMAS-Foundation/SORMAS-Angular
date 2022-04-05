@@ -168,7 +168,7 @@
         }
       }
 
-      .required {
+      .mat-placeholder-required {
         color: mat.get-color-from-palette(mat.define-palette($warn, 300));
       }
 

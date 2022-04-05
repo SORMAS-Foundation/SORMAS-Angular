@@ -6,6 +6,7 @@ import { FormElementBase } from '../../types/form-element-base';
 import { DatepickerHeaderTodayComponent } from '../datepicker-header-today/datepicker-header-today.component';
 import { FormActionsService } from '../../../../_services/form-actions.service';
 import { HelperService } from '../../../../_services/helper.service';
+import { FormElementControlService } from '../../../../_services/form-element-control.service';
 
 @Component({
   selector: 'app-form-datetime',
@@ -22,14 +23,21 @@ export class FormDatetimeComponent
   subscription: Subscription[] = [];
   header = DatepickerHeaderTodayComponent;
 
-  constructor(formActionsService: FormActionsService, private helperService: HelperService) {
+  constructor(
+    formActionsService: FormActionsService,
+    private helperService: HelperService,
+    private formElementControlService: FormElementControlService
+  ) {
     super(formActionsService);
   }
 
   ngOnInit(): void {
     super.ngOnInit();
+    const validations = this.config.validation
+      ? this.formElementControlService.getValidators(this.config.validation)
+      : null;
     this.form = new FormGroup({
-      date: new FormControl(),
+      date: new FormControl(null, validations),
       time: new FormControl(),
     });
     this.updateFields(this.config.value);

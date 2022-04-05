@@ -12,7 +12,6 @@
   <div *ngIf="config.options.length">
     <mat-label *ngIf="config.label" class="selection-list-label">
       {{ config.label || '' | translate }}
-      <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
     <mat-selection-list [formControlName]="config.key" (change)="onChange()">
       <mat-list-option

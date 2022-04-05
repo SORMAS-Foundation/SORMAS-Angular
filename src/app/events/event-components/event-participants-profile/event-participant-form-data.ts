@@ -39,8 +39,6 @@ const optionsVaccinationStatus = pipe.transform(VaccinationStatus);
 const optionsVaccinationSource = pipe.transform(VaccinationInfoSource);
 const optionsVaccineName = pipe.transform(VaccineName);
 const optionsVaccineManufacturer = pipe.transform(VaccineManufacturer);
-const optionsCountryOfBirth = pipe.transform(['default country']);
-const optionsCitizenship = pipe.transform(['default citizenship']);
 
 export const FORM_DATA_EVENT_PARTICIPANT = [
   {
@@ -364,14 +362,14 @@ export const FORM_DATA_EVENT_PARTICIPANT = [
         ...FORM_DATA_SELECT,
         key: 'person.birthCountry.caption',
         label: 'captions.Person.birthCountry',
-        options: optionsCountryOfBirth,
+        service: 'countryService',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'person.citizenship.caption',
         label: 'captions.Person.citizenship',
-        options: optionsCitizenship,
+        service: 'countryService',
       },
       {
         ...FORM_DATA_WIDGET,

@@ -22,6 +22,7 @@ import { InpageNavModule } from '../inpage-nav/inpage-nav.module';
 import { DirectivesModule } from '../../_directives/directives.module';
 import { CollapsableBoxModule } from '../collapsable-box/collapsable-box.module';
 import { FormSearchboxComponent } from './components/form-searchbox/form-searchbox.component';
+import { FormElementControlService } from '../../_services/form-element-control.service';
 
 @NgModule({
   imports: [
@@ -51,5 +52,6 @@ import { FormSearchboxComponent } from './components/form-searchbox/form-searchb
     FormMultiselectComponent,
   ],
   exports: [DynamicFormComponent, FormMultiselectComponent],
+  providers: [FormElementControlService],
 })
 export class DynamicFormModule {}
