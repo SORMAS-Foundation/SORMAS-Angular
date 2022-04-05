@@ -32,7 +32,7 @@ export class MergeDuplicatesTableComponent implements OnInit {
       'completeness',
       'merge',
       'pick',
-      'hide'
+      'hide',
     ];
   }
 
@@ -55,11 +55,7 @@ export class MergeDuplicatesTableComponent implements OnInit {
   }
 
   isChildHidden(index: number): boolean {
-    if (this.hideChildren.includes(index)) {
-      return true;
-    }
-
-    return false;
+    return this.hideChildren.includes(index);
   }
 
   hideChild(index: number): void {
@@ -84,14 +80,17 @@ export class MergeDuplicatesTableComponent implements OnInit {
   }
 
   mergeAction(element: any): void {
+    // eslint-disable-next-line no-console
     console.log('element', element);
   }
 
   pickAction(element: any): void {
+    // eslint-disable-next-line no-console
     console.log('element', element);
   }
 
   hideAction(element: any): void {
+    // eslint-disable-next-line no-console
     console.log('element', element);
   }
 }

@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MERGE_DUPLICATES_FILTERS_FORM_ID } from '../../_constants/form-identifiers';
 import { HEADER_HEIGHT } from '../../_constants/common';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
@@ -21,8 +21,7 @@ export class MergeDuplicatesListComponent implements OnInit, OnDestroy {
 
   public mergeDuplicates: MergeDuplicateDto[];
 
-  constructor(private mergeDuplicatesService: MergeDuplicateService) {
-  }
+  constructor(private mergeDuplicatesService: MergeDuplicateService) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -32,8 +31,7 @@ export class MergeDuplicatesListComponent implements OnInit, OnDestroy {
           next: (response: any) => {
             this.mergeDuplicates = response.elements;
           },
-          error: (err: any) => {
-          },
+          error: () => {},
           complete: () => {},
         })
     );
