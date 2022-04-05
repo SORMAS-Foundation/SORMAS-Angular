@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Resource } from '../../_models/resource';
-import { Serializer } from '../../_serializers/base.serializer';
 import { HelperService } from '../helper.service';
+import { Serializer } from '../../_serializers/serializer';
 
 @Injectable({
   providedIn: 'root',

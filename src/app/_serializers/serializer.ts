@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import { Serializer } from './base.serializer';
+import { BaseSerializer } from './base.serializer';
 import { deserializeDates, serializeDates } from './date-parse';
 
-export class DashboardNewCasesSerializer implements Serializer {
+export class Serializer implements BaseSerializer {
   fromJson(json: any): any {
     json.id = json.id ?? json.uuid;
     deserializeDates(json);

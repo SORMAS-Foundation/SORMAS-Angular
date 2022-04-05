@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import * as constants from '../../app.constants';
 import { HelperService } from '../helper.service';
 import { DashboardService } from './dashboard.service';
-import { DashboardTestResultsSerializer } from '../../_serializers/dashboard-test-results.serializer';
+import { Serializer } from '../../_serializers/serializer';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class DashboardTestResultsService extends DashboardService {
       helperService,
       '',
       constants.API_ROUTE_DASHBOARD_TEST_RESULTS,
-      new DashboardTestResultsSerializer()
+      new Serializer()
     );
   }
 }
