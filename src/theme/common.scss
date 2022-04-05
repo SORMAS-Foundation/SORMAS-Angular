@@ -55,9 +55,15 @@ strong {
 }
 
 .filters {
+  .mat-drawer,
+  .mat-drawer-container {
+    color: unset;
+  }
+
   .mat-drawer-inner-container {
     overflow-y: scroll;
   }
+
   .dynamic-form-input {
     margin-right: 0;
     .mat-radio-button {

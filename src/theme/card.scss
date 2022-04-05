@@ -6,10 +6,15 @@
   $foreground: map-get($theme, foreground);
 
   :root {
+    .mat-card {
+      color: unset;
+    }
+
     .mat-card-header-text {
       width: 100%;
       margin: 0;
     }
+
     .title-date {
       color: map-get($sormas-accent, 600);
       font-size: 14px;
