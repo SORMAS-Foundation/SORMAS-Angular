@@ -36,6 +36,10 @@ table {
     padding: 5px;
     border: 0;
     background-color: unset;
+
+    &.pl-child {
+      padding-left: 29px;
+    }
   }
 
   tr.hide {
