@@ -146,6 +146,8 @@ export * from './eventParticipantReferenceDto';
 export * from './eventReferenceDto';
 export * from './eventSourceType';
 export * from './eventStatus';
+export * from './exportConfigurationDto';
+export * from './exportType';
 export * from './exposureDto';
 export * from './exposureRole';
 export * from './exposureType';

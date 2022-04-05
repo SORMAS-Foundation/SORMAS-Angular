@@ -1,17 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormElementBase } from '../../dynamic-form/types/form-element-base';
-import { FORM_DATA_EXPORT_CONFIGURATION } from '../../../cases/export-configuration/export-configuration-form-data';
+import { EXPORT_TYPE } from '../../../app.constants';
+import * as dataCase from '../../../cases/cases-list/export-configuration-form-data';
+import * as dataTask from '../../../tasks/tasks-list/export-configuration-form-data';
+import { FormBase, FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 @Component({
   selector: 'app-group-select',
   templateUrl: './group-select.component.html',
   styleUrls: ['./group-select.component.scss'],
 })
-export class GroupSelectComponent {
+export class GroupSelectComponent implements OnInit {
   config: FormElementBase<string>;
   group: FormGroup;
-  dataForm = FORM_DATA_EXPORT_CONFIGURATION;
+  dataForm: FormBase<any>[] = [];
+
+  ngOnInit(): void {
+    const exportType = this.group?.get('exportType')?.value;
+    switch (exportType) {
+      case EXPORT_TYPE.CASE:
+        this.dataForm = dataCase.FORM_DATA_EXPORT_CONFIGURATION;
+        break;
+      case EXPORT_TYPE.TASK:
+        this.dataForm = dataTask.FORM_DATA_EXPORT_CONFIGURATION;
+        break;
+      default:
+        break;
+    }
+  }
 
   selectAll(): void {
     this.updateFields(true);

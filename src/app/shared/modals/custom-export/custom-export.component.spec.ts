@@ -1,23 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { MaterialModule } from '../../material.module';
+import { MaterialModule } from '../../../material.module';
 
-import { CustomCaseExportComponent } from './custom-case-export.component';
+import { CustomExportComponent } from './custom-export.component';
 
-describe('CustomCaseExportComponent', () => {
-  let component: CustomCaseExportComponent;
-  let fixture: ComponentFixture<CustomCaseExportComponent>;
+describe('CustomExportComponent', () => {
+  let component: CustomExportComponent;
+  let fixture: ComponentFixture<CustomExportComponent>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [CustomCaseExportComponent],
+      declarations: [CustomExportComponent],
       imports: [TranslateModule.forRoot(), MaterialModule],
+      providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomCaseExportComponent);
+    fixture = TestBed.createComponent(CustomExportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
