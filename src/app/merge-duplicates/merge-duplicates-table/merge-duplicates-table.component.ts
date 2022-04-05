@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DatepickerHeaderTodayComponent } from '../../shared/dynamic-form/components/datepicker-header-today/datepicker-header-today.component';
 import { DEFAULT_DATE_FORMAT } from '../../_constants/common';
-import {MergeDuplicateDto} from '../../_models/mergeDuplicateDto';
+import { MergeDuplicateDto } from '../../_models/mergeDuplicateDto';
 
 @Component({
   selector: 'app-merge-duplicates-table',
@@ -15,6 +15,7 @@ export class MergeDuplicatesTableComponent implements OnInit {
   @Input() mergeDuplicates: MergeDuplicateDto[];
 
   displayedColumns: string[];
+  hideChildren: number[] = [];
 
   ngOnInit(): void {
     this.displayedColumns = [
@@ -29,11 +30,47 @@ export class MergeDuplicatesTableComponent implements OnInit {
       'reportDate',
       'creationDate',
       'completeness',
+      'merge',
+      'pick',
+      'hide'
     ];
   }
 
   triggerDatePicker(picker: any): void {
     picker.open();
+  }
+
+  processTableData(): any[] {
+    const newArray: any[] = [];
+    this.mergeDuplicates.forEach((mergeDuplicate: any) => {
+      newArray.push(mergeDuplicate.parent);
+      newArray.push(mergeDuplicate.child);
+    });
+
+    return newArray;
+  }
+
+  isChild(index: number): boolean {
+    return index % 2 === 1;
+  }
+
+  isChildHidden(index: number): boolean {
+    if (this.hideChildren.includes(index)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  hideChild(index: number): void {
+    if (this.hideChildren.includes(index + 1)) {
+      this.hideChildren.splice(
+        this.hideChildren.findIndex((item) => item === index + 1),
+        1
+      );
+    } else {
+      this.hideChildren.push(index + 1);
+    }
   }
 
   onChangeCheckbox(element: any): void {
@@ -44,5 +81,17 @@ export class MergeDuplicatesTableComponent implements OnInit {
       // eslint-disable-next-line no-param-reassign
       element.endDate = null;
     }
+  }
+
+  mergeAction(element: any): void {
+    console.log('element', element);
+  }
+
+  pickAction(element: any): void {
+    console.log('element', element);
+  }
+
+  hideAction(element: any): void {
+    console.log('element', element);
   }
 }
