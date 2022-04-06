@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 
 import { BaseService } from './base.service';
 import { Serializer } from '../../_serializers/serializer';
-
 import * as constants from '../../app.constants';
 import { ActionDto } from '../../_models/models';
 import { HelperService } from '../helper.service';
