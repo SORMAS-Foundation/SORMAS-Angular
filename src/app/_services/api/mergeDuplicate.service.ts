@@ -6,7 +6,7 @@ import { BaseService } from './base.service';
 import * as constants from '../../app.constants';
 import { HelperService } from '../helper.service';
 import { MergeDuplicateDto } from '../../_models/mergeDuplicateDto';
-import { MergeDuplicateSerializer } from '../../_serializers/mergeDuplicate.serializer';
+import { Serializer } from '../../_serializers/serializer';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class MergeDuplicateService extends BaseService<MergeDuplicateDto> {
       helperService,
       '',
       constants.API_ROUTE_MERGE_DUPLICATES,
-      new MergeDuplicateSerializer()
+      new Serializer()
     );
   }
 }
