@@ -1,6 +1,4 @@
-import { CaseOrigin } from '../_models/caseOrigin';
-import { FollowUpStatus } from '../_models/followUpStatus';
-import { PointOfEntryType } from '../_models/pointOfEntryType';
+import { CaseOrigin, FollowUpStatus, PointOfEntryType, ExportType } from '../_models/models';
 import { DateFilterOptions } from './enums';
 
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
@@ -240,4 +238,14 @@ export const FacilityCategoryGroups = {
   ],
   // WORKING_PLACE: ['BUSINESS', 'OTHER_WORKING_PLACE'],
   // COMMERCE: ['RETAIL', 'WHOLESALE', 'OTHER_COMMERCE'],
+};
+
+export const EXPORT_TYPE = {
+  CASE: 'CASE' as ExportType,
+  CONTACT: 'CONTACT' as ExportType,
+  EVENT_PARTICIPANTS: 'EVENT_PARTICIPANTS' as ExportType,
+  VISIT: 'VISIT' as ExportType,
+  SAMPLE: 'SAMPLE' as ExportType,
+  TASK: 'TASK' as ExportType,
+  PERSON: 'PERSON' as ExportType,
 };
