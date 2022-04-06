@@ -19,10 +19,8 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { CaseFiltersComponent } from './case-filters/case-filters.component';
 import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
 import { CaseEditComponent } from './case-edit/case-edit.component';
-import { CustomCaseExportComponent } from './custom-case-export/custom-case-export.component';
 import { CaseImportComponent } from './case-import/case-import.component';
 import { TherapyFiltersComponent } from './case_components/therapy-filters/therapy-filters.component';
-import { ExportConfigurationComponent } from './export-configuration/export-configuration.component';
 import { CaseGuideComponent } from './case-guide/case-guide.component';
 import { MergeDuplicatesCaseGuideComponent } from './merge-duplicates-case-guide/merge-duplicates-case-guide.component';
 
@@ -42,11 +40,9 @@ import { MergeDuplicatesCaseGuideComponent } from './merge-duplicates-case-guide
     CaseClinicalCourseComponent,
     CaseContactsComponent,
     CaseFiltersComponent,
-    CustomCaseExportComponent,
     CaseImportComponent,
     CaseEditComponent,
     TherapyFiltersComponent,
-    ExportConfigurationComponent,
     CaseGuideComponent,
     MergeDuplicatesCaseGuideComponent,
   ],

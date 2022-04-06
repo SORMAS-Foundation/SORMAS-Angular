@@ -23,9 +23,9 @@ import {
   CASE_LINE_LISTING_FORM_ID,
   CASE_EXPORT_TYPES,
   SMALL_NOTIFICATION_MODAL_WIDTH,
+  EXPORT_TYPE,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
 import {
   actionsMoreDefs,
   actionsViewOptionsDefs,
@@ -44,7 +44,9 @@ import { LineListingAddComponent } from '../../shared/modals/line-listing-add-mo
 import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseGuideComponent } from '../case-guide/case-guide.component';
+import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
 import { MergeDuplicatesCaseGuideComponent } from '../merge-duplicates-case-guide/merge-duplicates-case-guide.component';
+import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -186,8 +188,12 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   exportCustomCase(): void {
-    this.dialog.open(CustomCaseExportComponent, {
+    this.dialog.open(CustomExportComponent, {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      data: {
+        exportType: EXPORT_TYPE.CASE,
+        exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
+      },
     });
   }
 

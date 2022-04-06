@@ -4,19 +4,14 @@ import { BaseService } from './base.service';
 
 import * as constants from '../../app.constants';
 import { HelperService } from '../helper.service';
-import { EventGroupSerializer } from '../../_serializers/event-group.serializer';
+import { Serializer } from '../../_serializers/serializer';
+import { EventActionIndexDto } from '../../_models/models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EventActionService extends BaseService<any> {
+export class EventActionService extends BaseService<EventActionIndexDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(
-      httpClient,
-      helperService,
-      '',
-      constants.API_ROUTE_EVENT_ACTIONS,
-      new EventGroupSerializer()
-    );
+    super(httpClient, helperService, '', constants.API_ROUTE_EVENT_ACTIONS, new Serializer());
   }
 }

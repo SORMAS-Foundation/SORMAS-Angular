@@ -383,3 +383,11 @@ export const API_ROUTE_LAB_MESSAGES = {
   ADD: 'labMessage/push',
   DELETE: 'labMessage/delete',
 };
+
+export const API_ROUTE_IMPORT_EXPORT = {
+  ENDPOINT: 'export',
+  GET_ALL: 'export/indexList',
+  UPDATE: 'export/push',
+  ADD: 'export/push',
+  DELETE: 'export/delete',
+};

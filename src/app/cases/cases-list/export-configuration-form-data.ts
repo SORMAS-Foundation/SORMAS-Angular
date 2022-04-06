@@ -1,11 +1,22 @@
-import { FORM_DATA_INPUT, FORM_DATA_CHECKBOX, FORM_DATA_WIDGET } from '../../app.constants';
+import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import {
+  FORM_DATA_INPUT,
+  FORM_DATA_CHECKBOX,
+  FORM_DATA_WIDGET,
+  FORM_DATA_NULL,
+} from '../../app.constants';
 
-export const FORM_DATA_EXPORT_CONFIGURATION = [
+export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
   {
     id: 'export',
     title: 'captions.export',
     required: true,
     fields: [
+      {
+        ...FORM_DATA_NULL,
+        key: 'exportType',
+        className: 'hidden',
+      },
       {
         ...FORM_DATA_INPUT,
         key: 'name',
