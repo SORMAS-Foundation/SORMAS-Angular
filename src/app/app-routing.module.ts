@@ -102,6 +102,11 @@ const routes: Routes = [
       import('./lab-messages/lab-messages.module').then((m) => m.LabMessagesModule),
     canActivate: [Guard],
   },
+  {
+    path: 'actions',
+    loadChildren: () => import('./actions/actions.module').then((m) => m.ActionsModule),
+    canActivate: [Guard],
+  },
   { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
   { path: '**', component: NotFoundComponent },
 ];
