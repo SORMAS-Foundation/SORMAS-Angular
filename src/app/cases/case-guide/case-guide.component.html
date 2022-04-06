@@ -1,0 +1,14 @@
+<div mat-dialog-title>
+  <h1>{{ 'strings.headingCasesGuide' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <h2>{{ 'strings.headingExplanationOfTerms' | translate }}</h2>
+  <h3>{{ 'strings.headingCompleteness' | translate }}</h3>
+  <div [innerHtml]="'strings.infoCaseCompleteness' | translate" class="guide-info"></div>
+</div>

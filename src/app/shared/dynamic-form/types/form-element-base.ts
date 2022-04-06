@@ -112,4 +112,5 @@ export class FormBase<T> {
   hidden?: boolean;
   hiddenLeftSection?: boolean;
   appearance?: FormGroupStyle;
+  className?: string;
 }

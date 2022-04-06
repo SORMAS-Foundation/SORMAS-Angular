@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import * as constants from '../../app.constants';
 import { HelperService } from '../helper.service';
 import { DashboardService } from './dashboard.service';
-import { DashboardStoppedFollowUpSerializer } from '../../_serializers/dashboard-stopped-follow-up.serializer';
+import { Serializer } from '../../_serializers/serializer';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class DashboardStoppedFollowUpService extends DashboardService {
       helperService,
       '',
       constants.API_ROUTE_DASHBOARD_STOPPED_FOLLOW_UP,
-      new DashboardStoppedFollowUpSerializer()
+      new Serializer()
     );
   }
 }

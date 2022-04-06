@@ -1,6 +1,4 @@
-import { CaseOrigin } from '../_models/caseOrigin';
-import { FollowUpStatus } from '../_models/followUpStatus';
-import { PointOfEntryType } from '../_models/pointOfEntryType';
+import { CaseOrigin, FollowUpStatus, PointOfEntryType, ExportType } from '../_models/models';
 import { DateFilterOptions } from './enums';
 
 export const VIRTUAL_SCROLL_DEFAULT_ROW_HEIGHT = 48;
@@ -37,11 +35,14 @@ export type EntityLink = {
 export const ADD_MODAL_NARROW = '720px';
 export const ADD_MODAL_WIDE = '840px';
 export const MODAL_MEDIUM_WIDTH = '940px';
+export const MODAL_LARGE_WIDTH = '1024px';
 export const ADD_MODAL_MAX_WIDTH = '100vw';
 export const CASE_EXPORT_CUSTOM_MODAL_WIDTH = '776px';
 export const CASE_IMPORT_MODAL_WIDTH = '720px';
 export const CONFIGURATION_MODAL_WIDTH = '550px';
 export const POPULATION_IMPORT_MODAL_WIDTH = '720px';
+
+export const SMALL_NOTIFICATION_MODAL_WIDTH = 335;
 
 export const HEADER_HEIGHT = 68;
 export const HEADING_TABS_HEIGHT = 108;
@@ -163,6 +164,13 @@ export enum MapType {
   Contacts,
 }
 
+export const CASE_EXPORT_TYPES = {
+  BASIC: 'basic',
+  DETAILED: 'detailed',
+  CASE_MANAGEMENT: 'management',
+  SAMPLE: 'sample',
+};
+
 export const FacilityCategoryGroups = {
   ACCOMMODATION: [
     'CAMPSITE',
@@ -230,4 +238,14 @@ export const FacilityCategoryGroups = {
   ],
   // WORKING_PLACE: ['BUSINESS', 'OTHER_WORKING_PLACE'],
   // COMMERCE: ['RETAIL', 'WHOLESALE', 'OTHER_COMMERCE'],
+};
+
+export const EXPORT_TYPE = {
+  CASE: 'CASE' as ExportType,
+  CONTACT: 'CONTACT' as ExportType,
+  EVENT_PARTICIPANTS: 'EVENT_PARTICIPANTS' as ExportType,
+  VISIT: 'VISIT' as ExportType,
+  SAMPLE: 'SAMPLE' as ExportType,
+  TASK: 'TASK' as ExportType,
+  PERSON: 'PERSON' as ExportType,
 };

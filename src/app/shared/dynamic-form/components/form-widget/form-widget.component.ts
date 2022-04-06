@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver,
   ViewChild,
   ViewContainerRef,
   ChangeDetectorRef,
@@ -29,6 +28,7 @@ import { AddCaseLabelComponent } from '../../../widgets/add-case-label/add-case-
 import { CasePersonContactsListComponent } from '../../../widgets/case-person-contacts-list/case-person-contacts-list.component';
 import { LineListingNewCasesComponent } from '../../../widgets/line-listing-new-cases/line-listing-new-cases.component';
 import { LineListingNewContactsComponent } from '../../../widgets/line-listing-new-contacts/line-listing-new-contacts.component';
+import { GroupSelectComponent } from '../../../widgets/group-select/group-select.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -51,6 +51,7 @@ const COMPONENTS_MAP: any = {
   'app-add-case-label': AddCaseLabelComponent,
   'app-line-listing-new-cases': LineListingNewCasesComponent,
   'app-line-listing-new-contacts': LineListingNewContactsComponent,
+  'app-group-select': GroupSelectComponent,
 };
 
 @Component({
@@ -66,17 +67,11 @@ export class FormWidgetComponent implements AfterViewInit {
 
   @ViewChild('dynamic', { read: ViewContainerRef }) dynamic: ViewContainerRef;
 
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.components[this.config?.widget]
-    );
     this.dynamic.clear();
-    const componentRef = this.dynamic.createComponent<any>(componentFactory);
+    const componentRef: any = this.dynamic.createComponent(this.components[this.config?.widget]);
     componentRef.instance.group = this.group;
     componentRef.instance.config = this.config;
     componentRef.instance.formId = this.formId;

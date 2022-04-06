@@ -5,19 +5,13 @@ import { BaseService } from './base.service';
 import * as constants from '../../app.constants';
 import { PathogenTestDto } from '../../_models/models';
 import { HelperService } from '../helper.service';
-import { PathogenTestSerializer } from '../../_serializers/pathogen-test.serializer';
+import { Serializer } from '../../_serializers/serializer';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PathogenTestService extends BaseService<PathogenTestDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(
-      httpClient,
-      helperService,
-      '',
-      constants.API_ROUTE_PATHOGEN_TESTS,
-      new PathogenTestSerializer()
-    );
+    super(httpClient, helperService, '', constants.API_ROUTE_PATHOGEN_TESTS, new Serializer());
   }
 }

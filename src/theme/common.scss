@@ -55,9 +55,15 @@ strong {
 }
 
 .filters {
+  .mat-drawer,
+  .mat-drawer-container {
+    color: unset;
+  }
+
   .mat-drawer-inner-container {
     overflow-y: scroll;
   }
+
   .dynamic-form-input {
     margin-right: 0;
     .mat-radio-button {
@@ -625,5 +631,21 @@ strong {
 
   &.fullscreen {
     margin-left: 3px;
+  }
+}
+
+:root .guide-info {
+  ul {
+    list-style-type: none;
+    padding-left: 24px;
+  }
+
+  li::before {
+    content: '\27A4';
+    float: left;
+    margin-left: -24px;
+    font-size: 13px;
+    line-height: 21px;
+    color: mat.get-color-from-palette($sormas-alert, 300);
   }
 }

@@ -4,6 +4,7 @@ export const API_ROUTE_CASES = {
   UPDATE: 'cases/update',
   ADD: 'cases/add',
   DELETE: 'cases/delete',
+  EXPORT: 'cases/export',
 };
 
 export const API_ROUTE_CASES_FOLLOW_UP = {
@@ -373,6 +374,14 @@ export const API_ROUTE_LAB_MESSAGES = {
   UPDATE: 'labMessage/push',
   ADD: 'labMessage/push',
   DELETE: 'labMessage/delete',
+};
+
+export const API_ROUTE_IMPORT_EXPORT = {
+  ENDPOINT: 'export',
+  GET_ALL: 'export/indexList',
+  UPDATE: 'export/push',
+  ADD: 'export/push',
+  DELETE: 'export/delete',
 };
 
 export const API_ROUTE_MERGE_DUPLICATES = {

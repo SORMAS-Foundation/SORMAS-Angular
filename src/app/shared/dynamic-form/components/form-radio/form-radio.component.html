@@ -6,7 +6,6 @@
       [ngClass]="{ 'medium-text-radio': config.className?.includes('medium-text-radio') }"
     >
       {{ config.label || '' | translate }}
-      <span *ngIf="config.validation?.length" class="required">*</span>
     </mat-label>
     <mat-radio-button
       *ngFor="let opt of config.options"

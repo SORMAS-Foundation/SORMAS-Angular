@@ -1,5 +1,5 @@
 import { NavItem, NavItemRole } from '../../_models/common';
-import { ACTIONS_BULK_EDIT } from '../../_constants/actions';
+import { ACTIONS_BULK_EDIT, ACTIONS_TASK } from '../../_constants/actions';
 import { TaskEditComponent } from '../task-edit/task-edit.component';
 
 export const actionsBulkEditDefs: NavItem[] = [
@@ -18,7 +18,25 @@ export const actionsBulkEditDefs: NavItem[] = [
   },
   {
     role: NavItemRole.ACTION,
-    name: 'captions.actionArchive',
+    name: 'captions.actionArchiveCoreEntity',
     action: ACTIONS_BULK_EDIT.ARCHIVE,
+  },
+];
+
+export const actionsMoreDefs: NavItem[] = [
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportBasic',
+    action: ACTIONS_TASK.BASIC_EXPORT,
+  },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportDetailed',
+    action: ACTIONS_TASK.DETAILED_EXPORT,
+  },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportCustom',
+    action: ACTIONS_TASK.CUSTOM_EXPORT,
   },
 ];

@@ -6,19 +6,13 @@ import { BaseService } from './base.service';
 import * as constants from '../../app.constants';
 import { HelperService } from '../helper.service';
 import { ContactDto } from '../../_models/contactDto';
-import { ContactSerializer } from '../../_serializers/contact.serializer';
+import { Serializer } from '../../_serializers/serializer';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactFollowUpService extends BaseService<ContactDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(
-      httpClient,
-      helperService,
-      '',
-      constants.API_ROUTE_CONTACTS_FOLLOW_UP,
-      new ContactSerializer()
-    );
+    super(httpClient, helperService, '', constants.API_ROUTE_CONTACTS_FOLLOW_UP, new Serializer());
   }
 }

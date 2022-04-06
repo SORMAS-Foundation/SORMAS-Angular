@@ -1,0 +1,21 @@
+@use '/src/variables.scss' as *;
+
+.info-text {
+  color: map-get($sormas-accent, 500);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.list-heading {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 0;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.list-holder {
+  margin: 24px 0 36px;
+}
