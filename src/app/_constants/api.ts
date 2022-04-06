@@ -66,6 +66,7 @@ export const API_ROUTE_TASKS = {
   UPDATE: 'tasks/push',
   ADD: 'tasks/push',
   DELETE: 'tasks/delete',
+  EXPORT: 'tasks/export',
 };
 
 export const API_ROUTE_EVENTS = {

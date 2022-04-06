@@ -171,6 +171,11 @@ export const CASE_EXPORT_TYPES = {
   SAMPLE: 'sample',
 };
 
+export const TASK_EXPORT_TYPES = {
+  BASIC: 'basic',
+  DETAILED: 'detailed',
+};
+
 export const FacilityCategoryGroups = {
   ACCOMMODATION: [
     'CAMPSITE',
