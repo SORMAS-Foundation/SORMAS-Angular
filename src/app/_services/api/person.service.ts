@@ -4,19 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from './base.service';
-import { PersonSerializer } from '../../_serializers/person.serializer';
 
 import * as constants from '../../app.constants';
 import { PersonDto } from '../../_models/models';
 import { HelperService } from '../helper.service';
 import { Filter } from '../../_models/common';
+import { Serializer } from '../../_serializers/serializer';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonService extends BaseService<PersonDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(httpClient, helperService, '', constants.API_ROUTE_PERSONS, new PersonSerializer());
+    super(httpClient, helperService, '', constants.API_ROUTE_PERSONS, new Serializer());
   }
 
   getSimilar(filters: Filter[] = []): Observable<any[]> {

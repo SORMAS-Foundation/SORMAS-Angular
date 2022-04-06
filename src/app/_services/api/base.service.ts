@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Resource } from '../../_models/resource';
-import { Serializer } from '../../_serializers/base.serializer';
+import { BaseSerializer } from '../../_serializers/base.serializer';
 
 import { PaginationResponse } from '../../_models/common';
 import { HelperService } from '../helper.service';
@@ -19,7 +19,7 @@ export class BaseService<T extends Resource> {
     protected helperService: HelperService,
     @Inject('string') private url: string,
     @Inject('any') protected endpoint: any,
-    @Inject('Serializer') protected serializer: Serializer
+    @Inject('Serializer') protected serializer: BaseSerializer
   ) {}
 
   getAll(
