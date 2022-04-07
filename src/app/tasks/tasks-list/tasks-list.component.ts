@@ -13,16 +13,18 @@ import { TableComponent } from '../../shared/table/table.component';
 import {
   ACTIONS_TASK,
   ADD_MODAL_MAX_WIDTH,
-  CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+  EXPORT_CUSTOM_MODAL_WIDTH,
   CONFIG_TASKS,
   EXPORT_TYPE,
   SMALL_NOTIFICATION_MODAL_WIDTH,
-  TASK_EXPORT_TYPES,
   TASK_FILTERS_FORM_ID,
+  EXPORT_TYPES,
+  API_ROUTE_TASKS,
 } from '../../app.constants';
 import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
 import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
 import { NotificationService } from '../../_services/notification.service';
+import { ExportService } from '../../_services/api/export.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -44,6 +46,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
   constructor(
     public taskService: TaskService,
+    public exportService: ExportService,
     private dialog: MatDialog,
     private translateService: TranslateService,
     private notificationService: NotificationService
@@ -110,8 +113,9 @@ export class TasksListComponent implements OnInit, OnDestroy {
   }
 
   executeExport(exportType: string): void {
+    const endpoint: string = API_ROUTE_TASKS.EXPORT;
     this.subscription.push(
-      this.taskService.export(exportType).subscribe({
+      this.exportService.export(exportType, endpoint).subscribe({
         next: () => {},
         error: (err: any) => {
           this.notificationService.error(err);
@@ -123,7 +127,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
   customExport(): void {
     this.dialog.open(CustomExportComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
         exportType: EXPORT_TYPE.TASK,
         exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
@@ -138,7 +142,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(TASK_EXPORT_TYPES.BASIC);
+    this.executeExport(EXPORT_TYPES.BASIC);
   }
 
   exportDetailedTask(): void {
@@ -148,7 +152,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(TASK_EXPORT_TYPES.DETAILED);
+    this.executeExport(EXPORT_TYPES.DETAILED);
   }
 
   ngOnDestroy(): void {
