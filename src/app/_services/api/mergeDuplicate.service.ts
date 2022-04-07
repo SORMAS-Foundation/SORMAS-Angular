@@ -13,12 +13,6 @@ import { Serializer } from '../../_serializers/serializer';
 })
 export class MergeDuplicateService extends BaseService<MergeDuplicateDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(
-      httpClient,
-      helperService,
-      '',
-      constants.API_ROUTE_MERGE_DUPLICATES,
-      new Serializer()
-    );
+    super(httpClient, helperService, '', constants.API_ROUTE_MERGE_DUPLICATES, new Serializer());
   }
 }

@@ -14,7 +14,7 @@ import { MergeDuplicatesTableComponent } from './merge-duplicates-table/merge-du
     MergeDuplicatesComponent,
     MergeDuplicateFiltersComponent,
     MergeDuplicatesListComponent,
-    MergeDuplicatesTableComponent
+    MergeDuplicatesTableComponent,
   ],
   imports: [
     CommonModule,
