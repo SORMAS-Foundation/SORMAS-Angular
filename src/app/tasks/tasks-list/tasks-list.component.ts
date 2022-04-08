@@ -13,7 +13,7 @@ import { TableComponent } from '../../shared/table/table.component';
 import {
   ACTIONS_TASK,
   ADD_MODAL_MAX_WIDTH,
-  CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+  EXPORT_CUSTOM_MODAL_WIDTH,
   CONFIG_TASKS,
   EXPORT_TYPE,
   TASK_FILTERS_FORM_ID,
@@ -105,7 +105,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
   customExport(): void {
     this.dialog.open(CustomExportComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
         exportType: EXPORT_TYPE.TASK,
         exportFormData: FORM_DATA_EXPORT_CONFIGURATION,

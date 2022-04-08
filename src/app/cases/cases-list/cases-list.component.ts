@@ -15,7 +15,7 @@ import { CONFIG_CASES } from '../../_constants/storage';
 import {
   HEADER_HEIGHT,
   ADD_MODAL_MAX_WIDTH,
-  CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+  EXPORT_CUSTOM_MODAL_WIDTH,
   CASE_IMPORT_MODAL_WIDTH,
   CASE_FILTERS_FORM_ID,
   ACTIONS_VIEW_OPTIONS,
@@ -189,7 +189,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   exportCustomCase(): void {
     this.dialog.open(CustomExportComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
         exportType: EXPORT_TYPE.CASE,
         exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
@@ -295,13 +295,13 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openCaseGuide(): void {
     this.dialog.open(CaseGuideComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
 
   openMergeDuplicatesCaseGuide(): void {
     this.dialog.open(MergeDuplicatesCaseGuideComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
 
