@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -84,7 +84,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
     private localStorageService: LocalStorageService,
     private filterService: FilterService,
     private notificationService: NotificationService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

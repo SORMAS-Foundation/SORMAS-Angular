@@ -36,7 +36,6 @@ export class MergeDuplicatesTableComponent implements OnInit {
     ];
   }
 
-
   triggerDatePicker(picker: any): void {
     picker.open();
   }
