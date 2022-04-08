@@ -13,13 +13,18 @@ import { TableComponent } from '../../shared/table/table.component';
 import {
   ACTIONS_TASK,
   ADD_MODAL_MAX_WIDTH,
-  CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+  EXPORT_CUSTOM_MODAL_WIDTH,
   CONFIG_TASKS,
   EXPORT_TYPE,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
   TASK_FILTERS_FORM_ID,
+  EXPORT_TYPES,
+  API_ROUTE_TASKS,
 } from '../../app.constants';
 import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
 import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
+import { NotificationService } from '../../_services/notification.service';
+import { ExportService } from '../../_services/api/export.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -41,8 +46,10 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
   constructor(
     public taskService: TaskService,
+    public exportService: ExportService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -92,8 +99,10 @@ export class TasksListComponent implements OnInit, OnDestroy {
   onActionSelected(event: any): void {
     switch (event) {
       case ACTIONS_TASK.BASIC_EXPORT:
+        this.exportBasicTask();
         break;
       case ACTIONS_TASK.DETAILED_EXPORT:
+        this.exportDetailedTask();
         break;
       case ACTIONS_TASK.CUSTOM_EXPORT:
         this.customExport();
@@ -103,14 +112,47 @@ export class TasksListComponent implements OnInit, OnDestroy {
     }
   }
 
+  executeExport(exportType: string): void {
+    const endpoint: string = API_ROUTE_TASKS.EXPORT;
+    this.subscription.push(
+      this.exportService.export(exportType, endpoint).subscribe({
+        next: () => {},
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
+  }
+
   customExport(): void {
     this.dialog.open(CustomExportComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
         exportType: EXPORT_TYPE.TASK,
         exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
       },
     });
+  }
+
+  exportBasicTask(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(EXPORT_TYPES.BASIC);
+  }
+
+  exportDetailedTask(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportDetailed'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(EXPORT_TYPES.DETAILED);
   }
 
   ngOnDestroy(): void {

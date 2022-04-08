@@ -15,15 +15,16 @@ import { CONFIG_CASES } from '../../_constants/storage';
 import {
   HEADER_HEIGHT,
   ADD_MODAL_MAX_WIDTH,
-  CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+  EXPORT_CUSTOM_MODAL_WIDTH,
   CASE_IMPORT_MODAL_WIDTH,
   CASE_FILTERS_FORM_ID,
   ACTIONS_VIEW_OPTIONS,
   PERIOD_PICKER_DEFAULT_RANGE,
   CASE_LINE_LISTING_FORM_ID,
-  CASE_EXPORT_TYPES,
   SMALL_NOTIFICATION_MODAL_WIDTH,
   EXPORT_TYPE,
+  EXPORT_TYPES,
+  API_ROUTE_CASES,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import {
@@ -47,6 +48,7 @@ import { CaseGuideComponent } from '../case-guide/case-guide.component';
 import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
 import { MergeDuplicatesCaseGuideComponent } from '../merge-duplicates-case-guide/merge-duplicates-case-guide.component';
 import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
+import { ExportService } from '../../_services/api/export.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -77,6 +79,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   constructor(
     private caseService: CaseService,
+    private exportService: ExportService,
     private caseFollowUpService: CaseFollowUpService,
     public helperService: HelperService,
     private activeRoute: ActivatedRoute,
@@ -189,7 +192,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   exportCustomCase(): void {
     this.dialog.open(CustomExportComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
         exportType: EXPORT_TYPE.CASE,
         exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
@@ -198,8 +201,9 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   executeExport(exportType: string): void {
+    const endpoint: string = API_ROUTE_CASES.EXPORT;
     this.subscriptions.push(
-      this.caseService.export(exportType).subscribe({
+      this.exportService.export(exportType, endpoint).subscribe({
         next: () => {},
         error: (err: any) => {
           this.notificationService.error(err);
@@ -216,7 +220,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(CASE_EXPORT_TYPES.BASIC);
+    this.executeExport(EXPORT_TYPES.BASIC);
   }
 
   exportDetailedCase(): void {
@@ -226,7 +230,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(CASE_EXPORT_TYPES.DETAILED);
+    this.executeExport(EXPORT_TYPES.DETAILED);
   }
 
   exportManagementCase(): void {
@@ -236,7 +240,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(CASE_EXPORT_TYPES.CASE_MANAGEMENT);
+    this.executeExport(EXPORT_TYPES.CASE_MANAGEMENT);
   }
 
   exportSampleCase(): void {
@@ -246,7 +250,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(CASE_EXPORT_TYPES.SAMPLE);
+    this.executeExport(EXPORT_TYPES.SAMPLE);
   }
 
   addLineListing(): void {
@@ -295,13 +299,13 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openCaseGuide(): void {
     this.dialog.open(CaseGuideComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
 
   openMergeDuplicatesCaseGuide(): void {
     this.dialog.open(MergeDuplicatesCaseGuideComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
 
