@@ -136,6 +136,7 @@ export const FORM_DATA_USER = [
         key: 'address.facility',
         label: 'captions.Facility',
         service: 'facilityService',
+        hasOtherOption: true,
         determinedBy: [
           {
             key: 'address.district.uuid',

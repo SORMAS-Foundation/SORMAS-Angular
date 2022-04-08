@@ -33,6 +33,7 @@ export class FormElementBase<T> {
   service?: string;
   serviceMethod?: string;
   determinedBy?: FormElementDependency[];
+  hasOtherOption?: boolean;
 
   constructor(
     options: {
@@ -66,6 +67,7 @@ export class FormElementBase<T> {
       service?: string;
       serviceMethod?: string;
       determinedBy?: FormElementDependency[];
+      hasOtherOption?: boolean;
     } = {}
   ) {
     this.value = options.value;
@@ -98,6 +100,7 @@ export class FormElementBase<T> {
     this.service = options.service;
     this.serviceMethod = options.serviceMethod;
     this.determinedBy = options.determinedBy;
+    this.hasOtherOption = options.hasOtherOption;
   }
 }
 
