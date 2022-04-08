@@ -21,6 +21,7 @@ import { RiskLevel } from './riskLevel';
 import { UserReferenceDto } from './userReferenceDto';
 
 export interface EventActionIndexDto {
+  uuid?: string;
   eventUuid?: string;
   eventTitle?: string;
   eventDisease?: Disease;

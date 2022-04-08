@@ -77,6 +77,14 @@ export const API_ROUTE_EVENTS = {
   DELETE: 'events/delete',
 };
 
+export const API_ROUTE_EVENT_ACTIONS = {
+  ENDPOINT: 'actions',
+  GET_ALL: 'actions/indexEventActionList',
+  UPDATE: 'actions/push',
+  ADD: 'actions/push',
+  DELETE: 'actions/delete',
+};
+
 export const API_ROUTE_SAMPLES = {
   ENDPOINT: 'samples',
   GET_ALL: 'samples/indexList',
