@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -45,7 +45,6 @@ import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseGuideComponent } from '../case-guide/case-guide.component';
 import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
-import { MergeDuplicatesCaseGuideComponent } from '../merge-duplicates-case-guide/merge-duplicates-case-guide.component';
 import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
 
 @Component({
@@ -84,7 +83,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private localStorageService: LocalStorageService,
     private filterService: FilterService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -180,7 +180,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.openCaseGuide();
         break;
       case ACTIONS_CASE.MERGE_DUPLICATES:
-        this.openMergeDuplicatesCaseGuide();
+        this.router.navigate(['/merge-duplicates/list']);
         break;
       default:
         break;
@@ -295,12 +295,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openCaseGuide(): void {
     this.dialog.open(CaseGuideComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
-    });
-  }
-
-  openMergeDuplicatesCaseGuide(): void {
-    this.dialog.open(MergeDuplicatesCaseGuideComponent, {
       width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }

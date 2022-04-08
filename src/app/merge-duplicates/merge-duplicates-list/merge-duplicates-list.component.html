@@ -3,9 +3,8 @@
   <ng-container list>
     <div class="page-header">
       <h1 class="page-header-title">
-        <ng-container>
-          {{ 'captions.caseMergeDuplicates' | translate }}
-        </ng-container>
+        {{ 'captions.caseMergeDuplicates' | translate }}
+        <mat-icon (click)="openMergeDuplicatesCaseGuide()" class="material-icons-round">help_outline</mat-icon>
       </h1>
     </div>
     <app-merge-duplicates-table

@@ -294,7 +294,7 @@ app.use('/sormas-rest/travelentries/FGRT34-WEMNJ4-TH34QWFG-ADEJSA', (req, res) =
 app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
 
   const arrayData = [];
-  for (let i = 0 ; i <= 100 ; i++) {
+  for (let i = 0 ; i <= 10 ; i++) {
     arrayData.push(
       {
         parent: {
@@ -601,7 +601,7 @@ app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
     elements: arrayData,
     pageNumber: 0,
     size: 8,
-    totalElementCount: 300,
+    totalElementCount: 30,
     hasNext: false,
   };
 

@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 import { MERGE_DUPLICATES_FILTERS_FORM_ID } from '../../_constants/form-identifiers';
-import { HEADER_HEIGHT } from '../../_constants/common';
+import { CASE_EXPORT_CUSTOM_MODAL_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_MERGE_DUPLICATE_FILTERS } from '../merge-duplicate-filters/merge-duplicate-filters-form-data';
 import { MergeDuplicateService } from '../../_services/api/mergeDuplicate.service';
 import { MergeDuplicateDto } from '../../_models/mergeDuplicateDto';
+import { MergeDuplicatesCaseGuideComponent } from '../merge-duplicates-case-guide/merge-duplicates-case-guide.component';
 
 @Component({
   selector: 'app-merge-duplicates-list',
@@ -21,7 +23,7 @@ export class MergeDuplicatesListComponent implements OnInit, OnDestroy {
 
   public mergeDuplicates: MergeDuplicateDto[];
 
-  constructor(private mergeDuplicatesService: MergeDuplicateService) {}
+  constructor(private mergeDuplicatesService: MergeDuplicateService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -35,6 +37,12 @@ export class MergeDuplicatesListComponent implements OnInit, OnDestroy {
           complete: () => {},
         })
     );
+  }
+
+  openMergeDuplicatesCaseGuide(): void {
+    this.dialog.open(MergeDuplicatesCaseGuideComponent, {
+      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+    });
   }
 
   ngOnDestroy(): void {

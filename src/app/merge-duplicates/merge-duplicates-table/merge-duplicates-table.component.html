@@ -1,4 +1,5 @@
 <div class="merge-duplicates-table-wrapper" *ngIf="mergeDuplicates">
+
   <table mat-table [dataSource]="processTableData()">
 
     <ng-container matColumnDef="uuid">
@@ -48,12 +49,12 @@
 
     <ng-container matColumnDef="reportDate">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.reportDate' | translate }} </th>
-      <td mat-cell *matCellDef="let element">{{element.reportDate}}</td>
+      <td mat-cell *matCellDef="let element">{{element.reportDate | date: defaultDateFormat}}</td>
     </ng-container>
 
     <ng-container matColumnDef="creationDate">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.creationDate' | translate }} </th>
-      <td mat-cell *matCellDef="let element">{{element.creationDate}}</td>
+      <td mat-cell *matCellDef="let element">{{element.creationDate | date: defaultDateFormat}}</td>
     </ng-container>
 
     <ng-container matColumnDef="completeness">
@@ -72,7 +73,6 @@
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionPick' | translate }} </th>
       <td mat-cell *matCellDef="let element" class="actions">
         <mat-icon (click)="pickAction(element)" class="material-icons-round">check_circle_outline</mat-icon>
-        <mat-icon class="material-icons-round">check</mat-icon>
       </td>
     </ng-container>
 

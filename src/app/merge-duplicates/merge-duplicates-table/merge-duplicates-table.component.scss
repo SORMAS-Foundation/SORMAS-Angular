@@ -27,15 +27,24 @@
 table {
   width: 100%;
   th.mat-header-cell {
-    border-bottom-color: map-get($sormas-accent, 200);
+    border-bottom-color: mat.get-color-from-palette($sormas-accent, 200);
     border-left-width: 0;
     background-color: $white;
+  }
+
+  tr.mat-row {
+    &:nth-child(2n) {
+      td.mat-cell {
+        border-bottom: 2px solid mat.get-color-from-palette($sormas-primary, 200);
+      }
+    }
   }
 
   tr.mat-row td.mat-cell {
     padding: 5px;
     border: 0;
     background-color: unset;
+    border-bottom: 1px solid mat.get-color-from-palette($sormas-accent, 200);
 
     &.pl-child {
       padding-left: 29px;

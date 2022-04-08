@@ -8,6 +8,8 @@ import { MergeDuplicatesComponent } from './merge-duplicates.component';
 import { MergeDuplicateFiltersComponent } from './merge-duplicate-filters/merge-duplicate-filters.component';
 import { MergeDuplicatesListComponent } from './merge-duplicates-list/merge-duplicates-list.component';
 import { MergeDuplicatesTableComponent } from './merge-duplicates-table/merge-duplicates-table.component';
+import { MergeDuplicatesCaseGuideComponent } from './merge-duplicates-case-guide/merge-duplicates-case-guide.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { MergeDuplicatesTableComponent } from './merge-duplicates-table/merge-du
     MergeDuplicateFiltersComponent,
     MergeDuplicatesListComponent,
     MergeDuplicatesTableComponent,
+    MergeDuplicatesCaseGuideComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +25,7 @@ import { MergeDuplicatesTableComponent } from './merge-duplicates-table/merge-du
     MaterialModule,
     SharedModule,
     DynamicFormModule,
+    InfiniteScrollModule
   ],
 })
 export class MergeDuplicatesModule {}
