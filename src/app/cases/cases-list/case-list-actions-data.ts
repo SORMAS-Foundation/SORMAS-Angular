@@ -5,54 +5,44 @@ import { CaseEditComponent } from '../case-edit/case-edit.component';
 
 export const actionsMoreDefs: NavItem[] = [
   {
-    role: NavItemRole.MENU,
-    name: 'captions.export',
-    action: '',
-    children: [
-      {
-        role: NavItemRole.ACTION,
-        name: 'captions.exportBasic',
-        action: ACTIONS_CASE.BASIC_EXPORT,
-      },
-      {
-        role: NavItemRole.ACTION,
-        name: 'captions.exportDetailed',
-        action: ACTIONS_CASE.DETAILED_EXPORT,
-      },
-      {
-        role: NavItemRole.ACTION,
-        name: 'captions.exportCaseManagement',
-        action: ACTIONS_CASE.CASE_EXPORT,
-      },
-      {
-        role: NavItemRole.ACTION,
-        name: 'captions.exportSamples',
-        action: ACTIONS_CASE.SAMPLE_EXPORT,
-      },
-      {
-        role: NavItemRole.ACTION,
-        name: 'captions.exportCaseCustom',
-        action: ACTIONS_CASE.CUSTOM_EXPORT,
-      },
-    ],
+    role: NavItemRole.ACTION,
+    name: 'captions.exportBasic',
+    action: ACTIONS_CASE.BASIC_EXPORT,
+  },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportDetailed',
+    action: ACTIONS_CASE.DETAILED_EXPORT,
+  },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportCaseManagement',
+    action: ACTIONS_CASE.CASE_EXPORT,
+  },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportSamples',
+    action: ACTIONS_CASE.SAMPLE_EXPORT,
+  },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportCaseCustom',
+    action: ACTIONS_CASE.CUSTOM_EXPORT,
   },
   {
     role: NavItemRole.ACTION,
     name: 'captions.lineListing',
     action: ACTIONS_CASE.LINE_LISTING,
-    className: 'accent',
   },
   {
     role: NavItemRole.ACTION,
     name: 'captions.caseOpenCasesGuide',
     action: ACTIONS_CASE.CASE_GUIDE,
-    className: 'accent',
   },
   {
     role: NavItemRole.ACTION,
     name: 'captions.caseMergeDuplicates',
     action: ACTIONS_CASE.MERGE_DUPLICATES,
-    className: 'accent',
   },
 ];
 
