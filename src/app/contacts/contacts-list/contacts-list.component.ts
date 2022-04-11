@@ -17,6 +17,8 @@ import {
   CONTACT_FILTERS_FORM_ID,
   CONTACT_LINE_LISTING_FORM_ID,
   EXPORT_TYPES,
+  EXPORT_CUSTOM_MODAL_WIDTH,
+  EXPORT_TYPE,
   HEADER_HEIGHT,
   PERIOD_PICKER_DEFAULT_RANGE,
   SMALL_NOTIFICATION_MODAL_WIDTH,
@@ -37,6 +39,8 @@ import { LineListingAddComponent } from '../../shared/modals/line-listing-add-mo
 import { FORM_DATA_LINE_LISTING_ADD } from './contact-line-listing-add-form-data';
 import { ExportService } from '../../_services/api/export.service';
 import { NotificationService } from '../../_services/notification.service';
+import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
+import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
 
 @Component({
   selector: 'app-contacts-list',
@@ -177,6 +181,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.exportFollowUpContact();
         break;
       case ACTIONS_CONTACT.CUSTOM_EXPORT:
+        this.openCustomExport();
         break;
       case ACTIONS_CONTACT.LINE_LISTING:
         this.addLineListing();
@@ -248,6 +253,15 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     });
 
     this.executeExport(EXPORT_TYPES.FOLLOW_UP);
+  }
+  openCustomExport(): void {
+    this.dialog.open(CustomExportComponent, {
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
+      data: {
+        exportType: EXPORT_TYPE.CASE,
+        exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
+      },
+    });
   }
 
   ngOnDestroy(): void {
