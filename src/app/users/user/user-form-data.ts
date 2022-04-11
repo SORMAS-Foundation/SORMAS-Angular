@@ -136,7 +136,8 @@ export const FORM_DATA_USER = [
         key: 'address.facility',
         label: 'captions.Facility',
         service: 'facilityService',
-        hasOtherOption: true,
+        fallbackOptionKey: 'OTHER_FACILITY',
+        fallbackOptionValue: 'enum.PersonContactDetailType.OTHER',
         determinedBy: [
           {
             key: 'address.district.uuid',

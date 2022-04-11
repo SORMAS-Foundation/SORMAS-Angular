@@ -110,8 +110,11 @@ export class FormLazyOptionsBaseComponent extends FormBaseComponent implements O
       this.service[this.method](filters).subscribe({
         next: (response: any) => {
           this.config.options = response;
-          if (this.config.hasOtherOption) {
-            this.config.options.push({ key: 'OTHER', value: 'enum.PersonContactDetailType.OTHER' });
+          if (this.config.fallbackOptionKey && this.config.fallbackOptionValue) {
+            this.config.options.push({
+              key: this.config.fallbackOptionKey,
+              value: this.config.fallbackOptionValue,
+            });
           }
           this.toggleControl(!!this.config.options.length);
         },
