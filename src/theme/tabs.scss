@@ -54,8 +54,34 @@
 
       .mat-tab-link {
         height: auto;
+        margin: 0 12px;
         color: $white;
         opacity: 1;
+      }
+    }
+
+    .collapsed .main-menu {
+      padding: 16px 0;
+      clear: both;
+
+      .mat-ink-bar {
+        display: none;
+      }
+
+      .mat-tab-links {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .mat-tab-link {
+        display: block;
+        padding: 12px 0;
+        margin: 0;
+
+        &:hover,
+        &:focus {
+          color: map-get($sormas-primary, 700);
+        }
       }
     }
 
@@ -75,60 +101,60 @@
     }
   }
 
-  @media (min-width: map-get($grid-breakpoints, md)) {
-    :root {
-      .main-menu {
-        .mat-tab-link {
-          margin: 0 12px;
-        }
-      }
-    }
-  }
+  // @media (min-width: map-get($grid-breakpoints, md)) {
+  //   :root {
+  //     .main-menu {
+  //       .mat-tab-link {
+  //         margin: 0 12px;
+  //       }
+  //     }
+  //   }
+  // }
 
-  @media (min-width: map-get($grid-breakpoints, lg)) {
-    :root {
-      .main-menu {
-        .mat-tab-link {
-          margin: 0 16px;
-        }
-      }
-    }
-  }
+  // @media (min-width: map-get($grid-breakpoints, lg)) {
+  //   :root {
+  //     .main-menu {
+  //       .mat-tab-link {
+  //         margin: 0 16px;
+  //       }
+  //     }
+  //   }
+  // }
 
-  @media (min-width: map-get($grid-breakpoints, xl)) {
-    :root {
-      .mat-tab-link {
-        margin-right: 32px;
-      }
-    }
-  }
+  // @media (min-width: map-get($grid-breakpoints, xl)) {
+  //   :root {
+  //     .mat-tab-link {
+  //       margin-right: 32px;
+  //     }
+  //   }
+  // }
 
-  @media (max-width: map-get($grid-breakpoints, md)) {
-    :root {
-      .main-menu {
-        padding: 16px 0;
-        clear: both;
+  // @media (max-width: map-get($grid-breakpoints, md)) {
+  //   :root {
+  //     .main-menu {
+  //       padding: 16px 0;
+  //       clear: both;
 
-        .mat-ink-bar {
-          display: none;
-        }
+  //       .mat-ink-bar {
+  //         display: none;
+  //       }
 
-        .mat-tab-links {
-          width: 100%;
-          flex-direction: column;
-        }
+  //       .mat-tab-links {
+  //         width: 100%;
+  //         flex-direction: column;
+  //       }
 
-        .mat-tab-link {
-          display: block;
-          padding: 12px 0;
-          margin: 0;
+  //       .mat-tab-link {
+  //         display: block;
+  //         padding: 12px 0;
+  //         margin: 0;
 
-          &:hover,
-          &:focus {
-            color: map-get($sormas-primary, 700);
-          }
-        }
-      }
-    }
-  }
+  //         &:hover,
+  //         &:focus {
+  //           color: map-get($sormas-primary, 700);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
