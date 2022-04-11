@@ -12,11 +12,14 @@ import {
   ACTIONS_CONTACT,
   ACTIONS_VIEW_OPTIONS,
   ADD_MODAL_MAX_WIDTH,
+  API_ROUTE_CONTACTS,
   CONFIG_EVENTS,
   CONTACT_FILTERS_FORM_ID,
   CONTACT_LINE_LISTING_FORM_ID,
+  EXPORT_TYPES,
   HEADER_HEIGHT,
   PERIOD_PICKER_DEFAULT_RANGE,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
 } from '../../app.constants';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -32,6 +35,8 @@ import * as tableDataDetailed from './contacts-list-detailed-table-data';
 import * as tableDataFollowUp from './contacts-list-follow-up-table-data';
 import { LineListingAddComponent } from '../../shared/modals/line-listing-add-modal/line-listing-add.component';
 import { FORM_DATA_LINE_LISTING_ADD } from './contact-line-listing-add-form-data';
+import { ExportService } from '../../_services/api/export.service';
+import { NotificationService } from '../../_services/notification.service';
 
 @Component({
   selector: 'app-contacts-list',
@@ -63,11 +68,13 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     private contactService: ContactService,
     private contactFollowUpService: ContactFollowUpService,
     public helperService: HelperService,
+    public exportService: ExportService,
     private dialog: MatDialog,
     private translateService: TranslateService,
     private activeRoute: ActivatedRoute,
     private localStorageService: LocalStorageService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -161,10 +168,13 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   onActionSelected(event: any): void {
     switch (event) {
       case ACTIONS_CONTACT.BASIC_EXPORT:
+        this.exportBasicContact();
         break;
       case ACTIONS_CONTACT.DETAILED_EXPORT:
+        this.exportDetailedContact();
         break;
       case ACTIONS_CONTACT.FOLLOW_UP_EXPORT:
+        this.exportFollowUpContact();
         break;
       case ACTIONS_CONTACT.CUSTOM_EXPORT:
         break;
@@ -195,6 +205,49 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  executeExport(exportType: string): void {
+    const endpoint: string = API_ROUTE_CONTACTS.EXPORT;
+    this.subscriptions.push(
+      this.exportService.export(exportType, endpoint).subscribe({
+        next: () => {},
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
+      })
+    );
+  }
+
+  exportBasicContact(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(EXPORT_TYPES.BASIC);
+  }
+
+  exportDetailedContact(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportDetailed'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(EXPORT_TYPES.DETAILED);
+  }
+
+  exportFollowUpContact(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportFollowUp'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.executeExport(EXPORT_TYPES.FOLLOW_UP);
   }
 
   ngOnDestroy(): void {

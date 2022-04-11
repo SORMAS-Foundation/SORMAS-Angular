@@ -107,6 +107,7 @@ export const API_ROUTE_CONTACTS = {
   UPDATE: 'contacts/push',
   ADD: 'contacts/push',
   DELETE: 'contacts/delete',
+  EXPORT: 'contacts/export',
 };
 
 export const API_ROUTE_CLINICAL_VISITS = {
