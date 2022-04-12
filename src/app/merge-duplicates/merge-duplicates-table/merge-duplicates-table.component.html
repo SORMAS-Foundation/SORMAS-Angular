@@ -1,11 +1,15 @@
 <div class="merge-duplicates-table-wrapper" *ngIf="mergeDuplicates">
-
-  <table mat-table [dataSource]="processTableData()">
+  <mat-table [dataSource]="mergeDuplicates" (scroll)="onTableScroll($event)">
 
     <ng-container matColumnDef="uuid">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.uuid' | translate }} </th>
       <td mat-cell *matCellDef="let element ; let index = index" class="uuid" [ngClass]="{'pl-child': isChild(index)}">
-        <mat-icon *ngIf="!isChild(index)" (click)="hideChild(index)" class="material-icons-round">arrow_downward</mat-icon>
+        <mat-icon
+          *ngIf="!isChild(index)"
+          [ngClass]="{'rotate': isChildHidden(index + 1)}"
+          (click)="hideChild(index)"
+          class="material-icons-round show-more"
+        >arrow_downward</mat-icon>
         <a [routerLink]="['/cases/case/' + element.uuid]" mat-icon-button>
           <span class="bold">{{element.uuid | slice: 0:6}}</span>
         </a>
@@ -85,5 +89,5 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns; let index = index" [ngClass]="{'hide': isChildHidden(index)}"></tr>
-  </table>
+  </mat-table>
 </div>

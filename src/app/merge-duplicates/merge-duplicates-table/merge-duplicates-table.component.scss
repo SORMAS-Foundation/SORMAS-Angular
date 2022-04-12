@@ -2,9 +2,13 @@
 @use '/src/variables.scss' as *;
 
 .merge-duplicates-table-wrapper {
-  overflow: auto;
-  max-width: 100%;
-  margin-top: 40px;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
 
   .uuid {
     .mat-icon {
@@ -24,8 +28,11 @@
 }
 
 
-table {
+.mat-table {
   width: 100%;
+  overflow: auto;
+  height: 100%;
+
   th.mat-header-cell {
     border-bottom-color: mat.get-color-from-palette($sormas-accent, 200);
     border-left-width: 0;
@@ -33,6 +40,17 @@ table {
   }
 
   tr.mat-row {
+    &.hide {
+      display: none;
+    }
+    td {
+      .mat-icon.show-more {
+        transition: 0.4s;
+        &.rotate {
+          transform: rotate(-90deg);
+        }
+      }
+    }
     &:nth-child(2n) {
       td.mat-cell {
         border-bottom: 2px solid mat.get-color-from-palette($sormas-primary, 200);
@@ -49,10 +67,6 @@ table {
     &.pl-child {
       padding-left: 29px;
     }
-  }
-
-  tr.hide {
-    display: none;
   }
 
   .bold {

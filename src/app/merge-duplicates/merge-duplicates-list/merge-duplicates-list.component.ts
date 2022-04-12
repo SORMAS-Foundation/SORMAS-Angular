@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { MERGE_DUPLICATES_FILTERS_FORM_ID } from '../../_constants/form-identifiers';
 import { CASE_EXPORT_CUSTOM_MODAL_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
@@ -18,25 +19,21 @@ export class MergeDuplicatesListComponent implements OnInit, OnDestroy {
   headerHeight = HEADER_HEIGHT;
   formIdFilters = MERGE_DUPLICATES_FILTERS_FORM_ID;
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_MERGE_DUPLICATE_FILTERS));
+  type: string;
 
   private subscriptions: Subscription[] = [];
 
   public mergeDuplicates: MergeDuplicateDto[];
 
-  constructor(private mergeDuplicatesService: MergeDuplicateService, private dialog: MatDialog) {}
+  constructor(
+    private mergeDuplicatesService: MergeDuplicateService,
+    private dialog: MatDialog,
+    private activeRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.subscriptions.push(
-      this.mergeDuplicatesService
-        .getAll({ offset: null, size: null }, false, null, true)
-        .subscribe({
-          next: (response: any) => {
-            this.mergeDuplicates = response.elements;
-          },
-          error: () => {},
-          complete: () => {},
-        })
-    );
+    const routeParams = this.activeRoute.snapshot.params;
+    this.type = routeParams.type;
   }
 
   openMergeDuplicatesCaseGuide(): void {

@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: MergeDuplicatesComponent,
-    children: [{ path: 'list', component: MergeDuplicatesListComponent }],
+    children: [{ path: 'list/:type', component: MergeDuplicatesListComponent }],
   },
 ];
 

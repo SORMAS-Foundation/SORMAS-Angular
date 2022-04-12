@@ -180,7 +180,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.openCaseGuide();
         break;
       case ACTIONS_CASE.MERGE_DUPLICATES:
-        this.router.navigate(['/merge-duplicates/list']);
+        this.router.navigate(['/merge-duplicates/list/cases']);
         break;
       default:
         break;
