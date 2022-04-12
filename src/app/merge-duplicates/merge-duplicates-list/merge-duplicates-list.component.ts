@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { MERGE_DUPLICATES_FILTERS_FORM_ID } from '../../_constants/form-identifiers';
-import { CASE_EXPORT_CUSTOM_MODAL_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
+import { EXPORT_CUSTOM_MODAL_WIDTH, HEADER_HEIGHT } from '../../_constants/common';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_MERGE_DUPLICATE_FILTERS } from '../merge-duplicate-filters/merge-duplicate-filters-form-data';
 import { MergeDuplicateService } from '../../_services/api/mergeDuplicate.service';
@@ -38,7 +38,7 @@ export class MergeDuplicatesListComponent implements OnInit, OnDestroy {
 
   openMergeDuplicatesCaseGuide(): void {
     this.dialog.open(MergeDuplicatesCaseGuideComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
 
