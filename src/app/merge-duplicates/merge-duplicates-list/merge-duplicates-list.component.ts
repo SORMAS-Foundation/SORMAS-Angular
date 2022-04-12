@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { MERGE_DUPLICATES_FILTERS_FORM_ID } from '../../_constants/form-identifiers';
@@ -15,13 +14,11 @@ import { MergeDuplicatesCaseGuideComponent } from '../merge-duplicates-case-guid
   templateUrl: './merge-duplicates-list.component.html',
   styleUrls: ['./merge-duplicates-list.component.scss'],
 })
-export class MergeDuplicatesListComponent implements OnInit, OnDestroy {
+export class MergeDuplicatesListComponent implements OnInit {
   headerHeight = HEADER_HEIGHT;
   formIdFilters = MERGE_DUPLICATES_FILTERS_FORM_ID;
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_MERGE_DUPLICATE_FILTERS));
   type: string;
-
-  private subscriptions: Subscription[] = [];
 
   public mergeDuplicates: MergeDuplicateDto[];
 
@@ -40,9 +37,5 @@ export class MergeDuplicatesListComponent implements OnInit, OnDestroy {
     this.dialog.open(MergeDuplicatesCaseGuideComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
     });
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((subscriptions) => subscriptions.unsubscribe());
   }
 }
