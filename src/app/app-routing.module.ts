@@ -103,6 +103,11 @@ const routes: Routes = [
     canActivate: [Guard],
   },
   {
+    path: 'actions',
+    loadChildren: () => import('./actions/actions.module').then((m) => m.ActionsModule),
+    canActivate: [Guard],
+  },
+  {
     path: 'merge-duplicates',
     loadChildren: () =>
       import('./merge-duplicates/merge-duplicates.module').then((m) => m.MergeDuplicatesModule),

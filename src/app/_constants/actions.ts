@@ -21,7 +21,7 @@ export const ACTIONS_BULK_EDIT = {
 
 export const ACTIONS_EVENTS_VIEW_OPTIONS = {
   EVENTS: '/events/list',
-  ACTIONS: '/events/event-actions/list',
+  ACTIONS: '/actions/list',
   GROUPS: '/events/event-groups/list',
 };
 
