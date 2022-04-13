@@ -169,6 +169,7 @@ export const EXPORT_TYPES = {
   DETAILED: 'detailed',
   CASE_MANAGEMENT: 'management',
   SAMPLE: 'sample',
+  FOLLOW_UP: 'follow-up',
 };
 
 export const FacilityCategoryGroups = {
