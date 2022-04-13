@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { NavItem, TableColumn } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './actions-list-table-data';
