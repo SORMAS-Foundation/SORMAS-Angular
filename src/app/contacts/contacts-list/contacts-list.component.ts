@@ -206,7 +206,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     this.dialog.open(CustomExportComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
-        exportType: EXPORT_TYPE.CASE,
+        exportType: EXPORT_TYPE.CONTACT,
         exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
       },
     });
