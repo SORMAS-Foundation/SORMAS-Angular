@@ -1,8 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { asyncScheduler, Subject, Subscription } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import { throttleTime } from 'rxjs/operators';
 import { HelperService } from '../../_services/helper.service';
 
 export interface RouteItem {
@@ -57,31 +58,60 @@ export const userRoutesConfig: RouteItem[] = [
     ]),
   ],
 })
-export class MenuComponent implements OnDestroy {
+export class MenuComponent implements AfterViewInit, OnDestroy {
   routeConfig: RouteItem[] = routesConfig;
   userRouteConfig: RouteItem[] = userRoutesConfig;
-  // logo = logoPath;
 
   menuOpen = false;
+  collapsed = false;
+  requiredSpace: number;
   selectedRoute = '';
+  width$ = new Subject<number>();
+  resizeObserver: any;
 
-  private subscription: Subscription[] = [];
+  private subscription: Subscription = new Subscription();
+  @ViewChild('menu', { read: ElementRef }) menu: ElementRef;
+  @ViewChild('mainMenu', { read: ElementRef }) mainMenu: ElementRef;
+  @ViewChild('userMenu', { read: ElementRef }) userMenu: ElementRef;
+  @ViewChild('logo', { read: ElementRef }) logo: ElementRef;
 
   constructor(
     public translateService: TranslateService,
     public router: Router,
-    public helperService: HelperService
+    public helperService: HelperService,
+    private host: ElementRef
   ) {
     translateService.setDefaultLang('en');
     translateService.use('en');
-
-    this.subscription.push(
+    this.subscription.add(
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
           this.selectedRoute = event.url;
         }
       })
     );
+  }
+
+  ngAfterViewInit(): void {
+    this.subscription.add(
+      this.width$
+        .pipe(throttleTime(200, asyncScheduler, { leading: false, trailing: true }))
+        .subscribe((value) => {
+          if (!this.requiredSpace) {
+            this.requiredSpace =
+              this.logo?.nativeElement?.clientWidth +
+              this.mainMenu?.nativeElement?.scrollWidth +
+              this.userMenu?.nativeElement?.clientWidth;
+          }
+          this.collapsed = value <= this.requiredSpace;
+        })
+    );
+
+    this.resizeObserver = new ResizeObserver((entries) => {
+      this.width$.next(Math.floor(entries[0].contentRect.width));
+    });
+
+    this.resizeObserver.observe(this.host.nativeElement);
   }
 
   toggleMenu(closed?: boolean): void {
@@ -94,6 +124,7 @@ export class MenuComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.forEach((subscription) => subscription.unsubscribe());
+    this.resizeObserver.unobserve(this.host.nativeElement);
+    this.subscription.unsubscribe();
   }
 }
