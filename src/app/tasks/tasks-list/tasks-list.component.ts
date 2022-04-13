@@ -112,19 +112,6 @@ export class TasksListComponent implements OnInit, OnDestroy {
     }
   }
 
-  executeExport(exportType: string): void {
-    const endpoint: string = API_ROUTE_TASKS.EXPORT;
-    this.subscription.push(
-      this.exportService.export(exportType, endpoint).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {},
-      })
-    );
-  }
-
   customExport(): void {
     this.dialog.open(CustomExportComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
@@ -142,7 +129,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.BASIC);
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_TASKS.EXPORT);
   }
 
   exportDetailedTask(): void {
@@ -152,7 +139,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.DETAILED);
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_TASKS.EXPORT);
   }
 
   ngOnDestroy(): void {

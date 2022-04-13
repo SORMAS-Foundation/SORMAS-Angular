@@ -75,6 +75,7 @@ export const API_ROUTE_EVENTS = {
   UPDATE: 'events/update',
   ADD: 'events/add',
   DELETE: 'events/delete',
+  EXPORT: 'events/export',
 };
 
 export const API_ROUTE_EVENT_ACTIONS = {
@@ -83,6 +84,7 @@ export const API_ROUTE_EVENT_ACTIONS = {
   UPDATE: 'actions/push',
   ADD: 'actions/push',
   DELETE: 'actions/delete',
+  EXPORT: 'actions/export',
 };
 
 export const API_ROUTE_SAMPLES = {
@@ -282,6 +284,7 @@ export const API_ROUTE_EVENT_GROUPS = {
   UPDATE: 'eventGroups/push',
   ADD: 'eventGroups/push',
   DELETE: 'eventGroups/delete',
+  EXPORT: 'eventGroups/export',
 };
 
 export const API_ROUTE_EPI_DATA_CASE_CLASSIFICATION = {

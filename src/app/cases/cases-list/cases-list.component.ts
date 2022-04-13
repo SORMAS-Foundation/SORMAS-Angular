@@ -200,19 +200,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
     });
   }
 
-  executeExport(exportType: string): void {
-    const endpoint: string = API_ROUTE_CASES.EXPORT;
-    this.subscriptions.push(
-      this.exportService.export(exportType, endpoint).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {},
-      })
-    );
-  }
-
   exportBasicCase(): void {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportBasic'),
@@ -220,7 +207,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.BASIC);
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CASES.EXPORT);
   }
 
   exportDetailedCase(): void {
@@ -230,7 +217,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.DETAILED);
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_CASES.EXPORT);
   }
 
   exportManagementCase(): void {
@@ -240,7 +227,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.CASE_MANAGEMENT);
+    this.exportService.executeExport(EXPORT_TYPES.CASE_MANAGEMENT, API_ROUTE_CASES.EXPORT);
   }
 
   exportSampleCase(): void {
@@ -250,7 +237,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.SAMPLE);
+    this.exportService.executeExport(EXPORT_TYPES.SAMPLE, API_ROUTE_CASES.EXPORT);
   }
 
   addLineListing(): void {
