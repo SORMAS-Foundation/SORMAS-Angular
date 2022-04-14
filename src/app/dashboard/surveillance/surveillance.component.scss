@@ -1,69 +1,95 @@
 @use '/src/variables.scss' as *;
 
 .dashboard-surveillance-wrapper {
+  display: grid;
   padding: 24px;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'filter filter'
+    'disease_burden disease_burden'
+    'disease_menu disease_menu'
+    'cases cases'
+    'events results'
+    'epi_curve epi_curve'
+    'map map';
 
-  .pt-0 {
-    padding-top: 0;
-  }
-
-  .mat-card {
-    margin-bottom: 16px;
-  }
-
-  .width-40-mobile-100,
-  .width-50,
-  .width-50-mobile-100,
-  .width-60-mobile-100 {
-    display: inline-block;
-    vertical-align: top;
-  }
-  .width-40-mobile-100 {
-    width: 40%;
-  }
-  .width-50,
-  .width-50-mobile-100 {
-    width: 50%;
-  }
-  .width-60-mobile-100 {
-    width: 60%;
+  &.expand-map {
+    grid-template-areas:
+      'filter filter'
+      'disease_menu disease_menu'
+      'map map';
   }
 
-  .mr-16,
-  .mr-16-mobile-0 {
-    margin-right: 16px;
+  &.expand-epi-curve {
+    grid-template-areas:
+      'filter filter'
+      'disease_menu disease_menu'
+      'epi_curve epi_curve';
   }
 }
 
-.epi-visuals {
-  display: flex;
-  gap: 16px;
+.dashboard-surveillance-filters {
+  grid-area: filter;
+}
 
-  .epi-curve,
-  .map {
-    flex: 1 1 50%;
-    max-width: calc(50% - 8px);
-  }
+.dashboard-surveillance-disease-burden {
+  grid-area: disease_burden;
+}
+
+.dashboard-surveillance-disease-menu {
+  grid-area: disease_menu;
+  max-width: 100%;
+  padding-top: 0;
+}
+
+.dashboard-surveillance-cases {
+  grid-area: cases;
+}
+
+.dashboard-surveillance-events {
+  grid-area: events;
+}
+
+.dashboard-surveillance-results {
+  grid-area: results;
+}
+
+.dashboard-surveillance-epi-curve {
+  grid-area: epi_curve;
+  overflow-x: hidden;
+}
+
+.dashboard-surveillance-map {
+  grid-area: map;
 }
 
 [hidden] {
   display: none !important;
 }
 
-@media (max-width: map-get($grid-breakpoints, lg)) {
+@media (min-width: map-get($grid-breakpoints, xl)) {
   .dashboard-surveillance-wrapper {
-    .width-40-mobile-100,
-    .width-50-mobile-100,
-    .width-60-mobile-100 {
-      width: 100%;
+    grid-template-columns: 1.91fr 1fr 1fr;
+    grid-template-areas:
+      'filter filter filter'
+      'disease_burden disease_burden disease_burden'
+      'disease_menu disease_menu disease_menu'
+      'cases events results'
+      'epi_curve map map';
+
+    &.expand-map {
+      grid-template-areas:
+        'filter filter filter'
+        'disease_menu disease_menu disease_menu'
+        'map map map';
     }
 
-    .mr-16-mobile-0 {
-      margin-right: 0;
+    &.expand-epi-curve {
+      grid-template-areas:
+        'filter filter filter'
+        'disease_menu disease_menu disease_menu'
+        'epi_curve epi_curve epi_curve';
     }
-  }
-
-  .epi-visuals {
-    display: block;
   }
 }

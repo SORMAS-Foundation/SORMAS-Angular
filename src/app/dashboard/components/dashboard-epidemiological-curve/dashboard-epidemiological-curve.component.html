@@ -49,7 +49,10 @@
     </div>
 
     <div class="condition">
-      <mat-radio-group formControlName="dataType" *ngIf="type === dashboardEpidemiologicalCurveType.CASE">
+      <mat-radio-group
+        formControlName="dataType"
+        *ngIf="type === dashboardEpidemiologicalCurveType.CASE"
+      >
         <mat-radio-button value="CASE_STATUS" color="primary">
           <span>{{ 'enum.EpiCurveSurveillanceMode.CASE_STATUS' | translate }}</span>
         </mat-radio-button>
@@ -58,7 +61,10 @@
         </mat-radio-button>
       </mat-radio-group>
 
-      <mat-radio-group formControlName="dataType" *ngIf="type === dashboardEpidemiologicalCurveType.CONTACT">
+      <mat-radio-group
+        formControlName="dataType"
+        *ngIf="type === dashboardEpidemiologicalCurveType.CONTACT"
+      >
         <mat-radio-button value="FOLLOW_UP_STATUS" color="primary">
           <span>{{ 'enum.EpiCurveContactsMode.FOLLOW_UP_STATUS' | translate }}</span>
         </mat-radio-button>

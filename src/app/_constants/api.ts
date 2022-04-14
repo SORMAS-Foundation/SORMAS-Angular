@@ -66,6 +66,7 @@ export const API_ROUTE_TASKS = {
   UPDATE: 'tasks/push',
   ADD: 'tasks/push',
   DELETE: 'tasks/delete',
+  EXPORT: 'tasks/export',
 };
 
 export const API_ROUTE_EVENTS = {
@@ -74,6 +75,14 @@ export const API_ROUTE_EVENTS = {
   UPDATE: 'events/update',
   ADD: 'events/add',
   DELETE: 'events/delete',
+};
+
+export const API_ROUTE_EVENT_ACTIONS = {
+  ENDPOINT: 'actions',
+  GET_ALL: 'actions/indexEventActionList',
+  UPDATE: 'actions/push',
+  ADD: 'actions/push',
+  DELETE: 'actions/delete',
 };
 
 export const API_ROUTE_SAMPLES = {
@@ -98,6 +107,7 @@ export const API_ROUTE_CONTACTS = {
   UPDATE: 'contacts/push',
   ADD: 'contacts/push',
   DELETE: 'contacts/delete',
+  EXPORT: 'contacts/export',
 };
 
 export const API_ROUTE_CLINICAL_VISITS = {
@@ -382,4 +392,20 @@ export const API_ROUTE_IMPORT_EXPORT = {
   UPDATE: 'export/push',
   ADD: 'export/push',
   DELETE: 'export/delete',
+};
+
+export const API_ROUTE_MERGE_DUPLICATES = {
+  ENDPOINT: 'mergeDuplicates',
+  GET_ALL: 'mergeDuplicates/indexList',
+  UPDATE: 'mergeDuplicates/update',
+  ADD: 'mergeDuplicates/add',
+  DELETE: 'mergeDuplicates/delete',
+};
+
+export const API_ROUTE_MERGE_DUPLICATES_CONTACT = {
+  ENDPOINT: 'mergeDuplicatesContact',
+  GET_ALL: 'mergeDuplicatesContact/indexList',
+  UPDATE: 'mergeDuplicatesContact/update',
+  ADD: 'mergeDuplicatesContact/add',
+  DELETE: 'mergeDuplicatesContact/delete',
 };

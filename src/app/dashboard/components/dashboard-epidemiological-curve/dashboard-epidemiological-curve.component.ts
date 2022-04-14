@@ -283,167 +283,181 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
   }
 
   getDataCategories(): string[] {
-    let categories;
+    const categories: string[] = [];
     switch (this.form.value.epiCurveGrouping) {
       case 'WEEK':
-        categories = Object.keys(this.data).map(
-          (item) => `Wk ${format(new Date(item), WEEK_OF_YEAR_DATE_FORMAT)}`
-        );
+        Object.keys(this.data).forEach((item) => {
+          const date = new Date(item);
+          if (date.getTime()) {
+            categories.push(`Wk ${format(date, WEEK_OF_YEAR_DATE_FORMAT)}`);
+          }
+        });
         break;
       case 'MONTH':
-        categories = Object.keys(this.data).map((item) =>
-          format(new Date(item), MONTH_MEDIUM_DATE_FORMAT)
-        );
+        Object.keys(this.data).forEach((item) => {
+          const date = new Date(item);
+          if (date.getTime()) {
+            categories.push(format(date, MONTH_MEDIUM_DATE_FORMAT));
+          }
+        });
         break;
       default:
-        categories = Object.keys(this.data).map((item) =>
-          format(new Date(item), COMMON_DATE_FORMAT)
-        );
+        Object.keys(this.data).forEach((item) => {
+          const date = new Date(item);
+          if (date.getTime()) {
+            categories.push(format(date, COMMON_DATE_FORMAT));
+          }
+        });
         break;
     }
     return categories;
   }
 
   getDataFollowUpUntil(): any[] {
+    const values = Object.values(this.data).filter(Boolean);
     return [
       {
         ...SERIES_OPTIONS,
         id: 'F_U_UNTIL',
         name: this.translateService.instant('captions.dashboardFollowUpUntilShort'),
         color: FOLLOW_UP_UNTIL_COLORS_MAP.F_U_UNTIL,
-        data: Object.values(this.data).map((item) => item.F_U_UNTIL),
+        data: values.map((item) => item.F_U_UNTIL),
       },
     ];
   }
 
   getDataContactClassification(): any[] {
+    const values = Object.values(this.data).filter(Boolean);
     return [
       {
         ...SERIES_OPTIONS,
         id: 'CONTACT_UNCONFIRMED',
         name: this.translateService.instant('captions.dashboardUnconfirmed'),
         color: CONTACT_CLASSIFICATION_COLORS_MAP.CONTACT_UNCONFIRMED,
-        data: Object.values(this.data).map((item) => item.CONTACT_UNCONFIRMED),
+        data: values.map((item) => item.CONTACT_UNCONFIRMED),
       },
       {
         ...SERIES_OPTIONS,
         id: 'CONTACT_CONFIRMED',
         name: this.translateService.instant('captions.dashboardConfirmed'),
         color: CONTACT_CLASSIFICATION_COLORS_MAP.CONTACT_CONFIRMED,
-        data: Object.values(this.data).map((item) => item.CONTACT_CONFIRMED),
+        data: values.map((item) => item.CONTACT_CONFIRMED),
       },
     ];
   }
 
   getDataFollowUpStatus(): any[] {
+    const values = Object.values(this.data).filter(Boolean);
     return [
       {
         ...SERIES_OPTIONS,
         id: 'UNDER_F_U',
         name: this.translateService.instant('captions.dashboardUnderFollowUpShort'),
         color: FOLLOW_UP_STATUS_COLORS_MAP.UNDER_F_U,
-        data: Object.values(this.data).map((item) => item.UNDER_F_U),
+        data: values.map((item) => item.UNDER_F_U),
       },
       {
         ...SERIES_OPTIONS,
         id: 'CANCELED_F_U',
         name: this.translateService.instant('captions.dashboardCanceledFollowUpShort'),
         color: FOLLOW_UP_STATUS_COLORS_MAP.CANCELED_F_U,
-        data: Object.values(this.data).map((item) => item.CANCELED_F_U),
+        data: values.map((item) => item.CANCELED_F_U),
       },
       {
         ...SERIES_OPTIONS,
         id: 'LOST_F_U',
         name: this.translateService.instant('captions.dashboardLostToFollowUpShort'),
         color: FOLLOW_UP_STATUS_COLORS_MAP.LOST_F_U,
-        data: Object.values(this.data).map((item) => item.LOST_F_U),
+        data: values.map((item) => item.LOST_F_U),
       },
       {
         ...SERIES_OPTIONS,
         id: 'COMPETED_F_U',
         name: this.translateService.instant('captions.dashboardCompletedFollowUpShort'),
         color: FOLLOW_UP_STATUS_COLORS_MAP.COMPETED_F_U,
-        data: Object.values(this.data).map((item) => item.COMPETED_F_U),
+        data: values.map((item) => item.COMPETED_F_U),
       },
       {
         ...SERIES_OPTIONS,
         id: 'CONVERTED_CASE',
         name: this.translateService.instant('captions.dashboardConvertedToCase'),
         color: FOLLOW_UP_STATUS_COLORS_MAP.CONVERTED_CASE,
-        data: Object.values(this.data).map((item) => item.CONVERTED_CASE),
+        data: values.map((item) => item.CONVERTED_CASE),
       },
     ];
   }
 
   getDataCasesStatus(): any[] {
+    const values = Object.values(this.data).filter(Boolean);
     return [
       {
         ...SERIES_OPTIONS,
         id: 'NOT_CLASSIFIED',
         name: this.translateService.instant('captions.dashboardNotYetClassified'),
         color: CASE_CLASIFICATION_COLORS_MAP.NOT_CLASSIFIED,
-        data: Object.values(this.data).map((item) => item.NOT_CLASSIFIED),
+        data: values.map((item) => item.NOT_CLASSIFIED),
       },
       {
         ...SERIES_OPTIONS,
         id: 'SUSPECT',
         name: this.translateService.instant('captions.dashboardSuspect'),
         color: CASE_CLASIFICATION_COLORS_MAP.SUSPECT,
-        data: Object.values(this.data).map((item) => item.SUSPECT),
+        data: values.map((item) => item.SUSPECT),
       },
       {
         ...SERIES_OPTIONS,
         id: 'PROBABLE',
         name: this.translateService.instant('captions.dashboardProbable'),
         color: CASE_CLASIFICATION_COLORS_MAP.PROBABLE,
-        data: Object.values(this.data).map((item) => item.PROBABLE),
+        data: values.map((item) => item.PROBABLE),
       },
       {
         ...SERIES_OPTIONS,
         id: 'CONFIRMED_UNKNOWN_SYMPTOMS',
         name: this.translateService.instant('captions.dashboardConfirmedUnknownSymptoms'),
         color: CASE_CLASIFICATION_COLORS_MAP.CONFIRMED_UNKNOWN_SYMPTOMS,
-        data: Object.values(this.data).map((item) => item.CONFIRMED_UNKNOWN_SYMPTOMS),
+        data: values.map((item) => item.CONFIRMED_UNKNOWN_SYMPTOMS),
       },
       {
         ...SERIES_OPTIONS,
         id: 'CONFIRMED_NO_SYMPTOMS',
         name: this.translateService.instant('captions.dashboardConfirmedNoSymptoms'),
         color: CASE_CLASIFICATION_COLORS_MAP.CONFIRMED_NO_SYMPTOMS,
-        data: Object.values(this.data).map((item) => item.CONFIRMED_NO_SYMPTOMS),
+        data: values.map((item) => item.CONFIRMED_NO_SYMPTOMS),
       },
       {
         ...SERIES_OPTIONS,
         id: 'CONFIRMED',
         name: this.translateService.instant('captions.dashboardConfirmed'),
         color: CASE_CLASIFICATION_COLORS_MAP.CONFIRMED,
-        data: Object.values(this.data).map((item) => item.CONFIRMED),
+        data: values.map((item) => item.CONFIRMED),
       },
     ];
   }
 
   getDataPresentCondition(): any[] {
+    const values = Object.values(this.data).filter(Boolean);
     return [
       {
         ...SERIES_OPTIONS,
         id: 'ALIVE',
         name: this.translateService.instant('captions.dashboardAlive'),
         color: PRESENT_CONDITION_COLORS_MAP.ALIVE,
-        data: Object.values(this.data).map((item) => item.ALIVE),
+        data: values.map((item) => item.ALIVE),
       },
       {
         ...SERIES_OPTIONS,
         id: 'DEAD',
         name: this.translateService.instant('captions.dashboardDead'),
         color: PRESENT_CONDITION_COLORS_MAP.DEAD,
-        data: Object.values(this.data).map((item) => item.DEAD),
+        data: values.map((item) => item.DEAD),
       },
       {
         ...SERIES_OPTIONS,
         id: 'UNKNOWN',
         name: this.translateService.instant('captions.dashboardUnknown'),
         color: PRESENT_CONDITION_COLORS_MAP.UNKNOWN,
-        data: Object.values(this.data).map((item) => item.UNKNOWN),
+        data: values.map((item) => item.UNKNOWN),
       },
     ];
   }

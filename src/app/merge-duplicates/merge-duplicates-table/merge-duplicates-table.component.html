@@ -1,0 +1,93 @@
+<div class="merge-duplicates-table-wrapper" *ngIf="mergeDuplicates">
+  <mat-table [dataSource]="mergeDuplicates" (scroll)="onTableScroll($event)">
+
+    <ng-container matColumnDef="uuid">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.uuid' | translate }} </th>
+      <td mat-cell *matCellDef="let element ; let index = index" class="uuid" [ngClass]="{'pl-child': isChild(index)}">
+        <mat-icon
+          *ngIf="!isChild(index)"
+          [ngClass]="{'rotate': isChildHidden(index + 1)}"
+          (click)="hideChild(index)"
+          class="material-icons-round show-more"
+        >arrow_downward</mat-icon>
+        <a [routerLink]="['/cases/case/' + element.uuid]" mat-icon-button>
+          <span class="bold">{{element.uuid | slice: 0:6}}</span>
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="disease">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.columnDiseaseShort' | translate }} </th>
+      <td mat-cell *matCellDef="let element">{{ 'enum.Disease.' + element.disease | translate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="caseClassification">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.caseClassification' | translate }} </th>
+      <td mat-cell *matCellDef="let element">{{ 'enum.CaseClassification.' + element.caseClassification | translate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="personFirstName">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.personFirstName' | translate }} </th>
+      <td mat-cell *matCellDef="let element"> <span class="bold">{{element.personFirstName}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="personLastName">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.personLastName' | translate }} </th>
+      <td mat-cell *matCellDef="let element"> <span class="bold">{{element.personLastName}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sex">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.sex' | translate }} </th>
+      <td mat-cell *matCellDef="let element">{{ 'enum.Sex.' + element.sex | translate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="districtUuid">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.district' | translate }} </th>
+      <td mat-cell *matCellDef="let element">{{element.districtUuid}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="healthFacilityName">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.healthFacilityName' | translate }} </th>
+      <td mat-cell *matCellDef="let element">{{element.healthFacilityName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="reportDate">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.reportDate' | translate }} </th>
+      <td mat-cell *matCellDef="let element">{{element.reportDate | date: defaultDateFormat}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="creationDate">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.creationDate' | translate }} </th>
+      <td mat-cell *matCellDef="let element">{{element.creationDate | date: defaultDateFormat}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="completeness">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.completeness' | translate }} </th>
+      <td mat-cell *matCellDef="let element">{{element.completeness}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="merge">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionMerge' | translate }} </th>
+      <td mat-cell *matCellDef="let element" class="actions">
+        <mat-icon (click)="mergeAction(element)" class="material-icons-round">vertical_align_center</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pick">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionPick' | translate }} </th>
+      <td mat-cell *matCellDef="let element" class="actions">
+        <mat-icon (click)="pickAction(element)" class="material-icons-round">check_circle_outline</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hide">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionHide' | translate }} </th>
+      <td mat-cell *matCellDef="let element" class="actions">
+        <mat-icon (click)="hideAction(element)" class="material-icons-round">remove</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; let index = index" [ngClass]="{'hide': isChildHidden(index)}"></tr>
+  </mat-table>
+</div>
