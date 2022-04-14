@@ -22,14 +22,12 @@ export class ExportService {
   }
 
   executeExport(exportType: string, endpoint: string): void {
-    this.subscriptions.push(
-      this.export(exportType, endpoint).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {},
-      })
-    );
+    this.export(exportType, endpoint).subscribe({
+      next: () => {},
+      error: (err: any) => {
+        this.notificationService.error(err);
+      },
+      complete: () => {},
+    });
   }
 }
