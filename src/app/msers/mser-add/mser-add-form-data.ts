@@ -72,6 +72,8 @@ export const FORM_DATA_MSERS_ADD = [
         key: 'healthFacility.uuid',
         label: 'captions.facility',
         service: 'facilityService',
+        fallbackOptionKey: 'OTHER_FACILITY',
+        fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
         determinedBy: [
           {
             key: 'district.uuid',

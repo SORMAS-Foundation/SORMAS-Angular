@@ -111,7 +111,7 @@ export const FORM_DATA_USER = [
     fields: [
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facilityTypeGroup',
+        key: 'facilityTypeGroup',
         label: 'captions.Facility.typeGroup',
         service: 'helperService',
         serviceMethod: 'getFacilityCategories',
@@ -119,13 +119,13 @@ export const FORM_DATA_USER = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facilityType',
+        key: 'facilityType',
         label: 'captions.Facility.type',
         service: 'helperService',
         serviceMethod: 'getFacilityTypes',
         determinedBy: [
           {
-            key: 'address.facilityTypeGroup',
+            key: 'facilityTypeGroup',
           },
         ],
         newLine: true,
@@ -133,11 +133,11 @@ export const FORM_DATA_USER = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facility',
+        key: 'facility',
         label: 'captions.Facility',
         service: 'facilityService',
         fallbackOptionKey: 'OTHER_FACILITY',
-        fallbackOptionValue: 'enum.PersonContactDetailType.OTHER',
+        fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
         determinedBy: [
           {
             key: 'address.district.uuid',
@@ -149,11 +149,11 @@ export const FORM_DATA_USER = [
             optional: true,
           },
           {
-            key: 'address.facilityTypeGroup',
+            key: 'facilityTypeGroup',
             keyMap: 'typeGroup',
           },
           {
-            key: 'address.facilityType',
+            key: 'facilityType',
             keyMap: 'type',
           },
         ],

@@ -360,6 +360,8 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'healthFacility.uuid',
         label: 'captions.Facility',
         service: 'facilityService',
+        fallbackOptionKey: 'OTHER_FACILITY',
+        fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
         determinedBy: [
           {
             key: 'responsibleDistrict.uuid',
