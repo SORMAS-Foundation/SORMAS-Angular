@@ -214,19 +214,6 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     );
   }
 
-  executeExport(exportType: string): void {
-    const endpoint: string = API_ROUTE_CONTACTS.EXPORT;
-    this.subscriptions.push(
-      this.exportService.export(exportType, endpoint).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {},
-      })
-    );
-  }
-
   exportBasicContact(): void {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportBasic'),
@@ -234,7 +221,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.BASIC);
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CONTACTS.EXPORT);
   }
 
   exportDetailedContact(): void {
@@ -244,7 +231,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.DETAILED);
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_CONTACTS.EXPORT);
   }
 
   exportFollowUpContact(): void {
@@ -254,8 +241,9 @@ export class ContactsListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.FOLLOW_UP);
+    this.exportService.executeExport(EXPORT_TYPES.FOLLOW_UP, API_ROUTE_CONTACTS.EXPORT);
   }
+
   openCustomExport(): void {
     this.dialog.open(CustomExportComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
