@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { HelperService } from '../helper.service';
 import { NotificationService } from '../notification.service';
@@ -7,7 +7,7 @@ import { NotificationService } from '../notification.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ExportService implements OnDestroy {
+export class ExportService {
   private subscriptions: Subscription[] = [];
 
   constructor(
@@ -31,9 +31,5 @@ export class ExportService implements OnDestroy {
         complete: () => {},
       })
     );
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
