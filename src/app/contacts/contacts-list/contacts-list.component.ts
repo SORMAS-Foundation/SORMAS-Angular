@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { addDays, format } from 'date-fns';
 import { filter } from 'rxjs/operators';
 import { ContactService } from '../../_services/api/contact.service';
@@ -78,7 +78,8 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private localStorageService: LocalStorageService,
     private filterService: FilterService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -187,6 +188,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.addLineListing();
         break;
       case ACTIONS_CONTACT.MERGE_DUPLICATES:
+        this.router.navigate(['/merge-duplicates/list/contacts']);
         break;
       default:
         break;

@@ -393,3 +393,19 @@ export const API_ROUTE_IMPORT_EXPORT = {
   ADD: 'export/push',
   DELETE: 'export/delete',
 };
+
+export const API_ROUTE_MERGE_DUPLICATES = {
+  ENDPOINT: 'mergeDuplicates',
+  GET_ALL: 'mergeDuplicates/indexList',
+  UPDATE: 'mergeDuplicates/update',
+  ADD: 'mergeDuplicates/add',
+  DELETE: 'mergeDuplicates/delete',
+};
+
+export const API_ROUTE_MERGE_DUPLICATES_CONTACT = {
+  ENDPOINT: 'mergeDuplicatesContact',
+  GET_ALL: 'mergeDuplicatesContact/indexList',
+  UPDATE: 'mergeDuplicatesContact/update',
+  ADD: 'mergeDuplicatesContact/add',
+  DELETE: 'mergeDuplicatesContact/delete',
+};

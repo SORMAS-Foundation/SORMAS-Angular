@@ -1,0 +1,14 @@
+<app-filters [topGap]="headerHeight">
+  <app-merge-duplicate-filters [formId]="formIdFilters" [data]="filtersData" filters></app-merge-duplicate-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title">
+        {{ 'captions.caseMergeDuplicates' | translate }}
+        <mat-icon (click)="openMergeDuplicatesCaseGuide()" class="material-icons-round">help_outline</mat-icon>
+      </h1>
+    </div>
+    <app-merge-duplicates-table
+      [type]="type"
+    ></app-merge-duplicates-table>
+  </ng-container>
+</app-filters>

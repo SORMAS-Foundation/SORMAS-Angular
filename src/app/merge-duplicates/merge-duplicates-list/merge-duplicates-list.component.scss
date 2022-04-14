@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.page-header-title {
+  .mat-icon {
+    font-size: 24px;
+    color: mat.get-color-from-palette($sormas-primary, 700);
+    margin-left: 8px;
+    cursor: pointer;
+  }
+}
