@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HelperService } from '../helper.service';
 import { NotificationService } from '../notification.service';
 
@@ -8,8 +8,6 @@ import { NotificationService } from '../notification.service';
   providedIn: 'root',
 })
 export class ExportService {
-  private subscriptions: Subscription[] = [];
-
   constructor(
     public helperService: HelperService,
     public httpClient: HttpClient,
