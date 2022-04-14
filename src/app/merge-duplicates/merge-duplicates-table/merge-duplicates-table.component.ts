@@ -24,7 +24,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
   displayedColumns: string[];
   hideChildren: number[] = [];
 
-  size = 10;
+  size = 20;
   offset = 0;
 
   constructor(
@@ -59,7 +59,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
       service = this.mergeDuplicatesContactService;
     }
     this.subscriptions.push(
-      service.getAll({ offset: this.offset, size: this.size }, false, null, true).subscribe({
+      service.getAll({ offset: this.offset, size: this.size }, null, null, true).subscribe({
         next: (response: any) => {
           if (concat) {
             this.mergeDuplicates = this.mergeDuplicates.concat(
@@ -122,16 +122,6 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
       );
     } else {
       this.hideChildren.push(index + 1);
-    }
-  }
-
-  onChangeCheckbox(element: any): void {
-    if (element.enabled) {
-      // eslint-disable-next-line no-param-reassign
-      element.endDate = new Date(Date.now() + 6.048e8 * 3);
-    } else {
-      // eslint-disable-next-line no-param-reassign
-      element.endDate = null;
     }
   }
 

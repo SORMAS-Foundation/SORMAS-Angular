@@ -1,10 +1,16 @@
-<div class="menu" [@animateMenu]="!menuOpen ? 'close' : 'open'">
+<div
+  #menu
+  [@animateMenu]="!menuOpen ? 'close' : 'open'"
+  [ngClass]="{ menu: true, collapsed: collapsed }"
+>
   <div class="menu-overlay" (click)="toggleMenu(false)" (keyup.enter)="toggleMenu(false)"></div>
-  <img class="logo" [src]="helperService.getImagePath('sormas-logo.svg')" i18n-alt alt="logo" />
+  <div #logo class="logo">
+    <img [src]="helperService.getImagePath('sormas-logo.svg')" />
+  </div>
   <button mat-icon-button (click)="toggleMenu()" (keyup.enter)="toggleMenu()" class="button-toggle">
     <mat-icon class="material-icons-round">menu</mat-icon>
   </button>
-  <nav mat-tab-nav-bar class="main-menu">
+  <nav #mainMenu mat-tab-nav-bar class="main-menu">
     <a
       mat-tab-link
       *ngFor="let route of routeConfig"
@@ -16,7 +22,7 @@
       {{ route.label | translate }}
     </a>
   </nav>
-  <nav class="user-menu">
+  <nav #userMenu class="user-menu">
     <a
       mat-icon-button
       routerLink="/configuration"

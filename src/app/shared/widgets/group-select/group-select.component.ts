@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { EXPORT_TYPE } from '../../../app.constants';
 import * as dataCase from '../../../cases/cases-list/export-configuration-form-data';
 import * as dataTask from '../../../tasks/tasks-list/export-configuration-form-data';
+import * as dataContact from '../../../contacts/contacts-list/export-configuration-form-data';
 import { FormBase, FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 @Component({
@@ -23,6 +24,9 @@ export class GroupSelectComponent implements OnInit {
         break;
       case EXPORT_TYPE.TASK:
         this.dataForm = dataTask.FORM_DATA_EXPORT_CONFIGURATION;
+        break;
+      case EXPORT_TYPE.CONTACT:
+        this.dataForm = dataContact.FORM_DATA_EXPORT_CONFIGURATION;
         break;
       default:
         break;

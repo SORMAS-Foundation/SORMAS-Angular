@@ -1,46 +1,46 @@
-<div class="dashboard-surveillance-wrapper">
-  <mat-card>
+<div
+  class="dashboard-surveillance-wrapper"
+  [ngClass]="{
+    'expand-map': hideEpiCurve,
+    'expand-epi-curve': hideMap
+  }"
+>
+  <mat-card class="dashboard-surveillance-filters">
     <app-dashboard-filters [showDisease]="false"></app-dashboard-filters>
   </mat-card>
 
-  <div [hidden]="hideDiseaseBurden">
-    <app-dashboard-disease-burden></app-dashboard-disease-burden>
-  </div>
+  <app-dashboard-disease-burden
+    [hidden]="hideDiseaseBurden"
+    class="dashboard-surveillance-disease-burden"
+  ></app-dashboard-disease-burden>
 
-  <mat-card class="pt-0">
+  <mat-card class="dashboard-surveillance-disease-menu">
     <app-dashboard-disease-menu></app-dashboard-disease-menu>
   </mat-card>
 
-  <div [hidden]="hideNewData">
-    <div class="width-50-mobile-100">
-      <mat-card class="mr-16-mobile-0">
-        <app-dashboard-new-cases></app-dashboard-new-cases>
-      </mat-card>
-    </div>
-    <div class="width-50-mobile-100">
-      <div class="width-50">
-        <mat-card class="mr-16">
-          <app-dashboard-new-events></app-dashboard-new-events>
-        </mat-card>
-      </div>
-      <div class="width-50">
-        <mat-card>
-          <app-dashboard-test-results></app-dashboard-test-results>
-        </mat-card>
-      </div>
-    </div>
-  </div>
+  <mat-card [hidden]="hideNewData" class="dashboard-surveillance-cases">
+    <app-dashboard-new-cases></app-dashboard-new-cases>
+  </mat-card>
 
-  <div [ngClass]="hideMap || hideEpiCurve ? '' : 'epi-visuals'">
-    <mat-card [hidden]="hideEpiCurve" class="epi-curve">
-      <app-dashboard-epidemiological-curve
-        [type]="dashboardEpidemiologicalCurveType.CASE"
-        (epiCurveViewUpdate)="onEpiCurveViewChange($event)"
-      ></app-dashboard-epidemiological-curve>
-    </mat-card>
+  <mat-card [hidden]="hideNewData" class="dashboard-surveillance-events">
+    <app-dashboard-new-events></app-dashboard-new-events>
+  </mat-card>
 
-    <mat-card [hidden]="hideMap" class="map">
-      <app-dashboard-map [mapType]="MapType.Surveillance" (mapViewUpdate)="onMapViewChange($event)"></app-dashboard-map>
-    </mat-card>
-  </div>
+  <mat-card [hidden]="hideNewData" class="dashboard-surveillance-results">
+    <app-dashboard-test-results></app-dashboard-test-results>
+  </mat-card>
+
+  <mat-card [hidden]="hideEpiCurve" class="dashboard-surveillance-epi-curve">
+    <app-dashboard-epidemiological-curve
+      [type]="dashboardEpidemiologicalCurveType.CASE"
+      (epiCurveViewUpdate)="onEpiCurveViewChange($event)"
+    ></app-dashboard-epidemiological-curve>
+  </mat-card>
+
+  <mat-card [hidden]="hideMap" class="dashboard-surveillance-map">
+    <app-dashboard-map
+      [mapType]="MapType.Surveillance"
+      (mapViewUpdate)="onMapViewChange($event)"
+    ></app-dashboard-map>
+  </mat-card>
 </div>
