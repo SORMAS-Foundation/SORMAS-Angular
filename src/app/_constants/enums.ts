@@ -623,6 +623,12 @@ export enum EventInvestigationStatusOptions {
   DISCARDED = 'enum.EventInvestigationStatus.DISCARDED',
 }
 
+export enum EventIdentificationSource {
+  UNKNOWN = 'enum.EventIdentificationSource.UNKNOWN',
+  BACKWARD_TRACING = 'enum.EventIdentificationSource.BACKWARD_TRACING',
+  FORWARD_TRACING = 'enum.EventIdentificationSource.FORWARD_TRACING',
+}
+
 export enum ContactProximity {
   TOUCHED_FLUID = 'enum.ContactProximity.TOUCHED_FLUID',
   PHYSICAL_CONTACT = 'enum.ContactProximity.PHYSICAL_CONTACT',
@@ -985,4 +991,21 @@ export enum LabMessageStatus {
   PROCESSED = 'enum.LabMessageStatus.PROCESSED',
   FORWARDED = 'enum.LabMessageStatus.FORWARDED',
   UNCLEAR = 'enum.LabMessageStatus.UNCLEAR',
+}
+
+export enum ActionPriority {
+  HIGH = 'enum.ActionPriority.HIGH',
+  LOW = 'enum.ActionPriority.LOW',
+  NORMAL = 'enum.ActionPriority.NORMAL',
+}
+
+export enum ActionStatus {
+  DONE = 'enum.ActionStatus.DONE',
+  PENDING = 'enum.ActionStatus.PENDING',
+  IN_PROGRESS = 'enum.ActionStatus.IN_PROGRESS',
+}
+
+export enum EventCriteriaDateType {
+  EVENT_DATE = 'enum.EventCriteriaDateType.EVENT_DATE',
+  REPORT_DATE = 'enum.EventCriteriaDateType.REPORT_DATE',
 }

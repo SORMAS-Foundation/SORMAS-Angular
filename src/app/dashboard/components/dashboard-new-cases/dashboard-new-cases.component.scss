@@ -130,3 +130,10 @@
     }
   }
 }
+
+@media (min-width: map-get($grid-breakpoints, lg)) {
+  .cases-container {
+    max-width: 680px;
+    margin-inline: auto;
+  }
+}

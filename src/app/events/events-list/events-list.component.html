@@ -9,6 +9,13 @@
         <button mat-flat-button color="primary" (click)="openAddEventModal()">
           {{ 'captions.eventNewEvent' | translate }}
         </button>
+
+        <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+          <app-action-menu
+            [config]="actionsMore"
+            (action)="onActionSelected($event)"
+          ></app-action-menu>
+        </app-dropdown-menu>
       </div>
     </div>
     <app-table

@@ -1,6 +1,10 @@
 @use '@angular/material' as mat;
 @use '../../../variables' as *;
 
+:host {
+  display: block;
+}
+
 .menu {
   @include mat.elevation(2);
   position: fixed;
@@ -27,10 +31,14 @@
 }
 
 .logo {
-  width: 40px;
+  display: flex;
   height: 68px;
-  margin-right: 24px;
-  margin-left: 24px;
+  padding-right: 24px;
+  padding-left: 24px;
+
+  img {
+    width: 40px;
+  }
 }
 
 .button-toggle {
@@ -81,8 +89,8 @@
   }
 }
 
-@media (max-width: map-get($grid-breakpoints, md)) {
-  .menu {
+.collapsed {
+  &.menu {
     overflow: hidden;
     height: auto;
     flex-direction: row;
@@ -90,7 +98,10 @@
   }
 
   .button-toggle {
+    position: absolute;
     top: 14px;
+    left: 0;
+    right: 0;
     display: block;
     margin: 0 auto;
   }
@@ -98,9 +109,5 @@
   .main-menu {
     flex-basis: 100%;
     order: 4;
-  }
-
-  .user-menu {
-    margin-left: 0;
   }
 }

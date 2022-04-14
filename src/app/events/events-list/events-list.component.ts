@@ -14,9 +14,13 @@ import {
   HEADER_HEIGHT,
   EVENT_FILTERS_FORM_ID,
   MODAL_MEDIUM_WIDTH,
+  ACTIONS_EVENT,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+  EXPORT_TYPES,
+  API_ROUTE_EVENTS,
 } from '../../app.constants';
 import { EventAddComponent } from '../event-add/event-add.component';
-import { actionsBulkEditDefs } from './event-list-actions-data';
+import { actionsBulkEditDefs, actionsMoreDefs } from './event-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_FILTERS } from '../event-filters/event-filters-form-data';
@@ -26,6 +30,7 @@ import { EventGroupAddModalComponent } from '../event-group-add-modal/event-grou
 import { EventGroupService } from '../../_services/api/event-group.service';
 import { NotificationService } from '../../_services/notification.service';
 import { TableComponent } from '../../shared/table/table.component';
+import { ExportService } from '../../_services/api/export.service';
 
 @Component({
   selector: 'app-events-list',
@@ -36,6 +41,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_EVENT_FILTERS));
   tasks: EventDto[] = [];
   defaultColumns: TableColumn[] = [];
+  actionsMore: NavItem[] = actionsMoreDefs;
   configKey = CONFIG_EVENTS;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams = this.activeRoute.snapshot.queryParams;
@@ -51,6 +57,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   constructor(
     public eventService: EventService,
     public helperService: HelperService,
+    public exportService: ExportService,
     private dialog: MatDialog,
     private translateService: TranslateService,
     private activeRoute: ActivatedRoute,
@@ -67,6 +74,19 @@ export class EventsListComponent implements OnInit, OnDestroy {
         this.routeParams = params;
       })
     );
+  }
+
+  onActionSelected(event: any): void {
+    switch (event) {
+      case ACTIONS_EVENT.BASIC_EXPORT:
+        this.exportBasicEvent();
+        break;
+      case ACTIONS_EVENT.DETAILED_EXPORT:
+        this.exportDetailedEvent();
+        break;
+      default:
+        break;
+    }
   }
 
   openAddEventModal(): void {
@@ -141,6 +161,26 @@ export class EventsListComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  exportBasicEvent(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_EVENTS.EXPORT);
+  }
+
+  exportDetailedEvent(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportDetailed'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_EVENTS.EXPORT);
   }
 
   ngOnDestroy(): void {

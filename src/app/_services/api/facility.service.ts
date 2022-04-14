@@ -6,13 +6,13 @@ import { BaseService } from './base.service';
 import * as constants from '../../app.constants';
 import { FacilityDto } from '../../_models/models';
 import { HelperService } from '../helper.service';
-import { FacilitySerializer } from '../../_serializers/facility.serializer';
+import { Serializer } from '../../_serializers/serializer';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FacilityService extends BaseService<FacilityDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(httpClient, helperService, '', constants.API_ROUTE_FACILITIES, new FacilitySerializer());
+    super(httpClient, helperService, '', constants.API_ROUTE_FACILITIES, new Serializer());
   }
 }

@@ -7,6 +7,10 @@
   $foreground: map-get($theme, foreground);
 
   :root {
+    .mat-datepicker-content {
+      color: unset;
+    }
+
     .mat-form-field-appearance-outline {
       .mat-form-field-flex {
         align-items: center;

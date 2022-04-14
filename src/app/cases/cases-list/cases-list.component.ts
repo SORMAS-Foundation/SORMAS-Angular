@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,17 +15,18 @@ import { CONFIG_CASES } from '../../_constants/storage';
 import {
   HEADER_HEIGHT,
   ADD_MODAL_MAX_WIDTH,
-  CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+  EXPORT_CUSTOM_MODAL_WIDTH,
   CASE_IMPORT_MODAL_WIDTH,
   CASE_FILTERS_FORM_ID,
   ACTIONS_VIEW_OPTIONS,
   PERIOD_PICKER_DEFAULT_RANGE,
   CASE_LINE_LISTING_FORM_ID,
-  CASE_EXPORT_TYPES,
   SMALL_NOTIFICATION_MODAL_WIDTH,
+  EXPORT_TYPE,
+  EXPORT_TYPES,
+  API_ROUTE_CASES,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CustomCaseExportComponent } from '../custom-case-export/custom-case-export.component';
 import {
   actionsMoreDefs,
   actionsViewOptionsDefs,
@@ -44,6 +45,9 @@ import { LineListingAddComponent } from '../../shared/modals/line-listing-add-mo
 import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseGuideComponent } from '../case-guide/case-guide.component';
+import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
+import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
+import { ExportService } from '../../_services/api/export.service';
 
 @Component({
   selector: 'app-cases-list',
@@ -74,6 +78,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   constructor(
     private caseService: CaseService,
+    private exportService: ExportService,
     private caseFollowUpService: CaseFollowUpService,
     public helperService: HelperService,
     private activeRoute: ActivatedRoute,
@@ -81,7 +86,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private localStorageService: LocalStorageService,
     private filterService: FilterService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -177,6 +183,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.openCaseGuide();
         break;
       case ACTIONS_CASE.MERGE_DUPLICATES:
+        this.router.navigate(['/merge-duplicates/list/cases']);
         break;
       default:
         break;
@@ -184,21 +191,13 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   exportCustomCase(): void {
-    this.dialog.open(CustomCaseExportComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+    this.dialog.open(CustomExportComponent, {
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
+      data: {
+        exportType: EXPORT_TYPE.CASE,
+        exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
+      },
     });
-  }
-
-  executeExport(exportType: string): void {
-    this.subscriptions.push(
-      this.caseService.export(exportType).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {},
-      })
-    );
   }
 
   exportBasicCase(): void {
@@ -208,7 +207,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(CASE_EXPORT_TYPES.BASIC);
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CASES.EXPORT);
   }
 
   exportDetailedCase(): void {
@@ -218,7 +217,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(CASE_EXPORT_TYPES.DETAILED);
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_CASES.EXPORT);
   }
 
   exportManagementCase(): void {
@@ -228,7 +227,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(CASE_EXPORT_TYPES.CASE_MANAGEMENT);
+    this.exportService.executeExport(EXPORT_TYPES.CASE_MANAGEMENT, API_ROUTE_CASES.EXPORT);
   }
 
   exportSampleCase(): void {
@@ -238,7 +237,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(CASE_EXPORT_TYPES.SAMPLE);
+    this.exportService.executeExport(EXPORT_TYPES.SAMPLE, API_ROUTE_CASES.EXPORT);
   }
 
   addLineListing(): void {
@@ -287,7 +286,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openCaseGuide(): void {
     this.dialog.open(CaseGuideComponent, {
-      width: CASE_EXPORT_CUSTOM_MODAL_WIDTH,
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }
 

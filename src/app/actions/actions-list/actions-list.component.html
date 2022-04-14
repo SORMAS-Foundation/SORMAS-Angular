@@ -1,0 +1,28 @@
+<app-filters [topGap]="headerHeight">
+  <app-action-filters [formId]="formIdFilters" [data]="filtersData" filters></app-action-filters>
+  <ng-container list>
+    <div class="page-header">
+      <h1 class="page-header-title">
+        {{ 'captions.View.actions' | translate }}
+      </h1>
+      <div class="page-header-actions">
+        <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+          <app-action-menu
+            [config]="actionsMore"
+            (action)="onActionSelected($event)"
+          ></app-action-menu>
+        </app-dropdown-menu>
+      </div>
+    </div>
+    <app-table
+      [filterFormId]="formIdFilters"
+      [resourceService]="eventActionService"
+      [tableColumns]="defaultColumns"
+      [isSortable]="true"
+      [isHeaderSticky]="true"
+      [fullHeight]="true"
+      [saveConfigKey]="configKey"
+      [viewOptions]="actionsViewOption"
+    ></app-table>
+  </ng-container>
+</app-filters>

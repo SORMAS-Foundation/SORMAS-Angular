@@ -66,6 +66,8 @@ import { LineListingNewContactsComponent } from './widgets/line-listing-new-cont
 import { CasePersonContactsListComponent } from './widgets/case-person-contacts-list/case-person-contacts-list.component';
 import { CasePersonContactAddEditComponent } from './case-person-contact-add-edit/case-person-contact-add-edit.component';
 import { GroupSelectComponent } from './widgets/group-select/group-select.component';
+import { CustomExportComponent } from './modals/custom-export/custom-export.component';
+import { ExportConfigurationComponent } from './modals/export-configuration/export-configuration.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +120,8 @@ import { GroupSelectComponent } from './widgets/group-select/group-select.compon
     CasePersonContactsListComponent,
     CasePersonContactAddEditComponent,
     GroupSelectComponent,
+    CustomExportComponent,
+    ExportConfigurationComponent,
   ],
   imports: [
     CommonModule,
@@ -173,6 +177,8 @@ import { GroupSelectComponent } from './widgets/group-select/group-select.compon
     ToggleViewComponent,
     LegendComponent,
     PeriodPickerComponent,
+    CustomExportComponent,
+    ExportConfigurationComponent,
   ],
 })
 export class SharedModule {}
