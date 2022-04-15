@@ -136,8 +136,10 @@ export const FORM_DATA_USER = [
         key: 'facility',
         label: 'captions.Facility',
         service: 'facilityService',
-        fallbackOptionKey: 'OTHER_FACILITY',
-        fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
         determinedBy: [
           {
             key: 'address.district.uuid',

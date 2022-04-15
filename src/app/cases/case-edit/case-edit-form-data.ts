@@ -183,8 +183,10 @@ export const FORM_DATA_CASE_EDIT = [
         label: 'captions.Facility',
         validation: ['required'],
         service: 'facilityService',
-        fallbackOptionKey: 'OTHER_FACILITY',
-        fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
         determinedBy: [
           {
             key: 'district.uuid',

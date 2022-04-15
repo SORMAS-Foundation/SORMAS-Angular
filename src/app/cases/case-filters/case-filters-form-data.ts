@@ -239,8 +239,10 @@ export const FORM_DATA_CASE_FILTERS = [
         key: 'healthFacility.uuid',
         placeholder: 'captions.Facility',
         service: 'facilityService',
-        fallbackOptionKey: 'OTHER_FACILITY',
-        fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
         determinedBy: [
           {
             key: 'district.uuid',

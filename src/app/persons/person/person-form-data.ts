@@ -372,8 +372,10 @@ export const FORM_DATA_PERSON = [
         key: 'facility',
         label: 'captions.Location.facility',
         service: 'facilityService',
-        fallbackOptionKey: 'OTHER_FACILITY',
-        fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
         determinedBy: [
           {
             key: 'facilityCategory',

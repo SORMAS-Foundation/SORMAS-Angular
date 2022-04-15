@@ -550,8 +550,10 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'facility',
         label: 'captions.facility',
         dependingOn: 'typeOfPlace',
-        fallbackOptionKey: 'OTHER_FACILITY',
-        fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
         dependingOnValues: ['FACILITY'],
         service: 'facilityService',
         determinedBy: [

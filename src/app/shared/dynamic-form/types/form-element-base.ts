@@ -33,8 +33,7 @@ export class FormElementBase<T> {
   service?: string;
   serviceMethod?: string;
   determinedBy?: FormElementDependency[];
-  fallbackOptionKey?: string;
-  fallbackOptionValue?: string;
+  fallbackOption?: { fallbackOptionKey: string; fallbackOptionValue: string };
 
   constructor(
     options: {
@@ -68,8 +67,7 @@ export class FormElementBase<T> {
       service?: string;
       serviceMethod?: string;
       determinedBy?: FormElementDependency[];
-      fallbackOptionKey?: string;
-      fallbackOptionValue?: string;
+      fallbackOption?: { fallbackOptionKey: string; fallbackOptionValue: string };
     } = {}
   ) {
     this.value = options.value;
@@ -102,8 +100,7 @@ export class FormElementBase<T> {
     this.service = options.service;
     this.serviceMethod = options.serviceMethod;
     this.determinedBy = options.determinedBy;
-    this.fallbackOptionKey = options.fallbackOptionKey;
-    this.fallbackOptionValue = options.fallbackOptionValue;
+    this.fallbackOption = options.fallbackOption;
   }
 }
 
