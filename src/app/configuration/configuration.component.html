@@ -7,6 +7,15 @@
         <h1>{{ regionName }}</h1>
       </a>
     </div>
+
+    <div class="page-header-actions">
+      <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+        <app-action-menu
+          [config]="actionsMore"
+          (action)="onActionSelected($event)"
+        ></app-action-menu>
+      </app-dropdown-menu>
+    </div>
   </header>
 
   <div class="tab-nav-header" *ngIf="!regionName">
