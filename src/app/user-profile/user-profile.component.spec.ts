@@ -40,19 +40,4 @@ describe('UserProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should render header and card', () => {
-    const card = document.getElementsByTagName('mat-card');
-    const header = document.getElementsByTagName('h2');
-
-    expect(card[0]).toBeDefined();
-    expect(header[0].textContent).toBe('myProfile.userProfile');
-  });
-
-  it('renderes roles', async () => {
-    const chips = await loader.getAllHarnesses(MatChipHarness);
-    const rolesInChips = await Promise.all(chips.map((c) => c.getText()));
-
-    expect(rolesInChips).toEqual(mockRoles);
-  });
 });

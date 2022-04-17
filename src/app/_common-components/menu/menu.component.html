@@ -16,24 +16,22 @@
       *ngFor="let route of routeConfig"
       [routerLink]="[route.link]"
       [active]="isSelectedLink(route.selectedLink)"
-      (click)="toggleMenu()"
-      (keyup.enter)="toggleMenu()"
     >
       {{ route.label | translate }}
     </a>
   </nav>
   <nav #userMenu class="user-menu">
     <a
+      *ngFor="let route of userRouteConfig"
       mat-icon-button
-      routerLink="/configuration"
-      (click)="toggleMenu()"
-      (keyup.enter)="toggleMenu()"
-      [ngClass]="{
-        'button-settings': true,
-        active: isSelectedLink('configuration')
-      }"
+      [routerLink]="[route.link]"
+      [ngClass]="[
+        'button-user-menu',
+        route.selectedLink,
+        isSelectedLink(route.selectedLink) ? 'active' : ''
+      ]"
     >
-      <mat-icon class="material-icons-round">settings</mat-icon>
+      <mat-icon class="material-icons-round">{{ route.icon }}</mat-icon>
     </a>
   </nav>
 </div>

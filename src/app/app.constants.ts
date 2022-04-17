@@ -9,3 +9,4 @@ export * from './_constants/breakpoints';
 export * from './_constants/storage';
 export * from './_constants/form-identifiers';
 export * from './_constants/graphs';
+export * from './_constants/locale-options';

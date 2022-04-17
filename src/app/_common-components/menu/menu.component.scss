@@ -57,7 +57,7 @@
   margin-left: auto;
 }
 
-.button-settings {
+.button-user-menu {
   width: 30px;
   height: 30px;
   border: 2px solid map-get($sormas-accent, 600);
@@ -65,7 +65,7 @@
   color: map-get($sormas-primary, 50);
   line-height: 24px;
 
-  .mat-icon {
+  &:not(.about) .mat-icon {
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -81,10 +81,27 @@
   &:focus {
     background-color: map-get($sormas-accent, 700);
   }
+
+  & + & {
+    margin-left: 12px;
+  }
+}
+
+.button-user-menu.about {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  color: map-get($sormas-primary, 200);
+
+  &.active,
+  &:hover,
+  &:focus {
+    color: map-get($sormas-primary, 400);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .button-settings {
+  .button-user-menu {
     transition: 0.2s;
   }
 }
@@ -109,5 +126,17 @@
   .main-menu {
     flex-basis: 100%;
     order: 4;
+  }
+}
+
+:host-context([dir='rtl']) {
+  .user-menu {
+    margin-left: 24px;
+    margin-right: auto;
+  }
+
+  .button-user-menu + .button-user-menu {
+    margin-left: 0;
+    margin-right: 12px;
   }
 }

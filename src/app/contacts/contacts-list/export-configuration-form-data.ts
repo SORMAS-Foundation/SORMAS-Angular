@@ -260,12 +260,6 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'addressGpsCoordinates',
-        label: 'captions.CaseExport.addressGpsCoordinates',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_CHECKBOX,
         key: 'facility',
         label: 'captions.Location.facility',
         className: 'fullwidth',

@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from '../material.module';
-import { LocaleSelectComponent } from './locale-select/locale-select.component';
 import { TableComponent } from './table/table.component';
 import { DialogModule } from './dialog';
 import { InpageNavModule } from './inpage-nav/inpage-nav.module';
@@ -71,7 +70,6 @@ import { ExportConfigurationComponent } from './modals/export-configuration/expo
 
 @NgModule({
   declarations: [
-    LocaleSelectComponent,
     TableComponent,
     FormActionsComponent,
     NewEpidNumberComponent,
@@ -145,7 +143,6 @@ import { ExportConfigurationComponent } from './modals/export-configuration/expo
     FiltersModule,
   ],
   exports: [
-    LocaleSelectComponent,
     TableComponent,
     RouterModule,
     MaterialModule,
