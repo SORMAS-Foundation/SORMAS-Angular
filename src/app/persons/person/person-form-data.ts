@@ -349,22 +349,43 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facilityCategory',
+        key: 'facilityCategory',
         label: 'captions.facilityTypeGroup',
-        options: [],
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
         newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facilityType',
+        key: 'facilityType',
         label: 'captions.Location.facilityType',
-        options: [],
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
+          {
+            key: 'facilityCategory',
+          },
+        ],
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'address.facility',
+        key: 'facility',
         label: 'captions.Location.facility',
-        options: [],
+        service: 'facilityService',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
+        determinedBy: [
+          {
+            key: 'facilityCategory',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
+          },
+        ],
       },
       {
         ...FORM_DATA_INPUT,

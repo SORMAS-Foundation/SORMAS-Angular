@@ -491,12 +491,8 @@ export const FORM_DATA_EVENT_ADD = [
         newLine: true,
         dependingOn: 'typeOfPlace',
         dependingOnValues: ['FACILITY'],
-        options: [
-          {
-            key: 'default',
-            value: 'default',
-          },
-        ],
+        service: 'helperService',
+        serviceMethod: 'getFacilityCategories',
       },
       {
         ...FORM_DATA_SELECT,
@@ -504,10 +500,11 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.facilityType',
         dependingOn: 'typeOfPlace',
         dependingOnValues: ['FACILITY'],
-        options: [
+        service: 'helperService',
+        serviceMethod: 'getFacilityTypes',
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'facilityCategory',
           },
         ],
       },
@@ -517,10 +514,19 @@ export const FORM_DATA_EVENT_ADD = [
         label: 'captions.facility',
         dependingOn: 'typeOfPlace',
         dependingOnValues: ['FACILITY'],
-        options: [
+        service: 'facilityService',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
+        determinedBy: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'facilityCategory',
+            keyMap: 'typeGroup',
+          },
+          {
+            key: 'facilityType',
+            keyMap: 'type',
           },
         ],
       },
