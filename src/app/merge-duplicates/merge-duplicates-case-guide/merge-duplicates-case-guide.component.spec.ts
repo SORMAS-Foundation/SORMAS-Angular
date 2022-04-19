@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
 
+import { TranslateModule } from '@ngx-translate/core';
 import { MergeDuplicatesCaseGuideComponent } from './merge-duplicates-case-guide.component';
 
 describe('MergeDuplicatesCaseGuideComponent', () => {

@@ -30,8 +30,10 @@ export class MergeDuplicatesListComponent implements OnInit {
     const routeParams = this.activeRoute.snapshot.params;
     this.type = routeParams.type;
 
-    this.dialog.open(MergeDuplicatesCautionComponent, {
-      width: EXPORT_CUSTOM_MODAL_WIDTH,
+    setTimeout(() => {
+      this.dialog.open(MergeDuplicatesCautionComponent, {
+        width: EXPORT_CUSTOM_MODAL_WIDTH,
+      });
     });
   }
 
