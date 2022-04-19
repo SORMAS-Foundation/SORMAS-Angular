@@ -2,6 +2,12 @@
   <h2 class="assessments-title">
     {{ 'captions.caseFollowupVisitsView' | translate }}
   </h2>
+  <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}" class="more-btn">
+    <app-action-menu
+      [config]="actionsMore"
+      (action)="onActionSelected($event)"
+    ></app-action-menu>
+  </app-dropdown-menu>
   <mat-card class="assessments-list">
     <app-table
       [resourceService]="visitService"

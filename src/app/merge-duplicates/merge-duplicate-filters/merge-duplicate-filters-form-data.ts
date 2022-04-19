@@ -30,7 +30,7 @@ export const FORM_DATA_MERGE_DUPLICATE_FILTERS = [
   },
   {
     id: 'creationDate',
-    title: 'strings.entityCases',
+    title: 'captions.creationDate',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {

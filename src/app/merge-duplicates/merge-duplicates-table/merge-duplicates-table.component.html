@@ -1,8 +1,12 @@
 <div class="merge-duplicates-table-wrapper" *ngIf="mergeDuplicates">
+  <p class="total">{{getTotal()}}</p>
   <mat-table [dataSource]="mergeDuplicates" (scroll)="onTableScroll($event)">
 
     <ng-container matColumnDef="uuid">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.uuid' | translate }} </th>
+      <th mat-header-cell *matHeaderCellDef>
+        <span *ngIf="type === 'cases'">{{ 'captions.CaseData.uuid' | translate }}</span>
+        <span *ngIf="type === 'contacts'">{{ 'captions.Contact.uuid' | translate }}</span>
+      </th>
       <td mat-cell *matCellDef="let element ; let index = index" class="uuid" [ngClass]="{'pl-child': isChild(index)}">
         <mat-icon
           *ngIf="!isChild(index)"
@@ -14,6 +18,11 @@
           <span class="bold">{{element.uuid | slice: 0:6}}</span>
         </a>
       </td>
+    </ng-container>
+
+    <ng-container matColumnDef="caze">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.contactSourceCase' | translate }} </th>
+      <td mat-cell *matCellDef="let element"> {{element.caze.caption}} </td>
     </ng-container>
 
     <ng-container matColumnDef="disease">
@@ -34,6 +43,13 @@
     <ng-container matColumnDef="personLastName">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.personLastName' | translate }} </th>
       <td mat-cell *matCellDef="let element"> <span class="bold">{{element.personLastName}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.Person.approximateAge' | translate }} </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.ageAndBirthDate.age }} ({{ element.ageAndBirthDate.dateOfBirthDD }}/{{ element.ageAndBirthDate.dateOfBirthMM }}/{{ element.ageAndBirthDate.dateOfBirthYYYY }})
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="sex">
@@ -63,7 +79,18 @@
 
     <ng-container matColumnDef="completeness">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.completeness' | translate }} </th>
-      <td mat-cell *matCellDef="let element">{{element.completeness}}</td>
+      <td
+        mat-cell
+        *matCellDef="let element" class="completeness"
+        [ngClass]="{
+        'value-low': element.completeness > -0.01 && element.completeness < 25.01,
+        'value-medium': element.completeness > 25 && element.completeness < 50.01,
+        'value-normal': element.completeness > 50 && element.completeness < 75.01,
+        'value-high': element.completeness > 75 && element.completeness < 100.01
+        }"
+      >
+          {{element.completeness}}%
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="merge">
@@ -73,17 +100,17 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="hide">
+      <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionHide' | translate }} </th>
+      <td mat-cell *matCellDef="let element ; let index = index" class="actions">
+        <mat-icon (click)="hideAction(element)" *ngIf="!isChild(index)" class="material-icons-round">remove</mat-icon>
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="pick">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionPick' | translate }} </th>
       <td mat-cell *matCellDef="let element" class="actions">
         <mat-icon (click)="pickAction(element)" class="material-icons-round">check_circle_outline</mat-icon>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="hide">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionHide' | translate }} </th>
-      <td mat-cell *matCellDef="let element" class="actions">
-        <mat-icon (click)="hideAction(element)" class="material-icons-round">remove</mat-icon>
       </td>
     </ng-container>
 

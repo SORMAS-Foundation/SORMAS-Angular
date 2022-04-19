@@ -9,6 +9,7 @@ import { MergeDuplicateFiltersComponent } from './merge-duplicate-filters/merge-
 import { MergeDuplicatesListComponent } from './merge-duplicates-list/merge-duplicates-list.component';
 import { MergeDuplicatesTableComponent } from './merge-duplicates-table/merge-duplicates-table.component';
 import { MergeDuplicatesCaseGuideComponent } from './merge-duplicates-case-guide/merge-duplicates-case-guide.component';
+import { MergeDuplicatesCautionComponent } from './merge-duplicates-caution/merge-duplicates-caution.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MergeDuplicatesCaseGuideComponent } from './merge-duplicates-case-guide
     MergeDuplicatesListComponent,
     MergeDuplicatesTableComponent,
     MergeDuplicatesCaseGuideComponent,
+    MergeDuplicatesCautionComponent,
   ],
   imports: [
     CommonModule,

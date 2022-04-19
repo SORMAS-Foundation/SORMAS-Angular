@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { DatepickerHeaderTodayComponent } from '../../shared/dynamic-form/components/datepicker-header-today/datepicker-header-today.component';
 import { DEFAULT_DATE_FORMAT } from '../../_constants/common';
 import { MergeDuplicateDto } from '../../_models/mergeDuplicateDto';
@@ -27,9 +28,12 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
   size = 20;
   offset = 0;
 
+  totalElementCount: number;
+
   constructor(
     private mergeDuplicatesService: MergeDuplicateService,
-    private mergeDuplicatesContactService: MergeDuplicateContactService
+    private mergeDuplicatesContactService: MergeDuplicateContactService,
+    public translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +43,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
       'caseClassification',
       'personFirstName',
       'personLastName',
+      'age',
       'sex',
       'districtUuid',
       'healthFacilityName',
@@ -46,9 +51,13 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
       'creationDate',
       'completeness',
       'merge',
-      'pick',
       'hide',
+      'pick',
     ];
+
+    if (this.type === 'contacts') {
+      this.displayedColumns.splice(1, 0, 'caze');
+    }
 
     this.getMergeDuplicates();
   }
@@ -68,6 +77,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
           } else {
             this.mergeDuplicates = this.processTableData(response.elements);
           }
+          this.totalElementCount = response.totalElementCount;
         },
         error: () => {},
         complete: () => {},
@@ -138,6 +148,10 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
   hideAction(element: any): void {
     // eslint-disable-next-line no-console
     console.log('element', element);
+  }
+
+  getTotal(): string {
+    return this.translateService.instant('captions.caseNumberOfDuplicatesDetected').replace('%d', this.totalElementCount);
   }
 
   ngOnDestroy(): void {

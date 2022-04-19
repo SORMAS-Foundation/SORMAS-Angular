@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CaseFollowUpComponent } from './case-follow-up.component';
 
 describe('CaseFollowUpComponent', () => {
@@ -11,7 +12,7 @@ describe('CaseFollowUpComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CaseFollowUpComponent],
-      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule, MatDialogModule],
     }).compileComponents();
   });
 
