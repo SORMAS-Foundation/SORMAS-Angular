@@ -98,10 +98,6 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  triggerDatePicker(picker: any): void {
-    picker.open();
-  }
-
   processTableData(array: any[]): any[] {
     const newArray: any[] = [];
     array.forEach((mergeDuplicate: any) => {
@@ -151,7 +147,9 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
   }
 
   getTotal(): string {
-    return this.translateService.instant('captions.caseNumberOfDuplicatesDetected').replace('%d', this.totalElementCount);
+    return this.translateService
+      .instant('captions.caseNumberOfDuplicatesDetected')
+      .replace('%d', this.totalElementCount);
   }
 
   ngOnDestroy(): void {

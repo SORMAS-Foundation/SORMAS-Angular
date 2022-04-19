@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
-  ACTIONS_CASE_FOLLOW_UP, API_ROUTE_CASES_FOLLOW_UP,
-  API_ROUTE_SAMPLES,
+  ACTIONS_CASE_FOLLOW_UP,
+  API_ROUTE_CASES_FOLLOW_UP,
   EXPORT_TYPES,
   TableAppearanceOptions,
 } from '../../../app.constants';
