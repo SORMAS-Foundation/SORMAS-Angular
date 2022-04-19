@@ -1,0 +1,16 @@
+<div mat-dialog-title>
+  <mat-icon class="material-icons-round warning-icon">warning_amber</mat-icon>
+  <h1>{{ 'strings.headingCaution' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div [innerHtml]="'strings.infoMergeFiltersHint' | translate" class="guide-info"></div>
+  <button class="continue-btn" mat-flat-button color="primary" [mat-dialog-close]="">
+    {{ 'captions.actionContinue' | translate }}
+  </button>
+</div>
