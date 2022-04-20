@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { addDays, format } from 'date-fns';
 import { filter } from 'rxjs/operators';
 import { ContactService } from '../../_services/api/contact.service';
@@ -78,7 +78,8 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private localStorageService: LocalStorageService,
     private filterService: FilterService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -187,6 +188,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.addLineListing();
         break;
       case ACTIONS_CONTACT.MERGE_DUPLICATES:
+        this.router.navigate(['/merge-duplicates/list/contacts']);
         break;
       default:
         break;
@@ -212,19 +214,6 @@ export class ContactsListComponent implements OnInit, OnDestroy {
     );
   }
 
-  executeExport(exportType: string): void {
-    const endpoint: string = API_ROUTE_CONTACTS.EXPORT;
-    this.subscriptions.push(
-      this.exportService.export(exportType, endpoint).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {},
-      })
-    );
-  }
-
   exportBasicContact(): void {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportBasic'),
@@ -232,7 +221,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.BASIC);
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CONTACTS.EXPORT);
   }
 
   exportDetailedContact(): void {
@@ -242,7 +231,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.DETAILED);
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_CONTACTS.EXPORT);
   }
 
   exportFollowUpContact(): void {
@@ -252,8 +241,9 @@ export class ContactsListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.FOLLOW_UP);
+    this.exportService.executeExport(EXPORT_TYPES.FOLLOW_UP, API_ROUTE_CONTACTS.EXPORT);
   }
+
   openCustomExport(): void {
     this.dialog.open(CustomExportComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,

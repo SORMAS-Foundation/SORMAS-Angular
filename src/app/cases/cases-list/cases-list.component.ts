@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -46,7 +46,6 @@ import { FORM_DATA_LINE_LISTING_ADD } from './case-line-listing-add-form-data';
 import { NotificationService } from '../../_services/notification.service';
 import { CaseGuideComponent } from '../case-guide/case-guide.component';
 import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
-import { MergeDuplicatesCaseGuideComponent } from '../merge-duplicates-case-guide/merge-duplicates-case-guide.component';
 import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
 import { ExportService } from '../../_services/api/export.service';
 
@@ -87,7 +86,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private localStorageService: LocalStorageService,
     private filterService: FilterService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -183,7 +183,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.openCaseGuide();
         break;
       case ACTIONS_CASE.MERGE_DUPLICATES:
-        this.openMergeDuplicatesCaseGuide();
+        this.router.navigate(['/merge-duplicates/list/cases']);
         break;
       default:
         break;
@@ -200,19 +200,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
     });
   }
 
-  executeExport(exportType: string): void {
-    const endpoint: string = API_ROUTE_CASES.EXPORT;
-    this.subscriptions.push(
-      this.exportService.export(exportType, endpoint).subscribe({
-        next: () => {},
-        error: (err: any) => {
-          this.notificationService.error(err);
-        },
-        complete: () => {},
-      })
-    );
-  }
-
   exportBasicCase(): void {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportBasic'),
@@ -220,7 +207,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.BASIC);
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CASES.EXPORT);
   }
 
   exportDetailedCase(): void {
@@ -230,7 +217,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.DETAILED);
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_CASES.EXPORT);
   }
 
   exportManagementCase(): void {
@@ -240,7 +227,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.CASE_MANAGEMENT);
+    this.exportService.executeExport(EXPORT_TYPES.CASE_MANAGEMENT, API_ROUTE_CASES.EXPORT);
   }
 
   exportSampleCase(): void {
@@ -250,7 +237,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.executeExport(EXPORT_TYPES.SAMPLE);
+    this.exportService.executeExport(EXPORT_TYPES.SAMPLE, API_ROUTE_CASES.EXPORT);
   }
 
   addLineListing(): void {
@@ -299,12 +286,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
 
   openCaseGuide(): void {
     this.dialog.open(CaseGuideComponent, {
-      width: EXPORT_CUSTOM_MODAL_WIDTH,
-    });
-  }
-
-  openMergeDuplicatesCaseGuide(): void {
-    this.dialog.open(MergeDuplicatesCaseGuideComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
     });
   }

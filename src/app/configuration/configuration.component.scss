@@ -1,12 +1,18 @@
 @use '/src/variables.scss' as *;
 
 header {
-  position: sticky;
+  position: relative;
   z-index: 2;
-  top: 68px;
-  display: flex;
-  padding: 48px 32px 0;
+  display: block;
   background-color: $white;
+  padding: 20px 30px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+
+  .page-header-actions {
+    float: right;
+    margin-top: -50px;
+  }
 
   &.listing-header-region {
     border-bottom: solid 2px map-get($sormas-accent, 200);

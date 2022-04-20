@@ -102,6 +102,10 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         key: 'healthFacility.uuid',
         label: 'captions.Facility',
         service: 'facilityService',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
         determinedBy: [
           {
             key: 'district.uuid',

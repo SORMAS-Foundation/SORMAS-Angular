@@ -1,7 +1,14 @@
 <section class="assessments">
-  <h2 class="assessments-title">
-    {{ 'captions.caseFollowupVisitsView' | translate }}
-  </h2>
+  <header>
+    <h2 class="assessments-title">
+      {{ 'captions.caseFollowupVisitsView' | translate }}
+    </h2>
+    <div class="actions">
+      <button mat-stroked-button color="primary" (click)="export()">
+        {{ 'captions.export' | translate }}
+      </button>
+    </div>
+  </header>
   <mat-card class="assessments-list">
     <app-table
       [resourceService]="visitService"

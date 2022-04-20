@@ -1,0 +1,76 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.merge-duplicates-table-wrapper {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+
+  .uuid {
+    .mat-icon {
+      font-size: 18px;
+      color: mat.get-color-from-palette($sormas-accent, 400);
+      cursor: pointer;
+    }
+  }
+
+  .actions {
+    .mat-icon {
+      font-size: 24px;
+      color: mat.get-color-from-palette($sormas-primary, 700);
+      cursor: pointer;
+    }
+  }
+}
+
+
+.mat-table {
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+
+  th.mat-header-cell {
+    border-bottom-color: mat.get-color-from-palette($sormas-accent, 200);
+    border-left-width: 0;
+    background-color: $white;
+  }
+
+  tr.mat-row {
+    &.hide {
+      display: none;
+    }
+    td {
+      text-align: center;
+      .mat-icon.show-more {
+        transition: 0.4s;
+        &.rotate {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+    &:nth-child(2n) {
+      td.mat-cell {
+        border-bottom: 2px solid mat.get-color-from-palette($sormas-primary, 200);
+      }
+    }
+  }
+
+  tr.mat-row td.mat-cell {
+    padding: 5px;
+    border: 0;
+    background-color: unset;
+    border-bottom: 1px solid mat.get-color-from-palette($sormas-accent, 200);
+
+    &.pl-child {
+      padding-left: 29px;
+    }
+  }
+
+  .bold {
+    font-weight: 500;
+  }
+}

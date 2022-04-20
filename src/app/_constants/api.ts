@@ -15,6 +15,7 @@ export const API_ROUTE_CASES_FOLLOW_UP = {
 export const API_ROUTE_CONTACTS_FOLLOW_UP = {
   ENDPOINT: 'contacts',
   GET_ALL: 'contacts/followUp',
+  EXPORT: 'contacts/followUp/export',
 };
 
 export const API_ROUTE_PERSONS = {
@@ -75,6 +76,7 @@ export const API_ROUTE_EVENTS = {
   UPDATE: 'events/update',
   ADD: 'events/add',
   DELETE: 'events/delete',
+  EXPORT: 'events/export',
 };
 
 export const API_ROUTE_EVENT_ACTIONS = {
@@ -83,6 +85,7 @@ export const API_ROUTE_EVENT_ACTIONS = {
   UPDATE: 'actions/push',
   ADD: 'actions/push',
   DELETE: 'actions/delete',
+  EXPORT: 'actions/export',
 };
 
 export const API_ROUTE_SAMPLES = {
@@ -154,6 +157,7 @@ export const API_ROUTE_COUNTRIES = {
   UPDATE: 'countries/push',
   ADD: 'countries/push',
   DELETE: 'countries/delete',
+  EXPORT: 'countries/export',
 };
 
 export const API_ROUTE_DASHBOARD_NEW_CASES = {
@@ -202,6 +206,7 @@ export const API_ROUTE_REGIONS = {
   UPDATE: 'regions/push',
   ADD: 'regions/push',
   DELETE: 'regions/delete',
+  EXPORT: 'regions/export',
 };
 
 export const API_ROUTE_DISTRICTS = {
@@ -210,6 +215,7 @@ export const API_ROUTE_DISTRICTS = {
   UPDATE: 'districts/push',
   ADD: 'districts/push',
   DELETE: 'districts/delete',
+  EXPORT: 'districts/export',
 };
 
 export const API_ROUTE_COMMUNITIES = {
@@ -218,6 +224,7 @@ export const API_ROUTE_COMMUNITIES = {
   UPDATE: 'communities/push',
   ADD: 'communities/push',
   DELETE: 'communities/delete',
+  EXPORT: 'communities/export',
 };
 
 export const API_ROUTE_CONTINENTNS = {
@@ -226,6 +233,7 @@ export const API_ROUTE_CONTINENTNS = {
   UPDATE: 'continents/push',
   ADD: 'continents/push',
   DELETE: 'continents/delete',
+  EXPORT: 'continents/export',
 };
 
 export const API_ROUTE_ENTRY_POINTS = {
@@ -234,6 +242,7 @@ export const API_ROUTE_ENTRY_POINTS = {
   UPDATE: 'pointsofentry/push',
   ADD: 'pointsofentry/push',
   DELETE: 'pointsofentry/delete',
+  EXPORT: 'pointsofentry/export',
 };
 
 export const API_ROUTE_SUBCONTINENTNS = {
@@ -242,6 +251,7 @@ export const API_ROUTE_SUBCONTINENTNS = {
   UPDATE: 'subcontinents/push',
   ADD: 'subcontinents/push',
   DELETE: 'subcontinents/delete',
+  EXPORT: 'subcontinents/export',
 };
 
 export const API_ROUTE_DOCUMENT_TEMPLATES = {
@@ -266,6 +276,7 @@ export const API_ROUTE_FACILITIES = {
   UPDATE: 'facilities/pushListing',
   ADD: 'facilities/push',
   DELETE: 'facilities/delete',
+  EXPORT: 'facilities/export',
 };
 
 export const API_ROUTE_OUTBREAKS = {
@@ -282,6 +293,7 @@ export const API_ROUTE_EVENT_GROUPS = {
   UPDATE: 'eventGroups/push',
   ADD: 'eventGroups/push',
   DELETE: 'eventGroups/delete',
+  EXPORT: 'eventGroups/export',
 };
 
 export const API_ROUTE_EPI_DATA_CASE_CLASSIFICATION = {
@@ -392,4 +404,20 @@ export const API_ROUTE_IMPORT_EXPORT = {
   UPDATE: 'export/push',
   ADD: 'export/push',
   DELETE: 'export/delete',
+};
+
+export const API_ROUTE_MERGE_DUPLICATES = {
+  ENDPOINT: 'mergeDuplicates',
+  GET_ALL: 'mergeDuplicates/indexList',
+  UPDATE: 'mergeDuplicates/update',
+  ADD: 'mergeDuplicates/add',
+  DELETE: 'mergeDuplicates/delete',
+};
+
+export const API_ROUTE_MERGE_DUPLICATES_CONTACT = {
+  ENDPOINT: 'mergeDuplicatesContact',
+  GET_ALL: 'mergeDuplicatesContact/indexList',
+  UPDATE: 'mergeDuplicatesContact/update',
+  ADD: 'mergeDuplicatesContact/add',
+  DELETE: 'mergeDuplicatesContact/delete',
 };
