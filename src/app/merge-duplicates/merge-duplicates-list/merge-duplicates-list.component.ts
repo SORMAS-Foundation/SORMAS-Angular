@@ -34,7 +34,7 @@ export class MergeDuplicatesListComponent implements OnInit {
       this.dialog.open(MergeDuplicatesCautionComponent, {
         width: EXPORT_CUSTOM_MODAL_WIDTH,
       });
-    });
+    }, 500);
   }
 
   openMergeDuplicatesCaseGuide(): void {
