@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { USER_PROFILE_FORM_ID } from '../app.constants';
 import { AuthService } from '../shared/auth/auth-service/auth.service';
 import { FormBase } from '../shared/dynamic-form/types/form-element-base';
 import { FormElementControlService } from '../_services/form-element-control.service';
@@ -14,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   user = '';
   roles: string[] = [];
   formData: FormBase<any>[] = FORM_DATA_USER_PROFILE;
-  formId = 'test';
+  formId = USER_PROFILE_FORM_ID;
 
   constructor(
     private authService: AuthService,

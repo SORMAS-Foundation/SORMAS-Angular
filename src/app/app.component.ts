@@ -3,8 +3,9 @@ import { Direction } from '@angular/cdk/bidi';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { getEnv } from '../environments/getEnv';
-import { localeOptions } from './app.constants';
+import { CONFIG_LOCALE, localeOptions } from './app.constants';
 import { LocaleService } from './_services/local.service';
+import { LocalStorageService } from './_services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -19,19 +20,24 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(LOCALE_ID) protected localeId: string,
     public translateService: TranslateService,
-    public localeService: LocaleService
+    public localeService: LocaleService,
+    private localStorage: LocalStorageService
   ) {
     this.crashOnProductionWithLegacyLogin();
   }
 
   ngOnInit(): void {
     const languages = localeOptions.map((lang) => lang.locale);
+    const language = this.localStorage.get(CONFIG_LOCALE) || this.defaultLanguage;
 
     this.subscription.add(
-      this.localeService.getLocale().subscribe((locale: string) => this.setDirection(locale))
+      this.localeService.getLocale().subscribe((locale: string) => {
+        this.saveLocale(locale);
+        this.setDirection(locale);
+      })
     );
 
-    this.localeService.initLocale(languages, this.defaultLanguage);
+    this.localeService.initLocale(languages, language);
   }
 
   private crashOnProductionWithLegacyLogin(): void {
@@ -47,6 +53,10 @@ export class AppComponent implements OnInit, OnDestroy {
   setDirection(locale: string): void {
     const language = localeOptions.find((item) => item.locale === locale);
     this.direction = language?.dir ?? 'ltr';
+  }
+
+  saveLocale(locale: string): void {
+    this.localStorage.set(CONFIG_LOCALE, locale);
   }
 
   ngOnDestroy(): void {

@@ -60,9 +60,9 @@
 .button-user-menu {
   width: 30px;
   height: 30px;
-  border: 2px solid map-get($sormas-accent, 600);
+  border: 2px solid mat.get-color-from-palette($sormas-accent, 600);
   border-radius: 50%;
-  color: map-get($sormas-primary, 50);
+  color: mat.get-color-from-palette($sormas-primary, 50);
   line-height: 24px;
 
   &:not(.about) .mat-icon {
@@ -73,13 +73,13 @@
   }
 
   &.active {
-    background-color: map-get($sormas-accent, 700);
-    color: map-get($sormas-primary, 200);
+    background-color: mat.get-color-from-palette($sormas-accent, 700);
+    color: mat.get-color-from-palette($sormas-primary, 200);
   }
 
   &:hover,
   &:focus {
-    background-color: map-get($sormas-accent, 700);
+    background-color: mat.get-color-from-palette($sormas-accent, 700);
   }
 
   & + & {
@@ -91,12 +91,12 @@
   width: 24px;
   height: 24px;
   border: 0;
-  color: map-get($sormas-primary, 200);
+  color: mat.get-color-from-palette($sormas-primary, 200);
 
   &.active,
   &:hover,
   &:focus {
-    color: map-get($sormas-primary, 400);
+    color: mat.get-color-from-palette($sormas-primary, 400);
   }
 }
 
