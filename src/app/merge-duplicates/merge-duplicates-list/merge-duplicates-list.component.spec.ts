@@ -4,6 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MergeDuplicatesListComponent } from './merge-duplicates-list.component';
 
 describe('MergeDuplicatesListComponent', () => {
@@ -17,6 +18,7 @@ describe('MergeDuplicatesListComponent', () => {
         MatDialogModule,
         HttpClientTestingModule,
         RouterTestingModule,
+        BrowserAnimationsModule,
         TranslateModule.forRoot(),
       ],
     }).compileComponents();

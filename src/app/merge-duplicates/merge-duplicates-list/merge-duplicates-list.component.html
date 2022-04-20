@@ -7,6 +7,9 @@
         <mat-icon (click)="openMergeDuplicatesCaseGuide()" class="material-icons-round">help_outline</mat-icon>
       </h1>
     </div>
+    <button mat-stroked-button color="primary" class="calculate-btn">
+      {{ 'captions.caseCalculateCompleteness' | translate }}
+    </button>
     <app-merge-duplicates-table
       [type]="type"
     ></app-merge-duplicates-table>

@@ -1,11 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
-import { EntityLink, EXPORT_TYPES, SentResourceTypes } from '../_constants/common';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  EntityLink,
+  EXPORT_TYPES,
+  SentResourceTypes,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+} from '../_constants/common';
 import { SendResourceService } from '../_services/send-resource.service';
 import { RegionDto } from '../_models/regionDto';
 import { NavItem } from '../_models/common';
-import { actionsMoreDefs, actionsMoreSingleDefs } from './configuration-actions-data';
+import { actionsMoreDefs } from './configuration-actions-data';
 import { ACTIONS_CONFIGURATION } from '../_constants/actions';
 import {
   API_ROUTE_COMMUNITIES,
@@ -17,6 +23,7 @@ import {
   API_ROUTE_SUBCONTINENTNS,
 } from '../_constants/api';
 import { ExportService } from '../_services/api/export.service';
+import { NotificationService } from '../_services/notification.service';
 
 const LINKS: EntityLink[] = [
   { link: '/configuration/outbreaks', title: 'Outbreaks' },
@@ -42,6 +49,7 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
   links: EntityLink[] = LINKS;
   actionsMore: NavItem[] = actionsMoreDefs;
   API_ROUTE: any;
+  exportType: string;
 
   private subscription: Subscription[] = [];
   public regionName: string | null;
@@ -49,7 +57,9 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
   constructor(
     private sendResourceService: SendResourceService,
     private router: Router,
-    private exportService: ExportService
+    private exportService: ExportService,
+    private translateService: TranslateService,
+    private notificationService: NotificationService
   ) {
     this.subscription.push(
       this.sendResourceService.getResource().subscribe((response: any) => {
@@ -69,12 +79,12 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.setApiRoute();
-    this.setMoreActions();
+    this.setExportType();
     this.subscription.push(
       this.router.events.subscribe((val) => {
         if (val instanceof NavigationEnd) {
           this.setApiRoute();
-          this.setMoreActions();
+          this.setExportType();
         }
       })
     );
@@ -104,14 +114,20 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
     }
   }
 
-  setMoreActions(): void {
-    this.actionsMore = actionsMoreSingleDefs;
-    if (this.router.url.includes('facilities') || this.router.url.includes('entry-points')) {
-      this.actionsMore = actionsMoreDefs;
+  setExportType(): void {
+    this.exportType = 'basic';
+    if (this.router.url.includes('facilities')) {
+      this.exportType = 'basic_detailed';
     }
   }
 
   onActionSelected(event: any) {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
     switch (event) {
       case ACTIONS_CONFIGURATION.BASIC_EXPORT:
         this.exportService.executeExport(EXPORT_TYPES.BASIC, this.API_ROUTE.EXPORT);
@@ -122,6 +138,16 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
       default:
         break;
     }
+  }
+
+  export(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, this.API_ROUTE.EXPORT);
   }
 
   ngOnDestroy(): void {

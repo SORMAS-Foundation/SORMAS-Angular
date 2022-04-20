@@ -299,11 +299,11 @@ app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
       {
         parent: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
           completeness: 0.1,
@@ -347,11 +347,11 @@ app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
         },
         child: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
           completeness: 0.1,
@@ -399,11 +399,11 @@ app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
       {
         parent: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
           completeness: 0.1,
@@ -447,11 +447,11 @@ app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
         },
         child: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
           completeness: 0.1,
@@ -499,11 +499,11 @@ app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
       {
         parent: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
           completeness: 0.1,
@@ -547,11 +547,11 @@ app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
         },
         child: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
           completeness: 0.1,
@@ -616,13 +616,16 @@ app.use('/sormas-rest/mergeDuplicatesContact/indexList', (req, res) => {
       {
         parent: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
+          caze: {
+            caption: 'Maria Wolf (STRFDA)',
+          },
           completeness: 0.1,
           creationDate: 1648479170897,
           disease: "CORONAVIRUS",
@@ -664,13 +667,16 @@ app.use('/sormas-rest/mergeDuplicatesContact/indexList', (req, res) => {
         },
         child: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
+          caze: {
+            caption: 'Maria Wolf (STRFDA)',
+          },
           completeness: 0.1,
           creationDate: 1648479170897,
           disease: "CORONAVIRUS",
@@ -716,13 +722,16 @@ app.use('/sormas-rest/mergeDuplicatesContact/indexList', (req, res) => {
       {
         parent: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
+          caze: {
+            caption: 'Maria Wolf (STRFDA)',
+          },
           completeness: 0.1,
           creationDate: 1648479170897,
           disease: "CORONAVIRUS",
@@ -764,14 +773,17 @@ app.use('/sormas-rest/mergeDuplicatesContact/indexList', (req, res) => {
         },
         child: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
           completeness: 0.1,
+          caze: {
+            caption: 'Maria Wolf (STRFDA)',
+          },
           creationDate: 1648479170897,
           disease: "CORONAVIRUS",
           diseaseDetails: "",
@@ -816,14 +828,17 @@ app.use('/sormas-rest/mergeDuplicatesContact/indexList', (req, res) => {
       {
         parent: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
           completeness: 0.1,
+          caze: {
+            caption: 'Maria Wolf (STRFDA)',
+          },
           creationDate: 1648479170897,
           disease: "CORONAVIRUS",
           diseaseDetails: "",
@@ -864,13 +879,16 @@ app.use('/sormas-rest/mergeDuplicatesContact/indexList', (req, res) => {
         },
         child: {
           ageAndBirthDate: {
-            age: null,
+            age: 33,
             ageType: null,
-            dateOfBirthDD: 5,
-            dateOfBirthMM: 1,
-            dateOfBirthYYYY: null,
+            dateOfBirthDD: 20,
+            dateOfBirthMM: 10,
+            dateOfBirthYYYY: 1989,
           },
           caseClassification: "NOT_CLASSIFIED",
+          caze: {
+            caption: 'Maria Wolf (STRFDA)',
+          },
           completeness: 0.1,
           creationDate: 1648479170897,
           disease: "CORONAVIRUS",

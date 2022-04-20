@@ -3,8 +3,11 @@ import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import {
+  ACTIONS_SAMPLE,
   ADD_MODAL_MAX_WIDTH,
+  API_ROUTE_SAMPLES,
   CONFIG_SAMPLES,
+  EXPORT_TYPES,
   HEADER_HEIGHT,
   SAMPLE_FILTERS_FORM_ID,
 } from '../../app.constants';
@@ -16,7 +19,12 @@ import { SampleAddComponent } from '../sample-add/sample-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import { FORM_DATA_SAMPLE_FILTERS } from '../sample-filters/sample-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
-import { actionsViewOptionsDefs, actionsBulkEditDefs } from './samples-list-actions-data';
+import {
+  actionsViewOptionsDefs,
+  actionsBulkEditDefs,
+  actionsMoreDefs,
+} from './samples-list-actions-data';
+import { ExportService } from '../../_services/api/export.service';
 
 @Component({
   selector: 'app-samples-list',
@@ -32,13 +40,15 @@ export class SamplesListComponent implements OnInit, OnDestroy {
   formIdFilters = SAMPLE_FILTERS_FORM_ID;
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEditOptions: NavItem[] = actionsBulkEditDefs;
+  actionsMore: NavItem[] = actionsMoreDefs;
 
   private subscription: Subscription[] = [];
 
   constructor(
     public sampleService: SampleService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private exportService: ExportService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +71,19 @@ export class SamplesListComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  onActionSelected(event: any): void {
+    switch (event) {
+      case ACTIONS_SAMPLE.BASIC_EXPORT:
+        this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_SAMPLES.EXPORT);
+        break;
+      case ACTIONS_SAMPLE.DETAILED_EXPORT:
+        this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_SAMPLES.EXPORT);
+        break;
+      default:
+        break;
+    }
   }
 
   ngOnDestroy(): void {

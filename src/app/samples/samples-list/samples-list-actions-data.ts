@@ -1,5 +1,22 @@
 import { NavItem, NavItemRole } from '../../_models/common';
-import { ACTIONS_BULK_EDIT, ACTIONS_SAMPLES_VIEW_OPTIONS } from '../../_constants/actions';
+import {
+  ACTIONS_BULK_EDIT,
+  ACTIONS_SAMPLE,
+  ACTIONS_SAMPLES_VIEW_OPTIONS,
+} from '../../_constants/actions';
+
+export const actionsMoreDefs: NavItem[] = [
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportBasic',
+    action: ACTIONS_SAMPLE.BASIC_EXPORT,
+  },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.exportDetailed',
+    action: ACTIONS_SAMPLE.DETAILED_EXPORT,
+  },
+];
 
 export const actionsViewOptionsDefs: NavItem[] = [
   {

@@ -10,6 +10,7 @@ export const API_ROUTE_CASES = {
 export const API_ROUTE_CASES_FOLLOW_UP = {
   ENDPOINT: 'cases',
   GET_ALL: 'cases/followUp',
+  EXPORT: 'cases-follow-up/export',
 };
 
 export const API_ROUTE_CONTACTS_FOLLOW_UP = {
@@ -94,6 +95,7 @@ export const API_ROUTE_SAMPLES = {
   UPDATE: 'samples/update',
   ADD: 'samples/add',
   DELETE: 'samples/delete',
+  EXPORT: 'samples/export',
 };
 
 export const API_ROUTE_TRAVEL_ENTRIES = {
