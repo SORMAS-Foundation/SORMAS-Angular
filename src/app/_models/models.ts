@@ -184,6 +184,7 @@ export * from './jsonNodeType';
 export * from './labMessageDto';
 export * from './labMessageStatus';
 export * from './language';
+export * from './locale.model';
 export * from './locationDto';
 export * from './maternalHistoryDto';
 export * from './meansOfImmunization';

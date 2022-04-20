@@ -1,6 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { asyncScheduler, Subject, Subscription } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 import { throttleTime } from 'rxjs/operators';
@@ -10,11 +9,11 @@ export interface RouteItem {
   link: string;
   label: string;
   selectedLink: string;
+  icon?: string;
 }
 
 export const routesConfig: RouteItem[] = [
   { link: '', label: 'captions.mainMenuDashboard', selectedLink: 'dashboard' },
-  { link: 'about', label: 'captions.mainMenuAbout', selectedLink: 'about' },
   { link: 'tasks/list', label: 'captions.mainMenuTasks', selectedLink: 'tasks' },
   { link: 'cases/list', label: 'captions.mainMenuCases', selectedLink: 'cases' },
   { link: 'msers/list', label: 'captions.mainMenuAggregateReports', selectedLink: 'msers' },
@@ -25,14 +24,25 @@ export const routesConfig: RouteItem[] = [
   { link: 'entries/list', label: 'captions.mainMenuEntries', selectedLink: 'entries' },
   { link: 'reports/list', label: 'captions.mainMenuReports', selectedLink: 'reports' },
   { link: 'immunizations/list', label: 'Immunizations', selectedLink: 'immunizations' },
-  { link: 'user-profile', label: 'mainMenuMyProfile', selectedLink: 'user-profile' },
   { link: 'stats', label: 'captions.mainMenuStatistics', selectedLink: 'stats' },
   { link: 'persons/list', label: 'captions.mainMenuPersons', selectedLink: 'persons' },
   { link: 'users/list', label: 'captions.mainMenuUsers', selectedLink: 'users' },
 ];
 
 export const userRoutesConfig: RouteItem[] = [
-  { link: 'configuration/outbreaks', label: 'Configuration', selectedLink: 'configuration' },
+  { link: 'about', label: 'captions.mainMenuAbout', selectedLink: 'about', icon: 'info' },
+  {
+    link: 'configuration',
+    label: 'captions.mainMenuConfiguration',
+    selectedLink: 'configuration',
+    icon: 'settings',
+  },
+  {
+    link: 'user-profile',
+    label: 'mainMenuMyProfile',
+    selectedLink: 'user-profile',
+    icon: 'account_circle',
+  },
 ];
 
 @Component({
@@ -76,17 +86,15 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   @ViewChild('logo', { read: ElementRef }) logo: ElementRef;
 
   constructor(
-    public translateService: TranslateService,
     public router: Router,
     public helperService: HelperService,
     private host: ElementRef
   ) {
-    translateService.setDefaultLang('en');
-    translateService.use('en');
     this.subscription.add(
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
           this.selectedRoute = event.url;
+          this.menuOpen = false;
         }
       })
     );

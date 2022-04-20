@@ -11,3 +11,4 @@ export const CONFIG_WEEKLY_REPORTS = 'configWeeklyReports';
 export const CONFIG_WEEKLY_REPORTS_REGION_SUMMARY = 'configWeeklyReportsRegionSummary';
 export const CONFIG_WEEKLY_REPORTS_OFFICER_SUMMARY = 'configWeeklyReportsOfficerSummary';
 export const CONFIG_SHARE_REQUESTS = 'configShareRequests';
+export const CONFIG_LOCALE = 'localeId';

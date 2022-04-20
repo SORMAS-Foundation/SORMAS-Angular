@@ -176,5 +176,6 @@
   "viewFullscreen": "View fullscreen",
   "exitFullscreen": "Exit fullscreen",
   "lineListingSharedDisease": "Shared disease",
-  "lineListingSharedLocation": "Shared location"
+  "lineListingSharedLocation": "Shared location",
+  "headingUserProfile": "Role name"
 }

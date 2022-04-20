@@ -1,23 +1,13 @@
-<h2 i18n>{{ 'myProfile.userProfile' | translate }}</h2>
+<section>
+  <header>
+    <h1>{{ 'headingUserProfile' | translate }}</h1>
+  </header>
 
-<mat-card raised>
-  <h3 i18n data-test-id="user-name">
-    {{ 'captions.User.userName' | translate }} <b>{{ user }}</b>
-  </h3>
-
-  <mat-card-content>
-    <h3 i18n>{{ 'captions.User.userRoles' | translate }}</h3>
-    <mat-chip-list [selectable]="false" aria-label="User roles">
-      <mat-chip *ngFor="let role of roles"> {{ role }}</mat-chip>
-    </mat-chip-list>
-  </mat-card-content>
-  <br />
-
-  <app-locale-select> </app-locale-select>
-
-  <mat-card-actions>
-    <button mat-button color="accent" (click)="logout()">
-      {{ 'captions.actionLogout' | translate }}
-    </button>
-  </mat-card-actions>
-</mat-card>
+  <div class="page-content">
+    <app-dynamic-form
+      [formId]="formId"
+      [formElements]="formData"
+      (changed)="onFormChange($event)"
+    ></app-dynamic-form>
+  </div>
+</section>
