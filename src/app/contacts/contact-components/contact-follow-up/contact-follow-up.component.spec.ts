@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ContactFollowUpComponent } from './contact-follow-up.component';
+import { MaterialModule } from '../../../material.module';
 
 describe('ContactFollowUpComponent', () => {
   let component: ContactFollowUpComponent;
@@ -11,7 +12,7 @@ describe('ContactFollowUpComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ContactFollowUpComponent],
-      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule, MaterialModule],
     }).compileComponents();
   });
 
