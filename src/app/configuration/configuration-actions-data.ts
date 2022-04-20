@@ -13,11 +13,3 @@ export const actionsMoreDefs: NavItem[] = [
     action: ACTIONS_CONFIGURATION.DETAILED_EXPORT,
   },
 ];
-
-export const actionsMoreSingleDefs: NavItem[] = [
-  {
-    role: NavItemRole.ACTION,
-    name: 'captions.exportBasic',
-    action: ACTIONS_CONFIGURATION.BASIC_EXPORT,
-  },
-];

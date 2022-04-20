@@ -9,12 +9,15 @@
     </div>
 
     <div class="page-header-actions">
-      <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+      <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}" *ngIf="exportType === 'basic_detailed'">
         <app-action-menu
           [config]="actionsMore"
           (action)="onActionSelected($event)"
         ></app-action-menu>
       </app-dropdown-menu>
+      <button mat-stroked-button color="primary" (click)="export()" class="export-btn" *ngIf="exportType === 'basic'">
+        {{ 'captions.export' | translate }}
+      </button>
     </div>
   </header>
 

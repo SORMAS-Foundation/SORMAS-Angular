@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import {
-  ACTIONS_CASE_FOLLOW_UP,
   API_ROUTE_CASES_FOLLOW_UP,
   EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
   TableAppearanceOptions,
 } from '../../../app.constants';
-import { Filter, NavItem, TableColumn } from '../../../_models/common';
+import { Filter, TableColumn } from '../../../_models/common';
 import { CaseDataDto, VisitDto } from '../../../_models/models';
 import { BaseService } from '../../../_services/api/base.service';
 import { VisitService } from '../../../_services/api/visit.service';
 import { defaultColumnDefs } from './case-follow-up-table-data';
-import { actionsMoreDefs } from './case-follow-up-actions-data';
 import { ExportService } from '../../../_services/api/export.service';
+import { NotificationService } from '../../../_services/notification.service';
 
 @Component({
   selector: 'app-case-follow-up',
@@ -23,11 +24,15 @@ export class CaseFollowUpComponent {
   defaultColumns: TableColumn[] = defaultColumnDefs;
   tableAppearanceOptions = TableAppearanceOptions;
   preSetFilters: Filter[];
-  actionsMore: NavItem[] = actionsMoreDefs;
 
   public resourceService: BaseService<any>;
 
-  constructor(public visitService: VisitService, private exportService: ExportService) {}
+  constructor(
+    public visitService: VisitService,
+    private exportService: ExportService,
+    private translateService: TranslateService,
+    private notificationService: NotificationService
+  ) {}
 
   updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
     this.preSetFilters = [
@@ -39,13 +44,13 @@ export class CaseFollowUpComponent {
     this.resourceService = resourceService;
   }
 
-  onActionSelected(event: any): void {
-    switch (event) {
-      case ACTIONS_CASE_FOLLOW_UP.BASIC_EXPORT:
-        this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CASES_FOLLOW_UP.EXPORT);
-        break;
-      default:
-        break;
-    }
+  export(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CASES_FOLLOW_UP.EXPORT);
   }
 }
