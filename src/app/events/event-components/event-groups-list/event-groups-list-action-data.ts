@@ -1,4 +1,4 @@
-import { ACTIONS_EVENTS_VIEW_OPTIONS, ACTIONS_EVENT_GROUP } from '../../../_constants/actions';
+import { ACTIONS_EVENTS_VIEW_OPTIONS } from '../../../_constants/actions';
 import { NavItem, NavItemRole } from '../../../_models/common';
 
 export const viewOptionsDefs: NavItem[] = [
