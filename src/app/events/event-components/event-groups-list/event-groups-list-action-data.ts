@@ -18,11 +18,3 @@ export const viewOptionsDefs: NavItem[] = [
     action: ACTIONS_EVENTS_VIEW_OPTIONS.GROUPS,
   },
 ];
-
-export const actionsMoreDefs: NavItem[] = [
-  {
-    role: NavItemRole.ACTION,
-    name: 'captions.exportBasic',
-    action: ACTIONS_EVENT_GROUP.BASIC_EXPORT,
-  },
-];
