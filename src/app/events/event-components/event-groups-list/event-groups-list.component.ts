@@ -12,10 +12,10 @@ import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { EventGroupService } from '../../../_services/api/event-group.service';
 import { EventAddComponent } from '../../event-add/event-add.component';
-import { actionsMoreDefs, viewOptionsDefs } from './event-groups-list-action-data';
+import { viewOptionsDefs } from './event-groups-list-action-data';
 import { defaultColumnDefs } from './event-groups-list-table-data';
 import { EVENT_GROUP_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
-import { ACTIONS_EVENT_GROUP, API_ROUTE_EVENT_GROUPS } from '../../../app.constants';
+import { API_ROUTE_EVENT_GROUPS } from '../../../app.constants';
 import { NotificationService } from '../../../_services/notification.service';
 import { ExportService } from '../../../_services/api/export.service';
 
@@ -29,7 +29,6 @@ export class EventGroupsListComponent implements OnDestroy {
   actionsViewOption: NavItem[] = viewOptionsDefs;
   tableAppearanceOptions = TableAppearanceOptions;
   formId = EVENT_GROUP_FILTERS_FORM_ID;
-  actionsMore: NavItem[] = actionsMoreDefs;
 
   private subscription: Subscription[] = [];
   constructor(
@@ -39,12 +38,6 @@ export class EventGroupsListComponent implements OnDestroy {
     private translateService: TranslateService,
     private notificationService: NotificationService
   ) {}
-
-  onActionSelected(event: any): void {
-    if (event === ACTIONS_EVENT_GROUP.BASIC_EXPORT) {
-      this.exportBasicEventGroup();
-    }
-  }
 
   exportBasicEventGroup(): void {
     this.notificationService.prompt({
