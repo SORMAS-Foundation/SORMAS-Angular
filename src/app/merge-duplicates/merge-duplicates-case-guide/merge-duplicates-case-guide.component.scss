@@ -17,3 +17,7 @@ h3 {
   color: mat.get-color-from-palette($sormas-primary, 400);
   text-transform: uppercase;
 }
+
+.with-margin {
+  margin-bottom: 20px;
+}

@@ -21,7 +21,11 @@
   <h2>{{ 'strings.headingExplanationOfTerms' | translate }}</h2>
   <h3>{{ 'strings.headingCompleteness' | translate }}</h3>
   <div [innerHtml]="'strings.infoCaseCompleteness' | translate" class="guide-info"></div>
-  <div [innerHtml]="'strings.infoContactCompletenessMerge' | translate" class="guide-info"></div>
+  <div
+    [innerHtml]="'strings.infoCompletenessMerge' | translate"
+    class="guide-info with-margin"
+  ></div>
+  <div [innerHtml]="'strings.infoCalculateCompleteness' | translate" class="guide-info"></div>
   <h2>{{ 'captions.caseFilterWithDifferentRegion' | translate }}</h2>
   <div [innerHtml]="'strings.infoMergeIgnoreRegion' | translate" class="guide-info"></div>
 </div>
