@@ -8,9 +8,16 @@ import { MaterialModule } from '../material.module';
 import { PersonsListComponent } from './persons-list/persons-list.component';
 import { PersonFiltersComponent } from './person-filters/person-filters.component';
 import { PersonComponent } from './person/person.component';
+import { SetMissingGeolocationComponent } from './set-missing-geolocation/set-missing-geolocation.component';
 
 @NgModule({
-  declarations: [PersonsComponent, PersonComponent, PersonsListComponent, PersonFiltersComponent],
+  declarations: [
+    PersonsComponent,
+    PersonComponent,
+    PersonsListComponent,
+    PersonFiltersComponent,
+    SetMissingGeolocationComponent,
+  ],
   imports: [CommonModule, PersonsRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })
 export class PersonsModule {}

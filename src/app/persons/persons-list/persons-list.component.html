@@ -5,7 +5,11 @@
       <h1 class="page-header-title">
         {{ 'captions.View.persons' | translate }}
       </h1>
-      <div class="page-header-actions"></div>
+      <div class="page-header-actions">
+        <button mat-stroked-button color="primary" (click)="setGeolocation()">
+          {{ 'captions.personsSetMissingGeoCoordinates' | translate }}
+        </button>
+      </div>
     </div>
 
     <app-table

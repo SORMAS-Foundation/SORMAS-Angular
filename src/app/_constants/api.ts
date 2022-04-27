@@ -26,6 +26,7 @@ export const API_ROUTE_PERSONS = {
   ADD: 'persons/push',
   DELETE: 'persons/delete',
   MATCH: 'persons/similarPersons',
+  SET_MISSING_COORDINATES: 'persons/setMissingCoordinates',
 };
 
 export const API_ROUTE_PATHOGEN_TESTS = {

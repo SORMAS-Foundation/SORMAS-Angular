@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+  <h1>{{ 'captions.personsSetMissingGeoCoordinates' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+    <button mat-stroked-button color="primary" mat-dialog-close class="reset-btn">
+      {{ 'captions.actionCancel' | translate }}
+    </button>
+    <button mat-flat-button color="primary" class="save-btn" (click)="continue()">
+      {{ 'captions.actionContinue' | translate }}
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <p class="info">
+    <mat-icon class="material-icons-round">info</mat-icon>
+    {{ 'strings.confirmationSetMissingGeoCoordinates' | translate }}
+  </p>
+  <form [formGroup]="form">
+    <mat-checkbox color="primary" formControlName="replace">
+      <span class="label">{{ 'confirmSetMissingGeoCoordinates' | translate }}</span>
+      <span class="warning">{{ 'warningSetMissingGeoCoordinates' | translate }}</span>
+    </mat-checkbox>
+  </form>
+</div>
