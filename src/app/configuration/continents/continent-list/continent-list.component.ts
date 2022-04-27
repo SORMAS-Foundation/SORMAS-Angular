@@ -3,7 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import {CONFIGURATION_MODAL_WIDTH, EXPORT_TYPES, SMALL_NOTIFICATION_MODAL_WIDTH} from '../../../_constants/common';
+import {
+  CONFIGURATION_MODAL_WIDTH,
+  EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+} from '../../../_constants/common';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { ContinentDto } from '../../../_models/continentDto';
