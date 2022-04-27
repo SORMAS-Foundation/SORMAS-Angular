@@ -10,11 +10,16 @@ import { actionsBulkEditDefs } from './regions-actions-data';
 import { defaultColumnDefs } from './regions-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import {
+  API_ROUTE_REGIONS,
   CONFIGURATION_MODAL_WIDTH,
   CONFIGURATION_REGION_FILTERS_FORM_ID,
+  EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
 } from '../../../app.constants';
 import { RegionAddEditComponent } from '../region-add-edit/region-add-edit.component';
 import { TableComponent } from '../../../shared/table/table.component';
+import { NotificationService } from '../../../_services/notification.service';
+import { ExportService } from '../../../_services/api/export.service';
 
 @Component({
   selector: 'app-region-list',
@@ -34,7 +39,9 @@ export class RegionListComponent implements OnDestroy {
   constructor(
     public regionService: RegionService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private notificationService: NotificationService,
+    private exportService: ExportService
   ) {}
 
   openEditRegionModal(region: RegionDto): void {
@@ -73,6 +80,16 @@ export class RegionListComponent implements OnDestroy {
         }
       })
     );
+  }
+
+  export(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_REGIONS.EXPORT);
   }
 
   ngOnDestroy(): void {

@@ -9,10 +9,17 @@ import { CountryService } from '../../../_services/api/country.service';
 import { actionsBulkEditDefs } from './countries-actions-data';
 import { defaultColumnDefs } from './countries-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
+import {
+  CONFIGURATION_MODAL_WIDTH,
+  EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+} from '../../../_constants/common';
 import { CountryAddEditComponent } from '../country-add-edit/country-add-edit.component';
 import { TableComponent } from '../../../shared/table/table.component';
 import { CONFIGURATION_COUNTRY_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
+import { API_ROUTE_COUNTRIES } from '../../../_constants/api';
+import { NotificationService } from '../../../_services/notification.service';
+import { ExportService } from '../../../_services/api/export.service';
 
 @Component({
   selector: 'app-country-list',
@@ -32,7 +39,9 @@ export class CountryListComponent implements OnDestroy {
   constructor(
     public countryService: CountryService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private notificationService: NotificationService,
+    private exportService: ExportService
   ) {}
 
   openEditCountryModal(country: CountryDto): void {
@@ -71,6 +80,16 @@ export class CountryListComponent implements OnDestroy {
         }
       })
     );
+  }
+
+  export(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_COUNTRIES.EXPORT);
   }
 
   ngOnDestroy(): void {

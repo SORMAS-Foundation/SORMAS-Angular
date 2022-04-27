@@ -3,7 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
+import {
+  CONFIGURATION_MODAL_WIDTH,
+  EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+} from '../../../_constants/common';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { CommunityDto } from '../../../_models/communityDto';
@@ -13,6 +17,9 @@ import { actionsBulkEditDefs } from './communities-actions-data';
 import { defaultColumnDefs } from './communities-table-data';
 import { TableComponent } from '../../../shared/table/table.component';
 import { CONFIGURATION_COMMUNITY_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
+import { API_ROUTE_COMMUNITIES } from '../../../_constants/api';
+import { NotificationService } from '../../../_services/notification.service';
+import { ExportService } from '../../../_services/api/export.service';
 
 @Component({
   selector: 'app-community-list',
@@ -32,7 +39,9 @@ export class CommunityListComponent implements OnDestroy {
   constructor(
     public communityService: CommunityService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private notificationService: NotificationService,
+    private exportService: ExportService
   ) {}
 
   openEditCommunityModal(community: CommunityDto): void {
@@ -71,6 +80,16 @@ export class CommunityListComponent implements OnDestroy {
         }
       })
     );
+  }
+
+  export(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_COMMUNITIES.EXPORT);
   }
 
   ngOnDestroy(): void {
