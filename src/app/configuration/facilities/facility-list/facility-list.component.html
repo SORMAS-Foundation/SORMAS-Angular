@@ -21,7 +21,7 @@
     <button mat-stroked-button color="primary" class="import-btn">
       {{ 'captions.actionImport' | translate }}
     </button>
-    <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}" class="export-dropdown">
+    <app-dropdown-menu buttonText="{{ 'captions.export' | translate }}" class="export-dropdown">
       <app-action-menu
         [config]="actionsMore"
         (action)="onActionSelected($event)"
