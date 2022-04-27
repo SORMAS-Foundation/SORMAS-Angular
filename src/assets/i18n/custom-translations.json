@@ -177,5 +177,7 @@
   "exitFullscreen": "Exit fullscreen",
   "lineListingSharedDisease": "Shared disease",
   "lineListingSharedLocation": "Shared location",
-  "headingUserProfile": "Role name"
+  "headingUserProfile": "Role name",
+  "confirmSetMissingGeoCoordinates": "Also replace exising coordinates",
+  "warningSetMissingGeoCoordinates": "This might replace coordinates which were intentionally set differently"
 }

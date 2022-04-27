@@ -35,4 +35,17 @@ export class PersonService extends BaseService<PersonDto> {
         })
       );
   }
+
+  setMissingCoordinates(filters: Filter[] = []): Observable<any> {
+    const endpoint = this.endpoint.SET_MISSING_COORDINATES;
+    const requestPayload: any = {};
+
+    filters.forEach((filter: any) => {
+      requestPayload[filter.field] = filter.value;
+    });
+
+    return this.httpClient
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, requestPayload)
+      .pipe(map((data: any) => this.serializer.fromJson(data)));
+  }
 }
