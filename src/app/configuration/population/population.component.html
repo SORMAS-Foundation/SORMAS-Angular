@@ -7,5 +7,5 @@
   <button mat-stroked-button color="primary" (click)="openImportModal()">
     {{ 'captions.actionImport' | translate }}
   </button>
-  <button mat-stroked-button color="primary">{{ 'captions.export' | translate }}</button>
+  <button (click)="export()" mat-stroked-button color="primary">{{ 'captions.export' | translate }}</button>
 </p>

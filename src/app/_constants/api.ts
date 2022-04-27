@@ -423,3 +423,7 @@ export const API_ROUTE_MERGE_DUPLICATES_CONTACT = {
   ADD: 'mergeDuplicatesContact/add',
   DELETE: 'mergeDuplicatesContact/delete',
 };
+
+export const API_ROUTE_POPULATION = {
+  EXPORT: 'population/export',
+};

@@ -85,8 +85,13 @@ export class FacilityListComponent implements OnDestroy {
   }
 
   onActionSelected(event: any) {
+    let title = this.translateService.instant('captions.exportBasic');
+    if (event === ACTIONS_FACILITY.DETAILED_EXPORT) {
+      title = this.translateService.instant('captions.exportDetailed');
+    }
+
     this.notificationService.prompt({
-      title: this.translateService.instant('captions.exportBasic'),
+      title,
       message: this.translateService.instant('strings.infoDownloadExport'),
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
