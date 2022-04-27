@@ -8,13 +8,18 @@ import { actionsBulkEditDefs } from './districts-actions-data';
 import { defaultColumnDefs } from './districts-table-data';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import {
+  API_ROUTE_DISTRICTS,
   CONFIGURATION_DISTRICT_FILTERS_FORM_ID,
   CONFIGURATION_MODAL_WIDTH,
+  EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
   TableAppearanceOptions,
 } from '../../../app.constants';
 import { DistrictAddEditComponent } from '../district-add-edit/district-add-edit.component';
 import { DistrictDto } from '../../../_models/districtDto';
 import { TableComponent } from '../../../shared/table/table.component';
+import { NotificationService } from '../../../_services/notification.service';
+import { ExportService } from '../../../_services/api/export.service';
 
 @Component({
   selector: 'app-district-list',
@@ -34,7 +39,9 @@ export class DistrictListComponent implements OnDestroy {
   constructor(
     public districtService: DistrictService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private notificationService: NotificationService,
+    private exportService: ExportService
   ) {}
 
   openEditDistrictModal(district: DistrictDto): void {
@@ -73,6 +80,16 @@ export class DistrictListComponent implements OnDestroy {
         }
       })
     );
+  }
+
+  export(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_DISTRICTS.EXPORT);
   }
 
   ngOnDestroy(): void {
