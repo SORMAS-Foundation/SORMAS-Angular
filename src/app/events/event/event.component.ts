@@ -1,15 +1,29 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { EntityLink, SentResourceTypes } from '../../_constants/common';
+import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../../_services/notification.service';
 import { EventDto } from '../../_models/eventDto';
 import { EventService } from '../../_services/api/event.service';
 import { HelperService } from '../../_services/helper.service';
 import { SendResourceService } from '../../_services/send-resource.service';
+import { ExportService } from '../../_services/api/export.service';
 import { EventParticipantDto } from '../../_models/eventParticipantDto';
-import { actionsEditDefs } from './event-actions-data';
-import { EVENT_DETAILS_FORM_ID } from '../../app.constants';
+import { actionsEditDefs, actionsMoreDefs } from './event-actions-data';
+import {
+  EntityLink,
+  SentResourceTypes,
+  ACTIONS_EVENT_PARTICIPANT,
+  EVENT_DETAILS_FORM_ID,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+  EXPORT_TYPES,
+  API_ROUTE_EVENT_PARTICIPANTS,
+  EXPORT_TYPE,
+  EXPORT_CUSTOM_MODAL_WIDTH,
+} from '../../app.constants';
+import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
+import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
 
 // case routing for tabs
 const eventLinks = (eventId: string): EntityLink[] => {
@@ -42,6 +56,7 @@ export class EventComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   eventParticipant: EventParticipantDto;
   actionEditOptions = actionsEditDefs;
+  actionsMore = actionsMoreDefs;
   formId = EVENT_DETAILS_FORM_ID;
 
   constructor(
@@ -50,7 +65,10 @@ export class EventComponent implements OnInit, OnDestroy {
     private notificationService: NotificationService,
     private router: Router,
     private helperService: HelperService,
-    private sendResourceService: SendResourceService
+    private sendResourceService: SendResourceService,
+    private dialog: MatDialog,
+    private exportService: ExportService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -104,6 +122,52 @@ export class EventComponent implements OnInit, OnDestroy {
 
   onEventDelete(): void {
     this.router.navigate(['/events/list']);
+  }
+
+  onActionSelected(event: any): void {
+    switch (event) {
+      case ACTIONS_EVENT_PARTICIPANT.BASIC_EXPORT:
+        this.exportBasic();
+        break;
+      case ACTIONS_EVENT_PARTICIPANT.DETAILED_EXPORT:
+        this.exportDetailed();
+        break;
+      case ACTIONS_EVENT_PARTICIPANT.CUSTOM_EXPORT:
+        this.customExport();
+        break;
+      default:
+        break;
+    }
+  }
+
+  customExport(): void {
+    this.dialog.open(CustomExportComponent, {
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
+      data: {
+        exportType: EXPORT_TYPE.EVENT_PARTICIPANTS,
+        exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
+      },
+    });
+  }
+
+  exportBasic(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_EVENT_PARTICIPANTS.EXPORT);
+  }
+
+  exportDetailed(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportDetailed'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_EVENT_PARTICIPANTS.EXPORT);
   }
 
   ngOnDestroy(): void {

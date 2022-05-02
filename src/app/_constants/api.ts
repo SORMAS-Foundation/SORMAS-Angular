@@ -143,6 +143,7 @@ export const API_ROUTE_EVENT_PARTICIPANTS = {
   UPDATE: 'eventparticipants/update',
   ADD: 'eventparticipants/add',
   DELETE: 'eventparticipants/delete',
+  EXPORT: 'eventparticipants/export',
 };
 
 // toDo: hardcoded endpoint. Needs backend
