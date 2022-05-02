@@ -3,7 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { CONFIGURATION_MODAL_WIDTH } from '../../../_constants/common';
+import {
+  CONFIGURATION_MODAL_WIDTH,
+  EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+} from '../../../_constants/common';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { NavItem, TableColumn } from '../../../_models/common';
 import { ContinentDto } from '../../../_models/continentDto';
@@ -14,6 +18,8 @@ import { defaultColumnDefs } from './continents-table-data';
 import { NotificationService } from '../../../_services/notification.service';
 import { TableComponent } from '../../../shared/table/table.component';
 import { CONFIGURATION_CONTINENT_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
+import { ExportService } from '../../../_services/api/export.service';
+import { API_ROUTE_CONTINENTNS } from '../../../_constants/api';
 
 @Component({
   selector: 'app-continent-list',
@@ -34,7 +40,8 @@ export class ContinentListComponent implements OnDestroy {
     public continentService: ContinentService,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private exportService: ExportService
   ) {}
 
   openEditContinentModal(continent: ContinentDto): void {
@@ -73,6 +80,16 @@ export class ContinentListComponent implements OnDestroy {
         }
       })
     );
+  }
+
+  export(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CONTINENTNS.EXPORT);
   }
 
   ngOnDestroy(): void {

@@ -19,7 +19,7 @@
     >
       <mat-option *ngFor="let opt of config.options" [value]="opt.key">
         <mat-icon *ngIf="opt.icon" class="material-icons-round">
-          <img [src]="opt.icon" />
+          <img [src]="helperService.getImagePath(opt.icon)" />
         </mat-icon>
         {{ opt.value | translate }}
       </mat-option>

@@ -5,7 +5,10 @@ import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import {
   ADD_MODAL_MAX_WIDTH,
+  API_ROUTE_ENTRY_POINTS,
   CONFIGURATION_ENTRY_POINT_FILTERS_FORM_ID,
+  EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
   TableAppearanceOptions,
 } from '../../../app.constants';
 import { NavItem, TableColumn } from '../../../_models/common';
@@ -15,6 +18,8 @@ import { EntryPointsAddEditComponent } from '../entry-points-add-edit/entry-poin
 import { actionsBulkEditDefs } from './entry-points-actions-data';
 import { defaultColumnDefs } from './entry-points-table-data';
 import { TableComponent } from '../../../shared/table/table.component';
+import { NotificationService } from '../../../_services/notification.service';
+import { ExportService } from '../../../_services/api/export.service';
 
 @Component({
   selector: 'app-entry-points-list',
@@ -34,7 +39,9 @@ export class EntryPointsListComponent implements OnDestroy {
   constructor(
     public entryPointService: EntryPointService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private notificationService: NotificationService,
+    private exportService: ExportService
   ) {}
 
   openEditEntryPointModal(entryPoint: PointOfEntryDto): void {
@@ -73,6 +80,16 @@ export class EntryPointsListComponent implements OnDestroy {
         }
       })
     );
+  }
+
+  export(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportBasic'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_ENTRY_POINTS.EXPORT);
   }
 
   ngOnDestroy(): void {

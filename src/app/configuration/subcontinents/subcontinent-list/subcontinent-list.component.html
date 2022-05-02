@@ -18,5 +18,8 @@
     <button class="add-btn" mat-flat-button color="primary" (click)="openAddSubcontinentModal()">
       {{ 'actionAddNewSubcontinent' | translate }}
     </button>
+    <button mat-stroked-button color="primary" (click)="export()" class="export-btn">
+      {{ 'captions.export' | translate }}
+    </button>
   </div>
 </app-table>

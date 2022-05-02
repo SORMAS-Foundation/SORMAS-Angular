@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PopulationComponent } from './population.component';
 
 describe('PopulationComponent', () => {
@@ -12,7 +13,7 @@ describe('PopulationComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [PopulationComponent],
-      imports: [MatDialogModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot(), MatDialogModule],
     }).compileComponents();
   });
 

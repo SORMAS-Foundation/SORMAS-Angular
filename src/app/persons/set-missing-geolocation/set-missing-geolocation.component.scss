@@ -1,0 +1,45 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.mat-dialog-title {
+  padding: 48px 32px 24px 64px;
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .button-dialog-close {
+    top: 2px;
+    right: 2px;
+  }
+}
+
+.mat-dialog-content {
+  padding: 24px 64px 48px;
+  font-size: 14px;
+  background-color: $white;
+}
+
+.info {
+  padding-left: 32px;
+  color: mat.get-color-from-palette($sormas-accent, 500);
+  font-size: 12px;
+  line-height: 16px;
+
+  .mat-icon {
+    margin-left: -32px;
+    float: left;
+    font-size: 18px;
+  }
+}
+
+.label {
+  font-weight: normal;
+}
+
+.warning {
+  display: block;
+  font-weight: normal;
+  color: mat.get-color-from-palette($sormas-alert, 700);
+}
