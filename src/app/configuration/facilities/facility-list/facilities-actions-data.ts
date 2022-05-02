@@ -7,6 +7,11 @@ export const actionsBulkEditDefs: NavItem[] = [
     name: 'captions.actionArchiveCoreEntity',
     action: ACTIONS_BULK_EDIT.ARCHIVE,
   },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.actionDearchiveCoreEntity',
+    action: ACTIONS_BULK_EDIT.DEARCHIVE,
+  },
 ];
 
 export const actionsMoreDefs: NavItem[] = [

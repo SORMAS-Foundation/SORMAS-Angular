@@ -64,6 +64,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   loading = false;
   additionalHeaderDefs: any[] = [];
   additionalHeader: string[] = [];
+  bulkEditOptionsDefs: NavItem[];
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -127,6 +128,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.bulkEditOptionsDefs = this.bulkEditOptions;
+
     if (this.isSelectableOnce) {
       this.selection = new SelectionModel<any>(false, []);
     }
@@ -156,6 +159,30 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
             this.filters = this.filters.concat(this.preSetFilters);
           }
           this.getResources(true);
+          this.selection.clear();
+
+          const relevance = response.filters?.find((item: any) => item.field === 'relevanceStatus');
+          switch (relevance?.value) {
+            case 'ACTIVE':
+              this.bulkEditOptionsDefs = this.bulkEditOptions.filter(
+                (item) => item.action !== ACTIONS_BULK_EDIT.DEARCHIVE
+              );
+              break;
+            case 'ARCHIVED':
+              this.bulkEditOptionsDefs = this.bulkEditOptions.filter(
+                (item) => item.action !== ACTIONS_BULK_EDIT.ARCHIVE
+              );
+              break;
+            case 'ALL':
+              this.bulkEditOptionsDefs = this.bulkEditOptions.filter(
+                (item) =>
+                  item.action !== ACTIONS_BULK_EDIT.ARCHIVE &&
+                  item.action !== ACTIONS_BULK_EDIT.DEARCHIVE
+              );
+              break;
+            default:
+              this.bulkEditOptionsDefs = this.bulkEditOptions;
+          }
         })
     );
   }
@@ -285,41 +312,67 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  openBulkDelete(): void {
+  confirmBulkAction(type: string): void {
     const items = this.getSelectedItems();
-    this.notificationService
-      .confirm({
-        title: this.translateService.instant('strings.headingConfirmDeletion'),
-        message: this.translateService
-          .instant(`strings.confirmationDelete${this.showTotalContext}`)
-          .replace('%d', items.length),
+    let titleKey = '';
+    let messageKey = '';
+    let buttonKey = '';
+
+    switch (type) {
+      case ACTIONS_BULK_EDIT.DELETE:
+        titleKey = 'strings.headingConfirmDeletion';
+        messageKey = `strings.confirmationDelete${this.showTotalContext}`;
+        buttonKey = 'captions.actionDelete';
+        break;
+      case ACTIONS_BULK_EDIT.ARCHIVE:
+        titleKey = 'strings.headingConfirmArchiving';
+        messageKey = `strings.confirmationArchive${this.showTotalContext}`;
+        buttonKey = 'captions.actionArchiveCoreEntity';
+        break;
+      case ACTIONS_BULK_EDIT.DEARCHIVE:
+        titleKey = 'strings.headingConfirmDearchiving';
+        messageKey = `strings.confirmationDearchive${this.showTotalContext}`;
+        buttonKey = 'captions.actionDearchiveCoreEntity';
+        break;
+      default:
+    }
+
+    this.subscriptions.push(
+      this.notificationService[type === ACTIONS_BULK_EDIT.DELETE ? 'confirm' : 'prompt']({
+        title: this.translateService.instant(titleKey),
+        message: this.translateService.instant(messageKey).replace('%d', items.length),
         buttonDeclineText: this.translateService.instant('captions.actionCancel'),
-        buttonConfirmText: this.translateService.instant('captions.actionDelete'),
-      })
-      .subscribe((action) => {
+        buttonConfirmText: this.translateService.instant(buttonKey),
+      }).subscribe((action) => {
         if (action === 'CONFIRM') {
-          this.deleteItems();
+          this.executeBulkAction(type);
         }
-      });
+      })
+    );
   }
 
-  deleteItems(): void {
+  executeBulkAction(type: string): void {
     const items = this.getSelectedItems().map((item) => item.uuid);
+    const action = type.toLowerCase() as keyof typeof this.resourceService;
     this.subscriptions.push(
-      this.resourceService.delete(items).subscribe((response) => {
-        const errors = items.filter((item) => !response.includes(item));
-        if (errors.length) {
+      this.resourceService[action](items).subscribe({
+        next: (response) => {
+          const failures = items.filter((item) => !response.includes(item));
           this.notificationService.success(
-            this.translateService.instant('messageEntitiesNotDeleted', {
-              entity: this.showTotalContext,
-            })
+            this.translateService.instant(
+              failures.length ? 'messageEntitiesNotDeleted' : 'messageEntitiesDeleted',
+              {
+                entity: this.showTotalContext,
+              }
+            )
           );
-        }
-        this.notificationService.success(
-          this.translateService.instant('messageEntitiesDeleted', { entity: this.showTotalContext })
-        );
-        this.selection.clear();
-        this.getResources(true);
+          this.selection.clear();
+          this.getResources(true);
+        },
+        error: (err: any) => {
+          this.notificationService.error(err);
+        },
+        complete: () => {},
       })
     );
   }
@@ -434,7 +487,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         this.openBulkEdit(bulkEditOption);
         break;
       case ACTIONS_BULK_EDIT.DELETE:
-        this.openBulkDelete();
+      case ACTIONS_BULK_EDIT.ARCHIVE:
+      case ACTIONS_BULK_EDIT.DEARCHIVE:
+        this.confirmBulkAction(event);
         break;
       case ACTIONS_BULK_EDIT.GROUP:
         this.triggerGroupEvent.emit(this.getSelectedItems());

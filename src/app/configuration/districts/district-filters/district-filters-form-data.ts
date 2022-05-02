@@ -36,6 +36,7 @@ export const FORM_DATA_DISTRICT_FILTERS = [
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },

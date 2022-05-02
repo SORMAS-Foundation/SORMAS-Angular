@@ -123,6 +123,26 @@ export class BaseService<T extends Resource> {
     return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, items);
   }
 
+  archive(items: string[]): Observable<any> {
+    // endpoint
+    let endpoint = this.endpoint.ENDPOINT;
+    if (this.endpoint.ARCHIVE) {
+      endpoint = this.endpoint.ARCHIVE;
+    }
+
+    return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, items);
+  }
+
+  dearchive(items: string[]): Observable<any> {
+    // endpoint
+    let endpoint = this.endpoint.ENDPOINT;
+    if (this.endpoint.ARCHIVE) {
+      endpoint = this.endpoint.DEARCHIVE;
+    }
+
+    return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, items);
+  }
+
   getAllAsOptions(filters: any): Observable<any> {
     return this.getAll(null, null, filters).pipe(
       map((data: any) => {

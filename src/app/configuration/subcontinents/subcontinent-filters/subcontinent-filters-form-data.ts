@@ -30,6 +30,7 @@ export const FORM_DATA_SUBCONTINENT_FILTERS = [
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },
