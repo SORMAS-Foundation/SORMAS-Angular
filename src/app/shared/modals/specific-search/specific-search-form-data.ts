@@ -9,8 +9,8 @@ export const FORM_DATA_SPECIFIC_SEARCH = [
     fields: [
       {
         ...FORM_DATA_INPUT,
-        key: 'thirdParty',
-        label: 'captions.personContactDetailThirdParty',
+        key: 'uuid',
+        placeholder: 'caseSpecificSearch',
       },
     ],
   },

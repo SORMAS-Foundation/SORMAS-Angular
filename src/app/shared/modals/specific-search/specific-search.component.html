@@ -1,1 +1,33 @@
-<p>specific-search works!</p>
+<div mat-dialog-title>
+  <h1>{{ 'captions.caseSearchSpecificCase' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content class="white">
+  <p class="info">
+    <mat-icon class="material-icons-round">info</mat-icon>
+    {{ 'strings.infoSpecificCaseSearch' | translate }}
+  </p>
+  <app-dynamic-form
+    *ngIf="myFormElements.length"
+    [formId]="formId"
+    [formElements]="myFormElements"
+    (changed)="updateValues($event)"
+  ></app-dynamic-form>
+  <button mat-button color="warn" class="delete">
+    {{ 'captions.actionCancel' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    class="save-btn"
+    (click)="save()"
+    [disabled]="!this.updatedResource || this.updatedResource?.thirdParty === ''"
+  >
+    {{ 'captions.caseSearchCase' | translate }}
+  </button>
+</div>
