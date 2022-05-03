@@ -61,7 +61,10 @@
           {{ 'captions.eventParticipantAddPerson' | translate }}
         </button>
         <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
-          <app-action-menu></app-action-menu>
+          <app-action-menu
+            [config]="actionsMore"
+            (action)="onActionSelected($event)"
+          ></app-action-menu>
         </app-dropdown-menu>
       </div>
     </div>
