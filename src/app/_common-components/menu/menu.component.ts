@@ -23,7 +23,11 @@ export const routesConfig: RouteItem[] = [
   { link: 'shares/list', label: 'captions.mainMenuShareRequests', selectedLink: 'shares' },
   { link: 'entries/list', label: 'captions.mainMenuEntries', selectedLink: 'entries' },
   { link: 'reports/list', label: 'captions.mainMenuReports', selectedLink: 'reports' },
-  { link: 'immunizations/list', label: 'Immunizations', selectedLink: 'immunizations' },
+  {
+    link: 'immunizations/list',
+    label: 'captions.mainMenuImmunizations',
+    selectedLink: 'immunizations',
+  },
   { link: 'stats', label: 'captions.mainMenuStatistics', selectedLink: 'stats' },
   { link: 'persons/list', label: 'captions.mainMenuPersons', selectedLink: 'persons' },
   { link: 'users/list', label: 'captions.mainMenuUsers', selectedLink: 'users' },
