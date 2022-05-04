@@ -133,7 +133,7 @@ export const FORM_DATA_USER = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'facility',
+        key: 'address.Facility',
         label: 'captions.Facility',
         service: 'facilityService',
         fallbackOption: {
@@ -161,6 +161,15 @@ export const FORM_DATA_USER = [
         ],
         newLine: true,
         className: 'size-large',
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'healthFacilityDetails',
+        label: 'captions.CaseData.healthFacilityDetails',
+        newLine: true,
+        className: 'size-full',
+        dependingOn: 'address__Facility',
+        dependingOnValues: ['OTHER_FACILITY'],
       },
     ],
   },

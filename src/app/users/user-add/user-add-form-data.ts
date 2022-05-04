@@ -161,6 +161,15 @@ export const FORM_DATA_USER_ADD = [
         newLine: true,
         className: 'size-large',
       },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'healthFacilityDetails',
+        label: 'captions.CaseData.healthFacilityDetails',
+        newLine: true,
+        className: 'size-full',
+        dependingOn: 'address__Facility',
+        dependingOnValues: ['OTHER_FACILITY'],
+      },
     ],
   },
   {
