@@ -36,6 +36,7 @@ export const FORM_DATA_COUNTRY_FILTERS = [
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },

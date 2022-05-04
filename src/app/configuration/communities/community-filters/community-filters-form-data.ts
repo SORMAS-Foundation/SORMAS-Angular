@@ -36,6 +36,7 @@ export const FORM_DATA_COMMUNITY_FILTERS = [
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },

@@ -155,15 +155,6 @@ export const API_ROUTE_ACTIONS = {
   DELETE: 'actions/delete',
 };
 
-export const API_ROUTE_COUNTRIES = {
-  ENDPOINT: 'countries',
-  GET_ALL: 'countries/indexList',
-  UPDATE: 'countries/push',
-  ADD: 'countries/push',
-  DELETE: 'countries/delete',
-  EXPORT: 'countries/export',
-};
-
 export const API_ROUTE_DASHBOARD_NEW_CASES = {
   ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/newCases',
@@ -204,6 +195,17 @@ export const API_ROUTE_DASHBOARD_STOPPED_FOLLOW_UP = {
   GET_ALL: 'dashboard/stoppedFollowUp',
 };
 
+export const API_ROUTE_COUNTRIES = {
+  ENDPOINT: 'countries',
+  GET_ALL: 'countries/indexList',
+  UPDATE: 'countries/push',
+  ADD: 'countries/push',
+  DELETE: 'countries/delete',
+  EXPORT: 'countries/export',
+  ARCHIVE: 'countries/archive',
+  DEARCHIVE: 'countries/dearchive',
+};
+
 export const API_ROUTE_REGIONS = {
   ENDPOINT: 'regions',
   GET_ALL: 'regions/indexList',
@@ -211,6 +213,8 @@ export const API_ROUTE_REGIONS = {
   ADD: 'regions/push',
   DELETE: 'regions/delete',
   EXPORT: 'regions/export',
+  ARCHIVE: 'regions/archive',
+  DEARCHIVE: 'regions/dearchive',
 };
 
 export const API_ROUTE_DISTRICTS = {
@@ -220,6 +224,8 @@ export const API_ROUTE_DISTRICTS = {
   ADD: 'districts/push',
   DELETE: 'districts/delete',
   EXPORT: 'districts/export',
+  ARCHIVE: 'regions/archive',
+  DEARCHIVE: 'regions/dearchive',
 };
 
 export const API_ROUTE_COMMUNITIES = {
@@ -229,6 +235,8 @@ export const API_ROUTE_COMMUNITIES = {
   ADD: 'communities/push',
   DELETE: 'communities/delete',
   EXPORT: 'communities/export',
+  ARCHIVE: 'communities/archive',
+  DEARCHIVE: 'communities/dearchive',
 };
 
 export const API_ROUTE_CONTINENTNS = {
@@ -238,6 +246,8 @@ export const API_ROUTE_CONTINENTNS = {
   ADD: 'continents/push',
   DELETE: 'continents/delete',
   EXPORT: 'continents/export',
+  ARCHIVE: 'continents/archive',
+  DEARCHIVE: 'continents/dearchive',
 };
 
 export const API_ROUTE_ENTRY_POINTS = {
@@ -247,6 +257,8 @@ export const API_ROUTE_ENTRY_POINTS = {
   ADD: 'pointsofentry/push',
   DELETE: 'pointsofentry/delete',
   EXPORT: 'pointsofentry/export',
+  ARCHIVE: 'pointsofentry/archive',
+  DEARCHIVE: 'pointsofentry/dearchive',
 };
 
 export const API_ROUTE_SUBCONTINENTNS = {
@@ -256,6 +268,8 @@ export const API_ROUTE_SUBCONTINENTNS = {
   ADD: 'subcontinents/push',
   DELETE: 'subcontinents/delete',
   EXPORT: 'subcontinents/export',
+  ARCHIVE: 'subcontinents/archive',
+  DEARCHIVE: 'subcontinents/dearchive',
 };
 
 export const API_ROUTE_DOCUMENT_TEMPLATES = {
@@ -281,6 +295,8 @@ export const API_ROUTE_FACILITIES = {
   ADD: 'facilities/push',
   DELETE: 'facilities/delete',
   EXPORT: 'facilities/export',
+  ARCHIVE: 'continents/archive',
+  DEARCHIVE: 'continents/dearchive',
 };
 
 export const API_ROUTE_OUTBREAKS = {

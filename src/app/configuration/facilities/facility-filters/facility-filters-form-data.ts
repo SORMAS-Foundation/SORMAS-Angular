@@ -2,7 +2,7 @@ import {
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
   FORM_DATA_SEARCHBOX,
-  FacilityStatus,
+  EntityRelevanceStatusOptions,
 } from '../../../app.constants';
 import { FormGroupStyleType } from '../../../_models/common';
 
@@ -10,7 +10,7 @@ import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-ke
 
 const pipe = new EnumToKeyValuePipe();
 
-const facilityStatusOptions = pipe.transform(FacilityStatus);
+const relevanceStatusOptions = pipe.transform(EntityRelevanceStatusOptions);
 
 export const FORM_DATA_FACILITY_FILTERS = [
   {
@@ -33,9 +33,10 @@ export const FORM_DATA_FACILITY_FILTERS = [
     fields: [
       {
         ...FORM_DATA_RADIO,
-        key: 'facilityStatus',
-        options: facilityStatusOptions,
+        key: 'relevanceStatus',
+        options: relevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },

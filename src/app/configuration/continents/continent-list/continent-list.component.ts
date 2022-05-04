@@ -32,7 +32,7 @@ export class ContinentListComponent implements OnDestroy {
   tableAppearanceOptions = TableAppearanceOptions;
   formId = CONFIGURATION_CONTINENT_FILTERS_FORM_ID;
 
-  private subscription: Subscription[] = [];
+  private subscription: Subscription = new Subscription();
 
   @ViewChild(TableComponent) tableComponent: TableComponent;
 
@@ -55,7 +55,7 @@ export class ContinentListComponent implements OnDestroy {
       },
     });
 
-    this.subscription.push(
+    this.subscription.add(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           this.tableComponent.getResources(true);
@@ -73,7 +73,7 @@ export class ContinentListComponent implements OnDestroy {
       },
     });
 
-    this.subscription.push(
+    this.subscription.add(
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           this.tableComponent.getResources(true);
@@ -93,6 +93,6 @@ export class ContinentListComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.forEach((subscription) => subscription.unsubscribe());
+    this.subscription.unsubscribe();
   }
 }
