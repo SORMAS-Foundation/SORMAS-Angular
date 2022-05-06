@@ -215,8 +215,8 @@ export const FORM_DATA_CASE_EDIT = [
         label: 'captions.CaseData.healthFacilityDetails',
         newLine: true,
         className: 'size-full',
-        dependingOn: 'placeOfStaty',
-        dependingOnValues: ['FACILITY'],
+        dependingOn: 'facility',
+        dependingOnValues: ['OTHER_FACILITY'],
       },
       {
         ...FORM_DATA_INPUT,
