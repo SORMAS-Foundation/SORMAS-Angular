@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-  <h1>{{ 'captions.caseSearchSpecificCase' | translate }}</h1>
+  <h1>{{ searchSpecific | translate }}</h1>
   <div mat-dialog-actions>
     <button mat-icon-button mat-dialog-close class="button-dialog-close">
       <mat-icon class="material-icons-round">highlight_off</mat-icon>
@@ -8,9 +8,8 @@
 </div>
 
 <div mat-dialog-content class="white">
-  <p class="info">
+  <p class="info" [innerText]="infoSpecificSearch | translate">
     <mat-icon class="material-icons-round">info</mat-icon>
-    {{ 'strings.infoSpecificCaseSearch' | translate }}
   </p>
   <app-dynamic-form
     *ngIf="myFormElements.length"
@@ -26,8 +25,8 @@
     color="primary"
     class="save-btn"
     (click)="save()"
-    [disabled]="!this.updatedResource || this.updatedResource?.thirdParty === ''"
+    [disabled]="!this.updatedResource || this.updatedResource?.uuid === ''"
   >
-    {{ 'captions.caseSearchCase' | translate }}
+    {{ searchText | translate }}
   </button>
 </div>

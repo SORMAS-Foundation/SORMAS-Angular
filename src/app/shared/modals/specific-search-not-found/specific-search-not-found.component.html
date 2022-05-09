@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-  <h1>{{ 'strings.headingCaseFound' | translate }}</h1>
+  <h1>{{ notFoundHeading | translate }}</h1>
   <div mat-dialog-actions>
     <button mat-icon-button mat-dialog-close class="button-dialog-close">
       <mat-icon class="material-icons-round">highlight_off</mat-icon>
@@ -7,8 +7,8 @@
   </div>
 </div>
 <div mat-dialog-content class="white">
-  <p>{{ 'strings.messageCaseFound' | translate }}</p>
-  <button mat-flat-button mat-dialog-close color="primary">
+  <p>{{ notFoundMessage | translate }}</p>
+  <button mat-flat-button mat-dialog-close color="primary" class="ok-button">
     {{ 'captions.actionOkay' | translate }}
   </button>
 </div>

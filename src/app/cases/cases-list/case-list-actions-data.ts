@@ -47,7 +47,7 @@ export const actionsMoreDefs: NavItem[] = [
   {
     role: NavItemRole.ACTION,
     name: 'captions.caseSearchSpecificCase',
-    action: ACTIONS_CASE.CASE_CUSTOM_SEARCH,
+    action: ACTIONS_CASE.CASE_SPECIFIC_SEARCH,
   },
 ];
 

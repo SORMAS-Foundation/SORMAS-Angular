@@ -1,14 +1,20 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { CONFIGURATION_MODAL_WIDTH, CUSTOM_SEARCH_ID } from '../../../app.constants';
+import {
+  CONFIGURATION_MODAL_WIDTH,
+  CUSTOM_SEARCH_ID,
+  SPECIFIC_SEARCH_TYPE,
+} from '../../../app.constants';
 import { CaseService } from '../../../_services/api/case.service';
+import { EventService } from '../../../_services/api/event.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { NotificationService } from '../../../_services/notification.service';
 import { FormBase } from '../../dynamic-form/types/form-element-base';
-import { SpecificSearchFoundComponent } from '../specific-search-found/specific-search-found.component';
+import { SpecificSearchNotFoundComponent } from '../specific-search-not-found/specific-search-not-found.component';
 import { FORM_DATA_SPECIFIC_SEARCH } from './specific-search-form-data';
 
 @Component({
@@ -16,17 +22,25 @@ import { FORM_DATA_SPECIFIC_SEARCH } from './specific-search-form-data';
   templateUrl: './specific-search.component.html',
   styleUrls: ['./specific-search.component.scss'],
 })
-export class SpecificSearchComponent implements OnInit {
+export class SpecificSearchComponent implements OnInit, OnDestroy {
   myFormElements: FormBase<any>[] = [];
   updatedResource: any;
   modalWidth: string;
   formId = CUSTOM_SEARCH_ID;
   subscriptions: Subscription[] = [];
+  type =
+    this.data.type === SPECIFIC_SEARCH_TYPE.CASE_SPECIFIC_SEARCH
+      ? SPECIFIC_SEARCH_TYPE.CASE_SPECIFIC_SEARCH.slice(0, -1)
+      : SPECIFIC_SEARCH_TYPE.EVENT_SPECIFIC_SEARCH.slice(0, -1);
+  infoSpecificSearch = `strings.infoSpecific${this.type}Search`;
+  searchText = `captions.${this.type.toLowerCase()}Search${this.type}`;
+  searchSpecific = `captions.${this.type.toLowerCase()}SearchSpecific${this.type}`;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<SpecificSearchComponent>,
     private caseService: CaseService,
+    private eventService: EventService,
     public breakpointObserver: BreakpointObserver,
     private formElementControlService: FormElementControlService,
     private notificationService: NotificationService,
@@ -53,7 +67,18 @@ export class SpecificSearchComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  caseNotFound(): void {
+    this.dialog.open(SpecificSearchNotFoundComponent, {
+      width: CONFIGURATION_MODAL_WIDTH,
+      data: { type: this.data.type },
+    });
+  }
+
   save(): void {
+    const currentService =
+      this.data.type === SPECIFIC_SEARCH_TYPE.CASE_SPECIFIC_SEARCH
+        ? this.caseService
+        : this.eventService;
     Object.keys(this.updatedResource).forEach(
       (key) => this.updatedResource[key] === undefined && delete this.updatedResource[key]
     );
@@ -65,17 +90,20 @@ export class SpecificSearchComponent implements OnInit {
         },
       ];
       this.subscriptions.push(
-        this.caseService.getAll(null, null, filters, false).subscribe({
+        currentService.searchSpecific(filters).subscribe({
           next: (response: any) => {
             if (response.elements.length === 1) {
-              this.dialog.open(SpecificSearchFoundComponent, {
-                width: CONFIGURATION_MODAL_WIDTH,
-                data: {},
-              });
-              this.router.navigate([`/cases/case/${response.elements[0].uuid}/details`]);
+              this.router.navigate([
+                `/${this.data.type}/${this.data.type.slice(0, -1).toLowerCase()}/${
+                  response.elements[0].uuid
+                }/details`,
+              ]);
+            } else {
+              this.caseNotFound();
             }
           },
           error: (err: any) => {
+            this.caseNotFound();
             this.notificationService.error(err);
           },
           complete: () => {},

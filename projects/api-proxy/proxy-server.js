@@ -1434,6 +1434,32 @@ app.use('/sormas-rest/contacts/followUp', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/cases/search', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'TOO2YC-ZQYOFM-7MQPYU-UCTRCJLU',
+      },
+      {
+        uuid: 'TOO2YC-ZQYOFM-7MQPYU-UCTRCJLU',
+      },
+    ],
+  });
+});
+
+app.use('/sormas-rest/events/search', (req, res) => {
+  res.status(200).send({
+    elements: [
+      {
+        uuid: 'TOO2YC-ZQYOFM-7MQPYU-UCTRCJLU',
+      },
+      {
+        uuid: 'TOO2YC-ZQYOFM-7MQPYU-UCTRCJLU',
+      },
+    ],
+  });
+});
+
 app.use('/sormas-rest/cases/followUp', (req, res) => {
   res.status(200).send({
     elements: [

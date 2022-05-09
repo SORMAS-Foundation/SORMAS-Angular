@@ -18,6 +18,8 @@ import {
   SMALL_NOTIFICATION_MODAL_WIDTH,
   EXPORT_TYPES,
   API_ROUTE_EVENTS,
+  EXPORT_CUSTOM_MODAL_WIDTH,
+  SPECIFIC_SEARCH_TYPE,
 } from '../../app.constants';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs, actionsMoreDefs } from './event-list-actions-data';
@@ -31,6 +33,7 @@ import { EventGroupService } from '../../_services/api/event-group.service';
 import { NotificationService } from '../../_services/notification.service';
 import { TableComponent } from '../../shared/table/table.component';
 import { ExportService } from '../../_services/api/export.service';
+import { SpecificSearchComponent } from '../../shared/modals/specific-search/specific-search.component';
 
 @Component({
   selector: 'app-events-list',
@@ -83,6 +86,9 @@ export class EventsListComponent implements OnInit, OnDestroy {
         break;
       case ACTIONS_EVENT.DETAILED_EXPORT:
         this.exportDetailedEvent();
+        break;
+      case ACTIONS_EVENT.EVENT_SPECIFIC_SEARCH:
+        this.specificSearchModal();
         break;
       default:
         break;
@@ -181,6 +187,13 @@ export class EventsListComponent implements OnInit, OnDestroy {
     });
 
     this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_EVENTS.EXPORT);
+  }
+
+  specificSearchModal(): void {
+    this.dialog.open(SpecificSearchComponent, {
+      width: EXPORT_CUSTOM_MODAL_WIDTH,
+      data: { type: SPECIFIC_SEARCH_TYPE.EVENT_SPECIFIC_SEARCH },
+    });
   }
 
   ngOnDestroy(): void {

@@ -4,15 +4,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { SpecificSearchFoundComponent } from './specific-search-found.component';
+import { SpecificSearchNotFoundComponent } from './specific-search-not-found.component';
 
-describe('SpecificSearchFoundComponent', () => {
-  let component: SpecificSearchFoundComponent;
-  let fixture: ComponentFixture<SpecificSearchFoundComponent>;
+describe('SpecificSearchNotFoundComponent', () => {
+  let component: SpecificSearchNotFoundComponent;
+  let fixture: ComponentFixture<SpecificSearchNotFoundComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SpecificSearchFoundComponent],
+      declarations: [SpecificSearchNotFoundComponent],
       imports: [
         MatDialogModule,
         HttpClientTestingModule,
@@ -23,7 +23,7 @@ describe('SpecificSearchFoundComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SpecificSearchFoundComponent);
+    fixture = TestBed.createComponent(SpecificSearchNotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

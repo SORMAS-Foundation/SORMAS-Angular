@@ -5,6 +5,7 @@ export const API_ROUTE_CASES = {
   ADD: 'cases/add',
   DELETE: 'cases/delete',
   EXPORT: 'cases/export',
+  SEARCH: 'cases/search',
 };
 
 export const API_ROUTE_CASES_FOLLOW_UP = {
@@ -79,6 +80,7 @@ export const API_ROUTE_EVENTS = {
   ADD: 'events/add',
   DELETE: 'events/delete',
   EXPORT: 'events/export',
+  SEARCH: 'events/search',
 };
 
 export const API_ROUTE_EVENT_ACTIONS = {

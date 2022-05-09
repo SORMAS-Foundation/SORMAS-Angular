@@ -25,6 +25,7 @@ import {
   EXPORT_TYPE,
   EXPORT_TYPES,
   API_ROUTE_CASES,
+  SPECIFIC_SEARCH_TYPE,
 } from '../../app.constants';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import {
@@ -186,8 +187,8 @@ export class CasesListComponent implements OnInit, OnDestroy {
       case ACTIONS_CASE.MERGE_DUPLICATES:
         this.router.navigate(['/merge-duplicates/list/cases']);
         break;
-      case ACTIONS_CASE.CASE_CUSTOM_SEARCH:
-        this.customSearchModal();
+      case ACTIONS_CASE.CASE_SPECIFIC_SEARCH:
+        this.specificSearchModal();
         break;
       default:
         break;
@@ -294,13 +295,10 @@ export class CasesListComponent implements OnInit, OnDestroy {
     });
   }
 
-  customSearchModal(): void {
+  specificSearchModal(): void {
     this.dialog.open(SpecificSearchComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
-      data: {
-        // exportType: EXPORT_TYPE.CASE,
-        // exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
-      },
+      data: { type: SPECIFIC_SEARCH_TYPE.CASE_SPECIFIC_SEARCH },
     });
   }
 
