@@ -148,13 +148,18 @@ legend {
   }
 
   .columns-md-2 .dynamic-form-card {
-    columns: 2;
+    column-count: 2;
+
+    .widget-fullwidth {
+      display: block;
+      column-span: all;
+    }
   }
 }
 
 @media (min-width: map-get($grid-breakpoints, lg)) {
   .columns-lg-3 .dynamic-form-card {
-    columns: 3;
+    column-count: 3;
   }
 }
 

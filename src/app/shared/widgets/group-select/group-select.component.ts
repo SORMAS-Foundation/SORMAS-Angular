@@ -46,7 +46,7 @@ export class GroupSelectComponent implements OnInit {
 
   updateFields(value: boolean): void {
     this.dataForm
-      .filter((section) => section.id !== 'export')
+      .filter((section) => this.config?.widgetInfo?.sections?.includes(section.id))
       .forEach((section) => {
         section.fields.forEach((field: FormElementBase<string>) => {
           if (field.controlType === 'checkbox') {

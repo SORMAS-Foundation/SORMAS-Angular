@@ -38,7 +38,11 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-group-select',
-        className: 'fullwidth',
+        widgetInfo: {
+          info: 'strings.infoEditExportConfiguration',
+          sections: ['coreData', 'sensitiveData', 'personData', 'locationData'],
+        },
+        className: 'widget-fullwidth',
       },
     ],
   },
@@ -47,6 +51,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.CORE',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['coreData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'uuid',
@@ -139,6 +151,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     className: 'columns-lg-3 columns-md-2',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['sensitiveData'],
+        },
+        className: 'widget-fullwidth',
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'personFirstName',
         label: 'captions.TaskExport.personFirstName',
@@ -169,6 +189,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.PERSON',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['personData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'personAddressRegion',
@@ -254,6 +282,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.LOCATION',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['locationData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'regionName',
