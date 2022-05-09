@@ -19,6 +19,7 @@ import { debounceTime, filter } from 'rxjs/operators';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TitleCasePipe } from '@angular/common';
 import { BaseService } from '../../_services/api/base.service';
 import * as constants from '../../app.constants';
 import {
@@ -39,6 +40,7 @@ import { NotificationService } from '../../_services/notification.service';
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
+  providers: [TitleCasePipe],
 })
 export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   public dataSource = new TableVirtualScrollDataSource<any>([]);
@@ -124,7 +126,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     private localStorageService: LocalStorageService,
     public translateService: TranslateService,
     private dialog: MatDialog,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    public titleCasePipe: TitleCasePipe
   ) {}
 
   ngOnInit(): void {
@@ -314,6 +317,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   confirmBulkAction(type: string): void {
     const items = this.getSelectedItems();
+    const context = this.titleCasePipe.transform(this.showTotalContext).replaceAll(' ', '');
     let titleKey = '';
     let messageKey = '';
     let buttonKey = '';
@@ -321,17 +325,17 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
     switch (type) {
       case ACTIONS_BULK_EDIT.DELETE:
         titleKey = 'strings.headingConfirmDeletion';
-        messageKey = `strings.confirmationDelete${this.showTotalContext}`;
+        messageKey = `strings.confirmationDelete${context}`;
         buttonKey = 'captions.actionDelete';
         break;
       case ACTIONS_BULK_EDIT.ARCHIVE:
         titleKey = 'strings.headingConfirmArchiving';
-        messageKey = `strings.confirmationArchive${this.showTotalContext}`;
+        messageKey = `strings.confirmationArchive${context}`;
         buttonKey = 'captions.actionArchiveCoreEntity';
         break;
       case ACTIONS_BULK_EDIT.DEARCHIVE:
         titleKey = 'strings.headingConfirmDearchiving';
-        messageKey = `strings.confirmationDearchive${this.showTotalContext}`;
+        messageKey = `strings.confirmationDearchive${context}`;
         buttonKey = 'captions.actionDearchiveCoreEntity';
         break;
       default:

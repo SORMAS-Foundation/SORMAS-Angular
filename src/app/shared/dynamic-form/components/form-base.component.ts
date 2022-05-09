@@ -31,10 +31,12 @@ export class FormBaseComponent implements OnInit {
   }
 
   onChange(): void {
-    this.formActionsService.setInputChange(
-      this.formId,
-      this.config.key,
-      this.initialValue !== this.control.value
-    );
+    if (typeof this.control !== 'undefined') {
+      this.formActionsService.setInputChange(
+        this.formId,
+        this.config.key,
+        this.initialValue !== this.control.value
+      );
+    }
   }
 }
