@@ -13,6 +13,13 @@
       font-size: 12px;
       font-weight: normal;
       line-height: 24px;
+      white-space: nowrap;
+
+      span {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
       .mat-chip-remove {
         color: inherit;

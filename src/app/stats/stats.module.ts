@@ -9,6 +9,8 @@ import { ExportsComponent } from './exports/exports.component';
 import { StatsRoutingModule } from './stats-routing.module';
 import { StatisticsFiltersComponent } from './statistics/statistics-filters/statistics-filters.component';
 import { StatisticsListComponent } from './statistics/statistics-list/statistics-list.component';
+import { StatisticsOptionsComponent } from './statistics/statistics-options/statistics-options.component';
+import { StatisticsResultsComponent } from './statistics/statistics-results/statistics-results.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { StatisticsListComponent } from './statistics/statistics-list/statistics
     ExportsComponent,
     StatisticsFiltersComponent,
     StatisticsListComponent,
+    StatisticsOptionsComponent,
+    StatisticsResultsComponent,
   ],
   imports: [CommonModule, MaterialModule, SharedModule, DynamicFormModule, StatsRoutingModule],
 })

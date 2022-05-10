@@ -4,6 +4,7 @@ import { EXPORT_TYPE } from '../../../app.constants';
 import * as dataCase from '../../../cases/cases-list/export-configuration-form-data';
 import * as dataTask from '../../../tasks/tasks-list/export-configuration-form-data';
 import * as dataContact from '../../../contacts/contacts-list/export-configuration-form-data';
+import * as dataEventParticipants from '../../../events/event/export-configuration-form-data';
 import { FormBase, FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 @Component({
@@ -28,8 +29,10 @@ export class GroupSelectComponent implements OnInit {
       case EXPORT_TYPE.CONTACT:
         this.dataForm = dataContact.FORM_DATA_EXPORT_CONFIGURATION;
         break;
-      default:
+      case EXPORT_TYPE.EVENT_PARTICIPANTS:
+        this.dataForm = dataEventParticipants.FORM_DATA_EXPORT_CONFIGURATION;
         break;
+      default:
     }
   }
 

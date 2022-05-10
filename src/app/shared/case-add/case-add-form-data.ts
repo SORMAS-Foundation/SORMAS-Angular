@@ -237,6 +237,10 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.healthFacility',
         validation: ['required'],
         service: 'facilityService',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
         determinedBy: [
           {
             key: 'district.uuid',
@@ -265,8 +269,8 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.healthFacilityDetails',
         newLine: true,
         className: 'size-full',
-        dependingOn: 'placeOfStay',
-        dependingOnValues: ['FACILITY'],
+        dependingOn: 'facility',
+        dependingOnValues: ['OTHER_FACILITY'],
       },
       {
         ...FORM_DATA_INPUT,

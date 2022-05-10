@@ -30,6 +30,7 @@ export const FORM_DATA_CONTINENT_FILTERS = [
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },

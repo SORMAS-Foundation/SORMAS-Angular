@@ -79,7 +79,7 @@
       [disabled]="item.disabled"
       (removed)="remove(item)"
     >
-      {{ item.value }}
+      <span>{{ item.value | translate }}</span>
       <mat-icon matChipRemove class="material-icons-round icon-clear">highlight_off</mat-icon>
     </mat-chip>
   </mat-chip-list>
