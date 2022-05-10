@@ -17,8 +17,8 @@ export class CaseService extends BaseService<CaseDataDto> {
     super(httpClient, helperService, '', constants.API_ROUTE_CASES, new Serializer());
   }
 
-  searchSpecific(filters: Filter[] = []): Observable<any> {
-    const endpoint: string = `${this.endpoint.SEARCH}/${filters[0].value}`;
+  searchSpecific(uuid: string = ''): Observable<any> {
+    const endpoint: string = `${this.endpoint.SEARCH}/${uuid}`;
 
     return this.httpClient
       .get(`${this.helperService.getApiUrl()}/${endpoint}`)

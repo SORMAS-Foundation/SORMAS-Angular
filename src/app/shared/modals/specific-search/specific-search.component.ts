@@ -82,14 +82,8 @@ export class SpecificSearchComponent implements OnInit, OnDestroy {
       (key) => this.updatedResource[key] === undefined && delete this.updatedResource[key]
     );
     if (this.updatedResource?.uuid) {
-      const filters = [
-        {
-          field: 'specificId',
-          value: this.updatedResource.uuid,
-        },
-      ];
       this.subscriptions.push(
-        currentService.searchSpecific(filters).subscribe({
+        currentService.searchSpecific(this.updatedResource.uuid).subscribe({
           next: (response: any) => {
             if (response.elements.length > 0) {
               this.router.navigate([
