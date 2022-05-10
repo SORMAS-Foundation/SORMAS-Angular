@@ -6340,6 +6340,5 @@
   "lineListingSharedLocation": "Shared location",
   "headingUserProfile": "Role name",
   "confirmSetMissingGeoCoordinates": "Also replace exising coordinates",
-  "warningSetMissingGeoCoordinates": "This might replace coordinates which were intentionally set differently",
-  "caseSpecificSearch": "Seach by Case ID, External ID, epid number"
+  "warningSetMissingGeoCoordinates": "This might replace coordinates which were intentionally set differently"
 }
