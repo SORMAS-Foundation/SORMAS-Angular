@@ -7,7 +7,6 @@ import * as constants from '../../app.constants';
 import { CaseDataDto } from '../../_models/caseDataDto';
 import { HelperService } from '../helper.service';
 import { Serializer } from '../../_serializers/serializer';
-import { Filter } from '../../_models/common';
 
 @Injectable({
   providedIn: 'root',

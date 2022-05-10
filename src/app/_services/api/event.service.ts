@@ -8,7 +8,6 @@ import * as constants from '../../app.constants';
 import { EventDto } from '../../_models/eventDto';
 import { HelperService } from '../helper.service';
 import { Serializer } from '../../_serializers/serializer';
-import { Filter } from '../../_models/common';
 
 @Injectable({
   providedIn: 'root',
