@@ -75,7 +75,7 @@ export class SpecificSearchComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    const currentService =
+    const currentService: any =
       this.data.type === SPECIFIC_SEARCH_TYPE.CASE_SPECIFIC_SEARCH
         ? this.caseService
         : this.eventService;
@@ -92,9 +92,9 @@ export class SpecificSearchComponent implements OnInit, OnDestroy {
       this.subscriptions.push(
         currentService.searchSpecific(filters).subscribe({
           next: (response: any) => {
-            if (response.elements.length === 1) {
+            if (response.elements.length > 0) {
               this.router.navigate([
-                `/${this.data.type}/${this.data.type.slice(0, -1).toLowerCase()}/${
+                `/${this.data.type.toLowerCase()}/${this.data.type.slice(0, -1).toLowerCase()}/${
                   response.elements[0].uuid
                 }/details`,
               ]);

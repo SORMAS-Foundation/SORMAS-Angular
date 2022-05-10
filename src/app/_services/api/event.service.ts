@@ -19,15 +19,10 @@ export class EventService extends BaseService<EventDto> {
   }
 
   searchSpecific(filters: Filter[] = []): Observable<any> {
-    const endpoint: string = this.endpoint.SEARCH;
-    const requestPayload: any = {};
-
-    filters.forEach((filter: any) => {
-      requestPayload[filter.field] = filter.value;
-    });
+    const endpoint: string = `${this.endpoint.SEARCH}/${filters[0].value}`;
 
     return this.httpClient
-      .post(`${this.helperService.getApiUrl()}/${endpoint}`, requestPayload)
+      .get(`${this.helperService.getApiUrl()}/${endpoint}`)
       .pipe(map((data: any) => this.serializer.fromJson(data)));
   }
 }

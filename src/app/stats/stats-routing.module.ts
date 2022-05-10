@@ -11,8 +11,8 @@ const routes: Routes = [
     component: StatsComponent,
     children: [
       { path: '', redirectTo: 'statistics', pathMatch: 'full' },
-      { path: 'statistics', component: StatisticsComponent, canActivate: [LeaveGuard] },
-      { path: 'exports', component: ExportsComponent, canActivate: [LeaveGuard] },
+      { path: 'statistics', component: StatisticsComponent, canDeactivate: [LeaveGuard] },
+      { path: 'exports', component: ExportsComponent, canDeactivate: [LeaveGuard] },
     ],
   },
 ];

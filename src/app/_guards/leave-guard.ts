@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanDeactivate } from '@angular/router';
 import { FormActionsService } from '../_services/form-actions.service';
 
 @Injectable({ providedIn: 'root' })
-export class LeaveGuard implements CanActivate {
+export class LeaveGuard implements CanDeactivate<any> {
   canLeave = true;
 
   constructor(private formActionsService: FormActionsService) {
@@ -12,7 +12,7 @@ export class LeaveGuard implements CanActivate {
     });
   }
 
-  canActivate(): boolean {
+  canDeactivate(): boolean {
     return this.canLeave;
   }
 }
