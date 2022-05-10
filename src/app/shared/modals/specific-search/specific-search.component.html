@@ -11,22 +11,26 @@
   <p class="info" [innerText]="infoSpecificSearch | translate">
     <mat-icon class="material-icons-round">info</mat-icon>
   </p>
-  <app-dynamic-form
-    *ngIf="myFormElements.length"
-    [formId]="formId"
-    [formElements]="myFormElements"
-    (changed)="updateValues($event)"
-  ></app-dynamic-form>
-  <button mat-button color="warn" class="delete" mat-dialog-close>
-    {{ 'captions.actionCancel' | translate }}
-  </button>
-  <button
-    mat-flat-button
-    color="primary"
-    class="save-btn"
-    (click)="save()"
-    [disabled]="!this.updatedResource || this.updatedResource?.uuid === ''"
-  >
-    {{ searchText | translate }}
-  </button>
+  <div class="container">
+    <app-dynamic-form
+      *ngIf="myFormElements.length"
+      [formId]="formId"
+      [formElements]="myFormElements"
+      (changed)="updateValues($event)"
+    ></app-dynamic-form>
+    <div class="actions">
+      <button mat-button color="warn" class="delete" mat-dialog-close>
+        {{ 'captions.actionCancel' | translate }}
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="save-btn"
+        (click)="save()"
+        [disabled]="!this.updatedResource || this.updatedResource?.uuid === ''"
+      >
+        {{ searchText | translate }}
+      </button>
+    </div>
+  </div>
 </div>

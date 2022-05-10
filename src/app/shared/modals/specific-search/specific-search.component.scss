@@ -11,19 +11,18 @@
   vertical-align: middle;
 }
 
-.delete {
-  float: left;
-  position: absolute;
-  right: 25%;
-  bottom: 12%;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .actions {
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .save-btn {
-  float: left;
-  position: absolute;
-  right: 10%;
-  bottom: 12%;
-
   &.mat-button-disabled {
     background-color: mat.get-color-from-palette($sormas-accent, 50);
   }
