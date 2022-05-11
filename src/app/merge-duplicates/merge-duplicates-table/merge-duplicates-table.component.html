@@ -8,13 +8,17 @@
         <span *ngIf="type === 'contacts'">{{ 'captions.Contact.uuid' | translate }}</span>
       </th>
       <td mat-cell *matCellDef="let element ; let index = index" class="uuid" [ngClass]="{'pl-child': isChild(index)}">
-        <mat-icon
-          *ngIf="!isChild(index)"
-          [ngClass]="{'rotate': isChildHidden(index + 1)}"
-          (click)="hideChild(index)"
-          class="material-icons-round show-more"
-        >arrow_downward</mat-icon>
-        <a [routerLink]="['/cases/case/' + element.uuid]" mat-icon-button>
+        <div class="show-more-content" *ngIf="!isChild(index)">
+          <mat-icon
+            [ngClass]="{'rotate': isChildHidden(index + 1)}"
+            (click)="hideChild(index)"
+            class="material-icons-round show-more"
+          >arrow_downward</mat-icon>
+        </div>
+        <a *ngIf="type === 'cases'" [routerLink]="['/cases/case/' + element.uuid + '/details']" mat-icon-button>
+          <span class="bold">{{element.uuid | slice: 0:6}}</span>
+        </a>
+        <a *ngIf="type === 'contacts'" [routerLink]="['/contacts/contact/' + element.uuid + '/details']" mat-icon-button>
           <span class="bold">{{element.uuid | slice: 0:6}}</span>
         </a>
       </td>
@@ -27,7 +31,11 @@
 
     <ng-container matColumnDef="disease">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.columnDiseaseShort' | translate }} </th>
-      <td mat-cell *matCellDef="let element">{{ 'enum.Disease.' + element.disease | translate }}</td>
+      <td mat-cell *matCellDef="let element">
+        <div class="row-content">
+          {{ 'enum.Disease.' + element.disease | translate }}
+        </div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="caseClassification">
@@ -37,19 +45,29 @@
 
     <ng-container matColumnDef="personFirstName">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.personFirstName' | translate }} </th>
-      <td mat-cell *matCellDef="let element"> <span class="bold">{{element.personFirstName}}</span> </td>
+      <td mat-cell *matCellDef="let element">
+        <div class="row-content">
+          <span class="bold">{{element.personFirstName}}</span>
+        </div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="personLastName">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.personLastName' | translate }} </th>
-      <td mat-cell *matCellDef="let element"> <span class="bold">{{element.personLastName}}</span> </td>
+      <td mat-cell *matCellDef="let element">
+        <div class="row-content">
+          <span class="bold">{{element.personLastName}}</span>
+        </div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="age">
       <th mat-header-cell *matHeaderCellDef> {{ 'captions.Person.approximateAge' | translate }} </th>
       <td mat-cell *matCellDef="let element">
-        {{ element.ageAndBirthDate.age }} ({{ element.ageAndBirthDate.dateOfBirthDD }}/
-        {{ element.ageAndBirthDate.dateOfBirthMM }}/{{ element.ageAndBirthDate.dateOfBirthYYYY }})
+        <div class="row-content">
+          {{ element.ageAndBirthDate.age }} ({{ element.ageAndBirthDate.dateOfBirthMM + '/' +
+        element.ageAndBirthDate.dateOfBirthDD + '/' + element.ageAndBirthDate.dateOfBirthYYYY }})
+        </div>
       </td>
     </ng-container>
 
@@ -64,25 +82,29 @@
     </ng-container>
 
     <ng-container matColumnDef="healthFacilityName">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.healthFacilityName' | translate }} </th>
-      <td mat-cell *matCellDef="let element">{{element.healthFacilityName}}</td>
+      <th class="larger" mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.healthFacilityName' | translate }} </th>
+      <td class="larger" mat-cell *matCellDef="let element">
+        <div class="row-content">
+          {{element.healthFacilityName}}
+        </div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="reportDate">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.reportDate' | translate }} </th>
-      <td mat-cell *matCellDef="let element">{{element.reportDate | date: defaultDateFormat}}</td>
+      <th class="align-right" mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.reportDate' | translate }} </th>
+      <td mat-cell *matCellDef="let element" class="align-right">{{element.reportDate | date: defaultDateFormat}}</td>
     </ng-container>
 
     <ng-container matColumnDef="creationDate">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.creationDate' | translate }} </th>
-      <td mat-cell *matCellDef="let element">{{element.creationDate | date: defaultDateFormat}}</td>
+      <th class="align-right" mat-header-cell *matHeaderCellDef> {{ 'captions.creationDate' | translate }} </th>
+      <td mat-cell *matCellDef="let element" class="align-right">{{element.creationDate | date: defaultDateFormat}}</td>
     </ng-container>
 
     <ng-container matColumnDef="completeness">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.completeness' | translate }} </th>
+      <th class="align-right" mat-header-cell *matHeaderCellDef> {{ 'captions.CaseData.completeness' | translate }} </th>
       <td
         mat-cell
-        *matCellDef="let element" class="completeness"
+        *matCellDef="let element" class="completeness align-right"
         [ngClass]="{
         'value-low': element.completeness > -0.01 && element.completeness < 25.01,
         'value-medium': element.completeness > 25 && element.completeness < 50.01,
@@ -95,27 +117,47 @@
     </ng-container>
 
     <ng-container matColumnDef="merge">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionMerge' | translate }} </th>
-      <td mat-cell *matCellDef="let element" class="actions">
-        <mat-icon (click)="mergeAction(element)" class="material-icons-round">vertical_align_center</mat-icon>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">{{ 'captions.actionMerge' | translate }}</th>
+      <td mat-cell *matCellDef="let element ; let index = index" class="actions align-center">
+        <mat-icon
+          [ngClass]="{'is-child': isChild(index), 'disabled': actionsDisabled}"
+          (click)="mergeAction(element)"
+          class="material-icons-round"
+        >vertical_align_center</mat-icon>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="hide">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionHide' | translate }} </th>
-      <td mat-cell *matCellDef="let element ; let index = index" class="actions">
-        <mat-icon (click)="hideAction(element)" *ngIf="!isChild(index)" class="material-icons-round">remove</mat-icon>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">{{ 'captions.actionHide' | translate }}</th>
+      <td mat-cell *matCellDef="let element ; let index = index" class="actions align-center">
+        <mat-icon (click)="hideAction(index)" *ngIf="!isChild(index)" class="material-icons-round">remove</mat-icon>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="pick">
-      <th mat-header-cell *matHeaderCellDef> {{ 'captions.actionPick' | translate }} </th>
-      <td mat-cell *matCellDef="let element" class="actions">
-        <mat-icon (click)="pickAction(element)" class="material-icons-round">check_circle_outline</mat-icon>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">{{ 'captions.actionPick' | translate }}</th>
+      <td mat-cell *matCellDef="let element ; let index = index" class="actions align-center">
+        <mat-icon
+          *ngIf="isChild(index)"
+          (click)="pickAction(element)"
+          [ngClass]="{'disabled': actionsDisabled}"
+          class="material-icons-round pick"
+        >check</mat-icon>
+        <mat-icon
+          *ngIf="!isChild(index)"
+          (click)="pickAction(element)"
+          [ngClass]="{'disabled': actionsDisabled}"
+          class="material-icons-round pick"
+        >check_circle_outline</mat-icon>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns; let index = index" [ngClass]="{'hide': isChildHidden(index)}"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns;
+      let index = index"
+      [ngClass]="{'hide': isChildHidden(index), 'child-hidden': isChildHidden(index + 1), 'hide-all': isHideAll(row)}"
+    ></tr>
   </mat-table>
 </div>
