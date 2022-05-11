@@ -38,6 +38,10 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-group-select',
+        widgetInfo: {
+          info: 'strings.infoEditExportConfiguration',
+          sections: ['coreData', 'personData', 'vaccinationData'],
+        },
         className: 'fullwidth',
       },
     ],
@@ -47,6 +51,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.CORE',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['coreData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'eventParticipantUuid',
@@ -174,6 +186,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.PERSON',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['personData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'personUuid',
@@ -331,6 +351,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.VACCINATION',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['vaccinationData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'vaccinationStatus',
