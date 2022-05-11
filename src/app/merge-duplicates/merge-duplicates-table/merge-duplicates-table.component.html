@@ -117,7 +117,7 @@
     </ng-container>
 
     <ng-container matColumnDef="merge">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center">{{ 'captions.actionMerge' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef class="align-center">{{ 'captions.actionMerge' | translate }}</th>
       <td mat-cell *matCellDef="let element ; let index = index" class="actions align-center">
         <mat-icon
           [ngClass]="{'is-child': isChild(index), 'disabled': actionsDisabled}"
@@ -128,14 +128,14 @@
     </ng-container>
 
     <ng-container matColumnDef="hide">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center">{{ 'captions.actionHide' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef class="align-center">{{ 'captions.actionHide' | translate }}</th>
       <td mat-cell *matCellDef="let element ; let index = index" class="actions align-center">
         <mat-icon (click)="hideAction(index)" *ngIf="!isChild(index)" class="material-icons-round">remove</mat-icon>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="pick">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center">{{ 'captions.actionPick' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef class="align-center">{{ 'captions.actionPick' | translate }}</th>
       <td mat-cell *matCellDef="let element ; let index = index" class="actions align-center">
         <mat-icon
           *ngIf="isChild(index)"
