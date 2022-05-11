@@ -226,8 +226,8 @@ export const API_ROUTE_DISTRICTS = {
   ADD: 'districts/push',
   DELETE: 'districts/delete',
   EXPORT: 'districts/export',
-  ARCHIVE: 'regions/archive',
-  DEARCHIVE: 'regions/dearchive',
+  ARCHIVE: 'districts/archive',
+  DEARCHIVE: 'districts/dearchive',
 };
 
 export const API_ROUTE_COMMUNITIES = {
@@ -297,8 +297,8 @@ export const API_ROUTE_FACILITIES = {
   ADD: 'facilities/push',
   DELETE: 'facilities/delete',
   EXPORT: 'facilities/export',
-  ARCHIVE: 'continents/archive',
-  DEARCHIVE: 'continents/dearchive',
+  ARCHIVE: 'facilities/archive',
+  DEARCHIVE: 'facilities/dearchive',
 };
 
 export const API_ROUTE_OUTBREAKS = {

@@ -572,7 +572,7 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'healthFacilityDetails',
         label: 'captions.CaseData.healthFacilityDetails',
         newLine: true,
-        className: 'size-full',
+        validation: ['required'],
         dependingOn: 'facility',
         dependingOnValues: ['OTHER_FACILITY'],
       },

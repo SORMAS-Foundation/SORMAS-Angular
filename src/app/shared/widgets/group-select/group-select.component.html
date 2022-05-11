@@ -1,6 +1,6 @@
 <div class="group-select">
-  <p class="info">
-    {{ 'strings.infoEditExportConfiguration' | translate }}
+  <p *ngIf="config?.widgetInfo?.info" class="info">
+    {{ config.widgetInfo.info | translate }}
   </p>
 
   <p class="actions">

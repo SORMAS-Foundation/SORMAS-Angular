@@ -39,6 +39,15 @@
       [style.width.px]="actualWidth"
       class="form-grid-row"
     >
+      <button
+        mat-icon-button
+        type="button"
+        (click)="removeContact(i)"
+        [disabled]="contacts.controls.length === 1"
+        class="button-remove"
+      >
+        <mat-icon class="material-icons-round">highlight_off</mat-icon>
+      </button>
       <mat-form-field
         appearance="outline"
         floatLabel="always"
@@ -223,16 +232,6 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <button
-        mat-icon-button
-        type="button"
-        (click)="removeContact(i)"
-        [disabled]="contacts.controls.length === 1"
-        class="button-remove"
-      >
-        <mat-icon class="material-icons-round">highlight_off</mat-icon>
-      </button>
     </div>
   </div>
 

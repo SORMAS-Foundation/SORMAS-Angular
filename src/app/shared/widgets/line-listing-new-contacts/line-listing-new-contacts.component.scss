@@ -26,6 +26,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    &:first-child {
+      padding-left: 60px;
+    }
   }
 }
 
@@ -46,6 +49,10 @@
 }
 
 .button-remove {
+  position: sticky;
+  background-color: $white;
+  left: 0;
+  z-index: 1;
   height: 32px;
   line-height: 32px;
 
