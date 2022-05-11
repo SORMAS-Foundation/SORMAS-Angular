@@ -1,0 +1,37 @@
+<div mat-dialog-title>
+  <h1>{{ searchSpecific | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content class="white">
+  <div class="info-text">
+    <mat-icon class="material-icons-round info">info</mat-icon>
+    <p class="info" [innerHTML]="infoSpecificSearch | translate"></p>
+  </div>
+  <div class="container">
+    <app-dynamic-form
+      *ngIf="myFormElements.length"
+      [formId]="formId"
+      [formElements]="myFormElements"
+      (changed)="updateValues($event)"
+    ></app-dynamic-form>
+    <div class="actions">
+      <button mat-button color="warn" class="delete" mat-dialog-close>
+        {{ 'captions.actionCancel' | translate }}
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="save-btn"
+        (click)="save()"
+        [disabled]="!this.updatedResource || this.updatedResource?.uuid === ''"
+      >
+        {{ searchText | translate }}
+      </button>
+    </div>
+  </div>
+</div>

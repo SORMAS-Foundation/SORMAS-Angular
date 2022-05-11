@@ -1,4 +1,4 @@
-<div *ngIf="viewOptions || bulkEditOptions || allowToggleColumns" class="actions">
+<div *ngIf="viewOptions || bulkEditOptionsDefs || allowToggleColumns" class="actions">
   <app-column-picker
     *ngIf="allowToggleColumns"
     [columns]="tableColumns"
@@ -9,12 +9,12 @@
     <app-action-menu [config]="viewOptions" (action)="onActionSelected($event)"></app-action-menu>
   </app-dropdown-menu>
   <app-dropdown-menu
-    *ngIf="bulkEditOptions?.length"
+    *ngIf="bulkEditOptionsDefs?.length"
     [buttonText]="'captions.bulkActions' | translate"
     [disabled]="selection.isEmpty()"
   >
     <app-action-menu
-      [config]="bulkEditOptions"
+      [config]="bulkEditOptionsDefs"
       (action)="onActionSelected($event)"
     ></app-action-menu>
   </app-dropdown-menu>

@@ -357,7 +357,7 @@ export const FORM_DATA_CASE_DETAILS = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'healthFacility.uuid',
+        key: 'facility',
         label: 'captions.Facility',
         service: 'facilityService',
         fallbackOption: {
@@ -387,6 +387,16 @@ export const FORM_DATA_CASE_DETAILS = [
         className: 'size-full',
         dependingOn: 'placeOfStaty',
         dependingOnValues: ['FACILITY'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'healthFacilityDetails',
+        label: 'captions.CaseData.healthFacilityDetails',
+        newLine: true,
+        validation: ['required'],
+        className: 'size-large',
+        dependingOn: 'facility',
+        dependingOnValues: ['OTHER_FACILITY'],
       },
       {
         ...FORM_DATA_INPUT,

@@ -44,6 +44,11 @@ export const actionsMoreDefs: NavItem[] = [
     name: 'captions.caseMergeDuplicates',
     action: ACTIONS_CASE.MERGE_DUPLICATES,
   },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.caseSearchSpecificCase',
+    action: ACTIONS_CASE.CASE_SPECIFIC_SEARCH,
+  },
 ];
 
 export const actionsViewOptionsDefs: NavItem[] = [

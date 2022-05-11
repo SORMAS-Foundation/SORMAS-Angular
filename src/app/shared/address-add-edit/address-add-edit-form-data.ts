@@ -99,7 +99,7 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
       },
       {
         ...FORM_DATA_SELECT,
-        key: 'healthFacility.uuid',
+        key: 'facility',
         label: 'captions.Facility',
         service: 'facilityService',
         fallbackOption: {
@@ -125,6 +125,16 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         ],
         className: 'size-large',
         newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'healthFacilityDetails',
+        label: 'captions.CaseData.healthFacilityDetails',
+        newLine: true,
+        validation: ['required'],
+        className: 'size-large',
+        dependingOn: 'facility',
+        dependingOnValues: ['OTHER_FACILITY'],
       },
     ],
   },

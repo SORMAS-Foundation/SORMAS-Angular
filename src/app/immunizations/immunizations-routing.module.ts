@@ -17,8 +17,8 @@ const routes: Routes = [
         path: 'immunization/:immunizationId',
         component: ImmunizationComponent,
         children: [
-          { path: 'profile', component: ImmunizationProfileComponent, canActivate: [LeaveGuard] },
-          { path: 'person', component: ImmunizationPersonComponent, canActivate: [LeaveGuard] },
+          { path: 'profile', component: ImmunizationProfileComponent, canDeactivate: [LeaveGuard] },
+          { path: 'person', component: ImmunizationPersonComponent, canDeactivate: [LeaveGuard] },
         ],
       },
     ],

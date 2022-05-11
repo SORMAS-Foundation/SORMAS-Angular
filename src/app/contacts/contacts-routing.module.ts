@@ -19,14 +19,14 @@ const routes: Routes = [
         path: 'contact/:contactId',
         component: ContactComponent,
         children: [
-          { path: 'details', component: ContactDetailsComponent, canActivate: [LeaveGuard] },
-          { path: 'person', component: ContactPersonComponent, canActivate: [LeaveGuard] },
+          { path: 'details', component: ContactDetailsComponent, canDeactivate: [LeaveGuard] },
+          { path: 'person', component: ContactPersonComponent, canDeactivate: [LeaveGuard] },
           {
             path: 'epidemiological-data',
             component: ContactEpidemiologicalDataComponent,
-            canActivate: [LeaveGuard],
+            canDeactivate: [LeaveGuard],
           },
-          { path: 'follow-up', component: ContactFollowUpComponent, canActivate: [LeaveGuard] },
+          { path: 'follow-up', component: ContactFollowUpComponent, canDeactivate: [LeaveGuard] },
         ],
       },
     ],

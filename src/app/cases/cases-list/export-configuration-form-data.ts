@@ -38,6 +38,22 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-group-select',
+        widgetInfo: {
+          info: 'strings.infoEditExportConfiguration',
+          sections: [
+            'coreData',
+            'sensitiveData',
+            'personData',
+            'hospitalizationData',
+            'epiData',
+            'vaccinationData',
+            'clinicalCourseData',
+            'therapyData',
+            'followUpData',
+            'additionalData',
+            'eventData',
+          ],
+        },
         className: 'fullwidth',
       },
     ],
@@ -47,6 +63,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.CORE',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['coreData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'id',
@@ -259,6 +283,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     className: 'columns-lg-3 columns-md-2',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['sensitiveData'],
+        },
+        className: 'widget-fullwidth',
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'firstName',
         label: 'captions.CaseExport.firstName',
@@ -326,49 +358,49 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'region',
+        key: 'person.region',
         label: 'captions.regionName',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'district',
+        key: 'person.district',
         label: 'captions.Location.district',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'community',
+        key: 'person.community',
         label: 'captions.Location.community',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'city',
+        key: 'person.city',
         label: 'captions.city',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'street',
+        key: 'person.street',
         label: 'captions.Location.street',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'houseNumber',
+        key: 'person.houseNumber',
         label: 'captions.Location.houseNumber',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'additionalInformation',
+        key: 'person.additionalInformation',
         label: 'captions.Location.additionalInformation',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_CHECKBOX,
-        key: 'postalCode',
+        key: 'person.postalCode',
         label: 'captions.Location.postalCode',
         className: 'fullwidth',
       },
@@ -440,6 +472,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     className: 'columns-lg-3 columns-md-2',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['personData'],
+        },
+        className: 'widget-fullwidth',
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'ageGroup',
         label: 'captions.CaseExport.ageGroup',
@@ -489,6 +529,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     className: 'columns-lg-3 columns-md-2',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['hospitalizationData'],
+        },
+        className: 'widget-fullwidth',
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'admittedToHealthFacility',
         label: 'captions.CaseHospitalization.admittedToHealthFacility',
@@ -520,6 +568,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     className: 'columns-lg-3 columns-md-2',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['epiData'],
+        },
+        className: 'widget-fullwidth',
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'traveled',
         label: 'captions.CaseExport.traveled',
@@ -550,6 +606,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.VACCINATION',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['vaccinationData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'vaccinationStatus',
@@ -636,6 +700,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     className: 'columns-lg-3 columns-md-2',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['clinicalCourseData'],
+        },
+        className: 'widget-fullwidth',
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'healthConditions',
         label: 'captions.CaseData.healthConditions',
@@ -655,6 +727,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     className: 'columns-lg-3 columns-md-2',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['therapyData'],
+        },
+        className: 'widget-fullwidth',
+      },
+      {
         ...FORM_DATA_CHECKBOX,
         key: 'numberOfPrescriptions',
         label: 'captions.CaseExport.numberOfPrescriptions',
@@ -673,6 +753,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.FOLLOW_UP',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['followUpData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'followUpStatus',
@@ -716,6 +804,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.ADDITIONAL',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['additionalData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'country',
@@ -849,6 +945,14 @@ export const FORM_DATA_EXPORT_CONFIGURATION: FormBase<any>[] = [
     title: 'enum.ExportGroupType.EVENT',
     className: 'columns-lg-3 columns-md-2',
     fields: [
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-group-select',
+        widgetInfo: {
+          sections: ['eventData'],
+        },
+        className: 'widget-fullwidth',
+      },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'eventCount',

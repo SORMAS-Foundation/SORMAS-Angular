@@ -206,7 +206,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.watchFields = arrayTmp
       .filter((item) => item.dependingOn)
       .map((item) => ({
-        watch: item.dependingOn,
+        watch: item.dependingOn?.replace(/\./g, '__'),
         target: item.key.replace(/\./g, '__'),
         values: item.dependingOnValues,
       }));

@@ -1,0 +1,238 @@
+<div class="visualization">
+  <div class="options-form">
+    <form [formGroup]="form">
+      <fieldset class="visualization-section">
+        <div class="visualization-type">
+          <mat-form-field appearance="outline" floatLabel="always" class="field-visualization">
+            <mat-select #type disableOptionCentering formControlName="statisticsVisualizationType">
+              <mat-option value="TABLE">
+                {{ 'enum.StatisticsVisualizationType.TABLE' | translate }}
+              </mat-option>
+              <mat-option value="MAP">
+                {{ 'enum.StatisticsVisualizationType.MAP' | translate }}
+              </mat-option>
+              <mat-option value="CHART">
+                {{ 'enum.StatisticsVisualizationType.CHART' | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-radio-group
+            *ngIf="type.value === 'MAP'"
+            formControlName="statisticsVisualizationMapType"
+          >
+            <mat-radio-button color="primary" value="REGIONS">
+              <span>{{ 'enum.StatisticsVisualizationMapType.REGIONS' | translate }}</span>
+            </mat-radio-button>
+            <mat-radio-button color="primary" value="DISTRICTS">
+              <span>{{ 'enum.StatisticsVisualizationMapType.DISTRICTS' | translate }}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <mat-radio-group
+            *ngIf="type.value === 'CHART'"
+            formControlName="statisticsVisualizationChartType"
+          >
+            <mat-radio-button color="primary" value="COLUMN">
+              <span>{{ 'enum.StatisticsVisualizationChartType.COLUMN' | translate }}</span>
+            </mat-radio-button>
+            <mat-radio-button
+              color="primary"
+              value="STACKED_COLUMN"
+              [disabled]="incidence.value === 'CASE_INCIDENCE'"
+            >
+              <span>{{ 'enum.StatisticsVisualizationChartType.STACKED_COLUMN' | translate }}</span>
+            </mat-radio-button>
+            <mat-radio-button color="primary" value="LINE">
+              <span>{{ 'enum.StatisticsVisualizationChartType.LINE' | translate }}</span>
+            </mat-radio-button>
+            <mat-radio-button
+              color="primary"
+              value="PIE"
+              [disabled]="incidence.value === 'CASE_INCIDENCE'"
+            >
+              <span>{{ 'enum.StatisticsVisualizationChartType.PIE' | translate }}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div *ngIf="type.value === 'TABLE' || type.value === 'CHART'" class="axis-selector">
+          <mat-form-field appearance="outline" floatLabel="always" class="field-axis">
+            <mat-label *ngIf="type.value === 'TABLE'">
+              {{ 'enum.StatisticsVisualizationElementType.ROWS' | translate }}
+            </mat-label>
+            <mat-label *ngIf="type.value === 'CHART'">
+              {{ 'enum.StatisticsVisualizationElementType.Chart.ROWS' | translate }}
+            </mat-label>
+            <mat-select #rows disableOptionCentering formControlName="rows">
+              <mat-option *ngIf="type.value === 'TABLE'" value="">
+                {{ 'captions.statisticsDontGroupRows' | translate }}
+              </mat-option>
+              <mat-option *ngIf="type.value === 'CHART'" value="">
+                {{ 'captions.statisticsDontGroupSeries' | translate }}
+              </mat-option>
+              <mat-optgroup
+                *ngFor="let group of statisticsAttributesGroups"
+                [label]="group.name | translate"
+              >
+                <mat-option *ngFor="let option of group.attributes" [value]="option.key">
+                  {{ option.value | translate }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            *ngIf="
+              rows.value === 'ONSET_TIME' ||
+              rows.value === 'REPORT_TIME' ||
+              rows.value === 'OUTCOME_TIME'
+            "
+            appearance="outline"
+            floatLabel="always"
+            class="field-axis-selection"
+          >
+            <mat-label></mat-label>
+            <mat-select
+              disableOptionCentering
+              formControlName="rowsDetails"
+              [placeholder]="'captions.statisticsSpecifySelection' | translate"
+            >
+              <mat-option *ngFor="let option of statisticsTimeAttributes" [value]="option.key">
+                {{ option.value | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            *ngIf="rows.value === 'JURISDICTION'"
+            appearance="outline"
+            floatLabel="always"
+            class="field-axis-selection"
+          >
+            <mat-label></mat-label>
+            <mat-select
+              disableOptionCentering
+              formControlName="rowsDetails"
+              [placeholder]="'captions.statisticsSpecifySelection' | translate"
+            >
+              <mat-option *ngFor="let option of statisticsPlaceAttributes" [value]="option.key">
+                {{ option.value | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-icon-button color="primary" (click)="swapAxes()">
+            <mat-icon class="material-icons-round">swap_horiz</mat-icon>
+          </button>
+
+          <mat-form-field appearance="outline" floatLabel="always" class="field-axis">
+            <mat-label *ngIf="type.value === 'TABLE'">
+              {{ 'enum.StatisticsVisualizationElementType.COLUMNS' | translate }}
+            </mat-label>
+            <mat-label *ngIf="type.value === 'CHART'">
+              {{ 'enum.StatisticsVisualizationElementType.Chart.COLUMNS' | translate }}
+            </mat-label>
+            <mat-select #columns disableOptionCentering formControlName="columns">
+              <mat-option *ngIf="type.value === 'TABLE'" value="">
+                {{ 'captions.statisticsDontGroupColumns' | translate }}
+              </mat-option>
+              <mat-option *ngIf="type.value === 'CHART'" value="">
+                {{ 'captions.statisticsDontGroupX' | translate }}
+              </mat-option>
+              <mat-optgroup
+                *ngFor="let group of statisticsAttributesGroups"
+                [label]="group.name | translate"
+              >
+                <mat-option *ngFor="let option of group.attributes" [value]="option.key">
+                  {{ option.value | translate }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            *ngIf="
+              columns.value === 'ONSET_TIME' ||
+              columns.value === 'REPORT_TIME' ||
+              columns.value === 'OUTCOME_TIME'
+            "
+            appearance="outline"
+            floatLabel="always"
+            class="field-axis-selection"
+          >
+            <mat-label></mat-label>
+            <mat-select
+              disableOptionCentering
+              formControlName="columnsDetails"
+              [placeholder]="'captions.statisticsSpecifySelection' | translate"
+            >
+              <mat-option *ngFor="let option of statisticsTimeAttributes" [value]="option.key">
+                {{ option.value | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            *ngIf="columns.value === 'JURISDICTION'"
+            appearance="outline"
+            floatLabel="always"
+            class="field-axis-selection"
+          >
+            <mat-label></mat-label>
+            <mat-select
+              disableOptionCentering
+              formControlName="columnsDetails"
+              [placeholder]="'captions.statisticsSpecifySelection' | translate"
+            >
+              <mat-option *ngFor="let option of statisticsPlaceAttributes" [value]="option.key">
+                {{ option.value | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </fieldset>
+
+      <fieldset class="options-section">
+        <mat-form-field appearance="outline" floatLabel="always" class="field-incidence">
+          <mat-select #incidence disableOptionCentering formControlName="caseCountOrIncidence">
+            <mat-option value="CASE_COUNT">
+              {{ 'enum.CaseCountOrIncidence.CASE_COUNT' | translate }}
+            </mat-option>
+            <mat-option value="CASE_INCIDENCE">
+              {{ 'enum.CaseCountOrIncidence.CASE_INCIDENCE' | translate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+          *ngIf="incidence.value === 'CASE_INCIDENCE'"
+          appearance="outline"
+          floatLabel="always"
+          class="field-incidence-divisor"
+        >
+          <mat-label>
+            {{ 'captions.statisticsIncidenceDivisor' | translate }}
+          </mat-label>
+          <input matInput type="text" formControlName="incidenceDivisor" />
+        </mat-form-field>
+
+        <div class="field-incidence-flags">
+          <mat-checkbox color="primary" formControlName="showZeroResults" class="field-zero-values">
+            {{ 'captions.statisticsShowZeroValues' | translate }}
+          </mat-checkbox>
+
+          <mat-checkbox
+            *ngIf="type.value === 'MAP'"
+            color="primary"
+            formControlName="hideOtherCountries"
+            class="field-zero-values"
+          >
+            {{ 'captions.dashboardHideOtherCountries' | translate }}
+          </mat-checkbox>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="actions">
+    <button mat-flat-button color="primary" class="button-generate" (click)="generate()">
+      Generate
+    </button>
+  </div>
+</div>

@@ -20,23 +20,23 @@ const routes: Routes = [
       {
         path: 'event-groups/list',
         component: EventGroupsComponent,
-        canActivate: [LeaveGuard],
+        canDeactivate: [LeaveGuard],
       },
       {
         path: 'event/:eventId',
         component: EventComponent,
         children: [
-          { path: 'details', component: EventDataComponent, canActivate: [LeaveGuard] },
+          { path: 'details', component: EventDataComponent, canDeactivate: [LeaveGuard] },
           {
             path: 'participants',
             component: EventParticipantsComponent,
-            canActivate: [LeaveGuard],
+            canDeactivate: [LeaveGuard],
           },
-          { path: 'actions', component: EventActionsComponent, canActivate: [LeaveGuard] },
+          { path: 'actions', component: EventActionsComponent, canDeactivate: [LeaveGuard] },
           {
             path: 'participants-profile/:participantId',
             component: EventParticipantsProfileComponent,
-            canActivate: [LeaveGuard],
+            canDeactivate: [LeaveGuard],
           },
         ],
       },

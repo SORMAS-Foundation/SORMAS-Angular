@@ -38,6 +38,7 @@ export const FORM_DATA_ENTRY_POINT_FILTERS = [
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },

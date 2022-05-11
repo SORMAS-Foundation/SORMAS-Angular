@@ -17,11 +17,11 @@ const routes: Routes = [
         path: 'entry/:entryId',
         component: EntryComponent,
         children: [
-          { path: 'travel-entry', component: TravelEntryComponent, canActivate: [LeaveGuard] },
+          { path: 'travel-entry', component: TravelEntryComponent, canDeactivate: [LeaveGuard] },
           {
             path: 'travel-entry-person',
             component: TravelEntryPersonComponent,
-            canActivate: [LeaveGuard],
+            canDeactivate: [LeaveGuard],
           },
         ],
       },

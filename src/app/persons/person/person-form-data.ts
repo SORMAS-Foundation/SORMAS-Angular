@@ -389,6 +389,15 @@ export const FORM_DATA_PERSON = [
       },
       {
         ...FORM_DATA_INPUT,
+        key: 'healthFacilityDetails',
+        label: 'captions.CaseData.healthFacilityDetails',
+        newLine: true,
+        validation: ['required'],
+        dependingOn: 'facility',
+        dependingOnValues: ['OTHER_FACILITY'],
+      },
+      {
+        ...FORM_DATA_INPUT,
         key: 'address.street',
         label: 'captions.Location.street',
         newLine: true,

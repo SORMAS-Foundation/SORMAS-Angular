@@ -532,6 +532,15 @@ export const FORM_DATA_EVENT_ADD = [
       },
       {
         ...FORM_DATA_INPUT,
+        key: 'healthFacilityDetails',
+        label: 'captions.CaseData.healthFacilityDetails',
+        newLine: true,
+        validation: ['required'],
+        dependingOn: 'facility',
+        dependingOnValues: ['OTHER_FACILITY'],
+      },
+      {
+        ...FORM_DATA_INPUT,
         key: 'typeOfPlaceText',
         label: 'Event.typeOfPlaceText',
         dependingOn: 'typeOfPlace',

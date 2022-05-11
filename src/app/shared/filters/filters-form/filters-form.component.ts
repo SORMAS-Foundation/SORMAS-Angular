@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, AfterViewInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Filter } from '../../../_models/common';
 import { FilterService } from '../../../_services/filter.service';
@@ -10,7 +10,7 @@ import { FormBase } from '../../dynamic-form/types/form-element-base';
   templateUrl: './filters-form.component.html',
   styleUrls: ['./filters-form.component.scss'],
 })
-export class FiltersFormComponent implements OnInit, OnDestroy {
+export class FiltersFormComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() formId: string;
   @Input() showFilterHeader = true;
   @Input() set data(raw: FormBase<any>[]) {
@@ -33,6 +33,20 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.updateFilters(this.getInintialValues()));
+  }
+
+  getInintialValues(): any {
+    const result: any = {};
+    this.formData?.forEach((section) => {
+      section.fields.forEach((field) => {
+        result[field.key.replaceAll('.', '__')] = field.value;
+      });
+    });
+    return result;
   }
 
   getFormValues(raw: any): any {
@@ -70,7 +84,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     const values: string[] = Object.values(formValues);
     this.filters = [];
     values.forEach((e, i) => {
-      if (values[i] !== null && values[i] !== undefined) {
+      if (values[i] !== null && values[i] !== undefined && values[i] !== '') {
         this.filters.push({ field: keys[i], value: values[i] });
       }
     });

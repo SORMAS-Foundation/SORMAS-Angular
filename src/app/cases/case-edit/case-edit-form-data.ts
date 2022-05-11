@@ -214,9 +214,10 @@ export const FORM_DATA_CASE_EDIT = [
         key: 'healthFacilityDetails',
         label: 'captions.CaseData.healthFacilityDetails',
         newLine: true,
-        className: 'size-full',
-        dependingOn: 'placeOfStaty',
-        dependingOnValues: ['FACILITY'],
+        validation: ['required'],
+        className: 'size-large',
+        dependingOn: 'facility',
+        dependingOnValues: ['OTHER_FACILITY'],
       },
       {
         ...FORM_DATA_INPUT,

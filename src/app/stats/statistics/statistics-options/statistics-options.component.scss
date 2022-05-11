@@ -1,0 +1,107 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.visualization {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+  padding: 24px;
+  padding-left: 0;
+  margin-bottom: 24px;
+}
+
+.options-form {
+  flex-grow: 1;
+}
+
+.actions {
+  text-align: end;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  column-gap: 24px;
+  row-gap: 8px;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.visualization-type {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  align-items: center;
+}
+
+.axis-selector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+
+  > * {
+    flex-shrink: 0;
+  }
+}
+
+.field-visualization {
+  width: 126px;
+}
+
+.field-axis {
+  width: 160px;
+}
+
+.field-axis-selection {
+  width: 126px;
+}
+
+.options-section {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 32px;
+  align-items: flex-end;
+}
+
+.field-incidence {
+  width: 140px;
+}
+
+.field-incidence-divisor {
+  width: 150px;
+}
+
+.field-zero-values {
+  margin-bottom: 5px;
+}
+
+.field-incidence-flags {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  row-gap: 16px;
+}
+
+@media (min-width: map-get($grid-breakpoints, xl)) {
+  .visualization {
+    flex-direction: row;
+    padding-top: 48px;
+    padding-left: 24px;
+  }
+
+  form {
+    flex-direction: row;
+  }
+
+  .options-section {
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 2px solid mat.get-color-from-palette($sormas-accent, 200);
+    padding-left: 32px;
+  }
+}
