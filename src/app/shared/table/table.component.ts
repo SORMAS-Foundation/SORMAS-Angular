@@ -338,6 +338,16 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         messageKey = `strings.confirmationDearchive${context}`;
         buttonKey = 'captions.actionDearchiveCoreEntity';
         break;
+      case ACTIONS_BULK_EDIT.ENABLE:
+        titleKey = 'strings.headingConfirmEnabling';
+        messageKey = `strings.confirmationEnable${context}`;
+        buttonKey = 'captions.actionEnable';
+        break;
+      case ACTIONS_BULK_EDIT.DISABLE:
+        titleKey = 'strings.headingConfirmDisabling';
+        messageKey = `strings.confirmationDisable${context}`;
+        buttonKey = 'captions.actionDisable';
+        break;
       default:
     }
 
@@ -493,6 +503,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       case ACTIONS_BULK_EDIT.DELETE:
       case ACTIONS_BULK_EDIT.ARCHIVE:
       case ACTIONS_BULK_EDIT.DEARCHIVE:
+      case ACTIONS_BULK_EDIT.ENABLE:
+      case ACTIONS_BULK_EDIT.DISABLE:
         this.confirmBulkAction(event);
         break;
       case ACTIONS_BULK_EDIT.GROUP:

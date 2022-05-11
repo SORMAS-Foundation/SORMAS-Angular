@@ -1,9 +1,21 @@
 @use '/src/variables.scss' as *;
 
+.mat-icon {
+  font-size: 14px;
+}
+
 .accent {
   font-weight: 500;
 }
 
 .warn {
   color: map-get($sormas-alert, 700);
+}
+
+.enable .mat-icon {
+  color: map-get($sormas-primary, 400);
+}
+
+.disable .mat-icon {
+  color: map-get($sormas-alert, 300);
 }
