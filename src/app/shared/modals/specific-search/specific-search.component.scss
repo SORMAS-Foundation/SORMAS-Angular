@@ -1,0 +1,33 @@
+@use '/src/variables.scss' as *;
+@use '@angular/material' as mat;
+
+.info {
+  color: mat.get-color-from-palette($sormas-accent, 500);
+  font-size: 12px;
+}
+
+.mat-icon {
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .actions {
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.save-btn {
+  &.mat-button-disabled {
+    background-color: mat.get-color-from-palette($sormas-accent, 50);
+  }
+}
+
+.white {
+  background-color: $white;
+}

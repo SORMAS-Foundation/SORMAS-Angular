@@ -44,4 +44,9 @@ export const actionsMoreDefs: NavItem[] = [
     name: 'captions.exportDetailed',
     action: ACTIONS_EVENT.DETAILED_EXPORT,
   },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.eventSearchSpecificEvent',
+    action: ACTIONS_EVENT.EVENT_SPECIFIC_SEARCH,
+  },
 ];

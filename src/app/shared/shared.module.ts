@@ -67,6 +67,8 @@ import { CasePersonContactAddEditComponent } from './case-person-contact-add-edi
 import { GroupSelectComponent } from './widgets/group-select/group-select.component';
 import { CustomExportComponent } from './modals/custom-export/custom-export.component';
 import { ExportConfigurationComponent } from './modals/export-configuration/export-configuration.component';
+import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
+import { SpecificSearchNotFoundComponent } from './modals/specific-search-not-found/specific-search-not-found.component';
 
 @NgModule({
   declarations: [
@@ -120,6 +122,8 @@ import { ExportConfigurationComponent } from './modals/export-configuration/expo
     GroupSelectComponent,
     CustomExportComponent,
     ExportConfigurationComponent,
+    SpecificSearchComponent,
+    SpecificSearchNotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -176,6 +180,7 @@ import { ExportConfigurationComponent } from './modals/export-configuration/expo
     PeriodPickerComponent,
     CustomExportComponent,
     ExportConfigurationComponent,
+    SpecificSearchComponent,
   ],
 })
 export class SharedModule {}
