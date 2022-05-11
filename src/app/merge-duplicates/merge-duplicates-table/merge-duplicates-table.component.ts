@@ -8,7 +8,7 @@ import { MergeDuplicateService } from '../../_services/api/mergeDuplicate.servic
 import { MergeDuplicateContactService } from '../../_services/api/mergeDuplicateContact.service';
 import { FilterService } from '../../_services/filter.service';
 import { MERGE_DUPLICATES_FILTERS_FORM_ID } from '../../_constants/form-identifiers';
-import {NotificationService} from '../../_services/notification.service';
+import { NotificationService } from '../../_services/notification.service';
 
 @Component({
   selector: 'app-merge-duplicates-table',
@@ -42,7 +42,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
     private mergeDuplicatesContactService: MergeDuplicateContactService,
     public translateService: TranslateService,
     private filterService: FilterService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -202,7 +202,6 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
   hideAction(element: any): void {
     this.hiddenUuids.push(this.mergeDuplicates[element].uuid);
     this.hiddenUuids.push(this.mergeDuplicates[element + 1].uuid);
-    console.log('this.hiddenUuids', this.hiddenUuids);
   }
 
   isHideAll(element: any): boolean {
