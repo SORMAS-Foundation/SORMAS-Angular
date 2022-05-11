@@ -39,6 +39,7 @@ export class StatisticsOptionsComponent implements OnInit {
       caseCountOrIncidence: new FormControl('CASE_COUNT'),
       incidenceDivisor: new FormControl(100000),
       showZeroResults: new FormControl(false),
+      hideOtherCountries: new FormControl(false),
     });
   }
 

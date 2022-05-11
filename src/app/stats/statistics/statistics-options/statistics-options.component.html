@@ -208,14 +208,25 @@
           class="field-incidence-divisor"
         >
           <mat-label>
-            {{ 'Incidence divisor' | translate }}
+            {{ 'captions.statisticsIncidenceDivisor' | translate }}
           </mat-label>
           <input matInput type="text" formControlName="incidenceDivisor" />
         </mat-form-field>
 
-        <mat-checkbox color="primary" formControlName="showZeroResults" class="field-zero-values">
-          {{ 'Show zero values' | translate }}
-        </mat-checkbox>
+        <div class="field-incidence-flags">
+          <mat-checkbox color="primary" formControlName="showZeroResults" class="field-zero-values">
+            {{ 'captions.statisticsShowZeroValues' | translate }}
+          </mat-checkbox>
+
+          <mat-checkbox
+            *ngIf="type.value === 'MAP'"
+            color="primary"
+            formControlName="hideOtherCountries"
+            class="field-zero-values"
+          >
+            {{ 'captions.dashboardHideOtherCountries' | translate }}
+          </mat-checkbox>
+        </div>
       </fieldset>
     </form>
   </div>
