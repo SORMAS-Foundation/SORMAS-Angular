@@ -68,7 +68,6 @@ import { GroupSelectComponent } from './widgets/group-select/group-select.compon
 import { CustomExportComponent } from './modals/custom-export/custom-export.component';
 import { ExportConfigurationComponent } from './modals/export-configuration/export-configuration.component';
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
-import { SpecificSearchNotFoundComponent } from './modals/specific-search-not-found/specific-search-not-found.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +122,6 @@ import { SpecificSearchNotFoundComponent } from './modals/specific-search-not-fo
     CustomExportComponent,
     ExportConfigurationComponent,
     SpecificSearchComponent,
-    SpecificSearchNotFoundComponent,
   ],
   imports: [
     CommonModule,
