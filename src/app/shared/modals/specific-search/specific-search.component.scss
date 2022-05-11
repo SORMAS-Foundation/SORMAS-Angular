@@ -11,6 +11,17 @@
   vertical-align: middle;
 }
 
+.info-text {
+  color: mat.get-color-from-palette($sormas-accent, 500);
+  font-size: 12px;
+
+  .mat-icon {
+    float: left;
+    margin-left: -28px;
+    font-size: 18px;
+  }
+}
+
 .container {
   display: flex;
   justify-content: space-between;

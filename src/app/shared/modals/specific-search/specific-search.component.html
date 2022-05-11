@@ -8,9 +8,10 @@
 </div>
 
 <div mat-dialog-content class="white">
-  <p class="info" [innerHTML]="infoSpecificSearch | translate">
-    <mat-icon class="material-icons-round">info</mat-icon>
-  </p>
+  <div class="info-text">
+    <mat-icon class="material-icons-round info">info</mat-icon>
+    <p class="info" [innerHTML]="infoSpecificSearch | translate"></p>
+  </div>
   <div class="container">
     <app-dynamic-form
       *ngIf="myFormElements.length"

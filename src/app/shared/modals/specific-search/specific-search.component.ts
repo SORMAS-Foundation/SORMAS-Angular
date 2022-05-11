@@ -2,18 +2,14 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import {
-  CONFIGURATION_MODAL_WIDTH,
-  CUSTOM_SEARCH_ID,
-  SPECIFIC_SEARCH_TYPE,
-} from '../../../app.constants';
+import { CUSTOM_SEARCH_ID, SPECIFIC_SEARCH_TYPE } from '../../../app.constants';
 import { CaseService } from '../../../_services/api/case.service';
 import { EventService } from '../../../_services/api/event.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import { NotificationService } from '../../../_services/notification.service';
 import { FormBase } from '../../dynamic-form/types/form-element-base';
-import { SpecificSearchNotFoundComponent } from '../specific-search-not-found/specific-search-not-found.component';
 import { FORM_DATA_SPECIFIC_SEARCH } from './specific-search-form-data';
 
 @Component({
@@ -44,7 +40,8 @@ export class SpecificSearchComponent implements OnInit, OnDestroy {
     private formElementControlService: FormElementControlService,
     private notificationService: NotificationService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -67,9 +64,16 @@ export class SpecificSearchComponent implements OnInit, OnDestroy {
   }
 
   caseNotFound(): void {
-    this.dialog.open(SpecificSearchNotFoundComponent, {
-      width: CONFIGURATION_MODAL_WIDTH,
-      data: { type: this.data.type },
+    const type: string =
+      this.data.type === SPECIFIC_SEARCH_TYPE.CASE_SPECIFIC_SEARCH
+        ? SPECIFIC_SEARCH_TYPE.CASE_SPECIFIC_SEARCH.slice(0, -1)
+        : SPECIFIC_SEARCH_TYPE.EVENT_SPECIFIC_SEARCH.slice(0, -1);
+    const notFoundHeading: string = `strings.headingNo${type}Found`;
+    const notFoundMessage: string = `strings.messageNo${type}Found`;
+    this.notificationService.prompt({
+      title: this.translateService.instant(notFoundHeading),
+      message: this.translateService.instant(notFoundMessage),
+      buttonConfirmText: this.translateService.instant('captions.actionOkay'),
     });
   }
 
