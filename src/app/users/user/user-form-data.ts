@@ -223,11 +223,6 @@ export const FORM_DATA_USER = [
     title: 'headingGps',
     fields: [
       {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-gps-coords',
-        className: 'push-right',
-      },
-      {
         ...FORM_DATA_INPUT,
         key: 'location.latitude',
         label: 'captions.Location.latitude',
@@ -244,6 +239,16 @@ export const FORM_DATA_USER = [
         key: 'location.latLonAccuracy',
         label: 'captions.Location.latLonAccuracy',
         className: 'size-small',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
+        className: 'fullwidth',
+        widgetInfo: {
+          latitude: 'location.latitude',
+          longitude: 'location.longitude',
+          latLonAccuracy: 'location.latLonAccuracy',
+        },
       },
     ],
   },
