@@ -4,7 +4,7 @@
 .location-icon {
   position: absolute;
   top: 42px;
-  right: 17px;
+  right: 18px;
   color: map-get($sormas-primary, 700);
 }
 
@@ -29,4 +29,5 @@
 .close-map-btn {
   cursor: pointer;
   color: mat.get-color-from-palette($sormas-accent, 500);
+  margin-right: 2px;
 }
