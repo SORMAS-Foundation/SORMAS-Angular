@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { DatepickerHeaderTodayComponent } from '../../shared/dynamic-form/components/datepicker-header-today/datepicker-header-today.component';
-import { DEFAULT_DATE_FORMAT } from '../../_constants/common';
+import { DEFAULT_DATE_FORMAT, MERGE_DUPLICATES_TYPE } from '../../_constants/common';
 import { MergeDuplicateDto } from '../../_models/mergeDuplicateDto';
 import { MergeDuplicateService } from '../../_services/api/mergeDuplicate.service';
 import { MergeDuplicateContactService } from '../../_services/api/mergeDuplicateContact.service';
@@ -36,6 +36,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
   actionsDisabled: boolean = false;
 
   hiddenUuids: any[] = [];
+  mergeDuplicatesType = MERGE_DUPLICATES_TYPE;
 
   constructor(
     private mergeDuplicatesService: MergeDuplicateService,
@@ -64,7 +65,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
       'hide',
     ];
 
-    if (this.type === 'contacts') {
+    if (this.type === MERGE_DUPLICATES_TYPE.CONTACTS) {
       this.displayedColumns.splice(1, 0, 'caze');
     }
 
@@ -92,7 +93,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
 
   getMergeDuplicates(concat: boolean = false): void {
     let service = this.mergeDuplicatesService;
-    if (this.type === 'contacts') {
+    if (this.type === MERGE_DUPLICATES_TYPE.CONTACTS) {
       service = this.mergeDuplicatesContactService;
     }
     this.subscriptions.push(
