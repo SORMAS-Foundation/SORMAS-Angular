@@ -3,5 +3,6 @@
 </button>
 
 <div class="map-wrapper" [ngClass]="{'opened': isMapOpened}">
+  <mat-icon class="material-icons-round close-map-btn" (click)="isMapOpened = false">highlight_off</mat-icon>
   <div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)"></div>
 </div>

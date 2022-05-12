@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables' as *;
 
 .location-icon {
@@ -10,7 +11,8 @@
 .map-wrapper {
   max-height: 0;
   overflow: hidden;
-  transition: 2s;
+  transition: 0.5s;
+  text-align: right;
 
   &.opened {
     max-height: 5000px;
@@ -20,4 +22,8 @@
 .map {
   height: 436px;
   width: 100%;
+}
+
+.close-map-btn {
+  cursor: pointer;
 }

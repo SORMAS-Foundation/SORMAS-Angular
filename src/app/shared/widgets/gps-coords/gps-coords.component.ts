@@ -91,28 +91,32 @@ export class GpsCoordsComponent implements OnInit {
     };
 
     this.selectedMarker = L.marker(latLng(lat, lng), icon).addTo(this.map);
-
-    this.map.flyTo(latLng(lat, lng), this.initialZoom, {
-      animate: true,
-      duration: 1,
-    });
   }
 
   showLocation(): void {
-    const latitude = this.config.widgetInfo.latitude.replaceAll('.', '__');
-    const longitude = this.config.widgetInfo.longitude.replaceAll('.', '__');
+    const latitude = this.group.controls[this.config.widgetInfo.latitude.replaceAll('.', '__')]
+      .value;
+    const longitude = this.group.controls[this.config.widgetInfo.longitude.replaceAll('.', '__')]
+      .value;
+    const latLonAccuracy = this.group.controls[
+      this.config.widgetInfo.latLonAccuracy.replaceAll('.', '__')
+    ].value;
 
     if (
-      parseInt(this.group.controls[latitude].value, 10) >= -90 &&
-      parseInt(this.group.controls[latitude].value, 10) <= 90 &&
-      parseInt(this.group.controls[longitude].value, 10) >= -180 &&
-      parseInt(this.group.controls[longitude].value, 10) <= 180
+      parseInt(latitude, 10) >= -90 &&
+      parseInt(latitude, 10) <= 90 &&
+      parseInt(longitude, 10) >= -180 &&
+      parseInt(longitude, 10) <= 180 &&
+      parseInt(latLonAccuracy, 10) > 0 &&
+      parseInt(latLonAccuracy, 10) <= 30
     ) {
       this.isMapOpened = true;
-      this.setSelectedMarker(
-        this.group.controls[latitude].value,
-        this.group.controls[longitude].value
-      );
+      this.setSelectedMarker(latitude, longitude);
+
+      this.map.flyTo(latLng(latitude, longitude), latLonAccuracy, {
+        animate: true,
+        duration: 1,
+      });
     } else {
       this.notificationService.error(this.translateService.instant('invalidCoords'));
     }
