@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { latLng, Map, tileLayer } from 'leaflet';
 import '@bepo65/leaflet.fullscreen';
 import { NotificationService } from '../../../_services/notification.service';
-import {FormElementBase} from '../../dynamic-form/types/form-element-base';
+import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 declare let require: any;
 

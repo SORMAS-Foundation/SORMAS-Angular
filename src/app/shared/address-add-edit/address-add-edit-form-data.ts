@@ -1,5 +1,5 @@
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import {FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET} from '../../_constants/form-data';
+import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET } from '../../_constants/form-data';
 import { PersonAddressType, AreaType } from '../../_constants/enums';
 
 const pipe = new EnumToKeyValuePipe();

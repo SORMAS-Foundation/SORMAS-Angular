@@ -14,7 +14,8 @@ import {
   InstitutionalPartnerType,
   TypeOfPlace,
   MeansOfTransport,
-  RiskLevel, FORM_DATA_WIDGET,
+  RiskLevel,
+  FORM_DATA_WIDGET,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
