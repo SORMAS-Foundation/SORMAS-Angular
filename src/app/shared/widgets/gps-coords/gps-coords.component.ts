@@ -109,7 +109,7 @@ export class GpsCoordsComponent implements OnInit {
         this.group.controls.location__longitude.value
       );
     } else {
-      this.notificationService.error('Invalid coords');
+      this.notificationService.error(this.translateService.instant('invalidCoords'));
     }
   }
 }
