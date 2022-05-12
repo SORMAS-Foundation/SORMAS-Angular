@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { TranslateModule } from '@ngx-translate/core';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MaterialModule } from '../material.module';
 import { TableComponent } from './table/table.component';
 import { DialogModule } from './dialog';
@@ -68,7 +69,6 @@ import { GroupSelectComponent } from './widgets/group-select/group-select.compon
 import { CustomExportComponent } from './modals/custom-export/custom-export.component';
 import { ExportConfigurationComponent } from './modals/export-configuration/export-configuration.component';
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [

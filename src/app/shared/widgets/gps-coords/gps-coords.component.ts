@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { latLng, Map, tileLayer } from 'leaflet';
 import '@bepo65/leaflet.fullscreen';
-import {NotificationService} from '../../../_services/notification.service';
+import { NotificationService } from '../../../_services/notification.service';
 
 declare let require: any;
 
