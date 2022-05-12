@@ -584,11 +584,6 @@ export const FORM_DATA_CASE_ADD = [
     title: 'headingGps',
     fields: [
       {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-gps-coords',
-        className: 'push-right',
-      },
-      {
         ...FORM_DATA_INPUT,
         key: 'location.latitude',
         label: 'captions.Location.latitude',
@@ -605,6 +600,11 @@ export const FORM_DATA_CASE_ADD = [
         key: 'location.latLonAccuracy',
         label: 'captions.Location.latLonAccuracy',
         className: 'size-small',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
+        className: 'fullwidth',
       },
     ],
   },
