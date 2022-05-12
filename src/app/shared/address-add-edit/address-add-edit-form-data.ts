@@ -89,6 +89,7 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         label: 'captions.Facility.type',
         service: 'helperService',
         serviceMethod: 'getFacilityTypes',
+        validation: ['required'],
         determinedBy: [
           {
             key: 'facilityTypeGroup',

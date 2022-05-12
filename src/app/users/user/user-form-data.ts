@@ -123,6 +123,7 @@ export const FORM_DATA_USER = [
         label: 'captions.Facility.type',
         service: 'helperService',
         serviceMethod: 'getFacilityTypes',
+        validation: ['required'],
         determinedBy: [
           {
             key: 'facilityTypeGroup',
