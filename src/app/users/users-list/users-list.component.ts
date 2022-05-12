@@ -12,6 +12,7 @@ import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT, USER_FILTERS_FORM_ID } from '../../
 import { UserAddComponent } from '../user-add/user-add.component';
 import { FORM_DATA_USER_FILTERS } from '../user-filters/user-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import { actionsBulkEditDefs } from './users-actions-data';
 
 @Component({
   selector: 'app-users-list',
@@ -25,6 +26,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   configKey = CONFIG_USERS;
   headerHeight = HEADER_HEIGHT;
   formId = USER_FILTERS_FORM_ID;
+  actionsBulkEdit = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
 

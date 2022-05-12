@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
 import { BaseService } from './base.service';
 import * as constants from '../../app.constants';
 import { UserDto } from '../../_models/models';
@@ -13,5 +14,17 @@ import { Serializer } from '../../_serializers/serializer';
 export class UserService extends BaseService<UserDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
     super(httpClient, helperService, '', constants.API_ROUTE_USERS, new Serializer());
+  }
+
+  enable(users: string[]): Observable<any> {
+    const endpoint = this.endpoint.ENABLE ?? this.endpoint.ENDPOINT;
+
+    return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, users);
+  }
+
+  disable(users: string[]): Observable<any> {
+    const endpoint = this.endpoint.ENABLE ?? this.endpoint.ENDPOINT;
+
+    return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, users);
   }
 }

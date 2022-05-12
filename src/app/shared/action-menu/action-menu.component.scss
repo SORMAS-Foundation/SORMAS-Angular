@@ -1,9 +1,22 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
+
+.mat-icon {
+  font-size: 14px;
+}
 
 .accent {
   font-weight: 500;
 }
 
 .warn {
-  color: map-get($sormas-alert, 700);
+  color: mat.get-color-from-palette($sormas-alert, 700);
+}
+
+.enable .mat-icon {
+  color: mat.get-color-from-palette($sormas-primary, 400);
+}
+
+.disable .mat-icon {
+  color: mat.get-color-from-palette($sormas-alert, 300);
 }
