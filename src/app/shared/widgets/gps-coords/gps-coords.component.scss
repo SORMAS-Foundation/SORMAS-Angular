@@ -4,7 +4,7 @@
 .location-icon {
   position: absolute;
   top: 42px;
-  right: 22px;
+  right: 17px;
   color: map-get($sormas-primary, 700);
 }
 
@@ -13,6 +13,7 @@
   overflow: hidden;
   transition: 0.5s;
   text-align: right;
+  margin-top: 16px;
 
   &.opened {
     max-height: 5000px;
@@ -22,8 +23,10 @@
 .map {
   height: 436px;
   width: 100%;
+  border-radius: 5px;
 }
 
 .close-map-btn {
   cursor: pointer;
+  color: mat.get-color-from-palette($sormas-accent, 500);
 }
