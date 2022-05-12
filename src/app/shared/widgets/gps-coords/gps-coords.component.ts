@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { latLng, Map, tileLayer } from 'leaflet';
 import '@bepo65/leaflet.fullscreen';
 import { NotificationService } from '../../../_services/notification.service';
+import {FormElementBase} from '../../dynamic-form/types/form-element-base';
 
 declare let require: any;
 
@@ -14,6 +15,7 @@ declare let require: any;
 })
 export class GpsCoordsComponent implements OnInit {
   group: FormGroup;
+  config: FormElementBase<string>;
 
   map: Map;
   initialLat = 51.1657;
@@ -97,16 +99,19 @@ export class GpsCoordsComponent implements OnInit {
   }
 
   showLocation(): void {
+    const latitude = this.config.widgetInfo.latitude.replaceAll('.', '__');
+    const longitude = this.config.widgetInfo.longitude.replaceAll('.', '__');
+
     if (
-      parseInt(this.group.controls.location__latitude.value, 10) >= -90 &&
-      parseInt(this.group.controls.location__latitude.value, 10) <= 90 &&
-      parseInt(this.group.controls.location__longitude.value, 10) >= -180 &&
-      parseInt(this.group.controls.location__longitude.value, 10) <= 180
+      parseInt(this.group.controls[latitude].value, 10) >= -90 &&
+      parseInt(this.group.controls[latitude].value, 10) <= 90 &&
+      parseInt(this.group.controls[longitude].value, 10) >= -180 &&
+      parseInt(this.group.controls[longitude].value, 10) <= 180
     ) {
       this.isMapOpened = true;
       this.setSelectedMarker(
-        this.group.controls.location__latitude.value,
-        this.group.controls.location__longitude.value
+        this.group.controls[latitude].value,
+        this.group.controls[longitude].value
       );
     } else {
       this.notificationService.error(this.translateService.instant('invalidCoords'));

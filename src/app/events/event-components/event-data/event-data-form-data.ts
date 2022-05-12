@@ -713,6 +713,16 @@ export const FORM_DATA_EVENT_ADD = [
         key: 'accuracy',
         label: 'captions.Location.latLonAccuracy',
       },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
+        className: 'fullwidth',
+        widgetInfo: {
+          latitude: 'latitude',
+          longitude: 'longitude',
+          latLonAccuracy: 'accuracy',
+        },
+      },
     ],
   },
   {

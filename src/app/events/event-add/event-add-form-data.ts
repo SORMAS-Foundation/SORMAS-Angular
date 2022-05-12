@@ -14,7 +14,7 @@ import {
   InstitutionalPartnerType,
   TypeOfPlace,
   MeansOfTransport,
-  RiskLevel,
+  RiskLevel, FORM_DATA_WIDGET,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -675,6 +675,16 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_INPUT,
         key: 'accuracy',
         label: 'captions.Location.latLonAccuracy',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
+        className: 'fullwidth',
+        widgetInfo: {
+          latitude: 'latitude',
+          longitude: 'longitude',
+          latLonAccuracy: 'accuracy',
+        },
       },
     ],
   },

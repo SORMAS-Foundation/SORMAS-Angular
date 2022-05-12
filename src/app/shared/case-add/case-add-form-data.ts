@@ -605,6 +605,11 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_WIDGET,
         widget: 'app-gps-coords',
         className: 'fullwidth',
+        widgetInfo: {
+          latitude: 'location.latitude',
+          longitude: 'location.longitude',
+          latLonAccuracy: 'location.latLonAccuracy',
+        },
       },
     ],
   },
