@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import {
   ACTIONS_CONTACT,
-  API_ROUTE_CASES,
+  API_ROUTE_CONTACTS,
   EXPORT_CUSTOM_MODAL_WIDTH,
   EXPORT_TYPE,
   EXPORT_TYPES,
@@ -91,7 +91,7 @@ export class CaseContactsComponent {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CASES.EXPORT);
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_CONTACTS.EXPORT);
   }
 
   exportDetailedCase(): void {
@@ -101,7 +101,7 @@ export class CaseContactsComponent {
       maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
     });
 
-    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_CASES.EXPORT);
+    this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_CONTACTS.EXPORT);
   }
 
   onActionSelected(event: any): void {
