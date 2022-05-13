@@ -97,7 +97,6 @@ export const FORM_DATA_MERGE_DUPLICATE_FILTERS = [
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
         label: 'captions.CaseData.responsibleDistrict',
-        validation: ['required'],
         service: 'districtService',
         determinedBy: [
           {

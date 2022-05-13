@@ -98,9 +98,13 @@ export class GpsCoordsComponent implements OnInit {
       .value;
     const longitude = this.group.controls[this.config.widgetInfo.longitude.replaceAll('.', '__')]
       .value;
-    const latLonAccuracy = this.group.controls[
+    let latLonAccuracy = this.group.controls[
       this.config.widgetInfo.latLonAccuracy.replaceAll('.', '__')
     ].value;
+
+    if (typeof latLonAccuracy === 'undefined' || latLonAccuracy === '') {
+      latLonAccuracy = 5;
+    }
 
     if (
       parseInt(latitude, 10) >= -90 &&
