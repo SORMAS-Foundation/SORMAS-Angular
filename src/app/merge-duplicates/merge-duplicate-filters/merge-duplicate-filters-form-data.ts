@@ -4,7 +4,8 @@ import {
   FORM_DATA_SEARCHBOX,
   Disease,
   FORM_DATA_DATE,
-  NewCaseDateType, FORM_DATA_CHECKBOX,
+  NewCaseDateType,
+  FORM_DATA_CHECKBOX,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
@@ -97,7 +98,6 @@ export const FORM_DATA_MERGE_DUPLICATE_FILTERS = [
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
         label: 'captions.CaseData.responsibleDistrict',
-        validation: ['required'],
         service: 'districtService',
         determinedBy: [
           {
