@@ -122,6 +122,7 @@ export const FORM_DATA_USER_ADD = [
         label: 'captions.Facility.type',
         service: 'helperService',
         serviceMethod: 'getFacilityTypes',
+        validation: ['required'],
         determinedBy: [
           {
             key: 'facilityTypeGroup',

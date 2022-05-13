@@ -503,6 +503,7 @@ export const FORM_DATA_EVENT_ADD = [
         dependingOnValues: ['FACILITY'],
         service: 'helperService',
         serviceMethod: 'getFacilityTypes',
+        validation: ['required'],
         determinedBy: [
           {
             key: 'facilityCategory',
