@@ -92,6 +92,7 @@ export interface NavItem {
   name: string;
   action: string;
   className?: string;
+  icon?: string;
   children?: NavItem[];
   component?: any;
   componentTitle?: string;

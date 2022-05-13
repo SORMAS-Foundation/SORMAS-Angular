@@ -21,6 +21,7 @@ import { FORM_DATA_USER_FILTERS } from '../user-filters/user-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { NotificationService } from '../../_services/notification.service';
 import { ExportService } from '../../_services/api/export.service';
+import { actionsBulkEditDefs } from './users-actions-data';
 
 @Component({
   selector: 'app-users-list',
@@ -34,6 +35,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   configKey = CONFIG_USERS;
   headerHeight = HEADER_HEIGHT;
   formId = USER_FILTERS_FORM_ID;
+  actionsBulkEdit = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
 

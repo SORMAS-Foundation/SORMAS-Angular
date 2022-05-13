@@ -7,6 +7,9 @@
     </ng-template>
     <ng-template [ngSwitchCase]="'ACTION'">
       <button mat-list-item (click)="onItemSelected(item.action)" [ngClass]="item.className || ''">
+        <mat-icon *ngIf="item.icon" class="material-icons-round">
+          {{ item.icon }}
+        </mat-icon>
         {{ item.name | translate }}
       </button>
     </ng-template>

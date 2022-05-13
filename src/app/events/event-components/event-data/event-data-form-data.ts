@@ -539,6 +539,7 @@ export const FORM_DATA_EVENT_ADD = [
         dependingOnValues: ['FACILITY'],
         service: 'helperService',
         serviceMethod: 'getFacilityTypes',
+        validation: ['required'],
         determinedBy: [
           {
             key: 'facilityCategory',
@@ -712,6 +713,16 @@ export const FORM_DATA_EVENT_ADD = [
         ...FORM_DATA_INPUT,
         key: 'accuracy',
         label: 'captions.Location.latLonAccuracy',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
+        className: 'fullwidth',
+        widgetInfo: {
+          latitude: 'latitude',
+          longitude: 'longitude',
+          latLonAccuracy: 'accuracy',
+        },
       },
     ],
   },

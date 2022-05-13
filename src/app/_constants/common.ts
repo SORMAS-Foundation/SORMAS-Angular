@@ -116,6 +116,11 @@ export const SPECIFIC_SEARCH_TYPE = {
   EVENT_SPECIFIC_SEARCH: 'Events',
 };
 
+export const MERGE_DUPLICATES_TYPE = {
+  CASES: 'cases',
+  CONTACTS: 'contacts',
+};
+
 export const CASE_ORIGIN = {
   IN_COUNTRY: 'IN_COUNTRY' as CaseOrigin,
   POINT_OF_ENTRY: 'POINT_OF_ENTRY' as CaseOrigin,
