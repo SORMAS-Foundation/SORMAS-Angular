@@ -1,4 +1,17 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  ACTIONS_CONTACT,
+  API_ROUTE_CASES,
+  EXPORT_CUSTOM_MODAL_WIDTH,
+  EXPORT_TYPE,
+  EXPORT_TYPES,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+} from '../../../app.constants';
+import { CustomExportComponent } from '../../../shared/modals/custom-export/custom-export.component';
+import { NotificationService } from '../../../_services/notification.service';
+import { ExportService } from '../../../_services/api/export.service';
 import { BaseService } from '../../../_services/api/base.service';
 import { CaseDataDto } from '../../../_models/caseDataDto';
 import { Filter, NavItem, NavItemRole, TableColumn } from '../../../_models/common';
@@ -8,21 +21,7 @@ import { ContactService } from '../../../_services/api/contact.service';
 import { FORM_DATA_CASE_CONTACT_FILTERS } from '../../../shared/contact-filters/contact-filters-form-data';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { CONTACT_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
-import {
-  ACTIONS_CASE,
-  ACTIONS_CONTACT,
-  API_ROUTE_CASES,
-  EXPORT_CUSTOM_MODAL_WIDTH,
-  EXPORT_TYPE,
-  EXPORT_TYPES,
-  SMALL_NOTIFICATION_MODAL_WIDTH,
-} from 'src/app/app.constants';
-import { MatDialog } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
-import { CustomExportComponent } from 'src/app/shared/modals/custom-export/custom-export.component';
 import { FORM_DATA_EXPORT_CONFIGURATION } from '../../cases-list/export-configuration-form-data';
-import { NotificationService } from 'src/app/_services/notification.service';
-import { ExportService } from 'src/app/_services/api/export.service';
 
 @Component({
   selector: 'app-case-contacts',
@@ -107,13 +106,13 @@ export class CaseContactsComponent {
 
   onActionSelected(event: any): void {
     switch (event) {
-      case ACTIONS_CASE.BASIC_EXPORT:
+      case ACTIONS_CONTACT.BASIC_EXPORT:
         this.exportBasicCase();
         break;
-      case ACTIONS_CASE.DETAILED_EXPORT:
+      case ACTIONS_CONTACT.DETAILED_EXPORT:
         this.exportDetailedCase();
         break;
-      case ACTIONS_CASE.CUSTOM_EXPORT:
+      case ACTIONS_CONTACT.CUSTOM_EXPORT:
         this.exportCustomCase();
         break;
       default:
