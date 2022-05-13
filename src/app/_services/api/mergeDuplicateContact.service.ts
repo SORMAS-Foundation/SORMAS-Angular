@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BaseService } from './base.service';
 
 import * as constants from '../../app.constants';
@@ -20,5 +22,21 @@ export class MergeDuplicateContactService extends BaseService<MergeDuplicateDto>
       constants.API_ROUTE_MERGE_DUPLICATES_CONTACT,
       new Serializer()
     );
+  }
+
+  merge(uuid: string = ''): Observable<any> {
+    const endpoint: string = `${this.endpoint.MERGE}`;
+
+    return this.httpClient
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, { uuid })
+      .pipe(map((data: any) => this.serializer.fromJson(data)));
+  }
+
+  pick(uuid: string = ''): Observable<any> {
+    const endpoint: string = `${this.endpoint.PICK}`;
+
+    return this.httpClient
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, { uuid })
+      .pipe(map((data: any) => this.serializer.fromJson(data)));
   }
 }
