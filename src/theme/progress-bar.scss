@@ -9,5 +9,16 @@
     .mat-progress-bar-buffer {
       background-color: mat.get-color-from-palette($sormas-primary, 50);
     }
+
+    .mat-progress-bar {
+      &.loading-bar {
+        height: 6px;
+        border-radius: 3px;
+
+        .mat-progress-bar-fill::after {
+          background: linear-gradient(to right, #32e6fa, #3281fa);
+        }
+      }
+    }
   }
 }

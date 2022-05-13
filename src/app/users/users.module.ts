@@ -9,6 +9,7 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UserFiltersComponent } from './user-filters/user-filters.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserComponent } from './user/user.component';
+import { UsersSyncComponent } from './users-sync/users-sync.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { UserComponent } from './user/user.component';
     UserFiltersComponent,
     UserAddComponent,
     UserComponent,
+    UsersSyncComponent,
   ],
   imports: [CommonModule, UsersRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

@@ -27,4 +27,16 @@ export class UserService extends BaseService<UserDto> {
 
     return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, users);
   }
+
+  sync(): Observable<any> {
+    const endpoint = this.endpoint.SYNC ?? this.endpoint.ENDPOINT;
+
+    return this.httpClient.get(`${this.helperService.getApiUrl()}/${endpoint}`);
+  }
+
+  abortSync(): Observable<any> {
+    const endpoint = this.endpoint.ABORT_SYNC ?? this.endpoint.ENDPOINT;
+
+    return this.httpClient.get(`${this.helperService.getApiUrl()}/${endpoint}`);
+  }
 }

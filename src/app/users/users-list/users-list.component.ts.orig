@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,9 +17,11 @@ import {
 import { UserAddComponent } from '../user-add/user-add.component';
 import { FORM_DATA_USER_FILTERS } from '../user-filters/user-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+<<<<<<< Updated upstream
 import { actionsBulkEditDefs } from './users-actions-data';
+=======
 import { UsersSyncComponent } from '../users-sync/users-sync.component';
-import { TableComponent } from '../../shared/table/table.component';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-users-list',
@@ -36,7 +38,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
   actionsBulkEdit = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
-  @ViewChild('usersList') usersList: TableComponent;
 
   constructor(
     public userService: UserService,
@@ -69,9 +70,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
   syncUsers(): void {
     const dialogRef = this.dialog.open(UsersSyncComponent, {
       maxWidth: ADD_MODAL_NARROW,
-      data: {
-        usersCount: this.usersList.totalItems,
-      },
     });
 
     this.subscription.push(
