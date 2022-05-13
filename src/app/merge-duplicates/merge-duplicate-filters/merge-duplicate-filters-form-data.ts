@@ -4,7 +4,8 @@ import {
   FORM_DATA_SEARCHBOX,
   Disease,
   FORM_DATA_DATE,
-  NewCaseDateType, FORM_DATA_CHECKBOX,
+  NewCaseDateType,
+  FORM_DATA_CHECKBOX,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
