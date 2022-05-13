@@ -136,6 +136,7 @@ export const API_ROUTE_USERS = {
   UPDATE: 'users/update',
   ADD: 'users/add',
   DELETE: 'users/delete',
+  EXPORT: 'users/export',
 };
 
 // toDO: hardcoded endpoint. Needs backend
