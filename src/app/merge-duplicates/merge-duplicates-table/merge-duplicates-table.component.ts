@@ -37,6 +37,7 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
 
   hiddenUuids: any[] = [];
   mergeDuplicatesType = MERGE_DUPLICATES_TYPE;
+  service: any;
 
   constructor(
     private mergeDuplicatesService: MergeDuplicateService,
@@ -47,6 +48,11 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.service = this.mergeDuplicatesService;
+    if (this.type === MERGE_DUPLICATES_TYPE.CONTACTS) {
+      this.service = this.mergeDuplicatesContactService;
+    }
+
     this.displayedColumns = [
       'uuid',
       'disease',
@@ -92,12 +98,8 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
   }
 
   getMergeDuplicates(concat: boolean = false): void {
-    let service = this.mergeDuplicatesService;
-    if (this.type === MERGE_DUPLICATES_TYPE.CONTACTS) {
-      service = this.mergeDuplicatesContactService;
-    }
     this.subscriptions.push(
-      service.getAll({ offset: this.offset, size: this.size }, null, null, true).subscribe({
+      this.service.getAll({ offset: this.offset, size: this.size }, null, null, true).subscribe({
         next: (response: any) => {
           if (concat) {
             this.mergeDuplicates = this.mergeDuplicates.concat(
@@ -162,18 +164,29 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
 
   mergeAction(element: any): void {
     if (!this.actionsDisabled) {
+      let message = this.translateService.instant('strings.confirmationMergeCaseAndDeleteOther');
+      if (this.type === MERGE_DUPLICATES_TYPE.CONTACTS) {
+        message = this.translateService.instant('strings.confirmationMergeContactAndDeleteOther');
+      }
+
       this.notificationService
         .prompt({
           title: this.translateService.instant('strings.headingConfirmChoice'),
-          message: this.translateService.instant('strings.confirmationMergeCaseAndDeleteOther'),
+          message,
           buttonDeclineText: this.translateService.instant('captions.actionCancel'),
           buttonConfirmText: this.translateService.instant('captions.actionConfirm'),
         })
         .subscribe((result) => {
           if (result) {
             if (result === 'CONFIRM') {
-              // eslint-disable-next-line no-console
-              console.log('merge action', element);
+              this.service.merge(element.uuid).subscribe({
+                next: (response: any) => {
+                  // eslint-disable-next-line no-console
+                  console.log('merge action', response);
+                },
+                error: () => {},
+                complete: () => {},
+              });
             }
           }
         });
@@ -182,18 +195,29 @@ export class MergeDuplicatesTableComponent implements OnInit, OnDestroy {
 
   pickAction(element: any): void {
     if (!this.actionsDisabled) {
+      let message = this.translateService.instant('strings.confirmationPickCaseAndDeleteOther');
+      if (this.type === MERGE_DUPLICATES_TYPE.CONTACTS) {
+        message = this.translateService.instant('strings.confirmationPickContactAndDeleteOther');
+      }
+
       this.notificationService
         .prompt({
           title: this.translateService.instant('strings.headingConfirmChoice'),
-          message: this.translateService.instant('strings.confirmationPickCaseAndDeleteOther'),
+          message,
           buttonDeclineText: this.translateService.instant('captions.actionCancel'),
           buttonConfirmText: this.translateService.instant('captions.actionConfirm'),
         })
         .subscribe((result) => {
           if (result) {
             if (result === 'CONFIRM') {
-              // eslint-disable-next-line no-console
-              console.log('pick action', element);
+              this.service.pick(element.uuid).subscribe({
+                next: (response: any) => {
+                  // eslint-disable-next-line no-console
+                  console.log('pick action', response);
+                },
+                error: () => {},
+                complete: () => {},
+              });
             }
           }
         });
