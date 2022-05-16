@@ -136,6 +136,7 @@ export const API_ROUTE_USERS = {
   UPDATE: 'users/update',
   ADD: 'users/add',
   DELETE: 'users/delete',
+  EXPORT: 'users/export',
   ENABLE: 'users/enable',
   DISABLE: 'users/disable',
   SYNC: 'users/sync',
@@ -438,6 +439,8 @@ export const API_ROUTE_MERGE_DUPLICATES = {
   UPDATE: 'mergeDuplicates/update',
   ADD: 'mergeDuplicates/add',
   DELETE: 'mergeDuplicates/delete',
+  MERGE: 'mergeDuplicates/merge',
+  PICK: 'mergeDuplicates/pick',
 };
 
 export const API_ROUTE_MERGE_DUPLICATES_CONTACT = {
@@ -446,6 +449,8 @@ export const API_ROUTE_MERGE_DUPLICATES_CONTACT = {
   UPDATE: 'mergeDuplicatesContact/update',
   ADD: 'mergeDuplicatesContact/add',
   DELETE: 'mergeDuplicatesContact/delete',
+  MERGE: 'mergeDuplicatesContact/merge',
+  PICK: 'mergeDuplicatesContact/pick',
 };
 
 export const API_ROUTE_POPULATION = {

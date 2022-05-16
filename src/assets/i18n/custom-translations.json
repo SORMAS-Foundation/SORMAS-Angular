@@ -171,6 +171,7 @@
   "NotFound.backTo": "Back to",
   "NotFound.needHelp": "need help?",
   "NotFound.contactUs": "Contact Us",
+  "NotFound.request": "Not found",
   "contactFollowupVisitsView": "Follow-up",
   "headingLabMessages": "Lab messages",
   "viewFullscreen": "View fullscreen",
@@ -179,5 +180,7 @@
   "lineListingSharedLocation": "Shared location",
   "headingUserProfile": "Role name",
   "confirmSetMissingGeoCoordinates": "Also replace existing coordinates",
-  "warningSetMissingGeoCoordinates": "This might replace coordinates which were intentionally set differently"
+  "warningSetMissingGeoCoordinates": "This might replace coordinates which were intentionally set differently",
+  "invalidCoords": "Invalid coordinates",
+  "unauthorized": "Unauthorized"
 }

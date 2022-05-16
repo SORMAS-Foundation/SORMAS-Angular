@@ -361,6 +361,7 @@ export const FORM_DATA_PERSON = [
         label: 'captions.Location.facilityType',
         service: 'helperService',
         serviceMethod: 'getFacilityTypes',
+        validation: ['required'],
         determinedBy: [
           {
             key: 'facilityCategory',

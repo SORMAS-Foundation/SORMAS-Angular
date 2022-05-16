@@ -1,3 +1,8 @@
 <button mat-icon-button class="location-icon">
-  <mat-icon class="material-icons-round">my_location</mat-icon>
+  <mat-icon class="material-icons-round" (click)="showLocation()">my_location</mat-icon>
 </button>
+
+<div class="map-wrapper" [ngClass]="{'opened': isMapOpened}">
+  <mat-icon class="material-icons-round close-map-btn" (click)="isMapOpened = false">highlight_off</mat-icon>
+  <div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)"></div>
+</div>

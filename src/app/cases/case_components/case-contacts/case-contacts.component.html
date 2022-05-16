@@ -1,6 +1,14 @@
 <app-filters [fixed]="false">
   <app-contact-filters [data]="filtersData" filters></app-contact-filters>
   <ng-container list>
+    <div class="actions-section">
+      <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+        <app-action-menu
+          [config]="actionsMore"
+          (action)="onActionSelected($event)"
+        ></app-action-menu>
+      </app-dropdown-menu>
+    </div>
     <app-table
       [filterFormId]="formIdFilters"
       [resourceService]="contactService"

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CaseContactsComponent } from './case-contacts.component';
@@ -11,7 +12,7 @@ describe('CaseContactsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CaseContactsComponent],
-      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot(), MatDialogModule],
     }).compileComponents();
   });
 

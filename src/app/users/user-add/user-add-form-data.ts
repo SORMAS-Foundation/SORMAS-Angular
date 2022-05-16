@@ -122,6 +122,7 @@ export const FORM_DATA_USER_ADD = [
         label: 'captions.Facility.type',
         service: 'helperService',
         serviceMethod: 'getFacilityTypes',
+        validation: ['required'],
         determinedBy: [
           {
             key: 'facilityTypeGroup',
@@ -222,11 +223,6 @@ export const FORM_DATA_USER_ADD = [
     title: 'headingGps',
     fields: [
       {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-gps-coords',
-        className: 'push-right',
-      },
-      {
         ...FORM_DATA_INPUT,
         key: 'location.latitude',
         label: 'captions.Location.latitude',
@@ -243,6 +239,16 @@ export const FORM_DATA_USER_ADD = [
         key: 'location.latLonAccuracy',
         label: 'captions.Location.latLonAccuracy',
         className: 'size-small',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-gps-coords',
+        className: 'fullwidth',
+        widgetInfo: {
+          latitude: 'location.latitude',
+          longitude: 'location.longitude',
+          latLonAccuracy: 'location.latLonAccuracy',
+        },
       },
     ],
   },

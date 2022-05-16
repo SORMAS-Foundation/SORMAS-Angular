@@ -9,6 +9,9 @@
         <button class="add-btn" mat-flat-button color="primary" (click)="openAddUserModal()">
           {{ 'captions.userNewUser' | translate }}
         </button>
+        <button mat-stroked-button color="primary" (click)="exportBasicEventGroup()">
+          {{ 'captions.exportUserRoles' | translate }}
+        </button>
         <button mat-stroked-button color="primary" (click)="syncUsers()">
           {{ 'captions.syncUsers' | translate }}
         </button>

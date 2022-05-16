@@ -5,6 +5,7 @@ import {
   Disease,
   FORM_DATA_DATE,
   NewCaseDateType,
+  FORM_DATA_CHECKBOX,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
@@ -67,8 +68,9 @@ export const FORM_DATA_MERGE_DUPLICATE_FILTERS = [
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
-        ...FORM_DATA_INPUT,
+        ...FORM_DATA_SEARCHBOX,
         key: 'searchEvents',
+        placeholder: 'strings.promptCaseOrContactEventSearchField',
         className: 'fullwidth',
       },
     ],
@@ -96,7 +98,6 @@ export const FORM_DATA_MERGE_DUPLICATE_FILTERS = [
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
         label: 'captions.CaseData.responsibleDistrict',
-        validation: ['required'],
         service: 'districtService',
         determinedBy: [
           {
@@ -104,6 +105,11 @@ export const FORM_DATA_MERGE_DUPLICATE_FILTERS = [
           },
         ],
         className: 'fullwidth',
+      },
+      {
+        ...FORM_DATA_CHECKBOX,
+        key: 'differingRegions',
+        label: 'captions.caseFilterWithDifferentRegion',
       },
     ],
   },
