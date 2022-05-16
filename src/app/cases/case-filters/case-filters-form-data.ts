@@ -80,6 +80,7 @@ export const FORM_DATA_CASE_FILTERS = [
         key: 'relevanceStatus',
         options: caseRelevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },
