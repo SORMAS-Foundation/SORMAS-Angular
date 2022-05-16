@@ -21,21 +21,15 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err) => {
         if ([404].indexOf(err.status) !== -1) {
-          this.notificationService.error(
-            `${this.translateService.instant('NotFound.request')}: <br>${err.url}`
-          );
+          this.notificationService.error(this.translateService.instant('NotFound.request'));
         }
 
         if ([401].indexOf(err.status) !== -1) {
-          this.notificationService.error(
-            `${this.translateService.instant('unauthorized')}: <br>${err.url}`
-          );
+          this.notificationService.error(this.translateService.instant('unauthorized'));
         }
 
         if (this.statusArray.indexOf(err.status) === -1) {
-          this.notificationService.error(
-            `${this.translateService.instant('NotFound.wentWrong')}: <br>${err.url}`
-          );
+          this.notificationService.error(this.translateService.instant('NotFound.wentWrong'));
         }
 
         const error = err.error.message || err.statusText;

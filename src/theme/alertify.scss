@@ -17,6 +17,7 @@
 
       .ajs-message.ajs-visible {
         right: 0;
+        padding: 24px;
       }
     }
 
@@ -25,23 +26,26 @@
       max-width: 436px;
       padding: 2rem;
       margin-bottom: 1rem;
-      background-color: map-get($sormas-primary, 50);
+      background-color: mat.get-color-from-palette($sormas-primary, 50);
       border-radius: 5px;
       font-size: 1rem;
       @include mat.elevation(4);
 
       &.ajs-success {
-        background-color: map-get($sormas-success, 50);
+        background-color: mat.get-color-from-palette($sormas-success, 50);
         @include mat.elevation(4);
       }
 
       &.ajs-error {
-        background-color: map-get($sormas-alert, 50);
+        background-color: mat.get-color-from-palette($sormas-alert, 50);
+        color: mat.get-color-from-palette($sormas-accent, 800);
+        font-weight: 500;
+        font-size: 16px;
         @include mat.elevation(15);
       }
 
       &.ajs-warning {
-        background-color: map-get($sormas-warning, 50);
+        background-color: mat.get-color-from-palette($sormas-warning, 50);
         @include mat.elevation(15);
       }
     }
