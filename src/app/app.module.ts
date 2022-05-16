@@ -20,6 +20,7 @@ import { MenuComponent } from './_common-components/menu/menu.component';
 import { ApiInterceptor } from './_interceptors/ApiInterceptor';
 import { NotFoundComponent } from './_common-components/not-found/not-found.component';
 import { HelperService } from './_services/helper.service';
+import { ErrorInterceptor } from './_interceptors/error.interceptor.service';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/');
@@ -50,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: AuthService, useClass: getEnv().isLegacyLogin ? AuthService : KeycloakService },
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAuth,
