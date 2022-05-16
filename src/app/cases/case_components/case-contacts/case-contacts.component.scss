@@ -6,3 +6,10 @@
   font-size: 34px;
   font-weight: 500;
 }
+
+.actions-section {
+  display: flex;
+  justify-content: end;
+  padding: 32px;
+  background-color: $white;
+}
