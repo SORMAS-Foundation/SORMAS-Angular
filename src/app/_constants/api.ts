@@ -136,6 +136,7 @@ export const API_ROUTE_USERS = {
   UPDATE: 'users/update',
   ADD: 'users/add',
   DELETE: 'users/delete',
+  EXPORT: 'users/export',
   ENABLE: 'users/enable',
   DISABLE: 'users/disable',
 };

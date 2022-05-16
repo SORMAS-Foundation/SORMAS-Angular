@@ -8,10 +8,19 @@ import { CONFIG_USERS } from '../../_constants/storage';
 import { defaultColumnDefs } from './users-list-table-data';
 import { UserService } from '../../_services/api/user.service';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ADD_MODAL_MAX_WIDTH, HEADER_HEIGHT, USER_FILTERS_FORM_ID } from '../../app.constants';
+import {
+  ADD_MODAL_MAX_WIDTH,
+  API_ROUTE_USERS,
+  EXPORT_TYPES,
+  HEADER_HEIGHT,
+  SMALL_NOTIFICATION_MODAL_WIDTH,
+  USER_FILTERS_FORM_ID,
+} from '../../app.constants';
 import { UserAddComponent } from '../user-add/user-add.component';
 import { FORM_DATA_USER_FILTERS } from '../user-filters/user-filters-form-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
+import { NotificationService } from '../../_services/notification.service';
+import { ExportService } from '../../_services/api/export.service';
 import { actionsBulkEditDefs } from './users-actions-data';
 
 @Component({
@@ -33,11 +42,23 @@ export class UsersListComponent implements OnInit, OnDestroy {
   constructor(
     public userService: UserService,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private notificationService: NotificationService,
+    private exportService: ExportService
   ) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+  }
+
+  exportBasicEventGroup(): void {
+    this.notificationService.prompt({
+      title: this.translateService.instant('captions.exportUserRoles'),
+      message: this.translateService.instant('strings.infoDownloadExport'),
+      maxWidth: SMALL_NOTIFICATION_MODAL_WIDTH,
+    });
+
+    this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_USERS.EXPORT);
   }
 
   openAddUserModal(): void {
