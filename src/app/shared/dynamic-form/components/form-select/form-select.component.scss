@@ -12,7 +12,7 @@
   position: sticky;
   bottom: -8px;
   background-color: $white;
-  color: map-get($sormas-accent, 400);
+  color: mat.get-color-from-palette($sormas-accent, 400);
   box-shadow: 0px -1px 1px 0px rgba($black, 0.14), 0px -1px 2px 0px rgba($black, 0.12);
 
   &.mat-option-disabled {

@@ -1,7 +1,8 @@
+@use '@angular/material' as mat;
 @use '/src/variables' as *;
 
 .place-icon {
   margin-top: -8px;
   margin-right: -8px;
-  color: map-get($sormas-primary, 700);
+  color: mat.get-color-from-palette($sormas-primary, 700);
 }

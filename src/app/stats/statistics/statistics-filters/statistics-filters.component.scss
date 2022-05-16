@@ -3,7 +3,7 @@
 
 section {
   padding: 8px 16px;
-  border: 1px solid map-get($sormas-accent, 200);
+  border: 1px solid mat.get-color-from-palette($sormas-accent, 200);
   margin: 24px 0;
   border-radius: 4px;
 }
@@ -54,13 +54,13 @@ h3 {
   margin-left: -12px;
 
   .mat-icon {
-    color: map-get($sormas-alert, 300);
+    color: mat.get-color-from-palette($sormas-alert, 300);
     font-size: 18px;
   }
 }
 
 .filters-info {
-  color: map-get($sormas-primary, 500);
+  color: mat.get-color-from-palette($sormas-primary, 500);
   font-size: 18px;
   line-height: 22px;
   text-align: center;
@@ -73,7 +73,7 @@ h3 {
   width: 300px;
   padding: 8px 16px 8px 32px;
   border-radius: 5px;
-  background-color: map-get($sormas-primary, 50);
+  background-color: mat.get-color-from-palette($sormas-primary, 50);
   font-size: 12px;
 
   .filters-info {

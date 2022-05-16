@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 h2 {
@@ -44,7 +45,7 @@ h2 {
 
 .document-delete {
   height: 24px;
-  color: map-get($sormas-alert, 300);
+  color: mat.get-color-from-palette($sormas-alert, 300);
   line-height: 24px;
   text-align: right;
 

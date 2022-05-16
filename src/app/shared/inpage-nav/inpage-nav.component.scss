@@ -10,7 +10,7 @@ nav {
 
   a {
     margin: 0 1rem;
-    color: map-get($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
 
     &:hover,
     &:focus,

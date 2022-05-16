@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 header {
@@ -10,7 +11,7 @@ header {
   margin-bottom: -10px;
 
   &.listing-header-region {
-    border-bottom: solid 2px map-get($sormas-accent, 200);
+    border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 200);
   }
 
   .line-listing-region {
@@ -35,7 +36,7 @@ header {
 }
 
 h1 {
-  color: map-get($sormas-accent, 800);
+  color: mat.get-color-from-palette($sormas-accent, 800);
   font-size: 34px;
   font-weight: 500;
   line-height: 40px;
@@ -48,7 +49,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   padding: 0 32px;
-  border-bottom: solid 2px map-get($sormas-accent, 200);
+  border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 200);
   background-color: $white;
 }
 

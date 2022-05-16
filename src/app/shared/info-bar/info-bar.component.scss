@@ -1,9 +1,10 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .info-bar {
   padding: 8px 24px;
   margin: 0 24px 16px;
-  background-color: map-get($sormas-accent, 50);
+  background-color: mat.get-color-from-palette($sormas-accent, 50);
   border-radius: 4px;
 }
 
@@ -19,7 +20,7 @@ ul {
 li {
   height: 32px;
   padding: 0 16px;
-  border-right: solid 1px map-get($sormas-accent, 200);
+  border-right: solid 1px mat.get-color-from-palette($sormas-accent, 200);
   margin: 0;
   line-height: 32px;
 

@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .mat-card-actions {
@@ -19,5 +20,5 @@
 }
 
 .delete {
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
 }

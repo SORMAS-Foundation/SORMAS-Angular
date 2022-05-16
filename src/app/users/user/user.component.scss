@@ -1,9 +1,10 @@
-@use '../../../variables.scss' as *;
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
 
 .page-content {
   position: relative;
   z-index: 1;
-  background: map-get($sormas-accent, 50);
+  background: mat.get-color-from-palette($sormas-accent, 50);
 }
 
 header {
@@ -12,7 +13,7 @@ header {
   top: 68px;
   display: flex;
   padding: 48px 24px;
-  border-bottom: 2px solid map-get($sormas-accent, 200);
+  border-bottom: 2px solid mat.get-color-from-palette($sormas-accent, 200);
   background: $white;
 
   .mat-icon-button {

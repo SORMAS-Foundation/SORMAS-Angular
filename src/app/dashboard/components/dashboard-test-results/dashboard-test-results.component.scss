@@ -1,13 +1,14 @@
-@use '../../../../variables.scss' as *;
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
 
 .dashboard-test-results {
   min-height: 200px;
   margin: 8px;
   h1 {
-    color: map-get($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
     font-weight: 500;
     .nr-of-test-results {
-      color: map-get($sormas-accent, 800);
+      color: mat.get-color-from-palette($sormas-accent, 800);
     }
   }
   .test-results-container {
@@ -15,19 +16,19 @@
       .row {
         display: block;
         text-align: center;
-        border-bottom: solid 1px map-get($sormas-accent, 200);
+        border-bottom: solid 1px mat.get-color-from-palette($sormas-accent, 200);
         margin-top: 10px;
         &.positive {
-          color: map-get($sormas-alert, 700);
+          color: mat.get-color-from-palette($sormas-alert, 700);
         }
         &.negative {
-          color: map-get($sormas-primary, 400);
+          color: mat.get-color-from-palette($sormas-primary, 400);
         }
         &.pending {
-          color: map-get($sormas-alert, 300);
+          color: mat.get-color-from-palette($sormas-alert, 300);
         }
         &.indeterminate {
-          color: map-get($sormas-warning, 800);
+          color: mat.get-color-from-palette($sormas-warning, 800);
         }
         .number {
           display: inline-block;
@@ -49,7 +50,7 @@
         }
         .text {
           display: inline-block;
-          color: map-get($sormas-accent, 600) !important;
+          color: mat.get-color-from-palette($sormas-accent, 600) !important;
           font-weight: 500;
           min-width: 90px;
           text-align: left;

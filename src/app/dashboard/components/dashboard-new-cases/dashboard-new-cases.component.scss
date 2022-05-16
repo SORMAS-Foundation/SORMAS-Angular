@@ -1,12 +1,13 @@
-@use '../../../../variables.scss' as *;
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
 
 .dashboard-new-cases {
   margin: 8px;
   h1 {
-    color: map-get($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
     font-weight: 500;
     .nr-of-cases {
-      color: map-get($sormas-accent, 800);
+      color: mat.get-color-from-palette($sormas-accent, 800);
     }
   }
   .cases-container {
@@ -16,28 +17,28 @@
       flex-basis: 50%;
       .row {
         display: flex;
-        border-bottom: solid 1px map-get($sormas-accent, 200);
+        border-bottom: solid 1px mat.get-color-from-palette($sormas-accent, 200);
         margin-top: 10px;
         &.not-classified {
-          color: map-get($sormas-accent, 500);
+          color: mat.get-color-from-palette($sormas-accent, 500);
         }
         &.suspect {
-          color: map-get($sormas-warning, 400);
+          color: mat.get-color-from-palette($sormas-warning, 400);
         }
         &.probable {
-          color: map-get($sormas-warning, 800);
+          color: mat.get-color-from-palette($sormas-warning, 800);
         }
         &.confirmed {
-          color: map-get($sormas-alert, 700);
+          color: mat.get-color-from-palette($sormas-alert, 700);
         }
         &.confirmed-asymptomatic {
-          color: map-get($sormas-alert, 300);
+          color: mat.get-color-from-palette($sormas-alert, 300);
         }
         &.confirmed-unknown {
-          color: map-get($sormas-alert, 900);
+          color: mat.get-color-from-palette($sormas-alert, 900);
         }
         &.not-case {
-          color: map-get($sormas-primary, 500);
+          color: mat.get-color-from-palette($sormas-primary, 500);
         }
         .number {
           flex: 15%;
@@ -57,7 +58,7 @@
         }
         .text {
           flex: 77%;
-          color: map-get($sormas-accent, 600) !important;
+          color: mat.get-color-from-palette($sormas-accent, 600) !important;
           font-weight: 500;
         }
       }
@@ -69,11 +70,11 @@
         height: fit-content;
         text-align: right;
         padding: 6px 10px;
-        color: map-get($sormas-accent, 400);
-        border: solid 2px map-get($sormas-alert, 200);
+        color: mat.get-color-from-palette($sormas-accent, 400);
+        border: solid 2px mat.get-color-from-palette($sormas-alert, 200);
         border-radius: 3px;
         .value {
-          color: map-get($sormas-alert, 700);
+          color: mat.get-color-from-palette($sormas-alert, 700);
           font-weight: 700;
           .mat-icon {
             width: 14px;
@@ -82,9 +83,9 @@
           }
         }
         &.no-fatalities {
-          border: solid 2px map-get($sormas-accent, 100);
+          border: solid 2px mat.get-color-from-palette($sormas-accent, 100);
           .value {
-            color: map-get($sormas-accent, 500);
+            color: mat.get-color-from-palette($sormas-accent, 500);
             .mat-icon {
               visibility: hidden;
             }
@@ -95,35 +96,35 @@
         width: fit-content;
         margin-top: 12px;
         padding: 2px 6px;
-        color: map-get($sormas-accent, 400);
-        background-color: map-get($sormas-alert, 50);
+        color: mat.get-color-from-palette($sormas-accent, 400);
+        background-color: mat.get-color-from-palette($sormas-alert, 50);
         .value {
-          color: map-get($sormas-alert, 700);
+          color: mat.get-color-from-palette($sormas-alert, 700);
           font-weight: 700;
         }
       }
       .row {
         width: fit-content;
         margin-top: 8px;
-        color: map-get($sormas-accent, 400);
+        color: mat.get-color-from-palette($sormas-accent, 400);
         &.cases-resulting {
-          border: solid 1px map-get($sormas-primary, 200);
+          border: solid 1px mat.get-color-from-palette($sormas-primary, 200);
           padding: 0 6px;
           border-radius: 2px;
         }
         .value {
           font-size: 16px;
           font-weight: 500;
-          color: map-get($sormas-accent, 600);
+          color: mat.get-color-from-palette($sormas-accent, 600);
         }
       }
       .last-reported-district {
         margin-top: 5px;
-        color: map-get($sormas-accent, 600);
+        color: mat.get-color-from-palette($sormas-accent, 600);
         font-weight: 500;
         .hint {
           display: block;
-          color: map-get($sormas-accent, 400);
+          color: mat.get-color-from-palette($sormas-accent, 400);
           font-size: 10px;
         }
       }

@@ -33,11 +33,11 @@
     .search-icon {
       width: 14px;
       height: 12px;
-      color: map-get($sormas-accent, 200);
+      color: mat.get-color-from-palette($sormas-accent, 200);
       font-size: 12px;
     }
     ::placeholder {
-      color: map-get($sormas-accent, 200);
+      color: mat.get-color-from-palette($sormas-accent, 200);
       font-size: 12px;
     }
   }

@@ -74,7 +74,7 @@ footer {
   padding: 12px 0;
   font-size: 20px;
   line-height: 24px;
-  border-bottom: 2px solid map-get($sormas-accent, 200);
+  border-bottom: 2px solid mat.get-color-from-palette($sormas-accent, 200);
 }
 
 .mat-card-content {
@@ -103,12 +103,12 @@ footer {
   strong {
     font-size: 20px;
     font-weight: 500;
-    color: map-get($sormas-primary, A700);
+    color: mat.get-color-from-palette($sormas-primary, A700);
   }
 
   em {
     font-style: normal;
-    color: map-get($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
   }
 }
 

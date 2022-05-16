@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
 @mixin card-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -16,11 +19,11 @@
     }
 
     .title-date {
-      color: map-get($sormas-accent, 600);
+      color: mat.get-color-from-palette($sormas-accent, 600);
       font-size: 14px;
       .title-date-item-2,
       .title-date-item-4 {
-        color: map-get($sormas-accent, 400);
+        color: mat.get-color-from-palette($sormas-accent, 400);
         font-size: 10px;
       }
       .title-date-item-3 {

@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 h3 {
@@ -10,7 +11,7 @@ h3 {
 
 .content {
   overflow: hidden;
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
   font-size: 14px;
   line-height: 20px;
   text-overflow: ellipsis;
@@ -19,7 +20,7 @@ h3 {
 
 .third-party-role {
   margin: -2px 0 8px;
-  color: map-get($sormas-accent, 300);
+  color: mat.get-color-from-palette($sormas-accent, 300);
   font-weight: 500;
 }
 
@@ -36,6 +37,6 @@ h3 {
   top: 8px;
   left: 8px;
   margin: 0;
-  color: map-get($sormas-primary, 400);
+  color: mat.get-color-from-palette($sormas-primary, 400);
   font-size: 18px;
 }

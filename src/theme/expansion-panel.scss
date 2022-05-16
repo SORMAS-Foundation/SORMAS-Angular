@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
+
 @mixin expansion-panel-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -11,7 +12,7 @@
     .mat-expansion-panel {
       @include mat.elevation(0);
 
-      border: solid 1px map-get($sormas-accent, 200);
+      border: solid 1px mat.get-color-from-palette($sormas-accent, 200);
       color: unset;
     }
 
@@ -55,8 +56,8 @@
 
       .mat-expansion-panel-body {
         padding: 0;
-        border-top: 1px solid map-get($sormas-accent, 200);
-        border-bottom: 1px solid map-get($sormas-accent, 200);
+        border-top: 1px solid mat.get-color-from-palette($sormas-accent, 200);
+        border-bottom: 1px solid mat.get-color-from-palette($sormas-accent, 200);
       }
 
       @media (prefers-reduced-motion: no-preference) {

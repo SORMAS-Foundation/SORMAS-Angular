@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .mat-form-field-prefix {
@@ -7,7 +8,7 @@
 
 .search-icon {
   width: 16px;
-  color: map-get($sormas-accent, 200);
+  color: mat.get-color-from-palette($sormas-accent, 200);
   font-size: 14px;
 }
 
