@@ -513,7 +513,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'facility',
-        label: 'captions.facility',
+        label: 'captions.Facility',
         dependingOn: 'typeOfPlace',
         dependingOnValues: ['FACILITY'],
         service: 'facilityService',

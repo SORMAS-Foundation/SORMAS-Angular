@@ -77,11 +77,6 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         className: 'size-large',
         service: 'helperService',
         serviceMethod: 'getFacilityCategories',
-        determinedBy: [
-          {
-            key: 'district.uuid',
-          },
-        ],
       },
       {
         ...FORM_DATA_SELECT,
