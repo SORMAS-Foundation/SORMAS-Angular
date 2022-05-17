@@ -94,6 +94,7 @@ export const FORM_DATA_EVENT_FILTERS = [
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },

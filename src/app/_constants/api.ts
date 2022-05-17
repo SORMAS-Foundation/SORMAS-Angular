@@ -6,6 +6,8 @@ export const API_ROUTE_CASES = {
   DELETE: 'cases/delete',
   EXPORT: 'cases/export',
   SEARCH: 'cases/searchSpecific',
+  ARCHIVE: 'cases/archive',
+  DEARCHIVE: 'cases/dearchive',
 };
 
 export const API_ROUTE_CASES_FOLLOW_UP = {
@@ -71,6 +73,8 @@ export const API_ROUTE_TASKS = {
   ADD: 'tasks/push',
   DELETE: 'tasks/delete',
   EXPORT: 'tasks/export',
+  ARCHIVE: 'tasks/archive',
+  DEARCHIVE: 'tasks/dearchive',
 };
 
 export const API_ROUTE_EVENTS = {
@@ -81,6 +85,8 @@ export const API_ROUTE_EVENTS = {
   DELETE: 'events/delete',
   EXPORT: 'events/export',
   SEARCH: 'events/searchSpecific',
+  ARCHIVE: 'events/archive',
+  DEARCHIVE: 'events/dearchive',
 };
 
 export const API_ROUTE_EVENT_ACTIONS = {

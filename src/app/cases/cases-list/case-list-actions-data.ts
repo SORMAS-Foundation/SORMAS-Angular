@@ -90,6 +90,11 @@ export const actionsBulkEditDefs: NavItem[] = [
   },
   {
     role: NavItemRole.ACTION,
+    name: 'captions.actionDearchiveCoreEntity',
+    action: ACTIONS_BULK_EDIT.DEARCHIVE,
+  },
+  {
+    role: NavItemRole.ACTION,
     name: 'captions.sormasToSormasShare',
     action: ACTIONS_BULK_EDIT.SHARE,
   },
