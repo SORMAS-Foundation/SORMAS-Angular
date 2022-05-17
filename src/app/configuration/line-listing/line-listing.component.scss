@@ -5,7 +5,7 @@
   height: 100vh;
   padding-top: 10px;
   margin: -25px;
-  background: map-get($sormas-accent, 50);
+  background: mat.get-color-from-palette($sormas-accent, 50);
 
   .text {
     .mat-icon {

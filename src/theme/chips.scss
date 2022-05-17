@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
 @mixin chips-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -8,8 +11,8 @@
   :root {
     .mat-standard-chip {
       min-height: 24px;
-      background-color: map-get($sormas-accent, 50);
-      color: map-get($sormas-accent, 800);
+      background-color: mat.get-color-from-palette($sormas-accent, 50);
+      color: mat.get-color-from-palette($sormas-accent, 800);
       font-size: 12px;
       font-weight: normal;
       line-height: 24px;

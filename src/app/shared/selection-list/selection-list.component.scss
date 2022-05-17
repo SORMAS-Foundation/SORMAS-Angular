@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .accent {
@@ -5,5 +6,5 @@
 }
 
 .warn {
-  color: map-get($sormas-alert, 700);
+  color: mat.get-color-from-palette($sormas-alert, 700);
 }

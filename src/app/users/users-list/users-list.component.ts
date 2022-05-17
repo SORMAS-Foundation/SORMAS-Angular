@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,8 +12,9 @@ import {
   ADD_MODAL_MAX_WIDTH,
   API_ROUTE_USERS,
   EXPORT_TYPES,
-  HEADER_HEIGHT,
   SMALL_NOTIFICATION_MODAL_WIDTH,
+  ADD_MODAL_NARROW,
+  HEADER_HEIGHT,
   USER_FILTERS_FORM_ID,
 } from '../../app.constants';
 import { UserAddComponent } from '../user-add/user-add.component';
@@ -22,6 +23,8 @@ import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { NotificationService } from '../../_services/notification.service';
 import { ExportService } from '../../_services/api/export.service';
 import { actionsBulkEditDefs } from './users-actions-data';
+import { UsersSyncComponent } from '../users-sync/users-sync.component';
+import { TableComponent } from '../../shared/table/table.component';
 
 @Component({
   selector: 'app-users-list',
@@ -38,6 +41,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   actionsBulkEdit = actionsBulkEditDefs;
 
   private subscription: Subscription[] = [];
+  @ViewChild('usersList') usersList: TableComponent;
 
   constructor(
     public userService: UserService,
@@ -67,6 +71,23 @@ export class UsersListComponent implements OnInit, OnDestroy {
       data: {
         title: this.translateService.instant('strings.headingCreateNewUser'),
         component: UserAddComponent,
+      },
+    });
+
+    this.subscription.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
+  }
+
+  syncUsers(): void {
+    const dialogRef = this.dialog.open(UsersSyncComponent, {
+      maxWidth: ADD_MODAL_NARROW,
+      data: {
+        usersCount: this.usersList.totalItems,
       },
     });
 

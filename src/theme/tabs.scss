@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
 @mixin tabs-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -10,7 +13,7 @@
       min-width: auto;
       padding: 8px 0;
       margin-right: 16px;
-      color: map-get($sormas-accent, 800);
+      color: mat.get-color-from-palette($sormas-accent, 800);
 
       &:hover,
       &:focus,
@@ -33,7 +36,7 @@
     }
 
     .mat-tab-header-pagination-chevron {
-      border-color: map-get($sormas-primary, 700);
+      border-color: mat.get-color-from-palette($sormas-primary, 700);
     }
 
     .mat-tab-nav-bar {
@@ -80,7 +83,7 @@
 
         &:hover,
         &:focus {
-          color: map-get($sormas-primary, 700);
+          color: mat.get-color-from-palette($sormas-primary, 700);
         }
       }
     }

@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '../../../variables.scss' as *;
 
 .page-content {
@@ -69,7 +70,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 0 25px;
-  border-bottom: solid 2px map-get($sormas-accent, 200);
+  border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 200);
   background-color: $white;
 }
 

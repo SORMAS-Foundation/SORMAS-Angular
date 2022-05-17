@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 table {
@@ -6,7 +7,7 @@ table {
 }
 
 th.mat-header-cell {
-  border-bottom-color: map-get($sormas-accent, 200);
+  border-bottom-color: mat.get-color-from-palette($sormas-accent, 200);
   border-left-width: 0;
   background-color: $white;
 }
@@ -32,14 +33,14 @@ tr.mat-row td.mat-cell {
       text-align: inherit;
 
       &:hover {
-        border-color: map-get($sormas-primary, 100);
+        border-color: mat.get-color-from-palette($sormas-primary, 100);
       }
     }
   }
 }
 
 tr.mat-row.row-selected td.mat-cell {
-  background-color: map-get($sormas-primary, 50);
+  background-color: mat.get-color-from-palette($sormas-primary, 50);
 }
 
 .spacer {
@@ -47,21 +48,21 @@ tr.mat-row.row-selected td.mat-cell {
 }
 
 .status-normal {
-  color: map-get($sormas-accent, 400);
+  color: mat.get-color-from-palette($sormas-accent, 400);
 }
 
 .status-low {
-  color: map-get($sormas-primary, 600);
+  color: mat.get-color-from-palette($sormas-primary, 600);
 }
 
 .status-medium {
-  color: map-get($sormas-warning, 600);
+  color: mat.get-color-from-palette($sormas-warning, 600);
 }
 
 .status-medium-high {
-  color: map-get($sormas-warning, 800);
+  color: mat.get-color-from-palette($sormas-warning, 800);
 }
 
 .status-high {
-  color: map-get($sormas-alert, 700);
+  color: mat.get-color-from-palette($sormas-alert, 700);
 }

@@ -123,7 +123,7 @@ legend {
 
 .required {
   margin-left: 6px;
-  color: map-get($sormas-alert, 400);
+  color: mat.get-color-from-palette($sormas-alert, 400);
 }
 
 .hidden {

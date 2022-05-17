@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .action {
@@ -9,25 +10,25 @@
   position: absolute;
   top: 10px;
   left: 16px;
-  color: map-get($sormas-accent, 400);
+  color: mat.get-color-from-palette($sormas-accent, 400);
   font-size: 10px;
 }
 
 .action-date-day {
   margin-right: 3px;
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
   font-size: 14px;
   font-weight: 500;
 }
 
 .action-date-month {
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
   text-transform: uppercase;
 }
 
 h3 {
   padding: 8px 0;
-  border-bottom: 2px solid map-get($sormas-alert, 100);
+  border-bottom: 2px solid mat.get-color-from-palette($sormas-alert, 100);
   margin: 0;
   font-size: 16px;
   font-weight: 500;
@@ -36,7 +37,7 @@ h3 {
 h4 {
   padding: 12px 0;
   margin: 0;
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
   font-size: 14px;
   font-weight: 500;
 }
@@ -44,7 +45,7 @@ h4 {
 .action-props {
   display: flex;
   justify-content: space-evenly;
-  color: map-get($sormas-accent, 400);
+  color: mat.get-color-from-palette($sormas-accent, 400);
 }
 
 .action-status {
@@ -53,15 +54,15 @@ h4 {
 }
 
 .status-DONE {
-  color: map-get($sormas-success, 700);
+  color: mat.get-color-from-palette($sormas-success, 700);
 }
 
 .status-PENDING {
-  color: map-get($sormas-alert, 300);
+  color: mat.get-color-from-palette($sormas-alert, 300);
 }
 
 .status-IN_PROGRESS {
-  color: map-get($sormas-primary, 400);
+  color: mat.get-color-from-palette($sormas-primary, 400);
 }
 
 .action-priority {
@@ -69,17 +70,17 @@ h4 {
 }
 
 .priority-LOW {
-  color: map-get($sormas-accent, 600);
+  color: mat.get-color-from-palette($sormas-accent, 600);
   font-size: 12px;
 }
 
 .priority-NORMAL {
-  color: map-get($sormas-primary, 400);
+  color: mat.get-color-from-palette($sormas-primary, 400);
   font-size: 12px;
 }
 
 .priority-HIGH {
-  color: map-get($sormas-alert, 300);
+  color: mat.get-color-from-palette($sormas-alert, 300);
   font-size: 12px;
 }
 
@@ -92,7 +93,7 @@ h4 {
   position: absolute;
   right: 16px;
   bottom: 8px;
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
   font-size: 12px;
   text-align: right;
 

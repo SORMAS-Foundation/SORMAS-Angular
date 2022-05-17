@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
 @mixin tooltip-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -8,7 +11,7 @@
   :root {
     .mat-tooltip {
       padding: 4px 12px;
-      background-color: rgba(map-get($sormas-accent, 900), 0.8);
+      background-color: rgba(mat.get-color-from-palette($sormas-accent, 900), 0.8);
       font-size: 12px;
       line-height: 14px;
     }

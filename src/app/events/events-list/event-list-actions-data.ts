@@ -23,6 +23,11 @@ export const actionsBulkEditDefs: NavItem[] = [
   },
   {
     role: NavItemRole.ACTION,
+    name: 'captions.actionDearchiveCoreEntity',
+    action: ACTIONS_BULK_EDIT.DEARCHIVE,
+  },
+  {
+    role: NavItemRole.ACTION,
     name: 'captions.actionGroupEvent',
     action: ACTIONS_BULK_EDIT.GROUP,
   },

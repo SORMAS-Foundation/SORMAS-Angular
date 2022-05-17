@@ -26,7 +26,7 @@
 
 h2 {
   margin-bottom: 8px;
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
   font-size: 20px;
   line-height: 24px;
 }
@@ -60,7 +60,7 @@ h2 {
 .file-upload {
   label {
     margin-right: 24px;
-    color: map-get($sormas-primary, 700);
+    color: mat.get-color-from-palette($sormas-primary, 700);
     cursor: pointer;
     font-size: 12px;
   }

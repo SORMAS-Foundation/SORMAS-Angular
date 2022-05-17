@@ -1,9 +1,10 @@
-@use '../../../variables.scss' as *;
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
 
 .page-content {
   position: relative;
   z-index: 1;
-  background: map-get($sormas-accent, 50);
+  background: mat.get-color-from-palette($sormas-accent, 50);
 }
 
 header {
@@ -12,7 +13,7 @@ header {
   top: 68px;
   display: flex;
   padding: 48px 24px;
-  border-bottom: 2px solid map-get($sormas-accent, 200);
+  border-bottom: 2px solid mat.get-color-from-palette($sormas-accent, 200);
   background: $white;
 
   .mat-icon-button {
@@ -39,7 +40,7 @@ h1 {
 .person-information {
   padding: 8px 24px;
   margin: 0 24px 16px;
-  background-color: map-get($sormas-accent, 50);
+  background-color: mat.get-color-from-palette($sormas-accent, 50);
   border-radius: 4px;
 
   ul {
@@ -53,7 +54,7 @@ h1 {
   li {
     height: 32px;
     padding: 0 16px;
-    border-right: solid 1px map-get($sormas-accent, 200);
+    border-right: solid 1px mat.get-color-from-palette($sormas-accent, 200);
     margin: 0;
     line-height: 32px;
 
@@ -76,7 +77,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   padding: 0 25px;
-  border-bottom: solid 2px map-get($sormas-accent, 200);
+  border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 200);
   background-color: $white;
 }
 

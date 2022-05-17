@@ -23,4 +23,4 @@ $warn: mat.get-color-from-palette($sormas-alert, 700);
 $white: #ffffff;
 $black: #000000;
 
-$warn-default: map-get($sormas-alert, default);
+$warn-default: mat.get-color-from-palette($sormas-alert, default);

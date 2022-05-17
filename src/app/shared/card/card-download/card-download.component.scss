@@ -1,8 +1,9 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .card-download {
   padding-top: 8px;
-  border-top: 2px solid map-get($sormas-alert, 100);
+  border-top: 2px solid mat.get-color-from-palette($sormas-alert, 100);
 }
 
 .mat-button {

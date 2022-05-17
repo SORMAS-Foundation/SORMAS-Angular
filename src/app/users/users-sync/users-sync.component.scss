@@ -1,0 +1,112 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.mat-dialog-content {
+  padding: 24px 34px;
+}
+
+.step {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.iteration {
+  flex: 0 0 96px;
+  padding: 24px 24px 0 0;
+  line-height: 24px;
+  text-align: right;
+}
+
+.instructions {
+  @include mat.elevation(1);
+
+  flex: 1 1 100%;
+  padding: 24px;
+  background-color: $white;
+  border-radius: 5px;
+}
+
+.instructions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+h2 {
+  margin-bottom: 8px;
+  color: mat.get-color-from-palette($sormas-accent, 500);
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.button-download {
+  padding: 0;
+  margin-right: 32px;
+
+  .mat-icon {
+    width: 14px;
+    font-size: 14px;
+  }
+}
+
+.process-info {
+  padding-left: 40px;
+
+  .mat-icon {
+    float: left;
+    margin-left: -40px;
+  }
+}
+
+.mat-progress-bar {
+  margin-block: 40px;
+}
+
+.progress-info {
+  display: flex;
+  column-gap: 12px;
+  line-height: 1;
+  font-weight: 500;
+
+  .processed {
+    margin-right: auto;
+  }
+
+  .syncronized,
+  .errors,
+  .no-errors {
+    padding: 5px 8px;
+    border-radius: 2px;
+  }
+
+  .syncronized {
+    background-color: mat.get-color-from-palette($sormas-success, 50);
+  }
+
+  .errors {
+    background-color: mat.get-color-from-palette($sormas-alert, 300);
+    color: $white;
+  }
+
+  .no-errors {
+    background-color: mat.get-color-from-palette($sormas-accent, 100);
+  }
+}
+
+.actions {
+  margin-top: 32px;
+  text-align: right;
+}
+
+.rotate {
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

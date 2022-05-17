@@ -1,8 +1,9 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .dashboard-wrapper {
   min-height: 100%;
-  background-color: map-get($sormas-accent, 50);
+  background-color: mat.get-color-from-palette($sormas-accent, 50);
   .page-header {
     background-color: $white;
   }

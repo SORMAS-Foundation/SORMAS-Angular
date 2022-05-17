@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .button-open,
@@ -67,7 +68,7 @@
   .button-close {
     top: 14px;
     right: 22px;
-    color: map-get($sormas-accent, 500);
+    color: mat.get-color-from-palette($sormas-accent, 500);
   }
 
   .mat-sidenav {

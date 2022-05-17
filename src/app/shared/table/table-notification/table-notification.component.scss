@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .results-error {
@@ -7,13 +8,13 @@
 
   h2 {
     margin-bottom: 8px;
-    color: map-get($sormas-alert, 600);
+    color: mat.get-color-from-palette($sormas-alert, 600);
     font-size: 16px;
     line-height: 24px;
   }
 
   .mat-icon {
-    color: map-get($sormas-alert, 200);
+    color: mat.get-color-from-palette($sormas-alert, 200);
     line-height: 20px;
     vertical-align: middle;
   }
@@ -51,6 +52,6 @@
 
 .results-no-match {
   p:first-of-type {
-    color: map-get($sormas-alert, 600);
+    color: mat.get-color-from-palette($sormas-alert, 600);
   }
 }

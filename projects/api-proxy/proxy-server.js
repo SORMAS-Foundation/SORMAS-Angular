@@ -230,6 +230,23 @@ app.use('/sormas-rest/persons/setMissingCoordinates', (req, res) => {
 //   ]);
 // });
 
+app.use('/sormas-rest/users/sync', (req, res) => {
+  setTimeout(() => {
+    const errors = Math.floor(Math.random() * 4);
+    res.status(200).send({
+      syncronized: 1 - errors / 100,
+      errors: errors / 100,
+    });
+  }, Math.floor(Math.random() * (5000 - 2000) + 2000));
+});
+
+app.use('/sormas-rest/users/abortSync', (req, res) => {
+  res.status(200).send({
+    syncronized: Math.floor(Math.random() * (90 - 50) + 50) / 100,
+    errors: 0,
+  });
+});
+
 app.use('/sormas-rest/additionaltests/query/samples', (req, res) => {
   res.status(200).send([
     {

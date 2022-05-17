@@ -1,0 +1,79 @@
+<div mat-dialog-title>
+  <h1>{{ 'strings.headingSyncUsers' | translate }}</h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div class="step">
+    <div class="iteration">{{ 'strings.step' | translate }} 1</div>
+    <div class="instructions">
+      <div class="instructions-header">
+        <h2>{{ 'strings.headingSyncUsers' | translate }}</h2>
+        <button
+          mat-flat-button
+          color="primary"
+          class="button-sync"
+          [disabled]="syncOngoing"
+          (click)="startSync()"
+        >
+          {{ 'captions.sync' | translate }}
+        </button>
+      </div>
+      <p [innerHtml]="'strings.infoSyncUsers' | translate"></p>
+    </div>
+  </div>
+
+  <div *ngIf="showProgress" class="step">
+    <div class="iteration"></div>
+    <div class="instructions">
+      <h2 *ngIf="false">{{ 'strings.headingDownloadImportTemplate' | translate }}</h2>
+      <div class="process-info">
+        <mat-icon class="material-icons-round" [ngClass]="{ rotate: syncOngoing }">sync</mat-icon>
+        <p
+          [innerHtml]="'strings.infoUserSyncProcess' | translate | replace: '%d':data.usersCount"
+        ></p>
+      </div>
+      <mat-progress-bar
+        [value]="(processed / data.usersCount) * 100"
+        class="loading-bar"
+      ></mat-progress-bar>
+      <div class="progress-info">
+        <span class="processed">{{ processed }}/{{ data.usersCount }} processed</span>
+        <span *ngIf="syncDone" class="syncronized">{{ syncronized }} syncronized</span>
+        <span *ngIf="syncDone" [ngClass]="{ errors: errors, 'no-errors': !errors }">
+          {{ errors }} errors
+        </span>
+      </div>
+      <div class="actions">
+        <button mat-stroked-button color="primary" [disabled]="!syncOngoing" (click)="cancelSync()">
+          {{ 'captions.actionCancel' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="iteration">{{ 'strings.step' | translate }} 2</div>
+    <div class="instructions">
+      <h2>{{ 'strings.headingDownloadErrorReport' | translate }}</h2>
+      <p>{{ 'strings.infoDownloadErrorReport' | translate }}</p>
+      <p class="actions">
+        <a
+          href="#"
+          target="_blank"
+          mat-button
+          color="primary"
+          class="button-download"
+          [disabled]="!errors"
+        >
+          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          {{ 'captions.importDownloadErrorReport' | translate }}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

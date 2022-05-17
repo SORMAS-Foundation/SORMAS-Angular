@@ -74,6 +74,7 @@ export const FORM_DATA_TASK_FILTERS = [
         key: 'relevanceStatus',
         options: taskTypeOptions,
         separated: true,
+        value: 'ACTIVE',
       },
     ],
   },

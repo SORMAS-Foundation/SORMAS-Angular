@@ -23,8 +23,20 @@ export class UserService extends BaseService<UserDto> {
   }
 
   disable(users: string[]): Observable<any> {
-    const endpoint = this.endpoint.ENABLE ?? this.endpoint.ENDPOINT;
+    const endpoint = this.endpoint.DISABLE ?? this.endpoint.ENDPOINT;
 
     return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, users);
+  }
+
+  sync(): Observable<any> {
+    const endpoint = this.endpoint.SYNC ?? this.endpoint.ENDPOINT;
+
+    return this.httpClient.get(`${this.helperService.getApiUrl()}/${endpoint}`);
+  }
+
+  abortSync(): Observable<any> {
+    const endpoint = this.endpoint.ABORT_SYNC ?? this.endpoint.ENDPOINT;
+
+    return this.httpClient.get(`${this.helperService.getApiUrl()}/${endpoint}`);
   }
 }
