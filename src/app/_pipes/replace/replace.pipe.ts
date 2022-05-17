@@ -5,7 +5,7 @@ export class ReplacePipe implements PipeTransform {
   transform(
     value: string,
     strToReplace: string,
-    replacementStr: string,
+    replacementStr: string | number,
     occurence?: number
   ): string {
     if (!value || !strToReplace || !replacementStr) {
@@ -15,10 +15,10 @@ export class ReplacePipe implements PipeTransform {
 
     if (occurence) {
       result = value.replace(RegExp(`^(?:.*?${strToReplace}){${occurence}}`), (x) =>
-        x.replace(RegExp(`${strToReplace}$`), replacementStr)
+        x.replace(RegExp(`${strToReplace}$`), replacementStr.toString())
       );
     } else {
-      result = value.replaceAll(strToReplace, replacementStr);
+      result = value.replaceAll(strToReplace, replacementStr.toString());
     }
 
     return result;

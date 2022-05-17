@@ -145,6 +145,8 @@ export const API_ROUTE_USERS = {
   EXPORT: 'users/export',
   ENABLE: 'users/enable',
   DISABLE: 'users/disable',
+  SYNC: 'users/sync',
+  ABORT_SYNC: 'users/abortSync',
 };
 
 // toDO: hardcoded endpoint. Needs backend
