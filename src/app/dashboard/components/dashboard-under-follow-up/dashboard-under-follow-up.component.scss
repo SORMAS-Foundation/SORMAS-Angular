@@ -25,7 +25,7 @@ h3 {
 }
 
 .icon-info {
-  color: map-get($sormas-primary, 500);
+  color: mat.get-color-from-palette($sormas-primary, 500);
   font-size: 18px;
   line-height: 22px;
   text-align: center;
@@ -37,7 +37,7 @@ h3 {
 
   width: 300px;
   padding: 8px 16px 8px 32px;
-  background-color: map-get($sormas-primary, 50);
+  background-color: mat.get-color-from-palette($sormas-primary, 50);
   font-size: 12px;
   border-radius: 5px;
 

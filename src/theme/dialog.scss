@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
+
 @mixin dialog-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -11,7 +12,7 @@
     .mat-dialog-container {
       position: relative;
       padding: 0;
-      background: map-get($sormas-accent, 50);
+      background: mat.get-color-from-palette($sormas-accent, 50);
       border-radius: 12px;
       color: unset;
     }
@@ -32,7 +33,7 @@
       display: flex;
       justify-content: space-between;
       padding: 24px 64px;
-      border-bottom: 2px solid map-get($sormas-accent, 200);
+      border-bottom: 2px solid mat.get-color-from-palette($sormas-accent, 200);
       margin: 0;
       background-color: $white;
 
@@ -52,7 +53,7 @@
       position: absolute;
       top: 8px;
       right: 8px;
-      color: map-get($sormas-accent, 500);
+      color: mat.get-color-from-palette($sormas-accent, 500);
     }
 
     .mat-dialog-content {
@@ -132,7 +133,7 @@
       }
     }
 
-    @media (min-width: map-get($grid-breakpoints, md)) {
+    @media (min-width: mat.get-color-from-palette($grid-breakpoints, md)) {
       .mat-dialog-content {
         legend {
           flex-basis: 156px;

@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .selection-list-label {
@@ -6,5 +7,5 @@
 }
 
 .required {
-  color: map-get($sormas-alert, 300);
+  color: mat.get-color-from-palette($sormas-alert, 300);
 }

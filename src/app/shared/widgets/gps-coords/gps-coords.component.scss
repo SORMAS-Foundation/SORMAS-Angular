@@ -5,7 +5,7 @@
   position: absolute;
   top: 42px;
   right: 18px;
-  color: map-get($sormas-primary, 700);
+  color: mat.get-color-from-palette($sormas-primary, 700);
 }
 
 .map-wrapper {

@@ -1,10 +1,11 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .dialog-title-icon {
   position: absolute;
   margin-top: 18px;
   margin-left: -60px;
-  color: map-get($sormas-alert, 200);
+  color: mat.get-color-from-palette($sormas-alert, 200);
   font-size: 40px;
 }
 

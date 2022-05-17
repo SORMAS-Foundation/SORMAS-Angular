@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
 @mixin list-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -24,7 +27,7 @@
       }
 
       .mat-list-option:not(.mat-list-item-disabled)[aria-selected='true'] {
-        background-color: map-get($primary, 50);
+        background-color: mat.get-color-from-palette($sormas-primary, 50);
       }
     }
   }

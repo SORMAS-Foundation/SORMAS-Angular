@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
+
 @mixin form-radio-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -37,37 +38,37 @@
         text-align: left;
 
         &:not(.mat-radio-disabled) .mat-radio-outer-circle {
-          border-color: mat.get-color-from-palette(mat.define-palette($primary, 700));
+          border-color: mat.get-color-from-palette($sormas-primary, 700);
         }
 
         &:focus,
         &:hover {
-          color: mat.get-color-from-palette(mat.define-palette($primary, 700));
+          color: mat.get-color-from-palette($sormas-primary, 700);
         }
 
         &.mat-radio-checked {
-          color: mat.get-color-from-palette(mat.define-palette($primary, 700));
+          color: mat.get-color-from-palette($sormas-primary, 700);
         }
       }
 
       &.ng-touched.ng-invalid .mat-radio-button:not(.mat-radio-disabled) .mat-radio-outer-circle {
-        border-color: mat.get-color-from-palette(mat.define-palette($warn, 300));
+        border-color: mat.get-color-from-palette($sormas-alert, 300);
       }
 
       &.alert {
         .radio-group-label {
-          color: map-get($sormas-alert, 700);
+          color: mat.get-color-from-palette($sormas-alert, 700);
         }
 
         .mat-radio-button:not(.mat-radio-disabled).mat-radio-checked {
-          color: map-get($sormas-alert, 700);
+          color: mat.get-color-from-palette($sormas-alert, 700);
 
           .mat-radio-outer-circle {
-            border-color: map-get($sormas-alert, 300);
+            border-color: mat.get-color-from-palette($sormas-alert, 300);
           }
 
           .mat-radio-inner-circle {
-            background-color: map-get($sormas-alert, 300);
+            background-color: mat.get-color-from-palette($sormas-alert, 300);
           }
         }
       }

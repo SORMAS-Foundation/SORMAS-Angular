@@ -4,7 +4,7 @@
 table {
   width: 100%;
   th.mat-header-cell {
-    border-bottom-color: map-get($sormas-accent, 200);
+    border-bottom-color: mat.get-color-from-palette($sormas-accent, 200);
     border-left-width: 0;
     background-color: $white;
   }

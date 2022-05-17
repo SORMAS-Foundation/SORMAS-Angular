@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 h2 {
@@ -7,5 +8,5 @@ h2 {
 }
 
 p {
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
 }

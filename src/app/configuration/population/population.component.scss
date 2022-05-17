@@ -1,9 +1,10 @@
+@use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
 .info-text {
   max-width: 520px;
   margin: 0 auto;
-  color: map-get($sormas-accent, 500);
+  color: mat.get-color-from-palette($sormas-accent, 500);
   font-size: 12px;
   line-height: 16px;
 
