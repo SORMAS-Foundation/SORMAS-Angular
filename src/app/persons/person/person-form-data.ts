@@ -379,6 +379,10 @@ export const FORM_DATA_PERSON = [
         },
         determinedBy: [
           {
+            key: 'address.district.uuid',
+            keyMap: 'district.uuid',
+          },
+          {
             key: 'facilityCategory',
             keyMap: 'typeGroup',
           },

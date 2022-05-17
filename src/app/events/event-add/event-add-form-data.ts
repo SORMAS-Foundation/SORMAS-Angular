@@ -523,6 +523,9 @@ export const FORM_DATA_EVENT_ADD = [
         },
         determinedBy: [
           {
+            key: 'district.uuid',
+          },
+          {
             key: 'facilityCategory',
             keyMap: 'typeGroup',
           },
