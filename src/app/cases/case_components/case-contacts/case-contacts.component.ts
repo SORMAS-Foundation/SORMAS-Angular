@@ -21,7 +21,7 @@ import { ContactService } from '../../../_services/api/contact.service';
 import { FORM_DATA_CASE_CONTACT_FILTERS } from '../../../shared/contact-filters/contact-filters-form-data';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { CONTACT_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
-import { FORM_DATA_EXPORT_CONFIGURATION } from '../../cases-list/export-configuration-form-data';
+import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
 
 @Component({
   selector: 'app-case-contacts',
@@ -78,7 +78,7 @@ export class CaseContactsComponent {
     this.dialog.open(CustomExportComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
-        exportType: EXPORT_TYPE.CASE,
+        exportType: EXPORT_TYPE.CONTACT,
         exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
       },
     });
