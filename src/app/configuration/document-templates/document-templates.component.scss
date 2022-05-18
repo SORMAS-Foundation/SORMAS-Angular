@@ -1,6 +1,13 @@
 @use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
+:host {
+  flex: 1 1 100%;
+  margin: -24px;
+  padding: 24px;
+  background: mat.get-color-from-palette($sormas-accent, 50);
+}
+
 .section-title {
   flex: 0 0 176px;
   padding: 24px 24px 24px 0;
