@@ -1,4 +1,4 @@
-<section class="section" *ngFor="let workflow of documentWorkflow">
+<div class="section" *ngFor="let workflow of documentWorkflow">
   <h2 class="section-title">
     {{ 'enum.DocumentWorkflow.' + workflow | translate }}
   </h2>
@@ -18,4 +18,4 @@
       {{ 'captions.DocumentTemplate.buttonUploadTemplate' | translate }}
     </button>
   </mat-card>
-</section>
+</div>

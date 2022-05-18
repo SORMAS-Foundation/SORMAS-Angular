@@ -1,14 +1,25 @@
 @use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
+section {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 header {
-  position: relative;
+  position: sticky;
   z-index: 2;
-  display: block;
-  background-color: $white;
-  padding: 20px 30px;
-  margin-top: 10px;
-  margin-bottom: -10px;
+  top: 68px;
+  display: flex;
+  padding: 48px 32px 0;
+  background: $white;
 
   &.listing-header-region {
     border-bottom: solid 2px mat.get-color-from-palette($sormas-accent, 200);

@@ -52,10 +52,12 @@ export class UsersSyncComponent implements OnDestroy {
             return;
           }
           this.processed = this.data.usersCount;
-          this.syncronized = Math.floor(result.syncronized * this.data.usersCount);
-          this.errors = Math.ceil(result.errors * this.data.usersCount);
           this.syncDone = true;
           this.syncOngoing = false;
+          if (result) {
+            this.syncronized = Math.floor(result.syncronized * this.data.usersCount);
+            this.errors = Math.ceil(result.errors * this.data.usersCount);
+          }
         },
         error: () => {},
         complete: () => {},
