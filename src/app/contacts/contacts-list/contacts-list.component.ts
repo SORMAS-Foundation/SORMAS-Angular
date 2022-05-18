@@ -101,7 +101,9 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   }
 
   updateFollowUpTable(filters?: Filter[]): void {
-    this.defaultColumns = this.generateFollowUpColumns(filters);
+    if (this.tableView === ACTIONS_VIEW_OPTIONS.FOLLOW_UP) {
+      this.defaultColumns = this.generateFollowUpColumns(filters);
+    }
   }
 
   generateFollowUpColumns(filters?: Filter[]): TableColumn[] {

@@ -10,6 +10,7 @@ export const CASE_SYMPTOMS_FORM_ID = 'case';
 export const CASE_FILTERS_FORM_ID = 'caseFilters';
 export const CASE_LINE_LISTING_FORM_ID = 'caseLineListing';
 export const CASE_EXPORT_CONFIGURATION_FORM_ID = 'caseExportConfiguration';
+export const CASE_CHOOSE_FORM_ID = 'caseChooseCaseModal';
 
 export const CONFIGURATION_COMMUNITY_FILTERS_FORM_ID = 'communityFilters';
 export const CONFIGURATION_CONTINENT_FILTERS_FORM_ID = 'continentFilters';

@@ -7,6 +7,7 @@ import { Filter, TableColumn } from '../../../_models/common';
 import { TableAppearanceOptions } from '../../../_constants/enums';
 import { FilterService } from '../../../_services/filter.service';
 import { CaseDataDto } from '../../../_models/caseDataDto';
+import { CASE_CHOOSE_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-choose-case-modal',
@@ -18,6 +19,7 @@ export class ChooseCaseModalComponent implements OnInit {
   tableAppearanceOptions = TableAppearanceOptions;
   selectedCase: CaseDataDto | null;
   filtersForm = new FormGroup({});
+  formId = CASE_CHOOSE_FORM_ID;
 
   constructor(
     public dialogRef: MatDialogRef<ChooseCaseModalComponent>,
@@ -39,10 +41,10 @@ export class ChooseCaseModalComponent implements OnInit {
 
   filtersToArray(): void {
     const filter: Filter = {
-      field: 'nameUuidEpidNumberLike',
+      field: 'caseLike',
       value: this.filtersForm.value.nameUuidEpidNumberLike,
     };
-    this.filterService.setFilters([filter]);
+    this.filterService.setFilters([filter], this.formId);
   }
 
   onSelectCase(event: any): void {
