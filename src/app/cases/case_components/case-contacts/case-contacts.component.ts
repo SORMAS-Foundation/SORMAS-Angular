@@ -21,7 +21,7 @@ import { ContactService } from '../../../_services/api/contact.service';
 import { FORM_DATA_CASE_CONTACT_FILTERS } from '../../../shared/contact-filters/contact-filters-form-data';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { CONTACT_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
-import { FORM_DATA_EXPORT_CONFIGURATION } from '../../../contacts/contacts-list/export-configuration-form-data';
+import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
 
 @Component({
   selector: 'app-case-contacts',
