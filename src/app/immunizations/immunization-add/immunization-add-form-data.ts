@@ -194,6 +194,10 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         key: 'healthFacility.uuid',
         label: 'captions.Immunization.healthFacility',
         service: 'facilityService',
+        fallbackOption: {
+          fallbackOptionKey: 'OTHER_FACILITY',
+          fallbackOptionValue: 'captions.Facility.OTHER_FACILITY',
+        },
         determinedBy: [
           {
             key: 'responsibleDistrict.uuid',
@@ -220,6 +224,9 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         key: 'healthFacilityDetails',
         newLine: true,
         label: 'captions.Immunization.healthFacilityDetails',
+        dependingOn: 'healthFacility.uuid',
+        dependingOnValues: ['OTHER_FACILITY'],
+        validation: ['required'],
       },
     ],
   },
