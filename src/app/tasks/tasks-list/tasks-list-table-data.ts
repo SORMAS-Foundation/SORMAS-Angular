@@ -11,7 +11,7 @@ export const defaultColumnDefs: TableColumn[] = [
     format: {
       type: TableDataFormatOptions.LINK,
       pattern: '/cases/case/$param1/details',
-      params: ['uuid'],
+      params: ['contextReference.uuid'],
       truncate: 6,
     },
   },
