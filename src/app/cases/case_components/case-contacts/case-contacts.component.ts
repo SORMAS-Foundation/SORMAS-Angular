@@ -78,7 +78,7 @@ export class CaseContactsComponent {
     this.dialog.open(CustomExportComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
-        exportType: EXPORT_TYPE.CONTACT,
+        exportType: EXPORT_TYPE.CASE_CONTACT,
         exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
       },
     });

@@ -253,6 +253,7 @@ export const FacilityCategoryGroups = {
 
 export const EXPORT_TYPE = {
   CASE: 'CASE' as ExportType,
+  CASE_CONTACT: 'CASE_CONTACT' as ExportType,
   CONTACT: 'CONTACT' as ExportType,
   EVENT_PARTICIPANTS: 'EVENT_PARTICIPANTS' as ExportType,
   VISIT: 'VISIT' as ExportType,
