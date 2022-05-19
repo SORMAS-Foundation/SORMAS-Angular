@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { asyncScheduler, Subject, Subscription } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import { MatTabNav } from '@angular/material/tabs';
 import { throttleTime } from 'rxjs/operators';
 import { HelperService } from '../../_services/helper.service';
 
@@ -88,6 +89,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   @ViewChild('mainMenu', { read: ElementRef }) mainMenu: ElementRef;
   @ViewChild('userMenu', { read: ElementRef }) userMenu: ElementRef;
   @ViewChild('logo', { read: ElementRef }) logo: ElementRef;
+  @ViewChild('matTabsRef', { static: false }) matTabsRef: MatTabNav;
 
   constructor(
     public router: Router,
@@ -121,9 +123,18 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
 
     this.resizeObserver = new ResizeObserver((entries) => {
       this.width$.next(Math.floor(entries[0].contentRect.width));
+      setTimeout(() => {
+        this.fixResizeInkBar();
+      }, 500);
     });
 
     this.resizeObserver.observe(this.host.nativeElement);
+  }
+
+  fixResizeInkBar(): void {
+    if (this.mainMenu) {
+      this.matTabsRef._alignInkBarToSelectedTab();
+    }
   }
 
   toggleMenu(closed?: boolean): void {
