@@ -1,12 +1,14 @@
 @use '@angular/material' as mat;
 @use '/src/variables.scss' as *;
 
-.line-listing-wrapper {
-  height: 100vh;
-  padding-top: 10px;
-  margin: -25px;
+:host {
+  flex: 1 1 100%;
+  margin: -24px;
+  padding: 24px;
   background: mat.get-color-from-palette($sormas-accent, 50);
+}
 
+.line-listing-wrapper {
   .text {
     .mat-icon {
       display: inline-block;

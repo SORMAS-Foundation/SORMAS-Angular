@@ -549,7 +549,7 @@ export const FORM_DATA_EVENT_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'facility',
-        label: 'captions.facility',
+        label: 'captions.Facility',
         dependingOn: 'typeOfPlace',
         fallbackOption: {
           fallbackOptionKey: 'OTHER_FACILITY',
@@ -558,6 +558,9 @@ export const FORM_DATA_EVENT_ADD = [
         dependingOnValues: ['FACILITY'],
         service: 'facilityService',
         determinedBy: [
+          {
+            key: 'district.uuid',
+          },
           {
             key: 'facilityCategory',
             keyMap: 'typeGroup',
