@@ -50,7 +50,7 @@ export class GroupSelectComponent implements OnInit {
       .forEach((section) => {
         section.fields.forEach((field: FormElementBase<string>) => {
           if (field.controlType === 'checkbox') {
-            this.group.controls[field.key]?.setValue(value);
+            this.group.controls[field.key.replaceAll('.', '__')]?.setValue(value);
           }
         });
       });
