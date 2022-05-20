@@ -117,7 +117,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: {
         exportType: EXPORT_TYPE.TASK,
-        exportFormData: FORM_DATA_EXPORT_CONFIGURATION,
+        exportFormData: JSON.parse(JSON.stringify(FORM_DATA_EXPORT_CONFIGURATION)),
       },
     });
   }
