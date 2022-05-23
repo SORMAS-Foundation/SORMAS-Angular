@@ -50,6 +50,10 @@ export class CaseDetailsComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  createNewTask(event: any): void {
+    console.log('event', event);
+  }
+
   updateComponent(caseItem: CaseDataDto, resourceService: BaseService<any>): void {
     this.case = caseItem;
     this.resourceService = resourceService;

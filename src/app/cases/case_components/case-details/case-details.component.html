@@ -13,6 +13,7 @@
       [resourceService]="taskService"
       [scopeId]="case.uuid"
       [cardCollapse]="true"
+      (addItem)="createNewTask($event)"
     ></app-edge-panel>
     <app-edge-panel
       type="SAMPLE"
