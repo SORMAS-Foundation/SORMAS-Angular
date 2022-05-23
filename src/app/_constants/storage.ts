@@ -1,4 +1,7 @@
 export const CONFIG_CASES = 'configCases';
+export const CONFIG_CASES_DETAILED = 'configCasesDetailed';
+export const CONFIG_CONTACTS = 'configContacts';
+export const CONFIG_CONTACTS_DETAILED = 'configContactsDetailed';
 export const CONFIG_TASKS = 'configTasks';
 export const CONFIG_EVENTS = 'configEvents';
 export const CONFIG_SAMPLES = 'configSamples';

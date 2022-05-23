@@ -13,7 +13,6 @@ import {
   ACTIONS_VIEW_OPTIONS,
   ADD_MODAL_MAX_WIDTH,
   API_ROUTE_CONTACTS,
-  CONFIG_EVENTS,
   CONTACT_FILTERS_FORM_ID,
   CONTACT_LINE_LISTING_FORM_ID,
   EXPORT_TYPES,
@@ -22,6 +21,8 @@ import {
   HEADER_HEIGHT,
   PERIOD_PICKER_DEFAULT_RANGE,
   SMALL_NOTIFICATION_MODAL_WIDTH,
+  CONFIG_CONTACTS,
+  CONFIG_CONTACTS_DETAILED,
 } from '../../app.constants';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -51,7 +52,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_CONTACT_FILTERS));
   tasks: EventDto[] = [];
   defaultColumns: TableColumn[] = [];
-  configKey = CONFIG_EVENTS;
+  configKey = CONFIG_CONTACTS;
   routeParams = this.activeRoute.snapshot.queryParams;
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsMore: NavItem[] = actionsMoreDefs;
@@ -129,7 +130,6 @@ export class ContactsListComponent implements OnInit, OnDestroy {
   }
 
   changeOptionView(event: any): void {
-    this.localStorageService.remove(this.configKey);
     this.showTable = false;
     this.tableView = event;
     switch (event) {
@@ -137,6 +137,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.$service = this.contactService;
         this.legend = tableDataDetailed.legendDefs;
         this.defaultColumns = tableDataDetailed.defaultColumnDefs;
+        this.configKey = CONFIG_CONTACTS;
         break;
       case ACTIONS_VIEW_OPTIONS.FOLLOW_UP:
         this.$service = this.contactFollowUpService;
@@ -148,6 +149,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.$service = this.contactService;
         this.legend = tableDataDefault.legendDefs;
         this.defaultColumns = tableDataDefault.defaultColumnDefs;
+        this.configKey = CONFIG_CONTACTS_DETAILED;
     }
     setTimeout(() => {
       this.showTable = true;
