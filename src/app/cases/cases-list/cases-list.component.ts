@@ -11,7 +11,7 @@ import * as tableDataDefault from './case-list-table-data';
 import * as tableDataDetailed from './case-list-detailed-table-data';
 import * as tableDataFollowUp from './case-list-follow-up-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
-import { CONFIG_CASES } from '../../_constants/storage';
+import { CONFIG_CASES, CONFIG_CASES_DETAILED } from '../../_constants/storage';
 import {
   HEADER_HEIGHT,
   ADD_MODAL_MAX_WIDTH,
@@ -112,7 +112,6 @@ export class CasesListComponent implements OnInit, OnDestroy {
   }
 
   changeOptionView(event: any): void {
-    this.localStorageService.remove(this.configKey);
     this.showTable = false;
     this.tableView = event;
     switch (event) {
@@ -120,6 +119,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.$service = this.caseService;
         this.legend = tableDataDetailed.legendDefs;
         this.defaultColumns = tableDataDetailed.defaultColumnDefs;
+        this.configKey = CONFIG_CASES_DETAILED;
         break;
       case ACTIONS_VIEW_OPTIONS.FOLLOW_UP:
         this.$service = this.caseFollowUpService;
@@ -131,6 +131,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
         this.$service = this.caseService;
         this.legend = tableDataDefault.legendDefs;
         this.defaultColumns = tableDataDefault.defaultColumnDefs;
+        this.configKey = CONFIG_CASES;
     }
     setTimeout(() => {
       this.showTable = true;
