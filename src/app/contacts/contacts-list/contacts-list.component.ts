@@ -21,7 +21,8 @@ import {
   HEADER_HEIGHT,
   PERIOD_PICKER_DEFAULT_RANGE,
   SMALL_NOTIFICATION_MODAL_WIDTH,
-  CONFIG_CONTACTS, CONFIG_CASES, CONFIG_CONTACTS_DETAILED,
+  CONFIG_CONTACTS,
+  CONFIG_CONTACTS_DETAILED,
 } from '../../app.constants';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
