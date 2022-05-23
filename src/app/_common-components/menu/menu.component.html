@@ -10,7 +10,7 @@
   <button mat-icon-button (click)="toggleMenu()" (keyup.enter)="toggleMenu()" class="button-toggle">
     <mat-icon class="material-icons-round">menu</mat-icon>
   </button>
-  <nav #mainMenu mat-tab-nav-bar class="main-menu">
+  <nav #mainMenu #matTabsRef mat-tab-nav-bar class="main-menu">
     <a
       mat-tab-link
       *ngFor="let route of routeConfig"
