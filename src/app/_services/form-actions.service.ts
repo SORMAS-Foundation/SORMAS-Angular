@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Resource } from '../_models/resource';
 
 @Injectable({ providedIn: 'root' })
 export class FormActionsService {
   private subjectSave = new Subject<any>();
-  private subjectInputChange = new Subject<any>();
+  private subjectInputChange = new BehaviorSubject<any>({});
   private subjectDiscard = new Subject<any>();
   private subjectInputValue = new Subject<any>();
   private subjectModal = new Subject<any>();
@@ -29,7 +29,7 @@ export class FormActionsService {
     } else if (this.fieldsArray[formId]?.includes(field)) {
       this.fieldsArray[formId] = this.fieldsArray[formId].filter((item) => item !== field);
     }
-    this.subjectInputChange.next({ formId, inputChange: this.fieldsArray[formId].length });
+    this.subjectInputChange.next({ formId, inputChange: this.fieldsArray[formId]?.length });
   }
 
   resetInputChange(formId: string): void {

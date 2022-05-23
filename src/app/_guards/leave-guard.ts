@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { FormActionsService } from '../_services/form-actions.service';
 
 @Injectable({ providedIn: 'root' })
 export class LeaveGuard implements CanDeactivate<any> {
-  canLeave = true;
+  constructor(private formActionsService: FormActionsService) {}
 
-  constructor(private formActionsService: FormActionsService) {
-    this.formActionsService.getInputChange().subscribe((response: any) => {
-      this.canLeave = !response.inputChange;
+  canDeactivate(): Observable<boolean> | boolean {
+    const subject = new Subject<boolean>();
+    setTimeout(() => {
+      this.formActionsService
+        .getInputChange()
+        .pipe(take(1))
+        .subscribe((changes) => {
+          subject.next(!changes?.inputChange);
+          subject.complete();
+        });
     });
-  }
-
-  canDeactivate(): boolean {
-    return this.canLeave;
+    return subject.asObservable().pipe(take(1));
   }
 }

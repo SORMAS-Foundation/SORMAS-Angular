@@ -31,17 +31,20 @@ export class FormActionsComponent implements OnInit, OnDestroy {
         if (event instanceof NavigationStart && this.hasInputsChanged && !event.url.includes('#')) {
           this.notificationService
             .prompt({
-              title: this.translateService.instant('actionSureToLeave'),
-              message: this.translateService.instant('actionLooseChanges'),
-              buttonDeclineText: this.translateService.instant('captions.actionCancel'),
-              buttonConfirmText: this.translateService.instant('captions.actionConfirm'),
+              title: this.translateService.instant('strings.unsavedChanges.warningTitle'),
+              message: this.translateService.instant('strings.unsavedChanges.warningMessage'),
+              buttonCancelText: this.translateService.instant('strings.unsavedChanges.cancel'),
+              buttonDeclineText: this.translateService.instant('strings.unsavedChanges.discard'),
+              buttonConfirmText: this.translateService.instant('strings.unsavedChanges.save'),
+              minWidth: 580,
             })
             .subscribe((result) => {
-              if (result) {
-                if (result === 'CONFIRM') {
-                  this.formActionsService.resetInputChange(this.formId);
-                  this.router.navigate([event.url]);
-                }
+              if (result === 'CONFIRM') {
+                this.saveForm();
+              }
+              if (result === 'DECLINE') {
+                this.formActionsService.resetInputChange(this.formId);
+                this.router.navigate([event.url]);
               }
             });
         }
