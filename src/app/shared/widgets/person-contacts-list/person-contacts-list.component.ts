@@ -81,6 +81,7 @@ export class PersonContactsListComponent implements OnDestroy, OnInit {
 
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe(({ resource, deleteResource } = {}) => {
+        this.formActionsService.setDiscard(this.formId);
         if (!resource) {
           return;
         }

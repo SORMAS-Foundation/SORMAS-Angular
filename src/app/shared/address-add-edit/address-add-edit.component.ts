@@ -11,6 +11,7 @@ import {
   ADD_MODAL_WIDE,
   BREAKPOINTS,
 } from '../../app.constants';
+import { FormActionsService } from '../../_services/form-actions.service';
 
 @Component({
   selector: 'app-address-add-edit',
@@ -28,7 +29,8 @@ export class AddressAddEditComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<AddressAddEditComponent>,
     public breakpointObserver: BreakpointObserver,
-    private formElementControlService: FormElementControlService
+    private formElementControlService: FormElementControlService,
+    private formActionsService: FormActionsService
   ) {}
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class AddressAddEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.formActionsService.setDiscard(this.formId);
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
