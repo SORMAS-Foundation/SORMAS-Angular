@@ -1,1 +1,30 @@
-/* stylelint-disable */
+.notice {
+  margin: 0;
+  font-weight: 500;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.button-show,
+.button-hide {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.button-hide {
+  float: right;
+}
+
+.info {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 16px;
+
+  p {
+    margin: 0;
+  }
+}

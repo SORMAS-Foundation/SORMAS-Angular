@@ -131,6 +131,146 @@ app.use('/sormas-rest/persons/setMissingCoordinates', (req, res) => {
   });
 });
 
+app.use('/sormas-rest/dashboard/transmissionChain', (req, res) => {
+  res.status(200).send({
+    nodes: [
+      {
+        name: 'Contact1',
+        value: 1,
+        category: 0,
+      },
+      {
+        name: 'Contact2',
+        value: 1,
+        category: 1,
+      },
+      {
+        name: 'Contact3',
+        value: 1,
+        category: 3,
+      },
+      {
+        name: 'Contact4',
+        value: 1,
+        category: 4,
+      },
+      {
+        name: 'Contact5',
+        value: 1,
+        category: 4,
+      },
+      {
+        name: 'Contact6',
+        value: 1,
+        category: 0,
+      },
+      {
+        name: 'Contact7',
+        value: 1,
+        category: 0,
+      },
+      {
+        name: 'Contact8',
+        value: 1,
+        category: 4,
+      },
+      {
+        name: 'Contact9',
+        value: 1,
+        category: 0,
+      },
+      {
+        name: 'Contact10',
+        value: 1,
+        category: 4,
+      },
+      {
+        name: 'Contact11',
+        value: 1,
+        category: 5,
+      },
+      {
+        name: 'Contact12',
+        value: 1,
+        category: 5,
+      },
+      {
+        name: 'Contact13',
+        value: 1,
+        category: 4,
+      },
+      {
+        name: 'Contact14',
+        value: 1,
+        category: 6,
+      },
+      {
+        name: 'Contact15',
+        value: 1,
+        category: 4,
+      },
+    ],
+    links: [
+      {
+        source: 0,
+        target: 1,
+      },
+      {
+        source: 0,
+        target: 2,
+      },
+      {
+        source: 1,
+        target: 3,
+      },
+      {
+        source: 1,
+        target: 4,
+      },
+      {
+        source: 1,
+        target: 5,
+      },
+      {
+        source: 4,
+        target: 6,
+      },
+      {
+        source: 4,
+        target: 7,
+      },
+      {
+        source: 8,
+        target: 8,
+      },
+      {
+        source: 8,
+        target: 9,
+      },
+      {
+        source: 8,
+        target: 10,
+      },
+      {
+        source: 8,
+        target: 11,
+      },
+      {
+        source: 8,
+        target: 12,
+      },
+      {
+        source: 8,
+        target: 13,
+      },
+      {
+        source: 8,
+        target: 14,
+      },
+    ],
+  });
+});
+
 // app.use('/sormas-rest/lineListing/enabled', (req, res) => {
 //   res.status(200).send([
 //     {
@@ -338,7 +478,8 @@ app.use('/sormas-rest/mergeDuplicates/indexList', (req, res) => {
         externalToken: null,
         followUpStatus: 'FOLLOW_UP',
         followUpUntil: 1649628000000,
-        healthFacilityName: 'Elderly care facility 1Elderly care facility 1Elderly care facility 1Elderly care facility 1Elderly care facility 1',
+        healthFacilityName:
+          'Elderly care facility 1Elderly care facility 1Elderly care facility 1Elderly care facility 1Elderly care facility 1',
         id: 26159,
         inJurisdiction: true,
         internalToken: null,

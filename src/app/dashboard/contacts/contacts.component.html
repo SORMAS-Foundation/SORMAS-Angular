@@ -1,37 +1,52 @@
 <section
   class="dashboard-contacts-wrapper"
-  [ngClass]="{ 'epi-fullscreen': fullscreenEpi, 'map-fullscreen': fullScreenMap }"
+  [ngClass]="{
+    'epi-fullscreen': fullscreenEpi,
+    'map-fullscreen': fullScreenMap,
+    'transmission-chain-mode': showTransmissionChain
+  }"
 >
   <mat-card class="dashboard-contacts-filters">
     <app-dashboard-filters></app-dashboard-filters>
   </mat-card>
-  <mat-card class="dashboard-contacts-contacts">
+
+  <mat-card *ngIf="!showTransmissionChain" class="dashboard-contacts-contacts">
     <app-dashboard-contacts></app-dashboard-contacts>
   </mat-card>
-  <mat-card class="dashboard-contacts-under-follow-up">
+
+  <mat-card *ngIf="!showTransmissionChain" class="dashboard-contacts-under-follow-up">
     <app-dashboard-under-follow-up></app-dashboard-under-follow-up>
   </mat-card>
-  <mat-card class="dashboard-contacts-stopped-follow-up">
+
+  <mat-card *ngIf="!showTransmissionChain" class="dashboard-contacts-stopped-follow-up">
     <app-dashboard-stopped-follow-up></app-dashboard-stopped-follow-up>
   </mat-card>
-  <mat-card class="dashboard-contacts-visits">
+
+  <mat-card *ngIf="!showTransmissionChain" class="dashboard-contacts-visits">
     <app-dashboard-visits></app-dashboard-visits>
   </mat-card>
-  <mat-card class="dashboard-contacts-contact-stats">
+
+  <mat-card *ngIf="!showTransmissionChain" class="dashboard-contacts-contact-stats">
     <app-dashboard-contact-stats></app-dashboard-contact-stats>
   </mat-card>
-  <mat-card class="dashboard-contacts-epi-curve">
+
+  <mat-card *ngIf="!showTransmissionChain" class="dashboard-contacts-epi-curve">
     <app-dashboard-epidemiological-curve
       [type]="dashboardEpidemiologicalCurveType.CONTACT"
       (epiCurveViewUpdate)="onEpiCurveViewChange($event)"
     ></app-dashboard-epidemiological-curve>
   </mat-card>
-  <mat-card class="dashboard-contacts-map">
-    <app-dashboard-map [mapType]="MapType.Contacts"
+
+  <mat-card *ngIf="!showTransmissionChain" class="dashboard-contacts-map">
+    <app-dashboard-map
+      [mapType]="MapType.Contacts"
       (mapViewUpdate)="onMapViewChange($event)"
     ></app-dashboard-map>
   </mat-card>
+
   <mat-card class="dashboard-transmission-chain">
-    <app-dashboard-transmission-chain></app-dashboard-transmission-chain>
+    <app-dashboard-transmission-chain
+      (viewModeUpdate)="onTransmissionChainViewChange($event)"
+    ></app-dashboard-transmission-chain>
   </mat-card>
 </section>
