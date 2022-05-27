@@ -32,9 +32,9 @@ import {
   actionsMoreDefs,
   actionsViewOptionsDefs,
   actionsBulkEditDefs,
+  actionsImportDefs,
 } from './case-list-actions-data';
 import { ACTIONS_CASE } from '../../_constants/actions';
-import { CaseImportComponent } from '../case-import/case-import.component';
 import { HelperService } from '../../_services/helper.service';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { CaseAddComponent } from '../../shared/case-add/case-add.component';
@@ -50,6 +50,7 @@ import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data
 import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
 import { ExportService } from '../../_services/api/export.service';
 import { SpecificSearchComponent } from '../../shared/modals/specific-search/specific-search.component';
+import { ImportModalComponent } from '../../shared/modals/import-modal/import-modal.component';
 
 @Component({
   selector: 'app-cases-list',
@@ -66,6 +67,7 @@ export class CasesListComponent implements OnInit, OnDestroy {
   actionsMore: NavItem[] = actionsMoreDefs;
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
+  actionsImport: NavItem[] = actionsImportDefs;
   routeParams: Params;
   formIdFilters = CASE_FILTERS_FORM_ID;
   tableView = ACTIONS_VIEW_OPTIONS.DEFAULT;
@@ -156,10 +158,30 @@ export class CasesListComponent implements OnInit, OnDestroy {
     );
   }
 
-  openImportModal(): void {
-    this.dialog.open(CaseImportComponent, {
-      width: CASE_IMPORT_MODAL_WIDTH,
-    });
+  onImportSelected(event: any): void {
+    switch (event) {
+      case ACTIONS_CASE.LINE_LISTING_IMPORT:
+        this.dialog.open(ImportModalComponent, {
+          width: CASE_IMPORT_MODAL_WIDTH,
+          data: {
+            title: 'strings.headingLineListingImport',
+            type: ACTIONS_CASE.LINE_LISTING_IMPORT,
+            service: this.caseService,
+          },
+        });
+        break;
+      case ACTIONS_CASE.DETAILED_IMPORT:
+        this.dialog.open(ImportModalComponent, {
+          width: CASE_IMPORT_MODAL_WIDTH,
+          data: {
+            title: 'strings.headingImportCases',
+            type: ACTIONS_CASE.DETAILED_IMPORT,
+            service: this.caseService,
+          },
+        });
+        break;
+      default:
+    }
   }
 
   onActionSelected(event: any): void {

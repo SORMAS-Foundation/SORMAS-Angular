@@ -5,6 +5,7 @@ export const API_ROUTE_CASES = {
   ADD: 'cases/add',
   DELETE: 'cases/delete',
   EXPORT: 'cases/export',
+  IMPORT: 'cases/import',
   SEARCH: 'cases/searchSpecific',
   ARCHIVE: 'cases/archive',
   DEARCHIVE: 'cases/dearchive',
