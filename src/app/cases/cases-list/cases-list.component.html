@@ -19,11 +19,20 @@
           {{ 'captions.caseNewCase' | translate }}
         </button>
 
-        <button mat-stroked-button color="primary" (click)="openImportModal()">
-          {{ 'captions.actionImport' | translate }}
-        </button>
+        <app-dropdown-menu
+          horizontalPosition="before"
+          buttonText="{{ 'captions.actionImport' | translate }}"
+        >
+          <app-action-menu
+            [config]="actionsImport"
+            (action)="onImportSelected($event)"
+          ></app-action-menu>
+        </app-dropdown-menu>
 
-        <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
+        <app-dropdown-menu
+          horizontalPosition="before"
+          buttonText="{{ 'captions.moreActions' | translate }}"
+        >
           <app-action-menu
             [config]="actionsMore"
             (action)="onActionSelected($event)"
