@@ -49,16 +49,16 @@ fieldset {
   }
 }
 
-.field-visualization {
-  width: 126px;
-}
-
-.field-axis {
+.mat-form-field {
   width: 160px;
+
+  &.field-incidence-divisor {
+    margin: 0;
+  }
 }
 
-.field-axis-selection {
-  width: 126px;
+.mat-radio-group mat-label {
+  display: block;
 }
 
 .options-section {
@@ -66,18 +66,6 @@ fieldset {
   flex-wrap: wrap;
   column-gap: 32px;
   align-items: flex-end;
-}
-
-.field-incidence {
-  width: 140px;
-}
-
-.field-incidence-divisor {
-  width: 150px;
-}
-
-.field-zero-values {
-  margin-bottom: 5px;
 }
 
 .field-incidence-flags {
