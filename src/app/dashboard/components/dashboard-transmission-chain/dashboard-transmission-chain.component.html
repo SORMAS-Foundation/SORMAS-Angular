@@ -1,1 +1,32 @@
-<p>dashboard-transmission-chain works!</p>
+<ng-container *ngIf="!showTransmissionChain">
+  <p *ngIf="!disease" class="notice">
+    <mat-icon class="material-icons-round" color="primary">scatter_plot</mat-icon>
+    {{ 'strings.infoNoNetworkDiagram' | translate }}
+  </p>
+
+  <div *ngIf="disease" class="info">
+    <p>{{ 'strings.infoDisplayNetworkDiagram' | translate }}</p>
+
+    <button
+      mat-icon-button
+      color="primary"
+      class="button-show"
+      (click)="toggleTransmissionChain(true)"
+    >
+      <mat-icon class="material-icons-round">fullscreen</mat-icon>
+    </button>
+  </div>
+</ng-container>
+
+<div *ngIf="showTransmissionChain">
+  <button
+    mat-icon-button
+    color="primary"
+    class="button-hide"
+    (click)="toggleTransmissionChain(false)"
+  >
+    <mat-icon class="material-icons-round">fullscreen_exit</mat-icon>
+  </button>
+
+  <app-transmission-chain></app-transmission-chain>
+</div>

@@ -1,8 +1,13 @@
 @use '/src/variables.scss' as *;
 
 .epi-fullscreen {
-  .dashboard-contacts-contacts, .dashboard-contacts-under-follow-up, .dashboard-contacts-stopped-follow-up,
-  .dashboard-contacts-visits, .dashboard-contacts-contact-stats, .dashboard-contacts-map, .dashboard-transmission-chain {
+  .dashboard-contacts-contacts,
+  .dashboard-contacts-under-follow-up,
+  .dashboard-contacts-stopped-follow-up,
+  .dashboard-contacts-visits,
+  .dashboard-contacts-contact-stats,
+  .dashboard-contacts-map,
+  .dashboard-transmission-chain {
     display: none;
   }
 
@@ -10,12 +15,17 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
       'filter filter filter'
-      'epi_curve epi_curve epi_curve'
+      'epi_curve epi_curve epi_curve';
   }
 }
 .map-fullscreen {
-  .dashboard-contacts-contacts, .dashboard-contacts-under-follow-up, .dashboard-contacts-stopped-follow-up,
-  .dashboard-contacts-visits, .dashboard-contacts-contact-stats, .dashboard-contacts-epi-curve, .dashboard-transmission-chain {
+  .dashboard-contacts-contacts,
+  .dashboard-contacts-under-follow-up,
+  .dashboard-contacts-stopped-follow-up,
+  .dashboard-contacts-visits,
+  .dashboard-contacts-contact-stats,
+  .dashboard-contacts-epi-curve,
+  .dashboard-transmission-chain {
     display: none;
   }
 
@@ -23,7 +33,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
       'filter filter filter'
-      'map map map'
+      'map map map';
   }
 }
 
@@ -40,6 +50,13 @@
     'epi_curve epi_curve'
     'map map'
     'transmission_chain transmission_chain';
+
+  &.transmission-chain-mode {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'filter'
+      'transmission_chain';
+  }
 }
 
 .dashboard-contacts-filters {

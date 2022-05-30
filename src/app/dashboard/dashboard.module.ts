@@ -28,6 +28,7 @@ import { MapLayersComponent } from './components/map-layers/map-layers.component
 import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { ProgressBarColor } from '../_directives/progress-bar-color.directive';
 import { DashboardMapComponent } from './components/dashboard-map/dashboard-map.component';
+import { TransmissionChainComponent } from './components/transmission-chain/transmission-chain.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { DashboardMapComponent } from './components/dashboard-map/dashboard-map.
     MapLayersComponent,
     ProgressBarColor,
     DashboardMapComponent,
+    TransmissionChainComponent,
   ],
   imports: [
     CommonModule,

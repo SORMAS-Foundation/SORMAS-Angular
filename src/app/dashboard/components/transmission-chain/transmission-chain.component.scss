@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.disease-network-diagram {
+  h2 {
+    margin: 0;
+  }
+
+  p {
+    color: mat.get-color-from-palette($sormas-accent, 500);
+  }
+}
+
+.diagram {
+  width: 100%;
+  height: 400px;
+}
