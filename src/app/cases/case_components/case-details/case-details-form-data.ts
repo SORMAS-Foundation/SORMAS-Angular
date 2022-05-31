@@ -26,6 +26,7 @@ import {
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { ClassificationRulesComponent } from '../../classification-rules/classification-rules.component';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -66,10 +67,19 @@ export const FORM_DATA_CASE_DETAILS = [
     required: true,
     fields: [
       {
-        ...FORM_DATA_RADIO,
+        ...FORM_DATA_SELECT,
         key: 'caseClassification',
         validation: ['required'],
         options: optionsCaseClassification,
+        className: 'size-large',
+        allowClear: false,
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-info-modal',
+        widgetInfo: {
+          component: ClassificationRulesComponent,
+        },
       },
       {
         ...FORM_DATA_SELECT,
@@ -77,18 +87,21 @@ export const FORM_DATA_CASE_DETAILS = [
         label: 'captions.CaseData.clinicalConfirmation',
         options: optionsYesNoUnknown,
         newLine: true,
+        className: 'size-small',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'epidemiologicalConfirmation',
         label: 'captions.CaseData.epidemiologicalConfirmation',
         options: optionsYesNoUnknown,
+        className: 'size-small',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'laboratoryDiagnosticConfirmation',
         label: 'captions.CaseData.laboratoryDiagnosticConfirmation',
         options: optionsYesNoUnknown,
+        className: 'size-small',
       },
       {
         ...FORM_DATA_DATE,
