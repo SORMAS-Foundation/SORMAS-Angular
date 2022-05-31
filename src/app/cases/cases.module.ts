@@ -19,7 +19,6 @@ import { DynamicFormModule } from '../shared/dynamic-form/dynamic-form.module';
 import { CaseFiltersComponent } from './case-filters/case-filters.component';
 import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
 import { CaseEditComponent } from './case-edit/case-edit.component';
-import { CaseImportComponent } from './case-import/case-import.component';
 import { TherapyFiltersComponent } from './case_components/therapy-filters/therapy-filters.component';
 import { CaseGuideComponent } from './case-guide/case-guide.component';
 import { ClassificationRulesComponent } from './classification-rules/classification-rules.component';
@@ -40,7 +39,6 @@ import { ClassificationRulesComponent } from './classification-rules/classificat
     CaseClinicalCourseComponent,
     CaseContactsComponent,
     CaseFiltersComponent,
-    CaseImportComponent,
     CaseEditComponent,
     TherapyFiltersComponent,
     CaseGuideComponent,

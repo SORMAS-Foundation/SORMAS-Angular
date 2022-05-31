@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-  <h1>{{ 'strings.headingImportCases' | translate }}</h1>
+  <h1>{{ data.title | translate }}</h1>
   <div mat-dialog-actions>
     <button mat-icon-button mat-dialog-close class="button-dialog-close">
       <mat-icon class="material-icons-round">highlight_off</mat-icon>
@@ -15,13 +15,13 @@
       <p>{{ 'strings.infoDownloadImportGuide' | translate }}</p>
       <p class="actions">
         <a
-          href="/assets/document.pdf"
+          [href]="importGuideUrl"
           target="_blank"
           mat-button
           color="primary"
           class="button-download"
         >
-          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          <mat-icon class="material-icons-round">file_download</mat-icon>
           {{ 'captions.importDownloadImportGuide' | translate }}
         </a>
         <a
@@ -31,7 +31,7 @@
           color="primary"
           class="button-download"
         >
-          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          <mat-icon class="material-icons-round">file_download</mat-icon>
           {{ 'captions.importDownloadDataDictionary' | translate }}
         </a>
       </p>
@@ -51,7 +51,7 @@
           color="primary"
           class="button-download"
         >
-          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          <mat-icon class="material-icons-round">file_download</mat-icon>
           {{ 'captions.importDownloadImportTemplate' | translate }}
         </a>
       </p>
@@ -68,8 +68,8 @@
         <input type="file" id="import" name="import" accept=".csv" />
       </p>
       <p class="actions">
-        <button mat-button color="primary" class="button-upload" (click)="importCases()">
-          <mat-icon class="material-icons-round">file_upload_black</mat-icon>
+        <button mat-button color="primary" class="button-upload" (click)="import()">
+          <mat-icon class="material-icons-round">file_upload</mat-icon>
           {{ 'captions.importImportData' | translate }}
         </button>
       </p>
@@ -89,7 +89,7 @@
           color="primary"
           class="button-download"
         >
-          <mat-icon class="material-icons-round">file_download_black</mat-icon>
+          <mat-icon class="material-icons-round">file_download</mat-icon>
           {{ 'captions.importDownloadErrorReport' | translate }}
         </a>
       </p>

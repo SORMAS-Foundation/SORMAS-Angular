@@ -51,6 +51,19 @@ export const actionsMoreDefs: NavItem[] = [
   },
 ];
 
+export const actionsImportDefs: NavItem[] = [
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.importLineListing',
+    action: ACTIONS_CASE.LINE_LISTING_IMPORT,
+  },
+  {
+    role: NavItemRole.ACTION,
+    name: 'captions.importDetailed',
+    action: ACTIONS_CASE.DETAILED_IMPORT,
+  },
+];
+
 export const actionsViewOptionsDefs: NavItem[] = [
   {
     role: NavItemRole.ACTION,

@@ -143,6 +143,11 @@ export class BaseService<T extends Resource> {
     return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, items);
   }
 
+  import(source: any): Observable<any> {
+    const endpoint = this.endpoint.IMPORT ?? this.endpoint.ENDPOINT;
+    return this.httpClient.post(`${this.helperService.getApiUrl()}/${endpoint}`, source);
+  }
+
   getAllAsOptions(filters: any): Observable<any> {
     return this.getAll(null, null, filters).pipe(
       map((data: any) => {

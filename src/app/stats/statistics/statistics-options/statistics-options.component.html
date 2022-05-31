@@ -4,6 +4,9 @@
       <fieldset class="visualization-section">
         <div class="visualization-type">
           <mat-form-field appearance="outline" floatLabel="always" class="field-visualization">
+            <mat-label>
+              {{ 'strings.headingVisualization' | translate }}
+            </mat-label>
             <mat-select #type disableOptionCentering formControlName="statisticsVisualizationType">
               <mat-option value="TABLE">
                 {{ 'enum.StatisticsVisualizationType.TABLE' | translate }}
@@ -21,6 +24,9 @@
             *ngIf="type.value === 'MAP'"
             formControlName="statisticsVisualizationMapType"
           >
+            <mat-label>
+              {{ 'captions.statisticsChartType' | translate }}
+            </mat-label>
             <mat-radio-button color="primary" value="REGIONS">
               <span>{{ 'enum.StatisticsVisualizationMapType.REGIONS' | translate }}</span>
             </mat-radio-button>
@@ -33,24 +39,23 @@
             *ngIf="type.value === 'CHART'"
             formControlName="statisticsVisualizationChartType"
           >
+            <mat-label>
+              {{ 'captions.statisticsChartType' | translate }}
+            </mat-label>
             <mat-radio-button color="primary" value="COLUMN">
               <span>{{ 'enum.StatisticsVisualizationChartType.COLUMN' | translate }}</span>
             </mat-radio-button>
             <mat-radio-button
               color="primary"
               value="STACKED_COLUMN"
-              [disabled]="incidence.value === 'CASE_INCIDENCE'"
+              [disabled]="caseIncidence.checked"
             >
               <span>{{ 'enum.StatisticsVisualizationChartType.STACKED_COLUMN' | translate }}</span>
             </mat-radio-button>
             <mat-radio-button color="primary" value="LINE">
               <span>{{ 'enum.StatisticsVisualizationChartType.LINE' | translate }}</span>
             </mat-radio-button>
-            <mat-radio-button
-              color="primary"
-              value="PIE"
-              [disabled]="incidence.value === 'CASE_INCIDENCE'"
-            >
+            <mat-radio-button color="primary" value="PIE" [disabled]="caseIncidence.checked">
               <span>{{ 'enum.StatisticsVisualizationChartType.PIE' | translate }}</span>
             </mat-radio-button>
           </mat-radio-group>
@@ -190,19 +195,20 @@
       </fieldset>
 
       <fieldset class="options-section">
-        <mat-form-field appearance="outline" floatLabel="always" class="field-incidence">
-          <mat-select #incidence disableOptionCentering formControlName="caseCountOrIncidence">
-            <mat-option value="CASE_COUNT">
-              {{ 'enum.CaseCountOrIncidence.CASE_COUNT' | translate }}
-            </mat-option>
-            <mat-option value="CASE_INCIDENCE">
-              {{ 'enum.CaseCountOrIncidence.CASE_INCIDENCE' | translate }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <mat-radio-group formControlName="caseCountOrIncidence">
+          <mat-label>
+            {{ 'captions.statisticsChartType' | translate }}
+          </mat-label>
+          <mat-radio-button #caseCount color="primary" value="CASE_COUNT">
+            <span>{{ 'enum.CaseCountOrIncidence.CASE_COUNT' | translate }}</span>
+          </mat-radio-button>
+          <mat-radio-button #caseIncidence color="primary" value="CASE_INCIDENCE">
+            <span>{{ 'enum.CaseCountOrIncidence.CASE_INCIDENCE' | translate }}</span>
+          </mat-radio-button>
+        </mat-radio-group>
 
         <mat-form-field
-          *ngIf="incidence.value === 'CASE_INCIDENCE'"
+          *ngIf="caseCount.checked"
           appearance="outline"
           floatLabel="always"
           class="field-incidence-divisor"

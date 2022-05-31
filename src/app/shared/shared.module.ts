@@ -70,6 +70,7 @@ import { CustomExportComponent } from './modals/custom-export/custom-export.comp
 import { ExportConfigurationComponent } from './modals/export-configuration/export-configuration.component';
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
 import { InfoModalComponent } from './widgets/info-modal/info-modal.component';
+import { ImportModalComponent } from './modals/import-modal/import-modal.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { InfoModalComponent } from './widgets/info-modal/info-modal.component';
     ExportConfigurationComponent,
     SpecificSearchComponent,
     InfoModalComponent,
+    ImportModalComponent,
   ],
   imports: [
     CommonModule,
@@ -183,6 +185,7 @@ import { InfoModalComponent } from './widgets/info-modal/info-modal.component';
     CustomExportComponent,
     ExportConfigurationComponent,
     SpecificSearchComponent,
+    ImportModalComponent,
   ],
 })
 export class SharedModule {}

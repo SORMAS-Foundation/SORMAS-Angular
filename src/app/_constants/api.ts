@@ -5,6 +5,7 @@ export const API_ROUTE_CASES = {
   ADD: 'cases/add',
   DELETE: 'cases/delete',
   EXPORT: 'cases/export',
+  IMPORT: 'cases/import',
   SEARCH: 'cases/searchSpecific',
   ARCHIVE: 'cases/archive',
   DEARCHIVE: 'cases/dearchive',
@@ -206,6 +207,11 @@ export const API_ROUTE_DASHBOARD_VISITS = {
 export const API_ROUTE_DASHBOARD_STOPPED_FOLLOW_UP = {
   ENDPOINT: 'dashboard',
   GET_ALL: 'dashboard/stoppedFollowUp',
+};
+
+export const API_ROUTE_DASHBOARD_TRANSMISSION_CHAIN = {
+  ENDPOINT: 'dashboard',
+  GET_ALL: 'dashboard/transmissionChain',
 };
 
 export const API_ROUTE_COUNTRIES = {
