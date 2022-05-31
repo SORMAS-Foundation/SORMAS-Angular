@@ -11,7 +11,7 @@ describe('ContinentsComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [ContinentsComponent],
-      imports: [MatDialogModule]
+      imports: [MatDialogModule],
     }).compileComponents();
   });
 
