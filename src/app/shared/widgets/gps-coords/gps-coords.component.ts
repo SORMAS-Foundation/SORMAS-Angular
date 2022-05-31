@@ -74,7 +74,7 @@ export class GpsCoordsComponent implements OnInit {
     this.title = this.translateService.instant('strings.headingCaseStatusMap');
   }
 
-  setSelectedMarker(lat: number, lng: number) {
+  setSelectedMarker(lat: number, lng: number, latLonAccuracy: number, isMarker: boolean) {
     if (this.selectedMarker) {
       this.map.removeLayer(this.selectedMarker);
     }
@@ -90,7 +90,11 @@ export class GpsCoordsComponent implements OnInit {
       }),
     };
 
-    this.selectedMarker = L.marker(latLng(lat, lng), icon).addTo(this.map);
+    if (isMarker) {
+      this.selectedMarker = L.marker(latLng(lat, lng), icon).addTo(this.map);
+    } else {
+      this.selectedMarker = L.circle([lat, lng], { radius: latLonAccuracy }).addTo(this.map);
+    }
   }
 
   showLocation(): void {
@@ -98,26 +102,25 @@ export class GpsCoordsComponent implements OnInit {
       .value;
     const longitude = this.group.controls[this.config.widgetInfo.longitude.replaceAll('.', '__')]
       .value;
-    let latLonAccuracy = this.group.controls[
+    const latLonAccuracy = this.group.controls[
       this.config.widgetInfo.latLonAccuracy.replaceAll('.', '__')
     ].value;
 
-    if (typeof latLonAccuracy === 'undefined' || latLonAccuracy === '') {
-      latLonAccuracy = 5;
+    let isMarker = false;
+    if (typeof latLonAccuracy === 'undefined' || latLonAccuracy === '' || latLonAccuracy === 0) {
+      isMarker = true;
     }
 
     if (
       parseInt(latitude, 10) >= -90 &&
       parseInt(latitude, 10) <= 90 &&
       parseInt(longitude, 10) >= -180 &&
-      parseInt(longitude, 10) <= 180 &&
-      parseInt(latLonAccuracy, 10) > 0 &&
-      parseInt(latLonAccuracy, 10) <= 30
+      parseInt(longitude, 10) <= 180
     ) {
       this.isMapOpened = true;
-      this.setSelectedMarker(latitude, longitude);
+      this.setSelectedMarker(latitude, longitude, latLonAccuracy, isMarker);
 
-      this.map.flyTo(latLng(latitude, longitude), latLonAccuracy, {
+      this.map.flyTo(latLng(latitude, longitude), 5, {
         animate: true,
         duration: 1,
       });
