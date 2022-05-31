@@ -70,6 +70,7 @@ import { CustomExportComponent } from './modals/custom-export/custom-export.comp
 import { ExportConfigurationComponent } from './modals/export-configuration/export-configuration.component';
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
 import { ImportModalComponent } from './modals/import-modal/import-modal.component';
+import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { ImportModalComponent } from './modals/import-modal/import-modal.compone
     ExportConfigurationComponent,
     SpecificSearchComponent,
     ImportModalComponent,
+    CalculateCaseClassificationComponent,
   ],
   imports: [
     CommonModule,
