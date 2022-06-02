@@ -182,5 +182,7 @@
   "confirmSetMissingGeoCoordinates": "Also replace existing coordinates",
   "warningSetMissingGeoCoordinates": "This might replace coordinates which were intentionally set differently",
   "invalidCoords": "Invalid coordinates",
-  "unauthorized": "Unauthorized"
+  "unauthorized": "Unauthorized",
+  "visitDeatiles": "Visit detailes",
+  "symptoms.availability": "Availability"
 }
