@@ -30,6 +30,11 @@
   }
 }
 
+.actions {
+  text-align: right;
+  margin-bottom: 24px;
+}
+
 @media (min-width: map-get($grid-breakpoints, xl)) {
   .assessments-title {
     flex: 0 0 248px;

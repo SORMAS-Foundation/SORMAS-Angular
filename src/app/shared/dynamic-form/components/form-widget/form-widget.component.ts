@@ -30,6 +30,7 @@ import { LineListingNewCasesComponent } from '../../../widgets/line-listing-new-
 import { LineListingNewContactsComponent } from '../../../widgets/line-listing-new-contacts/line-listing-new-contacts.component';
 import { GroupSelectComponent } from '../../../widgets/group-select/group-select.component';
 import { CalculateCaseClassificationComponent } from '../../../widgets/calculate-case-classification/calculate-case-classification.component';
+import { ClinicalCourseGroupSelectComponent } from '../../../widgets/clinical-course-group-select/clinical-course-group-select.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -54,6 +55,7 @@ const COMPONENTS_MAP: any = {
   'app-line-listing-new-contacts': LineListingNewContactsComponent,
   'app-group-select': GroupSelectComponent,
   'app-calculate-case-classification': CalculateCaseClassificationComponent,
+  'app-clinical-course-group-select': ClinicalCourseGroupSelectComponent,
 };
 
 @Component({

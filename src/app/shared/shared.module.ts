@@ -71,6 +71,7 @@ import { ExportConfigurationComponent } from './modals/export-configuration/expo
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
 import { ImportModalComponent } from './modals/import-modal/import-modal.component';
 import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
+import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-group-select/clinical-course-group-select.component';
 
 @NgModule({
   declarations: [
@@ -127,6 +128,7 @@ import { CalculateCaseClassificationComponent } from './widgets/calculate-case-c
     SpecificSearchComponent,
     ImportModalComponent,
     CalculateCaseClassificationComponent,
+    ClinicalCourseGroupSelectComponent,
   ],
   imports: [
     CommonModule,
