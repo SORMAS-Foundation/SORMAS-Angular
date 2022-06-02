@@ -71,6 +71,7 @@ import { ExportConfigurationComponent } from './modals/export-configuration/expo
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
 import { ImportModalComponent } from './modals/import-modal/import-modal.component';
 import { AddVisitsGroupSelectComponent } from './widgets/add-visits-group-select/add-visits-group-select.component';
+import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
 
 @NgModule({
   declarations: [
@@ -127,6 +128,7 @@ import { AddVisitsGroupSelectComponent } from './widgets/add-visits-group-select
     SpecificSearchComponent,
     ImportModalComponent,
     AddVisitsGroupSelectComponent,
+    CalculateCaseClassificationComponent,
   ],
   imports: [
     CommonModule,
