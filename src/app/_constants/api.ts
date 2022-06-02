@@ -9,6 +9,7 @@ export const API_ROUTE_CASES = {
   SEARCH: 'cases/searchSpecific',
   ARCHIVE: 'cases/archive',
   DEARCHIVE: 'cases/dearchive',
+  CALCULATE_CLASSIFICATION: 'cases/calculateClassification',
 };
 
 export const API_ROUTE_CASES_FOLLOW_UP = {

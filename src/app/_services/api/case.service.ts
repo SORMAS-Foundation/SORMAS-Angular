@@ -23,4 +23,12 @@ export class CaseService extends BaseService<CaseDataDto> {
       .get(`${this.helperService.getApiUrl()}/${endpoint}`)
       .pipe(map((data: any) => this.serializer.fromJson(data)));
   }
+
+  calculateClassification(uuid: string = ''): Observable<any> {
+    const endpoint: string = `${this.endpoint.CALCULATE_CLASSIFICATION}/${uuid}`;
+
+    return this.httpClient
+      .post(`${this.helperService.getApiUrl()}/${endpoint}`, {})
+      .pipe(map((data: any) => this.serializer.fromJson(data)));
+  }
 }
