@@ -22,6 +22,7 @@ import { CaseEditComponent } from './case-edit/case-edit.component';
 import { TherapyFiltersComponent } from './case_components/therapy-filters/therapy-filters.component';
 import { CaseGuideComponent } from './case-guide/case-guide.component';
 import { ClinicalCourseAddComponent } from './case_components/clinical-course-add/clinical-course-add.component';
+import { ClassificationRulesComponent } from './classification-rules/classification-rules.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ClinicalCourseAddComponent } from './case_components/clinical-course-ad
     TherapyFiltersComponent,
     CaseGuideComponent,
     ClinicalCourseAddComponent,
+    ClassificationRulesComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],
 })

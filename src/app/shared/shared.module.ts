@@ -69,6 +69,7 @@ import { GroupSelectComponent } from './widgets/group-select/group-select.compon
 import { CustomExportComponent } from './modals/custom-export/custom-export.component';
 import { ExportConfigurationComponent } from './modals/export-configuration/export-configuration.component';
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
+import { InfoModalComponent } from './widgets/info-modal/info-modal.component';
 import { ImportModalComponent } from './modals/import-modal/import-modal.component';
 import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
 import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-group-select/clinical-course-group-select.component';
@@ -126,6 +127,7 @@ import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-gr
     CustomExportComponent,
     ExportConfigurationComponent,
     SpecificSearchComponent,
+    InfoModalComponent,
     ImportModalComponent,
     CalculateCaseClassificationComponent,
     ClinicalCourseGroupSelectComponent,
