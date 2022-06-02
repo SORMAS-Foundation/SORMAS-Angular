@@ -29,6 +29,7 @@ import { CasePersonContactsListComponent } from '../../../widgets/case-person-co
 import { LineListingNewCasesComponent } from '../../../widgets/line-listing-new-cases/line-listing-new-cases.component';
 import { LineListingNewContactsComponent } from '../../../widgets/line-listing-new-contacts/line-listing-new-contacts.component';
 import { GroupSelectComponent } from '../../../widgets/group-select/group-select.component';
+import { InfoModalComponent } from '../../../widgets/info-modal/info-modal.component';
 import { CalculateCaseClassificationComponent } from '../../../widgets/calculate-case-classification/calculate-case-classification.component';
 
 const COMPONENTS_MAP: any = {
@@ -53,6 +54,7 @@ const COMPONENTS_MAP: any = {
   'app-line-listing-new-cases': LineListingNewCasesComponent,
   'app-line-listing-new-contacts': LineListingNewContactsComponent,
   'app-group-select': GroupSelectComponent,
+  'app-info-modal': InfoModalComponent,
   'app-calculate-case-classification': CalculateCaseClassificationComponent,
 };
 
