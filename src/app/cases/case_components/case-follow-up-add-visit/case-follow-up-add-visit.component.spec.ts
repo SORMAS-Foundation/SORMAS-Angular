@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CaseFollowUpAddVisitComponent } from './case-follow-up-add-visit.component';
@@ -9,6 +10,7 @@ describe('CaseFollowUpAddVisitComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CaseFollowUpAddVisitComponent],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 

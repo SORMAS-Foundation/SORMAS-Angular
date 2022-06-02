@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { AddVisitsGroupSelectComponent } from './add-visits-group-select.component';
 
@@ -8,9 +9,9 @@ describe('AddVisitsGroupSelectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddVisitsGroupSelectComponent ]
-    })
-    .compileComponents();
+      declarations: [AddVisitsGroupSelectComponent],
+      imports: [TranslateModule.forRoot()],
+    }).compileComponents();
   });
 
   beforeEach(() => {
