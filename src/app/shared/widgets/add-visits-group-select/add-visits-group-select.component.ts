@@ -33,10 +33,7 @@ export class AddVisitsGroupSelectComponent {
     this.dataForm.forEach((section) => {
       section.fields.forEach((field: FormElementBase<string>) => {
         if (field.controlType === 'radio') {
-          console.log('field', field, this.group, field.key);
-
           const control = this.group.controls[field.key];
-          console.log('control', control);
           const changed = control.value !== value;
           control?.patchValue(value);
           this.formActionsService.setInputChange(this.formId, field.key, changed);

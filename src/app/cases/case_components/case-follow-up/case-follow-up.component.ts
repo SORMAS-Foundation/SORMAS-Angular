@@ -3,7 +3,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import {
-  ADD_MODAL_MAX_WIDTH,
   ADD_MODAL_WIDE,
   API_ROUTE_CASES_FOLLOW_UP,
   EXPORT_TYPES,

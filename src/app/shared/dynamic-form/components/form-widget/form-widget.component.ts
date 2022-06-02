@@ -30,6 +30,7 @@ import { LineListingNewCasesComponent } from '../../../widgets/line-listing-new-
 import { LineListingNewContactsComponent } from '../../../widgets/line-listing-new-contacts/line-listing-new-contacts.component';
 import { GroupSelectComponent } from '../../../widgets/group-select/group-select.component';
 import { AddVisitsGroupSelectComponent } from '../../../widgets/add-visits-group-select/add-visits-group-select.component';
+import { InfoModalComponent } from '../../../widgets/info-modal/info-modal.component';
 import { CalculateCaseClassificationComponent } from '../../../widgets/calculate-case-classification/calculate-case-classification.component';
 
 const COMPONENTS_MAP: any = {
@@ -55,6 +56,7 @@ const COMPONENTS_MAP: any = {
   'app-line-listing-new-cases': LineListingNewCasesComponent,
   'app-line-listing-new-contacts': LineListingNewContactsComponent,
   'app-group-select': GroupSelectComponent,
+  'app-info-modal': InfoModalComponent,
   'app-calculate-case-classification': CalculateCaseClassificationComponent,
 };
 

@@ -1,0 +1,351 @@
+<div mat-dialog-title>
+  <h1>
+    {{ 'strings.classificationRulesFor' | translate }} {{ 'enum.Disease.' + disease | translate }}
+  </h1>
+  <div mat-dialog-actions>
+    <button mat-icon-button mat-dialog-close class="button-dialog-close">
+      <mat-icon class="material-icons-round">highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div class="classification-suspect">
+    <h2>
+      <mat-icon class="material-icons-round">person_search</mat-icon>
+      {{ 'strings.classificationSuspect' | translate }}
+    </h2>
+    <p
+      [innerHtml]="'strings.classificationInfoNumberText' | translate | replace: '%s':'ONE'"
+      class="requirements-info"
+    ></p>
+    <ul class="rules">
+      <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+      <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+      <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+      <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+      <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+      <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+      <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+      <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+      <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+    </ul>
+  </div>
+
+  <div class="classification-probable">
+    <h2>
+      <mat-icon class="material-icons-round">queue</mat-icon>
+      {{ 'strings.classificationProbable' | translate }}
+    </h2>
+    <p [innerHtml]="'strings.classificationInfoText' | translate" class="requirements-info"></p>
+    <ul class="rules">
+      <li>
+        <strong class="subtitle">{{ 'strings.classificationOneOf' | translate }}</strong>
+        <ul class="subrules">
+          <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+          <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+          <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+          <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+          <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+          <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+          <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+          <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+          <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+        </ul>
+      </li>
+      <li>
+        <h3>
+          <strong class="subtitle">{{ 'strings.classificationOneOf' | translate }}</strong>
+        </h3>
+        <ul class="subrules">
+          <li>{{ 'enum.CaseConfirmationBasis.EPIDEMIOLOGICAL_CONFIRMATION' | translate }}</li>
+          <li>{{ 'strings.classificationEventCluster' | translate }}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="classification-confirmed">
+    <h2>
+      <mat-icon class="material-icons-round">new_releases</mat-icon>
+      {{ 'strings.classificationConfirmed' | translate }}
+    </h2>
+    <p [innerHtml]="'strings.classificationInfoText' | translate" class="requirements-info"></p>
+    <ul class="rules">
+      <li>
+        {{ 'strings.classificationOnePositiveTestResult' | translate }}
+        {{ 'enum.PathogenTestType.PCR_RT_PCR' | translate }},
+        {{ 'enum.PathogenTestType.ANTIGEN_DETECTION' | translate }},
+        {{ 'enum.PathogenTestType.ISOLATION' | translate }},
+        {{ 'enum.PathogenTestType.SEQUENCING' | translate }}
+        <strong class="subtitle">{{ 'strings.or' | translate }}</strong>
+        {{ 'enum.PathogenTestType.RAPID_TEST' | translate }}
+        {{ 'strings.classificationForDisease' | translate }}
+        {{ 'enum.Disease.' + disease | translate }}
+      </li>
+      <li>
+        <h3>
+          <strong class="subtitle">{{ 'strings.classificationOneOf' | translate }}</strong>
+        </h3>
+        <ul class="subrules">
+          <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+          <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+          <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+          <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+          <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+          <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+          <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+          <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+          <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="classification-confirmed-no-symptoms">
+    <h2>
+      <mat-icon class="material-icons-round">sentiment_satisfied_alt</mat-icon>
+      {{ 'strings.classificationConfirmedNoSymptoms' | translate }}
+    </h2>
+    <p [innerHtml]="'strings.classificationInfoText' | translate" class="requirements-info"></p>
+    <ul class="rules">
+      <li>
+        {{ 'strings.classificationOnePositiveTestResult' | translate }}
+        {{ 'enum.PathogenTestType.PCR_RT_PCR' | translate }},
+        {{ 'enum.PathogenTestType.ANTIGEN_DETECTION' | translate }},
+        {{ 'enum.PathogenTestType.ISOLATION' | translate }},
+        {{ 'enum.PathogenTestType.SEQUENCING' | translate }}
+        <strong class="subtitle">{{ 'strings.or' | translate }}</strong>
+        {{ 'enum.PathogenTestType.RAPID_TEST' | translate }}
+        {{ 'strings.classificationForDisease' | translate }}
+        {{ 'enum.Disease.' + disease | translate }}
+      </li>
+      <li>
+        <h3>
+          <strong class="subtitle">{{ 'strings.classificationSymptomsAnyOf' | translate }}</strong>
+          {{ 'strings.setTo' | translate }}
+          <strong class="subtitle">{{ 'strings.no' | translate }}</strong>
+        </h3>
+        <ul class="subrules symptoms">
+          <li>{{ 'captions.Symptoms.chillsSweats' | translate }}</li>
+          <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+          <li>{{ 'captions.Symptoms.diarrhea' | translate }}</li>
+          <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+          <li>{{ 'captions.Symptoms.fever' | translate }}</li>
+          <li>{{ 'captions.Symptoms.headache' | translate }}</li>
+          <li>{{ 'captions.Symptoms.musclePain' | translate }}</li>
+          <li>{{ 'captions.Symptoms.nausea' | translate }}</li>
+          <li>{{ 'captions.Symptoms.otherNonHemorrhagicSymptoms' | translate }}</li>
+          <li>{{ 'captions.Symptoms.rapidBreathing' | translate }}</li>
+          <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+          <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+          <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+          <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+          <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+          <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+          <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+          <li>{{ 'captions.Symptoms.feelingIll' | translate }}</li>
+          <li>{{ 'captions.Symptoms.fastHeartRate' | translate }}</li>
+          <li>{{ 'captions.Symptoms.oxygenSaturationLower94' | translate }}</li>
+          <li>{{ 'captions.Symptoms.shivering' | translate }}</li>
+        </ul>
+      </li>
+      <li>
+        <h3>
+          <strong class="subtitle">{{ 'strings.classificationNoneOf' | translate }}</strong>
+        </h3>
+        <ul class="rules-options">
+          <li>
+            <h3>
+              <strong class="subtitle">{{ 'strings.classificationOneOf' | translate }}</strong>
+            </h3>
+            <ul class="subrules">
+              <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+              <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+              <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+              <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+              <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+              <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+              <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="classification-confirmed-symptoms-unknown">
+    <h2>
+      <mat-icon class="material-icons-round">sick</mat-icon>
+      {{ 'strings.classificationConfirmedUnknownSymptoms' | translate }}
+    </h2>
+    <p [innerHtml]="'strings.classificationInfoText' | translate" class="requirements-info"></p>
+    <ul class="rules">
+      <li>
+        {{ 'strings.classificationOnePositiveTestResult' | translate }}
+        {{ 'enum.PathogenTestType.PCR_RT_PCR' | translate }},
+        {{ 'enum.PathogenTestType.ANTIGEN_DETECTION' | translate }},
+        {{ 'enum.PathogenTestType.ISOLATION' | translate }},
+        {{ 'enum.PathogenTestType.SEQUENCING' | translate }}
+        <strong class="subtitle">{{ 'strings.or' | translate }}</strong>
+        {{ 'enum.PathogenTestType.RAPID_TEST' | translate }}
+        {{ 'strings.classificationForDisease' | translate }}
+        {{ 'enum.Disease.' + disease | translate }}
+      </li>
+      <li>
+        <h3>
+          <strong class="subtitle">{{ 'strings.classificationOneOf' | translate }}</strong>
+        </h3>
+        <ul class="rules-options">
+          <li>
+            <h3>
+              <strong class="subtitle">{{
+                'strings.classificationSymptomsAnyOf' | translate
+              }}</strong>
+              {{ 'strings.setTo' | translate }}
+              <strong class="subtitle">{{ 'captions.unknown' | translate }}</strong>
+            </h3>
+            <ul class="subrules symptoms">
+              <li>{{ 'captions.Symptoms.chillsSweats' | translate }}</li>
+              <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+              <li>{{ 'captions.Symptoms.diarrhea' | translate }}</li>
+              <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+              <li>{{ 'captions.Symptoms.fever' | translate }}</li>
+              <li>{{ 'captions.Symptoms.headache' | translate }}</li>
+              <li>{{ 'captions.Symptoms.musclePain' | translate }}</li>
+              <li>{{ 'captions.Symptoms.nausea' | translate }}</li>
+              <li>{{ 'captions.Symptoms.otherNonHemorrhagicSymptoms' | translate }}</li>
+              <li>{{ 'captions.Symptoms.rapidBreathing' | translate }}</li>
+              <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+              <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+              <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+              <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+              <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+              <li>{{ 'captions.Symptoms.feelingIll' | translate }}</li>
+              <li>{{ 'captions.Symptoms.fastHeartRate' | translate }}</li>
+              <li>{{ 'captions.Symptoms.oxygenSaturationLower94' | translate }}</li>
+              <li>{{ 'captions.Symptoms.shivering' | translate }}</li>
+            </ul>
+          </li>
+          <li>
+            <h3>
+              <strong class="subtitle">{{
+                'strings.classificationSymptomsAnyOf' | translate
+              }}</strong>
+              {{ 'strings.setTo' | translate }}
+              <strong class="subtitle">{{ 'strings.none' | translate }}</strong>
+            </h3>
+            <ul class="subrules symptoms">
+              <li>{{ 'captions.Symptoms.chillsSweats' | translate }}</li>
+              <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+              <li>{{ 'captions.Symptoms.diarrhea' | translate }}</li>
+              <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+              <li>{{ 'captions.Symptoms.fever' | translate }}</li>
+              <li>{{ 'captions.Symptoms.headache' | translate }}</li>
+              <li>{{ 'captions.Symptoms.musclePain' | translate }}</li>
+              <li>{{ 'captions.Symptoms.nausea' | translate }}</li>
+              <li>{{ 'captions.Symptoms.otherNonHemorrhagicSymptoms' | translate }}</li>
+              <li>{{ 'captions.Symptoms.rapidBreathing' | translate }}</li>
+              <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+              <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+              <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+              <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+              <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+              <li>{{ 'captions.Symptoms.feelingIll' | translate }}</li>
+              <li>{{ 'captions.Symptoms.fastHeartRate' | translate }}</li>
+              <li>{{ 'captions.Symptoms.oxygenSaturationLower94' | translate }}</li>
+              <li>{{ 'captions.Symptoms.shivering' | translate }}</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3>
+          <strong class="subtitle">{{ 'strings.classificationNoneOf' | translate }}</strong>
+        </h3>
+        <ul class="rules-options">
+          <li>
+            <h3>
+              <strong class="subtitle">{{
+                'strings.classificationSymptomsAnyOf' | translate
+              }}</strong>
+              {{ 'strings.setTo' | translate }}
+              <strong class="subtitle">{{ 'strings.no' | translate }}</strong>
+            </h3>
+            <ul class="subrules symptoms">
+              <li>{{ 'captions.Symptoms.chillsSweats' | translate }}</li>
+              <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+              <li>{{ 'captions.Symptoms.diarrhea' | translate }}</li>
+              <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+              <li>{{ 'captions.Symptoms.fever' | translate }}</li>
+              <li>{{ 'captions.Symptoms.headache' | translate }}</li>
+              <li>{{ 'captions.Symptoms.musclePain' | translate }}</li>
+              <li>{{ 'captions.Symptoms.nausea' | translate }}</li>
+              <li>{{ 'captions.Symptoms.otherNonHemorrhagicSymptoms' | translate }}</li>
+              <li>{{ 'captions.Symptoms.rapidBreathing' | translate }}</li>
+              <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+              <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+              <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+              <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+              <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+              <li>{{ 'captions.Symptoms.feelingIll' | translate }}</li>
+              <li>{{ 'captions.Symptoms.fastHeartRate' | translate }}</li>
+              <li>{{ 'captions.Symptoms.oxygenSaturationLower94' | translate }}</li>
+              <li>{{ 'captions.Symptoms.shivering' | translate }}</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3>
+          <strong class="subtitle">{{ 'strings.classificationNoneOf' | translate }}</strong>
+        </h3>
+        <ul class="rules-options">
+          <li>
+            <h3>
+              <strong class="subtitle">{{ 'strings.classificationOneOf' | translate }}</strong>
+            </h3>
+            <ul class="subrules">
+              <li>{{ 'captions.Symptoms.pneumoniaClinicalOrRadiologic' | translate }}</li>
+              <li>{{ 'captions.Symptoms.difficultyBreathing' | translate }}</li>
+              <li>{{ 'captions.Symptoms.cough' | translate }}</li>
+              <li>{{ 'captions.Symptoms.runnyNose' | translate }}</li>
+              <li>{{ 'captions.Symptoms.respiratoryDiseaseVentilation' | translate }}</li>
+              <li>{{ 'captions.Symptoms.acuteRespiratoryDistressSyndrome' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfTaste' | translate }}</li>
+              <li>{{ 'captions.Symptoms.lossOfSmell' | translate }}</li>
+              <li>{{ 'captions.Symptoms.soreThroat' | translate }}</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="classification-not-case">
+    <h2>
+      <mat-icon class="material-icons-round">how_to_reg</mat-icon>
+      {{ 'strings.classificationNotACase' | translate }}
+    </h2>
+    <p
+      [innerHtml]="'strings.classificationInfoNumberText' | translate | replace: '%s':'ONE'"
+      class="requirements-info"
+    ></p>
+    <ul class="rules">
+      <li>
+        {{ 'strings.classificationOneNegativeTestResult' | translate }}
+        {{ 'strings.classificationForDisease' | translate }}
+        {{ 'enum.Disease.' + disease | translate }}
+      </li>
+      <li>{{ 'strings.classificationOneOtherPositiveTestResult' | translate }}</li>
+    </ul>
+  </div>
+</div>

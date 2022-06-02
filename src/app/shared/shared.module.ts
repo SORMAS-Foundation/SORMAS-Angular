@@ -69,6 +69,7 @@ import { GroupSelectComponent } from './widgets/group-select/group-select.compon
 import { CustomExportComponent } from './modals/custom-export/custom-export.component';
 import { ExportConfigurationComponent } from './modals/export-configuration/export-configuration.component';
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
+import { InfoModalComponent } from './widgets/info-modal/info-modal.component';
 import { ImportModalComponent } from './modals/import-modal/import-modal.component';
 import { AddVisitsGroupSelectComponent } from './widgets/add-visits-group-select/add-visits-group-select.component';
 import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
@@ -126,6 +127,7 @@ import { CalculateCaseClassificationComponent } from './widgets/calculate-case-c
     CustomExportComponent,
     ExportConfigurationComponent,
     SpecificSearchComponent,
+    InfoModalComponent,
     ImportModalComponent,
     AddVisitsGroupSelectComponent,
     CalculateCaseClassificationComponent,
