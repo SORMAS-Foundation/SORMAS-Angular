@@ -30,6 +30,7 @@
 <div #vsTable *ngIf="tableColumns">
   <app-loader [show]="loading"></app-loader>
   <cdk-virtual-scroll-viewport
+    *ngIf="fetchStatus !== fetchStatusType.ERROR"
     [tvsItemSize]="rowHeight"
     [headerHeight]="headerHeight"
     [style.height.px]="tableHeight"
@@ -37,7 +38,6 @@
     (scrolledIndexChange)="scrolledIndexChange($event)"
   >
     <table
-      *ngIf="fetchStatus !== fetchStatusType.ERROR"
       mat-table
       [dataSource]="dataSource"
       matSort
@@ -194,4 +194,10 @@
       [context]="showTotalContext"
     ></app-table-notification>
   </cdk-virtual-scroll-viewport>
+
+  <app-table-notification
+    *ngIf="fetchStatus === fetchStatusType.ERROR"
+    [type]="fetchStatus"
+    [context]="showTotalContext"
+  ></app-table-notification>
 </div>

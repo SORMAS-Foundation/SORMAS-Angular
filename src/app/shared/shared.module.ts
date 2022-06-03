@@ -72,6 +72,7 @@ import { SpecificSearchComponent } from './modals/specific-search/specific-searc
 import { InfoModalComponent } from './widgets/info-modal/info-modal.component';
 import { ImportModalComponent } from './modals/import-modal/import-modal.component';
 import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
+import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-group-select/clinical-course-group-select.component';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { CalculateCaseClassificationComponent } from './widgets/calculate-case-c
     InfoModalComponent,
     ImportModalComponent,
     CalculateCaseClassificationComponent,
+    ClinicalCourseGroupSelectComponent,
   ],
   imports: [
     CommonModule,
