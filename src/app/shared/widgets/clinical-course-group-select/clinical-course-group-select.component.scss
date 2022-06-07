@@ -1,0 +1,16 @@
+p {
+  margin: 12px 0 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.actions .mat-button {
+  min-width: unset;
+  padding: 0;
+  margin-right: 2rem;
+}
+
+.database-exports {
+  display: flex;
+  justify-content: space-between;
+}

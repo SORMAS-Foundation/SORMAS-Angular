@@ -73,6 +73,7 @@ import { InfoModalComponent } from './widgets/info-modal/info-modal.component';
 import { ImportModalComponent } from './modals/import-modal/import-modal.component';
 import { AddVisitsGroupSelectComponent } from './widgets/add-visits-group-select/add-visits-group-select.component';
 import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
+import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-group-select/clinical-course-group-select.component';
 
 @NgModule({
   declarations: [
@@ -131,6 +132,7 @@ import { CalculateCaseClassificationComponent } from './widgets/calculate-case-c
     ImportModalComponent,
     AddVisitsGroupSelectComponent,
     CalculateCaseClassificationComponent,
+    ClinicalCourseGroupSelectComponent,
   ],
   imports: [
     CommonModule,

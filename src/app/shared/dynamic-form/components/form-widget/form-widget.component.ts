@@ -32,6 +32,7 @@ import { GroupSelectComponent } from '../../../widgets/group-select/group-select
 import { AddVisitsGroupSelectComponent } from '../../../widgets/add-visits-group-select/add-visits-group-select.component';
 import { InfoModalComponent } from '../../../widgets/info-modal/info-modal.component';
 import { CalculateCaseClassificationComponent } from '../../../widgets/calculate-case-classification/calculate-case-classification.component';
+import { ClinicalCourseGroupSelectComponent } from '../../../widgets/clinical-course-group-select/clinical-course-group-select.component';
 
 const COMPONENTS_MAP: any = {
   'app-follow-up-status': FollowUpStatusComponent,
@@ -58,6 +59,7 @@ const COMPONENTS_MAP: any = {
   'app-group-select': GroupSelectComponent,
   'app-info-modal': InfoModalComponent,
   'app-calculate-case-classification': CalculateCaseClassificationComponent,
+  'app-clinical-course-group-select': ClinicalCourseGroupSelectComponent,
 };
 
 @Component({

@@ -184,5 +184,6 @@
   "invalidCoords": "Invalid coordinates",
   "unauthorized": "Unauthorized",
   "visitDeatiles": "Visit detailes",
-  "symptoms.availability": "Availability"
+  "symptoms.availability": "Availability",
+  "headingClinicalDetails": "Assessment details"
 }

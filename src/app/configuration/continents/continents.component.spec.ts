@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatDialogModule } from '@angular/material/dialog';
 import { ContinentsComponent } from './continents.component';
 
 describe('ContinentsComponent', () => {
@@ -10,6 +11,7 @@ describe('ContinentsComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [ContinentsComponent],
+      imports: [MatDialogModule],
     }).compileComponents();
   });
 
