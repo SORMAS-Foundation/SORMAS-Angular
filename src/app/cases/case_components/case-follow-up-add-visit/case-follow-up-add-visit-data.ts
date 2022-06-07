@@ -202,22 +202,16 @@ export const FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS = [
     ],
   },
   {
-    id: 'cardiovascular',
-    title: 'enum.SymptomGroup.CARDIOVASCULAR',
+    id: 'gastroIntestinal',
+    title: 'enum.SymptomGroup.GASTROINTESTINAL',
     fields: [
       {
         ...FORM_DATA_RADIO,
-        key: 'symptoms.fastHeartRate',
-        label: 'captions.Symptoms.fastHeartRate',
+        key: 'symptoms.abdominalPain',
+        label: 'captions.Symptoms.abdominalPain',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
-    ],
-  },
-  {
-    id: 'gastrointestinal',
-    title: 'enum.SymptomGroup.GASTROINTESTINAL',
-    fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'symptoms.diarrhea',
@@ -229,6 +223,26 @@ export const FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS = [
         ...FORM_DATA_RADIO,
         key: 'symptoms.nausea',
         label: 'captions.Symptoms.nausea',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'symptoms.vomiting',
+        label: 'captions.Symptoms.vomiting',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
+      },
+    ],
+  },
+  {
+    id: 'skin',
+    title: 'enum.SymptomGroup.SKIN',
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'symptoms.skinUlcers',
+        label: 'captions.Symptoms.skinUlcers',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
@@ -268,6 +282,33 @@ export const FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS = [
         className: 'size-large',
         dependingOn: 'symptoms.otherComplications',
         dependingOnValues: ['YES'],
+      },
+    ],
+  },
+  {
+    id: 'complications',
+    title: 'strings.headingComplications',
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'symptoms.confusedDisoriented',
+        label: 'captions.Symptoms.confusedDisoriented',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'symptoms.seizures',
+        label: 'captions.Symptoms.seizures',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'symptoms.otherComplications',
+        label: 'captions.Symptoms.otherComplications',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
       },
     ],
   },
