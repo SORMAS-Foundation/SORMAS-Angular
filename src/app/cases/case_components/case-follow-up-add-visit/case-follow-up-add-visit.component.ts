@@ -2,7 +2,6 @@ import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
-import { CaseDataDto } from '../../../_models/caseDataDto';
 import { VisitService } from '../../../_services/api/visit.service';
 import { FormElementControlService } from '../../../_services/form-element-control.service';
 import * as data from './case-follow-up-add-visit-data';
@@ -13,8 +12,7 @@ import * as data from './case-follow-up-add-visit-data';
   styleUrls: ['./case-follow-up-add-visit.component.scss'],
 })
 export class CaseFollowUpAddVisitComponent implements OnInit, OnDestroy {
-  myFormElements: FormBase<any>[] = [];
-  public formData: FormBase<any>[] = data.FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS;
+  myFormElements: FormBase<any>[] = data.FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS;
   formId = ADD_EDIT_FORM_ID;
   subscriptions: Subscription[] = [];
 
@@ -43,6 +41,48 @@ export class CaseFollowUpAddVisitComponent implements OnInit, OnDestroy {
                 'hidden',
                 true
               );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'symptoms',
+                'hidden',
+                true
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'general',
+                'hidden',
+                true
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'respiratory',
+                'hidden',
+                true
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'gastroIntestinal',
+                'hidden',
+                true
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'skin',
+                'hidden',
+                true
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'other',
+                'hidden',
+                true
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'complications',
+                'hidden',
+                true
+              );
             } else {
               this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
                 this.myFormElements,
@@ -50,8 +90,49 @@ export class CaseFollowUpAddVisitComponent implements OnInit, OnDestroy {
                 'hidden',
                 false
               );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'symptoms',
+                'hidden',
+                false
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'general',
+                'hidden',
+                false
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'respiratory',
+                'hidden',
+                false
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'gastroIntestinal',
+                'hidden',
+                false
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'skin',
+                'hidden',
+                false
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'other',
+                'hidden',
+                false
+              );
+              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+                this.myFormElements,
+                'complications',
+                'hidden',
+                false
+              );
             }
-            console.log('ssss', this.myFormElements);
           })
         );
       }

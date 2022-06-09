@@ -44,8 +44,9 @@ export const FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS = [
       {
         ...FORM_DATA_DATETIME,
         key: 'visitDateTime',
-        label: 'captions.Visit.visitDateTime',
-        value: new Date(),
+        label: 'captions.date',
+        timeLabel: 'timeHeading',
+        className: 'dateTime',
       },
       {
         ...FORM_DATA_INPUT,
