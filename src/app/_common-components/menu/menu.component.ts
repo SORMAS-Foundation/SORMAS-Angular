@@ -133,7 +133,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
 
   fixResizeInkBar(): void {
     if (this.mainMenu) {
-      this.matTabsRef._alignInkBarToSelectedTab();
+      this.matTabsRef?._alignInkBarToSelectedTab();
     }
   }
 
