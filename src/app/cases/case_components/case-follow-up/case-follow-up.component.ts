@@ -3,9 +3,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import {
-  ADD_MODAL_WIDE,
   API_ROUTE_CASES_FOLLOW_UP,
   EXPORT_TYPES,
+  MODAL_LARGE_WIDTH,
   SMALL_NOTIFICATION_MODAL_WIDTH,
   TableAppearanceOptions,
 } from '../../../app.constants';
@@ -63,7 +63,7 @@ export class CaseFollowUpComponent {
 
   openAddVisitModal(): void {
     const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
-      maxWidth: ADD_MODAL_WIDE,
+      maxWidth: MODAL_LARGE_WIDTH,
       data: {
         title: this.translateService.instant('strings.headingCreateNewVisit'),
         component: CaseFollowUpAddVisitComponent,

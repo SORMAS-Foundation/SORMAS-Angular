@@ -6416,7 +6416,7 @@
   "warningSetMissingGeoCoordinates": "This might replace coordinates which were intentionally set differently",
   "invalidCoords": "Invalid coordinates",
   "unauthorized": "Unauthorized",
-  "visitDeatiles": "Visit detailes",
+  "visitDeatiles": "Visit details",
   "symptoms.availability": "Availability",
   "headingClinicalDetails": "Assessment details"
 }
