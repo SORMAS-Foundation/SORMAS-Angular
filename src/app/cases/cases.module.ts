@@ -21,6 +21,7 @@ import { CasePortHealthComponent } from './case_components/case-port-health/case
 import { CaseEditComponent } from './case-edit/case-edit.component';
 import { TherapyFiltersComponent } from './case_components/therapy-filters/therapy-filters.component';
 import { CaseGuideComponent } from './case-guide/case-guide.component';
+import { ClinicalCourseAddComponent } from './case_components/clinical-course-add/clinical-course-add.component';
 import { ClassificationRulesComponent } from './classification-rules/classification-rules.component';
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ClassificationRulesComponent } from './classification-rules/classificat
     CaseEditComponent,
     TherapyFiltersComponent,
     CaseGuideComponent,
+    ClinicalCourseAddComponent,
     ClassificationRulesComponent,
   ],
   imports: [CommonModule, CasesRoutingModule, MaterialModule, SharedModule, DynamicFormModule],

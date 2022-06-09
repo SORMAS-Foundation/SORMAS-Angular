@@ -9,6 +9,11 @@
     {{ 'captions.ClinicalVisit' | translate }}
   </h2>
   <mat-card class="assessments-list">
+    <div class="actions">
+      <button mat-flat-button color="primary" (click)="openAddClinicalCourseModal()">
+        {{ 'captions.clinicalVisitNewClinicalVisit' | translate }}
+      </button>
+    </div>
     <app-table
       [resourceService]="clinicalVisitService"
       [tableColumns]="defaultColumns"

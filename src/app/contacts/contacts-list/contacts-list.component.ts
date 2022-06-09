@@ -137,7 +137,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.$service = this.contactService;
         this.legend = tableDataDetailed.legendDefs;
         this.defaultColumns = tableDataDetailed.defaultColumnDefs;
-        this.configKey = CONFIG_CONTACTS;
+        this.configKey = CONFIG_CONTACTS_DETAILED;
         break;
       case ACTIONS_VIEW_OPTIONS.FOLLOW_UP:
         this.$service = this.contactFollowUpService;
@@ -149,7 +149,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.$service = this.contactService;
         this.legend = tableDataDefault.legendDefs;
         this.defaultColumns = tableDataDefault.defaultColumnDefs;
-        this.configKey = CONFIG_CONTACTS_DETAILED;
+        this.configKey = CONFIG_CONTACTS;
     }
     setTimeout(() => {
       this.showTable = true;
