@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ADD_EDIT_FORM_ID } from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
