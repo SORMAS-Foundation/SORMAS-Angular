@@ -85,6 +85,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_WIDGET,
         widget: 'app-calculate-case-classification',
         key: 'uuid',
+        className: 'push-right',
       },
       {
         ...FORM_DATA_SELECT,
