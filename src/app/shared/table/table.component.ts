@@ -148,7 +148,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
           this.filters = this.preSetFilters;
         }
         this.offset = value;
-        this.getResources(!value);
+        this.getResources();
       })
     );
 
@@ -162,7 +162,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
             this.filters = this.filters.concat(this.preSetFilters);
           }
           this.getResources(true);
-          this.selection.clear();
 
           const relevance = response.filters?.find((item: any) => item.field === 'relevanceStatus');
           switch (relevance?.value) {
@@ -380,7 +379,6 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
               }
             )
           );
-          this.selection.clear();
           this.getResources(true);
         },
         error: (err: any) => {
@@ -398,6 +396,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       .subscribe({
         next: (response: any) => {
           if (reload) {
+            this.selection.clear();
             const dataSourceTmp = [];
             for (let i = 0; i < response.totalElementCount; i += 1) {
               this.dataSourceArray.push({
