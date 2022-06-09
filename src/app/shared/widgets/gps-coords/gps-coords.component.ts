@@ -107,7 +107,7 @@ export class GpsCoordsComponent implements OnInit {
     ].value;
 
     let isMarker = false;
-    if (typeof latLonAccuracy === 'undefined' || latLonAccuracy === '' || latLonAccuracy === 0) {
+    if (typeof latLonAccuracy === 'undefined' || latLonAccuracy === '' || latLonAccuracy === '0') {
       isMarker = true;
     }
 
