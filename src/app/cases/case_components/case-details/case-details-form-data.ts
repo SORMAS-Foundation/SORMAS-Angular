@@ -69,6 +69,7 @@ export const FORM_DATA_CASE_DETAILS = [
       {
         ...FORM_DATA_SELECT,
         key: 'caseClassification',
+        label: 'captions.CaseData.caseClassification',
         validation: ['required'],
         options: optionsCaseClassification,
         className: 'size-large',
