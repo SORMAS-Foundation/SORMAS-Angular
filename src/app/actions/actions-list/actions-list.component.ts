@@ -6,13 +6,13 @@ import { NavItem, TableColumn } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './actions-list-table-data';
 import {
-  CONFIG_EVENTS,
   HEADER_HEIGHT,
   EVENT_FILTERS_FORM_ID,
   ACTIONS_EVENT_ACTION,
   SMALL_NOTIFICATION_MODAL_WIDTH,
   EXPORT_TYPES,
   API_ROUTE_EVENT_ACTIONS,
+  CONFIG_EVENTS_ACTIONS,
 } from '../../app.constants';
 import { actionsBulkEditDefs, actionsMoreDefs } from './actions-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
@@ -33,7 +33,7 @@ export class ActionsListComponent implements OnInit, OnDestroy {
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_EVENT_FILTERS));
   tasks: EventDto[] = [];
   defaultColumns: TableColumn[] = [];
-  configKey = CONFIG_EVENTS;
+  configKey = CONFIG_EVENTS_ACTIONS;
   actionsMore: NavItem[] = actionsMoreDefs;
   actionsBulkEdit: NavItem[] = actionsBulkEditDefs;
   routeParams = this.activeRoute.snapshot.queryParams;

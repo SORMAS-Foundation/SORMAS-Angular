@@ -23,6 +23,7 @@ import {
   SMALL_NOTIFICATION_MODAL_WIDTH,
   CONFIG_CONTACTS,
   CONFIG_CONTACTS_DETAILED,
+  CONFIG_CONTACTS_FOLLOW_UP,
 } from '../../app.constants';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -143,6 +144,7 @@ export class ContactsListComponent implements OnInit, OnDestroy {
         this.$service = this.contactFollowUpService;
         this.legend = tableDataFollowUp.legendDefs;
         this.defaultColumns = this.generateFollowUpColumns();
+        this.configKey = CONFIG_CONTACTS_FOLLOW_UP;
         break;
       case ACTIONS_VIEW_OPTIONS.DEFAULT:
       default:
