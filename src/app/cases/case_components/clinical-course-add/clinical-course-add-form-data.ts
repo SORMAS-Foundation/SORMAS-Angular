@@ -58,7 +58,8 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
       {
         ...FORM_DATA_DATETIME,
         key: 'visitDateTime',
-        label: 'captions.ClinicalVisit.visitDateTime',
+        label: 'captions.date',
+        timeLabel: 'timeHeading',
         validation: ['required'],
       },
       {
@@ -78,7 +79,6 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
   {
     id: 'measurements',
     title: 'strings.headingClinicalMeasurements',
-    required: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -337,7 +337,7 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
         label: 'captions.Symptoms.otherNonHemorrhagicSymptomsText',
         dependingOn: 'otherNonHemorrhagicSymptoms',
         dependingOnValues: ['YES'],
-        validaton: ['required'],
+        validation: ['required'],
       },
     ],
   },
