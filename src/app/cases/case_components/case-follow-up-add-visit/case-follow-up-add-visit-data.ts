@@ -32,7 +32,7 @@ const optionsTemperature = range(35, 44.1, 0.1).map((val) => ({
 export const FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS = [
   {
     id: 'details',
-    title: 'visitDeatiles',
+    title: 'visitDetails',
     fields: [
       {
         ...FORM_DATA_RADIO,

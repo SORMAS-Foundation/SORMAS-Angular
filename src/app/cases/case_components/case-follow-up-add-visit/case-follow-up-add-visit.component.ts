@@ -24,8 +24,6 @@ export class CaseFollowUpAddVisitComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.myFormElements = JSON.parse(JSON.stringify(data.FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS));
-
     setTimeout(() => {
       const { form } = this.dynamicForm;
       if (form) {
@@ -34,108 +32,37 @@ export class CaseFollowUpAddVisitComponent implements OnInit, OnDestroy {
 
         this.subscriptions.push(
           availability.valueChanges.subscribe((val: string) => {
-            if (val !== 'COOPERATIVE') {
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'measurements',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'symptoms',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'general',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'respiratory',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'gastroIntestinal',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'skin',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'other',
-                'hidden',
-                true
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'complications',
-                'hidden',
-                true
-              );
-            } else {
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'measurements',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'symptoms',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'general',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'respiratory',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'gastroIntestinal',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'skin',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'other',
-                'hidden',
-                false
-              );
-              this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
-                this.myFormElements,
-                'complications',
-                'hidden',
-                false
-              );
+            if (val === 'COOPERATIVE') {
+              this.toggleSections(false);
+            }
+            if (val === 'UNCOOPERATIVE' || val === 'UNAVAILABLE') {
+              this.toggleSections(true);
             }
           })
         );
       }
+    });
+  }
+
+  toggleSections(visible: boolean): void {
+    const ids: string[] = [
+      'measurements',
+      'symptoms',
+      'general',
+      'respiratory',
+      'gastroIntestinal',
+      'skin',
+      'other',
+      'complications',
+    ];
+
+    ids.forEach((id) => {
+      this.myFormElements = this.formElementControlService.setAttributeToGroupElement(
+        this.myFormElements,
+        id,
+        'hidden',
+        visible
+      );
     });
   }
 
