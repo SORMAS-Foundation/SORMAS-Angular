@@ -6,6 +6,12 @@
         {{ 'captions.View.persons' | translate }}
       </h1>
       <div class="page-header-actions">
+        <app-dropdown-menu buttonText="{{ 'captions.export' | translate }}">
+          <app-action-menu
+            [config]="actionsExport"
+            (action)="onActionSelected($event)"
+          ></app-action-menu>
+        </app-dropdown-menu>
         <button mat-stroked-button color="primary" (click)="setGeolocation()">
           {{ 'captions.personsSetMissingGeoCoordinates' | translate }}
         </button>
