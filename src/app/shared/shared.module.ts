@@ -74,6 +74,7 @@ import { ImportModalComponent } from './modals/import-modal/import-modal.compone
 import { AddVisitsGroupSelectComponent } from './widgets/add-visits-group-select/add-visits-group-select.component';
 import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
 import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-group-select/clinical-course-group-select.component';
+import { ShareModalComponent } from './modals/share-modal/share-modal.component';
 
 @NgModule({
   declarations: [
@@ -133,6 +134,7 @@ import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-gr
     AddVisitsGroupSelectComponent,
     CalculateCaseClassificationComponent,
     ClinicalCourseGroupSelectComponent,
+    ShareModalComponent,
   ],
   imports: [
     CommonModule,
@@ -192,6 +194,7 @@ import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-gr
     ExportConfigurationComponent,
     SpecificSearchComponent,
     ImportModalComponent,
+    ShareModalComponent,
   ],
 })
 export class SharedModule {}

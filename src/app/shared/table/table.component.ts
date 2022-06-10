@@ -33,8 +33,14 @@ import {
 import { FilterService } from '../../_services/filter.service';
 import { LocalStorageService } from '../../_services/local-storage.service';
 import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
-import { ACTIONS_BULK_EDIT, ACTIONS_VIEW_OPTIONS, ADD_MODAL_MAX_WIDTH } from '../../app.constants';
+import {
+  ACTIONS_BULK_EDIT,
+  ACTIONS_VIEW_OPTIONS,
+  ADD_MODAL_MAX_WIDTH,
+  MODAL_NARROW_WIDTH,
+} from '../../app.constants';
 import { NotificationService } from '../../_services/notification.service';
+import { ShareModalComponent } from '../modals/share-modal/share-modal.component';
 
 @Component({
   selector: 'app-table',
@@ -518,6 +524,9 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
       case ACTIONS_VIEW_OPTIONS.FOLLOW_UP:
         this.viewOptionEvent.emit(ACTIONS_VIEW_OPTIONS.FOLLOW_UP);
         break;
+      case ACTIONS_BULK_EDIT.SHARE:
+        this.openShareModal();
+        break;
       default:
         // eslint-disable-next-line no-console
         console.log(event);
@@ -550,6 +559,20 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.determineHeight(this.fullHeight);
+  }
+
+  openShareModal(): void {
+    const dialogRef = this.dialog.open(ShareModalComponent, {
+      width: MODAL_NARROW_WIDTH,
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {
