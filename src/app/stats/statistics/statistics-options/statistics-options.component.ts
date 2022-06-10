@@ -81,9 +81,11 @@ export class StatisticsOptionsComponent implements OnInit {
     }
 
     if (controlChartType) {
-      controlChartType.valueChanges.subscribe((val) => {
-        this.twoAxes = val !== 'PIE';
-      });
+      this.subscriptions.add(
+        controlChartType.valueChanges.subscribe((val) => {
+          this.twoAxes = val !== 'PIE';
+        })
+      );
     }
   }
 
