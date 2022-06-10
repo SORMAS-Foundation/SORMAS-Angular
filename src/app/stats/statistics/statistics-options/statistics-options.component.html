@@ -125,72 +125,74 @@
             </mat-select>
           </mat-form-field>
 
-          <button mat-icon-button color="primary" (click)="swapAxes()">
-            <mat-icon class="material-icons-round">swap_horiz</mat-icon>
-          </button>
+          <ng-container *ngIf="twoAxes">
+            <button mat-icon-button color="primary" (click)="swapAxes()">
+              <mat-icon class="material-icons-round">swap_horiz</mat-icon>
+            </button>
 
-          <mat-form-field appearance="outline" floatLabel="always" class="field-axis">
-            <mat-label *ngIf="type.value === 'TABLE'">
-              {{ 'enum.StatisticsVisualizationElementType.COLUMNS' | translate }}
-            </mat-label>
-            <mat-label *ngIf="type.value === 'CHART'">
-              {{ 'enum.StatisticsVisualizationElementType.Chart.COLUMNS' | translate }}
-            </mat-label>
-            <mat-select #columns disableOptionCentering formControlName="columns">
-              <mat-option *ngIf="type.value === 'TABLE'" value="">
-                {{ 'captions.statisticsDontGroupColumns' | translate }}
-              </mat-option>
-              <mat-option *ngIf="type.value === 'CHART'" value="">
-                {{ 'captions.statisticsDontGroupX' | translate }}
-              </mat-option>
-              <mat-optgroup
-                *ngFor="let group of statisticsAttributesGroups"
-                [label]="group.name | translate"
+            <mat-form-field appearance="outline" floatLabel="always" class="field-axis">
+              <mat-label *ngIf="type.value === 'TABLE'">
+                {{ 'enum.StatisticsVisualizationElementType.COLUMNS' | translate }}
+              </mat-label>
+              <mat-label *ngIf="type.value === 'CHART'">
+                {{ 'enum.StatisticsVisualizationElementType.Chart.COLUMNS' | translate }}
+              </mat-label>
+              <mat-select #columns disableOptionCentering formControlName="columns">
+                <mat-option *ngIf="type.value === 'TABLE'" value="">
+                  {{ 'captions.statisticsDontGroupColumns' | translate }}
+                </mat-option>
+                <mat-option *ngIf="type.value === 'CHART'" value="">
+                  {{ 'captions.statisticsDontGroupX' | translate }}
+                </mat-option>
+                <mat-optgroup
+                  *ngFor="let group of statisticsAttributesGroups"
+                  [label]="group.name | translate"
+                >
+                  <mat-option *ngFor="let option of group.attributes" [value]="option.key">
+                    {{ option.value | translate }}
+                  </mat-option>
+                </mat-optgroup>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field
+              *ngIf="
+                columns.value === 'ONSET_TIME' ||
+                columns.value === 'REPORT_TIME' ||
+                columns.value === 'OUTCOME_TIME'
+              "
+              appearance="outline"
+              floatLabel="always"
+              class="field-axis-selection"
+            >
+              <mat-label></mat-label>
+              <mat-select
+                disableOptionCentering
+                formControlName="columnsDetails"
+                [placeholder]="'captions.statisticsSpecifySelection' | translate"
               >
-                <mat-option *ngFor="let option of group.attributes" [value]="option.key">
+                <mat-option *ngFor="let option of statisticsTimeAttributes" [value]="option.key">
                   {{ option.value | translate }}
                 </mat-option>
-              </mat-optgroup>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field
-            *ngIf="
-              columns.value === 'ONSET_TIME' ||
-              columns.value === 'REPORT_TIME' ||
-              columns.value === 'OUTCOME_TIME'
-            "
-            appearance="outline"
-            floatLabel="always"
-            class="field-axis-selection"
-          >
-            <mat-label></mat-label>
-            <mat-select
-              disableOptionCentering
-              formControlName="columnsDetails"
-              [placeholder]="'captions.statisticsSpecifySelection' | translate"
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field
+              *ngIf="columns.value === 'JURISDICTION'"
+              appearance="outline"
+              floatLabel="always"
+              class="field-axis-selection"
             >
-              <mat-option *ngFor="let option of statisticsTimeAttributes" [value]="option.key">
-                {{ option.value | translate }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field
-            *ngIf="columns.value === 'JURISDICTION'"
-            appearance="outline"
-            floatLabel="always"
-            class="field-axis-selection"
-          >
-            <mat-label></mat-label>
-            <mat-select
-              disableOptionCentering
-              formControlName="columnsDetails"
-              [placeholder]="'captions.statisticsSpecifySelection' | translate"
-            >
-              <mat-option *ngFor="let option of statisticsPlaceAttributes" [value]="option.key">
-                {{ option.value | translate }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+              <mat-label></mat-label>
+              <mat-select
+                disableOptionCentering
+                formControlName="columnsDetails"
+                [placeholder]="'captions.statisticsSpecifySelection' | translate"
+              >
+                <mat-option *ngFor="let option of statisticsPlaceAttributes" [value]="option.key">
+                  {{ option.value | translate }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
         </div>
       </fieldset>
 
@@ -208,7 +210,7 @@
         </mat-radio-group>
 
         <mat-form-field
-          *ngIf="caseCount.checked"
+          *ngIf="caseIncidence.checked"
           appearance="outline"
           floatLabel="always"
           class="field-incidence-divisor"

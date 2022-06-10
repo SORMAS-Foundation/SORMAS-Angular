@@ -18,6 +18,7 @@ export class StatisticsOptionsComponent implements OnInit {
   statisticsAttributesGroups = STATISTICS_ATTRIBUTES_GROUPS;
   statisticsTimeAttributes = STATISTICS_TIME_ATTRIBUTES;
   statisticsPlaceAttributes = STATISTICS_PLACE_ATTRIBUTES;
+  twoAxes = true;
   subscriptions: Subscription = new Subscription();
 
   ngOnInit(): void {
@@ -75,6 +76,14 @@ export class StatisticsOptionsComponent implements OnInit {
       this.subscriptions.add(
         controlColumns.valueChanges.subscribe(() => {
           controlColumnsDetails?.setValue(null);
+        })
+      );
+    }
+
+    if (controlChartType) {
+      this.subscriptions.add(
+        controlChartType.valueChanges.subscribe((val) => {
+          this.twoAxes = val !== 'PIE';
         })
       );
     }
