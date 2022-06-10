@@ -183,5 +183,7 @@
   "warningSetMissingGeoCoordinates": "This might replace coordinates which were intentionally set differently",
   "invalidCoords": "Invalid coordinates",
   "unauthorized": "Unauthorized",
+  "visitDetails": "Visit details",
+  "symptoms.availability": "Availability",
   "headingClinicalDetails": "Assessment details"
 }
