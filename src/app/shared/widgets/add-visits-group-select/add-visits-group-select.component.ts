@@ -32,7 +32,7 @@ export class AddVisitsGroupSelectComponent {
   updateSymptoms(value: string | undefined): void {
     this.dataForm.forEach((section) => {
       section.fields.forEach((field: FormElementBase<any>) => {
-        if (field.controlType === 'radio') {
+        if (field.controlType === 'radio' && field.key !== 'availability') {
           const control = this.group.controls[field.key];
           const changed = control.value !== value;
           control?.patchValue(value);
