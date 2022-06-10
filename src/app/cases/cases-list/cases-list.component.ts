@@ -11,7 +11,11 @@ import * as tableDataDefault from './case-list-table-data';
 import * as tableDataDetailed from './case-list-detailed-table-data';
 import * as tableDataFollowUp from './case-list-follow-up-table-data';
 import { CaseDataDto } from '../../_models/caseDataDto';
-import {CONFIG_CASES, CONFIG_CASES_DETAILED, CONFIG_CASES_FOLLOW_UP} from '../../_constants/storage';
+import {
+  CONFIG_CASES,
+  CONFIG_CASES_DETAILED,
+  CONFIG_CASES_FOLLOW_UP,
+} from '../../_constants/storage';
 import {
   HEADER_HEIGHT,
   ADD_MODAL_MAX_WIDTH,

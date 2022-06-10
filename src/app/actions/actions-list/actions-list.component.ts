@@ -6,13 +6,13 @@ import { NavItem, TableColumn } from '../../_models/common';
 import { EventDto } from '../../_models/eventDto';
 import { defaultColumnDefs } from './actions-list-table-data';
 import {
-  CONFIG_EVENTS,
   HEADER_HEIGHT,
   EVENT_FILTERS_FORM_ID,
   ACTIONS_EVENT_ACTION,
   SMALL_NOTIFICATION_MODAL_WIDTH,
   EXPORT_TYPES,
-  API_ROUTE_EVENT_ACTIONS, CONFIG_EVENTS_ACTIONS,
+  API_ROUTE_EVENT_ACTIONS,
+  CONFIG_EVENTS_ACTIONS,
 } from '../../app.constants';
 import { actionsBulkEditDefs, actionsMoreDefs } from './actions-list-actions-data';
 import { HelperService } from '../../_services/helper.service';
