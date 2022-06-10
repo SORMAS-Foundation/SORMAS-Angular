@@ -63,7 +63,6 @@
   }
 }
 
-
 .mat-table {
   width: 100%;
   overflow: auto;
@@ -96,7 +95,8 @@
   }
 
   tr.mat-row {
-    &.hide, &.hide-all {
+    &.hide,
+    &.hide-all {
       display: none;
     }
     td {
@@ -161,6 +161,21 @@
 
         &.rotate {
           transform: rotate(-90deg);
+        }
+      }
+    }
+
+    &:nth-child(2n) {
+      td.mat-cell {
+        background-color: rgb(mat.get-color-from-palette($sormas-primary, 50), 0.5);
+      }
+
+      .actions {
+        .mat-icon {
+          width: 32px;
+          height: 32px;
+          font-size: 32px;
+          line-height: 32px;
         }
       }
     }
