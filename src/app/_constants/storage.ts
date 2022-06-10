@@ -1,10 +1,15 @@
 export const CONFIG_CASES = 'configCases';
 export const CONFIG_CASES_DETAILED = 'configCasesDetailed';
+export const CONFIG_CASES_FOLLOW_UP = 'configCasesFollowUp';
 export const CONFIG_CONTACTS = 'configContacts';
 export const CONFIG_CONTACTS_DETAILED = 'configContactsDetailed';
+export const CONFIG_CONTACTS_FOLLOW_UP = 'configContactsFollowUp';
 export const CONFIG_TASKS = 'configTasks';
 export const CONFIG_EVENTS = 'configEvents';
+export const CONFIG_EVENTS_ACTIONS = 'configEventsActions';
+export const CONFIG_EVENTS_GROUPS = 'configEventsGroups';
 export const CONFIG_SAMPLES = 'configSamples';
+export const CONFIG_LAB_MESSAGES = 'configLabMessages';
 export const CONFIG_PERSONS = 'configPersons';
 export const CONFIG_USERS = 'configUsers';
 export const CONFIG_IMMUNIZATIONS = 'configImmunizations';

@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   ACTIONS_LAB_MESSAGE,
   ADD_MODAL_NARROW,
-  CONFIG_SAMPLES,
+  CONFIG_LAB_MESSAGES,
   HEADER_HEIGHT,
   LAB_MESSAGE_FILTERS_FORM_ID,
 } from '../../app.constants';
@@ -26,7 +26,7 @@ export class LabMessagesListComponent implements OnInit, OnDestroy {
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_LAB_MESSAGE_FILTERS));
   samples: SampleDto[] = [];
   defaultColumns: TableColumn[] = [];
-  configKey = CONFIG_SAMPLES;
+  configKey = CONFIG_LAB_MESSAGES;
   headerHeight = HEADER_HEIGHT;
   formIdFilters = LAB_MESSAGE_FILTERS_FORM_ID;
   actionsViewOptions: NavItem[] = actionsViewOptionsDefs;

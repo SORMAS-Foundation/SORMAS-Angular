@@ -15,7 +15,7 @@ import { EventAddComponent } from '../../event-add/event-add.component';
 import { viewOptionsDefs } from './event-groups-list-action-data';
 import { defaultColumnDefs } from './event-groups-list-table-data';
 import { EVENT_GROUP_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
-import { API_ROUTE_EVENT_GROUPS } from '../../../app.constants';
+import { API_ROUTE_EVENT_GROUPS, CONFIG_EVENTS_GROUPS } from '../../../app.constants';
 import { NotificationService } from '../../../_services/notification.service';
 import { ExportService } from '../../../_services/api/export.service';
 
@@ -29,6 +29,7 @@ export class EventGroupsListComponent implements OnDestroy {
   actionsViewOption: NavItem[] = viewOptionsDefs;
   tableAppearanceOptions = TableAppearanceOptions;
   formId = EVENT_GROUP_FILTERS_FORM_ID;
+  configKey = CONFIG_EVENTS_GROUPS;
 
   private subscription: Subscription[] = [];
   constructor(
