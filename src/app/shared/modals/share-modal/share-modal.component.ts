@@ -55,7 +55,7 @@ export class ShareModalComponent implements AfterViewInit, OnDestroy {
             if (val === true) {
               controlOwnership.disable();
             }
-            if (val === false) {
+            if (val === false && controlExcludeSensitiveData.value !== true) {
               controlOwnership.enable();
             }
           })
@@ -70,7 +70,7 @@ export class ShareModalComponent implements AfterViewInit, OnDestroy {
             if (val === true) {
               controlOwnership.disable();
             }
-            if (val === false) {
+            if (val === false && controlExcludePersonalData.value !== true) {
               controlOwnership.enable();
             }
           })
