@@ -20,6 +20,7 @@ export const FORM_DATA_CASE_SHARE = [
           },
         ],
         className: 'size-large',
+        validation: ['required'],
       },
     ],
   },
