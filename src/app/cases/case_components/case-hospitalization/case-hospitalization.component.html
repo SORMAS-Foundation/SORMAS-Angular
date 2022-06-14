@@ -1,5 +1,17 @@
-<app-dynamic-form
-  [formId]="formId"
-  [formElements]="myFormElements"
-  [resourceService]="resourceService"
-></app-dynamic-form>
+<app-sidebar>
+  <app-dynamic-form
+    #form
+    main
+    [formId]="formId"
+    [formElements]="myFormElements"
+    [resourceService]="resourceService"
+  ></app-dynamic-form>
+  <div *ngIf="case" aside>
+    <app-edge-panel
+      type="PREV_HOSPITALIZATION"
+      [scopeId]="case.uuid"
+      [cardCollapse]="true"
+      [data]="prevHospitalization"
+    ></app-edge-panel>
+  </div>
+</app-sidebar>

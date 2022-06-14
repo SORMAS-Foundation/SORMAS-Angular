@@ -14,6 +14,13 @@ export const PANEL_CONFIG = {
     cardStatusKey: 'pathogenTestResult',
     appearance: 'outlined',
   },
+  PREV_HOSPITALIZATION: {
+    title: 'strings.headingPreviousHospitalizations',
+    action: '+',
+    cardType: 'prev_hospitalization',
+    appearance: 'outlined',
+    cardTitleKey: 'healthFacility.caption',
+  },
   EVENT: {
     title: 'strings.entityEvents',
     action: 'captions.linkEvent',

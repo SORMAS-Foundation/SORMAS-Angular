@@ -60,7 +60,8 @@ export type EdgePanelType =
   | 'CONTACT'
   | 'PATHOGEN'
   | 'ADDITIONAL'
-  | 'VACCINATION';
+  | 'VACCINATION'
+  | 'PREV_HOSPITALIZATION';
 export const EDGE_PANEL_TYPE = {
   TASK: 'TASK' as EdgePanelType,
   SAMPLE: 'SAMPLE' as EdgePanelType,
@@ -71,6 +72,7 @@ export const EDGE_PANEL_TYPE = {
   PATHOGEN: 'PATHOGEN' as EdgePanelType,
   ADDITIONAL: 'ADDITIONAL' as EdgePanelType,
   VACCINATION: 'VACCINATION' as EdgePanelType,
+  PREV_HOSPITALIZATION: 'PREV_HOSPITALIZATION' as EdgePanelType,
 };
 
 // date format

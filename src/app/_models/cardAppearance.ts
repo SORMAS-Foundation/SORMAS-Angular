@@ -11,6 +11,7 @@ export type CardType =
   | 'sample'
   | 'case'
   | 'case_event'
+  | 'prev_hospitalization'
   | 'case_contact'
   | 'case_task'
   | 'contact'

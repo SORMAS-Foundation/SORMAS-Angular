@@ -21,6 +21,7 @@ import { PositionType } from '../../_models/positionType';
 })
 export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() resourceService: BaseService<any>;
+  @Input() data: any;
   @Input() scopeId: string | undefined;
   @Input() type: EdgePanelType = EDGE_PANEL_TYPE.TASK;
   @Input() filterCriteriaEntity?: string;
@@ -56,20 +57,24 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
     ];
 
     this.config = PANEL_CONFIG[this.type];
-    this.loadResource = true;
-    this.subscriptions.push(
-      this.resourceService?.getAll(null, null, filters).subscribe({
-        next: (response: any) => {
-          this.items = response.elements;
-          this.loadResource = false;
-        },
-        error: (err: any) => {
-          this.notificationService.error(err);
-          this.loadResource = false;
-        },
-        complete: () => {},
-      })
-    );
+    if (this.resourceService) {
+      this.loadResource = true;
+      this.subscriptions.push(
+        this.resourceService?.getAll(null, null, filters).subscribe({
+          next: (response: any) => {
+            this.items = response.elements;
+            this.loadResource = false;
+          },
+          error: (err: any) => {
+            this.notificationService.error(err);
+            this.loadResource = false;
+          },
+          complete: () => {},
+        })
+      );
+    } else {
+      this.items = this.data;
+    }
 
     this.subscriptions.push(
       this.breakpointObserver
