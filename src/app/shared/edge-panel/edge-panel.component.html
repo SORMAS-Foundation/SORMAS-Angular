@@ -12,7 +12,7 @@
 >
   <app-loader [show]="loadResource"></app-loader>
   <app-card-list
-    *ngIf="items.length"
+    *ngIf="items && items.length"
     [data]="items"
     [cardWidth]="cardWidth || 200"
     [initialPageSize]="initialSize"

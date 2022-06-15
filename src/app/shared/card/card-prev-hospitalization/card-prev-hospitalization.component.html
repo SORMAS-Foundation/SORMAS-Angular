@@ -1,0 +1,37 @@
+<div *ngIf="data" class="card-hospitalization">
+  <div class="timeline">
+    <div class="date">
+      <app-date-card
+        *ngIf="data.creationDate"
+        [date]="data.creationDate"
+        [showYear]="true"
+        [appearance]="dateCardType.STANDARD"
+        class="date"
+      ></app-date-card>
+      <app-date-card
+        *ngIf="data.changeDate"
+        [date]="data.changeDate"
+        [showYear]="true"
+        [appearance]="dateCardType.STANDARD"
+        class="date"
+      ></app-date-card>
+    </div>
+    <div class="isolation" *ngIf="data.isolated">
+      <p class="text">{{ 'captions.CasePreviousHospitalization.isolated' | translate }}</p>
+      <p [ngClass]="['value', 'value-' + data.isolated | lowercase]">
+        {{ data.isolated }}
+      </p>
+    </div>
+  </div>
+  <div *ngIf="data.description" class="description">
+    {{ data.description }}
+  </div>
+  <div class="address">
+    <div class="content">
+      <mat-icon class="material-icons-round">place</mat-icon>
+      <span *ngIf="data.district?.caption">{{ data.district?.caption }}, </span>
+      <span *ngIf="data.region?.caption">{{ data.region?.caption }}</span>
+      <span *ngIf="data.region?.caption">{{ data.community?.caption }}</span>
+    </div>
+  </div>
+</div>
