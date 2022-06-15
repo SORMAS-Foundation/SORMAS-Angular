@@ -16,7 +16,6 @@ export class CollapsableBoxComponent {
   @Input() iconExpand = 'add';
   @Input() iconCollapse = 'remove';
   @Input() showGroupLink = false;
-  @Input() bigSize = false;
 
   @Output() action: EventEmitter<string> = new EventEmitter();
 

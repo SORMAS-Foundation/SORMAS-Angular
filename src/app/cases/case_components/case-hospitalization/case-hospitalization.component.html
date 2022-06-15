@@ -8,13 +8,13 @@
   ></app-dynamic-form>
   <div *ngIf="case" aside>
     <app-edge-panel
+      class="big-link-size"
       type="PREV_HOSPITALIZATION"
       [scopeId]="case.uuid"
       [cardCollapse]="false"
       [cardEditPosition]="'TOPRIGHT'"
       [data]="prevHospitalization"
       status="unclassified"
-      [bigSize]="true"
     ></app-edge-panel>
   </div>
 </app-sidebar>

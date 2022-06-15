@@ -12,12 +12,7 @@
       </mat-icon>
     </mat-panel-title>
     <mat-panel-description *ngIf="actionText && !showGroupLink">
-      <button
-        [ngClass]="bigSize ? 'big-size' : ''"
-        mat-button
-        color="primary"
-        (click)="doAction($event)"
-      >
+      <button mat-button color="primary" (click)="doAction($event)">
         {{ actionText }}
       </button>
     </mat-panel-description>
