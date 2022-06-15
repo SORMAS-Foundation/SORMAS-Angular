@@ -1,30 +1,26 @@
 <div *ngIf="data" class="card-hospitalization">
-  <div class="hospitalization-details">
-    <span
-      [ngClass]="['hospitalization-status', 'status-' + data.healthFacilityDetails | lowercase]"
-    >
-      {{ data.healthFacilityDetails | humanize }}
-    </span>
-  </div>
-  <h1 class="title">{{ data.healthFacility?.caption }}</h1>
   <div class="timeline">
-    <app-date-card
-      *ngIf="data.creationDate"
-      [date]="data.creationDate"
-      [showYear]="true"
-      [appearance]="dateCardType.ACCENT"
-      class="date"
-    ></app-date-card>
-    <app-date-card
-      *ngIf="data.changeDate"
-      [date]="data.changeDate"
-      [showYear]="true"
-      [appearance]="dateCardType.ACCENT"
-      class="date"
-    ></app-date-card>
+    <div class="date">
+      <app-date-card
+        *ngIf="data.creationDate"
+        [date]="data.creationDate"
+        [showYear]="true"
+        [appearance]="dateCardType.STANDARD"
+        class="date"
+      ></app-date-card>
+      <app-date-card
+        *ngIf="data.changeDate"
+        [date]="data.changeDate"
+        [showYear]="true"
+        [appearance]="dateCardType.STANDARD"
+        class="date"
+      ></app-date-card>
+    </div>
     <div class="isolation" *ngIf="data.isolated">
       <p class="text">{{ 'captions.CasePreviousHospitalization.isolated' | translate }}</p>
-      <p class="value">{{ data.isolated | humanize }}</p>
+      <p [ngClass]="['value', 'value-' + data.isolated | lowercase]">
+        {{ data.isolated }}
+      </p>
     </div>
   </div>
   <div *ngIf="data.description" class="description">

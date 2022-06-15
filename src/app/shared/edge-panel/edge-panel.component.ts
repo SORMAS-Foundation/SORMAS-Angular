@@ -32,6 +32,7 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() cardWidth?: number;
   @Input() showCheckBoxFilter: boolean;
   @Input() cardEditPosition: PositionType = Position.BOTTOMRIGHT;
+  @Input() bigSize = false;
 
   @Output() addItem: EventEmitter<any> = new EventEmitter();
 

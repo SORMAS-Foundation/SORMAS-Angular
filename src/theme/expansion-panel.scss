@@ -88,6 +88,11 @@
 
         .mat-button {
           padding: 0;
+
+          &.big-size {
+            font-size: 28px;
+            font-weight: normal;
+          }
         }
       }
 

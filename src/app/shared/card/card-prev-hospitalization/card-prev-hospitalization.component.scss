@@ -2,6 +2,9 @@
 @use '/src/variables.scss' as *;
 
 .card-hospitalization {
+  padding-top: 10px;
+  border-top: solid 2px mat.get-color-from-palette($sormas-alert, 100);
+  margin-top: -4px;
   .title {
     font-size: 14px;
     color: mat.get-color-from-palette($sormas-accent, 800);
@@ -10,8 +13,11 @@
   .timeline {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     .date {
-      margin-right: 10px;
+      &:first-child {
+        margin-right: 10px;
+      }
     }
     .isolation {
       text-align: center;
@@ -22,7 +28,16 @@
       }
       .value {
         font-size: 14px;
-        color: mat.get-color-from-palette($sormas-warning, 800);
+        font-weight: 500;
+        &.value-yes {
+          color: mat.get-color-from-palette($sormas-warning, 800);
+        }
+        &.value-no {
+          color: mat.get-color-from-palette($sormas-primary, 400);
+        }
+        &.value-unknown {
+          color: mat.get-color-from-palette($sormas-accent, 500);
+        }
       }
     }
   }

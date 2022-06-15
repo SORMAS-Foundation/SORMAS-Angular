@@ -19,7 +19,8 @@ export const PANEL_CONFIG = {
     action: '+',
     cardType: 'prev_hospitalization',
     appearance: 'outlined',
-    cardTitleKey: 'healthFacility.caption',
+    cardTitleKey: 'healthFacilityDetails',
+    cardStatus: 'unclassified',
   },
   EVENT: {
     title: 'strings.entityEvents',
