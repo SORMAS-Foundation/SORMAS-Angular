@@ -1,4 +1,22 @@
 :host-context(.big-link-size) .mat-button {
+  height: 20px;
+  line-height: 20px;
   font-size: 30px;
   font-weight: normal;
+}
+
+:host-context(.big-link-size) .mat-expansion-panel-header-title {
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+:host-context(.big-link-size) .mat-expansion-panel-header-description {
+  width: 45px;
+  justify-content: initial;
+}
+
+:host-context(.big-link-size) .mat-icon {
+  height: 23px;
+  line-height: 23px;
 }
