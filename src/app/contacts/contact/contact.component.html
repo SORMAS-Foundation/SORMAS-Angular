@@ -17,6 +17,12 @@
   <app-info-bar [data]="contact" [type]="'CONTACT'"></app-info-bar>
 
   <div class="tab-nav-header">
+    <div *ngIf="contact.caze" class="case-link">
+      <a mat-button [routerLink]="['/cases/case/' + contact.caze.uuid + '/details']">
+        <mat-icon class="material-icons-round">navigate_before</mat-icon>
+        {{ 'captions.contactCaseContacts' | translate }}
+      </a>
+    </div>
     <nav mat-tab-nav-bar>
       <a
         mat-tab-link

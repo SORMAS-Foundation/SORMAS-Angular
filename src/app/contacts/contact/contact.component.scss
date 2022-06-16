@@ -58,3 +58,28 @@ h1 {
   text-align: right;
   white-space: nowrap;
 }
+
+.case-link {
+  align-self: center;
+  padding-right: 16px;
+  margin-top: 1px;
+  margin-right: 32px;
+  border-right: 1px solid mat.get-color-from-palette($sormas-primary, 200);
+
+  .mat-button {
+    height: 24px;
+    line-height: 24px;
+    padding: 0;
+
+    &:hover {
+      color: mat.get-color-from-palette($sormas-primary, 800);
+    }
+  }
+
+  .mat-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 16px;
+  }
+}
