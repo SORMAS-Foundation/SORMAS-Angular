@@ -24,7 +24,13 @@ import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-v
 
 const pipe = new EnumToKeyValuePipe();
 
-const contactStatusOptions = pipe.transform(ContactStatus);
+const contactStatusOptions = [
+  {
+    key: '',
+    value: 'captions.all',
+  },
+  ...pipe.transform(ContactStatus),
+];
 const contactCategoryOptions = pipe.transform(ContactCategory);
 const yesNoUnknownOptions = pipe.transform(YesNoUnknown);
 const relevanceStatusOptions = pipe.transform(EntityRelevanceStatusOptions);
@@ -103,6 +109,7 @@ export const FORM_DATA_CONTACT_FILTERS = [
         ...FORM_DATA_RADIO,
         key: 'relevanceStatus',
         options: relevanceStatusOptions,
+        value: 'ACTIVE',
         separated: true,
       },
     ],
@@ -116,6 +123,7 @@ export const FORM_DATA_CONTACT_FILTERS = [
         ...FORM_DATA_RADIO,
         key: 'contactStatus',
         options: contactStatusOptions,
+        value: '',
         separated: true,
       },
     ],
@@ -387,6 +395,20 @@ export const FORM_DATA_CASE_CONTACT_FILTERS = [
         key: 'contactOrCaseLike',
         placeholder: 'strings.promptContactsSearchField',
         className: 'fullwidth',
+      },
+    ],
+  },
+  {
+    id: 'status',
+    title: 'captions.Contact.contactStatus',
+    appearance: FormGroupStyleType.COLLAPSABLE,
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'contactStatus',
+        options: contactStatusOptions,
+        value: '',
+        separated: true,
       },
     ],
   },

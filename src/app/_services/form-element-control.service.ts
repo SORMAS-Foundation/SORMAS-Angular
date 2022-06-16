@@ -24,11 +24,11 @@ export class FormElementControlService {
       group[formElement.key] =
         validations.length > 0
           ? (group[formElement.key] = new FormControl(
-              { value: formElement.value || undefined, disabled: formElement.disabled },
+              { value: formElement.value ?? undefined, disabled: formElement.disabled },
               validations
             ))
           : (group[formElement.key] = new FormControl({
-              value: formElement.value || undefined,
+              value: formElement.value ?? undefined,
               disabled: formElement.disabled,
             }));
       validations = [];
