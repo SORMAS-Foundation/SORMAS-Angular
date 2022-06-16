@@ -81,6 +81,7 @@ export const FORM_DATA_CASE_DETAILS = [
         widgetInfo: {
           component: ClassificationRulesComponent,
         },
+        className: 'push-bottom',
       },
       {
         ...FORM_DATA_WIDGET,
