@@ -138,6 +138,10 @@ legend {
   margin-left: 20px;
 }
 
+.push-bottom {
+  margin-top: 28px;
+}
+
 @media (min-width: map-get($grid-breakpoints, md)) {
   .mat-card {
     padding: 16px 24px;

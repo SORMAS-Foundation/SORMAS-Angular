@@ -73,6 +73,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   additionalHeaderDefs: any[] = [];
   additionalHeader: string[] = [];
   bulkEditOptionsDefs: NavItem[];
+  stickyColumnsCount = 0;
 
   @Input() isSortable = false;
   @Input() isPageable = false;
@@ -243,6 +244,7 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getColumns(): string[] {
     let columns = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
+    let stickyColumns = 0;
 
     if (this.saveConfigKey) {
       const config = this.localStorageService.get(this.saveConfigKey);
@@ -254,19 +256,24 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
     if (this.isViewable) {
       columns.unshift('view');
+      stickyColumns += 1;
     }
 
     if (this.isEditable) {
       columns.unshift('edit');
+      stickyColumns += 1;
     }
 
     if (this.isSelectable) {
       columns.unshift('select');
+      stickyColumns += 1;
     }
 
     if (this.spacerRight) {
       columns.push('$spacerRight$');
     }
+
+    this.stickyColumnsCount = stickyColumns;
 
     return [...new Set(columns)];
   }
@@ -476,8 +483,12 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   drop(event: CdkDragDrop<string[]>): void {
-    moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
-    this.saveColumns();
+    moveItemInArray(
+      this.displayedColumns,
+      event.previousIndex + this.stickyColumnsCount,
+      event.currentIndex + this.stickyColumnsCount
+    );
+    // this.saveColumns();
   }
 
   determineHeight(fullHeight?: boolean): void {
