@@ -17,7 +17,6 @@ export class HelperApiService {
   getLatLng(city: string, address: string): Observable<any> {
     const endpoint = constants.API_ROUTE_HELPER.GET_LAT_LNG;
     const requestPayload: any = {
-      country,
       city,
       address,
     };
