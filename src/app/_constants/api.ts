@@ -470,3 +470,7 @@ export const API_ROUTE_MERGE_DUPLICATES_CONTACT = {
 export const API_ROUTE_POPULATION = {
   EXPORT: 'population/export',
 };
+
+export const API_ROUTE_HELPER = {
+  GET_LAT_LNG: 'get_lat_lng',
+};
