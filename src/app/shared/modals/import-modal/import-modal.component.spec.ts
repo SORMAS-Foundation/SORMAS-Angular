@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { PipesModule } from '../../../_pipes/pipes.module';
 import { ImportModalComponent } from './import-modal.component';
 
 describe('ImportModalComponent', () => {
@@ -12,7 +13,7 @@ describe('ImportModalComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [ImportModalComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [TranslateModule.forRoot(), PipesModule],
       providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }],
     }).compileComponents();
   });

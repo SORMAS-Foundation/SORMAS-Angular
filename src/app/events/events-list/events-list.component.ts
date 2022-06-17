@@ -20,6 +20,7 @@ import {
   API_ROUTE_EVENTS,
   EXPORT_CUSTOM_MODAL_WIDTH,
   SPECIFIC_SEARCH_TYPE,
+  ADD_MODAL_WIDE,
 } from '../../app.constants';
 import { EventAddComponent } from '../event-add/event-add.component';
 import { actionsBulkEditDefs, actionsMoreDefs } from './event-list-actions-data';
@@ -34,6 +35,7 @@ import { NotificationService } from '../../_services/notification.service';
 import { TableComponent } from '../../shared/table/table.component';
 import { ExportService } from '../../_services/api/export.service';
 import { SpecificSearchComponent } from '../../shared/modals/specific-search/specific-search.component';
+import { ImportModalComponent } from '../../shared/modals/import-modal/import-modal.component';
 
 @Component({
   selector: 'app-events-list',
@@ -193,6 +195,17 @@ export class EventsListComponent implements OnInit, OnDestroy {
     this.dialog.open(SpecificSearchComponent, {
       width: EXPORT_CUSTOM_MODAL_WIDTH,
       data: { type: SPECIFIC_SEARCH_TYPE.EVENT_SPECIFIC_SEARCH },
+    });
+  }
+
+  openImportModal(): void {
+    this.dialog.open(ImportModalComponent, {
+      width: ADD_MODAL_WIDE,
+      data: {
+        title: 'strings.headingImportEvent',
+        type: ACTIONS_EVENT.IMPORT,
+        service: this.eventService,
+      },
     });
   }
 

@@ -9,7 +9,7 @@
 }
 
 .iteration {
-  flex: 0 0 96px;
+  flex: 0 0 132px;
   padding: 24px 24px 0 0;
   line-height: 24px;
   text-align: right;
@@ -70,4 +70,8 @@ h2 {
   input[type='file']::file-selector-button {
     display: none;
   }
+}
+
+.mat-dialog-content {
+  padding: 24px;
 }
