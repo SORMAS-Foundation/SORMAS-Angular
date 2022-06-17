@@ -24,6 +24,7 @@ import {
   CONFIG_CONTACTS,
   CONFIG_CONTACTS_DETAILED,
   CONFIG_CONTACTS_FOLLOW_UP,
+  ADD_MODAL_WIDE,
 } from '../../app.constants';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
@@ -43,6 +44,7 @@ import { ExportService } from '../../_services/api/export.service';
 import { NotificationService } from '../../_services/notification.service';
 import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
 import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
+import { ImportModalComponent } from '../../shared/modals/import-modal/import-modal.component';
 
 @Component({
   selector: 'app-contacts-list',
@@ -256,6 +258,17 @@ export class ContactsListComponent implements OnInit, OnDestroy {
       data: {
         exportType: EXPORT_TYPE.CONTACT,
         exportFormData: JSON.parse(JSON.stringify(FORM_DATA_EXPORT_CONFIGURATION)),
+      },
+    });
+  }
+
+  openImportModal(): void {
+    this.dialog.open(ImportModalComponent, {
+      width: ADD_MODAL_WIDE,
+      data: {
+        title: 'strings.headingImportContacts',
+        type: ACTIONS_CONTACT.IMPORT,
+        service: this.contactService,
       },
     });
   }

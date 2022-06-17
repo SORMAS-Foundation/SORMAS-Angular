@@ -8,111 +8,136 @@
 </div>
 
 <div mat-dialog-content>
-  <div class="step">
-    <div class="iteration">{{ 'strings.step' | translate }} 1</div>
+  <div *ngIf="selectDate" class="step">
+    <div class="iteration">{{ 'strings.date' | translate }}</div>
     <div class="instructions">
-      <h2>{{ 'strings.headingDownloadImportGuide' | translate }}</h2>
-      <p>{{ 'strings.infoDownloadImportGuide' | translate }}</p>
-      <p class="actions">
-        <a
-          [href]="importGuideUrl"
-          target="_blank"
-          mat-button
-          color="primary"
-          class="button-download"
-        >
-          <mat-icon class="material-icons-round">file_download</mat-icon>
-          {{ 'captions.importDownloadImportGuide' | translate }}
-        </a>
-        <a
-          href="/assets/document.pdf"
-          target="_blank"
-          mat-button
-          color="primary"
-          class="button-download"
-        >
-          <mat-icon class="material-icons-round">file_download</mat-icon>
-          {{ 'captions.importDownloadDataDictionary' | translate }}
-        </a>
-      </p>
+      <p>{{ 'strings.infoPopulationCollectionDate' | translate }}</p>
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        [ngClass]="{
+          'datepicker-opened': picker.opened,
+          'datepicker-closed': !picker.opened
+        }"
+      >
+        <input matInput [matDatepicker]="picker" [formControlName]="'date'" />
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon class="material-icons-round">date_range</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
   </div>
 
-  <div class="step">
-    <div class="iteration">{{ 'strings.step' | translate }} 2</div>
-    <div class="instructions">
-      <h2>{{ 'strings.headingDownloadImportTemplate' | translate }}</h2>
-      <p>{{ 'strings.infoDownloadCaseImportTemplate' | translate }}</p>
-      <p class="actions">
-        <a
-          href="/assets/document.pdf"
-          target="_blank"
-          mat-button
-          color="primary"
-          class="button-download"
-        >
-          <mat-icon class="material-icons-round">file_download</mat-icon>
-          {{ 'captions.importDownloadImportTemplate' | translate }}
-        </a>
-      </p>
-    </div>
-  </div>
-
-  <div class="step">
-    <div class="iteration">{{ 'strings.step' | translate }} 3</div>
-    <div class="instructions">
-      <h2>{{ 'strings.headingImportCsvFile' | translate }}</h2>
-      <p>{{ 'strings.infoImportCsvFile' | translate }}</p>
-      <mat-radio-group name="separator" formControlName="separator">
-        <mat-label>{{ 'captions.importValueSeparator' | translate }}</mat-label>
-        <br />
-        <mat-radio-button value="DEFAULT" color="primary">
-          {{
-            'enum.ValueSeparator.DEFAULT'
-              | translate
-              | replace: '%s':('enum.ValueSeparator.SEMICOLON' | translate)
-          }}
-        </mat-radio-button>
-        <mat-radio-button value="COMMA" color="primary">
-          {{ 'enum.ValueSeparator.COMMA' | translate }}
-        </mat-radio-button>
-        <mat-radio-button value="SEMICOLON" color="primary">
-          {{ 'enum.ValueSeparator.SEMICOLON' | translate }}
-        </mat-radio-button>
-        <mat-radio-button value="TAB" color="primary">
-          {{ 'enum.ValueSeparator.TAB' | translate }}
-        </mat-radio-button>
-      </mat-radio-group>
-      <p class="file-upload">
-        <label for="import">Choose file</label>
-        <input type="file" id="import" name="import" accept=".csv" />
-      </p>
-      <p class="actions">
-        <button mat-button color="primary" class="button-upload" (click)="import()">
-          <mat-icon class="material-icons-round">file_upload</mat-icon>
-          {{ 'captions.importImportData' | translate }}
-        </button>
-      </p>
-    </div>
-  </div>
-
-  <div class="step">
-    <div class="iteration">{{ 'strings.step' | translate }} 4</div>
-    <div class="instructions">
-      <h2>{{ 'strings.headingDownloadErrorReport' | translate }}</h2>
-      <p>{{ 'strings.infoDownloadErrorReport' | translate }}</p>
-      <p class="actions">
-        <a
-          href="/assets/document.pdf"
-          target="_blank"
-          mat-button
-          color="primary"
-          class="button-download"
-        >
-          <mat-icon class="material-icons-round">file_download</mat-icon>
-          {{ 'captions.importDownloadErrorReport' | translate }}
-        </a>
-      </p>
+  <div *ngFor="let step of steps; let i = index" class="step">
+    <div class="iteration">{{ 'strings.step' | translate }} {{ i + 1 }}</div>
+    <div class="instructions" [ngSwitch]="step">
+      <ng-container *ngSwitchCase="'import_guide'" [ngTemplateOutlet]="importGuide"></ng-container>
+      <ng-container
+        *ngSwitchCase="'import_template'"
+        [ngTemplateOutlet]="importTemplate"
+      ></ng-container>
+      <ng-container *ngSwitchCase="'import'" [ngTemplateOutlet]="importFile"></ng-container>
+      <ng-container *ngSwitchCase="'error_report'" [ngTemplateOutlet]="errorReport"></ng-container>
     </div>
   </div>
 </div>
+
+<ng-template #importGuide>
+  <h2>{{ 'strings.headingDownloadImportGuide' | translate }}</h2>
+  <p>{{ 'strings.infoDownloadImportGuide' | translate }}</p>
+  <p class="actions">
+    <a [href]="importGuideUrl" target="_blank" mat-button color="primary" class="button-download">
+      <mat-icon class="material-icons-round">file_download</mat-icon>
+      {{ 'captions.importDownloadImportGuide' | translate }}
+    </a>
+    <a
+      href="/assets/document.pdf"
+      target="_blank"
+      mat-button
+      color="primary"
+      class="button-download"
+    >
+      <mat-icon class="material-icons-round">file_download</mat-icon>
+      {{ 'captions.importDownloadDataDictionary' | translate }}
+    </a>
+  </p>
+</ng-template>
+
+<ng-template #importTemplate>
+  <h2>{{ 'strings.headingDownloadImportTemplate' | translate }}</h2>
+  <p>{{ 'strings.infoDownloadCaseImportTemplate' | translate }}</p>
+  <p class="actions">
+    <a
+      href="/assets/document.pdf"
+      target="_blank"
+      mat-button
+      color="primary"
+      class="button-download"
+    >
+      <mat-icon class="material-icons-round">file_download</mat-icon>
+      {{ 'captions.importDownloadImportTemplate' | translate }}
+    </a>
+  </p>
+</ng-template>
+
+<ng-template #importFile>
+  <form [formGroup]="form">
+    <h2>{{ 'strings.headingImportCsvFile' | translate }}</h2>
+    <p>{{ 'strings.infoImportCsvFile' | translate }}</p>
+
+    <mat-checkbox *ngIf="selectOveride" color="primary" [formControlName]="'overwriteEntries'">
+      {{ 'captions.infrastructureImportAllowOverwrite' | translate }}
+    </mat-checkbox>
+
+    <mat-radio-group *ngIf="selectSeparator" name="separator" formControlName="separator">
+      <mat-label>{{ 'captions.importValueSeparator' | translate }}</mat-label>
+      <br />
+      <mat-radio-button value="DEFAULT" [checked]="true" color="primary">
+        {{
+          'enum.ValueSeparator.DEFAULT'
+            | translate
+            | replace: '%s':('enum.ValueSeparator.SEMICOLON' | translate)
+        }}
+      </mat-radio-button>
+      <mat-radio-button value="COMMA" color="primary">
+        {{ 'enum.ValueSeparator.COMMA' | translate }}
+      </mat-radio-button>
+      <mat-radio-button value="SEMICOLON" color="primary">
+        {{ 'enum.ValueSeparator.SEMICOLON' | translate }}
+      </mat-radio-button>
+      <mat-radio-button value="TAB" color="primary">
+        {{ 'enum.ValueSeparator.TAB' | translate }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <p class="file-upload">
+      <label for="import">Choose file</label>
+      <input type="file" id="import" name="import" formControlName="file" accept=".csv" />
+    </p>
+    <p class="actions">
+      <button mat-button color="primary" class="button-upload" (click)="import()">
+        <mat-icon class="material-icons-round">file_upload</mat-icon>
+        {{ 'captions.importImportData' | translate }}
+      </button>
+    </p>
+  </form>
+</ng-template>
+
+<ng-template #errorReport>
+  <h2>{{ 'strings.headingDownloadErrorReport' | translate }}</h2>
+  <p>{{ 'strings.infoDownloadErrorReport' | translate }}</p>
+  <p class="actions">
+    <a
+      href="/assets/document.pdf"
+      target="_blank"
+      mat-button
+      color="primary"
+      class="button-download"
+      [disabled]="!hasErrors"
+    >
+      <mat-icon class="material-icons-round">file_download</mat-icon>
+      {{ 'captions.importDownloadErrorReport' | translate }}
+    </a>
+  </p>
+</ng-template>
