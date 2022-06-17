@@ -63,6 +63,26 @@
     <div class="instructions">
       <h2>{{ 'strings.headingImportCsvFile' | translate }}</h2>
       <p>{{ 'strings.infoImportCsvFile' | translate }}</p>
+      <mat-radio-group name="separator" formControlName="separator">
+        <mat-label>{{ 'captions.importValueSeparator' | translate }}</mat-label>
+        <br />
+        <mat-radio-button value="DEFAULT" color="primary">
+          {{
+            'enum.ValueSeparator.DEFAULT'
+              | translate
+              | replace: '%s':('enum.ValueSeparator.SEMICOLON' | translate)
+          }}
+        </mat-radio-button>
+        <mat-radio-button value="COMMA" color="primary">
+          {{ 'enum.ValueSeparator.COMMA' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="SEMICOLON" color="primary">
+          {{ 'enum.ValueSeparator.SEMICOLON' | translate }}
+        </mat-radio-button>
+        <mat-radio-button value="TAB" color="primary">
+          {{ 'enum.ValueSeparator.TAB' | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
       <p class="file-upload">
         <label for="import">Choose file</label>
         <input type="file" id="import" name="import" accept=".csv" />

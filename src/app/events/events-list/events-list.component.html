@@ -10,6 +10,10 @@
           {{ 'captions.eventNewEvent' | translate }}
         </button>
 
+        <button mat-stroked-button color="primary" (click)="openImportModal()">
+          {{ 'captions.actionImport' | translate }}
+        </button>
+
         <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
           <app-action-menu
             [config]="actionsMore"
