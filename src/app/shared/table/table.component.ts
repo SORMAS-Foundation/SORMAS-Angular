@@ -170,6 +170,10 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
           }
           this.getResources(true);
 
+          if (!this.bulkEditOptions?.length) {
+            return;
+          }
+
           const relevance = response.filters?.find((item: any) => item.field === 'relevanceStatus');
           switch (relevance?.value) {
             case 'ACTIVE':
