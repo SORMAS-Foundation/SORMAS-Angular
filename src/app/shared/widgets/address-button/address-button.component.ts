@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { HelperApiService } from '../../../_services/api/helper-api.service';
-import { FormElementBase } from "../../dynamic-form/types/form-element-base";
-import { NotificationService } from "../../../_services/notification.service";
+import { FormElementBase } from '../../dynamic-form/types/form-element-base';
+import { NotificationService } from '../../../_services/notification.service';
 
 @Component({
   selector: 'app-address-button',
@@ -22,7 +22,9 @@ export class AddressButtonComponent implements OnDestroy {
 
   getLatLng(): void {
     this.subscription.add(
-      this.helperApiService.getLatLng(this.group.value.location__city, this.group.value.location__street).subscribe({
+      this.helperApiService
+        .getLatLng(this.group.value.location__city, this.group.value.location__street)
+        .subscribe({
           next: (response: any) => {
             // eslint-disable-next-line no-console
             console.log('response', response);
