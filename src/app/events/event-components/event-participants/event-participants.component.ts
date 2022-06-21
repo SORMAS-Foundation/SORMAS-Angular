@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 import { Filter, NavItem, TableColumn } from '../../../_models/common';
 import { CONFIG_CASES } from '../../../_constants/storage';
 import { defaultColumnDefs } from './event-participants-list-table-data';
@@ -14,7 +15,6 @@ import {
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_PARTICIPANTS_FILTERS } from '../event-participants-filters/event-participants-filters-form-data';
 import { ImportModalComponent } from '../../../shared/modals/import-modal/import-modal.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-event-participants',
