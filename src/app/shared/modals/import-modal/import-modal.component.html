@@ -9,7 +9,10 @@
 
 <div mat-dialog-content>
   <div *ngIf="selectDate" class="step">
-    <div class="iteration">{{ 'strings.date' | translate }}</div>
+    <div class="iteration">
+      {{ 'strings.date' | translate }}
+      <span class="required">*</span>
+    </div>
     <div class="instructions">
       <p>{{ 'strings.infoPopulationCollectionDate' | translate }}</p>
       <mat-form-field

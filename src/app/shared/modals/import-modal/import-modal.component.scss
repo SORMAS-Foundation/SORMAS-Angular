@@ -75,3 +75,7 @@ h2 {
 .mat-dialog-content {
   padding: 24px;
 }
+
+.required {
+  color: mat.get-color-from-palette($sormas-alert, 400);
+}
