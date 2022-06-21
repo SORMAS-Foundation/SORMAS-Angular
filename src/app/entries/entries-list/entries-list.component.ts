@@ -3,13 +3,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import {
+  ACTIONS_TRAVEL_ENTRIES,
   ADD_MODAL_MAX_WIDTH,
+  ADD_MODAL_WIDE,
   CONFIG_ENTRIES,
   ENTRY_FILTERS_FORM_ID,
   HEADER_HEIGHT,
 } from '../../app.constants';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { AddEditBaseModalComponent } from '../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
+import { ImportModalComponent } from '../../shared/modals/import-modal/import-modal.component';
 import { TableColumn } from '../../_models/common';
 import { TravelEntryDto } from '../../_models/travelEntryDto';
 import { TravelEntryService } from '../../_services/api/travel-entry-service';
@@ -58,6 +61,18 @@ export class EntriesListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
+  }
+
+  openImportModal(): void {
+    this.dialog.open(ImportModalComponent, {
+      width: ADD_MODAL_WIDE,
+      data: {
+        title: 'strings.headingImportTravelEntries',
+        type: ACTIONS_TRAVEL_ENTRIES.IMPORT,
+        service: this.entryService,
+        showStepTemplate: false,
+      },
+    });
   }
 
   ngOnDestroy(): void {

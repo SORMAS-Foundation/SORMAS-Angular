@@ -17,6 +17,9 @@
         <button class="add-btn" mat-flat-button color="primary" (click)="openAddContactModal()">
           {{ 'captions.contactCreateNew' | translate }}
         </button>
+        <button class="add-btn" mat-stroked-button color="primary" (click)="openImportModal()">
+          {{ 'captions.actionImport' | translate }}
+        </button>
 
         <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
           <app-action-menu
