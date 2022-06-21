@@ -19,6 +19,7 @@ export const ACTIONS_CASE_FOLLOW_UP = {
 export const ACTIONS_FACILITY = {
   BASIC_EXPORT: 'FACILITY_EXPORT_BASIC',
   DETAILED_EXPORT: 'FACILITY_EXPORT_DETAILED',
+  IMPORT: 'IMPORT',
 };
 
 export const ACTIONS_SAMPLE = {
@@ -147,5 +148,13 @@ export const ACTIONS_PERSONS = {
 };
 
 export const ACTIONS_TRAVEL_ENTRIES = {
+  IMPORT: 'IMPORT',
+};
+
+export const ACTIONS_ENTRY_POINTS = {
+  IMPORT: 'IMPORT',
+};
+
+export const ACTIONS_POPULATION = {
   IMPORT: 'IMPORT',
 };

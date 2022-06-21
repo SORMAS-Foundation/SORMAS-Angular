@@ -35,7 +35,6 @@ import { EntryPointsComponent } from './entry-points/entry-points.component';
 import { EntryPointsFiltersComponent } from './entry-points/entry-points-filters/entry-points-filters.component';
 import { EntryPointsListComponent } from './entry-points/entry-points-list/entry-points-list.component';
 import { EntryPointsAddEditComponent } from './entry-points/entry-points-add-edit/entry-points-add-edit.component';
-import { PopulationImportComponent } from './population/population-import/population-import.component';
 import { SubcontinentAddEditComponent } from './subcontinents/subcontinent-add-edit/subcontinent-add-edit.component';
 import { SubcontinentListComponent } from './subcontinents/subcontinent-list/subcontinent-list.component';
 import { SubcontinentFiltersComponent } from './subcontinents/subcontinent-filters/subcontinent-filters.component';
@@ -85,7 +84,6 @@ import { OutbreaksEditComponent } from './outbreaks/outbreaks-edit/outbreaks-edi
     EntryPointsFiltersComponent,
     EntryPointsListComponent,
     EntryPointsAddEditComponent,
-    PopulationImportComponent,
     SubcontinentAddEditComponent,
     SubcontinentFiltersComponent,
     SubcontinentListComponent,

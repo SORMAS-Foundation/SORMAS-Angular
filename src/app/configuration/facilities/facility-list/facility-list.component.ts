@@ -12,6 +12,7 @@ import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-
 import {
   ACTIONS_FACILITY,
   ADD_MODAL_MAX_WIDTH,
+  ADD_MODAL_WIDE,
   API_ROUTE_FACILITIES,
   CONFIGURATION_FACILITY_FILTERS_FORM_ID,
   EXPORT_TYPES,
@@ -21,6 +22,7 @@ import { FacilityAddEditComponent } from '../facility-add-edit/facility-add-edit
 import { TableComponent } from '../../../shared/table/table.component';
 import { NotificationService } from '../../../_services/notification.service';
 import { ExportService } from '../../../_services/api/export.service';
+import { ImportModalComponent } from '../../../shared/modals/import-modal/import-modal.component';
 
 @Component({
   selector: 'app-facility-list',
@@ -106,6 +108,18 @@ export class FacilityListComponent implements OnDestroy {
       default:
         break;
     }
+  }
+
+  openImportModal(): void {
+    this.dialog.open(ImportModalComponent, {
+      width: ADD_MODAL_WIDE,
+      data: {
+        title: 'strings.headingImportFacilities',
+        type: ACTIONS_FACILITY.IMPORT,
+        service: this.facilityService,
+        selectOveride: true,
+      },
+    });
   }
 
   ngOnDestroy(): void {
