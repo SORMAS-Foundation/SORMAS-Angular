@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import {
   ACTIONS_CONTACT,
+  ADD_MODAL_WIDE,
   API_ROUTE_CONTACTS,
   EXPORT_CUSTOM_MODAL_WIDTH,
   EXPORT_TYPE,
@@ -22,6 +23,7 @@ import { FORM_DATA_CASE_CONTACT_FILTERS } from '../../../shared/contact-filters/
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { CONTACT_FILTERS_FORM_ID } from '../../../_constants/form-identifiers';
 import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
+import { ImportModalComponent } from '../../../shared/modals/import-modal/import-modal.component';
 
 @Component({
   selector: 'app-case-contacts',
@@ -118,5 +120,17 @@ export class CaseContactsComponent {
       default:
         break;
     }
+  }
+
+  openImportModal(): void {
+    this.dialog.open(ImportModalComponent, {
+      width: ADD_MODAL_WIDE,
+      data: {
+        title: 'strings.headingImportCaseContacts',
+        type: ACTIONS_CONTACT.IMPORT,
+        service: this.contactService,
+        selectDate: true,
+      },
+    });
   }
 }

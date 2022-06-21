@@ -2,6 +2,9 @@
   <app-contact-filters [formId]="formIdFilters" [data]="filtersData" filters></app-contact-filters>
   <ng-container list>
     <div class="actions-section">
+      <button mat-stroked-button color="primary" (click)="openImportModal()" class="import-button">
+        {{ 'captions.actionImport' | translate }}
+      </button>
       <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
         <app-action-menu
           [config]="actionsMore"
