@@ -60,6 +60,14 @@
         >
           {{ 'captions.eventParticipantAddPerson' | translate }}
         </button>
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="openImportModal()"
+          class="import-button"
+        >
+          {{ 'captions.actionImport' | translate }}
+        </button>
         <app-dropdown-menu buttonText="{{ 'captions.moreActions' | translate }}">
           <app-action-menu
             [config]="actionsMore"
