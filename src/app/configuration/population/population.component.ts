@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import {
+  ACTIONS_POPULATION,
+  ADD_MODAL_WIDE,
   API_ROUTE_POPULATION,
   EXPORT_TYPES,
-  POPULATION_IMPORT_MODAL_WIDTH,
   SMALL_NOTIFICATION_MODAL_WIDTH,
 } from '../../app.constants';
-import { PopulationImportComponent } from './population-import/population-import.component';
 import { NotificationService } from '../../_services/notification.service';
 import { ExportService } from '../../_services/api/export.service';
+import { ImportModalComponent } from '../../shared/modals/import-modal/import-modal.component';
 
 @Component({
   selector: 'app-population',
@@ -24,12 +25,6 @@ export class PopulationComponent {
     private exportService: ExportService
   ) {}
 
-  openImportModal(): void {
-    this.dialog.open(PopulationImportComponent, {
-      width: POPULATION_IMPORT_MODAL_WIDTH,
-    });
-  }
-
   export(): void {
     this.notificationService.prompt({
       title: this.translateService.instant('captions.exportBasic'),
@@ -38,5 +33,16 @@ export class PopulationComponent {
     });
 
     this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_POPULATION.EXPORT);
+  }
+
+  openImportModal(): void {
+    this.dialog.open(ImportModalComponent, {
+      width: ADD_MODAL_WIDE,
+      data: {
+        title: 'strings.headingImportPopulationData',
+        type: ACTIONS_POPULATION.IMPORT,
+        selectDate: true,
+      },
+    });
   }
 }

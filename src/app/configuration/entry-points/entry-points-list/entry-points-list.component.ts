@@ -4,7 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AddEditBaseModalComponent } from '../../../shared/modals/add-edit-base-modal/add-edit-base-modal.component';
 import {
+  ACTIONS_ENTRY_POINTS,
   ADD_MODAL_MAX_WIDTH,
+  ADD_MODAL_WIDE,
   API_ROUTE_ENTRY_POINTS,
   CONFIGURATION_ENTRY_POINT_FILTERS_FORM_ID,
   EXPORT_TYPES,
@@ -20,6 +22,7 @@ import { defaultColumnDefs } from './entry-points-table-data';
 import { TableComponent } from '../../../shared/table/table.component';
 import { NotificationService } from '../../../_services/notification.service';
 import { ExportService } from '../../../_services/api/export.service';
+import { ImportModalComponent } from '../../../shared/modals/import-modal/import-modal.component';
 
 @Component({
   selector: 'app-entry-points-list',
@@ -90,6 +93,18 @@ export class EntryPointsListComponent implements OnDestroy {
     });
 
     this.exportService.executeExport(EXPORT_TYPES.BASIC, API_ROUTE_ENTRY_POINTS.EXPORT);
+  }
+
+  openImportModal(): void {
+    this.dialog.open(ImportModalComponent, {
+      width: ADD_MODAL_WIDE,
+      data: {
+        title: 'strings.headingImportPointsOfEntry',
+        type: ACTIONS_ENTRY_POINTS.IMPORT,
+        service: this.entryPointService,
+        selectOveride: true,
+      },
+    });
   }
 
   ngOnDestroy(): void {
