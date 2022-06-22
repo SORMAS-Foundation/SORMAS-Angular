@@ -7,14 +7,9 @@ import { CONFIG_CASES } from '../../../_constants/storage';
 import { defaultColumnDefs } from './event-participants-list-table-data';
 import { EventParticipantService } from '../../../_services/api/event-participant.service';
 import { actionsBulkEditDefs } from './event-participants-list-actions-data';
-import {
-  ACTIONS_EVENT_PARTICIPANT,
-  ADD_MODAL_WIDE,
-  EVENT_PARTICIPANTS_FILTERS_FORM_ID,
-} from '../../../app.constants';
+import { EVENT_PARTICIPANTS_FILTERS_FORM_ID } from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import { FORM_DATA_EVENT_PARTICIPANTS_FILTERS } from '../event-participants-filters/event-participants-filters-form-data';
-import { ImportModalComponent } from '../../../shared/modals/import-modal/import-modal.component';
 
 @Component({
   selector: 'app-event-participants',
@@ -36,18 +31,6 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private dialog: MatDialog
   ) {}
-
-  openImportModal(): void {
-    this.dialog.open(ImportModalComponent, {
-      width: ADD_MODAL_WIDE,
-      data: {
-        title: 'strings.headingImportEventParticipant',
-        type: ACTIONS_EVENT_PARTICIPANT.IMPORT,
-        service: this.eventParticipantService,
-        selectDate: true,
-      },
-    });
-  }
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;

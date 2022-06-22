@@ -21,9 +21,12 @@ import {
   API_ROUTE_EVENT_PARTICIPANTS,
   EXPORT_TYPE,
   EXPORT_CUSTOM_MODAL_WIDTH,
+  ADD_MODAL_WIDE,
 } from '../../app.constants';
 import { CustomExportComponent } from '../../shared/modals/custom-export/custom-export.component';
 import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data';
+import { ImportModalComponent } from '../../shared/modals/import-modal/import-modal.component';
+import { EventParticipantService } from '../../_services/api/event-participant.service';
 
 // case routing for tabs
 const eventLinks = (eventId: string): EntityLink[] => {
@@ -61,6 +64,7 @@ export class EventComponent implements OnInit, OnDestroy {
 
   constructor(
     public eventService: EventService,
+    public eventParticipantService: EventParticipantService,
     private activeRoute: ActivatedRoute,
     private notificationService: NotificationService,
     private router: Router,
@@ -168,6 +172,18 @@ export class EventComponent implements OnInit, OnDestroy {
     });
 
     this.exportService.executeExport(EXPORT_TYPES.DETAILED, API_ROUTE_EVENT_PARTICIPANTS.EXPORT);
+  }
+
+  openImportModal(): void {
+    this.dialog.open(ImportModalComponent, {
+      width: ADD_MODAL_WIDE,
+      data: {
+        title: 'strings.headingImportEventParticipant',
+        type: ACTIONS_EVENT_PARTICIPANT.IMPORT,
+        service: this.eventParticipantService,
+        selectDate: true,
+      },
+    });
   }
 
   ngOnDestroy(): void {
