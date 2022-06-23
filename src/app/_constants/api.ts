@@ -293,6 +293,14 @@ export const API_ROUTE_SUBCONTINENTNS = {
   DEARCHIVE: 'subcontinents/dearchive',
 };
 
+export const API_ROUTE_DOCUMENTS = {
+  ENDPOINT: 'documents',
+  GET_ALL: 'documents/entityDocuments',
+  UPDATE: 'documents/push',
+  ADD: 'documents/push',
+  DELETE: 'documents/delete',
+};
+
 export const API_ROUTE_DOCUMENT_TEMPLATES = {
   ENDPOINT: 'documenttemplates',
   GET_ALL: 'documenttemplates/indexList',

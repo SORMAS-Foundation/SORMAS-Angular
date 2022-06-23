@@ -11,6 +11,9 @@ import { SampleService } from '../../../_services/api/sample.service';
 import { EventService } from '../../../_services/api/event.service';
 import { CONTACT_RISKS } from '../../../_constants/common';
 import { CONTACT_DETAILS_FORM_ID } from '../../../_constants/form-identifiers';
+import { VaccinationService } from '../../../_services/api/vaccination.service';
+import { DocumentTemplateService } from '../../../_services/api/document-template.service';
+import { DocumentService } from '../../../_services/api/document.service';
 
 @Component({
   selector: 'app-contact-details',
@@ -33,7 +36,10 @@ export class ContactDetailsComponent implements AfterViewInit, OnDestroy {
     private formElementControlService: FormElementControlService,
     public taskService: TaskService,
     public sampleService: SampleService,
-    public eventService: EventService
+    public eventService: EventService,
+    public vaccinationService: VaccinationService,
+    public documentService: DocumentService,
+    public documentTemplateService: DocumentTemplateService
   ) {}
 
   ngAfterViewInit(): void {
