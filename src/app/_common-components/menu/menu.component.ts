@@ -21,6 +21,11 @@ export const routesConfig: RouteItem[] = [
   { link: 'events/list', label: 'captions.mainMenuEvents', selectedLink: 'events' },
   { link: 'contacts/list', label: 'captions.mainMenuContacts', selectedLink: 'contacts' },
   { link: 'samples/list', label: 'captions.mainMenuSamples', selectedLink: 'samples' },
+  {
+    link: 'lab-messages/list',
+    label: 'captions.mainMenuExternalMessages',
+    selectedLink: 'messages',
+  },
   { link: 'shares/list', label: 'captions.mainMenuShareRequests', selectedLink: 'shares' },
   { link: 'entries/list', label: 'captions.mainMenuEntries', selectedLink: 'entries' },
   { link: 'reports/list', label: 'captions.mainMenuReports', selectedLink: 'reports' },

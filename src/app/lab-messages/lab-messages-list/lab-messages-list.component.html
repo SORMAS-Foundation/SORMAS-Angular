@@ -7,7 +7,7 @@
   <ng-container list>
     <div class="page-header">
       <h1 class="page-header-title">
-        {{ 'captions.View.samples.labMessages' | translate }}
+        {{ 'captions.View.messages' | translate }}
       </h1>
 
       <div class="page-header-actions">
@@ -27,7 +27,6 @@
       [isHeaderSticky]="true"
       [fullHeight]="true"
       [saveConfigKey]="configKey"
-      [viewOptions]="actionsViewOptions"
       [bulkEditOptions]="actionsBulkEditOptions"
       (rowAction)="doLabMessageAction($event)"
       showTotalContext="{{ 'strings.entitySamples' | translate }}"

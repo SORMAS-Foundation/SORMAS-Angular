@@ -140,6 +140,7 @@
   },
   "defaultProject": "sormas",
   "cli": {
+    "analytics": false,
     "defaultCollection": "@angular-eslint/schematics",
     "cache": {
       "enabled": false

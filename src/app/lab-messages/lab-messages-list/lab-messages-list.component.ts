@@ -12,7 +12,7 @@ import { NavItem, TableColumn } from '../../_models/common';
 import { SampleDto } from '../../_models/sampleDto';
 import { defaultColumnDefs } from './lab-messages-list-table-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
-import { actionsBulkEditDefs, actionsViewOptionsDefs } from './lab-messages-list-actions-data';
+import { actionsBulkEditDefs } from './lab-messages-list-actions-data';
 import { LabMessageService } from '../../_services/api/lab-message.service';
 import { FORM_DATA_LAB_MESSAGE_FILTERS } from '../lab-messages-filters/lab-messages-filters-form-data';
 import { LabMessageAssignComponent } from '../lab-message-assign/lab-message-assign.component';
@@ -29,7 +29,6 @@ export class LabMessagesListComponent implements OnInit, OnDestroy {
   configKey = CONFIG_LAB_MESSAGES;
   headerHeight = HEADER_HEIGHT;
   formIdFilters = LAB_MESSAGE_FILTERS_FORM_ID;
-  actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
   actionsBulkEditOptions: NavItem[] = actionsBulkEditDefs;
 
   private subscriptions: Subscription[] = [];
