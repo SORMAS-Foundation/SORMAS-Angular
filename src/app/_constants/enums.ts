@@ -753,6 +753,13 @@ export enum SampleAssociationType {
   EVENT_PARTICIPANT = 'enum.SampleAssociationType.EVENT_PARTICIPANT',
 }
 
+export enum SampleShippmentStatus {
+  NOT_SHIPPED = 'enum.ShipmentStatus.NOT_SHIPPED',
+  RECEIVED = 'enum.ShipmentStatus.RECEIVED',
+  REFERRED_OTHER_LAB = 'enum.ShipmentStatus.REFERRED_OTHER_LAB',
+  SHIPPED = 'enum.ShipmentStatus.SHIPPED',
+}
+
 export enum PersonAssociationType {
   ALL = 'enum.PersonAssociation.ALL',
   CASE = 'enum.PersonAssociation.CASE',

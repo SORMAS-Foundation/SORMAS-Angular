@@ -10,6 +10,7 @@ import {
   SpecimenCondition,
   CaseClassification,
   DateFilterOptions,
+  SampleShippmentStatus,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
 
@@ -24,6 +25,7 @@ const relevanceStatusOptions = pipe.transform(EntityRelevanceStatusOptions);
 const caseClassificationOptions = pipe.transform(CaseClassification);
 const diseaseOptions = pipe.transform(Disease);
 const dateFilterOptions = pipe.transform(DateFilterOptions);
+const shipmentStatusOptions = pipe.transform(SampleShippmentStatus);
 
 export const FORM_DATA_SAMPLE_FILTERS = [
   {
@@ -43,7 +45,14 @@ export const FORM_DATA_SAMPLE_FILTERS = [
     id: 'samples',
     title: 'captions.Sample',
     appearance: FormGroupStyleType.COLLAPSABLE,
-    fields: [],
+    fields: [
+      {
+        ...FORM_DATA_RADIO,
+        key: 'shipmentStatus',
+        options: shipmentStatusOptions,
+        separated: true,
+      },
+    ],
   },
   {
     id: 'relevance',
