@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Optional } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { NotificationService } from '../../_services/notification.service';
   styleUrls: ['./set-missing-geolocation.component.scss'],
 })
 export class SetMissingGeolocationComponent implements OnInit, OnDestroy {
-  form: FormGroup;
+  form: UntypedFormGroup;
   subscription: Subscription = new Subscription();
 
   constructor(
@@ -23,8 +23,8 @@ export class SetMissingGeolocationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      replace: new FormControl(false),
+    this.form = new UntypedFormGroup({
+      replace: new UntypedFormControl(false),
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 import { FORM_DATA_DATABASE_EXPORTS } from '../../../stats/exports/exports-form-data';
 
@@ -10,7 +10,7 @@ import { FORM_DATA_DATABASE_EXPORTS } from '../../../stats/exports/exports-form-
 })
 export class ExportsGroupSelectComponent {
   config: FormElementBase<string>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   dataForm = FORM_DATA_DATABASE_EXPORTS;
 
   selectAll(): void {

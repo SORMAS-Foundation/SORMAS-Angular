@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 })
 export class CasePersonContactsListComponent implements OnDestroy, OnInit {
   config: FormElementBase<any>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   formId: string;
 
   person: PersonDto;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 })
 export class NewEpidNumberComponent {
   config: FormElementBase<string>;
-  group: FormGroup;
+  group: UntypedFormGroup;
 
   generateEpidNumber(): void {
     this.group.patchValue({ epidNumber: 'test-epid-number' });

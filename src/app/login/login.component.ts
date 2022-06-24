@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth/auth-service/auth.service';
 
@@ -14,10 +14,10 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  form: FormGroup = new FormGroup({
+  form: UntypedFormGroup = new UntypedFormGroup({
     // todo - extra validations required for inputs / pws?
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    username: new UntypedFormControl('', Validators.required),
+    password: new UntypedFormControl('', Validators.required),
   });
 
   async submit(): Promise<void> {

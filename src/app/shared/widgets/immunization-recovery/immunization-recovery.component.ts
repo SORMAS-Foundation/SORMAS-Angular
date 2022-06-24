@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 import { SearchCaseModalComponent } from '../../modals/search-case-modal/search-case-modal.component';
@@ -15,7 +15,7 @@ import { SearchCaseModalComponent } from '../../modals/search-case-modal/search-
 export class ImmunizationRecoveryComponent implements OnDestroy {
   private subscription: Subscription[] = [];
   config: FormElementBase<any>;
-  group: FormGroup;
+  group: UntypedFormGroup;
 
   constructor(private dialog: MatDialog, public translateService: TranslateService) {}
 

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { FORM_DATA_MULTISELECT } from '../../_constants/form-data';
@@ -17,7 +17,7 @@ export class ColumnPickerComponent implements OnInit, OnDestroy {
 
   @Output() selectionChange: EventEmitter<any[]> = new EventEmitter();
 
-  form: FormGroup = new FormGroup({});
+  form: UntypedFormGroup = new UntypedFormGroup({});
   config: FormElementBase<string> = {
     ...FORM_DATA_MULTISELECT,
     key: 'columns',
@@ -35,8 +35,8 @@ export class ColumnPickerComponent implements OnInit, OnDestroy {
   }
 
   initForm(): void {
-    this.form = new FormGroup({
-      columns: new FormControl(this.selection || []),
+    this.form = new UntypedFormGroup({
+      columns: new UntypedFormControl(this.selection || []),
     });
 
     const control = this.form.get('columns');

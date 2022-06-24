@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { UserService } from '../../_services/api/user.service';
 import { UserDto } from '../../_models/userDto';
 
@@ -11,7 +11,7 @@ import { UserDto } from '../../_models/userDto';
   styleUrls: ['./lab-message-assign.component.scss'],
 })
 export class LabMessageAssignComponent implements OnInit, OnDestroy {
-  form: FormGroup;
+  form: UntypedFormGroup;
   users: UserDto[] = [];
   subscriptions: Subscription[] = [];
 
@@ -23,8 +23,8 @@ export class LabMessageAssignComponent implements OnInit, OnDestroy {
   }
 
   initForm(): void {
-    this.form = new FormGroup({
-      assignee: new FormControl(this.data.labMessage?.assignee?.uuid),
+    this.form = new UntypedFormGroup({
+      assignee: new UntypedFormControl(this.data.labMessage?.assignee?.uuid),
     });
   }
 

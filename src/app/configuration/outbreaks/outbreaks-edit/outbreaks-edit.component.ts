@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { DistrictService } from '../../../_services/api/district.service';
@@ -12,7 +12,7 @@ import { DistrictDto } from '../../../_models/districtDto';
   styleUrls: ['./outbreaks-edit.component.scss'],
 })
 export class OutbreaksEditComponent implements OnInit, OnDestroy {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   districts: DistrictDto[] = [];
   affectedDistrictsCount = 0;
   totalDistrictsCount = 0;
@@ -53,7 +53,7 @@ export class OutbreaksEditComponent implements OnInit, OnDestroy {
       if (district.uuid) {
         this.form.addControl(
           district.uuid,
-          new FormControl(this.isDistrictAffected(district.uuid))
+          new UntypedFormControl(this.isDistrictAffected(district.uuid))
         );
       }
     });

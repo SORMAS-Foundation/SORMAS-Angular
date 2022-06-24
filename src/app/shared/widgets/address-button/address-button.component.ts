@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { HelperApiService } from '../../../_services/api/helper-api.service';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 import { NotificationService } from '../../../_services/notification.service';
@@ -13,7 +13,7 @@ import { NotificationService } from '../../../_services/notification.service';
 export class AddressButtonComponent implements OnDestroy {
   subscription: Subscription = new Subscription();
   config: FormElementBase<any>;
-  group: FormGroup;
+  group: UntypedFormGroup;
 
   constructor(
     private helperApiService: HelperApiService,

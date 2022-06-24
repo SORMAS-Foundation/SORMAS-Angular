@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-therapy-filters',
@@ -9,16 +9,16 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class TherapyFiltersComponent implements OnInit {
   @Output() selection: EventEmitter<any> = new EventEmitter<any>();
 
-  formFilters: FormGroup;
+  formFilters: UntypedFormGroup;
 
   ngOnInit(): void {
     this.initFormFilters();
   }
 
   initFormFilters(): void {
-    this.formFilters = new FormGroup({
-      type: new FormControl(),
-      details: new FormControl(),
+    this.formFilters = new UntypedFormGroup({
+      type: new UntypedFormControl(),
+      details: new UntypedFormControl(),
     });
   }
 

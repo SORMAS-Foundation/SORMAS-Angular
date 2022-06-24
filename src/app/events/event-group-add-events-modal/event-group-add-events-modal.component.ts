@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Filter, TableColumn } from '../../_models/common';
 import { FilterService } from '../../_services/filter.service';
 import { EventGroupService } from '../../_services/api/event-group.service';
@@ -16,7 +16,7 @@ import { EVENT_GROUP_FILTERS_ADD_EVENTS_MODAL_FORM_ID } from '../../_constants/f
 })
 export class EventGroupAddEventsModalComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
-  filtersForm = new FormGroup({});
+  filtersForm = new UntypedFormGroup({});
   selectedEventGroup: EventGroupsIndexDto | null;
   tableAppearanceOptions = TableAppearanceOptions;
   formId = EVENT_GROUP_FILTERS_ADD_EVENTS_MODAL_FORM_ID;
@@ -34,8 +34,8 @@ export class EventGroupAddEventsModalComponent implements OnInit {
   }
 
   initFiltersForm(): void {
-    this.filtersForm = new FormGroup({
-      searchEventGroup: new FormControl(),
+    this.filtersForm = new UntypedFormGroup({
+      searchEventGroup: new UntypedFormControl(),
     });
   }
 

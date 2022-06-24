@@ -138,11 +138,12 @@
       }
     }
   },
-  "defaultProject": "sormas",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics",
     "cache": {
       "enabled": false
-    }
+    },
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

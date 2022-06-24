@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Filter } from '../../../_models/common';
 import { DatepickerHeaderTodayComponent } from '../../../shared/dynamic-form/components/datepicker-header-today/datepicker-header-today.component';
@@ -14,7 +14,7 @@ import { ListingService } from '../../../_services/api/listing.service';
   styleUrls: ['./line-listing-modal.component.scss'],
 })
 export class LineListingModalComponent implements OnInit {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   header = DatepickerHeaderTodayComponent;
   endDateAll: any;
 
@@ -31,9 +31,9 @@ export class LineListingModalComponent implements OnInit {
   }
 
   initForm(): void {
-    this.form = new FormGroup({
-      listingSearch: new FormControl(),
-      endDateAll: new FormControl(),
+    this.form = new UntypedFormGroup({
+      listingSearch: new UntypedFormControl(),
+      endDateAll: new UntypedFormControl(),
     });
   }
 
