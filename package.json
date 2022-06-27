@@ -11,7 +11,7 @@
     "test": "ng test sormas",
     "test:ci": "ng test sormas --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "e2e": "concurrently \"npm run start-proxy\" \"ng e2e\"",
-    "e2e:ci": "ng e2e --protractor-config=e2e/protractor-ci.conf.js --webdriverUpdate=true",
+    "e2e:ci": "ng e2e --protractor-config=e2e/protractor-ci.conf.js --webdriverUpdate=false",
     "lint": "ng lint sormas --cache",
     "lint:styles": "stylelint \"**/*.scss\"",
     "format": "prettier --config ./.prettierrc --write \"src/{app,enviroonments}/**/*{.ts,.html,.scss}\""
