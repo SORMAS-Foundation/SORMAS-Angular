@@ -125,12 +125,7 @@ export const ACTIONS_IMMUNIZATION_EDIT = {
   DELETE: 'DELETE',
 };
 
-export const ACTIONS_SAMPLES_VIEW_OPTIONS = {
-  SAMPLES: '/samples/list',
-  LAB_MESSAGES: '/lab-messages/list',
-};
-
-export const ACTIONS_LAB_MESSAGE = {
+export const ACTIONS_EXTERNAL_MESSAGE = {
   ASSIGN: 'ASSIGN',
   PROCESS: 'PROCESS',
   DOWNLOAD: 'DOWNLOAD',

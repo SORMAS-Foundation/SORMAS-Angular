@@ -6,11 +6,11 @@ import { UserService } from '../../_services/api/user.service';
 import { UserDto } from '../../_models/userDto';
 
 @Component({
-  selector: 'app-lab-message-assign',
-  templateUrl: './lab-message-assign.component.html',
-  styleUrls: ['./lab-message-assign.component.scss'],
+  selector: 'app-message-assign',
+  templateUrl: './message-assign.component.html',
+  styleUrls: ['./message-assign.component.scss'],
 })
-export class LabMessageAssignComponent implements OnInit, OnDestroy {
+export class MessageAssignComponent implements OnInit, OnDestroy {
   form: FormGroup;
   users: UserDto[] = [];
   subscriptions: Subscription[] = [];
@@ -24,7 +24,7 @@ export class LabMessageAssignComponent implements OnInit, OnDestroy {
 
   initForm(): void {
     this.form = new FormGroup({
-      assignee: new FormControl(this.data.labMessage?.assignee?.uuid),
+      assignee: new FormControl(this.data.message?.assignee?.uuid),
     });
   }
 

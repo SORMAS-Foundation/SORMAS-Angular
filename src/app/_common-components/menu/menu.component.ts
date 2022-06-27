@@ -22,7 +22,7 @@ export const routesConfig: RouteItem[] = [
   { link: 'contacts/list', label: 'captions.mainMenuContacts', selectedLink: 'contacts' },
   { link: 'samples/list', label: 'captions.mainMenuSamples', selectedLink: 'samples' },
   {
-    link: 'lab-messages/list',
+    link: 'messages/list',
     label: 'captions.mainMenuExternalMessages',
     selectedLink: 'messages',
   },

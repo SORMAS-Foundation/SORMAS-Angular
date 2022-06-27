@@ -68,7 +68,7 @@ export const WEEKLY_REPORT_FILTERS_FORM_ID = 'weeklyReportFilters';
 
 export const SHARE_REQUEST_FILTERS_FORM_ID = 'shareRequestFilters';
 
-export const LAB_MESSAGE_FILTERS_FORM_ID = 'labMessageFilters';
+export const EXTERNAL_MESSAGE_FILTERS_FORM_ID = 'externalMessageFilters';
 
 export const USER_PROFILE_FORM_ID = 'userProfile';
 export const MERGE_DUPLICATES_FILTERS_FORM_ID = 'mergeDuplicatesFilters';

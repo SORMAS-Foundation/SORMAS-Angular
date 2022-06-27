@@ -97,9 +97,8 @@ const routes: Routes = [
     canActivate: [Guard],
   },
   {
-    path: 'lab-messages',
-    loadChildren: () =>
-      import('./lab-messages/lab-messages.module').then((m) => m.LabMessagesModule),
+    path: 'messages',
+    loadChildren: () => import('./messages/messages.module').then((m) => m.MessagesModule),
     canActivate: [Guard],
   },
   {

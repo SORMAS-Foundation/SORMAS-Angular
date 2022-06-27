@@ -1,9 +1,9 @@
 <app-filters [topGap]="headerHeight">
-  <app-lab-messages-filters
+  <app-messages-filters
     [formId]="formIdFilters"
     [data]="filtersData"
     filters
-  ></app-lab-messages-filters>
+  ></app-messages-filters>
   <ng-container list>
     <div class="page-header">
       <h1 class="page-header-title">
@@ -12,14 +12,14 @@
 
       <div class="page-header-actions">
         <button mat-flat-button color="primary" (click)="refresh()">
-          {{ 'captions.labMessageFetch' | translate }}
+          {{ 'captions.externalMessageFetch' | translate }}
         </button>
       </div>
     </div>
 
     <app-table
       [filterFormId]="formIdFilters"
-      [resourceService]="labMessageService"
+      [resourceService]="externalMessageService"
       [tableColumns]="defaultColumns"
       [isSortable]="true"
       [isSelectable]="true"
@@ -28,7 +28,7 @@
       [fullHeight]="true"
       [saveConfigKey]="configKey"
       [bulkEditOptions]="actionsBulkEditOptions"
-      (rowAction)="doLabMessageAction($event)"
+      (rowAction)="doMessageAction($event)"
       showTotalContext="{{ 'strings.entitySamples' | translate }}"
     ></app-table>
   </ng-container>
