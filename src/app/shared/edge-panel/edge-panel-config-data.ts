@@ -68,9 +68,14 @@ export const PANEL_CONFIG = {
   },
   VACCINATION: {
     title: 'captions.Immunization.vaccinations',
-    action: 'newVaccine',
+    action: 'actionAdd',
     cardType: 'vaccination',
     cardTitleKey: 'creationDate',
     titleDateFormat: 'd MMM h:mm aa',
+  },
+  DOCUMENT_TEMPLATE: {
+    title: 'captions.DocumentTemplate.plural',
+    action: 'captions.actionCreate',
+    cardType: 'document_template',
   },
 };

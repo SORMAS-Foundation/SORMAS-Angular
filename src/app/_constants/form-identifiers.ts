@@ -73,3 +73,5 @@ export const LAB_MESSAGE_FILTERS_FORM_ID = 'labMessageFilters';
 export const USER_PROFILE_FORM_ID = 'userProfile';
 export const MERGE_DUPLICATES_FILTERS_FORM_ID = 'mergeDuplicatesFilters';
 export const CUSTOM_SEARCH_ID = 'customSearch';
+
+export const DOCUMENT_TEMPLATE_CREATE_FORM_ID = 'documentTemplateCreate';

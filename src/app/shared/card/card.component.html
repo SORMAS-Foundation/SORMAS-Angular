@@ -65,6 +65,10 @@
     <app-card-attachments *ngSwitchCase="'attachments'" [data]="data"></app-card-attachments>
     <app-card-disease *ngSwitchCase="'disease'" [data]="data"></app-card-disease>
     <app-card-vaccination *ngSwitchCase="'vaccination'" [data]="data"></app-card-vaccination>
+    <app-card-document-template
+      *ngSwitchCase="'document_template'"
+      [data]="data"
+    ></app-card-document-template>
     <ng-content *ngSwitchDefault></ng-content>
   </mat-card-content>
 
