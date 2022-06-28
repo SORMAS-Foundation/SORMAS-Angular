@@ -77,6 +77,12 @@ export const FORM_DATA_TEXTAREA = {
   className: 'size-full',
 };
 
+export const FORM_DATA_EDITTEXTAREA = {
+  ...FORM_DATA_BASE,
+  controlType: 'edittextarea',
+  className: 'size-full',
+};
+
 export const FORM_DATA_NULL = {
   ...FORM_DATA_BASE,
   controlType: 'null',

@@ -1,5 +1,5 @@
 import {
-  FORM_DATA_DATETIME,
+  FORM_DATA_DATETIME, FORM_DATA_EDITTEXTAREA,
   FORM_DATA_INPUT,
   FORM_DATA_NULL,
   FORM_DATA_RADIO,
@@ -62,6 +62,11 @@ export const FORM_DATA_EVENT_ACTIONS_ADD_EDIT = [
         key: 'actionStatus',
         newLine: true,
         options: actionStatusOptions,
+      },
+      {
+        ...FORM_DATA_EDITTEXTAREA,
+        key: 'description',
+        newLine: true,
       },
     ],
   },

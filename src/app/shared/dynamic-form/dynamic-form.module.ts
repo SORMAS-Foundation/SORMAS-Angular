@@ -23,6 +23,7 @@ import { DirectivesModule } from '../../_directives/directives.module';
 import { CollapsableBoxModule } from '../collapsable-box/collapsable-box.module';
 import { FormSearchboxComponent } from './components/form-searchbox/form-searchbox.component';
 import { FormElementControlService } from '../../_services/form-element-control.service';
+import { FormEdittextareaComponent } from './components/form-edittextarea/form-edittextarea.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { FormElementControlService } from '../../_services/form-element-control.
     FormWidgetComponent,
     DatepickerHeaderTodayComponent,
     FormMultiselectComponent,
+    FormEdittextareaComponent,
   ],
   exports: [DynamicFormComponent, FormMultiselectComponent],
   providers: [FormElementControlService],
