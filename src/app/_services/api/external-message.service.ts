@@ -10,8 +10,8 @@ import { Serializer } from '../../_serializers/serializer';
 @Injectable({
   providedIn: 'root',
 })
-export class LabMessageService extends BaseService<LabMessageDto> {
+export class ExternalMessageService extends BaseService<LabMessageDto> {
   constructor(httpClient: HttpClient, helperService: HelperService) {
-    super(httpClient, helperService, '', constants.API_ROUTE_LAB_MESSAGES, new Serializer());
+    super(httpClient, helperService, '', constants.API_ROUTE_EXTERNAL_MESSAGES, new Serializer());
   }
 }

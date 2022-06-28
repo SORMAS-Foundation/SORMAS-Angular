@@ -4,15 +4,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { LabMessagesListComponent } from './lab-messages-list.component';
+import { MessagesListComponent } from './messages-list.component';
 
-describe('LabMessagesListComponent', () => {
-  let component: LabMessagesListComponent;
-  let fixture: ComponentFixture<LabMessagesListComponent>;
+describe('MessagesListComponent', () => {
+  let component: MessagesListComponent;
+  let fixture: ComponentFixture<MessagesListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LabMessagesListComponent],
+      declarations: [MessagesListComponent],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
@@ -23,7 +23,7 @@ describe('LabMessagesListComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LabMessagesListComponent);
+    fixture = TestBed.createComponent(MessagesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

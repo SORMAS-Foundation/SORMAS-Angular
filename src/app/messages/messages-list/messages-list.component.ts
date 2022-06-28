@@ -2,49 +2,48 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import {
-  ACTIONS_LAB_MESSAGE,
+  ACTIONS_EXTERNAL_MESSAGE,
   ADD_MODAL_NARROW,
-  CONFIG_LAB_MESSAGES,
+  CONFIG_EXTERNAL_MESSAGES,
   HEADER_HEIGHT,
-  LAB_MESSAGE_FILTERS_FORM_ID,
+  EXTERNAL_MESSAGE_FILTERS_FORM_ID,
 } from '../../app.constants';
 import { NavItem, TableColumn } from '../../_models/common';
 import { SampleDto } from '../../_models/sampleDto';
-import { defaultColumnDefs } from './lab-messages-list-table-data';
+import { defaultColumnDefs } from './messages-list-table-data';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
-import { actionsBulkEditDefs, actionsViewOptionsDefs } from './lab-messages-list-actions-data';
-import { LabMessageService } from '../../_services/api/lab-message.service';
-import { FORM_DATA_LAB_MESSAGE_FILTERS } from '../lab-messages-filters/lab-messages-filters-form-data';
-import { LabMessageAssignComponent } from '../lab-message-assign/lab-message-assign.component';
+import { actionsBulkEditDefs } from './messages-list-actions-data';
+import { ExternalMessageService } from '../../_services/api/external-message.service';
+import { FORM_DATA_LAB_MESSAGE_FILTERS } from '../messages-filters/messages-filters-form-data';
+import { MessageAssignComponent } from '../message-assign/message-assign.component';
 
 @Component({
-  selector: 'app-lab-messages-list',
-  templateUrl: './lab-messages-list.component.html',
-  styleUrls: ['./lab-messages-list.component.scss'],
+  selector: 'app-messages-list',
+  templateUrl: './messages-list.component.html',
+  styleUrls: ['./messages-list.component.scss'],
 })
-export class LabMessagesListComponent implements OnInit, OnDestroy {
+export class MessagesListComponent implements OnInit, OnDestroy {
   filtersData: FormBase<any>[] = JSON.parse(JSON.stringify(FORM_DATA_LAB_MESSAGE_FILTERS));
   samples: SampleDto[] = [];
   defaultColumns: TableColumn[] = [];
-  configKey = CONFIG_LAB_MESSAGES;
+  configKey = CONFIG_EXTERNAL_MESSAGES;
   headerHeight = HEADER_HEIGHT;
-  formIdFilters = LAB_MESSAGE_FILTERS_FORM_ID;
-  actionsViewOptions: NavItem[] = actionsViewOptionsDefs;
+  formIdFilters = EXTERNAL_MESSAGE_FILTERS_FORM_ID;
   actionsBulkEditOptions: NavItem[] = actionsBulkEditDefs;
 
   private subscriptions: Subscription[] = [];
 
-  constructor(public labMessageService: LabMessageService, private dialog: MatDialog) {}
+  constructor(public externalMessageService: ExternalMessageService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.defaultColumns = defaultColumnDefs;
   }
 
-  assignUser(labMessage: any): void {
-    const dialogRef = this.dialog.open(LabMessageAssignComponent, {
+  assignUser(message: any): void {
+    const dialogRef = this.dialog.open(MessageAssignComponent, {
       width: ADD_MODAL_NARROW,
       data: {
-        labMessage,
+        message,
       },
     });
 
@@ -57,16 +56,16 @@ export class LabMessagesListComponent implements OnInit, OnDestroy {
     );
   }
 
-  doLabMessageAction([data, action]: [unknown, string]): void {
+  doMessageAction([data, action]: [unknown, string]): void {
     switch (action) {
-      case ACTIONS_LAB_MESSAGE.ASSIGN:
+      case ACTIONS_EXTERNAL_MESSAGE.ASSIGN:
         this.assignUser(data);
         break;
-      case ACTIONS_LAB_MESSAGE.PROCESS:
+      case ACTIONS_EXTERNAL_MESSAGE.PROCESS:
         // eslint-disable-next-line no-console
         console.log(action, data);
         break;
-      case ACTIONS_LAB_MESSAGE.DOWNLOAD:
+      case ACTIONS_EXTERNAL_MESSAGE.DOWNLOAD:
         // eslint-disable-next-line no-console
         console.log(action, data);
         break;

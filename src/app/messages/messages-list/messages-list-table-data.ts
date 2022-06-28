@@ -1,4 +1,4 @@
-import { ACTIONS_LAB_MESSAGE, COMMON_DATE_FORMAT } from '../../app.constants';
+import { ACTIONS_EXTERNAL_MESSAGE, COMMON_DATE_FORMAT } from '../../app.constants';
 import { TableColumn, TableDataFormatOptions } from '../../_models/common';
 
 export const defaultColumnDefs: TableColumn[] = [
@@ -12,7 +12,12 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'captions.LabMessage.messageDateTime',
+    name: 'captions.ExternalMessage.type',
+    dataKey: 'type',
+    isSortable: true,
+  },
+  {
+    name: 'captions.ExternalMessage.messageDateTime',
     dataKey: 'messageDateTime',
     align: 'right',
     isSortable: true,
@@ -22,24 +27,23 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'captions.LabMessage.labName',
-    dataKey: 'labName',
+    name: 'captions.ExternalMessage.reporterName',
+    dataKey: 'reporterName',
     isSortable: true,
   },
   {
-    name: 'captions.LabMessage.labPostalCode',
-    dataKey: 'labPostalCode',
-    align: 'right',
+    name: 'captions.ExternalMessage.reporterPostalCode',
+    dataKey: 'reporterPostalCode',
     isSortable: true,
   },
   {
-    name: 'captions.LabMessage.testedDisease',
+    name: 'captions.ExternalMessage.testedDisease',
     dataKey: 'testedDisease',
     translationName: 'Disease',
     isSortable: true,
   },
   {
-    name: 'captions.LabMessage.sampleOverallTestResult',
+    name: 'captions.ExternalMessage.sampleOverallTestResult',
     dataKey: 'sampleOverallTestResult',
     translationName: 'PathogenTestResultType',
     format: {
@@ -50,35 +54,35 @@ export const defaultColumnDefs: TableColumn[] = [
     isSortable: true,
   },
   {
-    name: 'captions.LabMessage.personFirstName',
+    name: 'captions.ExternalMessage.personFirstName',
     dataKey: 'personFirstName',
     isSortable: true,
   },
   {
-    name: 'captions.LabMessage.personLastName',
+    name: 'captions.ExternalMessage.personLastName',
     dataKey: 'personLastName',
     isSortable: true,
   },
   {
-    name: 'captions.LabMessage.personBirthDate',
+    name: 'captions.ExternalMessage.personBirthDate',
     dataKey: 'personBirthDate',
     align: 'right',
     isSortable: true,
   },
   {
-    name: 'captions.LabMessage.personPostalCode',
+    name: 'captions.ExternalMessage.personPostalCode',
     dataKey: 'personPostalCode',
     align: 'right',
     isSortable: true,
   },
   {
-    name: 'captions.LabMessage.assignee',
+    name: 'captions.ExternalMessage.assignee',
     dataKey: 'assignee.caption',
     align: 'center',
     className: 'lab-message-assignee',
     actions: [
       {
-        type: ACTIONS_LAB_MESSAGE.ASSIGN,
+        type: ACTIONS_EXTERNAL_MESSAGE.ASSIGN,
         icon: 'assignment_ind',
         className: 'button-assign',
         color: 'primary',
@@ -86,7 +90,7 @@ export const defaultColumnDefs: TableColumn[] = [
         dependingOnValues: [null],
       },
       {
-        type: ACTIONS_LAB_MESSAGE.ASSIGN,
+        type: ACTIONS_EXTERNAL_MESSAGE.ASSIGN,
         useValue: true,
         color: 'primary',
         buttonStyle: 'STROKED',
@@ -96,9 +100,9 @@ export const defaultColumnDefs: TableColumn[] = [
     ],
   },
   {
-    name: 'captions.labMessageProcess',
+    name: 'captions.externalMessageProcess',
     dataKey: 'status',
-    translationName: 'LabMessageStatus',
+    translationName: 'ExternalMessageStatus',
     align: 'center',
     format: {
       type: TableDataFormatOptions.DISPLAY,
@@ -107,8 +111,8 @@ export const defaultColumnDefs: TableColumn[] = [
     },
     actions: [
       {
-        type: ACTIONS_LAB_MESSAGE.PROCESS,
-        text: 'captions.labMessageProcess',
+        type: ACTIONS_EXTERNAL_MESSAGE.PROCESS,
+        text: 'captions.externalMessageProcess',
         color: 'primary',
         buttonStyle: 'FLAT',
         dependingOn: 'status',
@@ -117,11 +121,11 @@ export const defaultColumnDefs: TableColumn[] = [
     ],
   },
   {
-    name: 'captions.LabMessage',
+    name: 'captions.ExternalMessage',
     dataKey: '',
     actions: [
       {
-        type: ACTIONS_LAB_MESSAGE.DOWNLOAD,
+        type: ACTIONS_EXTERNAL_MESSAGE.DOWNLOAD,
         text: 'actionDownload',
         color: 'primary',
         icon: 'file_download',

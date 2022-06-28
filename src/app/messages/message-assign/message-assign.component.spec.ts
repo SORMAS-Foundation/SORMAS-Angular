@@ -3,22 +3,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { LabMessageAssignComponent } from './lab-message-assign.component';
+import { MessageAssignComponent } from './message-assign.component';
 
-describe('LabMessageAssignComponent', () => {
-  let component: LabMessageAssignComponent;
-  let fixture: ComponentFixture<LabMessageAssignComponent>;
+describe('MessageAssignComponent', () => {
+  let component: MessageAssignComponent;
+  let fixture: ComponentFixture<MessageAssignComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LabMessageAssignComponent],
+      declarations: [MessageAssignComponent],
       imports: [HttpClientTestingModule, TranslateModule.forRoot()],
       providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LabMessageAssignComponent);
+    fixture = TestBed.createComponent(MessageAssignComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

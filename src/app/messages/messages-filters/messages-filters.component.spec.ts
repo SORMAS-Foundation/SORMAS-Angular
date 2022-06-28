@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { LabMessagesFiltersComponent } from './lab-messages-filters.component';
+import { MessagesFiltersComponent } from './messages-filters.component';
 
-describe('LabMessagesFiltersComponent', () => {
-  let component: LabMessagesFiltersComponent;
-  let fixture: ComponentFixture<LabMessagesFiltersComponent>;
+describe('MessagesFiltersComponent', () => {
+  let component: MessagesFiltersComponent;
+  let fixture: ComponentFixture<MessagesFiltersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LabMessagesFiltersComponent],
+      declarations: [MessagesFiltersComponent],
       imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LabMessagesFiltersComponent);
+    fixture = TestBed.createComponent(MessagesFiltersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

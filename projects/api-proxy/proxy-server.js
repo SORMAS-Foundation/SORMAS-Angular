@@ -1793,7 +1793,7 @@ app.use('/sormas-rest/dashboard/epiCurveDataPerFollowUpUntil', (req, res) => {
   });
 });
 
-app.use('/sormas-rest/labMessage/indexList', (req, res) => {
+app.use('/sormas-rest/externalMessage/indexList', (req, res) => {
   res.status(200).send({
     elements: [
       {

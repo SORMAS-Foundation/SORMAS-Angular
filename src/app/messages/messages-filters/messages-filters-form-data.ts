@@ -3,7 +3,7 @@ import {
   FORM_DATA_SELECT,
   FORM_DATA_SEARCHBOX,
   FORM_DATA_DATE,
-  LabMessageStatus,
+  ExternalMessageStatus,
   FORM_DATA_DATETIME,
 } from '../../app.constants';
 import { FormGroupStyleType } from '../../_models/common';
@@ -12,7 +12,13 @@ import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-v
 
 const pipe = new EnumToKeyValuePipe();
 
-const labMessagesStatusOptions = pipe.transform(LabMessageStatus);
+const messagesStatusOptions = [
+  {
+    key: '',
+    value: 'captions.all',
+  },
+  ...pipe.transform(ExternalMessageStatus),
+];
 
 export const FORM_DATA_LAB_MESSAGE_FILTERS = [
   {
@@ -23,20 +29,21 @@ export const FORM_DATA_LAB_MESSAGE_FILTERS = [
       {
         ...FORM_DATA_SEARCHBOX,
         key: 'searchFieldLike',
-        placeholder: 'strings.promptLabMessagesSearchField',
+        placeholder: 'strings.promptExternalMessagesSearchField',
         className: 'fullwidth',
       },
     ],
   },
   {
     id: 'status',
-    title: 'headingLabMessages',
+    title: 'headingExternalMessages',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
         ...FORM_DATA_RADIO,
-        key: 'labMessageStatus',
-        options: labMessagesStatusOptions,
+        key: 'externalMessageStatus',
+        options: messagesStatusOptions,
+        value: '',
         separated: true,
       },
     ],
@@ -50,45 +57,45 @@ export const FORM_DATA_LAB_MESSAGE_FILTERS = [
         ...FORM_DATA_SELECT,
         key: 'assignee',
         service: 'userService',
-        placeholder: 'captions.LabMessage.assignee',
+        placeholder: 'captions.ExternalMessage.assignee',
         className: 'fullwidth',
       },
     ],
   },
   {
     id: 'date',
-    title: 'captions.LabMessage.messageDateTime',
+    title: 'captions.ExternalMessage.messageDateTime',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
         ...FORM_DATA_DATETIME,
         key: 'messageDateFrom',
-        hint: 'captions.LabMessageCriteria.messageDateFrom',
+        hint: 'captions.externalMessageCriteria.messageDateFrom',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_DATETIME,
         key: 'messageDateTo',
-        hint: 'captions.LabMessageCriteria.messageDateTo',
+        hint: 'captions.ExternalMessageCriteria.messageDateTo',
         className: 'fullwidth',
       },
     ],
   },
   {
     id: 'birthdate',
-    title: 'captions.LabMessage.personBirthDate',
+    title: 'captions.ExternalMessage.personBirthDate',
     appearance: FormGroupStyleType.COLLAPSABLE,
     fields: [
       {
         ...FORM_DATA_DATE,
         key: 'birthDateFrom',
-        hint: 'captions.LabMessageCriteria.birthDateFrom',
+        hint: 'captions.ExternalMessageCriteria.birthDateFrom',
         className: 'fullwidth',
       },
       {
         ...FORM_DATA_DATE,
         key: 'birthDateTo',
-        hint: 'captions.LabMessageCriteria.birthDateTo',
+        hint: 'captions.ExternalMessageCriteria.birthDateTo',
         className: 'fullwidth',
       },
     ],
