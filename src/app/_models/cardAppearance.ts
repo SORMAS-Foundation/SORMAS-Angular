@@ -37,4 +37,6 @@ export type CardType =
   | 'sample_additional'
   | 'disease'
   | 'vaccination'
+  | 'document'
+  | 'document_template'
   | undefined;

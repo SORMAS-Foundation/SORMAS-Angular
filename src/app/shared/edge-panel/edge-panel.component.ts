@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import {
   EDGE_PANEL_INITIAL_SIZE_SINGLE_COLUMN,
   EDGE_PANEL_INITIAL_SIZE_DOUBLE_COLUMN,
@@ -8,11 +10,16 @@ import {
   EdgePanelType,
   BREAKPOINTS,
   Position,
+  ADD_MODAL_MAX_WIDTH,
+  MODAL_NARROW_WIDTH,
 } from '../../app.constants';
 import { PANEL_CONFIG } from './edge-panel-config-data';
 import { BaseService } from '../../_services/api/base.service';
 import { NotificationService } from '../../_services/notification.service';
 import { PositionType } from '../../_models/positionType';
+import { AddEditBaseModalComponent } from '../modals/add-edit-base-modal/add-edit-base-modal.component';
+import { VaccinationAddComponent } from '../vaccination-add/vaccination-add.component';
+import { DocumentTemplateCreateComponent } from '../document-template-create/document-template-create.component';
 
 @Component({
   selector: 'app-edge-panel',
@@ -31,6 +38,7 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   @Input() actionLinkParams = {};
   @Input() cardWidth?: number;
   @Input() showCheckBoxFilter: boolean;
+  @Input() cardEdit = true;
   @Input() cardEditPosition: PositionType = Position.BOTTOMRIGHT;
 
   @Output() addItem: EventEmitter<any> = new EventEmitter();
@@ -43,7 +51,9 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dialog: MatDialog,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -88,7 +98,49 @@ export class EdgePanelComponent implements OnInit, OnDestroy {
   }
 
   create(): void {
-    this.addItem.emit();
+    switch (this.type) {
+      case EDGE_PANEL_TYPE.VACCINATION:
+        this.addVaccination();
+        break;
+      case EDGE_PANEL_TYPE.DOCUMENT_TEMPLATE:
+        this.createDocumentTemplate();
+        break;
+      default:
+        this.addItem.emit();
+        break;
+    }
+  }
+
+  addVaccination(): void {
+    const dialogRef = this.dialog.open(AddEditBaseModalComponent, {
+      maxWidth: ADD_MODAL_MAX_WIDTH,
+      data: {
+        title: this.translateService.instant('strings.headingVaccination'),
+        component: VaccinationAddComponent,
+      },
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
+  }
+
+  createDocumentTemplate(): void {
+    const dialogRef = this.dialog.open(DocumentTemplateCreateComponent, {
+      width: MODAL_NARROW_WIDTH,
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          // callback
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {

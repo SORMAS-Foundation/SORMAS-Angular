@@ -1,0 +1,11 @@
+@use '/src/variables.scss' as *;
+
+.mat-dialog-content {
+  background-color: $white;
+}
+
+.form {
+  display: block;
+  width: 350px;
+  margin: 0 auto;
+}

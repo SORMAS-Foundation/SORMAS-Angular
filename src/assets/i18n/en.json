@@ -6437,5 +6437,6 @@
   "unauthorized": "Unauthorized",
   "visitDetails": "Visit details",
   "symptoms.availability": "Availability",
-  "headingClinicalDetails": "Assessment details"
+  "headingClinicalDetails": "Assessment details",
+  "actionAdd": "Add"
 }

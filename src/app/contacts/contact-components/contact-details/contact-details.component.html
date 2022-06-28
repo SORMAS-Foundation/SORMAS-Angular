@@ -30,5 +30,19 @@
       [scopeId]="contact.caze?.uuid"
       [cardCollapse]="true"
     ></app-edge-panel>
+    <app-edge-panel
+      type="VACCINATION"
+      *ngIf="contact"
+      [resourceService]="vaccinationService"
+      [scopeId]="contact.caze?.uuid"
+    ></app-edge-panel>
+    <app-documents-panel *ngIf="contact" [entityUuid]="contact.uuid!"></app-documents-panel>
+    <app-edge-panel
+      type="DOCUMENT_TEMPLATE"
+      *ngIf="contact"
+      [resourceService]="documentTemplateService"
+      [scopeId]="contact.uuid"
+      [cardEdit]="false"
+    ></app-edge-panel>
   </div>
 </app-sidebar>
