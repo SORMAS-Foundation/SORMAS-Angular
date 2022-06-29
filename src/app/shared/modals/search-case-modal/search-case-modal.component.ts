@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Filter } from '../../../_models/common';
 import { CaseService } from '../../../_services/api/case.service';
@@ -10,7 +10,7 @@ import { CaseService } from '../../../_services/api/case.service';
   styleUrls: ['./search-case-modal.component.scss'],
 })
 export class SearchCaseModalComponent implements OnInit {
-  filtersForm = new FormGroup({});
+  filtersForm = new UntypedFormGroup({});
 
   constructor(
     public dialogRef: MatDialogRef<SearchCaseModalComponent>,
@@ -23,8 +23,8 @@ export class SearchCaseModalComponent implements OnInit {
   }
 
   initFiltersForm(): void {
-    this.filtersForm = new FormGroup({
-      nameUuidEpidNumberLike: new FormControl(),
+    this.filtersForm = new UntypedFormGroup({
+      nameUuidEpidNumberLike: new UntypedFormControl(),
     });
   }
 

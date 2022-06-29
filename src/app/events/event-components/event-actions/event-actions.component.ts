@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CardComponent } from '../../../shared/card/card.component';
@@ -18,8 +18,8 @@ export class EventActionsComponent implements OnInit, OnDestroy {
   data: ActionDto[] = [];
   documents: any = {};
   subscriptions: Subscription[] = [];
-  form = new FormGroup({
-    status: new FormControl(),
+  form = new UntypedFormGroup({
+    status: new UntypedFormControl(),
   });
   maxHeight: number | undefined;
 

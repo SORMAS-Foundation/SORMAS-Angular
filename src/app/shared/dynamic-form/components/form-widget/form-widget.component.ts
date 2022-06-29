@@ -5,7 +5,7 @@ import {
   ViewContainerRef,
   ChangeDetectorRef,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivitiesListComponent } from '../../../widgets/activities-list/activities-list.component';
 // eslint-disable-next-line max-len
 import { ExposuresListComponent } from '../../../widgets/exposures-list/exposures-list.component';
@@ -69,7 +69,7 @@ const COMPONENTS_MAP: any = {
 })
 export class FormWidgetComponent implements AfterViewInit {
   config: FormElementBase<string>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   formId: string;
   components = COMPONENTS_MAP;
 

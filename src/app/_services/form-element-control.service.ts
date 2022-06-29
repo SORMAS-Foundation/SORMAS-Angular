@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { FormBase, FormElementBase } from '../shared/dynamic-form/types/form-element-base';
 import { Resource } from '../_models/resource';
 
@@ -11,7 +11,7 @@ const MIN_PASS_LENGTH = 8;
 })
 export class FormElementControlService {
   toFormGroup = (formElements: FormElementBase<string>[]) => {
-    const group: { [key: string]: FormControl } = {};
+    const group: { [key: string]: UntypedFormControl } = {};
     let validations: ValidatorFn[] = [];
     formElements.forEach((formElement) => {
       if (formElement.validation) {
@@ -23,17 +23,17 @@ export class FormElementControlService {
 
       group[formElement.key] =
         validations.length > 0
-          ? (group[formElement.key] = new FormControl(
+          ? (group[formElement.key] = new UntypedFormControl(
               { value: formElement.value ?? undefined, disabled: formElement.disabled },
               validations
             ))
-          : (group[formElement.key] = new FormControl({
+          : (group[formElement.key] = new UntypedFormControl({
               value: formElement.value ?? undefined,
               disabled: formElement.disabled,
             }));
       validations = [];
     });
-    return new FormGroup(group);
+    return new UntypedFormGroup(group);
   };
 
   setValuesForDynamicForm(resource: Resource, formElements: FormBase<any>[]): FormBase<any>[] {

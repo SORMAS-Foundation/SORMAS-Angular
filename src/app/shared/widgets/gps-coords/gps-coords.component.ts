@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { latLng, Map, tileLayer } from 'leaflet';
 import '@bepo65/leaflet.fullscreen';
@@ -14,7 +14,7 @@ declare let require: any;
   styleUrls: ['./gps-coords.component.scss'],
 })
 export class GpsCoordsComponent implements OnInit {
-  group: FormGroup;
+  group: UntypedFormGroup;
   config: FormElementBase<string>;
 
   map: Map;

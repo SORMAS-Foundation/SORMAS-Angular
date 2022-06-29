@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { combineLatest, Subscription } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { ContactProximity, ContactRelation, Sex } from '../../../app.constants';
@@ -13,7 +13,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 })
 export class LineListingNewContactsComponent implements OnInit, AfterViewInit, OnDestroy {
   config: FormElementBase<any>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   formId: string;
 
   containerWidth: number;
@@ -35,7 +35,7 @@ export class LineListingNewContactsComponent implements OnInit, AfterViewInit, O
   ngOnInit(): void {
     this.optionsYears = this.helperService.getYears();
     this.optionsMonths = this.helperService.getMonths();
-    this.group.setControl(this.config.key, new FormArray([]));
+    this.group.setControl(this.config.key, new UntypedFormArray([]));
     this.addContact();
   }
 
@@ -51,26 +51,26 @@ export class LineListingNewContactsComponent implements OnInit, AfterViewInit, O
     this.actualWidth = actualWidth;
   }
 
-  get contacts(): FormArray {
-    return this.group.get(this.config.key) as FormArray;
+  get contacts(): UntypedFormArray {
+    return this.group.get(this.config.key) as UntypedFormArray;
   }
 
   addContact(): void {
     this.contacts.push(
-      new FormGroup({
-        id: new FormControl(this.getUuid()),
-        reportDateTime: new FormControl(null, [Validators.required]),
-        multiDayContact: new FormControl(),
-        firstContactDate: new FormControl(),
-        lastContactDate: new FormControl(),
-        contactProximity: new FormControl(),
-        relationToCase: new FormControl(),
-        firstName: new FormControl(null, [Validators.required]),
-        lastName: new FormControl(null, [Validators.required]),
-        birthDateDD: new FormControl(),
-        birthDateMM: new FormControl(),
-        birthDateYYYY: new FormControl(),
-        sex: new FormControl(null, [Validators.required]),
+      new UntypedFormGroup({
+        id: new UntypedFormControl(this.getUuid()),
+        reportDateTime: new UntypedFormControl(null, [Validators.required]),
+        multiDayContact: new UntypedFormControl(),
+        firstContactDate: new UntypedFormControl(),
+        lastContactDate: new UntypedFormControl(),
+        contactProximity: new UntypedFormControl(),
+        relationToCase: new UntypedFormControl(),
+        firstName: new UntypedFormControl(null, [Validators.required]),
+        lastName: new UntypedFormControl(null, [Validators.required]),
+        birthDateDD: new UntypedFormControl(),
+        birthDateMM: new UntypedFormControl(),
+        birthDateYYYY: new UntypedFormControl(),
+        sex: new UntypedFormControl(null, [Validators.required]),
       })
     );
     const index = this.contacts.length - 1;

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FormBaseComponent } from '../form-base.component';
 import { FormElementBase } from '../../types/form-element-base';
@@ -17,8 +17,8 @@ export class FormDatetimeComponent
   extends FormBaseComponent
   implements OnInit, AfterViewInit, OnDestroy {
   config: FormElementBase<string>;
-  group: FormGroup;
-  form: FormGroup;
+  group: UntypedFormGroup;
+  form: UntypedFormGroup;
   options: any[] = [];
   subscription: Subscription[] = [];
   header = DatepickerHeaderTodayComponent;
@@ -36,9 +36,9 @@ export class FormDatetimeComponent
     const validations = this.config.validation
       ? this.formElementControlService.getValidators(this.config.validation)
       : null;
-    this.form = new FormGroup({
-      date: new FormControl(null, validations),
-      time: new FormControl(),
+    this.form = new UntypedFormGroup({
+      date: new UntypedFormControl(null, validations),
+      time: new UntypedFormControl(),
     });
     this.updateFields(this.config.value);
     this.updateTimeOptions();

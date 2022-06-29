@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import {
   addDays,
@@ -35,7 +35,7 @@ import { HelperService } from '../../../_services/helper.service';
 export class DashboardFiltersComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() showDisease = true;
 
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   filters: Filter[] = [];
   regions: RegionDto[] = [];
   periodOptions: any[] = PERIOD_DATA;
@@ -72,21 +72,21 @@ export class DashboardFiltersComponent implements OnInit, OnDestroy, AfterViewIn
   }
 
   initFiltersForm(): void {
-    this.form = new FormGroup({
-      period: new FormControl(),
-      dateFrom: new FormControl(),
-      dateTo: new FormControl(),
-      previousPeriod: new FormControl(),
-      previousDateFrom: new FormControl(),
-      previousDateTo: new FormControl(),
-      newCaseDateType: new FormControl(),
-      region: new FormControl(),
-      disease: new FormControl(),
-      customDateType: new FormControl(),
-      customFrom: new FormControl(),
-      customTo: new FormControl(),
-      customWeekFrom: new FormControl(),
-      customWeekTo: new FormControl(),
+    this.form = new UntypedFormGroup({
+      period: new UntypedFormControl(),
+      dateFrom: new UntypedFormControl(),
+      dateTo: new UntypedFormControl(),
+      previousPeriod: new UntypedFormControl(),
+      previousDateFrom: new UntypedFormControl(),
+      previousDateTo: new UntypedFormControl(),
+      newCaseDateType: new UntypedFormControl(),
+      region: new UntypedFormControl(),
+      disease: new UntypedFormControl(),
+      customDateType: new UntypedFormControl(),
+      customFrom: new UntypedFormControl(),
+      customTo: new UntypedFormControl(),
+      customWeekFrom: new UntypedFormControl(),
+      customWeekTo: new UntypedFormControl(),
     });
   }
 

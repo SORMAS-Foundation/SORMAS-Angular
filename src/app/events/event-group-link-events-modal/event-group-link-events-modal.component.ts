@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBase } from '../../shared/dynamic-form/types/form-element-base';
 import { TableAppearanceOptions } from '../../_constants/enums';
@@ -18,7 +18,7 @@ import { defaultColumnDefs } from './event-group-link-events-modal-table-data';
 })
 export class EventGroupLinkEventsModalComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
-  filtersForm = new FormGroup({});
+  filtersForm = new UntypedFormGroup({});
   selectedEvent: EventDto | null;
   presetFilters: Filter[];
   tableAppearanceOptions = TableAppearanceOptions;

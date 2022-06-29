@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./share-reject.component.scss'],
 })
 export class ShareRejectComponent implements OnInit, OnDestroy {
-  form: FormGroup;
+  form: UntypedFormGroup;
   subscriptions: Subscription[] = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
@@ -19,8 +19,8 @@ export class ShareRejectComponent implements OnInit, OnDestroy {
   }
 
   initForm(): void {
-    this.form = new FormGroup({
-      comment: new FormControl(),
+    this.form = new UntypedFormGroup({
+      comment: new UntypedFormControl(),
     });
   }
 

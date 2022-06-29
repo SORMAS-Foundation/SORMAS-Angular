@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { format } from 'date-fns';
 import { ECharts, EChartsOption } from 'echarts';
@@ -62,7 +62,7 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
   subscriptions: Subscription[] = [];
   chart: ECharts;
   chartOption: EChartsOption;
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   viewMode: ViewOptions = 'PRIMARY';
   optimalEntriesNumber = 7;
   optimalEntriesNumberWide = 12;
@@ -85,10 +85,10 @@ export class DashboardEpidemiologicalCurveComponent implements OnInit, OnDestroy
   }
 
   initForm(): void {
-    this.form = new FormGroup({
-      epiCurveGrouping: new FormControl('WEEK'),
-      showMinimumEntries: new FormControl(true),
-      dataType: new FormControl(
+    this.form = new UntypedFormGroup({
+      epiCurveGrouping: new UntypedFormControl('WEEK'),
+      showMinimumEntries: new UntypedFormControl(true),
+      dataType: new UntypedFormControl(
         this.type === DASHBOARD_EPIDEMIOLOGICAL_CURVE_TYPE.CASE ? 'CASE_STATUS' : 'FOLLOW_UP_STATUS'
       ),
     });
