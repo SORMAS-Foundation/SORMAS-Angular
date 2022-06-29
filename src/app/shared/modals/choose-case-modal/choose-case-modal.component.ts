@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { CaseService } from '../../../_services/api/case.service';
 import { defaultColumnDefs } from './choose-case-modal-table-data';
 import { Filter, TableColumn } from '../../../_models/common';
@@ -18,7 +18,7 @@ export class ChooseCaseModalComponent implements OnInit {
   defaultColumns: TableColumn[] = [];
   tableAppearanceOptions = TableAppearanceOptions;
   selectedCase: CaseDataDto | null;
-  filtersForm = new FormGroup({});
+  filtersForm = new UntypedFormGroup({});
   formId = CASE_CHOOSE_FORM_ID;
 
   constructor(
@@ -34,8 +34,8 @@ export class ChooseCaseModalComponent implements OnInit {
   }
 
   initFiltersForm(): void {
-    this.filtersForm = new FormGroup({
-      nameUuidEpidNumberLike: new FormControl(),
+    this.filtersForm = new UntypedFormGroup({
+      nameUuidEpidNumberLike: new UntypedFormControl(),
     });
   }
 

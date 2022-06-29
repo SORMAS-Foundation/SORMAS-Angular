@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { EXPORT_TYPE } from '../../../app.constants';
 import * as dataCase from '../../../cases/cases-list/export-configuration-form-data';
 import * as dataTask from '../../../tasks/tasks-list/export-configuration-form-data';
@@ -15,7 +15,7 @@ import { FormBase, FormElementBase } from '../../dynamic-form/types/form-element
 })
 export class GroupSelectComponent implements OnInit {
   config: FormElementBase<string>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   dataForm: FormBase<any>[] = [];
 
   ngOnInit(): void {

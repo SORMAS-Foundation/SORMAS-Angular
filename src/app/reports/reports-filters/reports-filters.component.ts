@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import addDays from 'date-fns/addDays';
 import { Subscription } from 'rxjs';
 import { WEEKLY_REPORT_FILTERS_FORM_ID } from '../../app.constants';
@@ -12,7 +12,7 @@ import { HelperService } from '../../_services/helper.service';
   styleUrls: ['./reports-filters.component.scss'],
 })
 export class ReportsFiltersComponent implements OnInit, OnDestroy, AfterViewInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   today = new Date();
   lastWeek: any;
   yearsOptions: any[] = [];
@@ -35,9 +35,9 @@ export class ReportsFiltersComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   initFiltersForm(): void {
-    this.form = new FormGroup({
-      year: new FormControl(),
-      epiWeek: new FormControl(),
+    this.form = new UntypedFormGroup({
+      year: new UntypedFormControl(),
+      epiWeek: new UntypedFormControl(),
     });
   }
 

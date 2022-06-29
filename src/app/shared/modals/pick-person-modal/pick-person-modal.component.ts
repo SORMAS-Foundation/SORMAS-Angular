@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import {
@@ -18,7 +18,7 @@ import { defaultColumnDefs } from './pick-person-modal-table-data';
   styleUrls: ['./pick-person-modal.component.scss'],
 })
 export class PickPersonModalComponent implements OnInit, OnDestroy {
-  form: FormGroup;
+  form: UntypedFormGroup;
   defaultColumns: TableColumn[] = [];
   person: SimilarPersonDto;
   matchingPersons: SimilarPersonDto[] = [];
@@ -53,11 +53,11 @@ export class PickPersonModalComponent implements OnInit, OnDestroy {
   }
 
   initFiltersForm(): void {
-    this.form = new FormGroup({
-      action: new FormControl(this.action),
-      firstName: new FormControl(this.person?.firstName),
-      lastName: new FormControl(this.person?.lastName),
-      uuidExternalIdExternalTokenLike: new FormControl(),
+    this.form = new UntypedFormGroup({
+      action: new UntypedFormControl(this.action),
+      firstName: new UntypedFormControl(this.person?.firstName),
+      lastName: new UntypedFormControl(this.person?.lastName),
+      uuidExternalIdExternalTokenLike: new UntypedFormControl(),
     });
     const controlAction = this.form.get('action');
     if (controlAction) {

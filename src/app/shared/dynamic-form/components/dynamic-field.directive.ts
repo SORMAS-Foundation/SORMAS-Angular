@@ -1,5 +1,5 @@
 import { Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormElementBase } from '../types/form-element-base';
 import { FormFields } from '../types/form-fields';
 import { FormCheckboxComponent } from './form-checkbox/form-checkbox.component';
@@ -41,7 +41,7 @@ export class DynamicFieldDirective implements OnInit {
   @Input() config: FormElementBase<string> = {
     ...FORM_DATA_BASE,
   };
-  @Input() group: FormGroup = new FormGroup({});
+  @Input() group: UntypedFormGroup = new UntypedFormGroup({});
   @Input() formId: string;
   component: any;
 

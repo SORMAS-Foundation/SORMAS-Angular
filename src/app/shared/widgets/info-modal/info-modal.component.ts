@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MODAL_NARROW_WIDTH } from '../../../app.constants';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
@@ -11,7 +11,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 })
 export class InfoModalComponent {
   config: FormElementBase<string>;
-  group: FormGroup;
+  group: UntypedFormGroup;
 
   constructor(private dialog: MatDialog) {}
 

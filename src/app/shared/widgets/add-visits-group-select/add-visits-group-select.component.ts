@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 import * as data from '../../../cases/case_components/case-follow-up-add-visit/case-follow-up-add-visit-data';
 import { FormActionsService } from '../../../_services/form-actions.service';
@@ -11,7 +11,7 @@ import { FormActionsService } from '../../../_services/form-actions.service';
 })
 export class AddVisitsGroupSelectComponent {
   config: FormElementBase<string>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   formId: string;
   dataForm = data.FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS;
 

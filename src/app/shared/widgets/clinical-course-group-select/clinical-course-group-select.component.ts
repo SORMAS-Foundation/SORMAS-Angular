@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 import { FORM_DATA_CLINICAL_COURSE_ADD } from '../../../cases/case_components/clinical-course-add/clinical-course-add-form-data';
 
@@ -10,7 +10,7 @@ import { FORM_DATA_CLINICAL_COURSE_ADD } from '../../../cases/case_components/cl
 })
 export class ClinicalCourseGroupSelectComponent {
   config: FormElementBase<string>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   dataForm = FORM_DATA_CLINICAL_COURSE_ADD;
 
   clearAll(): void {

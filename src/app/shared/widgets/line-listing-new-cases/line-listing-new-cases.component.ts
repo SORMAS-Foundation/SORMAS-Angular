@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {
   AbstractControl,
-  FormArray,
-  FormControl,
-  FormGroup,
+  UntypedFormArray,
+  UntypedFormControl,
+  UntypedFormGroup,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -22,7 +22,7 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 })
 export class LineListingNewCasesComponent implements OnInit, AfterViewInit, OnDestroy {
   config: FormElementBase<any>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   formId: string;
 
   containerWidth: number;
@@ -48,7 +48,7 @@ export class LineListingNewCasesComponent implements OnInit, AfterViewInit, OnDe
   ngOnInit(): void {
     this.optionsYears = this.helperService.getYears();
     this.optionsMonths = this.helperService.getMonths();
-    this.group.setControl(this.config.key, new FormArray([]));
+    this.group.setControl(this.config.key, new UntypedFormArray([]));
     this.monitorFormChanges();
     this.addCase();
   }
@@ -65,25 +65,25 @@ export class LineListingNewCasesComponent implements OnInit, AfterViewInit, OnDe
     this.actualWidth = actualWidth;
   }
 
-  get cases(): FormArray {
-    return this.group.get(this.config.key) as FormArray;
+  get cases(): UntypedFormArray {
+    return this.group.get(this.config.key) as UntypedFormArray;
   }
 
   addCase(): void {
     this.cases.push(
-      new FormGroup({
-        id: new FormControl(this.getUuid()),
-        reportDate: new FormControl(null, [Validators.required]),
-        community: new FormControl(),
-        healthFacility: new FormControl(null, [Validators.required]),
-        healthFacilityDetails: new FormControl(null, [this.ValidateFacilityName()]),
-        firstName: new FormControl(null, [Validators.required]),
-        lastName: new FormControl(null, [Validators.required]),
-        birthDateDD: new FormControl(),
-        birthDateMM: new FormControl(),
-        birthDateYYYY: new FormControl(),
-        sex: new FormControl(null, [Validators.required]),
-        onsetDate: new FormControl(),
+      new UntypedFormGroup({
+        id: new UntypedFormControl(this.getUuid()),
+        reportDate: new UntypedFormControl(null, [Validators.required]),
+        community: new UntypedFormControl(),
+        healthFacility: new UntypedFormControl(null, [Validators.required]),
+        healthFacilityDetails: new UntypedFormControl(null, [this.ValidateFacilityName()]),
+        firstName: new UntypedFormControl(null, [Validators.required]),
+        lastName: new UntypedFormControl(null, [Validators.required]),
+        birthDateDD: new UntypedFormControl(),
+        birthDateMM: new UntypedFormControl(),
+        birthDateYYYY: new UntypedFormControl(),
+        sex: new UntypedFormControl(null, [Validators.required]),
+        onsetDate: new UntypedFormControl(),
       })
     );
     const index = this.cases.length - 1;

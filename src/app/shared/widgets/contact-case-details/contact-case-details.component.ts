@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ChooseCaseModalComponent } from '../../modals/choose-case-modal/choose-case-modal.component';
 import { ADD_MODAL_MAX_WIDTH, MODAL_MEDIUM_WIDTH } from '../../../_constants/common';
 import { NotificationService } from '../../../_services/notification.service';
@@ -18,7 +18,7 @@ import { CaseAddComponent } from '../../case-add/case-add.component';
 export class ContactCaseDetailsComponent implements OnDestroy {
   private subscription: Subscription[] = [];
   config: FormElementBase<any>;
-  group: FormGroup;
+  group: UntypedFormGroup;
 
   constructor(
     private dialog: MatDialog,
