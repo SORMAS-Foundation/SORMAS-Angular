@@ -293,6 +293,14 @@ export const API_ROUTE_SUBCONTINENTNS = {
   DEARCHIVE: 'subcontinents/dearchive',
 };
 
+export const API_ROUTE_DOCUMENTS = {
+  ENDPOINT: 'documents',
+  GET_ALL: 'documents/entityDocuments',
+  UPDATE: 'documents/push',
+  ADD: 'documents/push',
+  DELETE: 'documents/delete',
+};
+
 export const API_ROUTE_DOCUMENT_TEMPLATES = {
   ENDPOINT: 'documenttemplates',
   GET_ALL: 'documenttemplates/indexList',
@@ -431,12 +439,12 @@ export const API_ROUTE_SHARE_REQUESTS = {
   DELETE: 'shareRequests/delete',
 };
 
-export const API_ROUTE_LAB_MESSAGES = {
-  ENDPOINT: 'labMessage',
-  GET_ALL: 'labMessage/indexList',
-  UPDATE: 'labMessage/push',
-  ADD: 'labMessage/push',
-  DELETE: 'labMessage/delete',
+export const API_ROUTE_EXTERNAL_MESSAGES = {
+  ENDPOINT: 'externalMessage',
+  GET_ALL: 'externalMessage/indexList',
+  UPDATE: 'externalMessage/push',
+  ADD: 'externalMessage/push',
+  DELETE: 'externalMessage/delete',
 };
 
 export const API_ROUTE_IMPORT_EXPORT = {

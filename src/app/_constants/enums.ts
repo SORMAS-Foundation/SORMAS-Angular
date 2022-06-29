@@ -986,11 +986,11 @@ export enum BooleanOption {
   false = 'strings.no',
 }
 
-export enum LabMessageStatus {
-  UNPROCESSED = 'enum.LabMessageStatus.UNPROCESSED',
-  PROCESSED = 'enum.LabMessageStatus.PROCESSED',
-  FORWARDED = 'enum.LabMessageStatus.FORWARDED',
-  UNCLEAR = 'enum.LabMessageStatus.UNCLEAR',
+export enum ExternalMessageStatus {
+  UNPROCESSED = 'enum.ExternalMessageStatus.UNPROCESSED',
+  PROCESSED = 'enum.ExternalMessageStatus.PROCESSED',
+  FORWARDED = 'enum.ExternalMessageStatus.FORWARDED',
+  UNCLEAR = 'enum.ExternalMessageStatus.UNCLEAR',
 }
 
 export enum ActionPriority {

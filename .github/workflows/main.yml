@@ -27,8 +27,6 @@ jobs:
           ${{ runner.os }}-node-
     - name: Install dependencies
       run: npm ci
-    - name: Install chrome driver
-      run: node node_modules/protractor/bin/webdriver-manager update --versions.chrome 102.0.5005.61 --gecko false --standalone false
     - name: Lint
       run: npm run lint
     - name: Build

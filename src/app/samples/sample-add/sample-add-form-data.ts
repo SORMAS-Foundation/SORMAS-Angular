@@ -48,7 +48,7 @@ export const FORM_DATA_SAMPLE_ADD = [
     fields: [
       {
         ...FORM_DATA_DATETIME,
-        label: 'captions.LabMessage.sampleDateTime',
+        label: 'captions.ExternalMessage.sampleDateTime',
         key: 'sampleDateTime',
       },
       {

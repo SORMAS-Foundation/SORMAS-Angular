@@ -75,6 +75,9 @@ import { AddVisitsGroupSelectComponent } from './widgets/add-visits-group-select
 import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
 import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-group-select/clinical-course-group-select.component';
 import { ShareModalComponent } from './modals/share-modal/share-modal.component';
+import { DocumentsPanelComponent } from './documents-panel/documents-panel.component';
+import { VaccinationAddComponent } from './vaccination-add/vaccination-add.component';
+import { DocumentTemplateCreateComponent } from './document-template-create/document-template-create.component';
 
 @NgModule({
   declarations: [
@@ -135,6 +138,9 @@ import { ShareModalComponent } from './modals/share-modal/share-modal.component'
     CalculateCaseClassificationComponent,
     ClinicalCourseGroupSelectComponent,
     ShareModalComponent,
+    DocumentsPanelComponent,
+    VaccinationAddComponent,
+    DocumentTemplateCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -195,6 +201,9 @@ import { ShareModalComponent } from './modals/share-modal/share-modal.component'
     SpecificSearchComponent,
     ImportModalComponent,
     ShareModalComponent,
+    DocumentsPanelComponent,
+    VaccinationAddComponent,
+    DocumentTemplateCreateComponent,
   ],
 })
 export class SharedModule {}

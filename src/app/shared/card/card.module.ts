@@ -26,6 +26,7 @@ import { CardSampleAdditionalComponent } from './card-list/card-sample-additiona
 import { CardDiseaseComponent } from './card-disease/card-disease.component';
 import { CardVaccinationComponent } from './card-vaccination/card-vaccination.component';
 import { CardPrevHospitalizationComponent } from './card-prev-hospitalization/card-prev-hospitalization.component';
+import { CardDocumentTemplateComponent } from './card-document-template/card-document-template.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, DateCardModule, PipesModule, TranslateModule],
@@ -52,6 +53,7 @@ import { CardPrevHospitalizationComponent } from './card-prev-hospitalization/ca
     CardDiseaseComponent,
     CardVaccinationComponent,
     CardPrevHospitalizationComponent,
+    CardDocumentTemplateComponent,
   ],
   exports: [CardComponent, CardListComponent, CardEventActionsComponent, CardAttachmentsComponent],
 })

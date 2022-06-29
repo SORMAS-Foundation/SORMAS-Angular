@@ -173,7 +173,7 @@
   "NotFound.contactUs": "Contact Us",
   "NotFound.request": "Not found",
   "contactFollowupVisitsView": "Follow-up",
-  "headingLabMessages": "Lab messages",
+  "headingExternalMessages": "Messages",
   "viewFullscreen": "View fullscreen",
   "exitFullscreen": "Exit fullscreen",
   "lineListingSharedDisease": "Shared disease",
@@ -185,5 +185,6 @@
   "unauthorized": "Unauthorized",
   "visitDetails": "Visit details",
   "symptoms.availability": "Availability",
-  "headingClinicalDetails": "Assessment details"
+  "headingClinicalDetails": "Assessment details",
+  "actionAdd": "Add"
 }
