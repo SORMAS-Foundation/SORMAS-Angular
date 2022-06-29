@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { CKEditorModule } from 'ckeditor4-angular';
 import { DynamicFormComponent } from './dynamic-form.component';
 import { DynamicFieldDirective } from './components/dynamic-field.directive';
 import { FormInputComponent } from './components/form-input/form-input.component';
@@ -34,6 +35,7 @@ import { FormEdittextareaComponent } from './components/form-edittextarea/form-e
     InpageNavModule,
     DirectivesModule,
     CollapsableBoxModule,
+    CKEditorModule
   ],
   declarations: [
     DynamicFormComponent,
