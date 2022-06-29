@@ -3,7 +3,6 @@
     [data]="config.value"
     (change)="onChange()"
     [formControlName]="config.key"
-    [(ngModel)]="xx"
   ></ckeditor>
   <div class="errorMessage" color="warn" *ngIf="!isValid">
     {{ config.validationMessage || '' | translate }}
