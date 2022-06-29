@@ -35,7 +35,7 @@ import { FormEdittextareaComponent } from './components/form-edittextarea/form-e
     InpageNavModule,
     DirectivesModule,
     CollapsableBoxModule,
-    CKEditorModule
+    CKEditorModule,
   ],
   declarations: [
     DynamicFormComponent,
