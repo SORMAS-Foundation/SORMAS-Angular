@@ -4,6 +4,9 @@
       {{ 'captions.caseFollowupVisitsView' | translate }}
     </h2>
     <div class="actions">
+      <button mat-flat-button color="primary" (click)="openAddVisitModal()">
+        {{ 'captions.visitNewVisit' | translate }}
+      </button>
       <button mat-stroked-button color="primary" (click)="export()">
         {{ 'captions.export' | translate }}
       </button>

@@ -9,7 +9,7 @@ import {
   getYear,
   startOfISOWeek,
 } from 'date-fns';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Filter } from '../_models/common';
 import {
   BRIEF_DATE_FORMAT,
@@ -166,5 +166,16 @@ export class HelperService {
         .map(([key, value]) => ({ key, value }))
         .filter((item) => typesMap[type].includes(item.key))
     );
+  }
+
+  getFirstSymptomOptions(filters: any): Observable<any> {
+    const result: any[] = [];
+    filters.forEach(({ value }: any) => {
+      if (Object.values(value)[0] === 'YES') {
+        const key = Object.keys(value)[0];
+        result.push({ key, value: `captions.Symptoms.${key}` });
+      }
+    });
+    return of(result);
   }
 }

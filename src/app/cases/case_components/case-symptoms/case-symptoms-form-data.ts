@@ -54,6 +54,9 @@ export const FORM_DATA_CASE_SYMPTOMS = [
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-symptoms-group-select',
+        widgetInfo: {
+          type: 'SYMPTOMS',
+        },
       },
     ],
   },

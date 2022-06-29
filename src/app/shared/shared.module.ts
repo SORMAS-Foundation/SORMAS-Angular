@@ -71,13 +71,12 @@ import { ExportConfigurationComponent } from './modals/export-configuration/expo
 import { SpecificSearchComponent } from './modals/specific-search/specific-search.component';
 import { InfoModalComponent } from './widgets/info-modal/info-modal.component';
 import { ImportModalComponent } from './modals/import-modal/import-modal.component';
-import { AddVisitsGroupSelectComponent } from './widgets/add-visits-group-select/add-visits-group-select.component';
 import { CalculateCaseClassificationComponent } from './widgets/calculate-case-classification/calculate-case-classification.component';
-import { ClinicalCourseGroupSelectComponent } from './widgets/clinical-course-group-select/clinical-course-group-select.component';
 import { ShareModalComponent } from './modals/share-modal/share-modal.component';
 import { DocumentsPanelComponent } from './documents-panel/documents-panel.component';
 import { VaccinationAddComponent } from './vaccination-add/vaccination-add.component';
 import { DocumentTemplateCreateComponent } from './document-template-create/document-template-create.component';
+import { FollowUpVisitAddComponent } from './follow-up-visit-add/follow-up-visit-add.component';
 
 @NgModule({
   declarations: [
@@ -134,13 +133,12 @@ import { DocumentTemplateCreateComponent } from './document-template-create/docu
     SpecificSearchComponent,
     InfoModalComponent,
     ImportModalComponent,
-    AddVisitsGroupSelectComponent,
     CalculateCaseClassificationComponent,
-    ClinicalCourseGroupSelectComponent,
     ShareModalComponent,
     DocumentsPanelComponent,
     VaccinationAddComponent,
     DocumentTemplateCreateComponent,
+    FollowUpVisitAddComponent,
   ],
   imports: [
     CommonModule,
@@ -204,6 +202,7 @@ import { DocumentTemplateCreateComponent } from './document-template-create/docu
     DocumentsPanelComponent,
     VaccinationAddComponent,
     DocumentTemplateCreateComponent,
+    FollowUpVisitAddComponent,
   ],
 })
 export class SharedModule {}

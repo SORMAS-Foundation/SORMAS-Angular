@@ -1,4 +1,15 @@
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.assessments-title {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
 }

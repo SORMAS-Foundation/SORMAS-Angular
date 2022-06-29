@@ -1,13 +1,13 @@
 <p [innerHTML]="'strings.messageSymptomsHint' | translate"></p>
 
 <div class="actions">
-  <button mat-button color="primary" (click)="setAllClear()">
+  <button mat-button color="primary" (click)="clearAll()">
     {{ 'captions.actionClearAll' | translate }}
   </button>
-  <button mat-button color="primary" (click)="setAllNo()">
+  <button mat-button color="primary" (click)="setClearToNo()">
     {{ 'captions.symptomsSetClearedToNo' | translate }}
   </button>
-  <button mat-button color="primary" (click)="setAllUnknown()">
+  <button mat-button color="primary" (click)="setClearToUnknown()">
     {{ 'captions.symptomsSetClearedToUnknown' | translate }}
   </button>
 </div>

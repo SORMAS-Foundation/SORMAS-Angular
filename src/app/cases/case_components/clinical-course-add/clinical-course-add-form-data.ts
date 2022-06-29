@@ -145,7 +145,10 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        widget: 'app-clinical-course-group-select',
+        widget: 'app-symptoms-group-select',
+        widgetInfo: {
+          type: 'CLINICAL_COURSE',
+        },
       },
     ],
   },
