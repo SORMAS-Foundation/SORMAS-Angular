@@ -10,7 +10,7 @@ import { UserDto } from '../../_models/userDto';
   templateUrl: './message-assign.component.html',
   styleUrls: ['./message-assign.component.scss'],
 })
-export class LabMessageAssignComponent implements OnInit, OnDestroy {
+export class MessageAssignComponent implements OnInit, OnDestroy {
   form: UntypedFormGroup;
   users: UserDto[] = [];
   subscriptions: Subscription[] = [];
