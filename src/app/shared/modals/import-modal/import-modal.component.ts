@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { ACTIONS_CASE } from '../../../app.constants';
@@ -17,7 +17,7 @@ export class ImportModalComponent implements OnInit, OnDestroy {
   @Input() selectSeparator = true;
   @Input() selectOveride = false;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   steps = ['import_guide', 'import_template', 'import', 'error_report'];
   hasErrors = false;
   private subscriptions: Subscription = new Subscription();
@@ -53,11 +53,11 @@ export class ImportModalComponent implements OnInit, OnDestroy {
   }
 
   initForm(): void {
-    this.form = new FormGroup({
-      date: new FormControl(),
-      overwriteEntries: new FormControl(),
-      separator: new FormControl('DEFAULT'),
-      file: new FormControl(),
+    this.form = new UntypedFormGroup({
+      date: new UntypedFormControl(),
+      overwriteEntries: new UntypedFormControl(),
+      separator: new UntypedFormControl('DEFAULT'),
+      file: new UntypedFormControl(),
     });
   }
 

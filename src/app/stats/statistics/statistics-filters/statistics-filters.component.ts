@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy, ViewChildren, QueryList } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { FormBase, FormElementBase } from '../../../shared/dynamic-form/types/form-element-base';
@@ -22,7 +22,7 @@ export class StatisticsFiltersComponent implements OnInit, OnDestroy {
   @Input() opened: boolean;
 
   filtersFormData = FORM_DATA_STATISTICS_FILTERS;
-  filtersForm = new FormGroup({});
+  filtersForm = new UntypedFormGroup({});
   filters: Filter[] = [];
   regions: RegionDto[] = [];
   districts: DistrictDto[] = [];
@@ -49,55 +49,55 @@ export class StatisticsFiltersComponent implements OnInit, OnDestroy {
   }
 
   initFiltersForm(): void {
-    this.filtersForm = new FormGroup({
-      diseases: new FormControl(),
-      classifications: new FormControl(),
-      outcomes: new FormControl(),
-      reportingUserRoles: new FormControl(),
-      regions: new FormControl(),
-      districts: new FormControl(),
-      communities: new FormControl(),
-      healthFacilitiesCategory: new FormControl(),
-      healthFacilitiesType: new FormControl(),
-      healthFacilities: new FormControl(),
-      personRegions: new FormControl(),
-      personDistricts: new FormControl(),
-      personCommunities: new FormControl(),
-      personCity: new FormControl(),
-      personPostCode: new FormControl(),
-      sexes: new FormControl(),
-      ageStratification: new FormControl(),
-      ageIntervals: new FormControl(),
-      onset: new FormControl(),
-      onsetYears: new FormControl(),
-      onsetQuarters: new FormControl(),
-      onsetMonths: new FormControl(),
-      onsetEpiWeeks: new FormControl(),
-      onsetQuartersOfYear: new FormControl(),
-      onsetMonthsOfYear: new FormControl(),
-      onsetEpiWeeksOfYear: new FormControl(),
-      onsetDateFrom: new FormControl(),
-      onsetDateTo: new FormControl(),
-      report: new FormControl(),
-      reportYears: new FormControl(),
-      reportQuarters: new FormControl(),
-      reportMonths: new FormControl(),
-      reportEpiWeeks: new FormControl(),
-      reportQuartersOfYear: new FormControl(),
-      reportMonthsOfYear: new FormControl(),
-      reportEpiWeeksOfYear: new FormControl(),
-      reportDateFrom: new FormControl(),
-      reportDateTo: new FormControl(),
-      outcome: new FormControl(),
-      outcomeYears: new FormControl(),
-      outcomeQuarters: new FormControl(),
-      outcomeMonths: new FormControl(),
-      outcomeEpiWeeks: new FormControl(),
-      outcomeQuartersOfYear: new FormControl(),
-      outcomeMonthsOfYear: new FormControl(),
-      outcomeEpiWeeksOfYear: new FormControl(),
-      outcomeDateFrom: new FormControl(),
-      outcomeDateTo: new FormControl(),
+    this.filtersForm = new UntypedFormGroup({
+      diseases: new UntypedFormControl(),
+      classifications: new UntypedFormControl(),
+      outcomes: new UntypedFormControl(),
+      reportingUserRoles: new UntypedFormControl(),
+      regions: new UntypedFormControl(),
+      districts: new UntypedFormControl(),
+      communities: new UntypedFormControl(),
+      healthFacilitiesCategory: new UntypedFormControl(),
+      healthFacilitiesType: new UntypedFormControl(),
+      healthFacilities: new UntypedFormControl(),
+      personRegions: new UntypedFormControl(),
+      personDistricts: new UntypedFormControl(),
+      personCommunities: new UntypedFormControl(),
+      personCity: new UntypedFormControl(),
+      personPostCode: new UntypedFormControl(),
+      sexes: new UntypedFormControl(),
+      ageStratification: new UntypedFormControl(),
+      ageIntervals: new UntypedFormControl(),
+      onset: new UntypedFormControl(),
+      onsetYears: new UntypedFormControl(),
+      onsetQuarters: new UntypedFormControl(),
+      onsetMonths: new UntypedFormControl(),
+      onsetEpiWeeks: new UntypedFormControl(),
+      onsetQuartersOfYear: new UntypedFormControl(),
+      onsetMonthsOfYear: new UntypedFormControl(),
+      onsetEpiWeeksOfYear: new UntypedFormControl(),
+      onsetDateFrom: new UntypedFormControl(),
+      onsetDateTo: new UntypedFormControl(),
+      report: new UntypedFormControl(),
+      reportYears: new UntypedFormControl(),
+      reportQuarters: new UntypedFormControl(),
+      reportMonths: new UntypedFormControl(),
+      reportEpiWeeks: new UntypedFormControl(),
+      reportQuartersOfYear: new UntypedFormControl(),
+      reportMonthsOfYear: new UntypedFormControl(),
+      reportEpiWeeksOfYear: new UntypedFormControl(),
+      reportDateFrom: new UntypedFormControl(),
+      reportDateTo: new UntypedFormControl(),
+      outcome: new UntypedFormControl(),
+      outcomeYears: new UntypedFormControl(),
+      outcomeQuarters: new UntypedFormControl(),
+      outcomeMonths: new UntypedFormControl(),
+      outcomeEpiWeeks: new UntypedFormControl(),
+      outcomeQuartersOfYear: new UntypedFormControl(),
+      outcomeMonthsOfYear: new UntypedFormControl(),
+      outcomeEpiWeeksOfYear: new UntypedFormControl(),
+      outcomeDateFrom: new UntypedFormControl(),
+      outcomeDateTo: new UntypedFormControl(),
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 import { FormActionsService } from '../../../_services/form-actions.service';
 import { FORM_DATA_FOLLOW_UP_VISIT_ADD } from '../../follow-up-visit-add/follow-up-visit-add-data';
@@ -13,7 +13,7 @@ import { FORM_DATA_CASE_SYMPTOMS } from '../../../cases/case_components/case-sym
 })
 export class SymptomsGroupSelectComponent implements OnInit {
   config: FormElementBase<string>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   formId: string;
   data: any;
 

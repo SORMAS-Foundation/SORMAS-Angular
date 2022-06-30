@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FORM_DATA_BASE } from '../../../app.constants';
 import { FormElementBase } from '../types/form-element-base';
 import { FormActionsService } from '../../../_services/form-actions.service';
@@ -12,7 +12,7 @@ export class FormBaseComponent implements OnInit {
   config: FormElementBase<any> = {
     ...FORM_DATA_BASE,
   };
-  group: FormGroup = new FormGroup({});
+  group: UntypedFormGroup = new UntypedFormGroup({});
   formId: string;
   initialValue: any;
   control: any;

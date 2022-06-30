@@ -2,7 +2,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter, throttleTime } from 'rxjs/operators';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { FormElementControlService } from '../../_services/form-element-control.service';
 import { FormBase, FormElementBase } from './types/form-element-base';
@@ -29,7 +29,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Output() formSubmit: EventEmitter<any> = new EventEmitter();
 
   formElementsProcessed: FormElementBase<any>[] = [];
-  form: FormGroup;
+  form: UntypedFormGroup;
   watchFields: any[] = [];
   subscription: Subscription[] = [];
   sections: any[] = [];

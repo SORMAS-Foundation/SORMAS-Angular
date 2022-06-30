@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { addDays, differenceInDays, isAfter } from 'date-fns';
 import { Subscription } from 'rxjs';
@@ -20,7 +20,7 @@ export class PeriodPickerComponent implements OnInit, OnDestroy {
   @Input() maxRange = PERIOD_PICKER_MAX_RANGE;
   @Input() filterId: string;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -35,9 +35,9 @@ export class PeriodPickerComponent implements OnInit, OnDestroy {
   }
 
   initFiltersForm(): void {
-    this.form = new FormGroup({
-      from: new FormControl(this.from, Validators.required),
-      to: new FormControl(this.to, Validators.required),
+    this.form = new UntypedFormGroup({
+      from: new UntypedFormControl(this.from, Validators.required),
+      to: new UntypedFormControl(this.to, Validators.required),
     });
     this.subscriptions.push(
       this.form.valueChanges

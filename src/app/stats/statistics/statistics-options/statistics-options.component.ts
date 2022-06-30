@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import {
@@ -14,7 +14,7 @@ import {
   styleUrls: ['./statistics-options.component.scss'],
 })
 export class StatisticsOptionsComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   statisticsAttributesGroups = STATISTICS_ATTRIBUTES_GROUPS;
   statisticsTimeAttributes = STATISTICS_TIME_ATTRIBUTES;
   statisticsPlaceAttributes = STATISTICS_PLACE_ATTRIBUTES;
@@ -27,20 +27,20 @@ export class StatisticsOptionsComponent implements OnInit {
   }
 
   createForm(): void {
-    this.form = new FormGroup({
-      statisticsVisualizationType: new FormControl('TABLE'),
-      rows: new FormControl(''),
-      rowsDetails: new FormControl(),
-      columns: new FormControl(''),
-      columnsDetails: new FormControl(),
-      statisticsVisualizationMapType: new FormControl('REGIONS'),
-      statisticsVisualizationChartType: new FormControl('STACKED_COLUMN'),
-      chartSeries: new FormControl(),
-      chartXAxis: new FormControl(),
-      caseCountOrIncidence: new FormControl('CASE_COUNT'),
-      incidenceDivisor: new FormControl(100000),
-      showZeroResults: new FormControl(false),
-      hideOtherCountries: new FormControl(false),
+    this.form = new UntypedFormGroup({
+      statisticsVisualizationType: new UntypedFormControl('TABLE'),
+      rows: new UntypedFormControl(''),
+      rowsDetails: new UntypedFormControl(),
+      columns: new UntypedFormControl(''),
+      columnsDetails: new UntypedFormControl(),
+      statisticsVisualizationMapType: new UntypedFormControl('REGIONS'),
+      statisticsVisualizationChartType: new UntypedFormControl('STACKED_COLUMN'),
+      chartSeries: new UntypedFormControl(),
+      chartXAxis: new UntypedFormControl(),
+      caseCountOrIncidence: new UntypedFormControl('CASE_COUNT'),
+      incidenceDivisor: new UntypedFormControl(100000),
+      showZeroResults: new UntypedFormControl(false),
+      hideOtherCountries: new UntypedFormControl(false),
     });
   }
 

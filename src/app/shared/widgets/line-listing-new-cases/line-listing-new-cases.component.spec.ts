@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { FORM_DATA_BASE } from '../../../app.constants';
@@ -21,7 +21,7 @@ describe('LineListingNewCasesComponent', () => {
     fixture = TestBed.createComponent(LineListingNewCasesComponent);
     component = fixture.componentInstance;
     component.config = FORM_DATA_BASE;
-    component.group = new FormGroup({});
+    component.group = new UntypedFormGroup({});
     fixture.detectChanges();
   });
 

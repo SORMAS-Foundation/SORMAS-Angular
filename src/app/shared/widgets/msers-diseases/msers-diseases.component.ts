@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { DiseaseService } from '../../../_services/api/disease.service';
@@ -13,11 +13,11 @@ import { FormElementBase } from '../../dynamic-form/types/form-element-base';
 })
 export class MsersDiseasesComponent implements OnInit, OnDestroy {
   config: FormElementBase<any>;
-  group: FormGroup;
+  group: UntypedFormGroup;
   formId: string;
 
   diseases: any[] = [];
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -40,9 +40,9 @@ export class MsersDiseasesComponent implements OnInit, OnDestroy {
   createForm(): void {
     this.diseases.forEach(({ disease }) => {
       if (disease) {
-        this.form.addControl(`newCases__${disease}`, new FormControl());
-        this.form.addControl(`labConfirmations__${disease}`, new FormControl());
-        this.form.addControl(`deaths__${disease}`, new FormControl());
+        this.form.addControl(`newCases__${disease}`, new UntypedFormControl());
+        this.form.addControl(`labConfirmations__${disease}`, new UntypedFormControl());
+        this.form.addControl(`deaths__${disease}`, new UntypedFormControl());
       }
     });
   }

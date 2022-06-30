@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { FormBaseComponent } from '../form-base.component';
   styleUrls: ['./form-multiselect.component.scss'],
 })
 export class FormMultiselectComponent extends FormBaseComponent implements OnInit, OnDestroy {
-  @Input() group: FormGroup;
+  @Input() group: UntypedFormGroup;
   @Input() config: FormElementBase<any>;
   @Input() className: string;
 
