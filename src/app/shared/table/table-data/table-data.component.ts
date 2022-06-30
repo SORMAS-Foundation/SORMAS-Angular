@@ -74,6 +74,9 @@ export class TableDataComponent implements OnChanges {
       case this.formats.DISPLAY:
         this.formatDisplay();
         break;
+      case this.formats.LIST:
+        this.formatList();
+        break;
       default: {
         const data = this.getData(this.config.dataKey);
         this.dataDisplay = this.config.translationName ? this.translateData(data) : data;
@@ -110,6 +113,14 @@ export class TableDataComponent implements OnChanges {
 
   formatDisplay(): void {
     this.dataDisplay = this.interpolate();
+  }
+
+  formatList(): void {
+    const data = this.getRawData(this.config.dataKey) || [];
+    const key = this.config?.format?.params ? this.config.format.params[0] : null;
+    this.dataDisplay = data
+      .map((item: any) => (key ? item[key] : item))
+      .join(this.config.format?.separator || ' ');
   }
 
   getRawData(key: string): any {

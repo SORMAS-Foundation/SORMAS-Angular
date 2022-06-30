@@ -24,13 +24,14 @@ export interface Filter {
 }
 
 // table
-export type TableDataFormatType = 'DISPLAY' | 'LINK' | 'NUMBER' | 'DATE' | 'LOADING';
+export type TableDataFormatType = 'DISPLAY' | 'LINK' | 'NUMBER' | 'DATE' | 'LIST' | 'LOADING';
 
 export const TableDataFormatOptions = {
   DISPLAY: 'DISPLAY' as TableDataFormatType,
   LINK: 'LINK' as TableDataFormatType,
   NUMBER: 'NUMBER' as TableDataFormatType,
   DATE: 'DATE' as TableDataFormatType,
+  LIST: 'LIST' as TableDataFormatType,
   LOADING: 'LOADING' as TableDataFormatType,
 };
 
@@ -41,6 +42,7 @@ export interface TableDataFormat {
   match?: { [key: string]: number[] };
   truncate?: number;
   breakSpaces?: boolean;
+  separator?: string;
 }
 
 export interface TableDataAction {
