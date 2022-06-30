@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import {
   ACTIONS_CONTACT,
   ADD_MODAL_WIDE,
@@ -30,7 +31,6 @@ import { FORM_DATA_EXPORT_CONFIGURATION } from './export-configuration-form-data
 import { ImportModalComponent } from '../../../shared/modals/import-modal/import-modal.component';
 import { LineListingAddComponent } from '../../../shared/modals/line-listing-add-modal/line-listing-add.component';
 import { FORM_DATA_LINE_LISTING_ADD } from '../../../contacts/contacts-list/contact-line-listing-add-form-data';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-case-contacts',
