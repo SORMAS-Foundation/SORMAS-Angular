@@ -1,21 +1,21 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CaseFollowUpAddVisitComponent } from './case-follow-up-add-visit.component';
+import { FollowUpVisitAddComponent } from './follow-up-visit-add.component';
 
-describe('CaseFollowUpAddVisitComponent', () => {
-  let component: CaseFollowUpAddVisitComponent;
-  let fixture: ComponentFixture<CaseFollowUpAddVisitComponent>;
+describe('FollowUpVisitAddComponent', () => {
+  let component: FollowUpVisitAddComponent;
+  let fixture: ComponentFixture<FollowUpVisitAddComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CaseFollowUpAddVisitComponent],
+      declarations: [FollowUpVisitAddComponent],
       imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CaseFollowUpAddVisitComponent);
+    fixture = TestBed.createComponent(FollowUpVisitAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

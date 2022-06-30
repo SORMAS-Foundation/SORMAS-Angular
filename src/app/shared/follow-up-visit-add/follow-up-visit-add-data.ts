@@ -8,9 +8,9 @@ import {
   TemperatureSource,
   FORM_DATA_DATETIME,
   CaseFollowupStatus,
-} from '../../../app.constants';
+} from '../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 const range = (start: number, end: number, step = 1) => {
@@ -29,7 +29,7 @@ const optionsTemperature = range(35, 44.1, 0.1).map((val) => ({
   value: `${val.toFixed(1)} °C`,
 }));
 
-export const FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS = [
+export const FORM_DATA_FOLLOW_UP_VISIT_ADD = [
   {
     id: 'details',
     title: 'visitDetails',
@@ -83,7 +83,10 @@ export const FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS = [
     fields: [
       {
         ...FORM_DATA_WIDGET,
-        widget: 'app-add-visits-group-select',
+        widget: 'app-symptoms-group-select',
+        widgetInfo: {
+          type: 'FOLLOW_UP_VISIT',
+        },
       },
     ],
   },
@@ -333,22 +336,127 @@ export const FORM_DATA_CASE_FOLLOW_UP_NEW_VISITS = [
         ...FORM_DATA_INPUT,
         key: 'symptoms.symptomsComments',
         label: 'captions.Symptoms.symptomsComments',
-        options: optionsYesNoUnknown,
         className: 'size-full',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'symptoms.onsetSymptom',
         label: 'captions.Symptoms.firstSymptom',
-        options: [],
         className: 'size-large',
         newLine: true,
+        service: 'helperService',
+        serviceMethod: 'getFirstSymptomOptions',
+        determinedBy: [
+          {
+            key: 'symptoms.chillsSweats',
+            optional: true,
+          },
+          {
+            key: 'symptoms.headache',
+            optional: true,
+          },
+          {
+            key: 'symptoms.fever',
+            optional: true,
+          },
+          {
+            key: 'symptoms.musclePain',
+            optional: true,
+          },
+          {
+            key: 'symptoms.shivering',
+            optional: true,
+          },
+          {
+            key: 'symptoms.feelingIll',
+            optional: true,
+          },
+          {
+            key: 'symptoms.soreThroat',
+            optional: true,
+          },
+          {
+            key: 'symptoms.runnyNose',
+            optional: true,
+          },
+          {
+            key: 'symptoms.cough',
+            optional: true,
+          },
+          {
+            key: 'symptoms.difficultyBreathing',
+            optional: true,
+          },
+          {
+            key: 'symptoms.rapidBreathing',
+            optional: true,
+          },
+          {
+            key: 'symptoms.pneumoniaClinicalOrRadiologic',
+            optional: true,
+          },
+          {
+            key: 'symptoms.oxygenSaturationLower94',
+            optional: true,
+          },
+          {
+            key: 'symptoms.respiratoryDiseaseVentilation',
+            optional: true,
+          },
+          {
+            key: 'symptoms.acuteRespiratoryDistressSyndrome',
+            optional: true,
+          },
+          {
+            key: 'symptoms.abdominalPain',
+            optional: true,
+          },
+          {
+            key: 'symptoms.diarrhea',
+            optional: true,
+          },
+          {
+            key: 'symptoms.nausea',
+            optional: true,
+          },
+          {
+            key: 'symptoms.vomiting',
+            optional: true,
+          },
+          {
+            key: 'symptoms.skinUlcers',
+            optional: true,
+          },
+          {
+            key: 'symptoms.lossOfSmell',
+            optional: true,
+          },
+          {
+            key: 'symptoms.lossOfTaste',
+            optional: true,
+          },
+          {
+            key: 'symptoms.otherNonHemorrhagicSymptoms',
+            optional: true,
+          },
+          {
+            key: 'symptoms.confusedDisoriented',
+            optional: true,
+          },
+          {
+            key: 'symptoms.seizures',
+            optional: true,
+          },
+          {
+            key: 'symptoms.otherComplications',
+            optional: true,
+          },
+        ],
       },
       {
         ...FORM_DATA_DATE,
         key: 'symptoms.onsetDate',
         label: 'captions.Symptoms.symptomOnset',
-        options: optionsYesNoUnknown,
         className: 'size-large',
       },
     ],
