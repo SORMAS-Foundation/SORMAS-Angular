@@ -33,6 +33,12 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'userRoles',
     translationName: 'UserRole',
     isSortable: true,
+    maxWidth: 300,
+    format: {
+      type: TableDataFormatOptions.LIST,
+      separator: ', ',
+      params: ['caption'],
+    },
   },
   {
     name: 'captions.User.userName',

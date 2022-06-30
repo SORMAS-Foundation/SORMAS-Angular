@@ -63,14 +63,14 @@ export const FORM_DATA_USER = [
       {
         ...FORM_DATA_SELECT,
         key: 'address.country.uuid',
-        label: 'captions.country',
+        label: 'captions.Location.country',
         options: [],
         service: 'countryService',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'address.region.uuid',
-        label: 'captions.region',
+        label: 'captions.Location.region',
         service: 'regionService',
         determinedBy: [
           {
@@ -82,7 +82,7 @@ export const FORM_DATA_USER = [
       {
         ...FORM_DATA_SELECT,
         key: 'address.district.uuid',
-        label: 'captions.district',
+        label: 'captions.Location.district',
         service: 'districtService',
         determinedBy: [
           {
@@ -94,7 +94,7 @@ export const FORM_DATA_USER = [
       {
         ...FORM_DATA_SELECT,
         key: 'address.community.uuid',
-        label: 'captions.community',
+        label: 'captions.Location.community',
         service: 'communityService',
         determinedBy: [
           {
