@@ -574,6 +574,8 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.determineHeight(this.fullHeight);
+    const el: any = document.querySelector<HTMLElement>('.cdk-virtual-scroll-viewport');
+    this.changeWheelSpeed(el, 0.59);
   }
 
   openShareModal(): void {
@@ -588,6 +590,46 @@ export class TableComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       })
     );
+  }
+
+  handleScrollReset(container: any): number {
+    return container.scrollTop;
+  }
+
+  handleMouseWheel(e: WheelEvent, container: any, scrollY: number, speedY: number): number {
+    let newScrollY: number = scrollY;
+    newScrollY += speedY * e.deltaY;
+    if (newScrollY < 0) {
+      newScrollY = 0;
+    } else {
+      const limitY: number = container.scrollHeight - container.clientHeight;
+      if (newScrollY > limitY) {
+        newScrollY = limitY;
+      }
+    }
+    return newScrollY;
+  }
+
+  changeWheelSpeed(container: any, speedY: number): any {
+    const e: WheelEvent = new WheelEvent('');
+    let removed: boolean = false;
+    container.addEventListener('mouseup', this.handleScrollReset(container), false);
+    container.addEventListener('mousedown', this.handleScrollReset(container), false);
+    container.addEventListener('mousewheel', this.handleMouseWheel(e, container, 0, speedY), false);
+
+    return () => {
+      if (removed) {
+        return;
+      }
+      container.removeEventListener('mouseup', this.handleScrollReset(container), false);
+      container.removeEventListener('mousedown', this.handleScrollReset(container), false);
+      container.removeEventListener(
+        'mousewheel',
+        this.handleMouseWheel(e, container, 0, speedY),
+        false
+      );
+      removed = true;
+    };
   }
 
   ngOnDestroy(): void {
