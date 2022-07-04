@@ -16,6 +16,7 @@ import { FormWidgetComponent } from './form-widget/form-widget.component';
 import { FormDatetimeComponent } from './form-datetime/form-datetime.component';
 import { FormMultiselectComponent } from './form-multiselect/form-multiselect.component';
 import { FormSearchboxComponent } from './form-searchbox/form-searchbox.component';
+import { FormEdittextareaComponent } from './form-edittextarea/form-edittextarea.component';
 
 const components: FormFields = {
   input: FormInputComponent,
@@ -27,6 +28,7 @@ const components: FormFields = {
   date: FormDateComponent,
   datetime: FormDatetimeComponent,
   textarea: FormTextareaComponent,
+  edittextarea: FormEdittextareaComponent,
   null: FormNullComponent,
   number: FormNumberComponent,
   widget: FormWidgetComponent,

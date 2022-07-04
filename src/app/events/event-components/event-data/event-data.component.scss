@@ -1,1 +1,52 @@
-/* stylelint-disable */
+@use '@angular/material' as mat;
+@use '/src/variables.scss' as *;
+
+.action-cards {
+  > h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: mat.get-color-from-palette($sormas-accent, 800);
+  }
+
+  .action-card {
+    padding: 12px 24px;
+    overflow: hidden;
+    margin-top: 15px;
+    border-radius: 5px;
+
+    p {
+      float: left;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: 0;
+
+      &.no {
+        float: right;
+      }
+    }
+
+    &.pending, &.progress {
+      border: 1px solid mat.get-color-from-palette($sormas-accent, 200);
+
+      &.pending {
+        p {
+          color: mat.get-color-from-palette($sormas-alert, 300);
+        }
+      }
+
+      &.progress {
+        p {
+          color: mat.get-color-from-palette($sormas-primary, 400);
+        }
+      }
+    }
+
+    &.done {
+      background: mat.get-color-from-palette($sormas-accent, 50);
+
+      p {
+        color: mat.get-color-from-palette($sormas-success, 700);
+      }
+    }
+  }
+}

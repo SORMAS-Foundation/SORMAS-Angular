@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { CKEditorModule } from 'ckeditor4-angular';
 import { DynamicFormComponent } from './dynamic-form.component';
 import { DynamicFieldDirective } from './components/dynamic-field.directive';
 import { FormInputComponent } from './components/form-input/form-input.component';
@@ -23,6 +24,7 @@ import { DirectivesModule } from '../../_directives/directives.module';
 import { CollapsableBoxModule } from '../collapsable-box/collapsable-box.module';
 import { FormSearchboxComponent } from './components/form-searchbox/form-searchbox.component';
 import { FormElementControlService } from '../../_services/form-element-control.service';
+import { FormEdittextareaComponent } from './components/form-edittextarea/form-edittextarea.component';
 
 @NgModule({
   imports: [
@@ -33,6 +35,7 @@ import { FormElementControlService } from '../../_services/form-element-control.
     InpageNavModule,
     DirectivesModule,
     CollapsableBoxModule,
+    CKEditorModule,
   ],
   declarations: [
     DynamicFormComponent,
@@ -50,6 +53,7 @@ import { FormElementControlService } from '../../_services/form-element-control.
     FormWidgetComponent,
     DatepickerHeaderTodayComponent,
     FormMultiselectComponent,
+    FormEdittextareaComponent,
   ],
   exports: [DynamicFormComponent, FormMultiselectComponent],
   providers: [FormElementControlService],

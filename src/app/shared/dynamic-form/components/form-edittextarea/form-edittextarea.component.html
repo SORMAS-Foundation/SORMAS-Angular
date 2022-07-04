@@ -1,0 +1,10 @@
+<div [formGroup]="group">
+  <ckeditor
+    [data]="config.value"
+    (change)="onChange()"
+    [formControlName]="config.key"
+  ></ckeditor>
+  <div class="errorMessage" color="warn" *ngIf="!isValid">
+    {{ config.validationMessage || '' | translate }}
+  </div>
+</div>
