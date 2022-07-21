@@ -582,6 +582,11 @@ export const FORM_DATA_EVENT_ADD = [
     title: 'captions.address',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-address-button',
+        className: 'push-right',
+      },
+      {
         ...FORM_DATA_SELECT,
         key: 'country.uuid',
         label: 'captions.country',
