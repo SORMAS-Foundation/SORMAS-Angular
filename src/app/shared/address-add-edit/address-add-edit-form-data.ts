@@ -139,6 +139,11 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
     title: 'headingAddressDetails',
     fields: [
       {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-address-button',
+        className: 'push-right',
+      },
+      {
         ...FORM_DATA_INPUT,
         key: 'street',
         label: 'captions.Location.street',
