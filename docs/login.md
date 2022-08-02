@@ -11,6 +11,8 @@ For auth using Keycloak see `auth-keycloak.md`.
 
 ### Legacy login - aka using Basic Auth
 
+**Legacy login is currently not working: https://github.com/hzi-braunschweig/SORMAS-Project/issues/10019**
+
 This approach is only for local development. It let's you connect the Angular application to any valid Sormas backend that supports Basic Auth.
 
 For configuration see `SORMAS-Angular/projects/api-proxy/.env` to configure your desired BE server.
