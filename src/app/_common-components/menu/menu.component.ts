@@ -56,7 +56,7 @@ export const userRoutesConfig: RouteItem[] = [
 ];
 
 @Component({
-  selector: 'app-menu',
+  selector: 'app-top-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
   animations: [

@@ -25,6 +25,7 @@ import {
 export class HelperService {
   private apiUrl: string;
   private domainSubfolder: string;
+  private legacyUrl: string;
 
   constructor(@Inject(LOCALE_ID) protected localeId: string) {}
 
@@ -45,6 +46,14 @@ export class HelperService {
       return `${this.domainSubfolder}assets/img/${imageName}`;
     }
     return `/assets/img/${imageName}`;
+  }
+
+  setLegacyUrl(legacyUrl: string): void {
+    this.legacyUrl = legacyUrl;
+  }
+
+  getLegacyUrl(): string {
+    return this.legacyUrl;
   }
 
   getRange(start: number, end: number, step = 1): number[] {
