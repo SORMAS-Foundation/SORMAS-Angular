@@ -21,13 +21,15 @@ import { ApiInterceptor } from './_interceptors/ApiInterceptor';
 import { NotFoundComponent } from './_common-components/not-found/not-found.component';
 import { HelperService } from './_services/helper.service';
 import { ErrorInterceptor } from './_interceptors/error.interceptor.service';
+import { SideMenuComponent } from './_common-components/side-menu/side-menu.component';
+import {MatIconModule} from "@angular/material/icon";
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/');
 }
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, NotFoundComponent],
+  declarations: [AppComponent, MenuComponent, NotFoundComponent, SideMenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,7 +45,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
         deps: [HttpClient],
       },
     }),
-    DateFnsModule.forRoot(),
+    DateFnsModule.forRoot()
   ],
   providers: [
     { provide: ENV, useFactory: getEnv },

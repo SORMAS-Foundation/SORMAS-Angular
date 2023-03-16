@@ -27,6 +27,7 @@ export function initializeAuth(
             helperService.setDomainFolder(result.domainSubfolder);
           }
           helperService.setApiUrl(result.apiUrl);
+          helperService.setLegacyUrl(result.legacyUrl);
           return resolve(
             authService.init({
               config: {

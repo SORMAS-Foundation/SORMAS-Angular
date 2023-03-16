@@ -1,0 +1,48 @@
+<!-- TODO add logo -->
+
+<mat-nav-list #mainMenu class="main-menu">
+  <ng-container *ngFor="let route of routeConfig">
+    <a
+      *ngIf="!useLegacyLink(route.legacyPath); else legacyLink"
+      mat-list-item
+      [routerLink]="[route.route]"
+      [ngClass]="[
+          route.selectedLink,
+          isSelectedLink(route.selectedLink) ? 'active' : ''
+        ]"
+    >
+      <mat-icon class="material-icons-round">{{ route.icon }}</mat-icon>
+      <span>{{ route.label | translate }}</span>
+    </a>
+    <ng-template #legacyLink>
+      <a
+        mat-list-item
+        href="{{getLegacyLink(route.legacyPath)}}"
+        [ngClass]="[
+          route.selectedLink,
+          isSelectedLink(route.selectedLink) ? 'active' : ''
+        ]"
+      >
+        <mat-icon class="material-icons-round">{{ route.icon }}</mat-icon>
+        <span>{{ route.label | translate }}</span>
+      </a>
+    </ng-template>
+  </ng-container>
+</mat-nav-list>
+
+<mat-nav-list #userMenu class="user-menu">
+  <a
+    *ngFor="let route of userRouteConfig"
+    mat-icon-button
+    [routerLink]="[route.route]"
+    [ngClass]="[
+        'button-user-menu',
+        route.selectedLink,
+        isSelectedLink(route.selectedLink) ? 'active' : ''
+      ]"
+  >
+    <mat-icon class="material-icons-round">{{ route.icon }}</mat-icon>
+  </a>
+</mat-nav-list>
+
+<!-- TODO add logout -->

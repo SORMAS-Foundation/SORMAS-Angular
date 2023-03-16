@@ -1,4 +1,4 @@
-<div [dir]="direction" class="main-wrapper">
-  <app-menu></app-menu>
-  <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container [dir]="direction" class="main-wrapper" autosize="true">
+  <mat-sidenav mode="side" opened><app-menu></app-menu></mat-sidenav>
+  <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+</mat-sidenav-container>
